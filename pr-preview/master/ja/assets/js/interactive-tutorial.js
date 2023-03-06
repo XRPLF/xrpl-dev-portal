@@ -186,7 +186,8 @@ function setup_generate_step() {
     const faucet_url = $("#generate-creds-button").data("fauceturl")
 
     try {
-      const data = await call_faucet(faucet_url)
+      // destination not defined - API will create account.
+      const data = await call_faucet(faucet_url, undefined, event)
 
       block.find(".loader").hide()
       block.find(".output-area").html(`<div><strong>${tl("Address:")}</strong>
@@ -264,17 +265,38 @@ function get_wallet(event) {
  * Helper for calling the Testnet/Devnet faucet.
  * @param {String} faucet_url The URL of the faucet to call, for example:
  *                            https://faucet.altnet.rippletest.net/accounts
- */
-async function call_faucet(faucet_url, destination) {
+ * @param {String} destination The account to fund, if undefined, the facuet will create one
+ * @param {Object} event The event object to get memo data from
+ * */
+async function call_faucet(faucet_url, destination, event) {
   // Future feature: support the Faucet's optional xrpAmount param
-  const body = {}
+  const block = $(event.target).closest(".interactive-block");
+
+  const tutorial_info = {
+    path: window.location.pathname,
+    button: event.target.id,
+    step: block.data("stepnumber"),
+    totalsteps: block.data("totalsteps"),
+  };
+  //pass in plain text instead of HEX- the API will encode. 
+  const memo = {
+    data: JSON.stringify(tutorial_info, null, 0),
+    format: "application/json", // application/json
+    // The MemoType decodes to a URL that explains the format of this memo type:
+    // https://github.com/XRPLF/xrpl-dev-portal/blob/master/tool/INTERACTIVE_TUTORIALS_README.md
+    type: "https://github.com/XRPLF/xrpl-dev-portal/blob/master/tool/INTERACTIVE_TUTORIALS_README.md",
+  };
+
+  const body = {};
   if (typeof destination != "undefined") {
-    body["destination"] = destination
+    body["destination"] = destination;
   }
+  body["memos"] = [memo];
+
   const response = await fetch(faucet_url, {
     method: 'POST',
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json; charset=utf-8"
     },
     body: JSON.stringify(body)
   })

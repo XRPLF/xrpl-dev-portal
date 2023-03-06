@@ -1,5 +1,6 @@
 DEFAULT_ADDRESS_1 = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
 DEFAULT_ADDRESS_2 = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
+TST_ISSUER = "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
 
 Request("Account Methods")
 
@@ -46,6 +47,16 @@ Request('account_lines', {
     "id": 2,
     "command": "account_lines",
     "account": DEFAULT_ADDRESS_1,
+    "ledger_index": "validated"
+  }
+})
+
+Request('account_nfts', {
+  description: "Retrieves NFTs owned by an account.",
+  link: "account_nfts.html",
+  body: {
+    "command": "account_nfts",
+    "account": "rsuHaTvJh1bDmDoxX9QcKP7HEBSBt4XsHx",
     "ledger_index": "validated"
   }
 })
@@ -186,6 +197,26 @@ Request('ledger_entry - AccountRoot', {
   }
 })
 
+Request('ledger_entry - AMM', {
+  description: "Returns a single Automated Market Maker object in its raw ledger format.",
+  link: "ledger_entry.html#get-amm-object",
+  status: "not_enabled",
+  body: {
+    "id": "example_get_amm",
+    "command": "ledger_entry",
+    "amm": {
+      "asset": {
+        "currency": "XRP"
+      },
+      "asset2": {
+        "currency" : "TST",
+        "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+      }
+    },
+    "ledger_index": "validated"
+  }
+})
+
 Request('ledger_entry - DirectoryNode', {
   description: "Returns a directory object in its raw ledger format.",
   link: "ledger_entry.html#get-directorynode-object",
@@ -196,6 +227,17 @@ Request('ledger_entry - DirectoryNode', {
       "owner": DEFAULT_ADDRESS_1,
       "sub_index": 0
     },
+    "ledger_index": "validated"
+  }
+})
+
+Request('ledger_entry - NFT Page', {
+  description: "Returns an NFT Page object in its raw ledger format.",
+  link: "ledger_entry.html#get-nft-page",
+  body: {
+    "id": "example_get_nft_page",
+    "command": "ledger_entry",
+    "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
     "ledger_index": "validated"
   }
 })
@@ -281,20 +323,19 @@ Request('ledger_entry - DepositPreauth', {
   }
 })
 
-// Waiting for TicketBatch amendment on Mainnet
-// Request('ledger_entry - Ticket', {
-//   description: "Returns a Ticket object in its raw ledger format.",
-//   link: "ledger_entry.html#get-ticket-object",
-//   body: {
-//     "id": "example_get_ticket",
-//     "command": "ledger_entry",
-//     "ticket": {
-//       "owner": DEFAULT_ADDRESS_1,
-//       "ticket_sequence": 0 // TODO: make a real ticket, fill in the seq
-//     },
-//     "ledger_index": "validated"
-//   }
-// })
+Request('ledger_entry - Ticket', {
+  description: "Returns a Ticket object in its raw ledger format.",
+  link: "ledger_entry.html#get-ticket-object",
+  body: {
+    "id": "example_get_ticket",
+    "command": "ledger_entry",
+    "ticket": {
+      "account": DEFAULT_ADDRESS_1,
+      "ticket_seq": 389 // This is a real ticket on Mainnet.
+    },
+    "ledger_index": "validated"
+  }
+})
 
 
 Request("Transaction Methods")
@@ -403,6 +444,26 @@ Request('deposit_authorized', {
   }
 })
 
+Request('nft_buy_offers', {
+  description: "Retrieves offers to buy a given NFT.",
+  link: "nft_buy_offers.html",
+  body: {
+    "command": "nft_buy_offers",
+    "nft_id": "00090000D0B007439B080E9B05BF62403911301A7B1F0CFAA048C0A200000007",
+    "ledger_index": "validated"
+  }
+})
+
+Request('nft_sell_offers', {
+  description: "Retrieves offers to sell a given NFT.",
+  link: "nft_sell_offers.html",
+  body: {
+    "command": "nft_sell_offers",
+    "nft_id": "00090000D0B007439B080E9B05BF62403911301A7B1F0CFAA048C0A200000007",
+    "ledger_index": "validated"
+  }
+})
+
 Request('path_find', {
   description: "Searches for a path along which a payment can possibly be made, and periodically sends updates when the path changes over time.",
   link: "path_find.html",
@@ -441,6 +502,22 @@ Request('ripple_path_find', {
         "value": "0.001",
         "currency": "USD",
         "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    }
+  }
+})
+
+Request('amm_info', {
+  description: "Looks up info on an Automated Market Maker instance.",
+  link: "amm_info.html",
+  status: "not_enabled",
+  body: {
+    "command": "amm_info",
+    "asset": {
+      "currency": "XRP"
+    },
+    "asset2": {
+      "currency": "TST",
+      "issuer": TST_ISSUER
     }
   }
 })

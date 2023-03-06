@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>オファー - XRPL.org (日本語)</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="オファー | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/offers.html" />
-    <meta property="og:description" content="オファーはXRP Ledgerの通貨取引オーダーの形態です。オファーのライフサイクルと特性について説明します。" />
-    <meta name="description" content="オファーはXRP Ledgerの通貨取引オーダーの形態です。オファーのライフサイクルと特性について説明します。" />
+    <meta property="og:description" content="オファーはXRP Ledgerの通貨取引に関する機能の一つです。オファーのライフサイクルと特性について説明します。" />
+    <meta name="description" content="オファーはXRP Ledgerの通貨取引に関する機能の一つです。オファーのライフサイクルと特性について説明します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="ja" />
     <link rel="alternate" href="https://xrpl.org/offers.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/offers.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/offers.html" hreflang="x-default" /><!-- Default: US english -->
@@ -52,24 +51,26 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2021-v4.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v15.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+
+    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
 
 
     <!-- Theme switch -->
-    <script src="assets/js/theme-switch.js"></script>
+    <script src="/ja/assets/js/theme-switch.js"></script>
 
 
 
     <!-- expandable code samples -->
-    <script src="assets/js/expandcode.js"></script>
+    <script src="/ja/assets/js/expandcode.js"></script>
     <!-- multi-code selection tabs -->
-    <script src="assets/js/multicodetab.js"></script>
+    <script src="/ja/assets/js/multicodetab.js"></script>
     <!-- copy code button -->
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
     <script>
@@ -83,13 +84,22 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
+    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
+    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,78 +109,84 @@
     <ul class="nav navbar-nav" id="topnav-pages">
 
             <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>アバウト</span></a>
+        <a class="nav-link dropdown-toggle" href="/ja/xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>アバウト</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
           <div class="navcol col-for-xrp-ledger">
             <h5 class="dropdown-item">XRP Ledger</h5>
-            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL オーバービュー</a>
-            <a class="dropdown-item" href="uses.html">ユースケースと注目プロジェクト</a>
-            <a class="dropdown-item" href="history.html">沿革</a>
+            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
+            <a class="dropdown-item" href="/ja/history.html">沿革</a>
             <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
-            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+            <a class="dropdown-item" href="/ja/xrp-overview.html">XRP Overview</a>
           </div><!--./col-->
           <div class="navcol col-for-sustainability">
             <h5 class="dropdown-item">Sustainability</h5>
-            <a class="dropdown-item" href="impact.html">インパクト</a>
-            <a class="dropdown-item" href="carbon-calculator.html">二酸化炭素電卓</a>
+            <a class="dropdown-item" href="/ja/impact.html">インパクト</a>
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
+            <a class="dropdown-item" href="/ja/privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
 
             <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>ドキュメント</span></a>
+        <a class="nav-link dropdown-toggle" href="/ja/docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>ドキュメント</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-ドキュメント" href="docs.html">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-ドキュメント" href="/ja/docs.html">
             <img id="top-nav-hero-docs" alt="ドキュメント icon" />
             <div class="dropdown-hero-text">
               <h4>ドキュメント</h4>
-              <p>Dive into XRP Ledger technology and start integrating.</p>
+              <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
             </div>
           </a>
           <div class="navcol col-for-質問">
             <h5 class="dropdown-item">質問</h5>
-            <a class="dropdown-item" href="faq.html">よくある質問</a>
+            <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
           </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
-            <a class="dropdown-item" href="concepts.html">コンセプト</a>
-            <a class="dropdown-item" href="tutorials.html">チュートリアル</a>
-            <a class="dropdown-item" href="references.html">リファレンス</a>
+            <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
+            <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
+            <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="dev-tools.html">開発者用ツール</a>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
-            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
-            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
-            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+            <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
+            <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-人気ページ">
             <h5 class="dropdown-item">人気ページ</h5>
-            <a class="dropdown-item" href="send-xrp.html">XRPの送金</a>
-            <a class="dropdown-item" href="reserves.html">準備金</a>
-            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
-            <a class="dropdown-item" href="run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="intro-to-consensus.html">コンセンサスについて</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">APIのメソッド</a>
+            <a class="dropdown-item" href="/ja/send-xrp.html">XRPの送金</a>
+            <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
+            <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
+          </div><!--./col-->
+          <div class="navcol col-for-popular-pages">
+            <h5 class="dropdown-item">Popular Pages</h5>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
 
             <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
+        <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="contribute.html">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
             <img id="top-nav-hero-contribute" alt="貢献する icon" />
             <div class="dropdown-hero-text">
               <h4>貢献する</h4>
@@ -178,9 +194,14 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="/ja/events.html">イベント</a>
+            <a class="dropdown-item" href="/ja/ambassadors.html">アンバサダー</a>
+            <a class="dropdown-item" href="/ja/developer-funding.html">開発者ファンド</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -190,15 +211,29 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
-            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+          <div class="input-group" id="topsearchboxcontainer">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
         </div>
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          日本語
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/offers.html">
+            English
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -220,7 +255,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/fersmi/xrpl-dev-portal/edit/master/content/concepts/decentralized-exchange/offers.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1235" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/concepts/decentralized-exchange/offers.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1796" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -234,10 +269,12 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#オファー">オファー</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#オファーのライフサイクル">オファーのライフサイクル</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#資金化されていないオファーの追跡">資金化されていないオファーの追跡</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#必要となる資金">必要となる資金</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#資金不足のオファーの追跡">資金不足のオファーの追跡</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#オファーとトラスト">オファーとトラスト</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#オファーの優先度">オファーの優先度</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#オファーの有効期限">オファーの有効期限</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -257,58 +294,85 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="オファー">オファー<a aria-hidden="true" class="hover_anchor" href="#オファー"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledgerの分散型取引所では、通貨の取引注文は「オファー」と呼ばれます。オファーはXRPと発行済み通貨の取引、または発行済み通貨間の取引（同一通貨コードだがイシュアーが異なる発行済み通貨を含む）を行うことができます。（同一コードでイシュアーが異なる通貨は、<a href="rippling.html">rippling</a>によって取引することもできます。）</p>
+<p>XRP Ledgerの<a href="decentralized-exchange.html">分散型取引所</a>では、通貨の取引注文は「オファー」と呼ばれます。オファーはXRPと<a href="tokens.html">トークン</a>の取引、またはトークン間の取引（同一通貨コードだが発行者が異なるトークンを含む）を行うことができます。（同一通貨コードで発行者が異なる通貨は、<a href="rippling.html">rippling</a>によって取引することもできます。）</p>
 <ul>
 <li>オファーを作成するには、<a href="offercreate.html">OfferCreateトランザクション</a>を送信します。</li>
-<li>即時に履行されないオファーはレジャーデータの<a href="offer.html">Offerオブジェクト</a>になります。その後のオファーとPaymentにより、レジャーのOfferオブジェクトは消費されます。</li>
-<li><a href="cross-currency-payments.html">複数通貨間の支払い</a>はオファーを消費して流動性を提供します。</li>
+<li>即時に約定されないオファーはレジャーデータの<a href="offer.html">Offerオブジェクト</a>になります。その後のオファーとPaymentにより、レジャーのOfferオブジェクトは約定されます。</li>
+<li><a href="cross-currency-payments.html">クロスカレンシー支払い</a>はオファーを約定して流動性を提供します。</li>
 </ul>
 <h2 id="オファーのライフサイクル">オファーのライフサイクル<a aria-hidden="true" class="hover_anchor" href="#オファーのライフサイクル"><i class="fa fa-link"></i></a></h2>
-<p>OfferCreateトランザクションの処理時に、このトランザクションは一致するオファーまたはクロスオファーを可能な限り自動的に消費します。（既存のオファーのレートが要求よりも良い場合には、オファーの作成者は<code>TakerGets</code>の全額よりも低い額を支払い、<code>TakerPays</code>を全額を受領できます。）それにより<code>TakerPays</code>の額を完全に満たせない場合、オファーはレジャーのOfferオブジェクトになります。（<a href="offercreate.html#offercreateフラグ">OfferCreateフラグ</a>を使用してこの動作を変更できます。）</p>
-<p>既存のオファーに対応する追加のOfferCreateトランザクション、またはオファーを使用してペイメントパスを接続する<a href="payment.html">Paymentトランザクション</a>のいずれかにより、レジャー上のオファーは履行されます。オファーの部分的な履行と、部分的な資金化が可能です。1つのトランザクションで、レジャーのオファーを最大850件まで消費できます。（この数を超えるとメタデータが大きくなり過ぎて、<a href="tec-codes.html"><code>tecOVERSIZE</code></a>となります。）</p>
-<p>オファーの<code>TakerGets</code>パラメーターで指定された通貨をいくらかでも（ゼロ以外のプラスの額）保有している限り、オファーを作成できます。オファーは、<code>TakerPays</code>の額が満たされるまで、<code>TakerGets</code>の額を上限として保有している通貨を売却します。オファーによって誰かに負債が発生することはありません。</p>
-<p>レジャーにすでに記録されているオファーにクロスするオファーを出した場合、関連する額に関係なく古いオファーは自動的に取り消されます。</p>
-<p>次の場合には、オファーは一時的または永久に <em>資金化されない</em> 可能性があります。</p>
+<p><a href="offercreate.html">OfferCreate トランザクション</a>は、2つのトークン、またはトークンとXRPの間で取引を行なうための命令です。それぞれのトランザクションは購入額（<code>TakerPays</code>）と売却額（<code>TakerGets</code>）を含みます。トランザクションが処理されると、自動的に一致または交差するオファーが可能な限り約定されます。その結果、新しいオファーを完全に約定しきれない場合、残りは台帳上のOfferオブジェクトとなります。</p>
+<p>Offerオブジェクトは、他のオファーやクロスカレンシー決済で完全に約定されるまで、台帳に保存されます。オファーを作成したアカウントは、そのオファーの所有者と呼ばれます。自分が作成したオファーは、専用の<a href="offercancel.html">OfferCancelトランザクション</a>、または<a href="offercreate.html">OfferCreateトランザクション</a>のオプションとして、いつでもキャンセルすることが可能です。</p>
+<p>台帳にOfferオブジェクトがある間は、あなたのXRPの一部が<a href="reserves.html">所有者準備金</a>として設定されます。何らかの理由でOfferオブジェクトが削除されると、そのXRPは再び使えるようになります。</p>
+<h3 id="必要となる資金">必要となる資金<a aria-hidden="true" class="hover_anchor" href="#必要となる資金"><i class="fa fa-link"></i></a></h3>
+<p>オファーを作成する際、その取引で売却する資産の一部でも保有していない場合、取引は「資金不足」として拒否されます。</p>
+<p>具体的には</p>
+<p><strong>トークンを売却する</strong> には、以下のいずれかが必要です。</p>
 <ul>
-<li>作成者に<code>TakerGets</code>の通貨がない場合。<ul>
-<li>作成者がその通貨を取得すると、オファーに資金が再び供給されます。</li>
+<li>そのトークンの任意の正の量を保持する、<em>または</em></li>
+<li>そのトークンの発行者になる。</li>
 </ul>
-</li>
-<li>オファーに資金を供給するために必要な通貨が<a href="freezes.html">凍結されたトラストライン</a>で保有されている場合。<ul>
-<li>トラストラインの凍結が解除されると、オファーに資金が再び供給されます。</li>
-</ul>
-</li>
-<li>オファーに必要な新しいトラストラインの準備金として十分な額のXRPを作成者が保有していない場合。（<a href="#オファーとトラスト">オファーとトラスト</a>を参照してください。）<ul>
-<li>作成者がXRPをさらに取得するか、または必要準備金が減額されると、オファーに資金が再び供給されます。</li>
-</ul>
-</li>
-<li>オファーに指定されている有効期限が最新の閉鎖済みレジャーの閉鎖時刻よりも前である場合。（<a href="#オファーの有効期限">オファーの有効期限</a>を参照してください。）</li>
-</ul>
-<p>資金化されないオファーはレジャーに無期限で残ることがありますが、特に影響はありません。次の方法でのみ、オファーはレジャーから<em>完全に</em>削除されます。</p>
+<p>ただし、オファーで指定された全額を保有する必要はありません。オファーを作成することで資金が拘束されるわけではないので、同じトークン（またはXRP）を売却するために複数のオファーを作成したり、オファーを作成した後で十分なトークンまたはXRPを調達することも可能です。</p>
+<p><strong>XRPを売却する</strong> には、Offerオブジェクトを台帳に保存するための準備金と、購入するトークンを保存するためのトラストラインの準備金を含む、必要な<a href="reserves.html">準備金</a>を確保する必要があります。準備金を確保した後にXRPが残っていれば、Offerオブジェクトを作成することができます。</p>
+<p>他のオファーと自身のオファーがマッチした場合、両方のオファーが、その時点における所有者の資金の範囲内で実行されます。マッチングしたオファーがあり、自分のオファーが完全に約定される前に資金が尽きてしまった場合、残りのオファーはキャンセルされます。トークンの発行者でない限り、オファーによってトークンの残高がマイナスになることはありません。(発行者であれば、オファーを使って、オファーで指定された合計金額まで新しいトークンを発行できます。発行したトークンは、発行者の立場からはマイナス残高として表示されます)。</p>
+<p>台帳に存在する自身のオファーと重なるオファーを作成した場合、金額にかかわらず、重なった古いオファーは自動的にキャンセルされます。</p>
+<p>次のような場合には、オファーが一時的または長期に渡って「資金不足」になる可能性があります。</p>
 <ul>
-<li>Paymentトランザクションまたは対応するOfferCreateトランザクションにより全額が請求される。</li>
-<li>OfferCancelトランザクションまたはOfferCreateトランザクションによりオファーが明示的に取り消される。</li>
-<li>同じアカウントからのOfferCreateトランザクションが以前のオファーにクロスする。（この場合、古いオファーが自動的に取り消されます。）</li>
-<li>トランザクションの処理中にオファーへの資金が供給されていないことが判明する。一般的に、オファーがオーダーブックの先中で最も有利なレートであったことが原因です。<ul>
-<li>これには、オファーのいずれかの側が、<code>rippled</code>の精度でサポートされているよりも0に近いことが検出されるケースも含まれます。</li>
+<li>所有者が売却する資産を一切保有しなくなった場合。<ul>
+<li>オーナーがその資産を再度取得すると、オファーに資金が供給されるようになります。</li>
+</ul>
+</li>
+<li>売却する資産が<a href="freezes.html">凍結されたトラストライン</a>に含まれるトークンである場合。<ul>
+<li>トラストラインが凍結解除されると、オファーは再び資金が供給されるようになります。</li>
+</ul>
+</li>
+<li>オファーが新しいトラストラインを作成する必要があるが、オーナーがその<a href="reserves.html">準備金</a>の増加に伴う十分なXRPを持っていない場合。<ul>
+<li>オーナーが追加のXRPを調達するか、準備金の必要量が減少すると、オファーは自動的に使用可能になります。</li>
+</ul>
+</li>
+<li>オファーが失効した場合。(<a href="#オファーの有効期限">オファーの有効期限</a>を参照)</li>
+</ul>
+<p>資金不足のOfferオブジェクトは、トランザクションによって削除されるまで、台帳に残ります。台帳からOfferオブジェクトを削除するには、以下の方法があります。</p>
+<ul>
+<li>一致するオファーまたは<a href="cross-currency-payments.html">クロスカレンシー支払い</a>によってオファーが全額約定される。</li>
+<li>所有者が明示的にオファーをキャンセルする。</li>
+<li>所有者が交差する新しいオファーを作成することにより、暗黙のうちにオファーをキャンセルする。</li>
+<li>トランザクション処理中にオファーが資金不足または期限切れであることが判明する。<ul>
+<li>これには、オファーが支払うことができる残額がゼロになる場合も含まれます。</li>
 </ul>
 </li>
 </ul>
-<h3 id="資金化されていないオファーの追跡">資金化されていないオファーの追跡<a aria-hidden="true" class="hover_anchor" href="#資金化されていないオファーの追跡"><i class="fa fa-link"></i></a></h3>
-<p>すべてのオファーの資金化状況の追跡は、コンピューターにとって負荷の高い処理となることがあります。特に積極的に取引しているアドレスでは大量のオファーがオープンです。1つの残高が、さまざまな通貨を購入する多数のオファーの資金化の状況に影響することがあります。このため、<code>rippled</code>ではオファーの検出と削除を積極的に行なっていません。</p>
+<h3 id="資金不足のオファーの追跡">資金不足のオファーの追跡<a aria-hidden="true" class="hover_anchor" href="#資金不足のオファーの追跡"><i class="fa fa-link"></i></a></h3>
+<p>すべてのオファーの資金状況の追跡は、コンピューターにとって負荷の高い処理となることがあります。特に積極的に取引しているアドレスでは大量のオファーがオープンです。1つの残高が、さまざまな通貨を購入する多数のオファーの資金状況に影響することがあります。このため、XRP Ledgerでは資金不足や期限切れのオファーの検出と削除を <em>積極的には</em> 行なっていません。</p>
 <p>クライアントアプリケーションでオファーの資金化の状況をローカルで追跡できます。このためには、最初に<a href="book_offers.html">book_offersメソッド</a>を使用してオーダーブックを取得し、次にオファーの<code>taker_gets_funded</code>フィールドを調べます。次に<code>transactions</code>ストリームを<a href="subscribe.html">サブスクライブ</a>し、トランザクションメタデータを監視してどのオファーが変更されるかを確認します。</p>
 <h2 id="オファーとトラスト">オファーとトラスト<a aria-hidden="true" class="hover_anchor" href="#オファーとトラスト"><i class="fa fa-link"></i></a></h2>
-<p>トラストラインの限度額（<a href="trustset.html">TrustSet</a>を参照）はオファーに影響しません。つまり、オファーを使用して、イシュアーの信用できる最大精算額を上回る額を取得できます。</p>
-<p>ただし、XRP以外の残高を保有するには、それらの残高を発行するアドレスへのトラストラインが必要です。オファーが受け入れられると、必要なトラストラインが自動的に作成され、その限度額が0に設定されます。<a href="reserves.html">アカウントが保有する必要のある準備金はトラストラインによって増加する</a>ため、新しいトラストラインを必要とするオファーがある場合、そのトラストラインの準備金として十分なXRPをアドレスに保有する必要があります。</p>
-<p>トラストラインはあなたが信用するイシュア―を示し、限度額の範囲内でそのイシュア―のイシュアンスを支払いとして受領します。オファーは特定通貨を取得するための明示的な指示であるため、これらの限度額を超えることができます。</p>
+<p>トラストラインの限度額（<a href="trustset.html">TrustSet</a>を参照）はオファーに影響しません。つまり、オファーを使用して、発行者に対して設定したトラストラインの限度額を上回る額を取得できます。</p>
+<p>ただし、トークンを保有するには、それらの残高を発行するアドレスへのトラストラインが必要です。オファーが約定されると、必要なトラストラインが自動的に作成され、その限度額が0に設定されます。<a href="reserves.html">アカウントが保有する必要のある準備金はトラストラインによって増加する</a>ため、新しいトラストラインを必要とするオファーがある場合、アカウントはそのトラストラインの準備金として十分なXRPを保有している必要があります。</p>
+<p>トラストラインの制限は、あなたの希望以上のトークンを受け取ることを防ぐためのものです。オファーとは、トークンをどれだけ欲しいかを明示的に示すものであるため、この制限を超えることができます。</p>
 <h2 id="オファーの優先度">オファーの優先度<a aria-hidden="true" class="hover_anchor" href="#オファーの優先度"><i class="fa fa-link"></i></a></h2>
-<p>既存のオファーは為替レート（「オファークオリティ」とも呼ばれます）によってグループにまとめられます。為替レートは、<code>TakerGets</code>と<code>TakerPays</code>の比率として計算されます。為替レートが高いオファーが優先的に処理されます。（つまり、オファーを受け入れる人は、支払われる通貨額に対して可能な限り多くを受領します。）同じ為替レートのオファーは、最も古いレジャーバージョンで出されたオファーに基づいて受け入れられます。</p>
-<p>同じ為替レートのオファーが同じレジャーバージョンに記録されている場合、オファーの処理順序は<a class="external-link" href="https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538" target="_blank" title="Source: Applying transactions">レジャーへトランザクションを適用する <i aria-hidden="true" class="fa fa-external-link"></i></a>ための<a class="external-link" href="https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp" target="_blank" title="Source: Transaction ordering">正規の順序 <i aria-hidden="true" class="fa fa-external-link"></i></a>によって決定します。この動作は確定的かつ効率的であり、操作することが困難であるように設計されています。</p>
+<p>台帳内のOfferオブジェクトは取引レートによってグループにまとめられます。取引レートは、<code>TakerGets</code>と<code>TakerPays</code>の比率として計算されます。取引レートが高いOfferオブジェクトが優先的に処理されます。（つまり、オファーを約定する人は、支払われる通貨額に対して可能な限り多くの額を受領します。）同じ取引レートのオファーは、オファーの作成タイミングを基準にして処理されます。</p>
+<p>同じ取引レートのOfferオブジェクトが同じ台帳ブロックに記録されている場合、オファーの処理順序は<a class="external-link" href="https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538" target="_blank" title="Source Code: Applying transactions">レジャーへトランザクションを適用する <i aria-hidden="true" class="fa fa-external-link"></i></a>ための<a class="external-link" href="https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp" target="_blank" title="Source Code: Transaction ordering">正規順序 <i aria-hidden="true" class="fa fa-external-link"></i></a>によって決定します。この動作は確定的かつ効率的であり、操作することが困難であるように設計されています。</p>
 <h2 id="オファーの有効期限">オファーの有効期限<a aria-hidden="true" class="hover_anchor" href="#オファーの有効期限"><i class="fa fa-link"></i></a></h2>
-<p>トランザクションの伝搬と確定には時間がかかることがあるため、レジャーのタイムスタンプからオファーの有効性を判断します。オファーが有効期限切れとなるのは、有効期限が最新の検証済みレジャーよりも前の場合だけです。つまり、<code>Expiration</code>フィールドが指定されているオファーが「アクティブ」であると見なされるのは、ローカルクロックに関係なく、その有効期限が最新の検証済みレジャーのタイムスタンプよりも後である場合です。</p>
-<p>閉鎖時刻が有効期限と同じかそれよりも後である完全な検証済みレジャーが作成されたら、<code>Expiration</code>が指定されているオファーの最終的な処理を即時に判断できます。</p>
-<p class="devportal-callout 注記"><strong>注記:</strong> レジャーを変更できるのは新しいトランザクションだけであることから、有効期限切れのオファーは、非アクティブになった後でもレジャーに残ることがあります。このオファーは資金化されていないと見なされ特に影響はありませんが、（<a href="ledger_entry.html">ledger_entry</a>コマンドなどの）実行結果に、引き続き表示される可能性があります。後に、サーバーが処理中に有効期限切れのオファーを検出すると、このオファーは別のトランザクション（別のOfferCreateなど）の結果として最終的に削除されることがあります。</p>
-<p>OfferCreateトランザクションが最初にレジャーに追加された時点で、このトランザクションに指定されている<code>Expiration</code>時刻をすでに経過していた場合は、トランザクションはオファーを実行しません。このようなトランザクションの結果コードは、<a href="known-amendments.html#checks">Checks Amendment</a>が有効であるかどうかによって異なります。Checks Amendmentが有効な場合、トランザクションの結果コードは<code>tecEXPIRED</code>です。それ以外の場合、トランザクションの結果コードは<code>tesSUCCESS</code>です。いずれの場合でも、このトランザクションには、<a href="transaction-cost.html">トランザクションコスト</a>として支払われたXRPを消却する以外に影響はありません。</p>
+<p>オファーを設定する際、オプションで有効期限を追加することができます。デフォルトでは、オファーに有効期限はありません。すでに有効期限切れのオファーを新たに作成することはできません。</p>
+<p>有効期限は秒単位で指定できますが、オファーが期限切れとなる時刻は、実際には正確ではありません。オファーが期限切れとなるのは、期限切れ時刻が直前の台帳のクローズ時刻より前か等しい場合です。それ以外の場合は、現実の時刻がオファー期限よりも後でも、オファーが約定する可能性があります。言い換えると、有効期限が最新の有効な台帳のクローズ時刻よりも遅ければ、実際の時計がどうであろうと、オファーはまだ「有効」なのです。</p>
+<p>これは、ネットワークのコンセンサス形成の仕組みによるものです。ピアツーピアネットワーク全体が合意に達するには、トランザクションを実行する際に、すべてのサーバーがどのオファーが期限切れであるかに合意する必要があります。個々のサーバーはシステム時刻の設定にわずかな違いがあるため、各サーバーが「現在」時刻を使用した場合、どのオファーが期限切れであるかについて同じ結論に達しない可能性があります。台帳のクローズ時刻は、その台帳のトランザクションが実行されるまで分からないため、サーバーは「前の台帳」の正式なクローズ時刻を代わりに使用します。<a href="ledgers.html#ledger-close-times">台帳のクローズ時刻は丸められます</a>。このため、オファーが期限切れかどうかを判断するための時刻と実世界の時刻の差が生じる場合があるのです。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> 期限切れのOfferオブジェクトは、トランザクションによって削除されるまで、台帳内に残ります。それまでは、APIから取得したデータ（<a href="ledger_entry.html">ledger_entryメソッド</a>などを使用）に表示され続ける可能性があります。トランザクションは、有効期限が切れたOfferオブジェクトや資金不足のOfferオブジェクトを見つけると自動的に削除します。通常、オファーやクロスカレンシー決済を実行すると、そのOfferオブジェクトはマッチングまたはキャンセルされます。Offerオブジェクトに対応する所有者準備金は、Offerオブジェクトが実際に削除されたときにのみ再び利用可能になります。</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>コンセプト:</strong><ul>
+<li><a href="tokens.html">トークン</a></li>
+<li><a href="paths.html">パス</a></li>
+</ul>
+</li>
+<li><strong>リファレンス:</strong><ul>
+<li><a href="account_offers.html">account_offersメソッド</a></li>
+<li><a href="book_offers.html">book_offersメソッド</a></li>
+<li><a href="offercreate.html">OfferCreateトランザクション</a></li>
+<li><a href="offercancel.html">OfferCancelトランザクション</a></li>
+<li><a href="offer.html">Offerオブジェクト</a></li>
+</ul>
+</li>
+</ul>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -418,7 +482,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
       
@@ -518,14 +582,9 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
-        <a class="nav-link" href="/ja/issued-currencies.html">発行済み通貨</a>
+        <a class="nav-link" href="/ja/tokens.html">トークン</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/issued-currencies-overview.html">発行済み通貨の概要</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
@@ -538,7 +597,61 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/freezes.html">発行済み通貨の凍結</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFT Reserve Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">Running an NFT Auction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_4"></a>
+
+        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -563,7 +676,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/demurrage.html">デマレージ <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
     </nav>
@@ -578,6 +691,11 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item active">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -622,12 +740,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/invariant-checking.html">Invariant Checking</a>
+    <a class="nav-link nav-leaf" href="/ja/invariant-checking.html">不変性チェック</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/negative-unl.html">ネガティブUNL</a>
   </div>
 
       
@@ -677,6 +795,11 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
+  </div>
+
     </nav>
 
   </div>
@@ -686,7 +809,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
-        <a class="nav-link" href="/ja/the-rippled-server.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
@@ -731,6 +854,33 @@
     <a class="nav-link nav-leaf" href="/ja/transaction-censorship-detection.html">取引検閲の検知</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+
+        <a class="nav-link" href="/ja/xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
     </nav>
 
   </div>
@@ -752,12 +902,59 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
-        <a class="nav-link" href="/ja/get-started.html">使用開始</a>
+        <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/public-servers.html">Public Servers</a>
+    <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/broker-sale.html">Broker a NFToken Sale</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/authorize-minter.html">Assign an Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/batch-minting.html">Batch Mint NFTokens</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
   </div>
 
       
@@ -772,7 +969,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">Get Started Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">JavaScriptを使ってみよう</a>
   </div>
 
       
@@ -797,11 +994,28 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="/ja/production-readiness.html">Production Readiness</a>
+        <a class="nav-link" href="/ja/build-apps.html">アプリケーションの構築</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+
+        <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -824,11 +1038,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -841,7 +1055,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/disable-master-key-pair.html">Disable Master Key Pair</a>
+    <a class="nav-link nav-leaf" href="/ja/disable-master-key-pair.html">マスターキーペアの無効化</a>
   </div>
 
       
@@ -866,7 +1080,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/use-tickets.html">チケットの使用</a>
   </div>
 
     </nav>
@@ -876,19 +1090,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4_1" aria-expanded="false" aria-controls="tree_nav_group_3_4_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -921,11 +1135,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4_2" aria-expanded="false" aria-controls="tree_nav_group_3_4_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -938,11 +1152,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4_3" aria-expanded="false" aria-controls="tree_nav_group_3_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="false" aria-controls="tree_nav_group_3_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -984,14 +1198,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
 
-        <a class="nav-link" href="/ja/use-tokens.html">Use Tokens</a>
+        <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1016,11 +1235,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
 
-        <a class="nav-link" href="/ja/xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
+        <a class="nav-link" href="/ja/xrp-ledger-businesses.html">ビジネスとしてのXRP Ledger</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -1028,12 +1247,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">XRP Chartsへの取引所の登録 <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1043,19 +1262,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
 
-        <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
+        <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの管理</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_1" aria-expanded="false" aria-controls="tree_nav_group_3_7_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -1099,6 +1318,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/capacity-planning.html">容量の計画</a>
   </div>
 
@@ -1114,11 +1338,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_2" aria-expanded="false" aria-controls="tree_nav_group_3_7_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -1126,12 +1350,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-amendment-voting.html">Configure Amendment Voting</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-amendment-voting.html">修正投票機能の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/test-amendments.html">Test Amendments</a>
   </div>
 
       
@@ -1181,11 +1410,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_3" aria-expanded="false" aria-controls="tree_nav_group_3_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -1233,11 +1462,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_4" aria-expanded="false" aria-controls="tree_nav_group_3_7_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -1260,11 +1489,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_5" aria-expanded="false" aria-controls="tree_nav_group_3_7_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -1287,6 +1516,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/server-wont-start.html">rippledサーバーが起動しない</a>
   </div>
 
@@ -1297,6 +1531,74 @@
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="false" aria-controls="tree_nav_group_3_10"></a>
+
+        <a class="nav-link" href="/ja/manage-the-clio-server.html">Clioサーバの管理</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11" aria-expanded="false" aria-controls="tree_nav_group_3_11"></a>
+
+        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_1" aria-expanded="false" aria-controls="tree_nav_group_3_11_1"></a>
+
+        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_2" aria-expanded="false" aria-controls="tree_nav_group_3_11_2"></a>
+
+        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -1320,7 +1622,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
 
-        <a class="nav-link" href="/ja/protocol-reference.html">XRP Ledger Protocol Reference</a>
+        <a class="nav-link" href="/ja/protocol-reference.html">XRP Ledgerプロトコルリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
       
@@ -1339,6 +1641,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/currency-formats.html">通貨フォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftoken.html">NFToken</a>
   </div>
 
     </nav>
@@ -1383,6 +1690,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/check.html">Check</a>
   </div>
 
@@ -1413,7 +1725,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/negativeunl.html">NegativeUNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokenoffer.html">NFTokenOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokenpage.html">NFTokenPage</a>
   </div>
 
       
@@ -1438,7 +1760,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -1482,6 +1804,31 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcancel.html">CheckCancel</a>
   </div>
 
@@ -1513,6 +1860,31 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokenacceptoffer.html">NFTokenAcceptOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokenburn.html">NFTokenBurn</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokencanceloffer.html">NFTokenCancelOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokencreateoffer.html">NFTokenCreateOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokenmint.html">NFTokenMint</a>
   </div>
 
       
@@ -1557,7 +1929,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -1589,7 +1961,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -1661,7 +2033,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
 
-        <a class="nav-link" href="/ja/client-libraries.html">Client Libraries</a>
+        <a class="nav-link" href="/ja/client-libraries.html">クライアントライブラリ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
@@ -1669,12 +2041,12 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
 
-        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript/TypeScript クライアントライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">ripple-lib 1.xからxrpl.js 2.xへの移行ガイド</a>
   </div>
 
     </nav>
@@ -1683,17 +2055,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-py.readthedocs.io/">Python Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-py.readthedocs.io/">Python クライアントライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://javadoc.io/doc/org.xrpl/">Java Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://javadoc.io/doc/org.xrpl/">Java クライアントライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://www.rubydoc.info/gems/xrbp">Ruby Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://www.rubydoc.info/gems/xrbp">Ruby クライアントライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
     </nav>
@@ -1705,7 +2077,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
 
-        <a class="nav-link" href="/ja/rippled-api.html">HTTP / WebSocket API リファレンス</a>
+        <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
@@ -1755,7 +2127,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
 
-        <a class="nav-link" href="/ja/public-rippled-methods.html">rippledのパブリックメソッド</a>
+        <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
       
@@ -1763,7 +2135,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_1"></a>
 
-        <a class="nav-link" href="/ja/account-methods.html">Account Methods</a>
+        <a class="nav-link" href="/ja/account-methods.html">Accountメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_1">
       
@@ -1784,6 +2156,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts</a>
   </div>
 
       
@@ -1820,7 +2197,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-methods.html">Ledger Methods</a>
+        <a class="nav-link" href="/ja/ledger-methods.html">Ledgerメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_2">
       
@@ -1857,7 +2234,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-methods.html">Transaction Methods</a>
+        <a class="nav-link" href="/ja/transaction-methods.html">Transactionメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
       
@@ -1894,9 +2271,14 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_4"></a>
 
-        <a class="nav-link" href="/ja/path-and-order-book-methods.html">Path and Order Book Methods</a>
+        <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -1905,6 +2287,16 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers</a>
   </div>
 
       
@@ -1926,7 +2318,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_5"></a>
 
-        <a class="nav-link" href="/ja/payment-channel-methods.html">Payment Channel Methods</a>
+        <a class="nav-link" href="/ja/payment-channel-methods.html">Payment Channelメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_5">
       
@@ -1948,7 +2340,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_6"></a>
 
-        <a class="nav-link" href="/ja/subscription-methods.html">Subscription Methods</a>
+        <a class="nav-link" href="/ja/subscription-methods.html">Subscriptionメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_6">
       
@@ -1970,7 +2362,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_7"></a>
 
-        <a class="nav-link" href="/ja/server-info-methods.html">Server Info Methods</a>
+        <a class="nav-link" href="/ja/server-info-methods.html">Server Infoメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_7">
       
@@ -1985,7 +2377,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info (rippled)</a>
   </div>
 
       
@@ -2002,9 +2394,36 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_8"></a>
 
-        <a class="nav-link" href="/ja/utility-methods.html">Utility Methods</a>
+        <a class="nav-link" href="/ja/clio-methods.html">Clio Serverメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_9"></a>
+
+        <a class="nav-link" href="/ja/utility-methods.html">ユーティリティメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/json.html">json</a>
@@ -2033,7 +2452,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
 
-        <a class="nav-link" href="/ja/admin-rippled-methods.html">管理rippledメソッド</a>
+        <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
       
@@ -2041,7 +2460,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_1"></a>
 
-        <a class="nav-link" href="/ja/key-generation-methods.html">キー生成のメソッド</a>
+        <a class="nav-link" href="/ja/key-generation-methods.html">キー生成メソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_1">
       
@@ -2063,7 +2482,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_2"></a>
 
-        <a class="nav-link" href="/ja/logging-and-data-management-methods.html">ログとデータ管理のメソッド</a>
+        <a class="nav-link" href="/ja/logging-and-data-management-methods.html">ログとデータの管理メソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_2">
       
@@ -2101,6 +2520,11 @@
     <a class="nav-link nav-leaf" href="/ja/logrotate.html">logrotate</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/node_to_shard.html">node_to_shard</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2110,7 +2534,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_3"></a>
 
-        <a class="nav-link" href="/ja/server-control-methods.html">Server Control Methods</a>
+        <a class="nav-link" href="/ja/server-control-methods.html">サーバ操作メソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_3">
       
@@ -2137,7 +2561,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
 
-        <a class="nav-link" href="/ja/signing-methods.html">Signing Methods</a>
+        <a class="nav-link" href="/ja/signing-methods.html">署名メソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
       
@@ -2159,7 +2583,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
 
-        <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理のメソッド</a>
+        <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理メソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
       
@@ -2257,7 +2681,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_5"></a>
 
-        <a class="nav-link" href="/ja/peer-port-methods.html">Peer Port Methods</a>
+        <a class="nav-link" href="/ja/peer-port-methods.html">ピアポートメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3_5">
       
@@ -2305,6 +2729,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       
@@ -2393,31 +2822,36 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/code-samples.html">サンプルコード</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+    
+  <div class="nav-item ">
 
-        <a class="nav-link" href="/ja/dev-tools.html">開発者用ツール</a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+        <a class="nav-link" href="/ja/dev-tools.html">開発者ツール</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
+    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPCツール</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/websocket-api-tool.html">WebSocket API Tool</a>
+    <a class="nav-link nav-leaf" href="/ja/websocket-api-tool.html">WebSocket APIツール</a>
   </div>
 
       
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a>
+    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-toml-checker.html">xrp-ledger.tomlチェッカー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-domain-verifier.html">Domain Verification Checker</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-domain-verifier.html">ドメイン検証チェッカー</a>
   </div>
 
       
@@ -2427,11 +2861,16 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tx-sender.html">Transaction Sender</a>
+    <a class="nav-link nav-leaf" href="/ja/tx-sender.html">トランザクション送信ツール</a>
   </div>
 
     </nav>
 
+  </div>
+
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL学習ポータル <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
 </nav>      </aside>
@@ -2450,8 +2889,8 @@
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
-            <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
-            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2464,7 +2903,9 @@
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
-            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
+            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2473,9 +2914,14 @@
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
+            <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
+            <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2486,7 +2932,7 @@
     <div class="d-lg-flex row">
       <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
       <span class="flex-grow-1">&nbsp;</span>
-      <div class="copyright-license">&copy; 2021 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース。</a>
       </div>
     </div><!-- /.absolute_bottom_footer -->
 
@@ -2504,14 +2950,15 @@
 <link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
-  algoliaOptions: { 'facetFilters': ["lang:ja"] },
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:ja"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

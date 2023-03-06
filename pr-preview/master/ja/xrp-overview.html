@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>XRP - XRPL.org (日本語)</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="XRP | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/xrp-overview.html" />
-    <meta property="og:description" content="Learn more about XRP Ledger’s native digital asset, XRP." />
-    <meta name="description" content="Learn more about XRP Ledger’s native digital asset, XRP." />
+    <meta property="og:description" content="XRP LedgerのネイティブデジタルアセットであるXRPの詳細はこちら。" />
+    <meta name="description" content="XRP LedgerのネイティブデジタルアセットであるXRPの詳細はこちら。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="ja" />
     <link rel="alternate" href="https://xrpl.org/xrp-overview.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/xrp-overview.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/xrp-overview.html" hreflang="x-default" /><!-- Default: US english -->
@@ -50,17 +49,19 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2021-v4.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v15.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+
+    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
 
 
     <!-- Theme switch -->
-    <script src="assets/js/theme-switch.js"></script>
+    <script src="/ja/assets/js/theme-switch.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -73,13 +74,22 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal lang-ja no-sidebar" data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal lang-ja no-sidebar" data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
+    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
+    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,78 +99,84 @@
     <ul class="nav navbar-nav" id="topnav-pages">
 
             <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>アバウト</span></a>
+        <a class="nav-link dropdown-toggle" href="/ja/xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>アバウト</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
           <div class="navcol col-for-xrp-ledger">
             <h5 class="dropdown-item">XRP Ledger</h5>
-            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL オーバービュー</a>
-            <a class="dropdown-item" href="uses.html">ユースケースと注目プロジェクト</a>
-            <a class="dropdown-item" href="history.html">沿革</a>
+            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
+            <a class="dropdown-item" href="/ja/history.html">沿革</a>
             <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
-            <a class="dropdown-item active" href="xrp-overview.html">XRP Overview</a>
+            <a class="dropdown-item active" href="/ja/xrp-overview.html">XRP Overview</a>
           </div><!--./col-->
           <div class="navcol col-for-sustainability">
             <h5 class="dropdown-item">Sustainability</h5>
-            <a class="dropdown-item" href="impact.html">インパクト</a>
-            <a class="dropdown-item" href="carbon-calculator.html">二酸化炭素電卓</a>
+            <a class="dropdown-item" href="/ja/impact.html">インパクト</a>
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
+            <a class="dropdown-item" href="/ja/privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
 
             <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>ドキュメント</span></a>
+        <a class="nav-link dropdown-toggle" href="/ja/docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>ドキュメント</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-ドキュメント" href="docs.html">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-ドキュメント" href="/ja/docs.html">
             <img id="top-nav-hero-docs" alt="ドキュメント icon" />
             <div class="dropdown-hero-text">
               <h4>ドキュメント</h4>
-              <p>Dive into XRP Ledger technology and start integrating.</p>
+              <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
             </div>
           </a>
           <div class="navcol col-for-質問">
             <h5 class="dropdown-item">質問</h5>
-            <a class="dropdown-item" href="faq.html">よくある質問</a>
+            <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
           </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
-            <a class="dropdown-item" href="concepts.html">コンセプト</a>
-            <a class="dropdown-item" href="tutorials.html">チュートリアル</a>
-            <a class="dropdown-item" href="references.html">リファレンス</a>
+            <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
+            <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
+            <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="dev-tools.html">開発者用ツール</a>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
-            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
-            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
-            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
-            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+            <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
+            <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-人気ページ">
             <h5 class="dropdown-item">人気ページ</h5>
-            <a class="dropdown-item" href="send-xrp.html">XRPの送金</a>
-            <a class="dropdown-item" href="reserves.html">準備金</a>
-            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
-            <a class="dropdown-item" href="run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="intro-to-consensus.html">コンセンサスについて</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">APIのメソッド</a>
+            <a class="dropdown-item" href="/ja/send-xrp.html">XRPの送金</a>
+            <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
+            <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
+          </div><!--./col-->
+          <div class="navcol col-for-popular-pages">
+            <h5 class="dropdown-item">Popular Pages</h5>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
 
             <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
+        <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="contribute.html">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
             <img id="top-nav-hero-contribute" alt="貢献する icon" />
             <div class="dropdown-hero-text">
               <h4>貢献する</h4>
@@ -168,9 +184,14 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="/ja/events.html">イベント</a>
+            <a class="dropdown-item" href="/ja/ambassadors.html">アンバサダー</a>
+            <a class="dropdown-item" href="/ja/developer-funding.html">開発者ファンド</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -180,15 +201,29 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
-            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+          <div class="input-group" id="topsearchboxcontainer">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
           </div><!--/.input-group-->
         </div>
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          日本語
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/xrp-overview.html">
+            English
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -213,7 +248,7 @@
 <section class="py-26 text-center">
   <div class="col-lg-5 mx-auto text-center">
     <div class="d-flex flex-column-reverse">
-      <h1 class="mb-0">Your Questions About XRP, Answered</h1>
+      <h1 class="mb-0">XRPに関する質問にお答えします</h1>
       <h6 class="eyebrow mb-3">XRPの概要</h6>
     </div>
   </div>
@@ -223,8 +258,8 @@
     <div class="card-grid card-grid-1x2">
     	<div class="d-none-sm mt-lg-0">
         <ul class="page-toc no-sideline p-0 sticky-top floating-nav">
-          <li class="nav-item"><a class="sidelinks nav-link" href="#about-xrp">About XRP</a></li>
-          <li class="nav-item"><a class="sidelinks nav-link" href="#xrp-trading">XRP in Trading</a></li>
+          <li class="nav-item"><a class="sidelinks nav-link" href="#about-xrp">XRPについて</a></li>
+          <li class="nav-item"><a class="sidelinks nav-link" href="#xrp-trading">XRPの取引</a></li>
           <li class="nav-item"><a class="sidelinks nav-link" href="#ripple">RippleとXRPの違い</a></li>
           <li class="nav-item"><a class="sidelinks nav-link" href="#wallets">XRPウォレット</a></li>
           <li class="nav-item"><a class="sidelinks nav-link" href="#exchanges">XRPが取り扱われている取引所</a></li>
@@ -233,9 +268,9 @@
 
     <div class="col mt-lg-0">
       <div class="link-section pb-26" id="about-xrp">
-        <h2 class="h4 h2-sm mb-8">What Is XRP?</h2>
-        <h5 class="longform mb-10">XRP is a digital asset that’s native to the XRP Ledger—an open-source, permissionless and decentralized <a href="https://www.distributedagreement.com/2018/09/24/what-is-a-blockchain/" target="_blank">blockchain technology.</a></h5>
-        <p class="mb-6">Created in 2012 specifically for payments, XRP can settle transactions on the ledger in 3-5 seconds. It was built to be a better Bitcoin—faster, cheaper and greener than any other digital asset.</p>
+        <h2 class="h4 h2-sm mb-8">XRPとは何ですか?</h2>
+        <h5 class="longform mb-10">XRPとは、XRP Ledger（パーミッションを必要としない、オープンソースで分散型の<a href="https://www.distributedagreement.com/2018/09/24/what-is-a-blockchain/" target="_blank">ブロックチェーン技術</a>）に固有のデジタルアセットです。</h5>
+        <p class="mb-6">送金に特化したデジタルアセットとして2012年に作成されたXRPは、レジャーの取引を3秒から5秒で決済できます。より優れたBitcoinをつくることを目指して設計されており、他のどのデジタルアセットよりも速く、低コストで、環境にやさしいのが特徴です。</p>
         <div class="overflow-x-xs">
           <table class="mb-10 landing-table">
             <thead>
@@ -253,18 +288,18 @@
               </tr>
               <tr>
                 <td>低価格</td>
-                <td>$0.0002/tx</td>
+                <td>$0.0002（1取引あたり）</td>
                 <td>$0.50/tx</td>
               </tr>
               <tr>
                   <td>スケーラブル</td>
-                  <td>1,500 tx per second</td>
-                   <td>3 tx per second</td>
+                  <td>1秒あたり1,500取引</td>
+                   <td>1秒あたり3取引</td>
               </tr>
               <tr>
                   <td>持続可能性</td>
                   <td>Environmentally sustainable (negligible energy consumption)</td>
-                <td>0.3% of global energy consumption</td>
+                <td>世界のエネルギー消費量の0.3&#37;を占める</td>
               </tr>
             </tbody>
           </table>
@@ -273,13 +308,13 @@
         <p class="mb-10">XRPは中央の仲介機関を必要とせずに直接送金できるため、2つの通貨間で迅速に効率よく取引できる便利な手段です。オープンな市場で自由に取引されており、実社会で国際送金や少額取引に使用されています。</p>
         <div class="card-grid card-grid-2xN mb-10">
           <div>
-            <img class="mw-100 mb-2 invertible-img" src="assets/img/icons/briefcase.svg">
+            <img class="mw-100 mb-2 invertible-img" src="/ja/assets/img/icons/briefcase.svg">
             <h6 class="fs-4-5">Financial Institutions</h6>
             <p class="">Leverage XRP as a bridge currency to facilitate faster, more affordable cross-border payments around the world.</p>
           </div>
           <div>
-            <img class="mw-100 mb-2 invertible-img" src="assets/img/icons/user.svg">
-            <h6 class="fs-4-5">Individual Consumers</h6>
+            <img class="mw-100 mb-2 invertible-img" src="/ja/assets/img/icons/user.svg">
+            <h6 class="fs-4-5">個人</h6>
             <p>Use XRP to move different currencies around the world. </p>
           </div>
         </div>
@@ -288,15 +323,15 @@
           <div class="z-index-1 position-relative">
             <h2 class="h4 mb-10-until-sm mb-8-sm">XRP was designed with sustainability in mind.</h2>
             <p class="mb-10">Explore how the energy consumption of XRP compares to other currencies.</p>
-            <a class="btn btn-primary btn-arrow" href="carbon-calculator.html">Green Currency Calculator</a>
+            <a class="btn btn-primary btn-arrow" href="carbon-calculator.html">Green Currency Calculatorを見る</a>
           </div>
         </div>
       </div>
 
       <div class="py-26 link-section" id="xrp-trading">
         <h2 class="h4 h2-sm mb-8">取引でXRPを使用するにはどうすればいいですか?</h2>
-        <h5 class="longform mb-10">XRP is traded on more than 100 markets and exchanges worldwide.</h5>
-        <p class="mb-6">XRP’s low transaction fees, reliability and high-speed enable traders to use the digital asset as high-speed, cost-efficient and reliable collateral across trading venues—<a href="https://ripple.com/insights/xrp-a-preferred-base-currency-for-arbitrage-trading/" target="_blank">seizing arbitrage opportunities</a>, servicing margin calls and managing general trading inventory in real time.</p>
+        <h5 class="longform mb-10">XRPは世界中の100以上の市場と取引所で取引されています</h5>
+        <p class="mb-6">XRPは取引手数料が低額で、信頼性が高く、高速であるため、トレーダーが取引所間で、高速かつコスト効率が高く信頼できる担保としてこのデジタルアセットを使用し、<a href="https://ripple.com/insights/xrp-a-preferred-base-currency-for-arbitrage-trading/" target="_blank">裁定取引の好機をとらえたり</a>、マージンコールを支払ったり、全般的な取引インベントリを管理したりといったことをリアルタイムで行えるようになります。</p>
         <p>XRPとそのエコシステムが本質的に持つ特性により、トレーダーが世界中の任意の取引所で担保の移動、通貨間の取引、ある暗号資産から別の暗号資産への切り替えをほぼ瞬時に実行できます。</p>
       </div>
 
@@ -331,22 +366,10 @@
 
       <div class="link-section py-26" id="wallets">
         <h2 class="h4 h2-sm mb-8">What Wallets Support XRP?</h2>
-        <h5 class="longform mb-10">Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software.</h5>
+        <h5 class="longform mb-10">デジタルウォレットとは、XRPなどの暗号資産の送金、受け取り、保管を行えるソフトウェアです。デジタルウォレットには、カストディ型と非カストディ型という2つのタイプがあります。</h5>
         <ul class="nav nav-grid-lg cols-of-4" id="wallets">
           <li class="nav-item nav-grid-head">
-            <h6 class="fs-4-5">Hardware Wallets</h6>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link external-link" href="https://www.ledger.com/" target="_blank"><img class="mw-100 invertible-img" id="wallet-ledger" alt="Ledger" /></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link external-link" href="https://www.secalot.com/" target="_blank"><img class="mw-100 " id="wallet-secalot" alt="Secalot" /></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link external-link" href="https://trezor.io/" target="_blank"><img class="mw-100 invertible-img" id="wallet-trezor" alt="Trezor" /></a>
-          </li>
-          <li class="nav-item nav-grid-head">
-            <h6 class="fs-4-5">Software Wallets</h6>
+            <h6 class="fs-4-5">ハードウェアウォレット:</h6>
           </li>
           <li class="nav-item">
             <a class="nav-link external-link" href="https://xumm.app/" target="_blank"><img class="mw-100 " id="wallet-xumm" alt="Xumm" /></a>
@@ -357,22 +380,31 @@
           <li class="nav-item">
             <a class="nav-link external-link" href="https://gatehub.net/" target="_blank"><img class="mw-100 invertible-img" id="wallet-gatehub" alt="Gatehub" /></a>
           </li>
+          <li class="nav-item nav-grid-head">
+            <h6 class="fs-4-5">ハードウェアウォレット:</h6>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link external-link" href="https://www.ledger.com/" target="_blank"><img class="mw-100 invertible-img" id="wallet-ledger" alt="XRP Ledger" /></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link external-link" href="https://trezor.io/" target="_blank"><img class="mw-100 invertible-img" id="wallet-trezor" alt="Trezor" /></a>
+          </li>
         </ul>
           <p class="fs-3 mt-10">免責事項: この情報はインターネット上の他の情報源から取得したものです。XRPL.orgは、いかなる取引所の支持、推奨も、取引所やデジタル資産の購入および販売に関するいかなる表明も一般的には行いません。サードパーティやサードパーティ技術を利用する前に、ご自身でデューデリジェンスを実施することをお勧めします。コンプライアンス、データセキュリティ、プライバシー慣習はプロバイダーによって大きく異なる場合があります。</p>
       </div>
 
       <div class="py-26 link-section" id="exchanges">
         <h2 class="h4 h2-sm mb-8">What Exchanges Support XRP?</h2>
-        <h5 class="longform mb-10">Exchanges are where people trade currencies. XRP is traded on more than 100 markets and exchanges worldwide.</h5>
+        <h5 class="longform mb-10">XRPは世界中の100以上の市場と取引所で取引されています</h5>
         <p class="mb-10">市場のタイプ（スポット、先物、オプション、スワップ）とセキュリティモデルのタイプ（カストディ、非カストディ）に応じて、さまざまなタイプの取引所があります。</p>
         <div class="card-grid card-grid-2xN mb-10">
           <div>
-            <h6 class="fs-4-5">Spot Exchanges</h6>
+            <h6 class="fs-4-5">取引所について見る</h6>
             <p class="mb-0">Spot exchanges allow people to buy and sell cryptocurrencies at current (spot) market rates.</p>
           </div>
           <div>
             <h6 class="fs-4-5">Futures, Options and Swap Exchanges</h6>
-            <p class="mb-0">Futures, options and swap exchanges allow people to buy and sell standardized contracts of cryptocurrency market rates in the future.</p>
+            <p class="mb-0">スポット取引所では、暗号資産を現在の（スポット）市場価格で売買できます。先物、オプション、スワップ取引所では、将来の暗号資産市場価格の標準契約を売買できます。</p>
           </div>
           <div>
             <h6 class="fs-4-5">Custodial Exchanges</h6>
@@ -380,10 +412,10 @@
           </div>
           <div>
             <h6 class="fs-4-5">Non-Custodial Exchanges</h6>
-            <p class="mb-0">Non-custodial exchanges, also known as decentralized exchanges, do not manage a user’s private keys, and publish decentralized order books of buyers and sellers on a blockchain.</p>
+            <p class="mb-0">カストディ型取引所は、ユーザーの秘密鍵を管理し、一元化された買い手と売り手のオーダーブックを公開します。非カストディ型取引所は、分散型取引所とも呼ばれ、ユーザーの秘密鍵は管理せず、ブロックチェーンに分散された売り手と買い手のオーダーブックを公開します。</p>
           </div>
         </div>
-        <h6>Top Exchanges, according to CryptoCompare</h6>
+        <h6>主要な取引所（2020年8月時点でのCryptoCompareの調査による）</h6>
         <ul class="nav nav-grid-lg cols-of-5 mb-10" id="top-exchanges">
           <li class="nav-item">
             <a class="nav-link external-link" href="https://www.bitstamp.net/" target="_blank"><span class="longform mr-3">1</span><img class="mw-100" id="exch-bitstamp" alt="Bitstamp"></a>
@@ -412,9 +444,6 @@
           <li class="nav-item">
             <a class="nav-link external-link" href="https://bittrex.com/" target="_blank"><span class="longform mr-3">9</span><img class="mw-100" id="exch-bittrex" alt="Bittrex"></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link external-link" href="https://ftx.com/" target="_blank"><span class="longform mr-3">10</span><img class="mw-100" id="exch-ftx" alt="FTX"></a>
-          </li>
         </ul>
 
         <p class="fs-3 mt-10 mb-0">免責事項: この情報はインターネット上の他の情報源から取得したものです。XRPL.orgは、いかなる取引所の支持、推奨も、取引所やデジタル資産の購入および販売に関するいかなる表明も一般的には行いません。サードパーティやサードパーティ技術を利用する前に、ご自身でデューデリジェンスを実施することをお勧めします。コンプライアンス、データセキュリティ、プライバシー慣習はプロバイダーによって大きく異なる場合があります。</p>
@@ -441,8 +470,8 @@
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
-            <li class="nav-item"><a href="/ja/carbon-calculator.html" class="nav-link">二酸化炭素電卓</a></li>
-            <li class="nav-item"><a href="/ja/xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -455,7 +484,9 @@
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
-            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者用ツール</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
+            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -464,9 +495,14 @@
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
+            <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
+            <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -477,7 +513,7 @@
     <div class="d-lg-flex row">
       <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
       <span class="flex-grow-1">&nbsp;</span>
-      <div class="copyright-license">&copy; 2021 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース。</a>
       </div>
     </div><!-- /.absolute_bottom_footer -->
 
@@ -495,14 +531,15 @@
 <link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
-  algoliaOptions: { 'facetFilters': ["lang:ja"] },
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:ja"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Known Amendments - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Known Amendments | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/known-amendments.html" />
@@ -15,7 +14,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/known-amendments.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/known-amendments.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/known-amendments.html" hreflang="x-default" /><!-- Default: US english -->
@@ -52,12 +51,14 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2021-v4.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v15.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+
+    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
 
 
     <!-- Theme switch -->
@@ -82,13 +83,22 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
+    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
+    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,12 +124,12 @@
           <div class="navcol col-for-sustainability">
             <h5 class="dropdown-item">Sustainability</h5>
             <a class="dropdown-item" href="impact.html">Impact</a>
-            <a class="dropdown-item" href="carbon-calculator.html">Carbon Calculator</a>
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -142,7 +152,9 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -157,8 +169,9 @@
             <a class="dropdown-item" href="reserves.html">Reserves</a>
             <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
+            <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -166,17 +179,22 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item" href="developer-funding.html">Developer Funding</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -186,7 +204,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
           </div><!--/.input-group-->
@@ -194,7 +212,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/known-amendments.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -216,7 +248,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/fersmi/xrpl-dev-portal/edit/master/content/concepts/consensus-network/amendments/known-amendments.md?pr=/XRPLF/xrpl-dev-portal/pull/1235" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/concepts/consensus-network/amendments/known-amendments.md?pr=/XRPLF/xrpl-dev-portal/pull/1796" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -229,14 +261,17 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#known-amendments">Known Amendments</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#checks">Checks</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditions">CryptoConditions</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditionssuite">CryptoConditionsSuite</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#deletableaccounts">DeletableAccounts</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#depositauth">DepositAuth</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#depositpreauth">DepositPreauth</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#disallowincoming">DisallowIncoming</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#enforceinvariants">EnforceInvariants</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#escrow">Escrow</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#expandedsignerlist">ExpandedSignerList</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#feeescalation">FeeEscalation</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fix1201">fix1201</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fix1368">fix1368</a></li>
@@ -254,19 +289,28 @@
         <li class="nav-item level-2"><a class="nav-link" href="#fixamendmentmajoritycalc">fixAmendmentMajorityCalc</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixcheckthreading">fixCheckThreading</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixtrustlinestoself">fixTrustLinesToSelf</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixuniversalnumber">fixUniversalNumber</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flow">Flow</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flowcross">FlowCross</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flowsortstrands">FlowSortStrands</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flowv2">FlowV2</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#hardenedvalidations">HardenedValidations</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#immediateofferkilled">ImmediateOfferKilled</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#multisign">MultiSign</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#multisignreserve">MultiSignReserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#negativeunl">NegativeUNL</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ownerpaysfee">OwnerPaysFee</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#paychan">PayChan</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></li>
@@ -277,6 +321,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#tickets">Tickets</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ticksize">TickSize</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#trustsetauth">TrustSetAuth</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrpfees">XRPFees</a></li>
       </ul>
   </div>
       </aside>
@@ -303,286 +348,404 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Name</th>
-<th align="left">Introduced</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Introduced</th>
+<th style="text-align: left;">Status</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
-<td align="left">TBD</td>
-<td align="left"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
+<td style="text-align: left;">TBD</td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
-<td align="left">TBD</td>
-<td align="left"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a href="#disallowincoming">DisallowIncoming</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#negativeunl">NegativeUNL</a></td>
-<td align="left">v1.7.3</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.3.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></td>
-<td align="left">v1.7.2</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.2.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixtrustlinestoself">fixTrustLinesToSelf</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></td>
-<td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.0.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixuniversalnumber">fixUniversalNumber</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#flowsortstrands">FlowSortStrands</a></td>
-<td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.0.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#immediateofferkilled">ImmediateOfferKilled</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#ticketbatch">TicketBatch</a></td>
-<td align="left">v1.7.0</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.7.0.html" target="_blank" title="Open for Voting: TBD"><img alt="Open for Voting: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-TBD-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#xrpfees">XRPFees</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1781">fix1781</a></td>
-<td align="left">v1.6.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB" target="_blank" title="Enabled: 2021-04-08"><img alt="Enabled: 2021-04-08" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--04--08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></td>
+<td style="text-align: left;">v1.8.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557" target="_blank" title="Enabled: 2023-01-23"><img alt="Enabled: 2023-01-23" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2023--01--23-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixamendmentmajoritycalc">fixAmendmentMajorityCalc</a></td>
-<td align="left">v1.6.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF" target="_blank" title="Enabled: 2021-04-08"><img alt="Enabled: 2021-04-08" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--04--08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></td>
+<td style="text-align: left;">v1.9.2</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE" target="_blank" title="Enabled: 2022-10-31"><img alt="Enabled: 2022-10-31" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2022--10--31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#hardenedvalidations">HardenedValidations</a></td>
-<td align="left">v1.6.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/3A45DCF055B68DCBBFE034240F9359FB22E8A64B1BF7113304535BF5BB8144BF" target="_blank" title="Enabled: 2021-04-08"><img alt="Enabled: 2021-04-08" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--04--08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></td>
+<td style="text-align: left;">v1.9.4</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C" target="_blank" title="Enabled: 2022-10-27"><img alt="Enabled: 2022-10-27" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2022--10--27-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#flowcross">FlowCross</a></td>
-<td align="left">v0.70.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F" target="_blank" title="Enabled: 2020-08-04"><img alt="Enabled: 2020-08-04" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--08--04-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#expandedsignerlist">ExpandedSignerList</a></td>
+<td style="text-align: left;">v1.9.1</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/802E2446547BB86397217E32A78CB9857F21B048B91C81BCC6EF837BE9C72C87" target="_blank" title="Enabled: 2022-10-13"><img alt="Enabled: 2022-10-13" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2022--10--13-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixqualityupperbound">fixQualityUpperBound</a></td>
-<td align="left">v1.5.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E" target="_blank" title="Enabled: 2020-07-09"><img alt="Enabled: 2020-07-09" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--07--09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#negativeunl">NegativeUNL</a></td>
+<td style="text-align: left;">v1.7.3</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA" target="_blank" title="Enabled: 2021-11-21"><img alt="Enabled: 2021-11-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--11--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></td>
-<td align="left">v1.5.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3" target="_blank" title="Enabled: 2020-07-03"><img alt="Enabled: 2020-07-03" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--07--03-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></td>
+<td style="text-align: left;">v1.7.2</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7" target="_blank" title="Enabled: 2021-11-18"><img alt="Enabled: 2021-11-18" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--11--18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#checks">Checks</a></td>
-<td align="left">v0.90.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6" target="_blank" title="Enabled: 2020-06-18"><img alt="Enabled: 2020-06-18" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--06--18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#ticketbatch">TicketBatch</a></td>
+<td style="text-align: left;">v1.7.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36" target="_blank" title="Enabled: 2021-11-18"><img alt="Enabled: 2021-11-18" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--11--18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#deletableaccounts">DeletableAccounts</a></td>
-<td align="left">v1.4.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE" target="_blank" title="Enabled: 2020-05-08"><img alt="Enabled: 2020-05-08" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--05--08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></td>
+<td style="text-align: left;">v1.7.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532" target="_blank" title="Enabled: 2021-11-11"><img alt="Enabled: 2021-11-11" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--11--11-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixcheckthreading">fixCheckThreading</a></td>
-<td align="left">v1.4.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A" target="_blank" title="Enabled: 2020-05-01"><img alt="Enabled: 2020-05-01" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--05--01-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#flowsortstrands">FlowSortStrands</a></td>
+<td style="text-align: left;">v1.7.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/1C3D3BD2AFDAF326EBFEA54579A89B024856609DB4310F7140086AAB262D09A1" target="_blank" title="Enabled: 2021-11-11"><img alt="Enabled: 2021-11-11" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--11--11-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></td>
-<td align="left">v1.4.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09" target="_blank" title="Enabled: 2020-05-01"><img alt="Enabled: 2020-05-01" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--05--01-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1781">fix1781</a></td>
+<td style="text-align: left;">v1.6.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB" target="_blank" title="Enabled: 2021-04-08"><img alt="Enabled: 2021-04-08" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--04--08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></td>
-<td align="left">v1.3.1</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20" target="_blank" title="Enabled: 2019-10-02"><img alt="Enabled: 2019-10-02" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--10--02-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixamendmentmajoritycalc">fixAmendmentMajorityCalc</a></td>
+<td style="text-align: left;">v1.6.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF" target="_blank" title="Enabled: 2021-04-08"><img alt="Enabled: 2021-04-08" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--04--08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#multisignreserve">MultiSignReserve</a></td>
-<td align="left">v1.2.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB" target="_blank" title="Enabled: 2019-04-17"><img alt="Enabled: 2019-04-17" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--04--17-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#hardenedvalidations">HardenedValidations</a></td>
+<td style="text-align: left;">v1.6.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/3A45DCF055B68DCBBFE034240F9359FB22E8A64B1BF7113304535BF5BB8144BF" target="_blank" title="Enabled: 2021-04-08"><img alt="Enabled: 2021-04-08" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2021--04--08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></td>
-<td align="left">v1.2.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF" target="_blank" title="Enabled: 2019-04-02"><img alt="Enabled: 2019-04-02" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--04--02-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#flowcross">FlowCross</a></td>
+<td style="text-align: left;">v0.70.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F" target="_blank" title="Enabled: 2020-08-04"><img alt="Enabled: 2020-08-04" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--08--04-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1578">fix1578</a></td>
-<td align="left">v1.2.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D" target="_blank" title="Enabled: 2019-03-23"><img alt="Enabled: 2019-03-23" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--03--23-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixqualityupperbound">fixQualityUpperBound</a></td>
+<td style="text-align: left;">v1.5.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E" target="_blank" title="Enabled: 2020-07-09"><img alt="Enabled: 2020-07-09" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--07--09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="depositpreauth.html">DepositPreauth</a></td>
-<td align="left">v1.1.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927" target="_blank" title="Enabled: 2018-10-09"><img alt="Enabled: 2018-10-09" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--10--09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></td>
+<td style="text-align: left;">v1.5.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3" target="_blank" title="Enabled: 2020-07-03"><img alt="Enabled: 2020-07-03" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--07--03-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1515">fix1515</a></td>
-<td align="left">v1.1.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF" target="_blank" title="Enabled: 2018-10-09"><img alt="Enabled: 2018-10-09" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--10--09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#checks">Checks</a></td>
+<td style="text-align: left;">v0.90.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6" target="_blank" title="Enabled: 2020-06-18"><img alt="Enabled: 2020-06-18" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--06--18-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1543">fix1543</a></td>
-<td align="left">v1.0.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6" target="_blank" title="Enabled: 2018-06-21"><img alt="Enabled: 2018-06-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--06--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#deletableaccounts">DeletableAccounts</a></td>
+<td style="text-align: left;">v1.4.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE" target="_blank" title="Enabled: 2020-05-08"><img alt="Enabled: 2020-05-08" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--05--08-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1623">fix1623</a></td>
-<td align="left">v1.0.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB" target="_blank" title="Enabled: 2018-06-20"><img alt="Enabled: 2018-06-20" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--06--20-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixcheckthreading">fixCheckThreading</a></td>
+<td style="text-align: left;">v1.4.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A" target="_blank" title="Enabled: 2020-05-01"><img alt="Enabled: 2020-05-01" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--05--01-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1571">fix1571</a></td>
-<td align="left">v1.0.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC" target="_blank" title="Enabled: 2018-06-19"><img alt="Enabled: 2018-06-19" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--06--19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></td>
+<td style="text-align: left;">v1.4.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09" target="_blank" title="Enabled: 2020-05-01"><img alt="Enabled: 2020-05-01" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2020--05--01-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#depositauth">DepositAuth</a></td>
-<td align="left">v0.90.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25" target="_blank" title="Enabled: 2018-04-06"><img alt="Enabled: 2018-04-06" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--04--06-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></td>
+<td style="text-align: left;">v1.3.1</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20" target="_blank" title="Enabled: 2019-10-02"><img alt="Enabled: 2019-10-02" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--10--02-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1513">fix1513</a></td>
-<td align="left">v0.90.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B" target="_blank" title="Enabled: 2018-04-06"><img alt="Enabled: 2018-04-06" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--04--06-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#multisignreserve">MultiSignReserve</a></td>
+<td style="text-align: left;">v1.2.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB" target="_blank" title="Enabled: 2019-04-17"><img alt="Enabled: 2019-04-17" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--04--17-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1201">fix1201</a></td>
-<td align="left">v0.80.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></td>
+<td style="text-align: left;">v1.2.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF" target="_blank" title="Enabled: 2019-04-02"><img alt="Enabled: 2019-04-02" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--04--02-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1512">fix1512</a></td>
-<td align="left">v0.80.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1578">fix1578</a></td>
+<td style="text-align: left;">v1.2.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D" target="_blank" title="Enabled: 2019-03-23"><img alt="Enabled: 2019-03-23" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--03--23-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1523">fix1523</a></td>
-<td align="left">v0.80.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="depositpreauth.html">DepositPreauth</a>[DepositPreauthAmendment]</td>
+<td style="text-align: left;">v1.1.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927" target="_blank" title="Enabled: 2018-10-09"><img alt="Enabled: 2018-10-09" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--10--09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1528">fix1528</a></td>
-<td align="left">v0.80.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1515">fix1515</a></td>
+<td style="text-align: left;">v1.1.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF" target="_blank" title="Enabled: 2018-10-09"><img alt="Enabled: 2018-10-09" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--10--09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#sorteddirectories">SortedDirectories</a></td>
-<td align="left">v0.80.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1543">fix1543</a></td>
+<td style="text-align: left;">v1.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6" target="_blank" title="Enabled: 2018-06-21"><img alt="Enabled: 2018-06-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--06--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#enforceinvariants">EnforceInvariants</a></td>
-<td align="left">v0.70.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6" target="_blank" title="Enabled: 2017-07-07"><img alt="Enabled: 2017-07-07" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--07--07-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1623">fix1623</a></td>
+<td style="text-align: left;">v1.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB" target="_blank" title="Enabled: 2018-06-20"><img alt="Enabled: 2018-06-20" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--06--20-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1373">fix1373</a></td>
-<td align="left">v0.70.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399" target="_blank" title="Enabled: 2017-07-07"><img alt="Enabled: 2017-07-07" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--07--07-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1571">fix1571</a></td>
+<td style="text-align: left;">v1.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC" target="_blank" title="Enabled: 2018-06-19"><img alt="Enabled: 2018-06-19" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--06--19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#escrow">Escrow</a></td>
-<td align="left">v0.60.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515" target="_blank" title="Enabled: 2017-03-31"><img alt="Enabled: 2017-03-31" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--03--31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#depositauth">DepositAuth</a></td>
+<td style="text-align: left;">v0.90.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25" target="_blank" title="Enabled: 2018-04-06"><img alt="Enabled: 2018-04-06" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--04--06-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#fix1368">fix1368</a></td>
-<td align="left">v0.60.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F" target="_blank" title="Enabled: 2017-03-31"><img alt="Enabled: 2017-03-31" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--03--31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1513">fix1513</a></td>
+<td style="text-align: left;">v0.90.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B" target="_blank" title="Enabled: 2018-04-06"><img alt="Enabled: 2018-04-06" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--04--06-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#paychan">PayChan</a></td>
-<td align="left">v0.33.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E" target="_blank" title="Enabled: 2017-03-31"><img alt="Enabled: 2017-03-31" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--03--31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1201">fix1201</a></td>
+<td style="text-align: left;">v0.80.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#ticksize">TickSize</a></td>
-<td align="left">v0.50.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E" target="_blank" title="Enabled: 2017-02-21"><img alt="Enabled: 2017-02-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--02--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1512">fix1512</a></td>
+<td style="text-align: left;">v0.80.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#cryptoconditions">CryptoConditions</a></td>
-<td align="left">v0.50.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15" target="_blank" title="Enabled: 2017-01-03"><img alt="Enabled: 2017-01-03" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--01--03-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1523">fix1523</a></td>
+<td style="text-align: left;">v0.80.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#flow">Flow</a></td>
-<td align="left">v0.33.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC" target="_blank" title="Enabled: 2016-10-21"><img alt="Enabled: 2016-10-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--10--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1528">fix1528</a></td>
+<td style="text-align: left;">v0.80.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#trustsetauth">TrustSetAuth</a></td>
-<td align="left">v0.30.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF" target="_blank" title="Enabled: 2016-07-19"><img alt="Enabled: 2016-07-19" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--07--19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#sorteddirectories">SortedDirectories</a></td>
+<td style="text-align: left;">v0.80.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#multisign">MultiSign</a></td>
-<td align="left">v0.31.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7" target="_blank" title="Enabled: 2016-06-27"><img alt="Enabled: 2016-06-27" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--06--27-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#enforceinvariants">EnforceInvariants</a></td>
+<td style="text-align: left;">v0.70.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6" target="_blank" title="Enabled: 2017-07-07"><img alt="Enabled: 2017-07-07" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--07--07-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#feeescalation">FeeEscalation</a></td>
-<td align="left">v0.31.0</td>
-<td align="left"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3" target="_blank" title="Enabled: 2016-05-19"><img alt="Enabled: 2016-05-19" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--05--19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1373">fix1373</a></td>
+<td style="text-align: left;">v0.70.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399" target="_blank" title="Enabled: 2017-07-07"><img alt="Enabled: 2017-07-07" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--07--07-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#shamapv2">SHAMapV2</a></td>
-<td align="left">v0.32.1</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2019/rippled-1.4.0.html" target="_blank" title="Vetoed: Removed in v1.4.0"><img alt="Vetoed: Removed in v1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v1.4.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#escrow">Escrow</a></td>
+<td style="text-align: left;">v0.60.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515" target="_blank" title="Enabled: 2017-03-31"><img alt="Enabled: 2017-03-31" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--03--31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#flowv2">FlowV2</a></td>
-<td align="left">v0.32.1</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2016/flowv2-vetoed.html" target="_blank" title="Vetoed: Removed in v0.33.0"><img alt="Vetoed: Removed in v0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v0.33.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#fix1368">fix1368</a></td>
+<td style="text-align: left;">v0.60.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F" target="_blank" title="Enabled: 2017-03-31"><img alt="Enabled: 2017-03-31" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--03--31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#suspay">SusPay</a></td>
-<td align="left">v0.31.0</td>
-<td align="left"><a class="external-link" href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" target="_blank" title="Vetoed: Removed in v0.60.0"><img alt="Vetoed: Removed in v0.60.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v0.60.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a href="#paychan">PayChan</a></td>
+<td style="text-align: left;">v0.33.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E" target="_blank" title="Enabled: 2017-03-31"><img alt="Enabled: 2017-03-31" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--03--31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td align="left"><a href="#tickets">Tickets</a></td>
-<td align="left">v0.30.1</td>
-<td align="left"><a title="Vetoed: Removed in v0.90.0"><img alt="Vetoed: Removed in v0.90.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v0.90.0-red.svg"/></a></td>
+<td style="text-align: left;"><a href="#ticksize">TickSize</a></td>
+<td style="text-align: left;">v0.50.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E" target="_blank" title="Enabled: 2017-02-21"><img alt="Enabled: 2017-02-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--02--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#cryptoconditions">CryptoConditions</a></td>
+<td style="text-align: left;">v0.50.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15" target="_blank" title="Enabled: 2017-01-03"><img alt="Enabled: 2017-01-03" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--01--03-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#flow">Flow</a></td>
+<td style="text-align: left;">v0.33.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC" target="_blank" title="Enabled: 2016-10-21"><img alt="Enabled: 2016-10-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--10--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#trustsetauth">TrustSetAuth</a></td>
+<td style="text-align: left;">v0.30.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF" target="_blank" title="Enabled: 2016-07-19"><img alt="Enabled: 2016-07-19" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--07--19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#multisign">MultiSign</a></td>
+<td style="text-align: left;">v0.31.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7" target="_blank" title="Enabled: 2016-06-27"><img alt="Enabled: 2016-06-27" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--06--27-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#feeescalation">FeeEscalation</a></td>
+<td style="text-align: left;">v0.31.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3" target="_blank" title="Enabled: 2016-05-19"><img alt="Enabled: 2016-05-19" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--05--19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></td>
+<td style="text-align: left;">v1.9.2</td>
+<td style="text-align: left;"><a title="Obsolete: To Be Removed"><img alt="Obsolete: To Be Removed" class="dactyl_badge" src="https://img.shields.io/badge/Obsolete-To%20Be%20Removed-red.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixnftokendirv1">fixNFTokenDirV1</a></td>
+<td style="text-align: left;">v1.9.1</td>
+<td style="text-align: left;"><a title="Obsolete: To Be Removed"><img alt="Obsolete: To Be Removed" class="dactyl_badge" src="https://img.shields.io/badge/Obsolete-To%20Be%20Removed-red.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#nonfungibletokensv1">NonFungibleTokensV1</a></td>
+<td style="text-align: left;">v1.9.0</td>
+<td style="text-align: left;"><a title="Obsolete: To Be Removed"><img alt="Obsolete: To Be Removed" class="dactyl_badge" src="https://img.shields.io/badge/Obsolete-To%20Be%20Removed-red.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
+<td style="text-align: left;">v0.60.0</td>
+<td style="text-align: left;"><a title="Obsolete: To Be Removed"><img alt="Obsolete: To Be Removed" class="dactyl_badge" src="https://img.shields.io/badge/Obsolete-To%20Be%20Removed-red.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#shamapv2">SHAMapV2</a></td>
+<td style="text-align: left;">v0.32.1</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2019/rippled-1.4.0.html" target="_blank" title="Vetoed: Removed in v1.4.0"><img alt="Vetoed: Removed in v1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v1.4.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#flowv2">FlowV2</a></td>
+<td style="text-align: left;">v0.32.1</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2016/flowv2-vetoed.html" target="_blank" title="Vetoed: Removed in v0.33.0"><img alt="Vetoed: Removed in v0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v0.33.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#suspay">SusPay</a></td>
+<td style="text-align: left;">v0.31.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" target="_blank" title="Vetoed: Removed in v0.60.0"><img alt="Vetoed: Removed in v0.60.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v0.60.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#tickets">Tickets</a></td>
+<td style="text-align: left;">v0.30.1</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2018/rippled-0.90.0.html" target="_blank" title="Vetoed: Removed in v0.90.0"><img alt="Vetoed: Removed in v0.90.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v0.90.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
 <p class="devportal-callout note"><strong>Note:</strong> In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.</p>
-<h2 id="checks">Checks<a aria-hidden="true" class="hover_anchor" href="#checks"><i class="fa fa-link"></i></a></h2>
+<h2 id="checkcashmakestrustline">CheckCashMakesTrustLine<a aria-hidden="true" class="hover_anchor" href="#checkcashmakestrustline"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">CheckCashMakesTrustLine</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Adjusts the <a href="checkcash.html">CheckCash transaction</a> so that cashing a <a href="checks.html">Check</a> for an issued token automatically creates a <a href="trust-lines-and-issuing.html">trust line</a> to hold the token. The new behavior is similar to how the <a href="offercreate.html">OfferCreate transaction</a> behaves when users buy tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)</p>
+<p>Without this amendment, users have to separately send a <a href="trustset.html">TrustSet transaction</a> before they can cash a Check for an issued token.</p>
+<p>This amendment does not change the fact that you cannot force anyone to hold tokens they don't want in the XRP Ledger.</p>
+<h2 id="checks">Checks<a aria-hidden="true" class="hover_anchor" href="#checks"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
 <p>Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.</p>
 <p>The sender or the receiver can cancel a Check at any time before it is cashed. A Check can also have an expiration time, after which it cannot be cashed, and anyone can cancel it.</p>
 <p>Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash, and a new ledger object type, Check. Adds a new transaction result code, <code>tecEXPIRED</code>, which occurs when trying to create a Check whose expiration time is in the past.</p>
-<p>This amendment also changes the OfferCreate transaction to return <code>tecEXPIRED</code> when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns <code>tesSUCCESS</code> but does not create or execute an Offer.</p>
 <h2 id="cryptoconditions">CryptoConditions<a aria-hidden="true" class="hover_anchor" href="#cryptoconditions"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">CryptoConditions</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -591,31 +754,55 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">CryptoConditionsSuite</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90</td>
-<td align="left">In Development</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Obsolete</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
-<p>Implements several types of crypto-conditions from the official <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-03" target="_blank">crypto-conditions specification <i aria-hidden="true" class="fa fa-external-link"></i></a> for use in <a href="escrowcreate.html">EscrowCreate</a> and <a href="escrowfinish.html">EscrowFinish</a> transactions. Without this amendment, only the PREIMAGE-SHA-256 type is supported.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> This amendment is still <a class="external-link" href="https://github.com/ripple/rippled/pull/2170" target="_blank">in development <i aria-hidden="true" class="fa fa-external-link"></i></a>. The version from <code>rippled</code> v0.60.0 to present does not implement the full functionality.</p>
+<p>This amendment was intended to add support for several types of crypto-conditions from the official <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-03" target="_blank">crypto-conditions specification <i aria-hidden="true" class="fa fa-external-link"></i></a> for use in <a href="escrowcreate.html">EscrowCreate</a> and <a href="escrowfinish.html">EscrowFinish</a> transactions.</p>
+<p>However, the amendment was added to <code>rippled</code> v0.60.0 before implementation was complete. As a result, this amendment ID refers to incomplete code which does almost nothing. Modifying the existing amendment to add support for other crypto-conditions would cause a conflict with old versions of the amendment already in released software. If a future release adds support for additional crypto-conditions, it must use a new and different amendment ID.</p>
 <h2 id="deletableaccounts">DeletableAccounts<a aria-hidden="true" class="hover_anchor" href="#deletableaccounts"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">DeletableAccounts</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -626,51 +813,125 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">DepositAuth</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
 <p>Adds a new account flag, <code>DepositAuth</code>, which lets an account strictly reject any incoming money from transactions sent by other accounts. Businesses can use this flag to comply with strict regulations that require due diligence before receiving money from any source.</p>
-<p>When an account enables this flag, Payment transactions fail if the account is the destination, regardless of whether the Payment would have delivered XRP or an issued currency. EscrowFinish and PaymentChannelClaim transactions fail if the account is the destination unless the destination account itself sends those transactions. If the <a href="#checks">Checks</a> amendment is enabled, the account can receive XRP or issued currencies by sending CheckCash transactions.</p>
+<p>When an account enables this flag, Payment transactions fail if the account is the destination, regardless of whether the Payment would have delivered XRP or a token. EscrowFinish and PaymentChannelClaim transactions fail if the account is the destination unless the destination account itself sends those transactions. If the <a href="#checks">Checks</a> amendment is enabled, the account can receive XRP or tokens by sending CheckCash transactions.</p>
 <p>As an exception, accounts with <code>DepositAuth</code> enabled can receive Payment transactions for small amounts of XRP (equal or less than the minimum <a href="reserves.html">account reserve</a>) if their current XRP balance is below the account reserve.</p>
 <p>Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the Disallow XRP flag, which is meant to be a non-binding advisory flag. (By not enforcing Disallow XRP in the ledger itself an account can still receive the necessary XRP to meet its <a href="reserves.html">account reserve</a> and pay <a href="transaction-cost.html">transaction costs</a>.)</p>
 <h2 id="depositpreauth">DepositPreauth<a aria-hidden="true" class="hover_anchor" href="#depositpreauth"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">DepositPreauth</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
 <p>Provides users of <a href="depositauth.html">deposit authorization</a> with a way to preauthorize specific senders so those senders are allowed to send payments directly.</p>
 <p>Adds a new transaction type, DepositPreauth for adding or removing preauthorization, and a DepositPreauth ledger object type for tracking preauthorizations from one account to another. Adds a JSON-RPC command, <code>deposit_authorized</code>, to query whether an account is authorized to send payments directly to another. <!-- STYLE_OVERRIDE: is authorized to --></p>
-<p>Also changes the behavior of cross-currency Payments from an account to itself when that account requires deposit authorization. Without this amendment, those payments always fail with the code <code>tecNO_PERMISSION</code>. With this amendment, those payments succeed as they would with Deposit Authorization disabled.</p>
-<h2 id="enforceinvariants">EnforceInvariants<a aria-hidden="true" class="hover_anchor" href="#enforceinvariants"><i class="fa fa-link"></i></a></h2>
+<p>Changes the behavior of cross-currency Payments from an account to itself when that account requires deposit authorization. Without this amendment, those payments always fail with the code <code>tecNO_PERMISSION</code>. With this amendment, those payments succeed as they would with Deposit Authorization disabled.</p>
+<p>Also changes the OfferCreate transaction to return <code>tecEXPIRED</code> when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns <code>tesSUCCESS</code> but does not create or execute an Offer.</p>
+<h2 id="disallowincoming">DisallowIncoming<a aria-hidden="true" class="hover_anchor" href="#disallowincoming"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">DisallowIncoming</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">47C3002ABA31628447E8E9A8B315FAA935CE30183F9A9B86845E469CA2CDC3DF</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Provides options to categorically block incoming Checks, Payment Channels, NFTokenOffers, and trust lines from reaching your account. When an account has these options enabled, other accounts cannot create those types of objects with the account as the destination.</p>
+<p>Adds 4 new AccountSet Flags and modifies the AccountSet transaction to allow enabling and disabling them:</p>
+<ul>
+<li>asfDisallowIncomingCheck</li>
+<li>asfDisallowIncomingPayChan</li>
+<li>asfDisallowIncomingNFTOffer</li>
+<li>asfDisallowIncomingTrustline</li>
+</ul>
+<p>Changes transaction processing to check the status of those flags before creating the corresponding type of object. If the destination account has the flag enabled, the transaction fails with the error code <code>tecNO_PERMISSION</code>.</p>
+<p>Without this amendment, any account can create these objects with any object as the destination; while this is usually harmless, it can block an account from later being deleted, and may also be used as part of scams.</p>
+<h2 id="enforceinvariants">EnforceInvariants<a aria-hidden="true" class="hover_anchor" href="#enforceinvariants"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">EnforceInvariants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -688,31 +949,85 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Escrow</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
 <p>Replaces the <a href="#suspay">SusPay</a> and <a href="#cryptoconditions">CryptoConditions</a> amendments.</p>
 <p>Provides "suspended payments" for XRP for escrow within the XRP Ledger, including support for <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02" target="_blank">Interledger Protocol Crypto-Conditions <i aria-hidden="true" class="fa fa-external-link"></i></a>. Creates a new ledger object type for suspended payments and new transaction types to create, execute, and cancel suspended payments.</p>
-<h2 id="feeescalation">FeeEscalation<a aria-hidden="true" class="hover_anchor" href="#feeescalation"><i class="fa fa-link"></i></a></h2>
+<h2 id="expandedsignerlist">ExpandedSignerList<a aria-hidden="true" class="hover_anchor" href="#expandedsignerlist"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">ExpandedSignerList</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>This amendment expands the maximum signer list size and allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).</p>
+<p>Without this amendment, the maximum signer list size is 8 entries, and each entry has exactly two fields, <code>Account</code> and <code>SignerWeight</code>.</p>
+<p>With this amendment, the maximum <a href="signerlist.html">SignerList object</a> size is 32 entries. Additionally, each <code>SignerEntry</code> object can contain an optional 256-bit (32-byte) <code>WalletLocator</code> field containing arbitrary data. This amendment changes the <a href="signerlistset.html">SignerListSet transaction</a> accordingly.</p>
+<h2 id="feeescalation">FeeEscalation<a aria-hidden="true" class="hover_anchor" href="#feeescalation"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">FeeEscalation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -729,31 +1044,55 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1201</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
-<p>Correctly implements a limit on <a href="transfer-fees.html">transfer fees</a> to a 100% fee, represented by a maximum <code>TransferRate</code> value of <code>2000000000</code>. (A 100% fee in this case means you must send 2 units of the issued currency for every 1 unit you want to deliver.) Without the amendment, the effective limit is a <code>TransferRate</code> value of 2<sup>32</sup>-1, for approximately a 329% fee.</p>
+<p>Correctly implements a limit on <a href="transfer-fees.html">transfer fees</a> to a 100% fee, represented by a maximum <code>TransferRate</code> value of <code>2000000000</code>. (A 100% fee in this case means you must send 2 units of the token for every 1 unit you want to deliver.) Without the amendment, the effective limit is a <code>TransferRate</code> value of 2<sup>32</sup>-1, for approximately a 329% fee.</p>
 <p>With this amendment enabled, an <a href="accountset.html">AccountSet</a> transaction that attempts to set <code>TransferRate</code> higher than <code>2000000000</code> fails with the result code <code>temBAD_TRANSFER_RATE</code>. Any existing <code>TransferRate</code> which was set to a higher value under the previous rules continues to apply at the higher rate.</p>
 <h2 id="fix1368">fix1368<a aria-hidden="true" class="hover_anchor" href="#fix1368"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1368</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -762,14 +1101,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1373</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -779,31 +1130,55 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1512</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
-<p>Fixes a bug in transaction processing that causes some invalid <a href="paymentchannelclaim.html">PaymentChannelClaim</a> transactions to fail with the wrong error code. Without this amendment, the transactions have a <code>tec</code>-class result code despite not being included in a ledger and therefore not paying the <a href="transaction-cost.html">transaction cost</a>.</p>
+<p>Fixes a bug in transaction processing that causes some invalid <a href="paymentchannelclaim.html">PaymentChannelClaim</a> transactions to fail with the wrong error code. Without this amendment, the transactions have a <code>tec</code>-class result code despite not being included in a ledger.</p>
 <p>With this amendment, the transactions fail with a more appropriate result code, <code>temBAD_AMOUNT</code>, instead.</p>
 <h2 id="fix1513">fix1513<a aria-hidden="true" class="hover_anchor" href="#fix1513"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1513</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -813,14 +1188,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1515</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -832,14 +1219,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1523</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -849,31 +1248,55 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1528</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
-<p>Fixes a bug where validators could build consensus ledgers with different timestamps, potentially delaying the process of declaring validated ledgers. The circumstances for this to occur require precise timing, so validators are unlikely to encounter this bug outside of controlled test conditions.</p>
+<p>Fixes a bug where validators could build consensus ledgers with different timestamps, potentially delaying the process of declaring validated ledgers. The circumstances for this to occur require precise timing, so this bug is unlikely to happen outside of controlled test conditions.</p>
 <p>This amendment changes how validators negotiate the close time of the consensus ledger so that they cannot reach a consensus on ledger contents but build ledger versions with different timestamps.</p>
 <h2 id="fix1543">fix1543<a aria-hidden="true" class="hover_anchor" href="#fix1543"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1543</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -888,14 +1311,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1571</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -908,14 +1343,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1578</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -928,14 +1375,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1623</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -946,14 +1405,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1781</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -964,14 +1435,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixAmendmentMajorityCalc</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -981,14 +1464,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixCheckThreading</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -998,32 +1493,156 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixMasterKeyAsRegularKey</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
 <p>Fixes a bug where accounts can set their regular key pair to match their master key pair, but cannot send transactions signed by the key if the master key is disabled.</p>
 <p>Without this fix, a user can unintentionally "black hole" their account by setting the regular key to match the master key, then disabling the master key. The network rejects transactions signed with the both-master-and-regular key pair because the code interprets them as being signed with the disabled master key before it recognizes that they are signed by the currently-enabled regular key.</p>
 <p>With this amendment enabled, a SetRegularKey transaction cannot set the regular key to match the master key; such a transaction results in the transaction code <code>temBAD_REGKEY</code>. Additionally, this amendment changes the signature verification code so that accounts which <em>already</em> have their regular key set to match their master key can send transactions successfully using the key pair.</p>
-<h2 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h2>
+<h2 id="fixnftokendirv1">fixNFTokenDirV1<a aria-hidden="true" class="hover_anchor" href="#fixnftokendirv1"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixNFTokenDirV1</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Obsolete</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>This amendment fixes an off-by-one error that occurred in some corner cases when determining which <code>NFTokenPage</code> a <code>NFToken</code> object belongs on. It also adjusts the constraints of <code>NFTokenPage</code> invariant checks, so that certain error cases fail with a suitable error code such as <code>tecNO_SUITABLE_TOKEN_PAGE</code> instead of failing with a <code>tecINVARIANT_FAILED</code> error code.</p>
+<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. This amendment is obsolete because its effects are included as part of <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
+<h2 id="fixnftokennegoffer">fixNFTokenNegOffer<a aria-hidden="true" class="hover_anchor" href="#fixnftokennegoffer"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixNFTokenNegOffer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Obsolete</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>This amendment fixes a bug in the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell a <code>NFToken</code> for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.</p>
+<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. This amendment is obsolete because its effects are included as part of <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
+<h2 id="fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2<a aria-hidden="true" class="hover_anchor" href="#fixnonfungibletokensv1_2"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixNonFungibleTokensV1_2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">73761231F7F3D94EC3D8C63D91BDD0D89045C6F71B917D1925C01253515A6669</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Amendment <code>fixNonFungibleTokensV1_2</code> is a combination of bug fixes that have been individually merged into feature/nft-fixes through the pull request process:</p>
+<p><strong>Fix Unburnable NFT</strong></p>
+<p>Currently, an NFT cannot be burned when it has over 500 offers. To remove this restriction, this change deletes exactly 500 offers upon burning the NFT, leaving any remaining offers untouched. This addresses a concern where the issuer account cannot burn an NFT that has enabled the <code>lsfBurnable</code> flag, due to the exceeding number of offers.</p>
+<p>See <a class="external-link" href="https://github.com/XRPLF/rippled/pull/4346" target="_blank">PR 4346 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><strong>Fix 3 Issues Around NFToken Offer Acceptance</strong></p>
+<p>Issue 1: Resolve situation where an account is unable to broker a deal due to an erroneous insufficient funds condition.</p>
+<p>Issue 2: Resolve situation where a buyer has insufficient funds to cover a transfer fee on the account.</p>
+<p>Issue 3: Enable currency issuers to buy and sell NFTs using their own currency.</p>
+<p>See <a class="external-link" href="https://github.com/XRPLF/rippled/pull/4380" target="_blank">PR 4380 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><strong>Prevent Brokered Sale of NFToken to Owner (fix #4374)</strong></p>
+<p>This fix prevents a broker from selling an NFT to the account that already owns the token.</p>
+<p>See <a class="external-link" href="https://github.com/XRPLF/rippled/issues/4374" target="_blank">Issue 4374 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><strong>Only allow the destination to settle an NFT offer through brokerage (fix #4373)</strong></p>
+<p>If you set a destination on an NFT offer, only that destination can settle through brokerage (fix #4373).</p>
+<p>See <a class="external-link" href="https://github.com/XRPLF/rippled/issues/4373" target="_blank">Issue 4373 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<h2 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixPayChanRecipientOwnerDir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1033,31 +1652,86 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixQualityUpperBound</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
 <p>Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.</p>
 <p>This amendment has no known impact on transaction processing.</p>
-<h2 id="fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers<a aria-hidden="true" class="hover_anchor" href="#fixrmsmallincreasedqoffers"><i class="fa fa-link"></i></a></h2>
+<h2 id="fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine<a aria-hidden="true" class="hover_anchor" href="#fixremovenftokenautotrustline"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixRemoveNFTokenAutoTrustLine</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2</td>
-<td align="left">Open for Voting</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Removes the <code>tfTrustLine</code> setting on <a href="non-fungible-tokens.html">non-fungible tokens</a>, to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a <a href="nftokenmint.html">NFTokenMint transaction</a> with the <code>tfTrustLine</code> flag enabled is considered invalid and cannot be confirmed by consensus; new <code>NFToken</code> objects cannot be minted with the flag.</p>
+<p>Without this amendment, an attacker could create new, meaningless fungible tokens and sell a <code>NFToken</code> back and forth for those tokens, creating many useless trust lines tied to the issuer and increasing the issuer's reserve requirement.</p>
+<p>This amendment does not change the code for <code>NFToken</code> objects that have already been minted. On test networks that enabled NFT support before this amendment, issuers who have already minted NFTokens with the <code>tfTrustLine</code> flag enabled are still vulnerable to the exploit even after the fixRemoveNFTokenAutoTrustLine amendment.</p>
+<p>This amendment has no effect unless either <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> or <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a> is enabled. To protect issuers, this amendment should be enabled <em>before</em> <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> or <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
+<h2 id="fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers<a aria-hidden="true" class="hover_anchor" href="#fixrmsmallincreasedqoffers"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixRmSmallIncreasedQOffers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1068,14 +1742,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixSTAmountCanonicalize</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB</td>
-<td align="left">Open for Voting</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1084,32 +1770,114 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixTakerDryOfferRemoval</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
 <p>Fixes a bug in <a href="autobridging.html">auto-bridging</a> that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.</p>
 <p>Without this fix, the dry offer remains on the ledger and counts toward its owner's <a href="reserves.html#owner-reserves">reserve requirement</a> without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.</p>
 <p>With this amendment enabled, the XRP Ledger removes these dry offers when they're matched in auto-bridging.</p>
-<h2 id="flow">Flow<a aria-hidden="true" class="hover_anchor" href="#flow"><i class="fa fa-link"></i></a></h2>
+<h2 id="fixtrustlinestoself">fixTrustLinesToSelf<a aria-hidden="true" class="hover_anchor" href="#fixtrustlinestoself"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixTrustLinesToSelf</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>This amendment removes two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment becomes enabled, it deletes trust lines with the IDs <code>2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1</code> and <code>326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A</code> if they exist. After doing so, the amendment does nothing else.</p>
+<p>On test networks that do not have these trust lines, the amendment has no effect.</p>
+<h2 id="fixuniversalnumber">fixUniversalNumber<a aria-hidden="true" class="hover_anchor" href="#fixuniversalnumber"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixUniversalNumber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">2E2FB9CF8A44EB80F4694D38AADAE9B8B7ADAFD2F092E10068E61C98C4F092B0</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Simplifies and unifies the code for decimal floating point math. In some cases, this provides slightly better accuracy than the previous code, resulting in calculations whose least significant digits are different than when calculated with the previous code. The different results may cause other edge case differences where precise calculations are used, such as ranking of Offers or processing of payments that use several different paths.</p>
+<p>Without this amendment, the code continues to use separate calculations for <code>STAmount</code> and <code>IOUAmount</code> objects, and <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">Automated Market Maker (XLS-30d) <i aria-hidden="true" class="fa fa-external-link"></i></a> uses a third class for calculations.</p>
+<h2 id="flow">Flow<a aria-hidden="true" class="hover_anchor" href="#flow"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Flow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1119,14 +1887,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">FlowCross</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1140,14 +1920,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">FlowSortStrands</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422</td>
-<td align="left">Open for Voting</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1157,14 +1949,22 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">FlowV2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26</td>
-<td align="left">Vetoed</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Vetoed</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1173,31 +1973,84 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">HardenedValidations</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
 <p>Allows validators to include a new optional field in their validations to attest to the hash of
 the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.</p>
-<h2 id="multisign">MultiSign<a aria-hidden="true" class="hover_anchor" href="#multisign"><i class="fa fa-link"></i></a></h2>
+<h2 id="immediateofferkilled">ImmediateOfferKilled<a aria-hidden="true" class="hover_anchor" href="#immediateofferkilled"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">ImmediateOfferKilled</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Changes OfferCreate transactions so that if an Offer uses <code>tfImmediateOrCancel</code> and transaction processing kills the Offer without moving any funds, the transaction uses the result code <code>tecKILLED</code> instead of <code>tesSUCCESS</code>. If the Offer exchanges any amount of funds, even a small amount, the transaction still uses <code>tesSUCCESS</code>. There are no other changes to the processing of the transaction (for example, in terms of whether it cleans up expired and unfunded Offers that were encountered in the ledger during transaction processing).</p>
+<p>Without this amendment, "Immediate or Cancel" Offers that failed to move any funds returned a <code>tesSUCCESS</code> result code, which could be confusing because the transaction effectively did nothing.</p>
+<h2 id="multisign">MultiSign<a aria-hidden="true" class="hover_anchor" href="#multisign"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">MultiSign</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -1218,14 +2071,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">MultiSignReserve</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1236,48 +2101,164 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">NegativeUNL</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076</td>
-<td align="left">Open for Voting</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
 <p>Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.</p>
-<h2 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h2>
+<h2 id="nonfungibletokensv1">NonFungibleTokensV1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">NonFungibleTokensV1</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871</td>
-<td align="left">In Development</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Obsolete</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
-<p>Fixes an inconsistency in the way <a href="transfer-fees.html">transfer fees</a> are calculated between <a href="offercreate.html">OfferCreate</a> and <a href="payment.html">Payment</a> transaction types. Without this amendment, the holder of the issued currency pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issued currency always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
+<p>Adds native support for <a href="non-fungible-tokens.html">non-fungible tokens</a>. Standards Draft: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/46" target="_blank">XLS-20d <i aria-hidden="true" class="fa fa-external-link"></i></a>. <!-- SPELLING_IGNORE: xls, 20d --></p>
+<p class="devportal-callout warning"><strong>Warning:</strong> There are several known issues with this amendment including one that can cause <code>tecINVARIANT_FAILED</code> errors to appear in the ledger. It has been replaced by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.</p>
+<p>This amendment adds 5 new transaction types:</p>
+<ul>
+<li><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a></li>
+<li><a href="nftokenburn.html">NFTokenBurn</a></li>
+<li><a href="nftokencanceloffer.html">NFTokenCancelOffer</a></li>
+<li><a href="nftokencreateoffer.html">NFTokenCreateOffer</a></li>
+<li><a href="nftokenmint.html">NFTokenMint</a></li>
+</ul>
+<p>It also adds 2 new ledger object types:</p>
+<ul>
+<li><a href="nftokenoffer.html">NFTokenOffer object</a></li>
+<li><a href="nftokenpage.html">NFTokenPage object</a></li>
+</ul>
+<p>Additionally, it modifies the <a href="accountroot.html">AccountRoot object</a> type to add 3 new optional fields: <code>MintedNFTokens</code>, <code>BurnedNFTokens</code>, and <code>NFTokenMinter</code>.</p>
+<p>It also modifies the <a href="accountset.html">AccountSet transaction</a> type to allow you to set the <code>NFTokenMinter</code> field.</p>
+<h2 id="nonfungibletokensv1_1">NonFungibleTokensV1_1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1_1"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">NonFungibleTokensV1_1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Adds native support for <a href="non-fungible-tokens.html">non-fungible tokens</a>, including fixes to several issues that were discovered after <a href="#nonfungibletokensv1">NonFungibleTokensV1</a>.</p>
+<p>This amendment combines the effects of the following amendments, rendering the individual amendments obsolete:</p>
+<ul>
+<li><a href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
+<li><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
+<li><a href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
+</ul>
+<p>It has no other effects.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> The <a href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a> fixes an known issue with this amendment. When creating a new test network, you should make sure that these amendments should be enabled together or the fix amendment is enabled first.</p>
+<h2 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">OwnerPaysFee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">N/A</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Fixes an inconsistency in the way <a href="transfer-fees.html">transfer fees</a> are calculated between <a href="offercreate.html">OfferCreate</a> and <a href="payment.html">Payment</a> transaction types. Without this amendment, the holder of the token pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the token always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
 <p>This Amendment requires the <a href="#flow">Flow Amendment</a> to be enabled.</p>
 <p class="devportal-callout note"><strong>Note:</strong> An incomplete version of this amendment was introduced in v0.33.0 and removed in v0.80.0. (It was never enabled.)</p>
 <h2 id="paychan">PayChan<a aria-hidden="true" class="hover_anchor" href="#paychan"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">PayChan</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -1288,14 +2269,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">RequireFullyCanonicalSig</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1307,14 +2300,22 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">SHAMapV2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3</td>
-<td align="left">Vetoed</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Vetoed</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1324,31 +2325,51 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">SortedDirectories</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
 <p>Sorts the entries in <a href="directorynode.html">DirectoryNode ledger objects</a> and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.</p>
-<p class="devportal-callout warning"><strong>Warning:</strong> Older versions of <code>rippled</code> that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem, <a href="install-rippled.html">upgrade</a> to <code>rippled</code> version 0.80.0 or later.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> Older versions of <code>rippled</code> that do not know about this amendment may crash when they find a DirectoryNode sorted by the new rules. To avoid this problem, <a href="install-rippled.html">upgrade</a> to <code>rippled</code> version 0.80.0 or later.</p>
 <h2 id="suspay">SusPay<a aria-hidden="true" class="hover_anchor" href="#suspay"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">SusPay</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13</td>
-<td align="left">Vetoed</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Vetoed</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1357,14 +2378,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">TicketBatch</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C</td>
-<td align="left">Open for Voting</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1374,14 +2407,22 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Tickets</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490</td>
-<td align="left">Vetoed</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Vetoed</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
@@ -1390,14 +2431,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">TickSize</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -1407,19 +2460,65 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th align="left">Amendment ID</th>
-<th align="left">Status</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">TrustSetAuth</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC</td>
-<td align="left">Enabled</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
 <p>Allows pre-authorization of accounting relationships (zero-balance trust lines) when using <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
 <p>With this amendment enabled, a <code>TrustSet</code> transaction with <a href="trustset.html#trustset-flags"><code>tfSetfAuth</code> enabled</a> can create a new <a href="ripplestate.html"><code>RippleState</code> ledger object</a> even if it keeps all the other values of the <code>RippleState</code> node in their default state. The new <code>RippleState</code> node has the <a href="ripplestate.html#ripplestate-flags"><code>lsfLowAuth</code> or <code>lsfHighAuth</code> flag</a> enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled <a href="accountroot.html#accountroot-flags"><code>lsfRequireAuth</code></a> by sending an <a href="accountset.html">AccountSet transaction</a> with the <a href="accountset.html#accountset-flags"><code>asfRequireAuth</code> flag enabled</a>.</p>
+<h2 id="xrpfees">XRPFees<a aria-hidden="true" class="hover_anchor" href="#xrpfees"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">XRPFees</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">93E516234E35E08CA689FA33A6D38E103881F8DCB53023F728C307AA89D515A7</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Simplifies transaction cost calculations to use XRP directly rather than calculating indirectly in "fee units" and translating the results to XRP. Updates all instances of "fee units" in the protocol and ledger data to be drops of XRP instead, including:</p>
+<ul>
+<li>Updates the Fee Voting protocol to use drops of XRP</li>
+<li>Updates the FeeSettings ledger entry type. Replaces <code>BaseFee</code>, <code>ReferenceFeeUnits</code>, <code>ReserveBase</code>, and <code>ReserveIncrement</code> fields with <code>BaseFeeDrops</code>, <code>ReserveBaseDrops</code>, and <code>ReserveIncrementDrops</code>.</li>
+<li>Updates the SetFee transaction type. Replaces <code>BaseFee</code>, <code>ReferenceFeeUnits</code>, <code>ReserveBase</code>, <code>ReserveIncrement</code> fields with <code>BaseFeeDrops</code>, <code>ReserveBaseDrops</code>, <code>ReserveIncrementDrops</code>.</li>
+</ul>
+<p>Without this amendment, the format of the transaction and ledger entry are the same.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -1524,7 +2623,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
       
@@ -1624,14 +2723,9 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="false" aria-controls="tree_nav_group_1_4"></a>
 
-        <a class="nav-link" href="issued-currencies.html">Issued Currencies</a>
+        <a class="nav-link" href="tokens.html">Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="issued-currencies-overview.html">Issued Currencies Overview</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
@@ -1644,7 +2738,61 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="freezes.html">Freezing Issued Currencies</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens Overview</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-reserve-requirements.html">NFT Reserve Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-auctions.html">Running an NFT Auction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_4" aria-expanded="false" aria-controls="tree_nav_group_1_4_4"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -1684,6 +2832,11 @@ the latest ledger that the validator considers to be fully validated. The consen
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1733,7 +2886,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
   </div>
 
       
@@ -1783,6 +2936,11 @@ the latest ledger that the validator considers to be fully validated. The consen
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1792,7 +2950,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="the-rippled-server.html">The rippled Server</a>
+        <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1837,6 +2995,33 @@ the latest ledger that the validator considers to be fully validated. The consen
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
+
+        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
     </nav>
 
   </div>
@@ -1858,9 +3043,56 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
 
-        <a class="nav-link" href="get-started.html">Get Started</a>
+        <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorize-minter.html">Assign an Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTokens</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="get-started.html">Get Started</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -1903,11 +3135,28 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+
+        <a class="nav-link" href="build-apps.html">Build Apps</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="production-readiness.html">Production Readiness</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="set-up-secure-signing.html">Set Up Secure Signing</a>
@@ -1930,11 +3179,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -1972,7 +3221,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
   </div>
 
     </nav>
@@ -1982,19 +3231,19 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_1" aria-expanded="false" aria-controls="tree_nav_group_2_4_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -2027,11 +3276,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_2" aria-expanded="false" aria-controls="tree_nav_group_2_4_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -2044,11 +3293,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -2090,14 +3339,19 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -2122,11 +3376,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
 
         <a class="nav-link" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
@@ -2139,7 +3393,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -2149,19 +3403,19 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
 
         <a class="nav-link" href="manage-the-rippled-server.html">Manage the rippled Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_1" aria-expanded="false" aria-controls="tree_nav_group_2_7_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -2205,6 +3459,11 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="capacity-planning.html">Capacity Planning</a>
   </div>
 
@@ -2220,11 +3479,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_2" aria-expanded="false" aria-controls="tree_nav_group_2_7_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -2232,12 +3491,17 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="configure-amendment-voting.html">Configure Amendment Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
   </div>
 
       
@@ -2287,11 +3551,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
 
         <a class="nav-link" href="configure-peering.html">Configure Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -2339,11 +3603,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_4" aria-expanded="false" aria-controls="tree_nav_group_2_7_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -2366,11 +3630,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_5" aria-expanded="false" aria-controls="tree_nav_group_2_7_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -2393,6 +3657,11 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server-wont-start.html">rippled Server Won't Start</a>
   </div>
 
@@ -2403,6 +3672,74 @@ the latest ledger that the validator considers to be fully validated. The consen
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+
+        <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
+
+        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
+
+        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
+
+        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -2447,6 +3784,11 @@ the latest ledger that the validator considers to be fully validated. The consen
     <a class="nav-link nav-leaf" href="currency-formats.html">Currency Formats</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken.html">NFToken</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2489,6 +3831,11 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -2519,7 +3866,17 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage</a>
   </div>
 
       
@@ -2544,7 +3901,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -2588,6 +3945,31 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcancel.html">CheckCancel</a>
   </div>
 
@@ -2619,6 +4001,31 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint</a>
   </div>
 
       
@@ -2663,7 +4070,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -2695,7 +4102,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -2811,7 +4218,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="rippled-api.html">HTTP / WebSocket APIs</a>
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
@@ -2861,7 +4268,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
-        <a class="nav-link" href="public-rippled-methods.html">Public rippled Methods</a>
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
@@ -2890,6 +4297,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts</a>
   </div>
 
       
@@ -3005,12 +4417,27 @@ the latest ledger that the validator considers to be fully validated. The consen
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
   </div>
 
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers</a>
   </div>
 
       
@@ -3091,7 +4518,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
   </div>
 
       
@@ -3108,9 +4535,36 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
-        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+        <a class="nav-link" href="clio-methods.html">Clio Server</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="json.html">json</a>
@@ -3139,7 +4593,7 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
-        <a class="nav-link" href="admin-rippled-methods.html">Admin rippled Methods</a>
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
@@ -3205,6 +4659,11 @@ the latest ledger that the validator considers to be fully validated. The consen
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
   </div>
 
     </nav>
@@ -3415,6 +4874,11 @@ the latest ledger that the validator considers to be fully validated. The consen
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-blockchain.html">Blockchain</a>
   </div>
 
@@ -3499,12 +4963,17 @@ the latest ledger that the validator considers to be fully validated. The consen
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -3540,6 +5009,11 @@ the latest ledger that the validator considers to be fully validated. The consen
 
   </div>
 
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Learning Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -3556,9 +5030,9 @@ the latest ledger that the validator considers to be fully validated. The consen
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
-            <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -3570,18 +5044,25 @@ the latest ledger that the validator considers to be fully validated. The consen
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
           </ul>
         </div><!--/.col -->
 
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -3592,7 +5073,7 @@ the latest ledger that the validator considers to be fully validated. The consen
     <div class="d-lg-flex row">
       <a href="/" class="footer-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org" /></a>
       <span class="flex-grow-1">&nbsp;</span>
-      <div class="copyright-license">&copy; 2021 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
       </div>
     </div><!-- /.absolute_bottom_footer -->
 
@@ -3610,14 +5091,15 @@ the latest ledger that the validator considers to be fully validated. The consen
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)

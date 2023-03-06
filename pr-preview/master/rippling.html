@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Rippling - XRPL.org</title>
-
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Rippling | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/rippling.html" />
-    <meta property="og:description" content="Rippling is automatic multi-party net settlement of issued currency balances." />
-    <meta name="description" content="Rippling is automatic multi-party net settlement of issued currency balances." />
+    <meta property="og:description" content="Rippling is automatic multi-party net settlement of token balances." />
+    <meta name="description" content="Rippling is automatic multi-party net settlement of token balances." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
-
+    <meta name="docsearch:language" content="en" />
     <link rel="alternate" href="https://xrpl.org/rippling.html" hreflang="en" />
     <link rel="alternate" href="https://xrpl.org/ja/rippling.html" hreflang="ja" />
     <link rel="alternate" href="https://xrpl.org/rippling.html" hreflang="x-default" /><!-- Default: US english -->
@@ -52,12 +51,14 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2021-v4.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v15.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+
+    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
 
 
     <!-- Theme switch -->
@@ -82,13 +83,22 @@
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<!---->
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
+    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
+    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,12 +124,12 @@
           <div class="navcol col-for-sustainability">
             <h5 class="dropdown-item">Sustainability</h5>
             <a class="dropdown-item" href="impact.html">Impact</a>
-            <a class="dropdown-item" href="carbon-calculator.html">Carbon Calculator</a>
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
-            <a class="dropdown-item" href="xrpl-foundation.html">XRPL Foundation</a>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
             <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -142,7 +152,9 @@
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -157,8 +169,9 @@
             <a class="dropdown-item" href="reserves.html">Reserves</a>
             <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
+            <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
-            <a class="dropdown-item" href="public-rippled-methods.html">API Methods</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -166,17 +179,22 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute" href="contribute.html">
-            <img id="top-nav-hero-contribute" alt="Contribute icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
             <div class="dropdown-hero-text">
-              <h4>Contribute</h4>
+              <h4>Contribute to the XRPL Community</h4>
               <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item" href="developer-funding.html">Developer Funding</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -186,7 +204,7 @@
     <div class="nav-item search" id="topnav-search">
       <form class="navbar-form navbar-right" role="search">
         <div class="form-inline">
-          <div class="input-group">
+          <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
             <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
           </div><!--/.input-group-->
@@ -194,7 +212,21 @@
       </form>
     </div><!--/#topnav-search-->
 
-<!---->
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/rippling.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
 
     <div class="nav-item" id="topnav-theme">
       <form class="form-inline">
@@ -216,7 +248,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/fersmi/xrpl-dev-portal/edit/master/content/concepts/issued-currencies/rippling.md?pr=/XRPLF/xrpl-dev-portal/pull/1235" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/concepts/tokens/rippling.md?pr=/XRPLF/xrpl-dev-portal/pull/1796" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -253,16 +285,16 @@
     <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
     <li class="active breadcrumb-item"><a href="concepts.html">Concepts</a></li>
-    <li class="active breadcrumb-item"><a href="issued-currencies.html">Issued Currencies</a></li>
+    <li class="active breadcrumb-item"><a href="tokens.html">Tokens</a></li>
     <li class="active breadcrumb-item">Rippling</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="rippling">Rippling<a aria-hidden="true" class="hover_anchor" href="#rippling"><i class="fa fa-link"></i></a></h1>
-<p>In the XRP Ledger, "rippling" describes a process of atomic net settlement between multiple connected parties who have <a href="trust-lines-and-issuing.html">trust lines</a> for the same currency. Rippling is an essential part of issued currencies, because it allows users who trust the same issuer to send issued balances to each other with the issuer as a passive intermediary. In a sense, rippling is like a passive, two-way <a href="offers.html">currency exchange order</a> with no limit and a 1:1 exchange rate for two currencies with the same currency code but different issuers.</p>
+<p>In the XRP Ledger, "rippling" describes a process of atomic net settlement between multiple connected parties who have <a href="trust-lines-and-issuing.html">trust lines</a> for the same token. Rippling is essential, because it allows users who hold tokens to send those to each other with the issuer as a passive intermediary. In a sense, rippling is like a passive, two-way <a href="offers.html">exchange order</a> with no limit and a 1:1 exchange rate for two tokens with the same currency code but different issuers.</p>
 <p>Rippling only occurs along the <a href="paths.html">paths</a> of a payment. <a href="direct-xrp-payments.html">Direct XRP-to-XRP payments</a> do not involve rippling.</p>
-<p>For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between issuers of the same currency. Thus, the <a href="#the-no-ripple-flag">No Ripple Flag</a> disables rippling on incoming trust lines by default, unless the account enables rippling by default by enabling the <a href="#the-default-ripple-flag">Default Ripple flag</a>.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> If you create a trust line to another address, you must explicitly enable the <code>tfSetNoRipple</code> flag to block rippling on your side of that trust line.</p>
+<p>For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between tokens with the same currency code but different issuers. The <a href="#the-no-ripple-flag">No Ripple Flag</a> disables rippling by default when others open trust lines to your account, unless you enable rippling by default using the <a href="#the-default-ripple-flag">Default Ripple flag</a>.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> When you create a trust line, you must explicitly enable the <code>tfSetNoRipple</code> flag to block rippling on your side of that trust line.</p>
 <h2 id="example-of-rippling">Example of Rippling<a aria-hidden="true" class="hover_anchor" href="#example-of-rippling"><i class="fa fa-link"></i></a></h2>
 <p>"Rippling" occurs when more than one trust line is adjusted to make a payment. For example, if Alice owes Charlie money, and Alice also owes Bob money, then you could represent that in the XRP Ledger with trust lines like so:</p>
 <figure><a href="img/noripple-01.svg" title="Charlie --($10)-- Alice -- ($20) -- Bob"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="50 60 450 100" width="450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/noripple-01.svg__genericDefs"></defs><g><defs id="img/noripple-01.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/noripple-01.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-01.svg__clipPath2"><path d="M0 0 L0 60 L60 60 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-01.svg__clipPath3"><path d="M0 0 L0 40 L140 40 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-01.svg__clipPath4"><path d="M0 0 L0 40 L150 40 L150 0 Z"></path></clippath></defs><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(240,80)"><circle clip-path="url(#img/noripple-01.svg__clipPath2)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(240,80)"><circle clip-path="url(#img/noripple-01.svg__clipPath2)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-01.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="13" xml:space="preserve" y="35.0547">Alice</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(70,80)"><circle clip-path="url(#img/noripple-01.svg__clipPath2)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(70,80)"><circle clip-path="url(#img/noripple-01.svg__clipPath2)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-01.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="35.0547">Charlie</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(420,80)"><circle clip-path="url(#img/noripple-01.svg__clipPath2)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(420,80)"><circle clip-path="url(#img/noripple-01.svg__clipPath2)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-01.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="16" xml:space="preserve" y="35.0547">Bob</text></g><g transform="translate(120,90)"><path clip-path="url(#img/noripple-01.svg__clipPath3)" d="M119.5 20.5 L10.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-01.svg__clipPath3)" d="M108.7417 14 L120 20.5 L108.7417 27" fill="none"></path><text clip-path="url(#img/noripple-01.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="52.6787" xml:space="preserve" y="16">$10</text></g><g transform="translate(290,90)"><path clip-path="url(#img/noripple-01.svg__clipPath4)" d="M11.5 20.5 L130.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-01.svg__clipPath4)" d="M22.2583 27 L11 20.5 L22.2583 14" fill="none"></path><text clip-path="url(#img/noripple-01.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="57.6787" xml:space="preserve" y="16">$20</text></g></g></svg></a></figure>
@@ -271,7 +303,7 @@
 <p>We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the XRP Ledger. Rippling occurs when addresses are linked by trust lines that use the same <a href="currency-formats.html#currency-codes">currency code</a>. The issuer does not need to be the same: in fact, larger chains always involve changing issuers.</p>
 <h2 id="the-no-ripple-flag">The No Ripple Flag<a aria-hidden="true" class="hover_anchor" href="#the-no-ripple-flag"><i class="fa fa-link"></i></a></h2>
 <p>Non-issuing accounts, especially liquidity providers who may hold balances from different issuers with different fees and policies, usually do not want their balances to ripple.</p>
-<p>The <strong>No Ripple</strong> flag is a setting on a trust line. When two trust lines both have No Ripple enabled by the same address, payments from third parties cannot "ripple" through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers of the same currency.</p>
+<p>The <strong>No Ripple</strong> flag is a setting on a trust line. When two trust lines both have No Ripple enabled by the same address, payments from third parties cannot ripple through that address on those trust lines. This protects liquidity providers from having balances shift unexpectedly between different issuers using the same currency code.</p>
 <p>An account can disable No Ripple on a single trust line, which can allow rippling through any pair that includes that trust line. The account can also enable rippling by default by enabling the <a href="#the-default-ripple-flag">Default Ripple flag</a>.</p>
 <p>For example, imagine Emily has money issued by two different financial institutions, like so</p>
 <figure><a href="img/noripple-03.svg" title="Charlie --($10)-- Institution A --($1)-- Emily --($100)-- Institution B --($2)-- Daniel"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="80 90 810 120" width="810" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/noripple-03.svg__genericDefs"></defs><g><defs id="img/noripple-03.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/noripple-03.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-03.svg__clipPath2"><path d="M0 0 L0 60 L60 60 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-03.svg__clipPath3"><path d="M0 0 L0 80 L80 80 L80 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-03.svg__clipPath4"><path d="M0 0 L0 40 L140 40 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-03.svg__clipPath5"><path d="M0 0 L0 40 L130 40 L130 0 Z"></path></clippath></defs><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(810,120)"><circle clip-path="url(#img/noripple-03.svg__clipPath2)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(810,120)"><circle clip-path="url(#img/noripple-03.svg__clipPath2)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-03.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="7" xml:space="preserve" y="35.0547">Daniel</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(620,110)"><circle clip-path="url(#img/noripple-03.svg__clipPath3)" cx="39.75" cy="39.75" r="39.25" stroke="none"></circle></g><g transform="translate(620,110)"><circle clip-path="url(#img/noripple-03.svg__clipPath3)" cx="39.75" cy="39.75" fill="none" r="39.25"></circle><text clip-path="url(#img/noripple-03.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="37">Gateway</text><text clip-path="url(#img/noripple-03.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="53.1094">B</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(270,110)"><circle clip-path="url(#img/noripple-03.svg__clipPath3)" cx="39.75" cy="39.75" r="39.25" stroke="none"></circle></g><g transform="translate(270,110)"><circle clip-path="url(#img/noripple-03.svg__clipPath3)" cx="39.75" cy="39.75" fill="none" r="39.25"></circle><text clip-path="url(#img/noripple-03.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="37">Gateway</text><text clip-path="url(#img/noripple-03.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="53.1094">A</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(100,120)"><circle clip-path="url(#img/noripple-03.svg__clipPath2)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(100,120)"><circle clip-path="url(#img/noripple-03.svg__clipPath2)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-03.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="35.0547">Charlie</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(450,120)"><circle clip-path="url(#img/noripple-03.svg__clipPath2)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(450,120)"><circle clip-path="url(#img/noripple-03.svg__clipPath2)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-03.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="10" xml:space="preserve" y="35.0547">Emily</text></g><g transform="translate(690,130)"><path clip-path="url(#img/noripple-03.svg__clipPath4)" d="M11.5 20.5 L120.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-03.svg__clipPath4)" d="M22.2583 27 L11 20.5 L22.2583 14" fill="none"></path><text clip-path="url(#img/noripple-03.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="57.3745" xml:space="preserve" y="16">$2</text></g><g transform="translate(500,130)"><path clip-path="url(#img/noripple-03.svg__clipPath4)" d="M119.5 20.5 L10.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-03.svg__clipPath4)" d="M108.7417 14 L120 20.5 L108.7417 27" fill="none"></path><text clip-path="url(#img/noripple-03.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="48.2251" xml:space="preserve" y="16">$100</text></g><g transform="translate(150,130)"><path clip-path="url(#img/noripple-03.svg__clipPath4)" d="M119.5 20.5 L10.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-03.svg__clipPath4)" d="M108.7417 14 L120 20.5 L108.7417 27" fill="none"></path><text clip-path="url(#img/noripple-03.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="52.6787" xml:space="preserve" y="16">$10</text></g><g transform="translate(340,130)"><path clip-path="url(#img/noripple-03.svg__clipPath5)" d="M11.5 20.5 L110.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-03.svg__clipPath5)" d="M22.2583 27 L11 20.5 L22.2583 14" fill="none"></path><text clip-path="url(#img/noripple-03.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="52.3198" xml:space="preserve" y="16">$1</text></g></g></svg></a></figure>
@@ -285,7 +317,7 @@
 <p>The No Ripple flag makes certain paths invalid, so that they cannot be used to make payments. A path is considered invalid if and only if it enters <strong>and</strong> exits an address node through trust lines where No Ripple has been enabled for that address.</p>
 <figure><a href="img/noripple-06.svg" title="Diagram demonstrating that No Ripple has to be set on both trust lines by the same address to do anything"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="30 40 980 520" width="980" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/noripple-06.svg__genericDefs"></defs><g><defs id="img/noripple-06.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/noripple-06.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-06.svg__clipPath2"><path d="M0 0 L0 110 L160 110 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-06.svg__clipPath3"><path d="M0 0 L0 50 L150 50 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-06.svg__clipPath4"><path d="M0 0 L0 60 L60 60 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-06.svg__clipPath5"><path d="M0 0 L0 80 L80 80 L80 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-06.svg__clipPath6"><path d="M0 0 L0 40 L150 40 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-06.svg__clipPath7"><path d="M0 0 L0 50 L140 50 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-06.svg__clipPath8"><path d="M0 0 L0 50 L130 50 L130 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-06.svg__clipPath9"><path d="M0 0 L0 40 L140 40 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/noripple-06.svg__clipPath10"><path d="M0 0 L0 40 L130 40 L130 0 Z"></path></clippath></defs><g fill="yellow" stroke="yellow" transform="translate(830,430)"><path clip-path="url(#img/noripple-06.svg__clipPath2)" d="M0.5 0.5 L148.5 0.5 L159 12.5 L159 109 L0.5 109 Z" stroke="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath2)" d="M0.5 0.5 L148.5 0.5 L159 12.5 L159 109 L0.5 109 Z" fill="none" stroke="black"></path><path clip-path="url(#img/noripple-06.svg__clipPath2)" d="M148.5 0.5 L148.5 12.5 L159 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(830,430)"><text clip-path="url(#img/noripple-06.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">This path is valid</text><text clip-path="url(#img/noripple-06.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="34.2188">because Daniel, but</text><text clip-path="url(#img/noripple-06.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="50.3281">not Emily, has set</text><text clip-path="url(#img/noripple-06.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="66.4375">the No Ripple flag</text><text clip-path="url(#img/noripple-06.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="82.5469">on the trust line</text><text clip-path="url(#img/noripple-06.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="98.6562">between them</text></g><g fill="lime" stroke="lime" transform="translate(50,460)"><rect clip-path="url(#img/noripple-06.svg__clipPath3)" height="48.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect><rect clip-path="url(#img/noripple-06.svg__clipPath3)" fill="none" height="48.5" stroke="black" width="148.5" x="0.5" y="0.5"></rect></g><g font-family="sans-serif" font-size="14px" transform="translate(50,460)"><text clip-path="url(#img/noripple-06.svg__clipPath3)" stroke="none" x="39" xml:space="preserve" y="18.1094">Valid path</text><text clip-path="url(#img/noripple-06.svg__clipPath3)" stroke="none" x="10" xml:space="preserve" y="34.2188">(Rippling possible)</text></g><g fill="lime" stroke="lime" transform="translate(50,330)"><rect clip-path="url(#img/noripple-06.svg__clipPath3)" height="48.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect><rect clip-path="url(#img/noripple-06.svg__clipPath3)" fill="none" height="48.5" stroke="black" width="148.5" x="0.5" y="0.5"></rect></g><g font-family="sans-serif" font-size="14px" transform="translate(50,330)"><text clip-path="url(#img/noripple-06.svg__clipPath3)" stroke="none" x="39" xml:space="preserve" y="18.1094">Valid path</text><text clip-path="url(#img/noripple-06.svg__clipPath3)" stroke="none" x="10" xml:space="preserve" y="34.2188">(Rippling possible)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(740,450)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(740,450)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="7" xml:space="preserve" y="35.0547">Daniel</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(570,450)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(570,450)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="10" xml:space="preserve" y="35.0547">Emily</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(390,440)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" r="39.25" stroke="none"></circle></g><g transform="translate(390,440)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" fill="none" r="39.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="37">Gateway</text><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="53.1094">A</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(220,450)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(220,450)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="35.0547">Charlie</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(930,320)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(930,320)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="7" xml:space="preserve" y="35.0547">Daniel</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(740,310)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" r="39.25" stroke="none"></circle></g><g transform="translate(740,310)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" fill="none" r="39.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="37">Gateway</text><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="53.1094">B</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(570,320)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(570,320)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="10" xml:space="preserve" y="35.0547">Emily</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(390,310)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" r="39.25" stroke="none"></circle></g><g transform="translate(390,310)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" fill="none" r="39.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="37">Gateway</text><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="53.1094">A</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(220,320)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(220,320)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="35.0547">Charlie</text></g><g fill="lime" stroke="lime" transform="translate(50,190)"><rect clip-path="url(#img/noripple-06.svg__clipPath3)" height="48.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect><rect clip-path="url(#img/noripple-06.svg__clipPath3)" fill="none" height="48.5" stroke="black" width="148.5" x="0.5" y="0.5"></rect></g><g font-family="sans-serif" font-size="14px" transform="translate(50,190)"><text clip-path="url(#img/noripple-06.svg__clipPath3)" stroke="none" x="39" xml:space="preserve" y="18.1094">Valid path</text><text clip-path="url(#img/noripple-06.svg__clipPath3)" stroke="none" x="10" xml:space="preserve" y="34.2188">(Rippling possible)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(930,190)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(930,190)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="7" xml:space="preserve" y="35.0547">Daniel</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(740,180)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" r="39.25" stroke="none"></circle></g><g transform="translate(740,180)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" fill="none" r="39.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="37">Gateway</text><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="53.1094">B</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(570,190)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(570,190)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="10" xml:space="preserve" y="35.0547">Emily</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(390,180)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" r="39.25" stroke="none"></circle></g><g transform="translate(390,180)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" fill="none" r="39.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="37">Gateway</text><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="53.1094">A</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(220,190)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(220,190)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="35.0547">Charlie</text></g><g fill="red" stroke="red" transform="translate(50,80)"><rect clip-path="url(#img/noripple-06.svg__clipPath6)" height="38.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect><rect clip-path="url(#img/noripple-06.svg__clipPath6)" fill="none" height="38.5" stroke="black" width="148.5" x="0.5" y="0.5"></rect></g><g font-family="sans-serif" font-size="14px" transform="translate(50,80)"><text clip-path="url(#img/noripple-06.svg__clipPath6)" stroke="none" x="33" xml:space="preserve" y="18.1094">Invalid path</text><text clip-path="url(#img/noripple-06.svg__clipPath6)" stroke="none" x="22" xml:space="preserve" y="34.2188">(Cannot ripple)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(930,70)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(930,70)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="7" xml:space="preserve" y="35.0547">Daniel</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(740,60)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" r="39.25" stroke="none"></circle></g><g transform="translate(740,60)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" fill="none" r="39.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="37">Gateway</text><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="53.1094">B</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(390,60)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" r="39.25" stroke="none"></circle></g><g transform="translate(390,60)"><circle clip-path="url(#img/noripple-06.svg__clipPath5)" cx="39.75" cy="39.75" fill="none" r="39.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="37">Gateway</text><text clip-path="url(#img/noripple-06.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="53.1094">A</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(220,70)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(220,70)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="35.0547">Charlie</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(570,70)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" r="29.25" stroke="none"></circle></g><g transform="translate(570,70)"><circle clip-path="url(#img/noripple-06.svg__clipPath4)" cx="29.75" cy="29.75" fill="none" r="29.25"></circle><text clip-path="url(#img/noripple-06.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="10" xml:space="preserve" y="35.0547">Emily</text></g><g transform="translate(620,460)"><path clip-path="url(#img/noripple-06.svg__clipPath7)" d="M11.5 20.5 L120.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath7)" d="M22.2583 27 L11 20.5 L22.2583 14" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath7)" font-family="sans-serif" font-size="14px" stroke="none" x="48.2251" xml:space="preserve" y="16">$100</text><text clip-path="url(#img/noripple-06.svg__clipPath7)" font-family="sans-serif" font-size="14px" stroke="none" x="32.3657" xml:space="preserve" y="32.1094">     No Ripple</text></g><g transform="translate(460,460)"><path clip-path="url(#img/noripple-06.svg__clipPath8)" d="M11.5 20.5 L110.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath8)" d="M22.2583 27 L11 20.5 L22.2583 14" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="52.3198" xml:space="preserve" y="16">$1</text><text clip-path="url(#img/noripple-06.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="27.3657" xml:space="preserve" y="32.1094">    No Ripple</text></g><g transform="translate(270,460)"><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M119.5 20.5 L10.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M108.7417 14 L120 20.5 L108.7417 27" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="52.6787" xml:space="preserve" y="16">$10</text></g><g transform="translate(810,330)"><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M11.5 20.5 L120.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M22.2583 27 L11 20.5 L22.2583 14" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="57.3745" xml:space="preserve" y="16">$2</text></g><g transform="translate(620,330)"><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M119.5 20.5 L10.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M108.7417 14 L120 20.5 L108.7417 27" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="48.2251" xml:space="preserve" y="16">$100</text></g><g transform="translate(460,330)"><path clip-path="url(#img/noripple-06.svg__clipPath10)" d="M11.5 20.5 L110.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath10)" d="M22.2583 27 L11 20.5 L22.2583 14" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath10)" font-family="sans-serif" font-size="14px" stroke="none" x="52.3198" xml:space="preserve" y="16">$1</text></g><g transform="translate(270,330)"><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M119.5 20.5 L10.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M108.7417 14 L120 20.5 L108.7417 27" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="52.6787" xml:space="preserve" y="16">$10</text></g><g transform="translate(810,200)"><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M11.5 20.5 L120.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M22.2583 27 L11 20.5 L22.2583 14" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="57.3745" xml:space="preserve" y="16">$2</text></g><g transform="translate(620,200)"><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M119.5 20.5 L10.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M108.7417 14 L120 20.5 L108.7417 27" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="48.2251" xml:space="preserve" y="16">$100</text></g><g transform="translate(460,200)"><path clip-path="url(#img/noripple-06.svg__clipPath8)" d="M11.5 20.5 L110.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath8)" d="M22.2583 27 L11 20.5 L22.2583 14" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="52.3198" xml:space="preserve" y="16">$1</text><text clip-path="url(#img/noripple-06.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="27.3657" xml:space="preserve" y="32.1094">    No Ripple</text></g><g transform="translate(270,200)"><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M119.5 20.5 L10.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M108.7417 14 L120 20.5 L108.7417 27" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="52.6787" xml:space="preserve" y="16">$10</text></g><g transform="translate(810,80)"><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M11.5 20.5 L120.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M22.2583 27 L11 20.5 L22.2583 14" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="57.3745" xml:space="preserve" y="16">$2</text></g><g transform="translate(620,80)"><path clip-path="url(#img/noripple-06.svg__clipPath7)" d="M119.5 20.5 L10.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath7)" d="M108.7417 14 L120 20.5 L108.7417 27" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath7)" font-family="sans-serif" font-size="14px" stroke="none" x="48.2251" xml:space="preserve" y="16">$100</text><text clip-path="url(#img/noripple-06.svg__clipPath7)" font-family="sans-serif" font-size="14px" stroke="none" x="8.2769" xml:space="preserve" y="32.1094">No Ripple          .</text></g><g transform="translate(270,80)"><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M119.5 20.5 L10.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath9)" d="M108.7417 14 L120 20.5 L108.7417 27" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="52.6787" xml:space="preserve" y="16">$10</text></g><g transform="translate(460,80)"><path clip-path="url(#img/noripple-06.svg__clipPath8)" d="M11.5 20.5 L110.5 20.5" fill="none"></path><path clip-path="url(#img/noripple-06.svg__clipPath8)" d="M22.2583 27 L11 20.5 L22.2583 14" fill="none"></path><text clip-path="url(#img/noripple-06.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="52.3198" xml:space="preserve" y="16">$1</text><text clip-path="url(#img/noripple-06.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="27.3657" xml:space="preserve" y="32.1094">    No Ripple</text></g></g></svg></a></figure>
 <h2 id="the-default-ripple-flag">The Default Ripple Flag<a aria-hidden="true" class="hover_anchor" href="#the-default-ripple-flag"><i class="fa fa-link"></i></a></h2>
-<p>The <strong>Default Ripple</strong> flag is an account setting that enables rippling on all incoming trust lines by default. Gateways and other currency issuers MUST enable this flag for their customers to be able to send those currencies to each other.</p>
+<p>The <strong>Default Ripple</strong> flag is an account setting that enables rippling on all <em>incoming</em> trust lines by default. Issuers MUST enable this flag for their customers to be able to send tokens to each other.</p>
 <p>The Default Ripple setting of your account does not affect trust lines that you create; only trust lines that others open to you. If you change the Default Ripple setting of your account, trust lines that were created before the change keep their existing No Ripple settings. You can use a <a href="trustset.html">TrustSet transaction</a> to change the No Ripple setting of a trust line to match your address's new default.</p>
 <p>For more information, see <a href="become-an-xrp-ledger-gateway.html#default-ripple">Default Ripple in 'Becoming an XRP Ledger Gateway'</a>.</p>
 <h2 id="using-no-ripple">Using No Ripple<a aria-hidden="true" class="hover_anchor" href="#using-no-ripple"><i class="fa fa-link"></i></a></h2>
@@ -295,7 +327,7 @@
 <p>To enable the No Ripple flag, send a <a href="trustset.html">TrustSet transaction</a> with the <code>tfSetNoRipple</code> flag. You can disable the No Ripple flag (that is, allow rippling) with the <code>tfClearNoRipple</code> flag instead.</p>
 <h3 id="looking-up-no-ripple-status">Looking Up No Ripple Status<a aria-hidden="true" class="hover_anchor" href="#looking-up-no-ripple-status"><i class="fa fa-link"></i></a></h3>
 <p>In the case of two accounts that mutually trust each other, the No Ripple flag is tracked separately for each account.</p>
-<p>Using the <a href="rippled-api.html">HTTP / WebSocket APIs</a> or your preferred <a href="client-libraries.html">client library</a>, look up trust lines with the <a href="account_lines.html">account_lines method</a>. For each trust line, the <code>no_ripple</code> field shows whether the current address has enabled the No Ripple flag on that trust line, and the <code>no_ripple_peer</code> field shows whether the counterparty has enabled the No Ripple flag.</p>
+<p>Using the <a href="http-websocket-apis.html">HTTP / WebSocket APIs</a> or your preferred <a href="client-libraries.html">client library</a>, look up trust lines with the <a href="account_lines.html">account_lines method</a>. For each trust line, the <code>no_ripple</code> field shows whether the current address has enabled the No Ripple flag on that trust line, and the <code>no_ripple_peer</code> field shows whether the counterparty has enabled the No Ripple flag.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
@@ -420,7 +452,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
       
@@ -520,14 +552,9 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="true" aria-controls="tree_nav_group_1_4"></a>
 
-        <a class="nav-link" href="issued-currencies.html">Issued Currencies</a>
+        <a class="nav-link" href="tokens.html">Tokens</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_1_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="issued-currencies-overview.html">Issued Currencies Overview</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
@@ -540,7 +567,61 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="freezes.html">Freezing Issued Currencies</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens Overview</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-reserve-requirements.html">NFT Reserve Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-auctions.html">Running an NFT Auction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_4" aria-expanded="false" aria-controls="tree_nav_group_1_4_4"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -580,6 +661,11 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -629,7 +715,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
   </div>
 
       
@@ -679,6 +765,11 @@
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
+  </div>
+
     </nav>
 
   </div>
@@ -688,7 +779,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="the-rippled-server.html">The rippled Server</a>
+        <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -733,6 +824,33 @@
     <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
+
+        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
     </nav>
 
   </div>
@@ -754,9 +872,56 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
 
-        <a class="nav-link" href="get-started.html">Get Started</a>
+        <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorize-minter.html">Assign an Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTokens</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="get-started.html">Get Started</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -799,11 +964,28 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+
+        <a class="nav-link" href="build-apps.html">Build Apps</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="production-readiness.html">Production Readiness</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="set-up-secure-signing.html">Set Up Secure Signing</a>
@@ -826,11 +1008,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -868,7 +1050,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
   </div>
 
     </nav>
@@ -878,19 +1060,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_1" aria-expanded="false" aria-controls="tree_nav_group_2_4_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -923,11 +1105,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_2" aria-expanded="false" aria-controls="tree_nav_group_2_4_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -940,11 +1122,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -986,14 +1168,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
   </div>
 
       
@@ -1018,11 +1205,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
 
         <a class="nav-link" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
@@ -1035,7 +1222,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>
+    <a class="nav-link nav-leaf" href="become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
   </div>
 
     </nav>
@@ -1045,19 +1232,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
 
         <a class="nav-link" href="manage-the-rippled-server.html">Manage the rippled Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_1" aria-expanded="false" aria-controls="tree_nav_group_2_7_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -1101,6 +1288,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="capacity-planning.html">Capacity Planning</a>
   </div>
 
@@ -1116,11 +1308,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_2" aria-expanded="false" aria-controls="tree_nav_group_2_7_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -1128,12 +1320,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a>
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
   </div>
 
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="configure-amendment-voting.html">Configure Amendment Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
   </div>
 
       
@@ -1183,11 +1380,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
 
         <a class="nav-link" href="configure-peering.html">Configure Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -1235,11 +1432,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_4" aria-expanded="false" aria-controls="tree_nav_group_2_7_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -1262,11 +1459,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_5" aria-expanded="false" aria-controls="tree_nav_group_2_7_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -1289,6 +1486,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server-wont-start.html">rippled Server Won't Start</a>
   </div>
 
@@ -1299,6 +1501,74 @@
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+
+        <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
+
+        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
+
+        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
+
+        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -1343,6 +1613,11 @@
     <a class="nav-link nav-leaf" href="currency-formats.html">Currency Formats</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken.html">NFToken</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1385,6 +1660,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -1415,7 +1695,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage</a>
   </div>
 
       
@@ -1440,7 +1730,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
   </div>
 
     </nav>
@@ -1484,6 +1774,31 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcancel.html">CheckCancel</a>
   </div>
 
@@ -1515,6 +1830,31 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint</a>
   </div>
 
       
@@ -1559,7 +1899,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
   </div>
 
       
@@ -1591,7 +1931,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
   </div>
 
     </nav>
@@ -1707,7 +2047,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
-        <a class="nav-link" href="rippled-api.html">HTTP / WebSocket APIs</a>
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
@@ -1757,7 +2097,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
-        <a class="nav-link" href="public-rippled-methods.html">Public rippled Methods</a>
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
@@ -1786,6 +2126,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts</a>
   </div>
 
       
@@ -1901,12 +2246,27 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
   </div>
 
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers</a>
   </div>
 
       
@@ -1987,7 +2347,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="server_info.html">server_info</a>
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
   </div>
 
       
@@ -2004,9 +2364,36 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
-        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+        <a class="nav-link" href="clio-methods.html">Clio Server</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="json.html">json</a>
@@ -2035,7 +2422,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
-        <a class="nav-link" href="admin-rippled-methods.html">Admin rippled Methods</a>
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
@@ -2101,6 +2488,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
   </div>
 
     </nav>
@@ -2311,6 +2703,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-blockchain.html">Blockchain</a>
   </div>
 
@@ -2395,12 +2792,17 @@
 
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2436,6 +2838,11 @@
 
   </div>
 
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Learning Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -2452,9 +2859,9 @@
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
-            <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
-            <li class="nav-item"><a href="xrpl-foundation.html" class="nav-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2466,18 +2873,25 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
           </ul>
         </div><!--/.col -->
 
         <div class="col-lg">
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute</a></li>
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -2488,7 +2902,7 @@
     <div class="d-lg-flex row">
       <a href="/" class="footer-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org" /></a>
       <span class="flex-grow-1">&nbsp;</span>
-      <div class="copyright-license">&copy; 2021 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
       </div>
     </div><!-- /.absolute_bottom_footer -->
 
@@ -2506,14 +2920,15 @@
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
 
 <!-- Algolia DocSearch -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
   const ds = docsearch({
-  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
   indexName: 'xrpl',
-  inputSelector: '#topsearchbox',
-  algoliaOptions: { 'facetFilters': ["lang:en"] },
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
   debug: false
   });
   const search_params = new URLSearchParams(window.location.search)
