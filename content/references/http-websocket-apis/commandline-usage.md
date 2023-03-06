@@ -89,7 +89,7 @@ The following options determine which ledger to load first when starting up. The
 | `--load`              | **DEPRECATED** Intended for debugging. Only load the initial ledger from the ledger store on disk. |
 | `--replay`            | Intended for debugging. Use with `--ledger` to replay a ledger close. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic. |
 | `--start`             | Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. This makes the functionality of those amendments available right away, instead of needing to wait two weeks for the [Amendment Process](amendments.html). |
-| `--valid`            | **DEPRECATED** Intended for debugging. Consider the initial ledger a valid network ledger even before fully syncing with the network. |
+| `--valid`             | **DEPRECATED** Intended for debugging. Consider the initial ledger a valid network ledger even before fully syncing with the network. |
 
 ## Client Mode Options
 
