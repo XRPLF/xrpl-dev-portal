@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 30 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gips, rifs, gigs
+  gifs: gies, ifs, kifs
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -31,30 +31,30 @@ Found 30 possible spelling errors:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  xrpfees: 
   disallowincoming: 
-  fixuniversalnumber: 
+  xrpfees: 
   depositpreauthamendment: 
-  immediateofferkilled: 
   fixnonfungibletokensv1_2: 
+  fixuniversalnumber: 
+  immediateofferkilled: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingtrustline: 
-  asfdisallowincomingnftoffer: 
   asfdisallowincomingpaychan: 
+  asfdisallowincomingtrustline: 
   asfdisallowincomingcheck: 
-  30d: 3rd, 3d, 3-d
+  asfdisallowincomingnftoffer: 
+  30d: 3d, 3-d, 3rd
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3d, 3-d, 3rd
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenminter: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3d, 3-d, 3rd
 
 -----------------------------
 Discouraged Words and Phrases
@@ -141,7 +141,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 55
   Words: 744
-  Characters: 4,621
+  Characters: 4,622
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
