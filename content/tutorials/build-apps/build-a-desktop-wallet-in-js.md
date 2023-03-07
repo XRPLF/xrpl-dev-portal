@@ -117,7 +117,7 @@ It's basic HTML code with preloading CSS files, we are using plain CSS for this 
 
 ### Step 3: Creating the Send XRP Page
 
-Till now, we have created the home page that displays the account and ledger details. In this step, we will create the Send XRP page that will allow users to send XRP to another account with optional destination tag.
+Till now, we have created the home page that displays the account and ledger details. In this step, we will create the Send XRP page that will allow users to send XRP to another account.
 
 ![Send XRP Page Screenshot](img/js-wallet-send-xrp.png)
 
