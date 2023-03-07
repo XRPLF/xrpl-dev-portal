@@ -61,7 +61,7 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 |:-------------------------|:--------------------------------------------------|
 | `temINVALID_FLAG`        | Occurs if the transaction specifies both `tfImmediateOrCancel` and `tfFillOrKill`. |
 | `tecEXPIRED`             | Occurs if the transaction specifies an `Expiration` time that has already passed. |
-| `tecKILLED`              | Occurs if the transaction specifies `tfFillOrKill`, and the full amount cannot be filled. If the _[ImmediateOfferKilled amendment][]_ is enabled, this result code also occurs when the transaction specifies `tfImmediateOrCancel` and is canceled without moving funds (previously, this would return `tesSUCCESS`). |
+| `tecKILLED`              | Occurs if the transaction specifies `tfFillOrKill`, and the full amount cannot be filled. If the _[ImmediateOfferKilled amendment][]_ is enabled, this result code also occurs when the transaction specifies `tfImmediateOrCancel` and executes without moving funds (previously, this would return `tesSUCCESS`). |
 | `temBAD_EXPIRATION`      | Occurs if the transaction contains an `Expiration` field that is not validly formatted. |
 | `temBAD_SEQUENCE`        | Occurs if the transaction contains an `OfferSequence` that is not validly formatted, or is higher than the transaction's own `Sequence` number. |
 | `temBAD_OFFER`           | Occurs if the Offer tries to trade XRP for XRP, or tries to trade an invalid or negative amount of a token. |
