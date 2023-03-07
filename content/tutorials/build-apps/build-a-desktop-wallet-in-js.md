@@ -137,7 +137,8 @@ In the code above, we retrieve elements from DOM, add event listeners, validate 
 
 ### Step 4: Creating the Transactions Page
 
-In this step, we will create the Transactions page that will display the latest transactions for the account. The transactions will be fetched from the XRP Ledger using the getTransactions method from the xrpl.js library. The transactions will be displayed in a table with the following columns:
+Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account.
+
   1. Account: The account that sent the transaction.
   2. Destination: The account that received the transaction.
   3. Amount: The amount of XRP sent in the transaction.
@@ -162,6 +163,8 @@ In the code above we fetch the transactions from the XRP Ledger by using the [ac
 You can use this code as a starting point and customize it to suit your needs. For example, you might want to add more columns to the table. You can also check out the [XRP Ledger Explorer](https://livenet.xrpl.org/) to see how the transaction details are displayed.
 
 ### Step 5: Running the App
+
+A wallet app is not complete without a way to run it. In this step, we will set up the vite bundler to run the app.
 
 1. Set up vite bundler, copy the code written below to the vite.config.js file.
 
