@@ -4897,7 +4897,7 @@ known_broken_links:
     - /blog/label/amendments.html
     - /blog/label/features.html
     - /blog/2023/nft-devnet-decommission.html
-    - /carbon-calculator.html
+    - carbon-calculator.html
     # For various reasons these links break from the Python requests client,
     #  but they work in browser. (Often a protection against bots, like
     #  Cloudflare.)
