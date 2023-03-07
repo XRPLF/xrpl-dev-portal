@@ -111,9 +111,13 @@ In the code above you'll notice addXrpLogo function, this function is used to ad
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/render-xrpl-logo.js", language="js") }}
 
-7. Writing the HTML and CSS for the home page. Copy the contents of the [index.html](_code-samples/build-a-wallet/js/index.html) file to your index.html file.
+Up next we need to update the HTML and CSS for the home page to give it the XRPL-look and feel. 
 
-It's basic HTML code with preloading CSS files, we are using plain CSS for this tutorial. You can use any CSS framework of your choice and beautify the page as you like. For now, we'll keep it simple. The CSS code is written in the index.css file. You can copy the code from the [index.css](_code-samples/build-a-wallet/js/index.css) file to your project's index.css file.
+7. Copy the contents of the [index.html](_code-samples/build-a-wallet/js/index.html) file to your index.html file.
+
+For this tutorial, we're just using basic HTML and pre-loaded CSS files. If you'd like to change the aesthetic, you can replace it with any CSS framework of your choice!
+
+8. Copy the code from the [index.css](_code-samples/build-a-wallet/js/index.css) file to your project's index.css file to use the pre-made stylings.
 
 ### Step 3: Creating the Send XRP Page
 
