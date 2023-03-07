@@ -86,7 +86,7 @@ In this step, we will create the home page that will display the account details
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-wallet-details.js", language="js") }}
 
-In the function getWalletDetails, we are using the [account_info](https://xrpl.org/account_info.html) method to fetch the account details. We are also using the [server_info](https://xrpl.org/server_info.html) method to calculate the reserve base and increment. You can read more about the reserve requirement [here](https://xrpl.org/reserves.html). Follow the comments in the code to understand the logic.
+In the function `getWalletDetails`, we are using the [account_info](https://xrpl.org/account_info.html) method to fetch the account details. We are also using the [server_info](https://xrpl.org/server_info.html) method to calculate the reserve base and increment. You can read more about the reserve requirement [here](https://xrpl.org/reserves.html). Follow the comments in the code to understand the logic.
 
 5. Create another file in helpers folder named get-ledger-details.js which will be used to fetch the ledger details and copy the code written below to the file.
 
