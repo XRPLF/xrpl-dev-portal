@@ -8,87 +8,34 @@ parent: contribute.html
 Each new XRPLF tutorial follows the same basic format.
 
 
-<table>
-  <tr>
-   <td>
-<ol>
+## Description
 
-<li>A brief description of the features illustrated in the tutorial. There should be enough conceptual information to understand what the tutorial illustrates, with links to additional conceptual information, if needed.
-</li>
-</ol>
-   </td>
-   <td>
+1. A brief description of the features illustrated in the tutorial.
 
 ![Description](img/tut-struct1.png)
 
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
-
-<li>Prerequisites for running the code, if needed, or links to the sample code.
-</li>
-</ol>
-   </td>
-   <td>
-
+2. Prerequisites for running the code, if needed, or links to the sample code.
 
 ![Prerequisites](img/tut-struct2.png)
 
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
-
-<li>Usage examples of the features in the tutorial.
-</li>
-</ol>
-   </td>
-   <td>
+3. Usage examples of the features in the tutorial.
 
 ![Usage](img/tut-struct3.png)
 
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
-
-<li>A code walkthrough of the sample application, highlighting unique elements in the scripts.
-</li>
-</ol>
-   </td>
-   <td>
+4. A code walkthrough of the sample application, highlighting unique elements in the scripts.
 
 ![Code Walkthrough](img/tut-struct4.png)
 
-   </td>
-  </tr>
-  <tr>
-   <td>
-<ol>
-
-<li>See Also, with links to conceptual information or good tutorials to try as a next step.
-</li>
-</ol>
-   </td>
-   <td>
+5. See Also, with links to conceptual information or good tutorials to try as a next step.
 
 ![See Also](img/tut-struct5.png)
-
-   </td>
-  </tr>
-</table>
-
 
 Separate setup (prerequisites) from usage from code development. These are each different activities that engage different areas of the brain. Trying to think of all three elements at once leads to confusion and headaches.
 
 
 ## Description
 
-List what the sample demonstrates. If possible, each example should describe the steps to accomplish specific related tasks. (For example, create a NFT Sell Offer, Accept a Sell Offer, Delete a Sell Offer.)
+List what the sample demonstrates. If possible, each example should describe the steps to accomplish specific related tasks. (For example, create a NFT Sell Offer, Accept a Sell Offer, Delete a Sell Offer.)  There should be enough conceptual information to understand what the tutorial illustrates, with links to additional conceptual information, if needed.
 
 
 ## Prerequisites
