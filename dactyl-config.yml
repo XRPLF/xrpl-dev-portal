@@ -4897,9 +4897,11 @@ known_broken_links:
     - /blog/label/amendments.html
     - /blog/label/features.html
     - /blog/2023/nft-devnet-decommission.html
+    - /carbon-calculator.html
     # For various reasons these links break from the Python requests client,
     #  but they work in browser. (Often a protection against bots, like
     #  Cloudflare.)
+    - https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner
     - https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt
     - http://web.archive.org/web/20171211225452/https://forum.ripple.com/viewtopic.php?f=2&t=3613
     - https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/
