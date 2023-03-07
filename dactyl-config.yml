@@ -2774,10 +2774,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-results/transaction-results.md
