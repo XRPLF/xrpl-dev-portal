@@ -1,0 +1,117 @@
+---
+html: tutorial-structure.html
+parent: contribute.html
+---
+
+# Tutorial Structure
+
+Each new XRPLF tutorial follows the same basic format.
+
+
+<table>
+  <tr>
+   <td>
+<ol>
+
+<li>A brief description of the features illustrated in the tutorial. There should be enough conceptual information to understand what the tutorial illustrates, with links to additional conceptual information, if needed.
+</li>
+</ol>
+   </td>
+   <td>
+
+![Description](img/tut-struct1.png)
+
+   </td>
+  </tr>
+  <tr>
+   <td>
+<ol>
+
+<li>Prerequisites for running the code, if needed, or links to the sample code.
+</li>
+</ol>
+   </td>
+   <td>
+
+
+![Prerequisites](img/tut-struct2.png)
+
+   </td>
+  </tr>
+  <tr>
+   <td>
+<ol>
+
+<li>Usage examples of the features in the tutorial.
+</li>
+</ol>
+   </td>
+   <td>
+
+![Usage](img/tut-struct3.png)
+
+   </td>
+  </tr>
+  <tr>
+   <td>
+<ol>
+
+<li>A code walkthrough of the sample application, highlighting unique elements in the scripts.
+</li>
+</ol>
+   </td>
+   <td>
+
+![Code Walkthrough](img/tut-struct4.png)
+
+   </td>
+  </tr>
+  <tr>
+   <td>
+<ol>
+
+<li>See Also, with links to conceptual information or good tutorials to try as a next step.
+</li>
+</ol>
+   </td>
+   <td>
+
+![See Also](img/tut-struct5.png)
+
+   </td>
+  </tr>
+</table>
+
+
+Separate setup (prerequisites) from usage from code development. These are each different activities that engage different areas of the brain. Trying to think of all three elements at once leads to confusion and headaches.
+
+
+## Description
+
+List what the sample demonstrates. If possible, each example should describe the steps to accomplish specific related tasks. (For example, create a NFT Sell Offer, Accept a Sell Offer, Delete a Sell Offer.)
+
+
+## Prerequisites
+
+Provide links to any required software and to all of the example code needed to run the tutorial. If necessary, give simple instructions for using third-party tools, but provide a link to the source website for the customer to do a deeper dive at their leisure.
+
+
+## Usage Example
+
+Start by providing a finished, working example of the tutorial application. This is an opportunity for immediate success working with the software to solve a problem.
+
+Use screenshots for each step of the tutorial – these allow the user to understand the tutorial without having to run the code themselves. Of course we _want _them to run the code, but this gives them a choice.
+
+Describe the sunny day scenario. The application should run without problems if there is an uninterrupted connection to the internet. Don’t provide a lot of troubleshooting information, unless it’s pertinent to the tutorial.
+
+
+## Code Walkthrough
+
+Walk through the code, one chunk at a time. Don’t belabor topics that have been discussed in earlier examples. Provide sample code, but don’t provide exhaustive explanations for how to program underlying platforms like HTML syntax unless there is something unique to the implementation.
+
+An important thing to emphasize is that every interaction with the XRPL is either a transaction or a request, and that all transactions and requests are essentially the same. The sample code we provide shows how to prepare the transaction or request, and how to process the returned results. Knowing how to submit and respond to one transaction or request gives a pretty good idea for how to submit and respond to any transaction or request.
+
+
+## See Also
+
+At the end of the tutorial, provide links to additional resources, conceptual information, and any tutorials that would be a sensible next step in the learning journey.
