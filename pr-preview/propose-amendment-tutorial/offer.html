@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v14.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v15.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -124,7 +124,6 @@
           <div class="navcol col-for-sustainability">
             <h5 class="dropdown-item">Sustainability</h5>
             <a class="dropdown-item" href="impact.html">Impact</a>
-            <a class="dropdown-item" href="carbon-calculator.html">Carbon Calculator</a>
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
@@ -288,9 +287,8 @@
     <div class="content">
         <h1 id="offer">Offer<a aria-hidden="true" class="hover_anchor" href="#offer"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>Offer</code> object type describes an offer to exchange currencies, more traditionally known as an <em>order</em>, in the XRP Ledger's distributed exchange. An <a href="offercreate.html">OfferCreate transaction</a> only creates an <code>Offer</code> object in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.</p>
-<p>An offer can become unfunded through other activities in the network, while remaining in the ledger. However, <code>rippled</code> automatically prunes any unfunded offers it happens across in the course of transaction processing (and <em>only</em> transaction processing, because the ledger state must only be changed by transactions).</p>
-<p>For more information, see <a href="offers.html">Offers</a>.</p>
+<p>The <code>Offer</code> ledger entry describes an <a href="offers.html">Offer</a> to exchange currencies in the XRP Ledger's <a href="decentralized-exchange.html">decentralized exchange</a>. (In finance, this is more traditionally known as an <em>order</em>.) An <a href="offercreate.html">OfferCreate transaction</a> only creates an <code>Offer</code> entry in the ledger when the Offer cannot be fully executed immediately by consuming other Offers already in the ledger.</p>
+<p>An Offer can become unfunded through other activities in the network, while remaining in the ledger. When processing transactions, the network automatically prunes any unfunded Offers that those transactions come across. (Otherwise, unfunded Offers remain, because <em>only</em> transactions can change the ledger state.)</p>
 <h2 id="example-offer-json">Example Offer JSON<a aria-hidden="true" class="hover_anchor" href="#example-offer-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt"</span><span class="p">,</span>
@@ -329,14 +327,14 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The address of the account that owns this offer.</td>
+<td style="text-align: left;">The address of the account that owns this Offer.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>BookDirectory</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The ID of the <a href="directorynode.html">Offer Directory</a> that links to this offer.</td>
+<td style="text-align: left;">The ID of the <a href="directorynode.html">Offer Directory</a> that links to this Offer.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>BookNode</code></td>
@@ -350,7 +348,7 @@
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">Indicates the time after which this offer is considered unfunded. See <a href="basic-data-types.html#specifying-time">Specifying Time</a> for details.</td>
+<td style="text-align: left;">Indicates the time after which this Offer is considered unfunded. See <a href="basic-data-types.html#specifying-time">Specifying Time</a> for details.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Flags</code></td>
@@ -364,7 +362,7 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt16</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The value <code>0x006F</code>, mapped to the string <code>Offer</code>, indicates that this object describes an order to trade currency.</td>
+<td style="text-align: left;">The value <code>0x006F</code>, mapped to the string <code>Offer</code>, indicates that this object describes an Offer.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerNode</code></td>
@@ -399,14 +397,14 @@
 <td style="text-align: left;">String or Object</td>
 <td style="text-align: left;">Amount</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The remaining amount and type of currency requested by the offer creator.</td>
+<td style="text-align: left;">The remaining amount and type of currency requested by the Offer creator.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TakerGets</code></td>
 <td style="text-align: left;">String or Object</td>
 <td style="text-align: left;">Amount</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The remaining amount and type of currency being provided by the offer creator.</td>
+<td style="text-align: left;">The remaining amount and type of currency being provided by the Offer creator.</td>
 </tr>
 </tbody>
 </table>
@@ -429,14 +427,14 @@
 <td><code>0x00010000</code></td>
 <td>65536</td>
 <td><code>tfPassive</code></td>
-<td>The object was placed as a passive offer. This has no effect on the object in the ledger.</td>
+<td>The object was placed as a passive Offer. This has no effect on the object in the ledger.</td>
 </tr>
 <tr>
 <td><code>lsfSell</code></td>
 <td><code>0x00020000</code></td>
 <td>131072</td>
 <td><code>tfSell</code></td>
-<td>The object was placed as a sell offer. This has no effect on the object in the ledger (because <code>tfSell</code> only matters if you get a better rate than you asked for, which cannot happen after the object enters the ledger).</td>
+<td>The object was placed as a sell Offer. This has no effect on the object in the ledger (because <code>tfSell</code> only matters if you get a better rate than you asked for, which cannot happen after the object enters the ledger).</td>
 </tr>
 </tbody>
 </table>
@@ -444,9 +442,11 @@
 <p>The ID of an <code>Offer</code> object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
 <li>The Offer space key (<code>0x006F</code>)</li>
-<li>The AccountID of the account placing the offer</li>
-<li>The Sequence number of the <a href="offercreate.html">OfferCreate transaction</a> that created the offer
-    If the OfferCreate transaction used a <a href="tickets.html">Ticket</a>, use the <code>TicketSequence</code> value instead.</li>
+<li>The AccountID of the account placing the Offer</li>
+<li>
+<p>The Sequence number of the <a href="offercreate.html">OfferCreate transaction</a> that created the Offer.</p>
+<p>If the OfferCreate transaction used a <a href="tickets.html">Ticket</a>, use the <code>TicketSequence</code> value instead.</p>
+</li>
 </ul>
 <!-- -->
 <!-- -->
@@ -2469,7 +2469,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
-        <a class="nav-link" href="clio-methods.html">Clio Server Methods</a>
+        <a class="nav-link" href="clio-methods.html">Clio Server</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
       
@@ -2964,7 +2964,6 @@
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
-            <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
             <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>

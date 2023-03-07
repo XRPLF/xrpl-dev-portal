@@ -1,11 +1,11 @@
 -------------
 Spell Checker
 -------------
-Found 19 possible spelling errors:
+Found 31 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gids, gifts, ifs
-  ringtee: 
+  gifs: gibs, gis, gits
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -24,7 +24,7 @@ Found 19 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalance, unbalanced
+  unbalances: unbalanced, unbalance
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
@@ -33,22 +33,36 @@ Found 19 possible spelling errors:
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
   xlsd: xls, lsd
 
+<Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  disallowincoming: 
+  depositpreauthamendment: 
+  fixnonfungibletokensv1_2: 
+  immediateofferkilled: 
+  fixuniversalnumber: 
+  xrpfees: 
+  nftokenoffers: nftokenoffer
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingcheck: 
+  asfdisallowincomingnftoffer: 
+  asfdisallowincomingtrustline: 
+  30d: 3-d, 3rd, 3d
+
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3-d, 3rd, 3d
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenminter: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3-d, 3rd, 3d
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 35 discouraged words/phrases:
+Found 36 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -76,6 +90,8 @@ Page: <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)>
    Discouraged word: sufficient (2 instances); suggest 'enough' instead.
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
    Discouraged phrase: defaults to (1 instances); suggest 'the default is' instead.
+Page: <Page 'Known Amendments' (known-amendments.html)>
+   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
 Page: <Page 'XRPL Quickstart' (xrpl-quickstart.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)>
@@ -132,14 +148,14 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 739
-  Characters: 4,582
+  Words: 741
+  Characters: 4,600
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
-  Sentences: 485
-  Words: 6,721
-  Characters: 49,337
+  Sentences: 539
+  Words: 7,452
+  Characters: 54,728
 
 <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Length Metrics:
   Sentences: 380

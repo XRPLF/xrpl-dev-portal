@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v14.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v15.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -124,7 +124,6 @@
           <div class="navcol col-for-sustainability">
             <h5 class="dropdown-item">Sustainability</h5>
             <a class="dropdown-item" href="impact.html">Impact</a>
-            <a class="dropdown-item" href="carbon-calculator.html">Carbon Calculator</a>
           </div><!--./col-->
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
@@ -299,7 +298,7 @@
 <p>At the core, the XRP Ledger is a shared database that records information such as accounts, balances, and offers to trade assets. Signed instructions called "transactions" cause changes such as creating accounts, making payments, and trading assets.</p>
 <p>As a cryptographic system, the owners of XRP Ledger accounts are identified by <em>cryptographic identities</em>, which correspond to public/private key pairs. Transactions are authorized by cryptographic signatures matching these identities. Every server processes every transaction according to the same deterministic, known rules. Ultimately, the goal is for every server in the network to have a complete copy of the exact same ledger state, without needing a single central authority to arbitrate transactions.</p>
 <h3 id="the-double-spend-problem">The Double Spend Problem<a aria-hidden="true" class="hover_anchor" href="#the-double-spend-problem"><i class="fa fa-link"></i></a></h3>
-<p>The "double spend" problem is a fundamental challenge to operating any sort of payment system. The problem comes from the requirement that when money is spent in one place, it can't also be spent in another place. More generally, the problem occurs when you have any two transactions such that either one is valid but not both together.</p>
+<p>The "double spend" problem is a fundamental challenge to any digital payment system. The problem comes from the requirement that when money is spent in one place, it can't also be spent in another place. More generally, the problem occurs when you have any two transactions such that either one is valid but not both together.</p>
 <p>Suppose Alice, Bob, and Charlie are using a payment system, and Alice has a balance of $10. For the payment system to be useful, Alice must be able to send her $10 to Bob, or to Charlie. However, if Alice tries to send $10 to Bob and also send $10 to Charlie at the same time, that's where the double spend problem comes in.</p>
 <p>If Alice can send the "same" $10 to both Charlie and Bob, the payment system ceases to be useful. The payment system needs a way to choose which transaction should succeed and which should fail, in such a way that all participants agree on which transaction has happened. Either of those two transactions is equally valid on its own. However, different participants in the payment system may have a different view of which transaction came first.</p>
 <p>Conventionally, payment systems solve the double spend problem by having a central authority track and approve transactions. For example, a bank decides to clear a check based on the issuer's available balance, of which the bank is the sole custodian. In such a system, all participants follow the central authority's decisions.</p>
@@ -2393,7 +2392,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
-        <a class="nav-link" href="clio-methods.html">Clio Server Methods</a>
+        <a class="nav-link" href="clio-methods.html">Clio Server</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
       
@@ -2888,7 +2887,6 @@
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
-            <li class="nav-item"><a href="carbon-calculator.html" class="nav-link">Carbon Calculator</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
             <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
             <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
