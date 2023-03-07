@@ -2439,10 +2439,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.md
         targets:
             - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md
