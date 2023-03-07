@@ -402,7 +402,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecKILLED</code></td>
-<td style="text-align: left;">Occurs if the transaction specifies <code>tfFillOrKill</code>, and the full amount cannot be filled. If the <em><a href="known-amendments.html#immediateofferkilled">ImmediateOfferKilled amendment</a></em> is enabled, this result code also occurs when the transaction specifies <code>tfImmediateOrCancel</code> and is canceled without moving funds (previously, this would return <code>tesSUCCESS</code>).</td>
+<td style="text-align: left;">Occurs if the transaction specifies <code>tfFillOrKill</code>, and the full amount cannot be filled. If the <em><a href="known-amendments.html#immediateofferkilled">ImmediateOfferKilled amendment</a></em> is enabled, this result code also occurs when the transaction specifies <code>tfImmediateOrCancel</code> and executes without moving funds (previously, this would return <code>tesSUCCESS</code>).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_EXPIRATION</code></td>
