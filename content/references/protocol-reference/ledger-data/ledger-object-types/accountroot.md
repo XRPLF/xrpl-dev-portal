@@ -73,14 +73,14 @@ AccountRoot objects can have the following flag values:
 | `lsfDefaultRipple`                | `0x00800000` | 8388608           | `asfDefaultRipple`                | Enable [rippling](rippling.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. |
 | `lsfDepositAuth`                  | `0x01000000` | 16777216          | `asfDepositAuth`                  | This account has [DepositAuth](depositauth.html) enabled, meaning it can only receive funds from transactions it sends, and from [preauthorized](depositauth.html#preauthorization) accounts. _(Added by the [DeposithAuth amendment][])_ |
 | `lsfDisableMaster`                | `0x00100000` | 1048576           | `asfDisableMaster`                | Disallows use of the master key to sign transactions for this account. |
-| `lsfDisallowIncomingCheck`        | `0x08000000` | 134217728         | `asfDisallowIncomingCheck`        | This account is blocking incoming checks. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
-| `lsfDisallowIncomingNFTokenOffer` | `0x04000000` | 67108864          | `asfDisallowIncomingNFTokenOffer` | This account is blocking incoming NFToken offers. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
-| `lsfDisallowIncomingPayChan`      | `0x10000000` | 268435456         | `asfDisallowIncomingPayChan`      | This account is blocking incoming payment channels. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
+| `lsfDisallowIncomingCheck`        | `0x08000000` | 134217728         | `asfDisallowIncomingCheck`        | This account is blocking incoming Checks. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
+| `lsfDisallowIncomingNFTokenOffer` | `0x04000000` | 67108864          | `asfDisallowIncomingNFTokenOffer` | This account is blocking incoming NFTokenOffers. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
+| `lsfDisallowIncomingPayChan`      | `0x10000000` | 268435456         | `asfDisallowIncomingPayChan`      | This account is blocking incoming Payment Channels. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
 | `lsfDisallowIncomingTrustline`    | `0x20000000` | 536870912         | `asfDisallowIncomingTrustline`    | This account is blocking incoming trust lines. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
-| `lsfDisallowXRP`                  | `0x00080000` | 524288            | `asfDisallowXRP`                  | Client applications should not send XRP to this account. Not enforced by `rippled`. |
-| `lsfGlobalFreeze`                 | `0x00400000` | 4194304           | `asfGlobalFreeze`                 | All assets issued by this address are frozen. |
-| `lsfNoFreeze`                     | `0x00200000` | 2097152           | `asfNoFreeze`                     | This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled. |
-| `lsfPasswordSpent`                | `0x00010000` | 65536             | (None)                            | The account has used its free SetRegularKey transaction. |
+| `lsfDisallowXRP`                  | `0x00080000` | 524288            | `asfDisallowXRP`                  | Client applications should not send XRP to this account. (Advisory; not enforced by the protocol.) |
+| `lsfGlobalFreeze`                 | `0x00400000` | 4194304           | `asfGlobalFreeze`                 | All assets issued by this account are frozen. |
+| `lsfNoFreeze`                     | `0x00200000` | 2097152           | `asfNoFreeze`                     | This account cannot freeze trust lines connected to it. Once enabled, cannot be disabled. |
+| `lsfPasswordSpent`                | `0x00010000` | 65536             | (None)                            | This account has used its free SetRegularKey transaction. |
 | `lsfRequireAuth`                  | `0x00040000` | 262144            | `asfRequireAuth`                  | This account must individually approve other users for those users to hold this account's tokens. |
 | `lsfRequireDestTag`               | `0x00020000` | 131072            | `asfRequireDest`                  | Requires incoming payments to specify a Destination Tag. |
 
