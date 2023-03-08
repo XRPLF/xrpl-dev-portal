@@ -5,5 +5,5 @@ const ledgerCloseTimeEl = document.getElementById('ledger-close-time')
 window.electronAPI.onUpdateLedgerData((_event, value) => {
     ledgerIndexEl.innerText = value.ledger_index
     ledgerHashEl.innerText = value.ledger_hash
-    ledgerCloseTimeEl.innerText = value.close_time
+    ledgerCloseTimeEl.innerText = value.ledger_time
 })

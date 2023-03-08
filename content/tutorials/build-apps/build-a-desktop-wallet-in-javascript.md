@@ -17,7 +17,7 @@ better understand how to integrate XRP Ledger functionality into a larger projec
 
 To complete this tutorial, you should meet the following requirements:
 
-- You have node.js 14+ installes on your machine.
+- You have node.js 14+ installed on your machine. You can get the latest version [here](https://nodejs.org/en/).
 - You are somewhat familiar with modern JavaScript programming and have completed the [Get Started Using JavaScript tutorial](get-started-using-javascript.html).
 - You have at least some rough understanding of what the XRP Ledger, it's capabilities and of cryptocurrency in general. Ideally you have completed the [Basic XRPL guide](https://learn.xrpl.org/)
 
@@ -28,11 +28,12 @@ You can find the complete source code for all of this tutorial's examples in the
 ## Rationale
 
 This tutorial takes you through the process of creating a XRP Wallet application from scratch. Starting with a simple,
-hello-world like example with minimal functionality, we add more complex functionality, progressing step-by-step.
+"Hello World" like example with minimal functionality, step-by-step we will add more and more complex features. At the 
+end you will have a rough understanding  
 
-As JavaScript is a programming language that originated in the web browser ecosystem, it is by it's nature not natively 
-suited for creating apps. Here we have to choose from a bunch of frameworks that enable us to write desktop apps with 
-JavaScript. For this tutorial we will use the [Electron Framework](https://www.electronjs.org/), as it is well 
+As JavaScript is a programming language that originated in the web browser ecosystem, it's not natively 
+supporting the creation of desktop applications. We have to pick a frameworks that enable us to write 
+desktop applications with JavaScript. For this tutorial we will use the [Electron Framework](https://www.electronjs.org/), as it is well 
 established, documented and will get us up and running without having to care for dependencies and stuff that would make 
 us divert too much from the goals of this tutorial.
 
@@ -42,10 +43,10 @@ At the end of this tutorial, you will have built a JavaScript Wallet application
 
 ![Desktop wallet screenshot](img/javascript-wallet-preview.png)
 
-The look and feel of the user interface should be roughly the same, as the Electron Framework allows us to write 
-cross-platform applications that are styled with CSS.
+The look and feel of the user interface should be roughly the same regardless of operating system, as the Electron Framework allows us to write 
+cross-platform applications that are styled with HTML and CSS just like a web-based application.
 
-This application is capable of the following:
+The application we are going to build here will be capable of the following:
 
 - Shows updates to the XRP Ledger in real-time.
 - Can view any XRP Ledger account's activity "read-only" including showing how much XRP was delivered by each transaction.
@@ -55,38 +56,75 @@ This application is capable of the following:
     - If the address doesn't want to receive XRP ([`DisallowXRP` flag](become-an-xrp-ledger-gateway.html#disallow-xrp) enabled).
     - If the address has a [verified domain name](https://xrpl.org/xrp-ledger-toml.html#account-verification) associated with it.
 
-The application in this tutorial _doesn't_ have the ability to send or trade [tokens](issued-currencies.html) or use other [payment types](payment-types.html) like Escrow or Payment Channels. However, it provides a foundation that you can implement those and other features on top of.
+The application in this tutorial _doesn't_ have the ability to send or trade [tokens](issued-currencies.html) or 
+use other [payment types](payment-types.html) like Escrow or Payment Channels. However, it provides a foundation 
+that you can implement those and other features on top of.
 
-In addition to the above features, you'll also learn a little bit about Events, IPC (inter-process-communication) 
+In addition to the above features, you'll also learn a bit about Events, IPC (inter-process-communication) 
 and asynchronous (async) code in JavaScript.
 
 ## Steps
 
-### Install Dependencies
+### Preparing the development machine and installing dependencies
 
-This tutorial depends on various programming libraries. To get the project up and running, in the build-a-wallet-with-javascript/js
+The basic building block for running JavaScript in a non-browser environment, also called headless JavaScript, we need 
+to have node.js installed on the development machine.
+
+This tutorial depends on various node.js libraries. To install those dependencies and get the project up and running, in the build-a-wallet-with-javascript/js
 folder, run the following command to install the required modules:
 
 ```console
 npm install
 ```
 
-This installs the Electron Framework, the xrpl.js client library and the async.js library we will use for the polling example.
+This installs the Electron Framework, the xrpl.js client library and a couple of helpers we are going to need for our 
+application to work.
 
+### 1. Hello XRP Ledger
 
-### 1. Hello World
+**Full code for this step:** [`1_hello.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/1_hello.js).
+
+Our first step is to write a "Hello World" like application, that interacts on a very basic level with the XRP Ledger 
+and displays some high-level information about the current ledger state on the screen. Nothing too fancy so far, as we 
+will take care of styling and GUI related coding in a later step:
+
+![Screenshot: Step 1, hello world equivalent](img/javascript-wallet-1.png)
+
+In the package.json file you can find prepared commands to run our application according to the steps comprising the 
+structure of this tutorial. To get the application running at this early stage of development, run the following command 
 
 ```console
 npm run hello
 ```
 
-### 2.a Show Ledger Updates by Polling
+### 2.A. Show Ledger Updates by Polling
+
+**Full code for this step:** [`2_async-poll.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_async-poll.js).
+
+Our "Hello Ledger" application from Step 1. so far only shows the latest validated ledger sequence at the time when we 
+opened it. So let's take things up a notch and add some dashboard like functionality where our wallet app will keep in 
+sync with the ledger and display the latest specs and stats like a clock that is keeping track on time:
+
+![Screenshot: Step 2, show ledger updates](img/javascript-wallet-2.png)
+
+To get the application running at this stage of development, run the following command:
 
 ```console
 npm run async-poll
 ```
 
-### 2.b Show Ledger Updates by Using Subscriptions
+### 2.B. Show Ledger Updates by Using Subscriptions
+
+**Full code for this step:** [`2_async-subscribe.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_async-subscribe.js).
+
+In Step 2.a we kept  our application on the heartbeat of the XRPL by periodically polling it for updates. In JavaScript,
+our client is connecting to the XRPL via [WebSockets](https://en.wikipedia.org/wiki/WebSocket). Our client has a 
+permanent bidirectional connection to the XRPL, which allows us to subscribe to events that the server sends out. This 
+saves resources on the server, which now only sends out data we explicitly asked for when a change happens, as well as 
+the client which does not have to sort through incoming data for relevant changes. This also reduces the complexity of the 
+application and saves us a couple of lines of code.
+
+To get the application running at this stage of development, run the following command:
 
 ```console
 npm run async-subscribe
@@ -94,11 +132,32 @@ npm run async-subscribe
 
 ### 3. Display an Account
 
+**Full code for this step:** [`3_account.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/3_account.js).
+
+Now that we have a  permanent connection to the XRPL and some code to bring the delivered data to life on our 
+screen, it's time to add some "wallet" functionality by managing am individual account. For this step, we will momentarily 
+hardcode the address of the account, and save the complexities of key handling for later. The application, after finishing 
+this step should look like this:
+
+![Screenshot: Step 3, show account information](img/javascript-wallet-3.png)
+
+To get the application running at this stage of development, run the following command:
+
 ```console
 npm run account
 ```
 
 ### 4. Show Account's Transactions
+
+**Full code for this step:** [`4_tx-history.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/4_tx-history.js).
+
+At this point, your wallet shows the account's balance getting updated, but doesn't give you any clue about how this state
+came about, namely the actual transactions that caused the updates. So, our next step is to display the account's 
+transaction history and to keep it up to date:
+
+To get the application running at this stage of development, run the following command:
+
+![Screenshot: Step 4, show transaction history](img/javascript-wallet-4.png)
 
 ```console
 npm run tx-history
@@ -107,6 +166,19 @@ npm run tx-history
 
 ### 5. Send XRP
 
+**Full code for this step:** [`5_send-xrp.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_send-xrp.js).
+
+Up until now we have enabled our app to query and display data from the XRPL. Now it's time to actively participate in
+the ledger by enabling out application to send transactions. For now, you can stick to sending direct XRP payments 
+because there are more complexities involved in sending issued tokens. 
+
+But before that, it is time to take that wallflowery appearance of our application and give it a more usable and 
+nicer looking UI. 
+
+![Screenshot: Step 5, send xrp dialog](img/javascript-wallet-5.png)
+
+To get the application running at this stage of development, run the following command:
+
 ```console
 npm run send-xrp
 ```
@@ -114,10 +186,27 @@ npm run send-xrp
 
 ### 6. Domain Verification and Polish
 
-TDB
+**Full code for this step:** [`6_domain-verification.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/3_domain-verification.js).
 
+One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of 
+protections or feedback for users to save them from human error and scams. These sorts of protections are extra 
+important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't 
+have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to 
+the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
 
-## Next Steps
+One type of check you can make is to verify the domain name associated with an XRP Ledger address; this is called
+[account domain verification](xrp-ledger-toml.html#account-verification). When an account's domain is verified, 
+you could show it like this:
+
+TBD
+
+To get the application running at this stage of development, run the following command:
+
+```console
+npm run domain-verification
+```
+
+## Next Steps & Topics for further research
 
 TBD
 
