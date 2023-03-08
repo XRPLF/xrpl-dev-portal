@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 32 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gifu, ifs, gins
-  ringtee: 
+  gifs: gibs, gits, gins
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -24,24 +24,24 @@ Found 32 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalanced, unbalance
+  unbalances: unbalance, unbalanced
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  depositpreauthamendment: 
-  immediateofferkilled: 
-  fixuniversalnumber: 
-  fixnonfungibletokensv1_2: 
-  disallowincoming: 
   xrpfees: 
+  immediateofferkilled: 
+  depositpreauthamendment: 
+  disallowincoming: 
+  fixnonfungibletokensv1_2: 
+  fixuniversalnumber: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingnftoffer: 
-  asfdisallowincomingpaychan: 
   asfdisallowincomingcheck: 
   asfdisallowincomingtrustline: 
+  asfdisallowincomingpaychan: 
   30d: 3rd, 3-d, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
@@ -146,8 +146,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 743
-  Characters: 4,611
+  Words: 745
+  Characters: 4,624
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

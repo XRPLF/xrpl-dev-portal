@@ -372,6 +372,14 @@
 <td style="text-align: left;"><strong>DEPRECATED</strong> Intended for debugging: do not build a local ledger until one can be obtained from the network.</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>--newnodeid</code></td>
+<td style="text-align: left;">Generate a random node identity for the server.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--nodeid {VALUE}</code></td>
+<td style="text-align: left;">Specify a node identity. <code>{VALUE}</code> can also be a parameter associated with the container or hardware running the server, such as <code>$HOSTNAME</code>.</td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>--nodetoshard</code></td>
 <td style="text-align: left;">Before fully starting, copy any complete <a href="history-sharding.html">history shards</a> from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!-- --></td>
 </tr>
@@ -1457,16 +1465,6 @@ Longest<span class="w"> </span>suite<span class="w"> </span>times:
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a>
   </div>
 
       
