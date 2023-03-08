@@ -9,7 +9,7 @@ labels:
 # AccountRoot
 [[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
 
-The `AccountRoot` object type describes a single [account](accounts.html), its settings, and XRP balance.
+An `AccountRoot` ledger entry type describes a single [account](accounts.html), its settings, and XRP balance.
 
 ## Example {{currentpage.name}} JSON
 
@@ -34,21 +34,21 @@ The `AccountRoot` object type describes a single [account](accounts.html), its s
 
 ## {{currentpage.name}} Fields
 
-The `AccountRoot` object has the following fields:
+An `AccountRoot` object has the following fields:
 
 | Field                         | JSON Type | [Internal Type][] | Required? | Description  |
 |:------------------------------|:----------|:------------------|:----------|:-------------|
 | `Account`                     | String    | AccountID         | Yes       | The identifying (classic) address of this [account](accounts.html). |
 | `AccountTxnID`                | String    | Hash256           | No        | The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the [`AccountTxnID` transaction field](transaction-common-fields.html#accounttxnid). To enable it, send an [AccountSet transaction with the `asfAccountTxnID` flag enabled](accountset.html#accountset-flags). |
 | `Balance`                     | String    | Amount            | No        | The account's current [XRP balance in drops][XRP, in drops], represented as a string. |
-| `BurnedNFTokens`              | Number    | UInt32            | No        | How many total of this account's issued [non-fungible tokens](non-fungible-tokens.html) have been burned. This number is always equal or less than `MintedNFTokens`. |
+| `BurnedNFTokens`              | Number    | UInt32            | No        | How many total of this account's issued [non-fungible tokens](non-fungible-tokens.html) have been burned. This number is always equal or less than `MintedNFTokens`. _(Added by the [NonFungibleTokensV1_1 amendment][])_ |
 | `Domain`                      | String    | Blob              | No        | A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. [Cannot be more than 256 bytes in length.](https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
 | `EmailHash`                   | String    | Hash128           | No        | The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
 | [`Flags`](#accountroot-flags) | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this account. |
 | `LedgerEntryType`             | String    | UInt16            | Yes       | The value `0x0061`, mapped to the string `AccountRoot`, indicates that this is an AccountRoot object. |
 | `MessageKey`                  | String    | Blob              | No        | A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. |
-| `MintedNFTokens`              | Number    | UInt32            | No        | How many total [non-fungible tokens](non-fungible-tokens.html) have been minted by and on behalf of this account. |
-| `NFTokenMinter`               | String    | AccountID         | No        | Another account that can mint [non-fungible tokens](non-fungible-tokens.html) on behalf of this account. |
+| `MintedNFTokens`              | Number    | UInt32            | No        | How many total [non-fungible tokens](non-fungible-tokens.html) have been minted by and on behalf of this account. _(Added by the [NonFungibleTokensV1_1 amendment][])_ |
+| `NFTokenMinter`               | String    | AccountID         | No        | Another account that can mint [non-fungible tokens](non-fungible-tokens.html) on behalf of this account. _(Added by the [NonFungibleTokensV1_1 amendment][])_ |
 | `OwnerCount`                  | Number    | UInt32            | Yes       | The number of objects this account owns in the ledger, which contributes to its owner reserve. |
 | `PreviousTxnID`               | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq`           | Number    | UInt32            | Yes       |The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
@@ -71,12 +71,12 @@ AccountRoot objects can have the following flag values:
 |-----------------------------------|--------------|-------------------|-----------------------------------|----|
 | `lsfAMM` :not_enabled:            | `0x02000000` | 33554432          | (None)                            | This account is an Automated Market Maker instance. :not_enabled: |
 | `lsfDefaultRipple`                | `0x00800000` | 8388608           | `asfDefaultRipple`                | Enable [rippling](rippling.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. |
-| `lsfDepositAuth`                  | `0x01000000` | 16777216          | `asfDepositAuth`                  | This account can only receive funds from transactions it sends, and from [preauthorized](depositauth.html#preauthorization) accounts. (It has [DepositAuth](depositauth.html) enabled.) |
+| `lsfDepositAuth`                  | `0x01000000` | 16777216          | `asfDepositAuth`                  | This account has [DepositAuth](depositauth.html) enabled, meaning it can only receive funds from transactions it sends, and from [preauthorized](depositauth.html#preauthorization) accounts. _(Added by the [DeposithAuth amendment][])_ |
 | `lsfDisableMaster`                | `0x00100000` | 1048576           | `asfDisableMaster`                | Disallows use of the master key to sign transactions for this account. |
-| `lsfDisallowIncomingCheck`        | `0x08000000` | 134217728         | `asfDisallowIncomingCheck`        | This account is blocking incoming checks. _(Added by the [DisallowIncoming amendment][].)_ |
-| `lsfDisallowIncomingNFTokenOffer` | `0x04000000` | 67108864          | `asfDisallowIncomingNFTokenOffer` | This account is blocking incoming NFToken offers. _(Added by the [DisallowIncoming amendment][].)_ |
-| `lsfDisallowIncomingPayChan`      | `0x10000000` | 268435456         | `asfDisallowIncomingPayChan`      | This account is blocking incoming payment channels. _(Added by the [DisallowIncoming amendment][].)_ |
-| `lsfDisallowIncomingTrustline`    | `0x20000000` | 536870912         | `asfDisallowIncomingTrustline`    | This account is blocking incoming trust lines. _(Added by the [DisallowIncoming amendment][].)_ |
+| `lsfDisallowIncomingCheck`        | `0x08000000` | 134217728         | `asfDisallowIncomingCheck`        | This account is blocking incoming checks. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
+| `lsfDisallowIncomingNFTokenOffer` | `0x04000000` | 67108864          | `asfDisallowIncomingNFTokenOffer` | This account is blocking incoming NFToken offers. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
+| `lsfDisallowIncomingPayChan`      | `0x10000000` | 268435456         | `asfDisallowIncomingPayChan`      | This account is blocking incoming payment channels. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
+| `lsfDisallowIncomingTrustline`    | `0x20000000` | 536870912         | `asfDisallowIncomingTrustline`    | This account is blocking incoming trust lines. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
 | `lsfDisallowXRP`                  | `0x00080000` | 524288            | `asfDisallowXRP`                  | Client applications should not send XRP to this account. Not enforced by `rippled`. |
 | `lsfGlobalFreeze`                 | `0x00400000` | 4194304           | `asfGlobalFreeze`                 | All assets issued by this address are frozen. |
 | `lsfNoFreeze`                     | `0x00200000` | 2097152           | `asfNoFreeze`                     | This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled. |
