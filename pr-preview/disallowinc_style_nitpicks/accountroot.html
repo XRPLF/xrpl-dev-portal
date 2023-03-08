@@ -520,21 +520,21 @@
 <td><code>0x08000000</code></td>
 <td>134217728</td>
 <td><code>asfDisallowIncomingCheck</code></td>
-<td>This account is blocking incoming checks. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
+<td>This account is blocking incoming Checks. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
 </tr>
 <tr>
 <td><code>lsfDisallowIncomingNFTokenOffer</code></td>
 <td><code>0x04000000</code></td>
 <td>67108864</td>
 <td><code>asfDisallowIncomingNFTokenOffer</code></td>
-<td>This account is blocking incoming NFToken offers. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
+<td>This account is blocking incoming NFTokenOffers. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
 </tr>
 <tr>
 <td><code>lsfDisallowIncomingPayChan</code></td>
 <td><code>0x10000000</code></td>
 <td>268435456</td>
 <td><code>asfDisallowIncomingPayChan</code></td>
-<td>This account is blocking incoming payment channels. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
+<td>This account is blocking incoming Payment Channels. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
 </tr>
 <tr>
 <td><code>lsfDisallowIncomingTrustline</code></td>
@@ -548,28 +548,28 @@
 <td><code>0x00080000</code></td>
 <td>524288</td>
 <td><code>asfDisallowXRP</code></td>
-<td>Client applications should not send XRP to this account. Not enforced by <code>rippled</code>.</td>
+<td>Client applications should not send XRP to this account. (Advisory; not enforced by the protocol.)</td>
 </tr>
 <tr>
 <td><code>lsfGlobalFreeze</code></td>
 <td><code>0x00400000</code></td>
 <td>4194304</td>
 <td><code>asfGlobalFreeze</code></td>
-<td>All assets issued by this address are frozen.</td>
+<td>All assets issued by this account are frozen.</td>
 </tr>
 <tr>
 <td><code>lsfNoFreeze</code></td>
 <td><code>0x00200000</code></td>
 <td>2097152</td>
 <td><code>asfNoFreeze</code></td>
-<td>This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled.</td>
+<td>This account cannot freeze trust lines connected to it. Once enabled, cannot be disabled.</td>
 </tr>
 <tr>
 <td><code>lsfPasswordSpent</code></td>
 <td><code>0x00010000</code></td>
 <td>65536</td>
 <td>(None)</td>
-<td>The account has used its free SetRegularKey transaction.</td>
+<td>This account has used its free SetRegularKey transaction.</td>
 </tr>
 <tr>
 <td><code>lsfRequireAuth</code></td>
