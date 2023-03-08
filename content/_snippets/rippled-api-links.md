@@ -239,7 +239,8 @@
   "TicketBatch",
   "Tickets",
   "TickSize",
-  "TrustSetAuth"
+  "TrustSetAuth",
+  "XRPFees"
 ] %}
 
 {% for amd in amendment_names %}

@@ -41,6 +41,18 @@ The `FeeSettings` object has the following fields:
 
 **Warning:** The JSON format for this ledger object type is unusual. The `BaseFee`, `ReserveBase`, and `ReserveIncrement` indicate drops of XRP but ***not*** in the usual format for [specifying XRP][Currency Amount].
 
+
+If the _[XRPFees amendment][]_ is enabled, the `FeeSettings` object has these fields instead:
+
+| Name                    | JSON Type | [Internal Type][] | Required? | Description            |
+|:------------------------|:----------|:------------------|:----------|:-----------------------|
+| `BaseFeeDrops`          | String    | Amount            | Yes       | The [transaction cost](transaction-cost.html) of the "reference transaction" in drops of XRP. |
+| `Flags`                 | Number    | UInt32            | Yes       | A bitmap of boolean flags enabled for this object. Currently, the protocol defines no flags for `FeeSettings` objects. The value is always `0`. |
+| `LedgerEntryType`       | String    | UInt16            | Yes       | The value `0x0073`, mapped to the string `FeeSettings`, indicates that this object contains the ledger's fee settings. |
+| `ReserveBaseDrops`      | String    | Amount            | Yes       | The [base reserve](reserves.html#base-reserve-and-owner-reserve) for an account in the XRP Ledger, as drops of XRP. |
+| `ReserveIncrementDrops` | String    | Amount            | Yes       | The incremental [owner reserve](reserves.html#base-reserve-and-owner-reserve) for owning objects, as drops of XRP. |
+
+
 ## FeeSettings ID Format
 
 The `FeeSettings` object ID is the hash of the `FeeSettings` space key (`0x0065`) only. This means that the ID of the `FeeSettings` object in a ledger is always:
@@ -48,6 +60,7 @@ The `FeeSettings` object ID is the hash of the `FeeSettings` space key (`0x0065`
 ```
 4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651
 ```
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
