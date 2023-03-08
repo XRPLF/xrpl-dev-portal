@@ -10,13 +10,18 @@ labels:
 
 以下に示すのは、本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 
-**ヒント:** このリストは手動に更新されています。生ステータスを[XRPScan Amendment Dashboard](https://xrpscan.com/amendments)にご覧下さい。
+**ヒント:** このリストは手動で更新されています。最新のステータスは[XRPScan Amendment Dashboard](https://xrpscan.com/amendments)をご覧下さい。
 
 | 名前                            | 導入済み | ステータス                              |
 |:----------------------------------|:-----------|:------------------------------------|
-| [fixTrustLinesToSelf][]           | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                  | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [CheckCashMakesTrustLine][]       | v1.8.0     | [投票中: 未定](https://xrpl.org/blog/2021/rippled-1.8.1.html "BADGE_80d0e0") |
+| [DisallowIncoming][]              | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fixTrustLinesToSelf][]           | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fixUniversalNumber][]            | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [ImmediateOfferKilled][]          | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [XRPFees][]                       | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [CheckCashMakesTrustLine][]       | v1.8.0     | [有効: 2022/01/23](https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557 "BADGE_GREEN") |
 | [NonFungibleTokensV1_1][]         | v1.9.2     | [有効: 2022/10/31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
 | [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [有効: 2022/10/27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
 | [ExpandedSignerList][]            | v1.9.1     | [有効: 2022/10/13](https://livenet.xrpl.org/transactions/802E2446547BB86397217E32A78CB9857F21B048B91C81BCC6EF837BE9C72C87 "BADGE_GREEN") |
