@@ -81,9 +81,12 @@ labels:
 ## CheckCashMakesTrustLine
 [CheckCashMakesTrustLine]: #checkcashmakestrustline
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F | 開発中 |
+| Amendment    | CheckCashMakesTrustLine |
+|:-------------|:------------------------|
+| Amendment ID | 98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
 Adjusts the [CheckCash transaction][] so that cashing a [Check](checks.html) for an issued token automatically creates a [trust line](trust-lines-and-issuing.html) to hold the token. The new behavior is similar to how the [OfferCreate transaction][] behaves when users purchase tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)
 
@@ -95,9 +98,12 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 ## Checks
 [Checks]: #checks
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 | 有効 |
+| Amendment    | Checks |
+|:-------------|:-------|
+| Amendment ID | 157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 「Checks」をXRP Ledgerに導入します。Checksは個人用の紙の小切手と同様の機能を持っています。送信者はトランザクションに署名して、具体的な最高額と受取人を入力したCheckを作成します。その後、受取人はCheckを換金して、指定された金額を上限として現金を受け取ることができます。金銭の移動が実際に発生するのはCheckが換金されるときなので、送信者の現在の残高と流動性の状況によっては、Checkを換金できない場合があります。Checkを換金できない場合、Checkオブジェクトはレジャーに残るため、後日換金できるようになる場合があります。
 
@@ -110,18 +116,24 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 ## CryptoConditions
 [CryptoConditions]: #cryptoconditions
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146 | 有効 |
+| Amendment    | CryptoConditions |
+|:-------------|:-----------------|
+| Amendment ID | 1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 この修正は有効ですが、[SusPay](#suspay) Amendmentも有効にならなければ効果がありません。RippleではSusPayを有効にする予定はありません。代わりに、Crypto-Conditionsを[Escrow](#escrow) Amendmentに組み込む予定です。
 
 ## CryptoConditionsSuite
 [CryptoConditionsSuite]: #cryptoconditionssuite
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 | 開発中 |
+| Amendment    | CryptoConditionsSuite |
+|:-------------|:----------------------|
+| Amendment ID | 86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90 |
+| ステータス     | 廃止 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
 [EscrowCreate][]トランザクションと[EscrowFinish][]トランザクションで使用するために、公式の[Crypto-Conditions仕様](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03)から数種類のCrypto-Conditionsを導入します。この修正を行わない場合、サポートされるのはPREIMAGE-SHA-256タイプのみです。
 
@@ -132,9 +144,12 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 ## DeletableAccounts
 [DeletableAccounts]: #deletableaccounts
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9 | 有効 |
+| Amendment    | DeletableAccounts |
+|:-------------|:------------------|
+| Amendment ID | 30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 [アカウント](accounts.html)を削除できるようになります。
 
@@ -145,9 +160,12 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 ## DepositAuth
 [DepositAuth]: #depositauth
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064 | 有効 |
+| Amendment    | DepositAuth |
+|:-------------|:------------|
+| Amendment ID | F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 新しいアカウントフラグ`DepositAuth`を追加します。これにより、他のアカウントから送信されたトランザクションに係る入金が厳密に拒否されます。企業はこのフラグを使用することで、あらゆる送金人からの送金を受け入れる前に規則に準拠して適切に対処することができます。
 
@@ -160,9 +178,12 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 ## DepositPreauth
 [DepositPreauth]: #depositpreauth
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194 | 有効 |
+| Amendment    | DepositPreauth |
+|:-------------|:---------------|
+| Amendment ID | 3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 [Deposit Authorization](depositauth.html)のユーザーに特定の送信者を事前承認する手段を提供して、承認された送信者が支払いを直接送信できるようにします。
 
@@ -170,12 +191,40 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 
 また、アカウントにDeposit Authorizationが必要な場合、アカウントから自身への異なる通貨間での支払いの動作も変更します。この修正を行わない場合、これらの支払いはコードtecNO_PERMISSIONにて常に失敗します。この修正を行う場合、これらの支払いはDeposit Authorization無効時と同様に成功します。
 
+
+## DisallowIncoming
+[DisallowIncoming]: #disallowincoming
+
+| Amendment    | DisallowIncoming |
+|:-------------|:-----------------|
+| Amendment ID | 47C3002ABA31628447E8E9A8B315FAA935CE30183F9A9B86845E469CA2CDC3DF |
+| ステータス     | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+Provides options to categorically block incoming Checks, Payment Channels, NFTokenOffers, and trust lines from reaching your account. When an account has these options enabled, other accounts cannot create those types of objects with the account as the destination.
+
+Adds 4 new AccountSet Flags and modifies the AccountSet transaction to allow enabling and disabling them:
+
+- asfDisallowIncomingCheck
+- asfDisallowIncomingPayChan
+- asfDisallowIncomingNFTOffer
+- asfDisallowIncomingTrustline
+
+Changes transaction processing to check the status of those flags before creating the corresponding type of object. If the destination account has the flag enabled, the transaction fails with the error code `tecNO_PERMISSION`.
+
+Without this amendment, any account can create these objects with any object as the destination; while this is usually harmless, it can block an account from later being deleted, and may also be used as part of scams.
+
+
 ## EnforceInvariants
 [EnforceInvariants]: #enforceinvariants
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF | 有効 |
+| Amendment    | EnforceInvariants |
+|:-------------|:------------------|
+| Amendment ID | DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 トランザクション処理にサニティーチェックを追加して、所定の条件が常に満たされるようにします。これにより、トランザクション処理時のバグを防ぐ独立した追加のレイヤーができます。このレイヤーがなければXRP Ledgerが脆弱なものとなり悪用される可能性が生じます。Rippleは、Amendmentを追加せずに、将来バージョンの`rippled`に不変性チェックをさらに追加する予定です。
 
@@ -192,9 +241,12 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 ## Escrow
 [Escrow]: #escrow
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104 | 有効 |
+| Amendment    | Escrow |
+|:-------------|:-------|
+| Amendment ID | 07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 [SusPay](#suspay)および[CryptoConditions](#cryptoconditions) Amendmentを置き換えます。
 
@@ -204,9 +256,12 @@ XRP Ledger内のEscrowにXRPの「停止された支払い」機能を提供し�
 ## ExpandedSignerList
 [ExpandedSignerList]: #expandedsignerlist
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856 | 有効 |
+| Amendment    | ExpandedSignerList |
+|:-------------|:-------------------|
+| Amendment ID | B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate description -->
 This amendment expands the maximum signer list size and allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).
@@ -218,9 +273,12 @@ With this amendment, the maximum [SignerList object][] size is 32 entries. Addit
 ## FeeEscalation
 [FeeEscalation]: #feeescalation
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE | 有効 |
+| Amendment    | FeeEscalation |
+|:-------------|:--------------|
+| Amendment ID | 42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 提案されたトランザクションに[トランザクションコスト](transaction-cost.html)を適用する方法を変更します。トランザクションコストの高いトランザクションの優先順位が高くなるよう、コンセンサスプロセスを変更します。 <!-- STYLE_OVERRIDE: prioritize -->
 
@@ -237,9 +295,12 @@ With this amendment, the maximum [SignerList object][] size is 32 entries. Addit
 ## fix1201
 [fix1201]: #fix1201
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD | 有効 |
+| Amendment    | fix1201 |
+|:-------------|:--------|
+| Amendment ID | B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 [送金手数料](transfer-fees.html)に限度を正しく導入し、100%の料金にします。これは、`TransferRate`値の最大値である`2000000000`を表します。（この場合の100%の料金とは、送信する1ユニットごとに2ユニットの発行済み通貨を送信する必要があることを意味します。）この修正を行わない場合、有効な限度は`TransferRate`値の2<sup>32</sup>-1、つまり約329%の料金となります。
 
@@ -248,18 +309,24 @@ With this amendment, the maximum [SignerList object][] size is 32 entries. Addit
 ## fix1368
 [fix1368]: #fix1368
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA | 有効 |
+| Amendment    | fix1368 |
+|:-------------|:--------|
+| Amendment ID | E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 有効であるべき一部の支払いが失敗となる、トランザクション処理の小さなバグを修正します。具体的には、支払い処理中に、特定金額の通貨を生成する支払いステップの一部で、浮動小数点の表示に関する精度の不良により、わずかに異なる金額が生成されてしまうことがあります。この状況が発生すると、正確な金額を送金できないため支払いが失敗します。fix1368 Amendmentにより、トランザクション処理が修正されれば、このような支払いの失敗はなくなります。
 
 ## fix1373
 [fix1373]: #fix1373
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC | 有効 |
+| Amendment    | fix1373 |
+|:-------------|:--------|
+| Amendment ID | 42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 特定の[支払いパス](paths.html)を作成する際にエラーを引き起こすトランザクション処理の小さなバグを修正します。この結果、有効であっても正しく作成されていないパスを、支払いで使用できなくなりました。この修正を行わない場合、支払い時に好ましくないパスの使用を強制されたり、失敗したりする恐れがあります。
 
@@ -268,9 +335,12 @@ fix1373 Amendmenによりこの問題は修正されるため、正しく作成�
 ## fix1512
 [fix1512]: #fix1512
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1 | 有効 |
+| Amendment    | fix1512 |
+|:-------------|:--------|
+| Amendment ID | 6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 一部の無効な[PaymentChannelClaim][]トランザクションが、不正確なエラーコードで失敗するトランザクション処理のバグを修正します。この修正を行わない場合、トランザクションの結果コードは`tec`クラスとなりますが、レジャーに入力されず、[トランザクションコスト](transaction-cost.html)は支払われません。
 
@@ -279,9 +349,12 @@ fix1373 Amendmenによりこの問題は修正されるため、正しく作成�
 ## fix1513
 [fix1513]: #fix1513
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172 | 有効 |
+| Amendment    | fix1513 |
+|:-------------|:--------|
+| Amendment ID | 67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 `FeeEscalation` Amendmentが行われると、新しい`STAmountCalcSwitchovers`コードが使用されないトランザクション処理のバグを修正します。
 
@@ -290,9 +363,12 @@ fix1373 Amendmenによりこの問題は修正されるため、正しく作成�
 ## fix1515
 [fix1515]: #fix1515
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE | 有効 |
+| Amendment    | fix1515 |
+|:-------------|:--------|
+| Amendment ID | 5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 Paymentトランザクションがオファーを処理していく方法を変更して、支払処理とオファー処理における流動性の消費の仕方のわずかな違いをなくします。（[FlowCross][]が有効の場合、オファーCreateトランザクションの処理方法にも影響します。）
 
@@ -305,9 +381,12 @@ Paymentトランザクションがオファーを処理していく方法を変�
 ## fix1523
 [fix1523]: #fix1523
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D | 有効 |
+| Amendment    | fix1523 |
+|:-------------|:--------|
+| Amendment ID | B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 支払先アカウント別の追跡機能を[Escrow](escrow.html)に追加します。この修正を行わない場合、保留中のEscrowは送信者別にしか追跡できません。この修正により、[account_objectsメソッド][]を使用して支払先アドレスごとに保留中のEscrowを調べることができます。ただし、この修正が有効になる前に作成された保留中のEscrowを除きます。また、この修正では、[EscrowCreateトランザクション][]を支払先のトランザクション履歴に表示することができます。これは[account_txメソッド][]による表示と同様です。
 
@@ -316,9 +395,12 @@ Paymentトランザクションがオファーを処理していく方法を変�
 ## fix1528
 [fix1528]: #fix1528
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454 | 有効 |
+| Amendment    | fix1528 |
+|:-------------|:--------|
+| Amendment ID | 1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 バリデータがさまざまなタイムスタンプでコンセンサスレジャーを構築できることが原因で、検証済みレジャーの宣言プロセスに遅れをもたらす可能性があるバグを修正します。このような状況の発生は正確なタイミングを要するため、管理テスト環境の外部にいるバリデータがこのバグに遭遇することはあまりありません。
 
@@ -327,9 +409,12 @@ Paymentトランザクションがオファーを処理していく方法を変�
 ## fix1543
 [fix1543]: #fix1543
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2 | 有効 |
+| Amendment    | fix1543 |
+|:-------------|:--------|
+| Amendment ID | CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 予約済のフラグ範囲を、まだ正しく適用されていないトランザクションタイプに適用します。未定義または未知のフラグ、または予約された範囲のフラグが有効になっている場合、影響を受けるトランザクションタイプのトランザクションは無効と見なされるようになります。（この変更による影響を受けないトランザクションには、すでに同じルールが正しく適用されています。）
 
@@ -343,9 +428,12 @@ Paymentトランザクションがオファーを処理していく方法を変�
 ## fix1571
 [fix1571]: #fix1571
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C | 有効 |
+| Amendment    | fix1571 |
+|:-------------|:--------|
+| Amendment ID | 7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 以下のようにEscrowの問題を修正します。
 
@@ -355,9 +443,12 @@ Paymentトランザクションがオファーを処理していく方法を変�
 ## fix1578
 [fix1578]: #fix1578
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288 | 有効 |
+| Amendment    | fix1578 |
+|:-------------|:--------|
+| Amendment ID | FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 以下の2つのトランザクションタイプから返される結果コードを変更します。
 
@@ -367,9 +458,12 @@ Paymentトランザクションがオファーを処理していく方法を変�
 ## fix1623
 [fix1623]: #fix1623
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F | 有効 |
+| Amendment    | fix1623 |
+|:-------------|:--------|
+| Amendment ID | 58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 変動金額で換金されたCheckCashトランザクションのメタデータに送金額を追加します。（[Checks](#checks) Amendmentが有効でないかぎり効果がありません。）
 
@@ -377,14 +471,16 @@ Paymentトランザクションがオファーを処理していく方法を変�
 
 fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`Amount`フィールドを使用）またはその他のトランザクションタイプには影響しません。
 
-**注意:** `rippled`1.0.0では、fix1623 Amendmentの前にChecks Amendmentを有効にした場合、fix1623 Amendmentが行われる前の変動金額のCheckCashトランザクションについては、トランザクションがゼロ以外の金額であっても、`delivered_amount`に「0」と表示される場合があります。Rippleでは、fix1623を[Checks][] Amendmentと同時に本番ネットワーク環境で有効にするよう計画していますが、この状況は[並列ネットワーク](parallel-networks.html)上で発生する可能性があります。
 
 ## fix1781
 [fix1781]: #fix1781
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E | 有効 |
+| Amendment    | fix1781 |
+|:-------------|:--------|
+| Amendment ID | 25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate amendment description -->
 Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.
@@ -397,9 +493,12 @@ With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result cod
 ## fixAmendmentMajorityCalc
 [fixAmendmentMajorityCalc]: #fixamendmentmajoritycalc
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068 | 有効 |
+| Amendment    | fixAmendmentMajorityCalc |
+|:-------------|:-------------------------|
+| Amendment ID | 4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate amendment description -->
 Fixes a bug that could cause an amendment to achieve a majority and later activate with support of slightly less than 80% of trusted validators due to rounding semantics.
@@ -410,9 +509,12 @@ Without this amendment, the minimum threshold for amendment activation is any va
 ## fixCheckThreading
 [fixCheckThreading]: #fixcheckthreading
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4 | 有効 |
+| Amendment    | fixCheckThreading |
+|:-------------|:------------------|
+| Amendment ID | 8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 Checksトランザクションがアカウントのメタデータに影響を及ぼす方法を変更し、Checksが受信アカウントの[アカウント](accounts.html)履歴に適切に追加されるようにします。（具体的には、受信アカウントの[AccountRootオブジェクト](accountroot.html)の`PreviousTxnID`フィールドと`PreviousTxnLedgerSeq`フィールドを更新します。これは、アカウントと、アカウントが所有するオブジェクトに影響を及ぼしたトランザクションの「スレッド」を追跡するために使用できます。）
 
@@ -421,9 +523,12 @@ Checksトランザクションがアカウントのメタデータに影響を�
 ## fixMasterKeyAsRegularKey
 [fixMasterKeyAsRegularKey]: #fixmasterkeyasregularkey
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37 | 有効 |
+| Amendment    | fixMasterKeyAsRegularKey |
+|:-------------|:-------------------------|
+| Amendment ID | C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 アカウントのレギュラーキーペアがマスターキーペアと一致するように設定できるものの、マスターキーが無効になった場合に、そのキーによって署名されたトランザクションを送信できなくなるバグを修正します。
 
@@ -435,9 +540,12 @@ Checksトランザクションがアカウントのメタデータに影響を�
 ## fixNFTokenDirV1
 [fixNFTokenDirV1]: #fixnftokendirv1
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3 | 廃止 |
+| Amendment    | fixNFTokenDirV1 |
+|:-------------|:----------------|
+| Amendment ID | 0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3 |
+| ステータス     | 廃止 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate description -->
 This amendment fixes an off-by-one error that occurred in some corner cases when determining which `NFTokenPage` a `NFToken` object belongs on. It also adjusts the constraints of `NFTokenPage` invariant checks, so that certain error cases fail with a suitable error code such as `tecNO_SUITABLE_TOKEN_PAGE` instead of failing with a `tecINVARIANT_FAILED` error code.
@@ -448,9 +556,12 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 ## fixNFTokenNegOffer
 [fixNFTokenNegOffer]: #fixnftokennegoffer
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6 | 廃止 |
+| Amendment    | fixNFTokenNegOffer |
+|:-------------|:-------------------|
+| Amendment ID | 36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6 |
+| ステータス     | 廃止 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate description -->
 This amendment fixes a bug in the [NonFungibleTokensV1][] amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell an NFT for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.
@@ -458,12 +569,56 @@ This amendment fixes a bug in the [NonFungibleTokensV1][] amendment code where N
 This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. This amendment is obsolete because its effects are included as part of [NonFungibleTokensV1_1][].
 
 
+## fixNonFungibleTokensV1_2
+[fixNonFungibleTokensV1_2]: #fixnonfungibletokensv1_2
+
+| Amendment    | fixNonFungibleTokensV1_2 |
+|:-------------|:-------------------------|
+| Amendment ID | 73761231F7F3D94EC3D8C63D91BDD0D89045C6F71B917D1925C01253515A6669 |
+| ステータス     | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+Amendment `fixNonFungibleTokensV1_2` is a combination of bug fixes that have been individually merged into feature/nft-fixes through the pull request process:
+
+**Fix Unburnable NFT**
+
+Currently, an NFT cannot be burned when it has over 500 offers. To remove this restriction, this change deletes exactly 500 offers upon burning the NFT, leaving any remaining offers untouched. This addresses a concern where the issuer account cannot burn an NFT that has enabled the `lsfBurnable` flag, due to the exceeding number of offers.
+
+See [PR 4346](https://github.com/XRPLF/rippled/pull/4346).
+
+**Fix 3 Issues Around NFToken Offer Acceptance**
+
+Issue 1: Resolve situation where an account is unable to broker a deal due to an erroneous insufficient funds condition.
+
+Issue 2: Resolve situation where a buyer has insufficient funds to cover a transfer fee on the account.
+
+Issue 3: Enable currency issuers to buy and sell NFTs using their own currency.
+
+See [PR 4380](https://github.com/XRPLF/rippled/pull/4380).
+
+**Prevent Brokered Sale of NFToken to Owner (fix #4374)**
+
+This fix prevents a broker from selling an NFT to the account that already owns the token.
+
+See [Issue 4374](https://github.com/XRPLF/rippled/issues/4374).
+
+**Only allow the destination to settle an NFT offer through brokerage (fix #4373)**
+
+If you set a destination on an NFT offer, only that destination can settle through brokerage (fix #4373).
+
+See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
+
+
 ## fixPayChanRecipientOwnerDir
 [fixPayChanRecipientOwnerDir]: #fixpaychanrecipientownerdir
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8 | 有効 |
+| Amendment    | fixPayChanRecipientOwnerDir |
+|:-------------|:----------------------------|
+| Amendment ID | 621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 [PaymentChannelCreateトランザクション][]タイプを変更し、受取人の[所有者ディレクトリー](directorynode.html)に新しい[Payment Channel](payment-channels.html)が追加されるようにします。この修正を適用しない場合、新しいPayment Channelは送金者の所有者ディレクトリーにのみ追加されます。この修正を有効にする場合、新しく作成したPayment Channelは両者の所有者ディレクトリーに追加されます。既存のPayment Channelは変更されません。
 
@@ -473,9 +628,12 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 ## fixQualityUpperBound
 [fixQualityUpperBound]: #fixqualityupperbound
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 | 有効 |
+| Amendment    | fixQualityUpperBound |
+|:-------------|:---------------------|
+| Amendment ID | 89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate amendment description -->
 Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.
@@ -486,9 +644,12 @@ This amendment has no known impact on transaction processing.
 ## fixRemoveNFTokenAutoTrustLine
 [fixRemoveNFTokenAutoTrustLine]: #fixremovenftokenautotrustline
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD | 有効 |
+| Amendment    | fixRemoveNFTokenAutoTrustLine |
+|:-------------|:------------------------------|
+| Amendment ID | DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate amendment description -->
 
@@ -506,9 +667,12 @@ To protect issuers, this amendment should be enabled _before_ [NonFungibleTokens
 ## fixRmSmallIncreasedQOffers
 [fixRmSmallIncreasedQOffers]: #fixrmsmallincreasedqoffers
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2 | 有効 |
+| Amendment    | fixRmSmallIncreasedQOffers |
+|:-------------|:---------------------------|
+| Amendment ID | B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate amendment description -->
 This amendment fixes an issue where certain Offers, when almost completely consumed, have a much lower exchange rate than when they were first placed. This occurs when the remaining amounts of one or both assets are so small that they cannot be rounded to a similar ratio as when the Offer was placed.
@@ -521,9 +685,12 @@ With this amendment, payments and trades can remove these types of Offers the sa
 ## fixSTAmountCanonicalize
 [fixSTAmountCanonicalize]: #fixstamountcanonicalize
 
-| Amendment ID                                                     | ステータス  |
-|:-----------------------------------------------------------------|:----------|
-| 452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB | 有効 |
+| Amendment    | fixSTAmountCanonicalize |
+|:-------------|:------------------------|
+| Amendment ID | 452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate amendment description -->
 Fixes an edge case in [deserializing](serialization.html) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.
@@ -532,9 +699,12 @@ Fixes an edge case in [deserializing](serialization.html) Amount-type fields. Wi
 ## fixTakerDryOfferRemoval
 [fixTakerDryOfferRemoval]: #fixtakerdryofferremoval
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561 | 有効 |
+| Amendment    | fixTakerDryOfferRemoval |
+|:-------------|:------------------------|
+| Amendment ID | 2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 XRP Ledger内にドライオファーを残す可能性がある[オートブリッジ](autobridging.html)のバグを修正します。ドライオファーとは、オファーを掛け合わせても資金を調達できないオファーのことです。
 
@@ -546,9 +716,12 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 ## fixTrustLinesToSelf
 [fixTrustLinesToSelf]: #fixtrustlinestoself
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013 | 開発中 |
+| Amendment    | fixTrustLinesToSelf |
+|:-------------|:--------------------|
+| Amendment ID | F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013 |
+| ステータス     | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate amendment description -->
 This amendment removes two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment becomes enabled, it deletes trust lines with the IDs `2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1` and `326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A` if they exist. After doing so, the amendment does nothing else.
@@ -556,12 +729,30 @@ This amendment removes two trust lines from an account to itself that were creat
 On test networks that do not have these trust lines, the amendment has no effect.
 
 
+## fixUniversalNumber
+[fixUniversalNumber]: #fixuniversalnumber
+
+| Amendment    | fixUniversalNumber |
+|:-------------|:-------------------|
+| Amendment ID | 2E2FB9CF8A44EB80F4694D38AADAE9B8B7ADAFD2F092E10068E61C98C4F092B0 |
+| ステータス     | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+Simplifies and unifies the code for decimal floating point math. In some cases, this provides slightly better accuracy than the previous code, resulting in calculations whose least significant digits are different than when calculated with the previous code. The different results may cause other edge case differences where precise calculations are used, such as ranking of Offers or processing of payments that use several different paths.
+
+Without this amendment, the code continues to use separate calculations for `STAmount` and `IOUAmount` objects, and [Automated Market Maker (XLS-30d)](https://github.com/XRPLF/XRPL-Standards/discussions/78) uses a third class for calculations.
+
+
 ## Flow
 [Flow]: #flow
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 | 有効 |
+| Amendment    | Flow |
+|:-------------|:-----|
+| Amendment ID | 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 支払い処理エンジンを、より堅固で効率的に作られたFlowエンジンに置き換えます。この新バージョンの支払い処理エンジンは、旧バージョンと同じルールを踏襲しますが、浮動小数点の丸め処理により異なる結果をもたらすことがあります。この修正は[FlowV2](https://xrpl.org/blog/2016/flowv2-vetoed.html) Amendmentに代わるものです。
 
@@ -570,9 +761,12 @@ On test networks that do not have these trust lines, the amendment has no effect
 ## FlowCross
 [FlowCross]: #flowcross
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC | 有効 |
+| Amendment    | FlowCross |
+|:-------------|:----------|
+| Amendment ID | 3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 XRP Ledgerの分散型取引所において、オファーの掛け合わせのロジックを合理化します。[Flow](#flow) Amendmentから更新されたコードを使用してオファーの掛け合わせを行うため、[OfferCreateトランザクション][]と[Paymentトランザクション][]は多くのコードを共有します。オファーの処理方法には微妙な違いがあります。
 
@@ -584,9 +778,12 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 ## FlowSortStrands
 [FlowSortStrands]: #flowsortstrands
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422 | 有効 |
+| Amendment    | FlowSortStrands |
+|:-------------|:----------------|
+| Amendment ID | AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate amendment description -->
 Improves the payment engine's calculations for finding the most cost-efficient way to execute a cross-currency transaction.
@@ -597,30 +794,53 @@ Without this change, the engine simulates a payment through each possible path t
 ## FlowV2
 [FlowV2]: #flowv2
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 | 禁止 |
+| Amendment    | FlowV2 |
+|:-------------|:-------|
+| Amendment ID | 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 |
+| ステータス     | 禁止 |
+| Amendment前の機能は廃止? | いいえ |
 
 これは[Flow](#flow) Amendmentの旧バージョンです。[バグが原因で不採用となり](https://xrpl.org/blog/2016/flowv2-vetoed.html)、バージョン0.33.0で除外されました。
 
 ## HardenedValidations
 [HardenedValidations]: #hardenedvalidations
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 | 有効 |
+| Amendment    | HardenedValidations |
+|:-------------|:--------------------|
+| Amendment ID | 1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate amendment description -->
 Allows validators to include a new optional field in their validations to attest to the hash of
 the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
 
 
+## ImmediateOfferKilled
+[ImmediateOfferKilled]: #immediateofferkilled
+
+| Amendment    | ImmediateOfferKilled |
+|:-------------|:---------------------|
+| Amendment ID | 75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A |
+| ステータス     | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+Changes OfferCreate transactions so that if an Offer uses `tfImmediateOrCancel` and transaction processing kills the Offer without moving any funds, the transaction uses the result code `tecKILLED` instead of `tesSUCCESS`. If the Offer exchanges any amount of funds, even a small amount, the transaction still uses `tesSUCCESS`. There are no other changes to the processing of the transaction (for example, in terms of whether it cleans up expired and unfunded Offers that were encountered in the ledger during transaction processing).
+
+Without this amendment, "Immediate or Cancel" Offers that failed to move any funds returned a `tesSUCCESS` result code, which could be confusing because the transaction effectively did nothing.
+
+
 ## MultiSign
 [MultiSign]: #multisign
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 | 有効 |
+| Amendment    | MultiSign |
+|:-------------|:----------|
+| Amendment ID | 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 トランザクションの承認方法として[マルチ署名](multi-signing.html)を導入します。[`SignerList`レジャーオブジェクトタイプ](signerlist.html)と[`SignerListSet`トランザクションタイプ](signerlistset.html)を作成します。省略可能な`Signers`フィールドをすべてのトランザクションタイプに追加します。一部のトランザクション結果コードを変更します。
 
@@ -642,9 +862,12 @@ SignerListを持つアドレスは、レギュラーキーが定義されてい�
 ## MultiSignReserve
 [MultiSignReserve]: #multisignreserve
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D | 有効 |
+| Amendment    | MultiSignReserve |
+|:-------------|:-----------------|
+| Amendment ID | 586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 XRP Ledgerアカウントが[マルチ署名](multi-signing.html) SignerListを所有する場合、アカウントに加算される[所有者準備金](reserves.html#所有者準備金)を削減します。
 
@@ -656,9 +879,12 @@ XRP Ledgerアカウントが[マルチ署名](multi-signing.html) SignerListを�
 ## NegativeUNL
 [NegativeUNL]: #negativeunl
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 | 有効 |
+| Amendment    | NegativeUNL |
+|:-------------|:------------|
+| Amendment ID | B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate amendment description -->
 Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.
@@ -667,9 +893,12 @@ Implements a "Negative UNL" system, where the network can track which validators
 ## NonFungibleTokensV1
 [NonFungibleTokensV1]: #nonfungibletokensv1
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87 | 廃止 |
+| Amendment    | NonFungibleTokensV1 |
+|:-------------|:--------------------|
+| Amendment ID | 3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87 |
+| ステータス     | 廃止 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate description -->
 Adds native support for non-fungible tokens. Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
@@ -697,9 +926,12 @@ It also modifies the [AccountSet transaction][] type to allow you to set the `NF
 ## NonFungibleTokensV1_1
 [NonFungibleTokensV1_1]: #nonfungibletokensv1_1
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627 | 有効 |
+| Amendment    | NonFungibleTokensV1_1 |
+|:-------------|:----------------------|
+| Amendment ID | 32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate description -->
 Adds native support for [non-fungible tokens](non-fungible-tokens.html), including fixes to several issues that were discovered after [NonFungibleTokensV1][].
@@ -721,19 +953,25 @@ It has no other effects.
 | Amendment ID                                                     | ステータス |
 |:-----------------------------------------------------------------|:---------|
 | 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 | 開発中 |
+| ステータス     | 開発中 |
+| デフォルトの投票(最新の安定版) | 非該当 |
+| Amendment前の機能は廃止? | いいえ |
 
 [OfferCreate](offercreate.html)トランザクションタイプと[Payment](payment.html)トランザクションタイプで、[送金手数料](transfer-fees.html)の計算方法に相違があるのを修正します。この修正を行わない場合、オファーがオファープレースメントで実行される際にイシュアンスの保有者が送金手数料を支払いますが、トランザクションの最初の送信者は支払い処理の過程で実行されるオファーの送金手数料を支払います。この修正により、オファーがPaymentトランザクションまたはOfferCreateトランザクションの一部として実行されるかどうかにかかわらず、イシュアンスの保有者が常に送金手数料を支払います。支払い以外のオファー処理は影響を受けません。
 
 この修正については、[Flow Amendment](#flow)を有効にする必要があります。
 
-**注記:** この修正の未完成のバージョンがv0.33.0で導入されましたが、v0.80.0で削除されました。（適用されませんでした。）Rippleは、コードが十分に安定してからAmendmentを再度追加する予定です。
+**注記:** 不完全なバージョンのこのAmendmentについては、v0.33.0で導入され、v0.80.0で削除されました（有効となったことはありません）。
 
 ## PayChan
 [PayChan]: #paychan
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647 | 有効 |
+| Amendment    | PayChan |
+|:-------------|:--------|
+| Amendment ID | 08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 XRPの「Payment Channel」を作成します。Payment Channelは、2名の当事者間で一方向の繰り返しの支払い、またはそれに伴う一時的な貸付を容易に行えるようにするツールです。Rippleは、この機能が[Interledger Protocol](https://interledger.org/)に役立つと期待しています。ある当事者がPayment Channelを作成し、そのチャンネル内に有効期限を事前に設定してXRPをいくらか確保します。次に、レジャー外部の安全な通信を介して、送信者は「クレーム」メッセージを受信者に送信できます。受信者は有効期限の終了前にクレームメッセージを清算することも、支払いが必要ない場合は清算しないことも選択できます。受信者は、クレームを実際にネットワークに分散させてコンセンサスプロセスで清算されるのを待たなくとも、請求を個々に確認してから、有効期限内であれば多数の少額クレームをまとめて後で清算することができます。
 
@@ -744,9 +982,12 @@ XRPの「Payment Channel」を作成します。Payment Channelは、2名の当�
 ## RequireFullyCanonicalSig
 [RequireFullyCanonicalSig]: #requirefullycanonicalsig
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC | 有効 |
+| Amendment    | RequireFullyCanonicalSig |
+|:-------------|:-------------------------|
+| Amendment ID | 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 <!-- TODO: translate amendment description -->
 Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of only protecting transactions with the [tfFullyCanonicalSig flag](transaction-common-fields.html#グローバルフラグ) enabled.
@@ -761,9 +1002,11 @@ For more information, see [`rippled` issue #3042](https://github.com/ripple/ripp
 ## SHAMapV2
 [SHAMapV2]: #shamapv2
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 | 禁止 |
+| Amendment    | SHAMapV2 |
+|:-------------|:---------|
+| Amendment ID | C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 |
+| ステータス     | 廃止 |
+| Amendment前の機能は廃止? | いいえ |
 
 `rippled`がレジャーを表示する際に使用するハッシュツリー構造を変更します。新しい構造は以前のバージョンよりもコンパクトで効率的です。この修正はレジャーハッシュの計算方法が変わりますが、その他にユーザーに与える影響はありません。
 
@@ -772,9 +1015,12 @@ For more information, see [`rippled` issue #3042](https://github.com/ripple/ripp
 ## SortedDirectories
 [SortedDirectories]: #sorteddirectories
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E | 有効 |
+| Amendment    | SortedDirectories |
+|:-------------|:------------------|
+| Amendment ID | CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 [DirectoryNodeレジャーオブジェクト](directorynode.html)内の項目をソートして、削除されるべき所有者ディレクトリのページが場合によっては削除されないというバグを修正します。
 
@@ -783,9 +1029,11 @@ For more information, see [`rippled` issue #3042](https://github.com/ripple/ripp
 ## SusPay
 [SusPay]: #suspay
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 | 禁止 |
+| Amendment    | SusPay |
+|:-------------|:-------|
+| Amendment ID | DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 |
+| ステータス     | 廃止 |
+| Amendment前の機能は廃止? | はい |
 
 この修正は、[Escrow](escrow-object.html) Amendmentに置き換えられました。
 
@@ -793,9 +1041,12 @@ For more information, see [`rippled` issue #3042](https://github.com/ripple/ripp
 ## TicketBatch
 [TicketBatch]: #ticketbatch
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C | 有効 |
+| Amendment    | TicketBatch |
+|:-------------|:------------|
+| Amendment ID | 955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 <!-- TODO: translate amendment description -->
 This amendment adds [Tickets](tickets.html) as a way of sending transactions out of the typical sequence number order.
@@ -806,18 +1057,23 @@ Standards Draft: [XLS-13d](https://github.com/XRPLF/XRPL-Standards/issues/16).
 ## Tickets
 [Tickets]: #tickets
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 | 禁止 |
+| Amendment    | Tickets |
+|:-------------|:--------|
+| Amendment ID | C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 |
+| ステータス     | 廃止 |
+| Amendment前の機能は廃止? | いいえ |
 
 この修正は、[TicketBatch][] Amendmentに置き換えられました。
 
 ## TickSize
 [TickSize]: #ticksize
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164 | 有効 |
+| Amendment    | TickSize |
+|:-------------|:---------|
+| Amendment ID | 532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 オーダーブック内で[オファー](offers.html#オファーのライフサイクル)をランク付けする方法を変更して、通貨発行者がオファーを為替レートでランク付けする際に考慮する有効桁数を設定できるようにします。この修正により、オファーの交換レートが設定された有効桁数に丸められるため、同じ交換レートを持つオファーが増加します。この修正の目的は、以前のオファーよりもランク付けを高くするには、価格面で意味のある改善をしなければならないようにすることです。主要な発行者がこれを採用すれば、既存のオファーよりわずかなパーセンテージだけ上回るオファーでレジャーを攻撃しようとするスパムが低減します。また、よりバラツキの少ない為替レートでオファーをグループ化できるため、レジャー内のオーダーブックを効率的に保管できます。
 
@@ -826,13 +1082,35 @@ Standards Draft: [XLS-13d](https://github.com/XRPLF/XRPL-Standards/issues/16).
 ## TrustSetAuth
 [TrustSetAuth]: #trustsetauth
 
-| Amendment ID                                                     | ステータス |
-|:-----------------------------------------------------------------|:---------|
-| 6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC | 有効 |
+| Amendment    | TrustSetAuth |
+|:-------------|:-------------|
+| Amendment ID | 6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | はい |
 
 [承認されたトラストライン](authorized-trust-lines.html)を使用する場合に、会計関係の事前承認（ゼロバランストラストライン）を許可します。
 
 この修正が適用されれば、[`tfSetfAuth`を有効にした](trustset.html#trustsetのフラグ)`TrustSet`トランザクションにおいて、`RippleState`ノードの他のすべての値をデフォルト状態にしたままでも、新しい[`RippleState`レジャーオブジェクト](ripplestate.html)を作成できます。新しい`RippleState`ノードでは、トランザクションの送信者が低いノードと見なされるか高いノードと見なされるかに応じて、[`lsfLowAuth`フラグまたは`lsfHighAuth`フラグ](ripplestate.html#ripplestateのフラグ)が有効になります。トランザクションの送信者は、[asfRequireAuthフラグを有効](accountset.html#accountsetのフラグ)にして[AccountSetトランザクション](accountset.html)を送信することで、事前に[`lsfRequireAuth`](accountroot.html#accountrootのフラグ)を有効にしておく必要があります。
+
+## XRPFees
+[XRPFees]: #xrpfees
+
+| Amendment    | XRPFees |
+|:-------------|:--------|
+| Amendment ID | 93E516234E35E08CA689FA33A6D38E103881F8DCB53023F728C307AA89D515A7 |
+| ステータス     | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+Simplifies transaction cost calculations to use XRP directly rather than calculating indirectly in "fee units" and translating the results to XRP. Updates all instances of "fee units" in the protocol and ledger data to be drops of XRP instead, including:
+
+- Updates the Fee Voting protocol to use drops of XRP
+- Updates the FeeSettings ledger entry type. Replaces `BaseFee`, `ReferenceFeeUnits`, `ReserveBase`, and `ReserveIncrement` fields with `BaseFeeDrops`, `ReserveBaseDrops`, and `ReserveIncrementDrops`.
+- Updates the SetFee transaction type. Replaces `BaseFee`, `ReferenceFeeUnits`, `ReserveBase`, `ReserveIncrement` fields with `BaseFeeDrops`, `ReserveBaseDrops`, `ReserveIncrementDrops`.
+
+Without this amendment, the format of the transaction and ledger entry are the same.
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
