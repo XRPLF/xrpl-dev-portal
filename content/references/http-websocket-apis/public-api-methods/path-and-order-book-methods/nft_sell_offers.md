@@ -44,7 +44,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](websocket-api-tool.html?server=wss%3A%2F%2Fxls20-sandbox.rippletest.net%3A51233%2F#nft_sell_offers)
+[Try it! >](websocket-api-tool.html#nft_sell_offers)
 
 The request includes the following parameters:
 
