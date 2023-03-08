@@ -4,6 +4,11 @@ const xrpl = require("xrpl")
 
 const testnetUrl = "wss://s.altnet.rippletest.net:51233"
 
+/**
+ * This function creates our application window
+ *
+ * @returns {Electron.CrossProcessExports.BrowserWindow}
+ */
 const createWindow = () => {
 
     const appWindow = new BrowserWindow({
@@ -19,6 +24,12 @@ const createWindow = () => {
     return appWindow
 }
 
+/**
+ * This function creates a XRPL client, subscribes to 'ledger' events from the XRPL and broadcasts those by
+ * dispatching the 'update-ledger-data' event which will be picked up by the frontend
+ *
+ * @returns {Promise<void>}
+ */
 const main = async () => {
     const appWindow = createWindow()
 
@@ -26,15 +37,19 @@ const main = async () => {
 
     await client.connect()
 
+    // Subscribe client to 'ledger' event on the XRPL
     await client.request({
         "command": "subscribe",
         "streams": ["ledger"]
     })
 
+    // Dispatch 'update-ledger-data' event locally
     client.on("ledgerClosed", async (ledger) => {
         appWindow.webContents.send('update-ledger-data', ledger)
     })
 }
+
+// For purposes of this tutorial we can safely ignore the following code
 
 app.whenReady().then(() => {
     main()
