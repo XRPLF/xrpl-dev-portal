@@ -422,8 +422,9 @@ Get the standby address and connect to the ledger.
 
 ```
   const wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
-  results = 'Connecting to ' + getNet() + '...'
+  let net = getNet()
+  const client = new xrpl.Client(net)
+  results = 'Connecting to ' + net + '...'
     document.getElementById('standbyResultField').value = results
   await client.connect()
   results +=  "\nConnected. Cancelling offer..."
@@ -945,8 +946,9 @@ async function oPcreateBuyOffer() {
 async function oPcancelOffer() {
 
   const wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
-  results = 'Connecting to ' + getNet() + '...'
+  let net = getNet()
+  const client = new xrpl.Client(net)
+  results = 'Connecting to ' + net + '...'
   document.getElementById('operationalResultField').value = results
   await client.connect()
   results +=  "\nConnected. Cancelling offer..."
