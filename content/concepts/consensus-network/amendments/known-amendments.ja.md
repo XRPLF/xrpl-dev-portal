@@ -88,11 +88,11 @@ labels:
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-Adjusts the [CheckCash transaction][] so that cashing a [Check](checks.html) for an issued token automatically creates a [trust line](trust-lines-and-issuing.html) to hold the token. The new behavior is similar to how the [OfferCreate transaction][] behaves when users purchase tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)
+[CheckCashトランザクション][]を修正し、[Check](checks.html)を現金化して発行されたトークンを入手すると、トークンを保持する[トラストライン](trust-lines-and-issuing.html)を自動的に作成するようにしました。この新しい動作は、ユーザーが分散型取引所でトークンを購入する際の[OfferCreateトランザクション][]の動作に似ています。自動的に作成されたトラストラインには限度額0が設定されています。これにより、Checkでトークンを受け取る前にトラストラインを設定するという設定ステップがなくなります。(XRPを送信するCheckは影響を受けません)。
 
-Without this amendment, users have to separately send a [TrustSet transaction][] before they can cash a Check for an issued token.
+この修正を適用しない場合、ユーザーは、Checkを発行トークンと交換する前に、別途[TrustSetトランザクション][]を送信する必要があります。
 
-This amendment does not change the fact that you cannot force anyone to hold tokens they don't want in the XRP Ledger.
+この修正は、XRP Ledgerにおいて不要なトークンを保持することを誰にも強制できないという原則を変えるものではありません。
 
 
 ## Checks
@@ -123,7 +123,7 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | はい |
 
-この修正は有効ですが、[SusPay](#suspay) Amendmentも有効にならなければ効果がありません。RippleではSusPayを有効にする予定はありません。代わりに、Crypto-Conditionsを[Escrow](#escrow) Amendmentに組み込む予定です。
+この修正は有効ですが、[SusPay](#suspay) Amendmentも有効でない限り、何の影響も及ぼしません。SusPayの修正は、[Escrow](#escrow)の修正に置き換えられたため、CryptoConditionsの修正は効力を持ちません。
 
 ## CryptoConditionsSuite
 [CryptoConditionsSuite]: #cryptoconditionssuite
@@ -135,11 +135,9 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-[EscrowCreate][]トランザクションと[EscrowFinish][]トランザクションで使用するために、公式の[Crypto-Conditions仕様](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03)から数種類のCrypto-Conditionsを導入します。この修正を行わない場合、サポートされるのはPREIMAGE-SHA-256タイプのみです。
+[EscrowCreate][]トランザクションと[EscrowFinish][]トランザクションで使用するために、公式の[Crypto-Conditions仕様](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03)から数種類のCrypto-Conditionsを導入するものでした。
 
-<!-- TODO: update translated description to clarify that this amendment is obsolete. -->
-
-**注意:** この修正は[開発中](https://github.com/ripple/rippled/pull/2170)です。`rippled`v0.60.0以降のバージョンでは、完全な機能は導入されません。
+しかし、この修正は実装が完了する前に`rippled` v0.60.0に追加されました。その結果、このAmendment IDは、ほとんど何もしない不完全なコードを参照することになりました。他のcrypto-conditionsのサポートを追加するために既存のAmendmentを変更すると、すでにリリースされたソフトウェアにある古いバージョンの修正案との衝突が発生します。将来のリリースで追加の暗号条件のサポートが追加される場合、新しい別のAmendment IDを使用する必要があります。
 
 ## DeletableAccounts
 [DeletableAccounts]: #deletableaccounts
@@ -202,18 +200,18 @@ This amendment does not change the fact that you cannot force anyone to hold tok
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-Provides options to categorically block incoming Checks, Payment Channels, NFTokenOffers, and trust lines from reaching your account. When an account has these options enabled, other accounts cannot create those types of objects with the account as the destination.
+Checks、Payment Channels、NFTokenOffer、およびトラストラインを自分のアカウントが受信するのを個別にブロックするためのオプションを提供します。アカウントでこれらのオプションを有効にすると、他のアカウントは、そのアカウントを宛先としてその種類のオブジェクトを作成することができなくなります。
 
-Adds 4 new AccountSet Flags and modifies the AccountSet transaction to allow enabling and disabling them:
+4つの新しいAccountSet Flagsを追加し、AccountSetトランザクションで有効化および無効化できるように変更します。
 
 - asfDisallowIncomingCheck
 - asfDisallowIncomingPayChan
 - asfDisallowIncomingNFTOffer
 - asfDisallowIncomingTrustline
 
-Changes transaction processing to check the status of those flags before creating the corresponding type of object. If the destination account has the flag enabled, the transaction fails with the error code `tecNO_PERMISSION`.
+対応するオブジェクトタイプを作成する前に、これらのフラグの状態をチェックするようにトランザクション処理を変更します。宛先アカウントがそのフラグを有効にしている場合、トランザクションはエラーコード`tecNO_PERMISSION`で失敗します。
 
-Without this amendment, any account can create these objects with any object as the destination; while this is usually harmless, it can block an account from later being deleted, and may also be used as part of scams.
+この修正が適用されない場合、どのアカウントでも、任意のオブジェクトの宛先としてこれらのオブジェクトを作成することができます。これは通常問題はないものの、後でアカウントを削除する際に妨げになったり、詐欺の一部として使用される可能性があります。
 
 
 ## EnforceInvariants
@@ -226,7 +224,7 @@ Without this amendment, any account can create these objects with any object as 
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | はい |
 
-トランザクション処理にサニティーチェックを追加して、所定の条件が常に満たされるようにします。これにより、トランザクション処理時のバグを防ぐ独立した追加のレイヤーができます。このレイヤーがなければXRP Ledgerが脆弱なものとなり悪用される可能性が生じます。Rippleは、Amendmentを追加せずに、将来バージョンの`rippled`に不変性チェックをさらに追加する予定です。
+トランザクション処理にサニティーチェックを追加して、所定の条件が常に満たされるようにします。これにより、トランザクション処理時のバグを防ぐ独立した追加のレイヤーができます。このレイヤーがなければXRP Ledgerが脆弱なものとなり悪用される可能性が生じます。`rippled`の将来バージョンでは、Amendmentを追加せずに不変性チェックをさらに追加する予定です。
 
 2つの新しいトランザクションエラーコード、`tecINVARIANT_FAILED`と`tefINVARIANT_FAILED`を導入します。新しいチェックを追加するためにトランザクション処理を変更します。
 
@@ -250,7 +248,7 @@ Without this amendment, any account can create these objects with any object as 
 
 [SusPay](#suspay)および[CryptoConditions](#cryptoconditions) Amendmentを置き換えます。
 
-XRP Ledger内のEscrowにXRPの「停止された支払い」機能を提供します。これには[Interledger Protocol Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02)のサポートが含まれます。停止された支払い用のレジャーオブジェクトタイプと、停止された支払いを作成、実行、取り消すためのトランザクションタイプを新規作成します。
+XRP Ledger内のEscrowにXRPの「仮払い」機能を提供します。これには[Interledger Protocol Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02)のサポートが含まれます。仮払い用のレジャーオブジェクトタイプと、仮払いを作成、実行、取り消すためのトランザクションタイプを新規作成します。
 
 
 ## ExpandedSignerList
@@ -263,12 +261,11 @@ XRP Ledger内のEscrowにXRPの「停止された支払い」機能を提供し�
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate description -->
-This amendment expands the maximum signer list size and allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).
+この修正により、署名者リストの最大サイズが拡大され、各署名者にオプションのデータを関連付けることができるようになりました。追加データは署名者を特定するために使用でき、スマートコントラクトや、大規模な組織で誰が鍵を管理しているかを特定するのに便利です。例えば、IPv6アドレスやハードウェアセキュリティモジュール（HSM）の識別子を保存することができます。
 
-Without this amendment, the maximum signer list size is 8 signers, and each signer has exactly two fields, `Account` and `SignerWeight`.
+この修正が適用されない場合、署名者リストの最大サイズは8人で、各署名者には`Account`と`SignerWeight`の2つのフィールドが存在します。
 
-With this amendment, the maximum [SignerList object][] size is 32 entries. Additionally, each `SignerEntry` object can contain an optional 256-bit `WalletLocator` field containing arbitrary data. This amendment changes the [SignerListSet transaction][] accordingly.
+この修正により、[SignerListオブジェクト][]の最大サイズは32エントリになります。さらに、各`SignerEntry`オブジェクトは、任意のデータを含む256ビットの`WalletLocator`フィールドを含むことができます。この修正により、[SignerListSetトランザクション][]もそれに応じて変更されます。
 
 ## FeeEscalation
 [FeeEscalation]: #feeescalation
@@ -280,7 +277,7 @@ With this amendment, the maximum [SignerList object][] size is 32 entries. Addit
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | はい |
 
-提案されたトランザクションに[トランザクションコスト](transaction-cost.html)を適用する方法を変更します。トランザクションコストの高いトランザクションの優先順位が高くなるよう、コンセンサスプロセスを変更します。 <!-- STYLE_OVERRIDE: prioritize -->
+提案されたトランザクションに[トランザクションコスト](transaction-cost.html)を適用する方法を変更します。トランザクションコストの高いトランザクションの優先順位が高くなるよう、コンセンサスプロセスを変更します。
 
 この修正により、前のコンセンサスラウンドに含められなかったトランザクションに固定サイズのトランザクションキューが導入されます。コンセンサスネットワーク内の`rippled`サーバーに重い負荷が課されている場合、トランザクションコストの低いトランザクションは後のレジャーのキューに入れられます。各コンセンサスラウンドでは、トランザクションコスト（`Fee`値）が高いキューのトランザクションが優先され、コンセンサスネットワークで処理できる限りのトランザクションが含められます。トランザクションキューが一杯になると、トランザクションコストが最も低いトランザクションから順にキューから完全に除外されます。
 
@@ -482,12 +479,11 @@ fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`A
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate amendment description -->
-Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.
+循環パスの検出時に、特定のXRPエンドポイントがチェックされない不具合を修正します。
 
-Without this amendment, it is possible to have a [payment path](paths.html) where the input to the path is XRP, and an intermediate path step also outputs XRP. This is a "loop" payment, and the payment engine disallows such paths because they can have different results when executed forward compared to backwards.
+この修正が適用されない場合、[支払いパス](paths.html)の入力がXRPで、パスの中間ステップでもXRPが出力されるようなパスが存在し得ます。これは「ループ」決済であり、前方と後方で実行すると異なる結果になる可能性があるため、決済エンジンはこのようなパスを禁止しています。
 
-With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](tem-codes.html) instead.
+この修正が適用された場合、これらの支払いは、代わりに[結果コード`temBAD_PATH_LOOP`](tem-codes.html)で失敗します。
 
 
 ## fixAmendmentMajorityCalc
@@ -500,10 +496,9 @@ With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result cod
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate amendment description -->
-Fixes a bug that could cause an amendment to achieve a majority and later activate with support of slightly less than 80% of trusted validators due to rounding semantics.
+丸め処理の影響により、Amendmentが過半数を達成した後、信頼できるバリデーターの80%にわずかに満たない賛成で有効になることがあるバグを修正しました。
 
-Without this amendment, the minimum threshold for amendment activation is any value that rounds to 204/256 of trusted validators, which depends on the number of trusted validators at the time. For example, an amendment could activate with exactly 28 out of 36 validators (approximately 77.8%). With this amendment, the actual minimum number of validators needed is never less than 80% of trusted validators.
+この修正が適用されない場合、Amendmentが有効になるための最小閾値は、信頼できるバリデーターの204/256を丸めた値であり、これはその時の信頼できるバリデーターの数に依存します。例えば、36人中28人(約77.8%)のバリデータがあれば、補正は有効になりえます。この修正により、実際に必要な最小限のバリデーターの数は、信頼できるバリデーターの80％を下回ることはありません。
 
 
 ## fixCheckThreading
@@ -547,10 +542,9 @@ Checksトランザクションがアカウントのメタデータに影響を�
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate description -->
-This amendment fixes an off-by-one error that occurred in some corner cases when determining which `NFTokenPage` a `NFToken` object belongs on. It also adjusts the constraints of `NFTokenPage` invariant checks, so that certain error cases fail with a suitable error code such as `tecNO_SUITABLE_TOKEN_PAGE` instead of failing with a `tecINVARIANT_FAILED` error code.
+この修正では、`NFToken`オブジェクトがどの`NFTokenPage`に属するかを判断する際に、いくつかの特定のケースで発生した境界値判定エラーが修正されました。また、`NFTokenPage`の不変性チェックの制約を調整し、特定のエラーケースが`tecINVARIANT_FAILED`エラーコードで失敗する代わりに、`tecNO_SUITABLE_TOKEN_PAGE`などの適切なエラーコードで失敗するようにしました。
 
-This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. This amendment is obsolete because its effects are included as part of [NonFungibleTokensV1_1][].
+この修正は、[NonFungibleTokensV1][] Amendmentが有効でない限り、何の効果もありません。この修正は、その効果が[NonFungibleTokensV1_1][]の一部として含まれているため、廃止されました。
 
 
 ## fixNFTokenNegOffer
@@ -563,10 +557,9 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate description -->
-This amendment fixes a bug in the [NonFungibleTokensV1][] amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell an NFT for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.
+この修正は、[NonFungibleTokensV1][] Amendmentのコードにおいて、NFTが負の金額で取引されてしまうバグを修正したものです。この修正が適用されない場合、ユーザーは負の金額でNFTの売買を申し込むことができ、その結果、NFTを「買う」人は「売る」人からお金も受け取ることになります。この修正により、マイナスの金額でのNFTのオファーは無効とみなされます。
 
-This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. This amendment is obsolete because its effects are included as part of [NonFungibleTokensV1_1][].
+この修正は、[NonFungibleTokensV1][] Amendmentが有効でない限り、何の影響もありません。この修正は、その効果が[NonFungibleTokensV1_1][]の一部として含まれているため、廃止されました。
 
 
 ## fixNonFungibleTokensV1_2
@@ -579,35 +572,35 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-Amendment `fixNonFungibleTokensV1_2` is a combination of bug fixes that have been individually merged into feature/nft-fixes through the pull request process:
+`fixNonFungibleTokensV1_2` Amendment は、プルリクエストプロセスを通じて個別に feature/nft-fixes にマージされたバグ修正の組み合わせです。
 
-**Fix Unburnable NFT**
+**バーン不可能なNFTの修正**
 
-Currently, an NFT cannot be burned when it has over 500 offers. To remove this restriction, this change deletes exactly 500 offers upon burning the NFT, leaving any remaining offers untouched. This addresses a concern where the issuer account cannot burn an NFT that has enabled the `lsfBurnable` flag, due to the exceeding number of offers.
+現在、NFTは500以上のオファーがあるとバーンすることができません。この制限を取り除くため、この修正では、NFTを焼却する際にちょうど500個のオファーを削除し、残りのオファーはそのままにします。これにより、発行者アカウントが`lsfBurnable`フラグを有効にしたNFTを、オファー数が多いために焼却できない問題が解決されます。
 
-See [PR 4346](https://github.com/XRPLF/rippled/pull/4346).
+参考: [PR 4346](https://github.com/XRPLF/rippled/pull/4346).
 
-**Fix 3 Issues Around NFToken Offer Acceptance**
+**NFTokenのオファー承認に関する3つの問題の修正**
 
-Issue 1: Resolve situation where an account is unable to broker a deal due to an erroneous insufficient funds condition.
+問題1：アカウントが資金不足という誤った条件により、取引を仲介できない問題を解決する。
 
-Issue 2: Resolve situation where a buyer has insufficient funds to cover a transfer fee on the account.
+問題2：買い手がアカウントの送金手数料をカバーするための資金が不足している問題を解決する。
 
-Issue 3: Enable currency issuers to buy and sell NFTs using their own currency.
+問題3：トークン発行者が自身のトークンでNFTを売買できるようにする。
 
-See [PR 4380](https://github.com/XRPLF/rippled/pull/4380).
+参考: [PR 4380](https://github.com/XRPLF/rippled/pull/4380).
 
-**Prevent Brokered Sale of NFToken to Owner (fix #4374)**
+**NFTokenの所有者への売却が仲介されないようにする （#4374を修正）**
 
-This fix prevents a broker from selling an NFT to the account that already owns the token.
+この修正により、ブローカーが既にトークンを保有しているアカウントに対してNFTを販売することができなくなります。
 
-See [Issue 4374](https://github.com/XRPLF/rippled/issues/4374).
+参考: [Issue 4374](https://github.com/XRPLF/rippled/issues/4374).
 
-**Only allow the destination to settle an NFT offer through brokerage (fix #4373)**
+**宛先のみがNFTオファーのブローカー決済可能とする (#4373を修正)**
 
-If you set a destination on an NFT offer, only that destination can settle through brokerage (fix #4373).
+NFTオファーに宛先を設定した場合、その宛先のみが仲介で決済できるように修正します。
 
-See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
+参考: [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
 
 
 ## fixPayChanRecipientOwnerDir
@@ -620,9 +613,9 @@ See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-[PaymentChannelCreateトランザクション][]タイプを変更し、受取人の[所有者ディレクトリー](directorynode.html)に新しい[Payment Channel](payment-channels.html)が追加されるようにします。この修正を適用しない場合、新しいPayment Channelは送金者の所有者ディレクトリーにのみ追加されます。この修正を有効にする場合、新しく作成したPayment Channelは両者の所有者ディレクトリーに追加されます。既存のPayment Channelは変更されません。
+[PaymentChannelCreateトランザクション][]タイプを変更し、受取人の[所有者ディレクトリ](directorynode.html)に新しい[Payment Channel](payment-channels.html)が追加されるようにします。この修正を適用しない場合、新しいPayment Channelは送金者の所有者ディレクトリーにのみ追加されます。この修正を有効にする場合、新しく作成したPayment Channelは両者の所有者ディレクトリーに追加されます。既存のPayment Channelは変更されません。
 
-この変更により、受取人によるPayment Channelの検索が容易になります。また、アカウントがオープンPayment Channelの受取人だった場合に、そのアカウントが削除されないようにします（ただし、この修正の前に作成されたチャンネルを除きます）。
+この修正により、受取人によるPayment Channelの検索が容易になります。また、アカウントがオープンPayment Channelの受取人だった場合に、そのアカウントが削除されないようにします（ただし、この修正の前に作成されたチャンネルを除きます）。
 
 
 ## fixQualityUpperBound
@@ -635,10 +628,9 @@ See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate amendment description -->
-Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.
+クロスカレンシー決済における個々のステップの入出力比を計算するための使用されていないコードのバグを修正する。
 
-This amendment has no known impact on transaction processing.
+この修正は、取引処理に影響を及ぼさないことが確認されています。
 
 
 ## fixRemoveNFTokenAutoTrustLine
@@ -651,17 +643,15 @@ This amendment has no known impact on transaction processing.
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate amendment description -->
+このフラグを使用した発行者に対するDoS攻撃から保護するために、[非代替性トークン](non-fungible-tokens.html)の`tfTrustLine`設定を削除します。このフラグを有効にすると、`tfTrustLine`フラグを有効にした[NFTokenMintトランザクション](nftokenmint.html)は無効とみなされ、コンセンサスによって検証されません。したがって、`NFToken`オブジェクトはこのフラグを使用してミントをすることができません。
 
-Removes the `tfTrustLine` setting on [non-fungible tokens](non-fungible-tokens.html), to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a [NFTokenMint transaction](nftokenmint.html) with the `tfTrustLine` flag enabled is considered invalid and cannot be confirmed by consensus; therefore, `NFToken` objects cannot be minted with the flag.
+この修正が適用されない場合、攻撃者は意味のない新しい代替可能トークンを作り、そのトークンとNFTを売買することで、発行者に紐づく多数の無駄なトラストラインを作り、発行者の準備金を増加させることができます。
 
-Without this amendment, an attacker could create new, meaningless fungible tokens and sell an NFT back and forth for those tokens, creating numerous useless trust lines tied to the issuer and increasing the issuer's reserve requirement. 
+この修正は、すでにミントされた`NFToken`オブジェクトのコードを変更するものではありません。NonFungibleTokensV1_1がすでに有効になっているテストネットワークでは、`tfTrustLine`フラグが有効なNFTokenをすでにミントしている発行者は、fixRemoveNFTokenAutoTrustLine Amendmentの有効後も脆弱性があることを意味しています。
 
-This amendment does not change the code for `NFToken` objects that have already been minted. On test networks that already have NonFungibleTokensV1_1 enabled, this means that issuers who have already minted NFTokens with the `tfTrustLine` flag enabled are still vulnerable to the exploit even after the fixRemoveNFTokenAutoTrustLine amendment.
+この修正は、[NonFungibleTokensV1][]または [NonFungibleTokensV1_1][]が有効になっていない限り、影響を及ぼしません。
 
-This amendment has no effect unless [NonFungibleTokensV1][] or [NonFungibleTokensV1_1][] is also enabled.
-
-To protect issuers, this amendment should be enabled _before_ [NonFungibleTokensV1][] or [NonFungibleTokensV1_1][].
+発行者を保護するため、このamendmentは[NonFungibleTokensV1][]または[NonFungibleTokensV1_1][]の前に有効にする必要があります。
 
 
 ## fixRmSmallIncreasedQOffers
@@ -674,12 +664,11 @@ To protect issuers, this amendment should be enabled _before_ [NonFungibleTokens
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate amendment description -->
-This amendment fixes an issue where certain Offers, when almost completely consumed, have a much lower exchange rate than when they were first placed. This occurs when the remaining amounts of one or both assets are so small that they cannot be rounded to a similar ratio as when the Offer was placed.
+この修正は、特定のオファーがほとんど約定された状態で、そのオファーが最初に配置されたときよりも取引レートが大幅に悪化する問題を修正するものです。これは、片方または両方の資産の残額が非常に小さいため、オファーが置かれたときと同様の比率に丸めることができない場合に起こるものです。
 
-Without this amendment, an Offer in this state blocks Offers with better rates deeper in the order book and causes some payments and Offers to fail when they could have succeeded.
+この修正が適用されない場合、この状態でのオファーは、よりレートの良いオファーがより深いオーダーブックでブロックされ、本来成功するはずの支払いやオファーが失敗することがあります。
 
-With this amendment, payments and trades can remove these types of Offers the same way that transactions normally remove fully consumed or unfunded Offers.
+この修正により、決済および取引は、通常、トランザクションが約定済みまたは未約定のオファーを削除するのと同じ方法で、これらのタイプのオファーを削除できるようになります。
 
 
 ## fixSTAmountCanonicalize
@@ -692,8 +681,7 @@ With this amendment, payments and trades can remove these types of Offers the sa
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate amendment description -->
-Fixes an edge case in [deserializing](serialization.html) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.
+Amount型フィールドの[デシリアライズ](serialization.html)におけるエッジケースの問題を修正しました。この修正が適用されない場合、一部の稀なケースで、この操作により、デシリアライズ中に有効なシリアライズされた金額がオーバーフローしてしまう可能性がありました。この修正により、XRP Ledgerはより迅速にエラー状態を検出し、問題となるようなケースを排除します。
 
 
 ## fixTakerDryOfferRemoval
@@ -723,10 +711,9 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate amendment description -->
-This amendment removes two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment becomes enabled, it deletes trust lines with the IDs `2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1` and `326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A` if they exist. After doing so, the amendment does nothing else.
+この修正により、古いバグにより作成されたアカウントから自身へのトラストラインが2つ削除されます（いずれも2013-05-07のもの）。この修正が有効になると、IDが`2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1`と`326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A`のトラストラインが存在していれば削除します。削除後、この修正は他に何もしません。
 
-On test networks that do not have these trust lines, the amendment has no effect.
+これらのトラストラインを持たないテストネットワークでは、この修正はは何の影響も及ぼしません。
 
 
 ## fixUniversalNumber
@@ -739,9 +726,9 @@ On test networks that do not have these trust lines, the amendment has no effect
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-Simplifies and unifies the code for decimal floating point math. In some cases, this provides slightly better accuracy than the previous code, resulting in calculations whose least significant digits are different than when calculated with the previous code. The different results may cause other edge case differences where precise calculations are used, such as ranking of Offers or processing of payments that use several different paths.
 
-Without this amendment, the code continues to use separate calculations for `STAmount` and `IOUAmount` objects, and [Automated Market Maker (XLS-30d)](https://github.com/XRPLF/XRPL-Standards/discussions/78) uses a third class for calculations.
+10進浮動小数点演算のコードを簡略化し、統合します。場合によっては、以前のコードよりも精度が若干向上し、最下位桁が以前のコードで計算したときと異なる計算結果になることがあります。この計算結果の違いにより、オファーのランキングや複数の異なるパスを使用する支払い処理など、精密な計算が使用される他のエッジケースにおいて違いが生じる場合があります。
+この修正が適用されない場合、コードは引き続き`STAmount`と`IOUAmount`オブジェクトに対して別々の計算を使用し、[自動マーケットメーカー(XLS-30d)](https://github.com/XRPLF/XRPL-Standards/discussions/78)は計算のために新しい3つめの計算方法を使用します。
 
 
 ## Flow
@@ -785,10 +772,9 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate amendment description -->
-Improves the payment engine's calculations for finding the most cost-efficient way to execute a cross-currency transaction.
+決済エンジンの計算を改善し、最もコスト効率の良いクロスカレンシー取引の実行方法を見つけます。
 
-Without this change, the engine simulates a payment through each possible path to calculate the quality (ratio of input to output) of each path. With this change, the engine calculates the theoretical quality of each path without simulating a full payment. With this amendment, the payment engine executes some cross-currency payments much faster, is able to find the most cost-efficient path in more cases, and can enable some payments to succeed in certain conditions where the old payment engine would fail to find enough liquidity.
+この修正が適用されない場合、エンジンは可能な各パスを介して支払いをシミュレートし、各パスの品質（入力と出力の比率）を計算します。この修正により、エンジンは完全な支払いをシミュレートすることなく、各パスの理論的な品質を計算します。この変更により、決済エンジンは一部のクロスカレンシー決済をより速く実行し、より多くのケースで最も費用対効果の高いパスを見つけることができるようになり、従来の決済エンジンでは十分な流動性を見つけることができなかった特定の条件でも、一部の決済を成功させることができるようになります。
 
 
 ## FlowV2
@@ -812,9 +798,7 @@ Without this change, the engine simulates a payment through each possible path t
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate amendment description -->
-Allows validators to include a new optional field in their validations to attest to the hash of
-the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
+バリデータは、バリデータが完全に検証されたとみなす最新の台帳のハッシュを証明する新しいオプションフィールドをバリデーションに含めることができるようにします。コンセンサスプロセスでは、この情報を使用してコンセンサスの堅牢性を高めることができます。
 
 
 ## ImmediateOfferKilled
@@ -827,9 +811,9 @@ the latest ledger that the validator considers to be fully validated. The consen
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-Changes OfferCreate transactions so that if an Offer uses `tfImmediateOrCancel` and transaction processing kills the Offer without moving any funds, the transaction uses the result code `tecKILLED` instead of `tesSUCCESS`. If the Offer exchanges any amount of funds, even a small amount, the transaction still uses `tesSUCCESS`. There are no other changes to the processing of the transaction (for example, in terms of whether it cleans up expired and unfunded Offers that were encountered in the ledger during transaction processing).
+オファーが`tfImmediateOrCancel`を使用し、トランザクション処理で資金を移動せずにオファーを終了した場合、トランザクションは`tesSUCCESS`ではなく結果コード`tecKILLED`を使用するようにOfferCreateトランザクションを変更します。Offerが少額でも資金を交換した場合、トランザクションは引き続き`tesSUCCESS`を使用します。トランザクションの処理自体には変更はありません（例えば、トランザクション処理中に台帳に表示された期限切れのオファーや未入金のオファーをクリーンアップするかどうかという点など）。
 
-Without this amendment, "Immediate or Cancel" Offers that failed to move any funds returned a `tesSUCCESS` result code, which could be confusing because the transaction effectively did nothing.
+この修正が適用されない場合、資金の移動に失敗した「Immediate or Cancel」注文は、結果コード「tesSUCCESS」を返し、そのトランザクションが事実上何もしなかったため、混乱する可能性を残します。
 
 
 ## MultiSign
@@ -886,8 +870,7 @@ XRP Ledgerアカウントが[マルチ署名](multi-signing.html) SignerListを�
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate amendment description -->
-Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.
+ネットワークがどのバリデータが一時的にオフラインになったかを追跡し、定足数計算の際にそれらのバリデータを無視できる「ネガティブUNL」システムを実装します。これにより、ネットワークが不安定な状態でも、ネットワークを進展させる能力を高めることができます。
 
 
 ## NonFungibleTokensV1
@@ -900,12 +883,11 @@ Implements a "Negative UNL" system, where the network can track which validators
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate description -->
-Adds native support for non-fungible tokens. Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
+非代替性トークンのネイティブサポートを追加します。標準規格案: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46)。
 
-**Warning:** There are several known issues with this amendment including one that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. It has been replaced by the [NonFungibleTokensV1_1 amendment][].
+**注意:** この修正には、台帳に`tecINVARIANT_FAILED`エラーが表示される問題を含む、いくつかの既知の問題が存在します。これは[NonFungibleTokensV1_1 Amendment][]に置き換えられました。
 
-This amendment adds 5 new transaction types:
+この修正では、新たに5種類のトランザクションが追加されます。
 
 - [NFTokenAcceptOffer][]
 - [NFTokenBurn][]
@@ -913,14 +895,14 @@ This amendment adds 5 new transaction types:
 - [NFTokenCreateOffer][]
 - [NFTokenMint][]
 
-It also adds 2 new ledger object types:
+また、新たに2種類の台帳オブジェクトが追加されます。
 
 - [NFTokenOffer object][]
 - [NFTokenPage object][]
 
-Additionally, it modifies the [AccountRoot object][] type to add 3 new optional fields: `MintedNFTokens`, `BurnedNFTokens`, and `NFTokenMinter`.
+さらに、[AccountRootオブジェクト][]型を変更し、`MintedNFTokens`、`BurnedNFTokens`、`NFTokenMinter`の3つの新しい任意のフィールドを追加しています。
 
-It also modifies the [AccountSet transaction][] type to allow you to set the `NFTokenMinter` field.
+また、[AccountSetトランザクション][]を変更し、`NFTokenMinter`フィールドを設定できるようにしました。
 
 
 ## NonFungibleTokensV1_1
@@ -933,18 +915,17 @@ It also modifies the [AccountSet transaction][] type to allow you to set the `NF
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate description -->
-Adds native support for [non-fungible tokens](non-fungible-tokens.html), including fixes to several issues that were discovered after [NonFungibleTokensV1][].
+[NonFungibleTokensV1][]の後に発見されたいくつかの問題の修正を含む[非代替性トークン](non-fungible-tokens.html)のネイティブサポートを追加します。
 
-This amendment combines the effects of the following amendments, rendering the individual amendments obsolete:
+この修正は、以下の修正内容を統合し、個々のAmendmentsを廃止するものです。
 
 - [NonFungibleTokensV1][]
 - [fixNFTokenNegOffer][]
 - [fixNFTokenDirV1][]
 
-It has no other effects.
+それ以外の影響はありません。
 
-**Caution:** The [fixRemoveNFTokenAutoTrustLine][] fixes an known issue with this amendment. When creating a new test network, you should make sure that these amendments should be enabled together or the fix amendment is enabled first.
+**注意:** [fixRemoveNFTokenAutoTrustLine][]は、このAmendmentの既知の問題を修正します。新しいテストネットワークを作成する場合、これらの修正を一緒に有効にするか、またはAmendmentの修正を先に有効にする必要があります。
 
 
 ## OwnerPaysFee
@@ -989,14 +970,13 @@ XRPの「Payment Channel」を作成します。Payment Channelは、2名の当�
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | はい |
 
-<!-- TODO: translate amendment description -->
-Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of only protecting transactions with the [tfFullyCanonicalSig flag](transaction-common-fields.html#グローバルフラグ) enabled.
+XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも完全に正規でない署名は無効とします。これにより、[tfFullyCanonicalSigフラグ](transaction-common-fields.html#グローバルフラグ)を有効にしたトランザクションのみを保護することに代わって、_すべての_ トランザクションにおいて[トランザクションの展性](transaction-malleability.html)から守られます。
 
-Without this amendment, a transaction is malleable if it uses a secp256k1 signature and does not have tfFullyCanonicalSig enabled. Most signing utilities enable tfFullyCanonicalSig by default, but there are exceptions.
+この修正が適用されない場合、トランザクションがsecp256k1署名を使用し、tfFullyCanonicalSigが有効でない場合は、変更可能となります。ほとんどの署名ユーティリティは、デフォルトでtfFullyCanonicalSigを有効にしていますが、例外もあります。
 
-With this amendment, no single-signed transactions are malleable. ([Multi-signed transactions may still be malleable](transaction-malleability.html#マルチ署名の展性) if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the tfFullyCanonicalSig flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.
+この修正により、単独署名のトランザクションは展性になりません。(署名者が必要以上の署名を提供した場合、[マルチ署名のトランザクションはまだ展性であるかもしれません](transaction-malleability.html#マルチ署名の展性))。すべてのトランザクションは、tfFullyCanonicalSigフラグに関係なく、署名の完全な正規の形式を使用する必要があります。完全に正規化された署名を作成しない署名ユーティリティはサポートされていません。Ripple社が提供するすべての署名ユーティリティは、少なくとも2014年以降、完全に正規化された署名のみを提供するようになっています。
 
-For more information, see [`rippled` issue #3042](https://github.com/ripple/rippled/issues/3042).
+詳しくは、[`rippled` issue #3042](https://github.com/ripple/rippled/issues/3042)を参照してください。
 
 
 ## SHAMapV2
@@ -1010,7 +990,7 @@ For more information, see [`rippled` issue #3042](https://github.com/ripple/ripp
 
 `rippled`がレジャーを表示する際に使用するハッシュツリー構造を変更します。新しい構造は以前のバージョンよりもコンパクトで効率的です。この修正はレジャーハッシュの計算方法が変わりますが、その他にユーザーに与える影響はありません。
 
-この修正が適用されると、ネットワークでハッシュツリー構造への変更を計算している間、XRP Ledgerはしばらく使用できなくなります。 <!-- STYLE_OVERRIDE: will -->
+この修正が適用されると、ネットワークでハッシュツリー構造への変更を計算している間、XRP Ledgerはしばらく使用できなくなります。
 
 ## SortedDirectories
 [SortedDirectories]: #sorteddirectories
@@ -1048,10 +1028,9 @@ For more information, see [`rippled` issue #3042](https://github.com/ripple/ripp
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-<!-- TODO: translate amendment description -->
-This amendment adds [Tickets](tickets.html) as a way of sending transactions out of the typical sequence number order.
+この修正により、通常のシーケンス番号順ではないトランザクションを送信する方法として、[Tickets](ticket.html)が追加されます。
 
-Standards Draft: [XLS-13d](https://github.com/XRPLF/XRPL-Standards/issues/16).
+標準規格案: [XLS-13d](https://github.com/XRPLF/XRPL-Standards/issues/16).
 
 
 ## Tickets
@@ -1103,13 +1082,13 @@ Standards Draft: [XLS-13d](https://github.com/XRPLF/XRPL-Standards/issues/16).
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-Simplifies transaction cost calculations to use XRP directly rather than calculating indirectly in "fee units" and translating the results to XRP. Updates all instances of "fee units" in the protocol and ledger data to be drops of XRP instead, including:
+トランザクションコストの計算を簡素化し、「手数料単位」で間接的に計算し、結果をXRPに変換するのではなく、直接XRPを使用するようにしました。プロトコルや台帳データにおける「手数料単位」のインスタンスを全て変更し、XRPの代わりにdropsを使用するように修正します。修正には以下を含みます。
 
-- Updates the Fee Voting protocol to use drops of XRP
-- Updates the FeeSettings ledger entry type. Replaces `BaseFee`, `ReferenceFeeUnits`, `ReserveBase`, and `ReserveIncrement` fields with `BaseFeeDrops`, `ReserveBaseDrops`, and `ReserveIncrementDrops`.
-- Updates the SetFee transaction type. Replaces `BaseFee`, `ReferenceFeeUnits`, `ReserveBase`, `ReserveIncrement` fields with `BaseFeeDrops`, `ReserveBaseDrops`, `ReserveIncrementDrops`.
+- Fee Votingプロトコルを更新し、XRPのdropsを使用するように変更します。
+- FeeSettingsの台帳の項目タイプを変更します。`BaseFee`、`ReferenceFeeUnits`、`ReserveBase`、`ReserveIncrement`フィールドを`BaseFeeDrops`、`ReserveBaseDrops`、`ReserveIncrementDrops`に置き換えます。
+- SetFee トランザクションタイプを変更します。`BaseFee`、`ReferenceFeeUnits`、`ReserveBase`、`ReserveIncrement`フィールドを`BaseFeeDrops`、`ReserveBaseDrops`、`ReserveIncrementDrops`に置き換えます。
 
-Without this amendment, the format of the transaction and ledger entry are the same.
+このAmendment がなければ、トランザクションの形式と台帳の項目は同一です。
 
 
 <!--{# common link defs #}-->
