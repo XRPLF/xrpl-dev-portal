@@ -1864,23 +1864,24 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md
+        # Redirect to build instructions on rippled repo.
+    -   name: Build and Run rippled on Ubuntu
+        html: build-run-rippled-ubuntu.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
         targets:
             - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.ja.md
-        targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md
+        # Redirect to b uild instructions on rippled repo.
+    -   name: Build and Run rippled on macOS
+        html: build-run-rippled-macos.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
         targets:
             - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.ja.md
-        targets:
             - ja
-
-        # TODO: translate
+        
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-in-reporting-mode.md
         targets:
             - en
