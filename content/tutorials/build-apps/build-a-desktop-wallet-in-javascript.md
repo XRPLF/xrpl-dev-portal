@@ -21,9 +21,24 @@ To complete this tutorial, you should meet the following requirements:
 - You are somewhat familiar with modern JavaScript programming and have completed the [Get Started Using JavaScript tutorial](get-started-using-javascript.html).
 - You have at least some rough understanding of what the XRP Ledger, it's capabilities and of cryptocurrency in general. Ideally you have completed the [Basic XRPL guide](https://learn.xrpl.org/)
 
-## Source Code
+### Source Code
 
 You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/).
+
+### Preparing the development machine and installing dependencies
+
+The basic building block for running JavaScript in a non-browser environment, also called headless JavaScript, we need
+to have node.js installed on the development machine.
+
+This tutorial depends on various node.js libraries. To install those dependencies and get the project up and running, in the build-a-wallet-with-javascript/js
+folder, run the following command to install the required modules:
+
+```console
+npm install
+```
+
+This installs the Electron Framework, the xrpl.js client library and a couple of helpers we are going to need for our
+application to work.
 
 ## Rationale
 
@@ -65,21 +80,6 @@ and asynchronous (async) code in JavaScript.
 
 ## Steps
 
-### Preparing the development machine and installing dependencies
-
-The basic building block for running JavaScript in a non-browser environment, also called headless JavaScript, we need 
-to have node.js installed on the development machine.
-
-This tutorial depends on various node.js libraries. To install those dependencies and get the project up and running, in the build-a-wallet-with-javascript/js
-folder, run the following command to install the required modules:
-
-```console
-npm install
-```
-
-This installs the Electron Framework, the xrpl.js client library and a couple of helpers we are going to need for our 
-application to work.
-
 ### 1. Hello XRP Ledger
 
 **Full code for this step:** [`1_hello.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/1_hello.js).
@@ -91,11 +91,30 @@ will take care of styling and GUI related coding in a later step:
 ![Screenshot: Step 1, hello world equivalent](img/javascript-wallet-1.png)
 
 In the package.json file you can find prepared commands to run our application according to the steps comprising the 
-structure of this tutorial. To get the application running at this early stage of development, run the following command 
+structure of this tutorial. To get the application running at this early stage of development, run the following command: 
 
 ```console
 npm run hello
 ```
+
+The source code of this step is as follows, and we will use this lightweight example to get privy on how the data flow 
+in electron works: 
+
+{{ include_code("_code-samples/build-a-wallet/js/1_hello.js", language="js") }}
+
+The main parts are a helper function that executes a ledger request and the main function that creates the application 
+window, calls our helper function and distributes its contents by broadcasting an event that will get picked up by the 
+frontend.
+
+We will use this example to study how to do Inter Process Communication (IPC) in Electron. For reasons of due diligence it 
+has to be mentioned that JavaScript has no real Processes / Threading because follows event-driven paradigm. Nonetheless 
+Electron provides us with two IPC modules called ipcMain and ipcRenderer. We can roughly equate those to the backend
+and the frontend when we think in terms of client-server applications. It works as follows:
+
+1. Create a function that enables the frontend to subscribe to backend events (in 1_preload.js)
+2. Make the function available by preloading it (webPreferences.preload during window creation)
+3. Use that function in the frontend (e.g. 1_renderer.js, loaded in 1_hello.html) to attach a callback that handles frontend updates when the event is dispatched
+4. Dispatch the event from the backend (e.g. appWindow.webContents.send('update-ledger-index', value))
 
 ### 2.A. Show Ledger Updates by Polling
 
@@ -209,4 +228,8 @@ npm run domain-verification
 ## Next Steps & Topics for further research
 
 TBD
+
+- Promises / async
+- Electron framework
+- Event Handler
 
