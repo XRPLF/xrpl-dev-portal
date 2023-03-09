@@ -53,7 +53,7 @@ AMMのLPトークンを使って落札すると、落札額はAMMに返金され
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 
 | フィールド       | JSONの型    | [内部の型][] | 必須?  | 説明 |
 |:---------------|:-----------|:- ----------|:----- |:------------|
