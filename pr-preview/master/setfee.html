@@ -347,6 +347,43 @@
 </tr>
 </tbody>
 </table>
+<p>If the <em><a href="known-amendments.html#xrpfees">XRPFees amendment</a></em> is enabled, <code>SetFee</code> pseudo-transactions use these fields instead:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">JSON Type</th>
+<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>BaseFeeDrops</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Amount</td>
+<td style="text-align: left;">The charge, in drops of XRP, for the reference transaction. (This is the <a href="transaction-cost.html">transaction cost</a> before scaling for load.)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ReserveBaseDrops</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Amount</td>
+<td style="text-align: left;">The base reserve, in drops</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ReserveIncrementDrops</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Amount</td>
+<td style="text-align: left;">The incremental reserve, in drops</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LedgerSequence</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;"><em>(Omitted for some historical <code>SetFee</code> pseudo-transactions)</em> The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change.</td>
+</tr>
+</tbody>
+</table>
 <p class="devportal-callout note"><strong>Note:</strong> In the full history of the XRP Ledger, there is an exception to the rule that transaction hashes are unique. Two early <a href="setfee.html">SetFee pseudo-transactions</a> had the exact same fields, resulting in the same hash, <code>1C15FEA3E1D50F96B6598607FC773FF1F6E0125F30160144BE0C5CBC52F5151B</code>. The first of these transactions appears <a href="websocket-api-tool.html?server=wss%3A%2F%2Fs2.ripple.com%2F&amp;req=%7B%22id%22%3A%22setfee_nonunique_hash_1%22%2C%22command%22%3A%22transaction_entry%22%2C%22tx_hash%22%3A%221C15FEA3E1D50F96B6598607FC773FF1F6E0125F30160144BE0C5CBC52F5151B%22%2C%22ledger_index%22%3A3715073%7D">in ledger 3715073</a> and the second is <a href="websocket-api-tool.html?server=wss%3A%2F%2Fs2.ripple.com%2F&amp;req=%7B%22id%22%3A%22setfee_nonunique_hash_1%22%2C%22command%22%3A%22transaction_entry%22%2C%22tx_hash%22%3A%221C15FEA3E1D50F96B6598607FC773FF1F6E0125F30160144BE0C5CBC52F5151B%22%2C%22ledger_index%22%3A3721729%7D">in ledger 3721729</a>. Newer <a href="setfee.html">SetFee pseudo-transactions</a> include a <code>LedgerSequence</code> field so that they are guaranteed to be unique.</p>
 <!-- -->
 <!-- -->
@@ -1274,16 +1311,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a>
   </div>
 
       

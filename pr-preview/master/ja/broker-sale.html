@@ -491,8 +491,9 @@
 </code></pre></div>
 <p>Get the broker account and connect to the ledger. </p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">brokerSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"wss://xls20-sandbox.rippletest.net:51233"</span><span class="p">)</span>
-<span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'...'</span>
+<span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+<span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'...'</span>
 <span class="w">  </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'brokerResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
 <span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 <span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w">  </span><span class="s2">"</span><span class="se">\n</span><span class="s2">Connected. Cancelling offer..."</span>
@@ -558,9 +559,6 @@
 </code></pre></div>
 <p>Get the correct network host.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="w">  </span><span class="nv">let</span><span class="w"> </span><span class="nv">faucetHost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">null</span>
-<span class="w">  </span><span class="k">if</span><span class="ss">(</span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s2">"xls"</span><span class="ss">)</span>.<span class="nv">checked</span><span class="ss">)</span><span class="w"> </span>{
-<span class="w">    </span><span class="nv">faucetHost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"faucet-nft.ripple.com"</span>
-<span class="w">  </span>}<span class="w"> </span>
 
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'standby'</span><span class="ss">)</span><span class="w"> </span>{
 <span class="w">    </span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s1">'standbyResultField'</span><span class="ss">)</span>.<span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">results</span>
@@ -2141,16 +2139,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/update-rippled-manually-on-ubuntu.html">UbuntuまたはDebianでの手動更新</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-ubuntu.html">Ubuntuでのrippledの構築と実行</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-macos.html">macOSでのrippledの構築と実行</a>
   </div>
 
       

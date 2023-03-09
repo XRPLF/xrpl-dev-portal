@@ -362,7 +362,7 @@
 <td style="text-align: left;"><a href="ticksize.html"><code>TickSize</code></a></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt8</td>
-<td style="text-align: left;"><em>(Optional)</em> Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are <code>3</code> to <code>15</code> inclusive, or <code>0</code> to disable. <em>(Added by the <a href="known-amendments.html#ticksize">TickSize amendment</a>.)</em></td>
+<td style="text-align: left;"><em>(Optional)</em> Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are <code>3</code> to <code>15</code> inclusive, or <code>0</code> to disable.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>WalletLocator</code></td>
@@ -423,7 +423,7 @@
 <td style="text-align: left;"><code>asfDefaultRipple</code></td>
 <td style="text-align: left;">8</td>
 <td style="text-align: left;"><code>lsfDefaultRipple</code></td>
-<td style="text-align: left;">Enable <a href="rippling.html">rippling</a> on this account's trust lines by default. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.27.3" target="_blank" title="New in: rippled 0.27.3"><img alt="New in: rippled 0.27.3" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.27.3-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">Enable <a href="rippling.html">rippling</a> on this account's trust lines by default.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>asfDepositAuth</code></td>
@@ -436,6 +436,30 @@
 <td style="text-align: left;">4</td>
 <td style="text-align: left;"><code>lsfDisableMaster</code></td>
 <td style="text-align: left;">Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a <a href="cryptographic-keys.html">Regular Key</a> or a <a href="multi-signing.html">Signer List</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>asfDisallowIncomingCheck</code></td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;"><code>lsfDisallowIncomingCheck</code></td>
+<td style="text-align: left;">Block incoming checks to the account; enforced by <code>rippled</code>. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>asfDisallowIncomingNFTokenOffer</code></td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;"><code>lsfDisallowIncomingNFTokenOffer</code></td>
+<td style="text-align: left;">Block incoming NFToken offers to the account; enforced by <code>rippled</code>. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>asfDisallowIncomingPayChan</code></td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;"><code>lsfDisallowIncomingPayChan</code></td>
+<td style="text-align: left;">Block incoming payment channels to the account; enforced by <code>rippled</code>. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>asfDisallowIncomingTrustline</code></td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;"><code>lsfDisallowIncomingTrustline</code></td>
+<td style="text-align: left;">Block incoming trust lines to the account; enforced by <code>rippled</code>. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>asfDisallowXRP</code></td>
@@ -469,7 +493,7 @@
 </tr>
 </tbody>
 </table>
-<p>To enable the <code>asfDisableMaster</code> or <code>asfNoFreeze</code> flags, you must <a href="transaction-basics.html#authorizing-transactions">authorize the transaction</a> by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can disable <code>asfDisableMaster</code> (that is, re-enable the master key pair) using a regular key pair or multi-signature. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.28.0" target="_blank" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>To enable the <code>asfDisableMaster</code> or <code>asfNoFreeze</code> flags, you must <a href="transaction-basics.html#authorizing-transactions">authorize the transaction</a> by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can disable <code>asfDisableMaster</code> (that is, re-enable the master key pair) using a regular key pair or multi-signature.</p>
 <p>The following <a href="transaction-common-fields.html#flags-field">Transaction flags</a> (<code>tf</code> flags), specific to the AccountSet transaction type, serve the same purpose. Due to limited space, some settings do not have associated <code>tf</code> flags, and new <code>tf</code> flags are not being added to the <code>AccountSet</code> transaction type. You can use a combination of <code>tf</code> and <code>asf</code> flags to enable multiple settings with a single transaction.</p>
 <table class="table-responsive">
 <thead>
@@ -521,9 +545,18 @@
 </table>
 <p class="devportal-callout caution"><strong>Caution:</strong> The numeric values of <code>tf</code> and <code>asf</code> flags in transactions do not match up with the values they set in the accounts "at rest" in the ledger. To read the flags of an account in the ledger, see <a href="accountroot.html#accountroot-flags"><code>AccountRoot</code> flags</a>.</p>
 <h3 id="blocking-incoming-transactions">Blocking Incoming Transactions<a aria-hidden="true" class="hover_anchor" href="#blocking-incoming-transactions"><i class="fa fa-link"></i></a></h3>
+<!-- This concept info should be moved to another topic after the IA.v2 migration. -->
 <p>Incoming transactions with unclear purposes may be an inconvenience for financial institutions, who would have to recognize when a customer made a mistake, and then potentially refund accounts or adjust balances depending on the mistake. The <code>asfRequireDest</code> and <code>asfDisallowXRP</code> flags are intended to protect users from accidentally sending funds in a way that is unclear about the reason the funds were sent.</p>
 <p>For example, a destination tag is typically used to identify which hosted balance should be credited when a financial institution receives a payment. If the destination tag is omitted, it may be unclear which account should be credited, creating a need for refunds, among other problems. By using the <code>asfRequireDest</code> tag, you can ensure that every incoming payment has a destination tag, which makes it harder for others to send you an ambiguous payment by accident.</p>
 <p>You can protect against unwanted incoming payments for non-XRP currencies by not creating trust lines in those currencies. Since XRP does not require trust, the <code>asfDisallowXRP</code> flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in <code>rippled</code> because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to send a transaction that disabled the flag, the account would be completely unusable.) Instead, client applications should disallow or discourage XRP payments to accounts with the <code>asfDisallowXRP</code> flag enabled.</p>
+<p>You also have the option to block all incoming checks, NFToken offers, payment channels, and trust lines, using these account flags:</p>
+<ul>
+<li><code>asfDisallowIncomingCheck</code></li>
+<li><code>asfDisallowIncomingNFTOffer</code></li>
+<li><code>asfDisallowIncomingPayChan</code></li>
+<li><code>asfDisallowIncomingTrustline</code></li>
+</ul>
+<p>If a destination account has these flags enabled, <code>rippled</code> won't create the corresponding object on the ledger and returns the error code <code>tecNO_PERMISSION</code>.</p>
 <h2 id="transferrate">TransferRate<a aria-hidden="true" class="hover_anchor" href="#transferrate"><i class="fa fa-link"></i></a></h2>
 <p>The <code>TransferRate</code> field specifies a fee to charge whenever counterparties transfer the currency you issue. See <a href="transfer-fees.html">Transfer Fees</a> for more information.</p>
 <p>In <code>rippled</code>'s WebSocket and JSON-RPC APIs, the transfer fee is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
@@ -1456,16 +1489,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a>
   </div>
 
       

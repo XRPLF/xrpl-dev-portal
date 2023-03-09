@@ -357,6 +357,55 @@
 </tbody>
 </table>
 <p class="devportal-callout warning"><strong>Warning:</strong> The JSON format for this ledger object type is unusual. The <code>BaseFee</code>, <code>ReserveBase</code>, and <code>ReserveIncrement</code> indicate drops of XRP but <strong><em>not</em></strong> in the usual format for <a href="basic-data-types.html#specifying-currency-amounts">specifying XRP</a>.</p>
+<p>If the <em><a href="known-amendments.html#xrpfees">XRPFees amendment</a></em> is enabled, the <code>FeeSettings</code> object has these fields instead:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">JSON Type</th>
+<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>BaseFeeDrops</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Amount</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The <a href="transaction-cost.html">transaction cost</a> of the "reference transaction" in drops of XRP.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Flags</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">A bitmap of boolean flags enabled for this object. Currently, the protocol defines no flags for <code>FeeSettings</code> objects. The value is always <code>0</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UInt16</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The value <code>0x0073</code>, mapped to the string <code>FeeSettings</code>, indicates that this object contains the ledger's fee settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ReserveBaseDrops</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Amount</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The <a href="reserves.html#base-reserve-and-owner-reserve">base reserve</a> for an account in the XRP Ledger, as drops of XRP.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ReserveIncrementDrops</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Amount</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The incremental <a href="reserves.html#base-reserve-and-owner-reserve">owner reserve</a> for owning objects, as drops of XRP.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="feesettings-id-format">FeeSettings ID Format<a aria-hidden="true" class="hover_anchor" href="#feesettings-id-format"><i class="fa fa-link"></i></a></h2>
 <p>The <code>FeeSettings</code> object ID is the hash of the <code>FeeSettings</code> space key (<code>0x0065</code>) only. This means that the ID of the <code>FeeSettings</code> object in a ledger is always:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="mf">4</span><span class="n">BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651</span>
@@ -1287,16 +1336,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a>
   </div>
 
       

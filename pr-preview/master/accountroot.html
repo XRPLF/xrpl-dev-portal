@@ -515,6 +515,34 @@
 <td>Disallows use of the master key to sign transactions for this account.</td>
 </tr>
 <tr>
+<td><code>lsfDisallowIncomingCheck</code></td>
+<td><code>0x08000000</code></td>
+<td>134217728</td>
+<td><code>asfDisallowIncomingCheck</code></td>
+<td>This account is blocking incoming checks. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
+</tr>
+<tr>
+<td><code>lsfDisallowIncomingNFTokenOffer</code></td>
+<td><code>0x04000000</code></td>
+<td>67108864</td>
+<td><code>asfDisallowIncomingNFTokenOffer</code></td>
+<td>This account is blocking incoming NFToken offers. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
+</tr>
+<tr>
+<td><code>lsfDisallowIncomingPayChan</code></td>
+<td><code>0x10000000</code></td>
+<td>268435456</td>
+<td><code>asfDisallowIncomingPayChan</code></td>
+<td>This account is blocking incoming payment channels. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
+</tr>
+<tr>
+<td><code>lsfDisallowIncomingTrustline</code></td>
+<td><code>0x20000000</code></td>
+<td>536870912</td>
+<td><code>asfDisallowIncomingTrustline</code></td>
+<td>This account is blocking incoming trust lines. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
+</tr>
+<tr>
 <td><code>lsfDisallowXRP</code></td>
 <td><code>0x00080000</code></td>
 <td>524288</td>
@@ -1501,16 +1529,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a>
   </div>
 
       

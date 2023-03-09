@@ -580,8 +580,9 @@
 </code></pre></div>
 <p>Get the standby address and connect to the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"wss://xls20-sandbox.rippletest.net:51233"</span><span class="p">)</span>
-<span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'...'</span>
+<span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+<span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'...'</span>
 <span class="w">    </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
 <span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 <span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w">  </span><span class="s2">"</span><span class="se">\n</span><span class="s2">Connected. Cancelling offer..."</span>
@@ -953,8 +954,9 @@
 <span class="n">async</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">oPcancelOffer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">operationalSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">"wss://xls20-sandbox.rippletest.net:51233"</span><span class="p">)</span>
-<span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'...'</span>
+<span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+<span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'...'</span>
 <span class="w">  </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
 <span class="w">  </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 <span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w">  </span><span class="s2">"</span><span class="se">\n</span><span class="s2">Connected. Cancelling offer..."</span>
@@ -2438,16 +2440,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/update-rippled-manually-on-ubuntu.html">UbuntuまたはDebianでの手動更新</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-ubuntu.html">Ubuntuでのrippledの構築と実行</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-macos.html">macOSでのrippledの構築と実行</a>
   </div>
 
       
