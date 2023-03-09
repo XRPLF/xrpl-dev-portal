@@ -38,7 +38,7 @@ _([NonFungibleTokensV1_1 amendment][]が必要です)_
 ```
 
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 
 | フィールド      | JSONの型            | [内部の型][]        | 説明               |
 |:--------------|:--------------------|:------------------|:-------------------|
