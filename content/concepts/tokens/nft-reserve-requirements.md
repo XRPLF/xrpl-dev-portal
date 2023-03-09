@@ -5,7 +5,6 @@ blurb: Understand reserve requirements for minting and holding NFTs.
 labels:
  - Non-fungible Tokens, NFTs
 ---
-
 # NFT Reserve Requirements
 
 Minting, holding, and offering NFTs for sale require XRP held in reserve. The reserve charges can add up quickly. Understanding the reserve requirements can help you choose the best approach for your business case.

@@ -748,7 +748,6 @@ pages:
         targets:
             - en
 
-    # TODO: Outdated translation
     -   md: concepts/tokens/tokens.ja.md
         targets:
             - ja
@@ -802,34 +801,52 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nft-reserve-requirements.md
         targets:
             - en
+
+    -   md: concepts/tokens/nft-reserve-requirements.ja.md
+        targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nftoken-batch-minting.md
         targets:
             - en
+
+    -   md: concepts/tokens/nftoken-batch-minting.ja.md
+        targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nftoken-authorized-minting.md
         targets:
             - en
+
+    -   md: concepts/tokens/nftoken-authorized-minting.ja.md
+        targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nftoken-auctions.md
         targets:
             - en
+
+    -   md: concepts/tokens/nftoken-auctions.ja.md
+        targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nft-collections.md
         targets:
             - en
+
+    -   md: concepts/tokens/nft-collections.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/tokens/nft-fixed-supply.md
+        targets:
+            - en
+
+    -   md: concepts/tokens/nft-fixed-supply.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/freezes.md

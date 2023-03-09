@@ -5,7 +5,6 @@ blurb: You can assign another account to mint NFTs in your stead.
 labels:
  - Non-fungible Tokens, NFTs
 ---
-
 # Running an NFT Auction
 
 There are several ways to run an auction, each with advantages and disadvantages.
