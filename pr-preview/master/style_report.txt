@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 39 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: ifs, gils, gigs
-  kuressaare: 
+  gifs: gibs, gies, gigs
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -24,31 +24,31 @@ Found 39 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalanced, unbalance
+  unbalances: unbalance, unbalanced
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  disallowincoming: 
-  immediateofferkilled: 
-  fixnonfungibletokensv1_2: 
   fixuniversalnumber: 
   xrpfees: 
+  immediateofferkilled: 
+  fixnonfungibletokensv1_2: 
   depositpreauthamendment: 
+  disallowincoming: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingnftoffer: 
-  asfdisallowincomingpaychan: 
   asfdisallowincomingcheck: 
+  asfdisallowincomingpaychan: 
   asfdisallowincomingtrustline: 
-  30d: 3-d, 3d, 3rd
+  asfdisallowincomingnftoffer: 
+  30d: 3-d, 3rd, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3-d, 3rd, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   disallowincoming: 
@@ -79,7 +79,7 @@ Found 39 possible spelling errors:
   xrpfees: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3-d, 3rd, 3d
 
 -----------------------------
 Discouraged Words and Phrases
@@ -165,8 +165,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 745
-  Characters: 4,629
+  Words: 746
+  Characters: 4,631
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
