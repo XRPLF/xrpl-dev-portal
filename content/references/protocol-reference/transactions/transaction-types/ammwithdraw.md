@@ -59,7 +59,7 @@ This transaction has several modes, depending on which flags you specify. Each m
 - **Double-asset withdrawals**, in which you receive both assets from the AMM's pool in proportions that match their balances there. These withdrawals are not subject to a fee.
 - **Single-asset withdrawals**, in which you receive one asset from the AMM's pool. The AMM charges a fee based on how much your deposit shifts the balance of assets in the pool. Depending on the withdraw mode, the amount of the fee can be added to the amount of LP Tokens paid in, or debited from the amount of the asset paid out.
 
-The following combinations of fields indicat a **double-asset withdrawal**:
+The following combinations of fields indicate a **double-asset withdrawal**:
 
 | Flag Name(s)    | Flag Value   | Fields Specified       | Meaning |
 |-----------------|--------------|------------------------|---------|
