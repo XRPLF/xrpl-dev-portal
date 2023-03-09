@@ -1,11 +1,11 @@
 -------------
 Spell Checker
 -------------
-Found 39 possible spelling errors:
+Found 40 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, gies, gigs
-  ringtee: 
+  gifs: gifu, gif, gits
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -22,33 +22,36 @@ Found 39 possible spelling errors:
 <Page 'Minting NFTs into Collections' (nft-collections.html)> Unknown Words:
   nftokentaxon: 
 
+<Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
+  blackhole: black-hole, blockhole
+
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalance, unbalanced
+  unbalances: unbalanced, unbalance
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  disallowincoming: 
   fixuniversalnumber: 
   xrpfees: 
-  immediateofferkilled: 
   fixnonfungibletokensv1_2: 
+  immediateofferkilled: 
   depositpreauthamendment: 
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  asfdisallowincomingnftoffer: 
+  asfdisallowincomingtrustline: 
   asfdisallowincomingcheck: 
   asfdisallowincomingpaychan: 
-  asfdisallowincomingtrustline: 
-  asfdisallowincomingnftoffer: 
-  30d: 3-d, 3rd, 3d
+  30d: 3-d, 3d, 3rd
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3-d, 3d, 3rd
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   disallowincoming: 
@@ -79,7 +82,7 @@ Found 39 possible spelling errors:
   xrpfees: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3-d, 3d, 3rd
 
 -----------------------------
 Discouraged Words and Phrases
@@ -123,7 +126,7 @@ Page: <Page 'tem Codes' (tem-codes.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.1 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.2 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
@@ -165,8 +168,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 746
-  Characters: 4,631
+  Words: 744
+  Characters: 4,618
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

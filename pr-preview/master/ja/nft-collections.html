@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Minting NFTs into Collections - XRPL.org (日本語)</title>
+    <title>NFTのコレクション化 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Minting NFTs into Collections | XRPL.org (日本語)">
+    <meta property="og:title" content="NFTのコレクション化 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nft-collections.html" />
-    <meta property="og:description" content="You can mint NFTs as collections using the NFT Taxon field." />
-    <meta name="description" content="You can mint NFTs as collections using the NFT Taxon field." />
+    <meta property="og:description" content="NFTのTaxonフィールドを使用して、NFTをコレクションとしてミントすることができます。" />
+    <meta name="description" content="NFTのTaxonフィールドを使用して、NFTをコレクションとしてミントすることができます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['Non-fungible Tokens, NFTs']
+      "page_labels": ['非代替性トークン, NFT']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -255,12 +255,11 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/concepts/tokens/nft-collections.md?pr=/XRPLF/xrpl-dev-portal/pull/1796" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/master/content/concepts/tokens/nft-collections.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1796" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-non-fungible-tokens-nfts">Non-fungible Tokens, NFTs</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Non-fungible Tokens, NFTs" -->
+      <a href="/ja/label-nfts.html" class="label label-非代替性トークン-nft">非代替性トークン, NFT</a>
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -268,7 +267,7 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#minting-nfts-into-collections">Minting NFTs into Collections</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#nftのコレクション化">NFTのコレクション化</a></li>
       </ul>
   </div>
       </aside>
@@ -284,18 +283,15 @@
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
     <li class="active breadcrumb-item"><a href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a></li>
-    <li class="active breadcrumb-item">Minting NFTs into Collections</li>
+    <li class="active breadcrumb-item">NFTのコレクション化</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="minting-nfts-into-collections">Minting NFTs into Collections<a aria-hidden="true" class="hover_anchor" href="#minting-nfts-into-collections"><i class="fa fa-link"></i></a></h1>
-<p>You can use the <code>NFTokenTaxon</code> field to group NFTs into collections. As the minter, you can choose any numeric value from <code>0x0</code> to <code>0xFFFFFFFF</code>and assign it to NFTs as you create them. The significance of the taxon is entirely up to you.</p>
-<p>For example, for your first collection, you might set the <code>NFTokenTaxon</code> to <code>1</code>. You might have a collection of NFTs with taxon values of <code>316</code>, <code>420</code>, or <code>911</code>. You might use taxons that start with a digit to indicate the type of NFT (for example, all Real Estate NFTs have a taxon that starts with <code>2</code>).</p>
-<p>While the <code>NFTokenTaxon</code> field is required, you can set the value to <code>0</code> if you don't intend to create a collection.</p>
-<p>See <a href="nftoken.html#分類群">NFTokenTaxon</a>.</p>
+        <h1 id="nftのコレクション化">NFTのコレクション化<a aria-hidden="true" class="hover_anchor" href="#nftのコレクション化"><i class="fa fa-link"></i></a></h1>
+<p><code>NFTokenTaxon</code>フィールドを使用すると、NFTをコレクションにグループ化することができます。ミント担当者は、<code>0x0</code>から<code>0xFFFFFFF</code>までの任意の数値を選択し、NFTを作成する際にそれを割り当てることができます。Taxon(分類群)の定義付けは完全に自由です。</p>
+<p>例えば、最初のコレクションでは、<code>NFTokenTaxon</code>を<code>1</code>に設定します。NFTのコレクションで、Taxonの値が<code>316</code>、<code>420</code>、<code>911</code>であるものがあるかもしれません。NFTの種類を示すために、数字で始まるタクソンを使用することもできます（たとえば、すべての不動産NFTは<code>2</code>で始まるTaxonを持っているなど）。</p>
+<p><code>NFTokenTaxon</code>フィールドは必須ですが、コレクションを作成するつもりがなければ<code>0</code>を設定するのもよいでしょう。</p>
+<p><a href="nftoken.html#分類群">NFTokenの分類群</a>を参照してください。</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -521,32 +517,37 @@
     <nav class="nav flex-column show " id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFT Reserve Requirements</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFTの準備金要件</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">Running an NFT Auction</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">NFTオークションの実施</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">Minting NFTs into Collections</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">NFTのコレクション化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
     </nav>
