@@ -1,11 +1,11 @@
 -------------
 Spell Checker
 -------------
-Found 30 possible spelling errors:
+Found 31 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gids, giff, gift
-  kuressaare: 
+  gifs: gips, gigs, gins
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -22,39 +22,42 @@ Found 30 possible spelling errors:
 <Page 'Minting NFTs into Collections' (nft-collections.html)> Unknown Words:
   nftokentaxon: 
 
+<Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
+  blackhole: blockhole, black-hole
+
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalanced, unbalance
+  unbalances: unbalance, unbalanced
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  depositpreauthamendment: 
-  immediateofferkilled: 
-  fixuniversalnumber: 
-  fixnonfungibletokensv1_2: 
-  disallowincoming: 
   xrpfees: 
+  disallowincoming: 
+  immediateofferkilled: 
+  fixnonfungibletokensv1_2: 
+  depositpreauthamendment: 
+  fixuniversalnumber: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingcheck: 
-  asfdisallowincomingpaychan: 
   asfdisallowincomingtrustline: 
   asfdisallowincomingnftoffer: 
-  30d: 3rd, 3-d, 3d
+  asfdisallowincomingpaychan: 
+  30d: 3d, 3rd, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3d, 3rd, 3-d
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenminter: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3d, 3rd, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
@@ -140,8 +143,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 742
-  Characters: 4,607
+  Words: 740
+  Characters: 4,596
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

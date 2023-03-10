@@ -47,6 +47,7 @@ https://xrpl.org/nftoken-batch-minting.html
 https://xrpl.org/nftoken-authorized-minting.html
 https://xrpl.org/nftoken-auctions.html
 https://xrpl.org/nft-collections.html
+https://xrpl.org/nft-fixed-supply.html
 https://xrpl.org/freezes.html
 https://xrpl.org/common-misconceptions-about-freezes.html
 https://xrpl.org/rippling.html

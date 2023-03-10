@@ -275,6 +275,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#deletableaccounts">DeletableAccounts</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#depositauth">DepositAuth</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#depositpreauth">DepositPreauth</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#disallowincoming">DisallowIncoming</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#enforceinvariants">EnforceInvariants</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#escrow">Escrow</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#expandedsignerlist">ExpandedSignerList</a></li>
@@ -297,6 +298,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></li>
@@ -304,11 +306,13 @@
         <li class="nav-item level-2"><a class="nav-link" href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixtrustlinestoself">fixTrustLinesToSelf</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixuniversalnumber">fixUniversalNumber</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flow">Flow</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flowcross">FlowCross</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flowsortstrands">FlowSortStrands</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flowv2">FlowV2</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#hardenedvalidations">HardenedValidations</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#immediateofferkilled">ImmediateOfferKilled</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#multisign">MultiSign</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#multisignreserve">MultiSignReserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#negativeunl">NegativeUNL</a></li>
@@ -324,6 +328,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#tickets">Tickets</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ticksize">TickSize</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#trustsetauth">TrustSetAuth</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrpfees">XRPFees</a></li>
       </ul>
   </div>
       </aside>
@@ -346,7 +351,7 @@
         <h1 id="既知のamendment">既知のAmendment<a aria-hidden="true" class="hover_anchor" href="#既知のamendment"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>以下に示すのは、本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。</p>
-<p class="devportal-callout ヒント"><strong>ヒント:</strong> このリストは手動に更新されています。生ステータスを<a class="external-link" href="https://xrpscan.com/amendments" target="_blank">XRPScan Amendment Dashboard <i aria-hidden="true" class="fa fa-external-link"></i></a>にご覧下さい。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> このリストは手動で更新されています。最新のステータスは<a class="external-link" href="https://xrpscan.com/amendments" target="_blank">XRPScan Amendment Dashboard <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧下さい。</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -357,19 +362,44 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><a href="#fixtrustlinestoself">fixTrustLinesToSelf</a></td>
-<td style="text-align: left;">未定</td>
-<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
-</tr>
-<tr>
 <td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
 <td style="text-align: left;">未定</td>
 <td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
 </tr>
 <tr>
+<td style="text-align: left;"><a href="#disallowincoming">DisallowIncoming</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixtrustlinestoself">fixTrustLinesToSelf</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixuniversalnumber">fixUniversalNumber</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#immediateofferkilled">ImmediateOfferKilled</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#xrpfees">XRPFees</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+</tr>
+<tr>
 <td style="text-align: left;"><a href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></td>
 <td style="text-align: left;">v1.8.0</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2021/rippled-1.8.1.html" target="_blank" title="投票中: 未定"><img alt="投票中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-%E6%9C%AA%E5%AE%9A-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557" target="_blank" title="有効: 2022/01/23"><img alt="有効: 2022/01/23" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2022/01/23-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></td>
@@ -643,32 +673,56 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">CheckCashMakesTrustLine</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">98DECF327BF79997AEC178323AD51A830E457BFC6D454DAF3E46E5EC42DC619F</td>
-<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<p>Adjusts the <a href="checkcash.html">CheckCash transaction</a> so that cashing a <a href="checks.html">Check</a> for an issued token automatically creates a <a href="trust-lines-and-issuing.html">trust line</a> to hold the token. The new behavior is similar to how the <a href="offercreate.html">OfferCreate transaction</a> behaves when users purchase tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)</p>
-<p>Without this amendment, users have to separately send a <a href="trustset.html">TrustSet transaction</a> before they can cash a Check for an issued token.</p>
-<p>This amendment does not change the fact that you cannot force anyone to hold tokens they don't want in the XRP Ledger.</p>
+<p><a href="checkcash.html">CheckCashトランザクション</a>を修正し、<a href="checks.html">Check</a>を現金化して発行されたトークンを入手すると、トークンを保持する<a href="trust-lines-and-issuing.html">トラストライン</a>を自動的に作成するようにしました。この新しい動作は、ユーザーが分散型取引所でトークンを購入する際の<a href="offercreate.html">OfferCreateトランザクション</a>の動作に似ています。自動的に作成されたトラストラインには限度額0が設定されています。これにより、Checkでトークンを受け取る前にトラストラインを設定するという設定ステップがなくなります。(XRPを送信するCheckは影響を受けません)。</p>
+<p>この修正を適用しない場合、ユーザーは、Checkを発行トークンと交換する前に、別途<a href="trustset.html">TrustSetトランザクション</a>を送信する必要があります。</p>
+<p>この修正は、XRP Ledgerにおいて不要なトークンを保持することを誰にも強制できないという原則を変えるものではありません。</p>
 <h2 id="checks">Checks<a aria-hidden="true" class="hover_anchor" href="#checks"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Checks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -680,48 +734,83 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">CryptoConditions</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
-<p>この修正は有効ですが、<a href="#suspay">SusPay</a> Amendmentも有効にならなければ効果がありません。RippleではSusPayを有効にする予定はありません。代わりに、Crypto-Conditionsを<a href="#escrow">Escrow</a> Amendmentに組み込む予定です。</p>
+<p>この修正は有効ですが、<a href="#suspay">SusPay</a> Amendmentも有効でない限り、何の影響も及ぼしません。SusPayの修正は、<a href="#escrow">Escrow</a>の修正に置き換えられたため、CryptoConditionsの修正は効力を持ちません。</p>
 <h2 id="cryptoconditionssuite">CryptoConditionsSuite<a aria-hidden="true" class="hover_anchor" href="#cryptoconditionssuite"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">CryptoConditionsSuite</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90</td>
-<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">廃止</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<p><a href="escrowcreate.html">EscrowCreate</a>トランザクションと<a href="escrowfinish.html">EscrowFinish</a>トランザクションで使用するために、公式の<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-03" target="_blank">Crypto-Conditions仕様 <i aria-hidden="true" class="fa fa-external-link"></i></a>から数種類のCrypto-Conditionsを導入します。この修正を行わない場合、サポートされるのはPREIMAGE-SHA-256タイプのみです。</p>
-<!-- TODO: update translated description to clarify that this amendment is obsolete. -->
-<p class="devportal-callout 注意"><strong>注意:</strong> この修正は<a class="external-link" href="https://github.com/ripple/rippled/pull/2170" target="_blank">開発中 <i aria-hidden="true" class="fa fa-external-link"></i></a>です。<code>rippled</code>v0.60.0以降のバージョンでは、完全な機能は導入されません。</p>
+<p><a href="escrowcreate.html">EscrowCreate</a>トランザクションと<a href="escrowfinish.html">EscrowFinish</a>トランザクションで使用するために、公式の<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-03" target="_blank">Crypto-Conditions仕様 <i aria-hidden="true" class="fa fa-external-link"></i></a>から数種類のCrypto-Conditionsを導入するものでした。</p>
+<p>しかし、この修正は実装が完了する前に<code>rippled</code> v0.60.0に追加されました。その結果、このAmendment IDは、ほとんど何もしない不完全なコードを参照することになりました。他のcrypto-conditionsのサポートを追加するために既存のAmendmentを変更すると、すでにリリースされたソフトウェアにある古いバージョンの修正案との衝突が発生します。将来のリリースで追加の暗号条件のサポートが追加される場合、新しい別のAmendment IDを使用する必要があります。</p>
 <h2 id="deletableaccounts">DeletableAccounts<a aria-hidden="true" class="hover_anchor" href="#deletableaccounts"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">DeletableAccounts</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">30CD365592B8EE40489BA01AE2F7555CAC9C983145871DC82A42A31CF5BAE7D9</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -732,14 +821,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">DepositAuth</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -751,36 +852,97 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">DepositPreauth</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
 <p><a href="depositauth.html">Deposit Authorization</a>のユーザーに特定の送信者を事前承認する手段を提供して、承認された送信者が支払いを直接送信できるようにします。</p>
 <p>事前承認の追加または削除のために新しいトランザクションタイプDepositPreauthを、あるアカウントから別のアカウントへの事前承認の追跡のためにDepositPreauthレジャーオブジェクトタイプを追加します。JSON-RPCコマンド<code>deposit_authorized</code>を追加します。これは、アカウントが別のアカウントへ支払いを直接送金することが承認されているかどうかを問い合わせるためのものです。</p>
 <p>また、アカウントにDeposit Authorizationが必要な場合、アカウントから自身への異なる通貨間での支払いの動作も変更します。この修正を行わない場合、これらの支払いはコードtecNO_PERMISSIONにて常に失敗します。この修正を行う場合、これらの支払いはDeposit Authorization無効時と同様に成功します。</p>
-<h2 id="enforceinvariants">EnforceInvariants<a aria-hidden="true" class="hover_anchor" href="#enforceinvariants"><i class="fa fa-link"></i></a></h2>
+<h2 id="disallowincoming">DisallowIncoming<a aria-hidden="true" class="hover_anchor" href="#disallowincoming"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">DisallowIncoming</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF</td>
-<td style="text-align: left;">有効</td>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">47C3002ABA31628447E8E9A8B315FAA935CE30183F9A9B86845E469CA2CDC3DF</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<p>トランザクション処理にサニティーチェックを追加して、所定の条件が常に満たされるようにします。これにより、トランザクション処理時のバグを防ぐ独立した追加のレイヤーができます。このレイヤーがなければXRP Ledgerが脆弱なものとなり悪用される可能性が生じます。Rippleは、Amendmentを追加せずに、将来バージョンの<code>rippled</code>に不変性チェックをさらに追加する予定です。</p>
+<p>Checks、Payment Channels、NFTokenOffer、およびトラストラインを自分のアカウントが受信するのを個別にブロックするためのオプションを提供します。アカウントでこれらのオプションを有効にすると、他のアカウントは、そのアカウントを宛先としてその種類のオブジェクトを作成することができなくなります。</p>
+<p>4つの新しいAccountSet Flagsを追加し、AccountSetトランザクションで有効化および無効化できるように変更します。</p>
+<ul>
+<li>asfDisallowIncomingCheck</li>
+<li>asfDisallowIncomingPayChan</li>
+<li>asfDisallowIncomingNFTOffer</li>
+<li>asfDisallowIncomingTrustline</li>
+</ul>
+<p>対応するオブジェクトタイプを作成する前に、これらのフラグの状態をチェックするようにトランザクション処理を変更します。宛先アカウントがそのフラグを有効にしている場合、トランザクションはエラーコード<code>tecNO_PERMISSION</code>で失敗します。</p>
+<p>この修正が適用されない場合、どのアカウントでも、任意のオブジェクトの宛先としてこれらのオブジェクトを作成することができます。これは通常問題はないものの、後でアカウントを削除する際に妨げになったり、詐欺の一部として使用される可能性があります。</p>
+<h2 id="enforceinvariants">EnforceInvariants<a aria-hidden="true" class="hover_anchor" href="#enforceinvariants"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">EnforceInvariants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
+</tr>
+</tbody>
+</table>
+<p>トランザクション処理にサニティーチェックを追加して、所定の条件が常に満たされるようにします。これにより、トランザクション処理時のバグを防ぐ独立した追加のレイヤーができます。このレイヤーがなければXRP Ledgerが脆弱なものとなり悪用される可能性が生じます。<code>rippled</code>の将来バージョンでは、Amendmentを追加せずに不変性チェックをさらに追加する予定です。</p>
 <p>2つの新しいトランザクションエラーコード、<code>tecINVARIANT_FAILED</code>と<code>tefINVARIANT_FAILED</code>を導入します。新しいチェックを追加するためにトランザクション処理を変更します。</p>
 <p>不変性チェックの例:</p>
 <ul>
@@ -794,54 +956,89 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Escrow</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
 <p><a href="#suspay">SusPay</a>および<a href="#cryptoconditions">CryptoConditions</a> Amendmentを置き換えます。</p>
-<p>XRP Ledger内のEscrowにXRPの「停止された支払い」機能を提供します。これには<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02" target="_blank">Interledger Protocol Crypto-Conditions <i aria-hidden="true" class="fa fa-external-link"></i></a>のサポートが含まれます。停止された支払い用のレジャーオブジェクトタイプと、停止された支払いを作成、実行、取り消すためのトランザクションタイプを新規作成します。</p>
+<p>XRP Ledger内のEscrowにXRPの「仮払い」機能を提供します。これには<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02" target="_blank">Interledger Protocol Crypto-Conditions <i aria-hidden="true" class="fa fa-external-link"></i></a>のサポートが含まれます。仮払い用のレジャーオブジェクトタイプと、仮払いを作成、実行、取り消すためのトランザクションタイプを新規作成します。</p>
 <h2 id="expandedsignerlist">ExpandedSignerList<a aria-hidden="true" class="hover_anchor" href="#expandedsignerlist"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">ExpandedSignerList</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">B2A4DB846F0891BF2C76AB2F2ACC8F5B4EC64437135C6E56F3F859DE5FFD5856</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate description -->
-<p>This amendment expands the maximum signer list size and allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).</p>
-<p>Without this amendment, the maximum signer list size is 8 signers, and each signer has exactly two fields, <code>Account</code> and <code>SignerWeight</code>.</p>
-<p>With this amendment, the maximum <a href="signerlist.html">SignerList object</a> size is 32 entries. Additionally, each <code>SignerEntry</code> object can contain an optional 256-bit <code>WalletLocator</code> field containing arbitrary data. This amendment changes the <a href="signerlistset.html">SignerListSet transaction</a> accordingly.</p>
+<p>この修正により、署名者リストの最大サイズが拡大され、各署名者にオプションのデータを関連付けることができるようになりました。追加データは署名者を特定するために使用でき、スマートコントラクトや、大規模な組織で誰が鍵を管理しているかを特定するのに便利です。例えば、IPv6アドレスやハードウェアセキュリティモジュール（HSM）の識別子を保存することができます。</p>
+<p>この修正が適用されない場合、署名者リストの最大サイズは8人で、各署名者には<code>Account</code>と<code>SignerWeight</code>の2つのフィールドが存在します。</p>
+<p>この修正により、<a href="signerlist.html">SignerListオブジェクト</a>の最大サイズは32エントリになります。さらに、各<code>SignerEntry</code>オブジェクトは、任意のデータを含む256ビットの<code>WalletLocator</code>フィールドを含むことができます。この修正により、<a href="signerlistset.html">SignerListSetトランザクション</a>もそれに応じて変更されます。</p>
 <h2 id="feeescalation">FeeEscalation<a aria-hidden="true" class="hover_anchor" href="#feeescalation"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">FeeEscalation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
-<p>提案されたトランザクションに<a href="transaction-cost.html">トランザクションコスト</a>を適用する方法を変更します。トランザクションコストの高いトランザクションの優先順位が高くなるよう、コンセンサスプロセスを変更します。 <!-- STYLE_OVERRIDE: prioritize --></p>
+<p>提案されたトランザクションに<a href="transaction-cost.html">トランザクションコスト</a>を適用する方法を変更します。トランザクションコストの高いトランザクションの優先順位が高くなるよう、コンセンサスプロセスを変更します。</p>
 <p>この修正により、前のコンセンサスラウンドに含められなかったトランザクションに固定サイズのトランザクションキューが導入されます。コンセンサスネットワーク内の<code>rippled</code>サーバーに重い負荷が課されている場合、トランザクションコストの低いトランザクションは後のレジャーのキューに入れられます。各コンセンサスラウンドでは、トランザクションコスト（<code>Fee</code>値）が高いキューのトランザクションが優先され、コンセンサスネットワークで処理できる限りのトランザクションが含められます。トランザクションキューが一杯になると、トランザクションコストが最も低いトランザクションから順にキューから完全に除外されます。</p>
 <p>コンセンサスネットワークに重い負荷がかかる一方で、正規のユーザーは高めのトランザクションコストを支払い、トランザクションを確実に処理することができます。この状況は、未処理の低コストのトランザクションが完全に処理または除外されるまで続きます。</p>
 <p>1つのトランザクションは、以下のいずれかが発生するまでキュー内に残ります。</p>
@@ -854,14 +1051,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1201</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
@@ -871,14 +1080,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1368</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
@@ -887,14 +1108,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1373</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
@@ -904,14 +1137,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1512</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
@@ -921,14 +1166,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1513</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -938,14 +1195,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1515</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -957,14 +1226,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1523</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
@@ -974,14 +1255,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1528</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
@@ -991,14 +1284,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1543</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -1013,14 +1318,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1571</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -1033,14 +1350,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1578</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -1053,70 +1382,115 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1623</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
 <p>変動金額で換金されたCheckCashトランザクションのメタデータに送金額を追加します。（<a href="#checks">Checks</a> Amendmentが有効でないかぎり効果がありません。）</p>
 <p>この修正を行うと、トランザクション処理にて変動金額の<a href="checkcash.html">CheckCashトランザクション</a>のメタデータに<code>DeliveredAmount</code>フィールドが追加されます（<code>DeliverMin</code>フィールドを使用します）。この変更はレジャーデータに書き込まれるため、この修正を行わずにトランザクションを処理した場合とは異なるレジャーハッシュとなります。これは実際に送信される金額には影響しません。また、この修正を有効にすると、<a href="tx.html">txメソッド</a>と<a href="account_tx.html">account_txメソッド</a>によってCheckCashトランザクションの<a href="transaction-metadata.html#delivered_amount"><code>delivered_amount</code>フィールド</a>が返されます。（<code>delivered_amount</code>フィールドはトランザクションの検索時に計算されるものであり、レジャーに書き込まれるデータの一部ではありません。）</p>
 <p>fix1623 Amendmentは、固定金額の<a href="checkcash.html">CheckCashトランザクション</a>（<code>Amount</code>フィールドを使用）またはその他のトランザクションタイプには影響しません。</p>
-<p class="devportal-callout 注意"><strong>注意:</strong> <code>rippled</code>1.0.0では、fix1623 Amendmentの前にChecks Amendmentを有効にした場合、fix1623 Amendmentが行われる前の変動金額のCheckCashトランザクションについては、トランザクションがゼロ以外の金額であっても、<code>delivered_amount</code>に「0」と表示される場合があります。Rippleでは、fix1623を<a href="#checks">Checks</a> Amendmentと同時に本番ネットワーク環境で有効にするよう計画していますが、この状況は<a href="parallel-networks.html">並列ネットワーク</a>上で発生する可能性があります。</p>
 <h2 id="fix1781">fix1781<a aria-hidden="true" class="hover_anchor" href="#fix1781"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fix1781</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">25BA44241B3BD880770BFA4DA21C7180576831855368CBEC6A3154FDE4A7676E</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.</p>
-<p>Without this amendment, it is possible to have a <a href="paths.html">payment path</a> where the input to the path is XRP, and an intermediate path step also outputs XRP. This is a "loop" payment, and the payment engine disallows such paths because they can have different results when executed forward compared to backwards.</p>
-<p>With this amendment, those payments fail with the <a href="tem-codes.html"><code>temBAD_PATH_LOOP</code> result code</a> instead.</p>
+<p>循環パスの検出時に、特定のXRPエンドポイントがチェックされない不具合を修正します。</p>
+<p>この修正が適用されない場合、<a href="paths.html">支払いパス</a>の入力がXRPで、パスの中間ステップでもXRPが出力されるようなパスが存在し得ます。これは「ループ」決済であり、前方と後方で実行すると異なる結果になる可能性があるため、決済エンジンはこのようなパスを禁止しています。</p>
+<p>この修正が適用された場合、これらの支払いは、代わりに<a href="tem-codes.html">結果コード<code>temBAD_PATH_LOOP</code></a>で失敗します。</p>
 <h2 id="fixamendmentmajoritycalc">fixAmendmentMajorityCalc<a aria-hidden="true" class="hover_anchor" href="#fixamendmentmajoritycalc"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixAmendmentMajorityCalc</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">4F46DF03559967AC60F2EB272FEFE3928A7594A45FF774B87A7E540DB0F8F068</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>Fixes a bug that could cause an amendment to achieve a majority and later activate with support of slightly less than 80% of trusted validators due to rounding semantics.</p>
-<p>Without this amendment, the minimum threshold for amendment activation is any value that rounds to 204/256 of trusted validators, which depends on the number of trusted validators at the time. For example, an amendment could activate with exactly 28 out of 36 validators (approximately 77.8%). With this amendment, the actual minimum number of validators needed is never less than 80% of trusted validators.</p>
+<p>丸め処理の影響により、Amendmentが過半数を達成した後、信頼できるバリデーターの80%にわずかに満たない賛成で有効になることがあるバグを修正しました。</p>
+<p>この修正が適用されない場合、Amendmentが有効になるための最小閾値は、信頼できるバリデーターの204/256を丸めた値であり、これはその時の信頼できるバリデーターの数に依存します。例えば、36人中28人(約77.8%)のバリデータがあれば、補正は有効になりえます。この修正により、実際に必要な最小限のバリデーターの数は、信頼できるバリデーターの80％を下回ることはありません。</p>
 <h2 id="fixcheckthreading">fixCheckThreading<a aria-hidden="true" class="hover_anchor" href="#fixcheckthreading"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixCheckThreading</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">8F81B066ED20DAECA20DF57187767685EEF3980B228E0667A650BAF24426D3B4</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -1126,14 +1500,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixMasterKeyAsRegularKey</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">C4483A1896170C66C098DEA5B0E024309C60DC960DE5F01CD7AF986AA3D9AD37</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -1144,142 +1530,274 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixNFTokenDirV1</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">廃止</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate description -->
-<p>This amendment fixes an off-by-one error that occurred in some corner cases when determining which <code>NFTokenPage</code> a <code>NFToken</code> object belongs on. It also adjusts the constraints of <code>NFTokenPage</code> invariant checks, so that certain error cases fail with a suitable error code such as <code>tecNO_SUITABLE_TOKEN_PAGE</code> instead of failing with a <code>tecINVARIANT_FAILED</code> error code.</p>
-<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. This amendment is obsolete because its effects are included as part of <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
+<p>この修正では、<code>NFToken</code>オブジェクトがどの<code>NFTokenPage</code>に属するかを判断する際に、いくつかの特定のケースで発生した境界値判定エラーが修正されました。また、<code>NFTokenPage</code>の不変性チェックの制約を調整し、特定のエラーケースが<code>tecINVARIANT_FAILED</code>エラーコードで失敗する代わりに、<code>tecNO_SUITABLE_TOKEN_PAGE</code>などの適切なエラーコードで失敗するようにしました。</p>
+<p>この修正は、<a href="#nonfungibletokensv1">NonFungibleTokensV1</a> Amendmentが有効でない限り、何の効果もありません。この修正は、その効果が<a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>の一部として含まれているため、廃止されました。</p>
 <h2 id="fixnftokennegoffer">fixNFTokenNegOffer<a aria-hidden="true" class="hover_anchor" href="#fixnftokennegoffer"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixNFTokenNegOffer</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">36799EA497B1369B170805C078AEFE6188345F9B3E324C21E9CA3FF574E3C3D6</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">廃止</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate description -->
-<p>This amendment fixes a bug in the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell an NFT for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.</p>
-<p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. This amendment is obsolete because its effects are included as part of <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
+<p>この修正は、<a href="#nonfungibletokensv1">NonFungibleTokensV1</a> Amendmentのコードにおいて、NFTが負の金額で取引されてしまうバグを修正したものです。この修正が適用されない場合、ユーザーは負の金額でNFTの売買を申し込むことができ、その結果、NFTを「買う」人は「売る」人からお金も受け取ることになります。この修正により、マイナスの金額でのNFTのオファーは無効とみなされます。</p>
+<p>この修正は、<a href="#nonfungibletokensv1">NonFungibleTokensV1</a> Amendmentが有効でない限り、何の影響もありません。この修正は、その効果が<a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>の一部として含まれているため、廃止されました。</p>
+<h2 id="fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2<a aria-hidden="true" class="hover_anchor" href="#fixnonfungibletokensv1_2"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixNonFungibleTokensV1_2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">73761231F7F3D94EC3D8C63D91BDD0D89045C6F71B917D1925C01253515A6669</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+</tbody>
+</table>
+<p><code>fixNonFungibleTokensV1_2</code> Amendment は、プルリクエストプロセスを通じて個別に feature/nft-fixes にマージされたバグ修正の組み合わせです。</p>
+<p><strong>バーン不可能なNFTの修正</strong></p>
+<p>現在、NFTは500以上のオファーがあるとバーンすることができません。この制限を取り除くため、この修正では、NFTを焼却する際にちょうど500個のオファーを削除し、残りのオファーはそのままにします。これにより、発行者アカウントが<code>lsfBurnable</code>フラグを有効にしたNFTを、オファー数が多いために焼却できない問題が解決されます。</p>
+<p>参考: <a class="external-link" href="https://github.com/XRPLF/rippled/pull/4346" target="_blank">PR 4346 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><strong>NFTokenのオファー承認に関する3つの問題の修正</strong></p>
+<p>問題1：アカウントが資金不足という誤った条件により、取引を仲介できない問題を解決する。</p>
+<p>問題2：買い手がアカウントの送金手数料をカバーするための資金が不足している問題を解決する。</p>
+<p>問題3：トークン発行者が自身のトークンでNFTを売買できるようにする。</p>
+<p>参考: <a class="external-link" href="https://github.com/XRPLF/rippled/pull/4380" target="_blank">PR 4380 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><strong>NFTokenの所有者への売却が仲介されないようにする （#4374を修正）</strong></p>
+<p>この修正により、ブローカーが既にトークンを保有しているアカウントに対してNFTを販売することができなくなります。</p>
+<p>参考: <a class="external-link" href="https://github.com/XRPLF/rippled/issues/4374" target="_blank">Issue 4374 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><strong>宛先のみがNFTオファーのブローカー決済可能とする (#4373を修正)</strong></p>
+<p>NFTオファーに宛先を設定した場合、その宛先のみが仲介で決済できるように修正します。</p>
+<p>参考: <a class="external-link" href="https://github.com/XRPLF/rippled/issues/4373" target="_blank">Issue 4373 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixPayChanRecipientOwnerDir</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">621A0B264970359869E3C0363A899909AAB7A887C8B73519E4ECF952D33258A8</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<p><a href="paymentchannelcreate.html">PaymentChannelCreateトランザクション</a>タイプを変更し、受取人の<a href="directorynode.html">所有者ディレクトリー</a>に新しい<a href="payment-channels.html">Payment Channel</a>が追加されるようにします。この修正を適用しない場合、新しいPayment Channelは送金者の所有者ディレクトリーにのみ追加されます。この修正を有効にする場合、新しく作成したPayment Channelは両者の所有者ディレクトリーに追加されます。既存のPayment Channelは変更されません。</p>
-<p>この変更により、受取人によるPayment Channelの検索が容易になります。また、アカウントがオープンPayment Channelの受取人だった場合に、そのアカウントが削除されないようにします（ただし、この修正の前に作成されたチャンネルを除きます）。</p>
+<p><a href="paymentchannelcreate.html">PaymentChannelCreateトランザクション</a>タイプを変更し、受取人の<a href="directorynode.html">所有者ディレクトリ</a>に新しい<a href="payment-channels.html">Payment Channel</a>が追加されるようにします。この修正を適用しない場合、新しいPayment Channelは送金者の所有者ディレクトリーにのみ追加されます。この修正を有効にする場合、新しく作成したPayment Channelは両者の所有者ディレクトリーに追加されます。既存のPayment Channelは変更されません。</p>
+<p>この修正により、受取人によるPayment Channelの検索が容易になります。また、アカウントがオープンPayment Channelの受取人だった場合に、そのアカウントが削除されないようにします（ただし、この修正の前に作成されたチャンネルを除きます）。</p>
 <h2 id="fixqualityupperbound">fixQualityUpperBound<a aria-hidden="true" class="hover_anchor" href="#fixqualityupperbound"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixQualityUpperBound</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">89308AF3B8B10B7192C4E613E1D2E4D9BA64B2EE2D5232402AE82A6A7220D953</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.</p>
-<p>This amendment has no known impact on transaction processing.</p>
+<p>クロスカレンシー決済における個々のステップの入出力比を計算するための使用されていないコードのバグを修正する。</p>
+<p>この修正は、取引処理に影響を及ぼさないことが確認されています。</p>
 <h2 id="fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine<a aria-hidden="true" class="hover_anchor" href="#fixremovenftokenautotrustline"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixRemoveNFTokenAutoTrustLine</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">DF8B4536989BDACE3F934F29423848B9F1D76D09BE6A1FCFE7E7F06AA26ABEAD</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>Removes the <code>tfTrustLine</code> setting on <a href="non-fungible-tokens.html">non-fungible tokens</a>, to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a <a href="nftokenmint.html">NFTokenMint transaction</a> with the <code>tfTrustLine</code> flag enabled is considered invalid and cannot be confirmed by consensus; therefore, <code>NFToken</code> objects cannot be minted with the flag.</p>
-<p>Without this amendment, an attacker could create new, meaningless fungible tokens and sell an NFT back and forth for those tokens, creating numerous useless trust lines tied to the issuer and increasing the issuer's reserve requirement. </p>
-<p>This amendment does not change the code for <code>NFToken</code> objects that have already been minted. On test networks that already have NonFungibleTokensV1_1 enabled, this means that issuers who have already minted NFTokens with the <code>tfTrustLine</code> flag enabled are still vulnerable to the exploit even after the fixRemoveNFTokenAutoTrustLine amendment.</p>
-<p>This amendment has no effect unless <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> or <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a> is also enabled.</p>
-<p>To protect issuers, this amendment should be enabled <em>before</em> <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> or <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
+<p>このフラグを使用した発行者に対するDoS攻撃から保護するために、<a href="non-fungible-tokens.html">非代替性トークン</a>の<code>tfTrustLine</code>設定を削除します。このフラグを有効にすると、<code>tfTrustLine</code>フラグを有効にした<a href="nftokenmint.html">NFTokenMintトランザクション</a>は無効とみなされ、コンセンサスによって検証されません。したがって、<code>NFToken</code>オブジェクトはこのフラグを使用してミントをすることができません。</p>
+<p>この修正が適用されない場合、攻撃者は意味のない新しい代替可能トークンを作り、そのトークンとNFTを売買することで、発行者に紐づく多数の無駄なトラストラインを作り、発行者の準備金を増加させることができます。</p>
+<p>この修正は、すでにミントされた<code>NFToken</code>オブジェクトのコードを変更するものではありません。NonFungibleTokensV1_1がすでに有効になっているテストネットワークでは、<code>tfTrustLine</code>フラグが有効なNFTokenをすでにミントしている発行者は、fixRemoveNFTokenAutoTrustLine Amendmentの有効後も脆弱性があることを意味しています。</p>
+<p>この修正は、<a href="#nonfungibletokensv1">NonFungibleTokensV1</a>または <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>が有効になっていない限り、影響を及ぼしません。</p>
+<p>発行者を保護するため、このamendmentは<a href="#nonfungibletokensv1">NonFungibleTokensV1</a>または<a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>の前に有効にする必要があります。</p>
 <h2 id="fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers<a aria-hidden="true" class="hover_anchor" href="#fixrmsmallincreasedqoffers"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixRmSmallIncreasedQOffers</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">B6B3EEDC0267AB50491FDC450A398AF30DBCD977CECED8BEF2499CAB5DAC19E2</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>This amendment fixes an issue where certain Offers, when almost completely consumed, have a much lower exchange rate than when they were first placed. This occurs when the remaining amounts of one or both assets are so small that they cannot be rounded to a similar ratio as when the Offer was placed.</p>
-<p>Without this amendment, an Offer in this state blocks Offers with better rates deeper in the order book and causes some payments and Offers to fail when they could have succeeded.</p>
-<p>With this amendment, payments and trades can remove these types of Offers the same way that transactions normally remove fully consumed or unfunded Offers.</p>
+<p>この修正は、特定のオファーがほとんど約定された状態で、そのオファーが最初に配置されたときよりも取引レートが大幅に悪化する問題を修正するものです。これは、片方または両方の資産の残額が非常に小さいため、オファーが置かれたときと同様の比率に丸めることができない場合に起こるものです。</p>
+<p>この修正が適用されない場合、この状態でのオファーは、よりレートの良いオファーがより深いオーダーブックでブロックされ、本来成功するはずの支払いやオファーが失敗することがあります。</p>
+<p>この修正により、決済および取引は、通常、トランザクションが約定済みまたは未約定のオファーを削除するのと同じ方法で、これらのタイプのオファーを削除できるようになります。</p>
 <h2 id="fixstamountcanonicalize">fixSTAmountCanonicalize<a aria-hidden="true" class="hover_anchor" href="#fixstamountcanonicalize"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixSTAmountCanonicalize</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">452F5906C46D46F407883344BFDD90E672B672C5E9943DB4891E3A34FEEEB9DB</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>Fixes an edge case in <a href="serialization.html">deserializing</a> Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.</p>
+<p>Amount型フィールドの<a href="serialization.html">デシリアライズ</a>におけるエッジケースの問題を修正しました。この修正が適用されない場合、一部の稀なケースで、この操作により、デシリアライズ中に有効なシリアライズされた金額がオーバーフローしてしまう可能性がありました。この修正により、XRP Ledgerはより迅速にエラー状態を検出し、問題となるようなケースを排除します。</p>
 <h2 id="fixtakerdryofferremoval">fixTakerDryOfferRemoval<a aria-hidden="true" class="hover_anchor" href="#fixtakerdryofferremoval"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixTakerDryOfferRemoval</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -1290,32 +1808,84 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixTrustLinesToSelf</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>This amendment removes two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment becomes enabled, it deletes trust lines with the IDs <code>2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1</code> and <code>326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A</code> if they exist. After doing so, the amendment does nothing else.</p>
-<p>On test networks that do not have these trust lines, the amendment has no effect.</p>
+<p>この修正により、古いバグにより作成されたアカウントから自身へのトラストラインが2つ削除されます（いずれも2013-05-07のもの）。この修正が有効になると、IDが<code>2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1</code>と<code>326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A</code>のトラストラインが存在していれば削除します。削除後、この修正は他に何もしません。</p>
+<p>これらのトラストラインを持たないテストネットワークでは、この修正はは何の影響も及ぼしません。</p>
+<h2 id="fixuniversalnumber">fixUniversalNumber<a aria-hidden="true" class="hover_anchor" href="#fixuniversalnumber"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixUniversalNumber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">2E2FB9CF8A44EB80F4694D38AADAE9B8B7ADAFD2F092E10068E61C98C4F092B0</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+</tbody>
+</table>
+<p>10進浮動小数点演算のコードを簡略化し、統合します。場合によっては、以前のコードよりも精度が若干向上し、最下位桁が以前のコードで計算したときと異なる計算結果になることがあります。この計算結果の違いにより、オファーのランキングや複数の異なるパスを使用する支払い処理など、精密な計算が使用される他のエッジケースにおいて違いが生じる場合があります。
+この修正が適用されない場合、コードは引き続き<code>STAmount</code>と<code>IOUAmount</code>オブジェクトに対して別々の計算を使用し、<a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">自動マーケットメーカー(XLS-30d) <i aria-hidden="true" class="fa fa-external-link"></i></a>は計算のために新しい3つめの計算方法を使用します。</p>
 <h2 id="flow">Flow<a aria-hidden="true" class="hover_anchor" href="#flow"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Flow</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -1325,14 +1895,26 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">FlowCross</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -1346,32 +1928,51 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">FlowSortStrands</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">AF8DF7465C338AE64B1E937D6C8DA138C0D63AD5134A68792BBBE1F63356C422</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>Improves the payment engine's calculations for finding the most cost-efficient way to execute a cross-currency transaction.</p>
-<p>Without this change, the engine simulates a payment through each possible path to calculate the quality (ratio of input to output) of each path. With this change, the engine calculates the theoretical quality of each path without simulating a full payment. With this amendment, the payment engine executes some cross-currency payments much faster, is able to find the most cost-efficient path in more cases, and can enable some payments to succeed in certain conditions where the old payment engine would fail to find enough liquidity.</p>
+<p>決済エンジンの計算を改善し、最もコスト効率の良いクロスカレンシー取引の実行方法を見つけます。</p>
+<p>この修正が適用されない場合、エンジンは可能な各パスを介して支払いをシミュレートし、各パスの品質（入力と出力の比率）を計算します。この修正により、エンジンは完全な支払いをシミュレートすることなく、各パスの理論的な品質を計算します。この変更により、決済エンジンは一部のクロスカレンシー決済をより速く実行し、より多くのケースで最も費用対効果の高いパスを見つけることができるようになり、従来の決済エンジンでは十分な流動性を見つけることができなかった特定の条件でも、一部の決済を成功させることができるようになります。</p>
 <h2 id="flowv2">FlowV2<a aria-hidden="true" class="hover_anchor" href="#flowv2"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">FlowV2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">禁止</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -1380,32 +1981,83 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">HardenedValidations</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">1F4AFA8FA1BC8827AD4C0F682C03A8B671DCDF6B5C4DE36D44243A684103EF88</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>Allows validators to include a new optional field in their validations to attest to the hash of
-the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.</p>
+<p>バリデータは、バリデータが完全に検証されたとみなす最新の台帳のハッシュを証明する新しいオプションフィールドをバリデーションに含めることができるようにします。コンセンサスプロセスでは、この情報を使用してコンセンサスの堅牢性を高めることができます。</p>
+<h2 id="immediateofferkilled">ImmediateOfferKilled<a aria-hidden="true" class="hover_anchor" href="#immediateofferkilled"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">ImmediateOfferKilled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+</tbody>
+</table>
+<p>オファーが<code>tfImmediateOrCancel</code>を使用し、トランザクション処理で資金を移動せずにオファーを終了した場合、トランザクションは<code>tesSUCCESS</code>ではなく結果コード<code>tecKILLED</code>を使用するようにOfferCreateトランザクションを変更します。Offerが少額でも資金を交換した場合、トランザクションは引き続き<code>tesSUCCESS</code>を使用します。トランザクションの処理自体には変更はありません（例えば、トランザクション処理中に台帳に表示された期限切れのオファーや未入金のオファーをクリーンアップするかどうかという点など）。</p>
+<p>この修正が適用されない場合、資金の移動に失敗した「Immediate or Cancel」注文は、結果コード「tesSUCCESS」を返し、そのトランザクションが事実上何もしなかったため、混乱する可能性を残します。</p>
 <h2 id="multisign">MultiSign<a aria-hidden="true" class="hover_anchor" href="#multisign"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">MultiSign</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
@@ -1426,14 +2078,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">MultiSignReserve</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -1444,38 +2108,60 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">NegativeUNL</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.</p>
+<p>ネットワークがどのバリデータが一時的にオフラインになったかを追跡し、定足数計算の際にそれらのバリデータを無視できる「ネガティブUNL」システムを実装します。これにより、ネットワークが不安定な状態でも、ネットワークを進展させる能力を高めることができます。</p>
 <h2 id="nonfungibletokensv1">NonFungibleTokensV1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">NonFungibleTokensV1</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">廃止</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate description -->
-<p>Adds native support for non-fungible tokens. Standards Draft: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/46" target="_blank">XLS-20d <i aria-hidden="true" class="fa fa-external-link"></i></a>. <!-- SPELLING_IGNORE: xls, 20d --></p>
-<p class="devportal-callout warning"><strong>Warning:</strong> There are several known issues with this amendment including one that can cause <code>tecINVARIANT_FAILED</code> errors to appear in the ledger. It has been replaced by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.</p>
-<p>This amendment adds 5 new transaction types:</p>
+<p>非代替性トークンのネイティブサポートを追加します。標準規格案: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/46" target="_blank">XLS-20d <i aria-hidden="true" class="fa fa-external-link"></i></a>。</p>
+<p class="devportal-callout 注意"><strong>注意:</strong> この修正には、台帳に<code>tecINVARIANT_FAILED</code>エラーが表示される問題を含む、いくつかの既知の問題が存在します。これは<a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 Amendment</a>に置き換えられました。</p>
+<p>この修正では、新たに5種類のトランザクションが追加されます。</p>
 <ul>
 <li><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a></li>
 <li><a href="nftokenburn.html">NFTokenBurn</a></li>
@@ -1483,38 +2169,49 @@ the latest ledger that the validator considers to be fully validated. The consen
 <li><a href="nftokencreateoffer.html">NFTokenCreateOffer</a></li>
 <li><a href="nftokenmint.html">NFTokenMint</a></li>
 </ul>
-<p>It also adds 2 new ledger object types:</p>
+<p>また、新たに2種類の台帳オブジェクトが追加されます。</p>
 <ul>
 <li><a href="nftokenoffer.html">NFTokenOffer object</a></li>
 <li><a href="nftokenpage.html">NFTokenPage object</a></li>
 </ul>
-<p>Additionally, it modifies the <a href="accountroot.html">AccountRoot object</a> type to add 3 new optional fields: <code>MintedNFTokens</code>, <code>BurnedNFTokens</code>, and <code>NFTokenMinter</code>.</p>
-<p>It also modifies the <a href="accountset.html">AccountSet transaction</a> type to allow you to set the <code>NFTokenMinter</code> field.</p>
+<p>さらに、<a href="accountroot.html">AccountRootオブジェクト</a>型を変更し、<code>MintedNFTokens</code>、<code>BurnedNFTokens</code>、<code>NFTokenMinter</code>の3つの新しい任意のフィールドを追加しています。</p>
+<p>また、<a href="accountset.html">AccountSetトランザクション</a>を変更し、<code>NFTokenMinter</code>フィールドを設定できるようにしました。</p>
 <h2 id="nonfungibletokensv1_1">NonFungibleTokensV1_1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1_1"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">NonFungibleTokensV1_1</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">32A122F1352A4C7B3A6D790362CC34749C5E57FCE896377BFDC6CCD14F6CD627</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate description -->
-<p>Adds native support for <a href="non-fungible-tokens.html">non-fungible tokens</a>, including fixes to several issues that were discovered after <a href="#nonfungibletokensv1">NonFungibleTokensV1</a>.</p>
-<p>This amendment combines the effects of the following amendments, rendering the individual amendments obsolete:</p>
+<p><a href="#nonfungibletokensv1">NonFungibleTokensV1</a>の後に発見されたいくつかの問題の修正を含む<a href="non-fungible-tokens.html">非代替性トークン</a>のネイティブサポートを追加します。</p>
+<p>この修正は、以下の修正内容を統合し、個々のAmendmentsを廃止するものです。</p>
 <ul>
 <li><a href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
 <li><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
 <li><a href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
 </ul>
-<p>It has no other effects.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> The <a href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a> fixes an known issue with this amendment. When creating a new test network, you should make sure that these amendments should be enabled together or the fix amendment is enabled first.</p>
+<p>それ以外の影響はありません。</p>
+<p class="devportal-callout 注意"><strong>注意:</strong> <a href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a>は、このAmendmentの既知の問題を修正します。新しいテストネットワークを作成する場合、これらの修正を一緒に有効にするか、またはAmendmentの修正を先に有効にする必要があります。</p>
 <h2 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -1528,23 +2225,47 @@ the latest ledger that the validator considers to be fully validated. The consen
 <td style="text-align: left;">9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871</td>
 <td style="text-align: left;">開発中</td>
 </tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">非該当</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
 </tbody>
 </table>
 <p><a href="offercreate.html">OfferCreate</a>トランザクションタイプと<a href="payment.html">Payment</a>トランザクションタイプで、<a href="transfer-fees.html">送金手数料</a>の計算方法に相違があるのを修正します。この修正を行わない場合、オファーがオファープレースメントで実行される際にイシュアンスの保有者が送金手数料を支払いますが、トランザクションの最初の送信者は支払い処理の過程で実行されるオファーの送金手数料を支払います。この修正により、オファーがPaymentトランザクションまたはOfferCreateトランザクションの一部として実行されるかどうかにかかわらず、イシュアンスの保有者が常に送金手数料を支払います。支払い以外のオファー処理は影響を受けません。</p>
 <p>この修正については、<a href="#flow">Flow Amendment</a>を有効にする必要があります。</p>
-<p class="devportal-callout 注記"><strong>注記:</strong> この修正の未完成のバージョンがv0.33.0で導入されましたが、v0.80.0で削除されました。（適用されませんでした。）Rippleは、コードが十分に安定してからAmendmentを再度追加する予定です。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> 不完全なバージョンのこのAmendmentについては、v0.33.0で導入され、v0.80.0で削除されました（有効となったことはありません）。</p>
 <h2 id="paychan">PayChan<a aria-hidden="true" class="hover_anchor" href="#paychan"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">PayChan</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
@@ -1555,51 +2276,82 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">RequireFullyCanonicalSig</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against <a href="transaction-malleability.html">transaction malleability</a> on <em>all</em> transactions, instead of only protecting transactions with the <a href="transaction-common-fields.html#グローバルフラグ">tfFullyCanonicalSig flag</a> enabled.</p>
-<p>Without this amendment, a transaction is malleable if it uses a secp256k1 signature and does not have tfFullyCanonicalSig enabled. Most signing utilities enable tfFullyCanonicalSig by default, but there are exceptions.</p>
-<p>With this amendment, no single-signed transactions are malleable. (<a href="transaction-malleability.html#マルチ署名の展性">Multi-signed transactions may still be malleable</a> if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the tfFullyCanonicalSig flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.</p>
-<p>For more information, see <a class="external-link" href="https://github.com/ripple/rippled/issues/3042" target="_blank"><code>rippled</code> issue #3042 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも完全に正規でない署名は無効とします。これにより、<a href="transaction-common-fields.html#グローバルフラグ">tfFullyCanonicalSigフラグ</a>を有効にしたトランザクションのみを保護することに代わって、<em>すべての</em> トランザクションにおいて<a href="transaction-malleability.html">トランザクションの展性</a>から守られます。</p>
+<p>この修正が適用されない場合、トランザクションがsecp256k1署名を使用し、tfFullyCanonicalSigが有効でない場合は、変更可能となります。ほとんどの署名ユーティリティは、デフォルトでtfFullyCanonicalSigを有効にしていますが、例外もあります。</p>
+<p>この修正により、単独署名のトランザクションは展性になりません。(署名者が必要以上の署名を提供した場合、<a href="transaction-malleability.html#マルチ署名の展性">マルチ署名のトランザクションはまだ展性であるかもしれません</a>)。すべてのトランザクションは、tfFullyCanonicalSigフラグに関係なく、署名の完全な正規の形式を使用する必要があります。完全に正規化された署名を作成しない署名ユーティリティはサポートされていません。Ripple社が提供するすべての署名ユーティリティは、少なくとも2014年以降、完全に正規化された署名のみを提供するようになっています。</p>
+<p>詳しくは、<a class="external-link" href="https://github.com/ripple/rippled/issues/3042" target="_blank"><code>rippled</code> issue #3042 <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
 <h2 id="shamapv2">SHAMapV2<a aria-hidden="true" class="hover_anchor" href="#shamapv2"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">SHAMapV2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3</td>
-<td style="text-align: left;">禁止</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">廃止</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
 <p><code>rippled</code>がレジャーを表示する際に使用するハッシュツリー構造を変更します。新しい構造は以前のバージョンよりもコンパクトで効率的です。この修正はレジャーハッシュの計算方法が変わりますが、その他にユーザーに与える影響はありません。</p>
-<p>この修正が適用されると、ネットワークでハッシュツリー構造への変更を計算している間、XRP Ledgerはしばらく使用できなくなります。 <!-- STYLE_OVERRIDE: will --></p>
+<p>この修正が適用されると、ネットワークでハッシュツリー構造への変更を計算している間、XRP Ledgerはしばらく使用できなくなります。</p>
 <h2 id="sorteddirectories">SortedDirectories<a aria-hidden="true" class="hover_anchor" href="#sorteddirectories"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">SortedDirectories</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
@@ -1609,14 +2361,22 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">SusPay</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13</td>
-<td style="text-align: left;">禁止</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">廃止</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
@@ -1625,32 +2385,51 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">TicketBatch</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">955DF3FA5891195A9DAEFA1DDC6BB244B545DDE1BAA84CBB25D5F12A8DA68A0C</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: translate amendment description -->
-<p>This amendment adds <a href="tickets.html">Tickets</a> as a way of sending transactions out of the typical sequence number order.</p>
-<p>Standards Draft: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/issues/16" target="_blank">XLS-13d <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>この修正により、通常のシーケンス番号順ではないトランザクションを送信する方法として、<a href="ticket.html">Tickets</a>が追加されます。</p>
+<p>標準規格案: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/issues/16" target="_blank">XLS-13d <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="tickets">Tickets<a aria-hidden="true" class="hover_anchor" href="#tickets"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Tickets</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490</td>
-<td style="text-align: left;">禁止</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">廃止</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 </tbody>
 </table>
@@ -1659,14 +2438,26 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">TickSize</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
@@ -1676,19 +2467,65 @@ the latest ledger that the validator considers to be fully validated. The consen
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Amendment ID</th>
-<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">TrustSetAuth</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;">Amendment ID</td>
 <td style="text-align: left;">6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
 <td style="text-align: left;">有効</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">はい</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">はい</td>
 </tr>
 </tbody>
 </table>
 <p><a href="authorized-trust-lines.html">承認されたトラストライン</a>を使用する場合に、会計関係の事前承認（ゼロバランストラストライン）を許可します。</p>
 <p>この修正が適用されれば、<a href="trustset.html#trustsetのフラグ"><code>tfSetfAuth</code>を有効にした</a><code>TrustSet</code>トランザクションにおいて、<code>RippleState</code>ノードの他のすべての値をデフォルト状態にしたままでも、新しい<a href="ripplestate.html"><code>RippleState</code>レジャーオブジェクト</a>を作成できます。新しい<code>RippleState</code>ノードでは、トランザクションの送信者が低いノードと見なされるか高いノードと見なされるかに応じて、<a href="ripplestate.html#ripplestateのフラグ"><code>lsfLowAuth</code>フラグまたは<code>lsfHighAuth</code>フラグ</a>が有効になります。トランザクションの送信者は、<a href="accountset.html#accountsetのフラグ">asfRequireAuthフラグを有効</a>にして<a href="accountset.html">AccountSetトランザクション</a>を送信することで、事前に<a href="accountroot.html#accountrootのフラグ"><code>lsfRequireAuth</code></a>を有効にしておく必要があります。</p>
+<h2 id="xrpfees">XRPFees<a aria-hidden="true" class="hover_anchor" href="#xrpfees"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">XRPFees</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">93E516234E35E08CA689FA33A6D38E103881F8DCB53023F728C307AA89D515A7</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+</tbody>
+</table>
+<p>トランザクションコストの計算を簡素化し、「手数料単位」で間接的に計算し、結果をXRPに変換するのではなく、直接XRPを使用するようにしました。プロトコルや台帳データにおける「手数料単位」のインスタンスを全て変更し、XRPの代わりにdropsを使用するように修正します。修正には以下を含みます。</p>
+<ul>
+<li>Fee Votingプロトコルを更新し、XRPのdropsを使用するように変更します。</li>
+<li>FeeSettingsの台帳の項目タイプを変更します。<code>BaseFee</code>、<code>ReferenceFeeUnits</code>、<code>ReserveBase</code>、<code>ReserveIncrement</code>フィールドを<code>BaseFeeDrops</code>、<code>ReserveBaseDrops</code>、<code>ReserveIncrementDrops</code>に置き換えます。</li>
+<li>SetFee トランザクションタイプを変更します。<code>BaseFee</code>、<code>ReferenceFeeUnits</code>、<code>ReserveBase</code>、<code>ReserveIncrement</code>フィールドを<code>BaseFeeDrops</code>、<code>ReserveBaseDrops</code>、<code>ReserveIncrementDrops</code>に置き換えます。</li>
+</ul>
+<p>このAmendment がなければ、トランザクションの形式と台帳の項目は同一です。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -1921,32 +2758,37 @@ the latest ledger that the validator considers to be fully validated. The consen
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFT Reserve Requirements</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFTの準備金要件</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">Running an NFT Auction</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">NFTオークションの実施</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">Minting NFTs into Collections</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">NFTのコレクション化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
     </nav>
@@ -2009,7 +2851,7 @@ the latest ledger that the validator considers to be fully validated. The consen
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="AMM | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/amm.html" />
-    <meta property="og:description" content="The definition and details of an Automated Market Maker (AMM) instance." />
-    <meta name="description" content="The definition and details of an Automated Market Maker (AMM) instance." />
+    <meta property="og:description" content="自動マーケットメーカー（AMM）インスタンスの定義と詳細。" />
+    <meta name="description" content="自動マーケットメーカー（AMM）インスタンスの定義と詳細。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -255,7 +255,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/grants-banner/content/references/protocol-reference/ledger-data/ledger-object-types/amm.md?pr=/XRPLF/xrpl-dev-portal/pull/1802" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/grants-banner/content/references/protocol-reference/ledger-data/ledger-object-types/amm.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1802" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -268,11 +268,11 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#amm">AMM</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-amm-json">Example AMM JSON</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#amm-fields">AMM Fields</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#auction-slot-object">Auction Slot Object</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#amm-flags">AMM Flags</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#amm-id-format">AMM ID Format</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#amm-jsonの例">AMM JSONの例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#amm-フィールド">AMM フィールド</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#オークションスロットオブジェクト">オークションスロットオブジェクト</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#amm-フラグ">AMM フラグ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#amm-id-フォーマット">AMM ID フォーマット</a></li>
       </ul>
   </div>
       </aside>
@@ -292,16 +292,13 @@
     <li class="active breadcrumb-item">AMM</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="amm">AMM<a aria-hidden="true" class="hover_anchor" href="#amm"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/gregtatcam/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/xrplf/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <!-- TODO: Update source link to merged version when available -->
-<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em> <!-- SPELLING_IGNORE: 30d --></p>
-<p>The <code>AMM</code> object type describes a single <a href="automated-market-makers.html">Automated Market Maker</a> (AMM) instance.</p>
-<h2 id="example-amm-json">Example AMM JSON<a aria-hidden="true" class="hover_anchor" href="#example-amm-json"><i class="fa fa-link"></i></a></h2>
+<p><em>自動マーケットメーカー（AMM）機能は、XRP Ledger プロトコルに提案されている <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a>の拡張機能 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> に含まれるものです。これらの機能は AMM テストネットワークで使用することができますが、公式の修正案がなく、本番のメインネットでは使用することができません。修正案が出るまでは、このページに記載されている内容は変更される可能性があります。</em></p>
+<p><code>AMM</code>オブジェクトは、単一の<a href="automated-market-makers.html">自動マーケットメーカー</a>(AMM)インスタンスを表します。</p>
+<h2 id="amm-jsonの例">AMM JSONの例<a aria-hidden="true" class="hover_anchor" href="#amm-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"AMMAccount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rE54zDvgnghAoPopCgvtiqWNq3dU5y836S"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"Asset"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -351,132 +348,132 @@
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="amm-fields">AMM Fields<a aria-hidden="true" class="hover_anchor" href="#amm-fields"><i class="fa fa-link"></i></a></h2>
-<p>The <code>AMM</code> object has the following fields:</p>
+<h2 id="amm-フィールド">AMM フィールド<a aria-hidden="true" class="hover_anchor" href="#amm-フィールド"><i class="fa fa-link"></i></a></h2>
+<p><code>AMM</code>オブジェクトは以下のフィールドを持ちます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Required?</th>
-<th>Description</th>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">JSONの型</th>
+<th style="text-align: left;"><a href="serialization.html">内部の型</a></th>
+<th style="text-align: left;">必須?</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>Asset</code></td>
-<td style="text-align: left;">Object</td>
+<td style="text-align: left;">オブジェクト</td>
 <td style="text-align: left;">STIssue</td>
-<td style="text-align: left;">Yes</td>
-<td>The definition for one of the two assets this AMM holds. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields.</td>
+<td style="text-align: left;">はい</td>
+<td>このAMMが保有する2つのアセットのうちの1つの定義。JSONでは、<code>currency</code>と<code>issuer</code>フィールドを持つオブジェクトになります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Asset2</code></td>
-<td style="text-align: left;">Object</td>
+<td style="text-align: left;">オブジェクト</td>
 <td style="text-align: left;">STIssue</td>
-<td style="text-align: left;">Yes</td>
-<td>The definition for the other asset this AMM holds. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields.</td>
+<td style="text-align: left;">はい</td>
+<td>このAMMが保有するもう一つの資産の定義。JSONでは、<code>currency</code>と<code>issuer</code>フィールドを持つオブジェクトになります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>AMMAccount</code></td>
-<td style="text-align: left;">String</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">AccountID</td>
-<td style="text-align: left;">Yes</td>
-<td>The address of the <a href="accountroot.html#special-amm-accountroot-objects">special account</a> that holds this AMM's assets.</td>
+<td style="text-align: left;">はい</td>
+<td>このAMMの資産を保有する<a href="accountroot.html#ammの特殊なaccountrootオブジェクト">特殊なアカウント</a>のアドレス。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>AuctionSlot</code></td>
-<td style="text-align: left;">Object</td>
+<td style="text-align: left;">オブジェクト</td>
 <td style="text-align: left;">STObject</td>
-<td style="text-align: left;">No</td>
-<td>Details of the current owner of the auction slot, as an <a href="#auction-slot-object">Auction Slot object</a>.</td>
+<td style="text-align: left;">いいえ</td>
+<td>オークションスロットの現在の所有者の詳細。<a href="#オークションスロットオブジェクト">オークションスロットオブジェクト</a>形式です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LPTokenBalance</code></td>
-<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a></td>
 <td style="text-align: left;">Amount</td>
-<td style="text-align: left;">Yes</td>
-<td>The total outstanding balance of liquidity provider tokens from this AMM instance. The holders of these tokens can vote on the AMM's trading fee in proportion to their holdings, or redeem the tokens for a share of the AMM's assets which grows with the trading fees collected.</td>
+<td style="text-align: left;">はい</td>
+<td>AMMインスタンスの流動性供給者トークンの発行残高の合計。このトークンの保有者は、保有量に比例してAMMの取引手数料に投票したり、取引手数料の徴収とともに増えていくAMMの資産の一部とトークンを交換したりすることができます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TradingFee</code></td>
-<td style="text-align: left;">Number</td>
+<td style="text-align: left;">数値</td>
 <td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">Yes</td>
-<td>The percentage fee to be charged for trades against this AMM instance, in units of 1/100,000. The maximum value is 1000, for a 1% fee.</td>
+<td style="text-align: left;">はい</td>
+<td>AMMインスタンスに対する取引に課される手数料のパーセンテージを1/100,000の単位で指定します。最大値は1000で、これは1%の手数料となります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>VoteSlots</code></td>
-<td style="text-align: left;">Array</td>
+<td style="text-align: left;">配列</td>
 <td style="text-align: left;">STArray</td>
-<td style="text-align: left;">No</td>
-<td>A list of vote objects, representing votes on the pool's trading fee.</td>
+<td style="text-align: left;">いいえ</td>
+<td>プールの取引手数料に関する投票を表す、投票オブジェクトのリスト。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="auction-slot-object">Auction Slot Object<a aria-hidden="true" class="hover_anchor" href="#auction-slot-object"><i class="fa fa-link"></i></a></h3>
-<p>The <code>AuctionSlot</code> field contains an object with the following nested fields:</p>
+<h3 id="オークションスロットオブジェクト">オークションスロットオブジェクト<a aria-hidden="true" class="hover_anchor" href="#オークションスロットオブジェクト"><i class="fa fa-link"></i></a></h3>
+<p><code>AuctionSlot</code>フィールドは、以下のネストしたフィールドを持つオブジェクトを含んでいます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Required?</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">JSONの型</th>
+<th style="text-align: left;"><a href="serialization.html">内部の型</a></th>
+<th style="text-align: left;">必須?</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>Account</code></td>
-<td style="text-align: left;">String - Address</td>
+<td style="text-align: left;">文字列 - アドレス</td>
 <td style="text-align: left;">AccountID</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The current owner of this auction slot.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">このオークションスロットの現在の所有者。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>AuthAccounts</code></td>
-<td style="text-align: left;">Array</td>
+<td style="text-align: left;">配列</td>
 <td style="text-align: left;">STArray</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">A list of at most 4 additional accounts that are authorized to trade at the discounted fee for this AMM instance.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">AMMインスタンスに対して取引手数料を割引した価格で取引することを許可された、最大4つの追加アカウントのリスト。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>DiscountedFee</code></td>
-<td style="text-align: left;">String</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The trading fee to be charged to the auction owner, in the same format as <code>TradingFee</code>. By default this is 0, meaning that the auction owner can trade at no fee instead of the standard fee for this AMM.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">オークションの所有者に請求される取引手数料で、<code>TradingFee</code>と同じフォーマットです。デフォルトでは0で、オークションスロットの所有者はAMMの標準的な手数料の代わりに、手数料なしで取引できることを意味します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Price</code></td>
-<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a></td>
 <td style="text-align: left;">Amount</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The amount the auction owner paid to win this slot, in LP Tokens.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">オークションスロットの所有者がこのスロットを落札するために支払った金額（LPトークン）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Expiration</code></td>
-<td style="text-align: left;">String</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The time when this slot expires, in <a href="basic-data-types.html#時間の指定">seconds since the Ripple Epoch</a>.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">このスロットの有効期限が切れる<a href="basic-data-types.html#時間の指定">Rippleエポック以降の経過秒数</a>で指定した時刻。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="amm-flags">AMM Flags<a aria-hidden="true" class="hover_anchor" href="#amm-flags"><i class="fa fa-link"></i></a></h2>
-<p>There are currently no flags defined for <code>AMM</code> objects.</p>
-<h2 id="amm-id-format">AMM ID Format<a aria-hidden="true" class="hover_anchor" href="#amm-id-format"><i class="fa fa-link"></i></a></h2>
-<p>The ID of an <code>AMM</code> object is the <a href="basic-data-types.html#ハッシュ">SHA-512Half</a> of the following values, concatenated in order:</p>
+<h2 id="amm-フラグ">AMM フラグ<a aria-hidden="true" class="hover_anchor" href="#amm-フラグ"><i class="fa fa-link"></i></a></h2>
+<p>現在、<code>AMM</code>オブジェクトに定義されているフラグはありません。</p>
+<h2 id="amm-id-フォーマット">AMM ID フォーマット<a aria-hidden="true" class="hover_anchor" href="#amm-id-フォーマット"><i class="fa fa-link"></i></a></h2>
+<p><code>AMM</code>オブジェクトのIIは、以下の値の<a href="basic-data-types.html#ハッシュ">SHA-512Half</a>を順に繋げたものです。</p>
 <ol>
-<li>The <code>AMM</code> space key (<code>0x0041</code>)</li>
-<li>The AccountID of the first asset's issuer.</li>
-<li>The 160-bit currency code of the first token.</li>
-<li>The AccountID of the second asset's issuer.</li>
-<li>The 160-bit currency code of the second token.</li>
+<li><code>AMM</code>のスペースキー(<code>0x0041</code>)</li>
+<li>第1アセットの発行者のAccountID。</li>
+<li>第1トークンの160ビットの通貨コード。</li>
+<li>第2アセットの発行者のAccountID。</li>
+<li>第2トークンの160ビットの通貨コード。</li>
 </ol>
-<p>For XRP, use all 0's for both the token and the issuer.</p>
+<p>XRPの場合、トークン・発行者ともに全て0を使用します。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -709,32 +706,37 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFT Reserve Requirements</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFTの準備金要件</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">Running an NFT Auction</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">NFTオークションの実施</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">Minting NFTs into Collections</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">NFTのコレクション化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
     </nav>
@@ -797,7 +799,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

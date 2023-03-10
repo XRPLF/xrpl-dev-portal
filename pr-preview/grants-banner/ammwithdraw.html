@@ -371,14 +371,14 @@
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout note"><strong>Note:</strong> For a two-asset withdrawal, it is possible for <code>Asset</code> to correspond to <em>either</em> <code>Amount</code> or <code>Amount2</code> as long as <code>Asset2</code> corresponds to the other one. It is recommended to match them (that is, <code>Amount2</code> is an amount of the asset defined in <code>Asset2</code>) because it is less confusing that way.</p>
+<p class="devportal-callout note"><strong>Note:</strong> For a double-asset withdrawal, it is possible for <code>Asset</code> to correspond to <em>either</em> <code>Amount</code> or <code>Amount2</code> as long as <code>Asset2</code> corresponds to the other one. It is recommended to match them (that is, <code>Amount2</code> is an amount of the asset defined in <code>Asset2</code>) because it is less confusing that way.</p>
 <h3 id="ammwithdraw-modes">AMMWithdraw Modes<a aria-hidden="true" class="hover_anchor" href="#ammwithdraw-modes"><i class="fa fa-link"></i></a></h3>
 <p>This transaction has several modes, depending on which flags you specify. Each mode expects a specific combination of fields. The modes fall into two categories:</p>
 <ul>
 <li><strong>Double-asset withdrawals</strong>, in which you receive both assets from the AMM's pool in proportions that match their balances there. These withdrawals are not subject to a fee.</li>
 <li><strong>Single-asset withdrawals</strong>, in which you receive one asset from the AMM's pool. The AMM charges a fee based on how much your deposit shifts the balance of assets in the pool. Depending on the withdraw mode, the amount of the fee can be added to the amount of LP Tokens paid in, or debited from the amount of the asset paid out.</li>
 </ul>
-<p>The following modes are for a <strong>double-asset withdrawal</strong>:</p>
+<p>The following combinations of fields indicate a <strong>double-asset withdrawal</strong>:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -808,6 +808,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
   </div>
 
     </nav>

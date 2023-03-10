@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="AMMVote | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/ammvote.html" />
-    <meta property="og:description" content="Vote on the trading fee for an Automated Market Maker instance." />
-    <meta name="description" content="Vote on the trading fee for an Automated Market Maker instance." />
+    <meta property="og:description" content="自動マーケットメーカーインスタンスの取引手数料を投票する。" />
+    <meta name="description" content="自動マーケットメーカーインスタンスの取引手数料を投票する。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -255,7 +255,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/grants-banner/content/references/protocol-reference/transactions/transaction-types/ammvote.md?pr=/XRPLF/xrpl-dev-portal/pull/1802" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/grants-banner/content/references/protocol-reference/transactions/transaction-types/ammvote.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1802" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -268,9 +268,9 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#ammvote">AMMVote</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-ammvote-json">Example AMMVote JSON</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#ammvote-fields">AMMVote Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ammvote-jsonの例">AMMVote JSONの例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ammvote-フィールド">AMMVote フィールド</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#エラーケース">エラーケース</a></li>
       </ul>
   </div>
       </aside>
@@ -290,16 +290,13 @@
     <li class="active breadcrumb-item">AMMVote</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="ammvote">AMMVote<a aria-hidden="true" class="hover_anchor" href="#ammvote"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMVote.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <!-- TODO: Update source link to merged version when available -->
-<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em> <!-- SPELLING_IGNORE: 30d --></p>
-<p>Vote on the trading fee for an <a href="automated-market-makers.html">Automated Market Maker</a> instance. Up to 8 accounts can vote in proportion to the amount of the AMM's LP Tokens they hold. Each new vote re-calculates the AMM's trading fee based on a weighted average of the votes.</p>
-<h2 id="example-ammvote-json">Example AMMVote JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammvote-json"><i class="fa fa-link"></i></a></h2>
+<p><em>自動マーケットメーカー（AMM）機能は、XRP Ledger プロトコルに提案されている <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a>の拡張機能 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> に含まれるものです。これらの機能は AMM テストネットワークで使用することができますが、公式の修正案がなく、本番のメインネットでは使用することができません。修正案が出るまでは、このページに記載されている内容は変更される可能性があります。</em></p>
+<p><a href="automated-market-makers.html">自動マーケットメーカー</a>インスタンスの取引手数料を投票します。最大8つのアカウントが、保有するAMMのLPトークンの量に比例して投票することができます。各新規投票では、投票の加重平均に基づいてAMMの取引手数料が再計算されます。</p>
+<h2 id="ammvote-jsonの例">AMMVote JSONの例<a aria-hidden="true" class="hover_anchor" href="#ammvote-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"Asset"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -316,16 +313,16 @@
 <span class="w">    </span><span class="nt">"TransactionType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AMMVote"</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="ammvote-fields">AMMVote Fields<a aria-hidden="true" class="hover_anchor" href="#ammvote-fields"><i class="fa fa-link"></i></a></h2>
-<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, AMMVote transactions use the following fields:</p>
+<h2 id="ammvote-フィールド">AMMVote フィールド<a aria-hidden="true" class="hover_anchor" href="#ammvote-フィールド"><i class="fa fa-link"></i></a></h2>
+<p><a href="transaction-common-fields.html">共通フィールド</a>に加えて、AMMVoteトランザクションは以下のフィールドを使用します。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Required?</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">JSONの型</th>
+<th style="text-align: left;"><a href="serialization.html">内部の型</a></th>
+<th style="text-align: left;">必須?</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
@@ -333,54 +330,54 @@
 <td style="text-align: left;"><code>Asset</code></td>
 <td style="text-align: left;">Object</td>
 <td style="text-align: left;">STIssue</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The definition for one of the assets in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">AMMのプールにある資産の一つを定義します。JSONでは、<code>currency</code> と <code>issuer</code> フィールドを持つオブジェクトになります（XRPの場合は<code>issuer</code>を省略します）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Asset2</code></td>
 <td style="text-align: left;">Object</td>
 <td style="text-align: left;">STIssue</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The definition for the other asset in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">AMMのプールにあるもう一つの資産を定義します。JSONでは、<code>currency</code> と <code>issuer</code> フィールドを持つオブジェクトになります（XRPの場合は<code>issuer</code>を省略します）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TradingFee</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The proposed fee to vote for, in units of 1/100,000; a value of 1 is equivalent to 0.001%. The maximum value is 1000, indicating a 1% fee.</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">投票に必要な手数料を100000の1の単位で指定します。最大値は1000で、1％の手数料を表します。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<p>Besides errors that can occur for all transactions, AMMVote transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<h2 id="エラーケース">エラーケース<a aria-hidden="true" class="hover_anchor" href="#エラーケース"><i class="fa fa-link"></i></a></h2>
+<p>すべてのトランザクションで発生する可能性のあるエラーに加えて、AMMVoteトランザクションでは、次の<a href="transaction-results.html">トランザクション結果コード</a>が発生する可能性があります。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Error Code</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">エラーコード</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>tecAMM_INVALID_TOKENS</code></td>
-<td style="text-align: left;">The sender cannot vote because they do not hold any of this AMM's LP Tokens.</td>
+<td style="text-align: left;">送信者は、このAMMのLPトークンを保有していないため、投票することができません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecAMM_FAILED_VOTE</code></td>
-<td style="text-align: left;">There are already 8 votes from accounts that hold more LP Tokens than the sender of this transaction.</td>
+<td style="text-align: left;">このトランザクションの送信者よりも多くのLPトークンを保有しているアカウントからの投票が既に8件存在しています。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>terNO_ACCOUNT</code></td>
-<td style="text-align: left;">An account specified in this transaction does not exist.</td>
+<td style="text-align: left;">このトランザクションで指定されたアカウントが存在しません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_FEE</code></td>
-<td style="text-align: left;">The <code>TradingFee</code> from this transaction is not valid.</td>
+<td style="text-align: left;">このトランザクションの<code>TradingFee</code>は正しくありません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>terNO_AMM</code></td>
-<td style="text-align: left;">The Automated Market Maker instance for the asset pair in this transaction does not exist.</td>
+<td style="text-align: left;">このトランザクションの資産ペアの自動マーケットメーカー インスタンスが存在しません。</td>
 </tr>
 </tbody>
 </table>
@@ -616,32 +613,37 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFT Reserve Requirements</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFTの準備金要件</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">Running an NFT Auction</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">NFTオークションの実施</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">Minting NFTs into Collections</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">NFTのコレクション化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
     </nav>
@@ -704,7 +706,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
