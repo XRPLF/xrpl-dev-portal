@@ -190,6 +190,7 @@ targets:
             # Fix links from untranslated NFT API methods:
             "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
             "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
+            "nftokenmint.html#nftokenmint-fields": "nftokenmint.html#nftokenmint-フィールド"
             "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
             "nftokenoffer.html#nftokenoffer-flags": "nftokenoffer.html#nftokenoffer-フラグ"
             # Fix links from untranslated AMM pages:
