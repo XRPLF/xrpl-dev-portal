@@ -1020,6 +1020,7 @@ pages:
         targets:
             - en
 
+        # TODO: translate
     -   md: concepts/consensus-network/transaction-malleability.ja.md
         targets:
             - ja
