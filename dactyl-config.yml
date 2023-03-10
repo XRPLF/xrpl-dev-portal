@@ -913,10 +913,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/decentralized-exchange/automated-market-makers.md
         targets:
             - en
+
+    -   md: concepts/decentralized-exchange/automated-market-makers.ja.md
+        targets:
             - ja
 
     -   md: concepts/decentralized-exchange/offers.md
@@ -2390,7 +2392,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation with new section from the English version
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.ja.md
         targets:
             - ja
@@ -2403,10 +2404,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.md
         targets:
             - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
@@ -2560,34 +2563,44 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ammbid.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammbid.ja.md
+        targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ammcreate.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.ja.md
+        targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.ja.md
+        targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ammvote.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammvote.ja.md
+        targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/checkcancel.md
@@ -3293,12 +3306,13 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
         targets:
             - en
-            - ja
 
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.ja.md
+        targets:
+            - ja
 
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
         targets:

@@ -119,7 +119,7 @@ As a special case, during the final (20th) interval of the auction slot, the ref
 **Note:** As with all XRP Ledger times, transaction processing uses the [official close time](ledgers.html#ledger-close-times) of the _previous_ ledger, which can result in a difference of up to about 10 seconds from real time.
 
 
-## AMM Cases previous holder
+## Error Cases
 Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
 
 | Error Code              | Description                                  |
