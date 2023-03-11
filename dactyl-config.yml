@@ -984,7 +984,6 @@ pages:
         targets:
             - en
 
-    # TODO: update translation
     -   md: concepts/consensus-network/negative-unl.ja.md
         targets:
             - ja
@@ -2447,10 +2446,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.md
         targets:
             - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md
@@ -2790,10 +2791,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-results/transaction-results.md
