@@ -24,7 +24,7 @@ Escrowに留保されているXRPを送金元に返金します。
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 <!--{# fix md highlighting_ #}-->
 
 

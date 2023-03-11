@@ -32,7 +32,7 @@ OfferCreateトランザクションは、効果的な[指値注文](http://en.wi
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 <!--{# fix md highlighting_ #}-->
 
 
