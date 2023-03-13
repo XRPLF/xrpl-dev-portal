@@ -101,7 +101,9 @@ In the function `getLedgerDetails`, we are using the [ledger](https://xrpl.org/l
 
 {{ include_code("_code-samples/build-a-wallet/js/index.js", language="js") }}
 
-In the code above, we imported the `getWalletDetails` and `getLedgerDetails` functions from the get-wallet-details.js and get-ledger-details.js files respectively. Added event listners to the buttons for redirection. Used the `setInterval` method to call the getLedgerDetails function every 4 seconds. (Note: The ledger's estimate close time is 4 seconds, so we are calling the function every 4 seconds to get the latest ledger details. This can be adjusted according to your needs.)
+In the code above we rendered the wallet and ledger details using the information we got earlier in `get-wallet-details.js` and `get-ledger-details.js`. In order to make sure we have up to date data, we call the `getLedgerDetails` function every 4 seconds, as that's about how long it takes for a ledger to close on mainnet. 
+
+The one other thing we do here is add two buttons - one to send XRP and one to view the transaction history of our account. They won't work just yet - we'll have to add those implementations next.
 
 Up next we need to update the HTML and CSS for the home page to give it the XRPL-look and feel. 
 
