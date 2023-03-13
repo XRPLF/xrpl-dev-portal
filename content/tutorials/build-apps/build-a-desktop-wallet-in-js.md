@@ -70,7 +70,36 @@ SEED="sEd7B2Jm7RBhhh5i88SH38aZB8ot8Kq" // Replace with your seed
 ```
 6. Change the seed to your own seed. You can get a testnet account from [here](https://xrpl.org/xrp-test-net-faucet.html).
 
-### Step 2: Creating the Home Page (Displaying Account & Ledger Details)
+
+### Step 2: Running the App
+
+In this step, we will set up the vite bundler to run the application. We've used Vite to bundle the app, if you're unfamiliar with Vite, you can check out the [Vite documentation](https://vitejs.dev/guide/) to learn more.
+
+1. To set up vite bundler, copy the code written below to the vite.config.js file. xrpl.js requires some configuration to run with the vite bundler. You can find the configuration in the code below or you can check out the [xrpl.js documentation](https://github.com/XRPLF/xrpl.js/blob/main/UNIQUE_SETUPS.md#using-xrpljs-with-vite-react).
+
+{{ include_code("_code-samples/build-a-wallet/js/vite.config.js", language="js") }}
+
+2. Add script to package.json
+
+In your package.json file, add:
+
+```json
+"scripts": {
+    "dev": "vite"
+}
+```
+
+Now the basic setup of your application is ready, after completing the next steps of this tutorial you can run this command
+
+```bash
+yarn dev ## or npm run dev
+```
+
+in your terminal which will start your app in development mode. Your terminal will display an URL using which you can verify your changes in real-time.
+
+If you get stuck building while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's [Developer Discord](https://discord.com/invite/KTNmhJDXqa).
+
+### Step 3: Creating the Home Page (Displaying Account & Ledger Details)
 
 In this step, we will create the home page that will display the account details and the ledger details.
 
@@ -84,36 +113,21 @@ In this step, we will create the home page that will display the account details
 
 Now that you've got the basic setup, let's discuss what we're going to do. For the home page, we want to display our account info, what's happening on the ledger, and for fun add a little logo. In order to make that happen, first we need to look up our account state. These next few steps will walk you through that process.
 
-4. Make a new folder named helpers in the src directory, create a new file named get-wallet-details.js and copy the code written below to the file.
+4. Make a new folder named helpers in the src directory, create a new file named get-wallet-details.js and copy the code written below to the file. In the function `getWalletDetails`, we are using the [account_info](https://xrpl.org/account_info.html) method to fetch the account details. We are also using the [server_info](https://xrpl.org/server_info.html) method to calculate the reserve base and increment. You can read more about the reserve requirement [here](https://xrpl.org/reserves.html).
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-wallet-details.js", language="js") }}
 
-In the function `getWalletDetails`, we are using the [account_info](https://xrpl.org/account_info.html) method to fetch the account details. We are also using the [server_info](https://xrpl.org/server_info.html) method to calculate the reserve base and increment. You can read more about the reserve requirement [here](https://xrpl.org/reserves.html).
-
-5. Create another file in helpers folder named get-ledger-details.js which will be used to fetch the ledger details and copy the code written below to the file.
+5. Create another file in helpers folder named get-ledger-details.js which will be used to fetch the ledger details and copy the code written below to the file. In the function `getLedgerDetails`, we are using the [ledger](https://xrpl.org/ledger.html) that will fetch the details of the latest ledger.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-ledger-details.js", language="js") }}
 
-In the function `getLedgerDetails`, we are using the [ledger](https://xrpl.org/ledger.html) that will fetch the details of the latest ledger, you can tweak the code to fetch the details of a specific ledger and also to fetch account details and other information.
-
-
-6. Now, let's add the code to index.js file to fetch the account and ledger details and display them on the home page. Copy the code written below to the index.js file.
+6. Now, let's add the code to index.js file to fetch the account and ledger details and display them on the home page. Copy the code written below to the index.js file. Here we render the wallet and ledger details using the functions we implemented earlier in `get-wallet-details.js` and `get-ledger-details.js`. In order to make sure we have up to date data, we call the `getLedgerDetails` function every 4 seconds, as that's about how long it takes for a ledger to close on mainnet. 
 
 {{ include_code("_code-samples/build-a-wallet/js/index.js", language="js") }}
 
-In the code above we rendered the wallet and ledger details using the information we got earlier in `get-wallet-details.js` and `get-ledger-details.js`. In order to make sure we have up to date data, we call the `getLedgerDetails` function every 4 seconds, as that's about how long it takes for a ledger to close on mainnet. 
-
 The one other thing we do here is add two buttons - one to send XRP and one to view the transaction history of our account. They won't work just yet - we'll have to add those implementations next.
 
-Up next we need to update the HTML and CSS for the home page to give it the XRPL-look and feel. 
-
-7. Copy the contents of the [index.html](_code-samples/build-a-wallet/js/index.html) file to your index.html file.
-
-For this tutorial, we're using basic HTML and pre-loaded CSS files. If you'd like to change the aesthetic, you can replace it with any CSS framework of your choice!
-
-8. Copy the code from the [index.css](_code-samples/build-a-wallet/js/index.css) file to your project's index.css file to use the pre-made stylings.
-
-### Step 3: Creating the Send XRP Page
+### Step 4: Creating the Send XRP Page
 
 Now that we've created the home page, we can move on to the "Send XRP" page. This is what allows this wallet to manage your account's funds.
 
@@ -125,77 +139,39 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 
 3. Copy the contents of the [send-xrp.html](_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.html) file to your send-xrp.html file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.
 
-4. Now that we have the HTML code, let's add the JavaScript code. In the `helpers` folder, create a new file named `submit-transaction.js` and copy the code written below to the file.
+4. Now that we have the HTML code, let's add the JavaScript code. In the `helpers` folder, create a new file named `submit-transaction.js` and copy the code written below to the file. In this file, we are using the [submit](https://xrpl.org/submit.html) method to submit the transaction to the XRPL. Before submitting every transaction needs to be signed by a wallet, click [here](https://xrpl.org/sign.html) to learn more about signing a transaction.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/submit-transaction.js", language="js") }}
 
-In the code above, we are using the [submit](https://xrpl.org/submit.html) method to submit the signed transaction to the XRPL. You can read more about the submit method [here](https://xrpl.org/submit.html).
 
-5. Now back to the send-xrp.js file, copy the code written below to the file.
+1. Now back to the send-xrp.js file, copy the code written below to the file. In this piece of code we are first getting all the DOM elements from HTML and adding event listners to update & validate the fields based on the user input. Using `renderAvailableBalance` method we display the current available balance of the wallet. `validateAddress` function validates the user address, and the amount is validated using a regular expression. When all the fields are filled with correct inputs, we call the `submitTransaction` function to submit the transaction to the ledger.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.js", language="js") }}
 
-In the code above, we retrieve elements from DOM, add event listeners, validate inputs and after validation, we call the `submitTransaction` function from the submit-transaction.js file to submit the transaction to the XRPL.
-
-### Step 4: Creating the Transactions Page
+### Step 5: Creating the Transactions Page
 
 Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account.
 
-  1. Account: The account that sent the transaction.
-  2. Destination: The account that received the transaction.
-  3. Amount: The amount of XRP sent in the transaction.
-  4. Transaction Type: The type of transaction.
-  5. Result: The result of the transaction.
-  6. Link: A link to the transaction on the XRP Ledger Explorer.
+  - Account: The account that sent the transaction.
+  - Destination: The account that received the transaction.
+  - Amount: The amount of XRP sent in the transaction.
+  - Transaction Type: The type of transaction.
+  - Result: The result of the transaction.
+  - Link: A link to the transaction on the XRP Ledger Explorer.
 
 ![Transactions Page Screenshot](img/js-wallet-transaction.png)
 
-1. Create a folder named transaction-history in the src directory.
+1. Create a folder named `transaction-history` in the src directory.
 
-2. Add two files named transaction-history.js and transaction-history.html.
+2. Add two files named `transaction-history.js` and `transaction-history.html`.
 
-3. In the transaction-history.js file, copy the code written below.
+3. In the `transaction-history.js` file, copy the code written below. To fetch the transactions from XRP Ledger we are using [account_tx](https://xrpl.org/account_tx.html) method. This method returns a list of transactions that affected the specified account. We are using the `limit` parameter to limit the number of transactions to 10 per page. We are also using the `marker` parameter to paginate through the transactions.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.js", language="js") }}
 
-In the code above we fetch the transactions from the XRP Ledger by using the [account_tx](https://xrpl.org/account_tx.html) method. You can read more about the account_tx method [here](https://xrpl.org/account_tx.html).
-
-4. Copy the contents of the [transaction-history.html](_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.html) file to your transaction-history.html file.
+1. Copy the contents of the [transaction-history.html](_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.html) file to your transaction-history.html file.
 
 You can use this code as a starting point for displaying your account's transaction history. If you want an additional challenge, try expanding it to support different transaction types (e.g. [TrustSet](https://xrpl.org/trustset.html)). If you want inspiration for how to handle this, you can check out the [XRP Ledger Explorer](https://livenet.xrpl.org/) to see how the transaction details are displayed.
-
-### Step 5: Running the App
-
-A wallet app is not complete without a way to run it. In this step, we will set up the vite bundler to run the app.
-
-1. Set up vite bundler, copy the code written below to the vite.config.js file.
-
-{{ include_code("_code-samples/build-a-wallet/js/vite.config.js", language="js") }}
-
-We've used Vite to bundle the app, if you're unfamiliar with Vite, you can check out the [Vite documentation](https://vitejs.dev/guide/) to learn more.
-
-xrpl.js requires some configuration to run with the vite bundler. You can find the configuration in the code below or you can check out the [xrpl.js documentation](https://github.com/XRPLF/xrpl.js/blob/main/UNIQUE_SETUPS.md#using-xrpljs-with-vite-react).
-
-
-2. Add script to package.json
-
-In your package.json file, add:
-
-```json
-"scripts": {
-    "dev": "vite"
-}
-```
-
-Now our app is ready to run. To run the app, open terminal in the project directory and run:
-
-```bash
-yarn dev ## or npm run dev
-```
-
-This will start the app in development mode. Check your terminal for the URL where the app is running. Click the URL to open the app in your browser. You should see the home page of the app. 
-
-If you get stuck building while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's [Developer Discord](https://discord.com/invite/KTNmhJDXqa).
 
 ## Next Steps
 
