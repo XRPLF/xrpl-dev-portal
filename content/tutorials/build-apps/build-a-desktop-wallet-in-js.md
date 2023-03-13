@@ -193,7 +193,7 @@ yarn dev ## or npm run dev
 
 This will start the app in development mode. Check your terminal for the URL where the app is running. Click the URL to open the app in your browser. You should see the home page of the app. 
 
-If you ran into trouble while running the app, go over the steps again to ensure you followed them correctly. If still the app doesn't run, feel free to ask on XRPL Community [Discord](https://discord.com/invite/KTNmhJDXqa).
+If you get stuck building while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's [Developer Discord](https://discord.com/invite/KTNmhJDXqa).
 
 ## Next Steps
 
