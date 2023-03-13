@@ -123,7 +123,7 @@ Till now, we have created the home page that displays the account and ledger det
 
 3. Copy the contents of the [send-xrp.html](_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.html) file to your send-xrp.html file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.
 
-4. Now that we have the HTML code, let's add the JavaScript code. In helpers folder, add a new file named submit-transaction.js and copy the code written below to the file.
+4. Now that we have the HTML code, let's add the JavaScript code. In the `helpers` folder, create a new file named `submit-transaction.js` and copy the code written below to the file.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/submit-transaction.js", language="js") }}
 
