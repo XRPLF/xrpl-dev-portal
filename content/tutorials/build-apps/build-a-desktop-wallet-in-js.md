@@ -115,7 +115,7 @@ For this tutorial, we're using basic HTML and pre-loaded CSS files. If you'd lik
 
 ### Step 3: Creating the Send XRP Page
 
-Till now, we have created the home page that displays the account and ledger details. In this step, we will create the Send XRP page that will allow users to send XRP to another account.
+Now that we've created the home page, we can move on to the "Send XRP" page. This is what allows this wallet to manage your account's funds.
 
 ![Send XRP Page Screenshot](img/js-wallet-send-xrp.png)
 
