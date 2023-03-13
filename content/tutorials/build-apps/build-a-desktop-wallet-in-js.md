@@ -160,7 +160,7 @@ In the code above we fetch the transactions from the XRP Ledger by using the [ac
 
 4. Copy the contents of the [transaction-history.html](_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.html) file to your transaction-history.html file.
 
-You can use this code as a starting point and customize it to suit your needs. For example, you might want to add more columns to the table. You can also check out the [XRP Ledger Explorer](https://livenet.xrpl.org/) to see how the transaction details are displayed.
+You can use this code as a starting point for displaying your account's transaction history. If you want an additional challenge, try expanding it to support different transaction types (e.g. [TrustSet](https://xrpl.org/trustset.html)). If you want inspiration for how to handle this, you can check out the [XRP Ledger Explorer](https://livenet.xrpl.org/) to see how the transaction details are displayed.
 
 ### Step 5: Running the App
 
