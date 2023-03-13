@@ -121,7 +121,7 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 
 1. Create a folder named `send-xrp` in the `src` directory.
 
-2. Add two files named send-xrp.js and send-xrp.html. You can also create a separate css file depending on your choice. 
+2. Inside the `send-xrp` folder, create two files named send-xrp.js and send-xrp.html.
 
 3. Copy the contents of the [send-xrp.html](_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.html) file to your send-xrp.html file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.
 
