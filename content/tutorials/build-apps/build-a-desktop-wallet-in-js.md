@@ -201,7 +201,7 @@ Now that you have a functional wallet, you can take it in several new directions
 
 - You could support more of the XRP Ledger's [transaction types](transaction-types.html) including [tokens](issued-currencies.html) and [cross-currency payments](cross-currency-payments.html)
 - You could add support for multiple currencies, including IOUs.
-- Allow the user to trade in the [decentralized exchange](decentralized-exchange.html)
+- You could support creating [offers](https://xrpl.org/offers.html) in the [decentralized exchange](decentralized-exchange.html)
 - You could add new ways to request payments, such as with QR codes or URIs that open in your wallet.
 - Or you could support better account security including allowing users to set [regular key pairs](cryptographic-keys.html#regular-key-pair) or handle [multi-signing](multi-signing.html).
 
