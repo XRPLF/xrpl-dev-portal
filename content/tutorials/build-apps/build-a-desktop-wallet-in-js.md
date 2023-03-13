@@ -119,7 +119,7 @@ Till now, we have created the home page that displays the account and ledger det
 
 ![Send XRP Page Screenshot](img/js-wallet-send-xrp.png)
 
-1. Create a folder named send-xrp in the src directory.
+1. Create a folder named `send-xrp` in the `src` directory.
 
 2. Add two files named send-xrp.js and send-xrp.html. You can also create a separate css file depending on your choice. 
 
