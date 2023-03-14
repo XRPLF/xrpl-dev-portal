@@ -9,7 +9,7 @@ labels:
 
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
 
-Create or modify a trust line linking two accounts.
+Create or modify a [trust line](trust-lines-and-issuing.html) linking two accounts.
 
 ## Example {{currentpage.name}} JSON
 
@@ -42,6 +42,8 @@ Create or modify a trust line linking two accounts.
 | `LimitAmount`.`issuer`   | String    | (Amount.issuer)   | The address of the account to extend trust to. |
 | `QualityIn`              | Number    | UInt32            | _(Optional)_ Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
 | `QualityOut`             | Number    | UInt32            | _(Optional)_ Value outgoing balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
+
+If the account specified in `LimitAmount.issuer` is blocking incoming trust lines, the transaction fails with the result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment][] :not_enabled:)_
 
 
 ## TrustSet Flags

@@ -41,6 +41,17 @@ A `SetFee` [pseudo-transaction](pseudo-transaction-types.html) marks a change in
 | `ReserveIncrement`  | Unsigned Integer | UInt32            | The incremental reserve, in drops |
 | `LedgerSequence`    | Number           | UInt32            | _(Omitted for some historical `SetFee` pseudo-transactions)_ The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
+
+If the _[XRPFees amendment][]_ is enabled, `SetFee` pseudo-transactions use these fields instead:
+
+| Field                   | JSON Type | [Internal Type][] | Description     |
+|:------------------------|:----------|:------------------|:----------------|
+| `BaseFeeDrops`          | String    | Amount            | The charge, in drops of XRP, for the reference transaction. (This is the [transaction cost](transaction-cost.html) before scaling for load.) |
+| `ReserveBaseDrops`      | String    | Amount            | The base reserve, in drops |
+| `ReserveIncrementDrops` | String    | Amount            | The incremental reserve, in drops |
+| `LedgerSequence`        | Number    | UInt32            | _(Omitted for some historical `SetFee` pseudo-transactions)_ The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
+
+
 {% include '_snippets/setfee_uniqueness_note.md' %}
 
 <!--{# common link defs #}-->
