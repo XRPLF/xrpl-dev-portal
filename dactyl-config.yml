@@ -755,6 +755,22 @@ pages:
         blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
         targets:
             - ja
+            
+    -   name: Tokens
+        html: issued-currencies-overview.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: tokens.html
+        blurb: Anyone can make tokens representing digital value on the XRP Ledger.
+        targets:
+            - en
+
+    -   name: トークン
+        html: issued-currencies-overview.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: tokens.html
+        blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
+        targets:
+            - ja
 
     -   md: concepts/tokens/trust-lines-and-issuing.md
         targets:
