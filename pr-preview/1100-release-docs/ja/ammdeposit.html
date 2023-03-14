@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="AMMDeposit | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/ammdeposit.html" />
-    <meta property="og:description" content="Deposit funds into an Automated Market Maker in exchange for LPTokens." />
-    <meta name="description" content="Deposit funds into an Automated Market Maker in exchange for LPTokens." />
+    <meta property="og:description" content="LPTokenと引き換えに、自動マーケットメーカーに資金を預けます。" />
+    <meta name="description" content="LPTokenと引き換えに、自動マーケットメーカーに資金を預けます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -92,12 +92,12 @@
 
 <div class="top-banner fixed-top"> 
   <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
-    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
+    <span><p class="mb-0 no-wrap">Apply for XRPL Grants, open until March 24.</p></span>
+    <span><a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply for Funding</a></span>
   </div>
   <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
-    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
+    <span><p class="mb-0">Apply for XRPL Grants, open</p></span>
+    <span><p class="mb-0">until March 24.<a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply For Funding</a></p></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -255,7 +255,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/1100-release-docs/content/references/protocol-reference/transactions/transaction-types/ammdeposit.md?pr=/XRPLF/xrpl-dev-portal/pull/1803" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/1100-release-docs/content/references/protocol-reference/transactions/transaction-types/ammdeposit.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1803" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -268,12 +268,12 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#ammdeposit">AMMDeposit</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-ammdeposit-json">Example AMMDeposit JSON</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#ammdeposit-fields">AMMDeposit Fields</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#ammdeposit-modes">AMMDeposit Modes</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#single-asset-deposit-fee">Single Asset Deposit Fee</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#ammdeposit-flags">AMMDeposit Flags</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ammdeposit-jsonの例">AMMDeposit JSONの例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ammdeposit-フィールド">AMMDeposit フィールド</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ammdepositモード">AMMDepositモード</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#シングルアセット入金手数料">シングルアセット入金手数料</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ammdepositフラグ">AMMDepositフラグ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#エラーケース">エラーケース</a></li>
       </ul>
   </div>
       </aside>
@@ -293,17 +293,14 @@
     <li class="active breadcrumb-item">AMMDeposit</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="ammdeposit">AMMDeposit<a aria-hidden="true" class="hover_anchor" href="#ammdeposit"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMDeposit.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <!-- TODO: Update source link to merged version when available -->
-<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em> <!-- SPELLING_IGNORE: 30d --></p>
-<p>Deposit funds into an <a href="automated-market-makers.html">Automated Market Maker</a> (AMM) instance and receive the AMM's liquidity provider tokens (<em>LP Tokens</em>) in exchange. You can deposit one or both of the assets in the AMM's pool.</p>
-<p>If successful, this transaction creates a <a href="trust-lines-and-issuing.html">trust line</a> to the AMM Account (limit 0) to hold the LP Tokens.</p>
-<h2 id="example-ammdeposit-json">Example AMMDeposit JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammdeposit-json"><i class="fa fa-link"></i></a></h2>
+<p><em>自動マーケットメーカー（AMM）機能は、XRP Ledger プロトコルに提案されている <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a>の拡張機能 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> に含まれるものです。これらの機能は AMM テストネットワークで使用することができますが、公式の修正案がなく、本番のメインネットでは使用することができません。修正案が出るまでは、このページに記載されている内容は変更される可能性があります。</em></p>
+<p><a href="automated-market-makers.html">自動マーケットメーカー</a>（AMM）インスタンスに資金を預け、引き換えにAMMの流動性プロバイダートークン（ <em>LPトークン</em> ）を受け取ります。AMMのプールにある資産の一方または両方を預けることができます。</p>
+<p>トランザクションが成功すると、LPトークンを保持するためにAMMアカウント(リミット0)に<a href="trust-lines-and-issuing.html">トラストライン</a>が作成されます。</p>
+<h2 id="ammdeposit-jsonの例">AMMDeposit JSONの例<a aria-hidden="true" class="hover_anchor" href="#ammdeposit-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"Amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -325,149 +322,148 @@
 <span class="w">    </span><span class="nt">"TransactionType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AMMDeposit"</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="ammdeposit-fields">AMMDeposit Fields<a aria-hidden="true" class="hover_anchor" href="#ammdeposit-fields"><i class="fa fa-link"></i></a></h2>
-<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, AMMDeposit transactions use the following fields:</p>
+<h2 id="ammdeposit-フィールド">AMMDeposit フィールド<a aria-hidden="true" class="hover_anchor" href="#ammdeposit-フィールド"><i class="fa fa-link"></i></a></h2>
+<p><a href="transaction-common-fields.html">共通フィールド</a>に加えて、AMMDepositトランザクションは以下のフィールドを使用します。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Required?</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">JSONの型</th>
+<th style="text-align: left;"><a href="serialization.html">内部の型</a></th>
+<th style="text-align: left;">必須?</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>Asset</code></td>
-<td style="text-align: left;">Object</td>
+<td style="text-align: left;">オブジェクト</td>
 <td style="text-align: left;">STIssue</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The definition for one of the assets in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">AMMのプールにある資産の一つを定義します。JSONでは、<code>currency</code>と<code>issuer</code>フィールドを持つオブジェクトになります（XRPの場合は<code>issuer</code>を省略します）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Asset2</code></td>
-<td style="text-align: left;">Object</td>
+<td style="text-align: left;">オブジェクト</td>
 <td style="text-align: left;">STIssue</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The definition for the other asset in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">AMMのプールにあるもう一つの資産を定義します。JSONでは、<code>currency</code>と<code>issuer</code>フィールドを持つオブジェクトになります（XRPの場合は<code>issuer</code>を省略します）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Amount</code></td>
-<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a></td>
 <td style="text-align: left;">Amount</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">The amount of one asset to deposit to the AMM. If present, this must match the type of one of the assets (tokens or XRP) in the AMM's pool.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">AMMに預ける1つの資産の量を指定します。存在する場合、これはAMMのプールにある資産の一つ（トークンまたはXRP）と一致する必要があります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Amount2</code></td>
-<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a></td>
 <td style="text-align: left;">Amount</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">The amount of another asset to add to the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same asset as <code>Amount</code>.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">AMMに追加する別の資産の量を指定します。存在する場合、これはAMMのプール内の他の資産と一致する必要があり、<code>Amount</code>と同じ資産にすることはできません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>EPrice</code></td>
-<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a></td>
 <td style="text-align: left;">Amount</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">The maximum effective price, in the deposit asset, to pay for each LP Token received.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">受け取った各LPトークンに支払う、預け入れ資産の最大有効価格です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LPTokenOut</code></td>
-<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a></td>
 <td style="text-align: left;">Amount</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">How many of the AMM's LP Tokens to buy.</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">AMMのLPトークンの購入数量。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="ammdeposit-modes">AMMDeposit Modes<a aria-hidden="true" class="hover_anchor" href="#ammdeposit-modes"><i class="fa fa-link"></i></a></h3>
-<p>This transaction has five modes, defined by which flag you specify. Each mode expects a specific combination of fields. The modes fall into two categories: </p>
+<h3 id="ammdepositモード">AMMDepositモード<a aria-hidden="true" class="hover_anchor" href="#ammdepositモード"><i class="fa fa-link"></i></a></h3>
+<p>このトランザクションには5つのモードがあり、どのフラグを指定するかで定義されます。それぞれのモードは、特定のフィールドの組み合わせを必要とし、次の2つのカテゴリーに分類されます。</p>
 <ul>
-<li><strong>Double-asset deposits</strong>, in which you provide both assets in the AMM's pool, proportional to the balance of the assets already there. These deposits are not subject to a fee.</li>
-<li><strong>Single-asset deposits</strong>, in which you provide only one of the AMM's two assets. The AMM charges a fee, debited from the LP Tokens paid out, based on how much your deposit shifts the balance of assets in the pool.</li>
+<li><strong>ダブルアセット入金</strong>: AMMのプールにある両方(2つ)の資産を、既存の資産の残高に比例して預けます。この預け入れは手数料の対象外です。</li>
+<li><strong>シングルアセット入金</strong>, AMMの2つの資産のうち1つだけを預けます。AMMは、この預け入れによってプール内の資産残高がどれだけ変化したかによって、対価として支払われるLPトークンから差し引く手数料を設定します。</li>
 </ul>
-<p>The following combinations of fields indicate a <strong>double-asset deposit</strong>:</p>
+<p>以下の項目の組み合わせは、<strong>ダブルアセット入金</strong>について示しています。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th>Flag Name</th>
-<th>Flag Value</th>
-<th>Fields Specified</th>
-<th>Meaning</th>
+<th>フラグ名</th>
+<th>フラグ値</th>
+<th>指定フィールド</th>
+<th>意味</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>tfLPToken</code></td>
 <td><code>0x00010000</code></td>
-<td><code>LPTokenOut</code> only</td>
-<td>Deposit both of this AMM's assets, in amounts calculated so that you receive the specified amount of LP Tokens in return. The amounts deposited maintain the relative proportions of the two assets the AMM already holds.</td>
+<td><code>LPTokenOut</code>のみ</td>
+<td>指定された量のLPトークンを受け取るように計算された金額の、このAMMの両資産を預けます。預ける金額は、AMMの保有する2つの資産の割合と等しくなります。</td>
 </tr>
 <tr>
 <td><code>tfTwoAsset</code></td>
 <td><code>0x00100000</code></td>
-<td><code>Amount</code> and <code>Amount2</code></td>
-<td>Deposit both of this AMM's assets, up to the specified amounts. The actual amounts deposited must maintain the same balance of assets as the AMM already holds, so the amount of either one deposited MAY be less than specified. The amount of LP Tokens you get in return is based on the total value deposited.</td>
+<td><code>Amount</code>と<code>Amount2</code></td>
+<td>このAMMの両資産を指定された金額まで預けます。実際に預ける金額は、AMMがすでに保有している資産と同じ割合を維持する必要があるため、どちらか一方の預け入れ金額が指定金額より少なくてもかまいません。引き換えに得られるLPトークンの金額は、預けた金額の合計に基づきます。</td>
 </tr>
 </tbody>
 </table>
-<p>The following combinations of fields indicate a <strong>single asset deposit</strong>:</p>
+<p>以下の項目の組み合わせは、<strong>シングルアセット入金</strong>について示しています。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th>Flag Name</th>
-<th>Flag Value</th>
-<th>Fields Specified</th>
-<th>Meaning</th>
+<th>フラグ名</th>
+<th>フラグ値</th>
+<th>指定フィールド</th>
+<th>意味</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>tfSingleAsset</code></td>
 <td><code>0x00080000</code></td>
-<td><code>Amount</code> only</td>
-<td>Deposit exactly the specified amount of one asset, and receive an amount of LP Tokens based on the resulting share of the pool (minus fees).</td>
+<td><code>Amount</code>のみ</td>
+<td>指定の資産を指定の量だけ預け、その結果得られたプールのシェアに応じた量のLPトークンを受け取ります。（手数料を差し引いた金額）</td>
 </tr>
 <tr>
 <td><code>tfOneAssetLPToken</code></td>
 <td><code>0x00200000</code></td>
-<td><code>Amount</code> and <code>LPTokenOut</code></td>
-<td>Deposit up to the specified amount of one asset, so that you receive exactly the specified amount of LP Tokens in return (after fees).</td>
+<td><code>Amount</code>と<code>LPTokenOut</code></td>
+<td>1つの資産を指定された上限額まで預け、対価として指定金額分のLPトークンを受け取ります。（手数料を差し引いた金額）</td>
 </tr>
 <tr>
 <td><code>tfLimitLPToken</code></td>
 <td><code>0x00400000</code></td>
-<td><code>Amount</code> and <code>EPrice</code></td>
-<td>Deposit up to the specified amount of one asset, but pay no more than the specified effective price per LP Token (after fees).</td>
+<td><code>Amount</code>と<code>EPrice</code></td>
+<td>1つの資産を指定された金額まで預けますが、LPトークン1つにつき指定された有効価格（手数料差引後）を超えて預けることはありません。</td>
 </tr>
 </tbody>
 </table>
-<p>Any other combination of these fields and flags is invalid.</p>
-<h3 id="single-asset-deposit-fee">Single Asset Deposit Fee<a aria-hidden="true" class="hover_anchor" href="#single-asset-deposit-fee"><i class="fa fa-link"></i></a></h3>
-<p>The fee for a single asset deposit is calculated to be the same as if you had used the AMM to trade part of the deposit amount for the other asset, then done a double-asset deposit. The AMM's trading fee applies to the amount you would need to trade for, but not to the rest of the deposit. <em>For example, if the AMM's asset pool is split perfectly evenly between USD and EUR, and you try to deposit 100 USD, the amount of LP Tokens you receive is slightly less than if you had deposited 50 EUR + 50 USD, because you pay the trading fee to convert some of your USD to an equal amount of EUR.</em></p>
-<p>The formula for how many LP Tokens you receive for a double-asset deposit is:</p>
+<p>これ以外のフィールドとフラグの組み合わせは無効です。</p>
+<h3 id="シングルアセット入金手数料">シングルアセット入金手数料<a aria-hidden="true" class="hover_anchor" href="#シングルアセット入金手数料"><i class="fa fa-link"></i></a></h3>
+<p>シングルアセット入金の手数料は、AMMを使って預け入れ金額の一部を他の資産と交換し、ダブルアセット入金を行った場合と同じになるように計算されます。AMMの取引手数料は、取引に必要な金額には適用されますが、残りの預け入れ金額には適用されません。 <em>例えば、AMMの資産プールがUSDとEURで完全に均等に分割されている場合、100USDを預けようとすると、受け取るLPトークンの量は、50EUR+50USDを預けた場合よりもわずかに少なくなります。</em></p>
+<p>ダブルアセット入金の場合、LPトークンを受け取る数は、以下の計算式で算出できます。</p>
 <figure><a href="img/amm-single-asset-deposit-formula.svg" title="L = T × ( (( 1 + (B - (F × (1 - W) × B)) ÷ P)^W) - 1)"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="70 100 380 120" width="380" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/amm-single-asset-deposit-formula.svg__genericDefs"></defs><g><defs id="img/amm-single-asset-deposit-formula.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath2"><path d="M0 0 L0 30 L40 30 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath3"><path d="M0 0 L0 20 L160 20 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath4"><path d="M0 0 L0 30 L30 30 L30 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath5"><path d="M0 0 L0 80 L40 80 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath6"><path d="M0 0 L0 70 L40 70 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath7"><path d="M0 0 L0 50 L40 50 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath8"><path d="M0 0 L0 30 L70 30 L70 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath9"><path d="M0 0 L0 30 L180 30 L180 0 Z"></path></clippath></defs><g font-family="sans-serif" font-size="14px" transform="translate(170,150)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">1 +</text></g><g font-family="sans-serif" font-size="14px" transform="translate(200,140)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath3)" stroke="none" x="5" xml:space="preserve" y="18.1094">B - (F × (1 - W) × B)</text></g><g font-family="sans-serif" font-size="14px" transform="translate(260,160)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">P</text></g><g font-family="sans-serif" font-size="60px" transform="translate(390,120)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath5)" stroke="none" x="5" xml:space="preserve" y="61.2188">]</text></g><g font-family="sans-serif" font-size="60px" transform="translate(150,120)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath6)" stroke="none" x="5" xml:space="preserve" y="61.2188">[</text></g><g font-family="sans-serif" font-size="40px" transform="translate(340,130)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="42.4844">)</text></g><g font-family="sans-serif" font-size="40px" transform="translate(160,130)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="42.4844">(</text></g><g font-family="sans-serif" font-size="14px" transform="translate(350,130)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">W</text></g><g font-family="sans-serif" font-size="14px" transform="translate(370,150)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">- 1</text></g><g font-family="sans-serif" font-size="14px" transform="translate(90,150)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="18.1094">L = T ×</text></g><g transform="translate(190,150)"><path clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath9)" d="M10.5 10.5 L160.5 10.5" fill="none"></path></g></g></svg></a></figure>
 <!-- TODO: improve graphic -->
-<p>Where:</p>
 <ul>
-<li><code>L</code> is the amount of LP Tokens returned</li>
-<li><code>T</code> is the total outstanding LP Tokens before the deposit</li>
-<li><code>B</code> is the amount of the asset being deposited</li>
-<li><code>F</code> is the trading fee, as a decimal</li>
-<li><code>W</code> is the weight of the deposit asset in the pool. This is defined as 0.5 for all AMM pools (meaning a 50/50 split), so exponentiation by W is equivalent to taking the square root.</li>
-<li><code>P</code> is the total amount of the deposit asset in the pool before the deposit</li>
+<li><code>L</code>: 受け取るLPトークンの量</li>
+<li><code>T</code>: 預け入れ前のLPトークンの残高合計</li>
+<li><code>B</code>: 預け入れ資産の額</li>
+<li><code>F</code>: 取引手数料</li>
+<li><code>W</code>: プール内の預金資産の重みです。これはすべてのAMMプールで0.5と定義されています（50/50の分割を意味します）ので、Wによる累乗は平方根を取ることと同一です。</li>
+<li><code>P</code>: 預け入れ前のプール内の預金資産の合計額</li>
 </ul>
-<h3 id="ammdeposit-flags">AMMDeposit Flags<a aria-hidden="true" class="hover_anchor" href="#ammdeposit-flags"><i class="fa fa-link"></i></a></h3>
-<p>Transactions of the AMMDeposit type support additional values in the <a href="transaction-common-fields.html#flagsフィールド"><code>Flags</code> field</a>, as follows:</p>
+<h3 id="ammdepositフラグ">AMMDepositフラグ<a aria-hidden="true" class="hover_anchor" href="#ammdepositフラグ"><i class="fa fa-link"></i></a></h3>
+<p>AMMDepositタイプのトランザクションは、以下のように<a href="transaction-common-fields.html#flagsフィールド"><code>Flags</code>フィールド</a>の値を追加でサポートしています。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Flag Name</th>
-<th style="text-align: left;">Hex Value</th>
-<th style="text-align: left;">Decimal Value</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">フラグ名</th>
+<th style="text-align: left;">16進数値</th>
+<th style="text-align: left;">10進数値</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
@@ -475,92 +471,92 @@
 <td style="text-align: left;"><code>tfLPToken</code></td>
 <td style="text-align: left;"><code>0x00010000</code></td>
 <td style="text-align: left;">65536</td>
-<td style="text-align: left;">Perform a double-asset deposit and receive the specified amount of LP Tokens.</td>
+<td style="text-align: left;">ダブルアセット入金を行い、指定された額のLPトークンを受け取ります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tfSingleAsset</code></td>
 <td style="text-align: left;"><code>0x00080000</code></td>
 <td style="text-align: left;">524288</td>
-<td style="text-align: left;">Perform a single-asset deposit with a specified amount of the asset to deposit.</td>
+<td style="text-align: left;">預け入れる資産を指定して、シングルアセット入金を行います。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tfTwoAsset</code></td>
 <td style="text-align: left;"><code>0x00100000</code></td>
 <td style="text-align: left;">1048576</td>
-<td style="text-align: left;">Perform a double-asset deposit with specified amounts of both assets.</td>
+<td style="text-align: left;">両資産を指定金額で預けるダブルアセット入金を行います。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tfOneAssetLPToken</code></td>
 <td style="text-align: left;"><code>0x00200000</code></td>
 <td style="text-align: left;">2097152</td>
-<td style="text-align: left;">Perform a single-asset deposit and receive the specified amount of LP Tokens.</td>
+<td style="text-align: left;">シングルアセット入金を行い、指定された額のLPトークンを受け取ります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tfLimitLPToken</code></td>
 <td style="text-align: left;"><code>0x00400000</code></td>
 <td style="text-align: left;">4194304</td>
-<td style="text-align: left;">Perform a single-asset deposit with a specified effective price.</td>
+<td style="text-align: left;">有効価格を指定して、シングルアセット入金を行います。</td>
 </tr>
 </tbody>
 </table>
-<p>You must specify <strong>exactly one</strong> of these flags, plus any <a href="transaction-common-fields.html#グローバルフラグ">global flags</a>.</p>
-<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<p>Besides errors that can occur for all transactions, AMMDeposit transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<p>これらのフラグのうちの <strong>1つのみ</strong> と、任意の<a href="transaction-common-fields.html#グローバルフラグ">グローバルフラグ</a>を指定する必要があります。</p>
+<h2 id="エラーケース">エラーケース<a aria-hidden="true" class="hover_anchor" href="#エラーケース"><i class="fa fa-link"></i></a></h2>
+<p>すべてのトランザクションで発生する可能性のあるエラーに加えて、AMMDepositトランザクションでは、次の<a href="transaction-results.html">トランザクション結果コード</a>が発生する可能性があります。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Error Code</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">エラーコード</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>temBAD_AMM_OPTIONS</code></td>
-<td style="text-align: left;">The transaction specified an invalid combination of fields. See <a href="#ammdeposit-modes">AMMDeposit Modes</a>.</td>
+<td style="text-align: left;">トランザクションで無効なフィールドの組み合わせが指定されました。詳細は、<a href="#ammdepositモード">AMMDepositモード</a>を参照してください。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecFROZEN</code></td>
-<td style="text-align: left;">The transaction tried to deposit a <a href="freezes.html">frozen</a> token.</td>
+<td style="text-align: left;">トランザクションは<a href="freezes.html">凍結</a>されているトークンを預けようとしました。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecAMM_BALANCE</code></td>
-<td style="text-align: left;">The AMM does not have enough of one of the assets to accept the deposit (for example, to satisfy the trade part of a single-asset deposit) or the sender does not have enough of a given token.</td>
+<td style="text-align: left;">AMMが預け入れを行うのに十分な量の資産を保有していない（たとえば、シングルアセット入金に必要な残高を保有していない）、または送信者が指定されたトークンを十分に保有していない場合など。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_AMM_TOKENS</code></td>
-<td style="text-align: left;">The transaction specified the LP Tokens incorrectly; for example, the <code>issuer</code> is not the AMM's associated AccountRoot address or the <code>currency</code> is not the currency code for this AMM's LP Tokens, or the transaction specified this AMM's LP Tokens in one of the asset fields.</td>
+<td style="text-align: left;">トランザクションでLPトークンが正しく指定されています。例えば、<code>issuer</code>がAMMのAccountRootアドレスでない、<code>currency</code>がこのAMMのLPトークンの通貨コードでない、またはトランザクションがAssetフィールドのいずれかにこのAMMのLPトークンを指定した、など。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecAMM_FAILED_DEPOSIT</code></td>
-<td style="text-align: left;">The conditions on the deposit could not be satisfied; for example, the requested effective price in the <code>EPrice</code> field is too low.</td>
+<td style="text-align: left;">預け入れの条件が成立しませんでした。例えば、<code>EPrice</code>フィールドに指定された実効価格が低すぎる場合など。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecAMM_INVALID_TOKENS</code></td>
-<td style="text-align: left;">The AMM for this token pair does not exist, or one of the calculations resulted in a deposit amount rounding to zero.</td>
+<td style="text-align: left;">このトークンペアのAMMが存在しないか、計算の結果、預け入れ金額がゼロに丸められました。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecINSUF_RESERVE_LINE</code></td>
-<td style="text-align: left;">The sender of this transaction does meet the increased <a href="reserves.html">reserve requirement</a> of processing this transaction, probably because they need a new trust line to hold the LP Tokens, and they don't have enough XRP to meet the additional owner reserve for a new trust line.</td>
+<td style="text-align: left;">このトランザクションの送信者は、この処理による<a href="reserves.html">準備金要件</a>の増加の対象であり、LPトークンを保持するための新しいトラストラインが必要で、そのための追加の所有者準備金分のXRPを保有していないためと思われます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO_AUTH</code></td>
-<td style="text-align: left;">The sender is not authorized to hold one of the deposit assets.</td>
+<td style="text-align: left;">送信者は、預け入れ資産のいずれかを保有する権限を持っ ていません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO_LINE</code></td>
-<td style="text-align: left;">The sender does not have a trust line for one of the deposit assets.</td>
+<td style="text-align: left;">送信者が預け入れ資産のうち1つに対し、トラストラインを保有していません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecUNFUNDED_AMM</code></td>
-<td style="text-align: left;">The sender does not have a high enough balance to make the specified deposit.</td>
+<td style="text-align: left;">送信者の残高が、指定された預け入れを行うのに十分な量ではありません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>terNO_ACCOUNT</code></td>
-<td style="text-align: left;">An account specified in the request does not exist.</td>
+<td style="text-align: left;">リクエストで参照されたいずれかのアカウントが存在しません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>terNO_AMM</code></td>
-<td style="text-align: left;">The Automated Market Maker instance for the asset pair in this transaction does not exist.</td>
+<td style="text-align: left;">このトランザクションの資産ペアの自動マーケットメーカーインスタンスが存在しません。</td>
 </tr>
 </tbody>
 </table>
@@ -796,32 +792,37 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFT Reserve Requirements</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFTの準備金要件</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">Running an NFT Auction</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">NFTオークションの実施</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">Minting NFTs into Collections</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">NFTのコレクション化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
     </nav>
@@ -884,7 +885,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

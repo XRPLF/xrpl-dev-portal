@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="UNLModify | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/unlmodify.html" />
-    <meta property="og:description" content="Change the list of trusted validators currently considered offline." />
-    <meta name="description" content="Change the list of trusted validators currently considered offline." />
+    <meta property="og:description" content="現在オフラインとみなされている信頼できるバリデーターのリストを変更します。" />
+    <meta name="description" content="現在オフラインとみなされている信頼できるバリデーターのリストを変更します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['Blockchain']
+      "page_labels": ['ブロックチェーン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -92,12 +92,12 @@
 
 <div class="top-banner fixed-top"> 
   <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
-    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
+    <span><p class="mb-0 no-wrap">Apply for XRPL Grants, open until March 24.</p></span>
+    <span><a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply for Funding</a></span>
   </div>
   <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
-    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
+    <span><p class="mb-0">Apply for XRPL Grants, open</p></span>
+    <span><p class="mb-0">until March 24.<a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply For Funding</a></p></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -255,12 +255,11 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/1100-release-docs/content/references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.md?pr=/XRPLF/xrpl-dev-portal/pull/1803" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/1100-release-docs/content/references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1803" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-blockchain">Blockchain</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Blockchain" -->
+      <a href="/ja/label-blockchain.html" class="label label-ブロックチェーン">ブロックチェーン</a>
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -269,7 +268,7 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#unlmodify">UNLModify</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-unlmodify-json">Example UNLModify JSON</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#unlmodify-jsonの例">UNLModify JSONの例</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#unlmodify-fields">UNLModify Fields</a></li>
       </ul>
   </div>
@@ -290,15 +289,12 @@
     <li class="active breadcrumb-item">UNLModify</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="unlmodify">UNLModify<a aria-hidden="true" class="hover_anchor" href="#unlmodify"><i class="fa fa-link"></i></a></h1>
-<p><em>(Added by the <a href="known-amendments.html#negativeunl">NegativeUNL amendment</a>.)</em></p>
-<p>A <code>UNLModify</code> <a href="pseudo-transaction-types.html">pseudo-transaction</a> marks a change to the <a href="negative-unl.html">Negative UNL</a>, indicating that a trusted validator has gone offline or come back online.</p>
-<p class="devportal-callout note"><strong>Note:</strong> You cannot send a pseudo-transaction, but you may find one when processing ledgers.</p>
-<h2 id="example-unlmodify-json">Example UNLModify JSON<a aria-hidden="true" class="hover_anchor" href="#example-unlmodify-json"><i class="fa fa-link"></i></a></h2>
+<p><em>(<a href="known-amendments.html#negativeunl">NegativeUNL amendment</a>によって追加されました)</em></p>
+<p><code>UNLModify</code><a href="pseudo-transaction-types.html">疑似トランザクション</a>は<a href="negative-unl.html">Negative UNL</a>の変更を示し、信頼できるバリデータがオフラインになったかオンラインに戻ってきたことを示します。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> 擬似トランザクションを送信することはできませんが、台帳を処理する際に擬似トランザクションを発見することがあります。</p>
+<h2 id="unlmodify-jsonの例">UNLModify JSONの例<a aria-hidden="true" class="hover_anchor" href="#unlmodify-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
@@ -316,36 +312,36 @@
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">名前</th>
+<th style="text-align: left;">JSONの型</th>
+<th style="text-align: left;"><a href="serialization.html">内部の型</a></th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>TransactionType</code></td>
-<td style="text-align: left;">String</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">The value <code>0x0066</code>, mapped to the string <code>UNLModify</code>, indicates that this object is an <code>UNLModify</code> pseudo-transaction.</td>
+<td style="text-align: left;"><code>0x0066</code>は文字列<code>UNLModify</code>にマッピングされ、このオブジェクトが<code>UNLModify</code>擬似トランザクションであることを表します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LedgerSequence</code></td>
-<td style="text-align: left;">Number</td>
+<td style="text-align: left;">数値</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#レジャーインデックス">ledger index</a> where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change.</td>
+<td style="text-align: left;">この擬似トランザクションが出現する<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>です。これは、この擬似トランザクションを、同じ変更の他の出現と区別するものです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>UNLModifyDisabling</code></td>
-<td style="text-align: left;">Number</td>
+<td style="text-align: left;">数値</td>
 <td style="text-align: left;">UInt8</td>
-<td style="text-align: left;">If <code>1</code>, this change represents adding a validator to the Negative UNL. If <code>0</code>, this change represents removing a validator from the Negative UNL. (No other values are allowed.)</td>
+<td style="text-align: left;"><code>1</code>の場合、この変更はネガティブUNLにバリデーターを追加することを意味します。0` の場合、この変更はネガティブ UNL からバリデータを削除することを意味します。(これらの値以外は使用できません)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>UNLModifyValidator</code></td>
-<td style="text-align: left;">String</td>
+<td style="text-align: left;">文字列</td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;">The validator to add or remove, as identified by its master public key.</td>
+<td style="text-align: left;">追加または削除するバリデータであり、そのマスター公開鍵で識別されます。</td>
 </tr>
 </tbody>
 </table>
@@ -581,32 +577,37 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFT Reserve Requirements</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFTの準備金要件</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">Running an NFT Auction</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">NFTオークションの実施</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">Minting NFTs into Collections</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">NFTのコレクション化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
     </nav>
@@ -669,7 +670,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

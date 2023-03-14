@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Running an NFT Auction - XRPL.org (日本語)</title>
+    <title>NFTオークションの実施 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Running an NFT Auction | XRPL.org (日本語)">
+    <meta property="og:title" content="NFTオークションの実施 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nftoken-auctions.html" />
-    <meta property="og:description" content="You can assign another account to mint NFTs in your stead." />
-    <meta name="description" content="You can assign another account to mint NFTs in your stead." />
+    <meta property="og:description" content="NFTのMintを他のアカウントに代行してもらうことができます。" />
+    <meta name="description" content="NFTのMintを他のアカウントに代行してもらうことができます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['Non-fungible Tokens, NFTs']
+      "page_labels": ['非代替性トークン, NFT']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -92,12 +92,12 @@
 
 <div class="top-banner fixed-top"> 
   <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
-    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
+    <span><p class="mb-0 no-wrap">Apply for XRPL Grants, open until March 24.</p></span>
+    <span><a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply for Funding</a></span>
   </div>
   <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
-    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
+    <span><p class="mb-0">Apply for XRPL Grants, open</p></span>
+    <span><p class="mb-0">until March 24.<a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply For Funding</a></p></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -255,12 +255,11 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/1100-release-docs/content/concepts/tokens/nftoken-auctions.md?pr=/XRPLF/xrpl-dev-portal/pull/1803" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/1100-release-docs/content/concepts/tokens/nftoken-auctions.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1803" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-non-fungible-tokens-nfts">Non-fungible Tokens, NFTs</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Non-fungible Tokens, NFTs" -->
+      <a href="/ja/label-nfts.html" class="label label-非代替性トークン-nft">非代替性トークン, NFT</a>
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -268,10 +267,10 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#running-an-nft-auction">Running an NFT Auction</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#run-the-auction-off-the-xrpl-complete-the-purchase-on-xrpl">Run the Auction Off the XRPL, Complete the Purchase on XRPL</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#run-the-auction-in-brokered-mode-with-a-reserve">Run the Auction in Brokered Mode, with a Reserve</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#run-the-auction-in-brokered-mode-without-a-reserve">Run the Auction in Brokered Mode, without a Reserve.</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#nftオークションの実施">NFTオークションの実施</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrpl外でオークションを行いxrpl上で取引を成立させる">XRPL外でオークションを行い、XRPL上で取引を成立させる</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#最低落札価格ありのオークションを実施する">最低落札価格ありのオークションを実施する</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#最低落札価格なしのオークションを実施する">最低落札価格なしのオークションを実施する</a></li>
       </ul>
   </div>
       </aside>
@@ -287,61 +286,58 @@
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
     <li class="active breadcrumb-item"><a href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a></li>
-    <li class="active breadcrumb-item">Running an NFT Auction</li>
+    <li class="active breadcrumb-item">NFTオークションの実施</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="running-an-nft-auction">Running an NFT Auction<a aria-hidden="true" class="hover_anchor" href="#running-an-nft-auction"><i class="fa fa-link"></i></a></h1>
-<p>There are several ways to run an auction, each with advantages and disadvantages.</p>
-<h2 id="run-the-auction-off-the-xrpl-complete-the-purchase-on-xrpl">Run the Auction Off the XRPL, Complete the Purchase on XRPL<a aria-hidden="true" class="hover_anchor" href="#run-the-auction-off-the-xrpl-complete-the-purchase-on-xrpl"><i class="fa fa-link"></i></a></h2>
-<p>This flow is the most straightforward. Note that the <code>NFTokenOffer</code> objects can always be canceled by their creator, so it's not possible to implement a binding offer.</p>
+        <h1 id="nftオークションの実施">NFTオークションの実施<a aria-hidden="true" class="hover_anchor" href="#nftオークションの実施"><i class="fa fa-link"></i></a></h1>
+<p>オークションの運営にはいくつかの方法があり、それぞれにメリットとデメリットがあります。</p>
+<h2 id="xrpl外でオークションを行いxrpl上で取引を成立させる">XRPL外でオークションを行い、XRPL上で取引を成立させる<a aria-hidden="true" class="hover_anchor" href="#xrpl外でオークションを行いxrpl上で取引を成立させる"><i class="fa fa-link"></i></a></h2>
+<p>このフローが最もわかりやすいと思います。<code>NFTokenOffer</code>オブジェクトは常にその作成者によってキャンセルされる可能性があるため、拘束力のあるオファーを実装することはできないことに注意してください。</p>
 <ol>
-<li>Store your bids in a private database.</li>
-<li>You take a cut of the winning bid.</li>
-<li>Send the buyer/seller the XRPL transaction to complete the purchase. </li>
+<li>入札内容を非公開のデータベースに保存します。</li>
+<li>落札額の一部を手数料として徴収します。</li>
+<li>買い手/売り手へXRPLトランザクションを送信し、取引を完了させます。</li>
 </ol>
-<h2 id="run-the-auction-in-brokered-mode-with-a-reserve">Run the Auction in Brokered Mode, with a Reserve<a aria-hidden="true" class="hover_anchor" href="#run-the-auction-in-brokered-mode-with-a-reserve"><i class="fa fa-link"></i></a></h2>
-<p>Run the auction in brokered mode, as an auction with a reserve.</p>
-<p><img alt="Auction in Brokered Mode with a Reserve" src="img/nft-auction1.png" title="Auction in Brokered Mode with a Reserve"/></p>
+<h2 id="最低落札価格ありのオークションを実施する">最低落札価格ありのオークションを実施する<a aria-hidden="true" class="hover_anchor" href="#最低落札価格ありのオークションを実施する"><i class="fa fa-link"></i></a></h2>
+<p>最低落札価格ありのオークションとして、ブローカー方式で運営する。</p>
+<p><img alt="ブローカー方式で最低落札価格ありのオークション" src="img/nft-auction1.png" title="ブローカー方式で最低落札価格ありのオークション"/></p>
 <ol>
-<li>The seller creates the NFT, then sets the auction reserve price using <code>NFTokenCreateOffer</code>, specifying the broker account as the destination.</li>
-<li>The bidders make offers using <code>NFTokenCreateOffer</code>, setting the broker account as the destination.</li>
-<li>The broker selects the winning bid, completes the sale using <code>NFTokenAcceptOffer</code>, collecting the broker fee. Then the broker cancels any losing bids using <code>NFTokenCancelOffer</code>.</li>
+<li>売り手はNFTを作成し，<code>NFTokenCreateOffer</code>を用い，ブローカーアカウントを宛先に設定して，オークションの最低落札価格を設定します。</li>
+<li>入札者は<code>NFTokenCreateOffer</code>を使ってオファーを出し、ブローカーアカウントを宛先として設定します。</li>
+<li>ブローカーは落札した入札を選択し、<code>NFTokenAcceptOffer</code>を使用して取引を成立させ、ブローカー手数料を徴収します。その後、ブローカーは<code>NFTokenCancelOffer</code>を使って競り負けた入札をキャンセルします。</li>
 </ol>
-<p><strong>Pros:</strong></p>
+<p><strong>長所:</strong></p>
 <ul>
-<li>The entire auction happens on the XRPL, including your broker fee.</li>
-<li>The seller represents their reserve price on-chain.</li>
-<li>This is <em>close</em> to a binding offer, from the buyside.</li>
+<li>ブローカー手数料を含め、すべてのオークションはXRPLで行われます。</li>
+<li>売り手は最低落札価格をオンチェーンで表示します。</li>
+<li>これは買い手側にとって、拘束力のあるオファーに近いものです。</li>
 </ul>
-<p><strong>Cons:</strong></p>
+<p><strong>短所:</strong></p>
 <ul>
-<li>There must be implicit trust between the seller and the broker that the broker will not take more than some previously agreed-upon rate. If the reserve was 1 XRP and the winning bid was 1000 XRP, there is no on-chain mechanism to prevent the broker from taking 999 XRP as profit, leaving only the reserve profits for the seller.</li>
+<li>売り手とブローカーの間には、ブローカーが事前に合意したレート以上を取らないという暗黙の信頼関係が必要です。最低落札価格が1XRPで、落札価格が1000XRPだった場合、ブローカーが999XRPを手数料として徴収し、売り手には最低落札価格の利益しか残らないということが起き得ます。これを防ぐオンチェーンの仕組みは存在しません。</li>
 </ul>
-<p>A major mitigating factor of this downside is that if this behavior were to happen, brokers would lose their entire market share, which sellers should understand.</p>
-<h2 id="run-the-auction-in-brokered-mode-without-a-reserve">Run the Auction in Brokered Mode, without a Reserve.<a aria-hidden="true" class="hover_anchor" href="#run-the-auction-in-brokered-mode-without-a-reserve"><i class="fa fa-link"></i></a></h2>
-<p>This is the most complex workflow of the three.</p>
-<p><img alt="Auction in Brokered Mode without a Reserve" src="img/nft-auction2.png" title="Auction in Brokered Mode without a Reserve"/></p>
+<p>このデメリットの大きな軽減要素は、もしこのような行動が起これば、ブローカーは市場シェアをすべて失うことになるため、売り手はこの点を理解すべきです。</p>
+<h2 id="最低落札価格なしのオークションを実施する">最低落札価格なしのオークションを実施する<a aria-hidden="true" class="hover_anchor" href="#最低落札価格なしのオークションを実施する"><i class="fa fa-link"></i></a></h2>
+<p>この3つのうち、最も複雑なワークフローとなります。</p>
+<p><img alt="ブローカー方式で最低落札価格なしのオークション" src="img/nft-auction2.png" title="ブローカー方式で最低落札価格なしのオークション"/></p>
 <ol>
-<li>The seller creates an NFT using <code>NFTokenMint</code>.</li>
-<li>The bidders make offers using <code>NFTokenCreateOffer</code>, setting the broker as the destination.</li>
-<li>The broker selects the winning bid, subtracts the amount to be collected as a fee, then requests the seller sign a sell off for this amount via <code>NFTokenCreateOffer</code>.</li>
-<li>The seller signs the requested offer, setting the broker as the destination.</li>
-<li>The broker completes the sale using <code>NFTokenAcceptOffer</code>, and receives the broker fee.</li>
-<li>The broker cancels any remaining bids using <code>NFTokenCancelOffer</code>.</li>
+<li>売り手は<code>NFTokenMint</code>を使用してNFTを作成します。</li>
+<li>入札者は<code>NFTokenCreateOffer</code>を使って、ブローカーを宛先としてオファーを出します。</li>
+<li>ブローカーは落札者を選択し、手数料として徴収する金額を差し引いた後、<code>NFTokenCreateOffer</code>を介してこの金額で売却のための署名を売り手に要求します。</li>
+<li>売り手は要求されたオファーに署名し、宛先としてブローカーを設定します。</li>
+<li>ブローカーは<code>NFTokenAcceptOffer</code>を使って取引を完了させ、ブローカー手数料を受け取ります。</li>
+<li>ブローカーは<code>NFTokenCancelOffer</code>を使って競り負けた入札をキャンセルします。</li>
 </ol>
-<p><strong>Pros:</strong></p>
+<p><strong>長所:</strong></p>
 <ul>
-<li>This flow requires absolutely no trust among participants, making it the option most people expect on the blockchain.</li>
-<li>Sellers know exactly how much the broker takes from them in fees and must agree to it on the chain.</li>
+<li>このフローは参加者間のトラストが全く必要ないため、ほとんどの人がブロックチェーン上で期待するオプションとなっています。</li>
+<li>売り手はブローカーが手数料をいくら徴収するか正確に把握でき、チェーン上でそれに同意しなければなりません。</li>
 </ul>
-<p><strong>Cons:</strong></p>
+<p><strong>短所:</strong></p>
 <ul>
-<li>After the auction is complete, the sale is contingent on the seller agreeing to the final bid amount and broker fee amount. This means that sellers can back out of an otherwise complete auction or that sellers can delay settlement due to being distracted or not seeing some notification.</li>
-<li>After the auction is complete, a seller can refuse the winning bid, instead selling to someone else.</li>
+<li>オークション終了後は、売り手が最終入札額とブローカー手数料の額に合意することが売却の条件となります。つまり、売り手はオークション終了後に出品を取り消すことができ、また、売り手は注意散漫や通知を見逃すことで、決済を遅らせてしまうことがありえます。</li>
+<li>オークション終了後、出品者は落札を拒否し、他の出品者に売却することができてしまいます。</li>
 </ul>
     </div>
   </article>
@@ -568,32 +564,37 @@
     <nav class="nav flex-column show " id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFT Reserve Requirements</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFTの準備金要件</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">Running an NFT Auction</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">NFTオークションの実施</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">Minting NFTs into Collections</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">NFTのコレクション化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
     </nav>
@@ -656,7 +657,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -6,6 +6,7 @@ https://xrpl.org/uses.html
 https://xrpl.org/history.html
 https://xrpl.org/xrp-overview.html
 https://xrpl.org/impact.html
+https://xrpl.org/carbon-calculator.html
 https://xrpl.org/faq.html
 https://xrpl.org/privacy-policy.html
 https://xrpl.org/technical-faq.html
@@ -47,6 +48,7 @@ https://xrpl.org/nftoken-batch-minting.html
 https://xrpl.org/nftoken-authorized-minting.html
 https://xrpl.org/nftoken-auctions.html
 https://xrpl.org/nft-collections.html
+https://xrpl.org/nft-fixed-supply.html
 https://xrpl.org/freezes.html
 https://xrpl.org/common-misconceptions-about-freezes.html
 https://xrpl.org/rippling.html

@@ -91,12 +91,12 @@
 
 <div class="top-banner fixed-top"> 
   <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
-    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
+    <span><p class="mb-0 no-wrap">Apply for XRPL Grants, open until March 24.</p></span>
+    <span><a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply for Funding</a></span>
   </div>
   <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
-    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
+    <span><p class="mb-0">Apply for XRPL Grants, open</p></span>
+    <span><p class="mb-0">until March 24.<a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply For Funding</a></p></span>
   </div>
 </div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -286,7 +286,7 @@
     <div class="content">
         <h1 id="trustset">TrustSet<a aria-hidden="true" class="hover_anchor" href="#trustset"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>Create or modify a trust line linking two accounts.</p>
+<p>Create or modify a <a href="trust-lines-and-issuing.html">trust line</a> linking two accounts.</p>
 <h2 id="example-trustset-json">Example TrustSet JSON<a aria-hidden="true" class="hover_anchor" href="#example-trustset-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TrustSet"</span><span class="p">,</span>
@@ -354,7 +354,7 @@
 </tr>
 </tbody>
 </table>
-<p>If the <code>LimitAmount.issuer</code> is blocking incoming trust lines, the transaction fails with result code <code>tecNO_Permission</code>. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></p>
+<p>If the account specified in <code>LimitAmount.issuer</code> is blocking incoming trust lines, the transaction fails with the result code <code>tecNO_PERMISSION</code>. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
 <h2 id="trustset-flags">TrustSet Flags<a aria-hidden="true" class="hover_anchor" href="#trustset-flags"><i class="fa fa-link"></i></a></h2>
 <p>Transactions of the TrustSet type support additional values in the <a href="transaction-common-fields.html#flags-field"><code>Flags</code> field</a>, as follows:</p>
 <table class="table-responsive">
@@ -654,6 +654,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
   </div>
 
     </nav>
