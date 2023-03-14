@@ -10,7 +10,7 @@ labels:
 
 _Added by the [PayChan amendment][]._
 
-Create a unidirectional channel and fund it with XRP. The address sending this transaction becomes the "source address" of the payment channel.
+Create a [payment channel](payment-channels.html) and fund it with XRP. The address sending this transaction becomes the "source address" of the payment channel.
 
 ## Example {{currentpage.name}} JSON
 
@@ -43,7 +43,7 @@ Create a unidirectional channel and fund it with XRP. The address sending this t
 | `CancelAfter`    | Number    | UInt32            | _(Optional)_ The time, in [seconds since the Ripple Epoch][], when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time. |
 | `DestinationTag` | Number    | UInt32            | _(Optional)_ Arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
 
-If the `Destination` is blocking incoming NFToken offers, the transaction fails with result code `tecNO_Permission`. _(Added by the [DisallowIncoming amendment][].)_
+If the `Destination` account is blocking incoming payment channels, the transaction fails with result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment][] :not_enabled:)_
 
 
 <!--{# common link defs #}-->
