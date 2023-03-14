@@ -229,8 +229,9 @@ Get the broker account and connect to the ledger.
 
 ```
   const wallet = xrpl.Wallet.fromSeed(brokerSeedField.value)
-  const client = new xrpl.Client("wss://xls20-sandbox.rippletest.net:51233")
-  results = 'Connecting to ' + getNet() + '...'
+  let net = getNet()
+  const client = new xrpl.Client(net)
+  results = 'Connecting to ' + net + '...'
   document.getElementById('brokerResultField').value = results
   await client.connect()
   results +=  "\nConnected. Cancelling offer..."
@@ -326,9 +327,6 @@ Get the correct network host.
 
 ```
   let faucetHost = null
-  if(document.getElementById("xls").checked) {
-    faucetHost = "faucet-nft.ripple.com"
-  } 
 
   if (type == 'standby') {
     document.getElementById('standbyResultField').value = results

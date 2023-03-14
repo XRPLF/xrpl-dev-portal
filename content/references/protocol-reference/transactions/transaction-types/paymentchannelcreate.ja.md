@@ -28,7 +28,7 @@ _[PayChan Amendment][]が必要です。_
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 <!--{# fix md highlighting_ #}-->
 
 

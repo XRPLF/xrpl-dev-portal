@@ -7,7 +7,7 @@ labels:
   - XRP
 ---
 # AccountRoot
-[[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
+[[Source]](https://github.com/xrplf/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
 
 An `AccountRoot` ledger entry type describes a single [account](accounts.html), its settings, and XRP balance.
 
@@ -41,8 +41,8 @@ An `AccountRoot` object has the following fields:
 | `Account`                     | String    | AccountID         | Yes       | The identifying (classic) address of this [account](accounts.html). |
 | `AccountTxnID`                | String    | Hash256           | No        | The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the [`AccountTxnID` transaction field](transaction-common-fields.html#accounttxnid). To enable it, send an [AccountSet transaction with the `asfAccountTxnID` flag enabled](accountset.html#accountset-flags). |
 | `Balance`                     | String    | Amount            | No        | The account's current [XRP balance in drops][XRP, in drops], represented as a string. |
-| `BurnedNFTokens`              | Number    | UInt32            | No        | How many total of this account's issued [non-fungible tokens](non-fungible-tokens.html) have been burned. This number is always equal or less than `MintedNFTokens`. _(Added by the [NonFungibleTokensV1_1 amendment][])_ |
-| `Domain`                      | String    | Blob              | No        | A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. [Cannot be more than 256 bytes in length.](https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
+| `BurnedNFTokens`              | Number    | UInt32            | No        | How many total of this account's issued [non-fungible tokens](non-fungible-tokens.html) have been burned. This number is always equal or less than `MintedNFTokens`. |
+| `Domain`                      | String    | Blob              | No        | A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. [Cannot be more than 256 bytes in length.](https://github.com/xrplf/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
 | `EmailHash`                   | String    | Hash128           | No        | The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
 | [`Flags`](#accountroot-flags) | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this account. |
 | `LedgerEntryType`             | String    | UInt16            | Yes       | The value `0x0061`, mapped to the string `AccountRoot`, indicates that this is an AccountRoot object. |

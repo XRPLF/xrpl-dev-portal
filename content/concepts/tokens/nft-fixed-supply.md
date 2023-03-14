@@ -5,7 +5,6 @@ blurb: Use a new account to mint a fixed number of NFTs, then black hole the acc
 labels:
   - Non-fungible Tokens, NFTs
 ---
-
 # Guaranteeing a Fixed Supply of NFTs
 
 For some projects, you might want to guarantee that no more than a fixed number of NFTs are minted from an issuing account.

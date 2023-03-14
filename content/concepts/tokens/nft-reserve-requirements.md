@@ -5,7 +5,6 @@ blurb: Understand reserve requirements for minting and holding NFTs.
 labels:
  - Non-fungible Tokens, NFTs
 ---
-
 # NFT Reserve Requirements
 
 Minting, holding, and offering NFTs for sale require XRP held in reserve. The reserve charges can add up quickly. Understanding the reserve requirements can help you choose the best approach for your business case.
@@ -37,6 +36,8 @@ The following table provides examples of how much the total owner reserve might 
 ## `NFTokenOffer` Reserve
 
 Each `NFTokenOffer` object costs the account placing the offer one incremental reserve. As of this writing, the incremental reserve is 2 XRP. The reserve can be recovered by cancelling the offer. The reserve is also recovered if the offer is accepted, which removes the offer from the XRP Ledger.
+
+**Tip** After you sell an NFT, as a courtesy, cancel any stale `NFTokenOffer` objects on behalf of your bidders to give them back their reserve. You can do this with [NFTokenCancelOffer](nftokencanceloffer.html) transactions.
 
 ## Practical Considerations
 

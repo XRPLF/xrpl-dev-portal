@@ -14,10 +14,10 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [fixTrustLinesToSelf][]           | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [OwnerPaysFee][]                  | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [DisallowIncoming][]              | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixNonFungibleTokensV1_2][]      | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [fixTrustLinesToSelf][]           | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixUniversalNumber][]            | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [ImmediateOfferKilled][]          | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [XRPFees][]                       | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
@@ -818,8 +818,7 @@ This is a previous version of the [Flow](#flow) amendment. It was [rejected due 
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Allows validators to include a new optional field in their validations to attest to the hash of
-the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
+Allows validators to include a new optional field in their validations to attest to the hash of the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
 
 
 ## ImmediateOfferKilled
