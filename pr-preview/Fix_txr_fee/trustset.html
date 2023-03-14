@@ -286,7 +286,7 @@
     <div class="content">
         <h1 id="trustset">TrustSet<a aria-hidden="true" class="hover_anchor" href="#trustset"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>Create or modify a trust line linking two accounts.</p>
+<p>Create or modify a <a href="trust-lines-and-issuing.html">trust line</a> linking two accounts.</p>
 <h2 id="example-trustset-json">Example TrustSet JSON<a aria-hidden="true" class="hover_anchor" href="#example-trustset-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TrustSet"</span><span class="p">,</span>
@@ -354,6 +354,7 @@
 </tr>
 </tbody>
 </table>
+<p>If the account specified in <code>LimitAmount.issuer</code> is blocking incoming trust lines, the transaction fails with the result code <code>tecNO_PERMISSION</code>. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
 <h2 id="trustset-flags">TrustSet Flags<a aria-hidden="true" class="hover_anchor" href="#trustset-flags"><i class="fa fa-link"></i></a></h2>
 <p>Transactions of the TrustSet type support additional values in the <a href="transaction-common-fields.html#flags-field"><code>Flags</code> field</a>, as follows:</p>
 <table class="table-responsive">
@@ -1331,16 +1332,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a>
   </div>
 
       

@@ -284,7 +284,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="configure-grpc">Configure gRPC<a aria-hidden="true" class="hover_anchor" href="#configure-grpc"><i class="fa fa-link"></i></a></h1>
-<p>The <code>rippled</code> server has a limited <a class="external-link" href="https://grpc.io/" target="_blank">gRPC API <i aria-hidden="true" class="fa fa-external-link"></i></a> which <a href="rippled-server-modes.html">P2P mode servers</a> can provide. Reporting mode servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>rippled</code> server has a limited <a class="external-link" href="https://grpc.io/" target="_blank">gRPC API <i aria-hidden="true" class="fa fa-external-link"></i></a> which <a href="rippled-server-modes.html">P2P mode servers</a> can provide. Reporting mode servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> gRPC support is intended specifically for providing data to reporting mode servers from P2P mode servers. Breaking changes to the gRPC API may occur without warning or it may be removed entirely in future versions of the server.</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>To enable gRPC, you must meet the following prerequisites:</p>
@@ -293,22 +293,21 @@
 <p>You must have <a href="install-rippled.html">installed rippled</a>.</p>
 </li>
 <li>
-<p>Your server must be able to bind to the port you choose. The recommended port for gRPC is <code>50051</code>.</p>
+<p>Your server must be able to bind to the port you choose.</p>
 </li>
 </ul>
 <h2 id="steps">Steps<a aria-hidden="true" class="hover_anchor" href="#steps"><i class="fa fa-link"></i></a></h2>
 <p>To enable gRPC on your server, complete the following steps:</p>
 <ol>
 <li>
-<p>In your <code>rippled</code>'s config file, add a <code>[port_grpc]</code> configuration stanza.</p>
+<p>Ensure the <code>[port_grpc]</code> stanza is in your <code>rippled</code> config file.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="k">[port_grpc]</span>
 <span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">50051</span>
-<span class="na">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span>
+<span class="na">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span>
 </code></pre></div>
-<p>The configurable fields are as follows:</p>
 <ul>
-<li><code>port</code> field defines the port the server listens on for gRPC connections from client applications. The recommended port is <code>50051</code>.</li>
-<li><code>ip</code> defines which interfaces the server listens on. The value <code>0.0.0.0</code> listens on all available network interfaces. To limit connections to the local loopback network (same machine), use <code>127.0.0.1</code> instead.</li>
+<li><code>port</code> defines the port the server listens on for gRPC connections from client applications. The recommended port is <code>50051</code>.</li>
+<li><code>ip</code> defines which interfaces the server listens on. <code>127.0.0.1</code> limits connections to the local loopback network (same machine) and is enabled by default. Changing the value to <code>0.0.0.0</code> listens on all available network interfaces.</li>
 </ul>
 <p>The <a href="install-rippled.html">recommended installation</a> uses the config file <code>/etc/opt/ripple/rippled.cfg</code> by default. Other places you can put a config file include <code>$HOME/.config/ripple/rippled.cfg</code> (where <code>$HOME</code> is the home directory of the user running <code>rippled</code>), <code>$HOME/.local/ripple/rippled.cfg</code>, or the current working directory from where you start <code>rippled</code>.</p>
 </li>
@@ -1267,16 +1266,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a>
   </div>
 
       

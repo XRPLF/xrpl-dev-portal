@@ -291,7 +291,7 @@
     <div class="content">
         <h1 id="accountroot">AccountRoot<a aria-hidden="true" class="hover_anchor" href="#accountroot"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/xrplf/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>AccountRoot</code> object type describes a single <a href="accounts.html">account</a>, its settings, and XRP balance.</p>
+<p>An <code>AccountRoot</code> ledger entry type describes a single <a href="accounts.html">account</a>, its settings, and XRP balance.</p>
 <h2 id="example-accountroot-json">Example AccountRoot JSON<a aria-hidden="true" class="hover_anchor" href="#example-accountroot-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
@@ -311,7 +311,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="accountroot-fields">AccountRoot Fields<a aria-hidden="true" class="hover_anchor" href="#accountroot-fields"><i class="fa fa-link"></i></a></h2>
-<p>The <code>AccountRoot</code> object has the following fields:</p>
+<p>An <code>AccountRoot</code> object has the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -391,14 +391,14 @@
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">How many total <a href="non-fungible-tokens.html">non-fungible tokens</a> have been minted by and on behalf of this account.</td>
+<td style="text-align: left;">How many total <a href="non-fungible-tokens.html">non-fungible tokens</a> have been minted by and on behalf of this account. <em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NFTokenMinter</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">Another account that can mint <a href="non-fungible-tokens.html">non-fungible tokens</a> on behalf of this account.</td>
+<td style="text-align: left;">Another account that can mint <a href="non-fungible-tokens.html">non-fungible tokens</a> on behalf of this account. <em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerCount</code></td>
@@ -505,7 +505,7 @@
 <td><code>0x01000000</code></td>
 <td>16777216</td>
 <td><code>asfDepositAuth</code></td>
-<td>This account can only receive funds from transactions it sends, and from <a href="depositauth.html#preauthorization">preauthorized</a> accounts. (It has <a href="depositauth.html">DepositAuth</a> enabled.)</td>
+<td>This account has <a href="depositauth.html">DepositAuth</a> enabled, meaning it can only receive funds from transactions it sends, and from <a href="depositauth.html#preauthorization">preauthorized</a> accounts. <em>(Added by the <a href="known-amendments.html#depositauth">DepositAuth amendment</a>)</em></td>
 </tr>
 <tr>
 <td><code>lsfDisableMaster</code></td>
@@ -515,32 +515,60 @@
 <td>Disallows use of the master key to sign transactions for this account.</td>
 </tr>
 <tr>
+<td><code>lsfDisallowIncomingCheck</code></td>
+<td><code>0x08000000</code></td>
+<td>134217728</td>
+<td><code>asfDisallowIncomingCheck</code></td>
+<td>This account blocks incoming Checks. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
+</tr>
+<tr>
+<td><code>lsfDisallowIncomingNFTokenOffer</code></td>
+<td><code>0x04000000</code></td>
+<td>67108864</td>
+<td><code>asfDisallowIncomingNFTokenOffer</code></td>
+<td>This account blocks incoming NFTokenOffers. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
+</tr>
+<tr>
+<td><code>lsfDisallowIncomingPayChan</code></td>
+<td><code>0x10000000</code></td>
+<td>268435456</td>
+<td><code>asfDisallowIncomingPayChan</code></td>
+<td>This account blocks incoming Payment Channels. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
+</tr>
+<tr>
+<td><code>lsfDisallowIncomingTrustline</code></td>
+<td><code>0x20000000</code></td>
+<td>536870912</td>
+<td><code>asfDisallowIncomingTrustline</code></td>
+<td>This account blocks incoming trust lines. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
+</tr>
+<tr>
 <td><code>lsfDisallowXRP</code></td>
 <td><code>0x00080000</code></td>
 <td>524288</td>
 <td><code>asfDisallowXRP</code></td>
-<td>Client applications should not send XRP to this account. Not enforced by <code>rippled</code>.</td>
+<td>Client applications should not send XRP to this account. (Advisory; not enforced by the protocol.)</td>
 </tr>
 <tr>
 <td><code>lsfGlobalFreeze</code></td>
 <td><code>0x00400000</code></td>
 <td>4194304</td>
 <td><code>asfGlobalFreeze</code></td>
-<td>All assets issued by this address are frozen.</td>
+<td>All assets issued by this account are frozen.</td>
 </tr>
 <tr>
 <td><code>lsfNoFreeze</code></td>
 <td><code>0x00200000</code></td>
 <td>2097152</td>
 <td><code>asfNoFreeze</code></td>
-<td>This address cannot freeze trust lines connected to it. Once enabled, cannot be disabled.</td>
+<td>This account cannot freeze trust lines connected to it. Once enabled, cannot be disabled.</td>
 </tr>
 <tr>
 <td><code>lsfPasswordSpent</code></td>
 <td><code>0x00010000</code></td>
 <td>65536</td>
 <td>(None)</td>
-<td>The account has used its free SetRegularKey transaction.</td>
+<td>This account has used its free SetRegularKey transaction.</td>
 </tr>
 <tr>
 <td><code>lsfRequireAuth</code></td>
@@ -1506,16 +1534,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a>
   </div>
 
       
