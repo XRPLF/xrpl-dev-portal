@@ -150,7 +150,7 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 
 ### Step 5: Creating the Transactions Page
 
-Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account.
+Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account. In order to see what's happening on the ledger, we're going to display the following fields: 
 
   - Account: The account that sent the transaction.
   - Destination: The account that received the transaction.
