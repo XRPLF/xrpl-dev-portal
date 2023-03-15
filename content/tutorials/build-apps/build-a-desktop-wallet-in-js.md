@@ -111,7 +111,13 @@ In this step, we will create the home page that will display the account details
 
 3. Copy the contents of the [index.html](_code-samples/build-a-wallet/js/index.html), [index.js](_code-samples/build-a-wallet/js/index.js) and [index.css](_code-samples/build-a-wallet/js/index.css) files to your files.
 
-Now that you've got the basic setup, let's discuss what we're going to do. For the home page, we want to display our account info, what's happening on the ledger, and for fun add a little logo. In order to make that happen, first we need to look up our account state. These next few steps will walk you through that process.
+Now that you've got the basic setup, let's discuss what we're going to do. For the home page, we want to:
+
+- Display our account info
+- Show what's happening on the ledger
+- And add a little logo for fun
+
+In order to make that happen, we need to look up our account state on the ledger. The next couple steps will walk you through that process.
 
 4. Make a new folder named helpers in the src directory, create a new file named get-wallet-details.js and copy the code written below to the file. In the function `getWalletDetails`, we are using the [account_info](https://xrpl.org/account_info.html) method to fetch the account details. We are also using the [server_info](https://xrpl.org/server_info.html) method to calculate the reserve base and increment. You can read more about the reserve requirement [here](https://xrpl.org/reserves.html).
 
