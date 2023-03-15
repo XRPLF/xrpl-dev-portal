@@ -88,21 +88,9 @@ In your `package.json` file, add:
 }
 ```
 
-Now the basic setup of your application is ready, after completion of next steps of this tutorial you can run one of these commands
-
-```bash
-yarn dev
-```
-or 
-```bash
-npm run dev
-```
-
-in your terminal which will start your app in development mode. Your terminal will display an URL using which you can verify the changes in real-time.
-
 If you get stuck while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's [Developer Discord](https://discord.com/invite/KTNmhJDXqa).
 
-### Step 3: Creating the Home Page (Displaying Account & Ledger Details)
+### Step 2: Creating the Home Page (Displaying Account & Ledger Details)
 
 In this step, we will create the home page that will display the account details and the ledger details.
 
@@ -136,7 +124,18 @@ In order to make that happen, we need to look up our account state on the ledger
 
 The one other thing we do here is add two buttons - one to send XRP and one to view the transaction history of our account. They won't work just yet - we'll have to add those implementations next.
 
-### Step 4: Creating the Send XRP Page
+Now the basic setup of your application is ready, you can run one of these commands
+
+```bash
+yarn dev
+```
+or 
+```bash
+npm run dev
+```
+in your terminal which will start your app in development mode. Your terminal will display an URL using which you can verify the changes in real-time.
+
+### Step 3: Creating the Send XRP Page
 
 Now that we've created the home page, we can move on to the "Send XRP" page. This is what allows this wallet to manage your account's funds.
 
@@ -157,7 +156,7 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 
 {{ include_code("_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.js", language="js") }}
 
-### Step 5: Creating the Transactions Page
+### Step 45: Creating the Transactions Page
 
 Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account. In order to see what's happening on the ledger, we're going to display the following fields: 
 
