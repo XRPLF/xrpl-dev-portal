@@ -105,7 +105,7 @@ In this step, we will create the home page that will display the account details
 
 ![Home Page Screenshot](img/js-wallet-home.png)
 
-1. Make a new folder named src in the root directory of the project.
+1. Make a new folder named `src` in the root directory of the project.
 
 2. Create new files named index.html, index.js and index.css. 
 
