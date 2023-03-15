@@ -162,14 +162,15 @@ Now that we have created the home page and the send XRP page, let's create the t
 ![Transactions Page Screenshot](img/js-wallet-transaction.png)
 
 1. Create a folder named `transaction-history` in the src directory.
-
-2. Add two files named `transaction-history.js` and `transaction-history.html`.
-
-3. In the `transaction-history.js` file, copy the code written below. To fetch the transactions from XRP Ledger we are using [account_tx](https://xrpl.org/account_tx.html) method. This method returns a list of transactions that affected the specified account. We are using the `limit` parameter to limit the number of transactions to 10 per page. We are also using the `marker` parameter to paginate through the transactions.
+2. Create a file named `transaction-history.js` and copy the code written below. 
 
 {{ include_code("_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.js", language="js") }}
 
-1. Copy the contents of the [transaction-history.html](_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.html) file to your transaction-history.html file. In this file we are defining a table  which displays the mentioned fields mentioned above.
+This code uses [account_tx](https://xrpl.org/account_tx.html) to fetch transactions we've sent to and from this account. In order to get all the results, we're using the `marker` parameter to paginate through the incomplete list of transactions until we reach the end.
+
+3. Create a file named "transaction-history.html" and copy the code from [transaction-history.html](_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.html) into it. 
+
+`transaction-history.html` defines a table which displays the fields mentioned above.
 
 You can use this code as a starting point for displaying your account's transaction history. If you want an additional challenge, try expanding it to support different transaction types (e.g. [TrustSet](https://xrpl.org/trustset.html)). If you want inspiration for how to handle this, you can check out the [XRP Ledger Explorer](https://livenet.xrpl.org/) to see how the transaction details are displayed.
 
