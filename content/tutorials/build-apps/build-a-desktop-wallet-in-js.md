@@ -76,7 +76,7 @@ SEED="sEd7B2Jm7RBhhh5i88SH38aZB8ot8Kq" // Replace with your seed
 
 {{ include_code("_code-samples/build-a-wallet/js/vite.config.js", language="js") }}
 
-xrpl.js requires some configuration to run with the vite bundler. You can find the configuration in the code below or you can check out the [xrpl.js documentation](https://github.com/XRPLF/xrpl.js/blob/main/UNIQUE_SETUPS.md#using-xrpljs-with-vite-react).
+xrpl.js requires some configuration to run with the vite bundler. You can find the configuration in [xrpl.js documentation](https://github.com/XRPLF/xrpl.js/blob/main/UNIQUE_SETUPS.md#using-xrpljs-with-vite-react).
 
 1. Add script to `package.json`
 
