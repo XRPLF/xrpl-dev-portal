@@ -251,6 +251,8 @@ The response follows the [standard format][], with a successful result containin
 | `state`        | Array                               | Array of JSON objects containing data from the ledger's state tree, as defined below. |
 | `marker`       | [Marker][]                          | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
 
+If a `type` field is mentioned in the request, the `state` array might be empty. In such cases, you'll have to use the `marker` from this response to paginate and retrieve further data. Keep repeating this until you get a non-empty `state` array _(if the object specified in `type` exists on the ledger)_.
+
 The format of each object in the `state` array depends on whether `binary` was set to true or not in the request. Each `state` object may include the following fields:
 
 | `Field`             | Type      | Description                                |
