@@ -8,6 +8,8 @@ status: not_enabled
 ---
 # EVM Sidechain Validator Security
 
+{% include '_snippets/evmsc-disclaimer.md' %}
+
 Each validator candidate is encouraged to run its operations independently, as diverse setups increase the resilience of the network. Validator candidates should begin their setup phase now, to be on time for launch.
 
 ## Horcrux

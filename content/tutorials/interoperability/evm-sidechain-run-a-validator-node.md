@@ -8,6 +8,8 @@ status: not_enabled
 ---
 # Run a Validator Node on an EVM Sidechain
 
+{% include '_snippets/evmsc-disclaimer.md' %}
+
 ## Create Your Validator
 
 Use your node consensus public key (`exrpvalconspub...`) to create a new validator by staking XRP tokens. You can find your validator public key by running:
