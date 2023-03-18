@@ -156,7 +156,7 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 
 {{ include_code("_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.js", language="js") }}
 
-### Step 45: Creating the Transactions Page
+### Step 4: Creating the Transactions Page
 
 Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account. In order to see what's happening on the ledger, we're going to display the following fields: 
 
