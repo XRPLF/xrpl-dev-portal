@@ -1,7 +1,5 @@
 import { Client, Wallet, classicAddressToXAddress } from 'xrpl';
 
-import { Encode } from 'xrpl-tagged-address-codec';
-
 export default async function getWalletDetails() {
     try {
         const client = new Client(process.env.CLIENT); // Get the client from the environment variables
@@ -35,7 +33,7 @@ export default async function getWalletDetails() {
         });
 
         // Calculate the reserves by multiplying the owner count by the increment and adding the base reserve to it.
-        const accountReserves = (ownerCount + 1) * reserve_inc_xrp + reserve_base_xrp;
+        const accountReserves = ownerCount * reserve_inc_xrp + reserve_base_xrp;
 
         console.log('Got wallet details!');
 
