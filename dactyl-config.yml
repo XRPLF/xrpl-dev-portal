@@ -1167,6 +1167,9 @@ pages:
         nav_omit: true
         targets:
             - en
+
+    -   md: concepts/interoperability/xrpl-interoperability.ja.md
+        targets:
             - ja
 
     # Redirect "Introduction to EVM Sidechain" page
