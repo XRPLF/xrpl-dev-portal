@@ -1,4 +1,4 @@
-import { Client, Wallet } from 'xrpl';
+import { Client, Wallet, classicAddressToXAddress } from 'xrpl';
 
 import { Encode } from 'xrpl-tagged-address-codec';
 
@@ -39,17 +39,16 @@ export default async function getWalletDetails() {
 
         console.log('Got wallet details!');
 
-        // Get X-Address : https://xrpl.org/x-addresses.html
-        const tagged = Encode({
-            account: wallet.address,
-            tag: 1337,
-            test: false,
-        });
-
         // Disconnect the client
         await client.disconnect();
-        return { account_data, accountReserves, tagged, address: wallet.address };
+        return { 
+            account_data, 
+            accountReserves, 
+            xAddress: classicAddressToXAddress(wallet.address, false, false), // Learn more: https://xrpaddress.info/
+            address: wallet.address 
+        };
     } catch (error) {
         console.log('Error getting wallet details', error);
+        return error;
     }
 }

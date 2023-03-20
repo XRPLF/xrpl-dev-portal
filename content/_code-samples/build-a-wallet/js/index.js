@@ -24,11 +24,11 @@ txHistoryButton.addEventListener('click', () => {
 
 // Fetch the wallet details
 getWalletDetails()
-    .then(({ account_data, accountReserves, tagged, address }) => {
+    .then(({ account_data, accountReserves, xAddress, address }) => {
         walletElement.querySelector('.wallet_address').textContent = `Wallet Address: ${account_data.Account}`;
         walletElement.querySelector('.wallet_balance').textContent = `Wallet Balance: ${dropsToXrp(account_data.Balance)} XRP`;
         walletElement.querySelector('.wallet_reserve').textContent = `Wallet Reserve: ${accountReserves} XRP`;
-        walletElement.querySelector('.wallet_xaddress').textContent = `X-Address: ${tagged}`;
+        walletElement.querySelector('.wallet_xaddress').textContent = `X-Address: ${xAddress}`;
 
         // Redirect on View More link click
         walletElement.querySelector('#view_more_button').addEventListener('click', () => {
