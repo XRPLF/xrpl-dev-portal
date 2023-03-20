@@ -1055,14 +1055,6 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/consensus-network/federated-sidechains.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/federated-sidechains.ja.md
-        targets:
-            - ja
-
     -   md: concepts/xrpl-servers/xrpl-servers.md
         targets:
             - en
@@ -1137,32 +1129,6 @@ pages:
     -   md: concepts/xrpl-servers/the-clio-server.md
         targets:
             - en
-            - ja
-
-    # TODO: translate
-    -   md: concepts/interoperability/xrpl-interoperability.md
-        targets:
-            - en
-            - ja
-
-    # TODO: translate
-    -   md: concepts/interoperability/intro-to-evm-sidechain.md
-        targets:
-            - en
-            - ja
-
-    -   name: Hooks
-        html: https://xrpl-hooks.readme.io/
-        parent: xrpl-interoperability.html
-        blurb: Smart contract proposal for the XRP Ledger.
-        targets:
-            - en
-
-    -   name: Hooks
-        html: https://xrpl-hooks.readme.io/
-        parent: xrpl-interoperability.html
-        blurb: XRP Ledger向けスマートコントラクトの提案。
-        targets:
             - ja
 
     # Redirect old "the-rippled-server.html"
@@ -2216,52 +2182,6 @@ pages:
 
         # TODO: translate
     -   md: tutorials/manage-the-clio-server/install-clio-on-ubuntu.md
-        targets:
-            - en
-            - ja
-
-    -   name: Interoperability - EVM Sidechain
-        html: evm-sidechains.html
-        parent: tutorials.html
-        blurb: Learn how to interact with the EVM Sidechain Devnet.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: 相互運用性 - EVMサイドチェーン
-        html: evm-sidechains.html
-        parent: tutorials.html
-        blurb: EVM Sidechain Devnetとの接続方法について説明します。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/interoperability/get-started-evm-sidechain.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/interoperability/connect-metamask-to-xrpl-evm-sidechain.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/interoperability/join-evm-sidechain-devnet.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/interoperability/evm-sidechain-validator-security.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/interoperability/evm-sidechain-run-a-validator-node.md
         targets:
             - en
             - ja
