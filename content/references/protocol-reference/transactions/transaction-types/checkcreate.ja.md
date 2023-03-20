@@ -6,7 +6,7 @@ labels:
   - Checks
 ---
 # CheckCreate
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp "Source")
 
 _（[Checks Amendment][]が必要です）_
 
@@ -40,6 +40,7 @@ _（[Checks Amendment][]が必要です）_
 
 ## エラーケース
 
+- `Destination`アカウントがCheckの着信をブロックしている場合、トランザクションは結果コード`tecNO_PERMISSION`で失敗します。 _([DisallowIncoming amendment][] :not_enabled: が必要です。)_
 - `Destination`がトランザクションの送信者である場合、トランザクションは結果コード`temREDUNDANT`で失敗します。
 - `Destination`[アカウント](accounts.html)がレジャーに存在していない場合、トランザクションは結果コード`tecNO_DST`で失敗します。
 - `Destination`アカウントでRequireDestフラグが有効であるが、トランザクションに`DestinationTag`フィールドが含まれていない場合、トランザクションは結果コード`tecDST_TAG_NEEDED`で失敗します。
