@@ -2725,7 +2725,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/paymentchannelcreate.ja.md
         targets:
             - ja
