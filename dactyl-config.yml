@@ -1071,6 +1071,7 @@ pages:
         targets:
             - ja
 
+<<<<<<< HEAD
    # Redirect old "federated-sidechains.html"
     -   name: Federated Sidechains
         html: federated-sidechains.html
@@ -1082,6 +1083,8 @@ pages:
             - en
             - ja            
 
+=======
+>>>>>>> e29e3600e3 (Update dactyl config to remove in-development xchain bridge related docs)
     -   md: concepts/xrpl-servers/xrpl-servers.md
         targets:
             - en
@@ -1158,6 +1161,7 @@ pages:
             - en
             - ja
 
+<<<<<<< HEAD
     # Redirect "Interoperability" page
     -   name: Interoperability
         html: xrpl-interoperability.html
@@ -1165,13 +1169,15 @@ pages:
         redirect_url: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
         blurb: Learn about capabilities that bring programmability and ability to interact with other chains to the XRP Ledger.
         nav_omit: true
+=======
+    # TODO: translate
+    -   md: concepts/interoperability/xrpl-interoperability.md
+>>>>>>> e29e3600e3 (Update dactyl config to remove in-development xchain bridge related docs)
         targets:
             - en
-
-    -   md: concepts/interoperability/xrpl-interoperability.ja.md
-        targets:
             - ja
 
+<<<<<<< HEAD
     # Redirect "Introduction to EVM Sidechain" page
 
     -   name: Introduction to EVM Compatible XRP Ledger Sidechain
@@ -1180,6 +1186,10 @@ pages:
         redirect_url: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
         blurb: Introduction to the EVM compatible XRP Ledger Sidechain.
         nav_omit: true
+=======
+    # TODO: translate
+    -   md: concepts/interoperability/intro-to-evm-sidechain.md
+>>>>>>> e29e3600e3 (Update dactyl config to remove in-development xchain bridge related docs)
         targets:
             - en
             - ja
@@ -2240,6 +2250,7 @@ pages:
             - en
             - ja
 
+<<<<<<< HEAD
         # Redirect for "Interoperability - EVM Sidechain" tutorial page.
     -   name: Interoperability - EVM Sidechain
         html: evm-sidechains.html
@@ -2300,6 +2311,8 @@ pages:
             - en
             - ja           
 
+=======
+>>>>>>> e29e3600e3 (Update dactyl config to remove in-development xchain bridge related docs)
 # References -------------------------------------------------------------------
 
     -   name: References
