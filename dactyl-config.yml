@@ -1127,10 +1127,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/xrpl-servers/the-clio-server.md
         targets:
             - en
+
+    -   md: concepts/xrpl-servers/the-clio-server.ja.md
+        targets:
             - ja
 
     # TODO: translate
