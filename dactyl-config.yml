@@ -2571,7 +2571,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/accountset.ja.md
         targets:
             - ja
