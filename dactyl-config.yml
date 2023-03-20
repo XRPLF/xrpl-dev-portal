@@ -2707,7 +2707,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/nftokencreateoffer.ja.md
         targets:
             - ja
