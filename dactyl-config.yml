@@ -2700,7 +2700,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/offercreate.ja.md
         targets:
             - ja
