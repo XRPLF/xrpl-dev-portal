@@ -1067,12 +1067,7 @@ pages:
         targets:
             - en
 
-    # old translation
-    -   name: rippledサーバー
-        html: xrpl-servers.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: rippledは、XRP Ledgerを管理するコアのP2Pサーバーです。このセクションではコンセプトについて説明します。XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学ぶことができます。
+    -   md: concepts/xrpl-servers/xrpl-servers.ja.md
         targets:
             - ja
 
