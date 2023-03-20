@@ -33,7 +33,7 @@ If you are interested in staking cryptocurrency and running your own validator, 
 
 The underlying technology for the XRP Ledger EVM Sidechain consensus is [Tendermint](https://tendermint.com/), a Byzantine-Fault Tolerant engine for building blockchains.
 
-The blockchain uses the `cosmos-sdk` library on top of Tendermint to create and customize the blockchain using its built-in modules. The EVM sidechain uses the [Ethermint](https://github.com/evmos/ethermint) `cosmos-sdk` module, which provides EVM compatibility
+The blockchain uses the `cosmos-sdk` library on top of Tendermint to create and customize the blockchain using its built-in modules. The EVM sidechain uses the [Ethermint](https://github.com/evmos/ethermint) `cosmos-sdk` module, which provides EVM compatibility.
 
 ## Interoperability Using the EVM Sidechain
 

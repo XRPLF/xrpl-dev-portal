@@ -1139,16 +1139,20 @@ pages:
             - en
             - ja
 
-    # TODO: translate
     -   md: concepts/interoperability/xrpl-interoperability.md
         targets:
             - en
+
+    -   md: concepts/interoperability/xrpl-interoperability.ja.md
+        targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/interoperability/intro-to-evm-sidechain.md
         targets:
             - en
+
+    -   md: concepts/interoperability/intro-to-evm-sidechain.ja.md
+        targets:
             - ja
 
     -   name: Hooks
