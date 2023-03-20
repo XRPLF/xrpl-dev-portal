@@ -9,32 +9,41 @@ labels:
 
 `rippled`サーバーソフトウェアは、その設定に応じて以下のようなさまざまなモードで実行できます。
 
-* ストックサーバー - レジャーのローカルコピーを保持し、ネットワークをフォローします。
-* 検証サーバー（ _バリデータ_ ）- コンセンサスの参加者（ストックサーバーの処理もすべて行います）。
-* `rippled`スタンドアロンモードのサーバー - テスト用。他の`rippled`サーバーと通信しません。
+- [**P2Pモード**](#p2pモード) - ピアツーピアネットワークをフォローし、トランザクションを処理し、ある程度の[レジャー履歴](ledger-history.html)を維持します。このモードは、以下の役割のいずれか、またはすべてを行うように設定することができます。
+    - [**バリデータ**](#バリデータ) - コンセンサスに参加することで、ネットワークの安全確保に貢献します。
+    - [**APIサーバー**](#apiサーバー) - 共有レジャーからデータを読み込んだり、トランザクションを送信したり、レジャーのアクティビティを監視するための[APIアクセス](get-started-using-http-websocket-apis.html)を提供します。オプションとして、トランザクションやレジャーの履歴を完全に記録する [**全履歴サーバー**](#全履歴サーバー) とすることができます。
+    - [**ハブサーバー**](#公開ハブ) - ピアツーピアネットワークの他の多くのメンバー間のメッセージを中継します。
+- [**レポートモード**](#レポートモード) - リレーショナルデータベースからのAPIリクエストに対応するための専用モードです。ピアツーピアネットワークには参加しないため、P2Pモードサーバーを実行し、信頼できるgRPC接続を使用してレポートモードサーバーに接続する必要があります。 [新規: rippled 1.7.0][]
+- [**スタンドアローンモード**](#スタンドアローンモード) - テスト用のオフラインモードです。ピアツーピアネットワークに接続せず、コンセンサスも使用しません。
 
 また、[`rippled` API](http-websocket-apis.html)にローカルでアクセスするためのクライアントアプリケーションとして、`rippled`実行可能ファイルを実行できます。（この場合同じバイナリの2つのインスタンスを並列して実行できます。1つのインスタンスをサーバーとして実行し、もう1つのインスタンスをクライアントとして一時的に実行して終了します。）
 
-各モードでrippledを実行するためのコマンドについては、[rippledコマンドライン使用リファレンス](commandline-usage.html)を参照してください。
+各モードで`rippled`を実行するためのコマンドについては、[rippledコマンドライン使用リファレンス](commandline-usage.html)を参照してください。
 
 
-## ストックサーバーを運用する理由
+## P2Pモード
 
-独自の`rippled`サーバーを運用する理由は多数ありますが、その最たる理由として、独自サーバーが信頼できるものであり、自身でその負荷を管理でき、サーバーにアクセスするタイミングとアクセス方法を他のユーザーに依存せずに決めることができる点があげられます。もちろん、独自サーバーを不正使用者から保護するために適切なネットワークセキュリティ対策を講じなければなりません。
+P2Pモードは`rippled`サーバーのメインかつデフォルトのモードで、サーバーが行うべきほぼ全てのことを処理することができます。これらのサーバーは、トランザクションを処理し、XRP Ledgerの共有状態を維持するピアツーピア・ネットワークを形成しています。トランザクションを送信したり、レジャーデータを読んだり、その他ネットワークに参加したい場合、リクエストはどこかでP2Pモードのサーバーを経由しなければなりません。
 
-使用する`rippled`を信頼する必要があります。悪意のあるサーバーに接続してしまうと、そのサーバーはさまざまな方法であなたを利用して資金を失わせることができます。例:
+P2Pモードのサーバーは、追加機能を提供するためにさらに細かく設定することができます。P2Pモードで動作し、設定ファイルを最小限に変更したサーバーは、_ストックサーバー_ とも呼ばれます。その他の構成は以下の通りです。
 
-* 悪意のあるサーバーは、実際には行われていないあなたへの支払いが行われたと報告することがあります。
-* ペイメントパスと通貨取引オファーを選択的に表示または非表示にし、最適なディールをあなたに提示せずに不正使用者の利益になるようにします。
-* 悪意のあるサーバーにアドレスのシークレットキーを送信すると、このサーバーがあなたの代理として任意のトランザクションを実行し、アドレスが保有する資金全額を送金または消却することがあります。
+- [バリデータ](#バリデータ)
+- [APIサーバー](#apiサーバー)
+- [公開ハブ](#公開ハブ)
 
-さらに、独自サーバーを運用することでサーバーを制御できるようになり、重要な管理者専用コマンドや負荷の高いコマンドを実行できます。共有サーバーを使用する場合は、同じサーバーを利用する他のユーザーとサーバーのコンピューティング能力をめぐって競合することに注意する必要があります。WebSocket APIのコマンドの多くは、サーバーに大きな負荷をかけるため、`rippled`には必要に応じてその応答を縮小できるオプションがあります。サーバーを他のユーザーと共有する場合には、常に最適の結果を得られるとは限りません。
+P2Pモードのサーバーは、デフォルトで[メインネット](parallel-networks.html)に接続します。
 
-最後に、各自で検証サーバーを運用する場合には、ストックサーバーをパブリックネットワークへのプロキシとして使用し、ストックサーバー経由でのみ外部にアクセス可能なプライベートサブネット上で検証サーバーを維持することができます。これにより、検証サーバーの整合性を危うくすることはさらに難しくなります。
+### APIサーバー
+
+全てのP2Pモードサーバーは、トランザクションの送信、残高や設定の確認、サーバーの管理などの目的で、[API](http-websocket-apis.html)を提供しています。もしあなたがXRP Ledgerにデータを照会したり、ビジネス用途でトランザクションを送信するのであれば、[独自サーバーを運営する](xrpl-servers.html#独自サーバーを運営する理由)ことが有効でしょう。
+
+#### 全履歴サーバー
+
+他のいくつかのブロックチェーンとは異なり、XRP Ledgerは、現在のステートの把握や新しいトランザクションの処理のために、サーバーが完全なトランザクション履歴を持つことを必要としません。サーバーの運用者は、一度にどれだけの[レジャー履歴](ledger-history.html)を保存するかを決めることができます。ただし、P2PモードサーバーがAPIリクエストに答えられるのは、ローカルで利用可能なレジャー履歴のみです。例えば、6ヶ月分の履歴を保存している場合、サーバーは1年前のトランザクションの結果を示すことはできません。[すべての履歴](ledger-history.html#すべての履歴)を持つAPIサーバーは、XRP Ledgerの開始以降のすべてのトランザクションと残高を報告できます。
 
 ### 公開ハブ
 
-公開ハブは、他のサーバーへの[ピアプロトコル接続](peer-protocol.html)が多数あるストックサーバーを指します。ストックサーバーを公開ハブとして実行することで、XRP Ledgerネットワークの効率的な接続を維持できます。適切に運用されている公開ハブには、以下の特徴があります。
+公開ハブは、他のサーバーへの[ピアプロトコル接続](peer-protocol.html)が多数あるストックサーバーを指します。ストックサーバーを _公開ハブ_ として実行することで、XRP Ledgerネットワークの効率的な接続を維持できます。適切に運用されている公開ハブには、以下の特徴があります。
 
 - 十分な帯域幅。
 
@@ -42,59 +51,48 @@ labels:
 
 - メッセージを確実に中継する能力。
 
+サーバーをハブとして設定するには、許可される最大ピア数を増やし、ファイアウォールやNAT（ネットワークアドレス変換）ルーターで[適切なポートを転送](forward-ports-for-peering.html)していることを確認する必要があります。
 
+## バリデータ
 
-## バリデータを運用する理由
+XRP Ledgerの堅牢性は、他のバリデータが共謀しないことをそれぞれが信頼している、相互接続されたバリデータのネットワークに依存しています。他のP2Pモードサーバーと同様に、各トランザクションを処理し、レジャーの状態を計算することに加え、バリデータは[コンセンサスプロトコル](consensus.html)に積極的に参加しています。もしあなたやあなたの組織がXRP Ledgerにアクセスするのであれば、バリデータとして1台のサーバーを稼働させ、コンセンサスプロセスに貢献することが望ましいでしょう。
 
-XRP Ledgerの堅牢性は、バリデータが相互に接続されたネットワークに依存しています。各バリデータは、他の何人かのバリデータが _共謀しない_ と信頼しています。利害の異なるバリデータ運用オペレーターが増えるほど、ネットワークの各メンバーは、ネットワークが引き続き公平に運営されることに確信が持てるようになります。XRP Ledgerを使用している組織や個人の場合、コンセンサスプロセスへ参加することが自らの利益につながります。
+バリデーションはわずかな計算資源しか使用しませんが、1つの組織や団体が複数のバリデータを運用しても、共謀に対する保護が強化されるわけではないので、あまりメリットはないでしょう。各バリデータは一意の暗号鍵ペアで識別されるので、慎重に管理しなければいけません。複数のバリデータが鍵ペアを共有してはいけません。このような理由から、バリデーションはデフォルトで無効になっています。
 
-すべての`rippled`サーバーをバリデータとする必要はありません。信頼する同一オペレーターのサーバーの数が増えても、共謀の発生をよりよく防止できるわけではありません。組織が自然災害などの緊急事態に備えて冗長性を保つために、複数の地域でバリデータを運用することがあります。
-
-組織が検証サーバーを運用している場合は、1つ以上のストックサーバーを実行して、APIアクセスの計算負荷のバランスを取ったり、それらを検証サーバーと外部ネットワーク間のプロキシとすることもできます。
+他の目的にも使用されているサーバーで、安全にバリデーションを有効にすることができます。このような構成は _汎用サーバー_ と呼ばれます。あるいは、他のタスクを実行しない _専用バリデータ_ を、P2Pモードの他の`rippled`サーバーと一緒に[クラスタ](clustering.html)で実行することもできます。
 
 バリデータの実行についての詳細は、[バリデータとしての`rippled`の実行](run-rippled-as-a-validator.html)を参照してください。
 
 
 
-## `rippled`サーバーをスタンドアロンモードで実行する理由
+## レポートモード
+[新規: rippled 1.7.0][]
 
-信頼できるサーバーのコンセンサスなしでも、`rippled`をスタンドアロンモードで実行できます。スタンドアロンモードでは、`rippled`はXRP Ledgerピアツーピアネットワーク内のその他のサーバーとは通信しませんが、同じ操作のほとんどをローカルサーバーのみで実行できます。スタンドアロンでは、本番環境ネットワークに接続せずに`rippled`の動作をテストできます。たとえば、分散型ネットワークにAmendmentが反映される前に、[Amendmentの効果をテスト](amendments.html#amendmentのテスト)できます。
+レポートモードは、APIリクエストをより効率的に処理するために特化したモードです。このモードでは、サーバーは[gRPC](configure-grpc.html)を介して、P2Pモードで動作する別の`rippled`サーバーから最新の検証済みレジャーデータを取得し、そのデータをリレーショナルデータベース([PostgreSQL]( https://www.postgresql.org/) )にロードします。レポートモードサーバはピアツーピアネットワークに直接参加しませんが、トランザクションの送信などの要求を、使用しているP2Pモードサーバに転送することはできます。
 
-`rippled`をスタンドアロンモードで実行する場合、どのレジャーバージョンから開始するかを指示する必要があります。
+複数のレポートモードサーバーは、PostgreSQLデータベースと[Apache Cassandra](https://cassandra.apache.org/)クラスタへのアクセスを共有し、各サーバーがすべてのデータの冗長コピーを必要とせずに大量の履歴を提供できます。レポートモードサーバは、基礎となるデータの保存方法の違いに対応するため、若干の変更を加えた同じ [`rippled` API](http-websocket-apis.html) を使ってこのデータを提供します。
 
-* [新しいジェネシスレジャー](start-a-new-genesis-ledger-in-stand-alone-mode.html)を最初から作成する。
-* ディスクから[既存のレジャーバージョンを読み込む](load-a-saved-ledger-in-stand-alone-mode.html)。
+最も注目すべきは、レポートモードのサーバーは、保留中や未検証のレジャーデータまたはトランザクションをレポートしないことです。この制限は、[分散型取引所](decentralized-exchange.html)での裁定取引の実行など、流動的なデータへの迅速なアクセスに依存する特定の使用事例に関連しています。
+
+
+## スタンドアロンモード
+
+スタンドアローンモードでは、サーバーはネットワークに接続せず、コンセンサスプロセスにも参加せずに動作します。コンセンサスプロセスがなければ、手動で台帳を進める必要があり、「closedレジャー」と「validatedレジャー」の区別はありません。しかし、サーバーは依然としてAPIアクセスを提供し、トランザクションを同じように処理します。これにより、以下のことが可能になります。
+
+- 分散型ネットワーク上でAmendmentsが有効になる前に、[Amendmentsの影響をテストする](test-amendments.html)。
+- [新しいジェネシスレジャー](start-a-new-genesis-ledger-in-stand-alone-mode.html)を最初から作成する。
+- ディスクから[既存のレジャーバージョンを読み込み](load-a-saved-ledger-in-stand-alone-mode.html)、特定のトランザクションを再生して、その結果を再現したり、他の可能性をテストする。
 
 **注意:** スタンドアロンモードでは[レジャーを手動で進める](advance-the-ledger-in-stand-alone-mode.html)必要があります。
 
-## レポーティングモード
-[導入: rippled 1.7.0][][]
-
-<!-- TODO: translate this section -->
-Reporting mode is specialized mode for serving API requests more efficiently. In this mode, the server gets the latest validated ledger data over [gRPC](https://xrpl.org/configure-grpc.html) from a separate `rippled` server running in P2P Mode, then loads that data into a relational database ([PostgreSQL](https://www.postgresql.org/)). The reporting mode server does not directly participate in the peer-to-peer network, though it can forward requests such as transaction submission to the P2P Mode server it uses.
-
-Multiple reporting mode servers can share access to a PostgreSQL database and [Apache Cassandra](https://cassandra.apache.org/) cluster to serve a large amount of history without each server needing a redundant copy of all the data. Reporting mode servers provide this data through the same [`rippled` APIs](http-websocket-apis.html) with some slight changes to accommodate for the differences in how they store the underlying data.
-
-Most notably, reporting mode servers do not report pending, non-validated ledger data or transactions. This limitation is relevant to certain use cases that rely on rapid access to in-flux data, such as performing arbitrage in the [decentralized exchange](decentralized-exchange.html).
-
-
-
 ## 関連項目
 
-- **リファレンス:**
-  - [コマンドライン使用リファレンス](commandline-usage.html) - すべての`rippled`サーバーモードのコマンドラインオプションに関する詳細情報。
-  - [ledger_acceptメソッド][] - スタンドアロンモードでレジャーを手動で進めます。
-  - [featureメソッド][] - 現在有効になっている既知の[Amendment](amendments.html)を確認します。
 - **チュートリアル:**
   - [`rippled`の構成](configure-rippled.html)
-    - [バリデータとしての`rippled`の実行](run-rippled-as-a-validator.html)
-  - [スタンドアロンモードでのrippledの使用](use-stand-alone-mode.html):
-    - [スタンドアロンモードでの新しいジェネシスレジャーの開始](start-a-new-genesis-ledger-in-stand-alone-mode.html)
-    - [スタンドアロンモードでの保存済みレジャーの読み込み](load-a-saved-ledger-in-stand-alone-mode.html)
-    - [スタンドアロンモードでレジャーを進める](advance-the-ledger-in-stand-alone-mode.html)
+  - [スタンドアロンモードでのrippledの使用](use-stand-alone-mode.html)
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			 
-{% include '_snippets/tx-type-links.md' %}			 
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

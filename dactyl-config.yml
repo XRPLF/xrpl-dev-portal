@@ -1075,7 +1075,6 @@ pages:
         targets:
             - en
 
-        # TODO: Update this translation for the latest English version
     -   md: concepts/xrpl-servers/rippled-server-modes.ja.md
         targets:
             - ja
