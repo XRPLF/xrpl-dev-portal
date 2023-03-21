@@ -111,7 +111,7 @@ async function fetchTxHistory() {
                 ${renderTokenValueColumn(value)}
                 ${value.TransactionType ? `<td>${value.TransactionType}</td>` : '-'}
                 ${value.result ? `<td>${value.result}</td>` : '-'}
-                ${value.Hash ? `<td><a href="https://testnet.xrpl.org/transactions/${value.Hash}" target="_blank">View</a></td>` : '-'}`;
+                ${value.Hash ? `<td><a href="https://${process.env.EXPLORER_NETWORK}.xrpl.org/transactions/${value.Hash}" target="_blank">View</a></td>` : '-'}`;
                 // Add the row to the table
                 txHistoryElement.appendChild(row);
             });
