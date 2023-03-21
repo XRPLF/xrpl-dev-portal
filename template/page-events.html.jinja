@@ -1,4 +1,6 @@
 {% extends "base.html.jinja" %}
+
+{% set today = datetime.now().date() %}
 {% block head %}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -80,18 +82,196 @@
       </div>
     </div>
   </div>
+{% set events = [
+{ "name": "Hackathon: 2021",      
+      "description": "Explore the exciting project submissions from the fall 2021 XRPL Hackathon that focused on the NFT and Hooks smart contract functionalities on the ledger.",
+      "type": "hackathon-past",
+      "link": "https://xrpl-hackathon-2021.devpost.com/project-gallery",
+      "location": "Virtual",
+      "date": "September 13-October 6, 2021",
+      "image": "event-hack-2021.svg",
+      "end_date": "October 6, 2021",
+      },
+      
+    { "name": "XRPL Community Meetup: San Diego",      
+      "description": "The first official Meetup hosted by the XRPL Community. Community members in Southern California gathered around a firepit and shared their experiences with the XRPL.",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrpl-community/events/281806645/",
+      "location": "San Diego, CA",
+      "date": "Saturday, November 20, 2021",
+      "image": "event-meetup-san-diego@2x.jpg",
+      "end_date": "November 20, 2021",
+      },
 
-  {% set upcoming = [
+    { "name": "XRPL Community Meetup: Atlanta",      
+      "description": "The inaugural Meetup in the Southeast region of the United States got community members excited to meet like-minded individuals in their area.",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrpl-community/events/281980446/",
+      "location": "Atlanta, GA",
+      "date": "Saturday, November 27, 2021",
+      "image": "event-meetup-alanta@2x.jpg",
+      "end_date": "November 27, 2021",
+},
+
+    { "name": "XRPL Community Meetup: San Francisco",      
+      "description": "Community members in the Bay Area with diverse backgrounds in technology and beyond met in downtown San Francisco.",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrpl-community/events/281806676/",
+      "location": "San Francisco, CA",
+      "date": "Monday, November 29, 2021",
+      "image": "event-meetup-san-francisco@2x.jpg",
+      "end_date": "November 29, 2021",
+      },
+
+    { "name": "XRPL Community Meetup: Miami",      
+      "description": "One of the biggest Meetups held so far, this was the first of an ongoing series of local XRPL Community Meetup events in Miami. ",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrpl-community/events/281829463/",
+      "location": "Miami, FL ",
+      "date": "Thursday, December 9, 2021",
+      "image": "event-meetup-miami@2x.jpg",
+      "end_date": "December 8, 2022",
+      },
+
+    { "name": "XRPL Community Meetup: Nashville",      
+      "description": "Nashville-based members of the XRPL Community came together to network, learn, share ideas, and form new partnerships. ",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrp-ledger-nashville-community/events/282538189/",
+      "location": "Nashville, TN",
+      "date": "Saturday, December 18, 2021",
+      "image": "event-meetup-nashville@2x.jpg",
+      "end_date": "December 18, 2022",
+      },
+      
+
+    { "name": "NYC Meetup/Hackathon XRPL Celebration",
+      "id": "upcoming-xrpl-new-york",
+      "description": "The NYC/XRP community and Dev Null Productions cordially invites you to attend our 10th meetup, being held in celebration of the on-going XRPL Hackathon, at the unique and artistic TALS studio in Midtown Manhattan.",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/NYC-XRP/events/284485901/",
+      "location": "NYC, NY",
+      "date": "March 30, 2022",
+      "image": "event-meetup-new-york@2x.jpg",
+      "end_date": "March 30, 2022",
+      },
     
-  { "name": "Hackathon:<br />NFT Launch Party",      
+    { "name": "XRPL Community Meetup: London",
+      "id": "upcoming-xrpl-london",
+      "description": "Join for an evening of programming and networking with members of the XRPL Community in London, co-organised by Peerkat - the NFT platform for creators on the XRPL.",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrp-ledger-london-community/events/283536458/",
+      "location": "IDEALondon",
+      "date": "March 31, 2022",
+      "image": "event-meetup-london.png",
+      "end_date": "March 31, 2022",
+      },
+      
+    { "name": "XRPL Community Meetup: Toronto",
+      "id": "upcoming-xrpl-toronto",
+      "description": "Join us for our first Toronto meetup with an evening of programming and networking with other members of the XRP Ledger Community with special guests from the XUMM Wallet and ARK PLATES teams!",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrpl-toronto-community-meetup/events/284177188/",
+      "location": "Toronto",
+      "date": "March 31, 2022",
+      "image": "event-meetup-toronto@2x.jpg",
+      "end_date": "March 31, 2022",
+      },
+      
+    { "name": "XRPL Community Meetup: San Diego",
+      "id": "upcoming-xrpl-san-diego",
+      "description": "Get together with other San Diego-based members of the XRP Ledger Community to network and discuss all things XRPL! Join us for our second San Diego XRPL Meetup.",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrp-ledger-san-diego-community/events/284663355/",
+      "location": "San Diego, CA",
+      "date": "April 1st 2022",
+      "image": "event-meetup-san-diego@2x.jpg",
+      "end_date": "April 1, 2022",
+      },
+
+    { "name": "XRPL Community Meetup: Irvine LA",
+      "id": "upcoming-xrpl-irvine",
+      "description": "Get together with other LA-based members of the XRP Ledger Community to network and discuss all things XRPL.",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrp-ledger-la-community-meetup/events/284824635/",
+      "location": "UC Irvine, CA",
+      "date": "April 3rd 2022",
+      "image": "event-meetup-irvine@2x.jpg",
+      "end_date": "April 2, 2022",
+      },
+      
+    { "name": "XRPL Community Meetup: Miami #2",
+      "id": "upcoming-xrpl-miami-2",
+      "description": "We're excited to host our second Miami meetup for XRP Ledger community members on April 6th from 6-8pm, featuring Marco Neri, Developer Advocate at Ripple, who will join us to give a presentation on the XRP Ledger.",
+      "type": "meetup-past",
+      "link": "https://www.meetup.com/xrp-ledger-miami-community/events/284463736/",
+      "location": "The LAB Miami, FL",
+      "date": "April 6th 2022",
+      "image": "event-meetup-miami@2x.jpg",
+      "end_date": "April 6, 2022",
+      },
+
+    { "name": "Hackathon:<br />New Year, New NFT",
+      "id": "upcoming-xrpl-hackathon-new-year",
+      "description": "Build Functional NFTs that span across a full range of use cases.",
+      "type": "hackathon-past",
+      "link": "https://xrplnft2022.devpost.com/",
+      "location": "Virtual",
+      "date": "January 31 - March 14, 2022",
+      "image": "event-hack-nft@2x.png",
+      "end_date": "March 14, 2022",
+      },
+      
+
+    { "name": "Hackathon: Creating Real World Impact",      
+      "description": "Build apps to improve lives in the real world using any of the SDKs and APIs for the XRP Ledger.",
+      "type": "hackathon-past",
+      "link": "https://xrplimpact.devpost.com/",
+      "location": "Virtual",
+      "date": "May 26 - Jul 11, 2022",
+      "image": "event-hack-nft@2x.png",
+      "end_date" : "Jul 11, 2022",
+      },
+
+    { "name": "Conference:<br />Apex 2021",      
+      "description": "View sessions from the Apex 2021 stages in Las Vegas and Tallinn.",
+      "type": "conference-past",
+      "link": "https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZgnreb8ODgxJW032M9Z2XZ",
+      "location": "Las Vegas, Tallinn",
+      "date": "September 29-30, 2021",
+      "image": "event-conference-apex-2021.png",
+      "end_date": "September 30, 2022",
+      },
+
+    { "name": "Hackathon:<br />NFT Launch Party",      
     "description": "Build Functional NFTs that span across a full range of use cases.",
     "type": "hackathon-upcoming",
     "link": "https://xrplnft.devpost.com/",
     "location": "Virtual",
     "date": "Oct 31 - Dec 12, 2022",
-    "image": "event-hack-nft@2x.png"},
-      
-  ] %}
+    "image": "event-hack-nft@2x.png",
+    "end_date": "December 12, 2022",
+    },
+    { "name": "XRPL Zone @ Consensus",      
+    "description": "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects.",
+    "type": "conference-upcoming",
+    "link": "https://xrplnft.devpost.com/",
+    "location": "Austin, Texas",
+    "date": "April 27, 2023",
+    "image": "event-hack-nft@2x.png",
+    "end_date": "April 27, 2023"
+    },
+]
+%}
+  {% set past = [] %}
+  {% set upcoming = [] %}
+{% for event in events %}
+  {% set event_date = event.end_date.strftime('%b %d, %Y')  %}
+  {% if today > event_date %}
+    {% set past_events = past + [event] %}
+  {% else %}
+    {% set upcoming_events = upcoming + [event] %}
+  {% endif %}
+{% endfor %}
 
   <div class="row row-cols-1 row-cols-lg-3 card-deck mt-2">
   {% for event in upcoming %}
@@ -136,136 +316,6 @@
     </div>
   </div>
 
-
-  {% set past = [
-    { "name": "Hackathon: 2021",      
-      "description": "Explore the exciting project submissions from the fall 2021 XRPL Hackathon that focused on the NFT and Hooks smart contract functionalities on the ledger.",
-      "type": "hackathon-past",
-      "link": "https://xrpl-hackathon-2021.devpost.com/project-gallery",
-      "location": "Virtual",
-      "date": "September 13-October 6, 2021",
-      "image": "event-hack-2021.svg"},
-      
-    { "name": "XRPL Community Meetup: San Diego",      
-      "description": "The first official Meetup hosted by the XRPL Community. Community members in Southern California gathered around a firepit and shared their experiences with the XRPL.",
-      "type": "meetup-past",
-      "link": "https://www.meetup.com/xrpl-community/events/281806645/",
-      "location": "San Diego, CA",
-      "date": "Saturday, November 20, 2021",
-      "image": "event-meetup-san-diego@2x.jpg"},
-
-    { "name": "XRPL Community Meetup: Atlanta",      
-      "description": "The inaugural Meetup in the Southeast region of the United States got community members excited to meet like-minded individuals in their area.",
-      "type": "meetup-past",
-      "link": "https://www.meetup.com/xrpl-community/events/281980446/",
-      "location": "Atlanta, GA",
-      "date": "Saturday, November 27, 2021",
-      "image": "event-meetup-alanta@2x.jpg"},
-
-    { "name": "XRPL Community Meetup: San Francisco",      
-      "description": "Community members in the Bay Area with diverse backgrounds in technology and beyond met in downtown San Francisco.",
-      "type": "meetup-past",
-      "link": "https://www.meetup.com/xrpl-community/events/281806676/",
-      "location": "San Francisco, CA",
-      "date": "Monday, November 29, 2021",
-      "image": "event-meetup-san-francisco@2x.jpg"},
-
-    { "name": "XRPL Community Meetup: Miami",      
-      "description": "One of the biggest Meetups held so far, this was the first of an ongoing series of local XRPL Community Meetup events in Miami. ",
-      "type": "meetup-past",
-      "link": "https://www.meetup.com/xrpl-community/events/281829463/",
-      "location": "Miami, FL ",
-      "date": "Thursday, December 9, 2021",
-      "image": "event-meetup-miami@2x.jpg"},
-
-    { "name": "XRPL Community Meetup: Nashville",      
-      "description": "Nashville-based members of the XRPL Community came together to network, learn, share ideas, and form new partnerships. ",
-      "type": "meetup-past",
-      "link": "https://www.meetup.com/xrp-ledger-nashville-community/events/282538189/",
-      "location": "Nashville, TN",
-      "date": "Saturday, December 18, 2021",
-      "image": "event-meetup-nashville@2x.jpg"},
-
-    { "name": "NYC Meetup/Hackathon XRPL Celebration",
-      "id": "upcoming-xrpl-new-york",
-      "description": "The NYC/XRP community and Dev Null Productions cordially invites you to attend our 10th meetup, being held in celebration of the on-going XRPL Hackathon, at the unique and artistic TALS studio in Midtown Manhattan.",
-      "type": "meetup-past",
-      "link": "https://www.meetup.com/NYC-XRP/events/284485901/",
-      "location": "NYC, NY",
-      "date": "March 30, 2022",
-      "image": "event-meetup-new-york@2x.jpg"},
-    
-    { "name": "XRPL Community Meetup: London",
-      "id": "upcoming-xrpl-london",
-      "description": "Join for an evening of programming and networking with members of the XRPL Community in London, co-organised by Peerkat - the NFT platform for creators on the XRPL.",
-      "type": "meetup-past",
-      "link": "https://www.meetup.com/xrp-ledger-london-community/events/283536458/",
-      "location": "IDEALondon",
-      "date": "March 31, 2022",
-      "image": "event-meetup-london.png"},
-      
-    { "name": "XRPL Community Meetup: Toronto",
-      "id": "upcoming-xrpl-toronto",
-      "description": "Join us for our first Toronto meetup with an evening of programming and networking with other members of the XRP Ledger Community with special guests from the XUMM Wallet and ARK PLATES teams!",
-      "type": "meetup-past",
-      "link": "https://www.meetup.com/xrpl-toronto-community-meetup/events/284177188/",
-      "location": "Toronto",
-      "date": "March 31, 2022",
-      "image": "event-meetup-toronto@2x.jpg"},
-      
-    { "name": "XRPL Community Meetup: San Diego",
-      "id": "upcoming-xrpl-san-diego",
-      "description": "Get together with other San Diego-based members of the XRP Ledger Community to network and discuss all things XRPL! Join us for our second San Diego XRPL Meetup.",
-      "type": "meetup-past",
-      "link": "https://www.meetup.com/xrp-ledger-san-diego-community/events/284663355/",
-      "location": "San Diego, CA",
-      "date": "April 1st 2022",
-      "image": "event-meetup-san-diego@2x.jpg"},
-
-    { "name": "XRPL Community Meetup: Irvine LA",
-      "id": "upcoming-xrpl-irvine",
-      "description": "Get together with other LA-based members of the XRP Ledger Community to network and discuss all things XRPL.",
-      "type": "meetup-past",
-      "link": "https://www.meetup.com/xrp-ledger-la-community-meetup/events/284824635/",
-      "location": "UC Irvine, CA",
-      "date": "April 3rd 2022",
-      "image": "event-meetup-irvine@2x.jpg"},
-      
-    { "name": "XRPL Community Meetup: Miami #2",
-      "id": "upcoming-xrpl-miami-2",
-      "description": "We're excited to host our second Miami meetup for XRP Ledger community members on April 6th from 6-8pm, featuring Marco Neri, Developer Advocate at Ripple, who will join us to give a presentation on the XRP Ledger.",
-      "type": "meetup-past",
-      "link": "https://www.meetup.com/xrp-ledger-miami-community/events/284463736/",
-      "location": "The LAB Miami, FL",
-      "date": "April 6th 2022",
-      "image": "event-meetup-miami@2x.jpg"},
-
-    { "name": "Hackathon:<br />New Year, New NFT",
-      "id": "upcoming-xrpl-hackathon-new-year",
-      "description": "Build Functional NFTs that span across a full range of use cases.",
-      "type": "hackathon-past",
-      "link": "https://xrplnft2022.devpost.com/",
-      "location": "Virtual",
-      "date": "January 31 - March 14, 2022",
-      "image": "event-hack-nft@2x.png"},
-
-    { "name": "Hackathon: Creating Real World Impact",      
-      "description": "Build apps to improve lives in the real world using any of the SDKs and APIs for the XRP Ledger.",
-      "type": "hackathon-past",
-      "link": "https://xrplimpact.devpost.com/",
-      "location": "Virtual",
-      "date": "May 26 - Jul 11, 2022",
-      "image": "event-hack-nft@2x.png"},
-
-    { "name": "Conference:<br />Apex 2021",      
-      "description": "View sessions from the Apex 2021 stages in Las Vegas and Tallinn.",
-      "type": "conference-past",
-      "link": "https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZgnreb8ODgxJW032M9Z2XZ",
-      "location": "Las Vegas, Tallinn",
-      "date": "September 29-30, 2021",
-      "image": "event-conference-apex-2021.png"},
-
-  ] %}
   <div class="row row-cols-1 row-cols-lg-3 card-deck mb-0 mt-2 ">
   {% for event in past|reverse %}
     <a class="event-card {{event.type}}" href="{{event.link}}" target="_blank">
