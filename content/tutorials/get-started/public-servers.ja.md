@@ -15,7 +15,7 @@ labels:
 | Ripple[¹][]   | **Mainnet** | `https://s1.ripple.com:51234/` | `wss://s1.ripple.com/` | 汎用サーバークラスター |
 | Ripple[¹][]   | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [全履歴サーバ](ledger-history.html#すべての履歴) クラスター |
 | Ripple[¹][]   | Testnet     | `https://s.altnet.rippletest.net:51234/` | `wss://s.altnet.rippletest.net:51233/` | Testnet 公開サーバー |
-| XRPL Labs   | Testnet       | `https://testnet.xrpl-labs.com/` | `wss://testnet.xrpl-labs.com:443/` | CORSをサポートする Testnet 公開サーバー |
+| XRPL Labs   | Testnet       | `https://testnet.xrpl-labs.com/` | `wss://testnet.xrpl-labs.com/` | CORSをサポートする Testnet 公開サーバー |
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net:51233/` | Devnet 公開サーバー |
 | Ripple[¹][]   | AMM-Devnet  | `https://amm.devnet.rippletest.net:51234/` | `wss://amm.devnet.rippletest.net:51233/` | [XLS-30d Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78)開発用の特別なdevnetサーバー |
 
