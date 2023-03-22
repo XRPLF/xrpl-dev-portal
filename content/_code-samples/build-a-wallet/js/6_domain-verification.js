@@ -79,7 +79,6 @@ const main = async () => {
         "accounts": [fixedAddress]
     })
 
-    //
     client.on("ledgerClosed", async (ledger) => {
         const ledgerData = prepareLedgerData(ledger)
         appWindow.webContents.send('update-ledger-data', ledgerData)
