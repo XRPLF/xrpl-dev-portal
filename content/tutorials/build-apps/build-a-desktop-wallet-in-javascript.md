@@ -63,10 +63,10 @@ cross-platform applications that are styled with HTML and CSS just like a web-ba
 
 The application we are going to build here will be capable of the following:
 
-- Shows updates to the XRP Ledger in real-time.
-- Can view any XRP Ledger account's activity "read-only" including showing how much XRP was delivered by each transaction.
-- Shows how much XRP is set aside for the account's [reserve requirement](reserves.html).
-- Can send [direct XRP payments](direct-xrp-payments.html), and provides feedback about the intended destination address, including:
+- Showing updates to the XRP Ledger in real-time.
+- Viewing any XRP Ledger account's activity "read-only" including showing how much XRP was delivered by each transaction.
+- Showing how much XRP is set aside for the account's [reserve requirement](reserves.html).
+- Sending [direct XRP payments](direct-xrp-payments.html), and providing feedback about the intended destination address, including:
     - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
     - If the address doesn't want to receive XRP ([`DisallowXRP` flag](become-an-xrp-ledger-gateway.html#disallow-xrp) enabled).
     - If the address has a [verified domain name](https://xrpl.org/xrp-ledger-toml.html#account-verification) associated with it.
