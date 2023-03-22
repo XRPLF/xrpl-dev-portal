@@ -15,7 +15,7 @@ Transactions with `tec` codes destroy the XRP paid as a [transaction cost](trans
 
 | Code                       | Value | Explanation                             |
 |:---------------------------|:------|:----------------------------------------|
-| `tecAMM_BALANCE`           | 163   | 
+| `tecAMM_BALANCE`           | 163   |
 | `tecAMM_DIRECT_PAYMENT`    | 169   | The transaction tried to send money directly to an AccountRoot object that is part of an [Automated Market Maker](automated-market-makers.html) (AMM) :not_enabled:. AMM AccountRoot entries cannot send or receive money directly except through [AMMWithdraw][] and [AMMDeposit][] transactions. |
 | `tecAMM_EXISTS`            | 167   | The [AMMCreate transaction][] :not_enabled: tried to create an [Automated Market Maker](automated-market-makers.html) (AMM) instance that already exists. There can only be at most one AMM per unique currency pair. |
 | `tecAMM_FAILED_DEPOSIT`    | 164   | The [AMMDeposit transaction][] :not_enabled: failed, probably because the sender does not have enough of the specified assets, or because the deposit requested an effective price that isn't possible with the available amounts. |
@@ -61,13 +61,13 @@ Transactions with `tec` codes destroy the XRP paid as a [transaction cost](trans
 | `tecNO_TARGET`             | 138   | The transaction referenced an Escrow or PayChannel ledger object that doesn't exist, either because it never existed or it has already been deleted. (For example, another [EscrowFinish transaction][] has already executed the held payment.) Alternatively, the destination account has `asfDisallowXRP` set so it cannot be the destination of this [PaymentChannelCreate][] or [EscrowCreate][] transaction. |
 | `tecOBJECT_NOT_FOUND`      | 160   | One of the objects specified by this transaction did not exist in the ledger. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
 | `tecOVERSIZE`              | 145   | This transaction could not be processed, because the server created an excessively large amount of [metadata](transaction-metadata.html) when it tried to apply the transaction. [New in: rippled 0.29.0-hf1][] |
-| `tecOWNERS`                | 132   | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](accountset.html#accountset-flags) flag if it has any trust lines or available offers. |
+| `tecOWNERS`                | 132   | The transaction requires that the account sending it has a #NOTE: should be zero? nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](accountset.html#accountset-flags) flag if it has any trust lines or available offers. |
 | `tecPATH_DRY`              | 128   | The transaction failed because the provided [paths](paths.html) did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by [trust lines](trust-lines-and-issuing.html). |
 | `tecPATH_PARTIAL`          | 101   | The transaction failed because the provided [paths](paths.html) did not have enough liquidity to send the full amount. |
 | `tecTOO_SOON`              | 152   | The [AccountDelete transaction][] failed because the account to be deleted had a `Sequence` number that is too high. The current ledger index must be at least 256 higher than the account's sequence number. |
 | `tecUNFUNDED`              | 129   | The transaction failed because the account does not hold enough XRP to pay the amount in the transaction _and_ satisfy the additional [reserve](reserves.html) necessary to execute this transaction. |
 | `tecUNFUNDED_ADD`          | 102   | **DEPRECATED.**                         |
-| `tecUNFUNDED_AMM`          | 162   | The [AMMCreate transaction][] :not_enabled: failed because the sender does not have enough of the specified assets to fund it. |
+| `tecAMM_UNFUNDED`          | 162   | The [AMMCreate transaction][] :not_enabled: failed because the sender does not have enough of the specified assets to fund it. |
 | `tecUNFUNDED_PAYMENT`      | 104   | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the [reserve](reserves.html). |
 | `tecUNFUNDED_OFFER`        | 103   | The [OfferCreate transaction][] failed because the account creating the offer does not have any of the `TakerGets` currency. |
 
