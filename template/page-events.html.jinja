@@ -1,6 +1,4 @@
 {% extends "base.html.jinja" %}
-
-{% set today = datetime.now().date() %}
 {% block head %}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -23,11 +21,11 @@
   <img src="./img/backgrounds/events-orange.svg" id="events-orange">
 </div>
 
-<section class="py-26 text-center">
-  <div class="col-lg-5 mx-auto text-center">
+<section class="text-center py-26">
+  <div class="mx-auto text-center col-lg-5">
     <div class="d-flex flex-column-reverse">
       <h1 class="mb-0">{% trans %}Find the XRPL Community Around the World{% endtrans %}</h1>
-      <h6 class="eyebrow mb-3">{% trans %}Events{% endtrans %}</h6>
+      <h6 class="mb-3 eyebrow">{% trans %}Events{% endtrans %}</h6>
     </div>
   </div>
 </section>
@@ -35,23 +33,27 @@
 <section class="container-new py-26">
   <div class="event-hero card-grid card-grid-2xN">
     
-    <div class="col pr-2">
+    <div class="pr-2 col">
         <img src="./assets/img/events/event-hero3@2x.png" class="w-100">
     </div>
     
-    <div class="col pt-5 pr-2">
+    <div class="pt-5 pr-2 col">
       <div class="d-flex flex-column-reverse">
-        <h2 class="h4 h2-sm mb-8">{% trans %}The XRPL Developer Summit<br /> On-Demand{% endtrans %}</h2>
-        <h6 class="eyebrow mb-3">{% trans %}Apex{% endtrans %}</h6>
+        <h2 class="mb-8 h4 h2-sm">{% trans %}The XRPL Developer Summit{% endtrans %}</h2>
+        <h6 class="mb-3 eyebrow">{% trans %}Save the Date{% endtrans %}</h6>
       </div>
-      <p class="mb-4">{% trans %}Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.{% endtrans %}</p>
+      <p class="mb-4">{% trans %}Apex is back and headed to Amsterdam. Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.{% endtrans %}</p>
       
-      <div class="event-small-gray py-2 my-5" >
-        View all sessions from Apex 2022 and soak in the knowledge that was shared by passionate XRPL community members.
+      <div class="py-2 my-3 event-small-gray" >
+        Location: Amsterdam
+      </div>
+
+      <div class="py-2 my-3 event-small-gray" >
+        Date: September 6-8, 2023
       </div>
       
       <div class="d-lg-block">
-        <a class="btn btn-primary btn-arrow-out" target="_blank" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZi8N1e_dTodg816QzKc9SX">{% trans %}View On-Demand{% endtrans %}</a> 
+        <a class="btn btn-primary btn-arrow-out" target="_blank" href="http://apexdevsummit.com/">{% trans %}Learn More{% endtrans %}</a> 
       </div>
     </div>
     
@@ -60,9 +62,9 @@
 
 {# Upcoming Events #}
 <section class="container-new py-26" id="upcoming-events">
-  <div class="d-flex flex-column-reverse col-lg-6 p-0 pr-lg-5 mb-4 pb-2">
+  <div class="p-0 pb-2 mb-4 d-flex flex-column-reverse col-lg-6 pr-lg-5">
     <h3 class="h4 h2-sm">{% trans %}Check out meetups, hackathons, and other events hosted by the XRPL Community{% endtrans %}</h3>
-    <h6 class="eyebrow mb-3">{% trans %}Upcoming Events{% endtrans %}</h6>
+    <h6 class="mb-3 eyebrow">{% trans %}Upcoming Events{% endtrans %}</h6>
   </div>
 
   <div class="filter row col-12 mt-lg-5 d-flex flex-column">
@@ -229,7 +231,7 @@
       "location": "Virtual",
       "date": "May 26 - Jul 11, 2022",
       "image": "event-hack-nft@2x.png",
-      "end_date" : "Jul 11, 2022",
+      "end_date" : "July 11, 2022",
       },
 
     { "name": "Conference:<br />Apex 2021",      
@@ -254,36 +256,49 @@
     { "name": "XRPL Zone @ Consensus",      
     "description": "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects.",
     "type": "conference-upcoming",
-    "link": "https://xrplnft.devpost.com/",
+    "link": "",
     "location": "Austin, Texas",
     "date": "April 27, 2023",
     "image": "event-hack-nft@2x.png",
     "end_date": "April 27, 2023"
     },
+    { "name": "XRPL Developer AMAs",      
+    "description": "A chat with Crossmark about wallet development on the XRP Ledger!",
+    "type": "conference-upcoming",
+    "link": "https://discord.com/invite/CVG6Q2S3R8",
+    "location": "XRPL Developers Discord",
+    "date": "April 14, 2023",
+    "image": "event-hack-nft@2x.png",
+    "end_date": "April 14, 2023"
+    },
+    { "name": "Community Calls",      
+    "description": "Please check back! More details coming soon...",
+    "type": "conference-upcoming",
+    "link": "",
+    "location": "XRPL Developers Discord",
+    "date": "TBA",
+    "image": "event-hack-nft@2x.png",
+    "end_date": "December 27, 2023",
+    "style": "opacity: 0.3; pointer-events: none; cursor: default;"
+    },
 ]
 %}
-  {% set past = [] %}
-  {% set upcoming = [] %}
-{% for event in events %}
-  {% set event_date = event.end_date.strftime('%b %d, %Y')  %}
-  {% if today > event_date %}
-    {% set past_events = past + [event] %}
-  {% else %}
-    {% set upcoming_events = upcoming + [event] %}
-  {% endif %}
-{% endfor %}
 
-  <div class="row row-cols-1 row-cols-lg-3 card-deck mt-2">
+  {% set results = categorize_dates(events) %}
+  {% set upcoming = results.upcoming %}
+  {% set past = results.past %}
+
+  <div class="mt-2 row row-cols-1 row-cols-lg-3 card-deck">
   {% for event in upcoming %}
-    <a class="event-card {{event.type}}" href="{{event.link}}" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/{{event.image}}); ">
+    <a class="event-card {{event.type}}" href="{{event.link}}" style="{{event.style}}" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/{{event.image}});">
         <div class="event-card-title">{{event.name}}</div>
       </div>
       <div class="event-card-body">
         <p>{{event.description}}</p>
       </div>
       <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="d-flex mb-2 icon icon-location">{{event.location}}</span>
+        <span class="mb-2 d-flex icon icon-location">{{event.location}}</span>
         <span class="d-flex icon icon-date">{{event.date}}</span>
       </div>
     </a>
@@ -293,9 +308,9 @@
 
 {# Past events #}
 <section class="container-new pt-26" id="past-events">
-  <div class="d-flex flex-column-reverse col-lg-6 p-0 pr-lg-5 mb-4 pb-2">
+  <div class="p-0 pb-2 mb-4 d-flex flex-column-reverse col-lg-6 pr-lg-5">
     <h3 class="h4 h2-sm">{% trans %}Explore past community-hosted events{% endtrans %}</h3>
-    <h6 class="eyebrow mb-3">{% trans %}Past Events{% endtrans %}</h6>
+    <h6 class="mb-3 eyebrow">{% trans %}Past Events{% endtrans %}</h6>
   </div>
 
   <div class="filter row col-12 mt-lg-5 d-flex flex-column">
@@ -316,7 +331,7 @@
     </div>
   </div>
 
-  <div class="row row-cols-1 row-cols-lg-3 card-deck mb-0 mt-2 ">
+  <div class="mt-2 mb-0 row row-cols-1 row-cols-lg-3 card-deck ">
   {% for event in past|reverse %}
     <a class="event-card {{event.type}}" href="{{event.link}}" target="_blank">
       <div class="event-card-header" style="background: no-repeat url(assets/img/events/{{event.image}}); ">
@@ -326,7 +341,7 @@
         <p>{{event.description}}</p>
       </div>
       <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="d-flex mb-2 icon icon-location">{{event.location}}</span>
+        <span class="mb-2 d-flex icon icon-location">{{event.location}}</span>
         <span class="d-flex icon icon-date">{{event.date}}</span>
       </div>
     </a>

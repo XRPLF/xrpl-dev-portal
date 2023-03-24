@@ -4736,6 +4736,8 @@ pages:
         blurb: The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.
         top_nav_name: Events
         top_nav_hero_image: top-nav-hero-contribute
+        filters: 
+            - categorize_dates
         targets:
             - en
 
@@ -4748,6 +4750,8 @@ pages:
         blurb: XRP Ledger (XRPL) はコミュニティ主導のパブリックブロックチェーンです。ここでは、その参加方法について説明します。
         top_nav_name: イベント
         top_nav_hero_image: top-nav-hero-contribute
+        filters: 
+            - categorize_dates
         targets:
             - ja
 
