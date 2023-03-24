@@ -475,27 +475,33 @@ pages:
             - en
             - ja
 
-    -   md: use-cases/tokenization/authorized-minter.md
+    -   md: use-cases/tokenization/stablecoin-issuer.md
         parent: tokenization.html
-        targets:            
+        targets:
             - en
             - ja
 
-    -   md: use-cases/tokenization/stablecoin-issuer.md
+    -   md: use-cases/tokenization/nft-mkt-overview.md
         parent: tokenization.html
-        targets:            
+        targets:
             - en
             - ja
 
     -   md: use-cases/tokenization/nftoken-marketplace.md
-        parent: tokenization.html
-        targets:            
+        parent: nft-mkt-overview.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/tokenization/authorized-minter.md
+        parent: nft-mkt-overview.html
+        targets:
             - en
             - ja
 
     -   md: use-cases/tokenization/digital-artist.md
-        parent: tokenization.html
-        targets:            
+        parent: nft-mkt-overview.html
+        targets:
             - en
             - ja
 
