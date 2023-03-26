@@ -38,7 +38,7 @@ labels:
 
 アカウントへのレギュラーキーペアの割り当てについてのチュートリアルは、[レギュラーキーペアの操作](assign-a-regular-key-pair.html)を参照してください。
 
-セキュリティを強化するために[マルチ署名](multi-signing.html)を使用できますが、マルチ署名を使用する場合には[トランザクションコスト][]および[準備金](reserves.html)に追加のXRPが必要となります。
+セキュリティを強化するために[マルチシグ](multi-signing.html)を使用できますが、マルチシグを使用する場合には[トランザクションコスト][]および[準備金](reserves.html)に追加のXRPが必要となります。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

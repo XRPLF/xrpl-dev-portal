@@ -43,9 +43,9 @@ XRP Ledgerのアカウントとは、XRPの保有者と取引の送信者を意�
 トランザクションだけが、XRP Ledgerの共有されている状態を変更できます。XRP Ledgerに対するすべてのビジネスはトランザクションの形態をとります。以下のメソッドを使用して、トランザクションを処理します。
 
 * **[`sign`](sign.html)** - トランザクションに暗号で署名します。
-* **[`sign_for`](sign_for.html)** - マルチ署名に署名を提供します。
+* **[`sign_for`](sign_for.html)** - マルチシグに署名を提供します。
 * **[`submit`](submit.html)** - トランザクションをネットワークに送信します。
-* **[`submit_multisigned`](submit_multisigned.html)** - マルチ署名済みトランザクションをネットワークに送信します。
+* **[`submit_multisigned`](submit_multisigned.html)** - マルチシグトランザクションをネットワークに送信します。
 * **[`transaction_entry`](transaction_entry.html)** - レジャーの特定のバージョンからトランザクションについての情報を取得します。
 * **[`tx`](tx.html)** - 手元にあるすべてのレジャーからトランザクションについての情報を取得します。
 * **[`tx_history`](tx_history.html)** - 最新の全トランザクションについての情報を取得します。

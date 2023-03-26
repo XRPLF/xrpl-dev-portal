@@ -44,7 +44,7 @@ labels:
 
     ローカルマシンが[`rippled`の最小システム要件](system-requirements.html)を満たしていることを確認します。
 
-2. トランザクションに署名する必要がある場合は、`localhost`または`127.0.0.1`のサーバーに接続します。シングル署名の場合は[signメソッド][]、マルチ署名の場合は[sign_forメソッド][]を使用します。
+2. トランザクションに署名する必要がある場合は、`localhost`または`127.0.0.1`のサーバーに接続します。シングル署名の場合は[signメソッド][]、マルチシグの場合は[sign_forメソッド][]を使用します。
 
     [構成ファイルの例](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
 
@@ -133,7 +133,7 @@ Rippleが公開したものでないクライアントライブラリを使用�
 
 - **コンセプト:**
     - [暗号鍵](cryptographic-keys.html)
-    - [マルチ署名](multi-signing.html)
+    - [マルチシグ](multi-signing.html)
 - **チュートリアル:**
     - [rippledのインストール](install-rippled.html)
     - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.html)
