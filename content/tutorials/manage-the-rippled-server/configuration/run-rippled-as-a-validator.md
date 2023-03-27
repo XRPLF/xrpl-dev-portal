@@ -30,7 +30,7 @@ Even if your validator isn't a _trusted_ validator, it stills plays an important
 
 ## 1. Understand the traits of a good validator
 
-Strive to have your validator always embody the following properties. Being a good validator helps `rippled` server operators and validator list publishers (such as https://vl.ripple.com and https://vl.xrplf.org), to trust your validator before adding it to their UNLs.
+Strive to have your validator embody the following properties. Being a good validator helps `rippled` server operators and validator list publishers (such as https://vl.ripple.com and https://vl.xrplf.org) trust your validator before adding it to their UNLs.
 
 - **Available**
 
