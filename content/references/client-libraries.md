@@ -16,5 +16,7 @@ For other programming languages, you can access the XRP Ledger through the [HTTP
 | **C++**      | `rippled` Signing Library | [Get Started](https://github.com/ripple/rippled/tree/develop/Builds/linux#signing-library) |  | (Part of [`rippled`](https://github.com/ripple/rippled/)) |
 | **Java** | `xrpl4j` | [Get Started Using Java](get-started-using-java.html) | [API Reference](https://javadoc.io/doc/org.xrpl/)  | [Repo](https://github.com/XRPLF/xrpl4j) |
 | **Ruby** | `xrbp` | | [API Reference](https://www.rubydoc.info/gems/xrbp) | [Repo](https://github.com/DevNullProd/xrbp) |
+(https://github.com/Imdavyking/xrp) |
+| **Flutter/Dart** | `xrp` | | [API Reference](https://pub.dev/packages/xrp) | [Repo](https://github.com/Imdavyking/xrp) |
 
 **Tip:** To add a client library not listed here, please [suggest changes to this page]({{target.github_forkurl}}/edit/{{target.github_branch}}/content/{{currentpage.md}})!
