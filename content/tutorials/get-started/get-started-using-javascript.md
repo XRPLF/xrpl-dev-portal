@@ -61,7 +61,7 @@ How you load `xrpl.js` into your project depends on your development environment
 Add a `<script>` tag such as the following to your HTML:
 
 ```html
-<script src="https://unpkg.com/xrpl@2.0.0/build/xrpl-latest-min.js"></script>
+<script src="https://unpkg.com/xrpl/build/xrpl-latest-min.js"></script>
 ```
 
 You can load the library from a CDN as in the above example, or download a release and host it on your own website.
