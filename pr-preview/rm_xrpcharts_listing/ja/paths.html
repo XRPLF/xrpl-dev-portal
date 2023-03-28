@@ -1,0 +1,2989 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Paths - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Paths | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/paths.html" />
+    <meta property="og:description" content="In the XRP Ledger, paths define a way for tokens to flow through intermediary steps as part of a payment." />
+    <meta name="description" content="In the XRP Ledger, paths define a way for tokens to flow through intermediary steps as part of a payment." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/paths.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/paths.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/paths.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/ja/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/ja/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/ja/assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="/ja/assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="/ja/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+    <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
+    <meta name="color-scheme" content="dark light">
+
+    <!-- jQuery -->
+    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Document",
+      "page_group": "Docs",
+      "page_funnel": "Concepts",
+      "page_labels": ['Tokens']
+    })
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+
+    <!-- Stylesheet -->
+    <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v11b.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+    <!-- Theme switch -->
+    <script src="/ja/assets/js/theme-switch.js"></script>
+
+
+
+    <!-- expandable code samples -->
+    <script src="/ja/assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="/ja/assets/js/multicodetab.js"></script>
+    <!-- copy code button -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+            new ClipboardJS('.clipboard-btn');
+        });
+    </script>
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available on the XRP Ledger</p></span>
+    <span><a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">Native NFT support is now available</p></span>
+    <span><p class="mb-0">on the XRP Ledger<a href="/mint-and-burn-nftokens.html?utm_source=web&utm_medium=web&utm_campaign=xls-20_launch&utm_content=pencil_banner" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>ドキュメント</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-ドキュメント" href="/ja/docs.html">
+            <img id="top-nav-hero-docs" alt="ドキュメント icon" />
+            <div class="dropdown-hero-text">
+              <h4>ドキュメント</h4>
+              <p>XRPとXRP Ledgerの全てに対してのコミュニティーリーソース</p>
+            </div>
+          </a>
+          <div class="navcol col-for-質問">
+            <h5 class="dropdown-item">質問</h5>
+            <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
+          </div><!--./col-->
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
+            <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
+            <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
+          </div><!--./col-->
+          <div class="navcol col-for-online-tools">
+            <h5 class="dropdown-item">Online Tools</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">Code Samples</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Education Portal</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
+            <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+          </div><!--./col-->
+          <div class="navcol col-for-人気ページ">
+            <h5 class="dropdown-item">人気ページ</h5>
+            <a class="dropdown-item" href="/ja/send-xrp.html">XRPの送金</a>
+          </div><!--./col-->
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="/ja/reserves.html">Reserves</a>
+            <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
+          </div><!--./col-->
+          <div class="navcol col-for-popular-pages">
+            <h5 class="dropdown-item">Popular Pages</h5>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
+            <img id="top-nav-hero-contribute" alt="貢献する icon" />
+            <div class="dropdown-hero-text">
+              <h4>貢献する</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="/ja/events.html">Events</a>
+            <a class="dropdown-item" href="/ja/ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item" href="/ja/developer-funding.html">Developer Funding</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">検索</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="サイトを検索">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          日本語
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/paths.html">
+            English
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+
+    <div class="nav-item" id="topnav-theme">
+      <form class="form-inline">
+        <div class="custom-control custom-theme-toggle form-inline-item" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
+          <input type="checkbox" class="custom-control-input" id="css-toggle-btn">
+          <label class="custom-control-label" for="css-toggle-btn"><span class="d-lg-none">Light/Dark Theme</span></label>
+        </div>
+      </form>
+    </div><!--/#topnav-theme-->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/rm_xrpcharts_listing/content/concepts/transactions/paths.md?pr=/XRPLF/xrpl-dev-portal/pull/1852" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-tokens">Tokens</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Tokens" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
+      <h4>目次</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#paths">Paths</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#path-steps">Path Steps</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#technical-details">Technical Details</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#pathfinding">Pathfinding</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#implied-steps">Implied Steps</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#default-paths">Default Paths</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#path-specifications">Path Specifications</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+      </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+    <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/transactions.html">Transactions</a></li>
+    <li class="active breadcrumb-item">Paths</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
+    </div><!--/.devportal-callout-->
+    <div class="content">
+        <h1 id="paths">Paths<a aria-hidden="true" class="hover_anchor" href="#paths"><i class="fa fa-link"></i></a></h1>
+<p>In the XRP Ledger, paths define a way for <a href="tokens.html">tokens</a> to flow through intermediary steps as part of a payment. Paths enable <a href="cross-currency-payments.html">cross-currency payments</a> by connecting sender and receiver through orders in the XRP Ledger's decentralized exchange. Paths also enable complex settlement of offsetting debts.</p>
+<p>A single Payment transaction in the XRP Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a <em>path set</em>, which is a collection of possible paths to take. All paths in a path set must start with the same currency, and must also end with the same currency as each other.</p>
+<p>Since XRP can be sent directly to any address, an XRP-to-XRP transaction does not use any paths.</p>
+<h2 id="path-steps">Path Steps<a aria-hidden="true" class="hover_anchor" href="#path-steps"><i class="fa fa-link"></i></a></h2>
+<p>A path is made of steps that connect the sender to the receiver of the payment. Every step is either:</p>
+<ul>
+<li>Rippling through another address with the same currency</li>
+<li>Trading tokens or XRP using an order book</li>
+</ul>
+<p><a href="rippling.html">Rippling</a> is the process of exchanging equivalent tokens using the same currency code. In the typical case, rippling through an issuer involves reducing the tokens issued to one party and increasing the tokens issued to another party by an equal amount. The path step specifies which account to ripple through.</p>
+<p>Trading tokens and possibly XRP involves going to an order book and finding the best exchange rate between the assets involved for the amount being sent. The path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available Offers at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will --></p>
+<p>In both types of steps, each intermediate address gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to <a href="transfer-fees.html">transfer fees</a>, trust line quality settings, or rounding.</p>
+<figure><a href="img/paths-examples.svg" title="Diagram of three example paths"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="40 10 1170 530" width="1170" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/paths-examples.svg__genericDefs"></defs><g><defs id="img/paths-examples.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath2"><path d="M0 0 L0 50 L200 50 L200 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath3"><path d="M0 0 L0 30 L30 30 L30 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath4"><path d="M0 0 L0 30 L200 30 L200 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath5"><path d="M0 0 L0 40 L230 40 L230 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath6"><path d="M0 0 L0 180 L320 180 L320 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath7"><path d="M0 0 L0 120 L140 120 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath8"><path d="M0 0 L0 100 L130 100 L130 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath9"><path d="M0 0 L0 100 L100 100 L100 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath10"><path d="M0 0 L0 30 L60 30 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath11"><path d="M0 0 L0 40 L70 40 L70 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/paths-examples.svg__clipPath12"><path d="M0 0 L0 30 L70 30 L70 0 Z"></path></clippath></defs><g font-family="sans-serif" font-size="14px" transform="translate(920,160)"><text clip-path="url(#img/paths-examples.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">Path step - order book</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(880,160)"><rect clip-path="url(#img/paths-examples.svg__clipPath3)" height="28.5" stroke="none" width="28.5" x="0.5" y="0.5"></rect></g><g transform="translate(880,160)"><rect clip-path="url(#img/paths-examples.svg__clipPath3)" fill="none" height="28.5" width="28.5" x="0.5" y="0.5"></rect></g><g font-family="sans-serif" font-size="14px" transform="translate(920,110)"><text clip-path="url(#img/paths-examples.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">Path step - account</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(880,110)"><circle clip-path="url(#img/paths-examples.svg__clipPath3)" cx="14.75" cy="14.75" r="14.25" stroke="none"></circle></g><g transform="translate(880,110)"><circle clip-path="url(#img/paths-examples.svg__clipPath3)" cx="14.75" cy="14.75" fill="none" r="14.25"></circle></g><g font-family="sans-serif" font-size="14px" transform="translate(920,70)"><text clip-path="url(#img/paths-examples.svg__clipPath5)" stroke="none" x="5" xml:space="preserve" y="18.1094">Implied path step/link</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(870,30)"><rect clip-path="url(#img/paths-examples.svg__clipPath6)" height="178.5" stroke="none" width="318.5" x="0.5" y="0.5"></rect></g><g transform="translate(870,30)"><rect clip-path="url(#img/paths-examples.svg__clipPath6)" fill="none" height="178.5" width="318.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/paths-examples.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="134" xml:space="preserve" y="18.1094">Legend</text><path clip-path="url(#img/paths-examples.svg__clipPath6)" d="M1 24.1094 L319 24.1094" fill="none"></path></g><g fill="yellow" stroke="yellow" transform="translate(1050,400)"><path clip-path="url(#img/paths-examples.svg__clipPath7)" d="M0.5 0.5 L128.5 0.5 L139 12.5 L139 119 L0.5 119 Z" stroke="none"></path><path clip-path="url(#img/paths-examples.svg__clipPath7)" d="M0.5 0.5 L128.5 0.5 L139 12.5 L139 119 L0.5 119 Z" fill="none" stroke="black"></path><path clip-path="url(#img/paths-examples.svg__clipPath7)" d="M128.5 0.5 L128.5 12.5 L139 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(1050,400)"><text clip-path="url(#img/paths-examples.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="18.1094">XRP can bridge</text><text clip-path="url(#img/paths-examples.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="34.2188">two order books</text></g><g fill="yellow" stroke="yellow" transform="translate(500,60)"><path clip-path="url(#img/paths-examples.svg__clipPath8)" d="M0.5 0.5 L118.5 0.5 L129 12.5 L129 99 L0.5 99 Z" stroke="none"></path><path clip-path="url(#img/paths-examples.svg__clipPath8)" d="M0.5 0.5 L118.5 0.5 L129 12.5 L129 99 L0.5 99 Z" fill="none" stroke="black"></path><path clip-path="url(#img/paths-examples.svg__clipPath8)" d="M118.5 0.5 L118.5 12.5 L129 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(500,60)"><text clip-path="url(#img/paths-examples.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="18.1094">A simple path,</text><text clip-path="url(#img/paths-examples.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="34.2188">which ripples</text><text clip-path="url(#img/paths-examples.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="50.3281">through an</text><text clip-path="url(#img/paths-examples.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="66.4375">issuer trusted</text><text clip-path="url(#img/paths-examples.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="82.5469">by both parties</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(200,60)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g transform="translate(200,60)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="36.4453">Account:</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1.653 42.4453 L98.847 42.4453" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="57.5547">rvYAfWj...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="50" xml:space="preserve" y="73.6641"> </text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(340,60)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(340,60)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="17" xml:space="preserve" y="30.8906">Receiver:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="13" xml:space="preserve" y="47">ra5nK24...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="63.1094">Currency:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="79.2188">USD</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(60,60)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(60,60)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="22" xml:space="preserve" y="30.8906">Sender:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="11" xml:space="preserve" y="47">r9cZA1m...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="63.1094">Currency:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="79.2188">USD</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(480,410)"><rect clip-path="url(#img/paths-examples.svg__clipPath9)" height="98.5" stroke="none" width="98.5" x="0.5" y="0.5"></rect></g><g transform="translate(480,410)"><rect clip-path="url(#img/paths-examples.svg__clipPath9)" fill="none" height="98.5" width="98.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="7" xml:space="preserve" y="18.1094">Order Book:</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1 24.1094 L99 24.1094" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="39.2188">XRP</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1 45.2188 L99 45.2188" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="60.3281">USD</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="76.4375">rMwjYe...</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(900,410)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(900,410)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="17" xml:space="preserve" y="30.8906">Receiver:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="13" xml:space="preserve" y="47">ra5nK24...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="63.1094">Currency:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="79.2188">USD</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(760,410)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g transform="translate(760,410)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="36.4453">Account:</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1.653 42.4453 L98.847 42.4453" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="17" xml:space="preserve" y="57.5547">rf1BiGe...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="50" xml:space="preserve" y="73.6641"> </text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(620,410)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g transform="translate(620,410)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="36.4453">Account:</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1.653 42.4453 L98.847 42.4453" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="18" xml:space="preserve" y="57.5547">rMwjYe...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="50" xml:space="preserve" y="73.6641"> </text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(340,410)"><rect clip-path="url(#img/paths-examples.svg__clipPath9)" height="98.5" stroke="none" width="98.5" x="0.5" y="0.5"></rect></g><g transform="translate(340,410)"><rect clip-path="url(#img/paths-examples.svg__clipPath9)" fill="none" height="98.5" width="98.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="7" xml:space="preserve" y="18.1094">Order Book:</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1 24.1094 L99 24.1094" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="39.2188">USD</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="55.3281">rvYAfWj...</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1 61.3281 L99 61.3281" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="76.4375">XRP</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(200,410)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g transform="translate(200,410)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="36.4453">Account:</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1.653 42.4453 L98.847 42.4453" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="57.5547">rvYAfWj...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="50" xml:space="preserve" y="73.6641"> </text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(60,410)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(60,410)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="22" xml:space="preserve" y="30.8906">Sender:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="11" xml:space="preserve" y="47">r9cZA1m...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="63.1094">Currency:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="79.2188">USD</text></g><g fill="yellow" stroke="yellow" transform="translate(920,230)"><path clip-path="url(#img/paths-examples.svg__clipPath7)" d="M0.5 0.5 L128.5 0.5 L139 12.5 L139 119 L0.5 119 Z" stroke="none"></path><path clip-path="url(#img/paths-examples.svg__clipPath7)" d="M0.5 0.5 L128.5 0.5 L139 12.5 L139 119 L0.5 119 Z" fill="none" stroke="black"></path><path clip-path="url(#img/paths-examples.svg__clipPath7)" d="M128.5 0.5 L128.5 12.5 L139 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(920,230)"><text clip-path="url(#img/paths-examples.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="18.1094">Same-currency</text><text clip-path="url(#img/paths-examples.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="34.2188">paths can</text><text clip-path="url(#img/paths-examples.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="50.3281">connect through</text><text clip-path="url(#img/paths-examples.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="66.4375">rippling or</text><text clip-path="url(#img/paths-examples.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="82.5469">through order</text><text clip-path="url(#img/paths-examples.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="98.6562">books.</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(760,240)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(760,240)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="17" xml:space="preserve" y="30.8906">Receiver:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="13" xml:space="preserve" y="47">ra5nK24...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="63.1094">Currency:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="79.2188">USD</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(480,240)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g transform="translate(480,240)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="36.4453">Account:</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1.653 42.4453 L98.847 42.4453" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="18" xml:space="preserve" y="57.5547">rMwjYe...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="50" xml:space="preserve" y="73.6641"> </text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(340,240)"><rect clip-path="url(#img/paths-examples.svg__clipPath9)" height="98.5" stroke="none" width="98.5" x="0.5" y="0.5"></rect></g><g transform="translate(340,240)"><rect clip-path="url(#img/paths-examples.svg__clipPath9)" fill="none" height="98.5" width="98.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="7" xml:space="preserve" y="18.1094">Order Book:</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1 24.1094 L99 24.1094" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="39.2188">USD</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="55.3281">rvYAfWj...</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1 61.3281 L99 61.3281" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="76.4375">USD</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="92.5469">rMwjYe...</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(200,240)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g transform="translate(200,240)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="36.4453">Account:</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1.653 42.4453 L98.847 42.4453" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="57.5547">rvYAfWj...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="50" xml:space="preserve" y="73.6641"> </text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(60,240)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(60,240)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="22" xml:space="preserve" y="30.8906">Sender:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="11" xml:space="preserve" y="47">r9cZA1m...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="63.1094">Currency:</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="79.2188">USD</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(620,240)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g transform="translate(620,240)"><circle clip-path="url(#img/paths-examples.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="36.4453">Account:</text><path clip-path="url(#img/paths-examples.svg__clipPath9)" d="M1.653 42.4453 L98.847 42.4453" fill="none"></path><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="17" xml:space="preserve" y="57.5547">rf1BiGe...</text><text clip-path="url(#img/paths-examples.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="50" xml:space="preserve" y="73.6641"> </text></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(870,70)"><path clip-path="url(#img/paths-examples.svg__clipPath10)" d="M40.5 10.5 L10.5 10.5" fill="none"></path></g><g transform="translate(290,90)"><path clip-path="url(#img/paths-examples.svg__clipPath11)" d="M50.5 20.5 L10.5 20.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(150,100)"><path clip-path="url(#img/paths-examples.svg__clipPath12)" d="M50.5 10.5 L10.5 10.5" fill="none"></path></g><g transform="translate(570,440)"><path clip-path="url(#img/paths-examples.svg__clipPath11)" d="M50.5 20.5 L10.5 20.5" fill="none"></path></g><g transform="translate(430,440)"><path clip-path="url(#img/paths-examples.svg__clipPath11)" d="M50.5 20.5 L10.5 20.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(850,450)"><path clip-path="url(#img/paths-examples.svg__clipPath12)" d="M50.5 10.5 L10.5 10.5" fill="none"></path></g><g transform="translate(710,440)"><path clip-path="url(#img/paths-examples.svg__clipPath11)" d="M50.5 20.5 L10.5 20.5" fill="none"></path></g><g transform="translate(290,440)"><path clip-path="url(#img/paths-examples.svg__clipPath11)" d="M50.5 20.5 L10.5 20.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(150,450)"><path clip-path="url(#img/paths-examples.svg__clipPath12)" d="M50.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(150,280)"><path clip-path="url(#img/paths-examples.svg__clipPath12)" d="M50.5 10.5 L10.5 10.5" fill="none"></path></g><g transform="translate(290,270)"><path clip-path="url(#img/paths-examples.svg__clipPath11)" d="M50.5 20.5 L10.5 20.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(710,280)"><path clip-path="url(#img/paths-examples.svg__clipPath12)" d="M50.5 10.5 L10.5 10.5" fill="none"></path></g><g transform="translate(430,270)"><path clip-path="url(#img/paths-examples.svg__clipPath11)" d="M50.5 20.5 L10.5 20.5" fill="none"></path></g><g transform="translate(570,270)"><path clip-path="url(#img/paths-examples.svg__clipPath11)" d="M50.5 20.5 L10.5 20.5" fill="none"></path></g></g></svg></a></figure>
+<h1 id="technical-details">Technical Details<a aria-hidden="true" class="hover_anchor" href="#technical-details"><i class="fa fa-link"></i></a></h1>
+<h2 id="pathfinding">Pathfinding<a aria-hidden="true" class="hover_anchor" href="#pathfinding"><i class="fa fa-link"></i></a></h2>
+<p>The <code>rippled</code> API has two methods that can be used for pathfinding. The <code>ripple_path_find</code> method does a one-time lookup of possible path sets. The <code>path_find</code> method (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.</p>
+<p>You can have <code>rippled</code> automatically fill in paths when you sign it, by including the <code>build_path</code> field in a request to the <code>sign</code> method or <code>submit</code> command (sign-and-submit mode). However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Although <code>rippled</code> is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy <code>rippled</code> instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.</p>
+<p>Finding paths is a very challenging problem that changes slightly every few seconds as new ledgers are validated, so <code>rippled</code> is not designed to find the absolute best path. Still, you can find several possible paths and estimate the cost of delivering a particular amount.</p>
+<h2 id="implied-steps">Implied Steps<a aria-hidden="true" class="hover_anchor" href="#implied-steps"><i class="fa fa-link"></i></a></h2>
+<p>By convention, several steps of a path are implied by the <a href="payment-types.html">fields of the Payment transaction</a>: specifically, the <code>Account</code> (sender), <code>Destination</code> (receiver), <code>Amount</code> (currency and amount to be delivered) and <code>SendMax</code> (currency and amount to be sent, if specified). The implied steps are as follows:</p>
+<ul>
+<li>The first step of a path is always implied to be the sender of the transaction, as defined by the transaction's <code>Account</code> field.</li>
+<li>If the transaction includes a <code>SendMax</code> field with an <code>issuer</code> that is not the sender of the transaction, that issuer is implied to be the second step of the path.<ul>
+<li>If <code>issuer</code> of the <code>SendMax</code> <em>is</em> the sending address, then the path starts at the sending address, and may use any of that address's trust lines for the given currency code. See <a href="payment-types.html">special values for <code>SendMax</code> and <code>Amount</code></a> for details.</li>
+</ul>
+</li>
+<li>If the <code>Amount</code> field of the transaction includes an <code>issuer</code> that is not the same as the <code>Destination</code> of the transaction, that issuer is implied to be the second-to-last step of the path.</li>
+<li>Finally, last step of a path is always implied to be the receiver of a transaction, as defined by the transaction's <code>Destination</code> field.</li>
+</ul>
+<h2 id="default-paths">Default Paths<a aria-hidden="true" class="hover_anchor" href="#default-paths"><i class="fa fa-link"></i></a></h2>
+<p>In addition to explicitly specified paths, a transaction can execute along the <em>default path</em>. The default path is the simplest possible way to connect the implied steps of the transaction.</p>
+<p>The default path could be any of the following:</p>
+<ul>
+<li>If the transaction uses only one token (regardless of issuer), then the default path assumes the payment should ripple through the addresses involved. This path only works if those addresses are connected by trust lines.<ul>
+<li>If <code>SendMax</code> is omitted, or the <code>issuer</code> of the <code>SendMax</code> is the sender, the default path needs a trust line from the sending <code>Account</code> to the <code>issuer</code> of the destination <code>Amount</code> to work.</li>
+<li>If the <code>SendMax</code> and <code>Amount</code> have different <code>issuer</code> values, and neither are the sender or receiver, the default path is probably not useful because it would need to ripple across a trust line between the two issuers. Ripple (the company) typically discourages issuers from trusting one another directly.</li>
+</ul>
+</li>
+<li>For cross-currency transactions, the default path uses the order book between the source currency (as specified in the <code>SendMax</code> field) and the destination currency (as specified in the <code>Amount</code> field).</li>
+</ul>
+<p>The following diagram enumerates all possible default paths:</p>
+<figure><a href="img/default-paths.svg" title="Diagram of default paths"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="20 20 1120 840" width="1120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/default-paths.svg__genericDefs"></defs><g><defs id="img/default-paths.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath2"><path d="M0 0 L0 90 L150 90 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath3"><path d="M0 0 L0 30 L200 30 L200 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath4"><path d="M0 0 L0 30 L180 30 L180 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath5"><path d="M0 0 L0 30 L30 30 L30 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath6"><path d="M0 0 L0 30 L210 30 L210 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath7"><path d="M0 0 L0 30 L230 30 L230 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath8"><path d="M0 0 L0 210 L310 210 L310 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath9"><path d="M0 0 L0 100 L100 100 L100 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath10"><path d="M0 0 L0 80 L140 80 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath11"><path d="M0 0 L0 90 L140 90 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath12"><path d="M0 0 L0 40 L30 40 L30 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath13"><path d="M0 0 L0 20 L20 20 L20 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath14"><path d="M0 0 L0 160 L50 160 L50 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath15"><path d="M0 0 L0 30 L60 30 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath16"><path d="M0 0 L0 30 L80 30 L80 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath17"><path d="M0 0 L0 240 L50 240 L50 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath18"><path d="M0 0 L0 30 L160 30 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath19"><path d="M0 0 L0 30 L140 30 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath20"><path d="M0 0 L0 30 L120 30 L120 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath21"><path d="M0 0 L0 30 L190 30 L190 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath22"><path d="M0 0 L0 30 L170 30 L170 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/default-paths.svg__clipPath23"><path d="M0 0 L0 30 L100 30 L100 0 Z"></path></clippath></defs><g fill="rgb(120,120,120)" stroke="rgb(120,120,120)" transform="translate(810,710)"><path clip-path="url(#img/default-paths.svg__clipPath2)" d="M0.5 0.5 L138.5 0.5 L149 12.5 L149 89 L0.5 89 Z" stroke="none"></path><path clip-path="url(#img/default-paths.svg__clipPath2)" d="M0.5 0.5 L138.5 0.5 L149 12.5 L149 89 L0.5 89 Z" fill="none" stroke="white"></path><path clip-path="url(#img/default-paths.svg__clipPath2)" d="M138.5 0.5 L138.5 12.5 L149 12.5" fill="none" stroke="white"></path></g><g fill="white" font-family="sans-serif" font-size="14px" stroke="white" transform="translate(810,710)"><text clip-path="url(#img/default-paths.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">Cross-currency:</text><text clip-path="url(#img/default-paths.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="34.2188">Default path</text><text clip-path="url(#img/default-paths.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="50.3281">automatically uses</text><text clip-path="url(#img/default-paths.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="66.4375">an order book</text></g><g font-family="sans-serif" font-size="14px" transform="translate(860,210)"><text clip-path="url(#img/default-paths.svg__clipPath3)" stroke="none" x="5" xml:space="preserve" y="18.1094">path step - order book</text></g><g font-family="sans-serif" font-size="14px" transform="translate(860,160)"><text clip-path="url(#img/default-paths.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">path step - account</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(820,210)"><rect clip-path="url(#img/default-paths.svg__clipPath5)" height="28.5" stroke="none" width="28.5" x="0.5" y="0.5"></rect></g><g transform="translate(820,210)"><rect clip-path="url(#img/default-paths.svg__clipPath5)" fill="none" height="28.5" width="28.5" x="0.5" y="0.5"></rect></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(820,160)"><circle clip-path="url(#img/default-paths.svg__clipPath5)" cx="14.75" cy="14.75" r="14.25" stroke="none"></circle></g><g transform="translate(820,160)"><circle clip-path="url(#img/default-paths.svg__clipPath5)" cx="14.75" cy="14.75" fill="none" r="14.25"></circle></g><g font-family="sans-serif" font-size="14px" transform="translate(860,90)"><text clip-path="url(#img/default-paths.svg__clipPath6)" stroke="none" x="5" xml:space="preserve" y="18.1094">completes the default path</text></g><g font-family="sans-serif" font-size="14px" transform="translate(860,130)"><text clip-path="url(#img/default-paths.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="18.1094">implied by transaction fields</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(810,50)"><rect clip-path="url(#img/default-paths.svg__clipPath8)" height="208.5" stroke="none" width="308.5" x="0.5" y="0.5"></rect></g><g transform="translate(810,50)"><rect clip-path="url(#img/default-paths.svg__clipPath8)" fill="none" height="208.5" width="308.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/default-paths.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="129" xml:space="preserve" y="18.1094">Legend</text><path clip-path="url(#img/default-paths.svg__clipPath8)" d="M1 24.1094 L309 24.1094" fill="none"></path></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(350,700)"><rect clip-path="url(#img/default-paths.svg__clipPath9)" height="98.5" stroke="none" width="98.5" x="0.5" y="0.5"></rect></g><g stroke-width="2.5" transform="translate(350,700)"><rect clip-path="url(#img/default-paths.svg__clipPath9)" fill="none" height="98.5" width="98.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="10" xml:space="preserve" y="18.1094">Order Book</text><path clip-path="url(#img/default-paths.svg__clipPath9)" d="M1 24.1094 L99 24.1094" fill="none"></path><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="39.2188">FOO</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="55.3281">(issuer)</text><path clip-path="url(#img/default-paths.svg__clipPath9)" d="M1 61.3281 L99 61.3281" fill="none"></path><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="76.4375">BAR</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="92.5469">(issuer)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(50,700)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(50,700)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="21" xml:space="preserve" y="47">Account</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="63.1094">(Sender)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(200,700)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(200,700)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="47">SendMax.</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="63.1094">issuer</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(500,700)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(500,700)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="47">Amount.</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="63.1094">issuer</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(650,700)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(650,700)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="47">Destination</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="13" xml:space="preserve" y="63.1094">(Receiver)</text></g><g fill="rgb(120,120,120)" stroke="rgb(120,120,120)" transform="translate(750,370)"><path clip-path="url(#img/default-paths.svg__clipPath10)" d="M0.5 0.5 L128.5 0.5 L139 12.5 L139 79 L0.5 79 Z" stroke="none"></path><path clip-path="url(#img/default-paths.svg__clipPath10)" d="M0.5 0.5 L128.5 0.5 L139 12.5 L139 79 L0.5 79 Z" fill="none" stroke="white"></path><path clip-path="url(#img/default-paths.svg__clipPath10)" d="M128.5 0.5 L128.5 12.5 L139 12.5" fill="none" stroke="white"></path></g><g fill="white" font-family="sans-serif" font-size="14px" stroke="white" transform="translate(750,370)"><text clip-path="url(#img/default-paths.svg__clipPath10)" stroke="none" x="5" xml:space="preserve" y="18.1094">Same currency:</text><text clip-path="url(#img/default-paths.svg__clipPath10)" stroke="none" x="5" xml:space="preserve" y="34.2188">Rippling through</text><text clip-path="url(#img/default-paths.svg__clipPath10)" stroke="none" x="5" xml:space="preserve" y="50.3281">one issuer</text></g><g fill="yellow" stroke="yellow" transform="translate(800,560)"><path clip-path="url(#img/default-paths.svg__clipPath2)" d="M0.5 0.5 L138.5 0.5 L149 12.5 L149 89 L0.5 89 Z" stroke="none"></path><path clip-path="url(#img/default-paths.svg__clipPath2)" d="M0.5 0.5 L138.5 0.5 L149 12.5 L149 89 L0.5 89 Z" fill="none" stroke="black"></path><path clip-path="url(#img/default-paths.svg__clipPath2)" d="M138.5 0.5 L138.5 12.5 L149 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(800,560)"><text clip-path="url(#img/default-paths.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">Same currency:</text><text clip-path="url(#img/default-paths.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="34.2188">Rippling through</text><text clip-path="url(#img/default-paths.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="50.3281">two issuers -</text><text clip-path="url(#img/default-paths.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="66.4375">unlikely to work</text></g><g fill="rgb(120,120,120)" stroke="rgb(120,120,120)" transform="translate(610,120)"><path clip-path="url(#img/default-paths.svg__clipPath11)" d="M0.5 0.5 L128.5 0.5 L139 12.5 L139 89 L0.5 89 Z" stroke="none"></path><path clip-path="url(#img/default-paths.svg__clipPath11)" d="M0.5 0.5 L128.5 0.5 L139 12.5 L139 89 L0.5 89 Z" fill="none" stroke="white"></path><path clip-path="url(#img/default-paths.svg__clipPath11)" d="M128.5 0.5 L128.5 12.5 L139 12.5" fill="none" stroke="white"></path></g><g fill="white" font-family="sans-serif" font-size="14px" stroke="white" transform="translate(610,120)"><text clip-path="url(#img/default-paths.svg__clipPath11)" stroke="none" x="5" xml:space="preserve" y="18.1094">Same currency:</text><text clip-path="url(#img/default-paths.svg__clipPath11)" stroke="none" x="5" xml:space="preserve" y="34.2188">Direct trust line</text><text clip-path="url(#img/default-paths.svg__clipPath11)" stroke="none" x="5" xml:space="preserve" y="50.3281">from sender to</text><text clip-path="url(#img/default-paths.svg__clipPath11)" stroke="none" x="5" xml:space="preserve" y="66.4375">receiver</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(570,430)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(570,430)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="47">Destination</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="13" xml:space="preserve" y="63.1094">(Receiver)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(360,430)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(360,430)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="38.9453">Amount.</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="55.0547">issuer</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="71.1641">currency</text></g><g font-family="sans-serif" font-size="14px" font-weight="bold" transform="translate(340,470)"><text clip-path="url(#img/default-paths.svg__clipPath12)" stroke="none" x="5" xml:space="preserve" y="18.1094">=</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(240,430)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(240,430)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="38.9453">SendMax.</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="55.0547">issuer</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="71.1641">currency</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(50,430)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(50,430)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="21" xml:space="preserve" y="47">Account</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="63.1094">(Sender)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(160,40)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(160,40)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="47">Amount.</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="63.1094">issuer</text></g><g font-family="sans-serif" font-size="14px" transform="translate(140,80)"><text clip-path="url(#img/default-paths.svg__clipPath12)" stroke="none" x="5" xml:space="preserve" y="18.1094">=</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(410,40)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(410,40)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="47">Destination</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="13" xml:space="preserve" y="63.1094">(Receiver)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(40,40)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(40,40)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="21" xml:space="preserve" y="47">Account</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="63.1094">(Sender)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(310,300)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(310,300)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="47">Amount.</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="63.1094">issuer</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(570,300)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(570,300)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="47">Destination</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="13" xml:space="preserve" y="63.1094">(Receiver)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(50,300)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(50,300)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="21" xml:space="preserve" y="47">Account</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="63.1094">(Sender)</text></g><g font-family="sans-serif" font-size="14px" transform="translate(390,210)"><text clip-path="url(#img/default-paths.svg__clipPath12)" stroke="none" x="5" xml:space="preserve" y="18.1094">=</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(290,170)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(290,170)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="47">Amount.</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="63.1094">issuer</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(410,170)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(410,170)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="47">Destination</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="13" xml:space="preserve" y="63.1094">(Receiver)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(50,170)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(50,170)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="21" xml:space="preserve" y="47">Account</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="63.1094">(Sender)</text></g><g transform="translate(400,600)"><path clip-path="url(#img/default-paths.svg__clipPath13)" d="M0.5 0.5 L19 19" fill="none"></path><path clip-path="url(#img/default-paths.svg__clipPath13)" d="M19 0.5 L0.5 19" fill="none"></path></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(640,560)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(640,560)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="47">Destination</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="13" xml:space="preserve" y="63.1094">(Receiver)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(470,560)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(470,560)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="47">Amount.</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="63.1094">issuer</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(240,560)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(240,560)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="15" xml:space="preserve" y="47">SendMax.</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="63.1094">issuer</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(50,560)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" r="49.25" stroke="none"></circle></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(50,560)"><circle clip-path="url(#img/default-paths.svg__clipPath9)" cx="49.75" cy="49.75" fill="none" r="49.25"></circle><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="21" xml:space="preserve" y="47">Account</text><text clip-path="url(#img/default-paths.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="19" xml:space="preserve" y="63.1094">(Sender)</text></g><g transform="translate(750,680)"><path clip-path="url(#img/default-paths.svg__clipPath14)" d="M10.5 140.5 L30.5 140.5" fill="none"></path><path clip-path="url(#img/default-paths.svg__clipPath14)" d="M30.5 140.5 L30.5 10.5" fill="none"></path><path clip-path="url(#img/default-paths.svg__clipPath14)" d="M30.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(810,130)"><path clip-path="url(#img/default-paths.svg__clipPath15)" d="M40.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-width="2.5" transform="translate(810,90)"><path clip-path="url(#img/default-paths.svg__clipPath15)" d="M40.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-width="2.5" transform="translate(440,740)"><path clip-path="url(#img/default-paths.svg__clipPath16)" d="M60.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(140,740)"><path clip-path="url(#img/default-paths.svg__clipPath16)" d="M60.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-width="2.5" transform="translate(290,740)"><path clip-path="url(#img/default-paths.svg__clipPath16)" d="M60.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(590,740)"><path clip-path="url(#img/default-paths.svg__clipPath16)" d="M10.5 10.5 L60.5 10.5" fill="none"></path></g><g transform="translate(730,530)"><path clip-path="url(#img/default-paths.svg__clipPath14)" d="M10.5 140.5 L30.5 140.5" fill="none"></path><path clip-path="url(#img/default-paths.svg__clipPath14)" d="M30.5 140.5 L30.5 10.5" fill="none"></path><path clip-path="url(#img/default-paths.svg__clipPath14)" d="M30.5 10.5 L10.5 10.5" fill="none"></path></g><g transform="translate(680,300)"><path clip-path="url(#img/default-paths.svg__clipPath17)" d="M10.5 220.5 L30.5 220.5" fill="none"></path><path clip-path="url(#img/default-paths.svg__clipPath17)" d="M30.5 220.5 L30.5 10.5" fill="none"></path><path clip-path="url(#img/default-paths.svg__clipPath17)" d="M30.5 10.5 L10.5 10.5" fill="none"></path></g><g transform="translate(530,40)"><path clip-path="url(#img/default-paths.svg__clipPath17)" d="M10.5 220.5 L30.5 220.5" fill="none"></path><path clip-path="url(#img/default-paths.svg__clipPath17)" d="M30.5 220.5 L30.5 10.5" fill="none"></path><path clip-path="url(#img/default-paths.svg__clipPath17)" d="M30.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-width="2.5" transform="translate(330,600)"><path clip-path="url(#img/default-paths.svg__clipPath18)" d="M140.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(450,470)"><path clip-path="url(#img/default-paths.svg__clipPath19)" d="M120.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(140,470)"><path clip-path="url(#img/default-paths.svg__clipPath20)" d="M100.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(400,340)"><path clip-path="url(#img/default-paths.svg__clipPath21)" d="M170.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-width="2.5" transform="translate(250,80)"><path clip-path="url(#img/default-paths.svg__clipPath4)" d="M160.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-width="2.5" transform="translate(140,340)"><path clip-path="url(#img/default-paths.svg__clipPath21)" d="M170.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-width="2.5" transform="translate(140,210)"><path clip-path="url(#img/default-paths.svg__clipPath22)" d="M150.5 10.5 L10.5 10.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(560,600)"><path clip-path="url(#img/default-paths.svg__clipPath23)" d="M10.5 10.5 L80.5 10.5" fill="none"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(140,600)"><path clip-path="url(#img/default-paths.svg__clipPath20)" d="M100.5 10.5 L10.5 10.5" fill="none"></path></g></g></svg></a></figure>
+<p>You can use the <code>tfNoDirectRipple</code> flag to disable the default path. In this case, the transaction can only execute using the paths explicitly included in the transaction. Traders can use this option to take arbitrage opportunities.</p>
+<h2 id="path-specifications">Path Specifications<a aria-hidden="true" class="hover_anchor" href="#path-specifications"><i class="fa fa-link"></i></a></h2>
+<p>A path set is an array. Each member of the path set is another array that represents an individual <em>path</em>. Each member of a path is an object that specifies the step. A step has the following fields:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Value</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>account</code></td>
+<td style="text-align: left;">String - Address</td>
+<td style="text-align: left;"><em>(Optional)</em> If present, this path step represents rippling through the specified address. MUST NOT be provided if this step specifies the <code>currency</code> or <code>issuer</code> fields.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>currency</code></td>
+<td style="text-align: left;">String - Currency Code</td>
+<td style="text-align: left;"><em>(Optional)</em> If present, this path step represents changing currencies through an order book. The currency specified indicates the new currency. MUST NOT be provided if this step specifies the <code>account</code> field.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>issuer</code></td>
+<td style="text-align: left;">String - Address</td>
+<td style="text-align: left;"><em>(Optional)</em> If present, this path step represents changing currencies and this address defines the issuer of the new currency. If omitted in a step with a non-XRP <code>currency</code>, a previous step of the path defines the issuer. If present when <code>currency</code> is omitted, indicates a path step that uses an order book between same-named currencies with different issuers. MUST be omitted if the <code>currency</code> is XRP. MUST NOT be provided if this step specifies the <code>account</code> field.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>type</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> <em>(Optional)</em> An indicator of which other fields are present.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>type_hex</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><strong>DEPRECATED</strong>: <em>(Optional)</em> A hexadecimal representation of the <code>type</code> field.</td>
+</tr>
+</tbody>
+</table>
+<p>In summary, the following combination of fields are valid, optionally with <code>type</code>, <code>type_hex</code>, or both:</p>
+<ul>
+<li><code>account</code> by itself</li>
+<li><code>currency</code> by itself</li>
+<li><code>currency</code> and <code>issuer</code> as long as the <code>currency</code> is not XRP</li>
+<li><code>issuer</code> by itself</li>
+</ul>
+<p>Any other use of <code>account</code>, <code>currency</code>, and <code>issuer</code> fields in a path step is invalid.</p>
+<p>The <code>type</code> field, used for the binary serialization of a path set, is actually constructed through bitwise operations on a single integer. The bits are defined as follows:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th>Value (Hex)</th>
+<th>Value (Decimal)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x01</code></td>
+<td>1</td>
+<td>A change of address (rippling): the <code>account</code> field is present.</td>
+</tr>
+<tr>
+<td><code>0x10</code></td>
+<td>16</td>
+<td>A change of currency: the <code>currency</code> field is present.</td>
+</tr>
+<tr>
+<td><code>0x20</code></td>
+<td>32</td>
+<td>A change of issuer: the <code>issuer</code> field is present.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>Concepts:</strong><ul>
+<li><a href="cross-currency-payments.html">Cross-Currency Payments</a></li>
+<li><a href="decentralized-exchange.html">Decentralized Exchange</a>
+\</li>
+</ul>
+</li>
+</ul>
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<!-- <script src="/ja/assets/vendor/feedback-widget.js"></script> -->
+<!-- <div id="feedback-content"></div> -->
+<script>
+  // // Options
+  // const options = {
+  //   analyticsConfig: [
+  //     // { name: 'ga', id: 'UA-45576805-2' },
+  //     // { name: 'gtm', id: 'GTM-THHW334' },
+  //   ],
+  //   analyticsName: 'Feedback Widget Tracker',
+  //   theme: 'xrpl',
+  //   currentPath: window.location.pathname,
+  //   parentElement: '#feedback-content',
+  // };
+  // 
+  // // Init WidgetClass
+  // const r = new WidgetClass(options);
+</script>      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
+
+
+<nav class="nav flex-column dactyl-tree-nav">
+  <div class="nav-item nav-parent">
+    <a class="nav-link" href="/ja/docs.html">ドキュメント</a>
+  </div>
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/faq.html">よくある質問</a>
+  </div>
+
+    
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="true" aria-controls="tree_nav_group_2"></a>
+
+        <a class="nav-link" href="/ja/concepts.html">コンセプト</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+
+        <a class="nav-link" href="/ja/introduction.html">基本</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrpl.html">What is the XRP Ledger?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="/ja/rippled-servers.html">XRP Ledger Servers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clio-server.html">The Clio Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clustering.html">Clustering</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_2_3"></a>
+
+        <a class="nav-link" href="/ja/xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peer-protocol.html">Peer Protocol</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-censorship-detection.html">Transaction Censorship Detection</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+
+        <a class="nav-link" href="/ja/ledgers.html">Ledgers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">XRP Ledger Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_2"></a>
+
+        <a class="nav-link" href="/ja/validation.html">Validation</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_2_1"></a>
+
+        <a class="nav-link" href="/ja/consensus.html">Consensus</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/consensus-structure.html">Consensus Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/double-spend.html">The Double-spend Problem</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/consensus-principles-and-rules.html">Consensus Principles and Rules</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/consensus-protections.html">Consensus Protections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/fee-voting.html">Fee Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/negative-unl.html">Negative UNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/consensus-research.html">Consensus Research</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_2_2"></a>
+
+        <a class="nav-link" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3"></a>
+
+        <a class="nav-link" href="/ja/ledger-history.html">Ledger History</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/history-sharding.html">History Sharding</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/online-deletion.html">Online Deletion</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="true" aria-controls="tree_nav_group_2_4"></a>
+
+        <a class="nav-link" href="/ja/transactions.html">Transactions</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-structure.html">Transaction Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-queue.html">Transaction Queue</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-metadata-concept.html">Transaction Metadata</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_4"></a>
+
+        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">Trust Lines and Issuing</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/rippling.html">Rippling</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="/ja/paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-cost.html">Transaction Cost</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/secure-signing.html">安全な署名の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/source-and-destination-tags.html">Source and Destination Tags</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Tickets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/reliable-transaction-submission.html">信頼できるトランザクションの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_12" aria-expanded="false" aria-controls="tree_nav_group_2_4_12"></a>
+
+        <a class="nav-link" href="/ja/finality-of-results.html">Finality of Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_12">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-malleability.html">Transaction Malleability</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/canceling-a-transaction.html">Canceling a Transaction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-history.html">Transaction History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_12_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_12_4"></a>
+
+        <a class="nav-link" href="/ja/transaction-results-concepts.html">Transaction Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_12_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tec-codes-concepts.html">tec Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tef-codes-concepts.html">tef Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tel-codes-concepts.html">tel Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tem-codes-concepts.html">tem Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ter-codes-concepts.html">ter Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tes-success-concept.html">tes Success</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/look-up-transaction-results.html">トランザクションの結果の確認</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+
+        <a class="nav-link" href="/ja/payments.html">Payment Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">Direct XRP Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">Cross-Currency Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/payment-channels.html">Payment Channels</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/partial-payments.html">Partial Payments</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+
+        <a class="nav-link" href="/ja/tokens.html">Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
+
+        <a class="nav-link" href="/ja/token-types.html">Token Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_1"></a>
+
+        <a class="nav-link" href="/ja/non-fungible.html">Non-fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfer-fees.html">Transfer Fees</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
+
+        <a class="nav-link" href="/ja/freezing-tokens.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/common-misunderstandings-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/become-an-xrp-ledger-gateway.html">Become a Stablecoin Issuer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_5" aria-expanded="false" aria-controls="tree_nav_group_2_6_5"></a>
+
+        <a class="nav-link" href="/ja/decentralized-exchange.html">Decentralized Exchange</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/autobridging.html">オートブリッジング</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ticksize.html">ティックサイズ</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+
+        <a class="nav-link" href="/ja/accounts.html">Accounts</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account-structure.html">Account Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">Account Types</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account-deleting.html">Deleting Accounts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/reserves.html">Reserves</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cryptographic-keys.html">Cryptographic Keys</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/deposit-authorization.html">Deposit Authorization</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="/ja/tutorials.html">チュートリアル</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+
+        <a class="nav-link" href="/ja/quickstart.html">Quickstart</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
+
+        <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">Create Accounts and Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-trustline-send-currency.html">Create Trust Line and Send Currency</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrow-time.html">Create Time-based Escrows</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrow-condition.html">Create Conditional Escrows</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
+
+        <a class="nav-link" href="/ja/nft-quickstart.html">NFTokens Quickstart</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nftokens.html">Mint and Burn NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">Transfer NFTokens</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/broker-sale.html">Broker a NFToken Sale</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/authorize-minter.html">Assign an Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/batch-minting.html">Batch Mint NFTokens</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-python.html">Get Started Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-java.html">Get Started Using Java</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">JavaScriptを使ってみよう</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/send-xrp.html">XRPの送金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/monitor-incoming-payments-with-websocket.html">WebSocketを使用した着信ペイメントの監視</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+
+        <a class="nav-link" href="/ja/build-apps.html">Build Apps</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+
+        <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/change-or-remove-a-regular-key-pair.html">レギュラーキーペアの変更または削除</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/disable-master-key-pair.html">マスターキーペアの無効化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/require-destination-tags.html">宛先タグの要求</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/offline-account-setup.html">オフラインでのアカウント設定のチュートリアル</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/use-tickets.html">チケットの使用</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
+
+        <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_1" aria-expanded="false" aria-controls="tree_nav_group_3_5_1"></a>
+
+        <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/send-a-conditionally-held-escrow.html">条件に基づくEscrowの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cancel-an-expired-escrow.html">有効期限切れEscrowの取消し</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/look-up-escrows.html">Escrowの検索</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_2" aria-expanded="false" aria-controls="tree_nav_group_3_5_2"></a>
+
+        <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5_3" aria-expanded="false" aria-controls="tree_nav_group_3_5_3"></a>
+
+        <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cash-a-check-for-an-exact-amount.html">Checkの正確な金額での換金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cash-a-check-for-a-flexible-amount.html">Checkの変動金額での換金</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cancel-a-check.html">Checkの取消し</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/look-up-checks-by-sender.html">送金元に基づくCheckの検索</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/look-up-checks-by-recipient.html">受取人に基づくCheckの検索</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+
+        <a class="nav-link" href="/ja/use-tokens.html">Use Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+
+        <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの利用</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_1" aria-expanded="false" aria-controls="tree_nav_group_3_7_1"></a>
+
+        <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-rippled-on-centos-rhel-with-yum.html">yumを使用したCentOS/Red Hatへのインストール</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-rippled-on-ubuntu.html">UbuntuまたはDebian Linuxへのインストール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/update-rippled-automatically-on-linux.html">Linuxでの自動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/update-rippled-manually-on-centos-rhel.html">CentOS/Red Hatでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/update-rippled-manually-on-ubuntu.html">UbuntuまたはDebianでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-ubuntu.html">Ubuntuでのrippledの構築と実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-macos.html">macOSでのrippledの構築と実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/capacity-planning.html">容量の計画</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_2" aria-expanded="false" aria-controls="tree_nav_group_3_7_2"></a>
+
+        <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-amendment-voting.html">修正投票機能の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/connect-your-rippled-to-the-xrp-test-net.html">XRPL Altnetへのrippledの接続</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-online-deletion.html">オンライン削除の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-advisory-deletion.html">指示による削除の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-history-sharding.html">履歴シャーディングの設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-full-history.html">全履歴の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-public-signing.html">パブリック署名の有効化</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_3" aria-expanded="false" aria-controls="tree_nav_group_3_7_3"></a>
+
+        <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-a-private-server.html">プライベートサーバーの設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/forward-ports-for-peering.html">ピアリングのポート転送</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/manually-connect-to-a-specific-peer.html">特定のピアへの手動接続</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/set-max-number-of-peers.html">ピアの最大数の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/use-a-peer-reservation.html">ピアリザベーションの使用</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_4" aria-expanded="false" aria-controls="tree_nav_group_3_7_4"></a>
+
+        <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/load-a-saved-ledger-in-stand-alone-mode.html">スタンドアロンモードでの保存済みレジャーの読み込み</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/advance-the-ledger-in-stand-alone-mode.html">スタンドアロンモードでレジャーを進める</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7_5" aria-expanded="false" aria-controls="tree_nav_group_3_7_5"></a>
+
+        <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/understanding-log-messages.html">ログメッセージについて</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server-doesnt-sync.html">rippledサーバーが同期しない</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server-wont-start.html">rippledサーバーが起動しない</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/fix-sqlite-tx-db-page-size-issue.html">SQLiteトランザクションデータベースのページサイズの問題の解決</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
+
+        <a class="nav-link" href="/ja/manage-the-clio-server.html">Manage the Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
+
+        <a class="nav-link" href="/ja/evm-sidechains.html">Interoperability - EVM Sidechain</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
+
+        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
+
+        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="/ja/references.html">リファレンス</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
+
+        <a class="nav-link" href="/ja/protocol-reference.html">XRP Ledger Protocol Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_1" aria-expanded="false" aria-controls="tree_nav_group_4_1_1"></a>
+
+        <a class="nav-link" href="/ja/basic-data-types.html">基本的なデータ型</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/base58-encodings.html">base58エンコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/currency-formats.html">通貨フォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftoken.html">NFToken</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_2"></a>
+
+        <a class="nav-link" href="/ja/ledger-data-formats.html">レジャーのデータ型</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger-header.html">レジャーヘッダー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_2_3"></a>
+
+        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/check.html">Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/depositpreauth-object.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/directorynode.html">DirectoryNode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrow-object.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/feesettings.html">FeeSettings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledgerhashes.html">LedgerHashes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/negativeunl.html">NegativeUNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokenoffer.html">NFTokenOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokenpage.html">NFTokenPage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/offer.html">Offer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paychannel.html">PayChannel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ripplestate.html">RippleState</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/signerlist.html">SignerList</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ticket.html">Ticket</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3"></a>
+
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-common-fields.html">トランザクションの共通フィールド</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_2"></a>
+
+        <a class="nav-link" href="/ja/transaction-types.html">トランザクションのタイプ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/checkcancel.html">CheckCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/checkcash.html">CheckCash</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/depositpreauth.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrowcancel.html">EscrowCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrowcreate.html">EscrowCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokenacceptoffer.html">NFTokenAcceptOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokenburn.html">NFTokenBurn</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokencanceloffer.html">NFTokenCancelOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokencreateoffer.html">NFTokenCreateOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nftokenmint.html">NFTokenMint</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/offercancel.html">OfferCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/offercreate.html">OfferCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/payment.html">Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paymentchannelclaim.html">PaymentChannelClaim</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paymentchannelcreate.html">PaymentChannelCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paymentchannelfund.html">PaymentChannelFund</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/setregularkey.html">SetRegularKey</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/signerlistset.html">SignerListSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ticketcreate.html">TicketCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/trustset.html">TrustSet</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_3"></a>
+
+        <a class="nav-link" href="/ja/pseudo-transaction-types.html">疑似トランザクション</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enableamendment.html">EnableAmendment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/setfee.html">SetFee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/unlmodify.html">UNLModify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_4"></a>
+
+        <a class="nav-link" href="/ja/transaction-results.html">トランザクションの結果</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tec-codes.html">tecコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tef-codes.html">tefコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tel-codes.html">telコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tem-codes.html">temコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ter-codes.html">terコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tes-success.html">tes Success</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction-metadata.html">トランザクションのメタデータ</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+
+        <a class="nav-link" href="/ja/client-libraries.html">クライアントライブラリ</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">ripple-lib 1.xからxrpl.js 2.xへの移行ガイド</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-py.readthedocs.io/">Python Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://javadoc.io/doc/org.xrpl/">Java Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://www.rubydoc.info/gems/xrbp">Ruby Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+
+        <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_1"></a>
+
+        <a class="nav-link" href="/ja/api-conventions.html">APIの規則</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/request-formatting.html">要求フォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/response-formatting.html">応答フォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/error-formatting.html">エラーのフォーマット</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/markers-and-pagination.html">マーカーとページネーション</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/rippled-server-states.html">rippledサーバーの状態</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
+
+        <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_1"></a>
+
+        <a class="nav-link" href="/ja/account-methods.html">Account Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_channels.html">account_channels</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_currencies.html">account_currencies</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_info.html">account_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_nfts.html">account_nfts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_objects.html">account_objects</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_offers.html">account_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/account_tx.html">account_tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/gateway_balances.html">gateway_balances</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/noripple_check.html">noripple_check</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_2"></a>
+
+        <a class="nav-link" href="/ja/ledger-methods.html">Ledger Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_closed.html">ledger_closed</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_current.html">ledger_current</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_data.html">ledger_data</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_entry.html">ledger_entry</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_3"></a>
+
+        <a class="nav-link" href="/ja/transaction-methods.html">Transaction Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/submit_multisigned.html">submit_multisigned</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transaction_entry.html">transaction_entry</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tx.html">tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tx_history.html">tx_history</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_4"></a>
+
+        <a class="nav-link" href="/ja/path-and-order-book-methods.html">Path and Order Book Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_buy_offers.html">nft_buy_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_sell_offers.html">nft_sell_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/path_find.html">path_find</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ripple_path_find.html">ripple_path_find</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_5"></a>
+
+        <a class="nav-link" href="/ja/payment-channel-methods.html">Payment Channel Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/channel_authorize.html">channel_authorize</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/channel_verify.html">channel_verify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_6"></a>
+
+        <a class="nav-link" href="/ja/subscription-methods.html">Subscription Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/subscribe.html">subscribe</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/unsubscribe.html">unsubscribe</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_7"></a>
+
+        <a class="nav-link" href="/ja/server-info-methods.html">Server Info Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/fee.html">fee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_state.html">server_state</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_8"></a>
+
+        <a class="nav-link" href="/ja/clio-methods.html">Clio Server Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_9"></a>
+
+        <a class="nav-link" href="/ja/utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_9">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/json.html">json</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ping.html">ping</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/random.html">random</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
+
+        <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_1"></a>
+
+        <a class="nav-link" href="/ja/key-generation-methods.html">キー生成のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validation_create.html">validation_create</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/wallet_propose.html">wallet_propose</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_2"></a>
+
+        <a class="nav-link" href="/ja/logging-and-data-management-methods.html">ログとデータ管理のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/can_delete.html">can_delete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/crawl_shards.html">crawl_shards</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/download_shard.html">download_shard</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_cleaner.html">ledger_cleaner</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_request.html">ledger_request</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/log_level.html">log_level</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/logrotate.html">logrotate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/node_to_shard.html">node_to_shard</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_3"></a>
+
+        <a class="nav-link" href="/ja/server-control-methods.html">Server Control Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger_accept.html">ledger_accept</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/stop.html">stop</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validation_seed.html">validation_seed <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
+
+        <a class="nav-link" href="/ja/signing-methods.html">Signing Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+
+        <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理のメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peer_reservations_add.html">peer_reservations_add</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peer_reservations_del.html">peer_reservations_del</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peer_reservations_list.html">peer_reservations_list</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peers.html">peers</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_6"></a>
+
+        <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/feature.html">feature</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/fetch_info.html">fetch_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get_counts.html">get_counts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/print.html">print</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validator_info.html">validator_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validator_list_sites.html">validator_list_sites</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validators.html">validators</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/commandline-usage.html">rippledコマンドライン使用リファレンス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_5"></a>
+
+        <a class="nav-link" href="/ja/peer-port-methods.html">Peer Port Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-toml.html">xrp-ledger.tomlファイル</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+
+        <a class="nav-link" href="/ja/by-label.html">ラベル別に閲覧</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-blockchain.html">ブロックチェーン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-rippled.html">コアサーバー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-cross-currency.html">複数通貨間</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-data-retention.html">データ保持</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-development.html">開発</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-fees.html">手数料</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-payment-channels.html">Payment Channel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-payments.html">支払い</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-smart-contracts.html">スマートコントラクト</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-security.html">セキュリティ</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-tokens.html">トークン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-transaction-sending.html">トランザクション送信</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/label-xrp.html">XRP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/code-samples.html">Code Samples</a>
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
+
+        <a class="nav-link" href="/ja/dev-tools.html">Dev Tools</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPC Tool</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/websocket-api-tool.html">WebSocket API Tool</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validator-domain-verifier.html">Domain Verification Checker</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tx-sender.html">Transaction Sender</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Education Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+</nav>      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>ドキュメント</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
+            <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
+            <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
+            <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
+            <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
+            <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">Code Samples</a></li>
+            <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Education Portal</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>コミュニティー</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">Developer Funding</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex row">
+      <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2021 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース。</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="/ja/assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+  indexName: 'xrpl',
+  inputSelector: '#topsearchbox',
+  algoliaOptions: { 'facetFilters': ["lang:ja"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
+
+
+
+</body>
+</html>
