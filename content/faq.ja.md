@@ -1,11 +1,12 @@
 ---
 html: faq.html
-parent: docs.html
+parent: xrp-ledger-overview.html
 blurb: バリデータ、ユニークノードリスト、XRPの役割、セキュリティなどのトピックに関するよくある質問に対しての答えを見つけてください。
+subtitle: Your Questions About XRPL, Answered
+top_nav_grouping: About
+sidebar: disabled
 labels:
   - ブロックチェーン
-subtitle: Your Questions About XRPL, Answered
-top_nav_grouping: 質問
 template: page-faq2.html.jinja
 filters:
   - faq
