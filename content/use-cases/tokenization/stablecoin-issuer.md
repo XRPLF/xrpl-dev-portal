@@ -5,55 +5,48 @@ blurb: Issue your own stablecoin, based on assets of equal value outside of the 
 labels:
   - Tokens
 ---
-# Become a Stablecoin Issuer
+# Stablecoin Issuer
 
-**Stablecoin issuers** are businesses that link [tokens](tokens.html) in the XRP Ledger to assets in the outside world. An existing online financial institution can expand to issue a stablecoin in the the XRP Ledger. By doing so, the business can gain several advantages:
+**Stablecoin** are [tokens](tokens.html) that are backed by assets in the outside world. Stablecoins allow users to transact in familiar currencies, and provide a convenient way to get funds into and out of the blockchain. In exchange for providing these services, stablecoin issuers can earn revenue in various ways, such as fees on withdrawals or transfers of the stablecoin.
 
-* By enabling its customers to send and receive value in the XRP Ledger, the business increases its value proposition to customers.
-* By accepting payments from the XRP Ledger, the business increases the number of ways that customers can fund accounts at its business, even internationally.
-* The business can use XRP Ledger-related services as a new source of revenue.
-
-This guide explains the concepts and steps necessary to issue a stablecoin in the XRP Ledger, using a fictional online currency exchange named "ACME" and its customers as examples.
+While anyone can issue a token with any currency code in the XRP Ledger, stablecoins' value comes from the promise that they can be redeemed for the corresponding assets. Issuing a stablecoin may also involve regulatory obligations, which vary by jurisdiction. For these reasons, issuing a stablecoin generally requires a reputable business.
 
 **Note:** Stablecoin issuers on the XRP Ledger were formerly called "gateways".
 
+This article provides information you should know before issuing a stablecoin, summarizes the choices involved in setting up a stablecoin issuer, and provides resources for implementing the technical integration with the XRP Ledger.
 
-## Token Issuers Explained
 
-There are several related business models that provide a way for money and other forms of value to move in and out of the XRP Ledger. Most of these business models fall into one of the following categories:
-
-* A **Token Issuer** receives money (or other assets of value) outside of the XRP Ledger, and issues tokens in the XRP Ledger representing those assets. This provides a direct way for customers to get money in and out of the XRP Ledger. All currencies in the XRP Ledger, except for XRP, are tokens tied to a specific issuer.
-* A **Private Exchange** holds XRP and lets its customers buy and sell that XRP in its own system. Most cryptocurrencies rely on private exchanges to provide a market for the cryptocurrency, but the XRP Ledger has [a currency exchange built into the protocol itself](decentralized-exchange.html).
-* **Merchants** accept payment within the XRP Ledger in exchange for goods and services in the outside world.
-
-This guide focuses on running a **token issuer**.
+## Background Information
 
 ### Trust Lines and Tokens
 
 All assets in the XRP Ledger, except for the native cryptocurrency XRP, are represented as _tokens_, which are tied to a specific issuer who defines their meaning. The XRP Ledger has a system of directional accounting relationships, called _trust lines_, to make sure that users can only hold and receive the tokens they want.
 
-Tokens issued that are backed by balances in some outside system are sometimes called _stablecoins_. This includes tokens backed by fiat currency in a bank account, by cryptocurrencies on another blockchain, or other types of assets and forms of value. The term "stablecoin" comes from the idea that the exchange rate between the token and the asset it represents should be "stable" at 1:1 (minus fees).
+Tokens that are backed by funds in some outside system are sometimes called _stablecoins_. This includes tokens backed by fiat currency in a bank account, by cryptocurrencies on another blockchain, or other types of assets and forms of value. The term "stablecoin" comes from the idea that the exchange rate between the token and the asset it represents should be "stable" at 1:1 (minus fees).
 
-Main article: [Trust Lines and Issuing](trust-lines-and-issuing.html).
+For more information, see [Trust Lines and Issuing](trust-lines-and-issuing.html).
 
 
 ### XRP
 
-[**XRP**](xrp.html) is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other. This helps make XRP a convenient bridge currency. For more information on XRP, see the [XRP Overview](xrp-overview.html).
+**XRP** is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other. This helps make XRP a convenient bridge currency.
 
-Token issuers do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to meet the [reserve requirements](reserves.html) and pay the [cost of sending transactions](transaction-cost.html) through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy issuer.
+Token issuers do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to meet the reserve requirement and pay the cost of sending transactions through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy issuer.
 
-Main article: [XRP](xrp.html).
+For more information, see [XRP](xrp.html), [Reserves](reserves.html), and [Transaction Cost](transaction-cost.html)
 
 
-### Liquidity and Currency Exchange
+### Liquidity and Trading
 
-The XRP Ledger contains a [decentralized asset exchange](decentralized-exchange.html), where any user can place and fulfill bids to exchange XRP and tokens in any combination. [Cross-currency payments](cross-currency-payments.html) use the decentralized exchange to exchange currencies atomically when the transaction is executed. In this way, users who trade in the decentralized exchange provide the liquidity that makes cross-currency payments possible.
+The XRP Ledger contains a decentralized exchange, where any user can place and fulfill bids to exchange XRP and tokens in any combination. The decentralized exchange also provides the liquidity that makes atomic [cross-currency payments](cross-currency-payments.html) possible.
 
-Traders who hold an issuer's tokens can provide liquidity to other popular currencies, without the issuer needing to float a large reserve in various destination currencies. The issuer also does not need to take on the risk of holding a variety of different tokens and assets. However, an issuer _may_ still want to provide liquidity to XRP or other popular tokens at a baseline rate, especially when their token is new to the exchange. If you do provide liquidity, **use a different address for trading than your issuing address.**
+Stablecoin issuers aren't required to use the decentralized exchange directly, but all tokens are automatically available for trading. If a token is widely used, users should naturally trade it among themselves, creating liquidity to other popular assets. An issuer _may_ want to provide liquidity to XRP or other popular tokens at a baseline rate, especially when their token is new. If a stablecoin issuer does provide liquidity, a best practice is to **use different addresses for trading and for issuing.**
 
+For more information on the decentralized exchange, see [Decentralized Exchange](decentralized-exchange.html).
+
+<!-- TODO: figure out what to do with this 
 Liquidity providers can use the [HTTP / WebSocket APIs](http-websocket-apis.html), [client libraries](client-libraries.html), or another application to access the distributed exchange. It may also help client applications to display information about your business if you provide an [`xrp-ledger.toml` file](xrp-ledger-toml.html).
-
+-->
 
 
 ## Suggested Business Practices
@@ -69,20 +62,19 @@ The value of a stablecoin issuer's tokens in the XRP Ledger comes directly from 
 ### Hot and Cold Wallets
 
 {% include '_snippets/issuing-and-operational-addresses-intro.md' %}
-<!--{#_ #}-->
 
 Main article: [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
 
 
 ## Fees and Revenue Sources
 
-There are several ways in which an issuer can seek to profit from XRP Ledger integration. These can include:
+A stablecoin issuer can earn revenue in a variety of ways, including:
 
-* Withdrawal and Deposit fees. Issuers typically charge a small fee (such as 1%) for the service of adding or removing money from the XRP Ledger. You have the power to determine the rate you credit people when they move money onto and off of the XRP Ledger through your tokens.
-* Transfer fees. You can set a percentage fee to charge automatically when customers send each other tokens that you issued. This amount is debited from the XRP Ledger, decreasing your obligation each time your tokens change hands.
-* Indirect revenue from value added. XRP Ledger integration can provide valuable functionality for your customers that distinguishes your business from your competitors.
-* Interest on XRP Ledger-backed funds. You can keep the collateral for the funds you issue in XRP Ledger in a bank account that earns interest. Make sure you can always access enough funds to service customer withdrawals.
-* Financial Exchange. You also make offers to buy and sell your tokens in the XRP Ledger's decentralized exchange, providing liquidity to cross-currency payments and possibly making a profit. (As with all financial exchange, profits are not guaranteed.)
+- Withdrawal or Deposit fees. The issuer can charge a small fee (such as 1%) for the service of moving money into or out of the XRP Ledger. This fee isn't assessed on the XRP Ledger, but in the issuer's own systems when deciding how much to issue or credit users.
+- Transfer fees. The issuer can set a percentage fee to charge when users transfer the stablecoin within the XRP Ledger. This amount is debited from the XRP Ledger whenever users transact, decreasing the total obligation the stablecoin issuer owes to its users in the ledger without decreasing the amount of assets the issuer holds outside of the ledger.
+- Indirect revenue from value added. Stablecoins provide convenient functionality that can ease the adoption of other, adjacent services.
+- Interest on collateral. The issuer can hold the assets backing the stablecoin in an interest-earning account. Of course, they must make sure that they can always access enough funds to serve customer withdrawals.
+- Financial exchange. The business can buy and sell its own stablecoins in the decentralized exchange, providing liquidity to cross-currency payments and possibly making a profit. (As with all financial exchange, profits are not guaranteed.)
 
 
 ### Choosing Fee Rates
@@ -213,9 +205,11 @@ See also:
 
 # XRP Ledger Integration
 
+This document uses the example of a fictional cryptocurrency exchange called ACME Exchange which decides to issue an EUR stablecoin on the XRP Ledger, to illustrate the overall process and flow of funds for a stablecoin.
+
 ## Before Integration
 
-Our example exchange, ACME, already accepts withdrawals and deposits from customers using some existing system, and uses its own system of record to track how much balance each user has with the exchange. Such a system can be modeled with a balance sheet and tracking how much currency each user has with ACME.
+ACME, as a cryptocurrency exchange, already accepts withdrawals and deposits from customers using some system (such as an app or website). ACME has a _system of record_ to track how much each user holds with the exchange in each of several types of assets. Such a system can be modeled with a simple balance sheet, although in practice it probably involves databases, application servers, and various other infrastructure to ensure its reliability, information security, and so on.
 
 In the following diagram, ACME Exchange starts with €5 on hand, including €1 that belongs to Bob, €2 that belongs to Charlie, and an additional €2 of equity that belongs to ACME itself. Alice deposits €5, so ACME adds her to its balance sheet and ends up with €10.
 
@@ -230,9 +224,7 @@ In the following diagram, ACME Exchange starts with €5 on hand, including €1
 
 ## Sending into the XRP Ledger
 
-XRP Ledger payments can automatically bridge between currencies, but an issuer normally only sends single-currency payments that go directly to customers. This means debiting a customer's current balance in your system, and then sending the equivalent amount of tokens in the XRP Ledger to the customer's XRP Ledger address.
-
-An example flow for a payment into the XRP Ledger:
+Sending money _into_ the XRP Ledger involves issuing new stablecoins for an amount that ACME holds on behalf of one of its users. An example flow might look like this:
 
 1. Alice asks to send €3 of her ACME balance into the XRP Ledger.
 2. In its system of record, ACME debits Alice's balance €3.
@@ -240,7 +232,7 @@ An example flow for a payment into the XRP Ledger:
 
 **Assumptions:**
 
-* Alice already has an address in the XRP Ledger separate from her ACME account. Alice manages her XRP Ledger address using a third-party client application.
+* Alice already has an address in the XRP Ledger separate from her ACME account. Alice manages her XRP Ledger address using a third-party client application (wallet).
 
 ![Diagram: ACME issues 3 EUR.ACME to Alice on the XRP Ledger](img/e2g-02.png)
 
@@ -248,21 +240,22 @@ An example flow for a payment into the XRP Ledger:
 {{ include_svg("img/gateway-to-xrpl.svg", "Diagram: ACME issues 3 EUR.ACME to Alice on the XRP Ledger") }}
 #}-->
 
-
+After this, Alice can send or trade her EUR.ACME to other users in the XRP Ledger at her discretion. At any time, ACME can query the XRP Ledger to see who currently holds its tokens. 
 
 ### Requirements for Sending to XRP Ledger
 
 There are several prerequisites that ACME must meet for this to happen:
 
-- ACME sets aside money that is issued in the XRP Ledger. ACME can query the XRP Ledger to see who holds its tokens at any time. There are several ways ACME may do this:
+- ACME sets aside the funds that back its stablecoin. There are several ways ACME may do this:
     - ACME may create a XRP Ledger collateral account in ACME's system of record.
     - ACME can store the funds allocated to the XRP Ledger in a separate bank account.
-    - If ACME is a cryptocurrency exchange, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof to customers that the issuer is solvent.
+    - If the stablecoin is backed by cryptocurrency, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof of its reserves.
 - ACME should control two separate XRP Ledger addresses. See [Issuing and Operational Addresses](issuing-and-operational-addresses.html) for details.
     - ACME must enable the Default Ripple flag on its issuing address for customers to send and receive its tokens.
 - Alice must create an accounting relationship (trust line) from her XRP Ledger address to ACME's issuing address. She can do this from any XRP Ledger client application as long as she knows ACME's issuing address.
     - ACME should publicize its issuing address on its website where customers can find it. It can also use an [`xrp-ledger.toml` file](xrp-ledger-toml.html) to publish the issuing address to automated systems.
-- ACME must create a user interface for Alice to send funds from ACME into the XRP Ledger.
+	- Alternatively, instead of sending a Payment, ACME can write Alice as a Check in the XRP Ledger. This does not move any money right away, but creates both the trust line and the tokens together when Alice cashes the Check.
+- ACME must create a user interface for Alice to request for her funds from ACME to be sent into the XRP Ledger.
     - ACME needs to know Alice's XRP Ledger address. ACME can have Alice input her XRP Ledger address as part of the interface, or ACME can require Alice to input and verify her XRP Ledger address in advance.
 
 
@@ -274,8 +267,10 @@ An example flow of a payment out of the XRP Ledger:
 
 1. Bob sends an XRP Ledger transaction of €1 to ACME's issuing address.
 2. In ACME's system of record, ACME credits Bob's balance €1.
+3. Later, Bob can use ACME's own interface to withdraw the money to a separate account, such as requesting a bank deposit over the SEPA system (Europe) or ACH (United States), receiving a payment on another blockchain, or something else.
 
-Payments going from the XRP Ledger to an issuer can be single-currency or cross-currency payments. An issuing address can only receive payments in XRP or in tokens that it previously issued.
+XRP Ledger Payments going to an issuer can be single-currency or cross-currency payments, but the amount the issuer receives is typically denominated in the stablecoin it issued.
+
 
 ### Requirements for Receiving from XRP Ledger
 
@@ -283,8 +278,8 @@ In addition to the requirements for sending into the XRP Ledger, there are sever
 
 - ACME must monitor its XRP Ledger addresses for incoming payments.
 - ACME must know which user to credit in its system of record for the incoming payments.
-    - We recommend that ACME should bounce any unrecognized incoming payments back to their sender.
-    - Typically, the preferred method of recognizing incoming payments is through destination tags.
+    - ACME should bounce unrecognized incoming payments back to their sender.
+    - Typically, the preferred method of recognizing incoming payments is through [destination tags](source-and-destination-tags.html).
 
 
 ## Precautions
