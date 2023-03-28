@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v15.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v16.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,16 +89,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"> 
-  <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">Apply for XRPL Grants, open until March 24.</p></span>
-    <span><a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply for Funding</a></span>
-  </div>
-  <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">Apply for XRPL Grants, open</p></span>
-    <span><p class="mb-0">until March 24.<a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply For Funding</a></p></span>
-  </div>
-</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -738,7 +728,9 @@
 <p>The XRP Ledger has several "hash" types: Hash128, Hash160, and Hash256. These fields contain arbitrary binary data of the given number of bits, which may or may not represent the result of a hash operation.</p>
 <p>All such fields are serialized as the specific number of bits, with no length indicator, in big-endian byte order.</p>
 <h3 id="issue-fields">Issue Fields<a aria-hidden="true" class="hover_anchor" href="#issue-fields"><i class="fa fa-link"></i></a></h3>
-<p><em>(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d: Automated Market Maker <i aria-hidden="true" class="fa fa-external-link"></i></a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> and <a href="federated-sidechains.html">Federated Sidechains</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em> <!-- SPELLING_IGNORE: 30d --></p>
+<!--
+_(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> and [Federated Sidechains](federated-sidechains.html) <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)_ <!-- SPELLING_IGNORE: 30d -->
+<p>--&gt;</p>
 <p>Some fields specify a <em>type</em> of asset, which could be XRP or a fungible <a href="tokens.html">token</a>, without an amount. These fields have consist of one or two 160-bit segments in order:</p>
 <ol>
 <li>The first 160 bits are the <a href="#currency-codes">currency code</a> of the asset. For XRP, this is all 0's.</li>

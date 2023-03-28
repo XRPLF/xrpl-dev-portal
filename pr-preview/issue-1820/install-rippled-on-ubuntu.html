@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v15.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v16.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,16 +89,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"> 
-  <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">Apply for XRPL Grants, open until March 24.</p></span>
-    <span><a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply for Funding</a></span>
-  </div>
-  <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">Apply for XRPL Grants, open</p></span>
-    <span><p class="mb-0">until March 24.<a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply For Funding</a></p></span>
-  </div>
-</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -333,6 +323,7 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 <li><code>bionic</code> for <strong>Ubuntu 18.04 Bionic Beaver</strong></li>
 <li><code>buster</code> for <strong>Debian 10 Buster</strong></li>
 <li><code>bullseye</code> for <strong>Debian 11 Bullseye</strong></li>
+<li><code>jammy</code> for <strong>Ubuntu 22.04 Jammy Jellyfish</strong></li>
 </ul>
 <p>If you want access to development or pre-release versions of <code>rippled</code>, use one of the following instead of <code>stable</code>:</p>
 <ul>
@@ -358,21 +349,18 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 <p>The <code>rippled</code> service should start automatically. If not, you can start it manually:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">sudo systemctl start rippled.service
 </code></pre></div>
-<p>To configure it to start automatically on boot:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">sudo systemctl enable rippled.service
-</code></pre></div>
 </li>
 <li>
 <p>Optional: allow <code>rippled</code> to bind to privileged ports.</p>
 <p>This allows you to serve incoming API requests on port 80 or 443. (If you want to do so, you must also update the config file's port settings.)</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">sudo setcap 'cap_net_bind_service=+ep' /opt/ripple/bin/rippled
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">sudo setcap 'cap_net_bind_service=+ep' /opt/ripple/bin/rippled
 </code></pre></div>
 </li>
 </ol>
 <h2 id="next-steps">Next Steps<a aria-hidden="true" class="hover_anchor" href="#next-steps"><i class="fa fa-link"></i></a></h2>
 <p>It can take several minutes to sync with the rest of the XRP Ledger network, during which time the server outputs various warnings. For information about log messages, see <a href="understanding-log-messages.html">Understanding Log Messages</a>.</p>
 <p>You can use the <a href="get-started-using-http-websocket-apis.html#commandline"><code>rippled</code> commandline interface</a> to see if your server is synced with the network:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12">/opt/ripple/bin/rippled server_info
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">/opt/ripple/bin/rippled server_info
 </code></pre></div>
 <p>If the <code>server_state</code> in the response is <code>full</code> or <code>proposing</code>, then your server is fully synced to the network. Otherwise, you may need to wait longer. Fresh servers usually sync within 15 minutes; servers that already have <a href="ledger-history.html">ledger history</a> stored can take longer.</p>
 <p>After your server has synchronized with the rest of the network, you have a fully functional XRP Ledger peer-to-peer server that you can use to submit transactions or get API access to the XRP Ledger. See <a href="client-libraries.html">Client Libraries</a> or <a href="http-websocket-apis.html">HTTP / WebSocket APIs</a> for different ways to communicate with the server.</p>
@@ -383,7 +371,7 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 <p>The <a href="install-rippled.html">recommended installation</a> uses the config file <code>/etc/opt/ripple/rippled.cfg</code> by default. Other places you can put a config file include <code>$HOME/.config/ripple/rippled.cfg</code> (where <code>$HOME</code> is the home directory of the user running <code>rippled</code>), <code>$HOME/.local/ripple/rippled.cfg</code>, or the current working directory from where you start <code>rippled</code>.<!--_ --></p>
 <p>See <a class="external-link" href="https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg" target="_blank">the <code>rippled</code> GitHub repository <i aria-hidden="true" class="fa fa-external-link"></i></a> for a description of all configuration options.</p>
 <p>You must restart <code>rippled</code> for any configuration changes to take effect:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13">    sudo systemctl restart rippled.service
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12">    sudo systemctl restart rippled.service
 </code></pre></div>
 <p>If you change the <code>[debug_logfile]</code> or <code>[database_path]</code> sections, you may need to grant ownership of the new configured path to the user you run <code>rippled</code> as.</p>
 <h3 id="updates">Updates<a aria-hidden="true" class="hover_anchor" href="#updates"><i class="fa fa-link"></i></a></h3>

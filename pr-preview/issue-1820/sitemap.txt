@@ -39,6 +39,7 @@ https://xrpl.org/partial-payments.html
 https://xrpl.org/payment-channels.html
 https://xrpl.org/tokens.html
 https://xrpl.org/issued-currencies.html
+https://xrpl.org/issued-currencies-overview.html
 https://xrpl.org/trust-lines-and-issuing.html
 https://xrpl.org/authorized-trust-lines.html
 https://xrpl.org/non-fungible-tokens.html

@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v15.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v16.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -90,16 +90,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"> 
-  <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">Apply for XRPL Grants, open until March 24.</p></span>
-    <span><a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply for Funding</a></span>
-  </div>
-  <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">Apply for XRPL Grants, open</p></span>
-    <span><p class="mb-0">until March 24.<a href="https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner" class="btn btn-outline-secondary">Apply For Funding</a></p></span>
-  </div>
-</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -341,6 +331,7 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="o">-</span><span class="w"> </span><span class="n n-Quoted">`bionic`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">**</span><span class="n">Ubuntu</span><span class="w"> </span><span class="mf">18.04</span><span class="w"> </span><span class="n">Bionic</span><span class="w"> </span><span class="n">Beaver</span><span class="o">**</span>
 <span class="o">-</span><span class="w"> </span><span class="n n-Quoted">`buster`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">**</span><span class="n">Debian</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">Buster</span><span class="o">**</span>
 <span class="o">-</span><span class="w"> </span><span class="n n-Quoted">`bullseye`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">**</span><span class="n">Debian</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="n">Bullseye</span><span class="o">**</span>
+<span class="o">-</span><span class="w"> </span><span class="n n-Quoted">`jammy`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">**</span><span class="n">Ubuntu</span><span class="w"> </span><span class="mf">22.04</span><span class="w"> </span><span class="n">Jammy</span><span class="w"> </span><span class="n">Jellyfish</span><span class="o">**</span>
 </code></pre></div>
 <p><code>rippled</code>の開発バージョンまたはプレリリースバージョンにアクセスするには、<code>stable</code>ではなく次のいずれかを使用します。</p>
 <ul>
@@ -368,14 +359,11 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 <p><code>rippled</code>サービスが自動的に開始します。開始しない場合は、手動で開始できます。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">    sudo systemctl start rippled.service
 </code></pre></div>
-<p>起動時に自動で起動するようにするには、以下の手順に従います。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">    sudo systemctl enable rippled.service
-</code></pre></div>
 <h2 id="次のステップ">次のステップ<a aria-hidden="true" class="hover_anchor" href="#次のステップ"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>が残りのネットワークと同期されるまでには数分かかることがあります。その間、レジャーがない旨を知らせる警告が出力されます。</p>
 <p><code>rippled</code>ログメッセージの詳細は、<a href="understanding-log-messages.html">ログメッセージについて</a>を参照してください。</p>
 <p><code>rippled</code>が残りのネットワークと同期されたら、ストック<code>rippled</code>サーバーが完全に機能するようになります。このサーバーを、ローカル署名やXRP LedgerへのAPIアクセスに使用できます。<code>rippled</code>サーバーがネットワークと同期されているかどうかを判別するには、<a href="rippled-server-states.html"><code>rippled</code>サーバーの状況</a>を使用します。<a href="get-started-using-http-websocket-apis.html#コマンドライン"><code>rippled</code>のコマンドラインインターフェイス</a>を使用すれば、これを迅速にテストできます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12">$<span class="w"> </span>/opt/ripple/bin/rippled<span class="w"> </span>server_info
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">$<span class="w"> </span>/opt/ripple/bin/rippled<span class="w"> </span>server_info
 </code></pre></div>
 <p>rippled APIを使用した<code>rippled</code>サーバーとの通信について詳しくは、<a href="http-websocket-apis.html">rippled API reference</a>を参照してください。</p>
 <p>ストック<code>rippled</code>サーバーを実行できたら、次に検証サーバーとして実行してみましょう。検証サーバーについて、そして検証サーバーを実行する理由については、<a href="run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>を参照してください。</p>
