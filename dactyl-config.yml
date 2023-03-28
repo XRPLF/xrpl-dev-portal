@@ -1618,13 +1618,6 @@ pages:
 #         targets:
 #             - ja
 # 
-#     -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
-#         targets:
-#             - en
-# 
-#     -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.ja.md
-#         targets:
-#             - ja
 # 
 #     -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
 #         targets:
