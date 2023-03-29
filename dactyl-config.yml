@@ -400,7 +400,7 @@ pages:
         html: docs.html
         parent: index.html
         template: page-docs.html.jinja
-        sidebar: disabled
+        sidebar: left-only
         top_nav_name: Docs
         top_nav_shortcuts:
             # Programming Languages
