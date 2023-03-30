@@ -435,31 +435,19 @@ pages:
             - en
             - ja
 
-    -   md: use-cases/payments/direct-xrp-payments-uc.md
+    -   md: use-cases/payments/peer-to-peer-payments-uc.md
         parent: payments-uc.html
         targets:
             - en
             - ja
 
-    -   md: use-cases/payments/checks-uc.md
+    -   md: use-cases/payments/restricting-deposits-uc.md
         parent: payments-uc.html
         targets:
             - en
             - ja
 
-    -   md: use-cases/payments/payment-channels-uc.md
-        parent: payments-uc.html
-        targets:
-            - en
-            - ja
-
-    -   md: use-cases/payments/cross-currency-payments-uc.md
-        parent: payments-uc.html
-        targets:
-            - en
-            - ja
-
-    -   md: use-cases/payments/escrow-uc.md
+    -   md: use-cases/payments/smart-contracts-uc.md
         parent: payments-uc.html
         targets:
             - en
