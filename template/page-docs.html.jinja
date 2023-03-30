@@ -5,6 +5,7 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
+
   <section class="py-26 text-center">
     <div class="col-xl-4 col-lg-6 mx-auto text-center">
       <div class="d-flex flex-column-reverse w-100">
@@ -13,6 +14,107 @@
       </div>
     </div>
   </section>
+
+  {# Macros #}
+  {% macro purple_button(href, text, isArrowUp) %}
+    {% if isArrowUp %}
+      <a class="btn btn-primary btn-arrow-up" id="{{href}}-button" href="{{href}}">{{ text }}</a>
+    {% else %}
+      <a class="btn btn-primary btn-arrow" id="{{href}}-button" href="{{href}}">{{ text }}</a>
+    {% endif %}
+  {% endmacro %}
+
+  {% macro flat_card(href, title, description, image, isImageAbove) %}
+
+  {% endmacro %}
+
+  {# <div class="row row-cols-1 row-cols-lg-3 card-deck mt-10" id="advanced-features">
+      {% set cards2 = [
+        { "href": "decentralized-exchange.html",
+          "title":  _("Decentralized Exchange"),
+          "description":  _("A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain")},
+        { "href": "cross-currency-payments.html",
+          "title":  _("Cross-Currency Payments"),
+          "description":  _("Atomically settle multi-hop payments that cross currency or national boundaries with ease")},
+        { "href": "payment-channels.html",
+          "title":  _("Payment <br class='until-sm'/>Channels"),
+          "description":  _("Batched micropayments with unlimited speed, secured with XRP")},
+        { "href": "multi-signing.html",
+          "title":  _("Multi-Signing"),
+          "description":  _("Flexible options for custody and security of on-ledger accounts")},
+        { "href": "tokens.html",
+          "title":  _("Tokens"),
+          "description":  _("All currencies other than XRP can be represented in the XRP Ledger as tokens, sometimes called “IOUs”")},
+      ] %}
+
+    {% for card in cards2 %}
+      <a class="card" href="{{target.prefix}}{{card.href}}">
+        <div class="card-body">
+          <h4 class="card-title h5">{{card.title}}</h4>
+          <p class="card-text">{{card.description}}</p>
+        </div>
+        <div class="card-footer">&nbsp;</div>
+      </a>
+    {% endfor %}
+    </div> #}
+
+  {# TODO: Remove this experiment zone :) #}
+  <section>
+    {{ purple_button("nftoken.html", "Macro Button", true) }}
+    {{ purple_button("nftoken.html", "Macro Button", false) }}
+    {% macro experiment_display(title, body, image, display_image_above) %}
+      <div>
+      <a class="btn btn-primary btn-arrow-up" id="" href="nftoken.html">Purple button link</a>
+        {% if display_image_above %}
+          {{ image }}
+        {% endif %}
+        {{ title }}
+        {{ body }}
+        {% if not display_image_above %}
+          {{ image }}  
+        {% endif %}
+      </div>
+    {% endmacro %}
+    {{ experiment_display("Test title", "Body of text", "IMAGE", false)}}
+  </section>
+
+{# 
+  <section className="py-26 px-20 text-left">
+    <div className="card-grid card-grid-2xN">
+      <div className="col">
+        <h4>Browse By Recommended Pages</h4>
+        <ul className="nav flex-column">
+          {recommendedPages.map((r) => (
+            <NavLinks props={r} />
+          ))}
+        </ul>
+      </div>
+
+      <div className="col">
+        <div className="col-lg-12 p-6-sm p-10-until-sm br-8 cta-card">
+          <img
+            src={prefix + "/img/docs/cta-docs-purple.svg"}
+            className="d-none-sm cta cta-top-left"
+          />
+          <img
+            src={prefix + "/img/docs/cta-docs-green.svg"}
+            className="cta cta-bottom-right"
+          />
+          <div className="z-index-1 position-relative">
+            <h2 className="h4 mb-8-sm mb-10-until-sm">
+              Have an Idea For a Tool?
+            </h2>
+            <p className="mb-10">
+              Connect to the XRP Ledger Testnet network to develop and test
+              your apps built on the XRP Ledger, without risking real money
+              or impacting production XRP Ledger users.
+            </p>
+            {{ purple_button("xrp-testnet-faucet.html", "Generate TestnetCredentials", true) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> #}
 
   <section class="container-new mb-50-until-sm" id="docs-browse-by">
     <div class="row">
@@ -119,7 +221,6 @@
 {% block endbody %}
 
 {% endblock %}
-
 
 {% block analytics %}
     <script type="application/javascript">

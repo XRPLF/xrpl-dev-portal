@@ -76,6 +76,25 @@ button[disabled="disabled"] {
   }
 }
 
+@media (max-width: 767.98px) {
+  .btn-arrow-up {
+    display: block;
+    width: 100%;
+  }
+}
+
+.btn-arrow-up::after {
+  background-position: left 0px bottom -2px;
+  content: "\00a0";
+  background-image: url(../img/icons/arrow-up-right-white.svg);
+  background-repeat: no-repeat;
+  background-size: 32px;
+  display: inline-block;
+  padding: 4px 8px 4px 12px;
+  transition: background-position 0.3s ease-in-out;
+  margin-left: 4px;
+}
+
 /* (Jump to) "Top" button */
 
 .jump-to-top {

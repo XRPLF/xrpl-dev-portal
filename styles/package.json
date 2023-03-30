@@ -1,7 +1,9 @@
 {
   "devDependencies": {
-    "bootstrap": "^4.6.0",
-    "node-sass": "^7.0.0"
+    "bootstrap": "^4.6.1",
+    "jquery": "^1.9.1",
+    "node-sass": "^7.0.0",
+    "popper.js": "^1.16.1"
   },
   "scripts": {
     "build-css": "node-sass --include-path scss xrpl.scss ../assets/css/devportal2022-v16.css --output-style compressed",
