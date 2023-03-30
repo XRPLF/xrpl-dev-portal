@@ -28,115 +28,25 @@
 
   {% endmacro %}
 
-  {# <div class="row row-cols-1 row-cols-lg-3 card-deck mt-10" id="advanced-features">
-      {% set cards2 = [
-        { "href": "decentralized-exchange.html",
-          "title":  _("Decentralized Exchange"),
-          "description":  _("A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain")},
-        { "href": "cross-currency-payments.html",
-          "title":  _("Cross-Currency Payments"),
-          "description":  _("Atomically settle multi-hop payments that cross currency or national boundaries with ease")},
-        { "href": "payment-channels.html",
-          "title":  _("Payment <br class='until-sm'/>Channels"),
-          "description":  _("Batched micropayments with unlimited speed, secured with XRP")},
-        { "href": "multi-signing.html",
-          "title":  _("Multi-Signing"),
-          "description":  _("Flexible options for custody and security of on-ledger accounts")},
-        { "href": "tokens.html",
-          "title":  _("Tokens"),
-          "description":  _("All currencies other than XRP can be represented in the XRP Ledger as tokens, sometimes called “IOUs”")},
-      ] %}
-
-    {% for card in cards2 %}
-      <a class="card" href="{{target.prefix}}{{card.href}}">
-        <div class="card-body">
-          <h4 class="card-title h5">{{card.title}}</h4>
-          <p class="card-text">{{card.description}}</p>
-        </div>
-        <div class="card-footer">&nbsp;</div>
-      </a>
-    {% endfor %}
-    </div> #}
-
-  {# TODO: Remove this experiment zone :) #}
-  <section>
-    {{ purple_button("nftoken.html", "Macro Button", true) }}
-    {{ purple_button("nftoken.html", "Macro Button", false) }}
-    {% macro experiment_display(title, body, image, display_image_above) %}
-      <div>
-      <a class="btn btn-primary btn-arrow-up" id="" href="nftoken.html">Purple button link</a>
-        {% if display_image_above %}
-          {{ image }}
-        {% endif %}
-        {{ title }}
-        {{ body }}
-        {% if not display_image_above %}
-          {{ image }}  
-        {% endif %}
-      </div>
-    {% endmacro %}
-    {{ experiment_display("Test title", "Body of text", "IMAGE", false)}}
-  </section>
-
-{# 
-  <section className="py-26 px-20 text-left">
-    <div className="card-grid card-grid-2xN">
-      <div className="col">
-        <h4>Browse By Recommended Pages</h4>
-        <ul className="nav flex-column">
-          {recommendedPages.map((r) => (
-            <NavLinks props={r} />
-          ))}
-        </ul>
-      </div>
-
-      <div className="col">
-        <div className="col-lg-12 p-6-sm p-10-until-sm br-8 cta-card">
-          <img
-            src={prefix + "/img/docs/cta-docs-purple.svg"}
-            className="d-none-sm cta cta-top-left"
-          />
-          <img
-            src={prefix + "/img/docs/cta-docs-green.svg"}
-            className="cta cta-bottom-right"
-          />
-          <div className="z-index-1 position-relative">
-            <h2 className="h4 mb-8-sm mb-10-until-sm">
-              Have an Idea For a Tool?
-            </h2>
-            <p className="mb-10">
-              Connect to the XRP Ledger Testnet network to develop and test
-              your apps built on the XRP Ledger, without risking real money
-              or impacting production XRP Ledger users.
-            </p>
-            {{ purple_button("xrp-testnet-faucet.html", "Generate TestnetCredentials", true) }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> #}
-
-  <section class="container-new mb-50-until-sm" id="docs-browse-by">
-    <div class="row">
-      <div class="col-lg-6 mb-10" id="popular-topics">
-        <h2 class="h4">{% trans %}Browse By Popular Topics{% endtrans %}</h2>
-        <ul class="nav flex-column">
-          {% for pg_html in currentpage.popular_pages %}
-          {% set page = pages|selectattr("html", "defined_and_equalto", pg_html)|first %}
-          {% if page.html is not defined %}
-            {% include "ERROR: Couldn't find page "+pg_html+" from popular_pages" %}
-          {% endif %}
-          <li class="nav-item"><a href="{% if '//' not in page.html %}{{target.prefix}}{% endif %}{{page.html}}" class="nav-link">{{page.name}}</a>
-          {% endfor %}
-        </ul>
-      </div><!--/#popular-topics-->
-
-      <div class="col-lg-6" id="browse-by-label">
-        <h2 class="h4">{% trans %}Browse By Label{% endtrans %}</h2>
-        {% include 'component-tag-cloud.html.jinja' %}
-      </div><!--/#browse-by-label-->
-    </div>
-  </section>
+  {% set recommendedPages = [
+      {
+        "description": _("rippled API Reference"),
+        "link": "https://xrpl.org/manage-the-rippled-server.html",
+      },
+      {
+        "description": _("XRP Faucet"),
+        "link": "https://xrpl.org/xrp-testnet-faucet.html",
+      },
+      {
+        "description": _("Getting Started with Python"),
+        "link": "https://xrpl.org/get-started-using-python.html#get-started-using-python",
+      },
+      {
+        "description": _("Websocket API Tool"),
+        "link": "https://xrpl.org/websocket-api-tool.html",
+      },
+      { "description": _("XRP Ledger Explorer"), "link": "https://livenet.xrpl.org" },
+  ] %}
 
   <section class="container-new mb-50-until-sm" id="software-and-sdks">
     <div class="d-flex flex-column-reverse w-100">
@@ -197,6 +107,29 @@
     </div>
   </div>
 </section><!--/#docs-hot-topic-->
+
+  <section class="container-new mb-50-until-sm" id="docs-browse-by">
+    <div class="row">
+      <div class="col-lg-6 mb-10" id="popular-topics">
+        <h2 class="h4">{% trans %}Browse By Recommended Pages{% endtrans %}</h2>
+        <ul class="nav flex-column">
+          {% for page in recommendedPages %}
+            <li class="nav-item"><a href="{{page.link}}" class="nav-link">{{page.description}}</a>
+          {% endfor %}
+        </ul>
+      </div><!--/#popular-topics-->
+
+      <div class="col-lg-6 p-6-sm p-10-until-sm br-8 cta-card">
+        <img src="./img/backgrounds/cta-home-purple.svg" class="d-none-sm cta cta-top-left">
+        <img src="./img/backgrounds/cta-home-green.svg" class="cta cta-bottom-right">
+        <div class="z-index-1 position-relative">
+          <h2 class="h4 mb-8-sm mb-10-until-sm">{% trans %}Have an Idea for a Tool?{% endtrans %}</h2>
+          <p class="mb-10">{% trans %}Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.{% endtrans %}</p>
+          <a class="btn btn-primary btn-arrow" href="xrp-testnet-faucet.html">Generate Testnet Credentials</a>
+        </div>
+      </div>
+    </div>
+  </section><!-- Browse by recommended and Generate Testnet Credentials -->
 
 <section class="container-new mb-50-until-sm doc-index">
   <div class="d-flex flex-column-reverse w-100">
