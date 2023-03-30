@@ -19,13 +19,11 @@ This example shows how to:
 5. Get a list of offers for a particular NFToken.
 6. Cancel an offer.
 
-![Quickstart form with NFToken transfer fields](img/quickstart13.png)
+[![Quickstart form with NFToken transfer fields](img/quickstart13.png)](img/quickstart13.png)
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
 
-
 # Usage
-
 
 ## Get Accounts
 
@@ -39,9 +37,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
 
-![Form with account information](img/quickstart14.png)
-
-
+[![Form with account information](img/quickstart14.png)](img/quickstart14.png)
 
 ## Create a Sell Offer
 
@@ -55,9 +51,7 @@ To create a NFToken sell offer:
 
 The important piece of information in the response is the NFToken Offer Index, labeled as `nft_offer_index`, which you use to accept the sell offer.
 
-![NFToken Sell Offer](img/quickstart15.png)
-
-
+[![NFToken Sell Offer](img/quickstart15.png)](img/quickstart15.png)
 
 ## Accept Sell Offer
 
@@ -68,9 +62,7 @@ To accept an available sell offer:
 1. Enter the **NFToken Offer Index** (labeled as `nft_offer_index` in the token offer results. This is different from the `NFTokenID`.)
 2. Click **Accept Sell Offer**.
 
-![Accept Sell Offer](img/quickstart16.png)
-
-
+[![Accept Sell Offer](img/quickstart16.png)](img/quickstart16.png)
 
 ## Create a Buy Offer
 
@@ -84,9 +76,7 @@ To create an offer to buy a NFToken:
 4. Optionally enter the number of days until **Expiration**.
 5. Click **Create Buy Offer**.
 
-![NFToken Buy Offer](img/quickstart17.png)
-
-
+[![NFToken Buy Offer](img/quickstart17.png)](img/quickstart17.png)
 
 ## Accept a Buy Offer
 
@@ -95,9 +85,7 @@ To accept an offer to buy a NFToken:
 1. Enter the **NFToken Offer Index** (the `nft_offer_index` of the NFToken buy offer).
 3. Click **Accept Buy Offer**.
 
-![Accept Buy Offer](img/quickstart18.png)
-
-
+[![Accept Buy Offer](img/quickstart18.png)](img/quickstart18.png)
 
 ## Get Offers
 
@@ -105,9 +93,7 @@ To list the buy and sell offers associated with a NFToken:
 1. Enter the **NFToken ID**.
 2. Click **Get Offers**.
 
-![Get offers](img/quickstart19.png)
-
-
+[![Get offers](img/quickstart19.png)](img/quickstart19.png)
 
 ## Cancel Offer
 
@@ -116,48 +102,42 @@ To cancel a buy or sell offer that you have created:
 1. Enter the **NFToken Offer Index**.
 2. Click **Cancel Offer**.
 
-![Cancel offer](img/quickstart20.png)
-
-
+[![Cancel offer](img/quickstart20.png)](img/quickstart20.png)
 
 # Code Walkthrough
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
 
-
 ## Create Sell Offer
 
-
-```
+```javascript
 // *******************************************************
 // ****************** Create Sell Offer ******************
 // *******************************************************
+      
+async function createSellOffer() {
 ```
-
 
 Connect to the ledger and get the accounts.
 
-
-```
-async function createSellOffer() {
+```javascript
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('standbyResultField').value = results
+  results = 'Connecting to ' + net + '...'
+  standbyResultField.value = results
   await client.connect()
   results += '\nConnected. Creating sell offer...'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
 
 Compute the Expiration Date, if present. The expiration date represents the number of seconds after the Ripple Epoch that the offer should expire. Start with the current date, add the number of days till expiration, then set the `expirationDate` variable to the converted date in Ripple time. 
 
-```
-  //------------------------------------- Prepare Expiration Date
+```javascript
   var expirationDate = null
   if (standbyExpirationField.value !="") {
-    var days = document.getElementById('standbyExpirationField').value
+    var days = standbyExpirationField.value
     let d = new Date()
     d.setDate(d.getDate() + parseInt(days))
     var expirationDate = xrpl.isoTimeToRippleTime(d)
@@ -166,7 +146,7 @@ Compute the Expiration Date, if present. The expiration date represents the numb
 
 Define the transaction. A _Flags_ value of 1 indicates that this transaction is a sell offer.
 
-```
+```javascript
   let transactionBlob = {
     "TransactionType": "NFTokenCreateOffer",
     "Account": standby_wallet.classicAddress,
@@ -178,7 +158,7 @@ Define the transaction. A _Flags_ value of 1 indicates that this transaction is 
 
 If the Expiration Date is present, append it to the transaction.
 
-```
+```javascript
   if (expirationDate != null) {
     transactionBlob.Expiration = expirationDate
   }
@@ -187,36 +167,24 @@ If the Expiration Date is present, append it to the transaction.
 
 If the Destination field is not empty, append it to the transaction. When the destination is set, only the destination account can buy the NFToken.
 
-```
+```javascript
   if(standbyDestinationField.value !== '') {
     transactionBlob.Destination = standbyDestinationField.value
   }
 ```
 
-
 Submit the transaction and wait for the results.
 
 
-
-
-```
+```javascript
   const tx = await client.submitAndWait(transactionBlob,{wallet: standby_wallet})
-```
-
-
-
-
-
-```
   results += '\n\n***Sell Offers***\n'
 ```
 
-
 Request the list of sell offers for the token.
 
-
-```
-   let nftSellOffers
+```javascript      
+  let nftSellOffers
   try {
     nftSellOffers = await client.request({
       method: "nft_sell_offers",
@@ -227,91 +195,74 @@ Request the list of sell offers for the token.
   results += JSON.stringify(nftSellOffers,null,2)
 ```
 
-
 Request the list of buy offers for the token.
 
-
-```
+```javascript      
   results += '\n\n***Buy Offers***\n'
   let nftBuyOffers
   try {
     nftBuyOffers = await client.request({
       method: "nft_buy_offers",
       nft_id: standbyTokenIdField.value })
+      results += JSON.stringify(nftBuyOffers,null,2)
   } catch (err) {
     results += 'No buy offers.'
   }
-  results += JSON.stringify(nftBuyOffers,null,2)
 ```
-
 
 Report the results of the transaction.
 
-
-```
+```javascript
   results += '\n\nTransaction result:\n' + 
     JSON.stringify(tx.result.meta.TransactionResult, null, 2)
   results += '\n\nBalance changes:\n' + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
 ```
 
-
 Get the current XRP balances for the operational and standby accounts.
 
-
+```javascript
+  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
+  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
+  standbyResultField.value = results
 ```
-  document.getElementById('operationalBalanceField').value = 
-    (await client.getXrpBalance(operational_wallet.address))
-  document.getElementById('standbyBalanceField').value = 
-    (await client.getXrpBalance(standby_wallet.address))
-  document.getElementById('standbyResultField').value = results
-```
-
 
 Disconnect from the ledger.
 
-
-```
+```javascript
   client.disconnect()
 }// End of createSellOffer()
 ```
 
-
-
 ## Create Buy Offer
 
-
-```
+```javascript
 // *******************************************************
 // ***************** Create Buy Offer ********************
 // *******************************************************
 
-
 async function createBuyOffer() {
 ```
 
-
 Get the account and connect to the ledger.
 
-
-```
+```javascript
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  let results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('standbyResultField').value = results
+  let results = 'Connecting to ' + net + '...'
+  standbyResultField.value = results
   await client.connect()
   results = '\nConnected. Creating buy offer...'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
 Prepare the expiration date, if present.
 
-```
-  //------------------------------------- Prepare Expiration Date
+```javascript
   var expirationDate = null
   if (standbyExpirationField.value !="") {
-    var days = document.getElementById('standbyExpirationField').value
+    var days = standbyExpirationField.value
     let d = new Date()
     d.setDate(d.getDate() + parseInt(days))
     var expirationDate = xrpl.isoTimeToRippleTime(d)
@@ -321,7 +272,7 @@ Prepare the expiration date, if present.
 Define the transaction. Setting the _Flags_ value to _null_ indicates that this is a buy offer.
 
 
-```
+```javascript
   const transactionBlob = {
     "TransactionType": "NFTokenCreateOffer",
     "Account": standby_wallet.classicAddress,
@@ -333,25 +284,21 @@ Define the transaction. Setting the _Flags_ value to _null_ indicates that this 
 ```
 If the expiration date is present, append that to the transaction.
 
-```
+```javascript
   if (expirationDate != null) {
     transactionBlob.Expiration = expirationDate
   }
-
 ```
 
 Submit the transaction and wait for the results.
 
-
-```
+```javascript
   const tx = await client.submitAndWait(transactionBlob,{wallet: standby_wallet})
 ```
 
-
 Request the list of sell offers for the token.
 
-
-```
+```javascript
   results += "\n\n***Sell Offers***\n"
   let nftSellOffers
   try {
@@ -364,51 +311,47 @@ Request the list of sell offers for the token.
   results += JSON.stringify(nftSellOffers,null,2)
 ```
 
-
 Request the list of buy offers for the token.
 
-
-```
+```javascript
   results += "\n\n***Buy Offers***\n"
   let nftBuyOffers
   try {
     nftBuyOffers = await client.request({
     method: "nft_buy_offers",
     nft_id: standbyTokenIdField.value })
+    results += JSON.stringify(nftBuyOffers,null,2)
   } catch (err) {
     results += "No buy offers."
   }
-  results += JSON.stringify(nftBuyOffers,null,2)
 ```
-
 
 Report the results of the transaction.
 
-
-
-```
+```javascript
   results += "\n\nTransaction result:\n" +
     JSON.stringify(tx.result.meta.TransactionResult, null, 2)
   results += "\n\nBalance changes:\n" + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  document.getElementById('standbyResultField').value = results
-```
-
+  standbyResultField.value = results```
 
 Disconnect from the ledger.
 
-
-```
+```javascript      
   client.disconnect()
 }// End of createBuyOffer()
 ```
 
-
-
 ## Cancel Offer
 
 
-```
+
+// START HERE
+
+
+
+
+```javascript      
 // *******************************************************
 // ******************** Cancel Offer *********************
 // *******************************************************
@@ -416,36 +359,28 @@ Disconnect from the ledger.
 async function cancelOffer() {    
 ```
 
-
 Get the standby address and connect to the ledger.
 
-
-```
+```javascript      
   const wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + net + '...'
-    document.getElementById('standbyResultField').value = results
+  results = 'Connecting to ' + net + '...' + standbyResultField.value = results
   await client.connect()
   results +=  "\nConnected. Cancelling offer..."
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
 
 
 Insert the token offer index as a new array. This example destroys one offer at a time. In practice you could implement the function to accept multiple token offer index values and destroy all of the token offers in one operation.
 
-
-```
+```javascript      
   const tokenOfferIDs = [standbyTokenOfferIndexField.value]
-
-
 ```
-
 
 Define the transaction.
 
-
-```
+```javascript      
   const transactionBlob = {
     "TransactionType": "NFTokenCancelOffer",
     "Account": wallet.classicAddress,
@@ -453,19 +388,15 @@ Define the transaction.
   }
 ```
 
-
 Submit the transaction and wait for the results.
 
-
-```
+```javascript      
   const tx = await client.submitAndWait(transactionBlob,{wallet})
 ```
 
-
 Request the list of sell offers for the token.
 
-
-```
+```javascript      
   results += "\n\n***Sell Offers***\n"
   let nftSellOffers
   try {
@@ -479,50 +410,42 @@ Request the list of sell offers for the token.
   results += JSON.stringify(nftSellOffers,null,2)
 ```
 
-
 Request the list of buy offers for the token.
 
-
-```
+```javascript      
   results += "\n\n***Buy Offers***\n"
   let nftBuyOffers
   try {
     nftBuyOffers = await client.request({
       method: "nft_buy_offers",
-      nft_id: standbyTokenIdField.value })
+      nft_id: standbyTokenIdField.value
+    })
+    results += JSON.stringify(nftBuyOffers,null,2)
   } catch (err) {
     nftBuyOffers = "No buy offers."
   }
-  results += JSON.stringify(nftBuyOffers,null,2)
 ```
-
 
 Report the transaction results.
 
-
-```
+```javascript      
   results += "\nTransaction result:\n" +
     JSON.stringify(tx.result.meta.TransactionResult, null, 2)
   results += "\nBalance changes:\n" + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
-
 
 Disconnect from the ledger.
 
-
-```
+```javascript      
   client.disconnect() // End of cancelOffer()
 }
 ```
 
-
-
 ## Get Offers
 
-
-```
+```javascript      
 // *******************************************************
 // ******************** Get Offers ***********************
 // *******************************************************
@@ -533,68 +456,61 @@ async function getOffers() {
 
 Connect to the ledger.
 
-
-```
+```javascript      
+  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('standbyResultField').value = results
+  results = 'Connecting to ' + net + '...'
+  standbyResultField.value = results
   await client.connect()
   results += '\nConnected. Getting offers...'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
-
 
 Request the list of sell offers for the token.
 
-
-```
+```javascript      
   results += '\n\n***Sell Offers***\n'
   let nftSellOffers
   try {
     nftSellOffers = await client.request({
       method: "nft_sell_offers",
-      nft_id: standbyTokenIdField.value })
-    } catch (err) {
+      nft_id: standbyTokenIdField.value
+    })
+  } catch (err) {
       nftSellOffers = 'No sell offers.'
   }
   results += JSON.stringify(nftSellOffers,null,2)
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
-
 
 Request the list of buy offers for the token.
 
-
-```
+```javascript      
   results += '\n\n***Buy Offers***\n'
   let nftBuyOffers
   try {
     nftBuyOffers = await client.request({
       method: "nft_buy_offers",
-      nft_id: standbyTokenIdField.value })
+      nft_id: standbyTokenIdField.value 
+    })
   } catch (err) {
     nftBuyOffers =  'No buy offers.'
   }
   results += JSON.stringify(nftBuyOffers,null,2)
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
-
 
 Disconnect from the ledger.
 
-
-```
+```javascript      
   client.disconnect()
 }// End of getOffers()
 ```
 
-
-
 ## Accept Sell Offer
 
-
-```
+```javascript      
 // *******************************************************
 // ****************** Accept Sell Offer ******************
 // *******************************************************
@@ -603,27 +519,23 @@ Disconnect from the ledger.
 async function acceptSellOffer() {
 ```
 
-
 Get the accounts and connect to the ledger.
 
-
-```
+```javascript      
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('standbyResultField').value = results
+  results = 'Connecting to ' + net + '...'
+  standbyResultField.value = results
   await client.connect()
   results += '\nConnected. Accepting sell offer...\n\n'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
-
 
 Define the transaction.
 
-
-```
+```javascript      
   const transactionBlob = {
     "TransactionType": "NFTokenAcceptOffer",
     "Account": standby_wallet.classicAddress,
@@ -631,63 +543,49 @@ Define the transaction.
   }
 ```
 
-
 Submit the transaction and wait for the results.
 
-
-```
+```javascript      
   const tx = await client.submitAndWait(transactionBlob,{wallet: standby_wallet}) 
 ```
 
-
 Request the list of NFTs for the standby account.
 
-
-```
+```javascript      
   const nfts = await client.request({
     method: "account_nfts",
-    account: standby_wallet.classicAddress })
+    account: standby_wallet.classicAddress
+  })
 ```
-
 
 Get the balances for both accounts.
 
-
+```javascript      
+  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
+  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
 ```
-  document.getElementById('standbyBalanceField').value = 
-    (await client.getXrpBalance(standby_wallet.address))
-  document.getElementById('operationalBalanceField').value = 
-    (await client.getXrpBalance(operational_wallet.address))
-```
-
 
 Report the transaction results.
 
-
-```
+```javascript      
   results += 'Transaction result:\n'
   results +=  JSON.stringify(tx.result.meta.TransactionResult, null, 2)
   results += '\nBalance changes:'
   results +=  JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
   results += JSON.stringify(nfts,null,2)
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
-
 
 Disconnect from the ledger.
 
-
-```
+```javascript      
   client.disconnect()
 }// End of acceptSellOffer()
 ```
 
-
-
 ## Accept Buy Offer
 
-
-```
+```javascript      
 // *******************************************************
 // ******************* Accept Buy Offer ******************
 // *******************************************************
@@ -696,38 +594,33 @@ Disconnect from the ledger.
 async function acceptBuyOffer() {
 ```
 
-
 Get the accounts and connect to the ledger.
 
-
-```
+```javascript      
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('standbyResultField').value = results
+  results = 'Connecting to ' + net + '...'
+  standbyResultField.value = results
   await client.connect()
   results += '\nConnected. Accepting buy offer...'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
-
 
 Prepare the transaction.
 
-
-```
+```javascript      
+  const transactionBlob = {
     "TransactionType": "NFTokenAcceptOffer",
     "Account": standby_wallet.classicAddress,
     "NFTokenBuyOffer": standbyTokenOfferIndexField.value
   }
 ```
 
-
 Submit the transaction and wait for the results.
 
-
-```
+```javascript      
   const tx = await client.submitAndWait(transactionBlob,{wallet: standby_wallet}) 
 ```
 
@@ -735,20 +628,18 @@ Submit the transaction and wait for the results.
 Request the current list of NFTs for the standby account.
 
 
-```
+```javascript      
   const nfts = await client.request({
     method: "account_nfts",
     account: standby_wallet.classicAddress  
   })
   results += JSON.stringify(nfts,null,2)
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
-
 
 Report the transaction result.
 
-
-```
+```javascript      
   results += "\n\nTransaction result:\n" + 
     JSON.stringify(tx.result.meta.TransactionResult, null, 2)
   results += "\nBalance changes:\n" +
@@ -759,30 +650,26 @@ Report the transaction result.
 Request the XRP balance for both accounts.
 
 
-```
-  document.getElementById('operationalBalanceField').value = 
+```javascript      
+  operationalBalanceField.value = 
     (await client.getXrpBalance(operational_wallet.address))
-  document.getElementById('standbyBalanceField').value = 
+  standbyBalanceField.value = 
     (await client.getXrpBalance(standby_wallet.address))
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
-
 
 Disconnect from the ledger.
 
-
-```
+```javascript      
   client.disconnect()
 }// End of acceptBuyOffer()
 ```
-
-
 
 ## Reciprocal Transactions
 
 These functions duplicate the functions of the standby account for the operational account. See the corresponding standby account function for walkthrough information.
 
-```
+```javascript      
 // *******************************************************
 // *********** Operational Create Sell Offer *************
 // *******************************************************
@@ -792,23 +679,21 @@ async function oPcreateSellOffer() {
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('operationalResultField').value = results
+  results = 'Connecting to ' + net + '...'
+  operationalResultField.value = results
     await client.connect()
   results += '\nConnected. Creating sell offer...'
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   //------------------------------------- Prepare Expiration Date
-
   var expirationDate = null
   if (operationalExpirationField.value !="") {
-    var days = document.getElementById('operationalExpirationField').value
+    var days = operationalExpirationField.value
     let d = new Date()
     d.setDate(d.getDate() + parseInt(days))
     var expirationDate = xrpl.isoTimeToRippleTime(d)
   }
-
- // Prepare transaction -------------------------------------------------------
+  // Prepare transaction -------------------------------------------------------
   let transactionBlob = {
       "TransactionType": "NFTokenCreateOffer",
       "Account": operational_wallet.classicAddress,
@@ -844,26 +729,26 @@ async function oPcreateSellOffer() {
   try {
     nftBuyOffers = await client.request({
       method: "nft_buy_offers",
-      nft_id: operationalTokenIdField.value })
+      nft_id: operationalTokenIdField.value
+    })
+    results += JSON.stringify(nftBuyOffers,null,2)
   } catch (err) {
     results += 'No buy offers.'
   }
-  results += JSON.stringify(nftBuyOffers,null,2)
 
   // Check transaction results -------------------------------------------------
   results += '\n\nTransaction result:\n' + 
     JSON.stringify(tx.result.meta.TransactionResult, null, 2)
   results += '\n\nBalance changes:\n' + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  document.getElementById('operationalBalanceField').value = 
+  operationalBalanceField.value = 
     (await client.getXrpBalance(operational_wallet.address))
-  document.getElementById('standbyBalanceField').value = 
+  standbyBalanceField.value = 
     (await client.getXrpBalance(standby_wallet.address))
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   client.disconnect()
 }  // End of oPcreateSellOffer()
-
 
 // *******************************************************
 // ************** Operational Create Buy Offer ***********
@@ -875,16 +760,16 @@ async function oPcreateBuyOffer() {
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  let results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('operationalResultField').value = results
+  let results = 'Connecting to ' + net + '...'
+  operationalResultField.value = results
   await client.connect()
   results = '\nConnected. Creating buy offer...'
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   //------------------------------------- Prepare Expiration Date
   var expirationDate = null
   if (operationalExpirationField.value !="") {
-    var days = document.getElementById('operationalExpirationField').value
+    var days = operationalExpirationField.value
     let d = new Date()
     d.setDate(d.getDate() + parseInt(days))
     var expirationDate = xrpl.isoTimeToRippleTime(d)
@@ -933,11 +818,10 @@ async function oPcreateBuyOffer() {
     JSON.stringify(tx.result.meta.TransactionResult, null, 2)
   results += "\n\nBalance changes:\n" + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   client.disconnect()
 }// End of oPcreateBuyOffer()
-
 
 // *******************************************************
 // ************* Operational Cancel Offer ****************
@@ -949,10 +833,10 @@ async function oPcancelOffer() {
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + net + '...'
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
   await client.connect()
   results +=  "\nConnected. Cancelling offer..."
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   const tokenOfferIDs = [operationalTokenOfferIndexField.value]
 
@@ -981,7 +865,8 @@ async function oPcancelOffer() {
   try {
     nftBuyOffers = await client.request({
       method: "nft_buy_offers",
-      nft_id: operationalTokenIdField.value })
+      nft_id: operationalTokenIdField.value
+    })
   } catch (err) {
     nftBuyOffers = "No buy offers."
   }
@@ -993,7 +878,7 @@ async function oPcancelOffer() {
     JSON.stringify(tx.result.meta.TransactionResult, null, 2)
   results += "\nBalance changes:\n" + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   client.disconnect()
 }// End of oPcancelOffer()
@@ -1003,11 +888,11 @@ async function oPcancelOffer() {
 // *******************************************************
 
 async function oPgetOffers() {
-  const standby_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
+//  const standby_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('operationalResultField').value = results
+  results = 'Connecting to ' + net + '...'
+  operationalResultField.value = results
   await client.connect()
   results += '\nConnected. Getting offers...'
 
@@ -1017,25 +902,25 @@ async function oPgetOffers() {
   try {
     nftSellOffers = await client.request({
       method: "nft_sell_offers",
-      nft_id: operationalTokenIdField.value})
+      nft_id: operationalTokenIdField.value
+    })
   } catch (err) {
     nftSellOffers = 'No sell offers.'
   }
   results += JSON.stringify(nftSellOffers,null,2)
-
-  document.getElementById('standbyResultField').value = results
 
   results += '\n\n***Buy Offers***\n'
   let nftBuyOffers
   try {
     nftBuyOffers = await client.request({
       method: "nft_buy_offers",
-      nft_id: operationalTokenIdField.value })
+      nft_id: operationalTokenIdField.value
+    })
   } catch (err) {
     nftBuyOffers =  'No buy offers.'
   }
   results += JSON.stringify(nftBuyOffers,null,2)  
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   client.disconnect()
 }// End of oPgetOffers()
@@ -1049,11 +934,11 @@ async function oPacceptSellOffer() {
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('operationalResultField').value = results
+  results = 'Connecting to ' + net + '...'
+  operationalResultField.value = results
   await client.connect()
   results += '\nConnected. Accepting sell offer...\n\n'
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   // Prepare transaction -------------------------------------------------------
   const transactionBlob = {
@@ -1065,24 +950,22 @@ async function oPacceptSellOffer() {
   const tx = await client.submitAndWait(transactionBlob,{wallet: operational_wallet}) 
   const nfts = await client.request({
     method: "account_nfts",
-    account: operational_wallet.classicAddress })
+    account: operational_wallet.classicAddress
+  })
 
   // Check transaction results -------------------------------------------------
 
-  document.getElementById('standbyBalanceField').value = 
-    (await client.getXrpBalance(standby_wallet.address))
-  document.getElementById('operationalBalanceField').value = 
-    (await client.getXrpBalance(operational_wallet.address))
+  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
+  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
 
   results += 'Transaction result:\n'
   results +=  JSON.stringify(tx.result.meta.TransactionResult, null, 2)
   results += '\nBalance changes:'
   results +=  JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
   results += JSON.stringify(nfts,null,2)   
-  document.getElementById('operationalResultField').value = results    
+  operationalResultField.value = results    
   client.disconnect()
 }// End of acceptSellOffer()
-
 
 // *******************************************************
 // ********* Operational Accept Buy Offer ****************
@@ -1093,11 +976,11 @@ async function oPacceptBuyOffer() {
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('operationalResultField').value = results
+  results = 'Connecting to ' + net + '...'
+  operationalResultField.value = results
   await client.connect()
   results += '\nConnected. Accepting buy offer...'
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   // Prepare transaction -------------------------------------------------------
   const transactionBlob = {
@@ -1109,41 +992,42 @@ async function oPacceptBuyOffer() {
   const tx = await client.submitAndWait(transactionBlob,{wallet: operational_wallet}) 
   const nfts = await client.request({
     method: "account_nfts",
-    account: operational_wallet.classicAddress })
+    account: operational_wallet.classicAddress
+  })
   results += JSON.stringify(nfts,null,2)
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   // Check transaction results -------------------------------------------------
   results += "\n\nTransaction result:\n" + 
     JSON.stringify(tx.result.meta.TransactionResult, null, 2)
   results += "\nBalance changes:\n" +
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  document.getElementById('operationalBalanceField').value = 
+  operationalBalanceField.value = 
     (await client.getXrpBalance(operational_wallet.address))
-  document.getElementById('operationalBalanceField').value = 
+  operationalBalanceField.value = 
     (await client.getXrpBalance(standby_wallet.address))
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
   client.disconnect()
 }// End of acceptBuyOffer()
-
 ```
-
-
 
 ## 4.transfer-nfts.html
 
 Update the form with fields and buttons to support the new functions.
 
-
-```
-<!-- ************************************************************** -->
-<!-- ********************** The Form ****************************** -->
-<!-- ************************************************************** -->
-
+```html
 <html>
   <head>
     <title>Token Test Harness</title>
-    <script src='https://unpkg.com/xrpl@2.2.3'></script>
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <style>
+       body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
+       h1{font-weight: bold;}
+       input, button {padding: 6px;margin-bottom: 8px;}
+       button{font-weight: bold;font-family: "Work Sans", sans-serif;}
+       td{vertical-align: middle;}
+    </style>
+    <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
     <script src='ripplex1-send-xrp.js'></script>
     <script src='ripplex2-send-currency.js'></script>
     <script src='ripplex3-mint-nfts.js'></script>
@@ -1163,7 +1047,7 @@ Update the form with fields and buttons to support the new functions.
   <body>
     <h1>Token Test Harness</h1>
     <form id="theForm">
-      Choose your ledger instance:  
+      Choose your ledger instance:
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233" checked>
@@ -1493,17 +1377,4 @@ Update the form with fields and buttons to support the new functions.
     </form>
   </body>
 </html>
-
 ```
-
----
-
-
-| Previous                                                 | Next  |
-| :---                                                     |  ---: |
-| [← 3. Mint and Burn NFTokens >](mint-and-burn-nftokens.html) | [Broker a NFToken Sale → >](broker-sale.html) |
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
