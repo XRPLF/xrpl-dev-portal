@@ -284,10 +284,10 @@ In addition to the requirements for sending into the XRP Ledger, there are sever
 
 ## Precautions
 
-Processing payments to and from the XRP Ledger naturally comes with some risks, so an issuer should be sure to take care in implementing these processes. We recommend the following precautions:
+Processing payments to and from the XRP Ledger naturally comes with some risks, so an issuer should be sure to take care in implementing these processes. As a stablecoin issuer, you should take the following precautions:
 
-- Protect yourself against reversible deposits. XRP Ledger payments are irreversible, but many electronic money systems like credit cards or PayPal are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving tokens in the XRP Ledger.
-- When sending into the XRP Ledger, specify the issuing address as the issuer of the currency. Otherwise, you might accidentally use paths that deliver the same currency issued by other addresses.
+- Protect yourself against reversible deposits. XRP Ledger payments are irreversible, but many digital payments are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving tokens in the XRP Ledger.
+- When sending into the XRP Ledger, always specify your issuing address as the issuer of the token. Otherwise, you might accidentally use paths that deliver the same currency issued by other addresses.
 - Before sending a payment into the XRP Ledger, double check the cost of the payment. A payment from your operational address to a customer should not cost more than the destination amount plus any transfer fee you have set.
 - Before processing a payment out of the XRP Ledger, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you. Most anti-money-laundering regulations require this anyway. This is especially important because the users sending money from the XRP Ledger could be different than the ones that initially received the money in the XRP Ledger.
 - Follow the guidelines for reliable transaction submission when sending XRP Ledger transactions.
@@ -358,47 +358,101 @@ For your own security as well as the stability of the network, each XRP Ledger b
 
 There are several interfaces you can use to connect to the XRP Ledger, depending on your needs and your existing software:
 
-* [HTTP / WebSocket APIs](http-websocket-apis.html) can be used as a low-level interface to all core XRP Ledger functionality.
-* [Client Libraries](client-libraries.html) are available in several programming languages to provide convenient utilities for accessing the XRP Ledger.
-* Other tools such as [xApps](https://xumm.readme.io/docs/xapps) are also available.
+- [HTTP / WebSocket APIs](http-websocket-apis.html) can be used as a low-level interface to all core XRP Ledger functionality.
+- [Client Libraries](client-libraries.html) are available in several programming languages to provide convenient utilities for accessing the XRP Ledger.
+- Other tools such as [xApps](https://xumm.readme.io/docs/xapps) are also available.
+- Third party wallet applications may also be useful, especially for humans in charge of standby addresses.
 
 
 ## Tool Security
 
-Any time you submit an XRP Ledger transaction, it must be signed using your secret key. The secret key gives full control over your XRP Ledger address. **Never** send your secret key to a server run by someone else. Either use your own `rippled` server, or sign the transactions locally before sending them to a `rippled` server.
+Any time you submit an XRP Ledger transaction, it must be signed using your secret key. The secret key gives full control over your XRP Ledger address. **Never** send your secret key to a server run by someone else. Either use your own server, or sign the transactions locally using a client library.
 
-The examples in this document show API methods that include a secret key. This is only safe if you control `rippled` server yourself, *and* you connect to it over a connection that is secure from outside listeners. For instructions and examples of other secure configurations, see [Set Up Secure Signing](set-up-secure-signing.html).
+For instructions and examples of secure configurations, see [Set Up Secure Signing](set-up-secure-signing.html).
+
+## Issuer Setup
+
+There are some settings you must configure on your XRP Ledger account before you start issuing tokens. For examples of how to configure these settings, see the [Issue a Fungible Token tutorial](issue-a-fungible-token.html).
+
+Settings you may want to configure include:
+
+| Setting | Notes |
+|---------|-------|
+| Default Ripple | Issuers **must** enable this field. |
+| Deposit Authorization | Block all incoming payments from users you haven't explicitly approved. |
+| Require Auth | Restrict your tokens to being held by users you've explicitly approved. |
+| Tick Size | Round off exchange rates in the decentralized exchange to facilitate faster price discovery. |
+| Transfer Fee | Charge a percentage fee when users send your token to each other. |
 
 
-## Default Ripple
+### Default Ripple
 
 The Default Ripple flag controls whether the balances on a trust line are [allowed to ripple](rippling.html) by default. Rippling is what allows customers to send and trade tokens among themselves, so an issuer MUST allow rippling on all the trust lines to its issuing address.
 
 Before asking customers to create trust lines to its issuing address, an issuer should enable the Default Ripple flag on that address. Otherwise, the issuer must individually disable the No Ripple flag for each trust line that other addresses have created.
 
-For examples of how to configure this setting, see the [Issue a Fungible Token tutorial](issue-a-fungible-token.html).
+
+### Deposit Authorization
+
+The Deposit Authorization setting blocks all incoming payments to your account, unless either:
+
+- You have previously preauthorized the sender.
+- You send a transaction to receive the funds. For example, you could finish an Escrow that was initiated by a stranger.
+
+Deposit Authorization is most useful for blocking unwanted XRP payments, because you already can't receive tokens unless you've created a trust line to their issuer. However, as a stablecoin issuer, you need to be able to receive payments from users in order for them to redeem the stablecoin for its off-ledger value; you can preauthorize your customers but doing so requires storing an object in the ledger for each custom address, increasing your reserve requirement substantially.
+
+Therefore, Deposit Authorization is not recommended for stablecoin issuers unless you need it to meet regulatory requirements about receiving money from unknown or sanctioned entities.
+
+For more information, see [Deposit Authorization](depositauth.html).
 
 
-## Disallow XRP
+### Disallow XRP
 
-The Disallow XRP setting is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments from addresses that aren't intended to receive and hold XRP. The Disallow XRP flag is not strictly enforced, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default.
+The Disallow XRP setting is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments from addresses that aren't intended to receive and hold XRP. The Disallow XRP flag is not enforced at the protocol level, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default, but may allow users to ignore it.
 
-You should enable the Disallow XRP flag on your issuing and operational addresses unless you also use those addresses for XRP transactions. If you use the same addresses for withdrawals or deposits of XRP, you should leave this flag disabled.
-
-For examples of how to configure this setting, see the [Issue a Fungible Token tutorial](issue-a-fungible-token.html).
+The Disallow XRP flag is optional, but if you don't intend to receive XRP from customers you may want to enable it on your issuing address and all your operational addresses.
 
 
-## Require Auth
+### Require Auth
 
-The Require Auth setting prevents all counterparties from holding balances issued by an address unless the address has specifically approved an accounting relationship with that counterparty. For more information, see [Authorized Trust Lines](authorized-trust-lines.html).
+The Require Auth setting blocks users from holding the tokens you issue unless you explicitly approve their trust lines first. You can use this setting to meet regulatory requirements if it matters who holds your tokens within the XRP Ledger. However, this can reduce the utility of your tokens since your approval becomes a bottleneck for users to use them.
+
+Also, you must use your issuing address each time you authorize a trust line; if you must authorize a lot of trust lines, this can undermine the security of your issuing address because you have to use it so often. (If you only need to use the issuing address sparingly, you can put greater protections on its secret keys. The more often you use it, the more of a burden those protections become.)
+
+For more information, see [Authorized Trust Lines](authorized-trust-lines.html).
 
 
-### Authorizing Trust Lines
+### Tick Size
 
-If you are using the [Authorized Trust Lines](authorized-trust-lines.html) feature, customers cannot hold balances you issue unless you first authorize their accounting relationships to you in the XRP Ledger.
+The Tick Size setting controls how many decimal places are used when calculating exchange rates in the [Decentralized Exchange](decentralized-exchange.html). A higher Tick Size means more precision and less rounding in the amounts of various trades. Too much precision can be inconvenient because trades are ranked primarily based on exchange rate, so a trader can offer a minuscule amount more to the top of the list. A smaller Tick Size works similar to the minimum bid increment at an auction, saving everyone the time and effort of gradually bidding up a price by irrelevantly small amounts. However, a smaller Tick Size results in more rounding, which can increase the costs of trading, and sometimes has surprising results because two Offers that seemed like an exact match before rounding no longer match after rounding.
 
-To authorize an accounting relationship, submit a TrustSet transaction from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [`tfSetfAuth` flag](trustset.html#trustset-flags) for the transaction.
+The Tick Size is an account-level setting and applies to all tokens issued by the same address.
 
+Tick Size only controls the precision of _exchange rates_, not the precision of the token itself. Users can send and hold very large or very small amounts regardless of the Tick Size set by the token's issuer.
+
+For more information, see [Tick Size](tick-size.html).
+
+
+### Transfer Fees
+
+A transfer fee setting charges users a percentage fee when sending your tokens to each other. The transfer fee does not apply when issuing tokens or redeeming them directly with the issuing address. (It _does_ apply when users send payments to your hot wallet.) If you issue multiple tokens from the same address, the same transfer fee applies to all of them.
+
+When users send a token with a transfer fee, the amount of the transfer fee is debited from the sending side in addition to the destination amount, but only the destination amount is credited to the recipient. The amount of the fee "vanishes" from the XRP Ledger. As a stablecoin issuer, this means that you gain that much equity in your reserves outside of the XRP Ledger—or, in other words, the amount you need to keep as collateral decreases each time users pay a transfer fee.
+
+At a protocol level, the transfer fee is defined by the `TransferRate` account setting, which is an integer from 1 billion to 2 billion.
+
+For more information, see [Transfer Fees](transfer-fees.html).
+
+
+### Transfer Fees with Operational and Standby Addresses
+
+All XRP Ledger addresses, including operational and standby addresses, are subject to the issuer's transfer fees when sending tokens. If you set a nonzero transfer fee, then you must send extra (to pay the transfer fee) when making payments from your operational address or standby address. In other words, your addresses must pay back a little of the balance your issuing address created, each time you make a payment.
+
+Set the [`SendMax` transaction parameter][Payment] higher than the destination `Amount` parameter by a percentage based on the `TransferRate` setting.
+
+**Note:** Transfer fees do not apply when sending tokens directly from or to the issuing address. The issuing address must always accept its tokens at face value in the XRP Ledger. This means that customers don't have to pay the transfer fee if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the transfer fee the customer pays.
+
+For example: If ACME sets a transfer fee of 1%, an XRP Ledger payment to deliver 5 EUR.ACME from a customer address to ACME's issuing address would cost exactly 5 EUR.ACME. However, the customer would need to send 5.05 EUR.ACME to deliver 5 EUR.ACME to ACME's operational address. When ACME credits customers for payments to ACME's operational address, ACME credits the customer for the amount delivered to the operational address _and_ the transfer fee, giving the customer €5,05 in ACME's systems.
 
 
 ## Robustly Monitoring for Payments
@@ -422,101 +476,19 @@ As an added precaution, we recommend comparing the balances of your issuing addr
 For more details on how to read the details of incoming transactions, see [Look Up Transaction Results](look-up-transaction-results.html).
 
 
-## Transfer Fees
-
-The `TransferRate` setting defines a fee to charge for transferring tokens from one XRP Ledger address to another. See [Transfer Fees](transfer-fees.html) for more information.
-
-For examples of how to configure this setting, see the [Issue a Fungible Token tutorial](issue-a-fungible-token.html).
-
-
-### Transfer Fees with Operational and Standby Addresses
-
-All XRP Ledger addresses, including operational and standby addresses, are subject to the issuer's transfer fees when sending tokens. If you set a nonzero transfer fee, then you must send extra (to pay the transfer fee) when making payments from your operational address or standby address. In other words, your addresses must pay back a little of the balance your issuing address created, each time you make a payment.
-
-Set the [`SendMax` transaction parameter][Payment] higher than the destination `Amount` parameter by a percentage based on the `TransferRate` setting.
-
-**Note:** Transfer fees do not apply when sending tokens directly to the issuing address. The issuing address must always accept its tokens at face value in the XRP Ledger. This means that customers don't have to pay the transfer fee if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the transfer fee the customer pays.
-
-For example: If ACME sets a transfer fee of 1%, an XRP Ledger payment to deliver 5 EUR.ACME from a customer address to ACME's issuing address would cost exactly 5 EUR.ACME. However, the customer would need to send 5.05 EUR.ACME to deliver 5 EUR.ACME to ACME's operational address. (The issuing address's total obligations in the XRP Ledger decrease by 0.05 EUR.ACME.) When ACME credits customers for payments to ACME's operational address, ACME credits the customer for the amount delivered to the operational address _and_ the transfer fee, giving the customer €5,05 in ACME's systems.
-
 
 ## Sending Payments to Customers
 
 When you build an automated system to send payments into the XRP Ledger for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find ways to trick a system into paying them more money than it should.
 
-One common pitfall is performing pathfinding before sending a payment to customers in the XRP Ledger. If you specify the issuers correctly, the [default paths](paths.html#default-paths) can deliver the currency as intended.
+Generally, when sending stablecoins, you use a [Payment transaction][]. Some of the details are different depending on whether you are issuing tokens for the first time or transferring them from a hot wallet to a customer. Things to note include:
 
-The following is an example of using a locally-hosted `rippled`'s [submit method][] to send a payment from the operational address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` to the customer address `raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n`, sending and delivering funds issued by the issuing address `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW`.
+- When issuing new tokens from your issuing address, you should omit the `SendMax` field. Otherwise, malicious users can arrange their settings so that you issue the full `SendMax` amount instead of just the intended destination `Amount`.
+- When sending tokens _from a hot wallet_, you must specify `SendMax` if you have a nonzero transfer fee. In this case, set the `SendMax` field to the amount specified in the `Amount` field plus the transfer fee. (You may want to round up slightly, in case the precision of your calculations doesn't exactly match the XRP Ledger's.) For example, if you send a transaction whose `Amount` field specifies 99.47 USD, and your transfer fee is 0.25%, you should set the `SendMax` field to 124.3375, or 124.34 USD if you round up.
+- Omit the `Paths` field. This field is unnecessary when sending directly from the issuer, or from a hot wallet as long as the tokens being sent and the tokens being received have the same currency code and issuer—that is, they're the same stablecoin. The `Paths` field is intended for [Cross-Currency Payments](cross-currency-payments.html) and longer multi-hop (rippling) payments. If you naively perform pathfinding and attach the paths to your transaction, your payment may take a more expensive indirect route rather than failing if the direct path is not available; malicious users can even set this up to 
+- If you get a `tecPATH_DRY` result code, this usually indicates that either the customer doesn't have the necessary trust line set up already, or your issuer's rippling settings aren't configured correctly.
 
-Request:
-
-```
-{
-	"method": "submit",
-	"params": [{
-		"secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
-		"tx_json": {
-			"TransactionType": "Payment",
-			"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-			"Destination": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
-			"Amount": {
-				"currency": "USD",
-				"value": "0.13",
-				"issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
-			},
-			"SendMax": {
-				"currency": "USD",
-				"value": "0.13065",
-				"issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
-			},
-			"Fee": "10000"
-		}
-	}]
-}
-```
-
-*Reminder: Don't send your secret to a server you do not control.*
-
-Response:
-
-```
-{
-	"result": {
-		"engine_result": "tesSUCCESS",
-		"engine_result_code": 0,
-		"engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-		"status": "success",
-		"tx_blob": "1200002280000000240000016561D4449E57D63540000000000000000000000000005553440000000000204288D2E47F8EF6C99BCC457966320D1240971168400000000000271069D444A4413C6628000000000000000000000000005553440000000000204288D2E47F8EF6C99BCC457966320D12409711732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402207B75D91DC0EEE613A94E05FD5D031568D8A763E99697FF6328745BD226DA7D4E022005C75D7215FD62CB8E46C55B29FCA8E3FC62FDC55DF300597089DD29863BD3CD81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143A4C02EA95AD6AC3BED92FA036E0BBFB712C030C",
-		"tx_json": {
-			"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-			"Amount": {
-				"currency": "USD",
-				"issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-				"value": "0.13"
-			},
-			"Destination": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
-			"Fee": "10000",
-			"Flags": 2147483648,
-			"SendMax": {
-				"currency": "USD",
-				"issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-				"value": "0.13065"
-			},
-			"Sequence": 357,
-			"SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-			"TransactionType": "Payment",
-			"TxnSignature": "304402207B75D91DC0EEE613A94E05FD5D031568D8A763E99697FF6328745BD226DA7D4E022005C75D7215FD62CB8E46C55B29FCA8E3FC62FDC55DF300597089DD29863BD3CD",
-			"hash": "37B4AA5C77A8EB889164CA012E6F064A46B6B7B51677003FC3617F614608C60B"
-		}
-	}
-}
-```
-
-In particular, note the following features of the `Payment` transaction:
-
-- No `Paths` field. The payment only succeeds if it can use a [default path](paths.html#default-paths), which is preferable. Using less direct paths can become much more expensive.
-- The `issuer` of both the `SendMax` and the `Amount` is the issuing address. This ensures that the transaction sends and delivers tokens from the intended issuer, and not from another issuer using the same currency code.
-- The `value` of the `SendMax` amount is slightly higher than the destination `Amount`, to compensate for the transfer fee. In this case, the transfer fee is 0.5%, so the `SendMax` amount is exactly 1.005 times the destination `Amount`.
+For a detailed tutorial on issuing a token on the XRP Ledger, whether a stablecoin or otherwise, see [Issue a Fungible Token](issue-a-fungible-token.html).
 
 
 ## Bouncing Payments
