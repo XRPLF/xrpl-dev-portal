@@ -48,6 +48,67 @@
       { "description": _("XRP Ledger Explorer"), "link": "https://livenet.xrpl.org" },
   ] %}
 
+  {# <section class="container-new mb-50-until-sm" id="sdk-links">
+    <div class="row">
+      <div class="col-lg-6 mb-10" id="sdk-list">
+        <p>{% trans %}Explore SDKs{% endtrans %}</p>
+        <h2 class="h4">{% trans %}Browse By Recommended Pages{% endtrans %}</h2>
+        <ul class="nav flex-column">
+          {% for page in recommendedPages %}
+            <li class="nav-item"><a href="{{page.link}}" class="nav-link">{{page.description}}</a>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-lg-6 mb-10">
+        <img src="img/backgrounds/docs-sdk@2x.png" class="img-fluid pt-20 sdk-img" alt="A computer with 'SDKs' written on it.">
+      </div>
+    </div>
+  </section> #}
+
+  <section class="py-26 px-20 text-left">
+        <div class="card-grid card-grid-2xN">
+          <div class="col">
+            <h6>Explore SDKs</h6>
+            <h4>Interact with the XRP Ledger in a language of your choice</h4>
+            <div class="card-grid langs-cards card-grid-2xN mt-10">
+              <div class="col langs">
+                <a href="https://xrpl.org/get-started-using-javascript.html">
+                  <img
+                    src="/assets/img/logos/javascript.svg"
+                    class="circled-logo"
+                  >
+                  <h5 class="btn-arrow">Javascript</h5>
+                </a>
+              </div>
+              <div class="col langs">
+                <a href="https://xrpl.org/get-started-using-python.html">
+                  <img
+                    src="/assets/img/logos/python.svg"
+                    class="circled-logo"
+                  >
+                  <h5 class="btn-arrow">Python</h5>
+                </a>
+              </div>
+              <div class="col langs">
+                <a href="https://xrpl.org/get-started-using-java.html">
+                  <img
+                    src="/assets/img/logos/java.svg"
+                    class="circled-logo"
+                  >
+                  <h5 class="btn-arrow">Java</h5>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <img
+              src="/assets/img/backgrounds/sdk-black.png"
+              class="img-fluid pt-20 sdk-img"
+            />
+          </div>
+        </div>
+      </section>
+
   <section class="container-new mb-50-until-sm" id="software-and-sdks">
     <div class="d-flex flex-column-reverse w-100">
       <h2 class="h4">{% trans %}Software and SDKs{% endtrans %}</h2>

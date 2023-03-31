@@ -1,0 +1,93 @@
+// // TODO: Refactor this to have `.page-docs-index` at the top and everything else as sub-tiems
+
+// #main {
+//     flex: 0 0 75%;
+//     max-width: 75%;
+// }
+
+// Light mode
+.light .sdk-img{
+    content:url(../assets/img/backgrounds/sdk-white.png);
+  }
+  
+// Utilizes whitespace better when there's only a left sidebar
+// TODO: Figure out why this isn't working - but this sizing looks good as a temporary state.
+.page-docs-index main {
+    flex: 0 0 75%;
+    max-width: 75%;
+}
+
+.page-docs-index .langs h5:hover {
+    color:#9A52FF;
+    text-decoration: none !important;
+    background: none!important;
+  }
+  .page-docs-index .dev-tools-link h6:hover {
+    color:#9A52FF;
+    text-decoration: none;
+    background: none!important;
+  }
+  .page-docs-index .dev-tools-link p:hover {
+    text-decoration: none !important;
+    background: none !important;
+  }
+  .page-docs-index .dev-tools-link a:hover{
+    color:#9A52FF;
+    text-decoration: none !important;
+  }
+  .page-docs-index .langs a:hover{
+    text-decoration: none !important;
+  }
+  .page-docs-index .langs .btn-arrow::after{
+    content: url(../img/icons/arrow-right-purple.svg);
+    vertical-align: baseline;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .page-docs-index .dev-tools-link .btn-arrow::after{
+    content: url(../img/icons/arrow-right-purple.svg);
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .page-docs-index .langs a{
+    color:#E0E0E1
+  }
+  .light .langs a{
+    color: #000;
+  }
+  .page-docs-index .langs h5{
+    margin-block-start: 0 !important;
+  }
+  .page-docs-index h1,h2,h3,h4,h5,h6,p{
+    font-family: 'Work Sans'!important;
+  }
+  .page-docs-index h1{
+    font-size: 3.875rem;
+  }
+  @media (max-width: 991.98px) {
+    /* Fix dropdown size with top banner present */
+    .page-docs-index .langs-cards {
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: auto;
+    }
+  }
+  
+  .circled-logo{
+    margin-left:0.1rem;
+  }
+  
+  .circled-logo {
+    background-color: 757575;
+    border-radius: 50%;
+    padding: .65rem;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.75rem;
+    border: 2px solid #232325;
+  }
+  .circled-logo .img {
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+  }
