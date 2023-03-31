@@ -57,6 +57,7 @@ labels:
     - `bionic` for **Ubuntu 18.04 Bionic Beaver**
     - `buster` for **Debian 10 Buster**
     - `bullseye` for **Debian 11 Bullseye**
+    - `jammy` for **Ubuntu 22.04 Jammy Jellyfish**
 
    `rippled`の開発バージョンまたはプレリリースバージョンにアクセスするには、`stable`ではなく次のいずれかを使用します。
 
@@ -80,12 +81,6 @@ labels:
    `rippled`サービスが自動的に開始します。開始しない場合は、手動で開始できます。
 
         sudo systemctl start rippled.service
-
-   起動時に自動で起動するようにするには、以下の手順に従います。
-
-        sudo systemctl enable rippled.service
-
-
 
 ## 次のステップ
 
