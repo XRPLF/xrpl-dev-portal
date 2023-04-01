@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 43 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: rifs, gits, ifs
-  ringtee: 
+  gifs: gift, ifs, gibs
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -34,43 +34,43 @@ Found 43 possible spelling errors:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  fixuniversalnumber: 
-  disallowincoming: 
-  fixnonfungibletokensv1_2: 
-  immediateofferkilled: 
   xrpfees: 
   depositpreauthamendment: 
+  fixuniversalnumber: 
+  disallowincoming: 
+  immediateofferkilled: 
+  fixnonfungibletokensv1_2: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingpaychan: 
   asfdisallowincomingcheck: 
-  asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
-  30d: 3-d, 3rd, 3d
+  asfdisallowincomingnftoffer: 
+  30d: 3d, 3rd, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3d, 3rd, 3-d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -85,7 +85,7 @@ Found 43 possible spelling errors:
   xrpfees: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3d, 3rd, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
