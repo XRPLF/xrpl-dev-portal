@@ -223,7 +223,7 @@ pages:
         template: page-xrpl-overview.html.jinja
         html: xrp-ledger-overview.html
         parent: index.html
-        top_nav_name: アバウト
+        top_nav_name: 概要
         top_nav_grouping: XRP Ledger
         sidebar: disabled
         blurb: XRPL開発者コミュニティが推進するパブリックブロックチェーン「XRP Ledger」の主なメリットと特徴をご紹介します。
@@ -4697,8 +4697,8 @@ pages:
         parent: index.html
         template: page-community.html.jinja
         sidebar: disabled
-        blurb: Join the conversation
-        top_nav_name: コミュニティー
+        blurb: 話題に加わろう
+        top_nav_name: コミュニティ
         top_nav_hero_image: top-nav-hero-contribute
         targets:
             - ja
