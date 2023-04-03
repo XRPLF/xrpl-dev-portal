@@ -128,12 +128,4 @@ const main = async () => {
     })
 }
 
-app.whenReady().then(() => {
-    main()
-
-    app.on('activate', () => {
-        if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow()
-        }
-    })
-})
+app.whenReady().then(main)

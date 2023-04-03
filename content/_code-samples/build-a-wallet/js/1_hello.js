@@ -45,21 +45,18 @@ const createWindow = () => {
     // Loads a layout
     appWindow.loadFile(path.join(__dirname, 'view', '1_hello.html'))
 
-    // Performs main logic (display latest validated ledger index)
-    getValidatedLedgerIndex().then((value) => {
-        appWindow.webContents.send('update-ledger-index', value)
-    })
-
+    return appWindow
 }
 
-// For purposes of this tutorial we can safely ignore the following code
-
+// Here we have to wait for the application to signal that it is ready
+// to execute our code. In this case we create a main window, query
+// the ledger for its latest index and submit the result to the main
+// window where it will be displayed
 app.whenReady().then(() => {
-    createWindow()
 
-    app.on('activate', () => {
-        if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow()
-        }
+    const appWindow = createWindow()
+
+    getValidatedLedgerIndex().then((value) => {
+        appWindow.webContents.send('update-ledger-index', value)
     })
 })
