@@ -198,7 +198,7 @@ npm run tx-history
 
 ### 5. Send XRP
 
-**Full code for this step:** [`5_send-xrp.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_send-xrp.js).
+**Full code for this step:** [`7_send-xrp.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_send-xrp.js).
 
 Up until now we have enabled our app to query and display data from the XRPL. Now it's time to actively participate in
 the ledger by enabling out application to send transactions. For now, you can stick to sending direct XRP payments 
@@ -218,7 +218,7 @@ npm run send-xrp
 
 ### 6. Domain Verification and Polish
 
-**Full code for this step:** [`6_domain-verification.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/3_domain-verification.js).
+**Full code for this step:** [`8_domain-verification.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/3_domain-verification.js).
 
 One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of 
 protections or feedback for users to save them from human error and scams. These sorts of protections are extra 

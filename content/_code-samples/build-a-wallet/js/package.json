@@ -9,8 +9,10 @@
     "async-subscribe": "electron ./2_async-subscribe.js",
     "account": "electron ./3_account.js",
     "tx-history": "electron ./4_tx-history.js",
-    "send-xrp": "electron ./5_send-xrp.js",
-    "domain-verification": "electron ./6_domain-verification.js"
+    "password": "electron ./5_password.js",
+    "styling": "electron ./6_styling.js",
+    "send-xrp": "electron ./7_send-xrp.js",
+    "domain-verification": "electron ./8_domain-verification.js"
   },
   "dependencies": {
     "async": "^3.2.4",

@@ -1,3 +1,23 @@
+document.addEventListener('DOMContentLoaded', openAccountAddressDialog);
+
+function openAccountAddressDialog(){
+    const accountAddressDialog = document.getElementById('account-address-dialog');
+    const accountAddressInput = accountAddressDialog.querySelector('input');
+    const submitButton = accountAddressDialog.querySelector('button[type="submit"]');
+    const resetButton = accountAddressDialog.querySelector('button[type="reset"]');
+
+    submitButton.addEventListener('click', () => {
+        const address = accountAddressInput.value;
+        window.electronAPI.onEnterAccountAddress(address)
+    });
+
+    resetButton.addEventListener('click', () => {
+        accountAddressInput.value = '';
+    });
+
+    accountAddressDialog.showModal()
+}
+
 const ledgerIndexEl = document.getElementById('ledger-index')
 const ledgerHashEl = document.getElementById('ledger-hash')
 const ledgerCloseTimeEl = document.getElementById('ledger-close-time')

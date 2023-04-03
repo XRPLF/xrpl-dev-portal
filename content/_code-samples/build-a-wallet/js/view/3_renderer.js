@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', openSeedDialog);
+document.addEventListener('DOMContentLoaded', openAccountAddressDialog);
 
-function openSeedDialog(){
-    const seedDialog = document.getElementById('account-address-dialog');
-    const accountAddressInput = seedDialog.querySelector('input');
-    const submitButton = seedDialog.querySelector('button[type="submit"]');
-    const resetButton = seedDialog.querySelector('button[type="reset"]');
+function openAccountAddressDialog(){
+    const accountAddressDialog = document.getElementById('account-address-dialog');
+    const accountAddressInput = accountAddressDialog.querySelector('input');
+    const submitButton = accountAddressDialog.querySelector('button[type="submit"]');
+    const resetButton = accountAddressDialog.querySelector('button[type="reset"]');
 
     submitButton.addEventListener('click', () => {
         const address = accountAddressInput.value;
@@ -12,11 +12,10 @@ function openSeedDialog(){
     });
 
     resetButton.addEventListener('click', () => {
-        seedInput.value = '';
-        console.log('reset');
+        accountAddressInput.value = '';
     });
 
-    seedDialog.showModal()
+    accountAddressDialog.showModal()
 }
 
 const ledgerIndexEl = document.getElementById('ledger-index')

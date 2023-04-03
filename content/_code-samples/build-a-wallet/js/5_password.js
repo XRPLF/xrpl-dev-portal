@@ -5,6 +5,7 @@ const xrpl = require("xrpl")
 const testnetUrl = "wss://s.altnet.rippletest.net:51233"
 
 let reserveBaseXrp = null, reserveIncrementXrp = null
+
 const prepareAccountData = (rawAccountData) => {
     const numOwners = rawAccountData.OwnerCount || 0
 
@@ -46,11 +47,11 @@ const createWindow = () => {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'view', '4_preload.js'),
+            preload: path.join(__dirname, 'view', '5_preload.js'),
         },
     })
 
-    appWindow.loadFile(path.join(__dirname, 'view', '4_tx-history.html'))
+    appWindow.loadFile(path.join(__dirname, 'view', '5_password.html'))
 
     return appWindow
 }
@@ -58,7 +59,11 @@ const createWindow = () => {
 const main = async () => {
     const appWindow = createWindow()
 
-    ipcMain.on('address-entered', async (event, address) => {
+    ipcMain.on('seed-entered', async (event, seed) => {
+
+        const wallet = xrpl.Wallet.fromSeed(seed)
+
+        console.log(wallet)
 
         const client = new xrpl.Client(testnetUrl)
 
@@ -67,7 +72,7 @@ const main = async () => {
         await client.request({
             "command": "subscribe",
             "streams": ["ledger"],
-            "accounts": [address]
+            "accounts": [wallet.address]
         })
 
         client.on("ledgerClosed", async (ledger) => {
@@ -79,7 +84,7 @@ const main = async () => {
         client.on("transaction", async (transaction) => {
             const accountInfoRequest = {
                 "command": "account_info",
-                "account": address,
+                "account": wallet.address,
                 "ledger_index": transaction.ledger_index
             }
 
@@ -94,7 +99,7 @@ const main = async () => {
         // Initial Account Request -> get account details
         const accountInfoResponse = await client.request({
             "command": "account_info",
-            "account": address,
+            "account": wallet.address,
             "ledger_index": "current"
         })
         const accountData = prepareAccountData(accountInfoResponse.result.account_data)
@@ -103,11 +108,10 @@ const main = async () => {
         // Initial Transaction Request -> list transactions on startup
         const txResponse = await client.request({
             "command": "account_tx",
-            "account": address
+            "account": wallet.address
         })
         const transactions = prepareTxData(txResponse.result.transactions)
         appWindow.webContents.send('update-transaction-data', transactions)
-
     })
 }
 
