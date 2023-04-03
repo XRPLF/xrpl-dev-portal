@@ -98,7 +98,9 @@ In this step, we create a home page that displays account and ledger details.
 
 2. Create new files named `index.html`, `index.js` and `index.css`. 
 
-3. Copy the contents of the [index.html](_code-samples/build-a-wallet/js/index.html), [index.js](_code-samples/build-a-wallet/js/index.js) and [index.css](_code-samples/build-a-wallet/js/index.css) files to your files.
+3. Copy the content of [index.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/index.html) in your code.
+
+4. Add styling to your [index.css]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/index.css) file by following the link.
 
 This basic setup creates a homepage and applies some visual styles. The goal is for the homepage to:
 
@@ -108,11 +110,11 @@ This basic setup creates a homepage and applies some visual styles. The goal is 
 
 To make that happen, we need to connect to the XRP Ledger and look up the account and the latest validated ledger.
 
-4. In the `src/` directory, make a new folder named `helpers`. Create a new file there named `get-wallet-details.js` and define a function named `getWalletDetails` there. This function uses the [account_info method](account_info.html) to fetch account details and the [server_info method](server_info.html) to calculate the current [reserves](reserves.html). The code to do all this is as follows:
+5. In the `src/` directory, make a new folder named `helpers`. Create a new file there named `get-wallet-details.js` and define a function named `getWalletDetails` there. This function uses the [account_info method](account_info.html) to fetch account details and the [server_info method](server_info.html) to calculate the current [reserves](reserves.html). The code to do all this is as follows:
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-wallet-details.js", language="js") }}
 
-5. Now, let's add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. Here we render the wallet details using the function we defined in `get-wallet-details.js`. In order to make sure we have up to date ledger data, we are using the [ledger stream](subscribe.html#ledger-stream) to listen for ledger close events.
+6. Now, let's add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. Here we render the wallet details using the function we defined in `get-wallet-details.js`. In order to make sure we have up to date ledger data, we are using the [ledger stream](subscribe.html#ledger-stream) to listen for ledger close events.
 
 {{ include_code("_code-samples/build-a-wallet/js/index.js", language="js") }}
 
@@ -136,7 +138,7 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 
 2. Inside the `send-xrp` folder, create two files named `send-xrp.js` and `send-xrp.html`.
 
-3. Copy the contents of the [send-xrp.html](_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.html) file to your `send-xrp.html` file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.
+3. Copy the contents of the [send-xrp.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.html) file to your `send-xrp.html` file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.
 
 4. Now that we have the HTML code, let's add the JavaScript code. In the `helpers` folder, create a new file named `submit-transaction.js` and copy the code written below to the file. In this file, we are using the [submit](submit.html) method to submit the transaction to the XRPL. Before submitting every transaction needs to be signed by a wallet, learn more about [signing](sign.html) a transaction.
 
@@ -167,7 +169,7 @@ Now that we have created the home page and the send XRP page, let's create the t
 
 This code uses [account_tx](account_tx.html) to fetch transactions we've sent to and from this account. In order to get all the results, we're using the `marker` parameter to paginate through the incomplete list of transactions until we reach the end.
 
-3. Create a file named `transaction-history.html` and copy the code from [transaction-history.html](_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.html) into it. 
+3. Create a file named `transaction-history.html` and copy the code from [transaction-history.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.html) into it.
 
 `transaction-history.html` defines a table which displays the fields mentioned above.
 
