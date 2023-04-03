@@ -14,8 +14,8 @@ This tutorial demonstrates how to build a browser wallet for the XRP Ledger usin
 
 To complete this tutorial, you should meet the following guidelines:
 
-1. You have [Node.js](https://nodejs.org/en/download/) v10.15.3 or higher installed.
-2. You have [Yarn](https://yarnpkg.com/en/docs/install) (v1.17.3 or higher) or [NPM](https://www.npmjs.com/get-npm) (v6.4.1 or higher) installed.
+1. You have [Node.js](https://nodejs.org/en/download/) v14 or higher installed.
+2. You have [Yarn](https://yarnpkg.com/en/docs/install) (v1.17.3 or higher) installed.
 3. You are somewhat familiar with coding with JavaScript and have completed the [Get Started Using JavaScript](get-started-using-javascript.html) tutorial.
 
 ## Source Code
@@ -50,26 +50,24 @@ Before you begin, make sure you have the prerequisites installed. Check your nod
    ```sh
     yarn create vite-app <project-name>
     ```
-    or
-    ```sh
-    npm init vite-app <project-name>
-    ```
     to create a new project.
 
 3. Create or modify the file `package.json` to have the following contents:
 
 {{ include_code("_code-samples/build-a-wallet/js/package.json", language="js") }}
-        - Alternatively you can also do `yarn add <package-name>` or `npm install <package-name>` for each individual package to add them to your `package.json` file.
-  
-4. Run `yarn` or `npm i` to install the packages.
 
-5. Create a new file `.env` in the root directory of the project and add the following variables:
+   - Alternatively you can also do `yarn add <package-name>` for each individual package to add them to your `package.json` file.
+  
+1. Run `yarn` to install the packages.
+
+2. Create a new file `.env` in the root directory of the project and add the following variables:
 
 ```bash
 CLIENT="wss://s.altnet.rippletest.net/" // or any other server
 EXPLORER_NETWORK="testnet" // or "mainnet"
 SEED="sEd7B2Jm7RBhhh5i88SH38aZB8ot8Kq" // Replace with your seed
 ```
+
 6. Change the seed to your own seed. You can get a testnet account from [here](https://xrpl.org/xrp-test-net-faucet.html).
 
 7. Create a new file named `vite.config.js` if not present already in the root directory of the project.
@@ -126,16 +124,13 @@ In order to make that happen, we need to look up our account state on the ledger
 
 The one other thing we do here is add two buttons - one to send XRP and one to view the transaction history of our account. They won't work just yet - we'll have to add those implementations next.
 
-Now the basic setup of your application is ready, you can run one of these commands
+Now the application is ready to run. You can start it in dev mode using the following command:
 
 ```bash
 yarn dev
 ```
-or 
-```bash
-npm run dev
-```
-in your terminal which will start your app in development mode. Your terminal will display an URL using which you can verify the changes in real-time.
+
+Your terminal should output a URL which you can use to open your app in a browser. This dev site automatically updates to reflect any changes you make to the code.
 
 ### Step 3: Creating the Send XRP Page
 
