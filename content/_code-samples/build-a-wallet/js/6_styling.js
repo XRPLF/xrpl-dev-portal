@@ -18,7 +18,7 @@ const createWindow = () => {
         },
     })
 
-    appWindow.loadFile(path.join(__dirname, 'view', '5_password.html'))
+    appWindow.loadFile(path.join(__dirname, 'view', '6_styling.html'))
 
     return appWindow
 }

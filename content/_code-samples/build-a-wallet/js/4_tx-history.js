@@ -9,8 +9,8 @@ const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 const createWindow = () => {
 
     const appWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1024,
+        height: 768,
         webPreferences: {
             preload: path.join(__dirname, 'view', '4_preload.js'),
         },

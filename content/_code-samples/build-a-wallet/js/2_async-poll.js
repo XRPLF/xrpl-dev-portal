@@ -29,8 +29,8 @@ const getValidatedLedgerData = async (client) => {
 const createWindow = () => {
 
     const appWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1024,
+        height: 768,
         webPreferences: {
             preload: path.join(__dirname, 'view', '2_preload.js'),
         },
@@ -70,3 +70,5 @@ const main = async () => {
         }
     )
 }
+
+app.whenReady().then(main)
