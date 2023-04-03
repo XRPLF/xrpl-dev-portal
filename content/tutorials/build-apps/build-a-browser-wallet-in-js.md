@@ -114,7 +114,7 @@ In order to make that happen, we need to look up our account state on the ledger
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-wallet-details.js", language="js") }}
 
-5. Create another file in helpers folder named `get-ledger-details.js` which will be used to fetch the ledger details and copy the code written below to the file. In the function `getLedgerDetails`, we are using the [ledger](https://xrpl.org/ledger.html) that will fetch the details of the latest ledger.
+5. In the `helpers/` folder, create another file named `get-ledger-details.js`. Define a function, `getLedgerDetails()`, which fetches the latest validated ledger using the [ledger method](ledger.html). The code is as follows:
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-ledger-details.js", language="js") }}
 
