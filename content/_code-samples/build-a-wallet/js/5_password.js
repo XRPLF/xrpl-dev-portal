@@ -41,6 +41,54 @@ const prepareTxData = (transactions) => {
     }))
 }
 
+const subscribe = async (client, wallet, appWindow) => {
+    await client.request({
+        "command": "subscribe",
+        "streams": ["ledger"],
+        "accounts": [wallet.address]
+    })
+
+    client.on("ledgerClosed", async (ledger) => {
+        const ledgerData = prepareLedgerData(ledger)
+        appWindow.webContents.send('update-ledger-data', ledgerData)
+    })
+
+    // Wait for transaction on subscribed account and re-request account data
+    client.on("transaction", async (transaction) => {
+        const accountInfoRequest = {
+            "command": "account_info",
+            "account": wallet.address,
+            "ledger_index": transaction.ledger_index
+        }
+
+        const accountInfoResponse = await client.request(accountInfoRequest)
+        const accountData = prepareAccountData(accountInfoResponse.result.account_data)
+        appWindow.webContents.send('update-account-data', accountData)
+
+        const transactions = prepareTxData([{tx: transaction.transaction}])
+        appWindow.webContents.send('update-transaction-data', transactions)
+    })
+}
+
+const initialize = async (client, wallet, appWindow) => {
+    // Initial Account Request -> get account details
+    const accountInfoResponse = await client.request({
+        "command": "account_info",
+        "account": wallet.address,
+        "ledger_index": "current"
+    })
+    const accountData = prepareAccountData(accountInfoResponse.result.account_data)
+    appWindow.webContents.send('update-account-data', accountData)
+
+    // Initial Transaction Request -> list transactions on startup
+    const txResponse = await client.request({
+        "command": "account_tx",
+        "account": wallet.address
+    })
+    const transactions = prepareTxData(txResponse.result.transactions)
+    appWindow.webContents.send('update-transaction-data', transactions)
+}
+
 const createWindow = () => {
 
     const appWindow = new BrowserWindow({
@@ -63,55 +111,14 @@ const main = async () => {
 
         const wallet = xrpl.Wallet.fromSeed(seed)
 
-        console.log(wallet)
-
         const client = new xrpl.Client(testnetUrl)
 
         await client.connect()
 
-        await client.request({
-            "command": "subscribe",
-            "streams": ["ledger"],
-            "accounts": [wallet.address]
-        })
+        await subscribe(client, wallet, appWindow)
 
-        client.on("ledgerClosed", async (ledger) => {
-            const ledgerData = prepareLedgerData(ledger)
-            appWindow.webContents.send('update-ledger-data', ledgerData)
-        })
+        await initialize(client, wallet, appWindow)
 
-        // Wait for transaction on subscribed account and re-request account data
-        client.on("transaction", async (transaction) => {
-            const accountInfoRequest = {
-                "command": "account_info",
-                "account": wallet.address,
-                "ledger_index": transaction.ledger_index
-            }
-
-            const accountInfoResponse = await client.request(accountInfoRequest)
-            const accountData = prepareAccountData(accountInfoResponse.result.account_data)
-            appWindow.webContents.send('update-account-data', accountData)
-
-            const transactions = prepareTxData([{tx: transaction.transaction}])
-            appWindow.webContents.send('update-transaction-data', transactions)
-        })
-
-        // Initial Account Request -> get account details
-        const accountInfoResponse = await client.request({
-            "command": "account_info",
-            "account": wallet.address,
-            "ledger_index": "current"
-        })
-        const accountData = prepareAccountData(accountInfoResponse.result.account_data)
-        appWindow.webContents.send('update-account-data', accountData)
-
-        // Initial Transaction Request -> list transactions on startup
-        const txResponse = await client.request({
-            "command": "account_tx",
-            "account": wallet.address
-        })
-        const transactions = prepareTxData(txResponse.result.transactions)
-        appWindow.webContents.send('update-transaction-data', transactions)
     })
 }
 
