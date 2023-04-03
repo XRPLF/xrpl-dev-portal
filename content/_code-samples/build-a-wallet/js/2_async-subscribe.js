@@ -2,7 +2,7 @@ const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const xrpl = require("xrpl")
 
-const testnetUrl = "wss://s.altnet.rippletest.net:51233"
+const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
 /**
  * This function creates our application window
@@ -33,7 +33,7 @@ const createWindow = () => {
 const main = async () => {
     const appWindow = createWindow()
 
-    const client = new xrpl.Client(testnetUrl)
+    const client = new xrpl.Client(TESTNET_URL)
 
     await client.connect()
 
@@ -48,5 +48,3 @@ const main = async () => {
         appWindow.webContents.send('update-ledger-data', ledger)
     })
 }
-
-app.whenReady().then(main)

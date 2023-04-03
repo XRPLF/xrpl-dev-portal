@@ -1,8 +1,17 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
-    onEnterSeed: (address) => {
-        ipcRenderer.send('seed-entered', address)
+    onOpenSeedDialog: (callback) => {
+        ipcRenderer.on('open-seed-dialog', callback)
+    },
+    onEnterSeed: (seed) => {
+        ipcRenderer.send('seed-entered', seed)
+    },
+    onOpenPasswordDialog: (callback) => {
+        ipcRenderer.on('open-password-dialog', callback)
+    },
+    onEnterPassword: (password) => {
+        ipcRenderer.send('password-entered', password)
     },
     onUpdateLedgerData: (callback) => {
         ipcRenderer.on('update-ledger-data', callback)

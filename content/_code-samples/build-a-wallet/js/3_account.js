@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const xrpl = require("xrpl")
 
-const testnetUrl = "wss://s.altnet.rippletest.net:51233"
+const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
 let reserveBaseXrp = null, reserveIncrementXrp = null
 
@@ -49,7 +49,7 @@ const main = async () => {
 
     ipcMain.on('address-entered', async (event, address) =>  {
 
-        const client = new xrpl.Client(testnetUrl)
+        const client = new xrpl.Client(TESTNET_URL)
 
         await client.connect()
 

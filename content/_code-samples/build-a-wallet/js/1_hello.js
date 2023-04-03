@@ -3,7 +3,7 @@ const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const xrpl = require("xrpl")
 
-const testnetUrl = "wss://s.altnet.rippletest.net:51233"
+const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
 /**
  * This function creates a WebService client, which connects to the XRPL and fetches the latest ledger index.
@@ -11,7 +11,7 @@ const testnetUrl = "wss://s.altnet.rippletest.net:51233"
  * @returns {Promise<number>}
  */
 const getValidatedLedgerIndex = async () => {
-    const client = new xrpl.Client(testnetUrl)
+    const client = new xrpl.Client(TESTNET_URL)
 
     await client.connect()
 

@@ -1,9 +1,9 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const xrpl = require("xrpl")
-const { sendXrp } = require('./library/5_helpers')
+const { sendXrp } = require('./library/7_helpers')
 
-const testnetUrl = "wss://s.altnet.rippletest.net:51233"
+const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
 let reserveBaseXrp = null
 let reserveIncrementXrp = null
@@ -68,7 +68,7 @@ const main = async () => {
 
     wallet = xrpl.Wallet.fromSeed(fixedSeed)
 
-    client = new xrpl.Client(testnetUrl)
+    client = new xrpl.Client(TESTNET_URL)
 
     await client.connect()
 

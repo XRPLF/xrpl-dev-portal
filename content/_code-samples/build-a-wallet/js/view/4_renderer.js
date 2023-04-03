@@ -9,6 +9,7 @@ function openAccountAddressDialog(){
     submitButton.addEventListener('click', () => {
         const address = accountAddressInput.value;
         window.electronAPI.onEnterAccountAddress(address)
+        accountAddressDialog.close()
     });
 
     resetButton.addEventListener('click', () => {
