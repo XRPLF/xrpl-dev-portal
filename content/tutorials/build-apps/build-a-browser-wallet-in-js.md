@@ -41,7 +41,7 @@ This application can:
 
 ## Steps
 
-Before you begin, make sure you have the pre-requisites installed. Check your node version by running `node -v`. If you don't have node installed, you can download it [here](https://nodejs.org/en/download/).
+Before you begin, make sure you have the prerequisites installed. Check your node version by running `node -v`. If necessary, [download Node.js](https://nodejs.org/en/download/).
 
 ### Step 1: Setting up the project
 
