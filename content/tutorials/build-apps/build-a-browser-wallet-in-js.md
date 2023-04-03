@@ -110,7 +110,7 @@ Now that you've got the basic setup, let's discuss what we're going to do. For t
 
 In order to make that happen, we need to look up our account state on the ledger. The next couple steps will walk you through that process.
 
-4. Make a new folder named helpers in the src directory, create a new file named `get-wallet-details.js` and copy the code written below to the file. In the function `getWalletDetails`, we are using the [account_info](https://xrpl.org/account_info.html) method to fetch the account details. We are also using the [server_info](https://xrpl.org/server_info.html) method to calculate the reserve base and increment. You can read more about the reserve requirement [here](https://xrpl.org/reserves.html).
+4. In the `src/` directory, make a new folder named `helpers`. Create a new file there named `get-wallet-details.js` and define a function named `getWalletDetails` there. This function uses the [account_info method](account_info.html) to fetch account details and the [server_info method](server_info.html) to calculate the current [reserves](reserves.html). The code to do all this is as follows:
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-wallet-details.js", language="js") }}
 
