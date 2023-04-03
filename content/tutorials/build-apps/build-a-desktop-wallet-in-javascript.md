@@ -132,6 +132,19 @@ To get the application running at this stage of development, run the following c
 npm run async-poll
 ```
 
+The code has been refactored so that the main logic now resides in a main() function which delegates the window creation
+to a helper function. We also put the functionality to do the ledger request into a separate function:
+
+{{ include_code("_code-samples/build-a-wallet/js/2_async-poll.js", language="js", lines="8-22" }}
+
+Our main logic is to continuously poll the XRPL using this function in an infinite loop:
+
+{{ include_code("_code-samples/build-a-wallet/js/2_async-poll.js", language="js", lines="57-71" }}
+
+Querying the XRPL continuously works but is a rather clumsy "solution" that is both resource intensive for the XRPL 
+as well as for our local machine. Fortunately the XRPl offers the functionality to subscribe to certain changes in the 
+ledger via the subscribe method offered by the client. We will improve our code by employing this function in the next step.
+
 ### 2.B. Show Ledger Updates by Using Subscriptions
 
 **Full code for this step:** [`2_async-subscribe.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_async-subscribe.js).
