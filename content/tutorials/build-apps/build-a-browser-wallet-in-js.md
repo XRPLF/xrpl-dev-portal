@@ -56,7 +56,9 @@ Before you begin, make sure you have the prerequisites installed. Check your nod
     ```
     to create a new project.
 
-3. Navigate to your project directory and copy this [package.json](_code-samples/build-a-wallet/js/package.json) file to your project.
+3. Create or modify the file `package.json` to have the following contents:
+
+{{ include_code("_code-samples/build-a-wallet/js/package.json", language="js") }}
         - Alternatively you can also do `yarn add <package-name>` or `npm install <package-name>` for each individual package to add them to your `package.json` file.
   
 4. Run `yarn` or `npm i` to install the packages.
