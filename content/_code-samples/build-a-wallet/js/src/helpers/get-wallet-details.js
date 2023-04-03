@@ -1,14 +1,8 @@
 import { Client, Wallet, classicAddressToXAddress } from 'xrpl';
 
-export default async function getWalletDetails() {
+export default async function getWalletDetails({ client }) {
     try {
-        const client = new Client(process.env.CLIENT); // Get the client from the environment variables
         const wallet = Wallet.fromSeed(process.env.SEED); // Convert the seed to a wallet : https://xrpl.org/cryptographic-keys.html
-
-        // Wait for the client to connect
-        console.log('Connecting...');
-        await client.connect();
-        console.log('Connected! Getting wallet details...');
 
         // Get the wallet details: https://xrpl.org/account_info.html
         const {
@@ -37,8 +31,6 @@ export default async function getWalletDetails() {
 
         console.log('Got wallet details!');
 
-        // Disconnect the client
-        await client.disconnect();
         return { 
             account_data, 
             accountReserves, 

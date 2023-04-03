@@ -1,11 +1,7 @@
-import { Client, Wallet } from 'xrpl';
+import { Wallet } from 'xrpl';
 
-export default async function submitTransaction({ tx }) {
+export default async function submitTransaction({ client, tx }) {
     try {
-        const client = new Client(process.env.CLIENT);
-        // Wait for the client to connect
-        await client.connect();
-
         // Create a wallet using the seed
         const wallet = await Wallet.fromSeed(process.env.SEED);
         tx.Account = wallet.address;
@@ -13,9 +9,6 @@ export default async function submitTransaction({ tx }) {
         // Sign and submit the transaction : https://xrpl.org/send-xrp.html#send-xrp
         const response = await client.submit(tx, { wallet });
         console.log(response);
-
-        // Disconnect from the client
-        await client.disconnect();
 
         return response;
     } catch (error) {

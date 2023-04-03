@@ -114,11 +114,7 @@ In order to make that happen, we need to look up our account state on the ledger
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-wallet-details.js", language="js") }}
 
-5. In the `helpers/` folder, create another file named `get-ledger-details.js`. Define a function, `getLedgerDetails()`, which fetches the latest validated ledger using the [ledger method](ledger.html). The code is as follows:
-
-{{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-ledger-details.js", language="js") }}
-
-6. Now, let's add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. Here we render the wallet and ledger details using the functions we implemented earlier in `get-wallet-details.js` and `get-ledger-details.js`. In order to make sure we have up to date data, we call the `getLedgerDetails` function every 4 seconds, as that's about how long it takes for a ledger to close on mainnet. 
+1. Now, let's add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. Here we render the wallet details using the function we defined in `get-wallet-details.js`. In order to make sure we have up to date ledger data, we are using the [ledger stream](https://xrpl.org/subscribe.html#ledger-stream) to listen for ledger close events.
 
 {{ include_code("_code-samples/build-a-wallet/js/index.js", language="js") }}
 

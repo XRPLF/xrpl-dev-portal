@@ -1,4 +1,4 @@
-import { dropsToXrp, isValidClassicAddress, xrpToDrops } from 'xrpl';
+import { Client, Wallet, dropsToXrp, isValidClassicAddress, xrpToDrops } from 'xrpl';
 
 import getWalletDetails from '../helpers/get-wallet-details';
 import renderXrplLogo from '../helpers/render-xrpl-logo';
@@ -6,6 +6,32 @@ import submitTransaction from '../helpers/submit-transaction';
 
 // Optional: Render the XRPL logo
 renderXrplLogo();
+
+const client = new Client(process.env.CLIENT); // Get the client from the environment variables
+
+// Self-invoking function to connect to the client
+(async () => {
+    try {
+        await client.connect(); // Connect to the client   
+        
+        const wallet = Wallet.fromSeed(process.env.SEED); // Convert the seed to a wallet : https://xrpl.org/cryptographic-keys.html
+
+        // Subscribe to account transaction stream
+        await client.request({
+            command: 'subscribe',
+            accounts: [wallet.address],
+        });
+
+        // Fetch the wallet details and show the available balance
+        await getWalletDetails({ client }).then(({ accountReserves, account_data }) => {
+            availableBalanceElement.textContent = `Available Balance: ${dropsToXrp(account_data.Balance) - accountReserves} XRP`;
+        });
+
+    } catch (error) {
+        await client.disconnect();
+        console.log(error);
+    }
+})();
 
 // Get the elements from the DOM
 const homeButton = document.querySelector('#home_button');
@@ -30,14 +56,14 @@ txHistoryButton.addEventListener('click', () => {
     window.location.pathname = '/src/transaction-history/transaction-history.html';
 });
 
-// Fetch the wallet details and show the available balance
-function renderAvailableBalance() {
-    getWalletDetails().then(({ accountReserves, account_data }) => {
-        availableBalanceElement.textContent = `Available Balance: ${dropsToXrp(account_data.Balance) - accountReserves} XRP`;
-    });
-}
-
-renderAvailableBalance();
+// Update the account balance on successful transaction
+client.on('transaction', (response) => {
+    if (response.validated && response.transaction.TransactionType === 'Payment') {
+        getWalletDetails({ client }).then(({ accountReserves, account_data }) => {
+            availableBalanceElement.textContent = `Available Balance: ${dropsToXrp(account_data.Balance) - accountReserves} XRP`;
+        });
+    }
+});
 
 const validateAddress = () => {
     destinationAddress.value = destinationAddress.value.trim();
@@ -100,12 +126,11 @@ submitTxBtn.addEventListener('click', async () => {
         }
 
         // Submit the transaction to the ledger
-        const { result } = await submitTransaction({ tx: txJson });
+        const { result } = await submitTransaction({ client, tx: txJson });
         const txResult = result?.meta?.TransactionResult || result?.engine_result || ''; // Response format: https://xrpl.org/transaction-results.html
 
         // Check if the transaction was successful or not and show the appropriate message to the user
         if (txResult === 'tesSUCCESS') {
-            renderAvailableBalance();
             alert('Transaction submitted successfully!');
         } else {
             throw new Error(txResult);

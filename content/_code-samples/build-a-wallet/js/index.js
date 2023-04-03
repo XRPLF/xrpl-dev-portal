@@ -1,10 +1,12 @@
+import { Client, dropsToXrp, rippleTimeToISOTime } from 'xrpl';
+
 import addXrplLogo from './src/helpers/render-xrpl-logo';
-import { dropsToXrp } from 'xrpl';
-import getLedgerDetails from './src/helpers/get-ledger-details.js';
 import getWalletDetails from './src/helpers/get-wallet-details.js';
 
 // Optional: Render the XRPL logo
 addXrplLogo();
+
+const client = new Client(process.env.CLIENT); // Get the client from the environment variables
 
 // Get the elements from the DOM
 const sendXrpButton = document.querySelector('#send_xrp_button');
@@ -22,39 +24,48 @@ txHistoryButton.addEventListener('click', () => {
     window.location.pathname = '/src/transaction-history/transaction-history.html';
 });
 
-// Fetch the wallet details
-getWalletDetails()
-    .then(({ account_data, accountReserves, xAddress, address }) => {
-        walletElement.querySelector('.wallet_address').textContent = `Wallet Address: ${account_data.Account}`;
-        walletElement.querySelector('.wallet_balance').textContent = `Wallet Balance: ${dropsToXrp(account_data.Balance)} XRP`;
-        walletElement.querySelector('.wallet_reserve').textContent = `Wallet Reserve: ${accountReserves} XRP`;
-        walletElement.querySelector('.wallet_xaddress').textContent = `X-Address: ${xAddress}`;
+// Self-invoking function to connect to the client
+(async () => {
+    try {
+        await client.connect(); // Connect to the client
 
-        // Redirect on View More link click
-        walletElement.querySelector('#view_more_button').addEventListener('click', () => {
-            window.open(`https://${process.env.EXPLORER_NETWORK}.xrpl.org/accounts/${address}`, '_blank');
+        // Subscribe to the ledger stream
+        await client.request({
+            command: 'subscribe',
+            streams: ['ledger'],
         });
-    })
-    .finally(() => {
-        walletLoadingDiv.style.display = 'none';
-    });
 
-// Fetch the latest ledger details
-async function getAndRenderDetails() {
-    const ledger = await getLedgerDetails();
-    const ledgerIndex = document.querySelector('#ledger_index');
-    const ledgerHash = document.querySelector('#ledger_hash');
-    const closeTime = document.querySelector('#close_time');
-    ledgerIndex.textContent = `Ledger Index: ${ledger.result.ledger_index}`;
-    ledgerHash.textContent = `Ledger Hash: ${ledger.result.ledger_hash}`;
-    closeTime.textContent = `Close Time: ${ledger.result.ledger.close_time_human}`;
-    ledgerLoadingDiv.style.display = 'none';
-}
+        // Fetch the wallet details
+        getWalletDetails({ client })
+            .then(({ account_data, accountReserves, xAddress, address }) => {
+                walletElement.querySelector('.wallet_address').textContent = `Wallet Address: ${account_data.Account}`;
+                walletElement.querySelector('.wallet_balance').textContent = `Wallet Balance: ${dropsToXrp(account_data.Balance)} XRP`;
+                walletElement.querySelector('.wallet_reserve').textContent = `Wallet Reserve: ${accountReserves} XRP`;
+                walletElement.querySelector('.wallet_xaddress').textContent = `X-Address: ${xAddress}`;
 
-// On page load, get the latest ledger details
-getAndRenderDetails();
+                // Redirect on View More link click
+                walletElement.querySelector('#view_more_button').addEventListener('click', () => {
+                    window.open(`https://${process.env.EXPLORER_NETWORK}.xrpl.org/accounts/${address}`, '_blank');
+                });
+            })
+            .finally(() => {
+                walletLoadingDiv.style.display = 'none';
+            });
 
-// Every 4 seconds, get the latest ledger details
-setInterval(() => {
-    getAndRenderDetails();
-}, 4000);
+
+        // Fetch the latest ledger details
+        client.on('ledgerClosed', (ledger) => {
+            ledgerLoadingDiv.style.display = 'none';
+            const ledgerIndex = document.querySelector('#ledger_index');
+            const ledgerHash = document.querySelector('#ledger_hash');
+            const closeTime = document.querySelector('#close_time');
+            ledgerIndex.textContent = `Ledger Index: ${ledger.ledger_index}`;
+            ledgerHash.textContent = `Ledger Hash: ${ledger.ledger_hash}`;
+            closeTime.textContent = `Close Time: ${rippleTimeToISOTime(ledger.ledger_time)}`;
+        });
+        
+    } catch (error) {
+        await client.disconnect();
+        console.log(error);
+    }
+})();
