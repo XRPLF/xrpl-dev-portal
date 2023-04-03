@@ -1,44 +1,10 @@
 const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const xrpl = require("xrpl")
+const { prepareReserve, prepareAccountData } = require('./library/3_helpers')
+const { prepareTxData } = require('./library/4_helpers')
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
-
-let reserveBaseXrp = null, reserveIncrementXrp = null
-const prepareAccountData = (rawAccountData) => {
-    const numOwners = rawAccountData.OwnerCount || 0
-
-    let xrpReserve = null
-    if (reserveBaseXrp && reserveIncrementXrp) {
-        //TODO: Decimal?
-        xrpReserve = reserveBaseXrp + (reserveIncrementXrp * numOwners)
-    }
-
-    return {
-        classicAddress: rawAccountData.Account,
-        xAddress: xrpl.classicAddressToXAddress(rawAccountData.Account, false, true),
-        xrpBalance: xrpl.dropsToXrp(rawAccountData.Balance),
-        xrpReserve: xrpReserve
-    }
-}
-
-const prepareLedgerData = (ledger) => {
-    reserveBaseXrp = xrpl.dropsToXrp(ledger.reserve_base)
-    reserveIncrementXrp = xrpl.dropsToXrp(ledger.reserve_inc)
-
-    return ledger
-}
-
-const prepareTxData = (transactions) => {
-    return transactions.map(transaction => ({
-        confirmed: transaction.tx.date,
-        type: transaction.tx.TransactionType,
-        from: transaction.tx.Account,
-        to: transaction.tx.Destination,
-        value: xrpl.dropsToXrp(transaction.tx.Amount),
-        hash: transaction.tx.hash
-    }))
-}
 
 const createWindow = () => {
 
@@ -60,6 +26,8 @@ const main = async () => {
 
     ipcMain.on('address-entered', async (event, address) => {
 
+        let reserve = null
+
         const client = new xrpl.Client(TESTNET_URL)
 
         await client.connect()
@@ -71,8 +39,8 @@ const main = async () => {
         })
 
         client.on("ledgerClosed", async (ledger) => {
-            const ledgerData = prepareLedgerData(ledger)
-            appWindow.webContents.send('update-ledger-data', ledgerData)
+            reserve = prepareReserve(ledger)
+            appWindow.webContents.send('update-ledger-data', ledger)
         })
 
         // Wait for transaction on subscribed account and re-request account data
@@ -84,7 +52,7 @@ const main = async () => {
             }
 
             const accountInfoResponse = await client.request(accountInfoRequest)
-            const accountData = prepareAccountData(accountInfoResponse.result.account_data)
+            const accountData = prepareAccountData(accountInfoResponse.result.account_data, reserve)
             appWindow.webContents.send('update-account-data', accountData)
 
             const transactions = prepareTxData([{tx: transaction.transaction}])

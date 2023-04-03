@@ -28,10 +28,10 @@ const accountAddressXEl = document.getElementById('account-address-x')
 const accountBalanceEl = document.getElementById('account-balance')
 const accountReserveEl = document.getElementById('account-reserve')
 
-window.electronAPI.onUpdateLedgerData((_event, value) => {
-    ledgerIndexEl.innerText = value.ledger_index
-    ledgerHashEl.innerText = value.ledger_hash
-    ledgerCloseTimeEl.innerText = value.ledger_time
+window.electronAPI.onUpdateLedgerData((_event, ledger) => {
+    ledgerIndexEl.innerText = ledger.ledger_index
+    ledgerHashEl.innerText = ledger.ledger_hash
+    ledgerCloseTimeEl.innerText = ledger.ledger_time
 })
 
 window.electronAPI.onUpdateAccountData((_event, value) => {
