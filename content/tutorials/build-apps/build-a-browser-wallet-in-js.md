@@ -16,7 +16,7 @@ To complete this tutorial, you should meet the following guidelines:
 
 1. You have [Node.js](https://nodejs.org/en/download/) v10.15.3 or higher installed.
 2. You have [Yarn](https://yarnpkg.com/en/docs/install) (v1.17.3 or higher) or [NPM](https://www.npmjs.com/get-npm) (v6.4.1 or higher) installed.
-3. You are somewhat familiar with coding with JavaScript and have completed the [Get Started Using JavaScript](get-started-using-python.html) tutorial.
+3. You are somewhat familiar with coding with JavaScript and have completed the [Get Started Using JavaScript](get-started-using-javascript.html) tutorial.
 
 ## Source Code
 
