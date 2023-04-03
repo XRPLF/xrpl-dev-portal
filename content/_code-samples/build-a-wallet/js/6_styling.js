@@ -33,7 +33,6 @@ const main = async () => {
 
     let seed = null;
 
-    //
     ipcMain.on('seed-entered', async (event, providedSeed) => {
         seed = providedSeed
         appWindow.webContents.send('open-password-dialog')

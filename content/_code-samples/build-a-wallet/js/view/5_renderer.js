@@ -17,7 +17,7 @@ window.electronAPI.onOpenSeedDialog((_event) => {
     seedDialog.showModal()
 })
 
-window.electronAPI.onOpenPasswordDialog((_event) => {console.log('opwd')
+window.electronAPI.onOpenPasswordDialog((_event) => {
     const passwordDialog = document.getElementById('password-dialog');
     const passwordInput = passwordDialog.querySelector('input');
     const submitButton = passwordDialog.querySelector('button[type="submit"]');

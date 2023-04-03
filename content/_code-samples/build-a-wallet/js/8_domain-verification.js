@@ -55,11 +55,11 @@ const createWindow = () => {
         width: 1024,
         height: 768,
         webPreferences: {
-            preload: path.join(__dirname, 'view', '6_preload.js'),
+            preload: path.join(__dirname, 'view', '8_preload.js'),
         },
     })
 
-    appWindow.loadFile(path.join(__dirname, 'view', '6_domain-verification.html'))
+    appWindow.loadFile(path.join(__dirname, 'view', '8_domain-verification.html'))
 
     return appWindow
 }
