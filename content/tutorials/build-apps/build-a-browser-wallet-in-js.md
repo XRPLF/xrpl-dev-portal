@@ -68,15 +68,13 @@ EXPLORER_NETWORK="testnet" // or "mainnet"
 SEED="sEd7B2Jm7RBhhh5i88SH38aZB8ot8Kq" // Replace with your seed
 ```
 
-6. Change the seed to your own seed. You can get a testnet account from [here](https://xrpl.org/xrp-test-net-faucet.html).
+6. Change the seed to your own seed. You can get credentials from [the Testnet faucet](xrp-test-net-faucet.html).
 
-7. Create a new file named `vite.config.js` if not present already in the root directory of the project.
-
-8. Set up vite bundler, copy the code written below to the `vite.config.js` file. 
+7. Set up a Vite bundler. Create a file named `vite.config.js` in the root directory of the project and fill it with the following code:
 
 {{ include_code("_code-samples/build-a-wallet/js/vite.config.js", language="js") }}
 
-xrpl.js requires some configuration to run with the vite bundler. You can find the configuration in [xrpl.js documentation](https://github.com/XRPLF/xrpl.js/blob/main/UNIQUE_SETUPS.md#using-xrpljs-with-vite-react).
+This example includes the necessary configuration to make [xrpl.js work with Vite](https://github.com/XRPLF/xrpl.js/blob/main/UNIQUE_SETUPS.md#using-xrpljs-with-vite-react).
 
 1. Add script to `package.json`
 
@@ -92,7 +90,7 @@ If you get stuck while doing this tutorial, or working on another project, feel 
 
 ### 2. Creating the Home Page (Displaying Account & Ledger Details)
 
-In this step, we will create the home page that will display the account details and the ledger details.
+In this step, we create a home page that displays account and ledger details.
 
 ![Home Page Screenshot](img/js-wallet-home.png)
 
@@ -102,13 +100,13 @@ In this step, we will create the home page that will display the account details
 
 3. Copy the contents of the [index.html](_code-samples/build-a-wallet/js/index.html), [index.js](_code-samples/build-a-wallet/js/index.js) and [index.css](_code-samples/build-a-wallet/js/index.css) files to your files.
 
-Now that you've got the basic setup, let's discuss what we're going to do. For the home page, we want to:
+This basic setup creates a homepage and applies some visual styles. The goal is for the homepage to:
 
 - Display our account info
 - Show what's happening on the ledger
 - And add a little logo for fun
 
-In order to make that happen, we need to look up our account state on the ledger. The next couple steps will walk you through that process.
+To make that happen, we need to connect to the XRP Ledger and look up the account and the latest validated ledger.
 
 4. In the `src/` directory, make a new folder named `helpers`. Create a new file there named `get-wallet-details.js` and define a function named `getWalletDetails` there. This function uses the [account_info method](account_info.html) to fetch account details and the [server_info method](server_info.html) to calculate the current [reserves](reserves.html). The code to do all this is as follows:
 
