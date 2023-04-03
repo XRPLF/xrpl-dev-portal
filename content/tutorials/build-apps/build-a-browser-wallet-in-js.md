@@ -43,6 +43,8 @@ This application can:
 
 Before you begin, make sure you have the prerequisites installed. Check your node version by running `node -v`. If necessary, [download Node.js](https://nodejs.org/en/download/).
 
+**Tip:** If you get stuck while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's [Developer Discord](https://discord.com/invite/KTNmhJDXqa).
+
 ### 1. Setting up the project
 
 1. Navigate to the directory that you want to create the project in.
@@ -58,14 +60,14 @@ Before you begin, make sure you have the prerequisites installed. Check your nod
 
    - Alternatively you can also do `yarn add <package-name>` for each individual package to add them to your `package.json` file.
   
-1. Run `yarn` to install the packages.
+4. Run `yarn` to install the packages.
 
-2. Create a new file `.env` in the root directory of the project and add the following variables:
+5. Create a new file `.env` in the root directory of the project and add the following variables:
 
 ```bash
 CLIENT="wss://s.altnet.rippletest.net/" // or any other server
 EXPLORER_NETWORK="testnet" // or "mainnet"
-SEED="sEd7B2Jm7RBhhh5i88SH38aZB8ot8Kq" // Replace with your seed
+SEED="s████████████████████████████"  // Replace with your seed
 ```
 
 6. Change the seed to your own seed. You can get credentials from [the Testnet faucet](xrp-test-net-faucet.html).
@@ -76,7 +78,7 @@ SEED="sEd7B2Jm7RBhhh5i88SH38aZB8ot8Kq" // Replace with your seed
 
 This example includes the necessary configuration to make [xrpl.js work with Vite](https://github.com/XRPLF/xrpl.js/blob/main/UNIQUE_SETUPS.md#using-xrpljs-with-vite-react).
 
-1. Add script to `package.json`
+8. Add script to `package.json`
 
 In your `package.json` file, add:
 
@@ -85,8 +87,6 @@ In your `package.json` file, add:
     "dev": "vite"
 }
 ```
-
-If you get stuck while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's [Developer Discord](https://discord.com/invite/KTNmhJDXqa).
 
 ### 2. Creating the Home Page (Displaying Account & Ledger Details)
 
@@ -112,7 +112,7 @@ To make that happen, we need to connect to the XRP Ledger and look up the accoun
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-wallet-details.js", language="js") }}
 
-1. Now, let's add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. Here we render the wallet details using the function we defined in `get-wallet-details.js`. In order to make sure we have up to date ledger data, we are using the [ledger stream](https://xrpl.org/subscribe.html#ledger-stream) to listen for ledger close events.
+5. Now, let's add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. Here we render the wallet details using the function we defined in `get-wallet-details.js`. In order to make sure we have up to date ledger data, we are using the [ledger stream](subscribe.html#ledger-stream) to listen for ledger close events.
 
 {{ include_code("_code-samples/build-a-wallet/js/index.js", language="js") }}
 
@@ -138,12 +138,12 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 
 3. Copy the contents of the [send-xrp.html](_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.html) file to your `send-xrp.html` file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.
 
-4. Now that we have the HTML code, let's add the JavaScript code. In the `helpers` folder, create a new file named `submit-transaction.js` and copy the code written below to the file. In this file, we are using the [submit](https://xrpl.org/submit.html) method to submit the transaction to the XRPL. Before submitting every transaction needs to be signed by a wallet, click [here](https://xrpl.org/sign.html) to learn more about signing a transaction.
+4. Now that we have the HTML code, let's add the JavaScript code. In the `helpers` folder, create a new file named `submit-transaction.js` and copy the code written below to the file. In this file, we are using the [submit](submit.html) method to submit the transaction to the XRPL. Before submitting every transaction needs to be signed by a wallet, learn more about [signing](sign.html) a transaction.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/submit-transaction.js", language="js") }}
 
 
-1. Now back to the `send-xrp.js` file, copy the code written below to the file. In this piece of code we are first getting all the DOM elements from HTML and adding event listners to update & validate the fields based on the user input. Using `renderAvailableBalance` method we display the current available balance of the wallet. `validateAddress` function validates the user address, and the amount is validated using a regular expression. When all the fields are filled with correct inputs, we call the `submitTransaction` function to submit the transaction to the ledger.
+5. Now back to the `send-xrp.js` file, copy the code written below to the file. In this piece of code we are first getting all the DOM elements from HTML and adding event listners to update & validate the fields based on the user input. Using `renderAvailableBalance` method we display the current available balance of the wallet. `validateAddress` function validates the user address, and the amount is validated using a regular expression. When all the fields are filled with correct inputs, we call the `submitTransaction` function to submit the transaction to the ledger.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.js", language="js") }}
 
@@ -165,13 +165,13 @@ Now that we have created the home page and the send XRP page, let's create the t
 
 {{ include_code("_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.js", language="js") }}
 
-This code uses [account_tx](https://xrpl.org/account_tx.html) to fetch transactions we've sent to and from this account. In order to get all the results, we're using the `marker` parameter to paginate through the incomplete list of transactions until we reach the end.
+This code uses [account_tx](account_tx.html) to fetch transactions we've sent to and from this account. In order to get all the results, we're using the `marker` parameter to paginate through the incomplete list of transactions until we reach the end.
 
 3. Create a file named `transaction-history.html` and copy the code from [transaction-history.html](_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.html) into it. 
 
 `transaction-history.html` defines a table which displays the fields mentioned above.
 
-You can use this code as a starting point for displaying your account's transaction history. If you want an additional challenge, try expanding it to support different transaction types (e.g. [TrustSet](https://xrpl.org/trustset.html)). If you want inspiration for how to handle this, you can check out the [XRP Ledger Explorer](https://livenet.xrpl.org/) to see how the transaction details are displayed.
+You can use this code as a starting point for displaying your account's transaction history. If you want an additional challenge, try expanding it to support different transaction types (e.g. [TrustSet](trustset.html)). If you want inspiration for how to handle this, you can check out the [XRP Ledger Explorer](https://livenet.xrpl.org/) to see how the transaction details are displayed.
 
 ## Next Steps
 
@@ -179,7 +179,7 @@ Now that you have a functional wallet, you can take it in several new directions
 
 - You could support more of the XRP Ledger's [transaction types](transaction-types.html) including [tokens](issued-currencies.html) and [cross-currency payments](cross-currency-payments.html)
 - You could add support for displaying multiple tokens, beyond just XRP
-- You could support creating [offers](https://xrpl.org/offers.html) in the [decentralized exchange](decentralized-exchange.html)
+- You could support creating [offers](offers.html) in the [decentralized exchange](decentralized-exchange.html)
 - You could add new ways to request payments, such as with QR codes or URIs that open in your wallet.
 - Or you could support better account security including allowing users to set [regular key pairs](cryptographic-keys.html#regular-key-pair) or handle [multi-signing](multi-signing.html).
 
