@@ -1,53 +1,14 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
+const fs = require("fs");
 const path = require('path')
 const xrpl = require("xrpl")
-const { sendXrp } = require('./library/5_helpers')
-const { verify } = require('./library/6_helpers')
+const { initialize, subscribe, saveSaltedSeed, loadSaltedSeed } = require('./library/5_helpers')
+const { sendXrp } = require('./library/7_helpers')
+const { verify } = require('./library/8_helpers')
 
-const testnetUrl = "wss://s.altnet.rippletest.net:51233"
+const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
-let reserveBaseXrp = null
-let reserveIncrementXrp = null
-let client = null
-let wallet = null
-
-const fixedAddress = 'rn95xwUymaMyzAKnZUGuynjZ6qk9RzV4Q7'
-const fixedSeed = 'sEdSMHvzzWCLSuh2BiTgQihfyARVAKw'
-
-const prepareAccountData = (rawAccountData) => {
-    const numOwners = rawAccountData.OwnerCount || 0
-
-    let xrpReserve = null
-    if (reserveBaseXrp && reserveIncrementXrp) {
-        //TODO: Decimal?
-        xrpReserve = reserveBaseXrp + (reserveIncrementXrp * numOwners)
-    }
-
-    return {
-        classicAddress: rawAccountData.Account,
-        xAddress: xrpl.classicAddressToXAddress(rawAccountData.Account, false, true),
-        xrpBalance: xrpl.dropsToXrp(rawAccountData.Balance),
-        xrpReserve: xrpReserve
-    }
-}
-
-const prepareLedgerData = (ledger) => {
-    reserveBaseXrp = xrpl.dropsToXrp(ledger.reserve_base)
-    reserveIncrementXrp = xrpl.dropsToXrp(ledger.reserve_inc)
-
-    return ledger
-}
-
-const prepareTxData = (transactions) => {
-    return transactions.map(transaction => ({
-        confirmed: transaction.tx.date,
-        type: transaction.tx.TransactionType,
-        from: transaction.tx.Account,
-        to: transaction.tx.Destination,
-        value: xrpl.dropsToXrp(transaction.tx.Amount),
-        hash: transaction.tx.hash
-    }))
-}
+const WALLET_DIR = 'Wallet'
 
 const createWindow = () => {
 
@@ -67,70 +28,61 @@ const createWindow = () => {
 const main = async () => {
     const appWindow = createWindow()
 
-    wallet = xrpl.Wallet.fromSeed(fixedSeed)
+    if (!fs.existsSync(WALLET_DIR)) {
+        // Create Wallet directory in case it does not exist yet
+        fs.mkdirSync(path.join(__dirname, WALLET_DIR));
+    }
 
-    client = new xrpl.Client(testnetUrl)
+    let seed = null;
 
-    await client.connect()
-
-    await client.request({
-        "command": "subscribe",
-        "streams": ["ledger"],
-        "accounts": [fixedAddress]
+    ipcMain.on('seed-entered', async (event, providedSeed) => {
+        seed = providedSeed
+        appWindow.webContents.send('open-password-dialog')
     })
 
-    client.on("ledgerClosed", async (ledger) => {
-        const ledgerData = prepareLedgerData(ledger)
-        appWindow.webContents.send('update-ledger-data', ledgerData)
-    })
-
-    // Wait for transaction on subscribed account and re-request account data
-    client.on("transaction", async (transaction) => {
-        const accountInfoRequest = {
-            "command": "account_info",
-            "account": fixedAddress,
-            "ledger_index": transaction.ledger_index
+    ipcMain.on('password-entered', async (event, password) => {
+        if (!fs.existsSync(path.join(__dirname, WALLET_DIR , 'seed.txt'))) {
+            saveSaltedSeed('../' + WALLET_DIR, seed, password)
+        } else {
+            seed = loadSaltedSeed('../' + WALLET_DIR, password)
         }
 
-        const accountInfoResponse = await client.request(accountInfoRequest)
-        const accountData = prepareAccountData(accountInfoResponse.result.account_data)
-        appWindow.webContents.send('update-account-data', accountData)
+        const wallet = xrpl.Wallet.fromSeed(seed)
 
-        const transactions = prepareTxData([{tx: transaction.transaction}])
-        appWindow.webContents.send('update-transaction-data', transactions)
+        const client = new xrpl.Client(TESTNET_URL)
+
+        await client.connect()
+
+        await subscribe(client, wallet, appWindow)
+
+        await initialize(client, wallet, appWindow)
+
+        ipcMain.on('send-xrp-action', (event, paymentData) => {
+            sendXrp(paymentData, client, wallet).then((result) => {
+                console.log(result)
+                appWindow.webContents.send('send-xrp-transaction-finish', result)
+            })
+        })
+
+        ipcMain.on('destination-account-change', (event, destinationAccount) => {
+            verify(destinationAccount, client).then((result) => {
+                appWindow.webContents.send('update-domain-verification-data', result)
+            })
+        })
+
     })
 
-    // This is a temporary hack to dodge a possible race condition
-    setTimeout(async function() {
-        // Initial Account Request -> get account details
-        const accountInfoResponse = await client.request({
-            "command": "account_info",
-            "account": fixedAddress,
-            "ledger_index": "current"
-        })
-        const accountData = prepareAccountData(accountInfoResponse.result.account_data)
-        appWindow.webContents.send('update-account-data', accountData)
-
-        // Initial Transaction Request -> list transactions on startup
-        const txResponse = await client.request({
-            "command": "account_tx",
-            "account": fixedAddress
-        })
-        const transactions = prepareTxData(txResponse.result.transactions)
-        appWindow.webContents.send('update-transaction-data', transactions)
-    }, 600)
-
-    ipcMain.on('send-xrp-action', (event, paymentData) => {
-        sendXrp(paymentData, client, wallet).then((result) => {
-            console.log(result)
-            appWindow.webContents.send('send-xrp-transaction-finish', result)
-        })
-    })
-
-    ipcMain.on('destination-account-change', (event, destinationAccount) => {
-        verify(destinationAccount, client).then((result) => {
-            appWindow.webContents.send('update-domain-verification-data', result)
-        })
+    // We have to wait for the application frontend to be ready, otherise
+    // we might run into a race condition and the ope-dialog events
+    // get triggered before the callbacks are attached
+    appWindow.once('ready-to-show', () => {
+        // If there is no seed present yet, ask for it, otherwise query for the password
+        // for the seed that has been saved
+        if (!fs.existsSync(path.join(__dirname, WALLET_DIR, 'seed.txt'))) {
+            appWindow.webContents.send('open-seed-dialog')
+        } else {
+            appWindow.webContents.send('open-password-dialog')
+        }
     })
 }
 
