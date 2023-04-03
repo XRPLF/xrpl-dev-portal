@@ -1,12 +1,10 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const xrpl = require("xrpl")
 
 const testnetUrl = "wss://s.altnet.rippletest.net:51233"
 
 let reserveBaseXrp = null, reserveIncrementXrp = null
-
-const fixedAddress = 'rn95xwUymaMyzAKnZUGuynjZ6qk9RzV4Q7' // Operational Account Alex
 
 const prepareLedgerData = (ledger) => {
     reserveBaseXrp = xrpl.dropsToXrp(ledger.reserve_base)
@@ -49,44 +47,45 @@ const createWindow = () => {
 const main = async () => {
     const appWindow = createWindow()
 
-    const client = new xrpl.Client(testnetUrl)
+    ipcMain.on('address-entered', async (event, address) =>  {
 
-    await client.connect()
+        const client = new xrpl.Client(testnetUrl)
 
-    await client.request({
-        "command": "subscribe",
-        "streams": ["ledger"],
-        "accounts": [fixedAddress]
-    })
+        await client.connect()
 
-    //
-    client.on("ledgerClosed", async (ledger) => {
-        const ledgerData = prepareLedgerData(ledger)
-        appWindow.webContents.send('update-ledger-data', ledgerData)
-    })
+        await client.request({
+            "command": "subscribe",
+            "streams": ["ledger"],
+            "accounts": [address]
+        })
 
-    // Wait for transaction on subscribed account and re-request account data
-    client.on("transaction", async (transaction) => {
-        const accountInfoRequest = {
+        //
+        client.on("ledgerClosed", async (ledger) => {
+            const ledgerData = prepareLedgerData(ledger)
+            appWindow.webContents.send('update-ledger-data', ledgerData)
+        })
+
+        // Wait for transaction on subscribed account and re-request account data
+        client.on("transaction", async (transaction) => {
+            const accountInfoRequest = {
+                "command": "account_info",
+                "account": address,
+                "ledger_index": transaction.ledger_index
+            }
+            const accountInfoResponse = await client.request(accountInfoRequest)
+            const accountData = prepareAccountData(accountInfoResponse.result.account_data)
+            appWindow.webContents.send('update-account-data', accountData)
+        })
+
+        // Initial Account Request
+        const accountInfoResponse = await client.request({
             "command": "account_info",
-            "account": fixedAddress,
-            "ledger_index": transaction.ledger_index
-        }
-        const accountInfoResponse = await client.request(accountInfoRequest)
+            "account": address,
+            "ledger_index": "current"
+        })
         const accountData = prepareAccountData(accountInfoResponse.result.account_data)
         appWindow.webContents.send('update-account-data', accountData)
     })
-
-    // Initial Account Request
-    const accountInfoResponse = await client.request({
-        "command": "account_info",
-        "account": fixedAddress,
-        "ledger_index": "current"
-    })
-    const accountData = prepareAccountData(accountInfoResponse.result.account_data)
-    appWindow.webContents.send('update-account-data', accountData)
-
-
 }
 
 app.whenReady().then(() => {
