@@ -96,9 +96,9 @@ In this step, we create a home page that displays account and ledger details.
 
 1. Make a new folder named `src` in the root directory of the project.
 
-2. Create new files named `index.html`, `index.js` and `index.css`. 
+2. If not already present, create new files in the root folder named `index.html`, `index.js` and `index.css`.
 
-3. Copy the content of [index.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/index.html) in your code.
+3. Copy the contents of [index.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/index.html) in your code.
 
 4. Add styling to your [index.css]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/index.css) file by following the link.
 
