@@ -118,7 +118,7 @@ To make that happen, we need to connect to the XRP Ledger and look up the accoun
 
 {{ include_code("_code-samples/build-a-wallet/js/index.js", language="js") }}
 
-The one other thing we do here is add two buttons - one to send XRP and one to view the transaction history of our account. They won't work just yet - we'll have to add those implementations next.
+The one other thing we do here is add events to two buttons - one to send XRP and one to view transaction history. They won't work just yet—we'll implement them in the next steps.
 
 Now the application is ready to run. You can start it in dev mode using the following command:
 
