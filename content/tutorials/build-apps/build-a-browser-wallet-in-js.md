@@ -45,7 +45,7 @@ Before you begin, make sure you have the prerequisites installed. Check your nod
 
 **Tip:** If you get stuck while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's [Developer Discord](https://discord.com/invite/KTNmhJDXqa).
 
-### 1. Setting up the project
+### 1. Set up the project
 
 1. Navigate to the directory that you want to create the project in.
 2. Run 
@@ -88,7 +88,7 @@ In your `package.json` file, add:
 }
 ```
 
-### 2. Creating the Home Page (Displaying Account & Ledger Details)
+### 2. Create the Home Page (Displaying Account & Ledger Details)
 
 In this step, we create a home page that displays account and ledger details.
 
@@ -128,7 +128,7 @@ yarn dev
 
 Your terminal should output a URL which you can use to open your app in a browser. This dev site automatically updates to reflect any changes you make to the code.
 
-### 3. Creating the Send XRP Page
+### 3. Create the Send XRP Page
 
 Now that we've created the home page, we can move on to the "Send XRP" page. This is what allows this wallet to manage your account's funds.
 
@@ -149,7 +149,7 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 
 {{ include_code("_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.js", language="js") }}
 
-### 4. Creating the Transactions Page
+### 4. Create the Transactions Page
 
 Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account. In order to see what's happening on the ledger, we're going to display the following fields: 
 
