@@ -1,4 +1,4 @@
-const {prepareReserve, prepareAccountData} = require("./3_helpers");
+const {prepareReserve, prepareAccountData, prepareLedgerData} = require("./3_helpers");
 const {prepareTxData} = require("./4_helpers");
 const crypto = require("crypto");
 const fs = require("fs");
@@ -33,8 +33,9 @@ const subscribe = async (client, wallet, appWindow) => {
         "accounts": [wallet.address]
     })
 
-    client.on("ledgerClosed", async (ledger) => {
-        reserve = prepareReserve(ledger)
+    client.on("ledgerClosed", async (rawLedgerData) => {
+        reserve = prepareReserve(rawLedgerData)
+        const ledger = prepareLedgerData(rawLedgerData)
         appWindow.webContents.send('update-ledger-data', ledger)
     })
 

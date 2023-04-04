@@ -1,10 +1,7 @@
 const xrpl = require("xrpl");
-const prepareReserve = (ledger) => {
-    const reserveBaseXrp = xrpl.dropsToXrp(ledger.reserve_base)
-    const reserveIncrementXrp = xrpl.dropsToXrp(ledger.reserve_inc)
 
-    return { reserveBaseXrp, reserveIncrementXrp }
-}
+const RIPPLE_EPOCH = 946684800;
+
 
 const prepareAccountData = (rawAccountData, reserve) => {
     const numOwners = rawAccountData.OwnerCount || 0
@@ -23,4 +20,24 @@ const prepareAccountData = (rawAccountData, reserve) => {
     }
 }
 
-module.exports = { prepareReserve, prepareAccountData }
+const prepareLedgerData = (rawLedgerData) => {
+    const timestamp = RIPPLE_EPOCH + rawLedgerData.ledger_time
+    const dateTime = new Date(timestamp * 1000)
+    const dateTimeString = dateTime.toLocaleDateString() + ' ' + dateTime.toLocaleTimeString()
+
+    return {
+        ledgerIndex: rawLedgerData.ledger_index,
+        ledgerHash: rawLedgerData.ledger_hash,
+        ledgerCloseTime: dateTimeString
+    }
+}
+
+
+const prepareReserve = (ledger) => {
+    const reserveBaseXrp = xrpl.dropsToXrp(ledger.reserve_base)
+    const reserveIncrementXrp = xrpl.dropsToXrp(ledger.reserve_inc)
+
+    return { reserveBaseXrp, reserveIncrementXrp }
+}
+
+module.exports = { prepareAccountData, prepareLedgerData, prepareReserve }

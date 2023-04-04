@@ -48,10 +48,10 @@ const accountReserveEl = document.getElementById('account-reserve')
 const txTableBodyEl = document.getElementById('tx-table').tBodies[0]
 window.testEl = txTableBodyEl
 
-window.electronAPI.onUpdateLedgerData((_event, value) => {
-    ledgerIndexEl.innerText = value.ledger_index
-    ledgerHashEl.innerText = value.ledger_hash
-    ledgerCloseTimeEl.innerText = value.ledger_time
+window.electronAPI.onUpdateLedgerData((_eventledger, ledger) => {
+    ledgerIndexEl.innerText = ledger.ledgerIndex
+    ledgerHashEl.innerText = ledger.ledgerHash
+    ledgerCloseTimeEl.innerText = ledger.ledgerCloseTime
 })
 
 window.electronAPI.onUpdateAccountData((_event, value) => {

@@ -29,9 +29,9 @@ const accountBalanceEl = document.getElementById('account-balance')
 const accountReserveEl = document.getElementById('account-reserve')
 
 window.electronAPI.onUpdateLedgerData((_event, ledger) => {
-    ledgerIndexEl.innerText = ledger.ledger_index
-    ledgerHashEl.innerText = ledger.ledger_hash
-    ledgerCloseTimeEl.innerText = ledger.ledger_time
+    ledgerIndexEl.innerText = ledger.ledgerIndex
+    ledgerHashEl.innerText = ledger.ledgerHash
+    ledgerCloseTimeEl.innerText = ledger.ledgerCloseTime
 })
 
 window.electronAPI.onUpdateAccountData((_event, value) => {
