@@ -190,6 +190,7 @@ targets:
             # Fix links from untranslated NFT API methods:
             "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
             "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
+            "nftokenmint.html#nftokenmint-fields": "nftokenmint.html#nftokenmint-フィールド"
             "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
             "nftokenoffer.html#nftokenoffer-flags": "nftokenoffer.html#nftokenoffer-フラグ"
             # Fix links from untranslated AMM pages:
@@ -222,7 +223,7 @@ pages:
         template: page-xrpl-overview.html.jinja
         html: xrp-ledger-overview.html
         parent: index.html
-        top_nav_name: アバウト
+        top_nav_name: 概要
         top_nav_grouping: XRP Ledger
         sidebar: disabled
         blurb: XRPL開発者コミュニティが推進するパブリックブロックチェーン「XRP Ledger」の主なメリットと特徴をご紹介します。
@@ -344,29 +345,15 @@ pages:
         sidebar: disabled
         targets:
             - ja
+    
 
+        # Redirect old Carbon Calculator page to Impact
     -   name: Carbon Calculator
         html: carbon-calculator.html
-        parent: xrp-ledger-overview.html
-        template: page-calculator.html.jinja
-        top_nav_grouping: Sustainability
-        sidebar: disabled
-        blurb: Whether it's cash, credit, or crypto, every transaction you make consumes energy. Use the XRPL cryptocurrency carbon calculator to compare.
-        fb_card: currency-calculator-card-fb.png
-        twitter_card: currency-calculator-card-tw.png
+        template: pagetype-redirect.html.jinja
+        redirect_url: impact.html
         targets:
             - en
-
-    -   name: 二酸化炭素電卓
-        html: carbon-calculator.html
-        parent: xrp-ledger-overview.html
-        template: page-calculator.html.jinja
-        top_nav_grouping: Sustainability
-        sidebar: disabled
-        blurb: 現金、クレジットカード、暗号資産でもエネルギー消費する。インタラクティブツールで消費量を比較しましょう。
-        fb_card: currency-calculator-card-fb.png
-        twitter_card: currency-calculator-card-tw.png
-        targets:
             - ja
 
     -   name: XRPL Foundation
@@ -748,7 +735,6 @@ pages:
         targets:
             - en
 
-    # TODO: Outdated translation
     -   md: concepts/tokens/tokens.ja.md
         targets:
             - ja
@@ -764,6 +750,22 @@ pages:
 
     -   name: トークン
         html: issued-currencies.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: tokens.html
+        blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
+        targets:
+            - ja
+            
+    -   name: Tokens
+        html: issued-currencies-overview.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: tokens.html
+        blurb: Anyone can make tokens representing digital value on the XRP Ledger.
+        targets:
+            - en
+
+    -   name: トークン
+        html: issued-currencies-overview.html
         template: pagetype-redirect.html.jinja
         redirect_url: tokens.html
         blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
@@ -802,34 +804,52 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nft-reserve-requirements.md
         targets:
             - en
+
+    -   md: concepts/tokens/nft-reserve-requirements.ja.md
+        targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nftoken-batch-minting.md
         targets:
             - en
+
+    -   md: concepts/tokens/nftoken-batch-minting.ja.md
+        targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nftoken-authorized-minting.md
         targets:
             - en
+
+    -   md: concepts/tokens/nftoken-authorized-minting.ja.md
+        targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nftoken-auctions.md
         targets:
             - en
+
+    -   md: concepts/tokens/nftoken-auctions.ja.md
+        targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/tokens/nft-collections.md
         targets:
             - en
+
+    -   md: concepts/tokens/nft-collections.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/tokens/nft-fixed-supply.md
+        targets:
+            - en
+
+    -   md: concepts/tokens/nft-fixed-supply.ja.md
+        targets:
             - ja
 
     -   md: concepts/tokens/freezes.md
@@ -896,10 +916,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/decentralized-exchange/automated-market-makers.md
         targets:
             - en
+
+    -   md: concepts/decentralized-exchange/automated-market-makers.ja.md
+        targets:
             - ja
 
     -   md: concepts/decentralized-exchange/offers.md
@@ -978,7 +1000,6 @@ pages:
         targets:
             - en
 
-    # TODO: update translation
     -   md: concepts/consensus-network/negative-unl.ja.md
         targets:
             - ja
@@ -1003,6 +1024,7 @@ pages:
         targets:
             - en
 
+        # TODO: translate
     -   md: concepts/consensus-network/transaction-malleability.ja.md
         targets:
             - ja
@@ -1133,16 +1155,20 @@ pages:
             - en
             - ja
 
-    # TODO: translate
     -   md: concepts/interoperability/xrpl-interoperability.md
         targets:
             - en
+
+    -   md: concepts/interoperability/xrpl-interoperability.ja.md
+        targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/interoperability/intro-to-evm-sidechain.md
         targets:
             - en
+
+    -   md: concepts/interoperability/intro-to-evm-sidechain.ja.md
+        targets:
             - ja
 
     -   name: Hooks
@@ -1864,23 +1890,24 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md
+        # Redirect to build instructions on rippled repo.
+    -   name: Build and Run rippled on Ubuntu
+        html: build-run-rippled-ubuntu.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
         targets:
             - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.ja.md
-        targets:
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md
+        # Redirect to b uild instructions on rippled repo.
+    -   name: Build and Run rippled on macOS
+        html: build-run-rippled-macos.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
         targets:
             - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.ja.md
-        targets:
             - ja
-
-        # TODO: translate
+        
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-in-reporting-mode.md
         targets:
             - en
@@ -2372,7 +2399,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation with new section from the English version
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.ja.md
         targets:
             - ja
@@ -2385,10 +2411,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.md
         targets:
             - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
@@ -2439,10 +2467,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.md
         targets:
             - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md
@@ -2542,34 +2572,44 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ammbid.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammbid.ja.md
+        targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ammcreate.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.ja.md
+        targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.ja.md
+        targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ammvote.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammvote.ja.md
+        targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/checkcancel.md
@@ -2772,10 +2812,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-results/transaction-results.md
@@ -3275,12 +3317,13 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
         targets:
             - en
-            - ja
 
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.ja.md
+        targets:
+            - ja
 
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
         targets:
@@ -3854,6 +3897,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation
     -   md: references/http-websocket-apis/commandline-usage.ja.md
         targets:
             - ja
@@ -4651,8 +4695,8 @@ pages:
         parent: index.html
         template: page-community.html.jinja
         sidebar: disabled
-        blurb: Join the conversation
-        top_nav_name: コミュニティー
+        blurb: 話題に加わろう
+        top_nav_name: コミュニティ
         top_nav_hero_image: top-nav-hero-contribute
         targets:
             - ja
@@ -4675,6 +4719,8 @@ pages:
         blurb: The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.
         top_nav_name: Events
         top_nav_hero_image: top-nav-hero-contribute
+        filters: 
+            - categorize_dates
         targets:
             - en
 
@@ -4687,6 +4733,8 @@ pages:
         blurb: XRP Ledger (XRPL) はコミュニティ主導のパブリックブロックチェーンです。ここでは、その参加方法について説明します。
         top_nav_name: イベント
         top_nav_hero_image: top-nav-hero-contribute
+        filters: 
+            - categorize_dates
         targets:
             - ja
 
@@ -4900,6 +4948,7 @@ known_broken_links:
     # For various reasons these links break from the Python requests client,
     #  but they work in browser. (Often a protection against bots, like
     #  Cloudflare.)
+    - https://xrpl.typeform.com/grants?utm_source=web&utm_medium=web&utm_campaign=pencil_banner
     - https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt
     - http://web.archive.org/web/20171211225452/https://forum.ripple.com/viewtopic.php?f=2&t=3613
     - https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/

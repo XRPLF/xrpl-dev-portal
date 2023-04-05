@@ -34,7 +34,7 @@ _([NonFungibleTokensV1_1 amendment][]が必要です)_
 
 このトランザクションは、リストアップされた`NFTokenOffer`オブジェクトがあればレジャーから削除し、それに応じて必要な準備金を調整します。`NFTokenOffer`が見つからなくてもエラーにはなりません。その場合、トランザクションは正常に完了するでしょう。
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 
 | フィールド          | JSONの型  | [内部の型][]        | 説明                     |
 |:------------------|:----------|:------------------|:-------------------------|

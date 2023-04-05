@@ -1,15 +1,15 @@
 ---
 html: trustset.html
 parent: transaction-types.html
-blurb: 2つのアカウントをリンクするトラストラインを作成または変更します。
+blurb: トラストラインを作成または変更します。
 labels:
   - トークン
 ---
 # TrustSet
 
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
 
-2つのアカウントをリンクするトラストラインを作成または変更します。
+2つのアカウントをリンクする[トラストライン](trust-lines-and-issuing.html)を作成または変更します。
 
 ## {{currentpage.name}} JSONの例
 
@@ -29,7 +29,7 @@ labels:
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 <!--{# fix md highlighting_ #}-->
 
 | フィールド                    | JSONの型 | [内部の型][] | 説明       |
@@ -41,18 +41,21 @@ labels:
 | `QualityIn`              | 数値    | UInt32            | _（省略可）_ このトラストラインの受入額を、1,000,000,000単位当たりのこの数値の割合で評価。値`0`は、残高を額面価格で扱うことを示す省略表現です。 |
 | `QualityOut`             | 数値    | UInt32            | _（省略可）_ このトラストラインの払出額を、1,000,000,000単位当たりのこの数値の割合で評価。値`0`は、残高を額面価格で扱うことを示す省略表現です。 |
 
+`LimitAmount.issuer`で指定されたアカウントがトラストラインの着信をブロックしている場合、結果コード`tecNO_PERMISSION`でトランザクションが失敗します。 _([DisallowIncoming amendment][] :not_enabled: が必要です)_
 
 ## TrustSetのフラグ
 
 TrustSetタイプのトランザクションについては、[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)で以下の値が追加でサポートされます。
 
-| フラグ名       | 16進数値  | 10進数値 | 説明                   |
-|:----------------|:-----------|:--------------|:------------------------------|
-| tfSetfAuth      | 0x00010000 | 65536         | 他方の当事者がこのアカウントからのイシュアンスを保有することを承認します。（[*asfRequireAuth* AccountSet フラグ](accountset.html#accountsetのフラグ)を使用しない場合は効果がありません。）設定を解除できません。 |
-| tfSetNoRipple   | 0x00020000 | 131072        | 同一通貨の2つのトラストラインでこのフラグが設定されている場合、これらのトラストライン間でのripplingがブロックされます。（詳細は、[NoRipple](rippling.html)を参照してください。）[fix1578 Amendment][]が有効な場合、トランザクションにこのフラグが使用されていてもNoRippleを有効にできないときは、そのトランザクションは結果コード`tecNO_PERMISSION`で失敗します。このAmendmentが有効ではない場合は、トラストラインでNoRippleを有効にできない場合でもトランザクションの結果が`tesSUCCESS`になることがあります（トランザクションで可能な他の変更を行います）。 |
-| tfClearNoRipple | 0x00040000 | 262144        | No-Ripplingフラグをクリアします。（詳細は、[NoRipple](rippling.html)を参照してください。） |
-| tfSetFreeze     | 0x00100000 | 1048576       | トラストラインを[凍結](freezes.html)します。 |
-| tfClearFreeze   | 0x00200000 | 2097152       | トラストラインを[凍結解除](freezes.html)します。 |
+| フラグ名           | 16進数値      | 10進数値       | 説明                   |
+|:------------------|:-------------|:--------------|:----------------------|
+| `tfSetfAuth`      | `0x00010000` | 65536         | [このアカウントから発行された通貨](issued-currencies.html)を相手方に保有させることを許可します。（[*asfRequireAuth* AccountSet フラグ](accountset.html#accountsetのフラグ)を使用しない場合は効果がありません。）設定を解除できません。 |
+| `tfSetNoRipple`   | `0x00020000` | 131072        | 2つのトラストラインの両方でこのフラグが有効になっている場合、同じ通貨のトラストライン間の[リップリング](rippling.html)をブロックする No Ripple フラグを有効にします。 |
+| `tfClearNoRipple` | `0x00040000` | 262144        | No Rippleフラグを無効にし、このトラストラインで[リップリング](rippling.html)を許可します。 |
+| `tfSetFreeze`     | `0x00100000` | 1048576       | トラストラインを[凍結](freezes.html)します。 |
+| `tfClearFreeze`   | `0x00200000` | 2097152       | トラストラインを[凍結解除](freezes.html)します。 |
+
+トランザクションがNo Rippleを有効にしようとしたができない場合、結果コード `tecNO_PERMISSION` で失敗します。[fix1578 amendment][]が有効になる前は、このようなトランザクションは代わりに`tesSUCCESS`（可能な限りの他の変更を行う）という結果になりました。
 
 トラストラインのAuthフラグは、トラストラインがその所有者のXRP必要準備金に反映されるかどうかを左右しません。ただしAuthフラグを有効にすると、トラストラインがデフォルト状態になることがありません。承認されたトラストラインは削除できません。イシュアーは、トラストラインの限度と残高が0であっても、`tfSetfAuth`フラグだけを使用してトラストラインを事前承認できます。
 

@@ -25,7 +25,7 @@ OfferCancelトランザクションは、XRP LedgerからOfferオブジェクト
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 <!--{# fix md highlighting_ #}-->
 
 

@@ -7,9 +7,9 @@ labels:
 ---
 # TrustSet
 
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
 
-Create or modify a trust line linking two accounts.
+Create or modify a [trust line](trust-lines-and-issuing.html) linking two accounts.
 
 ## Example {{currentpage.name}} JSON
 
@@ -43,6 +43,8 @@ Create or modify a trust line linking two accounts.
 | `QualityIn`              | Number    | UInt32            | _(Optional)_ Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
 | `QualityOut`             | Number    | UInt32            | _(Optional)_ Value outgoing balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. |
 
+If the account specified in `LimitAmount.issuer` is blocking incoming trust lines, the transaction fails with the result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment][] :not_enabled:)_
+
 
 ## TrustSet Flags
 
@@ -52,7 +54,7 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 |:------------------|:-------------|:--------------|:--------------------------|
 | `tfSetfAuth`      | `0x00010000` | 65536         | Authorize the other party to hold [currency issued by this account](issued-currencies.html). (No effect unless using the [`asfRequireAuth` AccountSet flag](accountset.html#accountset-flags).) Cannot be unset. |
 | `tfSetNoRipple`   | `0x00020000` | 131072        | Enable the No Ripple flag, which blocks [rippling](rippling.html) between two trust lines of the same currency if this flag is enabled on both. |
-| `tfClearNoRipple` | `0x00040000` | 262144        | Disable the No Ripple flag, allowing [rippling](rippling.html) on this trust line.) |
+| `tfClearNoRipple` | `0x00040000` | 262144        | Disable the No Ripple flag, allowing [rippling](rippling.html) on this trust line. |
 | `tfSetFreeze`     | `0x00100000` | 1048576       | [Freeze](freezes.html) the trust line. |
 | `tfClearFreeze`   | `0x00200000` | 2097152       | [Unfreeze](freezes.html) the trust line. |
 

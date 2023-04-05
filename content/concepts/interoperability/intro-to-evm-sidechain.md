@@ -8,6 +8,8 @@ status: not_enabled
 ---
 # Introduction to EVM Compatible XRP Ledger Sidechain
 
+{% include '_snippets/evmsc-disclaimer.md' %}
+
 The Ethereum Virtual Machine (EVM) compatible XRP Ledger sidechain is a secure and fast public blockchain that brings all kinds of web3 applications to the XRP Ledger community. 
 
 - Explorer: [https://evm-sidechain.xrpl.org](https://evm-sidechain.xrpl.org/)
@@ -31,7 +33,7 @@ If you are interested in staking cryptocurrency and running your own validator, 
 
 The underlying technology for the XRP Ledger EVM Sidechain consensus is [Tendermint](https://tendermint.com/), a Byzantine-Fault Tolerant engine for building blockchains.
 
-The blockchain uses the `cosmos-sdk` library on top of Tendermint to create and customize the blockchain using its built-in modules. The EVM sidechain uses the [Ethermint](https://github.com/evmos/ethermint) `cosmos-sdk` module, which provides EVM compatibility
+The blockchain uses the `cosmos-sdk` library on top of Tendermint to create and customize the blockchain using its built-in modules. The EVM sidechain uses the [Ethermint](https://github.com/evmos/ethermint) `cosmos-sdk` module, which provides EVM compatibility.
 
 ## Interoperability Using the EVM Sidechain
 

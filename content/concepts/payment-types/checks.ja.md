@@ -21,7 +21,7 @@ Checksは[Escrow](escrow.html)と[Payment Channel](use-payment-channels.html)に
 
 * Checksは資金を凍結しません。Payment ChannelとEscrowでは、送金元が発行したクレームでXRPが清算されるか（Payment Channel）、または有効期限切れまたはCrypto-conditionsによってXRPがリリースされる（Escrow）までは、そのXRPを使用できません。
 
-* EscrowではXRPを自分自身に送金できます。ChecksとPayment Channelを使用してXRP（Checksの場合は発行済み通貨）を自身に送金することはできません。
+* EscrowではXRPを自分自身に送金できます。ChecksではXRPを自身に送金することはできません。
 
 
 **注記:** [Checks Amendment][] により、[OfferCreate][]トランザクションの有効期限が変更されます。詳細は[オファーの有効期限](offers.html#オファーの有効期限)を参照してください。
@@ -32,8 +32,6 @@ Checksは[Escrow](escrow.html)と[Payment Channel](use-payment-channels.html)に
 従来の紙の小切手では、実際の通貨を即座にやり取りすることなく残高を送金できます。XRP Ledger Checksを使用すると、銀行業界でよく利用され受け入れられている方法で資金を非同期にやり取りすることができます。
 
 XRP Ledger Checksは、XRP Ledgerに固有の問題も解決できます。たとえば、ユーザーが不審な支払いを拒否したり、支払いの一部のみを受領することを可能にします。これは、コンプライアンス上の理由から支払いの受け入れに慎重に対応する必要がある機関にとっては有用です。
-
-Checksはその他のさまざまな用途に利用できる可能性があります。RippleはコミュニティにてChecksの新しく創造的な用途が探られていくことを推奨しています。
 
 
 ### ユースケース: 支払いの承認
@@ -85,7 +83,7 @@ Checksはすべて同じ方法で開始されるため、**ステップ1と2**�
 
 ## Checksの利用可能性
 
-Checksを使用するには`rippled` v0.90.0以降が必要です。2018年10月11日の時点では、Checks Amendmentは本番環境のXRP Ledgerで有効になっていません。すべての既知のAmendmentの最新状況については、[既知のAmendment](known-amendments.html)を参照してください。Amendmentを有効化し、Amendmentに投票する方法については、[Amendmentプロセス](amendments.html#amendmentプロセス)を参照してください。
+[Checks amendment][]は2020年6月18日にメインネットで有効化されました。Amendmentがどのように有効化され、投票されるかについては、[Amendmentsプロセス](amendments.html#amendmentプロセス)を参照してください。
 
 Test NetまたはプライベートXRP LedgerネットワークでのAmendmentの状況を確認するには、[featureメソッド][]を使用してください。
 

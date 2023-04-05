@@ -8,6 +8,8 @@ status: not_enabled
 ---
 # Get Started with the EVM Sidechain
 
+{% include '_snippets/evmsc-disclaimer.md' %}
+
 This getting started tutorial walks you through the steps to set up your account and submit a transaction using the EVM sidechain bridge. 
 
 ## 1. Create an Account Using an EVM Compatible Wallet

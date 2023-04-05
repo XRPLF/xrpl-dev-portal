@@ -42,6 +42,7 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 
 ## Error Cases
 
+- If the `Destination` account is blocking incoming Checks, the transaction fails with the result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment][] :not_enabled:)_
 - If the `Destination` is the sender of the transaction, the transaction fails with the result code `temREDUNDANT`.
 - If the `Destination` [account](accounts.html) does not exist in the ledger, the transaction fails with the result code `tecNO_DST`.
 - If the `Destination` account has the `RequireDest` flag enabled but the transaction does not include a `DestinationTag` field, the transaction fails with the result code `tecDST_TAG_NEEDED`.

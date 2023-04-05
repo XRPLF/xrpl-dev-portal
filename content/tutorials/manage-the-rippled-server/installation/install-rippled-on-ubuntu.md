@@ -59,6 +59,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     - `bionic` for **Ubuntu 18.04 Bionic Beaver**
     - `buster` for **Debian 10 Buster**
     - `bullseye` for **Debian 11 Bullseye**
+    - `jammy` for **Ubuntu 22.04 Jammy Jellyfish**
 
     If you want access to development or pre-release versions of `rippled`, use one of the following instead of `stable`:
 
@@ -83,9 +84,6 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
         sudo systemctl start rippled.service
 
-    To configure it to start automatically on boot:
-
-        sudo systemctl enable rippled.service
 
 8. Optional: allow `rippled` to bind to privileged ports.
 

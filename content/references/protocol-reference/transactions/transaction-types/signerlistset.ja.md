@@ -42,7 +42,7 @@ SignerListSetトランザクションは、トランザクションの[マルチ
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 <!--{# fix md highlighting_ #}-->
 
 | フィールド         | JSONの型 | [内部の型][] | 説明                  |

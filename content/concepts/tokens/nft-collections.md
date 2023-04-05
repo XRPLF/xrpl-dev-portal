@@ -5,7 +5,6 @@ blurb: You can mint NFTs as collections using the NFT Taxon field.
 labels:
  - Non-fungible Tokens, NFTs
 ---
-
 # Minting NFTs into Collections
 
 You can use the `NFTokenTaxon` field to group NFTs into collections. As the minter, you can choose any numeric value from `0x0` to `0xFFFFFFFF`and assign it to NFTs as you create them. The significance of the taxon is entirely up to you.

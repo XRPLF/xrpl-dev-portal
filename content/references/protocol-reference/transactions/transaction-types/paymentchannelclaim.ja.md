@@ -42,7 +42,7 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 
 <!--{# TODO: replace the above example with one where the channel, pubkey, signature, and balance match #}-->
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 <!--{# fix md highlighting_ #}-->
 
 

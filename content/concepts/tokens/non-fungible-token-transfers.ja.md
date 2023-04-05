@@ -1,4 +1,5 @@
 ---
+name: NFTの取引
 html: non-fungible-token-transfers.html
 parent: non-fungible-tokens.html
 blurb: NFTokenをダイレクトモードまたはブローカーモードで取引する。
