@@ -5,8 +5,16 @@ const fs = require("fs");
 const path = require("path");
 const fernet = require("fernet");
 
+/**
+ * Fetches some initial data to be displayed on application startup
+ *
+ * @param client
+ * @param wallet
+ * @param appWindow
+ * @returns {Promise<void>}
+ */
 const initialize = async (client, wallet, appWindow) => {
-    // Initial Account Request -> get account details
+    // Reference: https://xrpl.org/account_info.html
     const accountInfoResponse = await client.request({
         "command": "account_info",
         "account": wallet.address,
@@ -15,7 +23,7 @@ const initialize = async (client, wallet, appWindow) => {
     const accountData = prepareAccountData(accountInfoResponse.result.account_data)
     appWindow.webContents.send('update-account-data', accountData)
 
-    // Initial Transaction Request -> list transactions on startup
+    // Reference: https://xrpl.org/account_tx.html
     const txResponse = await client.request({
         "command": "account_tx",
         "account": wallet.address
@@ -23,16 +31,27 @@ const initialize = async (client, wallet, appWindow) => {
     const transactions = prepareTxData(txResponse.result.transactions)
     appWindow.webContents.send('update-transaction-data', transactions)
 }
+
+/**
+ * Handles the subscriptions to ledger events and the internal routing of the responses
+ *
+ * @param client
+ * @param wallet
+ * @param appWindow
+ * @returns {Promise<void>}
+ */
 const subscribe = async (client, wallet, appWindow) => {
 
     let reserve = null
 
+    // Reference: https://xrpl.org/subscribe.html
     await client.request({
         "command": "subscribe",
         "streams": ["ledger"],
         "accounts": [wallet.address]
     })
 
+    // Reference: https://xrpl.org/subscribe.html#ledger-stream
     client.on("ledgerClosed", async (rawLedgerData) => {
         reserve = prepareReserve(rawLedgerData)
         const ledger = prepareLedgerData(rawLedgerData)
@@ -41,6 +60,7 @@ const subscribe = async (client, wallet, appWindow) => {
 
     // Wait for transaction on subscribed account and re-request account data
     client.on("transaction", async (transaction) => {
+        // Reference: https://xrpl.org/account_info.html
         const accountInfoRequest = {
             "command": "account_info",
             "account": wallet.address,
@@ -56,6 +76,13 @@ const subscribe = async (client, wallet, appWindow) => {
     })
 }
 
+/**
+ * Saves the wallet seed using proper cryptographic functions
+ *
+ * @param WALLET_DIR
+ * @param seed
+ * @param password
+ */
 const saveSaltedSeed = (WALLET_DIR, seed, password)=> {
     const salt = crypto.randomBytes(20).toString('hex')
 
@@ -81,6 +108,13 @@ const saveSaltedSeed = (WALLET_DIR, seed, password)=> {
     fs.writeFileSync(path.join(__dirname, WALLET_DIR, 'seed.txt'), privateKey)
 }
 
+/**
+ * Loads the plaintext value of the encrypted seed
+ *
+ * @param WALLET_DIR
+ * @param password
+ * @returns {*}
+ */
 const loadSaltedSeed = (WALLET_DIR, password) => {
     const salt = fs.readFileSync(path.join(__dirname, WALLET_DIR, 'salt.txt')).toString()
 

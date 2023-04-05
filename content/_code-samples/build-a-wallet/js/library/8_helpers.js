@@ -4,7 +4,8 @@ const { convertHexToString } = require("xrpl/dist/npm/utils/stringConversion");
 
 const lsfDisallowXRP = 0x00080000;
 
-/*
+/*  Example lookups
+
     |------------------------------------|---------------|-----------|
     | Address                            | Domain        | Verified  |
     |------------------------------------|---------------|-----------|
@@ -14,6 +15,15 @@ const lsfDisallowXRP = 0x00080000;
     |------------------------------------|---------------|-----------|
  */
 
+/**
+ * Check a potential destination address's details, and pass them back to the "Send XRP" dialog:
+ * - Is the account funded? If not, payments below the reserve base will fail
+ * - Do they have DisallowXRP enabled? If so, the user should be warned they don't want XRP, but can click through.
+ * - Do they have a verified Domain? If so, we want to show the user the associated domain info.
+ *
+ * @param accountData
+ * @returns {Promise<{domain: string, verified: boolean}|{domain: string, verified: boolean}>}
+ */
 async function checkDestination(accountData) {
     const accountStatus = {
         "funded": null,
@@ -22,15 +32,18 @@ async function checkDestination(accountData) {
         "domain_str": "" // the decoded domain, regardless of verification
     }
 
-    if (accountData & lsfDisallowXRP) {
-        accountStatus["disallow_xrp"] = true
-    } else {
-        accountStatus["disallow_xrp"] = false
-    }
+    accountStatus["disallow_xrp"] = !!(accountData & lsfDisallowXRP);
 
     return verifyAccountDomain(accountData)
 }
 
+/**
+ * Verify an account using a xrp-ledger.toml file.
+ * https://xrpl.org/xrp-ledger-toml.html#xrp-ledgertoml-file
+ *
+ * @param accountData
+ * @returns {Promise<{domain: string, verified: boolean}>}
+ */
 async function verifyAccountDomain(accountData) {
     const domainHex = accountData["Domain"]
     if (!domainHex) {
@@ -60,7 +73,15 @@ async function verifyAccountDomain(accountData) {
     }
 }
 
+/**
+ * Verifies if a given address has validated status
+ *
+ * @param accountAddress
+ * @param client
+ * @returns {Promise<{domain: string, verified: boolean}>}
+ */
 async function verify(accountAddress, client) {
+    // Reference: https://xrpl.org/account_info.html
     const request = {
         "command": "account_info",
         "account": accountAddress,

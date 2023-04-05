@@ -26,14 +26,13 @@ const createWindow = () => {
 const main = async () => {
     const appWindow = createWindow()
 
+    // Create Wallet directory in case it does not exist yet
     if (!fs.existsSync(WALLET_DIR)) {
-        // Create Wallet directory in case it does not exist yet
         fs.mkdirSync(path.join(__dirname, WALLET_DIR));
     }
 
     let seed = null;
 
-    //
     ipcMain.on('seed-entered', async (event, providedSeed) => {
         seed = providedSeed
         appWindow.webContents.send('open-password-dialog')

@@ -12,13 +12,14 @@ const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
  * @returns {Promise<*>}
  */
 const getValidatedLedgerData = async (client) => {
+    // Reference: https://xrpl.org/ledger.html#ledger
     const ledgerRequest = {
         "command": "ledger",
         "ledger_index": "validated"
     }
-    const ledgerResponse = client.request(ledgerRequest)
+    const ledgerResponse = await client.request(ledgerRequest)
 
-    return (await ledgerResponse).result
+    return ledgerResponse.result
 }
 
 /**

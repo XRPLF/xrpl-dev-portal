@@ -37,13 +37,14 @@ const main = async () => {
 
     await client.connect()
 
-    // Subscribe client to 'ledger' event on the XRPL
+    // Subscribe client to 'ledger' events
+    // Reference: https://xrpl.org/subscribe.html
     await client.request({
         "command": "subscribe",
         "streams": ["ledger"]
     })
 
-    // Dispatch 'update-ledger-data' event locally
+    // Dispatch 'update-ledger-data' event
     client.on("ledgerClosed", async (ledger) => {
         appWindow.webContents.send('update-ledger-data', ledger)
     })

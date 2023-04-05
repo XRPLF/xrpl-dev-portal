@@ -59,7 +59,6 @@ const main = async () => {
 
         ipcMain.on('send-xrp-action', (event, paymentData) => {
             sendXrp(paymentData, client, wallet).then((result) => {
-                console.log(result)
                 appWindow.webContents.send('send-xrp-transaction-finish', result)
             })
         })

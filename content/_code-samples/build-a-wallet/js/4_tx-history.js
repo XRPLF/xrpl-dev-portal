@@ -32,12 +32,14 @@ const main = async () => {
 
         await client.connect()
 
+        // Reference: https://xrpl.org/subscribe.html
         await client.request({
             "command": "subscribe",
             "streams": ["ledger"],
             "accounts": [address]
         })
 
+        // Reference: https://xrpl.org/subscribe.html#ledger-stream
         client.on("ledgerClosed", async (rawLedgerData) => {
             reserve = prepareReserve(rawLedgerData)
             const ledger = prepareLedgerData(rawLedgerData)
@@ -46,6 +48,7 @@ const main = async () => {
 
         // Wait for transaction on subscribed account and re-request account data
         client.on("transaction", async (transaction) => {
+            // Reference: https://xrpl.org/account_info.html
             const accountInfoRequest = {
                 "command": "account_info",
                 "account": address,
@@ -60,7 +63,8 @@ const main = async () => {
             appWindow.webContents.send('update-transaction-data', transactions)
         })
 
-        // Initial Account Request -> get account details
+        // Initial Account Request -> Get account details on startup
+        // Reference: https://xrpl.org/account_info.html
         const accountInfoResponse = await client.request({
             "command": "account_info",
             "account": address,
@@ -69,7 +73,8 @@ const main = async () => {
         const accountData = prepareAccountData(accountInfoResponse.result.account_data)
         appWindow.webContents.send('update-account-data', accountData)
 
-        // Initial Transaction Request -> list transactions on startup
+        // Initial Transaction Request -> List account transactions on startup
+        // Reference: https://xrpl.org/account_tx.html
         const txResponse = await client.request({
             "command": "account_tx",
             "account": address

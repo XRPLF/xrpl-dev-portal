@@ -15,16 +15,17 @@ const getValidatedLedgerIndex = async () => {
 
     await client.connect()
 
+    // Reference: https://xrpl.org/ledger.html#ledger
     const ledgerRequest = {
         "command": "ledger",
         "ledger_index": "validated"
     }
 
-    const ledgerResponse = client.request(ledgerRequest)
+    const ledgerResponse = await client.request(ledgerRequest)
 
     await client.disconnect()
 
-    return (await ledgerResponse).result.ledger_index
+    return ledgerResponse.result.ledger_index
 }
 
 /**
