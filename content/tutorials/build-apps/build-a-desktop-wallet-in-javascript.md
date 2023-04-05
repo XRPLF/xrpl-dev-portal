@@ -194,9 +194,9 @@ At this point, your wallet shows the account's balance getting updated, but does
 came about, namely the actual transactions that caused the updates. So, our next step is to display the account's 
 up to date transaction history using subscriptions once again:
 
-To get the application running at this stage of development, run the following command:
-
 ![Screenshot: Step 4, show transaction history](img/javascript-wallet-4.png)
+
+To get the application running at this stage of development, run the following command:
 
 ```console
 npm run tx-history
