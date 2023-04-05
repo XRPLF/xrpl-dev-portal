@@ -2556,7 +2556,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/accountset.ja.md
         targets:
             - ja
@@ -2629,7 +2628,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/checkcreate.ja.md
         targets:
             - ja
@@ -2694,7 +2692,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/nftokencreateoffer.ja.md
         targets:
             - ja
@@ -2719,7 +2716,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/offercreate.ja.md
         targets:
             - ja
@@ -2744,7 +2740,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/paymentchannelcreate.ja.md
         targets:
             - ja
@@ -2785,7 +2780,6 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/trustset.ja.md
         targets:
             - ja
