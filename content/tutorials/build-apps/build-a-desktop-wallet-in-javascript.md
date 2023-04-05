@@ -155,7 +155,7 @@ ledger via the subscribe method offered by the client. We will improve our code 
 
 **Full code for this step:** [`2_async-subscribe.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_async-subscribe.js).
 
-In Step 2.a we kept  our application on the heartbeat of the XRPL by periodically polling it for updates. In JavaScript,
+In Step 2.A we kept  our application on the heartbeat of the XRPL by periodically polling it for updates. In JavaScript,
 our client is connecting to the XRPL via [WebSockets](https://en.wikipedia.org/wiki/WebSocket). Our client has a 
 permanent bidirectional connection to the XRPL, which allows us to subscribe to events that the server sends out. This 
 saves resources on the server, which now only sends out data we explicitly asked for when a change happens, as well as 
