@@ -72,7 +72,7 @@ The application we are going to build here will be capable of the following:
     - If the address has a [verified domain name](https://xrpl.org/xrp-ledger-toml.html#account-verification) associated with it.
 
 The application in this tutorial _doesn't_ have the ability to send or trade [tokens](issued-currencies.html) or 
-use other [payment types](payment-types.html) like Escrow or Payment Channels. However, it provides a foundation 
+use other [payment types](payment-types.html) like [Escrow](https://xrpl.org/escrow.html) or [Payment Channels](https://xrpl.org/payment-channels.html). However, it provides a foundation 
 that you can implement those and other features on top of.
 
 In addition to the above features, you'll also learn a bit about Events, IPC (inter-process-communication) 
