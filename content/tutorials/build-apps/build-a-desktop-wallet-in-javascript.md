@@ -171,10 +171,12 @@ npm run async-subscribe
 
 **Full code for this step:** [`3_account.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/3_account.js).
 
-Now that we have a  permanent connection to the XRPL and some code to bring the delivered data to life on our 
-screen, it's time to add some "wallet" functionality by managing am individual account. For this step, we will momentarily 
-hardcode the address of the account, and save the complexities of key handling for later. The application, after finishing 
-this step should look like this:
+Now that we have a permanent connection to the XRPL and some code to bring the delivered data to life on our 
+screen, it's time to add some "wallet" functionality by managing an individual account. 
+
+For this step, we will momentarily 
+hardcode the address of the account, and save the complexities of key handling for later. After finishing 
+this step the application should look like this:
 
 ![Screenshot: Step 3, show account information](img/javascript-wallet-3.png)
 
