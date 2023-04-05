@@ -126,6 +126,12 @@ sync with the ledger and display the latest specs and stats like a clock that is
 
 ![Screenshot: Step 2, show ledger updates](img/javascript-wallet-2.png)
 
+To accomplish this, we'll need to subscribe to the ledger using this snippet of code: 
+
+<Code snippet>
+
+When you subscribe to the `ledger` stream, anytime there is a new validated ledger your code will be updated...
+
 To get the application running at this stage of development, run the following command:
 
 ```console
