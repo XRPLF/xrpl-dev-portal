@@ -103,8 +103,7 @@ in electron works:
 {{ include_code("_code-samples/build-a-wallet/js/1_hello.js", language="js") }}
 
 The main parts are a helper function that executes a ledger request and the main function that creates the application 
-window, calls our helper function and distributes its contents by broadcasting an event that will get picked up by the 
-frontend.
+window. The main function then calls our helper function and distributes its contents by broadcasting an event that will get picked up by the frontend.
 
 We will use this example to study how to do Inter Process Communication (IPC) in Electron. For reasons of due diligence it 
 has to be mentioned that JavaScript has no real Processes / Threading because follows event-driven paradigm. Nonetheless 
