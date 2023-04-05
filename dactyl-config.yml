@@ -1055,6 +1055,17 @@ pages:
         targets:
             - ja
 
+   # Redirect old "federated-sidechains.html"
+    -   name: Federated Sidechains
+        html: federated-sidechains.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+        blurb: Learn about federated sidechains, which enable value in the form of XRP and other tokens (IOUs) to move efficiently between a sidechain and the XRP Ledger.
+        nav_omit: true
+        targets:
+            - en
+            - ja            
+
     -   md: concepts/xrpl-servers/xrpl-servers.md
         targets:
             - en
@@ -1130,6 +1141,30 @@ pages:
         targets:
             - en
             - ja
+
+    # Redirect "Interoperability" page
+    -   name: Interoperability
+        html: xrpl-interoperability.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+        blurb: Learn about capabilities that bring programmability and ability to interact with other chains to the XRP Ledger.
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+    # Redirect "Introduction to EVM Sidechain" page
+
+    -   name: Introduction to EVM Compatible XRP Ledger Sidechain
+        html: intro-to-evm-sidechain.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
+        blurb: Introduction to the EVM compatible XRP Ledger Sidechain.
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
 
     # Redirect old "the-rippled-server.html"
     -   name: The rippled Server
@@ -2185,6 +2220,66 @@ pages:
         targets:
             - en
             - ja
+
+        # Redirect for "Interoperability - EVM Sidechain" tutorial page.
+    -   name: Interoperability - EVM Sidechain
+        html: evm-sidechains.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
+        nav_omit: true
+        targets:
+            - en
+            - ja            
+
+        # Redirect for "Get Started with EVM Sidechain" tutorial page.
+    -   name: Get Started with the EVM Sidechain
+        html: get-started-evm-sidechain.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/get-started-evm-sidechain/
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+        # Redirect for "Connect MetaMask to XRP Ledger Sidechain" tutorial page.
+    -   name: Connect MetaMask to XRP Ledger Sidechain
+        html: connect-metamask-to-xrpl-evm-sidechain.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/connect-metamask-to-xrpl-evm-sidechain/
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+        # Redirect for "Run a Validator Node on an EVM Sidechain" tutorial page.
+    -   name: Run a Validator Node on an EVM Sidechain
+        html: evm-sidechain-run-a-validator-node.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-run-a-validator-node/
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+        # Redirect for "Join the XRP Ledger EVM Sidechain Devnet" tutorial page.
+    -   name: Join the XRP Ledger EVM Sidechain Devnet
+        html: join-evm-sidechain-devnet.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/join-evm-sidechain-devnet/
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+        # Redirect for "EVM Sidechain Validator Security" tutorial page.
+    -   name: EVM Sidechain Validator Security
+        html: evm-sidechain-validator-security.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-validator-security/
+        nav_omit: true
+        targets:
+            - en
+            - ja           
 
 # References -------------------------------------------------------------------
 
