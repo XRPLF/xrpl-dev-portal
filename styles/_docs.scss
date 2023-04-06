@@ -104,3 +104,36 @@
   .page-docs .video-grid {
     grid-gap: 35px;
   }
+
+  .flat-card-grid {
+    grid-gap: 15px;
+    max-width: 100%;
+    min-height: 384px;
+
+    .flat-card {
+      padding: 32px 50px;
+      height: 100%;
+      width: 100%;
+    }
+
+    .row {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    .col {
+      display: flex;
+      
+      .btn-primary {
+        align-self: flex-end;
+      }
+    }
+
+    img {
+      width: auto;
+      height: 115px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+

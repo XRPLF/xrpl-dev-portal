@@ -26,17 +26,16 @@
   {% endmacro %}
 
   {% macro flatCard(href, title, description, linkText, src) %}
-    <div class="card video-image  flat-card">
+    <div class="card video-image flat-card">
       <img 
-        class="img-fluid"
         src={{src}}
         alt={{title}}
       />
-      <h5>{{ title }}</h5>
-      <p class="faded-text">
+      <h5 class="row">{{ title }}</h5>
+      <p class="row faded-text">
         {{ description }}
       </p>
-      <div class="dg-lg-block mb-5">
+      <div class="col">
         {{ primaryButton(href, linkText, false) }}
       </div>
     </div>
@@ -209,20 +208,27 @@
     <div class="mx-auto mb-10">
       <h4>Getting Started with XRP Ledger</h4>
     </div>
-    <div class="card-grid card-grid-3xN">
-      <div class="col-sm">
-        {{ flatCard("./tutorials/quickstart/", 
+    <div class="card-grid flat-card-grid card-grid-3xN">
+      <div class="col">
+        {{ flatCard("./concepts/", 
                     "Concepts", 
                     "Lorem ipsum dolor sit amet consectetur. Ullamcorper senectus egestas mauris ante tellus eu feugiat cursus. Quis in mi augue curabitur orci purus massa nec sagittis.", 
                     "Read the Docs",
-                    "/assets/img/backgrounds/docs-quick-start.svg") }}
+                    "/img/graphics/concepts-docs.svg") }}
       </div>
-      <div class="col-sm">
-        {{ flatCard("./tutorials/quickstart/", 
-                    "Concepts", 
+      <div class="col">
+        {{ flatCard("./tutorials/", 
+                    "Tutorials", 
                     "Lorem ipsum dolor sit amet consectetur. Ullamcorper senectus egestas mauris ante tellus eu feugiat cursus. Quis in mi augue curabitur orci purus massa nec sagittis.", 
-                    "Read the Docs",
-                    "/assets/img/backgrounds/docs-quick-start.svg") }}
+                    "View Tutorials",
+                    "/img/graphics/blue-computer.png") }}
+      </div>
+      <div class="col">
+        {{ flatCard("./references/", 
+                    "References", 
+                    "Lorem ipsum dolor sit amet consectetur. Ullamcorper senectus egestas mauris ante tellus eu feugiat cursus. Quis in mi augue curabitur orci purus massa nec sagittis.", 
+                    "View References",
+                    "/img/graphics/ref-book.png") }}
       </div>
     </div>
   </section>
