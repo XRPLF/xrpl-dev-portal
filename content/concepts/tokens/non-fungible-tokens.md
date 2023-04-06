@@ -6,9 +6,9 @@ labels:
  - Non-fungible Tokens, NFTs
 ---
 
-# Non-Fungible Tokens Overview
+# Non-Fungible Tokens
 
-The XRP Ledger supports non-fungible tokens (NFTs, or “nifties” in the vernacular) natively.  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
+The XRP Ledger natively supports non-fungible tokens (NFTs, or “nifties” in the vernacular).  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
 
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
@@ -63,25 +63,6 @@ You can destroy a `NFToken` you own using the [NFTokenBurn transaction][]. If th
 ![The NFT Lifecycle](img/nft-lifecycle.png "NFT Lifecycle Image")
 
 For more info about transferring `NFToken` objects, see [Trading NFTokens on the XRP Ledger](non-fungible-token-transfers.html).
-
-
-## Reference
-
-- [NFToken][] data type
-- Ledger Objects
-    - [NFTokenOffer object][]
-    - [NFTokenPage object][]
-- Transactions
-    - [NFTokenMint transaction][]
-    - [NFTokenCreateOffer transaction][]
-    - [NFTokenCancelOffer transaction][]
-    - [NFTokenAcceptOffer transaction][]
-    - [NFTokenBurn transaction][]
-- API Methods
-    - [account_nfts method][]
-    - [nft_sell_offers method][]
-    - [nft_buy_offers method][]
-    - [nft_info method][] (Clio server only)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
