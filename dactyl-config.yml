@@ -406,6 +406,12 @@ pages:
       targets:
          - en
          - ja
+
+    - md: concepts/introduction/crypto-wallets.md
+      parent: introduction.html
+      targets:
+         - en
+         - ja
          
     - md: concepts/introduction/txn-and-requests.md
       parent: introduction.html
