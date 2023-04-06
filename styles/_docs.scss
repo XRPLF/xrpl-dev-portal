@@ -1,28 +1,21 @@
-// // TODO: Refactor this to have `.page-docs-index` at the top and everything else as sub-tiems
-
-// #main {
-//     flex: 0 0 75%;
-//     max-width: 75%;
-// }
-
 // Light mode
 .light .sdk-img{
     content:url(../assets/img/backgrounds/sdk-white.png);
   }
-  
-// Utilizes whitespace better when there's only a left sidebar
-// TODO: Figure out why this isn't working - but this sizing looks good as a temporary state.
-.page-docs-index main {
-    flex: 0 0 75%;
-    max-width: 75%;
-}
-
-
 
 // Video Cards
-.get-started-img {
+.get-started-img, .flat-card {
     max-width:100%;
     max-height:100%;
+}
+
+.faded-text {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15.5667px;
+  line-height: 23px;
+  // color: #E0E0E1;
 }
 
 // Explore SDKs
@@ -83,7 +76,7 @@
     }
   }
   
-  .circled-logo{
+  .page-docs .circled-logo{
     margin-left:0.1rem;
   }
   
@@ -100,4 +93,14 @@
     width: 26px;
     height: 26px;
     display: inline-block;
+  }
+
+  .dev-tools-img {
+    max-width:100%; 
+    max-height: 100%;
+    margin:auto;
+  }
+
+  .page-docs .video-grid {
+    grid-gap: 35px;
   }

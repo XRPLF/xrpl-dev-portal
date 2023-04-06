@@ -1,13 +1,14 @@
 {% extends "base.html.jinja" %}
 
-{% block mainclasses %}landing page-docs-index landing-builtin-bg{% endblock %}
+{% block mainclasses %}landing page-docs-index landing-builtin-bg jackson-identifier {% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
 
+<div class="landing page-docs landing-builtin-bg overflow-hidden styled-page">
   <section class="py-26 text-center">
-    <div class="col-xl-4 col-lg-6 mx-auto text-center">
+    <div class="col-xl-4 col-lg-9 mx-auto text-center">
       <div class="d-flex flex-column-reverse w-100">
         <h1 class="mb-18">{% trans %}What Would You Like to Learn?{% endtrans %}</h1>
         <h6 class="eyebrow mb-3">{% trans %}XRP Ledger Documentation{% endtrans %}</h6>
@@ -24,17 +25,30 @@
     {% endif %}
   {% endmacro %}
 
-  {% macro flatCard(href, title, description, image, isImageAbove) %}
-     {# TODO: #}
+  {% macro flatCard(href, title, description, linkText, src) %}
+    <div class="card video-image  flat-card">
+      <img 
+        class="img-fluid"
+        src={{src}}
+        alt={{title}}
+      />
+      <h5>{{ title }}</h5>
+      <p class="faded-text">
+        {{ description }}
+      </p>
+      <div class="dg-lg-block mb-5">
+        {{ primaryButton(href, linkText, false) }}
+      </div>
+    </div>
   {% endmacro %}
 
-  {% macro videoCard(url, title, image)%}
+  {% macro videoCard(url, title, src)%}
     <div class="col">
-      <a class="btn1" data-url={{url}}>
+      <a class="btn1" data-url={{url}}> {# TODO: Remove me, If you use href instead, this loads the YouTube videos right away as full screen things #}
         <img
           class="get-started-img video-image"
           id={{title}}
-          src={{img}}
+          src={{src}}
         />
       </a>
 
@@ -42,11 +56,11 @@
     </div>
   {% endmacro %}
 
-  {% macro useCasesCard(subItems, title, image, id) %}
+  {% macro useCasesCard(subItems, title, src, id) %}
     <div class="col">
       <img
         class="use-cases-img img-fluid mb-2 shadow"
-        src={{image}}
+        src={{src}}
         alt="{{title}}"
         id={{id}}
       >
@@ -92,17 +106,17 @@
   {%
     set intermediateVideos = [
       {
-        "img": "/assets/img/backgrounds/docs-advanced-payment-features@2x.png",
+        "src": "/assets/img/backgrounds/docs-advanced-payment-features@2x.png",
         "title": "Advanced Payment Features",
         "url": "https://www.youtube.com/embed/e2Iwsk37LMk?rel=0&amp;showinfo=0&amp;autoplay=1",
       },
       {
-        "img": "/assets/img/backgrounds/docs-governance@2x.png",
+        "src": "/assets/img/backgrounds/docs-governance@2x.png",
         "title": "Governance and the Amendment Process",
         "url": "https://www.youtube.com/embed/4GbRdanHoR4?rel=0&amp;showinfo=0&amp;autoplay=1",
       },
       {
-        "img": "/assets/img/backgrounds/docs-sidechains@2x.png",
+        "src": "/assets/img/backgrounds/docs-sidechains@2x.png",
         "title": "Federated Sidechains",
         "url": "https://www.youtube.com/embed/NhH4LM8NxgY?rel=0&amp;showinfo=0&amp;autoplay=1",
       },
@@ -112,7 +126,7 @@
     {
       "title": "Build a Wallet",
       "id": "build-a-wallet",
-      "img": "/assets/img/backgrounds/docs-wallet@2x.png",
+      "src": "/assets/img/backgrounds/docs-wallet@2x.png",
       "subItems": [
         {
           "description": "Use Specialized Payment Types",
@@ -127,7 +141,7 @@
     {
       "title": "NFTs",
       "id": "nfts",
-      "img": "/assets/img/backgrounds/docs-nft@2x.png",
+      "src": "/assets/img/backgrounds/docs-nft@2x.png",
       "subItems": [
         {
           "description": "NFT Conceptual Overview",
@@ -146,7 +160,7 @@
     {
       "title": "Run an XRP Ledger Node",
       "id": "run-an-xrp-ledger-node",
-      "img": "/assets/img/backgrounds/docs-node@2x.png",
+      "src": "/assets/img/backgrounds/docs-node@2x.png",
       "subItems": [
         {
           "description": "About the Server",
@@ -167,22 +181,22 @@
   {%
     set getStartedVideos = [
     {
-      "img": "/assets/img/backgrounds/docs-intro-to-XRP-ledger@2x.png",
+      "src": "/assets/img/backgrounds/docs-intro-to-XRP-ledger@2x.png",
       "title": "Intro to XRP Ledger",
       "url": "https://www.youtube.com/embed/sVTybJ3cNyo?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
     {
-      "img": "/assets/img/backgrounds/docs-accounts@2x.png",
+      "src": "/assets/img/backgrounds/docs-accounts@2x.png",
       "title": "Accounts",
       "url": "https://www.youtube.com/embed/eO8jE6PftX8?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
     {
-      "img": "/assets/img/backgrounds/docs-decentralized-exchange@2x.png",
+      "src": "/assets/img/backgrounds/docs-decentralized-exchange@2x.png",
       "title": "Decentralized Exchange",
       "url": "https://www.youtube.com/embed/VWNrHBDfXvA?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
     {
-      "img": "/assets/img/backgrounds/docs-tokenization@2x.png",
+      "src": "/assets/img/backgrounds/docs-tokenization@2x.png",
       "title": "Tokenization",
       "url": "https://www.youtube.com/embed/Oj4cWOiWf4A?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
@@ -191,7 +205,29 @@
 
   {# TODO: Add the FlatCards section at the top #}
 
-  <section class="py-26 px-20 text-left">
+  <section class="text-left">
+    <div class="mx-auto mb-10">
+      <h4>Getting Started with XRP Ledger</h4>
+    </div>
+    <div class="card-grid card-grid-3xN">
+      <div class="col-sm">
+        {{ flatCard("./tutorials/quickstart/", 
+                    "Concepts", 
+                    "Lorem ipsum dolor sit amet consectetur. Ullamcorper senectus egestas mauris ante tellus eu feugiat cursus. Quis in mi augue curabitur orci purus massa nec sagittis.", 
+                    "Read the Docs",
+                    "/assets/img/backgrounds/docs-quick-start.svg") }}
+      </div>
+      <div class="col-sm">
+        {{ flatCard("./tutorials/quickstart/", 
+                    "Concepts", 
+                    "Lorem ipsum dolor sit amet consectetur. Ullamcorper senectus egestas mauris ante tellus eu feugiat cursus. Quis in mi augue curabitur orci purus massa nec sagittis.", 
+                    "Read the Docs",
+                    "/assets/img/backgrounds/docs-quick-start.svg") }}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-26 text-left">
     <div class="card-grid card-grid-2xN">
       <div class="col">
         <h6>Explore SDKs</h6>
@@ -235,16 +271,16 @@
     </div>
   </section>
 
-  <section class="py-15 px-20 text-left">
+  <section class="text-left">
     <h4 class="pb-4">Use Cases</h4>
     <div class="card-grid card-grid-3xN">
       {% for useCase in useCases %}
-        {{ useCasesCard(useCase.subItems, useCase.title, useCase.image, useCase.id)}}
+        {{ useCasesCard(useCase.subItems, useCase.title, useCase.src, useCase.id)}}
       {% endfor %}
     </div>
   </section>
 
-  <section class="py-10 px-20 text-left">
+  <section class="text-left">
     <div class="mx-auto mb-10">
       <h4>Getting Started with XRP Ledger</h4>
     </div>
@@ -267,13 +303,15 @@
             src="/assets/img/backgrounds/docs-quick-start.svg"
             alt="quick-start"
             id="quick-start-img"
+            class="img-fluid"
           />
         </div>
       </div>
       <div class="col">
-        <div class="card-grid card-grid-2xN">
+        <div class="card-grid card-grid-2xN video-grid">
+          {% set test = "/assets/img/backgrounds/docs-intro-to-XRP-ledger@2x.png"%}
           {% for video in getStartedVideos %}
-            {{ videoCard(video.url, video.title, video.image) }}
+            {{ videoCard(video.url, video.title, video.src) }}
           {% endfor %}
         </div>
         {{ primaryButton("https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi", "Watch Full Series", true) }}
@@ -281,16 +319,16 @@
     </div>
   </section>
 
-  <section class="py-26 px-20 text-left">
+  <section class="py-26 text-left">
     <h4 class="pb-4">Intermediate Learning Sources</h4>
     <div class="card-grid card-grid-3xN">
       {% for video in intermediateVideos %}
-        {{ videoCard(video.url, video.title, video.image) }}
+        {{ videoCard(video.url, video.title, video.src) }}
       {% endfor %}
     </div>
   </section>
 
-  <section class="py-26 px-20 text-left">
+  <section class="py-26 text-left">
     <div class="card-grid card-grid-2xN">
       <div class="col d-flex align-items-center justify-content-center">
         <img
@@ -318,7 +356,7 @@
     </div>
   </section>
 
-  <section class="container-new mb-50-until-sm" id="docs-browse-by">
+  <section class="container-new" id="docs-browse-by">
     <div class="row">
       <div class="col-lg-6 mb-10" id="popular-topics">
         <h2 class="h4">{% trans %}Browse By Recommended Pages{% endtrans %}</h2>
@@ -340,9 +378,7 @@
       </div>
     </div>
   </section><!-- Browse by recommended and Generate Testnet Credentials -->
-
-  {# TODO: Add the normal list of other pages to explore at the bottom of this one (About, Docs, Community, etc.)#}
-
+</div>
 {% endblock %}
 
 {% block endbody %}
