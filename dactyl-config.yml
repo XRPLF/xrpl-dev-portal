@@ -479,7 +479,49 @@ pages:
             - en
             - ja
 
-# Use Cases  -------------------------------------------------------------------
+# Introduction -----------------------------------------------------------------
+
+    -   name: Introduction
+        html: introduction.html
+        parent: docs.html
+        template: pagetype-category.html.jinja
+        blurb: This is a quick introduction to the principal features of the XRP Ledger (XRPL). Read this to get a high level understanding of the XRPL, then you can read more about areas of particular interest. The XRP Ledger is a blockchain that permanently records digital transactions of tokens between accounts. The sections below expand on the concepts introduced in that sentence.
+        targets:
+            - en
+
+    -   name: 基本
+        html: introduction.html
+        parent: concepts.html
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
+        targets:
+            - ja
+    
+    - md: concepts/introduction/what-is-xrpl.md
+      parent: introduction.html
+      targets:
+         - en
+         - ja
+    
+    - md: concepts/introduction/what-is-xrp.md
+      parent: introduction.html
+      targets:
+         - en
+         - ja
+
+    - md: concepts/introduction/crypto-wallets.md
+      parent: introduction.html
+      targets:
+         - en
+         - ja
+         
+    - md: concepts/introduction/txn-and-requests.md
+      parent: introduction.html
+      targets:
+         - en
+         - ja
+         
+# Use Cases --------------------------------------------------------------------
 
     -   name: Use Cases
         html: use-cases.html
@@ -638,49 +680,6 @@ pages:
         blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
         targets:
             - ja
-
-    -   name: Introduction
-        html: introduction.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: Learn the "what" and "why" of the XRP Ledger.
-        targets:
-            - en
-
-    -   name: 基本
-        html: introduction.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: 「XRP Ledgerとは何なのか」、「なぜXRP Ledgerなのか」を学びましょう。
-        targets:
-            - ja
-
-    - md: concepts/introduction/what-is-xrpl.md
-      parent: introduction.html
-      targets:
-         - en
-         - ja
-    
-    - md: concepts/introduction/what-is-xrp.md
-      parent: introduction.html
-      targets:
-         - en
-         - ja
-         
-    - md: concepts/introduction/txn-and-requests.md
-      parent: introduction.html
-      targets:
-         - en
-         - ja
-    # Supplanted by the new xrp-ledger-overview.html landing page.
-    # TODO: fully replace. https://github.com/XRPLF/xrpl-dev-portal/issues/1202
-    # -   md: concepts/introduction/xrp-ledger-overview.md
-    #     targets:
-    #         - en
-    #
-    # -   md: concepts/introduction/xrp-ledger-overview.ja.md
-    #     targets:
-    #         - ja
 
     -   md: concepts/introduction/intro-to-consensus.md
         targets:
