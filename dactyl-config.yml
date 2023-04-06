@@ -3529,12 +3529,6 @@ pages:
             - en
             - ja
 
-        # TODO: translate
-    -   md: references/http-websocket-apis/public-api-methods/clio-methods/nfts_by_issuer.md
-        targets:
-            - en
-            - ja
-
     -   name: Utility Methods
         html: utility-methods.html
         parent: public-api-methods.html
