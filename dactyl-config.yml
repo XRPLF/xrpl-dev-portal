@@ -1071,12 +1071,14 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/consensus-network/federated-sidechains.md
+    # Redirect for now obsolete "Federated Sidechains" page
+    -   name: Federated Sidechains
+        html: federated-sidechains.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+        nav_omit: true
         targets:
             - en
-
-    -   md: concepts/consensus-network/federated-sidechains.ja.md
-        targets:
             - ja
 
     -   md: concepts/xrpl-servers/xrpl-servers.md
@@ -1155,34 +1157,24 @@ pages:
             - en
             - ja
 
-    -   md: concepts/interoperability/xrpl-interoperability.md
+    # Redirect for "Interoperability" landing page
+    -   name: Interoperability
+        html: xrpl-interoperability.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+        nav_omit: true
         targets:
             - en
-
-    -   md: concepts/interoperability/xrpl-interoperability.ja.md
-        targets:
             - ja
 
-    -   md: concepts/interoperability/intro-to-evm-sidechain.md
+    # Redirect for "Introduction to EVM Compatible XRP Ledger Sidechain" page
+    -   name: Introduction to EVM Compatible XRP Ledger Sidechain
+        html: intro-to-evm-sidechain.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
+        nav_omit: true
         targets:
             - en
-
-    -   md: concepts/interoperability/intro-to-evm-sidechain.ja.md
-        targets:
-            - ja
-
-    -   name: Hooks
-        html: https://xrpl-hooks.readme.io/
-        parent: xrpl-interoperability.html
-        blurb: Smart contract proposal for the XRP Ledger.
-        targets:
-            - en
-
-    -   name: Hooks
-        html: https://xrpl-hooks.readme.io/
-        parent: xrpl-interoperability.html
-        blurb: XRP Ledger向けスマートコントラクトの提案。
-        targets:
             - ja
 
     # Redirect old "the-rippled-server.html"
@@ -2240,48 +2232,62 @@ pages:
             - en
             - ja
 
+    # Redirect for "Interoperability - EVM Sidechain" tutorial landing page
     -   name: Interoperability - EVM Sidechain
         html: evm-sidechains.html
-        parent: tutorials.html
-        blurb: Learn how to interact with the EVM Sidechain Devnet.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: 相互運用性 - EVMサイドチェーン
-        html: evm-sidechains.html
-        parent: tutorials.html
-        blurb: EVM Sidechain Devnetとの接続方法について説明します。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/interoperability/get-started-evm-sidechain.md
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
+        nav_omit: true
         targets:
             - en
             - ja
 
-        # TODO: translate
-    -   md: tutorials/interoperability/connect-metamask-to-xrpl-evm-sidechain.md
+    # Redirect for "Get Started with the EVM Sidechain" tutorial page
+    -   name: Get Started with the EVM Sidechain
+        html: get-started-evm-sidechain.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/get-started-evm-sidechain/
+        nav_omit: true
         targets:
             - en
             - ja
 
-        # TODO: translate
-    -   md: tutorials/interoperability/join-evm-sidechain-devnet.md
+    # Redirect for "Connect MetaMask to XRP Ledger Sidechain" tutorial page
+    -   name: Connect MetaMask to XRP Ledger Sidechain
+        html: connect-metamask-to-xrpl-evm-sidechain.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/connect-metamask-to-xrpl-evm-sidechain/
+        nav_omit: true
         targets:
             - en
             - ja
 
-        # TODO: translate
-    -   md: tutorials/interoperability/evm-sidechain-validator-security.md
+    # Redirect for "Join the XRP Ledger EVM Sidechain Devnet" tutorial page
+    -   name: Join the XRP Ledger EVM Sidechain Devnet
+        html: join-evm-sidechain-devnet.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/join-evm-sidechain-devnet/
+        nav_omit: true
         targets:
             - en
             - ja
 
-        # TODO: translate
-    -   md: tutorials/interoperability/evm-sidechain-run-a-validator-node.md
+    # Redirect for "EVM Sidechain Validator Security" tutorial page
+    -   name: EVM Sidechain Validator Security
+        html: evm-sidechain-validator-security.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-validator-security/
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+    # Redirect for "Run a Validator Node on an EVM Sidechain" tutorial page
+    -   name: Run a Validator Node on an EVM Sidechain
+        html: evm-sidechain-run-a-validator-node.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-run-a-validator-node/
+        nav_omit: true
         targets:
             - en
             - ja
