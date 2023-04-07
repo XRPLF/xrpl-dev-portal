@@ -102,9 +102,20 @@
   }
 
   .page-docs {
+
+    .h4::before {
+      margin-top: 0;
+      height: 0;
+    }
+
+    .row {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
     section {
-      margin-top: 64px;
-      margin-bottom: 64px;
+      margin-top: 128px;
+      margin-bottom: 128px;
       margin-right: 8%;
     }
 
@@ -128,17 +139,8 @@
       width: 100%;
     }
 
-    .row {
-      margin-right: 0;
-      margin-left: 0;
-    }
-
-    .col {
-      display: flex;
-      
-      .btn-primary {
-        align-self: flex-end;
-      }
+    .flat-card-padding {
+      margin-bottom: 75px;
     }
 
     img {
@@ -149,3 +151,21 @@
     }
   }
 
+.align-button-on-bottom {
+  
+  .btn-primary {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.quickstart-card {
+  padding: 32px;
+
+  .quickstart-image {
+    margin-left: -32px;
+    margin-right: -32px;
+    margin-bottom: -32px;
+    width: calc(100% + 64px);
+  }
+}

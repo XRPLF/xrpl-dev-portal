@@ -32,10 +32,10 @@
         alt={{title}}
       />
       <h5 class="row">{{ title }}</h5>
-      <p class="row faded-text">
+      <p class="row faded-text flat-card-padding">
         {{ description }}
       </p>
-      <div class="col">
+      <div class="col align-button-on-bottom">
         {{ primaryButton(href, linkText, false) }}
       </div>
     </div>
@@ -288,14 +288,14 @@
     <div class="mx-auto mb-10">
       <h4>Getting Started with XRP Ledger</h4>
     </div>
-    <div class="card-grid card-grid-2xN">
+    <div class="card-grid card-grid-2xN quickstart-card">
       <div class="col">
         <div class="card video-image">
           <h5 class="mt-7"> Quickstart to XRP Ledger </h5>
           <p class="mb-8 mt-4">
             An introduction to fundamental aspects of the XRP Ledger.
           </p>
-          <div class="dg-lg-block mb-5">
+          <div class="dg-lg-block mb-3">
             <a
               class="btn btn-primary btn-arrow get-started-button"
               href="./tutorials/quickstart/"
@@ -307,7 +307,7 @@
             src="/assets/img/backgrounds/docs-quick-start.svg"
             alt="quick-start"
             id="quick-start-img"
-            class="img-fluid"
+            class="quickstart-image"
           />
         </div>
       </div>
@@ -318,12 +318,15 @@
             {{ videoCard(video.url, video.title, video.src) }}
           {% endfor %}
         </div>
-        {{ primaryButton("https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi", "Watch Full Series", true) }}
+        <div class="align-button-on-bottom">
+          {{ primaryButton("https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi", "Watch Full Series", true) }}
+        </div>
       </div>
+
     </div>
   </section>
 
-  <section class="py-26 text-left">
+  <section class="text-left">
     <h4 class="pb-4">Intermediate Learning Sources</h4>
     <div class="card-grid card-grid-3xN">
       {% for video in intermediateVideos %}
@@ -332,7 +335,7 @@
     </div>
   </section>
 
-  <section class="py-26 text-left">
+  <section class="text-left">
     <div class="card-grid card-grid-2xN">
       <div class="col d-flex align-items-center justify-content-center">
         <img
