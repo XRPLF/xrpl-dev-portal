@@ -1168,18 +1168,6 @@ msgid ""
 "href='docs.html#docs-hot-topic'>proposed standards</a> for issuing NFTs."
 msgstr ""
 
-#: template/page-home.html.jinja:182
-msgid "Sidechains"
-msgstr ""
-
-#: template/page-home.html.jinja:183
-msgid ""
-"Extend, experiment, and specialize a custom sidechain based on the XRPL's"
-" proven blockchain technology. Learn more about <a "
-"href='https://dev.to/ripplexdev/a-vision-for-federated-sidechains-on-the-"
-"xrp-ledger-2o7o' target='_blank'>the vision of sidechains</a>."
-msgstr ""
-
 #: template/page-home.html.jinja:201
 msgid "XRPL.org: by the community, for the community"
 msgstr ""
