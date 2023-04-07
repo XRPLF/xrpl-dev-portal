@@ -971,12 +971,6 @@ pages:
          - en
          - ja
 
-    - md: concepts/tokens/become-an-xrp-ledger-gateway.md
-      parent: tokens.html
-      targets:
-         - en
-         - ja
-
     - md: concepts/tokens/decentralized-exchange.md
       parent: tokens.html
       targets:
