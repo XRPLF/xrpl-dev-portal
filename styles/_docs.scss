@@ -101,8 +101,19 @@
     margin:auto;
   }
 
-  .page-docs .video-grid {
-    grid-gap: 35px;
+  .page-docs {
+    section {
+      margin-top: 64px;
+      margin-bottom: 64px;
+    }
+
+    .video-grid {
+      grid-gap: 35px;
+    }
+
+    .title-space {
+      margin-bottom: 16px;
+    }
   }
 
   .flat-card-grid {
