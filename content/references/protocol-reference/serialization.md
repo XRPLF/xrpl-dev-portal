@@ -184,7 +184,7 @@ Transaction instructions may contain fields of any of the following types:
 | [Hash256][]   | 5         | 256        | No                   | A 256-bit arbitrary binary value. This usually represents the "SHA-512Half" hash of a transaction, ledger version, or ledger data object. |
 | [PathSet][]   | 18        | Variable   | No                   | A set of possible [payment paths](paths.html) for a [cross-currency payment](cross-currency-payments.html). |
 | [STArray][]   | 15        | Variable   | No                   | An array containing a variable number of members, which can be different types depending on the field. Two cases of this include [memos](transaction-common-fields.html#memos-field) and lists of signers used in [multi-signing](multi-signing.html). |
-| [STIssue][]   | 24        | 160 or 320 | No                   | :not_enabled: An asset definition, XRP or a token, with no quantity. |
+<!-- | [STIssue][]   | 24        | 160 or 320 | No                   | :not_enabled: An asset definition, XRP or a token, with no quantity. | -->
 | [STObject][]  | 14        | Variable   | No                   | An object containing one or more nested fields. |
 | [UInt8][]     | 16        | 8          | No                   | An 8-bit unsigned integer. |
 | [UInt16][]    | 1         | 16         | No                   | A 16-bit unsigned integer. The `TransactionType` is a special case of this type, with specific strings mapping to integer values. |
