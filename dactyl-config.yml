@@ -2417,12 +2417,14 @@ pages:
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.md
+    # Redirect for "AMM" ledger object type page
+    -   name: AMM
+        html: amm.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/ledger-object-types/amm/
+        nav_omit: true
         targets:
             - en
-
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.ja.md
-        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
@@ -2578,44 +2580,54 @@ pages:
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammbid.md
+    # Redirect for "AMMBid" transaction type page
+    -   name: AMMBid
+        html: ammbid.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammbid/
+        nav_omit: true        
         targets:
             - en
-
-    -   md: references/protocol-reference/transactions/transaction-types/ammbid.ja.md
-        targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.md
+    # Redirect for "AMMCreate" transaction type page
+    -   name: AMMCreate
+        html: ammcreate.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammcreate/
+        nav_omit: true
         targets:
             - en
-
-    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.ja.md
-        targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.md
+     # Redirect for "AMMDeposit" transaction type page
+    -   name: AMMDeposit
+        html: ammdeposit.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammdeposit/
+        nav_omit: true
         targets:
             - en
-
-    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.ja.md
-        targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammvote.md
+     # Redirect for "AMMVote" transaction type page
+    -   name: AMMVote
+        html: ammvote.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammvote/
+        nav_omit: true
         targets:
             - en
-
-    -   md: references/protocol-reference/transactions/transaction-types/ammvote.ja.md
-        targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.md
+     # Redirect for "AMMWithdraw" transaction type page
+    -   name: AMMWithdraw
+        html: ammwithdraw.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammwithdraw/
+        nav_omit: true
         targets:
             - en
-
-    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.ja.md
-        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/checkcancel.md
@@ -3323,12 +3335,14 @@ pages:
         targets:
             - ja
 
-    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
+     # Redirect for "amm_info" public api reference page
+    -   name: amm_info
+        html: amm_info.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/public-api-methods/amm_info/
+        nav_omit: true
         targets:
             - en
-
-    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.ja.md
-        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
@@ -3997,27 +4011,6 @@ pages:
         targets:
             - ja
 
-    -   name: AMM
-        html: label-amm.html
-        parent: by-label.html
-        landing_for: AMM
-        template: pagetype-label.html.jinja
-        blurb: Pages relating to Automated Market Makers (AMM).
-        filters:
-            - labels
-        targets:
-            - en
-
-    -   name: AMM
-        html: label-amm.html
-        parent: by-label.html
-        landing_for: AMM
-        template: pagetype-label.html.jinja
-        blurb: 自動マーケットメーカー（AMM）に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
 
     -   name: Blockchain
         html: label-blockchain.html
