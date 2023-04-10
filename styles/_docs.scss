@@ -1,7 +1,12 @@
 // Light mode
-.light .sdk-img{
+
+.sdk-img {
+  align-self: center;
+
+  .light {
     content:url(../assets/img/backgrounds/sdk-white.png);
   }
+}
 
 // Video Cards
 .get-started-img, .flat-card {
@@ -137,6 +142,7 @@
       padding: 32px 50px;
       height: 100%;
       width: 100%;
+      box-shadow: none;
     }
 
     .flat-card-padding {
@@ -157,6 +163,11 @@
     position: absolute;
     bottom: 0;
   }
+}
+
+.center-image {
+  display: flex;
+  justify-content: center;
 }
 
 .quickstart-card {
