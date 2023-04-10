@@ -1,10 +1,40 @@
-// Light mode
-
 .sdk-img {
   align-self: center;
+}
 
-  .light {
-    content:url(../assets/img/backgrounds/sdk-white.png);
+.light {
+  .sdk-img {
+    content:url(/assets/img/backgrounds/sdk-white.png);
+  }
+
+  .ref-book-illustration {
+    content:url(/img/graphics/ref-book-light.png)
+  }
+
+  .tutorial-illustration {
+    content:url(/img/graphics/tutorials-illustration-light.png)
+  }
+
+  .concepts-doc-illustration {
+    content:url(/img/graphics/concepts-docs-light.png)
+  }
+}
+
+.dark {
+  .sdk-img {
+    content:url(/assets/img/backgrounds/sdk-black.png);
+  }
+
+  .ref-book-illustration {
+    content:url(/img/graphics/ref-book.png)
+  }
+
+  .tutorial-illustration {
+    content:url(/img/graphics/tutorials-illustration.png)
+  }
+
+  .concepts-doc-illustration {
+    content:url(/img/graphics/concepts-docs.png)
   }
 }
 
@@ -28,7 +58,11 @@
 .page-docs-index {
 
   .dev-tools-links {
-    grid-gap: 40px;
+
+    h6::before {
+      margin-top: -20px;
+      height: 20px;
+    }
 
     h6:hover {
       color:#9A52FF;
@@ -185,5 +219,11 @@
     margin-right: -32px;
     margin-bottom: -32px;
     width: calc(100% + 64px);
+  }
+}
+
+.explore-links {
+  .card-grid {
+    grid-gap: 40px;
   }
 }

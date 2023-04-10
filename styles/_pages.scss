@@ -1060,7 +1060,15 @@
 
 .page-docs-index {
   &::before {
-    background-image: url(../img/backgrounds/bg-docs.png);
+    // TODO: Get this image to rotate properly :)
+    background-image: url(../img/backgrounds/bg-overview-top@2x.png);
+    position: absolute;
+    width: 464.17px;
+    height: 580px;
+    left: 561.12px;
+    top: 366.76px;
+
+    transform: rotate(165deg);
   }
 
   .center-search {
