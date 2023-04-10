@@ -273,7 +273,6 @@
         <li class="nav-item level-3"><a class="nav-link" href="#配列フィールド">配列フィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ブロブフィールド">ブロブフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ハッシュフィールド">ハッシュフィールド</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#issueフィールド">Issueフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#オブジェクトフィールド">オブジェクトフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#pathsetフィールド">PathSetフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#uintフィールド">UIntフィールド</a></li>
@@ -584,7 +583,7 @@
 <td>可変数のメンバーからなる配列。フィールドによってタイプが異なる場合があります。この例として、<a href="transaction-common-fields.html#memosフィールド">memos</a>や<a href="multi-signing.html">マルチ署名</a>で使用される署名者のリストがあります。</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="#issueフィールド">STIssue</a></td>
+<td style="text-align: left;">[STIssue][]</td>
 <td style="text-align: left;">24</td>
 <td style="text-align: left;">320</td>
 <td style="text-align: left;">いいえ</td>
@@ -703,16 +702,18 @@
 <h3 id="ハッシュフィールド">ハッシュフィールド<a aria-hidden="true" class="hover_anchor" href="#ハッシュフィールド"><i class="fa fa-link"></i></a></h3>
 <p>XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256があります。これらのフィールドには特定のビット数のバイナリデータが含まれており、それらのデータはハッシュ演算の結果を表す場合とそうでない場合があります。</p>
 <p>これらのフィールドは、長さインディケーターを使用せずに、ビッグエンディアンバイトオーダーで特定数のビットとしてシリアル化されます。</p>
-<h3 id="issueフィールド">Issueフィールド<a aria-hidden="true" class="hover_anchor" href="#issueフィールド"><i class="fa fa-link"></i></a></h3>
+<!--
+### Issueフィールド
+[STIssue]: #issueフィールド -->
 <!-- TODO: translate this section -->
 <!-- 
 _(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> and [Federated Sidechains](federated-sidechains.html) <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)_
 -->
-<p>Some fields specify a <em>type</em> of asset, which could be XRP or a fungible <a href="tokens.html">token</a>, without an amount. These fields have consist of two 160-bit segments in order:</p>
-<ol>
-<li>The first 160 bits are the <a href="currency-formats.html#通貨コード">currency code</a> of the asset. For XRP, this is all 0's.</li>
-<li>The next 160 bits are the <a href="#accountidフィールド">AccountID of the token issuer</a>. For XRP, this is all 0's.</li>
-</ol>
+<!--
+Some fields specify a _type_ of asset, which could be XRP or a fungible [token](tokens.html), without an amount. These fields have consist of two 160-bit segments in order:
+
+1. The first 160 bits are the [currency code](currency-formats.html#通貨コード) of the asset. For XRP, this is all 0's.
+2. The next 160 bits are the [AccountID of the token issuer](#accountidフィールド). For XRP, this is all 0's. -->
 <h3 id="オブジェクトフィールド">オブジェクトフィールド<a aria-hidden="true" class="hover_anchor" href="#オブジェクトフィールド"><i class="fa fa-link"></i></a></h3>
 <p>トランザクションフィールドの一部（<a href="signerlistset.html">SignerListSetトランザクション</a>の<code>SignerEntry</code>や<code>Memos</code>配列の<code>Memo</code>など）はオブジェクトです（「STObject」タイプと呼ばれます）。オブジェクトのシリアル化は配列のシリアル化に似ていますが、唯一異なる点としてオブジェクトフィールド内では<strong>オブジェクトのメンバーを正規順序に従って配置する必要がある</strong>点があげられます。配列フィールドではすでに順序が明示的に設定されています。</p>
 <p>オブジェクトフィールドの<a href="#フィールドの正規順序">正規フィールド順序</a>は、すべての最上位フィールドの正規フィールド順序と同じですが、オブジェクトのメンバーはオブジェクト内でソートする必要があります。最終メンバーの後には、「オブジェクトの終わり」を示すフィールドID（<code>0xe1</code>）があり、このフィールドには内容がありません。</p>
