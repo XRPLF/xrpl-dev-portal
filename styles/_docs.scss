@@ -25,24 +25,33 @@
 
 // Explore SDKs
 
-.page-docs-index .langs h5:hover {
+.page-docs-index {
+
+  .dev-tools-links {
+    grid-gap: 40px;
+
+    h6:hover {
+      color:#9A52FF;
+      text-decoration: none;
+      background: none!important;
+    }
+    p:hover {
+      text-decoration: none !important;
+      background: none !important;
+    }
+    a:hover{
+      color:#9A52FF;
+      text-decoration: none !important;
+    }
+  }
+
+  .langs h5:hover {
     color:#9A52FF;
     text-decoration: none !important;
     background: none!important;
   }
-  .page-docs-index .dev-tools-link h6:hover {
-    color:#9A52FF;
-    text-decoration: none;
-    background: none!important;
-  }
-  .page-docs-index .dev-tools-link p:hover {
-    text-decoration: none !important;
-    background: none !important;
-  }
-  .page-docs-index .dev-tools-link a:hover{
-    color:#9A52FF;
-    text-decoration: none !important;
-  }
+}
+
   .page-docs-index .langs a:hover{
     text-decoration: none !important;
   }
@@ -52,7 +61,7 @@
     width: 1.5rem;
     height: 1.5rem;
   }
-  .page-docs-index .dev-tools-link .btn-arrow::after{
+  .page-docs-index .dev-tools-links .btn-arrow::after{
     content: url(../img/icons/arrow-right-purple.svg);
     width: 1.5rem;
     height: 1.5rem;
@@ -171,8 +180,6 @@
 }
 
 .quickstart-card {
-  padding: 32px;
-
   .quickstart-image {
     margin-left: -32px;
     margin-right: -32px;

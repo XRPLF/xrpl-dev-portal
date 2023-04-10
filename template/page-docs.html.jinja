@@ -73,11 +73,11 @@
   {% endmacro %}
 
   {% macro devToolsCard(link, title, description) %}
-    <div class="col dev-tools-link">
+    <div class="col dev-tools-links">
       <a href="{{ link }}">
         <h6 class="btn-arrow">{{ title }}</h6>
-        <p> {{ description }}</p>
       </a>
+      <p> {{ description }}</p>
     </div>
   {% endmacro %}
 
@@ -201,6 +201,34 @@
     },
     ]
   %}
+  {%
+    set devTools = [
+    {
+      "title": "Faucets",
+      "link": "https://xrpl.org/xrp-testnet-faucet.html",
+      "description":
+        "Get credentials and test-XRP for XRP Ledger Testnet or Devnet.",
+    },
+    {
+      "title": "WebSocket Tool",
+      "link": "https://xrpl.org/websocket-api-tool.html",
+      "description":
+        "Send sample requests and get responses from the rippled API.",
+    },
+    {
+      "title": "XRP Ledger Explorer",
+      "link": "https://livenet.xrpl.org",
+      "description":
+        "View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.",
+    },
+    {
+      "title": "Transaction Sender",
+      "link": "https://xrpl.org/tx-sender.html",
+      "description":
+        "Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.",
+    },
+  ]
+  %}
 
   <section class="text-left">
     <div class="mx-auto mb-10">
@@ -243,7 +271,7 @@
 
   <section class="text-left">
     <div class="mx-auto mb-10">
-      <h4>Getting Started with XRP Ledger</h4>
+      <h4>Getting Started</h4>
     </div>
     <div class="card-grid card-grid-2xN quickstart-card">
       <div class="col">
