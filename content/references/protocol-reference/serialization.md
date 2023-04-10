@@ -300,18 +300,21 @@ The XRP Ledger has several "hash" types: Hash128, Hash160, and Hash256. These fi
 
 All such fields are serialized as the specific number of bits, with no length indicator, in big-endian byte order.
 
+
+<!-- Issue Fields is still under development -->
+<!--
 ### Issue Fields
 [STIssue]: #issue-fields
 
-<!--
-_(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) :not_enabled: and [Federated Sidechains](federated-sidechains.html) :not_enabled:)_ --> 
+_(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) :not_enabled: and [Federated Sidechains](federated-sidechains.html) :not_enabled:)_ -->
 
 <!-- SPELLING_IGNORE: 30d -->
 
+<!--
 Some fields specify a _type_ of asset, which could be XRP or a fungible [token](tokens.html), without an amount. These fields have consist of one or two 160-bit segments in order:
 
 1. The first 160 bits are the [currency code](#currency-codes) of the asset. For XRP, this is all 0's.
-2. If the first 160 bits are all 0's (the asset is XRP), the field ends there. Otherwise, the asset is a token and the next 160 bits are the [AccountID of the token issuer](#accountid-fields).
+2. If the first 160 bits are all 0's (the asset is XRP), the field ends there. Otherwise, the asset is a token and the next 160 bits are the [AccountID of the token issuer](#accountid-fields). -->
 
 
 ### Object Fields

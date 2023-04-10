@@ -268,18 +268,20 @@ XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256がありま�
 
 これらのフィールドは、長さインディケーターを使用せずに、ビッグエンディアンバイトオーダーで特定数のビットとしてシリアル化されます。
 
+<!--
 ### Issueフィールド
-[STIssue]: #issueフィールド
+[STIssue]: #issueフィールド -->
 <!-- TODO: translate this section -->
 
 <!-- 
 _(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) :not_enabled: and [Federated Sidechains](federated-sidechains.html) :not_enabled:)_
 -->
 
+<!--
 Some fields specify a _type_ of asset, which could be XRP or a fungible [token](tokens.html), without an amount. These fields have consist of two 160-bit segments in order:
 
 1. The first 160 bits are the [currency code](currency-formats.html#通貨コード) of the asset. For XRP, this is all 0's.
-2. The next 160 bits are the [AccountID of the token issuer](#accountidフィールド). For XRP, this is all 0's.
+2. The next 160 bits are the [AccountID of the token issuer](#accountidフィールド). For XRP, this is all 0's. -->
 
 ### オブジェクトフィールド
 [STObject]: #オブジェクトフィールド
