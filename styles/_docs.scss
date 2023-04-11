@@ -121,45 +121,59 @@
       color:#9A52FF;
       text-decoration: none !important;
     }
+
+    .btn-arrow::after{
+      content: url(../img/icons/arrow-right-purple.svg);
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 
-  .langs h5:hover {
-    color:#9A52FF;
-    text-decoration: none !important;
-    background: none!important;
-  }
-}
+  .langs {
+    
+    h5:hover {
+      color:#9A52FF;
+      text-decoration: none !important;
+      background: none!important;
+    }
 
-  .page-docs-index .langs a:hover{
-    text-decoration: none !important;
+    a:hover{
+      text-decoration: none !important;
+    }
+
+    .btn-arrow::after{
+      content: url(../img/icons/arrow-right-purple.svg);
+      vertical-align: baseline;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    a {
+      color:#E0E0E1;
+
+      .light {
+        color: #000;
+      }
+    }
+
+    h5 {
+      margin-block-start: 0 !important;
+    }
   }
-  .page-docs-index .langs .btn-arrow::after{
-    content: url(../img/icons/arrow-right-purple.svg);
-    vertical-align: baseline;
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  .page-docs-index .dev-tools-links .btn-arrow::after{
-    content: url(../img/icons/arrow-right-purple.svg);
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  
-  .page-docs-index .langs a{
-    color:#E0E0E1
-  }
-  .light .langs a{
-    color: #000;
-  }
-  .page-docs-index .langs h5{
-    margin-block-start: 0 !important;
-  }
-  .page-docs-index h1,h2,h3,h4,h5,h6,p{
+
+  h1,h2,h3,h4,h5,h6,p {
     font-family: 'Work Sans'!important;
   }
-  .page-docs-index h1{
+
+  h1 {
     font-size: 3.875rem;
   }
+
+  .langs-cards {
+    grid-gap: 40px;
+  }
+} 
+
   @media (max-width: 991.98px) {
     /* Fix dropdown size with top banner present */
     .page-docs-index .langs-cards {
@@ -167,11 +181,7 @@
       grid-auto-rows: auto;
     }
   }
-  
-  .page-docs .circled-logo{
-    margin-left:0.1rem;
-  }
-  
+    
   .circled-logo {
     background-color: 757575;
     border-radius: 50%;
@@ -217,6 +227,10 @@
 
     .title-space {
       margin-bottom: 16px;
+    }
+
+    .circled-logo{
+      margin-left:0.1rem;
     }
   }
 
