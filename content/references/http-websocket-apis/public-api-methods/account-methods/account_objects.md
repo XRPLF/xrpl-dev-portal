@@ -21,6 +21,7 @@ The types of objects that may appear in the `account_objects` response for an ac
 - [Check objects](check.html) for pending Checks.
 - [DepositPreauth objects](depositpreauth-object.html) for deposit preauthorizations. [New in: rippled 1.1.0][]
 - [Ticket objects](known-amendments.html#tickets) for Tickets.
+- [NFTokenPage objects](nftokenpage.html) for collections of NFTs.
 
 
 ## Request Format
