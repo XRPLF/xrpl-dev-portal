@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 43 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gids, ifs, giff
+  gifs: gies, gips, rifs
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -27,50 +27,50 @@ Found 43 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalance, unbalanced
+  unbalances: unbalanced, unbalance
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  disallowincoming: 
   xrpfees: 
   fixnonfungibletokensv1_2: 
-  fixuniversalnumber: 
   immediateofferkilled: 
   depositpreauthamendment: 
+  disallowincoming: 
+  fixuniversalnumber: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingnftoffer: 
+  asfdisallowincomingpaychan: 
   asfdisallowincomingcheck: 
   asfdisallowincomingtrustline: 
-  asfdisallowincomingpaychan: 
-  30d: 3d, 3-d, 3rd
+  30d: 3d, 3rd, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3-d, 3rd
+  30d: 3d, 3rd, 3-d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -85,7 +85,7 @@ Found 43 possible spelling errors:
   xrpfees: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3d, 3-d, 3rd
+  30d: 3d, 3rd, 3-d
 
 -----------------------------
 Discouraged Words and Phrases
