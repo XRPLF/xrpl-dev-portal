@@ -154,7 +154,7 @@ targets:
             # Fix links from untranslated issue-a-fungible-token.html
             "xrp-ledger-toml.html#account-verification": "xrp-ledger-toml.html#アカウント検証"
             "offers.html#offers-and-trust": "offers.html#オファーとトラスト"
-            "authorized-trust-lines.html#authorizing-trust-lines": "authorized-trust-lines.html#トラストラインの承認"
+            "authorized-trust-lines.html#authorizing-trust-lines": "authorized-trust-lines.html#トラストラインの認可"
             # Fix links from untranslated freeze tutorials:
             "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
             "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
