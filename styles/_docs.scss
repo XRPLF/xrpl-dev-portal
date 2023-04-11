@@ -18,6 +18,28 @@
   .concepts-doc-illustration {
     content:url(/img/graphics/concepts-docs-light.png)
   }
+
+  .use-cases {
+    .wallet-illustration {
+      content:url(/img/graphics/wallet-light.svg)
+    }
+
+    .token-illustration {
+      content:url(/img/graphics/tokens-light.png)
+    }
+
+    .connections-illustration {
+      content:url(/img/graphics/nodes-light.svg)
+    }
+  }
+
+  .quickstart-image {
+    content:url(/img/graphics/getting-started-pages-light.png)
+  }
+
+  .dev-tools-img {
+    content:url(/img/graphics/dev-tools-light.svg)
+  }
 }
 
 .dark {
@@ -34,7 +56,29 @@
   }
 
   .concepts-doc-illustration {
-    content:url(/img/graphics/concepts-docs.png)
+    content:url(/img/graphics/concepts-doc.png)
+  }
+
+  .use-cases {
+    .wallet-illustration {
+      content:url(/img/graphics/wallet-dark.png)
+    }
+
+    .token-illustration {
+      content:url(/img/graphics/tokens-dark.png)
+    }
+
+    .connections-illustration {
+      content:url(/img/graphics/nodes-dark.png)
+    }
+  }
+
+  .quickstart-image {
+    content:url(/img/graphics/getting-started-pages-dark.svg)
+  }
+
+  .dev-tools-img {
+    content:url(/img/graphics/dev-tools-dark.png)
   }
 }
 
