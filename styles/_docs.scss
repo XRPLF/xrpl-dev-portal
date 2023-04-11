@@ -94,10 +94,7 @@
   font-weight: 400;
   font-size: 15.5667px;
   line-height: 23px;
-  // color: #E0E0E1;
 }
-
-// Explore SDKs
 
 .page-docs-index {
 
@@ -168,95 +165,95 @@
   h1 {
     font-size: 3.875rem;
   }
-
-  .langs-cards {
-    grid-gap: 40px;
-  }
 } 
 
-  @media (max-width: 991.98px) {
-    /* Fix dropdown size with top banner present */
-    .page-docs-index .langs-cards {
-      grid-template-columns: 1fr 1fr;
-      grid-auto-rows: auto;
-    }
+#langs-cards {
+  grid-gap: 40px;
+}
+
+@media (max-width: 991.98px) {
+  /* Fix dropdown size with top banner present */
+  .page-docs-index .langs-cards {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
   }
-    
-  .circled-logo {
-    background-color: 757575;
-    border-radius: 50%;
-    padding: .65rem;
-    width: 50px;
-    height: 50px;
-    margin-bottom: 0.75rem;
-    border: 2px solid #232325;
-  }
-  .circled-logo .img {
-    width: 26px;
-    height: 26px;
-    display: inline-block;
-  }
+}
+  
+.circled-logo {
+  background-color: 757575;
+  border-radius: 50%;
+  padding: .65rem;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.75rem;
+  border: 2px solid #232325;
+}
+.circled-logo .img {
+  width: 26px;
+  height: 26px;
+  display: inline-block;
+}
 
-  .dev-tools-img {
-    max-width:100%; 
-    max-height: 100%;
-    margin:auto;
-  }
+.dev-tools-img {
+  max-width:100%; 
+  max-height: 100%;
+  margin:auto;
+}
 
-  .page-docs {
+.page-docs {
 
-    .h4::before {
-      margin-top: 0;
-      height: 0;
-    }
-
-    .row {
-      margin-right: 0;
-      margin-left: 0;
-    }
-
-    section {
-      margin-top: 128px;
-      margin-bottom: 128px;
-      margin-right: 8%;
-    }
-
-    .video-grid {
-      grid-gap: 35px;
-    }
-
-    .title-space {
-      margin-bottom: 16px;
-    }
-
-    .circled-logo{
-      margin-left:0.1rem;
-    }
+  .h4::before {
+    margin-top: 0;
+    height: 0;
   }
 
-  .flat-card-grid {
-    grid-gap: 15px;
-    max-width: 100%;
-    min-height: 384px;
-
-    .flat-card {
-      padding: 32px 50px;
-      height: 100%;
-      width: 100%;
-      box-shadow: none;
-    }
-
-    .flat-card-padding {
-      margin-bottom: 75px;
-    }
-
-    img {
-      width: auto;
-      height: 115px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  .row {
+    margin-right: 0;
+    margin-left: 0;
   }
+
+  section {
+    margin-top: 128px;
+    margin-bottom: 128px;
+    margin-right: 8%;
+  }
+
+  .video-grid {
+    grid-gap: 35px;
+  }
+
+  .title-space {
+    margin-bottom: 16px;
+  }
+
+  .circled-logo{
+    margin-left:0.1rem;
+  }
+}
+
+.flat-card-grid {
+  grid-gap: 15px;
+  max-width: 100%;
+  min-height: 384px;
+
+  .flat-card {
+    padding: 32px 50px;
+    height: 100%;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .flat-card-padding {
+    margin-bottom: 75px;
+  }
+
+  img {
+    width: auto;
+    height: 115px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 .align-button-on-bottom {
   
