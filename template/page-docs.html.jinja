@@ -43,7 +43,8 @@
 
   {% macro videoCard(url, title, src)%}
     <div class="col">
-      <a class="btn1" data-url={{url}}> {# TODO: Remove me, If you use href instead, this loads the YouTube videos right away as full screen things #}
+      <iframe id="video1" style="display:none;" src="{{url}}" title="{{title}}" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <a href="{{url}}" id="playvideo" class="btn1" data-url={{url}}>
         <img
           class="get-started-img video-image"
           id={{title}}
@@ -122,23 +123,27 @@
   %}
   {% set useCases = [
     {
-      "title": "Build a Wallet",
-      "id": "build-a-wallet",
+      "title": "On-Chain Finance",
+      "id": "on-chain-finance-use-cases",
       "imgClass": "wallet-illustration",
       "subItems": [
         {
-          "description": "Use Specialized Payment Types",
-          "link": "https://xrpl.org/use-specialized-payment-types.html",
+          "description": "Trade on the decentralized exchange",
+          "link": "https://xrpl.org/trade-in-the-decentralized-exchange.html",
         },
         {
-          "description": "Build a Desktop Wallet in Python",
-          "link": "https://xrpl.org/build-a-desktop-wallet-in-python.html",
+          "description": "Make payments",
+          "link": "https://xrpl.org/send-xrp.html",
         },
+        {
+          "description": "Use specialized payment types",
+          "link": "https://xrpl.org/use-specialized-payment-types.html"
+        }
       ],
     },
     {
-      "title": "NFTs",
-      "id": "nfts",
+      "title": "Tokens",
+      "id": "token-use-cases",
       "imgClass": "token-illustration",
       "subItems": [
         {
@@ -156,21 +161,21 @@
       ],
     },
     {
-      "title": "Run an XRP Ledger Node",
-      "id": "run-an-xrp-ledger-node",
+      "title": "Payments",
+      "id": "payments-use-cases",
       "imgClass": "connections-illustration",
       "subItems": [
         {
-          "description": "About the Server",
-          "link": "https://xrpl.org/xrpl-servers.html",
+          "description": "Peer to peer payments",
+          "link": "https://xrpl.org/direct-xrp-payments.html",
         },
         {
-          "description": "Install & Configure",
-          "link": "https://xrpl.org/install-rippled.html",
+          "description": "Cross-currency payments",
+          "link": "https://xrpl.org/cross-currency-payments.html",
         },
         {
-          "description": "Run a Validator Node",
-          "link": "https://xrpl.org/run-rippled-as-a-validator.html",
+          "description": "Escrows",
+          "link": "https://xrpl.org/escrow.html",
         },
       ],
     },
@@ -248,13 +253,12 @@
       <div class="col">
         {{ flatCard("./references/", 
                     "References", 
-                    "Look up detailed documentation for XRPL transactions, requests and more.", 
+                    "Look up reference documentation for the XRP Ledger protocol, API methods, and more.", 
                     "View References",
                     "ref-book-illustration") }}
       </div>
     </div>
   </section>
-
 
   <section class="text-left">
     <h4 class="pb-4">Use Cases</h4>

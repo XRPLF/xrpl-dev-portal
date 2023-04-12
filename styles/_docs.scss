@@ -167,6 +167,33 @@
   }
 } 
 
+@media (max-width: 765px) {
+  .page-docs-index {
+    .page-docs section {
+      margin-top: unset;
+      margin-bottom: 64px;
+      margin-right: unset;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    .flat-card-grid {
+      grid-gap: 24px;
+  
+      .flat-card {
+        padding: 32px 12px;
+      }
+    }
+
+  }
+
+  .page-docs-index::before {
+    display: none;
+  }
+}
+
 #langs-cards {
   grid-gap: 40px;
 }
@@ -226,8 +253,12 @@
     margin-bottom: 16px;
   }
 
-  .circled-logo{
+  .circled-logo {
     margin-left:0.1rem;
+  }
+
+  .container-new {
+    padding: 0px 0px;
   }
 }
 
