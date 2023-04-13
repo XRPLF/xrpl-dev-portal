@@ -394,7 +394,6 @@ https://xrpl.org/xrp-api.html
 https://xrpl.org/data-api.html
 https://xrpl.org/xrp-ledger-toml.html
 https://xrpl.org/label-accounts.html
-https://xrpl.org/label-amm.html
 https://xrpl.org/label-blockchain.html
 https://xrpl.org/label-checks.html
 https://xrpl.org/label-rippled.html
