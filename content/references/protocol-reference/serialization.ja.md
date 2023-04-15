@@ -183,8 +183,8 @@ curated_anchors:
 | [Hash160][] | 17 | 160 | いいえ | 160ビットの任意のバイナリ値。これにより通貨コードまたはイシュアーが定義されます。 |
 | [Hash256][] | 5 | 256 | いいえ | 256ビットの任意のバイナリ値。これは通常、トランザクション、レジャーバージョン、またはレジャーデータオブジェクトの「SHA-512ハーフ」ハッシュを表します。 |
 | [PathSet][] | 18 | 可変 | いいえ | [複数通貨間ペイメント](cross-currency-payments.html)の有効な[ペイメントパス](paths.html)のセット。 |
-| [STArray][] | 15 | 可変 | いいえ | 可変数のメンバーからなる配列。フィールドによってタイプが異なる場合があります。この例として、[memos](transaction-common-fields.html#memosフィールド)や[マルチシグ](multi-signing.html)で使用される署名者のリストがあります。 |
-| [STIssue][]   | 24        | 320        | いいえ                   | :not_enabled: An asset definition, XRP or a token, with no quantity.<!-- TODO: translate --> |
+| [STArray][] | 15 | 可変 | いいえ | 可変数のメンバーからなる配列。フィールドによってタイプが異なる場合があります。この例として、[memos](transaction-common-fields.html#memosフィールド)や[マルチ署名](multi-signing.html)で使用される署名者のリストがあります。 |
+| [STIssue][]   | 24        | 320        | いいえ                   | :not_enabled: 数量を含まない、資産(XRPまたはトークン)を指定します。 |
 | [STObject][] | 14 | 可変 | いいえ | 1つ以上のネストされたフィールドを含むオブジェクト。 |
 | [UInt8][] | 16 | 8 | いいえ | 8ビットの符号なし整数。 |
 | [UInt16][] | 1 | 16 | いいえ | 16ビットの符号なし整数。`TransactionType`は、このタイプの特殊なフィールドで、特定の文字列から整数値へのマッピングを含みます。 |
@@ -268,16 +268,20 @@ XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256がありま�
 
 これらのフィールドは、長さインディケーターを使用せずに、ビッグエンディアンバイトオーダーで特定数のビットとしてシリアル化されます。
 
+<!--
 ### Issueフィールド
-[STIssue]: #issueフィールド
+[STIssue]: #issueフィールド -->
 <!-- TODO: translate this section -->
 
+<!-- 
 _(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) :not_enabled: and [Federated Sidechains](federated-sidechains.html) :not_enabled:)_
+-->
 
+<!--
 Some fields specify a _type_ of asset, which could be XRP or a fungible [token](tokens.html), without an amount. These fields have consist of two 160-bit segments in order:
 
 1. The first 160 bits are the [currency code](currency-formats.html#通貨コード) of the asset. For XRP, this is all 0's.
-2. The next 160 bits are the [AccountID of the token issuer](#accountidフィールド). For XRP, this is all 0's.
+2. The next 160 bits are the [AccountID of the token issuer](#accountidフィールド). For XRP, this is all 0's. -->
 
 ### オブジェクトフィールド
 [STObject]: #オブジェクトフィールド

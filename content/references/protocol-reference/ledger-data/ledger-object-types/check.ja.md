@@ -63,7 +63,7 @@ _（[Checks Amendment][]が必要です）_
 * Checkスペースキー（`0x0043`）
 * `Check`オブジェクトを作成した[CheckCreateトランザクション][]の送信者のAccountID。
 * `Check`オブジェクトを作成した[CheckCreateトランザクション][]のシーケンス番号。
-
+    CheckCreateトランザクションが[Ticket](tickets.html)を使用する場合は、代わりに`TicketSequence`値を使用します。
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			

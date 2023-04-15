@@ -84,23 +84,23 @@ An example of a successful response:
       "state_accounting": {
         "connected": {
           "duration_us": "301410595",
-          "transitions": 2
+          "transitions": "2"
         },
         "disconnected": {
           "duration_us": "1207534",
-          "transitions": 2
+          "transitions": "2"
         },
         "full": {
           "duration_us": "3589171798767",
-          "transitions": 2
+          "transitions": "2"
         },
         "syncing": {
           "duration_us": "6182323",
-          "transitions": 2
+          "transitions": "2"
         },
         "tracking": {
           "duration_us": "43",
-          "transitions": 2
+          "transitions": "2"
         }
       },
       "time": "2021-Aug-24 20:44:43.466048 UTC",
@@ -154,23 +154,23 @@ Headers
       "state_accounting": {
         "connected": {
           "duration_us": "172799714",
-          "transitions": 1
+          "transitions": "1"
         },
         "disconnected": {
           "duration_us": "309059",
-          "transitions": 1
+          "transitions": "1"
         },
         "full": {
           "duration_us": "6020429212246",
-          "transitions": 143
+          "transitions": "143"
         },
         "syncing": {
           "duration_us": "413813232",
-          "transitions": 152
+          "transitions": "152"
         },
         "tracking": {
           "duration_us": "266553605",
-          "transitions": 152
+          "transitions": "152"
         }
       },
       "time": "2021-Aug-24 20:43:43.043406 UTC",
@@ -224,23 +224,23 @@ Headers
       "state_accounting": {
         "connected": {
           "duration_us": "172799714",
-          "transitions": 1
+          "transitions": "1"
         },
         "disconnected": {
           "duration_us": "309059",
-          "transitions": 1
+          "transitions": "1"
         },
         "full": {
           "duration_us": "6020429212246",
-          "transitions": 143
+          "transitions": "143"
         },
         "syncing": {
           "duration_us": "413813232",
-          "transitions": 152
+          "transitions": "152"
         },
         "tracking": {
           "duration_us": "266553605",
-          "transitions": 152
+          "transitions": "152"
         }
       },
       "time": "2021-Aug-24 20:43:43.043406 UTC",

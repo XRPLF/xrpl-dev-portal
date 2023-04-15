@@ -21,7 +21,7 @@ This example shows how to:
 2. Get a list of offers for the brokered item.
 3. Broker a sale between two different accounts.
 
-![Quickstart form with Broker Account](img/quickstart21.png)
+[![Quickstart form with Broker Account](img/quickstart21.png)](img/quickstart21.png)
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
 
@@ -38,7 +38,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         2. Click **Get New Operational Account**.
         3. Click **Get New Broker Account**
 
-![Quickstart form with Account Information](img/quickstart22.png)
+[![Quickstart form with Account Information](img/quickstart22.png)](img/quickstart22.png)
 
 ## Prepare a Brokered Transaction
 
@@ -51,7 +51,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 	6. Click **Create Sell Offer**.
 
 
-![Sell Offer with Destination](img/quickstart23.png)
+[![Sell Offer with Destination](img/quickstart23.png)](img/quickstart23.png)
 
 2. Use the Operational account to create a NFToken Buy Offer.
 	1. Enter the **Amount** of your offer.
@@ -60,14 +60,14 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 	4. Optionally enter the number of days until **Expiration**.
 	5. Click **Create Buy Offer**.
 
-![Buy Offer](img/quickstart24.png)
+[![Buy Offer](img/quickstart24.png)](img/quickstart24.png)
 
 ## Get Offers
 
 1. Enter the **NFToken ID**.
 2. Click **Get Offers**.
 
-![Get Offers](img/quickstart25.png)
+[![Get Offers](img/quickstart25.png)](img/quickstart25.png)
 
 ## Broker the Sale
 
@@ -76,7 +76,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 3. Enter a **Broker Fee**, in drops.
 4. Click **Broker Sale**.
 
-![Brokered Sale](img/quickstart26.png)
+[![Brokered Sale](img/quickstart26.png)](img/quickstart26.png)
 
 
 ## Cancel Offer
@@ -86,7 +86,7 @@ After accepting a buy offer, a best practice for the broker is to cancel all oth
 1. Enter the _nft_offer_index_ of the buy offer you want to cancel in the **Buy NFToken Offer Index** field.
 2. Click **Cancel Offer**.
 
-![Cancel Offer](img/quickstart27.png)
+[![Cancel Offer](img/quickstart27.png)](img/quickstart27.png)
 
 # Code Walkthrough
 
@@ -99,26 +99,29 @@ This script has new functions for brokered transactions and revised functions to
 
 ## Broker Get Offers
 
-```      
+```javascript      
+// *******************************************************
+// *************** Broker Get Offers *********************
+// *******************************************************
+      
 async function brGetOffers() {
 ```
 
 Connect to the ledger.
 
-```
-  const standby_wallet = xrpl.Wallet.fromSeed(brokerSeedField.value)
+```javascript      
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('brokerResultField').value = results
+  brokerResultField.value = results
   await client.connect()
   results += '\nConnected. Getting offers...'
-  document.getElementById('brokerResultField').value = results
+	brokerResultField.value = results
 ```
 
 Request the list of sell offers for the token.
 
-```
+```javascript      
   results += '\n\n***Sell Offers***\n'  
   let nftSellOffers
   try {
@@ -130,57 +133,57 @@ Request the list of sell offers for the token.
     nftSellOffers = 'No sell offers.'
   }
   results += JSON.stringify(nftSellOffers,null,2)
-  document.getElementById('brokerResultField').value = results
+	brokerResultField.value = results
 ```
 
 Request the list of buy offers for the token.
 
-```
+```javascript      
   results += '\n\n***Buy Offers***\n'
   let nftBuyOffers
   try {
     nftBuyOffers = await client.request({
       method: "nft_buy_offers",
-      nft_id: brokerTokenIdField.value })
-    } catch (err) {
+      nft_id: brokerTokenIdField.value 
+    })
+  } catch (err) {
     nftBuyOffers =  'No buy offers.'
   }
   results += JSON.stringify(nftBuyOffers,null,2)    
-
-  document.getElementById('brokerResultField').value = results
+	brokerResultField.value = results
 ```
 
 Disconnect from the ledger.
 
-```
+```javascript      
   client.disconnect()  
 }// End of brGetOffers()
 ```
 
 ## Broker Sale
 
-```
+```javascript      
 async function brokerSale() {
 ```
 
 Connect to the ledger and get the accounts.
 
-```
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const broker_wallet = xrpl.Wallet.fromSeed (brokerSeedField.value)
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  document.getElementById('brokerResultField').value = results
-  await client.connect()
-  results += '\nConnected. Brokering sale...'
-  document.getElementById('brokerResultField').value = results
+```javascript      
+	const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
+	const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
+	const broker_wallet = xrpl.Wallet.fromSeed (brokerSeedField.value)
+	let net = getNet()
+	const client = new xrpl.Client(net)
+	results = 'Connecting to ' + getNet() + '...'
+	brokerResultField.value = results
+	await client.connect()
+	results += '\nConnected. Brokering sale...'
+	brokerResultField.value = results
 ```
 
 Prepare the transaction. The difference between a brokered sale and a direct sale is that you provide both a sell offer and a buy offer, with an agreed-upon broker's fee. 
 
-```
+```javascript      
   const transactionBlob = {
     "TransactionType": "NFTokenAcceptOffer",
     "Account": broker_wallet.classicAddress,
@@ -192,61 +195,63 @@ Prepare the transaction. The difference between a brokered sale and a direct sal
   
   Submit the transaction and wait for the results.
   
-```
+```javascript      
   const tx = await client.submitAndWait(transactionBlob,{wallet: broker_wallet}) 
 ```
 
 Report the results.
 
-```
-  results += "\n\nTransaction result:\n" + 
-    JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-  results += "\nBalance changes:\n" +
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  document.getElementById('operationalBalanceField').value = 
-    (await client.getXrpBalance(operational_wallet.address))
-  document.getElementById('standbyBalanceField').value = 
-    (await client.getXrpBalance(standby_wallet.address))
-  document.getElementById('brokerBalanceField').value = 
-    (await client.getXrpBalance(broker_wallet.address))
-  document.getElementById('brokerResultField').value = results
+```javascript      
+	results += "\n\nTransaction result:\n" + 
+			JSON.stringify(tx.result.meta.TransactionResult, null, 2)
+	results += "\nBalance changes:\n" +
+			JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+	operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
+	standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
+	brokerBalanceField.value = (await client.getXrpBalance(broker_wallet.address))
+	brokerResultField.value = results
 ```
 
 Disconnect from the ledger.
 
-```
+```javascript      
   client.disconnect()
 }// End of brokerSale()
 ```
 
 ## Broker Cancel Offer
 
-```
+```javascript
+// *******************************************************
+// ************* Broker Cancel Offer ****************
+// *******************************************************
+
+
 async function brCancelOffer() {
 ```
 
 Get the broker account and connect to the ledger. 
 
-```
+```javascript      
   const wallet = xrpl.Wallet.fromSeed(brokerSeedField.value)
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + net + '...'
-  document.getElementById('brokerResultField').value = results
+	let net = getNet()
+	const client = new xrpl.Client(net)
+	results = 'Connecting to ' + getNet() + '...'
+  brokerResultField.value = results
   await client.connect()
   results +=  "\nConnected. Cancelling offer..."
-  document.getElementById('brokerResultField').value = results
+  brokerResultField.value = results
 ```
 
 The Token ID must be converted to an array.
 
-```
+```javascript      
   const tokenOfferIDs = [brokerTokenBuyOfferIndexField.value]
 ```
 
 Prepare the transaction.
 
-```
+```javascript      
   const transactionBlob = {
     "TransactionType": "NFTokenCancelOffer",
     "Account": wallet.classicAddress,
@@ -256,13 +261,13 @@ Prepare the transaction.
 
 Submit the transaction and wait for the results.
 
-```
+```javascript      
   const tx = await client.submitAndWait(transactionBlob,{wallet})
 ```
 
 Get the sell offers and report the results.
 
-```
+```javascript      
   results += "\n\n***Sell Offers***\n"
   let nftSellOffers
   try {
@@ -278,7 +283,7 @@ Get the sell offers and report the results.
 
 Get the buy offers and report the results.
 
-```
+```javascript      
   results += "\n\n***Buy Offers***\n"
   let nftBuyOffers
   try {
@@ -293,7 +298,7 @@ Get the buy offers and report the results.
 
 Report the transaction results.
 
-```
+```javascript      
   results += "\nTransaction result:\n" +
     JSON.stringify(tx.result.meta.TransactionResult, null, 2)
   results += "\nBalance changes:\n" + 
@@ -303,7 +308,7 @@ Report the transaction results.
 
 Disconnect from the ledger.
 
-```
+```javascript      
   client.disconnect()
 }// End of brCancelOffer()
 ```
@@ -311,13 +316,22 @@ Disconnect from the ledger.
 
 To accommodate the broker account, override the `getAccount(type)` function to watch for the _broker_ type. 
 
-```
+```javascript      
+// ***************************************************************************
+// ************** Revised Functions ******************************************
+// ***************************************************************************
+
+// *******************************************************
+// ************* Get Account *****************************
+// *******************************************************
+
+
 async function getAccount(type) {
 ```
 
 Connect to the ledger.
 
-```
+```javascript      
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + net + '....'
@@ -325,105 +339,105 @@ Connect to the ledger.
 
 Get the correct network host.
 
-```
+```javascript      
+  let net = getNet()
+  const client = new xrpl.Client(net)
+  results = 'Connecting to ' + net + '....'
+  
   let faucetHost = null
-
   if (type == 'standby') {
-    document.getElementById('standbyResultField').value = results
+    standbyResultField.value = results
   } 
   if (type == 'operational') {
-    document.getElementById('operationalResultField').value = results
+    operationalResultField.value = results
   }
   if (type == 'broker') {
-    document.getElementById('brokerResultField').value = results
+    brokerResultField.value = results
   }
 ```
 
 Connect to the ledger.
 
-```
-
+```javascript      
   await client.connect()
 
   results += '\nConnected, funding wallet.'
   if (type == 'standby') {
-    document.getElementById('standbyResultField').value = results
+    standbyResultField.value = results
   } 
   if (type == 'operational') {
-    document.getElementById('operationalResultField').value = results
+    operationalResultField.value = results
   }
   if (type == 'broker') {
-    document.getElementById('brokerResultField').value = results
+    brokerResultField.value = results
   }
 ```
 
 Create and fund a test account and report progress.
 
-```
-const my_wallet = (await client.fundWallet(null, { faucetHost })).wallet
+```javascript      
+  const my_wallet = (await client.fundWallet(null, { faucetHost })).wallet
 
   results += '\nGot a wallet.'
   if (type == 'standby') {
-    document.getElementById('standbyResultField').value = results
+    standbyResultField.value = results
   } 
   if (type == 'operational') {
-    document.getElementById('operationalResultField').value = results
+    operationalResultField.value = results
   }
   if (type == 'broker') {
-    document.getElementById('brokerResultField').value = results
+    brokerResultField.value = results
   }
 ```
 
 Get the XRP balance for the new account.
 
-```
-  const my_balance = (await client.getXrpBalance(my_wallet.address))
+```javascript      
+  const my_balance = (await client.getXrpBalance(my_wallet.address))  
 ```
 
 Populate the form fields for the appropriate account with the new account information.
 
-```
+```javascript      
   if (type == 'standby') {
-    document.getElementById('standbyAccountField').value = my_wallet.address
-    document.getElementById('standbyPubKeyField').value = my_wallet.publicKey
-    document.getElementById('standbyPrivKeyField').value = my_wallet.privateKey
-    document.getElementById('standbyBalanceField').value = 
-      (await client.getXrpBalance(my_wallet.address))
-    document.getElementById('standbySeedField').value = my_wallet.seed
+    standbyAccountField.value = my_wallet.address
+    standbyPubKeyField.value = my_wallet.publicKey
+    standbyPrivKeyField.value = my_wallet.privateKey
+    standbyBalanceField.value = (await client.getXrpBalance(my_wallet.address))
+    standbySeedField.value = my_wallet.seed
     results += '\nStandby account created.'
-    document.getElementById('standbyResultField').value = results
+    standbyResultField.value = results
   }
   if (type == 'operational') {
-    document.getElementById('operationalAccountField').value = my_wallet.address
-    document.getElementById('operationalPubKeyField').value = my_wallet.publicKey
-    document.getElementById('operationalPrivKeyField').value = my_wallet.privateKey
-    document.getElementById('operationalSeedField').value = my_wallet.seed
-    document.getElementById('operationalBalanceField').value = 
-      (await client.getXrpBalance(my_wallet.address))
+    operationalAccountField.value = my_wallet.address
+    operationalPubKeyField.value = my_wallet.publicKey
+    operationalPrivKeyField.value = my_wallet.privateKey
+    operationalSeedField.value = my_wallet.seed
+    operationalBalanceField.value = (await client.getXrpBalance(my_wallet.address))
     results += '\nOperational account created.'
-    document.getElementById('operationalResultField').value = results
+    operationalResultField.value = results
   }
   if (type == 'broker') {
-    document.getElementById('brokerAccountField').value = my_wallet.address
-    document.getElementById('brokerPubKeyField').value = my_wallet.publicKey
-    document.getElementById('brokerPrivKeyField').value = my_wallet.privateKey
-    document.getElementById('brokerSeedField').value = my_wallet.seed
-    document.getElementById('brokerBalanceField').value = 
-      (await client.getXrpBalance(my_wallet.address))
+    brokerAccountField.value = my_wallet.address
+    brokerPubKeyField.value = my_wallet.publicKey
+    brokerPrivKeyField.value = my_wallet.privateKey
+    brokerSeedField.value = my_wallet.seed
+    brokerBalanceField.value = (await client.getXrpBalance(my_wallet.address))
     results += '\nBroker account created.'
-    document.getElementById('brokerResultField').value = results
+    brokerResultField.value = results
   }
 ```
 
 Add the new account seed to corresponding line in the **Account Seeds** field.
 
-```
-document.getElementById('seeds').value = standbySeedField.value + '\n' + operationalSeedField.value + "\n" + brokerSeedField.value
+```javascript      
+  seeds.value = standbySeedField.value + '\n' + operationalSeedField.value + "\n" +
+    brokerSeedField.value
 ```
 
 Disconnect from the ledger.
 
-```
+```javascript      
   client.disconnect()
 } // End of getAccount()
 ```
@@ -432,31 +446,31 @@ Disconnect from the ledger.
 
 Override the `getAccountsFromSeeds()` function to include the broker account fields.
 
-```
+```javascript      
 async function getAccountsFromSeeds() {
 ```
 
 Connect to the ledger.
 
-```
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  document.getElementById('standbyResultField').value = results
-  await client.connect()
-  results += '\nConnected, finding wallets.\n'
-  document.getElementById('standbyResultField').value = results
+```javascript      
+	let net = getNet()
+	const client = new xrpl.Client(net)
+	results = 'Connecting to ' + getNet() + '....'
+	standbyResultField.value = results
+	await client.connect()
+	results += '\nConnected, finding wallets.\n'
+	standbyResultField.value = results
 ```
 
 Use the `split` function to parse the values from the **Seeds** field.
 
-```
+```javascript      
   var lines = seeds.value.split('\n');
 ```
 
 Derive the accounts from the seed values.
 
-```
+```javascript      
   const standby_wallet = xrpl.Wallet.fromSeed(lines[0])
   const operational_wallet = xrpl.Wallet.fromSeed(lines[1])
   const broker_wallet = xrpl.Wallet.fromSeed(lines[2])
@@ -464,7 +478,7 @@ Derive the accounts from the seed values.
 
 Get the XRP balances for the accounts.
 
-```
+```javascript      
   const standby_balance = (await client.getXrpBalance(standby_wallet.address))  
   const operational_balance = (await client.getXrpBalance(operational_wallet.address))  
   const broker_balance = (await client.getXrpBalance(broker_wallet.address))  
@@ -472,38 +486,35 @@ Get the XRP balances for the accounts.
 
 Populate the form fields based on the account values. 
 
-```
-  document.getElementById('standbyAccountField').value = standby_wallet.address
-  document.getElementById('standbyPubKeyField').value = standby_wallet.publicKey
-  document.getElementById('standbyPrivKeyField').value = standby_wallet.privateKey
-  document.getElementById('standbySeedField').value = standby_wallet.seed
-  document.getElementById('standbyBalanceField').value = 
-    (await client.getXrpBalance(standby_wallet.address))
+```javascript      
+	standbyAccountField.value = standby_wallet.address
+	standbyPubKeyField.value = standby_wallet.publicKey
+	standbyPrivKeyField.value = standby_wallet.privateKey
+	standbySeedField.value = standby_wallet.seed
+	standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
 
-  document.getElementById('operationalAccountField').value = operational_wallet.address
-  document.getElementById('operationalPubKeyField').value = operational_wallet.publicKey
-  document.getElementById('operationalPrivKeyField').value = operational_wallet.privateKey
-  document.getElementById('operationalSeedField').value = operational_wallet.seed
-  document.getElementById('operationalBalanceField').value = 
-    (await client.getXrpBalance(operational_wallet.address))
+	operationalAccountField.value = operational_wallet.address
+	operationalPubKeyField.value = operational_wallet.publicKey
+	operationalPrivKeyField.value = operational_wallet.privateKey
+	operationalSeedField.value = operational_wallet.seed
+	operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
 
-  document.getElementById('brokerAccountField').value = broker_wallet.address
-  document.getElementById('brokerPubKeyField').value = broker_wallet.publicKey
-  document.getElementById('brokerPrivKeyField').value = broker_wallet.privateKey
-  document.getElementById('brokerSeedField').value = broker_wallet.seed
-  document.getElementById('brokerBalanceField').value = 
-    (await client.getXrpBalance(broker_wallet.address))
+	brokerAccountField.value = broker_wallet.address
+	brokerPubKeyField.value = broker_wallet.publicKey
+	brokerPrivKeyField.value = broker_wallet.privateKey
+	brokerSeedField.value = broker_wallet.seed
+	brokerBalanceField.value = (await client.getXrpBalance(broker_wallet.address))
 ```
 
 Disconnect from the ledger.
 
-```
+```javascript      
   client.disconnect()
 ```
 
 Use the `getBalances()` function to get the current balances of fiat currency.
 
-```
+```javascript      
   getBalances()
 	
 } // End of getAccountsFromSeeds()
@@ -513,13 +524,17 @@ Use the `getBalances()` function to get the current balances of fiat currency.
 
 Override the `getBalances()` function to include the broker balance.
 
-```
+```javascript      
+// *******************************************************
+// ****************** Get Balances ***********************
+// *******************************************************
+
 async function getBalances() {
 ```
 
 Connect with the ledger. 
 
-```
+```javascript      
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + getNet() + '....'
@@ -533,7 +548,7 @@ Connect with the ledger.
 
 Derive each of the three accounts.
 
-```
+```javascript      
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   const broker_wallet = xrpl.Wallet.fromSeed(brokerSeedField.value)
@@ -541,8 +556,8 @@ Derive each of the three accounts.
 
 Get and report the Standby account balances.
 
-```
-  results= "\nGetting standby account balances...\n"
+```javascript      
+  results = "\nGetting standby account balances...\n"
   const standby_balances = await client.request({
     command: "gateway_balances",
     account: standby_wallet.address,
@@ -550,12 +565,12 @@ Get and report the Standby account balances.
     hotwallet: [operational_wallet.address]
   })
   results += JSON.stringify(standby_balances.result, null, 2)
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
 
 Get and report the Operational account balances.
 
-```
+```javascript      
   results= "\nGetting operational account balances...\n"
   const operational_balances = await client.request({
     command: "account_lines",
@@ -563,12 +578,12 @@ Get and report the Operational account balances.
     ledger_index: "validated"
   })
   results += JSON.stringify(operational_balances.result, null, 2)
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 ```
 
 Get and report the Broker account balances.
 
-```
+```javascript      
   results= "\nGetting broker account balances...\n"
   const broker_balances = await client.request({
     command: "account_lines",
@@ -576,35 +591,41 @@ Get and report the Broker account balances.
     ledger_index: "validated"
   })
   results += JSON.stringify(broker_balances.result, null, 2)
-  document.getElementById('brokerResultField').value = results
+  brokerResultField.value = results
 ```
 
 Update the XRP balances for the three accounts.
 
-```
-  document.getElementById('operationalBalanceField').value = 
-    (await client.getXrpBalance(operational_wallet.address))
-  document.getElementById('standbyBalanceField').value = 
-    (await client.getXrpBalance(standby_wallet.address))
-  document.getElementById('brokerBalanceField').value = 
-    (await client.getXrpBalance(broker_wallet.address))
+```javascript      
+  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
+  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
+  brokerBalanceField.value = (await client.getXrpBalance(broker_wallet.address))
 ```
 
 Disconnect from the ledger.
 
-```
+```javascript      
   client.disconnect()
 } // end of getBalances()
 ```
+
 ## 5.broker-nfts.html
 
 Revise the HTML form to add a new Broker section at the top.
 
-```
+```html
 <html>
   <head>
     <title>Token Test Harness</title>
-    <script src='https://unpkg.com/xrpl@2.2.3'></script>
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <style>
+       body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
+       h1{font-weight: bold;}
+       input, button {padding: 6px;margin-bottom: 8px;}
+       button{font-weight: bold;font-family: "Work Sans", sans-serif;}
+       td{vertical-align: middle;}
+    </style>
+    <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
     <script src='ripplex1-send-xrp.js'></script>
     <script src='ripplex2-send-currency.js'></script>
     <script src='ripplex3-mint-nfts.js'></script>
@@ -623,7 +644,7 @@ Revise the HTML form to add a new Broker section at the top.
   <body>
     <h1>Token Test Harness</h1>
     <form id="theForm">
-      Choose your ledger instance:  
+      Choose your ledger instance:
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233" checked>
@@ -1039,10 +1060,5 @@ Revise the HTML form to add a new Broker section at the top.
       </table>
     </form>
   </body>
-</html> 
+</html>
 ```
-
-
-| Previous      | Next                                                             |
-| :---          |                                                             ---: |
-| [← 4. Transfer NFTokens >](transfer-nftokens.html)  | [Authorize Minter → >](authorize-minter.html)|

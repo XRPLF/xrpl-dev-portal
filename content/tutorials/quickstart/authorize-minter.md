@@ -102,7 +102,7 @@ This function sets the authorized minter for an account. Each account can have 0
 // ****************  Set Minter  *************************
 // *******************************************************
 
-async function setMinter(type) {  
+async function setMinter() {    
 ```
 
 Connect to the ledger and get the account.
@@ -111,19 +111,18 @@ Connect to the ledger and get the account.
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + getNet() + '....'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results    
   await client.connect()
   results += '\nConnected, finding wallet.'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results    
   my_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  document.getElementById('standbyResultField').value = results
-```
+  standbyResultField.value = results    ```
 
 Define the AccountSet transaction, setting the `NFTokenMinter` account and the `asfAuthorizedNFTokenMinter` flag.
 
 ```javascript
   tx_json = {
-    "TransactionType": "AccountSet",    
+    "TransactionType": "AccountSet",
     "Account": my_wallet.address,
 ```
 
@@ -143,30 +142,30 @@ Set the `asfAuthorizedNFTokenMinter` flag (the numeric value is _10_).
 Report progress.
 
 ```javascript
-    results += '\n Set Minter.' 
-    document.getElementById('standbyResultField').value = results
+  results += '\nSet Minter.' 
+  standbyResultField.value = results    
 ```
 
 Prepare and send the transaction, then wait for results
 
 ```javascript
-    const prepared = await client.autofill(tx_json)
-    const signed = my_wallet.sign(prepared)
-    const result = await client.submitAndWait(signed.tx_json)
+  const prepared = await client.autofill(tx_json)
+  const signed = my_wallet.sign(prepared)
+  const result = await client.submitAndWait(signed.tx_blob)
 ```
 
 If the transaction succeeds, show the results. If not, report that the transaction failed.
 
 ```javascript
-    if (result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += '\nAccount setting succeeded.'
+  if (result.result.meta.TransactionResult == "tesSUCCESS") {
+    results += '\nAccount setting succeeded.\n'
     results += JSON.stringify(result,null,2)
-    document.getElementById('standbyResultField').value = results
-    } else {
+    standbyResultField.value = results    
+  } else {
     throw 'Error sending transaction: ${result}'
     results += '\nAccount setting failed.'
-    document.getElementById('standbyResultField').value = results
-    }
+  standbyResultField.value = results    
+  }
 ```
 
 Disconnect from the XRP Ledger.
@@ -193,7 +192,7 @@ Connect to the ledger and get the account.
 
 ```javascript
   results = 'Connecting to ' + getNet() + '....'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results    
   let net = getNet()
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   const client = new xrpl.Client(net)
@@ -203,13 +202,13 @@ Report success
 
 ```javascript
   results += '\nConnected. Minting NFToken.'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results    
 ```
       
 This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nftokens.html#mint-token), with the addition of the `Issuer` field.
 
 ```javascript
-  const transactionBlob = {
+  const tx_json = {
     "TransactionType": "NFTokenMint",
     "Account": standby_wallet.classicAddress,
 ```
@@ -248,10 +247,10 @@ The `NFTokenTaxon` is an optional number field the issuer can use for their own 
 Submit the transaction and wait for the results.
 
 ```javascript
-  const tx = await client.submitAndWait(transactionBlob, { wallet: standby_wallet} )
+  const tx = await client.submitAndWait(tx_json, { wallet: standby_wallet} )
   const nfts = await client.request({
     method: "account_nfts",
-    account: standby_wallet.classicAddress  
+    account: standby_wallet.classicAddress
   })
 ```
 
@@ -260,10 +259,9 @@ Report the results.
 ```javascript
   results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
   results += '\n\nnfts: ' + JSON.stringify(nfts, null, 2)
-  document.getElementById('standbyBalanceField').value = 
-    (await client.getXrpBalance(standby_wallet.address))
-  document.getElementById('standbyResultField').value = results 
-  
+  standbyResultField.value = results  + (await
+    client.getXrpBalance(standby_wallet.address))
+  standbyResultField.value = results    
 ```
 
 Disconnect from the XRP Ledger.
@@ -279,19 +277,19 @@ These functions duplicate the functions of the standby account for the operation
 
 ```javascript
 // *******************************************************
-// *********** Operational Set Minter  *******************
-// *******************************************************
+// ****************  Set Operational Minter  **************
+// ********************************************************
 
-async function oPsetMinter(type) {    
+async function oPsetMinter() {    
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + getNet() + '....'
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
   await client.connect()
   results += '\nConnected, finding wallet.'
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
   my_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   tx_json = {
     "TransactionType": "AccountSet",
@@ -299,24 +297,25 @@ async function oPsetMinter(type) {
     "NFTokenMinter": operationalMinterField.value,
     "SetFlag": xrpl.AccountSetAsfFlags.asfAuthorizedNFTokenMinter
   } 
-    results += '\n Set Minter.' 
-    document.getElementById('operationalResultField').value = results
+  results += '\nSet Minter.' 
+  operationalResultField.value = results
       
-    const prepared = await client.autofill(tx_json)
-    const signed = my_wallet.sign(prepared)
-    const result = await client.submitAndWait(signed.tx_json)
-    if (result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += '\nAccount setting succeeded.'
+  const prepared = await client.autofill(tx_json)
+  const signed = my_wallet.sign(prepared)
+  const result = await client.submitAndWait(signed.tx_blob)
+  if (result.result.meta.TransactionResult == "tesSUCCESS") {
+    results += '\nAccount setting succeeded.\n'
     results += JSON.stringify(result,null,2)
-    document.getElementById('operationalResultField').value = results
-    } else {
+    operationalResultField.value = results
+  } else {
     throw 'Error sending transaction: ${result}'
     results += '\nAccount setting failed.'
-    document.getElementById('operationalResultField').value = results
-    }
+    operationalResultField.value = results
+  }
       
   client.disconnect()
-} // End of configureAccount()
+} // End of oPsetMinter()
+
 
 // *******************************************************
 // ************** Operational Mint Other *****************
@@ -324,17 +323,17 @@ async function oPsetMinter(type) {
       
 async function oPmintOther() {
   results = 'Connecting to ' + getNet() + '....'
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
   let net = getNet()
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   const client = new xrpl.Client(net)
   await client.connect()
   results += '\nConnected. Minting NFToken.'
-  document.getElementById('operationalResultField').value = results
+  operationalResultField.value = results
 
   // This version adds the "Issuer" field.
   // ------------------------------------------------------------------------
-  const transactionBlob = {
+  const tx_json = {
     "TransactionType": 'NFTokenMint',
     "Account": operational_wallet.classicAddress,
     "URI": xrpl.convertStringToHex(operationalTokenUrlField.value),
@@ -345,7 +344,7 @@ async function oPmintOther() {
   }
       
   // ----------------------------------------------------- Submit signed blob 
-  const tx = await client.submitAndWait(transactionBlob, { wallet: operational_wallet} )
+  const tx = await client.submitAndWait(tx_json, { wallet: operational_wallet} )
   const nfts = await client.request({
     method: "account_nfts",
     account: operational_wallet.classicAddress  
@@ -354,10 +353,8 @@ async function oPmintOther() {
   // ------------------------------------------------------- Report results
   results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
   results += '\n\nnfts: ' + JSON.stringify(nfts, null, 2)
-  document.getElementById('operationalBalanceField').value = 
-    (await client.getXrpBalance(operational_wallet.address))
-  document.getElementById('operationalResultField').value = results    
-
+  results += await client.getXrpBalance(operational_wallet.address)
+  operationalResultField.value = results
   client.disconnect()
 } //End of oPmintToken
 ```
@@ -378,7 +375,7 @@ Update the form with fields and buttons to support the new functions.
        button{font-weight: bold;font-family: "Work Sans", sans-serif;}
        td{vertical-align: middle;}
     </style>
-    <script src='https://unpkg.com/xrpl@2.2.3'></script>
+    <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
     <script src='ripplex1-send-xrp.js'></script>
     <script src='ripplex2-send-currency.js'></script>
     <script src='ripplex3-mint-nfts.js'></script>
@@ -399,7 +396,7 @@ Update the form with fields and buttons to support the new functions.
   <body>
     <h1>Token Test Harness</h1>
     <form id="theForm">
-      Choose your ledger instance:  
+      Choose your ledger instance:
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233" checked>
@@ -754,8 +751,3 @@ Update the form with fields and buttons to support the new functions.
   </body>
 </html>
 ```
-
-| Previous      | Next                                                             |
-| :---          |                                                             ---: |
-| [← Broker a NFToken Sale >](broker-sale.html)  | [Batch Mint NFTokens → >](batch-minting.html) |
-

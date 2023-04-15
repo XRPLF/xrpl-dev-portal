@@ -67,7 +67,6 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     <!-- MULTICODE_BLOCK_START -->
 
-
 2. Fetch the latest repo updates:
 
         sudo yum -y update
