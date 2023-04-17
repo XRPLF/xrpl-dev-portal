@@ -1,5 +1,5 @@
 ---
-html: tutorial-structure.html
+html: tutorial-guidelines.html
 parent: contribute.html
 ---
 
