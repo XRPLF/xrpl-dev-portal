@@ -4850,6 +4850,22 @@ pages:
         nav_omit: true
         targets:
             - ja
+            
+    -   name: Wallet
+        html: wallet.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: xrp-overview.html
+        nav_omit: true
+        targets:
+            - en
+
+    -   name: ウォレット
+        html: wallet.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: xrp-overview.html
+        nav_omit: true
+        targets:
+            - ja
 
     -   name: Wallets
         html: wallets.html
