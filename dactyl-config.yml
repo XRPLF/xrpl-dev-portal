@@ -4666,6 +4666,22 @@ pages:
             - en
             - ja
 
+    # TODO: translate
+    -   md: contributing/tutorial-guidelines.md
+        html: tutorial-guidelines.html
+        parent: contribute.html
+        targets:
+            - en
+            - ja
+
+    # TODO: translate
+    -   md: contributing/tutorial-structure.md
+        html: tutorial-structure.html
+        parent: tutorial-guidelines.html
+        targets:
+            - en
+            - ja
+
     -   name: Events
         html: events.html
         parent: contribute.html
