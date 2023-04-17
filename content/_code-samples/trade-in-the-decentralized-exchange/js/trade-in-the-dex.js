@@ -37,7 +37,7 @@ async function main() {
            // 25 TST * 10 XRP per TST * 15% financial exchange (FX) cost
     value: xrpl.xrpToDrops(25*10*1.15)
   }
-  // "Quality" is defined as TakerPays ÷ TakerGets. The lower the "quality"
+  // "Quality" is defined as TakerPays / TakerGets. The lower the "quality"
   // number, the better the proposed exchange rate is for the taker.
   // The quality is rounded to a number of significant digits based on the
   // issuer's TickSize value (or the lesser of the two for token-token trades.)
