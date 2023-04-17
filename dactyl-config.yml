@@ -4669,7 +4669,8 @@ pages:
     # TODO: translate
     -   md: contributing/tutorial-guidelines.md
         html: tutorial-guidelines.html
-        parent: contribute.html
+        parent: contribute-code.html
+        top_nav_omit: true
         targets:
             - en
             - ja
@@ -4678,6 +4679,7 @@ pages:
     -   md: contributing/tutorial-structure.md
         html: tutorial-structure.html
         parent: tutorial-guidelines.html
+        top_nav_omit: true
         targets:
             - en
             - ja
