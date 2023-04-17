@@ -1,11 +1,11 @@
 -------------
 Spell Checker
 -------------
-Found 43 possible spelling errors:
+Found 46 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gils, giff, kifs
-  ringtee: 
+  gifs: gips, rifs, gift
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -27,23 +27,23 @@ Found 43 possible spelling errors:
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalanced, unbalance
+  unbalances: unbalance, unbalanced
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  immediateofferkilled: 
-  xrpfees: 
-  fixnonfungibletokensv1_2: 
-  disallowincoming: 
-  fixuniversalnumber: 
   depositpreauthamendment: 
+  fixnonfungibletokensv1_2: 
+  immediateofferkilled: 
+  fixuniversalnumber: 
+  disallowincoming: 
+  xrpfees: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingcheck: 
-  asfdisallowincomingnftoffer: 
   asfdisallowincomingpaychan: 
+  asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
   30d: 3-d, 3d, 3rd
 
@@ -87,10 +87,15 @@ Found 43 possible spelling errors:
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
   30d: 3-d, 3d, 3rd
 
+<Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
+  _want: wwant, twant, lwant
+  screenshots: screenshot
+  _them: them
+
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 32 discouraged words/phrases:
+Found 41 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -127,11 +132,22 @@ Page: <Page 'tem Codes' (tem-codes.html)>
    Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
 Page: <Page 'ledger_data' (ledger_data.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Tutorial Guidelines' (tutorial-guidelines.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+   Discouraged word: frequently (1 instances); suggest 'often' instead.
+   Discouraged word: performed (1 instances); suggest 'done' instead.
+   Discouraged phrase: a number of (1 instances); suggest 'some' instead.
+   Discouraged word: assistance (1 instances); suggest 'aid, help' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Tutorial Structure' (tutorial-structure.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
 ------------------
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.0 (Fairly Difficult)
+  Flesch Reading Ease Score: 57.9 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
@@ -173,8 +189,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 751
-  Characters: 4,671
+  Words: 750
+  Characters: 4,664
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
