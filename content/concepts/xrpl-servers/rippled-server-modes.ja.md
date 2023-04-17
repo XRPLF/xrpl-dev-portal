@@ -31,7 +31,7 @@ P2Pモードのサーバーは、追加機能を提供するためにさらに�
 - [APIサーバー](#apiサーバー)
 - [公開ハブ](#公開ハブ)
 
-P2Pモードのサーバーは、デフォルトで[メインネット](parallel-networks.html)に接続します。
+P2Pモードのサーバーは、デフォルトで[Mainnet](parallel-networks.html)に接続します。
 
 ### APIサーバー
 
