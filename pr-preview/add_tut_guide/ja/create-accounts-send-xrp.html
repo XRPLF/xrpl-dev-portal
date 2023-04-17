@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v15.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v16.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -90,16 +90,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"> 
-  <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
-    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
-  </div>
-  <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
-    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
-  </div>
-</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,7 +99,7 @@
     <ul class="nav navbar-nav" id="topnav-pages">
 
             <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="/ja/xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>アバウト</span></a>
+        <a class="nav-link dropdown-toggle" href="/ja/xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>概要</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
           <div class="navcol col-for-xrp-ledger">
             <h5 class="dropdown-item">XRP Ledger</h5>
@@ -129,6 +119,7 @@
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
+            <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
             <a class="dropdown-item" href="/ja/privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -144,10 +135,6 @@
               <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
             </div>
           </a>
-          <div class="navcol col-for-質問">
-            <h5 class="dropdown-item">質問</h5>
-            <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
-          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
@@ -184,13 +171,13 @@
       </li>
 
             <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
+        <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティ</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
           <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
             <img id="top-nav-hero-contribute" alt="貢献する icon" />
             <div class="dropdown-hero-text">
               <h4>貢献する</h4>
-              <p>Join the conversation</p>
+              <p>話題に加わろう</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
@@ -314,12 +301,12 @@
         <h1 id="1-create-accounts-and-send-xrp">1. Create Accounts and Send XRP<a aria-hidden="true" class="hover_anchor" href="#1-create-accounts-and-send-xrp"><i class="fa fa-link"></i></a></h1>
 <p>This example shows how to:</p>
 <ol>
-<li>Create accounts on the Testnet, funded with 10000 test XRP with no actual value. </li>
+<li>Create accounts on the Testnet, funded with 1000 test XRP with no actual value. </li>
 <li>Retrieve the accounts from seed values.</li>
 <li>Transfer XRP between accounts.</li>
 </ol>
-<p>When you create an account, you receive a public/private key pair offline. It does not appear on the ledger until it is funded with XRP. This example shows how to create accounts for Testnet, but not how to create an account that you can use on Mainnet.</p>
-<p><img alt="Token Test Harness" src="img/quickstart2.png"/></p>
+<p>When you create an account, you receive a public/private key pair offline. Your account does not appear on the ledger until it is funded with XRP. This example shows how to create accounts for Testnet, but not how to create an account that you can use on Mainnet.</p>
+<p><a href="img/quickstart2.png"><img alt="Token Test Harness" src="img/quickstart2.png"/></a></p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>To get started, create a new folder on your local disk and install the JavaScript library using <code>npm</code>.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">    npm install xrpl
@@ -335,15 +322,21 @@
 <li>Click <strong>Get New Operational Account.</strong></li>
 <li>Copy and paste the <strong>Seeds</strong> field in a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.</li>
 </ol>
-<p><img alt="Standby and Operational Accounts" src="img/quickstart3.png"/></p>
+<p><a href="img/quickstart3.png"><img alt="Standby and Operational Accounts" src="img/quickstart3.png"/></a></p>
 <p>You can transfer XRP between your new accounts. Each account has its own fields and buttons.</p>
-<p>To transfer XRP between accounts:</p>
+<p>To transfer XRP from the Standby account to the Operational account:</p>
 <ol>
-<li>Enter the <strong>Amount</strong> of XRP to send.</li>
-<li>Enter the <strong>Destination</strong> account (for example, copy and paste the Operational <strong>Account Field</strong> to the Standby <strong>Destination</strong> field).</li>
-<li>Click <strong>Send XRP&gt;</strong> to transfer XRP from the standby account to the operational account, or <strong>&lt;Send XRP</strong> to transfer XRP from the operational account to the standby account.</li>
+<li>On the Standby (left) side of the form, enter the <strong>Amount</strong> of XRP to send.</li>
+<li>Copy and paste the <strong>Operational Account</strong> field to the Standby <strong>Destination</strong> field.</li>
+<li>Click <strong>Send XRP&gt;</strong> to transfer XRP from the standby account to the operational account</li>
 </ol>
-<p><img alt="Transferred XRP" src="img/quickstart4.png"/></p>
+<p>To transfer XRP from the Operational account to the Standby account:</p>
+<ol>
+<li>On the Operational (right) side of the form, enter the <strong>Amount</strong> of XRP to send.</li>
+<li>Copy and paste the <strong>Standby Account</strong> field to the Standby <strong>Destination</strong> field.</li>
+<li>Click <strong>&lt;Send XRP</strong> to transfer XRP from the Operational account to the Standby account.</li>
+</ol>
+<p><a href="img/quickstart4.png"><img alt="Transferred XRP" src="img/quickstart4.png"/></a></p>
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> in the source repository for this website.</p>
 <h2 id="ripplex-1-send-xrpjs">ripplex-1-send-xrp.js<a aria-hidden="true" class="hover_anchor" href="#ripplex-1-send-xrpjs"><i class="fa fa-link"></i></a></h2>
@@ -357,11 +350,11 @@
 <span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </code></pre></div>
 <p>This function uses brute force <code>if</code> statements to discover the selected network instance and return the URI.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">net</span>
-<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"tn"</span><span class="p">).</span><span class="nx">checked</span><span class="p">)</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span>
-<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"dn"</span><span class="p">).</span><span class="nx">checked</span><span class="p">)</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"wss://s.devnet.rippletest.net:51233"</span>
-<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="nx">net</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="c1">// End of getNet()</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">net</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"tn"</span><span class="p">).</span><span class="nx">checked</span><span class="p">)</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"dn"</span><span class="p">).</span><span class="nx">checked</span><span class="p">)</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"wss://s.devnet.rippletest.net:51233"</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">net</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// End of getNet()</span>
 </code></pre></div>
 <h3 id="getaccounttype">getAccount(type)<a aria-hidden="true" class="hover_anchor" href="#getaccounttype"><i class="fa fa-link"></i></a></h3>
 <!-- SPELLING_IGNORE: getaccount -->
@@ -369,250 +362,223 @@
 <span class="c1">// ************* Get Account *****************************</span>
 <span class="c1">// *******************************************************</span>
 
-
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getAccount</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getAccount</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </code></pre></div>
 <p>Get the selected ledger.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span>
 </code></pre></div>
 <p>Instantiate a client.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="nx">net</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="nx">net</span><span class="p">)</span>
 </code></pre></div>
 <p>Use the <em>results</em> variable to capture progress information.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="w">        </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'....'</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'....'</span>
 </code></pre></div>
 <p>Use the default faucet using a <em>null</em> value.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">faucetHost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">faucetHost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
 </code></pre></div>
 <p>Report progress in the appropriate results field.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'standby'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
-<span class="w">        </span><span class="p">}</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'standby'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">standbyResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">operationalResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">  </span><span class="p">}</span>
 </code></pre></div>
 <p>Connect to the server.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
 
-
-<span class="w">        </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nConnected, funding wallet.'</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'standby'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nConnected, funding wallet.'</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'standby'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">standbyResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">operationalResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">  </span><span class="p">}</span>
 </code></pre></div>
 <p>Create and fund a test account.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="w">       </span><span class="kd">const</span><span class="w"> </span><span class="nx">my_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">faucetHost</span><span class="o">:</span><span class="w"> </span><span class="nx">walletServer</span><span class="p">})).</span><span class="nx">wallet</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">my_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">faucetHost</span><span class="w"> </span><span class="p">})).</span><span class="nx">wallet</span>
+
+<span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nGot a wallet.'</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'standby'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">standbyResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">operationalResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">  </span><span class="p">}</span><span class="w">       </span>
 </code></pre></div>
 <p>Get the current XRP balance for the account.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">my_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span><span class="w"> </span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">my_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span><span class="w">  </span>
 </code></pre></div>
 <p>If this is a standby account, populate the standby account fields.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'standby'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyAccountField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyPubKeyField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">publicKey</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyPrivKeyField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">privateKey</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyBalanceField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">              </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbySeedField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">seed</span>
-<span class="w">          </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nStandby account created.'</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'standby'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">standbyAccountField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span>
+<span class="w">    </span><span class="nx">standbyPubKeyField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">publicKey</span>
+<span class="w">    </span><span class="nx">standbyPrivKeyField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">privateKey</span>
+<span class="w">    </span><span class="nx">standbyBalanceField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">standbySeedField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">seed</span>
+<span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nStandby account created.'</span>
+<span class="w">    </span><span class="nx">standbyResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
 </code></pre></div>
 <p>Otherwise, populate the operational account fields.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalAccountField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalPubKeyField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">publicKey</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalPrivKeyField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">privateKey</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalSeedField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">seed</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalBalanceField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">              </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span>
-<span class="w">          </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nOperational account created.'</span>
-<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
-<span class="w">        </span><span class="p">}</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">operationalAccountField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span>
+<span class="w">    </span><span class="nx">operationalPubKeyField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">publicKey</span>
+<span class="w">    </span><span class="nx">operationalPrivKeyField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">privateKey</span>
+<span class="w">    </span><span class="nx">operationalSeedField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">seed</span>
+<span class="w">    </span><span class="nx">operationalBalanceField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">my_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nOperational account created.'</span>
+<span class="w">    </span><span class="nx">operationalResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">  </span><span class="p">}</span>
 </code></pre></div>
 <p>Insert the seed values for both accounts as they are created to the <strong>Seeds</strong> field as a convenience. You can copy the values and store them offline. When you reload this form or another in this tutorial, copy and paste them into the <strong>Seeds</strong> field to retrieve the accounts with the <code>getAccountsFromSeeds()</code> function.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'seeds'</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">standbySeedField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'\n'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">operationalSeedField</span><span class="p">.</span><span class="nx">value</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="w">  </span><span class="nx">seeds</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">standbySeedField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'\n'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">operationalSeedField</span><span class="p">.</span><span class="nx">value</span>
 </code></pre></div>
 <p>Disconnect from the XRP ledger. </p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="w">        </span><span class="nv">client</span>.<span class="k">disconnect</span><span class="ss">()</span>
-<span class="w">      </span>}<span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="k">End</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">getAccount</span><span class="ss">()</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// End of getAccount()</span>
 </code></pre></div>
 <h3 id="get-accounts-from-seeds">Get Accounts from Seeds<a aria-hidden="true" class="hover_anchor" href="#get-accounts-from-seeds"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="c1">// *******************************************************</span>
 <span class="c1">// ********** Get Accounts from Seeds ******************** </span>
 <span class="c1">// *******************************************************</span>
 
-<span class="w">      </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getAccountsFromSeeds</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getAccountsFromSeeds</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </code></pre></div>
 <p>Connect to the selected network.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="w">        </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
-<span class="w">        </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'....'</span>
-<span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
-<span class="w">        </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="w">        </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'</span><span class="se">\n</span><span class="s1">Connected, finding wallets.</span><span class="se">\n</span><span class="s1">'</span>
-<span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="nx">net</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'....'</span>
+<span class="w">  </span><span class="nx">standbyResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nConnected, finding wallets.\n'</span>
+<span class="w">  </span><span class="nx">standbyResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
 </code></pre></div>
 <p>Parse the <strong>Seeds</strong> field.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">seeds</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">);</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">seeds</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">)</span>
 </code></pre></div>
 <p>Get the <code>standby_wallet</code> based on the seed in the first line. Get the <code>operational_wallet</code> based on the seed in the second line.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">lines</span><span class="p">[</span><span class="mf">0</span><span class="p">])</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">lines</span><span class="p">[</span><span class="mf">1</span><span class="p">])</span>
 </code></pre></div>
 <p>Get the current XRP balances for the accounts.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">standby_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">getXrpBalance</span><span class="p">(</span><span class="n">standby_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">))</span><span class="w">  </span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">operational_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">getXrpBalance</span><span class="p">(</span><span class="n">operational_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">))</span><span class="w">  </span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">standby_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">standby_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span><span class="w">  </span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">operational_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">operational_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span><span class="w">  </span>
 </code></pre></div>
 <p>Populate the fields for the standby and operational accounts.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21">        document.getElementById('standbyAccountField').value = standby_wallet.address
-        document.getElementById('standbyPubKeyField').value = standby_wallet.publicKey
-        document.getElementById('standbyPrivKeyField').value = standby_wallet.privateKey
-        document.getElementById('standbySeedField').value = standby_wallet.seed
-        document.getElementById('standbyBalanceField').value = 
-          (await client.getXrpBalance(standby_wallet.address))
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="w">  </span><span class="nx">standbyAccountField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">standby_wallet</span><span class="p">.</span><span class="nx">address</span>
+<span class="w">  </span><span class="nx">standbyPubKeyField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">standby_wallet</span><span class="p">.</span><span class="nx">publicKey</span>
+<span class="w">  </span><span class="nx">standbyPrivKeyField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">standby_wallet</span><span class="p">.</span><span class="nx">privateKey</span>
+<span class="w">  </span><span class="nx">standbySeedField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">standby_wallet</span><span class="p">.</span><span class="nx">seed</span>
+<span class="w">  </span><span class="nx">standbyBalanceField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">standby_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span>
 
-
-        document.getElementById('operationalAccountField').value = operational_wallet.address
-        document.getElementById('operationalPubKeyField').value = operational_wallet.publicKey
-        document.getElementById('operationalPrivKeyField').value = operational_wallet.privateKey
-        document.getElementById('operationalSeedField').value = operational_wallet.seed
-        document.getElementById('operationalBalanceField').value = 
-          (await client.getXrpBalance(operational_wallet.address))
+<span class="w">  </span><span class="nx">operationalAccountField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">operational_wallet</span><span class="p">.</span><span class="nx">address</span>
+<span class="w">  </span><span class="nx">operationalPubKeyField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">operational_wallet</span><span class="p">.</span><span class="nx">publicKey</span>
+<span class="w">  </span><span class="nx">operationalPrivKeyField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">operational_wallet</span><span class="p">.</span><span class="nx">privateKey</span>
+<span class="w">  </span><span class="nx">operationalSeedField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">operational_wallet</span><span class="p">.</span><span class="nx">seed</span>
+<span class="w">  </span><span class="nx">operationalBalanceField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">operational_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span>
 </code></pre></div>
 <p>Disconnect from the XRP Ledger.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="w">       </span><span class="nv">client</span>.<span class="k">disconnect</span><span class="ss">()</span>
-
-
-<span class="w">      </span>}<span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="k">End</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">getAccountsFromSeeds</span><span class="ss">()</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// End of getAccountsFromSeeds()</span>
 </code></pre></div>
 <h3 id="send-xrp">Send XRP<a aria-hidden="true" class="hover_anchor" href="#send-xrp"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23"><span class="c1">// *******************************************************</span>
 <span class="c1">// ******************** Send XRP *************************</span>
 <span class="c1">// *******************************************************</span>
 
-<span class="w">      </span><span class="n">async</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">sendXRP</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sendXRP</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </code></pre></div>
 <p>Connect to your selected ledger.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="w">        </span><span class="n">results</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"Connecting to the selected ledger.</span><span class="se">\n</span><span class="s2">"</span>
-<span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
-<span class="w">        </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span>
-<span class="w">        </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'....'</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
-<span class="w">        </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="w">  </span><span class="nx">results</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"Connecting to the selected ledger.\n"</span>
+<span class="w">  </span><span class="nx">standbyResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'....'</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="nx">net</span><span class="p">)</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
 
+<span class="w">  </span><span class="nx">results</span><span class="w">  </span><span class="o">+=</span><span class="w"> </span><span class="s2">"\nConnected. Sending XRP.\n"</span>
+<span class="w">  </span><span class="nx">standbyResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
 
-<span class="w">        </span><span class="n">results</span><span class="w">  </span><span class="o">+=</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">Connected. Sending XRP.</span><span class="se">\n</span><span class="s2">"</span>
-<span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">standbySeedField</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">operationalSeedField</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sendAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">standbyAmountField</span><span class="p">.</span><span class="nx">value</span>
 
-
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">operationalSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">sendAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">standbyAmountField</span><span class="o">.</span><span class="n">value</span>
-
-
-<span class="w">        </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">standby_wallet.address: = "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">standby_wallet</span><span class="o">.</span><span class="n">address</span>
-<span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
+<span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">"\nstandby_wallet.address: = "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">standby_wallet</span><span class="p">.</span><span class="nx">address</span>
+<span class="w">  </span><span class="nx">standbyResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
 </code></pre></div>
 <p>Prepare the transaction. This is a Payment transaction from the standby address to the operational address.</p>
 <p>The <em>Payment</em> transaction expects the XRP to be expressed in drops, or 1/millionth of an XRP.  You can use the <code>xrpToDrops()</code> method to convert the send amount for you (which beats having to type an extra 6 zeroes to send 1 XRP).</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">autofill</span><span class="p">({</span>
-<span class="w">          </span><span class="s2">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">"Account"</span><span class="p">:</span><span class="w"> </span><span class="n">standby_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">xrpToDrops</span><span class="p">(</span><span class="n">sendAmount</span><span class="p">),</span>
-<span class="w">          </span><span class="s2">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="n">standbyDestinationField</span><span class="o">.</span><span class="n">value</span>
-<span class="w">        </span><span class="p">})</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
+<span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">standby_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"Amount"</span><span class="o">:</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">xrpToDrops</span><span class="p">(</span><span class="nx">sendAmount</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">"Destination"</span><span class="o">:</span><span class="w"> </span><span class="nx">standbyDestinationField</span><span class="p">.</span><span class="nx">value</span>
+<span class="w">  </span><span class="p">})</span>
 </code></pre></div>
 <p>Sign the prepared transaction.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">standby_wallet</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">prepared</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">standby_wallet</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">prepared</span><span class="p">)</span>
 </code></pre></div>
 <p>Submit the transaction and wait for the results.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">submitAndWait</span><span class="p">(</span><span class="n">signed</span><span class="o">.</span><span class="n">tx_blob</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">submitAndWait</span><span class="p">(</span><span class="n">signed</span><span class="o">.</span><span class="n">tx_blob</span><span class="p">)</span>
 </code></pre></div>
 <p>Request the balance changes caused by the transaction and report the results.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="w">         </span><span class="nv">results</span><span class="w">  </span><span class="o">+=</span><span class="w"> </span><span class="s2">"\nBalance changes: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-<span class="w">            </span><span class="nv">JSON</span>.<span class="nv">stringify</span><span class="ss">(</span><span class="nv">xrpl</span>.<span class="nv">getBalanceChanges</span><span class="ss">(</span><span class="nv">tx</span>.<span class="nb">result</span>.<span class="nv">meta</span><span class="ss">)</span>,<span class="w"> </span><span class="nv">null</span>,<span class="w"> </span><span class="mi">2</span><span class="ss">)</span>
-<span class="w">         </span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s1">'standbyResultField'</span><span class="ss">)</span>.<span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">results</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="w">  </span><span class="nx">results</span><span class="w">  </span><span class="o">+=</span><span class="w"> </span><span class="s">"\nBalance changes: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">getBalanceChanges</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">),</span><span class="w"> </span><span class="nx">null</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">standbyResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">results</span>
 
-<span class="w">        </span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s1">'standbyBalanceField'</span><span class="ss">)</span>.<span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">          </span><span class="ss">(</span><span class="nv">await</span><span class="w"> </span><span class="nv">client</span>.<span class="nv">getXrpBalance</span><span class="ss">(</span><span class="nv">standby_wallet</span>.<span class="nv">address</span><span class="ss">))</span>
-<span class="w">        </span><span class="nv">document</span>.<span class="nv">getElementById</span><span class="ss">(</span><span class="s1">'operationalBalanceField'</span><span class="ss">)</span>.<span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">          </span><span class="ss">(</span><span class="nv">await</span><span class="w"> </span><span class="nv">client</span>.<span class="nv">getXrpBalance</span><span class="ss">(</span><span class="nv">operational_wallet</span>.<span class="nv">address</span><span class="ss">))</span><span class="w">                 </span>
-<span class="w">        </span><span class="nv">client</span>.<span class="k">disconnect</span><span class="ss">()</span>
-
-
-<span class="w">      </span>}<span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="k">End</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">sendXRP</span><span class="ss">()</span>
+<span class="w">  </span><span class="nx">standbyBalanceField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="p">=</span><span class="w">  </span><span class="p">(</span><span class="nx">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">standby_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span>
+<span class="w">  </span><span class="nx">operationalBalanceField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nx">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">operational_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span><span class="w">                 </span>
+<span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span><span class="w">    </span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// End of sendXRP()</span>
 </code></pre></div>
 <h3 id="reciprocal-transactions">Reciprocal Transactions<a aria-hidden="true" class="hover_anchor" href="#reciprocal-transactions"><i class="fa fa-link"></i></a></h3>
 <p>For each of the transactions, there is an accompanying reciprocal transaction, with the prefix <em>oP,</em> for the operational account. See the corresponding function for the standby account for code commentary.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29"><span class="o">//</span><span class="w"> </span><span class="o">**********************************************************************</span>
-<span class="o">//</span><span class="w"> </span><span class="o">******</span><span class="w"> </span><span class="n">Reciprocal</span><span class="w"> </span><span class="n">Transactions</span><span class="w"> </span><span class="o">****************************************</span>
-<span class="o">//</span><span class="w"> </span><span class="o">**********************************************************************</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29"><span class="c1">// **********************************************************************</span>
+<span class="c1">// ****** Reciprocal Transactions ***************************************</span>
+<span class="c1">// **********************************************************************</span>
 
+<span class="c1">// *******************************************************</span>
+<span class="c1">// ********* Send XRP from Operational account ***********</span>
+<span class="c1">// *******************************************************</span>
 
-<span class="o">//</span><span class="w"> </span><span class="o">*******************************************************</span>
-<span class="o">//</span><span class="w"> </span><span class="o">*********</span><span class="w"> </span><span class="n">Send</span><span class="w"> </span><span class="n">XRP</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">Operational</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="o">***********</span>
-<span class="o">//</span><span class="w"> </span><span class="o">*******************************************************</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">oPsendXRP</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">  </span><span class="nx">results</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"Connecting to the selected ledger.\n"</span>
+<span class="w">  </span><span class="nx">operationalResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'....'</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="nx">net</span><span class="p">)</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
 
-<span class="w">      </span><span class="n">async</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">oPsendXRP</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">results</span><span class="w">  </span><span class="o">+=</span><span class="w"> </span><span class="s2">"\nConnected. Sending XRP.\n"</span>
+<span class="w">  </span><span class="nx">operationalResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
 
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">operationalSeedField</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">standbySeedField</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sendAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">operationalAmountField</span><span class="p">.</span><span class="nx">value</span>
 
-<span class="w">        </span><span class="n">results</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"Connecting to testnet.</span><span class="se">\n</span><span class="s2">"</span>
-<span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
-<span class="w">        </span><span class="n">let</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span>
-<span class="w">        </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Connecting to '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">getNet</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'....'</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
-<span class="w">        </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">"\noperational_wallet.address: = "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">operational_wallet</span><span class="p">.</span><span class="nx">address</span>
+<span class="w">  </span><span class="nx">operationalResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
 
+<span class="c1">// ---------------------------------------------------------- Prepare transaction</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
+<span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">operational_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"Amount"</span><span class="o">:</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">xrpToDrops</span><span class="p">(</span><span class="nx">operationalAmountField</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">"Destination"</span><span class="o">:</span><span class="w"> </span><span class="nx">operationalDestinationField</span><span class="p">.</span><span class="nx">value</span>
+<span class="w">  </span><span class="p">})</span>
 
-<span class="w">        </span><span class="n">results</span><span class="w">  </span><span class="o">+=</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">Connected. Sending XRP.</span><span class="se">\n</span><span class="s2">"</span>
-<span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
+<span class="c1">// ---------------------------------------------------- Sign prepared instructions</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">operational_wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared</span><span class="p">)</span>
 
+<span class="c1">// ------------------------------------------------------------ Submit signed blob</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">operational_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">operationalSeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">standby_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">fromSeed</span><span class="p">(</span><span class="n">standbySeedField</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">sendAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">operationalAmountField</span><span class="o">.</span><span class="n">value</span>
+<span class="w">  </span><span class="nx">results</span><span class="w">  </span><span class="o">+=</span><span class="w"> </span><span class="s2">"\nBalance changes: "</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">getBalanceChanges</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">operationalResultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span>
+<span class="w">  </span><span class="nx">standbyBalanceField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">standby_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span>
+<span class="w">  </span><span class="nx">operationalBalanceField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getXrpBalance</span><span class="p">(</span><span class="nx">operational_wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">))</span><span class="w">                 </span>
 
-
-<span class="w">        </span><span class="n">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">operational_wallet.address: = "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">operational_wallet</span><span class="o">.</span><span class="n">address</span>
-<span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
-
-
-<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="o">----------------------------------</span><span class="w"> </span><span class="n">Prepare</span><span class="w"> </span><span class="n">transaction</span>
-<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="n">Note</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">hard</span><span class="w"> </span><span class="n">coded</span><span class="o">.</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">autofill</span><span class="p">({</span>
-<span class="w">          </span><span class="s2">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">"Account"</span><span class="p">:</span><span class="w"> </span><span class="n">operational_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">xrpToDrops</span><span class="p">(</span><span class="n">operationalAmountField</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
-<span class="w">          </span><span class="s2">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="n">operationalDestinationField</span><span class="o">.</span><span class="n">value</span>
-<span class="w">        </span><span class="p">})</span>
-
-
-<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="o">----------------------------</span><span class="w"> </span><span class="n">Sign</span><span class="w"> </span><span class="n">prepared</span><span class="w"> </span><span class="n">instructions</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">operational_wallet</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">prepared</span><span class="p">)</span>
-
-
-<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="o">------------------------------------</span><span class="w"> </span><span class="n">Submit</span><span class="w"> </span><span class="n">signed</span><span class="w"> </span><span class="n">blob</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">submitAndWait</span><span class="p">(</span><span class="n">signed</span><span class="o">.</span><span class="n">tx_blob</span><span class="p">)</span>
-
-
-<span class="w">         </span><span class="n">results</span><span class="w">  </span><span class="o">+=</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">Balance changes: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-<span class="w">            </span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">xrpl</span><span class="o">.</span><span class="n">getBalanceChanges</span><span class="p">(</span><span class="n">tx</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">meta</span><span class="p">),</span><span class="w"> </span><span class="nb nb-Type">null</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
-<span class="w">         </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalResultField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">results</span>
-
-
-<span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'standbyBalanceField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">          </span><span class="p">(</span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">getXrpBalance</span><span class="p">(</span><span class="n">standby_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">))</span>
-<span class="w">        </span><span class="n">document</span><span class="o">.</span><span class="n">getElementById</span><span class="p">(</span><span class="s1">'operationalBalanceField'</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">          </span><span class="p">(</span><span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">getXrpBalance</span><span class="p">(</span><span class="n">operational_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">))</span><span class="w">                 </span>
-
-
-<span class="w">        </span><span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
-
-
-<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">End</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">oPsendXRP</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span><span class="w">    </span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// End of oPsendXRP()</span>
 </code></pre></div>
 <h2 id="1get-accounts-send-xrphtml">1.get-accounts-send-xrp.html<a aria-hidden="true" class="hover_anchor" href="#1get-accounts-send-xrphtml"><i class="fa fa-link"></i></a></h2>
 <p>Create a standard HTML form to send transactions and requests, then display the results.  </p>
@@ -627,7 +593,7 @@
 <span class="w">       </span><span class="nt">button</span><span class="p">{</span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s2">"Work Sans"</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;}</span>
 <span class="w">       </span><span class="nt">td</span><span class="p">{</span><span class="k">vertical-align</span><span class="p">:</span><span class="w"> </span><span class="kc">middle</span><span class="p">;}</span>
 <span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">'https://unpkg.com/xrpl@2.2.3'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">'https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">'ripplex1-send-xrp.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">module</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -845,20 +811,6 @@
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;">Previous</th>
-<th style="text-align: right;">Next</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><a class="btn btn-primary" href="xrpl-quickstart.html">← XRPL Quickstart</a></td>
-<td style="text-align: right;"><a class="btn btn-primary" href="create-trustline-send-currency.html">2. Create Trust Line and Send Currency →</a></td>
-</tr>
-</tbody>
-</table>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -890,25 +842,20 @@
   </div>
     
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/faq.html">よくある質問</a>
-  </div>
 
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="false" aria-controls="tree_nav_group_1"></a>
 
         <a class="nav-link" href="/ja/concepts.html">コンセプト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_1" aria-expanded="false" aria-controls="tree_nav_group_1_1"></a>
 
         <a class="nav-link" href="/ja/introduction.html">基本</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
@@ -931,19 +878,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2" aria-expanded="false" aria-controls="tree_nav_group_1_2"></a>
 
         <a class="nav-link" href="/ja/payment-system-basics.html">支払いシステムの基本</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_1" aria-expanded="false" aria-controls="tree_nav_group_1_2_1"></a>
 
         <a class="nav-link" href="/ja/accounts.html">アカウント</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cryptographic-keys.html">暗号鍵</a>
@@ -986,11 +933,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_4" aria-expanded="false" aria-controls="tree_nav_group_1_2_4"></a>
 
         <a class="nav-link" href="/ja/transaction-basics.html">トランザクションの基本</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-cost.html">トランザクションコスト</a>
@@ -1017,11 +964,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_3" aria-expanded="false" aria-controls="tree_nav_group_1_3"></a>
 
         <a class="nav-link" href="/ja/payment-types.html">支払いのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
@@ -1059,11 +1006,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="false" aria-controls="tree_nav_group_1_4"></a>
 
         <a class="nav-link" href="/ja/tokens.html">トークン</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
@@ -1071,45 +1018,50 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
 
         <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFT Reserve Requirements</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFTの準備金要件</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">Running an NFT Auction</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">NFTオークションの実施</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">Minting NFTs into Collections</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">NFTのコレクション化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
     </nav>
@@ -1119,11 +1071,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_4" aria-expanded="false" aria-controls="tree_nav_group_1_4_4"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -1165,14 +1117,14 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_5" aria-expanded="false" aria-controls="tree_nav_group_1_5"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1197,11 +1149,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6" aria-expanded="false" aria-controls="tree_nav_group_1_6"></a>
 
         <a class="nav-link" href="/ja/consensus-network.html">コンセンサスネットワーク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus.html">コンセンサス</a>
@@ -1245,11 +1197,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_9" aria-expanded="false" aria-controls="tree_nav_group_2_6_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6_9" aria-expanded="false" aria-controls="tree_nav_group_1_6_9"></a>
 
         <a class="nav-link" href="/ja/amendments.html">Amendment</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_6_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
@@ -1274,11 +1226,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1286,11 +1233,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/rippled-server-modes.html">rippledサーバーのモード</a>
@@ -1304,11 +1251,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7_3" aria-expanded="false" aria-controls="tree_nav_group_1_7_3"></a>
 
         <a class="nav-link" href="/ja/ledger-history.html">レジャー履歴</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_7_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/online-deletion.html">オンライン削除</a>
@@ -1335,29 +1282,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1371,19 +1296,19 @@
     
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="true" aria-controls="tree_nav_group_2"></a>
 
         <a class="nav-link" href="/ja/tutorials.html">チュートリアル</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3">
+    <nav class="nav flex-column show " id="tree_nav_group_2">
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="true" aria-controls="tree_nav_group_3_1"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="true" aria-controls="tree_nav_group_2_1"></a>
 
         <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3_1">
+    <nav class="nav flex-column show " id="tree_nav_group_2_1">
       
   <div class="nav-item active">
     <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
@@ -1426,11 +1351,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
 
         <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
@@ -1473,11 +1398,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="/ja/build-apps.html">アプリケーションの構築</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1490,11 +1415,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -1517,11 +1442,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1569,19 +1494,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1614,11 +1539,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1631,11 +1556,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="false" aria-controls="tree_nav_group_3_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1677,11 +1602,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1714,11 +1639,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
 
         <a class="nav-link" href="/ja/xrp-ledger-businesses.html">ビジネスとしてのXRP Ledger</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -1741,19 +1666,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの管理</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -1787,16 +1712,6 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-ubuntu.html">Ubuntuでのrippledの構築と実行</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-macos.html">macOSでのrippledの構築と実行</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
   </div>
 
@@ -1817,11 +1732,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -1889,11 +1804,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -1941,11 +1856,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -1968,11 +1883,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -2019,65 +1934,14 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="false" aria-controls="tree_nav_group_3_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
 
         <a class="nav-link" href="/ja/manage-the-clio-server.html">Clioサーバの管理</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11" aria-expanded="false" aria-controls="tree_nav_group_3_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_1" aria-expanded="false" aria-controls="tree_nav_group_3_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_2" aria-expanded="false" aria-controls="tree_nav_group_3_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -2091,27 +1955,27 @@
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
 
         <a class="nav-link" href="/ja/references.html">リファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
         <a class="nav-link" href="/ja/protocol-reference.html">XRP Ledgerプロトコルリファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_1" aria-expanded="false" aria-controls="tree_nav_group_4_1_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
 
         <a class="nav-link" href="/ja/basic-data-types.html">基本的なデータ型</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/base58-encodings.html">base58エンコード</a>
@@ -2134,11 +1998,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
 
         <a class="nav-link" href="/ja/ledger-data-formats.html">レジャーのデータ型</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-header.html">レジャーヘッダー</a>
@@ -2152,11 +2016,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_2_3"></a>
 
         <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -2165,11 +2029,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2253,11 +2112,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3"></a>
 
         <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-common-fields.html">トランザクションの共通フィールド</a>
@@ -2266,11 +2125,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_2"></a>
 
         <a class="nav-link" href="/ja/transaction-types.html">トランザクションのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
@@ -2279,31 +2138,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2423,11 +2257,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_3"></a>
 
         <a class="nav-link" href="/ja/pseudo-transaction-types.html">疑似トランザクション</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/enableamendment.html">EnableAmendment</a>
@@ -2450,11 +2284,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_4"></a>
 
         <a class="nav-link" href="/ja/transaction-results.html">トランザクションの結果</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/tec-codes.html">tecコード</a>
@@ -2510,19 +2344,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
 
         <a class="nav-link" href="/ja/client-libraries.html">クライアントライブラリ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
 
         <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript/TypeScript クライアントライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">ripple-lib 1.xからxrpl.js 2.xへの移行ガイド</a>
@@ -2554,19 +2388,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_1"></a>
 
         <a class="nav-link" href="/ja/api-conventions.html">APIの規則</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/request-formatting.html">要求フォーマット</a>
@@ -2604,19 +2438,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
 
         <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_1"></a>
 
         <a class="nav-link" href="/ja/account-methods.html">Accountメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account_channels.html">account_channels</a>
@@ -2674,11 +2508,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_2"></a>
 
         <a class="nav-link" href="/ja/ledger-methods.html">Ledgerメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger.html">ledger</a>
@@ -2711,11 +2545,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_3"></a>
 
         <a class="nav-link" href="/ja/transaction-methods.html">Transactionメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
@@ -2748,16 +2582,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_4"></a>
 
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -2795,11 +2624,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_5"></a>
 
         <a class="nav-link" href="/ja/payment-channel-methods.html">Payment Channelメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/channel_authorize.html">channel_authorize</a>
@@ -2817,11 +2646,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_6"></a>
 
         <a class="nav-link" href="/ja/subscription-methods.html">Subscriptionメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/subscribe.html">subscribe</a>
@@ -2839,11 +2668,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_7"></a>
 
         <a class="nav-link" href="/ja/server-info-methods.html">Server Infoメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/fee.html">fee</a>
@@ -2871,11 +2700,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
         <a class="nav-link" href="/ja/clio-methods.html">Clio Serverメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info</a>
@@ -2898,11 +2727,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
 
         <a class="nav-link" href="/ja/utility-methods.html">ユーティリティメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/json.html">json</a>
@@ -2929,19 +2758,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
         <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_1"></a>
 
         <a class="nav-link" href="/ja/key-generation-methods.html">キー生成メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/validation_create.html">validation_create</a>
@@ -2959,11 +2788,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_2"></a>
 
         <a class="nav-link" href="/ja/logging-and-data-management-methods.html">ログとデータの管理メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/can_delete.html">can_delete</a>
@@ -3011,11 +2840,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_3"></a>
 
         <a class="nav-link" href="/ja/server-control-methods.html">サーバ操作メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger_accept.html">ledger_accept</a>
@@ -3038,11 +2867,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
 
         <a class="nav-link" href="/ja/signing-methods.html">署名メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
@@ -3060,11 +2889,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
 
         <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
@@ -3097,11 +2926,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_6"></a>
 
         <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>
@@ -3158,11 +2987,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_5"></a>
 
         <a class="nav-link" href="/ja/peer-port-methods.html">ピアポートメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
@@ -3200,19 +3029,14 @@
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
 
         <a class="nav-link" href="/ja/by-label.html">ラベル別に閲覧</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       
@@ -3307,11 +3131,11 @@
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPCツール</a>
@@ -3360,7 +3184,7 @@
   <section class="container-fluid">
     <div class="row">
         <div class="col-lg">
-          <h5>アバウト</h5>
+          <h5>概要</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
@@ -3369,6 +3193,7 @@
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
             <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
@@ -3377,7 +3202,6 @@
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
-            <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
@@ -3389,7 +3213,7 @@
         </div><!--/.col -->
 
         <div class="col-lg">
-          <h5>コミュニティー</h5>
+          <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>

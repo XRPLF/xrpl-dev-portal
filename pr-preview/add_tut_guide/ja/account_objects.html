@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v15.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v16.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -90,16 +90,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"> 
-  <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
-    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
-  </div>
-  <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
-    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
-  </div>
-</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,7 +99,7 @@
     <ul class="nav navbar-nav" id="topnav-pages">
 
             <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="/ja/xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>アバウト</span></a>
+        <a class="nav-link dropdown-toggle" href="/ja/xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>概要</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
           <div class="navcol col-for-xrp-ledger">
             <h5 class="dropdown-item">XRP Ledger</h5>
@@ -129,6 +119,7 @@
           <div class="navcol col-for-about">
             <h5 class="dropdown-item">About</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
+            <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
             <a class="dropdown-item" href="/ja/privacy-policy.html">Privacy Policy</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -144,10 +135,6 @@
               <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
             </div>
           </a>
-          <div class="navcol col-for-質問">
-            <h5 class="dropdown-item">質問</h5>
-            <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
-          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
@@ -184,13 +171,13 @@
       </li>
 
             <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティー</span></a>
+        <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティ</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
           <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
             <img id="top-nav-hero-contribute" alt="貢献する icon" />
             <div class="dropdown-hero-text">
               <h4>貢献する</h4>
-              <p>Join the conversation</p>
+              <p>話題に加わろう</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
@@ -311,27 +298,27 @@
 <p>要求フォーマットの例:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-0-2">コマンドライン</a></li></ul>
 
-<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">{
-  "id": 1,
-  "command": "account_objects",
-  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-  "ledger_index": "validated",
-  "type": "state",
-  "limit": 10
-}
+<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
+<span class="w">  </span><span class="s">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"command"</span><span class="p">:</span><span class="w"> </span><span class="s">"account_objects"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s">"validated"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"state"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">{
-    "method": "account_objects",
-    "params": [
-        {
-            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "ledger_index": "validated",
-            "limit": 10,
-            "type": "state"
-        }
-    ]
-}
+<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
+<span class="w">    </span><span class="s">"method"</span><span class="p">:</span><span class="w"> </span><span class="s">"account_objects"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s">"validated"</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"state"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample コマンドライン" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">#Syntax: account_objects &lt;account&gt; [&lt;ledger&gt;]
@@ -384,261 +371,261 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 <p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
-<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">{
-    "id": 8,
-    "status": "success",
-    "type": "response",
-    "result": {
-        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-        "account_objects": [
-            {
-                "Balance": {
-                    "currency": "ASP",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0"
-                },
-                "Flags": 65536,
-                "HighLimit": {
-                    "currency": "ASP",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "ASP",
-                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
-                    "value": "10"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862",
-                "PreviousTxnLgrSeq": 1438879,
-                "index": "2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"
-            },
-            {
-                "Balance": {
-                    "currency": "XAU",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0"
-                },
-                "Flags": 3342336,
-                "HighLimit": {
-                    "currency": "XAU",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "XAU",
-                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
-                    "value": "0"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942",
-                "PreviousTxnLgrSeq": 5982530,
-                "index": "9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"
-            },
-            {
-                "Balance": {
-                    "currency": "USD",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0"
-                },
-                "Flags": 1114112,
-                "HighLimit": {
-                    "currency": "USD",
-                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "USD",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "5"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE",
-                "PreviousTxnLgrSeq": 10555014,
-                "index": "2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"
-            },
-            {
-                "Balance": {
-                    "currency": "MXN",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "481.992867407479"
-                },
-                "Flags": 65536,
-                "HighLimit": {
-                    "currency": "MXN",
-                    "issuer": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "MXN",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "1000"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5",
-                "PreviousTxnLgrSeq": 3316170,
-                "index": "EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"
-            },
-            {
-                "Balance": {
-                    "currency": "EUR",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0.793598266778297"
-                },
-                "Flags": 1114112,
-                "HighLimit": {
-                    "currency": "EUR",
-                    "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "EUR",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "1"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46",
-                "PreviousTxnLgrSeq": 5447146,
-                "index": "4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"
-            },
-            {
-                "Balance": {
-                    "currency": "CNY",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0"
-                },
-                "Flags": 2228224,
-                "HighLimit": {
-                    "currency": "CNY",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "3"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "CNY",
-                    "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
-                    "value": "0"
-                },
-                "LowNode": "0000000000000008",
-                "PreviousTxnID": "2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF",
-                "PreviousTxnLgrSeq": 5949673,
-                "index": "578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"
-            },
-            {
-                "Balance": {
-                    "currency": "DYM",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "1.336889190631542"
-                },
-                "Flags": 65536,
-                "HighLimit": {
-                    "currency": "DYM",
-                    "issuer": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "DYM",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "3"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1",
-                "PreviousTxnLgrSeq": 8818732,
-                "index": "5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"
-            },
-            {
-                "Balance": {
-                    "currency": "CHF",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "-0.3488146605801446"
-                },
-                "Flags": 131072,
-                "HighLimit": {
-                    "currency": "CHF",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "CHF",
-                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                    "value": "0"
-                },
-                "LowNode": "000000000000008C",
-                "PreviousTxnID": "722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869",
-                "PreviousTxnLgrSeq": 2687590,
-                "index": "F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"
-            },
-            {
-                "Balance": {
-                    "currency": "BTC",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0"
-                },
-                "Flags": 131072,
-                "HighLimit": {
-                    "currency": "BTC",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "3"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "BTC",
-                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                    "value": "0"
-                },
-                "LowNode": "0000000000000043",
-                "PreviousTxnID": "03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A",
-                "PreviousTxnLgrSeq": 8317037,
-                "index": "767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"
-            },
-            {
-                "Balance": {
-                    "currency": "USD",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "-16.00534471983042"
-                },
-                "Flags": 131072,
-                "HighLimit": {
-                    "currency": "USD",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "5000"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "USD",
-                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                    "value": "0"
-                },
-                "LowNode": "000000000000004A",
-                "PreviousTxnID": "CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7",
-                "PreviousTxnLgrSeq": 14365854,
-                "index": "826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"
-            }
-        ],
-        "ledger_hash": "053DF17D2289D1C4971C22F235BC1FCA7D4B3AE966F842E5819D0749E0B8ECD3",
-        "ledger_index": 14378733,
-        "limit": 10,
-        "marker": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5",
-        "validated": true
-    }
-}
+<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
+<span class="w">    </span><span class="s">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"status"</span><span class="p">:</span><span class="w"> </span><span class="s">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"response"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"account_objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"ASP"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"ASP"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"ASP"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"10"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">1438879</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"XAU"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">3342336</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"XAU"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"XAU"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">5982530</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">1114112</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"5"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">10555014</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"MXN"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"481.992867407479"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"MXN"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"MXN"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"1000"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">3316170</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"EUR"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0.793598266778297"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">1114112</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"EUR"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"EUR"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">5447146</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CNY"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">2228224</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CNY"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"3"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CNY"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000008"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">5949673</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"DYM"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"1.336889190631542"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"DYM"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"DYM"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"3"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">8818732</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CHF"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"-0.3488146605801446"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CHF"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CHF"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"000000000000008C"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">2687590</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"BTC"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"BTC"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"3"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"BTC"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000043"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">8317037</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"-16.00534471983042"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"5000"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"000000000000004A"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">14365854</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="s">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s">"053DF17D2289D1C4971C22F235BC1FCA7D4B3AE966F842E5819D0749E0B8ECD3"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">14378733</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s">"F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="mf">200</span><span class="w"> </span><span class="n">OK</span>
@@ -994,25 +981,20 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
   </div>
     
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/faq.html">よくある質問</a>
-  </div>
 
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="false" aria-controls="tree_nav_group_1"></a>
 
         <a class="nav-link" href="/ja/concepts.html">コンセプト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_1" aria-expanded="false" aria-controls="tree_nav_group_1_1"></a>
 
         <a class="nav-link" href="/ja/introduction.html">基本</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
@@ -1035,19 +1017,19 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2" aria-expanded="false" aria-controls="tree_nav_group_1_2"></a>
 
         <a class="nav-link" href="/ja/payment-system-basics.html">支払いシステムの基本</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_1" aria-expanded="false" aria-controls="tree_nav_group_1_2_1"></a>
 
         <a class="nav-link" href="/ja/accounts.html">アカウント</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cryptographic-keys.html">暗号鍵</a>
@@ -1090,11 +1072,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_4" aria-expanded="false" aria-controls="tree_nav_group_1_2_4"></a>
 
         <a class="nav-link" href="/ja/transaction-basics.html">トランザクションの基本</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-cost.html">トランザクションコスト</a>
@@ -1121,11 +1103,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_3" aria-expanded="false" aria-controls="tree_nav_group_1_3"></a>
 
         <a class="nav-link" href="/ja/payment-types.html">支払いのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
@@ -1163,11 +1145,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="false" aria-controls="tree_nav_group_1_4"></a>
 
         <a class="nav-link" href="/ja/tokens.html">トークン</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
@@ -1175,45 +1157,50 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
 
         <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a>
+    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFT Reserve Requirements</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFTの準備金要件</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">Running an NFT Auction</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">NFTオークションの実施</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">Minting NFTs into Collections</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">NFTのコレクション化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
     </nav>
@@ -1223,11 +1210,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_4" aria-expanded="false" aria-controls="tree_nav_group_1_4_4"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -1269,14 +1256,14 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_5" aria-expanded="false" aria-controls="tree_nav_group_1_5"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1301,11 +1288,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6" aria-expanded="false" aria-controls="tree_nav_group_1_6"></a>
 
         <a class="nav-link" href="/ja/consensus-network.html">コンセンサスネットワーク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus.html">コンセンサス</a>
@@ -1349,11 +1336,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_9" aria-expanded="false" aria-controls="tree_nav_group_2_6_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6_9" aria-expanded="false" aria-controls="tree_nav_group_1_6_9"></a>
 
         <a class="nav-link" href="/ja/amendments.html">Amendment</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_6_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
@@ -1378,11 +1365,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1390,11 +1372,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/rippled-server-modes.html">rippledサーバーのモード</a>
@@ -1408,11 +1390,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7_3" aria-expanded="false" aria-controls="tree_nav_group_1_7_3"></a>
 
         <a class="nav-link" href="/ja/ledger-history.html">レジャー履歴</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_1_7_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/online-deletion.html">オンライン削除</a>
@@ -1439,29 +1421,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1475,19 +1435,19 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
 
         <a class="nav-link" href="/ja/tutorials.html">チュートリアル</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
 
         <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
@@ -1530,11 +1490,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
 
         <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
@@ -1577,11 +1537,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="/ja/build-apps.html">アプリケーションの構築</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1594,11 +1554,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -1621,11 +1581,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1673,19 +1633,19 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1718,11 +1678,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1735,11 +1695,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="false" aria-controls="tree_nav_group_3_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1781,11 +1741,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1818,11 +1778,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
 
         <a class="nav-link" href="/ja/xrp-ledger-businesses.html">ビジネスとしてのXRP Ledger</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -1845,19 +1805,19 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの管理</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -1891,16 +1851,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-ubuntu.html">Ubuntuでのrippledの構築と実行</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-macos.html">macOSでのrippledの構築と実行</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
   </div>
 
@@ -1921,11 +1871,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -1993,11 +1943,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -2045,11 +1995,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -2072,11 +2022,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -2123,65 +2073,14 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="false" aria-controls="tree_nav_group_3_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
 
         <a class="nav-link" href="/ja/manage-the-clio-server.html">Clioサーバの管理</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11" aria-expanded="false" aria-controls="tree_nav_group_3_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_1" aria-expanded="false" aria-controls="tree_nav_group_3_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_11_2" aria-expanded="false" aria-controls="tree_nav_group_3_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -2195,27 +2094,27 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
     
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="true" aria-controls="tree_nav_group_4"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
 
         <a class="nav-link" href="/ja/references.html">リファレンス</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4">
+    <nav class="nav flex-column show " id="tree_nav_group_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
         <a class="nav-link" href="/ja/protocol-reference.html">XRP Ledgerプロトコルリファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_1" aria-expanded="false" aria-controls="tree_nav_group_4_1_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
 
         <a class="nav-link" href="/ja/basic-data-types.html">基本的なデータ型</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/base58-encodings.html">base58エンコード</a>
@@ -2238,11 +2137,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
 
         <a class="nav-link" href="/ja/ledger-data-formats.html">レジャーのデータ型</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-header.html">レジャーヘッダー</a>
@@ -2256,11 +2155,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_2_3"></a>
 
         <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -2269,11 +2168,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2357,11 +2251,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3"></a>
 
         <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-common-fields.html">トランザクションの共通フィールド</a>
@@ -2370,11 +2264,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_2"></a>
 
         <a class="nav-link" href="/ja/transaction-types.html">トランザクションのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
@@ -2383,31 +2277,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2527,11 +2396,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_3"></a>
 
         <a class="nav-link" href="/ja/pseudo-transaction-types.html">疑似トランザクション</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/enableamendment.html">EnableAmendment</a>
@@ -2554,11 +2423,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_4"></a>
 
         <a class="nav-link" href="/ja/transaction-results.html">トランザクションの結果</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/tec-codes.html">tecコード</a>
@@ -2614,19 +2483,19 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
 
         <a class="nav-link" href="/ja/client-libraries.html">クライアントライブラリ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
 
         <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript/TypeScript クライアントライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">ripple-lib 1.xからxrpl.js 2.xへの移行ガイド</a>
@@ -2658,19 +2527,19 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="true" aria-controls="tree_nav_group_4_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="true" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_3">
+    <nav class="nav flex-column show " id="tree_nav_group_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_1"></a>
 
         <a class="nav-link" href="/ja/api-conventions.html">APIの規則</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/request-formatting.html">要求フォーマット</a>
@@ -2708,19 +2577,19 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="true" aria-controls="tree_nav_group_4_3_2"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="true" aria-controls="tree_nav_group_3_3_2"></a>
 
         <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_3_2">
+    <nav class="nav flex-column show " id="tree_nav_group_3_3_2">
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_1" aria-expanded="true" aria-controls="tree_nav_group_4_3_2_1"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_1" aria-expanded="true" aria-controls="tree_nav_group_3_3_2_1"></a>
 
         <a class="nav-link" href="/ja/account-methods.html">Accountメソッド</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_3_2_1">
+    <nav class="nav flex-column show " id="tree_nav_group_3_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account_channels.html">account_channels</a>
@@ -2778,11 +2647,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_2"></a>
 
         <a class="nav-link" href="/ja/ledger-methods.html">Ledgerメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger.html">ledger</a>
@@ -2815,11 +2684,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_3"></a>
 
         <a class="nav-link" href="/ja/transaction-methods.html">Transactionメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
@@ -2852,16 +2721,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_4"></a>
 
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -2899,11 +2763,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_5"></a>
 
         <a class="nav-link" href="/ja/payment-channel-methods.html">Payment Channelメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/channel_authorize.html">channel_authorize</a>
@@ -2921,11 +2785,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_6"></a>
 
         <a class="nav-link" href="/ja/subscription-methods.html">Subscriptionメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/subscribe.html">subscribe</a>
@@ -2943,11 +2807,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_7"></a>
 
         <a class="nav-link" href="/ja/server-info-methods.html">Server Infoメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/fee.html">fee</a>
@@ -2975,11 +2839,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
 
         <a class="nav-link" href="/ja/clio-methods.html">Clio Serverメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info</a>
@@ -3002,11 +2866,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
 
         <a class="nav-link" href="/ja/utility-methods.html">ユーティリティメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/json.html">json</a>
@@ -3033,19 +2897,19 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
 
         <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_1"></a>
 
         <a class="nav-link" href="/ja/key-generation-methods.html">キー生成メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/validation_create.html">validation_create</a>
@@ -3063,11 +2927,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_2"></a>
 
         <a class="nav-link" href="/ja/logging-and-data-management-methods.html">ログとデータの管理メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/can_delete.html">can_delete</a>
@@ -3115,11 +2979,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_3"></a>
 
         <a class="nav-link" href="/ja/server-control-methods.html">サーバ操作メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger_accept.html">ledger_accept</a>
@@ -3142,11 +3006,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
 
         <a class="nav-link" href="/ja/signing-methods.html">署名メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
@@ -3164,11 +3028,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
 
         <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
@@ -3201,11 +3065,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_6"></a>
 
         <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>
@@ -3262,11 +3126,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_5"></a>
 
         <a class="nav-link" href="/ja/peer-port-methods.html">ピアポートメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
@@ -3304,19 +3168,14 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
 
         <a class="nav-link" href="/ja/by-label.html">ラベル別に閲覧</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       
@@ -3411,11 +3270,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPCツール</a>
@@ -3464,7 +3323,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
   <section class="container-fluid">
     <div class="row">
         <div class="col-lg">
-          <h5>アバウト</h5>
+          <h5>概要</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
@@ -3473,6 +3332,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
+            <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
             <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
           </ul>
         </div><!--/.col -->
@@ -3481,7 +3341,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
-            <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
@@ -3493,7 +3352,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
         </div><!--/.col -->
 
         <div class="col-lg">
-          <h5>コミュニティー</h5>
+          <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
