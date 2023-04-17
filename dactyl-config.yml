@@ -916,12 +916,13 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/decentralized-exchange/automated-market-makers.md
+        # Redirect AMM concept to separate site for unreleased features
+    -   name: Automated Market Makers (AMM)
+        html: automated-market-makers.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/automated-market-makers/
         targets:
             - en
-
-    -   md: concepts/decentralized-exchange/automated-market-makers.ja.md
-        targets:
             - ja
 
     -   md: concepts/decentralized-exchange/offers.md
