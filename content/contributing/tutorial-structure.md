@@ -11,23 +11,23 @@ Each new XRPLF tutorial follows the same basic format.
 
 1. A brief description of the features illustrated in the tutorial.
 
-![Description](../../img/tut-struct1.png)
+![Description](img/tut-struct1.png)
 
 2. Prerequisites for running the code, if needed, or links to the sample code.
 
-![Prerequisites](../../img/tut-struct2.png)
+![Prerequisites](img/tut-struct2.png)
 
 3. Usage examples of the features in the tutorial.
 
-![Usage](../../img/tut-struct3.png)
+![Usage](/img/tut-struct3.png)
 
 4. A code walkthrough of the sample application, highlighting unique elements in the scripts.
 
-![Code Walkthrough](../../img/tut-struct4.png)
+![Code Walkthrough](img/tut-struct4.png)
 
 5. See Also, with links to conceptual information or good tutorials to try as a next step.
 
-![See Also](../../img/tut-struct5.png)
+![See Also](img/tut-struct5.png)
 
 Separate setup (prerequisites) from usage from code development. These are each different activities that engage different areas of the brain. Trying to think of all three elements at once leads to confusion and headaches.
 
