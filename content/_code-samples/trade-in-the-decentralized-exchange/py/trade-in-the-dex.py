@@ -56,7 +56,7 @@ async def main() -> int:
         # "Quality" is defined as TakerPays / TakerGets. The lower the "quality"
         # number, the better the proposed exchange rate is for the taker.
         # The quality is rounded to a number of significant digits based on the
-        # issuer's TickSize value (or the lesser of the two for token-token trades.)
+        # issuer's TickSize value (or the lesser of the two for token-token trades).
         proposed_quality = Decimal(we_spend["value"]) / Decimal(we_want["value"])
 
         # Look up Offers. -----------------------------------------------------------
@@ -130,7 +130,7 @@ async def main() -> int:
             print(f"Orderbook2:\n{pprint.pformat(orderbook2_info.result)}")
 
             # Since TakerGets/TakerPays are reversed, the quality is the inverse.
-            # You could also calculate this as 1/proposed_quality.
+            # You could also calculate this as 1 / proposed_quality.
             offered_quality = Decimal(we_want["value"]) / Decimal(we_spend["value"])
 
             tally_currency = we_spend["currency"]
