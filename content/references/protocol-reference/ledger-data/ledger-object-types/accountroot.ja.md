@@ -37,8 +37,8 @@ labels:
 `AccountRoot`オブジェクトのフィールドは次のとおりです。
 
 | フィールド                      | JSONの型 | [内部の型][]        | 必須？ | 説明  |
-|:------------------------------|:---------|:------------------|:-------------|
-| `Account`                     | 文字列    | AccountID         | はい   | この[アカウント](accounts.html)を識別するための（クラシック）アドレスです。。 |
+|:------------------------------|:---------|:------------------|:------|:------|
+| `Account`                     | 文字列    | AccountID         | はい   | この[アカウント](accounts.html)を識別するための（クラシック）アドレスです。 |
 | `AccountTxnID`                | 文字列    | Hash256           | いいえ | このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、[`AccountTxnID`トランザクションフィールド](transaction-common-fields.html#accounttxnid)を使うために有効になっていなければなりません。これを有効にするには、[`asfAccountTxnID`フラグを有効にしたAccountSetトランザクション](accountset.html#accountsetのフラグ)を送信してください。 |
 | `Balance`                     | 文字列    | Amount            | いいえ | アカウントの現在の[drop単位のXRP残高][XRP、drop単位]で、文字列で表現されます。 |
 | `BurnedNFTokens`              | 数値      | UInt32            | いいえ | このアカウントで発行された [非代替性トークン](non-fungible-tokens.html) のうち、バーンしたトークンの総数を表します。この数値は常に `MintedNFTokens` と同じかそれ以下となります。 |
