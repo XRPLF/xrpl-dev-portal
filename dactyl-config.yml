@@ -107,7 +107,7 @@ targets:
             "partial-payments.html#the-delivered_amount-field": "partial-payments.html#delivered_amountフィールド"
             "partial-payments.html#partial-payments-exploit": "partial-payments.html#partial-paymentの悪用"
                                 # nearest approximation. this translation is also out of date
-            "rippled-server-modes.html#validators": "rippled-server-modes.html#バリデータを運用する理由"
+            "rippled-server-modes.html#validators": "rippled-server-modes.html#バリデータ"
             # Fix links from untranslated open-a-payment-channel-to-enable-an-inter-exchange-network.html
             "use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient": "use-payment-channels.html#1-支払人が特定の受取人へのpayment-channelを作成します"
             "use-payment-channels.html#2-the-payee-checks-specifics-of-the-payment-channel": "use-payment-channels.html#2-受取人がpayment-channelの特性を確認します"
@@ -134,14 +134,14 @@ targets:
             # Fix link from untranslated peer-crawler.html:
             "peer-protocol.html#private-peers": "peer-protocol.html#プライベートピア"
             # Fix links from untranslated health-check.html:
-            "rippled-server-modes.html#stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
+            "rippled-server-modes.html#stand-alone-mode": "rippled-server-modes.html#スタンドアロンモード"
             "server-doesnt-sync.html#normal-syncing-behavior": "server-doesnt-sync.html#通常の同期動作"
             # Fix link from untranslated negativeunl.html and ledgers.html:
             "consensus.html#validation": "consensus.html#検証"
             # Fix link from untranslated manifest.html:
-            "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポーティングモード"
+            "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポートモード"
             # Fix links for untranslated get-started-using-python.html:
-            "xrpl-servers.html#reasons-to-run-your-own-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
+            "xrpl-servers.html#reasons-to-run-your-own-server": "xrpl-servers.html#独自サーバーを運用する理由"
             "cryptographic-keys.html#key-components": "cryptographic-keys.html#キーの生成"
             "accounts.html#addresses": "accounts.html#アドレス"
             "cryptographic-keys.html#private-key": "cryptographic-keys.html#キーの生成"
@@ -1085,12 +1085,7 @@ pages:
         targets:
             - en
 
-    # old translation
-    -   name: rippledサーバー
-        html: xrpl-servers.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: rippledは、XRP Ledgerを管理するコアのP2Pサーバーです。このセクションではコンセプトについて説明します。XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学ぶことができます。
+    -   md: concepts/xrpl-servers/xrpl-servers.ja.md
         targets:
             - ja
 
@@ -1098,7 +1093,6 @@ pages:
         targets:
             - en
 
-        # TODO: Update this translation for the latest English version
     -   md: concepts/xrpl-servers/rippled-server-modes.ja.md
         targets:
             - ja
@@ -1151,10 +1145,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: concepts/xrpl-servers/the-clio-server.md
         targets:
             - en
+
+    -   md: concepts/xrpl-servers/the-clio-server.ja.md
+        targets:
             - ja
 
     # Redirect for "Interoperability" landing page
