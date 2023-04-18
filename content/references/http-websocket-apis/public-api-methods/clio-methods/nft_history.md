@@ -58,8 +58,9 @@ The request contains the following parameters:
 | `binary`           | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
 | `forward`          | Boolean                 | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results might not be internally ordered, but the pages are ordered overall.) |
 | `limit`        | UInt32 | _(Optional)_ Limit the number of NFTs to retrieve. The server is not required to honor this value. |
-| `marker`       | Marker | Value from a previous paginated response. Resume retrieving data where that response left off. This value is NOT stable if there is a change in the server's range of available ledgers; meaning if you are querying the “validated” ledger it 
-If you do not specify a ledger version, Clio uses the latest validated ledger.
+| `marker`       | Marker | Value from a previous paginated response. Resume retrieving data where that response left off. This value is NOT stable if there is a change in the server's range of available ledgers. If you are querying the “validated” ledger, it is possible that new NFTs are created during your paging. |
+
+**Note** If you do not specify a ledger version, Clio uses the latest validated ledger.
 
 ## Response Format
 
