@@ -273,7 +273,6 @@
         <li class="nav-item level-3"><a class="nav-link" href="#配列フィールド">配列フィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ブロブフィールド">ブロブフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ハッシュフィールド">ハッシュフィールド</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#issueフィールド">Issueフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#オブジェクトフィールド">オブジェクトフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#pathsetフィールド">PathSetフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#uintフィールド">UIntフィールド</a></li>
@@ -583,43 +582,14 @@
 <td style="text-align: left;">いいえ</td>
 <td>可変数のメンバーからなる配列。フィールドによってタイプが異なる場合があります。この例として、<a href="transaction-common-fields.html#memosフィールド">memos</a>や<a href="multi-signing.html">マルチ署名</a>で使用される署名者のリストがあります。</td>
 </tr>
-<tr>
-<td style="text-align: left;"><a href="#issueフィールド">STIssue</a></td>
-<td style="text-align: left;">24</td>
-<td style="text-align: left;">320</td>
-<td style="text-align: left;">いいえ</td>
-<td><span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> An asset definition, XRP or a token, with no quantity.<!-- TODO: translate --></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#オブジェクトフィールド">STObject</a></td>
-<td style="text-align: left;">14</td>
-<td style="text-align: left;">可変</td>
-<td style="text-align: left;">いいえ</td>
-<td>1つ以上のネストされたフィールドを含むオブジェクト。</td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#uintフィールド">UInt8</a></td>
-<td style="text-align: left;">16</td>
-<td style="text-align: left;">8</td>
-<td style="text-align: left;">いいえ</td>
-<td>8ビットの符号なし整数。</td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#uintフィールド">UInt16</a></td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">16</td>
-<td style="text-align: left;">いいえ</td>
-<td>16ビットの符号なし整数。<code>TransactionType</code>は、このタイプの特殊なフィールドで、特定の文字列から整数値へのマッピングを含みます。</td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#uintフィールド">UInt32</a></td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">32</td>
-<td style="text-align: left;">いいえ</td>
-<td>32ビットの符号なし整数。このタイプの例として、すべてのトランザクションの<code>Flags</code>フィールドと<code>Sequence</code>フィールドがあります。</td>
-</tr>
 </tbody>
 </table>
+<!-- TODO: translate -->
+<!-- | [STIssue][]   | 24        | 320        | いいえ                   | <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> An asset definition, XRP or a token, with no quantity. |-->
+<p>| <a href="#オブジェクトフィールド">STObject</a> | 14 | 可変 | いいえ | 1つ以上のネストされたフィールドを含むオブジェクト。 |
+| <a href="#uintフィールド">UInt8</a> | 16 | 8 | いいえ | 8ビットの符号なし整数。 |
+| <a href="#uintフィールド">UInt16</a> | 1 | 16 | いいえ | 16ビットの符号なし整数。<code>TransactionType</code>は、このタイプの特殊なフィールドで、特定の文字列から整数値へのマッピングを含みます。 |
+| <a href="#uintフィールド">UInt32</a> | 2 | 32 | いいえ | 32ビットの符号なし整数。このタイプの例として、すべてのトランザクションの<code>Flags</code>フィールドと<code>Sequence</code>フィールドがあります。 |</p>
 <p>上記のフィールドタイプの他に、<a href="ledger-object-types.html">レジャーオブジェクト</a>や<a href="transaction-metadata.html">トランザクションメタデータ</a>などのコンテキストでは以下のタイプが含まれることがあります。</p>
 <table class="table-responsive">
 <thead>
@@ -703,14 +673,18 @@
 <h3 id="ハッシュフィールド">ハッシュフィールド<a aria-hidden="true" class="hover_anchor" href="#ハッシュフィールド"><i class="fa fa-link"></i></a></h3>
 <p>XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256があります。これらのフィールドには特定のビット数のバイナリデータが含まれており、それらのデータはハッシュ演算の結果を表す場合とそうでない場合があります。</p>
 <p>これらのフィールドは、長さインディケーターを使用せずに、ビッグエンディアンバイトオーダーで特定数のビットとしてシリアル化されます。</p>
-<h3 id="issueフィールド">Issueフィールド<a aria-hidden="true" class="hover_anchor" href="#issueフィールド"><i class="fa fa-link"></i></a></h3>
+<!--
+### Issueフィールド
+[STIssue]: #issueフィールド -->
 <!-- TODO: translate this section -->
-<p><em>(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d: Automated Market Maker <i aria-hidden="true" class="fa fa-external-link"></i></a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> and <a href="federated-sidechains.html">Federated Sidechains</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
-<p>Some fields specify a <em>type</em> of asset, which could be XRP or a fungible <a href="tokens.html">token</a>, without an amount. These fields have consist of two 160-bit segments in order:</p>
-<ol>
-<li>The first 160 bits are the <a href="currency-formats.html#通貨コード">currency code</a> of the asset. For XRP, this is all 0's.</li>
-<li>The next 160 bits are the <a href="#accountidフィールド">AccountID of the token issuer</a>. For XRP, this is all 0's.</li>
-</ol>
+<!-- 
+_(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> and [Federated Sidechains](federated-sidechains.html) <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)_
+-->
+<!--
+Some fields specify a _type_ of asset, which could be XRP or a fungible [token](tokens.html), without an amount. These fields have consist of two 160-bit segments in order:
+
+1. The first 160 bits are the [currency code](currency-formats.html#通貨コード) of the asset. For XRP, this is all 0's.
+2. The next 160 bits are the [AccountID of the token issuer](#accountidフィールド). For XRP, this is all 0's. -->
 <h3 id="オブジェクトフィールド">オブジェクトフィールド<a aria-hidden="true" class="hover_anchor" href="#オブジェクトフィールド"><i class="fa fa-link"></i></a></h3>
 <p>トランザクションフィールドの一部（<a href="signerlistset.html">SignerListSetトランザクション</a>の<code>SignerEntry</code>や<code>Memos</code>配列の<code>Memo</code>など）はオブジェクトです（「STObject」タイプと呼ばれます）。オブジェクトのシリアル化は配列のシリアル化に似ていますが、唯一異なる点としてオブジェクトフィールド内では<strong>オブジェクトのメンバーを正規順序に従って配置する必要がある</strong>点があげられます。配列フィールドではすでに順序が明示的に設定されています。</p>
 <p>オブジェクトフィールドの<a href="#フィールドの正規順序">正規フィールド順序</a>は、すべての最上位フィールドの正規フィールド順序と同じですが、オブジェクトのメンバーはオブジェクト内でソートする必要があります。最終メンバーの後には、「オブジェクトの終わり」を示すフィールドID（<code>0xe1</code>）があり、このフィールドには内容がありません。</p>
@@ -982,7 +956,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -1195,11 +1169,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1209,7 +1178,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1256,29 +1225,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1944,57 +1891,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -2076,11 +1972,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2190,31 +2081,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2664,11 +2530,6 @@
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -3124,11 +2985,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

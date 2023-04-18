@@ -369,14 +369,14 @@
 <span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nConnected, finding wallet.'</span>
 </code></pre></div>
 <p>Get the account wallets.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">type</span><span class="o">==</span><span class="s1">'standby'</span><span class="ss">)</span><span class="w"> </span>{
-<span class="w">    </span><span class="nv">my_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">xrpl</span>.<span class="nv">Wallet</span>.<span class="nv">fromSeed</span><span class="ss">(</span><span class="nv">standbySeedField</span>.<span class="nv">value</span><span class="ss">)</span>
-<span class="w">  </span>}<span class="w"> </span><span class="k">else</span><span class="w"> </span>{
-<span class="w">    </span><span class="nv">my_wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">xrpl</span>.<span class="nv">Wallet</span>.<span class="nv">fromSeed</span><span class="ss">(</span><span class="nv">operationalSeedField</span>.<span class="nv">value</span><span class="ss">)</span>
-<span class="w">    </span><span class="nv">resultField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'operationalResultField'</span>
-<span class="w">  </span>}
-<span class="w">  </span><span class="nv">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">'\nRipple Default Setting: '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">defaultRippleSetting</span>
-<span class="w">  </span><span class="nv">resultField</span>.<span class="nv">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">results</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">type</span><span class="o">==</span><span class="err">'</span><span class="nx">standby</span><span class="err">'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">my_wallet</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">standbySeedField</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">my_wallet</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">operationalSeedField</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">resultField</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="err">'</span><span class="nx">operationalResultField</span><span class="err">'</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">results</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="err">'\</span><span class="nx">nRipple</span><span class="w"> </span><span class="nx">Default</span><span class="w"> </span><span class="nx">Setting</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">defaultRippleSetting</span>
+<span class="w">  </span><span class="nx">resultField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">results</span>
 </code></pre></div>
 <p>Prepare the transaction. If the <code>rippleDefault</code> argument is true, set the <code>asfDefaultRipple</code> flag. If it is false, clear the <code>asfDefaultRipple</code> flag.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">settings_tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
@@ -1170,7 +1170,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -1383,11 +1383,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1397,7 +1392,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1444,29 +1439,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -2132,57 +2105,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -2264,11 +2186,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2378,31 +2295,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2852,11 +2744,6 @@
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -3312,11 +3199,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

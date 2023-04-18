@@ -325,6 +325,16 @@
 <td style="text-align: left;">A unique identifier for the non-fungible token (NFT).</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>ledger_index_min</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;"><em>(Optional)</em> Use to specify the earliest ledger from which to include NFTs. A value of <code>-1</code> instructs the server to use the earliest validated ledger version available.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger_index_max</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;"><em>(Optional)</em> Use to specify the most recent ledger to include NFTs from. A value of <code>-1</code> instructs the server to use the most recent validated ledger version available.</td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
@@ -334,9 +344,33 @@
 <td style="text-align: left;">String or Unsigned Integer</td>
 <td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#レジャーインデックス">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically.  Do not specify the <code>ledger_index</code> as <code>closed</code> or <code>current</code>; doing so forwards the request to the P2P <code>rippled</code> server and the <code>nft_history</code> API is not available on <code>rippled</code>. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
 </tr>
+<tr>
+<td style="text-align: left;"><code>binary</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><em>(Optional)</em> Defaults to <code>false</code>. If set to <code>true</code>, returns transactions as hex strings instead of JSON.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>forward</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><em>(Optional)</em> Defaults to <code>false</code>. If set to <code>true</code>, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results might not be internally ordered, but the pages are ordered overall.)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>limit</code></td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;"><em>(Optional)</em> Limit the number of NFTs to retrieve. The server is not required to honor this value.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>marker</code></td>
+<td style="text-align: left;">Marker</td>
+<td style="text-align: left;">Value from a previous paginated response. Resume retrieving data where that response left off. This value is NOT stable if there is a change in the server's range of available ledgers; meaning if you are querying the “validated” ledger it</td>
+</tr>
+<tr>
+<td style="text-align: left;">If you do not specify a ledger version, Clio uses the latest validated ledger.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
 </tbody>
 </table>
-<p>If you do not specify a ledger version, Clio uses the latest validated ledger.</p>
 <h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
@@ -1239,7 +1273,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -1452,11 +1486,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1466,7 +1495,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1513,29 +1542,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -2201,57 +2208,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -2333,11 +2289,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2447,31 +2398,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2921,11 +2847,6 @@
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -3381,11 +3302,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

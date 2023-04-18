@@ -349,23 +349,23 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
 <p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-1-2">コマンドライン</a></li></ul>
 
-<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">{
- "result":{
-   "tx_blob":"1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
-   "tx_json":{
-     "Account":"r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-     "Fee":"10",
-     "Flags":2147483648,
-     "Sequence":2,
-     "SigningPubKey":"0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-     "TransactionType":"SetRegularKey",
-     "TxnSignature":"3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
-     "hash":"59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
-   }
- },
- "status":"success",
- "type":"response"
-}
+<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
+<span class="w"> </span><span class="s">"result"</span><span class="p">:{</span>
+<span class="w">   </span><span class="s">"tx_blob"</span><span class="p">:</span><span class="s">"1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E"</span><span class="p">,</span>
+<span class="w">   </span><span class="s">"tx_json"</span><span class="p">:{</span>
+<span class="w">     </span><span class="s">"Account"</span><span class="p">:</span><span class="s">"r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"Fee"</span><span class="p">:</span><span class="s">"10"</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"Flags"</span><span class="p">:</span><span class="mi">2147483648</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"Sequence"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"SigningPubKey"</span><span class="p">:</span><span class="s">"0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020"</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"TransactionType"</span><span class="p">:</span><span class="s">"SetRegularKey"</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"TxnSignature"</span><span class="p">:</span><span class="s">"3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83"</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"hash"</span><span class="p">:</span><span class="s">"59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">},</span>
+<span class="w"> </span><span class="s">"status"</span><span class="p">:</span><span class="s">"success"</span><span class="p">,</span>
+<span class="w"> </span><span class="s">"type"</span><span class="p">:</span><span class="s">"response"</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">{NEWWWWWWWWWWWW
@@ -436,26 +436,26 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 <p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a class="websocket" href="#code-3-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-3-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-3-2">コマンドライン</a></li></ul>
 
-<div class="code_sample websocket" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">{
- "result":{
-   "engine_result":"tesSUCCESS",
-   "engine_result_code":0,
-   "engine_result_message":"The transaction was applied.Only final in a validated ledger.",
-   "tx_blob":"1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
-   "tx_json":{
-     "Account":"r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-     "Fee":"10",
-     "Flags":2147483648,
-     "Sequence":2,
-     "SigningPubKey":"0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-     "TransactionType":"SetRegularKey",
-     "TxnSignature":"3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
-     "hash":"59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
-   }
- },
- "status":"success",
- "type":"response"
-}
+<div class="code_sample websocket" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="p">{</span>
+<span class="w"> </span><span class="s">"result"</span><span class="p">:{</span>
+<span class="w">   </span><span class="s">"engine_result"</span><span class="p">:</span><span class="s">"tesSUCCESS"</span><span class="p">,</span>
+<span class="w">   </span><span class="s">"engine_result_code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">   </span><span class="s">"engine_result_message"</span><span class="p">:</span><span class="s">"The transaction was applied.Only final in a validated ledger."</span><span class="p">,</span>
+<span class="w">   </span><span class="s">"tx_blob"</span><span class="p">:</span><span class="s">"1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E"</span><span class="p">,</span>
+<span class="w">   </span><span class="s">"tx_json"</span><span class="p">:{</span>
+<span class="w">     </span><span class="s">"Account"</span><span class="p">:</span><span class="s">"r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"Fee"</span><span class="p">:</span><span class="s">"10"</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"Flags"</span><span class="p">:</span><span class="mi">2147483648</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"Sequence"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"SigningPubKey"</span><span class="p">:</span><span class="s">"0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020"</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"TransactionType"</span><span class="p">:</span><span class="s">"SetRegularKey"</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"TxnSignature"</span><span class="p">:</span><span class="s">"3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83"</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"hash"</span><span class="p">:</span><span class="s">"59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">},</span>
+<span class="w"> </span><span class="s">"status"</span><span class="p">:</span><span class="s">"success"</span><span class="p">,</span>
+<span class="w"> </span><span class="s">"type"</span><span class="p">:</span><span class="s">"response"</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">{
@@ -506,21 +506,21 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 <p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a class="websocket" href="#code-4-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-4-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-4-2">コマンドライン</a></li></ul>
 
-<div class="code_sample websocket" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12">{
- "error":"badSecret",
- "error_code":41,
- "error_message":"Secret does not match account.",
- "request":{
-   "command":"submit",
-   "secret":"snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
-   "tx_json":{
-     "Account":"r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-     "TransactionType":"AccountSet"
-   }
- },
- "status":"error",
- "type":"response"
-}
+<div class="code_sample websocket" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="p">{</span>
+<span class="w"> </span><span class="s">"error"</span><span class="p">:</span><span class="s">"badSecret"</span><span class="p">,</span>
+<span class="w"> </span><span class="s">"error_code"</span><span class="p">:</span><span class="mi">41</span><span class="p">,</span>
+<span class="w"> </span><span class="s">"error_message"</span><span class="p">:</span><span class="s">"Secret does not match account."</span><span class="p">,</span>
+<span class="w"> </span><span class="s">"request"</span><span class="p">:{</span>
+<span class="w">   </span><span class="s">"command"</span><span class="p">:</span><span class="s">"submit"</span><span class="p">,</span>
+<span class="w">   </span><span class="s">"secret"</span><span class="p">:</span><span class="s">"snoPBrXtMeMyMHUVTgbuqAfg1SUTb"</span><span class="p">,</span>
+<span class="w">   </span><span class="s">"tx_json"</span><span class="p">:{</span>
+<span class="w">     </span><span class="s">"Account"</span><span class="p">:</span><span class="s">"r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"</span><span class="p">,</span>
+<span class="w">     </span><span class="s">"TransactionType"</span><span class="p">:</span><span class="s">"AccountSet"</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">},</span>
+<span class="w"> </span><span class="s">"status"</span><span class="p">:</span><span class="s">"error"</span><span class="p">,</span>
+<span class="w"> </span><span class="s">"type"</span><span class="p">:</span><span class="s">"response"</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13">{NEWWWWWWWWWWWW
@@ -774,7 +774,7 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -987,11 +987,6 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1001,7 +996,7 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1048,29 +1043,7 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1736,57 +1709,6 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -1868,11 +1790,6 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1982,31 +1899,6 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2456,11 +2348,6 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -2916,11 +2803,6 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

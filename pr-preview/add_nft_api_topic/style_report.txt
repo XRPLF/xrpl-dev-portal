@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 46 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gif, giff, gis
+  gifs: gifu, gins, ifs
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -27,35 +27,35 @@ Found 46 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slat, salas, sias
+  slas: slab, blas, slat
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalanced, unbalance
+  unbalances: unbalance, unbalanced
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  immediateofferkilled: 
-  fixuniversalnumber: 
   xrpfees: 
-  disallowincoming: 
   fixnonfungibletokensv1_2: 
+  immediateofferkilled: 
   depositpreauthamendment: 
+  disallowincoming: 
+  fixuniversalnumber: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingnftoffer: 
   asfdisallowincomingcheck: 
-  asfdisallowincomingpaychan: 
   asfdisallowincomingtrustline: 
-  30d: 3rd, 3d, 3-d
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingnftoffer: 
+  30d: 3d, 3rd, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3d, 3rd, 3-d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   disallowincoming: 
@@ -89,7 +89,7 @@ Found 46 possible spelling errors:
   xrpfees: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3d, 3rd, 3-d
 
 <Page 'nft_history' (nft_history.html)> Unknown Words:
   nft_history: 
@@ -97,7 +97,7 @@ Found 46 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 31 discouraged words/phrases:
+Found 32 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -132,29 +132,22 @@ Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-st
    Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
 Page: <Page 'tem Codes' (tem-codes.html)>
    Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+Page: <Page 'ledger_data' (ledger_data.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 ------------------
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.1 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.0 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
-  Automated Readability Index: Grade level 10.8
+  Automated Readability Index: Grade level 10.9
   Coleman-Liau Index: Grade level 11.5
-  Linsear Write Formula: Grade level 8.5
+  Linsear Write Formula: Grade level 8.4
 
 
 Most difficult pages by Flesch Reading Ease:
-<Page 'Interoperability' (xrpl-interoperability.html)> Readability Scores:
-  Flesch Reading Ease Score: 27.8 (Very Confusing)
-  Dale-Chall Readability Score: 10.2 (higher than average college level)
-  SMOG Index: Grade level 0.0
-  Gunning FOG Index: Grade level 12.8
-  Automated Readability Index: Grade level 17.4
-  Coleman-Liau Index: Grade level 17.9
-  Linsear Write Formula: Grade level 12.5
-
 <Page 'XRP-API' (xrp-api.html)> Readability Scores:
   Flesch Reading Ease Score: 29.2 (Very Confusing)
   Dale-Chall Readability Score: 12.5 (higher than average college level)
@@ -173,13 +166,22 @@ Most difficult pages by Flesch Reading Ease:
   Coleman-Liau Index: Grade level 16.3
   Linsear Write Formula: Grade level 7.5
 
+<Page 'Consensus Research' (consensus-research.html)> Readability Scores:
+  Flesch Reading Ease Score: 33.2 (Difficult)
+  Dale-Chall Readability Score: 11.4 (higher than average college level)
+  SMOG Index: Grade level 16.9
+  Gunning FOG Index: Grade level 14.5
+  Automated Readability Index: Grade level 17.8
+  Coleman-Liau Index: Grade level 17.1
+  Linsear Write Formula: Grade level 15.6
+
 -------------------
 Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 743
-  Characters: 4,612
+  Words: 750
+  Characters: 4,660
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="AMMBid | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/ammbid.html" />
-    <meta property="og:description" content="Bid on an Automated Market Maker&#39;s auction slot, which grants a discounted fee." />
-    <meta name="description" content="Bid on an Automated Market Maker&#39;s auction slot, which grants a discounted fee." />
+    <meta property="og:description" content="XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools." />
+    <meta name="description" content="XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -36,16 +36,6 @@
     <script src="assets/vendor/jquery-3.6.0.min.js"></script>
 
     <!-- Google Tag Manager -->
-    <script type="application/javascript">
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      "event": "page_info",
-      "page_type": "Document",
-      "page_group": "Docs",
-      "page_funnel": "References",
-      "page_labels": ['AMM']
-    })
-    </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -65,21 +55,7 @@
     <script src="assets/js/theme-switch.js"></script>
 
 
-
-    <!-- expandable code samples -->
-    <script src="assets/js/expandcode.js"></script>
-    <!-- multi-code selection tabs -->
-    <script src="assets/js/multicodetab.js"></script>
-    <!-- copy code button -->
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".multicode").minitabs();
-            make_code_expandable();
-            new ClipboardJS('.clipboard-btn');
-        });
-    </script>
-
+<meta http-equiv="refresh" content="0;url=https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammbid/" />
 
 </head>
 
@@ -232,33 +208,6 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
-  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
-    Page Toolbar
-    <span class="chevron"><span></span><span></span></span>
-  </a>
-  <div id="page-toc-wrapper" class="collapse d-lg-block">
-<div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/add_nft_api_topic/content/references/protocol-reference/transactions/transaction-types/ammbid.md?pr=/XRPLF/xrpl-dev-portal/pull/1862" target="_blank" class="btn btn-primary github-edit">Edit page</a>
-</div><!-- /.github-edit --><div class="labels-wrap">
-  <ul class="list-inline">
-    <li class="list-inline-item">
-      <a href="label-amm.html" class="label label-amm">AMM</a>
-    </li>
-  </ul>
-</div><!--/.labels-wrap-->
-    <div class="toc-header">
-      <h4>In this document</h4>
-    </div>
-    <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#ammbid">AMMBid</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-ammbid-json">Example AMMBid JSON</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#ammbid-fields">AMMBid Fields</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#auth-account-objects">Auth Account Objects</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#auction-slot-price">Auction Slot Price</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#bid-refunds">Bid Refunds</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
-      </ul>
-  </div>
       </aside>
 
       <!-- main column -->
@@ -268,257 +217,98 @@
     
 
     <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
-    <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
-    <li class="active breadcrumb-item"><a href="references.html">References</a></li>
-    <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
-    <li class="active breadcrumb-item"><a href="transaction-formats.html">Transaction Reference</a></li>
-    <li class="active breadcrumb-item"><a href="transaction-types.html">Transaction Types</a></li>
     <li class="active breadcrumb-item">AMMBid</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="ammbid">AMMBid<a aria-hidden="true" class="hover_anchor" href="#ammbid"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/gregtatcam/rippled/blob/amm-core-functionality/src/ripple/app/tx/impl/AMMBid.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<!-- TODO: Update source link to merged version when available -->
-<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em> <!-- SPELLING_IGNORE: 30d --></p>
-<p>Bid on an <a href="automated-market-makers.html">Automated Market Maker</a>'s (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.</p>
-<p>You bid using the AMM's LP Tokens; the amount of a winning bid is returned to the AMM, decreasing the outstanding balance of LP Tokens.</p>
-<h2 id="example-ammbid-json">Example AMMBid JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammbid-json"><i class="fa fa-link"></i></a></h2>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
-<span class="w">    </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Asset"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">"Asset2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">"AuthAccounts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"AuthAccount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rMKXGCbJ5d8LbrqthdG46q3f969MVK2Qeg"</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"AuthAccount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rBepJuTLFJt3WmtLXYAxSjtBWAeQxVbncv"</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">"BidMax"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"039C99CD9AB0B70B32ECDA51EAAE471625608EA2"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rE54zDvgnghAoPopCgvtiqWNq3dU5y836S"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">"Fee"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Flags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2147483648</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Sequence"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"TransactionType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AMMBid"</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="ammbid-fields">AMMBid Fields<a aria-hidden="true" class="hover_anchor" href="#ammbid-fields"><i class="fa fa-link"></i></a></h2>
-<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, AMMBid transactions use the following fields:</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Required?</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>Asset</code></td>
-<td style="text-align: left;">Object</td>
-<td style="text-align: left;">STIssue</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The definition for one of the assets in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Asset2</code></td>
-<td style="text-align: left;">Object</td>
-<td style="text-align: left;">STIssue</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The definition for the other asset in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>BidMin</code></td>
-<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
-<td style="text-align: left;">Amount</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Pay at least this amount for the slot. Setting this value higher makes it harder for others to outbid you. If omitted, pay the minimum necessary to win the bid.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>BidMax</code></td>
-<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
-<td style="text-align: left;">Amount</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Pay at most this amount for the slot. If the cost to win the bid is higher than this amount, the transaction fails. If omitted, pay as much as necessary to win the bid.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>AuthAccounts</code></td>
-<td style="text-align: left;">Array</td>
-<td style="text-align: left;">STArray</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">A list of up to 4 additional accounts that you allow to trade at the discounted fee. This cannot include the address of the transaction sender. Each of these objects should be an <a href="#auth-account-objects">Auth Account object</a>.</td>
-</tr>
-</tbody>
-</table>
-<p>You cannot specify both <code>BidMin</code> and <code>BidMax</code>.</p>
-<h3 id="auth-account-objects">Auth Account Objects<a aria-hidden="true" class="hover_anchor" href="#auth-account-objects"><i class="fa fa-link"></i></a></h3>
-<p>Each member of the <code>AuthAccounts</code> array must be an object with the following field:</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Required?</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>Account</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">AccountID</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The address of the account to authorize.</td>
-</tr>
-</tbody>
-</table>
-<p>Like other "inner objects" that can appear in arrays, the JSON representation of each of these objects is wrapped in an object whose only key is the object type, <code>AuthAccount</code>.</p>
-<h2 id="auction-slot-price">Auction Slot Price<a aria-hidden="true" class="hover_anchor" href="#auction-slot-price"><i class="fa fa-link"></i></a></h2>
-<p>If successful, the transaction automatically outbids the previous slot owner and debits the bid price from the sender's LP Tokens. The price to win the auction decreases over time, divided into 20 intervals of 72 minutes each. If the sender does not have enough LP Tokens to win the bid, or the price of the bid is higher than the transaction's <code>BidMax</code> value, the transaction fails with a <code>tecAMM_FAILED_BID</code> result.</p>
-<ul>
-<li>
-<p>If the auction slot is currently empty, expired, or in its last interval, the <strong>minimum bid</strong> is <strong>0.001% of the AMM's total LP Tokens balance</strong>.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> This minimum value is a placeholder and may change before the AMM feature becomes finalized.</p>
-</li>
-<li>
-<p>Otherwise, the price to outbid the current holder is calculated using the following formula:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">P = B × 1.05 × (1 - t⁶⁰) + M
-</code></pre></div>
-<ul>
-<li><code>P</code> is the price to outbid, in LP Tokens.</li>
-<li><code>B</code> is the price of the current bid, in LP Tokens.</li>
-<li><code>t</code> is the fraction of time elapsed in the current 24-hour slot, rounded down to a multiple of 0.05.</li>
-<li><code>M</code> is the <strong>minimum bid</strong> as defined above.</li>
-</ul>
-<p>There are two special cases for the cost to outbid someone. In the <strong>first interval</strong> after someone wins the bid, the price to outbid them is the minimum bid plus 5% more than the existing bid:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">P = B × 1.05 + M
-</code></pre></div>
-<p>In the <strong>last interval</strong> of someone's slot, the cost to outbid someone is only the minimum bid:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">P = M
-</code></pre></div>
-</li>
-</ul>
-<p class="devportal-callout note"><strong>Note:</strong> To make sure all servers in the network reach the same results when building a ledger, time measurements are based on the <a href="ledgers.html#ledger-close-times">official close time</a> of the previous ledger, which is approximate.</p>
-<h2 id="bid-refunds">Bid Refunds<a aria-hidden="true" class="hover_anchor" href="#bid-refunds"><i class="fa fa-link"></i></a></h2>
-<p>When you outbid an active auction slot, the AMM refunds the previous holder part of the price, using this formula:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">R = B × (1 - t)
-</code></pre></div>
-<ul>
-<li><code>R</code> is the amount to refund, in LP Tokens.</li>
-<li><code>B</code> is the price of the previous bid to be refunded, in LP Tokens.</li>
-<li><code>t</code> is the fraction of time elapsed in the current 24-hour slot, rounded down to a multiple of 0.05.</li>
-</ul>
-<p>As a special case, during the final (20th) interval of the auction slot, the refunded amount is zero.</p>
-<p class="devportal-callout note"><strong>Note:</strong> As with all XRP Ledger times, transaction processing uses the <a href="ledgers.html#ledger-close-times">official close time</a> of the <em>previous</em> ledger, which can result in a difference of up to about 10 seconds from real time.</p>
-<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<p>Besides errors that can occur for all transactions, AMMBid transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;">Error Code</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>tecAMM_FAILED_BID</code></td>
-<td style="text-align: left;">This transaction could not win the auction, either because the sender does not hold enough LP Tokens to pay the necessary bid or because the price to win the auction was higher than the transaction's specified <code>BidMax</code> value.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>tecAMM_INVALID_TOKENS</code></td>
-<td style="text-align: left;">The sender of this transaction does not hold enough LP Tokens to meet the slot price.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>temBAD_AMM_TOKENS</code></td>
-<td style="text-align: left;">The specified <code>BidMin</code> or <code>BidMax</code> were not specified as the correct LP Tokens for this AMM.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>temBAD_AMM_OPTIONS</code></td>
-<td style="text-align: left;">The transaction specified invalid options, such as a list of <code>AuthAccounts</code> that is too long, or specifying both <code>BidMin</code> and <code>BidMax</code>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>temDISABLED</code></td>
-<td style="text-align: left;">The AMM feature <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> is not enabled on this network.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>terNO_ACCOUNT</code></td>
-<td style="text-align: left;">One of the accounts specified in this request do not exist.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>terNO_AMM</code></td>
-<td style="text-align: left;">The Automated Market Maker instance for the asset pair in this transaction does not exist.</td>
-</tr>
-</tbody>
-</table>
-<!-- -->
-<!-- -->
-<!-- API object types -->
-<!-- -->
-<!-- -->
-<!-- -->
-<!-- rippled release notes links -->
+        <p>This page has been moved! You should be redirected automatically. If not, <a href="https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammbid/">click here to go to the new AMMBid page</a>.
     </div>
   </article>
-<!-- Feedback Widget -->
-<!-- <script src="assets/vendor/feedback-widget.js"></script> -->
-<!-- <div id="feedback-content"></div> -->
-<script>
-  // // Options
-  // const options = {
-  //   analyticsConfig: [
-  //     // { name: 'ga', id: 'UA-45576805-2' },
-  //     // { name: 'gtm', id: 'GTM-THHW334' },
-  //   ],
-  //   analyticsName: 'Feedback Widget Tracker',
-  //   theme: 'xrpl',
-  //   currentPath: window.location.pathname,
-  //   parentElement: '#feedback-content',
-  // };
-  // 
-  // // Init WidgetClass
-  // const r = new WidgetClass(options);
-</script>      </main>
+      </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
 
 
 <nav class="nav flex-column dactyl-tree-nav">
   <div class="nav-item nav-parent">
-    <a class="nav-link" href="docs.html">Documentation</a>
+    <a class="nav-link" href="index.html">Home</a>
   </div>
     
   <div class="nav-item ">
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="false" aria-controls="tree_nav_group_1"></a>
 
-        <a class="nav-link" href="concepts.html">Concepts</a>
+        <a class="nav-link" href="xrp-ledger-overview.html">XRPL Overview</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="uses.html">Use Cases & Featured Projects</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_1" aria-expanded="false" aria-controls="tree_nav_group_1_1"></a>
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="history.html">History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://livenet.xrpl.org/">Ledger Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrp-overview.html">XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="impact.html">Impact</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://foundation.xrpl.org/">XRPL Foundation <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="faq.html">FAQ</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="privacy-policy.html">Privacy Policy</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+
+        <a class="nav-link" href="docs.html">Documentation</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+
+        <a class="nav-link" href="concepts.html">Concepts</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_1" aria-expanded="false" aria-controls="tree_nav_group_2_1_1"></a>
 
         <a class="nav-link" href="introduction.html">Introduction</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="intro-to-consensus.html">Introduction to Consensus</a>
@@ -541,19 +331,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2" aria-expanded="false" aria-controls="tree_nav_group_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_2" aria-expanded="false" aria-controls="tree_nav_group_2_1_2"></a>
 
         <a class="nav-link" href="payment-system-basics.html">Payment System Basics</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_1" aria-expanded="false" aria-controls="tree_nav_group_1_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1_2_1"></a>
 
         <a class="nav-link" href="accounts.html">Accounts</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cryptographic-keys.html">Cryptographic Keys</a>
@@ -596,11 +386,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_4" aria-expanded="false" aria-controls="tree_nav_group_1_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_1_2_4"></a>
 
         <a class="nav-link" href="transaction-basics.html">Transaction Basics</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transaction-cost.html">Transaction Cost</a>
@@ -627,11 +417,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_3" aria-expanded="false" aria-controls="tree_nav_group_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_3" aria-expanded="false" aria-controls="tree_nav_group_2_1_3"></a>
 
         <a class="nav-link" href="payment-types.html">Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="direct-xrp-payments.html">Direct XRP Payments</a>
@@ -669,11 +459,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="false" aria-controls="tree_nav_group_1_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_4" aria-expanded="false" aria-controls="tree_nav_group_2_1_4"></a>
 
         <a class="nav-link" href="tokens.html">Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
@@ -687,11 +477,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_1_4_3"></a>
 
         <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_4_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
@@ -739,11 +529,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_4" aria-expanded="false" aria-controls="tree_nav_group_1_4_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_4_4" aria-expanded="false" aria-controls="tree_nav_group_2_1_4_4"></a>
 
         <a class="nav-link" href="freezes.html">Freezing Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_4_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
@@ -785,11 +575,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_5" aria-expanded="false" aria-controls="tree_nav_group_1_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_5" aria-expanded="false" aria-controls="tree_nav_group_2_1_5"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
@@ -817,11 +607,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6" aria-expanded="false" aria-controls="tree_nav_group_1_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_6" aria-expanded="false" aria-controls="tree_nav_group_2_1_6"></a>
 
         <a class="nav-link" href="consensus-network.html">Consensus Network</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus.html">Consensus</a>
@@ -865,11 +655,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6_9" aria-expanded="false" aria-controls="tree_nav_group_1_6_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_6_9" aria-expanded="false" aria-controls="tree_nav_group_2_1_6_9"></a>
 
         <a class="nav-link" href="amendments.html">Amendments</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_6_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_6_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="known-amendments.html">Known Amendments</a>
@@ -894,11 +684,6 @@
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
-  </div>
-
     </nav>
 
   </div>
@@ -906,11 +691,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_7" aria-expanded="false" aria-controls="tree_nav_group_2_1_7"></a>
 
         <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="rippled-server-modes.html">rippled Server Modes</a>
@@ -924,11 +709,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7_3" aria-expanded="false" aria-controls="tree_nav_group_1_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_1_7_3"></a>
 
         <a class="nav-link" href="ledger-history.html">Ledger History</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_7_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="online-deletion.html">Online Deletion</a>
@@ -962,48 +747,26 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
-  </div>
-
     </nav>
 
   </div>
 
-    </nav>
-
-  </div>
-
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
 
         <a class="nav-link" href="tutorials.html">Tutorials</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_2_1"></a>
 
         <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
@@ -1046,11 +809,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2_2"></a>
 
         <a class="nav-link" href="get-started.html">Get Started</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -1093,11 +856,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_2_3"></a>
 
         <a class="nav-link" href="build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1110,11 +873,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_2_4"></a>
 
         <a class="nav-link" href="production-readiness.html">Production Readiness</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="set-up-secure-signing.html">Set Up Secure Signing</a>
@@ -1137,11 +900,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_2_5"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -1189,19 +952,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_2_6"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_2_6_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -1234,11 +997,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_2_6_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1251,11 +1014,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_2_6_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -1297,11 +1060,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_2_7"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1334,11 +1097,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_2_8"></a>
 
         <a class="nav-link" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
@@ -1361,19 +1124,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_2_9"></a>
 
         <a class="nav-link" href="manage-the-rippled-server.html">Manage the rippled Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_2_9_1"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -1427,11 +1190,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_2_9_2"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -1499,11 +1262,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_2_9_3"></a>
 
         <a class="nav-link" href="configure-peering.html">Configure Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -1551,11 +1314,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_2_9_4"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -1578,11 +1341,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_2_9_5"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -1629,11 +1392,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_2_10"></a>
 
         <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
@@ -1643,27 +1406,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
     </nav>
 
   </div>
@@ -1671,57 +1413,27 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-    </nav>
-
-  </div>
-
-    
-  <div class="nav-item active-parent">
-
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="references.html">References</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3">
-      
-  <div class="nav-item active-parent">
-
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="true" aria-controls="tree_nav_group_3_1"></a>
-
-        <a class="nav-link" href="protocol-reference.html">XRP Ledger Protocol Reference</a>
-
-    <nav class="nav flex-column show " id="tree_nav_group_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_1"></a>
+
+        <a class="nav-link" href="protocol-reference.html">XRP Ledger Protocol Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_1"></a>
 
         <a class="nav-link" href="basic-data-types.html">Basic Data Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="base58-encodings.html">base58 Encodings</a>
@@ -1744,11 +1456,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_2"></a>
 
         <a class="nav-link" href="ledger-data-formats.html">Ledger Data Formats</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger-header.html">Ledger Header</a>
@@ -1762,11 +1474,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_2_3"></a>
 
         <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1775,11 +1487,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1861,26 +1568,26 @@
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3" aria-expanded="true" aria-controls="tree_nav_group_3_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_3"></a>
 
         <a class="nav-link" href="transaction-formats.html">Transaction Reference</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transaction-common-fields.html">Transaction Common Fields</a>
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_2" aria-expanded="true" aria-controls="tree_nav_group_3_1_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_3_2"></a>
 
         <a class="nav-link" href="transaction-types.html">Transaction Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3_1_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
@@ -1889,31 +1596,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2033,11 +1715,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_3_3"></a>
 
         <a class="nav-link" href="pseudo-transaction-types.html">Pseudo-Transactions</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="enableamendment.html">EnableAmendment</a>
@@ -2060,11 +1742,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_3_4"></a>
 
         <a class="nav-link" href="transaction-results.html">Transaction Results</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="tec-codes.html">tec Codes</a>
@@ -2120,19 +1802,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_2"></a>
 
         <a class="nav-link" href="client-libraries.html">Client Libraries</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_2_1"></a>
 
         <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
@@ -2164,19 +1846,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3"></a>
 
         <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_1"></a>
 
         <a class="nav-link" href="api-conventions.html">API Conventions</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="request-formatting.html">Request Formatting</a>
@@ -2214,19 +1896,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2"></a>
 
         <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_1"></a>
 
         <a class="nav-link" href="account-methods.html">Account Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_channels.html">account_channels</a>
@@ -2284,11 +1966,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_2"></a>
 
         <a class="nav-link" href="ledger-methods.html">Ledger Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger.html">ledger</a>
@@ -2321,11 +2003,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_3"></a>
 
         <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="submit.html">submit</a>
@@ -2358,16 +2040,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_4"></a>
 
         <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
@@ -2405,11 +2082,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_5"></a>
 
         <a class="nav-link" href="payment-channel-methods.html">Payment Channel Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="channel_authorize.html">channel_authorize</a>
@@ -2427,11 +2104,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_6"></a>
 
         <a class="nav-link" href="subscription-methods.html">Subscription Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="subscribe.html">subscribe</a>
@@ -2449,11 +2126,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_7"></a>
 
         <a class="nav-link" href="server-info-methods.html">Server Info Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="fee.html">fee</a>
@@ -2481,11 +2158,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_8"></a>
 
         <a class="nav-link" href="clio-methods.html">Clio Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
@@ -2513,11 +2190,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_9"></a>
 
         <a class="nav-link" href="utility-methods.html">Utility Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="json.html">json</a>
@@ -2544,19 +2221,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3"></a>
 
         <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_1"></a>
 
         <a class="nav-link" href="key-generation-methods.html">Key Generation Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="validation_create.html">validation_create</a>
@@ -2574,11 +2251,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_2"></a>
 
         <a class="nav-link" href="logging-and-data-management-methods.html">Logging and Data Management Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="can_delete.html">can_delete</a>
@@ -2626,11 +2303,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_3"></a>
 
         <a class="nav-link" href="server-control-methods.html">Server Control Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger_accept.html">ledger_accept</a>
@@ -2653,11 +2330,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_4"></a>
 
         <a class="nav-link" href="signing-methods.html">Signing Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="sign.html">sign</a>
@@ -2675,11 +2352,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_5"></a>
 
         <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="connect.html">connect</a>
@@ -2712,11 +2389,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_6"></a>
 
         <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>
@@ -2773,11 +2450,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_5"></a>
 
         <a class="nav-link" href="peer-port-methods.html">Peer Port Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="health-check.html">Health Check</a>
@@ -2812,22 +2489,17 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="by-label.html">Browse By Label</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-accounts.html">Accounts</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
   </div>
 
       
@@ -2914,19 +2586,19 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2962,9 +2634,70 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
     <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Learning Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="contribute.html">Contribute to the XRPL Community</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="contribute-code.html">Contribute Code to the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="events.html">Events</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ambassadors.html">Ambassadors</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="developer-funding.html">Developer Funding</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://jobs.xrpl.org/">XRPL Jobs <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl.org/blog/">Dev Blog <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrplgrants.org/">XRPL Grants <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/">GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="report-a-scam.html">Report a Scam</a>
+  </div>
+
+    </nav>
+
   </div>
 
 </nav>      </aside>

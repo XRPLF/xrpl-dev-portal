@@ -398,25 +398,25 @@
 <h3 id="成功した場合の応答の例">成功した場合の応答の例<a aria-hidden="true" class="hover_anchor" href="#成功した場合の応答の例"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-1-2">コマンドライン</a></li></ul>
 
-<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">{
-   "id": 2,
-  "status": "success",
-  "type": "response",
-  "result": {
-    "account_data": {
-      "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-      "Balance": "27389517749",
-      "Flags": 0,
-      "LedgerEntryType": "AccountRoot",
-      "OwnerCount": 18,
-      "PreviousTxnID": "B6B410172C0B65575D89E464AF5B99937CC568822929ABF87DA75CBD11911932",
-      "PreviousTxnLgrSeq": 6592159,
-      "Sequence": 1400,
-      "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
-    },
-    "ledger_index": 6760970
-  }
-}
+<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="p">{</span>
+<span class="w">   </span><span class="s">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"status"</span><span class="p">:</span><span class="w"> </span><span class="s">"success"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"response"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s">"account_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s">"27389517749"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"AccountRoot"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"B6B410172C0B65575D89E464AF5B99937CC568822929ABF87DA75CBD11911932"</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">6592159</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1400</span><span class="p">,</span>
+<span class="w">      </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">6760970</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">HTTP Status:200 OK
@@ -718,7 +718,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -931,11 +931,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -945,7 +940,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -992,29 +987,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1680,57 +1653,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -1812,11 +1734,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1926,31 +1843,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2400,11 +2292,6 @@
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -2860,11 +2747,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

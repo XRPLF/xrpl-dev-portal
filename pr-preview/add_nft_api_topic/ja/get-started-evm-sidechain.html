@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Get Started with the EVM Sidechain | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/get-started-evm-sidechain.html" />
-    <meta property="og:description" content="Get started with the EVM compatible sidechain for the XRP Ledger." />
-    <meta name="description" content="Get started with the EVM compatible sidechain for the XRP Ledger." />
+    <meta property="og:description" content="XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。" />
+    <meta name="description" content="XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -36,16 +36,6 @@
     <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
 
     <!-- Google Tag Manager -->
-    <script type="application/javascript">
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      "event": "page_info",
-      "page_type": "Document",
-      "page_group": "Docs",
-      "page_funnel": "Tutorials",
-      "page_labels": ['Development, Interoperability']
-    })
-    </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -66,21 +56,7 @@
     <script src="/ja/assets/js/theme-switch.js"></script>
 
 
-
-    <!-- expandable code samples -->
-    <script src="/ja/assets/js/expandcode.js"></script>
-    <!-- multi-code selection tabs -->
-    <script src="/ja/assets/js/multicodetab.js"></script>
-    <!-- copy code button -->
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".multicode").minitabs();
-            make_code_expandable();
-            new ClipboardJS('.clipboard-btn');
-        });
-    </script>
-
+<meta http-equiv="refresh" content="0;url=https://opensource.ripple.com/docs/evm-sidechain/get-started-evm-sidechain/" />
 
 </head>
 
@@ -236,34 +212,6 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
-  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
-    Page Toolbar
-    <span class="chevron"><span></span><span></span></span>
-  </a>
-  <div id="page-toc-wrapper" class="collapse d-lg-block">
-<div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/add_nft_api_topic/content/tutorials/interoperability/get-started-evm-sidechain.md?pr=/XRPLF/xrpl-dev-portal/pull/1862" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
-</div><!-- /.github-edit --><div class="labels-wrap">
-  <ul class="list-inline">
-    <li class="list-inline-item">
-      <span class="label label-development-interoperability">Development, Interoperability</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Development, Interoperability" -->
-    </li>
-  </ul>
-</div><!--/.labels-wrap-->
-    <div class="toc-header">
-      <h4>目次</h4>
-    </div>
-    <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#get-started-with-the-evm-sidechain">Get Started with the EVM Sidechain</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#1-create-an-account-using-an-evm-compatible-wallet">1. Create an Account Using an EVM Compatible Wallet</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#2-assign-your-xrp-ledger-devnet-tokens-to-the-evm-sidechain">2. Assign your XRP Ledger Devnet Tokens to the EVM Sidechain</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#3-submit-a-transaction-using-the-evm-sidechain-bridge">3. Submit a Transaction Using the EVM Sidechain Bridge</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#1-connect-both-wallets">1. Connect Both Wallets</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#2-start-the-transaction">2. Start the Transaction</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#3-receive-the-funds">3. Receive the Funds</a></li>
-      </ul>
-  </div>
       </aside>
 
       <!-- main column -->
@@ -273,138 +221,98 @@
     
 
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/tutorials.html">チュートリアル</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a></li>
     <li class="active breadcrumb-item">Get Started with the EVM Sidechain</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="get-started-with-the-evm-sidechain">Get Started with the EVM Sidechain<a aria-hidden="true" class="hover_anchor" href="#get-started-with-the-evm-sidechain"><i class="fa fa-link"></i></a></h1>
-<p><em>The EVM compatible sidechains implementation <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> is a proof of concept extension to the XRP Ledger protocol and is for development purposes only. There is no official amendment currently and it is not available on the production Mainnet. The EVM compatible sidechain bridge is connected to the XRP Ledger Devnet. Do not send transactions in Mainnet.</em> </p>
-<p>This getting started tutorial walks you through the steps to set up your account and submit a transaction using the EVM sidechain bridge. </p>
-<h2 id="1-create-an-account-using-an-evm-compatible-wallet">1. Create an Account Using an EVM Compatible Wallet<a aria-hidden="true" class="hover_anchor" href="#1-create-an-account-using-an-evm-compatible-wallet"><i class="fa fa-link"></i></a></h2>
-<!-- STYLE_OVERRIDE: wallet -->
-<p>In order to interact with the network, you need to create an account in the EVM sidechain. To create and manage this account you can use any EVM compatible wallet such as MetaMask.</p>
-<p>For instructions on how to install and create an account using MetaMask, see <a href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger EVM Sidechain</a>.</p>
-<h2 id="2-assign-your-xrp-ledger-devnet-tokens-to-the-evm-sidechain">2. Assign your XRP Ledger Devnet Tokens to the EVM Sidechain<a aria-hidden="true" class="hover_anchor" href="#2-assign-your-xrp-ledger-devnet-tokens-to-the-evm-sidechain"><i class="fa fa-link"></i></a></h2>
-<p>Before you can start interacting with the EVM blockchain, you need to assign some of your XRP Ledger Devnet Tokens to the EVM Sidechain. </p>
-<p>To generate tokens in the XRP Ledger Devnet, go to the <a href="xrp-testnet-faucet.html">XRP Faucets</a> page and click <em>Generate Devnet credentials</em> to generate a new Devnet account with some test XRP in it.</p>
-<p><img alt="Generate XRP Ledger Devnet credentials" src="img/evm-sidechain-xrpl-devnet-faucet.png" title="Generate XRP Ledger Devnet credentials"/></p>
-<p>Note the address and secret associated with your Devnet address. You need this information to set up your preferred XRP Ledger wallet. </p>
-<h2 id="3-submit-a-transaction-using-the-evm-sidechain-bridge">3. Submit a Transaction Using the EVM Sidechain Bridge<a aria-hidden="true" class="hover_anchor" href="#3-submit-a-transaction-using-the-evm-sidechain-bridge"><i class="fa fa-link"></i></a></h2>
-<p>Once you have your accounts set up and test fund allocated, submit a transaction to assign some of your test tokens from the XRP Ledger Devnet to the EVM Sidechain using the EVM Sidechain bridge.</p>
-<p>The EVM Sidechain bridge is a tool that enables transactions between chains in a fast and secure way.</p>
-<p>To start using the bridge, go to <a class="external-link" href="https://bridge.devnet.xrpl.org/" target="_blank">https://bridge.devnet.xrpl.org <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<h3 id="1-connect-both-wallets">1. Connect Both Wallets<a aria-hidden="true" class="hover_anchor" href="#1-connect-both-wallets"><i class="fa fa-link"></i></a></h3>
-<p><strong>Connect Xumm Wallet</strong></p>
-<p>Use your Xumm wallet to interact with the XRP Ledger Devnet chain. 
-Ensure that you have created an account on the public XRP Ledger Devnet as described in Step 1. </p>
-<p>To connect a Xumm wallet to the bridge, go to the <a class="external-link" href="https://bridge.devnet.xrpl.org" target="_blank">EVM Sidechain bridge <i aria-hidden="true" class="fa fa-external-link"></i></a> and click “Connect with Xumm Wallet”. </p>
-<p><img alt="Connect XUMM Wallet" src="img/evm-sidechain-connect-xumm-wallet.png" title="Connect XUMM wallet"/></p>
-<p class="devportal-callout note"><strong>Note:</strong> Ensure that you are connected to XRP Ledger Devnet and that the application that you are connecting with is the correct one.</p>
-<p>Follow the instructions on screen to scan the QR code using the Xumm app. The Xumm wallet app displays a confirmation page.</p>
-<p><img alt="Connect to XRP Ledger Devnet" src="img/evm-sidechain-bridge-sign-in.jpg" title="Connect to XRP Ledger Devnet"/></p>
-<p><strong>Connect MetaMask Wallet</strong></p>
-<p>Use your MetaMask wallet to interact with the XRP Ledger EVM Sidechain. 
-Ensure that you have created a MetaMask account and connected to the public XRP Ledger Devnet as described in <a href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger EVM Sidechain</a>.</p>
-<p>To connect a MetaMask wallet to the bridge, go to the <a class="external-link" href="https://bridge.devnet.xrpl.org" target="_blank">EVM Sidechain bridge <i aria-hidden="true" class="fa fa-external-link"></i></a> and click “Connect with Metamask Wallet”.</p>
-<p><img alt="Connect MetaMask Wallet" src="img/evm-sidechain-connect-metamask.png" title="Connect MetaMask wallet"/></p>
-<h3 id="2-start-the-transaction">2. Start the Transaction<a aria-hidden="true" class="hover_anchor" href="#2-start-the-transaction"><i class="fa fa-link"></i></a></h3>
-<p>Now that both Xumm and MetaMask wallets are connected to the bridge, you can select the direction of the bridge, the amount, and the address to fund.</p>
-<ul>
-<li><strong>Direction of the bridge</strong>: The direction can be either EVM sidechain → XRP Ledger Devnet or XRP Ledger Devnet → EVM sidechain. Use the “Switch Network” button to switch the direction.</li>
-<li><strong>From Amount</strong>: This is the transaction amount. Note that there is a fee to use the bridge.<ul>
-<li>Network fees: The fees required by the network for your transactions.</li>
-<li>Commission: The bridge applies a commission for every transaction completed. This is to prevent spam and distributed denial of service attacks (DDOS).</li>
-</ul>
-</li>
-<li>
-<p><strong>To Address</strong>: The address on the chain where you want the funds.</p>
-<p><img alt="Start the transaction" src="img/evm-sidechain-initiate-transfer.png" title="Start the transaction"/></p>
-</li>
-</ul>
-<p>Enter the details for your transaction and click <strong>Transfer</strong>. Review the details of the transaction carefully before accepting the transaction in the corresponding wallet. </p>
-<p><img alt="Approve the transaction" src="img/evm-sidechain-approve-transaction.png" title="Approve the transaction"/></p>
-<p>Depending on the direction of the transaction, you need to approve the transaction in the Xumm Wallet or in the Metamask.</p>
-<p><strong>XRP Ledger Devnet → EVM sidechain</strong></p>
-<p>For this direction you must approve the transaction in your Xumm Wallet. Before doing so, please check that the details are correct:</p>
-<ul>
-<li>Destination address has to be: <code>radjmEZTb4zsyNUJGV4gcVPXrFTJAuskKa</code></li>
-<li>
-<p>Memo has to be the same address that you entered in the destination field</p>
-<p><img alt="Review the transaction" src="img/evm-sidechain-review-transaction.jpg"/></p>
-</li>
-</ul>
-<p><strong>EVM sidechain → XRP Ledger Devnet</strong></p>
-<p>If this is the case, then you must approve the transaction in your Metamask. Before doing so, please check the details are correct:</p>
-<ul>
-<li>
-<p>Destination address has to be: <code>0x8cDE56336E289c028C8f7CF5c20283fF02272182</code></p>
-<p><img alt="Review the transaction in MetaMask" src="img/evm-sidechain-metamask-confirmation.png" title="Review the transaction in MetaMask"/></p>
-</li>
-</ul>
-<p>Once you approve the transaction either in Xumm wallet or in Metamask, a loading screen displays. This process can take up to a few minutes.</p>
-<p><img alt="Transaction in progress" src="img/evm-sidechain-transfer-in-progress.png" title="Transaction in progress"/></p>
-<h3 id="3-receive-the-funds">3. Receive the Funds<a aria-hidden="true" class="hover_anchor" href="#3-receive-the-funds"><i class="fa fa-link"></i></a></h3>
-<p>Following a few minutes of transaction processing time, you are redirected to the <strong>Transaction Confirmation</strong> screen where you can verify the details of the bridge transaction.</p>
-<ul>
-<li><strong>Origin transaction hash</strong>: Hash of the transaction in the origin chain.</li>
-<li><strong>Destination transaction hash</strong>: Hash of the transaction in the destination chain.</li>
-<li><strong>From address</strong>: Address on the origin chain.</li>
-<li><strong>To address</strong>: Address on the destination chain.</li>
-<li><strong>Receive</strong>: The amount received in the destination address.</li>
-</ul>
-<p><img alt="Transaction confirmation" src="img/evm-sidechain-transaction-confirmation.png" title="Transaction confirmation"/></p>
-<p>Your transaction has completed successfully and the test XRP tokens are now available in the other chain.</p>
+        <p>This page has been moved! You should be redirected automatically. If not, <a href="https://opensource.ripple.com/docs/evm-sidechain/get-started-evm-sidechain/">click here to go to the new Get Started with the EVM Sidechain page</a>.
     </div>
   </article>
-<!-- Feedback Widget -->
-<!-- <script src="/ja/assets/vendor/feedback-widget.js"></script> -->
-<!-- <div id="feedback-content"></div> -->
-<script>
-  // // Options
-  // const options = {
-  //   analyticsConfig: [
-  //     // { name: 'ga', id: 'UA-45576805-2' },
-  //     // { name: 'gtm', id: 'GTM-THHW334' },
-  //   ],
-  //   analyticsName: 'Feedback Widget Tracker',
-  //   theme: 'xrpl',
-  //   currentPath: window.location.pathname,
-  //   parentElement: '#feedback-content',
-  // };
-  // 
-  // // Init WidgetClass
-  // const r = new WidgetClass(options);
-</script>      </main>
+      </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
 
 
 <nav class="nav flex-column dactyl-tree-nav">
   <div class="nav-item nav-parent">
-    <a class="nav-link" href="/ja/docs.html">ドキュメント</a>
+    <a class="nav-link" href="/ja/index.html">Home</a>
   </div>
     
   <div class="nav-item ">
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="false" aria-controls="tree_nav_group_1"></a>
 
-        <a class="nav-link" href="/ja/concepts.html">コンセプト</a>
+        <a class="nav-link" href="/ja/xrp-ledger-overview.html">XRPL オーバービュー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_1" aria-expanded="false" aria-controls="tree_nav_group_1_1"></a>
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/history.html">沿革</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-overview.html">XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/impact.html">インパクト</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://foundation.xrpl.org/">XRPL財団 <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/faq.html">よくある質問</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/privacy-policy.html">Privacy Policy</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+
+        <a class="nav-link" href="/ja/docs.html">ドキュメント</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+
+        <a class="nav-link" href="/ja/concepts.html">コンセプト</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_1" aria-expanded="false" aria-controls="tree_nav_group_2_1_1"></a>
 
         <a class="nav-link" href="/ja/introduction.html">基本</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
@@ -427,19 +335,19 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2" aria-expanded="false" aria-controls="tree_nav_group_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_2" aria-expanded="false" aria-controls="tree_nav_group_2_1_2"></a>
 
         <a class="nav-link" href="/ja/payment-system-basics.html">支払いシステムの基本</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_1" aria-expanded="false" aria-controls="tree_nav_group_1_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1_2_1"></a>
 
         <a class="nav-link" href="/ja/accounts.html">アカウント</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cryptographic-keys.html">暗号鍵</a>
@@ -482,11 +390,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_4" aria-expanded="false" aria-controls="tree_nav_group_1_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_1_2_4"></a>
 
         <a class="nav-link" href="/ja/transaction-basics.html">トランザクションの基本</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-cost.html">トランザクションコスト</a>
@@ -513,11 +421,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_3" aria-expanded="false" aria-controls="tree_nav_group_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_3" aria-expanded="false" aria-controls="tree_nav_group_2_1_3"></a>
 
         <a class="nav-link" href="/ja/payment-types.html">支払いのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
@@ -555,11 +463,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="false" aria-controls="tree_nav_group_1_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_4" aria-expanded="false" aria-controls="tree_nav_group_2_1_4"></a>
 
         <a class="nav-link" href="/ja/tokens.html">トークン</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
@@ -567,17 +475,17 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_1_4_3"></a>
 
         <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_4_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
@@ -625,11 +533,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_4" aria-expanded="false" aria-controls="tree_nav_group_1_4_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_4_4" aria-expanded="false" aria-controls="tree_nav_group_2_1_4_4"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_4_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -671,11 +579,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_5" aria-expanded="false" aria-controls="tree_nav_group_1_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_5" aria-expanded="false" aria-controls="tree_nav_group_2_1_5"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
@@ -703,11 +611,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6" aria-expanded="false" aria-controls="tree_nav_group_1_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_6" aria-expanded="false" aria-controls="tree_nav_group_2_1_6"></a>
 
         <a class="nav-link" href="/ja/consensus-network.html">コンセンサスネットワーク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus.html">コンセンサス</a>
@@ -751,11 +659,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6_9" aria-expanded="false" aria-controls="tree_nav_group_1_6_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_6_9" aria-expanded="false" aria-controls="tree_nav_group_2_1_6_9"></a>
 
         <a class="nav-link" href="/ja/amendments.html">Amendment</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_6_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_6_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
@@ -780,11 +688,6 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -792,11 +695,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_7" aria-expanded="false" aria-controls="tree_nav_group_2_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/rippled-server-modes.html">rippledサーバーのモード</a>
@@ -810,11 +713,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7_3" aria-expanded="false" aria-controls="tree_nav_group_1_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_1_7_3"></a>
 
         <a class="nav-link" href="/ja/ledger-history.html">レジャー履歴</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1_7_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/online-deletion.html">オンライン削除</a>
@@ -841,29 +744,7 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -874,22 +755,22 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
 
   </div>
 
-    
-  <div class="nav-item active-parent">
+      
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="true" aria-controls="tree_nav_group_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
 
         <a class="nav-link" href="/ja/tutorials.html">チュートリアル</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_2_1"></a>
 
         <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
@@ -932,11 +813,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2_2"></a>
 
         <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
@@ -979,11 +860,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_2_3"></a>
 
         <a class="nav-link" href="/ja/build-apps.html">アプリケーションの構築</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -996,11 +877,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_2_4"></a>
 
         <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -1023,11 +904,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_2_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1075,19 +956,19 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_2_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_2_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1120,11 +1001,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_2_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1137,11 +1018,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_2_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1183,11 +1064,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_2_7"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1220,11 +1101,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_2_8"></a>
 
         <a class="nav-link" href="/ja/xrp-ledger-businesses.html">ビジネスとしてのXRP Ledger</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -1247,19 +1128,19 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_2_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの管理</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_2_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -1313,11 +1194,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_2_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -1385,11 +1266,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_2_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -1437,11 +1318,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_2_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -1464,11 +1345,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_2_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -1515,11 +1396,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_2_10"></a>
 
         <a class="nav-link" href="/ja/manage-the-clio-server.html">Clioサーバの管理</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
@@ -1529,27 +1410,6 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
 
   </div>
 
-      
-  <div class="nav-item active-parent">
-
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="true" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column show " id="tree_nav_group_2_11">
-      
-  <div class="nav-item active">
-
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="true" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column show " id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
     </nav>
 
   </div>
@@ -1557,57 +1417,27 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-    </nav>
-
-  </div>
-
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="/ja/references.html">リファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_1"></a>
 
         <a class="nav-link" href="/ja/protocol-reference.html">XRP Ledgerプロトコルリファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_1"></a>
 
         <a class="nav-link" href="/ja/basic-data-types.html">基本的なデータ型</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/base58-encodings.html">base58エンコード</a>
@@ -1630,11 +1460,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_2"></a>
 
         <a class="nav-link" href="/ja/ledger-data-formats.html">レジャーのデータ型</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-header.html">レジャーヘッダー</a>
@@ -1648,11 +1478,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_2_3"></a>
 
         <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -1661,11 +1491,6 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1749,11 +1574,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_3"></a>
 
         <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-common-fields.html">トランザクションの共通フィールド</a>
@@ -1762,11 +1587,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_3_2"></a>
 
         <a class="nav-link" href="/ja/transaction-types.html">トランザクションのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
@@ -1775,31 +1600,6 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1919,11 +1719,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_3_3"></a>
 
         <a class="nav-link" href="/ja/pseudo-transaction-types.html">疑似トランザクション</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/enableamendment.html">EnableAmendment</a>
@@ -1946,11 +1746,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_3_1_3_4"></a>
 
         <a class="nav-link" href="/ja/transaction-results.html">トランザクションの結果</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/tec-codes.html">tecコード</a>
@@ -2006,19 +1806,19 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_2"></a>
 
         <a class="nav-link" href="/ja/client-libraries.html">クライアントライブラリ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_2_1"></a>
 
         <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript/TypeScript クライアントライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">ripple-lib 1.xからxrpl.js 2.xへの移行ガイド</a>
@@ -2050,19 +1850,19 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3"></a>
 
         <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_1"></a>
 
         <a class="nav-link" href="/ja/api-conventions.html">APIの規則</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/request-formatting.html">要求フォーマット</a>
@@ -2100,19 +1900,19 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2"></a>
 
         <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_1"></a>
 
         <a class="nav-link" href="/ja/account-methods.html">Accountメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account_channels.html">account_channels</a>
@@ -2170,11 +1970,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_2"></a>
 
         <a class="nav-link" href="/ja/ledger-methods.html">Ledgerメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger.html">ledger</a>
@@ -2207,11 +2007,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_3"></a>
 
         <a class="nav-link" href="/ja/transaction-methods.html">Transactionメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
@@ -2244,16 +2044,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_4"></a>
 
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -2291,11 +2086,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_5"></a>
 
         <a class="nav-link" href="/ja/payment-channel-methods.html">Payment Channelメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/channel_authorize.html">channel_authorize</a>
@@ -2313,11 +2108,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_6"></a>
 
         <a class="nav-link" href="/ja/subscription-methods.html">Subscriptionメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/subscribe.html">subscribe</a>
@@ -2335,11 +2130,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_7"></a>
 
         <a class="nav-link" href="/ja/server-info-methods.html">Server Infoメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/fee.html">fee</a>
@@ -2367,11 +2162,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_8"></a>
 
         <a class="nav-link" href="/ja/clio-methods.html">Clio Serverメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info</a>
@@ -2399,11 +2194,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_2_9"></a>
 
         <a class="nav-link" href="/ja/utility-methods.html">ユーティリティメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/json.html">json</a>
@@ -2430,19 +2225,19 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3"></a>
 
         <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_1"></a>
 
         <a class="nav-link" href="/ja/key-generation-methods.html">キー生成メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/validation_create.html">validation_create</a>
@@ -2460,11 +2255,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_2"></a>
 
         <a class="nav-link" href="/ja/logging-and-data-management-methods.html">ログとデータの管理メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/can_delete.html">can_delete</a>
@@ -2512,11 +2307,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_3"></a>
 
         <a class="nav-link" href="/ja/server-control-methods.html">サーバ操作メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger_accept.html">ledger_accept</a>
@@ -2539,11 +2334,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_4"></a>
 
         <a class="nav-link" href="/ja/signing-methods.html">署名メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
@@ -2561,11 +2356,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_5"></a>
 
         <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
@@ -2598,11 +2393,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_3_6"></a>
 
         <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>
@@ -2659,11 +2454,11 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_2_3_3_5"></a>
 
         <a class="nav-link" href="/ja/peer-port-methods.html">ピアポートメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
@@ -2698,22 +2493,17 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
 
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="/ja/by-label.html">ラベル別に閲覧</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       
@@ -2800,19 +2590,19 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
 
   </div>
 
-    
+      
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/code-samples.html">サンプルコード</a>
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPCツール</a>
@@ -2848,9 +2638,70 @@ Ensure that you have created a MetaMask account and connected to the public XRP 
 
   </div>
 
-    
+      
   <div class="nav-item ">
     <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL学習ポータル <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="/ja/contribute.html">貢献する</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/contribute-code.html">Contribute Code to the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/events.html">イベント</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ambassadors.html">アンバサダー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/developer-funding.html">開発者ファンド</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://jobs.xrpl.org/">XRPL Jobs <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl.org/blog/">開発者ブログ <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrplgrants.org/">XRPL Grants <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/">GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/report-a-scam.html">Report a Scam</a>
+  </div>
+
+    </nav>
+
   </div>
 
 </nav>      </aside>

@@ -286,7 +286,7 @@
 <p>Amendmentが有効になると、そのAmendmentが含まれているバージョン以降のすべてのレジャーバージョンに永続的に適用されます。Amendmentを無効にすることはできません。ただし、Amendmentを無効にするための新しいAmendmentを導入する場合は除きます。</p>
 <p>既知のAmendment、それらのステータス、およびIDのリストについては、以下を参照してください: <a href="known-amendments.html">既知のAmendment</a></p>
 <h2 id="背景">背景<a aria-hidden="true" class="hover_anchor" href="#背景"><i class="fa fa-link"></i></a></h2>
-<p>トランザクション処理に変更があると、サーバーで同じトランザクションのセットを使用して別のレジャーが作成される場合があります。一部の <em>バリデータ</em> （<a href="rippled-server-modes.html#バリデータを運用する理由">コンセンサスに参加している</a><code>rippled</code>サーバー）が古いバージョンのソフトウェアを使用している状態で、他のバリデータが新しいバージョンのソフトウェアにアップグレードすると、ごく小さな問題から、場合によっては完全機能停止などの問題が生じる可能性があります。希なケースでは、少数のサーバーにおいて、実際のコンセンサスレジャーを取得するために、より多くの時間と帯域幅が使用される場合があります。既知のトランザクションの処理ルールを使ってレジャーを構築できないためです。最悪の場合、異なるルールを使用するサーバー間で当該レジャーについてコンセンサスに達することができないため、<a href="consensus.html">コンセンサスプロセス</a>により新しいレジャーバージョンを検証できない可能性があります。</p>
+<p>トランザクション処理に変更があると、サーバーで同じトランザクションのセットを使用して別のレジャーが作成される場合があります。一部の <em>バリデータ</em> （<a href="rippled-server-modes.html#バリデータ">コンセンサスに参加している</a><code>rippled</code>サーバー）が古いバージョンのソフトウェアを使用している状態で、他のバリデータが新しいバージョンのソフトウェアにアップグレードすると、ごく小さな問題から、場合によっては完全機能停止などの問題が生じる可能性があります。希なケースでは、少数のサーバーにおいて、実際のコンセンサスレジャーを取得するために、より多くの時間と帯域幅が使用される場合があります。既知のトランザクションの処理ルールを使ってレジャーを構築できないためです。最悪の場合、異なるルールを使用するサーバー間で当該レジャーについてコンセンサスに達することができないため、<a href="consensus.html">コンセンサスプロセス</a>により新しいレジャーバージョンを検証できない可能性があります。</p>
 <p>Amendmentはこの問題を解決し、十分なバリデータがそれらの機能をサポートしている場合にのみ新しい機能を有効にします。</p>
 <p>XRP Ledgerを使用しているユーザーや企業は、業務に影響を及ぼす可能性があるトランザクション処理の変更について事前に通知するためにAmendmentを使用することもできます。ただし、トランザクション処理や<a href="consensus.html">コンセンサスプロセス</a>に影響のないAPIを変更する場合、Amendmentは不要です。</p>
 <h2 id="amendmentについて">Amendmentについて<a aria-hidden="true" class="hover_anchor" href="#amendmentについて"><i class="fa fa-link"></i></a></h2>
@@ -442,7 +442,7 @@
 <p>これらの機能をサポートしている<code>rippled</code>バージョンを見つけるには、<a href="known-amendments.html">既知のAmendment</a>を参照してください。</p>
 <h2 id="amendmentのテスト">Amendmentのテスト<a aria-hidden="true" class="hover_anchor" href="#amendmentのテスト"><i class="fa fa-link"></i></a></h2>
 <p>Amendmentが有効になっている場合の<code>rippled</code>の動作を確認するには、そのAmendmentが実稼働ネットワークで有効になる前に、<code>rippled</code>の構成ファイルを実行して強制的に機能を有効にします。これは、開発目的でのみサポートされています。</p>
-<p>コンセンサスネットワークの他のメンバーはこの機能を有効にしていない可能性があるため、実稼働ネットワークに接続されている間はこの機能を使用しないでください。機能を強制的に有効にしてテストしている間は、<a href="rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由">スタンドアロンモード</a>で<code>rippled</code>を実行する必要があります。</p>
+<p>コンセンサスネットワークの他のメンバーはこの機能を有効にしていない可能性があるため、実稼働ネットワークに接続されている間はこの機能を使用しないでください。機能を強制的に有効にしてテストしている間は、<a href="rippled-server-modes.html#スタンドアロンモード">スタンドアロンモード</a>で<code>rippled</code>を実行する必要があります。</p>
 <p>機能を強制的に有効にするには、<code>[features]</code>スタンザを<code>rippled.cfg</code>ファイルに追加します。このスタンザで、有効にする機能の名前の短縮名を1行に1つずつ追加します。例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="k">[features]</span>
 <span class="na">MultiSign</span>
@@ -662,7 +662,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -875,11 +875,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -889,7 +884,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -936,29 +931,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1624,57 +1597,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -1756,11 +1678,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1870,31 +1787,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2344,11 +2236,6 @@
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -2804,11 +2691,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       
