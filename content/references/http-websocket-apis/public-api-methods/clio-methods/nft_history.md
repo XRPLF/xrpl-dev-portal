@@ -237,7 +237,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-With the `binary` parameter set to true, you receive a compact response that uses hex strings. It's not human readable, but much more concise.
+With the `binary` parameter set to _true_, you receive a compact response that uses hex strings. It's not human readable, but much more concise.
 
 <!-- MULTICODE_BLOCK_START -->
 
