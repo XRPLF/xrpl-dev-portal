@@ -16,9 +16,342 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
+
+{% set cards = [
+  {
+    "id": "aesthetes",
+    "title": _("Aesthetes"),
+    "description": _("Aesthetes is a bridge between fine art and blockchain, enabling everyone, around the world, to buy and sell with just a click for fractional ownership of international physical art."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://aesthetes.art/",
+  },
+  {
+    "id": "anchain-ai",
+    "title": _("Anchain.AI"),
+    "description": _("AnChain.AI offers AI-powered intelligence enhancing blockchain security, risk, and compliance strategies."),
+    "category_id": "security",
+    "category_name": "Security",
+    "link": "https://anchain.ai",
+  },
+  {
+    "id": "audiotarky",
+    "title": _("Audiotarky"),
+    "description": _("Audiotarky is a new music streaming platform that prioritises artists and privacy over algorithms and shareholders."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://www.audiotarky.com/",
+  },
+  {
+    "id": "bitgo",
+    "title": _("BitGo"),
+    "description": _("BitGo provides custodial and non-custodial asset holdings for digital assets including XRP. BitGo's enterprise-level security empowers businesses to integrate digital currencies like XRP into new and existing financial systems."),
+    "category_id": "custody",
+    "category_name": "Custody",
+    "link": "https://www.bitgo.com/",
+  },
+  {
+    "id": "bithomp",
+    "title": _("Bithomp"),
+    "description": _("Bithomp is an XRPL explorer and toolkit, used by many cryptocurrency exchanges. Bithomp was launched in 2015 with a mission to build the most user-friendly XRPL explorer."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://bithomp.com/",
+  },
+  {
+    "id": "bitpay",
+    "title": _("bitpay"),
+    "description": _("BitPay builds powerful, enterprise-grade tools for accepting and spending cryptocurrencies, including XRP."),
+    "category_id": "payments",
+    "category_name": "Payments",
+    "link": "https://bitpay.com/",
+  },
+  {
+    "id": "carbonland-trust",
+    "title": _("Carbonland Trust"),
+    "description": _("Carbonland Trust offers transparent nature-based carbon credits, and inclusive access to voluntary carbon markets for landowners and corporations alike. "),
+    "category_id": "sustainability",
+    "category_name": "Carbon Markets/Sustainability",
+    "link": "https://www.carbonlandtrust.com/",
+  },
+  {
+    "id": "casino-coin",
+    "title": _("Casino Coin"),
+    "description": _("CasinoCoin (CSC) is a digital currency developed specifically for the regulated gaming industry."),
+    "category_id": "other",
+    "category_name": "Other",
+    "link": "https://casinocoin.im/",
+  },
+  {
+    "id": "coil",
+    "title": _("Coil"),
+    "description": _("Coil provides better ways to access and reward the creators, publishers and platforms that create the content people love."),
+    "category_id": "web_monetization",
+    "category_name": "Web Monetization",
+    "link": "https://coil.com/",
+  },
+  {
+    "id": "cryptum",
+    "title": _("Cryptum"),
+    "description": _("Cryptum is an API/SDK platform for integrating the XRP Ledger with any application."),
+    "category_id": "developer_tooling",
+    "category_name": "Developer Tooling",
+    "link": "https://blockforce.in/products/cryptum",
+  },
+  {
+    "id": "evernode",
+    "title": _("Evernode"),
+    "description": _("Evernode proposes a permissionless, flexible, scalable Layer 2 smart contract network built from the XRP Ledger."),
+    "category_id": "developer_tooling",
+    "category_name": "Developer Tooling",
+    "link": "https://evernode.wordpress.com/",
+  },
+  {
+    "id": "forte",
+    "title": _("Forte"),
+    "description": _("Forte offers an unprecedented set of easy-to-use tools and services for game developers to integrate blockchain technology into their games, to unlock new economic and creative opportunities for gamers across the world."),
+    "category_id": "gaming",
+    "category_name": "Gaming",
+    "link": "https://www.forte.io/",
+  },
+  {
+    "id": "gatehub",
+    "title": _("Gatehub"),
+    "description": _("Gatehub XRP Ledger Markets is an explorer to track Gatehub's inssuances on the XRP Ledger."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://gatehub.net/markets",
+  },
+  {
+    "id": "gem-wallet",
+    "title": _("Gem Wallet"),
+    "description": _("GemWallet is a web extension that enables users to make fast payments on the XRP Ledger via a browser. It's a safer alternative to copying and pasting private keys for use with web applications."),
+    "category_id": "wallet",
+    "category_name": "Wallet",
+    "link": "https://gemwallet.app/",
+  },
+  {
+    "id": "ledger-city",
+    "title": _("Ledger City"),
+    "description": _("Ledger City is a crypto real estate game powered by the XRP Ledger."),
+    "category_id": "gaming",
+    "category_name": "Gaming",
+    "link": "https://ledgercitygame.com/",
+  },
+  {
+    "id": "multichain",
+    "title": _("Multichain"),
+    "description": _("Multichain is the ultimate Router for web3. It is an infrastructure developed for arbitrary cross-chain interactions."),
+    "category_id": "interoperability",
+    "category_name": "Interoperability",
+    "link": "https://multichain.org/",
+  },
+  {
+    "id": "nft-master",
+    "title": _("NFT Master"),
+    "description": _("NFT Master is an NFT marketplace where creators can buy, mint and sell NFTs."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://nftmaster.com/",
+  },
+  {
+    "id": "onthedex",
+    "title": _("OnTheDex"),
+    "description": _("OnTheDex is a quality source of information for aggregator sites to take live feeds of XRPL token activity."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://onthedex.live/",
+  },
+  {
+    "id": "onxrp",
+    "title": _("onXRP"),
+    "description": _("onXRP is an NFT marketplace where creators can buy, mint and sell NFTs built by the XPUNKs."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://onxrp.com/about/",
+  },
+  {
+    "id": "peerkat",
+    "title": _("Peerkat"),
+    "description": _("Peerkat is an NFT services and tooling provider for the XRPL community."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://peerkat.io/",
+  },
+  {
+    "id": "ripples-cbdc-platform",
+    "title": _("Ripple's CBDC Platform"),
+    "description": _("Ripple's Central Bank Digital Currency (CBDC) solution enables banks to mint, manage, transact and redeem currency to easily manage the full CBDC lifecycle. Each solution is built on a private ledger that is based upon XRP Ledger technology."),
+    "category_id": "cbdcs",
+    "category_name": "CBDC",
+    "link": "https://ripple.com/solutions/central-bank-digital-currency/",
+  },
+  {
+    "id": "ripples-on-demand-liquidity",
+    "title": _("Ripple's On-Demand Liquidity"),
+    "description": _("Ripple powers real-time, low-cost cross-border payment settlement  by using XRP as a bridge currency between two fiat currencies."),
+    "category_id": "payments",
+    "category_name": "Payments",
+    "link": "https://ripple.com/",
+  },
+  {
+    "id": "sologenic-dex",
+    "title": _("Sologenic DEX"),
+    "description": _("Sologenic DEX is a popular decentralized exchange on the XRP Ledger made by Sologenic."),
+    "category_id": "exchanges",
+    "category_name": "Exchanges",
+    "link": "https://sologenic.org/",
+  },
+  {
+    "id": "sologenic-nft",
+    "title": _("Sologenic NFT"),
+    "description": _("Sologenic NFT is an NFT marketplace designed by Sologenic."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://sologenic.org/nfts/marketplace?network=mainnet",
+  },
+  {
+    "id": "towo-labs",
+    "title": _("Towo Labs"),
+    "description": _("Towo Labs was founded in 2019, to develop XRP Ledger and Interledger infrastructures and make non-custodial crypto management easier."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://towolabs.com/",
+  },
+  {
+    "id": "x-tokenize",
+    "title": _("X-tokenize"),
+    "description": _("X-Tokenize is a command line tool to simplify the process of creating, managing and distributing issued currencies and eventually NFTs on the XRPL."),
+    "category_id": "developer_tooling",
+    "category_name": "Developer Tooling",
+    "link": "https://x-tokenize.com/",
+  },
+  {
+    "id": "xp-market",
+    "title": _("XP Market"),
+    "description": _("XP Market is a price-tracking website for cryptoassets on the XRPL coupled with a decentralized exchange."),
+    "category_id": "exchanges",
+    "category_name": "Exchanges",
+    "link": "https://xpmarket.com/",
+  },
+  {
+    "id": "xrp-cafe",
+    "title": _("XRP Cafe"),
+    "description": _("XRP Cafe is an NFT marketplace built by the community that aims to be the easiest way to build, sell and mint NFTs."),
+    "category_id": "nfts",
+    "category_name": "NFTs",
+    "link": "https://xrp.cafe/",
+  },
+  {
+    "id": "xrp-toolkit",
+    "title": _("XRP Toolkit"),
+    "description": _("XRP Toolkit is a platform for managing crypto assets and trading on the XRP Ledger's decentralized exchange."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://www.xrptoolkit.com/",
+  },
+  {
+    "id": "xrpl-rosetta",
+    "title": _("XRPL Rosetta"),
+    "description": _("XRPL Rosetta explores fiat data on XRPL through visualization."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://threexrp.dev/",
+  },
+  {
+    "id": "xrpl-org-ledger-explorer",
+    "title": _("XRPL.org Ledger Explorer"),
+    "description": _("XRPL.org's Ledger Explorer is a block explorer of the XRP Ledger."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://livenet.xrpl.org/",
+  },
+  {
+    "id": "xrpscan",
+    "title": _("XRPScan"),
+    "description": _("XRPSCAN is an explorer and analytics platform for the XRP Ledger. We provide a clean and simple way to look up accounts, ledgers and transactions."),
+    "category_id": "infrastructure",
+    "category_name": "Infrastructure",
+    "link": "https://xrpscan.com/",
+  },
+  {
+    "id": "xumm-wallet",
+    "title": _("Xumm Wallet"),
+    "description": _("Xumm Wallet is a non custodial wallet with superpower for the XRP Ledger."),
+    "category_id": "wallet",
+    "category_name": "Wallet",
+    "link": "https://xumm.app/#team",
+  },
+
+] %}
+
+
+{% set featured_categories = {
+  "infrastructure": "Infrastructure",
+  "developer_tooling": "Developer Tooling",
+} %}
+
+{% set other_categories = {
+  "interoperability": "Interoperability",
+  "wallet": "Wallet",
+  "nfts": "NFTs",
+  "exchanges": "Exchanges",
+  "gaming": "Gaming",
+  "security": "Security",
+  "payments": "Payments",
+  "web_monetization": "Web Monetization",
+  "sustainability": "Sustainability",
+  "cbdcs": "CBDCs",
+  "custody": "Custody",
+  "defi": "DeFi",
+  "other": "Other",
+} %}
+
+
+<!-- Modal -->
+<div class="modal fade " id="categoryFilterModal" tabindex="-1" aria-labelledby="categoryFilterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="btn cancel" data-dismiss="modal"><span class="chevron"><span></span><span></span></span> {% trans %}Cancel{% endtrans %}</a>
+        <a class="btn apply" data-dismiss="modal">{% trans %}Apply{% endtrans %} <span class="chevron"><span></span><span></span></span></a>
+      </div>
+      <div class="modal-body">
+  <!--  -->
+          <div class="p-3 page-events">
+            <form >
+              <p class="category-header mb-4">{% trans %}Featured Categories{% endtrans %} <span id="featured_count_old" class="featured_count category_count">2</span></p>
+                {% for category_id, category_name in featured_categories.items() %}
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}" checked>
+                      <label class="font-weight-bold" for="input_{{category_id}}">{{ category_name }}</label>
+                  </div>
+                {% endfor %}
+              <p class="category-header pt-5 mt-3 mb-4">{% trans %}Other Categories{% endtrans %} <span id="other_count_old" class="other_count category_count">0</span></p>    
+                {% for category_id, category_name in other_categories.items() %}
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}">
+                      <label for="input_{{category_id}}">{{ category_name }}</label>
+                  </div>
+                {% endfor %}
+            </form>
+        </div>
+  <!--  -->
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans %}Apply{% endtrans %}</button>
+        <a class="btn " data-dismiss="modal">{% trans %}Cancel{% endtrans %}</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal -->
+
+
 <div class="overflow-hidden">
-   <section class="py-26 text-center">
-    <div class="col-lg-5 mx-auto text-center">
+
+   <section class="container-new py-26 text-lg-center">
+    <div class="p-3 col-lg-8 mx-lg-auto">
       <div class="d-flex flex-column-reverse">
         <h1 class="mb-0">{% trans %}Powering Innovative Technology{% endtrans %}</h1>
         <h6 class="eyebrow mb-3">{% trans %}XRPL Use Cases{% endtrans %}</h6>
@@ -26,48 +359,86 @@
     </div>
   </section>
 
-
   <section class="container-new py-26">
-    <ul class="card-grid card-grid-3xN ls-none" id="use-case-card-grid">
+    <div class="col-lg-5 p-3 mb-3 mb-lg-5">
+      <div class="d-flex flex-column-reverse">
+        <h3 class="h4 h2-sm">{% trans %}Powering innovative use cases and projects{% endtrans %}</h3>
+        <h6 class="eyebrow mb-3">{% trans %}XRPL Ecosystem{% endtrans %}</h6>
+      </div>
+    </div>
+
+    <ul class="card-grid card-grid-3xN ls-none mt-4 pt-lg-2" id="use-case-card-grid">
       {% set uses = [
-        { "id": "micropayments",
-          "title": _("Micropayments"),
-          "description": _("Developers are using the XRP Ledger to build innovative products for gaming, content, and web monetization, among other applications where currency is at the center.")},
-        { "id": "wallets",
-          "title": _("Cryptocurrency Wallets"),
-          "description": _("Use the Ledger to build digital wallets to store private and public passwords and interact with various blockchains to send and receive digital assets, including XRP.")},
-        { "id": "exchanges",
-          "title": _("Exchanges"),
-          "description": _("Build sophisticated exchanges where users can invest and trade crypto and non-blockchain assets such as stocks, ETFs, and commodities.")},
-        { "id": "stablecoins",
-          "title": _("Stablecoins"),
-          "description": _("Financial institutions can use Issued Currencies to issue stablecoins on the XRP Ledger. XRPL’s integrated decentralized exchange (DEX) allows neutral, counterparty-free digital assets to be seamlessly exchanged to and from “issued assets,” including stablecoins.")},
-        { "id": "nft",
-          "title": _("NFTs"),
-          "description": _("XRPL allows issuance of IOUs which can represent a currency of any value, which can be extended to the issuance of non-fungible tokens (NFTs).")},
-        { "id": "defi",
-          "title": _("DeFi"),
-          "description": _("Provide access to financial products and services online in a decentralized and borderless manner on XRPL, with decentralized smart contract protocols replacing the traditional role of financial institutions.")},
-        { "id": "cbdc",
-          "title": _("CBDCs"),
-          "description": _("The CBDC Private Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs).")},
+        
+          {"id": "infrastructure",
+            "title": _("Infrastructure"),
+            "description": _("Build and operate components or systems that help the functionality of the XRP Ledger, such as Nodes, dev tools, storage, security and more.")},
+
+          {"id": "developer_tooling",
+            "title": _("Developer Tooling"),
+            "description": _("Developers can leverage open-source libraries, SDKs and more to help build their project and access essential XRP Ledger functionality.")},
+
+          {"id": "interoperability",
+            "title": _("Interoperability"),
+            "description": _("Developers and node operators can build and run custom sidechains while leveraging the XRPL’s lean and efficient feature set.")},
+
+          {"id": "wallet",
+            "title": _("Wallet"),
+            "description": _("Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP.")},
+
+          {"id": "nfts",
+            "title": _("NFTs"),
+            "description": _("XRPL supports the issuance of IOUs that represent a currency of any value, as well as non-fungible tokens (NFTs).")},
+
+          {"id": "exchanges",
+            "title": _("Exchanges"),
+            "description": _("Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities.")},
+
+          {"id": "gaming",
+            "title": _("Gaming"),
+            "description": _("The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability.")},
+
+          {"id": "security",
+            "title": _("Security"),
+            "description": _("Build services and tools that help prevent and combat fraudulent activity with the XRPL.")},
+
+          {"id": "payments",
+            "title": _("Payments"),
+            "description": _("Leverage the efficiency and speed of the XRP Ledger to move value all over the globe.")},
+
+          {"id": "web_monetization",
+            "title": _("Web Monetization"),
+            "description": _("Support creators and their content directly leveraging the power of the XRP Ledger.")},
+
+          {"id": "sustainability",
+            "title": _("Sustainability"),
+            "description": _("Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs).")},
+
+          {"id": "cbdc",
+            "title": _("CBDC"),
+            "description": _("A private version of the XRP Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs).")},
+
+          {"id": "custody",
+            "title": _("Custody"),
+            "description": _("Use the XRP Ledger to build crypto custody and securely hold, store and use your assets.")},
+
+          {"id": "defi",
+            "title": _("DeFi"),
+            "description": _("Provide access to financial products and services replacing the traditional role of financial institutions.")},
+
       ] %}
       {% for use in uses %}
-      <li class="col ls-none">
+      <li class="col ls-none p-3">
         <img id="{{use.id}}" alt="{{use.title}} icon">
         <h4 class="mt-3 mb-0 h5">{{use.title}}</h4>
-        <p class="mt-6-until-sm mt-3 mb-0">{{use.description}}</p>
+        <p class="mt-2 mt-md-3 mb-0">{{use.description}}</p>
       </li>
       {% endfor %}
     </ul>
   </section>
 
-  <div class="position-relative d-none-sm">
-    <img src="./img/backgrounds/use-cases-orange.svg" id="use-cases-orange">
-  </div>
-
   <section class="container-new py-26">
-    <div class="col-sm-7 p-0">
+    <div class="col-12 col-lg-8 col-xl-6 p-3 mb-5">
       <div class="d-flex flex-column-reverse">
         <h3 class="h4 h2-sm">{% trans %}Businesses and projects running<br class="until-sm"> on the XRP Ledger{% endtrans %}</h3>
         <h6 class="eyebrow mb-3">{% trans %}Solving Real Problems Across Industries{% endtrans %}</h6>
@@ -75,77 +446,62 @@
       <p class="mb-0 longform mt-8-until-sm mt-3 ">{% trans %}There are companies and developer projects around the world that leverage the XRP Ledger to solve interesting problems across a variety of industries and use cases.{% endtrans %}</p>
     </div>
 
-    {% set cards = [
-      { "link": "https://www.bitgo.com/",
-        "name": "BitGo",
-        "id": "bitgo",
-        "title": _("Asset Custody"),
-        "description": _("BitGo provides custodial and non-custodial asset holdings for digital assets including XRP. BitGo's enterprise-level security empowers businesses to integrate digital currencies like XRP into new and existing financial systems.")},
-      { "link": "https://bitpay.com/",
-        "id": "bitpay",
-        "name": "BitPay",
-        "title": _("Payment Processing"),
-        "description": _("BitPay builds powerful, enterprise-grade tools for accepting and spending cryptocurrencies, including XRP.")},
-      { "link": "https://coil.com/",
-        "id": "coil",
-        "name": "Coil",
-        "title": _("Web Monetization"),
-        "description": _("Coil provides web monetization as an alternative to traditional paid advertising. Coil uses the interledger protocol (ILP) to stream micropayments as users consume content. The XRPL’s payment channels provide an ideal system for settling these micropayments at high speed and low cost.")},
-      { "link": "https://www.forte.io/",
-        "id": "forte",
-        "name": "Forte",
-        "title": _("Online Gaming"),
-        "description": _("Forte offers an unprecedented set of easy-to-use tools and services for game developers to integrate blockchain technology into their games, to unlock new economic and creative opportunities for gamers across the world.")},
-      { "link": "https://gatehub.net/",
-        "id": "gatehub",
-        "name": "Gatehub",
-        "title": _("Wallet and Platforms"),
-        "description": _("GateHub is a platform for the Internet of Value, built on the XRP Ledger protocol. It allows everyone to send, receive, trade and manage any type of assets.")},
-      { "link": "https://www.exodus.io/",
-        "id": "exodus",
-        "name": "Exodus",
-        "title": _("Wallets and Apps"),
-        "description": _("Exodus offers wallets and applications for securing, managing and exchanging crypto.")},
-      { "link": "https://ripple.com/",
-        "id": "ripple",
-        "name": "Ripple",
-        "title": _("On-Demand Liquidity"),
-        "description": _("Ripple powers instant, lower-cost settlement of cross-border payments using XRP to source liquidity on demand. XRP is ideally suited for global payments because it's quicker, less costly, and more scalable than any other digital asset.")},
-      { "link": "https://towolabs.com",
-        "id": "towo",
-        "name": "Towo Labs",
-        "title": _("Infrastructure"),
-        "description": _("Towo Labs was founded in 2019, to develop XRP Ledger and Interledger infrastructures and make non-custodial crypto management easier.")},
-      { "link": "https://raisedinspace.com/",
-        "id": "raisedinspace",
-        "name": "Raised in Space",
-        "title": _("Music"),
-        "description": _("Raised in Space is a music/tech investment group focused on raising the value of music, innovating across the entire value chain of the music industry.")},
-      { "link": "https://xrpl-labs.com/",
-        "id": "xrpl-labs",
-        "name": "XRPL Labs",
-        "title": _("Applications"),
-        "description": _("From cold storage to apps for signing transactions, XRPL Labs is dedicated to building software on the XRP Ledger.")},
-      { "link": "https://xrplorer.com/",
-        "id": "xrplorer",
-        "name": "Xrplorer",
-        "title": _("Security"),
-        "description": _("Xrplorer offers services and tools that help prevent and combat fraudulent activity on the XRPL as well as custom APIs and analytics that supplement the XRPL APIs where they are not enough.")},
-    ] %}
+    <a class="btn  d-block d-lg-none" data-toggle="modal" data-target="#categoryFilterModal">
+      <span class="mr-3"><img src="./assets/img/uses/usecase-filter.svg" class=""></span>{% trans %}Filter by Categories{% endtrans %}<span class="ml-3 total_count category_count">2</span>
+    </a>
 
-    <div class="row row-cols-1 row-cols-lg-3 card-deck">
-      {% for card in cards %}
-      <a class="card" href="{{card.link}}" target="_blank" id="{{card.id}}">
-        <div class="card-body">
-          <img class="mw-100 mb-3 biz-logo" alt="{{card.name|default(card.id)}}">
-          <h4 class="card-title h5">{{card.title}}</h4>
-          <p class="card-text">{{card.description}}</p>
+<!-- Start company cards -->
+    <div class="row col-12 m-0 p-0 mt-4 pt-2">
+      <div class="left col-3 m-0 p-0 mt-2 d-none d-lg-block">
+
+<!-- Side bar Desktop.  -->
+        <div class="p-3 category_sidebar">
+            <form >
+              <p class="category-header mb-4">{% trans %}Featured Categories{% endtrans %} <span id="featured_count_old" class="featured_count category_count">2</span></p>
+                {% for category_id, category_name in featured_categories.items() %}
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}" checked>
+                      <label class="font-weight-bold" for="input_{{category_id}}">{{ category_name }}</label>
+                  </div>
+                {% endfor %}
+  
+              <p class="category-header pt-5 mt-3 mb-4">{% trans %}Other Categories{% endtrans %} <span id="other_count_old" class="other_count category_count">0</span></p>    
+                {% for category_id, category_name in other_categories.items() %}
+                  <div class="cat_checkbox category-checkbox pb-2">
+                      <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}">
+                      <label for="input_{{category_id}}">{{ category_name }}</label>
+                  </div>
+                {% endfor %}
+            </form>
         </div>
-        <div class="card-footer">&nbsp;</div>
-      </a>
-      {% endfor %}
-    </div>
+<!-- End sidebar desktop -->
+
+      </div>
+
+      <!-- cards -->
+      <div class="right row col row-cols-lg-2 m-0 p-0" id="use_case_companies_list">
+
+        {% for card in cards %}
+        <a class="card-uses category_{{card.category_id}}" href="{{card.link}}" target="_blank" id="{{card.id}}">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="{{card.title|default(card.id)}}">
+            </span>
+            <h4 class="card-title h6">{{card.title}}</h4>
+            <p class="card-text">{{card.description}}</p>
+            <div class="align-self-end"><span class="label label-use-{{card.category_id}}">{{card.category_name}}</span></div>
+          </div>
+        </a>
+        {% endfor %}
+
+      </div>
+      <!-- end cards -->
+
+    </div> 
+    <!-- end company cards -->
+
   </section>
+
 </div>
 
 {% endblock %}
@@ -160,3 +516,8 @@
     })
     </script>
 {% endblock analytics %}
+
+
+{% block endbody %}
+<script type="application/javascript" src="{{currentpage.prefix}}assets/js/use-cases.js"></script>
+{% endblock %}

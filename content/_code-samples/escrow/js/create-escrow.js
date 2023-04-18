@@ -1,57 +1,69 @@
 'use strict'
-const RippleAPI = require('ripple-lib').RippleAPI
-const cc = require('five-bells-condition')
-const crypto = require('crypto')
+if (typeof module !== "undefined") {
+  // Use var here because const/let are block-scoped to the if statement.
+  var xrpl = require('xrpl');
+};
 
-const myAddr = 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'
-const mySecret = 's████████████████████████████'
+const cc = require('five-bells-condition');
+const crypto = require('crypto');
 
-// Construct condition and fulfillment
-const preimageData = crypto.randomBytes(32)
-const myFulfillment = new cc.PreimageSha256()
-myFulfillment.setPreimage(preimageData)
-const conditionHex = myFulfillment.getConditionBinary().toString('hex').toUpperCase()
+// Useful Documentation:- 
+// 1. five-bells-condition: https://www.npmjs.com/package/five-bells-condition
+// 2. Crypto module: https://nodejs.org/api/crypto.html
 
-console.log('Condition:', conditionHex)
-console.log('Fulfillment:', myFulfillment.serializeBinary().toString('hex').toUpperCase())
+// Your account seed value, for testing purposes you can generate using: https://xrpl.org/xrp-test-net-faucet.html
+const seed = "sEd7jfWyNG6J71dEojB3W9YdHp2KCjy";
 
-// Construct transaction
-const currentTime = new Date()
-const myEscrow = {
-  "destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", // Destination can be same as source
-  "destinationTag": 2017,
-  "amount": "0.1113", //decimal XRP
-  "condition": conditionHex,
-  "allowExecuteAfter": currentTime.toISOString() // can be executed right away if the condition is met
+const main = async () => {
+  try {
+
+    // Construct condition and fulfillment ---------------------------------------
+    const preimageData = crypto.randomBytes(32);
+    const myFulfillment = new cc.PreimageSha256();
+    myFulfillment.setPreimage(preimageData);
+    const conditionHex = myFulfillment.getConditionBinary().toString('hex').toUpperCase();
+
+    console.log('Condition:', conditionHex);
+    console.log('Fulfillment:', myFulfillment.serializeBinary().toString('hex').toUpperCase());
+
+    // Connect -------------------------------------------------------------------
+    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
+    await client.connect();
+
+    // Prepare wallet to sign the transaction -------------------------------------
+    const wallet = await xrpl.Wallet.fromSeed(seed);
+    console.log("Wallet Address: ", wallet.address);
+    console.log("Seed: ", seed);
+
+    // Set the escrow finish time --------------------------------------------------
+    let finishAfter = new Date((new Date().getTime() / 1000) + 120); // 2 minutes from now
+    finishAfter = new Date(finishAfter * 1000);
+    console.log("This escrow will finish after: ", finishAfter);
+
+    const escrowCreateTransaction = {
+      "TransactionType": "EscrowCreate",
+      "Account": wallet.address,
+      "Destination": wallet.address,
+      "Amount": "6000000", //drops XRP
+      "DestinationTag": 2023,
+      "Condition": conditionHex,
+      "Fee": "12",
+      "FinishAfter": xrpl.isoTimeToRippleTime(finishAfter.toISOString()), // Refer for more details: https://xrpl.org/basic-data-types.html#specifying-time
+  };
+
+    xrpl.validate(escrowCreateTransaction);
+
+    // Sign and submit the transaction --------------------------------------------
+    console.log('Signing and submitting the transaction:', JSON.stringify(escrowCreateTransaction, null,  "\t"), "\n");
+    const response  = await client.submitAndWait(escrowCreateTransaction, { wallet });
+    console.log(`Sequence number: ${response.result.Sequence}`);
+    console.log(`Finished submitting! ${JSON.stringify(response.result, null, "\t")}`);
+
+    await client.disconnect();
+    
+  } catch (error) {
+    console.log(error);
+  }
 }
-const myInstructions = {
-  maxLedgerVersionOffset: 5
-}
 
-// Connect and submit
-const api = new RippleAPI({server: 'wss://s2.ripple.com'})
-
-function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
-  const signedData = api.sign(prepared.txJSON, secret)
-  console.log('Transaction ID: ', signedData.id)
-  return api.submit(signedData.signedTransaction).then(data => {
-    console.log('Tentative Result: ', data.resultCode)
-    console.log('Tentative Message: ', data.resultMessage)
-  })
-}
-
-api.connect().then(() => {
-  console.log('Connected')
-  return api.prepareEscrowCreation(myAddr, myEscrow, myInstructions)
-}).then(prepared => {
-  console.log('EscrowCreation Prepared')
-  return api.getLedger().then(ledger => {
-    console.log('Current Ledger', ledger.ledgerVersion)
-    return submitTransaction(ledger.ledgerVersion, prepared, mySecret)
-  })
-}).then(() => {
-  api.disconnect().then(() => {
-    console.log('api disconnected')
-    process.exit()
-  })
-}).catch(console.error)
+main()

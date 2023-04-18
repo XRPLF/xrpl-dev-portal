@@ -74,15 +74,29 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 
 ### Specifying Without Amounts
 
-If you are specifying a token without an amount (typically for defining an order book in the [decentralized exchange](decentralized-exchange.html)) you should specify it as a currency object, but omit the `value` field.
+In some cases, you need to define an asset (which could be XRP or a token) without a specific amount, such as when defining an order book in the [decentralized exchange](decentralized-exchange.html).
 
-If you are specifying XRP without an amount (typically for defining an order book), you should specify it as a JSON object with _only_ a `currency` field. Never include an `issuer` field for XRP.
+To describe a token without an amount, specify it as a currency object, but omit the `value` field. For example:
+
+```json
+{
+  "currency": "TST",
+  "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+}
+```
+
+To describe XRP without an amount, specify it as a JSON object with _only_ a `currency` field. Never include an `issuer` field for XRP. For example:
+
+```json
+{
+  "currency": "XRP"
+}
+```
 
 
 ## String Numbers
 
 {% include '_snippets/string-number-formatting.md' %}
-<!--{#_ #}-->
 
 ## XRP Precision
 

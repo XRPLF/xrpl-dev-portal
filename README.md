@@ -105,3 +105,30 @@ $ pybabel compile -f -d ./locale/
 If you added a new language for the first time, you need to make sure its target definition (in the `dactyl-config.yml` file) has the MO file in the `locale_file` field.
 
 After that, next time you build the site using Dactyl it should pull the updated translations!
+
+## Issues, Projects, and Project Boards
+
+Use GitHub Issues under the [`xrpl-dev-portal`](https://github.com/XRPLF/xrpl-dev-portal) repository to report bugs, feature requests, and suggestions for the XRP Ledger Documentation or the `xrpl.org` website. 
+
+For issues related to `rippled` or client libraries (`xrpl.js`, `xrpl-py`, and others), use the respective source repository under [`https://github.com/XRPLF`](https://github.com/XRPLF).
+
+If you are a contributor, use GitHub Projects and Project Boards to plan and track updates to xrpl.org. 
+
+### Project Board `xrpl-docs`
+
+The [`xrpl-docs`](https://github.com/orgs/XRPLF/projects/4) Kanban board is used to plan and track updates to the XRP Ledger Documentation. Contributors must update the status of an issue as it progresses through different stages.
+
+The `xrpl-docs` board has six columns based on the status of issues in this repository:
+
+* **No Status**: New or existing issues that no one has triaged yet.
+
+* **Backlog**: Issues that represent tasks to be done eventually. They should contain actionable and helpful information for a contributor to work on addressing the issue.
+
+* **Planned**: Issues with assignees who plan to address them in the near future, like 2-4 weeks.
+
+* **In Progress**: Issues that a contributor is actively working on.
+
+* **In Review**: Issues with a proposed fix that is currently being reviewed. These should be associated with an open pull request.
+
+* **Done**: Issues that have been completed, whose related content updates have been merged.
+
