@@ -186,6 +186,11 @@ async def main() -> int:
         balance_changes = get_balance_changes(result.result["meta"])
         print(f"Balance Changes:\n{pprint.pformat(balance_changes)}")
 
+        # For educational purposes the transaction metadata is analyzed manually in the
+        # following section. However, there is also a get_order_book_changes(metadata)
+        # utility function available in the xrpl library, which is generally the easier
+        # and preferred choice for parsing the metadata and computing orderbook changes.
+
         # Helper to convert an XRPL amount to a string for display
         def amt_str(amt) -> str:
             if isinstance(amt, str):
