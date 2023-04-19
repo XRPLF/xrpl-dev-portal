@@ -60,7 +60,9 @@ Before you begin, make sure you have the prerequisites installed. Check your nod
 
    - Alternatively you can also do `yarn add <package-name>` for each individual package to add them to your `package.json` file.
   
-4. Run `yarn` to install the packages.
+4. Install dependencies:
+
+        yarn
 
 5. Create a new file `.env` in the root directory of the project and add the following variables:
 
