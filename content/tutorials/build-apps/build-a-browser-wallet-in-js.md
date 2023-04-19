@@ -50,8 +50,9 @@ Before you begin, make sure you have the prerequisites installed. Check your nod
 1. Navigate to the directory that you want to create the project in.
 2. Create a new Vite project:
 
-        yarn create vite-app simple-xrpl-wallet
-
+```bash
+yarn create vite simple-xrpl-wallet --template vanilla
+```
 
 3. Create or modify the file `package.json` to have the following contents:
 
@@ -61,7 +62,9 @@ Before you begin, make sure you have the prerequisites installed. Check your nod
   
 4. Install dependencies:
 
-        yarn
+```bash
+yarn
+```
 
 5. Create a new file `.env` in the root directory of the project and add the following variables:
 
@@ -144,7 +147,6 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 4. Now that we have the HTML code, let's add the JavaScript code. In the `helpers` folder, create a new file named `submit-transaction.js` and copy the code written below to the file. In this file, we are using the [submit](submit.html) method to submit the transaction to the XRPL. Before submitting every transaction needs to be signed by a wallet, learn more about [signing](sign.html) a transaction.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/helpers/submit-transaction.js", language="js") }}
-
 
 5. Now back to the `send-xrp.js` file, copy the code written below to the file. In this piece of code we are first getting all the DOM elements from HTML and adding event listners to update & validate the fields based on the user input. Using `renderAvailableBalance` method we display the current available balance of the wallet. `validateAddress` function validates the user address, and the amount is validated using a regular expression. When all the fields are filled with correct inputs, we call the `submitTransaction` function to submit the transaction to the ledger.
 
