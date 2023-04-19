@@ -80,7 +80,7 @@ This example includes the necessary configuration to make [xrpl.js work with Vit
 
 8. Add script to `package.json`
 
-In your `package.json` file, add:
+In your `package.json` file, add the following section if it's not there already:
 
 ```json
 "scripts": {
