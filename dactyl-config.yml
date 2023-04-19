@@ -852,6 +852,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/tokens/nft-apis.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/freezes.md
         targets:
             - en
@@ -3522,6 +3527,12 @@ pages:
 
         # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
         targets:
             - en
             - ja
