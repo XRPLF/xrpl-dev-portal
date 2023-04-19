@@ -48,11 +48,10 @@ Before you begin, make sure you have the prerequisites installed. Check your nod
 ### 1. Set up the project
 
 1. Navigate to the directory that you want to create the project in.
-2. Run 
-   ```sh
-    yarn create vite-app <project-name>
-    ```
-    to create a new project.
+2. Create a new Vite project:
+
+        yarn create vite-app simple-xrpl-wallet
+
 
 3. Create or modify the file `package.json` to have the following contents:
 
