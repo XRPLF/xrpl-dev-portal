@@ -983,4 +983,14 @@ $placeholder-color: $gray-600;
 
 }
 
+// Pop-up window
+.popup {
+  .popup-window {
+    background: $white;
+  }
+  p {
+    color: $gray-900;
+  }
+}
+
 

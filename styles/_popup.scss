@@ -1,0 +1,103 @@
+.popup {
+  .popup-window {
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px 26px 16px;
+  gap: 16px;
+  z-index: 100;
+  position: fixed;
+  width: 360px;
+  top: 104px;
+  right: 32px;
+  background: $gray-700;
+  border-radius: 8px;
+  }
+
+  p {
+    margin-bottom: 0;
+    color: $gray-100;
+  }
+
+  label {
+    margin-bottom: 0;
+  }
+
+  .popuptext {
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .show {
+    visibility: visible;
+  }
+
+  .discord-logo {
+    display: inline-block;
+    vertical-align: -10%;
+    background: url("/img/logos/discord_white.svg");
+    width: 18px;
+    height: 14px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .show-again {
+    .show-again-checkbox {
+      border-radius: 6.5px;
+      vertical-align: middle;
+      appearance: none;
+      border: 1.625px solid $blue-purple-400;
+      width: 16.25px;
+      height: 16.25px;
+    }
+
+    .show-again-checkbox:checked {
+      background: $blue-purple-500;
+    }
+
+    .show-again-message {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 100%;
+      align-items: center;
+      vertical-align: middle;
+    }
+    /* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkmark:after {
+  left: 111.5px;
+  top: 146px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+  }
+
+  .close {
+    top: 22px;
+    right: 22px;
+    font-weight: 400;
+    line-height: 0.5;
+    font-size: 2rem;
+    position: absolute;
+    color: $gray-400;
+    text-shadow: none;
+  }
+}
