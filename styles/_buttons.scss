@@ -76,13 +76,6 @@ button[disabled="disabled"] {
   }
 }
 
-@media (max-width: 767.98px) {
-  .btn-arrow-up {
-    display: block;
-    width: 100%;
-  }
-}
-
 .btn-arrow-out::after {
   background-position: left 0px bottom 0px;
   content: "\00a0";
