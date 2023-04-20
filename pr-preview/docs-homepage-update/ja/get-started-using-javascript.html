@@ -352,7 +352,7 @@
 <p>前節のサンプルコードでは、利用可能な<a href="parallel-networks.html">並列ネットワーク</a>の1つであるTestnetに接続する方法を紹介しました。本番環境に移行するには、XRP Ledger Mainnetに接続する必要があります。それには2つの方法があります。</p>
 <ul>
 <li>
-<p><a href="install-rippled.html">コアサーバをインストール</a> (<code>rippled</code>)して、自分でノードを動かしてみましょう。コアサーバーはデフォルトではMainnetに接続しますが、設定を変更してTestnetやDevnetを使うこともできます](connect-your-rippled-to-thexrp-test-net.html)。<a href="rippled-server-modes.html#ストックサーバーを運用する理由">独自のコアサーバーを運用するのには良い理由があります</a>。独自のサーバーを走らせた場合、次のようにして接続することができます。</p>
+<p><a href="install-rippled.html">コアサーバをインストール</a> (<code>rippled</code>)して、自分でノードを動かしてみましょう。コアサーバーはデフォルトではMainnetに接続しますが、設定を変更してTestnetやDevnetを使うこともできます](connect-your-rippled-to-thexrp-test-net.html)。<a href="xrpl-servers.html#独自サーバーを運用する理由">独自のコアサーバーを運用するのには良い理由があります</a>。独自のサーバーを走らせた場合、次のようにして接続することができます。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="k">const</span><span class="w"> </span><span class="n">MY_SERVER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ws://localhost:6006/"</span>
 <span class="k">const</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">xrpl</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">MY_SERVER</span><span class="p">)</span>
 <span class="n">await</span><span class="w"> </span><span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
@@ -691,6 +691,11 @@
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+  </div>
+
     </nav>
 
   </div>
@@ -862,7 +867,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -909,7 +914,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -2340,6 +2345,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       

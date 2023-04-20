@@ -323,7 +323,7 @@
 <p>The sample code in the previous section shows you how to connect to the Testnet, which is a <a href="parallel-networks.html">parallel network</a> for testing where the money has no real value. When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:</p>
 <ul>
 <li>
-<p>By <a href="install-rippled.html">installing the core server</a> (<code>rippled</code>) and running a node yourself. The core server connects to the Mainnet by default, but you can <a href="connect-your-rippled-to-the-xrp-test-net.html">change the configuration to use Testnet or Devnet</a>. <a href="rippled-server-modes.html#ストックサーバーを運用する理由">There are good reasons to run your own core server</a>. If you run your own server, you can connect to it like so:</p>
+<p>By <a href="install-rippled.html">installing the core server</a> (<code>rippled</code>) and running a node yourself. The core server connects to the Mainnet by default, but you can <a href="connect-your-rippled-to-the-xrp-test-net.html">change the configuration to use Testnet or Devnet</a>. <a href="xrpl-servers.html#独自サーバーを運用する理由">There are good reasons to run your own core server</a>. If you run your own server, you can connect to it like so:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
 <span class="n">JSON_RPC_URL</span> <span class="o">=</span> <span class="s2">"http://localhost:5005/"</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">JSON_RPC_URL</span><span class="p">)</span>
@@ -762,6 +762,11 @@ response.status:<span class="w">  </span>ResponseStatus.SUCCESS
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+  </div>
+
     </nav>
 
   </div>
@@ -933,7 +938,7 @@ response.status:<span class="w">  </span>ResponseStatus.SUCCESS
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -980,7 +985,7 @@ response.status:<span class="w">  </span>ResponseStatus.SUCCESS
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -2411,6 +2416,11 @@ response.status:<span class="w">  </span>ResponseStatus.SUCCESS
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       

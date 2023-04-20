@@ -1,11 +1,11 @@
 -------------
 Spell Checker
 -------------
-Found 43 possible spelling errors:
+Found 46 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: kifs, gits, gils
-  kuressaare: 
+  gifs: giss, gif, gift
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -23,54 +23,58 @@ Found 43 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: blockhole, black-hole
+  blackhole: black-hole, blockhole
+
+<Page 'NFT APIs' (nft-apis.html)> Unknown Words:
+  nft_history: 
+  slas: slat, las, slae
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalance, unbalanced
+  unbalances: unbalanced, unbalance
   machowski: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  disallowincoming: 
+  fixnonfungibletokensv1_2: 
   immediateofferkilled: 
   xrpfees: 
-  fixnonfungibletokensv1_2: 
   depositpreauthamendment: 
   fixuniversalnumber: 
-  disallowincoming: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
   asfdisallowincomingcheck: 
-  asfdisallowincomingtrustline: 
+  asfdisallowincomingpaychan: 
   asfdisallowincomingnftoffer: 
-  30d: 3rd, 3d, 3-d
+  asfdisallowincomingtrustline: 
+  30d: 3-d, 3rd, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3-d, 3rd, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -85,12 +89,15 @@ Found 43 possible spelling errors:
   xrpfees: 
 
 <Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3-d, 3rd, 3d
+
+<Page 'nft_history' (nft_history.html)> Unknown Words:
+  nft_history: 
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 31 discouraged words/phrases:
+Found 32 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -125,6 +132,8 @@ Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-st
    Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
 Page: <Page 'tem Codes' (tem-codes.html)>
    Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+Page: <Page 'ledger_data' (ledger_data.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 ------------------
 Readability Scores
 ------------------
@@ -171,8 +180,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 751
-  Characters: 4,670
+  Words: 750
+  Characters: 4,661
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
