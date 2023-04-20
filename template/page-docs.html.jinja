@@ -23,7 +23,7 @@
   {# Macros #}
   {% macro primaryButton(href, text, isArrowUp) %}
     {% if isArrowUp %}
-      <a class="btn btn-primary btn-arrow-up" id="{{href}}-button" href="{{href}}">{{ text }}</a>
+      <a class="btn btn-primary btn-arrow-out" id="{{href}}-button" href="{{href}}">{{ text }}</a>
     {% else %}
       <a class="btn btn-primary btn-arrow" id="{{href}}-button" href="{{href}}">{{ text }}</a>
     {% endif %}
@@ -153,16 +153,16 @@
       "imgClass": "token-illustration",
       "subItems": [
         {
-          "description": "NFT Conceptual Overview",
+          "description": "NFT Marketplace",
           "link": "./non-fungible-tokens.html",
         },
         {
-          "description": "NFToken Format",
-          "link": "./nftoken.html",
+          "description": "Issue a stablecoin",
+          "link": "./issue-a-fungible-token.html",
         },
         {
-          "description": "NFToken Tester Tutorial",
-          "link": "./nftoken-tester-tutorial.html",
+          "description": "Assign an authorized minter",
+          "link": "./authorize-minter.html",
         },
       ],
     },
@@ -287,7 +287,7 @@
           <div class="dg-lg-block mb-3">
             <a
               class="btn btn-primary btn-arrow get-started-button"
-              href="./tutorials/xrpl-quickstart.html"
+              href="./xrpl-quickstart.html"
             >
               Get Started
             </a>
