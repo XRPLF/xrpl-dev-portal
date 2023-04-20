@@ -99,7 +99,6 @@
 .page-docs-index {
 
   .dev-tools-links {
-
     h6::before {
       margin-top: -20px;
       height: 20px;
@@ -110,10 +109,12 @@
       text-decoration: none;
       background: none!important;
     }
+
     p:hover {
       text-decoration: none !important;
       background: none !important;
     }
+
     a:hover{
       color:#9A52FF;
       text-decoration: none !important;
@@ -158,10 +159,6 @@
     }
   }
 
-  h1,h2,h3,h4,h5,h6,p {
-    font-family: 'Work Sans'!important;
-  }
-
   h1 {
     font-size: 3.875rem;
   }
@@ -169,12 +166,6 @@
 
 @media (max-width: 765px) {
   .page-docs-index {
-    .page-docs section {
-      margin-top: unset;
-      margin-bottom: 64px;
-      margin-right: unset;
-    }
-
     h1 {
       font-size: 3rem;
     }
@@ -239,12 +230,6 @@
     margin-left: 0;
   }
 
-  section {
-    margin-top: 128px;
-    margin-bottom: 128px;
-    margin-right: 8%;
-  }
-
   .video-grid {
     grid-gap: 35px;
   }
@@ -255,10 +240,6 @@
 
   .circled-logo {
     margin-left:0.1rem;
-  }
-
-  .container-new {
-    padding: 0px 0px;
   }
 }
 
@@ -284,7 +265,26 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .nav-link::after {
+    content: none !important;
+  }
+
+  @include media-breakpoint-down(md) {
+    .flat-card-padding {
+      margin-bottom: 0;
+    }
+
+    .nav-link::after {
+      content: ' ' !important;
+    }
+  
+    .flat-card .btn {
+      display: none;
+    }
+  }
 }
+
 
 .align-button-on-bottom {
   

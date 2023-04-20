@@ -1076,21 +1076,6 @@
     }
   }
 
-  section {
-    @include media-breakpoint-down(md) {
-      margin-bottom: 2.5rem;
-    }
-
-    @include media-breakpoint-up(lg) {
-      .row .col-lg-6:first-child {
-        padding-right: 40px;
-      }
-      .row .col-lg-6:last-child {
-        padding-left: 40px;
-      }
-    }
-  }
-
   #software-and-sdks .card-deck {
     .card:nth-child(1) .card-footer {
       background-image: url(../img/cards/4col-green.svg);
