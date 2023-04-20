@@ -31,7 +31,6 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
 
 - [`index`](#get-ledger-object-by-id)
 - [`account_root`](#get-accountroot-object)
-- [`amm`](#get-amm-object) :not_enabled:
 - [`directory`](#get-directorynode-object)
 - [`offer`](#get-offer-object)
 - [`ripple_state`](#get-ripplestate-object)
