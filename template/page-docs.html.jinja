@@ -91,19 +91,19 @@
   {% set recommendedPages = [
       {
         "description": _("rippled API Reference"),
-        "link": "https://xrpl.org/manage-the-rippled-server.html",
+        "link": "./manage-the-rippled-server.html",
       },
       {
         "description": _("XRP Faucet"),
-        "link": "https://xrpl.org/xrp-testnet-faucet.html",
+        "link": "./xrp-testnet-faucet.html",
       },
       {
         "description": _("Getting Started with Python"),
-        "link": "https://xrpl.org/get-started-using-python.html#get-started-using-python",
+        "link": "./get-started-using-python.html#get-started-using-python",
       },
       {
         "description": _("Websocket API Tool"),
-        "link": "https://xrpl.org/websocket-api-tool.html",
+        "link": "./websocket-api-tool.html",
       },
       { "description": _("XRP Ledger Explorer"), "link": "https://livenet.xrpl.org" },
   ] %}
@@ -135,15 +135,15 @@
       "subItems": [
         {
           "description": "Trade on the decentralized exchange",
-          "link": "https://xrpl.org/trade-in-the-decentralized-exchange.html",
+          "link": "./trade-in-the-decentralized-exchange.html",
         },
         {
           "description": "Make payments",
-          "link": "https://xrpl.org/send-xrp.html",
+          "link": "./send-xrp.html",
         },
         {
           "description": "Use specialized payment types",
-          "link": "https://xrpl.org/use-specialized-payment-types.html"
+          "link": "./use-specialized-payment-types.html"
         }
       ],
     },
@@ -154,15 +154,15 @@
       "subItems": [
         {
           "description": "NFT Conceptual Overview",
-          "link": "https://xrpl.org/non-fungible-tokens.html",
+          "link": "./non-fungible-tokens.html",
         },
         {
           "description": "NFToken Format",
-          "link": "https://xrpl.org/nftoken.html",
+          "link": "./nftoken.html",
         },
         {
           "description": "NFToken Tester Tutorial",
-          "link": "https://xrpl.org/nftoken-tester-tutorial.html",
+          "link": "./nftoken-tester-tutorial.html",
         },
       ],
     },
@@ -173,15 +173,15 @@
       "subItems": [
         {
           "description": "Peer to peer payments",
-          "link": "https://xrpl.org/direct-xrp-payments.html",
+          "link": "./direct-xrp-payments.html",
         },
         {
           "description": "Cross-currency payments",
-          "link": "https://xrpl.org/cross-currency-payments.html",
+          "link": "./cross-currency-payments.html",
         },
         {
           "description": "Escrows",
-          "link": "https://xrpl.org/escrow.html",
+          "link": "./escrow.html",
         },
       ],
     },
@@ -215,13 +215,13 @@
     set devTools = [
     {
       "title": "Faucets",
-      "link": "https://xrpl.org/xrp-testnet-faucet.html",
+      "link": "./xrp-testnet-faucet.html",
       "description":
         "Get credentials and test-XRP for XRP Ledger Testnet or Devnet.",
     },
     {
       "title": "WebSocket Tool",
-      "link": "https://xrpl.org/websocket-api-tool.html",
+      "link": "./websocket-api-tool.html",
       "description":
         "Send sample requests and get responses from the rippled API.",
     },
@@ -233,7 +233,7 @@
     },
     {
       "title": "Transaction Sender",
-      "link": "https://xrpl.org/tx-sender.html",
+      "link": "./tx-sender.html",
       "description":
         "Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.",
     },
@@ -243,21 +243,21 @@
   <section class="container-new py-26">
     <div class="nav card-grid flat-card-grid card-grid-3xN">
       <div class="col">
-        {{ flatCard("./concepts/", 
+        {{ flatCard("./concepts.html", 
                     "Concepts", 
                     "Learn the \"what\" and the \"why\" behind fundamental aspects of the XRP Ledger.", 
                     "Read the Docs",
                     "concepts-doc-illustration") }}
       </div>
       <div class="col">
-        {{ flatCard("./tutorials/", 
+        {{ flatCard("./tutorials.html", 
                     "Tutorials", 
                     "Get step-by-step guidance to perform common tasks with the XRP Ledger.", 
                     "View Tutorials",
                     "tutorial-illustration") }}
       </div>
       <div class="col">
-        {{ flatCard("./references/", 
+        {{ flatCard("./references.html", 
                     "References", 
                     "Look up reference documentation for the XRP Ledger protocol, API methods, and more.", 
                     "View References",
@@ -287,7 +287,7 @@
           <div class="dg-lg-block mb-3">
             <a
               class="btn btn-primary btn-arrow get-started-button"
-              href="./tutorials/quickstart/"
+              href="./tutorials/xrpl-quickstart.html"
             >
               Get Started
             </a>
@@ -322,7 +322,7 @@
       <div class="col">
         <div class="card-grid langs-cards card-grid-2xN mt-10" id="langs-cards">
           <div class="col langs">
-            <a href="https://xrpl.org/get-started-using-javascript.html">
+            <a href="./get-started-using-javascript.html">
               <img
                 src="/assets/img/logos/javascript.svg"
                 class="circled-logo"
@@ -331,7 +331,7 @@
             </a>
           </div>
           <div class="col langs">
-            <a href="https://xrpl.org/get-started-using-python.html">
+            <a href="./get-started-using-python.html">
               <img
                 src="/assets/img/logos/python.svg"
                 class="circled-logo"
@@ -340,7 +340,7 @@
             </a>
           </div>
           <div class="col langs">
-            <a href="https://xrpl.org/get-started-using-java.html">
+            <a href="./get-started-using-java.html">
               <img
                 src="/assets/img/logos/java.svg"
                 class="circled-logo"
@@ -388,7 +388,7 @@
             {{ devToolsCard(card.link, card.title, card.description) }}
           {% endfor %}
         </div>
-        {{ primaryButton("https://xrpl.org/dev-tools.html", "View All tools", false) }}
+        {{ primaryButton("./dev-tools.html", "View All tools", false) }}
       </div>
     </div>
   </section>
