@@ -1,4 +1,4 @@
-.popup {
+.discord-popup {
   .popup-window {
     visibility: hidden;
     display: flex;
@@ -65,19 +65,19 @@
       vertical-align: middle;
     }
     /* Create the checkmark/indicator (hidden when not checked) */
-    .checkmark:after {
+    .show-again-checkmark:after {
       content: "";
       position: absolute;
       display: none;
     }
 
     /* Show the checkmark when checked */
-    input:checked ~ .checkmark:after {
+    input:checked ~ .show-again-checkmark:after {
       display: block;
     }
 
     /* Style the checkmark/indicator */
-    .checkmark:after {
+    .show-again-checkmark:after {
       left: 111.5px;
       top: 146px;
       width: 5px;
