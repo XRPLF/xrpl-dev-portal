@@ -11,6 +11,7 @@ https://xrpl.org/faq.html
 https://xrpl.org/privacy-policy.html
 https://xrpl.org/technical-faq.html
 https://xrpl.org/docs.html
+https://xrpl.org/docs-index.html
 https://xrpl.org/concepts.html
 https://xrpl.org/introduction.html
 https://xrpl.org/intro-to-consensus.html

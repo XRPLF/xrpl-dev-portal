@@ -134,6 +134,9 @@
               <p>Dive into XRP Ledger technology and start integrating.</p>
             </div>
           </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="docs-index.html">Documentation Index</a>
+          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
             <a class="dropdown-item" href="concepts.html">Concepts</a>
@@ -285,11 +288,18 @@
         <h1 id="trade-in-the-decentralized-exchange">Trade in the Decentralized Exchange<a aria-hidden="true" class="hover_anchor" href="#trade-in-the-decentralized-exchange"><i class="fa fa-link"></i></a></h1>
 <p>This tutorial demonstrates how you can buy and sell tokens in the <a href="decentralized-exchange.html">decentralized exchange</a> (DEX).</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li>You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.</li>
+<li>You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:<ul>
+<li><strong>JavaScript</strong> with the <a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank">xrpl.js library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-javascript.html">Get Started Using JavaScript</a> for setup steps.</li>
+<li><strong>Python</strong> with the <a class="external-link" href="https://xrpl-py.readthedocs.io/" target="_blank"><code>xrpl-py</code> library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-python.html">Get Started using Python</a> for setup steps.</li>
+<li>You can also read along and use the interactive steps in your browser without any setup.</li>
+</ul>
+</li>
+</ul>
 <!-- Source for this specific tutorial's interactive bits: -->
 <script src="https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js"></script>
 <script src="assets/js/tutorials/trade-in-the-dex.js" type="application/javascript"></script>
-<p>This page provides JavaScript examples that use the <a class="external-link" href="https://js.xrpl.org/" target="_blank">xrpl.js <i aria-hidden="true" class="fa fa-external-link"></i></a> library. See <a href="get-started-using-javascript.html">Get Started Using JavaScript</a> for setup instructions.</p>
-<p>Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.</p>
 <h2 id="example-code">Example Code<a aria-hidden="true" class="hover_anchor" href="#example-code"><i class="fa fa-link"></i></a></h2>
 <p>Complete sample code for all of the steps of this tutorial is available under the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE" target="_blank">MIT license <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <ul>
@@ -315,7 +325,7 @@
 </table>
 <h3 id="1-connect-to-network">1. Connect to Network<a aria-hidden="true" class="hover_anchor" href="#1-connect-to-network"><i class="fa fa-link"></i></a></h3>
 <p>You must be connected to the network to submit transactions to it. Additionally, some languages (including JavaScript) require a high-precision number library for performing calculations on currency amounts you may find in the ledger. The following code shows how to connect to a public XRP Ledger Testnet server a supported <a href="client-libraries.html">client library</a> with the appropriate dependencies.</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li><li><a class="python" href="#code-0-1">Python</a></li></ul>
 
 <div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// In browsers, add the following &lt;script&gt; tags to the HTML to load dependencies</span>
 <span class="c1">// instead of using require():</span>
@@ -338,6 +348,23 @@
 <span class="p">}</span>
 
 <span class="nx">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">xrpl.asyncio.clients</span> <span class="kn">import</span> <span class="n">AsyncWebsocketClient</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Define the network client</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">AsyncWebsocketClient</span><span class="p">(</span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+        <span class="c1"># inside the context the client is open</span>
+
+        <span class="c1"># ... custom code goes here</span>
+
+    <span class="c1"># after exiting the context, the client is closed</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </code></pre></div></div>
 </div>
 <p class="devportal-callout note"><strong>Note:</strong> The JavaScript code samples in this tutorial use the <a class="external-link" href="https://javascript.info/async-await" target="_blank"><code>async</code>/<code>await</code> pattern <i aria-hidden="true" class="fa fa-external-link"></i></a>. Since <code>await</code> needs to be used from within an <code>async</code> function, the remaining code samples are written to continue inside the <code>main()</code> function started here. You can also use Promise methods <code>.then()</code> and <code>.catch()</code> instead of <code>async</code>/<code>await</code> if you prefer.</p>
@@ -375,9 +402,9 @@
 </div>
 <p class="devportal-callout caution"><strong>Caution:</strong> Ripple provides the <a href="parallel-networks.html">Testnet and Devnet</a> for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, <strong>do not</strong> use the same addresses on Testnet/Devnet and Mainnet.</p>
 <p>When you're <a href="production-readiness.html">building production-ready software</a>, you should use an existing account, and manage your keys using a <a href="set-up-secure-signing.html">secure signing configuration</a>. The following code shows how to create a <code>Wallet</code> instance to use your keys:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="python" href="#code-1-1">Python</a></li></ul>
 
-<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1">// Get credentials from the Testnet Faucet -----------------------------------</span>
+<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Get credentials from the Testnet Faucet -----------------------------------</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Requesting address from the Testnet faucet..."</span><span class="p">)</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">fundWallet</span><span class="p">()).</span><span class="nx">wallet</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Got address </span><span class="si">${</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb">.`</span><span class="p">)</span>
@@ -385,14 +412,19 @@
 <span class="w">  </span><span class="c1">// example using an environment variable as follows:</span>
 <span class="w">  </span><span class="c1">// const wallet = xrpl.Wallet.fromSeed(process.env['MY_SEED'])</span>
 </code></pre></div></div>
+
+<div class="code_sample python" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">        <span class="c1"># Get credentials from the Testnet Faucet -----------------------------------</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Requesting addresses from the Testnet faucet..."</span><span class="p">)</span>
+        <span class="n">wallet</span> <span class="o">=</span> <span class="k">await</span> <span class="n">generate_faucet_wallet</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div></div>
 </div>
 <h3 id="3-look-up-offers">3. Look Up Offers<a aria-hidden="true" class="hover_anchor" href="#3-look-up-offers"><i class="fa fa-link"></i></a></h3>
 <p>Before you buy or sell a token, you usually want to look up what others are buying and selling for, to get a sense of how others value it. In the XRP Ledger, you can look up existing offers for any currency pair using the <a href="book_offers.html">book_offers method</a>.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> Technically, this step is not a requirement for placing an Offer, but it is a good practice to confirm the current situation before trading anything with real value.</p>
 <p>The following code shows how to look up existing Offers and compare them to a proposed Offer to estimate how it would execute:</p>
-<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li></ul>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li><li><a class="python" href="#code-2-1">Python</a></li></ul>
 
-<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Define the proposed trade. ------------------------------------------------</span>
+<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// Define the proposed trade. ------------------------------------------------</span>
 <span class="w">  </span><span class="c1">// Technically you don't need to specify the amounts (in the "value" field)</span>
 <span class="w">  </span><span class="c1">// to look up order books using book_offers, but for this tutorial we reuse</span>
 <span class="w">  </span><span class="c1">// these variables to construct the actual Offer later.</span>
@@ -406,7 +438,7 @@
 <span class="w">           </span><span class="c1">// 25 TST * 10 XRP per TST * 15% financial exchange (FX) cost</span>
 <span class="w">    </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">xrpToDrops</span><span class="p">(</span><span class="mf">25</span><span class="o">*</span><span class="mf">10</span><span class="o">*</span><span class="mf">1.15</span><span class="p">)</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="c1">// "Quality" is defined as TakerPays ÷ TakerGets. The lower the "quality"</span>
+<span class="w">  </span><span class="c1">// "Quality" is defined as TakerPays / TakerGets. The lower the "quality"</span>
 <span class="w">  </span><span class="c1">// number, the better the proposed exchange rate is for the taker.</span>
 <span class="w">  </span><span class="c1">// The quality is rounded to a number of significant digits based on the</span>
 <span class="w">  </span><span class="c1">// issuer's TickSize value (or the lesser of the two for token-token trades.)</span>
@@ -511,6 +543,132 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 </code></pre></div></div>
+
+<div class="code_sample python" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">        <span class="c1"># Define the proposed trade. ------------------------------------------------</span>
+        <span class="c1"># Technically you don't need to specify the amounts (in the "value" field)</span>
+        <span class="c1"># to look up order books using book_offers, but for this tutorial we reuse</span>
+        <span class="c1"># these variables to construct the actual Offer later.</span>
+        <span class="c1">#</span>
+        <span class="c1"># Note that XRP is represented as drops, whereas any other currency is</span>
+        <span class="c1"># represented as a decimal value.</span>
+        <span class="n">we_want</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"currency"</span><span class="p">:</span> <span class="n">IssuedCurrency</span><span class="p">(</span>
+                <span class="n">currency</span><span class="o">=</span><span class="s2">"TST"</span><span class="p">,</span>
+                <span class="n">issuer</span><span class="o">=</span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span>
+            <span class="p">),</span>
+            <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"25"</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">we_spend</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"currency"</span><span class="p">:</span> <span class="n">XRP</span><span class="p">(),</span>
+            <span class="c1"># 25 TST * 10 XRP per TST * 15% financial exchange (FX) cost</span>
+            <span class="s2">"value"</span><span class="p">:</span> <span class="n">xrp_to_drops</span><span class="p">(</span><span class="mi">25</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1.15</span><span class="p">),</span>
+        <span class="p">}</span>
+
+        <span class="c1"># "Quality" is defined as TakerPays / TakerGets. The lower the "quality"</span>
+        <span class="c1"># number, the better the proposed exchange rate is for the taker.</span>
+        <span class="c1"># The quality is rounded to a number of significant digits based on the</span>
+        <span class="c1"># issuer's TickSize value (or the lesser of the two for token-token trades).</span>
+        <span class="n">proposed_quality</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">we_spend</span><span class="p">[</span><span class="s2">"value"</span><span class="p">])</span> <span class="o">/</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">we_want</span><span class="p">[</span><span class="s2">"value"</span><span class="p">])</span>
+
+        <span class="c1"># Look up Offers. -----------------------------------------------------------</span>
+        <span class="c1"># To buy TST, look up Offers where "TakerGets" is TST:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Requesting orderbook information..."</span><span class="p">)</span>
+        <span class="n">orderbook_info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+            <span class="n">BookOffers</span><span class="p">(</span>
+                <span class="n">taker</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+                <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"current"</span><span class="p">,</span>
+                <span class="n">taker_gets</span><span class="o">=</span><span class="n">we_want</span><span class="p">[</span><span class="s2">"currency"</span><span class="p">],</span>
+                <span class="n">taker_pays</span><span class="o">=</span><span class="n">we_spend</span><span class="p">[</span><span class="s2">"currency"</span><span class="p">],</span>
+                <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Orderbook:</span><span class="se">\n</span><span class="si">{</span><span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="n">orderbook_info</span><span class="o">.</span><span class="n">result</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+        <span class="c1"># Estimate whether a proposed Offer would execute immediately, and...</span>
+        <span class="c1"># If so, how much of it? (Partial execution is possible)</span>
+        <span class="c1"># If not, how much liquidity is above it? (How deep in the order book would</span>
+        <span class="c1"># other Offers have to go before ours would get taken?)</span>
+        <span class="c1"># Note: These estimates can be thrown off by rounding if the token issuer</span>
+        <span class="c1"># uses a TickSize setting other than the default (15). In that case, you</span>
+        <span class="c1"># can increase the TakerGets amount of your final Offer to compensate.</span>
+
+        <span class="n">offers</span> <span class="o">=</span> <span class="n">orderbook_info</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"offers"</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">want_amt</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">we_want</span><span class="p">[</span><span class="s2">"value"</span><span class="p">])</span>
+        <span class="n">running_total</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">offers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"No Offers in the matching book. Offer probably won't execute immediately."</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">offers</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="s2">"quality"</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">proposed_quality</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Matching Offer found, funded with </span><span class="si">{</span><span class="n">o</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'owner_funds'</span><span class="p">)</span><span class="si">}</span><span class="s2"> "</span>
+                          <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">we_want</span><span class="p">[</span><span class="s1">'currency'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                    <span class="n">running_total</span> <span class="o">+=</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"owner_funds"</span><span class="p">,</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+                    <span class="k">if</span> <span class="n">running_total</span> <span class="o">&gt;=</span> <span class="n">want_amt</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">"Full Offer will probably fill"</span><span class="p">)</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Offers are in ascending quality order, so no others after this</span>
+                    <span class="c1"># will match either</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">"Remaining orders too expensive."</span><span class="p">)</span>
+                    <span class="k">break</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total matched: </span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">running_total</span><span class="p">,</span><span class="w"> </span><span class="n">want_amt</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">we_want</span><span class="p">[</span><span class="s1">'currency'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">running_total</span> <span class="o">&lt;</span> <span class="n">want_amt</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Remaining </span><span class="si">{</span><span class="n">want_amt</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">running_total</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">we_want</span><span class="p">[</span><span class="s1">'currency'</span><span class="p">]</span><span class="si">}</span><span class="s2"> "</span>
+                      <span class="s2">"would probably be placed on top of the order book."</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">running_total</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># If part of the Offer was expected to cross, then the rest would be placed</span>
+            <span class="c1"># at the top of the order book. If none did, then there might be other</span>
+            <span class="c1"># Offers going the same direction as ours already on the books with an</span>
+            <span class="c1"># equal or better rate. This code counts how much liquidity is likely to be</span>
+            <span class="c1"># above ours.</span>
+            <span class="c1">#</span>
+            <span class="c1"># Unlike above, this time we check for Offers going the same direction as</span>
+            <span class="c1"># ours, so TakerGets and TakerPays are reversed from the previous</span>
+            <span class="c1"># book_offers request.</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Requesting second orderbook information..."</span><span class="p">)</span>
+            <span class="n">orderbook2_info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+                <span class="n">BookOffers</span><span class="p">(</span>
+                    <span class="n">taker</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+                    <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"current"</span><span class="p">,</span>
+                    <span class="n">taker_gets</span><span class="o">=</span><span class="n">we_spend</span><span class="p">[</span><span class="s2">"currency"</span><span class="p">],</span>
+                    <span class="n">taker_pays</span><span class="o">=</span><span class="n">we_want</span><span class="p">[</span><span class="s2">"currency"</span><span class="p">],</span>
+                    <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Orderbook2:</span><span class="se">\n</span><span class="si">{</span><span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="n">orderbook2_info</span><span class="o">.</span><span class="n">result</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+            <span class="c1"># Since TakerGets/TakerPays are reversed, the quality is the inverse.</span>
+            <span class="c1"># You could also calculate this as 1 / proposed_quality.</span>
+            <span class="n">offered_quality</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">we_want</span><span class="p">[</span><span class="s2">"value"</span><span class="p">])</span> <span class="o">/</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">we_spend</span><span class="p">[</span><span class="s2">"value"</span><span class="p">])</span>
+
+            <span class="n">tally_currency</span> <span class="o">=</span> <span class="n">we_spend</span><span class="p">[</span><span class="s2">"currency"</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tally_currency</span><span class="p">,</span> <span class="n">XRP</span><span class="p">):</span>
+                <span class="n">tally_currency</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"drops of </span><span class="si">{</span><span class="n">tally_currency</span><span class="si">}</span><span class="s2">"</span>
+
+            <span class="n">offers2</span> <span class="o">=</span> <span class="n">orderbook2_info</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"offers"</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="n">running_total2</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">offers2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">"No similar Offers in the book. Ours would be the first."</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">offers2</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">o</span><span class="p">[</span><span class="s2">"quality"</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">offered_quality</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Existing offer found, funded with </span><span class="si">{</span><span class="n">o</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'owner_funds'</span><span class="p">)</span><span class="si">}</span><span class="s2"> "</span>
+                              <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">tally_currency</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                        <span class="n">running_total2</span> <span class="o">+=</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"owner_funds"</span><span class="p">,</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">"Remaining orders are below where ours would be placed."</span><span class="p">)</span>
+                        <span class="k">break</span>
+
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Our Offer would be placed below at least </span><span class="si">{</span><span class="n">running_total2</span><span class="si">}</span><span class="s2"> "</span>
+                      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">tally_currency</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">running_total2</span> <span class="o">&lt;</span> <span class="n">want_amt</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Remaining </span><span class="si">{</span><span class="n">want_amt</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">running_total2</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">tally_currency</span><span class="si">}</span><span class="s2"> "</span>
+                          <span class="s2">"will probably be placed on top of the order book."</span><span class="p">)</span>
+</code></pre></div></div>
 </div>
 <p class="devportal-callout note"><strong>Note:</strong> Other users of the XRP Ledger can also make trades at any time, so this is only an estimate of what would happen if nothing else changes. The outcome of a transaction is not guaranteed until it is <a href="finality-of-results.html">final</a>.</p>
 <p>The following block demonstrates these calculations in action:</p>
@@ -586,9 +744,9 @@
 </tbody>
 </table>
 <p>The following code shows how to prepare, sign, and submit the transaction:</p>
-<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="javascript" href="#code-3-0">JavaScript</a></li></ul>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="javascript" href="#code-3-0">JavaScript</a></li><li><a class="python" href="#code-3-1">Python</a></li></ul>
 
-<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// Send OfferCreate transaction ----------------------------------------------</span>
+<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Send OfferCreate transaction ----------------------------------------------</span>
 
 <span class="w">  </span><span class="c1">// For this tutorial, we already know that TST is pegged to</span>
 <span class="w">  </span><span class="c1">// XRP at a rate of approximately 10:1 plus spread, so we use</span>
@@ -612,6 +770,32 @@
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="sb">`Error sending transaction: </span><span class="si">${</span><span class="nx">result</span><span class="si">}</span><span class="sb">`</span>
 <span class="w">  </span><span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">        <span class="c1"># Send OfferCreate transaction ----------------------------------------------</span>
+
+        <span class="c1"># For this tutorial, we already know that TST is pegged to</span>
+        <span class="c1"># XRP at a rate of approximately 10:1 plus spread, so we use</span>
+        <span class="c1"># hard-coded TakerGets and TakerPays amounts.</span>
+
+        <span class="n">tx</span> <span class="o">=</span> <span class="n">OfferCreate</span><span class="p">(</span>
+            <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+            <span class="n">taker_gets</span><span class="o">=</span><span class="n">we_spend</span><span class="p">[</span><span class="s2">"value"</span><span class="p">],</span>
+            <span class="n">taker_pays</span><span class="o">=</span><span class="n">we_want</span><span class="p">[</span><span class="s2">"currency"</span><span class="p">]</span><span class="o">.</span><span class="n">to_amount</span><span class="p">(</span><span class="n">we_want</span><span class="p">[</span><span class="s2">"value"</span><span class="p">]),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Sign and autofill the transaction (ready to submit)</span>
+        <span class="n">signed_tx</span> <span class="o">=</span> <span class="k">await</span> <span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">wallet</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Transaction:"</span><span class="p">,</span> <span class="n">signed_tx</span><span class="p">)</span>
+
+        <span class="c1"># Submit the transaction and wait for response (validated or rejected)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Sending OfferCreate transaction..."</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">send_reliable_submission</span><span class="p">(</span><span class="n">signed_tx</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">is_successful</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Transaction succeeded: "</span>
+                  <span class="sa">f</span><span class="s2">"https://testnet.xrpl.org/transactions/</span><span class="si">{</span><span class="n">signed_tx</span><span class="o">.</span><span class="n">get_hash</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error sending transaction: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div></div>
 </div>
 <p>You can use this interface to send the transaction specified by the amounts in the previous step:</p>
@@ -667,9 +851,9 @@
 <li>Other bookkeeping may have occurred, such as removing expired or unfunded Offers that would have matched.</li>
 </ul>
 <p>The following code demonstrates how to check the metadata of the transaction:</p>
-<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li></ul>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li><li><a class="python" href="#code-4-1">Python</a></li></ul>
 
-<div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// Check metadata ------------------------------------------------------------</span>
+<div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1">// Check metadata ------------------------------------------------------------</span>
 <span class="w">  </span><span class="c1">// In JavaScript, you can use getBalanceChanges() to help summarize all the</span>
 <span class="w">  </span><span class="c1">// balance changes caused by a transaction.</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">balance_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">getBalanceChanges</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">)</span>
@@ -711,6 +895,46 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Modified or removed </span><span class="si">${</span><span class="nx">offers_affected</span><span class="si">}</span><span class="sb"> matching Offer(s)`</span><span class="p">)</span>
 </code></pre></div></div>
+
+<div class="code_sample python" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">        <span class="c1"># Check metadata ------------------------------------------------------------</span>
+        <span class="n">balance_changes</span> <span class="o">=</span> <span class="n">get_balance_changes</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">"meta"</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Balance Changes:</span><span class="se">\n</span><span class="si">{</span><span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="n">balance_changes</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+        <span class="c1"># For educational purposes the transaction metadata is analyzed manually in the</span>
+        <span class="c1"># following section. However, there is also a get_order_book_changes(metadata)</span>
+        <span class="c1"># utility function available in the xrpl library, which is generally the easier</span>
+        <span class="c1"># and preferred choice for parsing the metadata and computing orderbook changes.</span>
+
+        <span class="c1"># Helper to convert an XRPL amount to a string for display</span>
+        <span class="k">def</span> <span class="nf">amt_str</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">amt</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">drops_to_xrp</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span><span class="si">}</span><span class="s2"> XRP"</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">amt</span><span class="p">[</span><span class="s1">'value'</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">amt</span><span class="p">[</span><span class="s1">'currency'</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">amt</span><span class="p">[</span><span class="s1">'issuer'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+
+        <span class="n">offers_affected</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">affnode</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">"meta"</span><span class="p">][</span><span class="s2">"AffectedNodes"</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="s2">"ModifiedNode"</span> <span class="ow">in</span> <span class="n">affnode</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">affnode</span><span class="p">[</span><span class="s2">"ModifiedNode"</span><span class="p">][</span><span class="s2">"LedgerEntryType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Offer"</span><span class="p">:</span>
+                    <span class="c1"># Usually a ModifiedNode of type Offer indicates a previous Offer that</span>
+                    <span class="c1"># was partially consumed by this one.</span>
+                    <span class="n">offers_affected</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="s2">"DeletedNode"</span> <span class="ow">in</span> <span class="n">affnode</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">affnode</span><span class="p">[</span><span class="s2">"DeletedNode"</span><span class="p">][</span><span class="s2">"LedgerEntryType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Offer"</span><span class="p">:</span>
+                    <span class="c1"># The removed Offer may have been fully consumed, or it may have been</span>
+                    <span class="c1"># found to be expired or unfunded.</span>
+                    <span class="n">offers_affected</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="s2">"CreatedNode"</span> <span class="ow">in</span> <span class="n">affnode</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">affnode</span><span class="p">[</span><span class="s2">"CreatedNode"</span><span class="p">][</span><span class="s2">"LedgerEntryType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"RippleState"</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">"Created a trust line."</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">affnode</span><span class="p">[</span><span class="s2">"CreatedNode"</span><span class="p">][</span><span class="s2">"LedgerEntryType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Offer"</span><span class="p">:</span>
+                    <span class="n">offer</span> <span class="o">=</span> <span class="n">affnode</span><span class="p">[</span><span class="s2">"CreatedNode"</span><span class="p">][</span><span class="s2">"NewFields"</span><span class="p">]</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Created an Offer owned by </span><span class="si">{</span><span class="n">offer</span><span class="p">[</span><span class="s1">'Account'</span><span class="p">]</span><span class="si">}</span><span class="s2"> with "</span>
+                          <span class="sa">f</span><span class="s2">"TakerGets=</span><span class="si">{</span><span class="n">amt_str</span><span class="p">(</span><span class="n">offer</span><span class="p">[</span><span class="s1">'TakerGets'</span><span class="p">])</span><span class="si">}</span><span class="s2"> and "</span>
+                          <span class="sa">f</span><span class="s2">"TakerPays=</span><span class="si">{</span><span class="n">amt_str</span><span class="p">(</span><span class="n">offer</span><span class="p">[</span><span class="s1">'TakerPays'</span><span class="p">])</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Modified or removed </span><span class="si">{</span><span class="n">offers_affected</span><span class="si">}</span><span class="s2"> matching Offer(s)"</span><span class="p">)</span>
+</code></pre></div></div>
 </div>
 <p>You can use this interface to test it out:</p>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="6" data-totalsteps="7" id="interactive-check_metadata">
@@ -729,9 +953,9 @@
 <h3 id="7-check-balances-and-offers">7. Check Balances and Offers<a aria-hidden="true" class="hover_anchor" href="#7-check-balances-and-offers"><i class="fa fa-link"></i></a></h3>
 <p>This is also a good time to look up the balances and outstanding Offers owned by your account as of the latest validated ledger. This shows any changes caused by your transaction as well as any others that executed in the same ledger version.</p>
 <p>The following code demonstrates how to look up balances using the <a href="account_lines.html">account_lines method</a> and look up Offers using the <a href="account_offers.html">account_offers method</a>.</p>
-<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="javascript" href="#code-5-0">JavaScript</a></li></ul>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="javascript" href="#code-5-0">JavaScript</a></li><li><a class="python" href="#code-5-1">Python</a></li></ul>
 
-<div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="c1">// Check balances ------------------------------------------------------------</span>
+<div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1">// Check balances ------------------------------------------------------------</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Getting address balances as of validated ledger..."</span><span class="p">)</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">balances</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="s2">"account_lines"</span><span class="p">,</span>
@@ -749,6 +973,28 @@
 <span class="w">    </span><span class="nx">ledger_index</span><span class="o">:</span><span class="w"> </span><span class="s2">"validated"</span>
 <span class="w">  </span><span class="p">})</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">acct_offers</span><span class="p">.</span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">        <span class="c1"># Check balances ------------------------------------------------------------</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Getting address balances as of validated ledger..."</span><span class="p">)</span>
+        <span class="n">balances</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+            <span class="n">AccountLines</span><span class="p">(</span>
+                <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+                <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">pprint</span><span class="o">.</span><span class="n">pp</span><span class="p">(</span><span class="n">balances</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="c1"># Check Offers --------------------------------------------------------------</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Getting outstanding Offers from </span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="si">}</span><span class="s2"> "</span>
+              <span class="sa">f</span><span class="s2">"as of validated ledger..."</span><span class="p">)</span>
+        <span class="n">acct_offers</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+            <span class="n">AccountOffers</span><span class="p">(</span>
+                <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+                <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">pprint</span><span class="o">.</span><span class="n">pp</span><span class="p">(</span><span class="n">acct_offers</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div></div>
 </div>
 <p>You can use this interface to test it out:</p>
@@ -804,20 +1050,25 @@
   </div>
     
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="docs-index.html">Documentation Index</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="false" aria-controls="tree_nav_group_1"></a>
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
 
         <a class="nav-link" href="concepts.html">Concepts</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_1" aria-expanded="false" aria-controls="tree_nav_group_1_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
 
         <a class="nav-link" href="introduction.html">Introduction</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="intro-to-consensus.html">Introduction to Consensus</a>
@@ -840,19 +1091,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2" aria-expanded="false" aria-controls="tree_nav_group_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
 
         <a class="nav-link" href="payment-system-basics.html">Payment System Basics</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_1" aria-expanded="false" aria-controls="tree_nav_group_1_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_2_1"></a>
 
         <a class="nav-link" href="accounts.html">Accounts</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cryptographic-keys.html">Cryptographic Keys</a>
@@ -895,11 +1146,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_4" aria-expanded="false" aria-controls="tree_nav_group_1_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_2_4"></a>
 
         <a class="nav-link" href="transaction-basics.html">Transaction Basics</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transaction-cost.html">Transaction Cost</a>
@@ -926,11 +1177,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_3" aria-expanded="false" aria-controls="tree_nav_group_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="payment-types.html">Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="direct-xrp-payments.html">Direct XRP Payments</a>
@@ -968,11 +1219,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="false" aria-controls="tree_nav_group_1_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="tokens.html">Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
@@ -986,11 +1237,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
         <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
@@ -1038,11 +1289,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_4" aria-expanded="false" aria-controls="tree_nav_group_1_4_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_4"></a>
 
         <a class="nav-link" href="freezes.html">Freezing Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
@@ -1084,11 +1335,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_5" aria-expanded="false" aria-controls="tree_nav_group_1_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
@@ -1116,11 +1367,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6" aria-expanded="false" aria-controls="tree_nav_group_1_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="consensus-network.html">Consensus Network</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus.html">Consensus</a>
@@ -1164,11 +1415,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6_9" aria-expanded="false" aria-controls="tree_nav_group_1_6_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_9" aria-expanded="false" aria-controls="tree_nav_group_2_6_9"></a>
 
         <a class="nav-link" href="amendments.html">Amendments</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_6_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="known-amendments.html">Known Amendments</a>
@@ -1200,11 +1451,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="xrpl-servers.html">XRP Ledger Servers</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="rippled-server-modes.html">rippled Server Modes</a>
@@ -1218,11 +1469,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7_3" aria-expanded="false" aria-controls="tree_nav_group_1_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_7_3"></a>
 
         <a class="nav-link" href="ledger-history.html">Ledger History</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="online-deletion.html">Online Deletion</a>
@@ -1263,19 +1514,19 @@
     
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="true" aria-controls="tree_nav_group_2"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
 
         <a class="nav-link" href="tutorials.html">Tutorials</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_2">
+    <nav class="nav flex-column show " id="tree_nav_group_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
         <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
@@ -1318,11 +1569,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
 
         <a class="nav-link" href="get-started.html">Get Started</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -1365,11 +1616,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="build-apps.html">Build Apps</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
@@ -1382,11 +1633,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
 
         <a class="nav-link" href="production-readiness.html">Production Readiness</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="set-up-secure-signing.html">Set Up Secure Signing</a>
@@ -1409,11 +1660,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -1461,19 +1712,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -1506,11 +1757,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1523,11 +1774,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="false" aria-controls="tree_nav_group_3_6_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -1569,11 +1820,11 @@
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="true" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="true" aria-controls="tree_nav_group_3_7"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_2_7">
+    <nav class="nav flex-column show " id="tree_nav_group_3_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1606,11 +1857,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
 
         <a class="nav-link" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
@@ -1633,19 +1884,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
 
         <a class="nav-link" href="manage-the-rippled-server.html">Manage the rippled Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -1699,11 +1950,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -1771,11 +2022,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
 
         <a class="nav-link" href="configure-peering.html">Configure Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -1823,11 +2074,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -1850,11 +2101,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -1901,11 +2152,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="false" aria-controls="tree_nav_group_3_10"></a>
 
         <a class="nav-link" href="manage-the-clio-server.html">Manage the Clio Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
@@ -1922,27 +2173,27 @@
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
 
         <a class="nav-link" href="references.html">References</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
 
         <a class="nav-link" href="protocol-reference.html">XRP Ledger Protocol Reference</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_1" aria-expanded="false" aria-controls="tree_nav_group_4_1_1"></a>
 
         <a class="nav-link" href="basic-data-types.html">Basic Data Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="base58-encodings.html">base58 Encodings</a>
@@ -1965,11 +2216,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_2"></a>
 
         <a class="nav-link" href="ledger-data-formats.html">Ledger Data Formats</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger-header.html">Ledger Header</a>
@@ -1983,11 +2234,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_2_3"></a>
 
         <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -2079,11 +2330,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3"></a>
 
         <a class="nav-link" href="transaction-formats.html">Transaction Reference</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transaction-common-fields.html">Transaction Common Fields</a>
@@ -2092,11 +2343,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_2"></a>
 
         <a class="nav-link" href="transaction-types.html">Transaction Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
@@ -2224,11 +2475,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_3"></a>
 
         <a class="nav-link" href="pseudo-transaction-types.html">Pseudo-Transactions</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="enableamendment.html">EnableAmendment</a>
@@ -2251,11 +2502,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_4"></a>
 
         <a class="nav-link" href="transaction-results.html">Transaction Results</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="tec-codes.html">tec Codes</a>
@@ -2311,19 +2562,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
 
         <a class="nav-link" href="client-libraries.html">Client Libraries</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
 
         <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
@@ -2355,19 +2606,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
 
         <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_1"></a>
 
         <a class="nav-link" href="api-conventions.html">API Conventions</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="request-formatting.html">Request Formatting</a>
@@ -2405,19 +2656,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
 
         <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_1"></a>
 
         <a class="nav-link" href="account-methods.html">Account Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_channels.html">account_channels</a>
@@ -2475,11 +2726,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_2"></a>
 
         <a class="nav-link" href="ledger-methods.html">Ledger Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger.html">ledger</a>
@@ -2512,11 +2763,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_3"></a>
 
         <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="submit.html">submit</a>
@@ -2549,11 +2800,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_4"></a>
 
         <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
@@ -2591,11 +2842,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_5"></a>
 
         <a class="nav-link" href="payment-channel-methods.html">Payment Channel Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="channel_authorize.html">channel_authorize</a>
@@ -2613,11 +2864,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_6"></a>
 
         <a class="nav-link" href="subscription-methods.html">Subscription Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="subscribe.html">subscribe</a>
@@ -2635,11 +2886,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_7"></a>
 
         <a class="nav-link" href="server-info-methods.html">Server Info Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="fee.html">fee</a>
@@ -2667,11 +2918,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_8"></a>
 
         <a class="nav-link" href="clio-methods.html">Clio Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
@@ -2699,11 +2950,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_9"></a>
 
         <a class="nav-link" href="utility-methods.html">Utility Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="json.html">json</a>
@@ -2730,19 +2981,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
 
         <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_1"></a>
 
         <a class="nav-link" href="key-generation-methods.html">Key Generation Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="validation_create.html">validation_create</a>
@@ -2760,11 +3011,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_2"></a>
 
         <a class="nav-link" href="logging-and-data-management-methods.html">Logging and Data Management Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="can_delete.html">can_delete</a>
@@ -2812,11 +3063,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_3"></a>
 
         <a class="nav-link" href="server-control-methods.html">Server Control Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger_accept.html">ledger_accept</a>
@@ -2839,11 +3090,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
 
         <a class="nav-link" href="signing-methods.html">Signing Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="sign.html">sign</a>
@@ -2861,11 +3112,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
 
         <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="connect.html">connect</a>
@@ -2898,11 +3149,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_6"></a>
 
         <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>
@@ -2959,11 +3210,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_5"></a>
 
         <a class="nav-link" href="peer-port-methods.html">Peer Port Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="health-check.html">Health Check</a>
@@ -3001,11 +3252,11 @@
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
 
         <a class="nav-link" href="by-label.html">Browse By Label</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-accounts.html">Accounts</a>
@@ -3103,11 +3354,11 @@
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -3174,6 +3425,7 @@
           <h5>Docs</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="docs.html" class="nav-link">Documentation</a></li>
+            <li class="nav-item"><a href="docs-index.html" class="nav-link">Documentation Index</a></li>
             <li class="nav-item"><a href="concepts.html" class="nav-link">Concepts</a></li>
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
