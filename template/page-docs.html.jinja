@@ -1,6 +1,6 @@
 {% extends "base.html.jinja" %}
 
-{% block mainclasses %}landing page-docs-index landing-builtin-bg jackson-identifier {% endblock %}
+{% block mainclasses %}landing page-docs page-docs-index landing-builtin-bg overflow-hidden styled-page{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
@@ -10,7 +10,6 @@
 {% endblock %}
 
 {% block main %}
-<div class="landing page-docs landing-builtin-bg overflow-hidden styled-page">
   <section class="text-center title-space">
     <div class="col-lg-9 mx-auto text-center">
       <div class="d-flex flex-column-reverse">
@@ -417,7 +416,9 @@
       </div>
     </div>
   </section><!-- Browse by recommended and Generate Testnet Credentials -->
-</div>
+  <section class="container-new my-10">
+    <a href="./docs-index.html" class="external-link ml-auto">See full documenation index <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </section>
 {% endblock %}
 
 {% block endbody %}
