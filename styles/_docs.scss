@@ -196,21 +196,6 @@
     grid-auto-rows: auto;
   }
 }
-  
-.circled-logo {
-  background-color: 757575;
-  border-radius: 50%;
-  padding: .65rem;
-  width: 50px;
-  height: 50px;
-  margin-bottom: 0.75rem;
-  border: 2px solid #232325;
-}
-.circled-logo .img {
-  width: 26px;
-  height: 26px;
-  display: inline-block;
-}
 
 .dev-tools-img {
   max-width:100%; 
@@ -219,7 +204,6 @@
 }
 
 .page-docs {
-
   .h4::before {
     margin-top: 0;
     height: 0;
@@ -266,8 +250,12 @@
     margin-right: auto;
   }
 
-  .nav-link::after {
-    content: none !important;
+  .nav-link {
+    border: none !important;
+
+    &::after {
+      content: none !important;
+    }
   }
 
   @include media-breakpoint-down(md) {
@@ -301,6 +289,12 @@
 
 .quickstart-card {
   .quickstart-image {
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: -20px;
+  }
+
+  @include media-breakpoint-up(lg) {
     margin-left: -32px;
     margin-right: -32px;
     margin-bottom: -32px;
