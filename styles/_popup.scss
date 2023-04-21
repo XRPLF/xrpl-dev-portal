@@ -1,18 +1,18 @@
 .popup {
   .popup-window {
-  visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 16px 26px 16px;
-  gap: 16px;
-  z-index: 100;
-  position: fixed;
-  width: 360px;
-  top: 104px;
-  right: 32px;
-  background: $gray-700;
-  border-radius: 8px;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 16px 26px 16px;
+    gap: 16px;
+    z-index: 100;
+    position: fixed;
+    width: 360px;
+    top: 104px;
+    right: 32px;
+    background: $gray-700;
+    border-radius: 8px;
   }
 
   p {
@@ -65,29 +65,29 @@
       vertical-align: middle;
     }
     /* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
 
-/* Show the checkmark when checked */
-input:checked ~ .checkmark:after {
-  display: block;
-}
+    /* Show the checkmark when checked */
+    input:checked ~ .checkmark:after {
+      display: block;
+    }
 
-/* Style the checkmark/indicator */
-.checkmark:after {
-  left: 111.5px;
-  top: 146px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
+    /* Style the checkmark/indicator */
+    .checkmark:after {
+      left: 111.5px;
+      top: 146px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
   }
 
   .close {
