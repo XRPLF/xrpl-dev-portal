@@ -63,13 +63,13 @@
         // store do not show again in local starage if checked when window is closed
         if (document.querySelector('.show-again-checkbox').checked) {
           if (localStorageAvailable())
-            localStorage.DoNotShowMessageAgain = "true";
+            localStorage.setItem("DoNotShowMessageAgain", "true");
           }
       })
 
       // handle do not show again
       if (localStorageAvailable()) {
-        if (localStorage.DoNotShowMessageAgain && localStorage.DoNotShowMessageAgain === "true") {
+        if (localStorage.getItem("DoNotShowMessageAgain") && localStorage.getItem("DoNotShowMessageAgain") === "true") {
             document.querySelector('.popup').style.display = 'none';
         }
       };
@@ -78,10 +78,11 @@
 
     <!-- show popup after 5 minutes -->
     <script type="text/javascript">
+      var timeout = 5 * 60 * 1000;
       window.setTimeout(function() {
         var popup = document.getElementById("myPopup");
         popup.classList.toggle("show");
-      }, 300000)
+      }, timeout);
     </script>
   </article>
   {% include 'component-feedback-widget.html.jinja' %}
