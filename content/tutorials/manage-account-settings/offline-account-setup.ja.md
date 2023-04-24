@@ -143,7 +143,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 - 定期的なローテーションで使用できる[レギュラーキーペアを割り当てる](assign-a-regular-key-pair.html)。
 - ユーザーが送金理由や送金相手をタグ付けせずに送金できないようにするために、[宛先タグを要求する](require-destination-tags.html)。
-- アカウントセキュリティを強化するために、[マルチ署名を設定する](set-up-multi-signing.html)。
+- アカウントセキュリティを強化するために、[マルチシグを設定する](set-up-multi-signing.html)。
 - 明示的に承認した送金、または事前に承認した相手からの送金のみを受け取れるようにするために、[DepositAuthを有効にする](depositauth.html)。
 - ユーザーがあなたの許可なくあなたへの[トラストライン](trust-lines-and-issuing.html)を開けないようにするために、[RequireAuthを有効にする](authorized-trust-lines.html#requireauthの有効化)。XRP Ledgerの分散型取引所や発行済み通貨機能を使用する予定がない場合は、これを対策として行うことをお勧めします。
 - 発行済み通貨[ゲートウェイ](become-an-xrp-ledger-gateway.html)には次のような追加の設定がある場合があります。
@@ -332,7 +332,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 - **チュートリアル:**
   - [安全な署名の設定](set-up-secure-signing.html)
   - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.html)
-  - [マルチ署名の設定](set-up-multi-signing.html)
+  - [マルチシグの設定](set-up-multi-signing.html)
 - **リファレンス:**
   - [基本的なデータタイプ: ](basic-data-types.html#アカウントシーケンス)[ ](basic-data-types.html#アカウントシーケンス)[アカウントシーケンス](basic-data-types.html#アカウントシーケンス)
   - [account_infoメソッド][]
