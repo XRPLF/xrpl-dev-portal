@@ -108,12 +108,11 @@ by broadcasting an event with the result as the payload. The event will then get
 the payload to display the index of the last closed / settled ledger on the XRPL.
 
 
-We will use this example to study how to do Inter Process Communication (IPC) in Electron. For reasons of due diligence it 
-has to be mentioned that JavaScript has no real Processes / Threading, it rather follows an event-driven paradigm. Nonetheless 
-Electron provides us with two IPC modules called ipcMain and ipcRenderer. We can roughly equate those two to a backend process
+This example shows how to do Inter Process Communication (IPC) in Electron. Technically, JavaScript has no true parallel processes or threading, because it follows a single-threaded event-driven paradigm. Nonetheless 
+Electron provides us with two IPC modules called `ipcMain` and `ipcRenderer`. We can roughly equate those two to a backend process
 and a frontend processc when we think in terms of client-server applications. It works as follows:
 
-1. Create a function that enables the frontend to subscribe to backend events (in 1_preload.js)
+1. Create a function that enables the frontend to subscribe to backend events (in `view/1_preload.js`)
 2. Make the function available by preloading it (webPreferences.preload during window creation)
 3. Use that function in the frontend (e.g. 1_renderer.js, loaded in 1_hello.html) to attach a callback that handles frontend updates when the event is dispatched
 4. Dispatch the event from the backend (e.g. appWindow.webContents.send('update-ledger-index', value))
