@@ -2048,9 +2048,9 @@
 </tr>
 </tbody>
 </table>
-<p>トランザクションの承認方法として<a href="multi-signing.html">マルチ署名</a>を導入します。<a href="signerlist.html"><code>SignerList</code>レジャーオブジェクトタイプ</a>と<a href="signerlistset.html"><code>SignerListSet</code>トランザクションタイプ</a>を作成します。省略可能な<code>Signers</code>フィールドをすべてのトランザクションタイプに追加します。一部のトランザクション結果コードを変更します。</p>
-<p>この修正により、マルチ署名のアドレスからトランザクションを承認できる署名者のリストをそのアドレスに保持できるようになります。このリストには定数があり、1から8で重み付けされた署名者が記載されています。これにより、「5人のうち任意の3人」や「Aの署名とその他任意の2人の署名」などの多様な設定が可能になります。</p>
-<p>署名者は資金供給のあるアドレスでも資金供給のないアドレスでも可能です。署名者リストのうち資金供給のあるアドレスは、レギュラーキー（定義済みの場合）またはマスターキー（無効でない場合）を使用して署名できます。資金供給のないアドレスは、マスターキーを使用して署名できます。マルチ署名済みトランザクションは、レギュラーキーで署名されたトランザクションと同じ権限を持ちます。</p>
+<p>トランザクションの承認方法として<a href="multi-signing.html">マルチシグ</a>を導入します。<a href="signerlist.html"><code>SignerList</code>レジャーオブジェクトタイプ</a>と<a href="signerlistset.html"><code>SignerListSet</code>トランザクションタイプ</a>を作成します。省略可能な<code>Signers</code>フィールドをすべてのトランザクションタイプに追加します。一部のトランザクション結果コードを変更します。</p>
+<p>この修正により、マルチシグのアドレスからトランザクションを承認できる署名者のリストをそのアドレスに保持できるようになります。このリストには定数があり、1から8で重み付けされた署名者が記載されています。これにより、「5人のうち任意の3人」や「Aの署名とその他任意の2人の署名」などの多様な設定が可能になります。</p>
+<p>署名者は資金供給のあるアドレスでも資金供給のないアドレスでも可能です。署名者リストのうち資金供給のあるアドレスは、レギュラーキー（定義済みの場合）またはマスターキー（無効でない場合）を使用して署名できます。資金供給のないアドレスは、マスターキーを使用して署名できます。マルチシグトランザクションは、レギュラーキーで署名されたトランザクションと同じ権限を持ちます。</p>
 <p>SignerListを持つアドレスは、レギュラーキーが定義されていなくてもマスターキーを無効にすることができます。また、SignerListを持つアドレスは、マスターキーが無効な場合でもレギュラーキーを削除することができます。<code>tecMASTER_DISABLED</code>トランザクション結果コードは<code>tecNO_ALTERNATIVE_KEY</code>に名前が変更されます。<code>tecNO_REGULAR_KEY</code>トランザクション結果コードは廃止となり、<code>tecNO_ALTERNATIVE_KEY</code>に代わります。さらに、この修正は以下の新しい<a href="transaction-results.html">トランザクション結果コード</a>を追加します。</p>
 <ul>
 <li><code>temBAD_SIGNER</code></li>
@@ -2088,7 +2088,7 @@
 </tr>
 </tbody>
 </table>
-<p>XRP Ledgerアカウントが<a href="multi-signing.html">マルチ署名</a> SignerListを所有する場合、アカウントに加算される<a href="reserves.html#所有者準備金">所有者準備金</a>を削減します。</p>
+<p>XRP Ledgerアカウントが<a href="multi-signing.html">マルチシグ</a> SignerListを所有する場合、アカウントに加算される<a href="reserves.html#所有者準備金">所有者準備金</a>を削減します。</p>
 <p>この修正を行わない場合、SignerListの所有者準備金は、リスト内の署名者数に応じて15～50 XRPの範囲となります。</p>
 <p>この修正により、新しいSignerListの所有者準備金は、署名者数に関係なく5 XRPとなります。以前に作成されたSignerListオブジェクトの準備金は、そのまま変更されません。この修正の後に作成されたSignerListオブジェクトの準備金を削減するには、この修正実施後に、<a href="signerlistset.html">SignerListSetトランザクション</a>を使用してSignerListを置き換えます。（この置き換えは、前のバージョンの場合とまったく同じです。）</p>
 <h2 id="negativeunl">NegativeUNL<a aria-hidden="true" class="hover_anchor" href="#negativeunl"><i class="fa fa-link"></i></a></h2>
@@ -2288,7 +2288,7 @@
 </table>
 <p>XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも完全に正規でない署名は無効とします。これにより、<a href="transaction-common-fields.html#グローバルフラグ">tfFullyCanonicalSigフラグ</a>を有効にしたトランザクションのみを保護することに代わって、<em>すべての</em> トランザクションにおいて<a href="transaction-malleability.html">トランザクションの展性</a>から守られます。</p>
 <p>この修正が適用されない場合、トランザクションがsecp256k1署名を使用し、tfFullyCanonicalSigが有効でない場合は、変更可能となります。ほとんどの署名ユーティリティは、デフォルトでtfFullyCanonicalSigを有効にしていますが、例外もあります。</p>
-<p>この修正により、単独署名のトランザクションは展性になりません。(署名者が必要以上の署名を提供した場合、<a href="transaction-malleability.html#マルチ署名の展性">マルチ署名のトランザクションはまだ展性であるかもしれません</a>)。すべてのトランザクションは、tfFullyCanonicalSigフラグに関係なく、署名の完全な正規の形式を使用する必要があります。完全に正規化された署名を作成しない署名ユーティリティはサポートされていません。Ripple社が提供するすべての署名ユーティリティは、少なくとも2014年以降、完全に正規化された署名のみを提供するようになっています。</p>
+<p>この修正により、単独署名のトランザクションは展性になりません。(署名者が必要以上の署名を提供した場合、<a href="transaction-malleability.html#マルチシグの展性">マルチシグのトランザクションはまだ展性であるかもしれません</a>)。すべてのトランザクションは、tfFullyCanonicalSigフラグに関係なく、署名の完全な正規の形式を使用する必要があります。完全に正規化された署名を作成しない署名ユーティリティはサポートされていません。Ripple社が提供するすべての署名ユーティリティは、少なくとも2014年以降、完全に正規化された署名のみを提供するようになっています。</p>
 <p>詳しくは、<a class="external-link" href="https://github.com/ripple/rippled/issues/3042" target="_blank"><code>rippled</code> issue #3042 <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
 <h2 id="shamapv2">SHAMapV2<a aria-hidden="true" class="hover_anchor" href="#shamapv2"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
@@ -2607,7 +2607,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -2727,7 +2727,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -2771,6 +2771,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
@@ -2831,11 +2836,6 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -2935,11 +2935,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -2949,7 +2944,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -2996,29 +2991,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -3200,12 +3173,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       
@@ -3684,57 +3657,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -3816,11 +3738,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -3930,31 +3847,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -4406,11 +4298,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -4535,6 +4422,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       
@@ -4859,11 +4751,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

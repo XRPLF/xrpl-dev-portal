@@ -336,7 +336,7 @@
 </ul>
 <h2 id="escrowの利用可能性">Escrowの利用可能性<a aria-hidden="true" class="hover_anchor" href="#escrowの利用可能性"><i class="fa fa-link"></i></a></h2>
 <p>条件付き決済は、2017-03-31以降XRP Ledgerコンセンサスプロトコルに対する<a href="known-amendments.html#escrow">「Escrow」Amendment</a>により利用可能になりました。同機能の以前のバージョンは、2016年に「Suspended Payments」（SusPay）という名称で<a href="xrp-testnet-faucet.html">XRP Ledger Testnet</a>で利用可能になりました。</p>
-<p><a href="rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由">スタンドアロンモード</a>でのテストの際には、Amendmentのステータスに関係なく、Escrow機能をローカルで強制的に有効にできます。次のスタンザを<code>rippled.cfg</code>に追加してください。</p>
+<p><a href="rippled-server-modes.html#スタンドアロンモード">スタンドアロンモード</a>でのテストの際には、Amendmentのステータスに関係なく、Escrow機能をローカルで強制的に有効にできます。次のスタンザを<code>rippled.cfg</code>に追加してください。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="k">[features]</span>
 <span class="na">Escrow</span>
 </code></pre></div>
@@ -344,7 +344,7 @@
 <h2 id="escrowfinishトランザクションのコスト">EscrowFinishトランザクションのコスト<a aria-hidden="true" class="hover_anchor" href="#escrowfinishトランザクションのコスト"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-04" target="_blank">Crypto-condition <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用する場合、Crypto-conditionフルフィルメントの検証に高い処理負荷がかかるため、EscrowFinishトランザクションでは<a href="transaction-cost.html#特別なトランザクションコスト">高額なトランザクションコスト</a>を支払う必要があります。</p>
 <p>Escrowが時間のみによってロックされており、Crypto-conditionがない場合、EscrowFinishのコストは、リファレンストランザクションの標準<a href="transaction-cost.html">トランザクションコスト</a>のみです。</p>
-<p>必要となる追加のトランザクションコストは、フルフィルメントのサイズに比例します。現時点では、フルフィルメントのあるEscrowFinishでは最小トランザクションコストとして、<strong>330 drop（<a href="basic-data-types.html#通貨額の指定">XRPのdrop数</a>）と、フルフィルメントのサイズで16バイトあたり10 drop</strong>が必要です。<a href="multi-signing.html">マルチ署名済み</a>トランザクションの場合、マルチ署名のコストがフルフィルメントのコストに加算されます。</p>
+<p>必要となる追加のトランザクションコストは、フルフィルメントのサイズに比例します。現時点では、フルフィルメントのあるEscrowFinishでは最小トランザクションコストとして、<strong>330 drop（<a href="basic-data-types.html#通貨額の指定">XRPのdrop数</a>）と、フルフィルメントのサイズで16バイトあたり10 drop</strong>が必要です。<a href="multi-signing.html">マルチシグ</a>トランザクションの場合、マルチシグのコストがフルフィルメントのコストに加算されます。</p>
 <p class="devportal-callout 注記"><strong>注記:</strong> 上記の式は、トランザクションのリファレンスコストがXRPの10 dropであることを前提としています。</p>
 <p><a href="fee-voting.html">手数料投票</a>により<code>reference_fee</code>の値が変更される場合、この式は新しいリファレンスコストに基づいてスケーリングされます。フルフィルメントのあるEscrowFinishトランザクションの公式は次のとおりです。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
@@ -484,7 +484,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -604,7 +604,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -648,6 +648,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
@@ -708,11 +713,6 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -812,11 +812,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -826,7 +821,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -873,29 +868,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1077,12 +1050,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       
@@ -1561,57 +1534,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -1693,11 +1615,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1807,31 +1724,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2283,11 +2175,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2412,6 +2299,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       
@@ -2736,11 +2628,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

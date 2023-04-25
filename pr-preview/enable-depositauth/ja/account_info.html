@@ -363,51 +363,51 @@
 <p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
-<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">{
-<span class="w">    </span><span class="s2">"id"</span>:<span class="w"> </span><span class="mi">5</span>,
-<span class="w">    </span><span class="s2">"status"</span>:<span class="w"> </span><span class="s2">"success"</span>,
-<span class="w">    </span><span class="s2">"type"</span>:<span class="w"> </span><span class="s2">"response"</span>,
-<span class="w">    </span><span class="s2">"result"</span>:<span class="w"> </span>{
-<span class="w">        </span><span class="s2">"account_data"</span>:<span class="w"> </span>{
-<span class="w">            </span><span class="s2">"Account"</span>:<span class="w"> </span><span class="s2">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span>,
-<span class="w">            </span><span class="s2">"Balance"</span>:<span class="w"> </span><span class="s2">"999999999960"</span>,
-<span class="w">            </span><span class="s2">"Flags"</span>:<span class="w"> </span><span class="mi">8388608</span>,
-<span class="w">            </span><span class="s2">"LedgerEntryType"</span>:<span class="w"> </span><span class="s2">"AccountRoot"</span>,
-<span class="w">            </span><span class="s2">"OwnerCount"</span>:<span class="w"> </span><span class="mi">0</span>,
-<span class="w">            </span><span class="s2">"PreviousTxnID"</span>:<span class="w"> </span><span class="s2">"4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42"</span>,
-<span class="w">            </span><span class="s2">"PreviousTxnLgrSeq"</span>:<span class="w"> </span><span class="mi">3</span>,
-<span class="w">            </span><span class="s2">"Sequence"</span>:<span class="w"> </span><span class="mi">6</span>,
-<span class="w">            </span><span class="s2">"index"</span>:<span class="w"> </span><span class="s2">"92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"</span>
-<span class="w">        </span>},
-<span class="w">        </span><span class="s2">"ledger_current_index"</span>:<span class="w"> </span><span class="mi">4</span>,
-<span class="w">        </span><span class="s2">"queue_data"</span>:<span class="w"> </span>{
-<span class="w">            </span><span class="s2">"auth_change_queued"</span>:<span class="w"> </span><span class="nv">true</span>,
-<span class="w">            </span><span class="s2">"highest_sequence"</span>:<span class="w"> </span><span class="mi">10</span>,
-<span class="w">            </span><span class="s2">"lowest_sequence"</span>:<span class="w"> </span><span class="mi">6</span>,
-<span class="w">            </span><span class="s2">"max_spend_drops_total"</span>:<span class="w"> </span><span class="s2">"500"</span>,
-<span class="w">            </span><span class="s2">"transactions"</span>:<span class="w"> </span>[
-<span class="w">                </span>{
-<span class="w">                    </span><span class="s2">"auth_change"</span>:<span class="w"> </span><span class="nv">false</span>,
-<span class="w">                    </span><span class="s2">"fee"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"fee_level"</span>:<span class="w"> </span><span class="s2">"2560"</span>,
-<span class="w">                    </span><span class="s2">"max_spend_drops"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"seq"</span>:<span class="w"> </span><span class="mi">6</span>
-<span class="w">                </span>},
-<span class="w">                </span>...<span class="ss">(</span><span class="nv">trimmed</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">length</span><span class="ss">)</span><span class="w"> </span>...
-<span class="w">                </span>{
-<span class="w">                    </span><span class="s2">"LastLedgerSequence"</span>:<span class="w"> </span><span class="mi">10</span>,
-<span class="w">                    </span><span class="s2">"auth_change"</span>:<span class="w"> </span><span class="nv">true</span>,
-<span class="w">                    </span><span class="s2">"fee"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"fee_level"</span>:<span class="w"> </span><span class="s2">"2560"</span>,
-<span class="w">                    </span><span class="s2">"max_spend_drops"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"seq"</span>:<span class="w"> </span><span class="mi">10</span>
-<span class="w">                </span>}
-<span class="w">            </span>],
-<span class="w">            </span><span class="s2">"txn_count"</span>:<span class="w"> </span><span class="mi">5</span>
-<span class="w">        </span>},
-<span class="w">        </span><span class="s2">"validated"</span>:<span class="w"> </span><span class="nv">false</span>
-<span class="w">    </span>}
-}
+<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
+<span class="w">    </span><span class="s">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"status"</span><span class="p">:</span><span class="w"> </span><span class="s">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"response"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">"account_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s">"999999999960"</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8388608</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"AccountRoot"</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42"</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s">"ledger_current_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"queue_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s">"auth_change_queued"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"highest_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"lowest_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"max_spend_drops_total"</span><span class="p">:</span><span class="w"> </span><span class="s">"500"</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"auth_change"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"fee_level"</span><span class="p">:</span><span class="w"> </span><span class="s">"2560"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"max_spend_drops"</span><span class="p">:</span><span class="w"> </span><span class="s">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="o">...</span><span class="p">(</span><span class="nx">trimmed</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="o">...</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"auth_change"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"fee_level"</span><span class="p">:</span><span class="w"> </span><span class="s">"2560"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"max_spend_drops"</span><span class="p">:</span><span class="w"> </span><span class="s">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="s">"txn_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">{
@@ -473,7 +473,7 @@
 <tr>
 <td style="text-align: left;"><code>signer_lists</code></td>
 <td style="text-align: left;">配列</td>
-<td style="text-align: left;">（要求に<code>signer_lists</code>が指定されていて、少なくとも1つのSignerListがアカウントに関連する場合を除いて省略されます。）<a href="multi-signing.html">マルチ署名</a>用にアカウントに関連付けられた<a href="signerlist.html">SignerListレジャーオブジェクト</a>の配列。アカウントが所有できるSignerListは最大1つであるため、この配列のメンバーは存在するとすれば、1メンバーのみです。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（要求に<code>signer_lists</code>が指定されていて、少なくとも1つのSignerListがアカウントに関連する場合を除いて省略されます。）<a href="multi-signing.html">マルチシグ</a>用にアカウントに関連付けられた<a href="signerlist.html">SignerListレジャーオブジェクト</a>の配列。アカウントが所有できるSignerListは最大1つであるため、この配列のメンバーは存在するとすれば、1メンバーのみです。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
@@ -676,7 +676,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -796,7 +796,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -840,6 +840,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
@@ -900,11 +905,6 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1004,11 +1004,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1018,7 +1013,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1065,29 +1060,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1269,12 +1242,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       
@@ -1753,57 +1726,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -1885,11 +1807,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1999,31 +1916,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2475,11 +2367,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2604,6 +2491,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       
@@ -2928,11 +2820,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

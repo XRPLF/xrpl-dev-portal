@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Authorized Trust Lines - XRPL.org (日本語)</title>
+    <title>認可トラストライン - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Authorized Trust Lines | XRPL.org (日本語)">
+    <meta property="og:title" content="認可トラストライン | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/authorized-trust-lines.html" />
-    <meta property="og:description" content="通貨発行者が自己の発行済み通貨を保有できる人を制限できる、Authorized Trust Lineについて説明します。" />
-    <meta name="description" content="通貨発行者が自己の発行済み通貨を保有できる人を制限できる、Authorized Trust Lineについて説明します。" />
+    <meta property="og:description" content="認可トラストラインとは、トークンを保有できる人を制限するための設定です。" />
+    <meta name="description" content="認可トラストラインとは、トークンを保有できる人を制限するための設定です。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -257,12 +257,15 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#authorized-trust-lines">Authorized Trust Lines</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#requireauth設定">RequireAuth設定</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#認可トラストライン">認可トラストライン</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ステーブルコインの発行">ステーブルコインの発行</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#注意事項">注意事項</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#技術情報">技術情報</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#requireauthの有効化">RequireAuthの有効化</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#アカウントのrequireauthの有効化の確認">アカウントのRequireAuthの有効化の確認</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#トラストラインの承認">トラストラインの承認</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#トラストラインの承認状況の確認">トラストラインの承認状況の確認</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#トラストラインの認可">トラストラインの認可</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#トラストラインの認可状況の確認">トラストラインの認可状況の確認</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -277,34 +280,38 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
-    <li class="active breadcrumb-item">Authorized Trust Lines</li>
+    <li class="active breadcrumb-item">認可トラストライン</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="authorized-trust-lines">Authorized Trust Lines<a aria-hidden="true" class="hover_anchor" href="#authorized-trust-lines"><i class="fa fa-link"></i></a></h1>
-<p>XRP LedgerのAuthorized Trust Lines機能により、通貨イシュアーは自身の（XRP以外の）発行済み通貨を保有できるユーザーを制限できます。これにより、不明なXRP Ledgerアドレスは発行済み通貨を保有できなくなります。Authorized Trust Lines機能は発行済み通貨にのみ適用され、XRPには影響しません。</p>
-<p>Authorized Trust Lines機能を使用するには、発行アドレスでRequireAuthフラグを有効にします。その後、発行アドレスは他のアドレスからのトラストラインを承認する<a href="trustset.html">TrustSetトランザクション</a>を送信できます。RequireAuthが有効であるときに発行アドレスから発行された資金を他のアドレスが保有できるのは、発行アドレスへのトラストラインが承認されている場合だけです。</p>
-<p>トラストラインを承認するトランザクションには発行アドレスによる署名が必要ですが、これにより発行アドレスが危険にさらされる可能性が高くなります。RequireAuthが有効であるXRP Ledgerへの資金の送金プロセスは次のようになります。</p>
+        <h1 id="認可トラストライン">認可トラストライン<a aria-hidden="true" class="hover_anchor" href="#認可トラストライン"><i class="fa fa-link"></i></a></h1>
+<p>XRP Ledgerの認可トラストライン機能により、発行者は、発行者が許可したアカウントのみが保有できるトークンを作成することができます。。認可トラストライン機能はトークンにのみ適用され、XRPには影響しません。</p>
+<p>認可トラストライン機能を使用するには、発行アドレスで<strong>RequireAuth</strong>フラグを有効にします。その後、他のアカウントは、あなたがそのアカウントのトラストラインをあなたの発行アカウントに承認した場合にのみ、あなたが発行したトークンを保持することができます。</p>
+<p>発行アドレスから<a href="trustset.html">TrustSetトランザクション</a>を送信し、自分のアカウントと認可するアカウントとの間のトラストラインを設定することで、トラストラインを認可することができます。トラストラインを認可した後、その認可を取り消すことはできません。(ただし、必要に応じてトラストラインを<a href="freezes.html">凍結</a>することは可能です)。</p>
+<p>トラストラインを認可するためのトランザクションは、発行アドレスの署名が必要であり、残念ながらそのアドレスのリスクエクスポージャーが増加することを意味します。</p>
+<p class="devportal-callout 注意"><strong>注意:</strong> Require Authを有効にできるのは、アカウントにトラストラインがなく、XRP LedgerにOffersがない場合だけなので、トークンの発行前に使用するかどうかを決定する必要があります。</p>
+<h2 id="ステーブルコインの発行">ステーブルコインの発行<a aria-hidden="true" class="hover_anchor" href="#ステーブルコインの発行"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledger上のステーブルコインと認可トラストラインの使用により、新規顧客の獲得プロセスは以下のようなものになります。</p>
 <ol>
-<li>発行ゲートウェイがその発行アドレスを顧客に公開します。</li>
-<li>顧客のXRP Ledgerアドレスからゲートウェイの発行アドレスへのトラストラインを作成するために顧客は<a href="trustset.html">TrustSetトランザクション</a>を送信します。これは、ゲートウェイが発行した特定通貨を特定の限度額まで保有することを顧客が望んでいることを意味します。</li>
-<li>ゲートウェイの発行アドレスは、顧客のトラストラインを承認するTrustSetトランザクションを送信します。</li>
+<li>顧客は、ステーブルコイン発行会社のシステムに登録し、身元を証明する情報（「Know Your Customer」（KYC）情報とも呼ばれる）を送信します。</li>
+<li>顧客とステーブルコイン発行者は、お互いのXRP Ledgerアドレスを提示し合います。</li>
+<li>顧客は<a href="trustset.html">TrustSetトランザクション</a>を送信し、発行者のアドレスにトラストラインを作成し、正のリミットを設定します。</li>
+<li>発行者はTrustSetトランザクションを送信し、顧客のトラストラインを認可します。</li>
 </ol>
-<p class="devportal-callout ヒント"><strong>ヒント:</strong> 発行ゲートウェイは、顧客がトラストラインの作成を完了する前に、そのトラストラインを事前に承認できます（ステップ3）。これにより限度額がゼロのトラストラインが作成されます。顧客のTrustSetトランザクション（ステップ2）により、事前承認されたトラストラインに限度額が設定されます。<em>（<a href="known-amendments.html#trustsetauth">TrustSetAuth Amendment</a>が必要です。）</em></p>
-<h2 id="requireauth設定">RequireAuth設定<a aria-hidden="true" class="hover_anchor" href="#requireauth設定"><i class="fa fa-link"></i></a></h2>
-<p><code>RequireAuth</code>設定をすることで、発行アドレスが当該通貨に関してその取引相手とのトラストラインを具体的に承認している場合を除き、すべての取引相手はアドレスから発行された残高を保有できなくなります。</p>
-<p>用心として、発行ゲートウェイが<a href="issuing-and-operational-addresses.html">運用アドレスとスタンバイアドレス</a>に対して<code>RequireAuth</code>を常に有効にし、これらのアドレスへのトラストラインを一切承認しないことが推奨されます。これにより、運用アドレスとスタンバイアドレスがXRP Ledgerで誤って通貨を発行することを防止できます。これは純粋な予防措置であり、発行アドレスにより作成された発行済み通貨の残高を、これらのアドレスが意図したとおりに送金することを阻止するものではありません。</p>
-<p>Authorized Trust Lines機能を使用するには、イシュアーがその発行アドレスの<code>RequireAuth</code>も有効にする必要もあります。その後、発行アドレスは顧客からの<a href="#トラストラインの承認">各トラストラインを承認する<code>TrustSet</code>トランザクションを送信する</a>必要があります。</p>
-<p class="devportal-callout 注意"><strong>注意:</strong> アカウントが<code>RequireAuth</code>を有効にできるのは、アカウントがトラストラインを所有しておらず、またXRP Ledgerにオファーがない場合に限られます。したがってXRP Ledgerで取引を開始する前に、この設定を使用するかどうかを決定しておく必要があります。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> 2つのTrustSetトランザクション（ステップ3および4）は、どちらの順序で発生しても構いません。発行者がトラストラインを先に認可した場合、これにより限度額が0に設定されたトラストラインが作成され、顧客のTrustSetトランザクションは、事前に認可されたトラストラインの限度額を設定することになります。(<a href="known-amendments.html#trustsetauth">TrustSetAuth amendment</a>によって追加されました。)_</p>
+<h2 id="注意事項">注意事項<a aria-hidden="true" class="hover_anchor" href="#注意事項"><i class="fa fa-link"></i></a></h2>
+<p>認可トラストラインを使用するつもりがない場合でも、<a href="issuing-and-operational-addresses.html">運用アカウントと予備アカウント</a>のRequire Auth設定を有効にし、これらのアカウントにトラストラインを認可させないようにすることができます。これは、これらのアカウントが誤ってトークンを発行することを防止します（たとえば、ユーザーが誤って間違ったアドレスをトラストしてしまった場合など）。これはあくまで予防措置であり、運用アカウントと予備アカウントが意図したとおりに <em>発行者の</em> トークンを転送することを止めるものではありません。</p>
+<h2 id="技術情報">技術情報<a aria-hidden="true" class="hover_anchor" href="#技術情報"><i class="fa fa-link"></i></a></h2>
+<!-- -->
 <h3 id="requireauthの有効化">RequireAuthの有効化<a aria-hidden="true" class="hover_anchor" href="#requireauthの有効化"><i class="fa fa-link"></i></a></h3>
-<p>ローカルでホストされている<code>rippled</code>の<a href="submit.html">submitメソッド</a>を使用して、RequireAuthフラグを有効にする<a href="accountset.html">AccountSetトランザクション</a>を送信する例を以下に示します。（このメソッドは、アドレスが発行アドレス、運用アドレス、スタンバイアドレスのいずれであっても同様に機能します。）</p>
-<p>要求:</p>
+<p>以下は、ローカルでホストされている<code>rippled</code>の<a href="submit.html">submitメソッド</a>を使って、<code>asfRequireAuth</code>フラグを使ってRequire Authを有効にする<a href="accountset.html">AccountSetトランザクション</a>を送信する例です。（このメソッドは、アドレスが発行アドレス、運用アドレス、スタンバイアドレスのいずれであっても同様に機能します。）</p>
+<p>リクエスト:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="err">POST</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//localhost:5005/</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submit"</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">       </span><span class="p">{</span>
-<span class="w">           </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">,</span>
+<span class="w">           </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s████████████████████████████"</span><span class="p">,</span>
 <span class="w">           </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">               </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"</span><span class="p">,</span>
 <span class="w">               </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000"</span><span class="p">,</span>
@@ -320,18 +327,18 @@
 <!-- -->
 <h2 id="アカウントのrequireauthの有効化の確認">アカウントのRequireAuthの有効化の確認<a aria-hidden="true" class="hover_anchor" href="#アカウントのrequireauthの有効化の確認"><i class="fa fa-link"></i></a></h2>
 <p>アカウントのRequireAuth設定の有効化の状態を確認するには、<a href="account_info.html">account_infoメソッド</a>を使用してアカウントを調べます。<code>Flags</code>フィールド（<code>result.account_data</code>オブジェクト）の値を、<a href="accountroot.html">AccountRootレジャーオブジェクトのビット単位フラグ</a>と比較します。</p>
-<p><code>Flags</code>値と<code>lsfRequireAuth</code>フラグ値（0x00040000）のビット単位のANDの結果がゼロ以外の場合、アカウントではRequireAuthが有効になっています。結果がゼロの場合、アカウントではRequireAuthが無効になっています。</p>
-<h2 id="トラストラインの承認">トラストラインの承認<a aria-hidden="true" class="hover_anchor" href="#トラストラインの承認"><i class="fa fa-link"></i></a></h2>
-<p>Authorized Trust Lines機能を使用している場合、他のアカウントからのトラストラインを最初に承認しなければ、これらの他のアカウントはあなたが発行する残高を保有できません。複数の通貨を発行する場合には、各通貨のトラストラインを個別に承認する必要があります。</p>
-<p>トラストラインを承認するには、<code>LimitAmount</code>の<code>issuer</code>として信頼するユーザーを指定して、発行アドレスから<a href="trustset.html">TrustSetトランザクション</a>を送信します。<code>value</code>（信頼する額）を<strong>0</strong>のままにし、トランザクションの<a href="trustset.html#trustsetのフラグ">tfSetfAuth</a>フラグを有効にします。</p>
-<p>ローカルでホストされている<code>rippled</code>の<a href="submit.html">submitメソッド</a>を使用して、顧客アドレス（rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn）が発行アドレス（rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW）からのUSDのイシュアンスを保有することを承認するTrustSetトランザクションを送信する例を以下に示します。</p>
-<p>要求:</p>
+<p><code>Flags</code>値と<code>lsfRequireAuth</code>フラグ値（<code>0x00040000</code>）のビット単位のANDの結果がゼロ以外の場合、アカウントではRequireAuthが有効になっています。結果がゼロの場合、アカウントではRequireAuthが無効になっています。</p>
+<h2 id="トラストラインの認可">トラストラインの認可<a aria-hidden="true" class="hover_anchor" href="#トラストラインの認可"><i class="fa fa-link"></i></a></h2>
+<p>認可トラストライン機能を使用している場合、他のアカウントからのトラストラインを認可しなければ、これらの他のアカウントはあなたが発行する残高を保有できません。複数のトークンを発行する場合には、各通貨のトラストラインを個別に認可する必要があります。</p>
+<p>トラストラインを認可するには、<code>LimitAmount</code>の<code>issuer</code>として信頼するユーザーを指定して、発行アドレスから<a href="trustset.html">TrustSetトランザクション</a>を送信します。<code>value</code>（信頼する額）を<strong>0</strong>のままにし、トランザクションの<a href="trustset.html#trustsetのフラグ">tfSetfAuth</a>フラグを有効にします。</p>
+<p>以下は、ローカルでホストされている<code>rippled</code>の<a href="submit.html">submitメソッド</a>を使用して、顧客アドレス<code>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</code>がアドレス<code>rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW</code>で発行したUSDを持つことを認可するTrustSetトランザクションを送信する例です。</p>
+<p>リクエスト:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="err">POST</span><span class="w"> </span><span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//localhost:8088/</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submit"</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">       </span><span class="p">{</span>
-<span class="w">           </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">,</span>
+<span class="w">           </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s████████████████████████████"</span><span class="p">,</span>
 <span class="w">           </span><span class="nt">"tx_json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">               </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"</span><span class="p">,</span>
 <span class="w">               </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000"</span><span class="p">,</span>
@@ -349,9 +356,30 @@
 </code></pre></div>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <!-- -->
-<h2 id="トラストラインの承認状況の確認">トラストラインの承認状況の確認<a aria-hidden="true" class="hover_anchor" href="#トラストラインの承認状況の確認"><i class="fa fa-link"></i></a></h2>
-<p>トラストラインの承認状況を確認するには、<a href="account_lines.html">account_linesメソッド</a>を使用してトラストラインを調べます。要求の<code>account</code>フィールドに顧客のアドレスを指定し、<code>peer</code>フィールドにイシュアーのアドレスを指定します。</p>
-<p>応答の<code>result.lines</code>配列で、必要とする通貨のトラストラインを表している<code>currency</code>フィールドを持つオブジェクトを見つけます。そのオブジェクトの<code>peer_authorized</code>フィールドに値<code>true</code>が設定されている場合は、イシュアー（要求の<code>peer</code>フィールドとして使用したアドレス）によりそのトラストラインが承認されています。</p>
+<h2 id="トラストラインの認可状況の確認">トラストラインの認可状況の確認<a aria-hidden="true" class="hover_anchor" href="#トラストラインの認可状況の確認"><i class="fa fa-link"></i></a></h2>
+<p>トラストラインの認可状況を確認するには、<a href="account_lines.html">account_linesメソッド</a>を使用してトラストラインを調べます。レスポンスの<code>account</code>フィールドに顧客のアドレスを指定し、<code>peer</code>フィールドに発行者のアドレスを指定します。</p>
+<p>応答の<code>result.lines</code>配列で、必要とする通貨のトラストラインを表している<code>currency</code>フィールドを持つオブジェクトを見つけます。そのオブジェクトの<code>peer_authorized</code>フィールドに値<code>true</code>が設定されている場合は、発行者（レスポンスの<code>peer</code>フィールドとして使用したアドレス）によりそのトラストラインが承認されています。</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>コンセプト:</strong><ul>
+<li><a href="depositauth.html">Deposit Authorization</a></li>
+<li><a href="freezes.html">トークンの凍結</a></li>
+</ul>
+</li>
+<li><strong>チュートリアル:</strong><ul>
+<li><a href="become-an-xrp-ledger-gateway.html">ステーブルコインを発行する</a></li>
+</ul>
+</li>
+<li><strong>リファレンス:</strong><ul>
+<li><a href="account_lines.html">account_linesメソッド</a></li>
+<li><a href="account_info.html">account_infoメソッド</a></li>
+<li><a href="accountset.html">AccountSetトランザクション</a></li>
+<li><a href="trustset.html">TrustSetトランザクション</a></li>
+<li><a href="accountroot.html#accountrootのフラグ">AccountRootフラグ</a></li>
+<li><a href="ripplestate.html#ripplestateのフラグ">RippleState (トラストライン) フラグ</a></li>
+</ul>
+</li>
+</ul>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -446,7 +474,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -566,7 +594,7 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -610,6 +638,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
@@ -670,11 +703,6 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -774,11 +802,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -788,7 +811,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -835,29 +858,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1039,12 +1040,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       
@@ -1523,57 +1524,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -1655,11 +1605,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1769,31 +1714,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2245,11 +2165,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2374,6 +2289,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       
@@ -2698,11 +2618,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

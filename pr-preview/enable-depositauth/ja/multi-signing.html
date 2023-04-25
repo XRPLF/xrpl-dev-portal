@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>マルチ署名 - XRPL.org (日本語)</title>
+    <title>マルチシグ - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="マルチ署名 | XRPL.org (日本語)">
+    <meta property="og:title" content="マルチシグ | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/multi-signing.html" />
-    <meta property="og:description" content="マルチ署名を使用することで、トランザクション送信時のセキュリティが強化されます。" />
-    <meta name="description" content="マルチ署名を使用することで、トランザクション送信時のセキュリティが強化されます。" />
+    <meta property="og:description" content="マルチシグを使用することで、トランザクション送信時のセキュリティが強化されます。" />
+    <meta name="description" content="マルチシグを使用することで、トランザクション送信時のセキュリティが強化されます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -257,9 +257,14 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#マルチ署名">マルチ署名</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#マルチシグ">マルチシグ</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#署名者リスト">署名者リスト</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#マルチ署名済みトランザクションの送信">マルチ署名済みトランザクションの送信</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#signer-weight">Signer Weight</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#quorum">Quorum</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#wallet-locator">Wallet Locator</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#signer-weightとquorumの使用例">Signer WeightとQuorumの使用例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#マルチシグトランザクションの送信">マルチシグトランザクションの送信</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -275,13 +280,13 @@
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/payment-system-basics.html">支払いシステムの基本</a></li>
     <li class="active breadcrumb-item"><a href="/ja/accounts.html">アカウント</a></li>
-    <li class="active breadcrumb-item">マルチ署名</li>
+    <li class="active breadcrumb-item">マルチシグ</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="マルチ署名">マルチ署名<a aria-hidden="true" class="hover_anchor" href="#マルチ署名"><i class="fa fa-link"></i></a></h1>
-<p>マルチ署名は、複数のシークレットキーを組み合わせて使用してXRP Ledgerの<a href="transaction-basics.html#トランザクションの承認">トランザクションを承認する</a>手法です。アドレスで有効な承認手法（マルチ署名、<a href="cryptographic-keys.html#マスターキーペア">マスターキーペア</a>、<a href="cryptographic-keys.html#レギュラーキーペア">レギュラーキーペア</a>など）を自由に組み合わせて使用できます。（唯一の要件は、 <em>少なくとも1つの</em> 手法を有効にする必要があることです。）</p>
-<p>マルチ署名には次のメリットがあります。</p>
+        <h1 id="マルチシグ">マルチシグ<a aria-hidden="true" class="hover_anchor" href="#マルチシグ"><i class="fa fa-link"></i></a></h1>
+<p>マルチシグは、複数のシークレットキーを組み合わせて使用してXRP Ledgerの<a href="transaction-basics.html#トランザクションの承認">トランザクションを承認する</a>手法です。アドレスで有効な承認手法（マルチシグ、<a href="cryptographic-keys.html#マスターキーペア">マスターキーペア</a>、<a href="cryptographic-keys.html#レギュラーキーペア">レギュラーキーペア</a>など）を自由に組み合わせて使用できます。（唯一の要件は、 <em>少なくとも1つの</em> 手法を有効にする必要があることです。）</p>
+<p>マルチシグには次のメリットがあります。</p>
 <ul>
 <li>複数のデバイスからのキーを要求できます。これにより、不正使用者があなたの代わりにトランザクションを送信するには複数のマシンを悪用しなければならなくなります。</li>
 <li>複数のユーザー間で1つのアドレスの管理を共有できます。この場合、各ユーザーが、そのアドレスからトランザクションを送信する際に必要な複数のキーのいずれか1つだけを所有します。</li>
@@ -289,21 +294,56 @@
 <li>その他のメリットもあります。</li>
 </ul>
 <h2 id="署名者リスト">署名者リスト<a aria-hidden="true" class="hover_anchor" href="#署名者リスト"><i class="fa fa-link"></i></a></h2>
-<p>マルチ署名を使用するには、あなたの代理として署名できるアドレスのリストを作成する必要があります。</p>
-<p><a href="signerlistset.html">SignerListSetトランザクション</a>は、あなたのアドレスからのトランザクションを承認できるアドレスを定義します。SignerListには最大8個のアドレスを指定できます。SignerListのquorum値とweight値を使用して、必要な署名の数と組み合わせを制御できます。</p>
-<h2 id="マルチ署名済みトランザクションの送信">マルチ署名済みトランザクションの送信<a aria-hidden="true" class="hover_anchor" href="#マルチ署名済みトランザクションの送信"><i class="fa fa-link"></i></a></h2>
-<p>マルチ署名済みトランザクションを正常に送信するには、以下のすべての条件を満たす必要があります。</p>
+<p>マルチシグを使用するには、あなたの代理として署名できるアドレスのリストを作成する必要があります。</p>
+<p><a href="signerlistset.html">SignerListSetトランザクション</a>は、<em>署名者リスト</em>（自分のアドレスからのトランザクションを承認できるアドレスのセット）を定義します。署名者リストには、1～32のアドレスを含めることができます。このリストには、自分のアドレスを含めることはできず、重複して登録することはできません。リストの <em>Signer Weight</em> と <em>Quorum</em> の設定を使用することで、どのような組み合わせでどれだけの署名が必要かを制御することができます。</p>
+<p><em>(<a href="known-amendments.html#expandedsignerlist">ExpandedSignerList amendment</a>により更新されました。)</em></p>
+<h3 id="signer-weight">Signer Weight<a aria-hidden="true" class="hover_anchor" href="#signer-weight"><i class="fa fa-link"></i></a></h3>
+<p>リスト内の各署名者にウェイトを割り当てます。ウェイトは、リスト上の他の署名者と比較して、その署名者の相対的な権限を表します。値が高いほど、より多くの権限を持つことになります。個々のウェイト値は、2<sup>16</sup>-1を超えることはできません。</p>
+<h3 id="quorum">Quorum<a aria-hidden="true" class="hover_anchor" href="#quorum"><i class="fa fa-link"></i></a></h3>
+<p>リストの定足数(quorum)の値は、トランザクションを承認するために必要な最小のウェイト合計です。クォーラムは0より大きく、署名者リストのウェイト値の合計以下でなければならない。つまり、与えられた署名者のウェイトでクォーラムを達成することが可能でなければなりません。</p>
+<h3 id="wallet-locator">Wallet Locator<a aria-hidden="true" class="hover_anchor" href="#wallet-locator"><i class="fa fa-link"></i></a></h3>
+<p>また、リスト内の各署名者のエントリに最大256ビットの任意のデータを追加することができます。このデータはネットワークで必要とされたり使用されたりすることはありませんが、スマートコントラクトや他のアプリケーションが署名者に関する他のデータを特定したり確認したりするために使用することができます。</p>
+<p><em>(<a href="known-amendments.html#expandedsignerlist">ExpandedSignerList amendment</a>によって追加されました。)</em></p>
+<h3 id="signer-weightとquorumの使用例">Signer WeightとQuorumの使用例<a aria-hidden="true" class="hover_anchor" href="#signer-weightとquorumの使用例"><i class="fa fa-link"></i></a></h3>
+<p>ウェイトと定足数により、アカウントを管理する責任ある参加者への相対的な信頼と権限に基づき、トランザクションごとに適切なレベルの監視を設定することができます。</p>
+<p>共有アカウントのユースケースの場合、定足数1のリストを作成し、すべての参加者に1のウェイトを与えることができます。</p>
+<p>非常に重要なアカウントの場合、定足数を3に設定し、重みを1とする3人の参加者を設定することができます。すべての参加者がトランザクションごとに同意して承認する必要があります。</p>
+<p>CEOのウェイトを3、副社長3人のウェイトを各2、取締役3人のウェイトを各1に割り当てたとする。このアカウントのトランザクションを承認するには、取締役3名全員（合計ウェイト3）、副社長1名と取締役1名（合計ウェイト3）、副社長2名（合計ウェイト4）、またはCEO（合計ウェイト3）の承認が必要となります。</p>
+<p>先の3つのユースケースでは、レギュラーキーを設定せずにマスターキーを無効にすることで、マルチシグが唯一の<a href="transaction-basics.html#トランザクションの識別">トランザクションの承認</a>の方法となるようにします。</p>
+<p>"バックアッププラン"としてマルチシグリストを作成するシナリオがあるかもしれません。アカウント所有者は、通常、トランザクションにレギュラーキー(マルチシグではない)を使用します。もしアカウント所有者が秘密鍵を紛失した場合、通常の鍵に代わるトランザクションにマルチシグするよう友人に依頼することができます。</p>
+<h2 id="マルチシグトランザクションの送信">マルチシグトランザクションの送信<a aria-hidden="true" class="hover_anchor" href="#マルチシグトランザクションの送信"><i class="fa fa-link"></i></a></h2>
+<p>マルチシグトランザクションを正常に送信するには、以下のすべての条件を満たす必要があります。</p>
 <ul>
-<li>トランザクションを送信するアドレス（<code>Account</code>に指定されるアドレス）は、<a href="signerlist.html">レジャーに<code>SignerList</code></a>を所有する必要があります。</li>
+<li>トランザクションを送信するアドレス（<code>Account</code>に指定されるアドレス）は、<a href="signerlist.html">レジャーに<code>SignerList</code></a>を所有する必要があります。この方法については、<a href="set-up-multi-signing.html">マルチシグを設定する</a>を参照してください。</li>
 <li>トランザクションに<code>SigningPubKey</code>フィールドを空の文字列として含める必要があります。</li>
 <li>トランザクションに、署名の配列が指定されている<a href="transaction-common-fields.html#signersフィールド"><code>Signers</code>フィールド</a>を含める必要があります。</li>
-<li><code>Signers</code>配列に含まれている署名は、SignerListで定義されている署名と一致している必要があります。</li>
-<li>指定された署名で、これらの署名者に関連付けられている<code>weight</code>の合計が、SignerListの<code>quorum</code>以上である必要があります。</li>
+<li><code>Signers</code>配列に含まれている署名は、<code>SignerList</code>で定義されている署名と一致している必要があります。</li>
+<li>指定された署名で、これらの署名者に関連付けられている<code>weight</code>の合計が、<code>SignerList</code>の<code>quorum</code>以上である必要があります。</li>
 <li><a href="transaction-cost.html">トランザクションコスト</a>（<code>Fee</code>フィールドで指定）は、通常のトランザクションコストの（N+1）倍以上である必要があります。このNは、指定される署名の数です。</li>
 <li>トランザクションのすべてのフィールドは、署名収集前に定義する必要があります。フィールドの<a href="transaction-common-fields.html#自動入力可能なフィールド">自動入力</a>は実行できません。</li>
-<li><code>Signers</code> 配列がバイナリ形式で指定される場合、この配列は署名者アドレスの数値に基づいて、低い値から順にソートされている必要があります。（JSONとして提出される場合は、<a href="submit_multisigned.html">submit_multisignedメソッド</a> がこの処理を自動的に実行します。）</li>
+<li><code>Signers</code>配列がバイナリ形式で指定される場合、この配列は署名者アドレスの数値に基づいて、低い値から順にソートされている必要があります。（JSONとして提出される場合は、<a href="submit_multisigned.html">submit_multisignedメソッド</a>がこの処理を自動的に実行します。）</li>
 </ul>
-<p>詳細は、<a href="set-up-multi-signing.html">マルチ署名の設定</a>を参照してください。</p>
+<p>詳細は、<a href="set-up-multi-signing.html">マルチシグの設定</a>を参照してください。</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>チュートリアル:</strong><ul>
+<li><a href="set-up-multi-signing.html">マルチシグを設定する</a></li>
+<li><a href="send-a-multi-signed-transaction.html">マルチシグトランザクションを送信する</a></li>
+</ul>
+</li>
+<li><strong>コンセプト:</strong><ul>
+<li><a href="cryptographic-keys.html">暗号鍵</a></li>
+<li><a href="transaction-cost.html#特別なトランザクションコスト">マルチシグトランザクションの特別なトランザクションコスト</a></li>
+</ul>
+</li>
+<li><strong>リファレンス:</strong><ul>
+<li><a href="signerlistset.html">SignerListSetトランザクション</a></li>
+<li><a href="signerlist.html">SignerListオブジェクト</a></li>
+<li><a href="sign_for.html">sign_forメソッド</a></li>
+<li><a href="submit_multisigned.html">submit_multisignedメソッド</a></li>
+</ul>
+</li>
+</ul>
 <!-- -->
 <!-- API object types -->
 <!-- -->
@@ -396,7 +436,7 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -516,7 +556,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -560,6 +600,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
@@ -620,11 +665,6 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -724,11 +764,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -738,7 +773,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -785,29 +820,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -989,12 +1002,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       
@@ -1473,57 +1486,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -1605,11 +1567,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1719,31 +1676,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2195,11 +2127,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2324,6 +2251,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       
@@ -2648,11 +2580,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

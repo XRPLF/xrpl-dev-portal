@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>AMM - XRPL.org (日本語)</title>
+    <title>NFT APIs - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="AMM | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/label-amm.html" />
-    <meta property="og:description" content="自動マーケットメーカー（AMM）に関するページ。" />
-    <meta name="description" content="自動マーケットメーカー（AMM）に関するページ。" />
+    <meta property="og:title" content="NFT APIs | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/nft-apis.html" />
+    <meta property="og:description" content="Specialized APIs let you access useful NFT metadata." />
+    <meta name="description" content="Specialized APIs let you access useful NFT metadata." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="ja" />
-    <link rel="alternate" href="https://xrpl.org/label-amm.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/label-amm.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/label-amm.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/nft-apis.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/nft-apis.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/nft-apis.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -40,9 +40,10 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       "event": "page_info",
-      "page_type": "Hub Page",
+      "page_type": "Document",
       "page_group": "Docs",
-      "page_labels": ["AMM"]
+      "page_funnel": "Concepts",
+      "page_labels": ['Non-fungible Tokens, NFTs']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -64,6 +65,21 @@
     <!-- Theme switch -->
     <script src="/ja/assets/js/theme-switch.js"></script>
 
+
+
+    <!-- expandable code samples -->
+    <script src="/ja/assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="/ja/assets/js/multicodetab.js"></script>
+    <!-- copy code button -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+            new ClipboardJS('.clipboard-btn');
+        });
+    </script>
 
 
 </head>
@@ -198,7 +214,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/label-amm.html">
+          <a class="dropdown-item" href="/nft-apis.html">
             English
           </a>
           <hr />
@@ -220,74 +236,129 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/enable-depositauth/content/concepts/tokens/nft-apis.md?pr=/XRPLF/xrpl-dev-portal/pull/1859" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-non-fungible-tokens-nfts">Non-fungible Tokens, NFTs</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Non-fungible Tokens, NFTs" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
+      <h4>目次</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#nft-apis">NFT APIs</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nft-objects">NFT Objects</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nft-transactions">NFT Transactions</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nft-requests">NFT requests</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#clio">Clio</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#clio-specific-nft-requests">Clio-specific NFT requests</a></li>
+      </ul>
+  </div>
       </aside>
 
       <!-- main column -->
-      <main class="main col-md-7 col-lg-6 order-md-3  landing landing-children padded-main" role="main" id="main_content_body">
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
 <nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
   <ul class="breadcrumb">
     
 
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/by-label.html">ラベル別に閲覧</a></li>
-    <li class="active breadcrumb-item">AMM</li>
+    <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a></li>
+    <li class="active breadcrumb-item">NFT APIs</li>
   </ul>
-</nav><!--/.breadcrumbs-wrap-->  <section class="content">
-      <h1 id="main-page-header">Label: AMM</h1>
-<p class="blurb">自動マーケットメーカー（AMM）に関するページ。</p>
-        <div class="curated-links">
-          <h3>コンセプト</h3>
-        <ul>
-          <li class="level-1">
-            <span class="pg-category">分散型取引所</span>
-            <a href="/ja/automated-market-makers.html">自動マーケットメーカー</a>
-            <p class="blurb child-blurb">自動マーケットメーカー（AMM）は、資産ペア間の流動性を提供し、分散型取引所のオーダーブックを補完すると同時に、流動性提供者に利益を提供します。</p>
-          </li>
-        <ul>
-        </div>
-        <div class="curated-links">
-          <h3>リファレンス</h3>
-        <ul>
-          <li class="level-1">
-            <span class="pg-category">レジャーオブジェクトのタイプ</span>
-            <a href="/ja/amm.html">AMM</a>
-            <p class="blurb child-blurb">自動マーケットメーカー（AMM）インスタンスの定義と詳細。</p>
-          </li>
-          <li class="level-1">
-            <span class="pg-category">トランザクションのタイプ</span>
-            <a href="/ja/ammbid.html">AMMBid</a>
-            <p class="blurb child-blurb">自動マーケットメーカーのオークションスロットに入札することで、手数料の割引を受けることができます。</p>
-          </li>
-          <li class="level-1">
-            <span class="pg-category">トランザクションのタイプ</span>
-            <a href="/ja/ammcreate.html">AMMCreate</a>
-            <p class="blurb child-blurb">指定された資産ペアを取引するための新しい自動マーケットメーカーを作成します。</p>
-          </li>
-          <li class="level-1">
-            <span class="pg-category">トランザクションのタイプ</span>
-            <a href="/ja/ammdeposit.html">AMMDeposit</a>
-            <p class="blurb child-blurb">LPTokenと引き換えに、自動マーケットメーカーに資金を預けます。</p>
-          </li>
-          <li class="level-1">
-            <span class="pg-category">トランザクションのタイプ</span>
-            <a href="/ja/ammvote.html">AMMVote</a>
-            <p class="blurb child-blurb">自動マーケットメーカーインスタンスの取引手数料を投票する。</p>
-          </li>
-          <li class="level-1">
-            <span class="pg-category">トランザクションのタイプ</span>
-            <a href="/ja/ammwithdraw.html">AMMWithdraw</a>
-            <p class="blurb child-blurb">LPTokenを自動マーケットメーカーに返却し、プールが保有する資産の一部と引き換える。</p>
-          </li>
-          <li class="level-1">
-            <span class="pg-category">PathおよびOrderBookのメソッド</span>
-            <a href="/ja/amm_info.html">amm_info</a>
-            <p class="blurb child-blurb">Get info about an Automted Market Maker (AMM) instance.</p>
-          </li>
-        <ul>
-        </div>
-  </section>
-      </main>
+</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
+    </div><!--/.devportal-callout-->
+    <div class="content">
+        <h1 id="nft-apis">NFT APIs<a aria-hidden="true" class="hover_anchor" href="#nft-apis"><i class="fa fa-link"></i></a></h1>
+<p>This page lists the transactions and requests associated with NFTs as a handy reference.</p>
+<h2 id="nft-objects">NFT Objects<a aria-hidden="true" class="hover_anchor" href="#nft-objects"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><a href="nftoken.html">NFToken</a> data type - The NFT object stored on the ledger.</li>
+<li>Ledger Objects<ul>
+<li><a href="nftokenoffer.html">NFTokenOffer object</a> - An offer to buy or sell an NFT.</li>
+<li><a href="nftokenpage.html">NFTokenPage object</a> - An NFT page holds a maximum of 32 NFT objects. In practice, each NFT page typically holds 16-24 NFTs.</li>
+</ul>
+</li>
+</ul>
+<h2 id="nft-transactions">NFT Transactions<a aria-hidden="true" class="hover_anchor" href="#nft-transactions"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li>
+<p><a href="nftokenmint.html">NFTokenMint</a> - Create an NFT.</p>
+</li>
+<li>
+<p><a href="nftokencreateoffer.html">NFTokenCreateOffer</a> - Create an offer to buy or sell an NFT.</p>
+</li>
+<li>
+<p><a href="nftokencanceloffer.html">NFTokenCancelOffer</a> - Cancel an offer to buy or sell an NFT.</p>
+</li>
+<li>
+<p><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a> - Accept an offer to buy or sell an NFT.</p>
+</li>
+<li>
+<p><a href="nftokenburn.html">NFTokenBurn</a> - Permanently destroy an NFT.</p>
+</li>
+</ul>
+<h2 id="nft-requests">NFT requests<a aria-hidden="true" class="hover_anchor" href="#nft-requests"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><a href="account_nfts.html">account_nfts method</a> - Get a list of non-fungible tokens owned by an account.</li>
+<li><a href="nft_buy_offers.html">nft_buy_offers method</a> - Get a list of buy offers for a specified NFToken object.</li>
+<li><a href="nft_sell_offers.html">nft_sell_offers method</a> - Get a list of sell offers for a specified NFToken object.</li>
+<li><a href="subscribe.html">subscribe method</a> - Listen for updates about a particular subject. For example, a marketplace can publish real-time updates on the status of NFTs listed on their platform.</li>
+<li><a href="unsubscribe.html">unsubscribe method</a> - Stop listening for updates about an NFT.</li>
+</ul>
+<h2 id="clio">Clio<a aria-hidden="true" class="hover_anchor" href="#clio"><i class="fa fa-link"></i></a></h2>
+<p>Clio servers enhance overall network performance by handling requests for information based on cached information, freeing up validators on the XRP Ledger to focus on processing transactions. In addition to all of the common XRP Ledger request types, the Clio server handles additional request types that provide more detailed responses.</p>
+<h3 id="clio-specific-nft-requests">Clio-specific NFT requests<a aria-hidden="true" class="hover_anchor" href="#clio-specific-nft-requests"><i class="fa fa-link"></i></a></h3>
+<ul>
+<li><a href="nft_info.html">nft_info</a> - Get current status information about the specified NFT.</li>
+<li><a href="nft_history.html">nft_history</a> - Get past transaction metadata for the specified NFT.</li>
+</ul>
+<!-- 
+[nfts_by_issuer](nfts_by_issuer.html) - Get a list of all NFTs created by the specified issuer.
+-->
+<p>You can access a public Clio server by sending a request to its URL and Clio port (typically 51233). Public Clio API servers come with no SLAs nor any responsibility to be fixed on priority. If your business use case requires continual monitoring and information requests, consider setting up your own Clio server instance. See <a href="install-clio-on-ubuntu.html">install-clio-on-ubuntu</a>.</p>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<!-- <script src="/ja/assets/vendor/feedback-widget.js"></script> -->
+<!-- <div id="feedback-content"></div> -->
+<script>
+  // // Options
+  // const options = {
+  //   analyticsConfig: [
+  //     // { name: 'ga', id: 'UA-45576805-2' },
+  //     // { name: 'gtm', id: 'GTM-THHW334' },
+  //   ],
+  //   analyticsName: 'Feedback Widget Tracker',
+  //   theme: 'xrpl',
+  //   currentPath: window.location.pathname,
+  //   parentElement: '#feedback-content',
+  // };
+  // 
+  // // Init WidgetClass
+  // const r = new WidgetClass(options);
+</script>      </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
 
@@ -297,13 +368,13 @@
     <a class="nav-link" href="/ja/docs.html">ドキュメント</a>
   </div>
     
-  <div class="nav-item ">
+  <div class="nav-item active-parent">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="false" aria-controls="tree_nav_group_1"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="true" aria-controls="tree_nav_group_1"></a>
 
         <a class="nav-link" href="/ja/concepts.html">コンセプト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1">
+    <nav class="nav flex-column show " id="tree_nav_group_1">
       
   <div class="nav-item ">
 
@@ -354,7 +425,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -460,13 +531,13 @@
   </div>
 
       
-  <div class="nav-item ">
+  <div class="nav-item active-parent">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="false" aria-controls="tree_nav_group_1_4"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="true" aria-controls="tree_nav_group_1_4"></a>
 
         <a class="nav-link" href="/ja/tokens.html">トークン</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4">
+    <nav class="nav flex-column show " id="tree_nav_group_1_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
@@ -474,17 +545,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
-  <div class="nav-item ">
+  <div class="nav-item active-parent">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="true" aria-controls="tree_nav_group_1_4_3"></a>
 
         <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+    <nav class="nav flex-column show " id="tree_nav_group_1_4_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
@@ -518,6 +589,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
@@ -578,11 +654,6 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -682,11 +753,6 @@
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -696,7 +762,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -743,29 +809,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -947,12 +991,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       
@@ -1431,57 +1475,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -1563,11 +1556,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1677,31 +1665,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2153,11 +2116,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2282,6 +2240,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       
@@ -2596,21 +2559,16 @@
   </div>
 
     
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="true" aria-controls="tree_nav_group_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
 
         <a class="nav-link" href="/ja/by-label.html">ラベル別に閲覧</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       
@@ -2849,23 +2807,5 @@ $(document).ready(() => {
 
 
 
-<!-- Feedback Widget -->
-<!-- <script src="/ja/assets/vendor/feedback-widget.js"></script> -->
-<!-- <div id="feedback-content"></div> -->
-<script>
-  // // Options
-  // const options = {
-  //   analyticsConfig: [
-  //     // { name: 'ga', id: 'UA-45576805-2' },
-  //     // { name: 'gtm', id: 'GTM-THHW334' },
-  //   ],
-  //   analyticsName: 'Feedback Widget Tracker',
-  //   theme: 'xrpl',
-  //   currentPath: window.location.pathname,
-  //   parentElement: '#feedback-content',
-  // };
-  // 
-  // // Init WidgetClass
-  // const r = new WidgetClass(options);
-</script></body>
+</body>
 </html>

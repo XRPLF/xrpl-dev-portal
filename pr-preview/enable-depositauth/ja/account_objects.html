@@ -288,7 +288,7 @@
 <ul>
 <li>現在処理中、資金化されていない、または有効期限切れで削除されていないオーダーの<a href="offer.html">Offerオブジェクト</a>。（詳細は、<a href="offers.html#オファーのライフサイクル">オファーのライフサイクル</a>を参照してください。）</li>
 <li>このアカウント側がデフォルト状態にないトラストラインの<a href="ripplestate.html">RippleStateオブジェクト</a>。</li>
-<li>アカウントの<a href="signerlist.html">SignerList</a>（アカウントで<a href="multi-signing.html">マルチ署名</a>が有効な場合）。</li>
+<li>アカウントの<a href="signerlist.html">SignerList</a>（アカウントで<a href="multi-signing.html">マルチシグ</a>が有効な場合）。</li>
 <li>実行されていないかまたは取り消されていない保留中の支払いの<a href="escrow.html">Escrowオブジェクト</a>。</li>
 <li>オープンPayment Channelの<a href="paychannel.html">PayChannelオブジェクト</a>。</li>
 <li>保留中のCheckの<a href="check.html">Checkオブジェクト</a>。</li>
@@ -298,27 +298,27 @@
 <p>要求フォーマットの例:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-0-2">コマンドライン</a></li></ul>
 
-<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">{
-  "id": 1,
-  "command": "account_objects",
-  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-  "ledger_index": "validated",
-  "type": "state",
-  "limit": 10
-}
+<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
+<span class="w">  </span><span class="s">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"command"</span><span class="p">:</span><span class="w"> </span><span class="s">"account_objects"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s">"validated"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"state"</span><span class="p">,</span>
+<span class="w">  </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">{
-    "method": "account_objects",
-    "params": [
-        {
-            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "ledger_index": "validated",
-            "limit": 10,
-            "type": "state"
-        }
-    ]
-}
+<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
+<span class="w">    </span><span class="s">"method"</span><span class="p">:</span><span class="w"> </span><span class="s">"account_objects"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s">"validated"</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"state"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample コマンドライン" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">#Syntax: account_objects &lt;account&gt; [&lt;ledger&gt;]
@@ -371,261 +371,261 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 <p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
-<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">{
-    "id": 8,
-    "status": "success",
-    "type": "response",
-    "result": {
-        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-        "account_objects": [
-            {
-                "Balance": {
-                    "currency": "ASP",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0"
-                },
-                "Flags": 65536,
-                "HighLimit": {
-                    "currency": "ASP",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "ASP",
-                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
-                    "value": "10"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862",
-                "PreviousTxnLgrSeq": 1438879,
-                "index": "2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"
-            },
-            {
-                "Balance": {
-                    "currency": "XAU",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0"
-                },
-                "Flags": 3342336,
-                "HighLimit": {
-                    "currency": "XAU",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "XAU",
-                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
-                    "value": "0"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942",
-                "PreviousTxnLgrSeq": 5982530,
-                "index": "9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"
-            },
-            {
-                "Balance": {
-                    "currency": "USD",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0"
-                },
-                "Flags": 1114112,
-                "HighLimit": {
-                    "currency": "USD",
-                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "USD",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "5"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE",
-                "PreviousTxnLgrSeq": 10555014,
-                "index": "2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"
-            },
-            {
-                "Balance": {
-                    "currency": "MXN",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "481.992867407479"
-                },
-                "Flags": 65536,
-                "HighLimit": {
-                    "currency": "MXN",
-                    "issuer": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "MXN",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "1000"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5",
-                "PreviousTxnLgrSeq": 3316170,
-                "index": "EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"
-            },
-            {
-                "Balance": {
-                    "currency": "EUR",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0.793598266778297"
-                },
-                "Flags": 1114112,
-                "HighLimit": {
-                    "currency": "EUR",
-                    "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "EUR",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "1"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46",
-                "PreviousTxnLgrSeq": 5447146,
-                "index": "4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"
-            },
-            {
-                "Balance": {
-                    "currency": "CNY",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0"
-                },
-                "Flags": 2228224,
-                "HighLimit": {
-                    "currency": "CNY",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "3"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "CNY",
-                    "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
-                    "value": "0"
-                },
-                "LowNode": "0000000000000008",
-                "PreviousTxnID": "2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF",
-                "PreviousTxnLgrSeq": 5949673,
-                "index": "578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"
-            },
-            {
-                "Balance": {
-                    "currency": "DYM",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "1.336889190631542"
-                },
-                "Flags": 65536,
-                "HighLimit": {
-                    "currency": "DYM",
-                    "issuer": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "DYM",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "3"
-                },
-                "LowNode": "0000000000000000",
-                "PreviousTxnID": "6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1",
-                "PreviousTxnLgrSeq": 8818732,
-                "index": "5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"
-            },
-            {
-                "Balance": {
-                    "currency": "CHF",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "-0.3488146605801446"
-                },
-                "Flags": 131072,
-                "HighLimit": {
-                    "currency": "CHF",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "0"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "CHF",
-                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                    "value": "0"
-                },
-                "LowNode": "000000000000008C",
-                "PreviousTxnID": "722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869",
-                "PreviousTxnLgrSeq": 2687590,
-                "index": "F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"
-            },
-            {
-                "Balance": {
-                    "currency": "BTC",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "0"
-                },
-                "Flags": 131072,
-                "HighLimit": {
-                    "currency": "BTC",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "3"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "BTC",
-                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                    "value": "0"
-                },
-                "LowNode": "0000000000000043",
-                "PreviousTxnID": "03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A",
-                "PreviousTxnLgrSeq": 8317037,
-                "index": "767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"
-            },
-            {
-                "Balance": {
-                    "currency": "USD",
-                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
-                    "value": "-16.00534471983042"
-                },
-                "Flags": 131072,
-                "HighLimit": {
-                    "currency": "USD",
-                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-                    "value": "5000"
-                },
-                "HighNode": "0000000000000000",
-                "LedgerEntryType": "RippleState",
-                "LowLimit": {
-                    "currency": "USD",
-                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-                    "value": "0"
-                },
-                "LowNode": "000000000000004A",
-                "PreviousTxnID": "CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7",
-                "PreviousTxnLgrSeq": 14365854,
-                "index": "826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"
-            }
-        ],
-        "ledger_hash": "053DF17D2289D1C4971C22F235BC1FCA7D4B3AE966F842E5819D0749E0B8ECD3",
-        "ledger_index": 14378733,
-        "limit": 10,
-        "marker": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5",
-        "validated": true
-    }
-}
+<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
+<span class="w">    </span><span class="s">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"status"</span><span class="p">:</span><span class="w"> </span><span class="s">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"response"</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"account_objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"ASP"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"ASP"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"ASP"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"10"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">1438879</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"XAU"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">3342336</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"XAU"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"XAU"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">5982530</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">1114112</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"5"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">10555014</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"MXN"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"481.992867407479"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"MXN"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"MXN"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"1000"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">3316170</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"EUR"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0.793598266778297"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">1114112</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"EUR"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"EUR"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">5447146</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CNY"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">2228224</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CNY"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"3"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CNY"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000008"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">5949673</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"DYM"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"1.336889190631542"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"DYM"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"DYM"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"3"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">8818732</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CHF"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"-0.3488146605801446"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CHF"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"CHF"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"000000000000008C"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">2687590</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"BTC"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"BTC"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"3"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"BTC"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000043"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">8317037</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"-16.00534471983042"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"5000"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"0000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"RippleState"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"value"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s">"000000000000004A"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7"</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">14365854</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="s">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s">"053DF17D2289D1C4971C22F235BC1FCA7D4B3AE966F842E5819D0749E0B8ECD3"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">14378733</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s">"F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="mf">200</span><span class="w"> </span><span class="n">OK</span>
@@ -1037,7 +1037,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -1157,7 +1157,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">Authorized Trust Lines</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
@@ -1201,6 +1201,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
@@ -1261,11 +1266,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1365,11 +1365,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
     <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/federated-sidechains.html">フェデレーションサイドチェーン</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1379,7 +1374,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1426,29 +1421,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="/ja/xrpl-interoperability.html">相互運用性 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/intro-to-evm-sidechain.html">EVM互換 XRP Ledger サイドチェーンの紹介 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1630,12 +1603,12 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       
@@ -2114,57 +2087,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/evm-sidechains.html">相互運用性 - EVMサイドチェーン</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="/ja/get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="/ja/join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -2246,11 +2168,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2360,31 +2277,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2836,11 +2728,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2965,6 +2852,11 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       
@@ -3289,11 +3181,6 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

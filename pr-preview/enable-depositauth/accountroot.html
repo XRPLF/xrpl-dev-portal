@@ -257,7 +257,6 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-accountroot-json">Example AccountRoot JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-fields">AccountRoot Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-flags">AccountRoot Flags</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#special-amm-accountroot-objects">Special AMM AccountRoot Objects</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-id-format">AccountRoot ID Format</a></li>
       </ul>
   </div>
@@ -477,13 +476,6 @@
 </thead>
 <tbody>
 <tr>
-<td><code>lsfAMM</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
-<td><code>0x02000000</code></td>
-<td>33554432</td>
-<td>(None)</td>
-<td>This account is an Automated Market Maker instance. <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
-</tr>
-<tr>
 <td><code>lsfDefaultRipple</code></td>
 <td><code>0x00800000</code></td>
 <td>8388608</td>
@@ -576,17 +568,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="special-amm-accountroot-objects">Special AMM AccountRoot Objects<a aria-hidden="true" class="hover_anchor" href="#special-amm-accountroot-objects"><i class="fa fa-link"></i></a></h2>
-<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em> <!-- SPELLING_IGNORE: 30d --></p>
-<p><a href="automated-market-makers.html">Automated Market Makers</a> (AMMs) use an AccountRoot object to issue their LP Tokens and hold the assets in the AMM pool, and an <a href="amm.html">AMM object</a> for tracking some of the details of the AMM. The address of an AMM's AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoot objects are created with the following settings:</p>
-<ul>
-<li><code>lsfAMM</code> <strong>enabled</strong>. This indicates that the AccountRoot is part of an AMM and is not a regular account.</li>
-<li><code>lsfDisableMaster</code> <strong>enabled</strong> and no other means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.</li>
-<li><code>lsfRequireAuth</code> <strong>enabled</strong> and no accounts preauthorized. This ensures that the only way to add money to the AMM Account is using the <a href="ammdeposit.html">AMMDeposit transaction</a>.</li>
-<li><code>lsfDefaultRipple</code> <strong>enabled</strong>. This ensures that users can send and trade the AMM's LP Tokens among themselves.</li>
-</ul>
-<p>These special accounts are not subject to the <a href="reserves.html">reserve requirement</a> but they can hold XRP if it is one of the two assets in the AMM's pool.</p>
-<p>In most other ways, these accounts function like ordinary accounts; the LP Tokens they issue behave like other <a href="tokens.html">tokens</a> except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.</p>
 <h2 id="accountroot-id-format">AccountRoot ID Format<a aria-hidden="true" class="hover_anchor" href="#accountroot-id-format"><i class="fa fa-link"></i></a></h2>
 <p>The ID of an AccountRoot object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
@@ -815,7 +796,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
 
-        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens Overview</a>
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
       
@@ -851,6 +832,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
@@ -911,11 +897,6 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1015,11 +996,6 @@
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1077,28 +1053,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
     </nav>
@@ -1764,57 +1718,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -1896,11 +1799,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2010,31 +1908,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2486,11 +2359,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
   </div>
 
@@ -2615,6 +2483,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_history.html">nft_history</a>
   </div>
 
       
@@ -2939,11 +2812,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-accounts.html">Accounts</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
   </div>
 
       
