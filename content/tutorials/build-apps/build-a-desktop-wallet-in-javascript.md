@@ -254,6 +254,10 @@ Describe use of helpers here...
 [`view/5_password.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/5_password.html).
 [`view/5_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/5_tx-renderer.js).
 
+After finishing this step the application should look like this:
+
+![Screenshot: Step 5, use salted password](img/javascript-wallet-5.png)
+
 ### 6. Styling
 
 **Full code for this step:**
@@ -264,6 +268,10 @@ Describe use of helpers here...
 [`view/6_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/6_tx-preload.js).
 [`view/6_styling.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/6_styling.html).
 [`view/6_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/6_tx-renderer.js).
+
+After finishing this step the application should look like this:
+
+![Screenshot: Step 6, style application with css](img/javascript-wallet-6.png)
 
 ### 7. Send XRP
 
@@ -285,7 +293,7 @@ because there are more complexities involved in sending issued tokens.
 But before that, it is time to take that wallflowery appearance of our application and give it a more usable and 
 nicer looking UI. 
 
-![Screenshot: Step 5, send xrp dialog](img/javascript-wallet-5.png)
+![Screenshot: Step 7, send xrp dialog](img/javascript-wallet-7.png)
 
 To get the application running at this stage of development, run the following command:
 
@@ -318,7 +326,7 @@ One type of check you can make is to verify the domain name associated with an X
 [account domain verification](xrp-ledger-toml.html#account-verification). When an account's domain is verified, 
 you could show it like this:
 
-TBD
+![Screenshot: Step 8, use domain verification](img/javascript-wallet-8.png)
 
 To get the application running at this stage of development, run the following command:
 
