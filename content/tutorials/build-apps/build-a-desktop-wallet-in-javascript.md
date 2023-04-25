@@ -102,20 +102,24 @@ in electron works:
 
 {{ include_code("_code-samples/build-a-wallet/js/1_hello.js", language="js") }}
 
-The main parts are a helper function that executes a ledger request and the main function that creates the application 
-window. The main function then calls our helper function and distributes its contents by broadcasting an event that will get picked up by the frontend.
+The main parts are two functions, one that creates the application window and one that executes 
+a so called [ledger request](https://xrpl.org/ledger.html#ledger). The result of the ledger request is then distributed
+by broadcasting an event with the result as the payload. The event will then get picked up by the frontend which uses 
+the payload to display the index of the last closed / settled ledger on the XRPL.
+
 
 We will use this example to study how to do Inter Process Communication (IPC) in Electron. For reasons of due diligence it 
-has to be mentioned that JavaScript has no real Processes / Threading because follows event-driven paradigm. Nonetheless 
-Electron provides us with two IPC modules called ipcMain and ipcRenderer. We can roughly equate those to the backend
-and the frontend when we think in terms of client-server applications. It works as follows:
+has to be mentioned that JavaScript has no real Processes / Threading, it rather follows an event-driven paradigm. Nonetheless 
+Electron provides us with two IPC modules called ipcMain and ipcRenderer. We can roughly equate those two to a backend process
+and a frontend processc when we think in terms of client-server applications. It works as follows:
 
 1. Create a function that enables the frontend to subscribe to backend events (in 1_preload.js)
 2. Make the function available by preloading it (webPreferences.preload during window creation)
 3. Use that function in the frontend (e.g. 1_renderer.js, loaded in 1_hello.html) to attach a callback that handles frontend updates when the event is dispatched
 4. Dispatch the event from the backend (e.g. appWindow.webContents.send('update-ledger-index', value))
 
-### 2.A. Show Ledger Updates by Polling
+
+### 2.A. Show Ledger Updates by using WebSocket subscriptions
 
 **Full code for this step:** [`2_async-poll.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_async-poll.js).
 
@@ -125,47 +129,55 @@ sync with the ledger and display the latest specs and stats like a clock that is
 
 ![Screenshot: Step 2, show ledger updates](img/javascript-wallet-2.png)
 
-To accomplish this, we'll need to subscribe to the ledger using this snippet of code: 
-
-<Code snippet>
-
-When you subscribe to the `ledger` stream, anytime there is a new validated ledger your code will be updated...
-
-To get the application running at this stage of development, run the following command:
-
-```console
-npm run async-poll
-```
-
-The code has been refactored so that the main logic now resides in a main() function which delegates the window creation
-to a helper function. We also put the functionality to do the ledger request into a separate function:
-
-{{ include_code("_code-samples/build-a-wallet/js/2_async-poll.js", language="js", lines="8-22" }}
-
-Our main logic is to continuously poll the XRPL using this function in an infinite loop:
-
-{{ include_code("_code-samples/build-a-wallet/js/2_async-poll.js", language="js", lines="57-71" }}
-
-Querying the XRPL continuously works but is a rather clumsy "solution" that is both resource intensive for the XRPL 
-as well as for our local machine. Fortunately the XRPl offers the functionality to subscribe to certain changes in the 
-ledger via the subscribe method offered by the client. We will improve our code by employing this function in the next step.
-
-### 2.B. Show Ledger Updates by Using Subscriptions
-
-**Full code for this step:** [`2_async-subscribe.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_async-subscribe.js).
-
-In Step 2.A we kept  our application on the heartbeat of the XRPL by periodically polling it for updates. In JavaScript,
-our client is connecting to the XRPL via [WebSockets](https://en.wikipedia.org/wiki/WebSocket). Our client has a 
-permanent bidirectional connection to the XRPL, which allows us to subscribe to events that the server sends out. This 
-saves resources on the server, which now only sends out data we explicitly asked for when a change happens, as well as 
-the client which does not have to sort through incoming data for relevant changes. This also reduces the complexity of the 
-application and saves us a couple of lines of code.
-
 To get the application running at this stage of development, run the following command:
 
 ```console
 npm run async-subscribe
 ```
+
+The code has been refactored so that the main logic now resides in a main() function. This allows us to handle the
+application ready event by using an one-liner at the end of the code. We will do such refactorings regularly along our journey
+in order to keep the code well managed and readable.
+
+{{ include_code("_code-samples/build-a-wallet/js/2_async-subscribe.js", language="js", lines="33-53") }}
+
+In JavaScript, our client is connecting to the XRPL via [WebSockets](https://en.wikipedia.org/wiki/WebSocket). Our client has a
+permanent bidirectional connection to the XRPL, which allows us to subscribe to events that the server sends out. This
+saves resources on the server, which now only sends out data we explicitly asked for when a change happens, as well as
+the client which does not have to sort through incoming data for relevant changes. This also reduces the complexity of the
+application and saves us a couple of lines of code. The subscription is happening here: 
+
+{{ include_code("_code-samples/build-a-wallet/js/2_async-subscribe.js", language="js", lines="42-45") }}
+
+When you [subscribe method](https://xrpl.org/subscribe.html) to the `ledger` stream, anytime there is a new validated
+ledger your code will be updated. The routing of the ´ledgerClosed´ event from the XRPL to the internal event `update-ledger-data`
+is happening here: 
+
+{{ include_code("_code-samples/build-a-wallet/js/2_async-subscribe.js", language="js", lines="48-50") }}
+
+
+### 2.B. Show Ledger Updates by Using Polling
+
+**Full code for this step:** [`2_async-poll.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_async-poll.js).
+
+In Step 2.A. we used the [subscribe method](https://xrpl.org/subscribe.html) to get the latest changes on the XRPL as 
+soon as they happen. This is the preferred way to get such updates, because it not only reduces the complexity of our 
+application and the data we have to handle, but also is less resource intensive on the servers. 
+
+For completeness's sake we will also implement a polling solution to get a feeling on how this would be done in cases where 
+Websocket subscriptions are not an option.
+
+To get the application running using polling, run the following command:
+
+```console
+npm run async-poll
+```
+
+The main difference is that instead of a subscription, The [ledger request](https://xrpl.org/ledger.html#ledger) with 
+which we are familiar from Step 1. is used in an infinite loop:
+
+{{ include_code("_code-samples/build-a-wallet/js/2_async-poll.js", language="js", lines="58-72") }}
+
 
 ### 3. Display an Account
 
@@ -174,9 +186,8 @@ npm run async-subscribe
 Now that we have a permanent connection to the XRPL and some code to bring the delivered data to life on our 
 screen, it's time to add some "wallet" functionality by managing an individual account. 
 
-For this step, we will momentarily 
-hardcode the address of the account, and save the complexities of key handling for later. After finishing 
-this step the application should look like this:
+We will get the address of the account we want to monitor by using a HTML dialog element. We will furthermore refactor the application 
+by encapsulating some functionality in a library. After finishing this step the application should look like this:
 
 ![Screenshot: Step 3, show account information](img/javascript-wallet-3.png)
 
@@ -185,6 +196,14 @@ To get the application running at this stage of development, run the following c
 ```console
 npm run account
 ```
+
+First of all, we create a directory which we will name "library". In this directory we then create a file 3_helpers.js
+with the following content:
+
+{{ include_code("_code-samples/build-a-wallet/js/library/3_helpers.js", language="js") }}
+
+Here we define three functions that will transform data we receive fron 
+
 
 ### 4. Show Account's Transactions
 
