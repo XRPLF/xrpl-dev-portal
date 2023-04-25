@@ -82,7 +82,11 @@ and asynchronous (async) code in JavaScript.
 
 ### 1. Hello XRP Ledger
 
-**Full code for this step:** [`1_hello.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/1_hello.js).
+**Full code for this step:** 
+[`1_hello.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/1_hello.js),
+[`view/1_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/1_preload.js),
+[`view/1_hello.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/1_hello.html),
+[`view/1_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/1_renderer.js).
 
 Our first step is to write a "Hello World" like application, that interacts on a very basic level with the XRP Ledger 
 and displays some high-level information about the current ledger state on the screen. Nothing too fancy so far, as we 
@@ -120,7 +124,11 @@ and a frontend processc when we think in terms of client-server applications. It
 
 ### 2.A. Show Ledger Updates by using WebSocket subscriptions
 
-**Full code for this step:** [`2_async-poll.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_async-poll.js).
+**Full code for this step:** 
+[`2_async-subscribe.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_async-subscribe.js),
+[`view/2_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/2_preload.js),
+[`view/2_async.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/2_async.html),
+[`view/2_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/2_renderer.js).
 
 Our "Hello Ledger" application from Step 1. so far only shows the latest validated ledger sequence at the time when we 
 opened it. So let's take things up a notch and add some dashboard like functionality where our wallet app will keep in 
@@ -157,7 +165,11 @@ is happening here:
 
 ### 2.B. Show Ledger Updates by Using Polling
 
-**Full code for this step:** [`2_async-poll.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_async-poll.js).
+**Full code for this step:** 
+[`2_async-poll.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_async-poll.js),
+[`view/2_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/2_preload.js),
+[`view/2_async.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/2_async.html),
+[`view/2_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/2_renderer.js).
 
 In Step 2.A. we used the [subscribe method](https://xrpl.org/subscribe.html) to get the latest changes on the XRPL as 
 soon as they happen. This is the preferred way to get such updates, because it not only reduces the complexity of our 
@@ -180,7 +192,12 @@ which we are familiar from Step 1. is used in an infinite loop:
 
 ### 3. Display an Account
 
-**Full code for this step:** [`3_account.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/3_account.js).
+**Full code for this step:** 
+[`3_account.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/3_account.js).
+[`library/3_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/3_helper.js).
+[`view/3_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/3_preload.js).
+[`view/3_account.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/3_account.html).
+[`view/3_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/3_renderer.js).
 
 Now that we have a permanent connection to the XRPL and some code to bring the delivered data to life on our 
 screen, it's time to add some "wallet" functionality by managing an individual account. 
@@ -201,12 +218,17 @@ with the following content:
 
 {{ include_code("_code-samples/build-a-wallet/js/library/3_helpers.js", language="js") }}
 
-Here we define three functions that will transform data we receive fron 
-
+Here we define three functions that will transform data we receive fron
 
 ### 4. Show Account's Transactions
 
-**Full code for this step:** [`4_tx-history.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/4_tx-history.js).
+**Full code for this step:** 
+[`4_tx-history.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/4_tx-history.js).
+[`library/3_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/3_helper.js).
+[`library/4_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/4_helper.js).
+[`view/4_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/4_tx-preload.js).
+[`view/4_tx-history.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/4_tx-history.html).
+[`view/4_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/4_tx-renderer.js).
 
 At this point, your wallet shows the account's balance getting updated, but doesn't give you any clue about how this state
 came about, namely the actual transactions that caused the updates. So, our next step is to display the account's 
@@ -219,11 +241,42 @@ To get the application running at this stage of development, run the following c
 ```console
 npm run tx-history
 ```
+Describe use of helpers here...
 
+### 5. Saving the Private Keys with a Password
 
-### 5. Send XRP
+**Full code for this step:**
+[`5_password.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/5_password.js).
+[`library/3_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/3_helper.js).
+[`library/4_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/4_helper.js).
+[`library/5_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/5_helper.js).
+[`view/5_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/5_tx-preload.js).
+[`view/5_password.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/5_password.html).
+[`view/5_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/5_tx-renderer.js).
 
-**Full code for this step:** [`7_send-xrp.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/2_send-xrp.js).
+### 6. Styling
+
+**Full code for this step:**
+[`6_styling.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/6_styling.js).
+[`library/3_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/3_helper.js).
+[`library/4_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/4_helper.js).
+[`library/5_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/5_helper.js).
+[`view/6_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/6_tx-preload.js).
+[`view/6_styling.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/6_styling.html).
+[`view/6_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/6_tx-renderer.js).
+
+### 7. Send XRP
+
+**Full code for this step:** 
+[`7_send-xrp.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/7_send-xrp.js).
+[`library/3_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/3_helper.js).
+[`library/4_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/4_helper.js).
+[`library/5_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/5_helper.js).
+[`library/6_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/6_helper.js).
+[`library/7_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/7_helper.js).
+[`view/7_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/7_preload.js).
+[`view/7_send-xrp.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/7_send-xrp.html).
+[`view/7_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/7_renderer.js).
 
 Up until now we have enabled our app to query and display data from the XRPL. Now it's time to actively participate in
 the ledger by enabling out application to send transactions. For now, you can stick to sending direct XRP payments 
@@ -241,9 +294,19 @@ npm run send-xrp
 ```
 
 
-### 6. Domain Verification and Polish
+### 8. Domain Verification and Polish
 
-**Full code for this step:** [`8_domain-verification.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/3_domain-verification.js).
+**Full code for this step:** 
+[`8_domain-verification.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/8_domain-verification.js).
+[`library/3_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/3_helper.js).
+[`library/4_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/4_helper.js).
+[`library/5_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/5_helper.js).
+[`library/6_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/6_helper.js).
+[`library/7_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/7_helper.js).
+[`library/8_helper.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/library/8_helper.js).
+[`view/8_prelaod.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/8_preload.js).
+[`view/8_domain-verification.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/8_domain-verification.html).
+[`view/8_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/8_renderer.js).
 
 One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of 
 protections or feedback for users to save them from human error and scams. These sorts of protections are extra 
