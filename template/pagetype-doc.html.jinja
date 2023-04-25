@@ -29,61 +29,7 @@
     <div class="content">
         {{ content }}
     </div>
-    <div class="discord-popup">
-      <div class="popup-window" id="myPopup">
-        <button type="button" class="close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        <p class="popup-text">Have questions?</p>
-        <a href="http://xrpldevs.com" class="btn btn-primary btn-arrow">
-          <span class="discord-logo"></span>
-          <span>Join the XRPL Discord</span>
-        </a>
-        <label class="show-again">
-        <input type="checkbox" class="show-again-checkbox">
-        <span class="show-again-checkmark"></span>
-          <label for="dont-show-again" class="show-again-message">Don't show this again</label>
-        </label>
-      </div>
-    </div>
-
-    <script type="text/javascript">
-      function localStorageAvailable() {
-        if (typeof(Storage) !== "undefined") {
-          return true;
-        }
-        else {
-          return false;
-        }
-      }
-      var cl = document.querySelector('.close');
-      cl.addEventListener('click', function () {
-        // close the window
-        document.querySelector('.popup').style.display = 'none';
-        // store do not show again in local starage if checked when window is closed
-        if (document.querySelector('.show-again-checkbox').checked) {
-          if (localStorageAvailable())
-            localStorage.setItem("DoNotShowMessageAgain", "true");
-          }
-      })
-
-      // handle do not show again
-      if (localStorageAvailable()) {
-        if (localStorage.getItem("DoNotShowMessageAgain") && localStorage.getItem("DoNotShowMessageAgain") === "true") {
-            document.querySelector('.popup').style.display = 'none';
-        }
-      };
-
-    </script>
-
-    <!-- show popup after 5 minutes -->
-    <script type="text/javascript">
-      var timeout = 5 * 60 * 1000;
-      window.setTimeout(function() {
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
-      }, timeout);
-    </script>
+    {% include 'component-discord-popup.html.jinja' %}
   </article>
   {% include 'component-feedback-widget.html.jinja' %}
 {% endblock %}
