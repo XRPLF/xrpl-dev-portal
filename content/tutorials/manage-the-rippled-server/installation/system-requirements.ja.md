@@ -11,7 +11,7 @@ labels:
 
 企業の本番環境で最良のパフォーマンスを実現するため、以下の仕様のベアメタルで`rippled`を実行することが推奨されています。
 
-- オペレーティングシステム: Ubuntu (LTF) 、CentOS または RedHat Enterprise Linux (最新版)
+- オペレーティングシステム: Ubuntu (LTF) 、CentOS または Red Hat Enterprise Linux (最新版)
 - CPU: Intel Xeon 3GHz以上のプロセッサー、8コア以上、ハイパースレッディング有効
 - ディスク: SSD / NVMe（10,000 IOPS以上）
 - RAM: 64GB
@@ -21,7 +21,7 @@ labels:
 
 テスト目的やたまにしか使わない場合は、一般的なハードウェア上でXRP Ledgerサーバーを稼働させることができます。以下の最低要件を満たせば、ほとんどの場合は動作しますが、必ずしも[ネットワークと同期](server-doesnt-sync.html)しているとは限りません。
 
-- オペレーティングシステム: Mac OS X、Windows（64ビット）、またはほとんどのLinuxディストリビューション(Red Hat、 Ubuntu、 Debianをサポート)
+- オペレーティングシステム: macOS、Windows（64ビット）、またはほとんどのLinuxディストリビューション(Red Hat、 Ubuntu、 Debianをサポート)
 - CPU: 64ビット x86_64、4コア以上
 - ディスク: データベースパーティション用に最低50GB。SSDを強く推奨（最低でも1000IOPS、それよりも多いことが望ましい）
 - RAM: 16GB以上

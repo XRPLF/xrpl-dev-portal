@@ -7,22 +7,14 @@ labels:
 ---
 # tec Codes
 
-These codes indicate that the transaction failed, but it was applied to a ledger to apply the [transaction cost](transaction-cost.html). They have numerical values in the range 100 to 199. Ripple recommends using the text code, not the numeric value.
+These codes indicate that the transaction failed, but it was applied to a ledger to apply the [transaction cost](transaction-cost.html). They have numerical values in the range 100 to 199. It is recommended to use the text code, not the numeric value.
 
-For the most part, transactions with `tec` codes take no action other than to destroy the XRP paid as a [transaction cost](transaction-cost.html), but there are some exceptions. As one such exception, a transaction that results in `tecOVERSIZE` still cleans up some [unfunded offers](offers.html#lifecycle-of-an-offer). Always look at the [transaction metadata](transaction-metadata.html) to see precisely what a transaction did.
+Transactions with `tec` codes destroy the XRP paid as a [transaction cost](transaction-cost.html), and consume a [sequence number](basic-data-types.html#account-sequence). For the most part, the transactions take no other action, but there are some exceptions. For example, a transaction that results in `tecOVERSIZE` still cleans up some [unfunded offers](offers.html#lifecycle-of-an-offer). Always look at the [transaction metadata](transaction-metadata.html) to see precisely what a transaction did.
 
 **Caution:** A transaction that provisionally failed with a `tec` code may still succeed or fail with a different code after being reapplied. The result is final when it appears in a validated ledger version. For more information, see [Finality of Results](finality-of-results.html) and [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 | Code                       | Value | Explanation                             |
 |:---------------------------|:------|:----------------------------------------|
-| `tecAMM_BALANCE`           | 163   | 
-| `tecAMM_DIRECT_PAYMENT`    | 169   | The transaction tried to send money directly to an AccountRoot object that is part of an [Automated Market Maker](automated-market-makers.html) (AMM) :not_enabled:. AMM AccountRoot entries cannot send or receive money directly except through [AMMWithdraw][] and [AMMDeposit][] transactions. |
-| `tecAMM_EXISTS`            | 167   | The [AMMCreate transaction][] :not_enabled: tried to create an [Automated Market Maker](automated-market-makers.html) (AMM) instance that already exists. There can only be at most one AMM per unique currency pair. |
-| `tecAMM_FAILED_DEPOSIT`    | 164   | The [AMMDeposit transaction][] :not_enabled: failed, probably because the sender does not have enough of the specified assets, or because the deposit requested an effective price that isn't possible with the available amounts. |
-| `tecAMM_FAILED_WITHDRAW`   | 165   | The [AMMWithdraw transaction][] :not_enabled: failed, probably because the sender does not have enough LP Tokens, or because the withdraw requested an effective price that isn't possible with the available amounts. |
-| `tecAMM_FAILED_BID`        | 168   | The [AMMBid transaction][] :not_enabled: failed, probably because the price to win the auction was higher than the specified maximum value or the sender's current balance. |
-| `tecAMM_FAILED_VOTE`       | 170   | The [AMMVote transaction][] :not_enabled: failed, probably because there are already too many votes from accounts that hold more LP Tokens for this AMM. (This can still recalculate the AMM's trading fee.) |
-| `tecAMM_INVALID_TOKENS`    | 166   | The AMM-related transaction :not_enabled: failed due to insufficient LP Tokens or problems with rounding; for example, depositing a very small amount of assets could fail if the amount of LP Tokens to be returned rounds down to zero. |
 | `tecCANT_ACCEPT_OWN_NFTOKEN_OFFER` | 157 | The transaction tried to accept an offer that was placed by the same account to buy or sell a [non-fungible token](non-fungible-tokens.html). _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
 | `tecCLAIM`                 | 100   | Unspecified failure, with transaction cost destroyed. |
 | `tecCRYPTOCONDITION_ERROR` | 146   | This [EscrowCreate][] or [EscrowFinish][] transaction contained a malformed or mismatched crypto-condition. |
@@ -61,13 +53,12 @@ For the most part, transactions with `tec` codes take no action other than to de
 | `tecNO_TARGET`             | 138   | The transaction referenced an Escrow or PayChannel ledger object that doesn't exist, either because it never existed or it has already been deleted. (For example, another [EscrowFinish transaction][] has already executed the held payment.) Alternatively, the destination account has `asfDisallowXRP` set so it cannot be the destination of this [PaymentChannelCreate][] or [EscrowCreate][] transaction. |
 | `tecOBJECT_NOT_FOUND`      | 160   | One of the objects specified by this transaction did not exist in the ledger. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
 | `tecOVERSIZE`              | 145   | This transaction could not be processed, because the server created an excessively large amount of [metadata](transaction-metadata.html) when it tried to apply the transaction. [New in: rippled 0.29.0-hf1][] |
-| `tecOWNERS`                | 132   | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](accountset.html#accountset-flags) flag if it has any trust lines or available offers. |
+| `tecOWNERS`                | 132   | The transaction cannot succeed because the sender already owns objects in the ledger. For example, an account cannot enable the [`lsfRequireAuth`](accountset.html#accountset-flags) flag if it has any trust lines or available offers. |
 | `tecPATH_DRY`              | 128   | The transaction failed because the provided [paths](paths.html) did not have enough liquidity to send anything at all. This could mean that the source and destination accounts are not linked by [trust lines](trust-lines-and-issuing.html). |
 | `tecPATH_PARTIAL`          | 101   | The transaction failed because the provided [paths](paths.html) did not have enough liquidity to send the full amount. |
 | `tecTOO_SOON`              | 152   | The [AccountDelete transaction][] failed because the account to be deleted had a `Sequence` number that is too high. The current ledger index must be at least 256 higher than the account's sequence number. |
 | `tecUNFUNDED`              | 129   | The transaction failed because the account does not hold enough XRP to pay the amount in the transaction _and_ satisfy the additional [reserve](reserves.html) necessary to execute this transaction. |
 | `tecUNFUNDED_ADD`          | 102   | **DEPRECATED.**                         |
-| `tecUNFUNDED_AMM`          | 162   | The [AMMCreate transaction][] :not_enabled: failed because the sender does not have enough of the specified assets to fund it. |
 | `tecUNFUNDED_PAYMENT`      | 104   | The transaction failed because the sending account is trying to send more XRP than it holds, not counting the [reserve](reserves.html). |
 | `tecUNFUNDED_OFFER`        | 103   | The [OfferCreate transaction][] failed because the account creating the offer does not have any of the `TakerGets` currency. |
 

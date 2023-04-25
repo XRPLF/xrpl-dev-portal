@@ -8,7 +8,7 @@ labels:
 # sign
 [[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "ソース")
 
-`sign`メソッドは[JSONフォーマットのトランザクション](transaction-formats.html)と[シード値](cryptographic-keys.html)を受け取り、トランザクションの署名済みバイナリー表現を返します。[マルチ署名済みトランザクション](multi-signing.html)に署名を付与する場合は、代わりに[sign_forメソッド][]を使用します。
+`sign`メソッドは[JSONフォーマットのトランザクション](transaction-formats.html)と[シード値](cryptographic-keys.html)を受け取り、トランザクションの署名済みバイナリー表現を返します。[マルチシグトランザクション](multi-signing.html)に署名を付与する場合は、代わりに[sign_forメソッド][]を使用します。
 
 {% include '_snippets/public-signing-note.md' %}
 <!--_ -->

@@ -1248,21 +1248,6 @@ msgstr ""
 "手数料の低減、取引の高速化、カスタムトークンの機能性により、XRPLはNFTのエコシステム構築に理想的なものとなっています。NFT発行のための<a"
 " href='docs.html#docs-hot-topic'>提案されている標準規格</a>を参照してください。"
 
-#: template/page-home.html.jinja:182
-msgid "Sidechains"
-msgstr "サイドチェーン"
-
-#: template/page-home.html.jinja:183
-msgid ""
-"Extend, experiment, and specialize a custom sidechain based on the XRPL's"
-" proven blockchain technology. Learn more about <a "
-"href='https://dev.to/ripplexdev/a-vision-for-federated-sidechains-on-the-"
-"xrp-ledger-2o7o' target='_blank'>the vision of sidechains</a>."
-msgstr ""
-"XRPLの実績あるブロックチェーン技術をベースに、カスタムサイドチェーンを拡張、実験、特化させます。詳しくは<a "
-"href='https://dev.to/ripplexdev/a-vision-for-federated-sidechains-on-the-"
-"xrp-ledger-2o7o' target='_blank'>サイドチェーンのビジョン</a>。"
-
 #: template/page-home.html.jinja:201
 #, fuzzy
 msgid "XRPL.org: by the community, for the community"

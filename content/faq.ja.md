@@ -1,11 +1,12 @@
 ---
 html: faq.html
-parent: docs.html
+parent: xrp-ledger-overview.html
 blurb: バリデータ、ユニークノードリスト、XRPの役割、セキュリティなどのトピックに関するよくある質問に対しての答えを見つけてください。
+subtitle: Your Questions About XRPL, Answered
+top_nav_grouping: About
+sidebar: disabled
 labels:
   - ブロックチェーン
-subtitle: Your Questions About XRPL, Answered
-top_nav_grouping: 質問
 template: page-faq2.html.jinja
 filters:
   - faq
@@ -27,7 +28,7 @@ name: よくある質問
 
 #### どのようにして持続可能なブロックチェーンを実現するのでしょうか？
 
-ビットコインのエネルギー消費量は、2021年現在アルゼンチンのエネルギー総消費量に相当します。また、ビットコインの採掘者が使用する電力の多くは環境を汚染するリソースから供給されていることが広く報告されています。XRPLは、プルーフ・オブ・ワークのようにエネルギーを浪費しない[コンセンサス・メカニズム](intro-to-consensus.html)を通じてトランザクションを承認し、カーボン・オフセットを活用して、[真にカーボンニュートラルな最初のブロックチェーンのひとつ](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030)となっています。[グリーン・カレンシー・カルキュレーター](carbon-calculator.html)を利用して、現金、クレジットカード、その他の人気のある暗号通貨と比較したXRPのエネルギー消費量を調べてみてください。
+ビットコインのエネルギー消費量は、2021年現在アルゼンチンのエネルギー総消費量に相当します。また、ビットコインの採掘者が使用する電力の多くは環境を汚染するリソースから供給されていることが広く報告されています。XRPLは、プルーフ・オブ・ワークのようにエネルギーを浪費しない[コンセンサス・メカニズム](intro-to-consensus.html)を通じてトランザクションを承認し、カーボン・オフセットを活用して、[真にカーボンニュートラルな最初のブロックチェーンのひとつ](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030)となっています。
 
 
 #### XRPLではXRP以外の通貨も取引できますか？

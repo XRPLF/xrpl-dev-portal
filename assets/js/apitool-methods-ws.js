@@ -197,25 +197,25 @@ Request('ledger_entry - AccountRoot', {
   }
 })
 
-Request('ledger_entry - AMM', {
-  description: "Returns a single Automated Market Maker object in its raw ledger format.",
-  link: "ledger_entry.html#get-amm-object",
-  status: "not_enabled",
-  body: {
-    "id": "example_get_amm",
-    "command": "ledger_entry",
-    "amm": {
-      "asset": {
-        "currency": "XRP"
-      },
-      "asset2": {
-        "currency" : "TST",
-        "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
-      }
-    },
-    "ledger_index": "validated"
-  }
-})
+// Request('ledger_entry - AMM', {
+//   description: "Returns a single Automated Market Maker object in its raw ledger format.",
+//   link: "ledger_entry.html#get-amm-object",
+//   status: "not_enabled",
+//   body: {
+//     "id": "example_get_amm",
+//     "command": "ledger_entry",
+//     "amm": {
+//       "asset": {
+//         "currency": "XRP"
+//       },
+//       "asset2": {
+//         "currency" : "TST",
+//         "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+//       }
+//     },
+//     "ledger_index": "validated"
+//   }
+// })
 
 Request('ledger_entry - DirectoryNode', {
   description: "Returns a directory object in its raw ledger format.",
@@ -227,6 +227,17 @@ Request('ledger_entry - DirectoryNode', {
       "owner": DEFAULT_ADDRESS_1,
       "sub_index": 0
     },
+    "ledger_index": "validated"
+  }
+})
+
+Request('ledger_entry - NFT Page', {
+  description: "Returns an NFT Page object in its raw ledger format.",
+  link: "ledger_entry.html#get-nft-page",
+  body: {
+    "id": "example_get_nft_page",
+    "command": "ledger_entry",
+    "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
     "ledger_index": "validated"
   }
 })

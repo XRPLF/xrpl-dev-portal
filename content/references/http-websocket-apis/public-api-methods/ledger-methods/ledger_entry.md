@@ -31,7 +31,6 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
 
 - [`index`](#get-ledger-object-by-id)
 - [`account_root`](#get-accountroot-object)
-- [`amm`](#get-amm-object) :not_enabled:
 - [`directory`](#get-directorynode-object)
 - [`offer`](#get-offer-object)
 - [`ripple_state`](#get-ripplestate-object)
@@ -40,6 +39,7 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
 - [`payment_channel`](#get-paychannel-object)
 - [`deposit_preauth`](#get-depositpreauth-object)
 - [`ticket`](#get-ticket-object)
+- [`nft_page`](#get-nft-page)
 
 **Caution:** If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.
 
@@ -141,73 +141,6 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html#ledger_entry-accountroot)
-
-
-
-### Get AMM Object
-
-_(Automated Market Maker (AMM) functionality is part of the proposed [XLS-30d](https://github.com/XRPLF/XRPL-Standards/discussions/78) extension :not_enabled: to the XRP Ledger protocol. You can use these features on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet.)_
-
-Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to [amm_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
-
-| Field        | Type             | Description           |
-|:-------------|:-----------------|:----------------------|
-| `amm`        | Object or String | The [AMM](amm.html) to retrieve. If you specify a string, it must be the [object ID](ledger-object-ids.html) of the AMM, as hexadecimal. If you specify an object, it must contain `asset` and `asset2` sub-fields. |
-| `amm.asset`  | Object           | One of the two assets in this AMM's pool, as a [currency object without an amount](currency-formats.html#specifying-without-amounts). |
-| `amm.asset2` | Object           | The other of the two assets in this AMM's pool, as a [currency object without an amount](currency-formats.html#specifying-without-amounts). |
-
-<!-- MULTICODE_BLOCK_START -->
-
-*WebSocket*
-
-```json
-{
-  "id": 3,
-  "command": "ledger_entry",
-  "amm": {
-    "asset": {
-      "currency": "XRP"
-    },
-    "asset2": {
-      "currency" : "TST",
-      "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
-    }
-  }
-  "ledger_index": "validated"
-}
-```
-
-*JSON-RPC*
-
-```json
-{
-    "method": "ledger_entry",
-    "params": [
-        {
-          "amm": {
-            "asset": {
-              "currency": "XRP"
-            },
-            "asset2": {
-              "currency" : "TST",
-              "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
-            }
-          },
-          "ledger_index": "validated"
-        }
-    ]
-}
-```
-
-*Commandline*
-
-```sh
-rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": { "currency" : "TST", "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" } }, "ledger_index": "validated" }'
-```
-
-<!-- MULTICODE_BLOCK_END -->
-
-[Try it! >](websocket-api-tool.html?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
 
 
 
@@ -627,6 +560,48 @@ rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJ
 [Try it! >](websocket-api-tool.html#ledger_entry-ticket)
 
 
+### Get NFT Page
+
+Return an NFT Page in its raw ledger format.
+
+| `Field`                 | Type                       | Description           |
+|:------------------------|:---------------------------|:----------------------|
+| `nft_page`              | String | The [object ID](ledger-object-ids.html) of an [NFT Page](nftokenpage.html) to retrieve. |
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+    "id": "example_get_nft_page",
+    "command": "ledger_entry",
+    "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
+    "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
+    "ledger_index": "validated"
+  }]
+}
+```
+
+*Commandline*
+
+```sh
+rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](websocket-api-tool.html#ledger_entry-nft-page)
 
 ## Response Format
 

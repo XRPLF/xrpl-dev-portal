@@ -15,6 +15,8 @@ You can create an application that mints multiple NFTokens at one time. You can 
 
 A best practice is to use `Tickets` to reserve the transaction sequence numbers. If you create an application that creates NFTokens without using tickets, if any transaction fails for any reason, the application stops with an error. If you use tickets, the application continues to send transactions, and you can look into the reason for the failure afterward.
 
+[![Batch Mint](img/quickstart33-batch-mint.png)](img/quickstart33-batch-mint.png)
+
 ## Usage
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try the sample in your own browser.
@@ -66,16 +68,16 @@ async function getAccountFromSeed() {
 	let net = getNet()
 	const client = new xrpl.Client(net)
 	results = 'Connecting to ' + getNet() + '....'
-	document.getElementById('standbyResultField').value = results
+	standbyResultField.value = results
 	await client.connect()
 	results += '\nConnected, finding wallets.\n'
-	document.getElementById('standbyResultField').value = results
+	standbyResultField.value = results
 ```
 
 Use the seed to derive the account.
 
 ```javascript
-  var theSeed = document.getElementById('seeds').value
+	var theSeed = seeds.value
 	const standby_wallet = xrpl.Wallet.fromSeed(theSeed)
 ```
 
@@ -88,12 +90,11 @@ Get the current XRP balance.
 Populate the fields for Standby account.
 
 ```javascript
-	document.getElementById('standbyAccountField').value = standby_wallet.address
-	document.getElementById('standbyPubKeyField').value = standby_wallet.publicKey
-	document.getElementById('standbyPrivKeyField').value = standby_wallet.privateKey
-	document.getElementById('standbySeedField').value = standby_wallet.seed
-	document.getElementById('standbyBalanceField').value = 
-		(await client.getXrpBalance(standby_wallet.address))
+	standbyAccountField.value = standby_wallet.address
+	standbyPubKeyField.value = standby_wallet.publicKey
+	standbyPrivKeyField.value = standby_wallet.privateKey
+	standbySeedField.value = standby_wallet.seed
+	standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
 ```
 
 Disconnect from the XRP Ledger.
@@ -108,6 +109,10 @@ Disconnect from the XRP Ledger.
 This version of `getTokens()` allows for a larger set of NFTokens by watching for a `marker` at the end of each batch of NFTokens.
 
 ```javascript
+// *******************************************************
+// **************** Get Batch Tokens *********************
+// *******************************************************
+      
 async function getBatchNFTokens() {
 ```
 
@@ -118,10 +123,10 @@ Connect to the XRP Ledger and get the account.
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + net + '...'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
   await client.connect()
   results += '\nConnected. Getting NFTokens...'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
 
 Request the `account_nfts`. Set the `limit` to 400, the maximum amount, to retrieve up to 400 records in one batch.
@@ -142,10 +147,10 @@ If the list of `NFTokens` exceeds your limit, the result includes a `marker` fie
   while (nfts.result.marker)
   {
     nfts = await client.request({
-      method: "account_nfts",
-      account: standby_wallet.classicAddress,
-      limit: 400,
-      marker: nfts.result.marker
+    method: "account_nfts",
+    account: standby_wallet.classicAddress,
+    limit: 400,
+    marker: nfts.result.marker
   })
     results += '\n' + JSON.stringify(nfts,null,2)
   }
@@ -154,7 +159,7 @@ If the list of `NFTokens` exceeds your limit, the result includes a `marker` fie
 Report the final results.
 
 ```javascript
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
 
 Disconnect from the XRP Ledger.
@@ -169,6 +174,10 @@ Disconnect from the XRP Ledger.
 This script mints multiple copies of the same NFToken. 
 
 ```javascript
+// *******************************************************
+// ******************  Batch Mint  ***********************
+// *******************************************************
+
 async function batchMint() {
 ```
 
@@ -178,12 +187,12 @@ Connect to the XRP Ledger and get the account.
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + getNet() + '....'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
   await client.connect() 
   results += '\nConnected, finding wallet.'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
   standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
 
 Get the account information, particularly the `Sequence` number.
@@ -196,7 +205,7 @@ Get the account information, particularly the `Sequence` number.
 
   my_sequence = account_info.result.account_data.Sequence
   results += "\n\nSequence Number: " + my_sequence + "\n\n"
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
 
 Next, create ticket numbers for the batch. Without tickets, if one transaction fails, all others in the batch fail. With tickets, there can be failures, but the rest can still succeed, and you can investigate any problems afterward.
@@ -249,7 +258,7 @@ Report the function progress.
 
 ```javascript
   results += "Tickets generated, minting NFTokens.\n\n"
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 ```
 
 Use a `for` loop to create the NFTokens one at a time, up to the number you specified.
@@ -292,7 +301,7 @@ Use the same logic as `getBatchNFTokens`, above, to get the list of current NFTo
   })
 
   results += JSON.stringify(nfts,null,2)
-  while (nfts.result.marker != null)
+  while (nfts.result.marker)
   {
 		nfts = await client.request({
 			method: "account_nfts",
@@ -309,9 +318,8 @@ Report the results.
 ```javascript
 	results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
 	results += '\n\nnftokens: ' + JSON.stringify(nfts, null, 2)
-	document.getElementById('standbyBalanceField').value = 
-		(await client.getXrpBalance(standby_wallet.address))
-	document.getElementById('standbyResultField').value = results
+	standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
+	standbyResultField.value = results
 ```
 
 Disconnect from the XRP Ledger.
@@ -340,7 +348,7 @@ For this form:
        button{font-weight: bold;font-family: "Work Sans", sans-serif;}
        td{vertical-align: middle;}
     </style>
-    <script src='https://unpkg.com/xrpl@2.2.3'></script>
+    <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
     <script src='ripplex1-send-xrp.js'></script>
     <script src='ripplex3-mint-nfts.js'></script>
     <script src='ripplex7-batch-minting.js'></script>
@@ -359,7 +367,7 @@ For this form:
   <body>
     <h1>Token Test Harness</h1>
     <form id="theForm">
-      Choose your ledger instance:  
+      Choose your ledger instance:
       &nbsp;&nbsp;
       <input type="radio" id="tn" name="server"
         value="wss://s.altnet.rippletest.net:51233" checked>
@@ -455,37 +463,35 @@ For this form:
 							<tr>
 								<td align="right">
 									NFToken Count
-								</td>
-								<td>
-									<input type="text" id="standbyNFTokenCountField" size="40"></input>
-									<br>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">Transfer Fee</td>
-								<td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
-							</tr>
-							</td>
-							</tr>
-							</table>
-							</td>
-							<td align="left" valign="top">
-									<button type="button" onClick="batchMint()">Batch Mint</button>
-									<br/>
-									<button type="button" onClick="getBatchNFTokens()">Get Batch NFTokens</button>
-									<br/>
-									<p align="left">
-									<textarea id="standbyResultField" cols="80" rows="20" maxlength="524288"></textarea>
-									</p>
-								</td>
+								    </td>
+								    <td>
+									    <input type="text" id="standbyNFTokenCountField" size="40"></input>
+									    <br>
+								    </td>
+							    </tr>
+							    <tr>
+								    <td align="right">Transfer Fee</td>
+								    <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
+							    </tr>
+							  </td>
 							</tr>
 						</table>
+					</td>
+					<td align="left" valign="top">
+					  <button type="button" onClick="batchMint()">Batch Mint</button>
+						<br/>
+						<button type="button" onClick="getBatchNFTokens()">Get Batch NFTokens</button>
+						<br/>
+						<p align="left">
+									
+<!-- Note the increased maxlength to hold the most possible NFToken info. -->
+
+            <textarea id="standbyResultField" cols="80" rows="20" maxlength="524288"></textarea>
+            </p>
+          </td>
+        </tr>
+      </table>
     </form>
   </body>
 </html>
 ```
-
-| Previous      | Next                                                             |
-| :---          |                                                             ---: |
-| [← Authorize Minter >](authorize-minter.html)  |  |
-

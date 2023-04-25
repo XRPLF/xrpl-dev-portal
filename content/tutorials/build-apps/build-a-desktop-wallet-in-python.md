@@ -1,8 +1,5 @@
 ---
 parent: build-apps.html
-targets:
-  - en
-  - ja # TODO: translate this page
 blurb: Build a graphical desktop wallet for the XRPL using Python.
 ---
 # Build a Desktop Wallet in Python

@@ -27,7 +27,7 @@ Proof of Work (PoW) was the first mechanism to solve the double spend problem wi
 
 #### How can a blockchain be sustainable?
 
-It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “[consensus](intro-to-consensus.html)” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be [one of the first truly carbon neutral blockchains](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/). Explore the energy consumption of XRP compared to cash, credit cards and other popular cryptocurrencies with the [Green Currency Calculator](carbon-calculator.html).
+It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “[consensus](intro-to-consensus.html)” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be [one of the first truly carbon neutral blockchains](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/).
 
 #### Can currencies other than XRP be traded through XRPL?
 
@@ -35,7 +35,7 @@ Yes, the XRP Ledger was built specifically to be able to tokenize arbitrary asse
 
 #### Isn’t XRPL only for payments?
 
-Although XRPL was initially developed for payment use cases, both the ledger and its native digital asset XRP are increasingly popular for a range of innovative blockchain use cases such as NFTs. New standards proposals for an automated market maker (AMM), XRPL Labs’ hooks amendment for smart contract functionality, and federated sidechains are all currently works in progress.
+Although XRPL was initially developed for payment use cases, both the ledger and its native digital asset XRP are increasingly popular for a range of innovative blockchain use cases such as NFTs. New standards proposals for an automated market maker (AMM), hooks amendment for smart contract functionality, and cross-chain bridges are all currently works in progress.
 
 ## Validators and Unique Node Lists
 

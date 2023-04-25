@@ -42,7 +42,7 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 
 <!--{# TODO: replace the above example with one where the channel, pubkey, signature, and balance match #}-->
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 <!--{# fix md highlighting_ #}-->
 
 
@@ -54,7 +54,7 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 | `Signature` | 文字列 | Blob | _（省略可）_ クレームの署名です（16進数）。署名付きメッセージには、Channel IDとクレームの額が含まれています。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。 |
 | `PublicKey` | 文字列 | Blob | _（省略可）_ 署名に使用する公開鍵（16進数）。公開鍵はレジャーに保管されているこのChannelの`PublicKey`と一致している必要があります。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。また`Signature`フィールドは省略されます。（`rippled`がトランザクションをレジャーに適用する前に署名の有効性をチェックできるように、トランザクションにPubKeyが指定されています。） |
 
-[DeletableAccounts Amendment](known-amendments.html#deletableaccounts) :not_enabledが有効であり、 _かつ_ Payment Channelの作成時に[fixPayChanRecipientOwnerDir Amendment](known-amendments.html#fixpaychanrecipientownerdir)が有効でなかった場合は、Payment Channelの送金先が[削除](accounts.html#アカウントの削除)され、現在レジャーに存在しない可能性があります。宛先が削除されている場合、支払元アカウントはチャネルから宛先にXRPを送金できません。トランザクションは`tecNO_DST`で失敗します。（もちろん、削除されたアカウントがトランザクションを送信することはできません。）宛先アカウントが削除されている場合に、このトランザクションタイプを他の用途（チャネルの有効期限の調整、XRPのないチャネルのクローズ、有効期限を過ぎたチャネルの削除など）で使用しても影響はありません。
+[DeletableAccounts Amendment](known-amendments.html#deletableaccounts)が有効であり、 _かつ_ Payment Channelの作成時に[fixPayChanRecipientOwnerDir Amendment](known-amendments.html#fixpaychanrecipientownerdir)が有効でなかった場合は、Payment Channelの送金先が[削除](accounts.html#アカウントの削除)され、現在レジャーに存在しない可能性があります。宛先が削除されている場合、支払元アカウントはチャネルから宛先にXRPを送金できません。トランザクションは`tecNO_DST`で失敗します。（もちろん、削除されたアカウントがトランザクションを送信することはできません。）宛先アカウントが削除されている場合に、このトランザクションタイプを他の用途（チャネルの有効期限の調整、XRPのないチャネルのクローズ、有効期限を過ぎたチャネルの削除など）で使用しても影響はありません。
 
 
 ## PaymentChannelClaimフラグ

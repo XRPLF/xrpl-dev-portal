@@ -83,7 +83,7 @@ To create the escrow as a smart contract, the participants must first define the
 
 Because participants want to create a conditionally-held escrow to provide the smart contract, they need a condition value and a fulfillment value. In this scenario, the participant that creates these values is the neutral party planner (oracle).
 
-The party planner generates the condition and fulfillment values. The party planner provides the condition value to the party host, who creates the escrow. The part planner also provides the condition to the party band so that they know that this is the right condition.
+The party planner generates the condition and fulfillment values. The party planner provides the condition value to the party host, who creates the escrow. The party planner also provides the condition to the party band so that they know that this is the right condition.
 
 The party planner must keep the fulfillment value a secret. Anyone can use the condition and fulfillment values to finish the escrow. Most often, the receiver finishes the escrow because they're the ones who are motivated to get paid.
 

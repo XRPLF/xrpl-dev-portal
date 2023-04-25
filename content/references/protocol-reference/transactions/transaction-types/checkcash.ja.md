@@ -26,7 +26,7 @@ Checkに相当する資金があるとは保証されないため、送金元に
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 <!--{# fix md highlighting_ #}-->
 
 | フィールド        | JSONの型           | [内部の型][] | 説明         |

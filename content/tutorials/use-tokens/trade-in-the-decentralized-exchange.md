@@ -14,13 +14,15 @@ This tutorial demonstrates how you can buy and sell tokens in the [decentralized
 
 ## Prerequisites
 
+- You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
+- You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
+    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](get-started-using-python.html) for setup steps.
+    - You can also read along and use the interactive steps in your browser without any setup.
+
 <!-- Source for this specific tutorial's interactive bits: -->
 <script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'></script>
 <script type="application/javascript" src="assets/js/tutorials/trade-in-the-dex.js"></script>
-
-This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup instructions.
-
-Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
 
 ## Example Code
 
@@ -49,6 +51,10 @@ _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/base-with-bignumber.js", language="js") }}
 
+_Python_
+
+{{ include_code("_code-samples/get-started/py/base-async.py", language="py") }}
+
 <!-- MULTICODE_BLOCK_END -->
 
 **Note:** The JavaScript code samples in this tutorial use the [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
@@ -71,6 +77,10 @@ _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Get credentials", end_before="// Define the proposed trade") }}
 
+_Python_
+
+{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Get credentials", end_before="# Define the proposed trade") }}
+
 <!-- MULTICODE_BLOCK_END -->
 
 ### {{n.next()}}. Look Up Offers
@@ -86,6 +96,10 @@ The following code shows how to look up existing Offers and compare them to a pr
 _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Define the proposed trade", end_before="// Send OfferCreate") }}
+
+_Python_
+
+{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Define the proposed trade", end_before="# Send OfferCreate") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -153,6 +167,10 @@ _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Send OfferCreate", end_before="// Check metadata") }}
 
+_Python_
+
+{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Send OfferCreate", end_before="# Check metadata") }}
+
 <!-- MULTICODE_BLOCK_END -->
 
 You can use this interface to send the transaction specified by the amounts in the previous step:
@@ -187,6 +205,10 @@ _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Check metadata", end_before="// Check balances") }}
 
+_Python_
+
+{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Check metadata", end_before="# Check balances") }}
+
 <!-- MULTICODE_BLOCK_END -->
 
 You can use this interface to test it out:
@@ -209,6 +231,10 @@ The following code demonstrates how to look up balances using the [account_lines
 _JavaScript_
 
 {{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Check balances", end_before="client.disconnect()") }}
+
+_Python_
+
+{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Check balances", end_before="# End main()") }}
 
 <!-- MULTICODE_BLOCK_END -->
 

@@ -80,7 +80,7 @@ XRP Ledgerは金融機関に対し、その発行資金が表す債務を履行�
 
 No Freeze設定は、アドレスに対して発行される通貨と、アドレスから発行される通貨のすべてに適用されます。一部の通貨のみを凍結できるようにしたい場合は、通貨ごとに異なるアドレスを使用してください。
 
-No Freeze設定は、アドレスのマスターキーのシークレットキーにより署名されたトランザクションでのみ有効にできます。[レギュラーキー](setregularkey.html)または[マルチ署名済みトランザクション](multi-signing.html)を使用してNo Freezeを有効にすることはできません。
+No Freeze設定は、アドレスのマスターキーのシークレットキーにより署名されたトランザクションでのみ有効にできます。[レギュラーキー](setregularkey.html)または[マルチシグトランザクション](multi-signing.html)を使用してNo Freezeを有効にすることはできません。
 
 
 <!--{# TODO: update "See Also" with new tutorials' technical details #}-->

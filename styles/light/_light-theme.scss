@@ -659,30 +659,6 @@ pre code {
   background-color: $light-bg;
 }
 
-// Carbon calculator
-.page-calculator {
-  #co2Animation,
-  #gasAnimation {
-    //filter: invert(100%) hue-rotate(200deg) brightness(1.8);
-    // Leave these dark for now
-    background: $body-bg;
-    padding: 1rem;
-  }
-
-  #calculator-mobile-toggle.show {
-    background-color: $blue-purple-500;
-    color: $white;
-  }
-  #calculator-inputs.sticky {
-    background-color: $light-bg;
-  }
-
-  #data-selector li:not(.active) a {
-    background-color: $light-form-bg;
-    color: $light-fg;
-  }
-}
-
 // Use Cases & Featured Projects page
 .page-uses {
 
@@ -987,3 +963,24 @@ $placeholder-color: $gray-600;
     filter: invert(100%) brightness(0.8);
   }
 }
+
+.page-impact {
+
+  .connect-list {
+    @each $connect in "connect-01", "connect-02", "connect-03", "connect-04" {
+      ##{$connect} {
+        content: url("../img/impact/lightmode/#{$connect}.svg");
+      }
+    }
+  }
+
+  #map-light {
+    display: block;
+  }
+  #map-dark {
+    display: none;
+  }
+
+}
+
+

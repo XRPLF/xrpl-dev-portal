@@ -71,7 +71,7 @@ Escrowは、少量の大口決済に適した大きな保証を提供してい�
 
 条件付き決済は、2017-03-31以降XRP Ledgerコンセンサスプロトコルに対する[「Escrow」Amendment](known-amendments.html#escrow)により利用可能になりました。同機能の以前のバージョンは、2016年に「Suspended Payments」（SusPay）という名称で[XRP Ledger Testnet](xrp-testnet-faucet.html)で利用可能になりました。
 
-[スタンドアロンモード](rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由)でのテストの際には、Amendmentのステータスに関係なく、Escrow機能をローカルで強制的に有効にできます。次のスタンザを`rippled.cfg`に追加してください。
+[スタンドアロンモード](rippled-server-modes.html#スタンドアロンモード)でのテストの際には、Amendmentのステータスに関係なく、Escrow機能をローカルで強制的に有効にできます。次のスタンザを`rippled.cfg`に追加してください。
 
     [features]
     Escrow
@@ -84,7 +84,7 @@ Escrow Amendmentのステータスは、[featureメソッド][]を使用して�
 
 Escrowが時間のみによってロックされており、Crypto-conditionがない場合、EscrowFinishのコストは、リファレンストランザクションの標準[トランザクションコスト](transaction-cost.html)のみです。
 
-必要となる追加のトランザクションコストは、フルフィルメントのサイズに比例します。現時点では、フルフィルメントのあるEscrowFinishでは最小トランザクションコストとして、**330 drop（[XRPのdrop数](basic-data-types.html#通貨額の指定)）と、フルフィルメントのサイズで16バイトあたり10 drop**が必要です。[マルチ署名済み](multi-signing.html)トランザクションの場合、マルチ署名のコストがフルフィルメントのコストに加算されます。
+必要となる追加のトランザクションコストは、フルフィルメントのサイズに比例します。現時点では、フルフィルメントのあるEscrowFinishでは最小トランザクションコストとして、**330 drop（[XRPのdrop数](basic-data-types.html#通貨額の指定)）と、フルフィルメントのサイズで16バイトあたり10 drop**が必要です。[マルチシグ](multi-signing.html)トランザクションの場合、マルチシグのコストがフルフィルメントのコストに加算されます。
 
 **注記:** 上記の式は、トランザクションのリファレンスコストがXRPの10 dropであることを前提としています。
 

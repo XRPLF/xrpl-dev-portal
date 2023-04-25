@@ -121,7 +121,7 @@ def create_wallet_directory():
         print("- OS Detected: Windows")
         File = PureWindowsPath(str(usr) + '/WalletTEST')
         Path_ = str(PureWindowsPath(str(usr)))
-    if OS == "Linux":
+    else:
         print("- OS Detected: Linux")
         # If it's Linux, use this path:
         File = PurePath(str(usr) + '/WalletTEST')

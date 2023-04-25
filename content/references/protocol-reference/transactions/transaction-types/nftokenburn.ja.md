@@ -3,15 +3,15 @@ html: nftokenburn.html
 parent: transaction-types.html
 blurb: TokenBurnを使用して、NFTを永久に破棄します。
 labels:
-  - Non-fungible Tokens, NFTs
+  - 非代替性トークン, NFT
 ---
 # NFTokenBurn
 
-NFTokenBurn トランザクションは、`NFToken` オブジェクトを保持している `NFTokenPage` 内から削除し、トークンをレジャーから削除（ _バーン_ ）することになります。
+NFTokenBurnトランザクションは、`NFToken`オブジェクトを保持している`NFTokenPage`内から削除し、トークンをレジャーから削除（ _バーン_ ）することになります。
 
-このトランザクションの送信者は、`NFToken` の所有者でなければなりません。`NFToken` が `lsfBurnable` フラグを有効にしている場合、代わりに発行者または発行者の `NFTokenMinter` によって許可されているアカウントの場合があります。
+このトランザクションの送信者は、`NFToken`の所有者でなければなりません。`NFToken`が`lsfBurnable`フラグを有効にしている場合、代わりに発行者または発行者の`NFTokenMinter`によって許可されているアカウントの場合があります。
 
-この操作に成功すると、対応する `NFToken` が削除されます。この操作によって `NFToken` を保持している `NFTokenPage` が空になるか、統合されて `NFTokenPage` が削除されると、所有者準備金が1つ減ります。
+この操作に成功すると、対応する`NFToken`が削除されます。この操作によって`NFToken`を保持している`NFTokenPage`が空になるか、統合されて`NFTokenPage`が削除されると、所有者準備金が1つ減ります。
 
 _([NonFungibleTokensV1_1 amendment][]が必要です)_
 
@@ -28,11 +28,11 @@ _([NonFungibleTokensV1_1 amendment][]が必要です)_
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% include '_snippets/tx-fields-intro.ja.md' %}
 
 | フィールド          | JSONの型  | [内部の型][]        | 説明                      |
 |:------------------|:----------|:------------------|:-------------------------|
-| `NFTokenID`       | 文字列    | Hash256           | このトランザクションによって削除される `NFToken` を指定します。 |
+| `NFTokenID`       | 文字列    | Hash256           | このトランザクションによって削除される`NFToken`を指定します。 |
 | `Owner`           | 文字列    | AccountID         | _(省略可)_ Burnする`NFToken`の所有者。所有者がこのトランザクションを送信するアカウントと異なる場合にのみ使用されます。発行者または許可された発行者は、`lsfBurnable`フラグが有効なNFTをBurnするために、このフィールドを使用することができます。 |
 
 

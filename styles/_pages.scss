@@ -414,29 +414,18 @@
 #impact-green {
   position: absolute;
   top: 0;
-  right: -4px;
+  left: -4px;
+  rotate: (180deg);
 }
-#impact-orange {
+#impact-purple {
   position: absolute;
   top: 100px;
-  left: -4px;
+  right: -4px;
 }
 #impact-magenta {
   position: absolute;
   top: 100px;
   right: -4px;
-}
-
-// Calculator
-#calculator-purple {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-}
-#calculator-green {
-  position: absolute;
-  top: 160px;
-  right: 0px;
 }
 
 // Foundation Page
@@ -450,6 +439,49 @@
   top: 40px;
   right: -4px;
 }
+
+.page-impact {
+
+  #map-light {
+    display: none;
+  }
+  #map-dark {
+    display: block;
+  }
+
+  .connect-list {
+    @each $connect in "connect-01", "connect-02", "connect-03", "connect-04" {
+      ##{$connect} {
+        content: url("../img/impact/#{$connect}.svg");
+      }
+    }
+  }
+
+  .btn-arrow-out::after {
+    background-position: left 0px bottom 0px;
+    content: "\00a0";
+    background-image: url(../img/icons/arrow-up-right-white.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 4px 8px 4px 12px;
+    transition: background-position 0.3s ease-in-out;
+    margin-left: 4px;
+  }
+
+  .btn-arrow-out:hover::after {
+    background-position: left 4px bottom 4px;
+  }
+  
+  @media (max-width: 767.98px) {
+    .btn-arrow-out {
+      display: block;
+      width: 100%;
+    }
+  }
+
+
+}
+
 
 .page-funding {
 
@@ -687,7 +719,6 @@
   .btn-arrow-out:hover::after {
     background-position: left 4px bottom 4px;
   }
-
   .event-card {
       max-width: 311px;
       margin: 32px auto;
@@ -1280,276 +1311,6 @@
   }
 }
 
-
-.page-calculator {
-
-  .calculator-section-description {
-    max-width: 458px;
-  }
-  /* CALCULATOR STYLING */
-  .calc-inputs {
-    margin-right: 1px;
-  }
-  #data-selector li a {
-    background: #22252B;
-    padding: 0.5rem 1.3rem;
-    color: $white;
-    white-space: nowrap;
-    font-weight: normal;
-  }
-  #data-selector li:nth-child(2) {
-    margin-left: -7px;
-    margin-right: -7px;
-  }
-  #data-selector li.active a {
-    background: $primary;
-    color: $black;
-  }
-  .tab-content div {
-    display: none;
-  }
-  .d-output {
-    display: none;
-    margin: 0 12px;
-    max-width: 188px;
-    width: 33%;
-    @include media-breakpoint-down(md) {
-      width: auto;
-    }
-  }
-  .d-output.active {
-    display: block;
-    animation-fill-mode: forwards;
-    animation: fadeIn 1s ease-in-out;
-    @include media-breakpoint-down(md) {
-      display: inline-block;
-      margin-bottom: 32px;
-    }
-    @include media-breakpoint-down(xs) {
-      display: block
-    }
-  }
-
-  @include media-breakpoint-down(xs) {
-    .d-output {
-      display: none;
-      width: auto;
-      max-width: 100%;
-    }
-    .viz-wrapper {
-      margin-right: 1rem;
-      min-width: 184px;
-    }
-    .num-wrapper {
-      h5 {
-        font-size: 1.3rem;
-        word-break: break-word;
-      }
-    }
-    .d-output[data-comp="kWh"].active {
-      display: inline-flex;
-    }
-    #data-selector li:nth-child(2) {
-      margin-left: 0;
-      margin-right: 0;
-      border-top: 1px solid $black;
-      border-bottom: 1px solid $black;
-    }
-  }
-  @include media-breakpoint-down(md) {
-    #calculator-inputs-offset.offset {
-      height: 404px;
-      width: 100%;
-    }
-    #calculator-inputs-offset {
-      height: 0;
-      width: 100%;
-    }
-    .d-output {
-      margin: 2rem 0;
-    }
-    #calculator-mobile-toggle.show {
-      position: fixed;
-      top: 84px;
-      right: 15px;
-      z-index: 9999999;
-      background: $black;
-    }
-    #calculator-mobile-toggle.hide {
-      display: none;
-    }
-    #calculator-inputs.sticky {
-      position: fixed;
-      top: 84px;
-      width: calc(100% - 30px);
-      left: 15px;
-      right: 15px;
-      background: $black;
-      display: none;
-    }
-    #calculator-inputs.sticky.show .calc-inputs-wrapper {
-      display: block;
-      margin-bottom: 1.5rem;
-    }
-    #calculator-inputs.sticky.show {
-      display: block;
-    }
-  }
-  @include media-breakpoint-down(sm) {
-    #calculator-inputs-offset.offset {
-      height: 486px;
-      width: 100%;
-    }
-  }
-  @include media-breakpoint-up(xl){
-    #data-selector li:first-child a {
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
-    }
-    #data-selector li:last-child a {
-      border-top-right-radius: 8px;
-      border-bottom-right-radius: 8px;
-    }
-  }
-  @include media-breakpoint-down(lg) {
-    #data-selector li:nth-child(2) {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-  .viz-wrapper {
-    position: relative;
-    height: 204px;
-    width: 184px;
-    overflow: hidden;
-    border-radius: 10px;
-  }
-  .viz-wrapper img {
-    margin-left: -1px;
-    margin-right: -1px;
-  }
-  @keyframes fadeIn {
-    0% { opacity: 0 }
-    100% { opacity: 1 }
-  }
-  .dot {
-    height: 2px;
-    width: 2px;
-    border-radius: 50%;
-    background-color: red;
-    position: absolute;
-    z-index: -1;
-    top: 98px;
-    left: 68px;
-    transform-origin: center center;
-  }
-  #kWh-btc-dot {
-    background-color: #FF671A;
-  }
-  #kWh-eth-dot {
-    background-color: #4F5664;
-  }
-  #kWh-xrp-dot {
-    background-color: $primary;
-  }
-  #kWh-pap-dot {
-  }
-
-  .dash {
-    &.active {
-      font-weight: bold;
-      color: $primary;
-    }
-  }
-
-  .dash:before {
-    // content: url(../img/icons/dash-line.png);
-    content: '|';
-    font-size: 7px;
-    font-weight: bold;
-    color: $gray-500;
-    position: absolute;
-    top: -10px;
-    margin-left: 13px;
-  }
-
-
-  input[type=range] {
-    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-    width: 100%; /* Specific width is required for Firefox. */
-    background: transparent; /* Otherwise white in Chrome */
-    z-index: 2;
-  }
-
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-  }
-
-  input[type=range]:focus {
-    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
-  }
-
-  input[type=range]::-ms-track {
-    width: 100%;
-    cursor: pointer;
-
-    /* Hides the slider so custom styles can be added */
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
-  }
-
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    box-sizing: content-box;
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    width: 1px; /* Set a specific slider handle width */
-    height: 1px; /* Slider handle height */
-    background: $primary;
-    padding: 0.125rem;
-    border: 8px solid $black;
-    box-shadow: 0 0 0 2px $primary;
-    cursor: pointer; /* Cursor on hover */
-  }
-
-  .slider::-moz-range-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    box-sizing: content-box;
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    width: 1px; /* Set a specific slider handle width */
-    height: 1px; /* Slider handle height */
-    background: $primary;
-    padding: 0.125rem;
-    border: 8px solid $black;
-    box-shadow: 0 0 0 2px $primary;
-    cursor: pointer; /* Cursor on hover */
-  }
-  input[type="range"] {
-    background: $primary;
-    height: 3px;
-  }
-
-  /** FF*/
-  input[type="range"]::-moz-range-progress {
-    background-color: $primary;
-  }
-  input[type="range"]::-moz-range-track {
-    background-color: $gray-500;
-  }
-  /* IE*/
-  input[type="range"]::-ms-fill-lower {
-    background-color: $primary;
-  }
-  input[type="range"]::-ms-fill-upper {
-    background-color: $gray-500;
-  }
-}
 
 .page-dev-tools {
   @each $tool,

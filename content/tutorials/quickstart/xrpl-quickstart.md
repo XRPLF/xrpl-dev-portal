@@ -54,10 +54,4 @@ To get started, create a new folder on your local disk and install the JavaScrip
 
 Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive.
 
-**Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
-
----
-
-| Previous      | Next                                                             |
-| :---          |                                                             ---: |
-|               | [1. Create Accounts and Send XRP → >](create-accounts-send-xrp.html) |
+**Note:** Without the Quickstart Samples, you will not be able to try the examples that follow.
