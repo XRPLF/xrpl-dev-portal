@@ -92,13 +92,6 @@ will take care of styling and GUI related coding in a later step:
 
 ![Screenshot: Step 1, hello world equivalent](img/javascript-wallet-1.png)
 
-In the package.json file you can find prepared commands to run our application according to the steps comprising the 
-structure of this tutorial. To get the application running at this early stage of development, run the following command: 
-
-```console
-npm run hello
-```
-
 First, we will create an entrypoint for our application, for this we create the file `1_hello.js` with the following content:
 
 `1_hello.js`
@@ -108,16 +101,22 @@ The main parts are two functions, one that creates the application window and on
 
 To display our results to the user, we need to create the view components that we specified in the `createWindow()` function. For this, we will create a `view` folder and add the following files there:
 
-`view/1_preload.js`
+<!-- MULTICODE_BLOCK_START -->
+
+*Preloader*
 {{ include_code("_code-samples/build-a-wallet/js/view/1_preload.js", language="js") }}
 
+*Template*
 `view/1_hello.html`
 {{ include_code("_code-samples/build-a-wallet/js/view/1_hello.html", language="html") }}
 
+*Renderer*
 `view/1_renderer.js`
 {{ include_code("_code-samples/build-a-wallet/js/view/1_renderer.js", language="js") }}
 
-The template part of the view is defined in `1_hello.html`, the wiring of our main application is done in `view/1_preloar.js`. The scripts to be used by our view can be found in `view/_1_renderer.js`, we could as well have them put in the template file, but that would make the template unreadable at some point.
+<!-- MULTICODE_BLOCK_END-->
+
+The template part of the view is defined in `view/1_hello.html`, the wiring of our main application is done in `view/1_preload.js`. The scripts to be used by our view can be found in `view/_1_renderer.js`, we could as well have them put in the template file, but that would make the template unreadable at some point.
 
 This example shows how to do Inter Process Communication (IPC) in Electron. Technically, JavaScript has no true parallel processes or threading, because it follows a single-threaded event-driven paradigm. Nonetheless Electron provides us with two IPC modules called `ipcMain` and `ipcRenderer`. We can roughly equate those two to a backend process and a frontend process when we think in terms of client-server applications. It works as follows:
 
@@ -126,6 +125,14 @@ This example shows how to do Inter Process Communication (IPC) in Electron. Tech
 3. Create a frontend view
 4. Use that function in the frontend (e.g. 1_renderer.js, loaded in 1_hello.html) to attach a callback that handles frontend updates when the event is dispatched
 5. Dispatch the event from the backend (e.g. appWindow.webContents.send('update-ledger-index', value))
+
+In the package.json file we have already defined some prepared commands to run our application according to the steps comprising the
+structure of this tutorial. To get the application running at this early stage of development, run the following command:
+
+```console
+npm run hello
+```
+
 
 ### 2.A. Show Ledger Updates by using WebSocket subscriptions
 
@@ -139,12 +146,6 @@ Our "Hello Ledger" application from Step 1. so far only shows the latest validat
 
 ![Screenshot: Step 2, show ledger updates](img/javascript-wallet-2.png)
 
-To get the application running at this stage of development, run the following command:
-
-```console
-npm run async-subscribe
-```
-
 The code has been refactored so that the main logic now resides in a main() function. This allows us to handle the application ready event by using an one-liner at the end of the code. We will do such refactorings regularly along our journey in order to keep the code well managed and readable.
 
 {{ include_code("_code-samples/build-a-wallet/js/2_async-subscribe.js", language="js", lines="33-53") }}
@@ -153,9 +154,15 @@ In JavaScript, our client is connecting to the XRPL via [WebSockets](https://en.
 
 {{ include_code("_code-samples/build-a-wallet/js/2_async-subscribe.js", language="js", lines="42-45") }}
 
-When you [subscribe method](https://xrpl.org/subscribe.html) to the `ledger` stream, anytime there is a new validated ledger your code will be updated. The routing of the ´ledgerClosed´ event from the XRPL to the internal event `update-ledger-data`is happening here: 
+When we [subscribe method](https://xrpl.org/subscribe.html) to the `ledger` stream, anytime there is a new validated ledger our code will be updated. The routing of the ´ledgerClosed´ event from the XRPL to the internal event `update-ledger-data`is happening here: 
 
 {{ include_code("_code-samples/build-a-wallet/js/2_async-subscribe.js", language="js", lines="48-50") }}
+
+To get the application running at this stage of development, run the following command:
+
+```console
+npm run async-subscribe
+```
 
 
 ### 2.B. Show Ledger Updates by Using Polling
@@ -170,15 +177,15 @@ In Step 2.A. we used the [subscribe method](https://xrpl.org/subscribe.html) to 
 
 For completeness's sake we will also implement a polling solution to get a feeling on how this would be done in cases where Websocket subscriptions are not an option.
 
+The main difference is that instead of a subscription, The [ledger request](https://xrpl.org/ledger.html#ledger) with which we are familiar from Step 1. is used in an infinite loop:
+
+{{ include_code("_code-samples/build-a-wallet/js/2_async-poll.js", language="js", lines="58-72") }}
+
 To get the application running using polling, run the following command:
 
 ```console
 npm run async-poll
 ```
-
-The main difference is that instead of a subscription, The [ledger request](https://xrpl.org/ledger.html#ledger) with which we are familiar from Step 1. is used in an infinite loop:
-
-{{ include_code("_code-samples/build-a-wallet/js/2_async-poll.js", language="js", lines="58-72") }}
 
 ### 3. Display an Account
 
@@ -194,12 +201,6 @@ Now that we have a permanent connection to the XRPL and some code to bring the d
 We will get the address of the account we want to monitor by using a HTML dialog element. We will furthermore refactor the application by encapsulating some functionality in a library. After finishing this step the application should look like this:
 
 ![Screenshot: Step 3, show account information](img/javascript-wallet-3.png)
-
-To get the application running at this stage of development, run the following command:
-
-```console
-npm run account
-```
 
 First, we will create a new directory, aptly named `library`. In this directory we then create a file `3_helpers.js` with the following content:
 
@@ -241,7 +242,19 @@ ipcMain.on('address-entered', async (event, address) =>  {
 }
 ```
 
-To display data for the account we have added two additional account sections.  First, there is an initial account_info request to get the data as soon as the user has entered the address. Then there is a subscription to the transactions stream for our account, and we issue another account info request in case a transaction happens, so the displayed balance is always up to date.
+To have some initial data to display for the account we have to add the following code to our main file:
+
+{{ include_code("_code-samples/build-a-wallet/js/3_account.js", language="js", lines="50-61") }}
+
+To keep the displayed balance of the account up-to-date, we use a transactions subscription for our account. As soon as a new transaction is registered, we issue an account_info request and send the data to the renderer:
+
+{{ include_code("_code-samples/build-a-wallet/js/3_account.js", language="js", lines="63-71") }}
+
+To get the application running at this stage of development, run the following command:
+
+```console
+npm run account
+```
 
 ### 4. Show Account's Transactions
 
@@ -253,16 +266,36 @@ To display data for the account we have added two additional account sections.  
 [`view/4_tx-history.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/4_tx-history.html).
 [`view/4_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/4_tx-renderer.js).
 
-At this point, your wallet shows the account's balance getting updated, but doesn't give you any clue about how this state came about, namely the actual transactions that caused the updates. So, our next step is to display the account's up to date transaction history using subscriptions once again:
+At this point, our wallet shows the account's balance getting updated, but doesn't give us any clue about how this state came about, namely the actual transactions that caused the updates. So, our next step is to display the account's up to date transaction history using subscriptions once again:
 
 ![Screenshot: Step 4, show transaction history](img/javascript-wallet-4.png)
 
-To get the application running at this stage of development, run the following command:
+First we will add a section to the template (`view/4_tx-history.html`) file to display the transaction list of a given account by adding the following code after the fieldset for the latest validated ledger:
+
+{{ include_code("_code-samples/build-a-wallet/js/view/4_tx-history.html", language="html", lines="29-44") }}
+
+Our preloader (`view/4_preloader.js`) will be complemented with a function that allows us to subscribe to the 'update-transaction-data' event:
+
+{{ include_code("_code-samples/build-a-wallet/js/view/4_preloader.js", language="js", lines="13-15") }}
+
+In the renderer (`view/4_preloader.js`), we define the callback that displays the latest transaction list:
+
+{{ include_code("_code-samples/build-a-wallet/js/view/4_preloader.js", language="js", lines="47-60") }}
+
+In our main file (`4_tx-history`), we already have queried the relevant data in the `client.on('transaction')` subscription. We just have to send it to the renderer by triggering the 'update-transaction-data' event:
+
+{{ include_code("_code-samples/build-a-wallet/js/4_tx-history.js", language="js", lines="62-63") }}
+
+As this is only called as soon as a new transaction is recorded, our transaction table is empty at first, so we need to issue an initial call for the account transactions:
+
+{{ include_code("_code-samples/build-a-wallet/js/4_tx-history.js", language="js", lines="76-83") }}
+
+That is it for this step, to get the application running at this stage of development, run the following command:
 
 ```console
 npm run tx-history
 ```
-Describe use of helpers here...
+
 
 ### 5. Saving the Private Keys with a Password
 
@@ -308,7 +341,7 @@ After finishing this step the application should look like this:
 [`view/7_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/7_renderer.js).
 
 Up until now we have enabled our app to query and display data from the XRPL. Now it's time to actively participate in
-the ledger by enabling out application to send transactions. For now, you can stick to sending direct XRP payments 
+the ledger by enabling out application to send transactions. For now, we can stick to sending direct XRP payments 
 because there are more complexities involved in sending issued tokens. 
 
 But before that, it is time to take that wallflowery appearance of our application and give it a more usable and 
@@ -337,9 +370,9 @@ npm run send-xrp
 [`view/8_domain-verification.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/8_domain-verification.html).
 [`view/8_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/view/8_renderer.js).
 
-One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and scams. These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
+One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and scams. These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team one can ask to cancel or refund a payment if one made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
 
-One type of check you can make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](xrp-ledger-toml.html#account-verification). When an account's domain is verified, you could show it like this:
+One type of check we could make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](xrp-ledger-toml.html#account-verification). When an account's domain is verified, we can could show it like this:
 
 ![Screenshot: Step 8, use domain verification](img/javascript-wallet-8.png)
 
