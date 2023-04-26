@@ -201,11 +201,47 @@ To get the application running at this stage of development, run the following c
 npm run account
 ```
 
-First of all, we create a directory which we will name "library". In this directory we then create a file 3_helpers.js with the following content:
+First, we will create a new directory, aptly named `library`. In this directory we then create a file `3_helpers.js` with the following content:
 
 {{ include_code("_code-samples/build-a-wallet/js/library/3_helpers.js", language="js") }}
 
-Here we define three functions that will transform data we receive fron
+Here we define three utility functions that will transform data we receive from the ledger, so it can be conveniently used in the frontend. as we progress in this tutorial, we will keep this pattern of putting reusable functionality in the library.
+
+Our main file will be called `3_account.js` and have the following content:
+
+{{ include_code("_code-samples/build-a-wallet/js/3_account.js", language="js") }}
+
+The content of our view files will be complemented as follows:
+
+`view/3_preload.js`
+{{ include_code("_code-samples/build-a-wallet/js/view/3_preload.js", language="js") }}
+
+`view/3_account.html`
+{{ include_code("_code-samples/build-a-wallet/js/view/3_account.html", language="html") }}
+
+`view/3_renderer.js`
+{{ include_code("_code-samples/build-a-wallet/js/view/3_renderer.js", language="js") }}
+
+In `view/3_account.html`, we have added a HTML dialog element, which we will use to query the user for the account address we want to monitor:
+{{ include_code("_code-samples/build-a-wallet/js/view/3_account.html", language="html", lines="30-41") }}
+
+To make the HTML dialog work, the following code snippet has been added to `view/3_renderer.js`:
+{{ include_code("_code-samples/build-a-wallet/js/view/3_renderer.js", language="js", lines="1-20") }}
+
+In order to handle the address the user entered and send it to the main process, we have added the following snippet to `exposeInMainWorld` in `view/3_preload.js`:
+{{ include_code("_code-samples/build-a-wallet/js/view/3_preload.js", language="js", lines="4-6") }}
+
+Note that, in contrast to our previous code, where we subscribed callbacks to events from the main process, we now send an event to the main process from the renderer context. For this we use `ipcRenderer.send()` instead of `ipcRenderer.on()`. Note that the use in the renderer also differs, while we subscribe to events from the main process immediately as soon as an `renderer.js` is loaded, we use our preloaded function only after an user interaction has taken place (`window.electronAPI.onEnterAccountAddress(address)`).
+
+As we will know the account we want to query the leger for is known only after the user enters an address, we wrap our application logic with an event handler:
+
+```javascript
+ipcMain.on('address-entered', async (event, address) =>  {
+  ...
+}
+```
+
+To display data for the account we have added two additional account sections.  First, there is an initial account_info request to get the data as soon as the user has entered the address. Then there is a subscription to the transactions stream for our account, and we issue another account info request in case a transaction happens, so the displayed balance is always up to date.
 
 ### 4. Show Account's Transactions
 
