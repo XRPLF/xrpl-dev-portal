@@ -317,7 +317,7 @@
 <p>フィールド（プレフィクスを含む）をソート順に連結します。</p>
 </li>
 </ol>
-<p>その結果、ECDSA（secp256k1楕円曲線を使用）やEd25519などの既知の署名アルゴリズムを使用して署名できるバイナリブロブが1つ作成されます。XRP Ledgerのために、適切なプレフィクス（シングル署名の場合は<code>0x53545800</code>、マルチ署名の場合は<code>0x534D5400</code>）を使用してデータを<a href="basic-data-types.html#ハッシュ">ハッシュ化</a>する必要があります。署名後に、指定されている<code>TxnSignature</code>フィールドを使用してトランザクションを再度シリアル化する必要があります。 <!-- --></p>
+<p>その結果、ECDSA（secp256k1楕円曲線を使用）やEd25519などの既知の署名アルゴリズムを使用して署名できるバイナリブロブが1つ作成されます。XRP Ledgerのために、適切なプレフィクス（シングル署名の場合は<code>0x53545800</code>、マルシグの場合は<code>0x534D5400</code>）を使用してデータを<a href="basic-data-types.html#ハッシュ">ハッシュ化</a>する必要があります。署名後に、指定されている<code>TxnSignature</code>フィールドを使用してトランザクションを再度シリアル化する必要があります。 <!-- --></p>
 <p class="devportal-callout 注記"><strong>注記:</strong> XRP Ledgerでは、<a href="ledger-object-types.html">レジャーオブジェクト</a>や処理済みのトランザクションなど他のタイプのデータを表す場合にも同じシリアル化フォーマットが使用されます。ただし、署名されるトランザクションに追加するのに適切なフィールドは限られています。（たとえば署名自体が指定されている<code>TxnSignature</code>フィールドは、署名するバイナリブロブに含まれていてはなりません。）このように、「署名」フィールドとされてオブジェクトに署名するときにオブジェクトに含まれるフィールドもあれば、「非署名」とされてオブジェクトに含まれないフィールドもあります。</p>
 <h3 id="例">例<a aria-hidden="true" class="hover_anchor" href="#例"><i class="fa fa-link"></i></a></h3>
 <p>署名済みトランザクションと未署名のトランザクションはいずれも、JSONフォーマットとバイナリフォーマットの両方で表すことができます。同じ署名済みトランザクションのJSONフォーマットとバイナリフォーマットの例を以下に示します。</p>
@@ -582,14 +582,43 @@
 <td style="text-align: left;">いいえ</td>
 <td>可変数のメンバーからなる配列。フィールドによってタイプが異なる場合があります。この例として、<a href="transaction-common-fields.html#memosフィールド">memos</a>や<a href="multi-signing.html">マルチ署名</a>で使用される署名者のリストがあります。</td>
 </tr>
+<tr>
+<td style="text-align: left;">[STIssue][]</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">320</td>
+<td style="text-align: left;">いいえ</td>
+<td><span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> 数量を含まない、資産(XRPまたはトークン)を指定します。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#オブジェクトフィールド">STObject</a></td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">可変</td>
+<td style="text-align: left;">いいえ</td>
+<td>1つ以上のネストされたフィールドを含むオブジェクト。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#uintフィールド">UInt8</a></td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">いいえ</td>
+<td>8ビットの符号なし整数。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#uintフィールド">UInt16</a></td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">いいえ</td>
+<td>16ビットの符号なし整数。<code>TransactionType</code>は、このタイプの特殊なフィールドで、特定の文字列から整数値へのマッピングを含みます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#uintフィールド">UInt32</a></td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">いいえ</td>
+<td>32ビットの符号なし整数。このタイプの例として、すべてのトランザクションの<code>Flags</code>フィールドと<code>Sequence</code>フィールドがあります。</td>
+</tr>
 </tbody>
 </table>
-<!-- TODO: translate -->
-<!-- | [STIssue][]   | 24        | 320        | いいえ                   | <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> An asset definition, XRP or a token, with no quantity. |-->
-<p>| <a href="#オブジェクトフィールド">STObject</a> | 14 | 可変 | いいえ | 1つ以上のネストされたフィールドを含むオブジェクト。 |
-| <a href="#uintフィールド">UInt8</a> | 16 | 8 | いいえ | 8ビットの符号なし整数。 |
-| <a href="#uintフィールド">UInt16</a> | 1 | 16 | いいえ | 16ビットの符号なし整数。<code>TransactionType</code>は、このタイプの特殊なフィールドで、特定の文字列から整数値へのマッピングを含みます。 |
-| <a href="#uintフィールド">UInt32</a> | 2 | 32 | いいえ | 32ビットの符号なし整数。このタイプの例として、すべてのトランザクションの<code>Flags</code>フィールドと<code>Sequence</code>フィールドがあります。 |</p>
 <p>上記のフィールドタイプの他に、<a href="ledger-object-types.html">レジャーオブジェクト</a>や<a href="transaction-metadata.html">トランザクションメタデータ</a>などのコンテキストでは以下のタイプが含まれることがあります。</p>
 <table class="table-responsive">
 <thead>
@@ -836,7 +865,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -1065,11 +1094,6 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1407,12 +1431,12 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       

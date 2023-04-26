@@ -1,11 +1,11 @@
 -------------
 Spell Checker
 -------------
-Found 46 possible spelling errors:
+Found 42 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gif, giff, gibs
-  kuressaare: 
+  gifs: ifs, kifs, gits
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -27,35 +27,30 @@ Found 46 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slag, sas, skas
-
-<Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
-  stablefoo: 
-  unbalances: unbalanced, unbalance
-  machowski: 
+  slas: slay, slaw, swas
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  xrpfees: 
-  fixuniversalnumber: 
+  depositpreauthamendment: 
   fixnonfungibletokensv1_2: 
   immediateofferkilled: 
-  depositpreauthamendment: 
+  xrpfees: 
+  fixuniversalnumber: 
   disallowincoming: 
   nftokenoffers: nftokenoffer
+  asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
   asfdisallowincomingcheck: 
-  asfdisallowincomingnftoffer: 
   asfdisallowincomingpaychan: 
-  30d: 3rd, 3-d, 3d
+  30d: 3-d, 3d, 3rd
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3-d, 3d, 3rd
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   nftokenoffers: nftokenoffer
@@ -88,16 +83,13 @@ Found 46 possible spelling errors:
 <Page 'SetFee' (setfee.html)> Unknown Words:
   xrpfees: 
 
-<Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
-
 <Page 'nft_history' (nft_history.html)> Unknown Words:
   nft_history: 
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 32 discouraged words/phrases:
+Found 28 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -115,9 +107,6 @@ Page: <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)>
 Page: <Page 'Running an NFT Auction' (nftoken-auctions.html)>
    Discouraged word: purchase (1 instances); suggest 'buy' instead.
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'Automated Market Makers' (automated-market-makers.html)>
-   Discouraged phrase: market maker (2 instances); suggest 'liquidity provider' instead.
-   Discouraged word: remainder (1 instances); suggest 'rest' instead.
 Page: <Page 'Amendments' (amendments.html)>
    Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
 Page: <Page 'Known Amendments' (known-amendments.html)>
@@ -130,8 +119,6 @@ Page: <Page '2. Create Trust Line and Send Currency' (create-trustline-send-curr
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-stand-alone-mode.html)>
    Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
-Page: <Page 'tem Codes' (tem-codes.html)>
-   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
 Page: <Page 'ledger_data' (ledger_data.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 ------------------
@@ -180,8 +167,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 750
-  Characters: 4,662
+  Words: 745
+  Characters: 4,633
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

@@ -485,7 +485,7 @@
 </tr>
 </tbody>
 </table>
-<p><code>asfDisableMaster</code>フラグまたは<code>asfNoFreeze</code>フラグを有効にするには、マスターキーペアで署名することによって<a href="transaction-basics.html#トランザクションの承認">トランザクションを承認</a>する必要があります。レギュラーキーペアやマルチ署名を使用することはできません。レギュラーキーペアまたはマルチ署名を使用すると、<code>asfDisableMaster</code>を無効にする（つまり、マスターキーペアを再び有効にする）ことができます。</p>
+<p><code>asfDisableMaster</code>フラグまたは<code>asfNoFreeze</code>フラグを有効にするには、マスターキーペアで署名することによって<a href="transaction-basics.html#トランザクションの承認">トランザクションを承認</a>する必要があります。レギュラーキーペアやマルチ署名を使用することはできません。レギュラーキーペアまたはマルチ署名を使用すると、<code>asfDisableMaster</code>を無効にする（つまり、マスターキーペアを再び有効にする）ことができます。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.28.0" target="_blank" title="新規: rippled 0.28.0"><img alt="新規: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.28.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>以下の<a href="transaction-common-fields.html#flagsフィールド">トランザクションフラグ</a>はAccountSetタイプのトランザクションに固有のもので、同様の目的を果たしますが、使用することはお勧めしません。限られたスペースのため、いくつかの設定には関連する <code>tf</code> フラグがありません。また、新しい <code>tf</code> フラグは <code>AccountSet</code> トランザクションタイプには追加されていません。一つのトランザクションで複数の設定を有効にするには、<code>tf</code>フラグと<code>asf</code>フラグを組み合わせて使用することができます。</p>
 <table class="table-responsive">
 <thead>
@@ -647,7 +647,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -876,11 +876,6 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1218,12 +1213,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       

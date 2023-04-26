@@ -404,7 +404,7 @@
 <p>失敗のケース（3）は、予期しない状態を表します。トランザクションが未処理の場合、最新の検証済みレジャーにある送信元アカウントの<code>Sequence</code>番号を確認する必要があります。（<a href="account_info.html">account_infoメソッド</a>を使用して確認できます。）最新の検証済みレジャーにあるアカウントの<code>Sequence</code>値がトランザクションの<code>Sequence</code>値より大きい場合、同じ<code>Sequence</code>値を持つ別のトランザクションが検証済みレジャーに含まれています。システムがこの別のトランザクションを認識していない場合、予期しない状態となり、その原因が特定されるまで処理を停止しなければならなくなります。そうしないと、システムが同じ目標を達成するために複数のトランザクションを送信する可能性があります。行う必要のある手順は、具体的な原因によって変わります。考えられる原因と手順は次のとおりです。</p>
 </li>
 <li>
-<p>前回送信したトランザクションに<a href="transaction-malleability.html">展性</a>があり、実際に検証済みレジャーに含まれていたが、予想と異なるハッシュだった場合。この問題は、<code>tfFullyCanonicalSig</code>フラグが含まれないフラグのセットを指定した場合か、必要以上の署名者によってマルチ署名されたトランザクションであった場合に起こる可能性があります。これに該当する場合は、その異なるハッシュとトランザクションの最終結果を保存し、通常のアクティビティーを再開します。</p>
+<p>前回送信したトランザクションに<a href="transaction-malleability.html">展性</a>があり、実際に検証済みレジャーに含まれていたが、予想と異なるハッシュだった場合。この問題は、<code>tfFullyCanonicalSig</code>フラグが含まれないフラグのセットを指定した場合か、必要以上の署名者によってマルチシグされたトランザクションであった場合に起こる可能性があります。これに該当する場合は、その異なるハッシュとトランザクションの最終結果を保存し、通常のアクティビティーを再開します。</p>
 </li>
 <li>
 <p>トランザクションを<a href="cancel-or-skip-a-transaction.html">キャンセル</a>して置き換えたため、置き換え後のトランザクションが代わりに処理された場合。障害から復旧しようとしている場合、置き換え後のトランザクションでレコードが失われている可能性があります。その場合、当初確認していたトランザクションは恒久的に失敗し、置き換え後のトランザクションの最終結果が検証済みレジャーバージョンに記録されます。両方の最終結果を保存し、他に欠落したトランザクションや置き換えられたトランザクションがないか確認してから、通常のアクティビティーを再開します。</p>
@@ -811,7 +811,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -1040,11 +1040,6 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1382,12 +1377,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       

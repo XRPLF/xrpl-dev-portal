@@ -321,7 +321,7 @@
 <td>0</td>
 </tr>
 <tr>
-<td><a href="multi-signing.html">マルチ署名済みトランザクション</a></td>
+<td><a href="multi-signing.html">マルチシグトランザクション</a></td>
 <td>10 drop × （1 + 署名の数）</td>
 </tr>
 <tr>
@@ -353,13 +353,13 @@
 <h2 id="オープンレジャーコスト">オープンレジャーコスト<a aria-hidden="true" class="hover_anchor" href="#オープンレジャーコスト"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>サーバーにはトランザクションコストを強制する2つ目のメカニズムがあり、 <em>オープンレジャーコスト</em> と呼ばれます。トランザクションがXRPによるオープンレジャーコスト要件を満たす場合のみ、そのトランザクションをオープンレジャーに含めることができます。オープンレジャーコスト要件を満たさないトランザクションは、<a href="#キューに入れられたトランザクション">次のレジャーのキューに入れられます</a>。</p>
 <p>新しいレジャーバージョンごとに、サーバーは前のレジャーのトランザクション数に基づいてオープンレジャーに含めるトランザクション数のソフトリミットを選択します。オープンレジャーコストは、オープンレジャー内のトランザクション数がソフトリミットと等しくなるまでは、スケーリングされていない最低トランザクションコストと同じです。それを超えると、オープンレジャーコストはオープンレジャーに含まれるトランザクションごとに急激に増加します。次のレジャーでは、現行のレジャーにソフトリミットを超えるトランザクションが含まれていれば、サーバーはソフトリミットを高くし、コンセンサスプロセスに5秒より時間が掛かる場合はソフトリミットを低くします。</p>
-<p>オープンレジャーコストの水準は、絶対的なトランザクションコストではなく<a href="#手数料レベル">標準的なトランザクションコストに比例</a>しています。標準よりも高い要件を持つトランザクションタイプ（<a href="multi-signing.html">マルチ署名済みトランザクション</a>など）は、オープンレジャーコストを満たすために最低限のトランザクションコスト要件を持つトランザクションよりも多く支払う必要があります。</p>
+<p>オープンレジャーコストの水準は、絶対的なトランザクションコストではなく<a href="#手数料レベル">標準的なトランザクションコストに比例</a>しています。標準よりも高い要件を持つトランザクションタイプ（<a href="multi-signing.html">マルチシグトランザクション</a>など）は、オープンレジャーコストを満たすために最低限のトランザクションコスト要件を持つトランザクションよりも多く支払う必要があります。</p>
 <p>関連項目: <a class="external-link" href="https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md" target="_blank"><code>rippled</code>リポジトリー内のFee Escalationの説明 <i aria-hidden="true" class="fa fa-external-link"></i></a>。</p>
 <h3 id="キューに入れられたトランザクション">キューに入れられたトランザクション<a aria-hidden="true" class="hover_anchor" href="#キューに入れられたトランザクション"><i class="fa fa-link"></i></a></h3>
 <p><code>rippled</code>が、サーバーのローカル負荷コストは満たすが<a href="#オープンレジャーコスト">オープンレジャーコスト</a>は満たさないトランザクションを受け取った場合、サーバーはそのトランザクションが後のレジャーに「含まれる可能性」を判断します。その可能性が高いと判断すれば、サーバーはそのトランザクションをトランザクションキューに追加し、他のネットワークメンバーにトランザクションを中継します。そうでない場合、サーバーはトランザクションを破棄します。<a href="#トランザクションコストと失敗したトランザクション">トランザクションコストは検証済みレジャーに含まれるトランザクションにのみ適用される</a>ため、サーバーは、トランザクションコストを支払わないトランザクションにより生じるネットワーク負荷量を最低限に抑えようとします。</p>
 <p>キューに入れられたトランザクションの詳細は、<a href="transaction-queue.html">トランザクションキュー</a>を参照してください。</p>
 <h2 id="referenceトランザクションコスト">Referenceトランザクションコスト<a aria-hidden="true" class="hover_anchor" href="#referenceトランザクションコスト"><i class="fa fa-link"></i></a></h2>
-<p>「Referenceトランザクション」とは、負荷スケーリング前の<a href="transaction-cost.html">トランザクションコスト</a>という観点からは、最も安価な（無料ではない）トランザクションと言えます。ほとんどのトランザクションのコストはReferenceトランザクションと同じです。<a href="multi-signing.html">マルチ署名済みトランザクション</a>など一部のトランザクションでは、このコストの数倍のコストが必要です。オープンレジャーコストが上昇する場合は、コスト水準はトランザクションの基本コストに比例します。</p>
+<p>「Referenceトランザクション」とは、負荷スケーリング前の<a href="transaction-cost.html">トランザクションコスト</a>という観点からは、最も安価な（無料ではない）トランザクションと言えます。ほとんどのトランザクションのコストはReferenceトランザクションと同じです。<a href="multi-signing.html">マルチシグトランザクション</a>など一部のトランザクションでは、このコストの数倍のコストが必要です。オープンレジャーコストが上昇する場合は、コスト水準はトランザクションの基本コストに比例します。</p>
 <h3 id="手数料レベル">手数料レベル<a aria-hidden="true" class="hover_anchor" href="#手数料レベル"><i class="fa fa-link"></i></a></h3>
 <p><em>手数料レベル</em> は、トランザクションの最少コストと実際のコストとの相対的な差を表します。<a href="#オープンレジャーコスト">オープンレジャーコスト</a>は絶対的なコストではなく手数料レベルで評価されます。比較する場合は以下の表を参照してください。</p>
 <table class="table-responsive">
@@ -381,7 +381,7 @@
 <td>512</td>
 </tr>
 <tr>
-<td>4つの署名を持つ<a href="multi-signing.html">マルチ署名済みトランザクション</a></td>
+<td>4つの署名を持つ<a href="multi-signing.html">マルチシグトランザクション</a></td>
 <td>50</td>
 <td>256</td>
 <td>100</td>
@@ -424,7 +424,7 @@
 <li>署名するトランザクションの<code>Fee</code>フィールドの正確な値は事前にわかりません。</li>
 <li><code>rippled</code>を使用している場合は、<a href="sign.html">signメソッド</a>の<code>fee_mult_max</code>パラメーターと<code>fee_div_max</code>パラメーターを使用して、署名しようとしている負荷スケーリングに制限を設定することもできます。</li>
 <li>オフラインのマシンから現在のトランザクションコストを調べることはできません。</li>
-<li><a href="multi-signing.html">マルチ署名</a>の場合、トランザクションコストの自動指定は行えません。</li>
+<li><a href="multi-signing.html">マルチシグ</a>の場合、トランザクションコストの自動指定は行えません。</li>
 </ul>
 <h2 id="トランザクションコストと失敗したトランザクション">トランザクションコストと失敗したトランザクション<a aria-hidden="true" class="hover_anchor" href="#トランザクションコストと失敗したトランザクション"><i class="fa fa-link"></i></a></h2>
 <p>トランザクションコストの目的はXRP Ledgerピアツーピアネットワークを過度な負荷から保護することであるため、トランザクションが成功するかどうかにかかわらず、ネットワークに分散されるすべてのトランザクションにコストが適用されます。ただし、共有のグローバルレジャーに作用するため、トランザクションを検証済みレジャーに含める必要があります。したがって、<code>rippled</code>サーバーは<a href="transaction-results.html"><code>tec</code>ステータスコード</a>（「tec」は「トランザクションエンジン - 請求手数料のみ」（Transaction Engine - Claimed fee only）を表します）で、失敗したトランザクションをレジャーに含めようとします。</p>
@@ -548,7 +548,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -777,11 +777,6 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1119,12 +1114,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       

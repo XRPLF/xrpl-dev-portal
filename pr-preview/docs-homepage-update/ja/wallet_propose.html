@@ -460,7 +460,7 @@ rippled<span class="w"> </span>wallet_propose<span class="w"> </span>masterpassp
 <tr>
 <td style="text-align: left;"><code>account_id</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;">XRP Ledgerの<a href="base58-encodings.html">base58</a>フォーマットで作成されたアカウントの<a href="basic-data-types.html#アドレス">アドレス</a>。これは公開鍵ではありませんが、公開鍵を2回ハッシュ化したものです。チェックサムも持っているため、タイプミスした場合はほぼ間違いなく無効なアドレスとみなされ、有効だが異なるアドレスとはみなされません。これはXRP LedgerのアカウントのプライマリIDです。支払いを受けるときにこれを人に伝えたり、トランザクションにおいて、自身や、支払先、委託先識別するのに使用します。<a href="multi-signing.html">マルチ署名のリスト</a>でもこれを使用して、他の署名者を識別します。</td>
+<td style="text-align: left;">XRP Ledgerの<a href="base58-encodings.html">base58</a>フォーマットで作成されたアカウントの<a href="basic-data-types.html#アドレス">アドレス</a>。これは公開鍵ではありませんが、公開鍵を2回ハッシュ化したものです。チェックサムも持っているため、タイプミスした場合はほぼ間違いなく無効なアドレスとみなされ、有効だが異なるアドレスとはみなされません。これはXRP LedgerのアカウントのプライマリIDです。支払いを受けるときにこれを人に伝えたり、トランザクションにおいて、自身や、支払先、委託先識別するのに使用します。<a href="multi-signing.html">マルチシグリスト</a>でもこれを使用して、他の署名者を識別します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>public_key</code></td>
@@ -480,9 +480,9 @@ rippled<span class="w"> </span>wallet_propose<span class="w"> </span>masterpassp
 </tbody>
 </table>
 <p>このメソッドを使用してキーペアを生成し、アカウントのレギュラーキーペアとして使用することもできます。アカウントにレギュラーキーペアを割り当てて、それを使用してほとんどのトランザクションに署名し、マスターキーペアをできるだけオフラインにしておくことも可能です。</p>
-<p>レギュラーキーペアとして使用するほかに、マルチ署名のリスト（SignerList）のメンバーとして使用することもできます。</p>
+<p>レギュラーキーペアとして使用するほかに、マルチシグのリスト（SignerList）のメンバーとして使用することもできます。</p>
 <p>マスターキーペアとレギュラーキーペアの詳細は、<a href="cryptographic-keys.html">暗号鍵</a>を参照してください。</p>
-<p>マルチ署名の詳細は、<a href="multi-signing.html">マルチ署名</a>を参照してください。</p>
+<p>マルチシグの詳細は、<a href="multi-signing.html">マルチシグ</a>を参照してください。</p>
 <h3 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li>いずれかの<a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>。</li>
@@ -583,7 +583,7 @@ rippled<span class="w"> </span>wallet_propose<span class="w"> </span>masterpassp
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -812,11 +812,6 @@ rippled<span class="w"> </span>wallet_propose<span class="w"> </span>masterpassp
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1154,12 +1149,12 @@ rippled<span class="w"> </span>wallet_propose<span class="w"> </span>masterpassp
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       

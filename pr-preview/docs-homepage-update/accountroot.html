@@ -260,7 +260,6 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-accountroot-json">Example AccountRoot JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-fields">AccountRoot Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-flags">AccountRoot Flags</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#special-amm-accountroot-objects">Special AMM AccountRoot Objects</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-id-format">AccountRoot ID Format</a></li>
       </ul>
   </div>
@@ -480,13 +479,6 @@
 </thead>
 <tbody>
 <tr>
-<td><code>lsfAMM</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
-<td><code>0x02000000</code></td>
-<td>33554432</td>
-<td>(None)</td>
-<td>This account is an Automated Market Maker instance. <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></td>
-</tr>
-<tr>
 <td><code>lsfDefaultRipple</code></td>
 <td><code>0x00800000</code></td>
 <td>8388608</td>
@@ -579,17 +571,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="special-amm-accountroot-objects">Special AMM AccountRoot Objects<a aria-hidden="true" class="hover_anchor" href="#special-amm-accountroot-objects"><i class="fa fa-link"></i></a></h2>
-<p><em>Automated Market Maker (AMM) functionality is part of the proposed <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> extension <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> to the XRP Ledger protocol. You can use these functions on AMM test networks, but there isn't an official amendment and they aren't available on the production Mainnet. Until there is an amendment, the details documented on these pages are subject to change.</em> <!-- SPELLING_IGNORE: 30d --></p>
-<p><a href="automated-market-makers.html">Automated Market Makers</a> (AMMs) use an AccountRoot object to issue their LP Tokens and hold the assets in the AMM pool, and an <a href="amm.html">AMM object</a> for tracking some of the details of the AMM. The address of an AMM's AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoot objects are created with the following settings:</p>
-<ul>
-<li><code>lsfAMM</code> <strong>enabled</strong>. This indicates that the AccountRoot is part of an AMM and is not a regular account.</li>
-<li><code>lsfDisableMaster</code> <strong>enabled</strong> and no other means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.</li>
-<li><code>lsfRequireAuth</code> <strong>enabled</strong> and no accounts preauthorized. This ensures that the only way to add money to the AMM Account is using the <a href="ammdeposit.html">AMMDeposit transaction</a>.</li>
-<li><code>lsfDefaultRipple</code> <strong>enabled</strong>. This ensures that users can send and trade the AMM's LP Tokens among themselves.</li>
-</ul>
-<p>These special accounts are not subject to the <a href="reserves.html">reserve requirement</a> but they can hold XRP if it is one of the two assets in the AMM's pool.</p>
-<p>In most other ways, these accounts function like ordinary accounts; the LP Tokens they issue behave like other <a href="tokens.html">tokens</a> except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.</p>
 <h2 id="accountroot-id-format">AccountRoot ID Format<a aria-hidden="true" class="hover_anchor" href="#accountroot-id-format"><i class="fa fa-link"></i></a></h2>
 <p>The ID of an AccountRoot object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
@@ -924,11 +905,6 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
