@@ -274,13 +274,13 @@ First we will add a section to the template (`view/4_tx-history.html`) file to d
 
 {{ include_code("_code-samples/build-a-wallet/js/view/4_tx-history.html", language="html", lines="29-44") }}
 
-Our preloader (`view/4_preloader.js`) will be complemented with a function that allows us to subscribe to the 'update-transaction-data' event:
+Our preloader (`view/4_preload.js`) will be complemented with a function that allows us to subscribe to the 'update-transaction-data' event:
 
-{{ include_code("_code-samples/build-a-wallet/js/view/4_preloader.js", language="js", lines="13-15") }}
+{{ include_code("_code-samples/build-a-wallet/js/view/4_preload.js", language="js", lines="13-15") }}
 
-In the renderer (`view/4_preloader.js`), we define the callback that displays the latest transaction list:
+In the renderer (`view/4_renderer.js`), we define the callback that displays the latest transaction list:
 
-{{ include_code("_code-samples/build-a-wallet/js/view/4_preloader.js", language="js", lines="47-60") }}
+{{ include_code("_code-samples/build-a-wallet/js/view/4_renderer.js", language="js", lines="47-60") }}
 
 In our main file (`4_tx-history`), we already have queried the relevant data in the `client.on('transaction')` subscription. We just have to send it to the renderer by triggering the 'update-transaction-data' event:
 
