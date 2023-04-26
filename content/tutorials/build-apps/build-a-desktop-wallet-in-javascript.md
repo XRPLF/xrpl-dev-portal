@@ -25,26 +25,10 @@ To complete this tutorial, you should meet the following requirements:
 
 You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/).
 
-### Preparing the development machine and installing dependencies
-
-The basic building block for running JavaScript in a non-browser environment, also called headless JavaScript, we need
-to have node.js installed on the development machine.
-
-This tutorial depends on various node.js libraries. To install those dependencies and get the project up and running, in the build-a-wallet-with-javascript/js
-folder, run the following command to install the required modules:
-
-```console
-npm install
-```
-
-This installs the Electron Framework, the xrpl.js client library and a couple of helpers we are going to need for our
-application to work.
-
 ## Rationale
 
 This tutorial takes you through the process of creating a XRP Wallet application from scratch. Starting with a simple,
-"Hello World" like example with minimal functionality, step-by-step we will add more and more complex features. At the 
-end you will have a rough understanding  
+"Hello World" like example with minimal functionality, step-by-step we will add more and more complex features.
 
 As JavaScript is a programming language that originated in the web browser ecosystem, it's not natively 
 supporting the creation of desktop applications. We have to pick a frameworks that enable us to write 
@@ -79,6 +63,20 @@ In addition to the above features, you'll also learn a bit about Events, IPC (in
 and asynchronous (async) code in JavaScript.
 
 ## Steps
+
+### 0. Project setup
+
+To initialize the project we will create a package.json file with the following content:
+
+{{ include_code("_code-samples/build-a-wallet/js/package.json", language="js", lines="1-28") }}
+
+Here we define the libraries our application will use in the `dependencies` section as well as shortcuts for running our application in the `scripts` section. To install those dependencies, run the following command:
+```console
+npm install
+```
+
+This installs the Electron Framework, the xrpl.js client library and a couple of helpers we are going to need for our
+application to work. 
 
 ### 1. Hello XRP Ledger
 
