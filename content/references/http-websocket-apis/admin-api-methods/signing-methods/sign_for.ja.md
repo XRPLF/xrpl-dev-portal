@@ -1,14 +1,14 @@
 ---
 html: sign_for.html
 parent: signing-methods.html
-blurb: マルチ署名済みトランザクションの署名を1つ提供します。
+blurb: マルチシグトランザクションの署名を1つ提供します。
 labels:
   - トランザクション送信
 ---
 # sign_for
 [[ソース]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")
 
-`sign_for`コマンドは、[マルチ署名済みトランザクション](multi-signing.html)の署名を1つ提供します。
+`sign_for`コマンドは、[マルチシグトランザクション](multi-signing.html)の署名を1つ提供します。
 
 {% include '_snippets/public-signing-note.md' %}
 <!--_ -->

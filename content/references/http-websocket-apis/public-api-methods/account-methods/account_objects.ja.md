@@ -15,7 +15,7 @@ labels:
 
 - 現在処理中、資金化されていない、または有効期限切れで削除されていないオーダーの[Offerオブジェクト](offer.html)。（詳細は、[オファーのライフサイクル](offers.html#オファーのライフサイクル)を参照してください。）
 - このアカウント側がデフォルト状態にないトラストラインの[RippleStateオブジェクト](ripplestate.html)。
-- アカウントの[SignerList](signerlist.html)（アカウントで[マルチ署名](multi-signing.html)が有効な場合）。
+- アカウントの[SignerList](signerlist.html)（アカウントで[マルチシグ](multi-signing.html)が有効な場合）。
 - 実行されていないかまたは取り消されていない保留中の支払いの[Escrowオブジェクト](escrow.html)。
 - オープンPayment Channelの[PayChannelオブジェクト](paychannel.html)。
 - 保留中のCheckの[Checkオブジェクト](check.html)。

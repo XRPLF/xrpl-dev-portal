@@ -1,14 +1,14 @@
 ---
 html: submit_multisigned.html
 parent: transaction-methods.html
-blurb: マルチ署名済みトランザクションを適用し、このトランザクションをネットワークに送信します。
+blurb: マルチシグトランザクションを適用し、このトランザクションをネットワークに送信します。
 labels:
   - トランザクション送信
 ---
 # submit_multisigned
 [[ソース]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
 
-`submit_multisigned`コマンドは[マルチ署名済み](multi-signing.html)トランザクションを適用し、このトランザクションをネットワークに送信して、今後のレジャーに追加します。（[`submit`コマンドを送信専用モードで](submit.html#送信専用モード)使用して、マルチ署名済みトランザクションをバイナリー形式で送信することもできます。)
+`submit_multisigned`コマンドは[マルチシグ](multi-signing.html)トランザクションを適用し、このトランザクションをネットワークに送信して、今後のレジャーに追加します。（[`submit`コマンドを送信専用モードで](submit.html#送信専用モード)使用して、マルチシグトランザクションをバイナリー形式で送信することもできます。)
 
 このコマンドを使用するには、[MultiSign Amendment][]が有効になっている必要があります。[新規: rippled 0.31.0][]
 

@@ -1,14 +1,14 @@
 ---
 html: signerlistset.html
 parent: transaction-types.html
-blurb: トランザクションのマルチ署名に使用できる署名者のリストを作成、置換、削除します。
+blurb: トランザクションのマルチシグに使用できる署名者のリストを作成、置換、削除します。
 labels:
   - セキュリティ
 ---
 # SignerListSet
 [[ソース]](https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
 
-SignerListSetトランザクションは、トランザクションの[マルチ署名](multi-signing.html)に使用できる署名者のリストを作成、置換、削除します。このトランザクションタイプは[MultiSign Amendment][]により導入されました。[新規: rippled 0.31.0][]
+SignerListSetトランザクションは、トランザクションの[マルチシグ](multi-signing.html)に使用できる署名者のリストを作成、置換、削除します。このトランザクションタイプは[MultiSign Amendment][]により導入されました。[新規: rippled 0.31.0][]
 
 ## {{currentpage.name}}のJSONの例
 
@@ -47,7 +47,7 @@ SignerListSetトランザクションは、トランザクションの[マルチ
 
 | フィールド         | JSONの型 | [内部の型][] | 説明                  |
 |:--------------|:----------|:------------------|:-----------------------------|
-| SignerQuorum  | 数値    | UInt32            | 署名者の重みのターゲット数。このリストの署名者によるマルチ署名は、付与された署名の重みの合計がこの値以上である場合に限り有効となります。SignerListを削除するには、`0`の値を使用します。 |
+| SignerQuorum  | 数値    | UInt32            | 署名者の重みのターゲット数。このリストの署名者によるマルチシグは、付与された署名の重みの合計がこの値以上である場合に限り有効となります。SignerListを削除するには、`0`の値を使用します。 |
 | SignerEntries | 配列     | 配列             | （削除する場合は省略）このリストの署名者のアドレスと重みを示す[SignerEntryオブジェクト](signerlist.html#signerentryオブジェクト)の配列。SignerListには1～32人のメンバーが含まれている必要があります。リストに1つのアドレスが複数回表示されることはありません。また、トランザクションを送信する`Account`も表示されません。 |
 
 アカウントは複数のSignerListを所有できません。既存のSignerListが存在する場合は、SignerListSetトランザクションが成功するとその既存のSignerListが置き換えられます。SignerListを削除するには、`SignerQuorum`を`0`に設定し、_かつ_`SignerEntries`フィールドを省略します。このようにしないと、トランザクションは[temMALFORMED](tem-codes.html)エラーで失敗します。SignerListを削除するトランザクションは、削除するSignerListがない場合でも成功したとみなされます。

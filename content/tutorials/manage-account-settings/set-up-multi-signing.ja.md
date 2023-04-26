@@ -1,30 +1,30 @@
 ---
 html: set-up-multi-signing.html
 parent: manage-account-settings.html
-blurb: アカウントに署名者リストを追加して、マルチ署名を有効にします。
+blurb: アカウントに署名者リストを追加して、マルチシグを有効にします。
 labels:
   - セキュリティ
 ---
-# マルチ署名の設定
+# マルチシグの設定
 
-[マルチ署名](multi-signing.html)は、XRP Ledgerの[トランザクション](transaction-basics.html)を承認する3種類の方法の1つです。マルチ署名の他に[レギュラーキーとマスターキー](cryptographic-keys.html)で署名する方法があります。3種類のトランザクション承認方法を自由に組み合わせて使用できるように[アドレス](accounts.html)を設定できます。
+[マルチシグ](multi-signing.html)は、XRP Ledgerの[トランザクション](transaction-basics.html)を承認する3種類の方法の1つです。マルチシグの他に[レギュラーキーとマスターキー](cryptographic-keys.html)で署名する方法があります。3種類のトランザクション承認方法を自由に組み合わせて使用できるように[アドレス](accounts.html)を設定できます。
 
-このチュートリアルでは、アドレスのマルチ署名を有効にする方法を説明します。
+このチュートリアルでは、アドレスのマルチシグを有効にする方法を説明します。
 
 
 ## 前提条件
 
 - トランザクションを送信するための十分なXRPが供給されていて、新しい署名者リストの[必要準備金](reserves.html)を満たしている資金供給のあるXRP Ledger[アドレス](accounts.html)が必要です。
 
-  - [MultiSignReserve Amendment][]が有効な場合、マルチ署名を使用するには、使用する署名と署名者の数に関わらず、アカウントの準備金として2 XRPが必要です。（MultiSignReserve Amendmentは**2019年4月7日**以降、本番環境のXRP Ledgerで有効になっています。)
+  - [MultiSignReserve Amendment][]が有効な場合、マルチシグを使用するには、使用する署名と署名者の数に関わらず、アカウントの準備金として2 XRPが必要です。（MultiSignReserve Amendmentは**2019年4月7日**以降、本番環境のXRP Ledgerで有効になっています。)
 
-  - [MultiSignReserve Amendment][]が有効ではないテストネットワークでは、マルチ署名を使用するには[アカウント準備金](reserves.html)に通常よりも多くのXRPが必要となります。必要額は、リストの署名者の数に応じて増加します。
+  - [MultiSignReserve Amendment][]が有効ではないテストネットワークでは、マルチシグを使用するには[アカウント準備金](reserves.html)に通常よりも多くのXRPが必要となります。必要額は、リストの署名者の数に応じて増加します。
 
 - XRP Ledgerフォーマットでキーペアを生成するツールを利用できる必要があります。この処理に`rippled`サーバーを使用する場合は、[wallet_proposeメソッド][]が管理者専用であるため、管理者アクセス権限が必要です。
 
   - あるいは、すでにXRP Ledgerアドレスを持っている人をあなたのアドレスの署名者として承認するには、その人または組織のアカウントアドレスを知っている必要があります。
 
-- マルチ署名は使用可能である必要があります。（MultiSign Amendmentは**2016年6月27日**以降、本番環境のXRP Ledgerで有効になっています。)
+- マルチシグは使用可能である必要があります。（MultiSign Amendmentは**2016年6月27日**以降、本番環境のXRP Ledgerで有効になっています。)
 
 ## 1. 構成の設計
 
@@ -58,9 +58,9 @@ labels:
 
 ## 3. SignerListSetトランザクションの送信
 
-通常の方法（シングルシグネチャー）で[SignerListSetトランザクション][]に[署名して送信](transaction-basics.html#トランザクションへの署名とトランザクションの送信)します。これによりSignerListがXRP Ledgerのアドレスに関連付けられるので、これ以降はSignerListの複数メンバーがあなたの代わりにトランザクションに署名するマルチ署名が可能となります。
+通常の方法（シングルシグネチャー）で[SignerListSetトランザクション][]に[署名して送信](transaction-basics.html#トランザクションへの署名とトランザクションの送信)します。これによりSignerListがXRP Ledgerのアドレスに関連付けられるので、これ以降はSignerListの複数メンバーがあなたの代わりにトランザクションに署名するマルチシグが可能となります。
 
-この例ではSignerListに3人のメンバーが含まれています。また、マルチ署名済みトランザクションにはrsA2LpzuawewSBQXkiju3YQTMzW13pAAdWの署名と、リストの他の2人のメンバーからの少なくとも1つの署名を必要とするように、重みと定数が設定されています。
+この例ではSignerListに3人のメンバーが含まれています。また、マルチシグトランザクションにはrsA2LpzuawewSBQXkiju3YQTMzW13pAAdWの署名と、リストの他の2人のメンバーからの少なくとも1つの署名を必要とするように、重みと定数が設定されています。
 
 {% include '_snippets/secret-key-warning.md' %}
 <!--{#_ #}-->
@@ -135,7 +135,7 @@ labels:
        }
     }
 
-[トランザクションの結果](transaction-results.html)が[**tesSUCCESS**](tes-success.html)であることを確認します。それ以外の場合、トランザクションは失敗しています。スタンドアロンモードまたは本番環境以外のネットワークで問題が発生した場合は、[マルチ署名が有効であること](start-a-new-genesis-ledger-in-stand-alone-mode.html#新しいジェネシスレジャーの設定)を確認してください。
+[トランザクションの結果](transaction-results.html)が[**tesSUCCESS**](tes-success.html)であることを確認します。それ以外の場合、トランザクションは失敗しています。スタンドアロンモードまたは本番環境以外のネットワークで問題が発生した場合は、[マルチシグが有効であること](start-a-new-genesis-ledger-in-stand-alone-mode.html#新しいジェネシスレジャーの設定)を確認してください。
 
 **注記:** [MultiSignReserve Amendment][]が有効ではない場合は、SignerListのメンバーの増加に応じて、アドレスの[所有者準備金](reserves.html#所有者準備金)のXRP額を増加する必要があります。アドレスに十分なXRPがないと、トランザクションは[tecINSUFFICIENT_RESERVE](tec-codes.html)で失敗します。[MultiSignReserve Amendment][]が有効な場合は、SignerListの署名者の数に関係なく[所有者準備金](reserves.html#所有者準備金)として必要なXRPは5 XRPです。関連項目: [SignerListと準備金](signerlist.html#signerlistと準備金)
 
@@ -196,11 +196,11 @@ labels:
        }
     }
 
-SignerListが予期した内容で存在していれば、アドレスでマルチ署名ができるようになります。
+SignerListが予期した内容で存在していれば、アドレスでマルチシグができるようになります。
 
 ## 6. その他のステップ
 
-これで、アドレスから[マルチ署名済みトランザクションを送信](send-a-multi-signed-transaction.html)できます。次の操作も実行できます。
+これで、アドレスから[マルチシグトランザクションを送信](send-a-multi-signed-transaction.html)できます。次の操作も実行できます。
 
 * `asfDisableMaster`フラグを使用して[AccountSetトランザクション][]を送信し、アドレスのマスターキーペアを無効化。
 * [SetRegularKeyトランザクション][]を送信して[アドレスのレギュラーキーペアを削除](change-or-remove-a-regular-key-pair.html)（レギュラーキーペアをすでに設定している場合）。
@@ -209,7 +209,7 @@ SignerListが予期した内容で存在していれば、アドレスでマル�
 
 - **コンセプト:**
   - [暗号鍵](cryptographic-keys.html)
-  - [マルチ署名](multi-signing.html)
+  - [マルチシグ](multi-signing.html)
 - **チュートリアル:**
   - [rippledのインストール](install-rippled.html)
   - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.html)

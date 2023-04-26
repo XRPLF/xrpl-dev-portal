@@ -65,6 +65,8 @@ The ID of a `Check` object is the [SHA-512Half][] of the following values, conca
 * The `Sequence` number of the [CheckCreate transaction][] that created the `Check` object.
     If the CheckCreate transaction used a [Ticket](tickets.html), use the `TicketSequence` value instead.
 
+See the tutorial showing how to [Send a Check](send-a-check.html).
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
