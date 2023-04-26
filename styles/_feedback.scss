@@ -2,6 +2,7 @@
 #feedback-content {
   .docked-widget {
     border: none !important;
+    background-color: transparent !important;
   }
   .widget-form-wrapper {
     position: static !important;
@@ -65,6 +66,7 @@
   .widget-helpful {
     .widget-header {
       background-color: $gray-800 !important;
+      border-radius: 8px !important;
     }
     .widget-header-title {
       color: $white !important;
