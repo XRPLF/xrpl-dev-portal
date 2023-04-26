@@ -10,6 +10,7 @@ def categorize_dates(arr):
         if end_date < today:
             obj['type'] = obj['type'] + '-past'
             past.append(obj)
+            print(obj['type'])
         else:
             obj['type'] = obj['type'] + '-upcoming'
             upcoming.append(obj)

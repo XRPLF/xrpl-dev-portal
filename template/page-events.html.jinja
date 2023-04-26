@@ -82,6 +82,18 @@
         <input value="hackathon" id="hackathon-upcoming" name="hackathon-upcoming" type="checkbox" class="events-filter" checked />
         <label for="hackathon-upcoming">Hackathons</label>
       </div>
+            <div class="form-check form-check-inline">
+        <input value="ama" id="ama-upcoming" name="ama-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="ama-upcoming">AMAs</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="cc" id="cc-upcoming" name="cc-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="cc-upcoming">Community Calls</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="zone" id="zone-upcoming" name="zone-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="zone-upcoming">XRPL Zone</label>
+      </div>
     </div>
   </div>
 {% set events = [
@@ -91,7 +103,7 @@
       "link": "https://xrpl-hackathon-2021.devpost.com/project-gallery",
       "location": "Virtual",
       "date": "September 13-October 6, 2021",
-      "image": "event-hack-2021.svg",
+      "image": "Hackathons.png",
       "end_date": "October 6, 2021",
       },
       
@@ -219,7 +231,7 @@
       "link": "https://xrplnft2022.devpost.com/",
       "location": "Virtual",
       "date": "January 31 - March 14, 2022",
-      "image": "event-hack-nft@2x.png",
+      "image": "Hackathons.png",
       "end_date": "March 14, 2022",
       },
       
@@ -230,7 +242,7 @@
       "link": "https://xrplimpact.devpost.com/",
       "location": "Virtual",
       "date": "May 26 - Jul 11, 2022",
-      "image": "event-hack-nft@2x.png",
+      "image": "Hackathons.png",
       "end_date" : "July 11, 2022",
       },
 
@@ -240,7 +252,7 @@
       "link": "https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZgnreb8ODgxJW032M9Z2XZ",
       "location": "Las Vegas, Tallinn",
       "date": "September 29-30, 2021",
-      "image": "event-conference-apex-2021.png",
+      "image": "Conference.png",
       "end_date": "September 30, 2022",
       },
 
@@ -250,7 +262,7 @@
     "link": "https://xrplnft.devpost.com/",
     "location": "Virtual",
     "date": "Oct 31 - Dec 12, 2022",
-    "image": "event-hack-nft@2x.png",
+    "image": "Hackathons.png",
     "end_date": "December 12, 2022",
     },
     { "name": "XRPL Zone @ Consensus",      
@@ -259,7 +271,7 @@
     "link": "https://xrplzone-consensus.splashthat.com/",
     "location": "Austin, Texas",
     "date": "April 27, 2023",
-    "image": "xrpl-card@2x.jpg",
+    "image": "XRPLZone.png",
     "end_date": "April 27, 2023"
     },
     { "name": "XRPL Developer AMAs",      
@@ -268,7 +280,7 @@
     "link": "https://discord.com/invite/xrpl",
     "location": "XRPL Developers Discord",
     "date": "April 14, 2023",
-    "image": "event-hack-nft@2x.png",
+    "image": "AMAs.png",
     "end_date": "April 14, 2023"
     },
     { "name": "NFTs with xrp.cafe",      
@@ -277,7 +289,7 @@
     "link": "https://dev.to/ripplexdev/xrpcafe-ama-on-xrpl-developers-discord-36gp",
     "location": "XRPL Developers Discord",
     "date": "January 1, 2023",
-    "image": "event-hack-nft@2x.png",
+    "image": "AMAs.png",
     "end_date": "January 1, 2023"
     },
     { "name": "Community Calls #2",      
@@ -286,7 +298,7 @@
     "link": "https://youtu.be/oNJ1Qqns2Gw",
     "location": "XRPL Developers Discord",
     "date": "August 8, 2022",
-    "image": "event-hack-nft@2x.png",
+    "image": "CommunityCalls.png",
     "end_date": "August 8, 2022"
     },
     { "name": "Community Calls #1",      
@@ -295,7 +307,7 @@
     "link": "https://youtu.be/KpSt0PFT2QM",
     "location": "XRPL Developers Discord",
     "date": "June 02, 2022",
-    "image": "event-hack-nft@2x.png",
+    "image": "CommunityCalls.png",
     "end_date": "June 02, 2022"
     },
     { "name": "AMAs: POS and Crypto Payments with FriiPay",      
@@ -304,7 +316,7 @@
     "link": "https://dev.to/ripplexdev/xrpl-developer-ama-pos-and-crypto-payments-with-friipay-13hm",
     "location": "XRPL Developers Discord",
     "date": "February 15, 2023",
-    "image": "event-hack-nft@2x.png",
+    "image": "AMAs.png",
     "end_date": "February 15, 2023"
     },
     { "name": "AMAs: On-chain Data with Bithomp",      
@@ -313,7 +325,7 @@
     "link": "https://dev.to/ripplexdev/xrpl-developer-ama-bithomp-4a8d",
     "location": "XRPL Developers Discord",
     "date": "March 15, 2023",
-    "image": "event-hack-nft@2x.png",
+    "image": "AMAs.png",
     "end_date": "March 15, 2023"
     },
 ]
@@ -365,6 +377,18 @@
         <input value="hackathon" id="hackathon-past" name="hackathon-past" type="checkbox" class="events-filter" checked />
         <label for="hackathon-past">Hackathons</label>
       </div>
+      <div class="form-check form-check-inline">
+        <input value="ama" id="ama-past" name="ama-past" type="checkbox" class="events-filter" checked />
+        <label for="ama-past">AMAs</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="cc" id="cc-past" name="cc-past" type="checkbox" class="events-filter" checked />
+        <label for="cc-past">Community Calls</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="zone" id="zone-past" name="zone-past" type="checkbox" class="events-filter" checked />
+        <label for="zone-past">XRPL Zone</label>
+      </div>
     </div>
   </div>
 
@@ -412,6 +436,27 @@
       $('.hackathon-upcoming').hide();
     }
   });
+    $('#ama-upcoming').change(function () {
+    if ($('#ama-upcoming').is(':checked')) {
+        $('.ama-upcoming').show();
+    } else {
+      $('.ama-upcoming').hide();
+    }
+  });
+  $('#cc-upcoming').change(function () {
+    if ($('#cc-upcoming').is(':checked')) {
+        $('.cc-upcoming').show();
+    } else {
+      $('.cc-upcoming').hide();
+    }
+  });
+  $('#zone-upcoming').change(function () {
+    if ($('#zone-upcoming').is(':checked')) {
+        $('.zone-upcoming').show();
+    } else {
+      $('.zone-upcoming').hide();
+    }
+  });
 
   $('#conference-past').change(function () {
     if ($('#conference-past').is(':checked')) {
@@ -432,6 +477,27 @@
         $('.hackathon-past').show();
     } else {
       $('.hackathon-past').hide();
+    }
+  });
+    $('#ama-past').change(function () {
+    if ($('#ama-past').is(':checked')) {
+        $('.ama-past').show();
+    } else {
+      $('.ama-past').hide();
+    }
+  });
+    $('#cc-past').change(function () {
+    if ($('#cc-past').is(':checked')) {
+        $('.cc-past').show();
+    } else {
+      $('.cc-past').hide();
+    }
+  });
+    $('#zone-past').change(function () {
+    if ($('#zone-past').is(':checked')) {
+        $('.zone-past').show();
+    } else {
+      $('.zone-past').hide();
     }
   });
 
