@@ -10,7 +10,7 @@
     display: block;
     background-color: $gray-800 !important;
     border-width: 0 !important;
-    padding: 2rem;
+    padding: 24px !important;
     border-radius: 8px !important;
 
     div {
@@ -22,16 +22,25 @@
       opacity: 1 !important;
       border: none !important;
       border-radius: 4px !important;
+      margin: 0 !important;
+      width: 100% !important;
     }
 
     .widget-header-title {
       background: none !important;
       flex-grow: 0 !important;
       padding-right: 1rem !important;
+      height: auto !important;
+      padding: 0 !important;
+      margin-bottom: 10px !important;
     }
 
     .widget-header-footer {
       background: none !important;
+    }
+
+    .widget-form-footer {
+      padding-right: 0 !important;
     }
     
     .submit {
@@ -41,6 +50,8 @@
         border: none !important;
         border-color: transparent !important;
         border-radius: 4px !important;
+        margin: 0 !important;
+        margin-top: 8px !important;
         &:hover {
           background: $blue-purple-600 !important;
         }
@@ -55,6 +66,8 @@
         }
     }
     .cancel {
+      margin: 0 !important;
+      margin-top: 8px !important;
       color: $blue-purple-300 !important;
       font-weight: 600 !important;
     }
