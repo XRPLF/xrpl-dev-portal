@@ -254,6 +254,7 @@ pages:
         template: page-uses.html.jinja
         html: uses.html
         parent: xrp-ledger-overview.html
+        blurb: XRP Ledgerが、決済やパブリックブロックチェーンの分野での革新的な技術にどのように利用されているかを紹介します。
         top_nav_grouping: XRP Ledger
         sidebar: disabled
         targets:
@@ -266,6 +267,13 @@ pages:
         top_nav_grouping: XRP Ledger
         targets:
             - en
+
+    -   name: Ledger エクスプローラ
+        html: https://livenet.xrpl.org/
+        parent: xrp-ledger-overview.html
+        top_nav_grouping: XRP Ledger
+        targets:
+            - ja
 
     -   name: XRPL Foundation
         html: https://foundation.xrpl.org/
@@ -285,6 +293,7 @@ pages:
         targets:
             - en
 
+    # TODO: update translation
     -   md: faq.ja.md
         targets:
             - ja
@@ -345,33 +354,34 @@ pages:
         parent: index.html
         template: page-docs.html.jinja
         sidebar: disabled
-        top_nav_level: 1
         top_nav_name: ドキュメント
         top_nav_shortcuts:
             # Programming Languages
-            - get-started-using-python.html
-            - get-started-using-javascript.html
-            - get-started-using-java.html
-            - get-started-using-http-websocket-apis.html
-            # Popular pages
-            - send-xrp.html
-            - reserves.html
-            - xrp-testnet-faucet.html
-            - run-rippled-as-a-validator.html
-            - build-run-rippled-in-reporting-mode.html
-           # - intro-to-consensus.html
-            - public-api-methods.html
+            -
+#            - get-started-using-python.html
+#            - get-started-using-javascript.html
+#            - get-started-using-java.html
+#            - get-started-using-http-websocket-apis.html
+#            # Popular pages
+#            - send-xrp.html
+#            - reserves.html
+#            - xrp-testnet-faucet.html
+#            - run-rippled-as-a-validator.html
+#            - build-run-rippled-in-reporting-mode.html
+#           # - intro-to-consensus.html
+#            - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
-        popular_pages: # TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
-            - send-xrp.html
-            - reserves.html
-            - xrp-testnet-faucet.html
-            - run-rippled-as-a-validator.html
-            - build-run-rippled-in-reporting-mode.html
+
+#        popular_pages: # TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
+#            - send-xrp.html
+#            - reserves.html
+#            - xrp-testnet-faucet.html
+#            - run-rippled-as-a-validator.html
+#            - build-run-rippled-in-reporting-mode.html
 
            # - intro-to-consensus.html
-        # blurb: Dive into XRP Ledger technology and start integrating. #TODO: translate
-
+        blurb: XRP Ledgerのドキュメント、およびXRPLの構築と統合を開始するのに必要なあらゆる情報を探ります。
+        top_nav_blurb: XRP Ledgerテクノロジーにダイブして、連携をスタートしましょう。
         filters:
             - labels
         targets:
@@ -389,9 +399,9 @@ pages:
 
     -   name: 基本
         html: introduction.html
-        parent: concepts.html
+        parent: docs.html
         template: pagetype-category.html.jinja
-        blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
+        blurb: XRP Ledger (XRPL)の主要な機能を簡単に紹介します。これを読んでXRPLのハイレベルな理解を深め、その後、特に興味のある分野についての詳細を読むことができます。XRP Ledgerは、アカウント間のトークンのデジタルトランザクションを永続的に記録するブロックチェーンです。以下のセクションは、その文章で紹介された概念を拡張するものです。
         targets:
             - ja
     
@@ -429,6 +439,7 @@ pages:
         blurb: Browse the documentation based on practical use cases.
         targets:
             - en
+            - ja
 
 
     -   name: Payments
@@ -4046,6 +4057,7 @@ pages:
         blurb: Complete references for different interfaces to the XRP Ledger.
         targets:
             - en
+            - ja
 
     -   md: amendments/amendments.md
         parent: amendment-heading.html
@@ -4056,15 +4068,17 @@ pages:
         parent: amendment-heading.html
         targets:
             - en
-#             
-#     -   md: amendments/amendment-heading.ja.md
-#         targets:
-#             - ja
-#             
-#     -   md: amendments/known-amendments.ja.md
-#         parent: known-amendment-heading.ja.html
-#         targets:
-#             - ja
+
+    # TODO: update translation
+    -   md: amendments/amendments.ja.md
+        parent: amendment-heading.html
+        targets:
+            - ja
+
+    -   md: amendments/known-amendments.ja.md
+        parent: amendment-heading.html
+        targets:
+            - ja
             
 
 
