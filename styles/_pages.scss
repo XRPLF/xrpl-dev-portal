@@ -936,6 +936,39 @@
 
 }
 
+#tutorial-cards {
+  .card:nth-child(1) .card-footer {
+    background-image: url(../img/cards/4col-light-blue-3.svg);
+  }
+  .card:nth-child(2) .card-footer {
+    background-image: url(../img/cards/4col-purple-blue-2.svg);
+  }
+  .card:nth-child(3) .card-footer {
+    background-image: url(../img/cards/4col-magenta-3.svg);
+  }
+  .card:nth-child(4) .card-footer {
+    background-image: url(../img/cards/4col-green-2.svg);
+  }
+  .card:nth-child(5) .card-footer {
+    background-image: url(../img/cards/4col-orange-yellow-2.svg);
+  }
+  .card:nth-child(6) .card-footer {
+    background-image: url(../img/cards/4col-blue-purple.svg);
+  }
+  .card:nth-child(7) .card-footer {
+    background-image: url(../img/cards/4col-yellow-2.svg);
+  }
+  .card:nth-child(8) .card-footer {
+    background-image: url(../img/cards/4col-orange-2.svg);
+  }
+
+
+  .card {
+    margin-bottom: 2.5rem;
+  }
+
+}
+
 
 .page-faq {
   &::before {

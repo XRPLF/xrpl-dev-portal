@@ -22,7 +22,25 @@
       {% if currentpage.blurb != target.blurb %}<p class="blurb">{{ currentpage.blurb }}</p>{% endif %}
       {% set show_blurbs = True %}
       {% set depth= 1 %}
-      {% include 'children.html' %}
+      {% if currentpage.name == "Tutorials" %}
+        {% macro tutorialCard(id, href, title, description, img) %}
+          <a class="card" href="{{href}}" target="_blank" id="{{id}}">
+              {% if img %}<img src="{{img}}" alt="{{title}} Screenshot" />{% endif %}
+              <div class="card-body">
+                <h4 class="card-title h5">{{title}}</h4>
+                <p class="card-text">{{description}}</p>
+              </div>
+              <div class="card-footer">&nbsp;</div>
+            </a>
+        {% endmacro %}
+        <div id="tutorial-cards" class="row row-cols-1 row-cols-lg-2 card-deck">
+          {% for child in currentpage.children %}
+            {{ tutorialCard(child.id, child.html, child.name, child.blurb, child.img)}}
+          {% endfor %}
+        </div>
+      {% else %}
+        {% include 'children.html' %}
+      {% endif %}
     </article>
   </section>
   {% endif %}
