@@ -69,9 +69,9 @@ yarn
 5. Create a new file `.env` in the root directory of the project and add the following variables:
 
 ```bash
-CLIENT="wss://s.altnet.rippletest.net/" // or any other server
-EXPLORER_NETWORK="testnet" // or "mainnet"
-SEED="s████████████████████████████"  // Replace with your seed
+CLIENT="wss://s.altnet.rippletest.net:51233/"
+EXPLORER_NETWORK="testnet"
+SEED="s████████████████████████████"
 ```
 
 6. Change the seed to your own seed. You can get credentials from [the Testnet faucet](xrp-test-net-faucet.html).
@@ -98,9 +98,9 @@ In this step, we create a home page that displays account and ledger details.
 
 ![Home Page Screenshot](img/js-wallet-home.png)
 
-1. Make a new folder named `src` in the root directory of the project.
+1. If not already present, create new files in the root folder named `index.html`, `index.js` and `index.css`.
 
-2. If not already present, create new files in the root folder named `index.html`, `index.js` and `index.css`.
+2. Make a new folder named `src` in the root directory of the project.
 
 3. Copy the contents of [index.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/index.html) in your code.
 
@@ -121,6 +121,8 @@ To make that happen, we need to connect to the XRP Ledger and look up the accoun
 6. Now, let's add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. Here we render the wallet details using the function we defined in `get-wallet-details.js`. In order to make sure we have up to date ledger data, we are using the [ledger stream](subscribe.html#ledger-stream) to listen for ledger close events.
 
 {{ include_code("_code-samples/build-a-wallet/js/index.js", language="js") }}
+
+Also, add the following two files, one in the `helpers` folder [render-xrpl-logo.js]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/helpers/render-xrpl-logo.js) and for the other one create a new folder named `assets` in `src` directory and add [xrpl.svg]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/assets/xrpl.svg) file. These files are used to render the XRPL logo for aesthetic purposes.
 
 The one other thing we do here is add events to two buttons - one to send XRP and one to view transaction history. They won't work just yet—we'll implement them in the next steps.
 
@@ -151,6 +153,16 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 5. Now back to the `send-xrp.js` file, copy the code written below to the file. In this piece of code we are first getting all the DOM elements from HTML and adding event listners to update & validate the fields based on the user input. Using `renderAvailableBalance` method we display the current available balance of the wallet. `validateAddress` function validates the user address, and the amount is validated using a regular expression. When all the fields are filled with correct inputs, we call the `submitTransaction` function to submit the transaction to the ledger.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.js", language="js") }}
+
+You can now click 'Send XRP' to try creating your own transaction! You can use this example to send XRP to the testnet faucet to try it out.
+
+Testnet faucet account: `rHbZCHJSGLWVMt8D6AsidnbuULHffBFvEN`
+
+Amount: 9
+
+Destination Tag: (Not usually necessary unless you're paying an account tied to an exchange)
+
+![Send XRP Transaction Screenshot](img/js-wallet-send-xrp-transaction-details.png)
 
 ### 4. Create the Transactions Page
 
