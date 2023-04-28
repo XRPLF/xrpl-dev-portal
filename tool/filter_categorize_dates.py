@@ -8,10 +8,11 @@ def categorize_dates(arr):
     for obj in arr:
         end_date = datetime.strptime(obj['end_date'], '%B %d, %Y')
         if end_date < today:
+            obj['type'] = obj['type'] + '-past'
             past.append(obj)
         else:
+            obj['type'] = obj['type'] + '-upcoming'
             upcoming.append(obj)
-
     return {'past': past, 'upcoming': upcoming}
 
 export = {
