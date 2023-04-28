@@ -40,4 +40,4 @@ const viteConfig = ({ mode }) => {
     });
 };
 
-export default viteCongig;
+export default viteConfig;
