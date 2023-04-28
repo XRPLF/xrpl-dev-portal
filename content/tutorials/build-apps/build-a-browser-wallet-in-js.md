@@ -124,7 +124,7 @@ To make that happen, we need to connect to the XRP Ledger and look up the accoun
 
 Also, add the following two files, one in the `helpers` folder [render-xrpl-logo.js]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/helpers/render-xrpl-logo.js) and for the other one create a new folder named `assets` in `src` directory and add [xrpl.svg]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/assets/xrpl.svg) file. These files are used to render the XRPL logo for aesthetic purposes.
 
-The one other thing we do here is add events to two buttons - one to send XRP and one to view transaction history. They won't work just yet—we'll implement them in the next steps.
+The one other thing we do here is add events to two buttons - one to send XRP and one to view transaction history. They won't work just yet — we'll implement them in the next steps.
 
 Now the application is ready to run. You can start it in dev mode using the following command:
 
