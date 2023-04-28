@@ -12,24 +12,22 @@ The software that powers the XRP Ledger is open-source, so anyone can download, 
 
 ## XRP Ledger Standards
 
-Changes to `rippled` are tracked by an XRP Ledger Standard (XLS), a document that identifies and details the specifications of a change. Before committing to development, always submit an XLS draft (XLSd) to the [XRPL-Standards repo](https://github.com/XRPLF/XRPL-Standards/discussions/categories/standard-proposals). This provides the community a chance to discuss and provide feedback about your change.
+Changes to `rippled` are tracked by an XRP Ledger Standard (XLS), a document that identifies and details the specifications of a change. Before committing to development, you must start a discussion in the [XRPL-Standards repo](https://github.com/XRPLF/XRPL-Standards/discussions). This provides the community a chance to discuss and provide feedback about your change.
 
 **Note:** Bug fixes don't require an XLS, but may require an amendment.
 
-Your XLSd should supply the community with information to facilitate useful discussion. Helpful sections to include are:
+Creating an XLS has its own process, but can be summarized as:
 
-- Abstract/Introduction
-- Specifications
-- Considerations
+1. Starting a discussion and gathering feedback.
+2. Creating an XLS draft in the standards repo.
+3. Publishing the XLS draft as a Candidate Specification.
 
-See: [XLS README](https://github.com/XRPLF/XRPL-Standards/blob/master/README.md)
-
-After receiving sufficient input from the community, you can move forward in the process. "Sufficient" is subjective in open-source development, but gauging the community response to your XLSd can help you understand how it will be received if it needs to be voted on as an amendment.
+For details, see the [XLS contributing guide](https://github.com/XRPLF/XRPL-Standards/blob/master/CONTRIBUTING.md).
 
 
 ## Amendment Implementation
 
-After you've finalized the XLSd with the community, you now need to determine if your change requires an amendment. Changes that affect **transaction processing** require amendments, specifically changes that:
+After you've created an XLSd, you now need to determine if your change requires an amendment. Changes that affect **transaction processing** require amendments, specifically changes that:
 
 - Modify ledger rules, resulting in different outcomes.
 - Add or remove transactions.
@@ -76,3 +74,9 @@ The general development path breaks down as follows:
 ## Code Flowchart
 
 ***TODO: Add flowchart.***
+
+
+## See Also
+
+- **Concepts:**
+    - [Amendments](amendments.html)
