@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v15.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v16.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,16 +89,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"> 
-  <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
-    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
-  </div>
-  <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
-    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
-  </div>
-</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -402,16 +392,16 @@
 <p>The key derivation processes described here are implemented in multiple places and programming languages:</p>
 <ul>
 <li>In C++ in the <code>rippled</code> code base:<ul>
-<li><a class="external-link" href="https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/Seed.h" target="_blank">Seed definition <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a class="external-link" href="https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp" target="_blank">General &amp; Ed25519 key derivation <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a class="external-link" href="https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp" target="_blank">secp256k1 key derivation <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h" target="_blank">Seed definition <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp" target="_blank">General &amp; Ed25519 key derivation <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp" target="_blank">secp256k1 key derivation <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
 </li>
 <li>In Python 3 in <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/propose-amendment-tutorial/content/_code-samples/key-derivation/py/key_derivation.py" target="_blank">this repository's code samples section <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
-<li>In JavaScript in the <a class="external-link" href="https://github.com/ripple/ripple-keypairs/" target="_blank"><code>ripple-keypairs</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> package.</li>
+<li>In JavaScript in the <a class="external-link" href="https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs" target="_blank"><code>ripple-keypairs</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> package.</li>
 </ul>
 <h3 id="ed25519-key-derivation">Ed25519 Key Derivation<a aria-hidden="true" class="hover_anchor" href="#ed25519-key-derivation"><i class="fa fa-link"></i></a></h3>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <figure><a href="img/key-derivation-ed25519.svg" title="Passphrase → Seed → Secret Key → Prefix + Public Key"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="0 10 440 450" width="440" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/key-derivation-ed25519.svg__genericDefs"></defs><g><defs id="img/key-derivation-ed25519.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath2"><path d="M0 0 L0 70 L60 70 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath3"><path d="M0 0 L0 70 L230 70 L230 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath4"><path d="M0 0 L0 70 L120 70 L120 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath5"><path d="M0 0 L0 70 L320 70 L320 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath6"><path d="M0 0 L0 90 L180 90 L180 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath7"><path d="M0 0 L0 100 L120 100 L120 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath8"><path d="M0 0 L0 50 L170 50 L170 0 Z"></path></clippath></defs><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(110,300)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" height="68.5" stroke="none" width="58.5" x="0.5" y="0.5"></rect></g><g transform="translate(110,300)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" fill="none" height="68.5" width="58.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="11" xml:space="preserve" y="13.3906">0xED</text><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="10" xml:space="preserve" y="29.5">Prefix</text><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" d="M1 35.5 L59 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="2" xml:space="preserve" y="50.6094">(1 byte)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(170,300)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" height="68.5" stroke="none" width="228.5" x="0.5" y="0.5"></rect></g><g transform="translate(170,300)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" fill="none" height="68.5" width="228.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="78" xml:space="preserve" y="29.5">Public Key</text><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" d="M1 35.5 L229 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="79" xml:space="preserve" y="50.6094">(32 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(170,170)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" height="68.5" stroke="none" width="228.5" x="0.5" y="0.5"></rect></g><g transform="translate(170,170)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" fill="none" height="68.5" width="228.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="75" xml:space="preserve" y="29.5">Private Key</text><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" d="M1 35.5 L229 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="79" xml:space="preserve" y="50.6094">(32 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(280,30)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" height="68.5" stroke="none" width="118.5" x="0.5" y="0.5"></rect></g><g transform="translate(280,30)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" fill="none" height="68.5" width="118.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="42" xml:space="preserve" y="29.5">Seed</text><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" d="M1 35.5 L119 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="24" xml:space="preserve" y="50.6094">(16 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(20,30)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" height="68.5" stroke="none" width="118.5" x="0.5" y="0.5"></rect></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(20,30)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" fill="none" height="68.5" width="118.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="21.4453">Passphrase</text></g><g font-family="sans-serif" font-size="14px" transform="translate(20,30)"><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" d="M1 27.4453 L119 27.4453" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" stroke="none" x="24" xml:space="preserve" y="42.5547">(Optional)</text><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" stroke="none" x="24" xml:space="preserve" y="58.6641">Any string</text></g><g stroke-dasharray="1,2" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(100,370)"><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath5)" d="M10.5 10.5 L10.5 30.5" fill="none"></path><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath5)" d="M10.5 30.5 L300.5 30.5" fill="none"></path><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath5)" d="M300.5 30.5 L300.5 10.5" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="93.6582" xml:space="preserve" y="42.1094">Master Public Key</text><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="120.3213" xml:space="preserve" y="58.2188">(33 bytes)</text></g><g transform="translate(230,230)"><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath6)" d="M10.5 10.5 L10.5 69.5" fill="none"></path><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath6)" d="M4 58.7417 L10.5 70 L17 58.7417" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="14" xml:space="preserve" y="48.0547">Public Key Derivation</text></g><g transform="translate(290,90)"><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath7)" d="M10.5 79.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath7)" d="M17 68.7417 L10.5 80 L4 68.7417" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath7)" font-family="sans-serif" font-size="14px" stroke="none" x="14" xml:space="preserve" y="53.0547">SHA-512Half</text></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(130,50)"><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath8)" d="M10.5 20.5 L149.5 20.5" fill="none"></path><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath8)" d="M138.7417 27 L150 20.5 L138.7417 14" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(130,50)"><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath8)" stroke="none" x="28.8989" xml:space="preserve" y="16">SHA-512, keep</text><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath8)" stroke="none" x="34.186" xml:space="preserve" y="32.1094">first 16 bytes</text></g></g></svg></a></figure>
 <ol>
 <li>
@@ -432,7 +422,7 @@
 </li>
 </ol>
 <h3 id="secp256k1-key-derivation">secp256k1 Key Derivation<a aria-hidden="true" class="hover_anchor" href="#secp256k1-key-derivation"><i class="fa fa-link"></i></a></h3>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <figure><a href="img/key-derivation-secp256k1.svg" title="Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="30 20 940 730" width="940" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/key-derivation-secp256k1.svg__genericDefs"></defs><g><defs id="img/key-derivation-secp256k1.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath2"><path d="M0 0 L0 50 L210 50 L210 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath3"><path d="M0 0 L0 70 L150 70 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath4"><path d="M0 0 L0 40 L160 40 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath5"><path d="M0 0 L0 40 L140 40 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath6"><path d="M0 0 L0 80 L150 80 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath7"><path d="M0 0 L0 80 L20 80 L20 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath8"><path d="M0 0 L0 70 L110 70 L110 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath9"><path d="M0 0 L0 70 L20 70 L20 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath10"><path d="M0 0 L0 70 L140 70 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath11"><path d="M0 0 L0 70 L180 70 L180 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath12"><path d="M0 0 L0 270 L80 270 L80 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath13"><path d="M0 0 L0 50 L130 50 L130 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath14"><path d="M0 0 L0 60 L410 60 L410 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath15"><path d="M0 0 L0 380 L410 380 L410 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath16"><path d="M0 0 L0 30 L50 30 L50 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath17"><path d="M0 0 L0 410 L120 410 L120 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath18"><path d="M0 0 L0 80 L70 80 L70 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath19"><path d="M0 0 L0 280 L210 280 L210 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath20"><path d="M0 0 L0 70 L210 70 L210 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath21"><path d="M0 0 L0 70 L60 70 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath22"><path d="M0 0 L0 30 L60 30 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath23"><path d="M0 0 L0 80 L60 80 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath24"><path d="M0 0 L0 220 L410 220 L410 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath25"><path d="M0 0 L0 50 L160 50 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath26"><path d="M0 0 L0 170 L460 170 L460 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath27"><path d="M0 0 L0 50 L180 50 L180 0 Z"></path></clippath></defs><g fill="lime" stroke="lime" transform="translate(630,600)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" stroke="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" fill="none" stroke="black"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M198.5 0.5 L198.5 12.5 L209 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(630,600)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">Accounts use the master</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="34.2188">key pair.</text></g><g fill="lime" stroke="lime" transform="translate(590,200)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" stroke="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" fill="none" stroke="black"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M198.5 0.5 L198.5 12.5 L209 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(590,200)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">Validators use the root key</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="34.2188">pair.</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(330,660)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" height="68.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(330,660)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" fill="none" height="68.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="29.5">Master Private Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" d="M1 35.5 L149 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="39" xml:space="preserve" y="50.6094">(32 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(150,670)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath4)" d="M0.5 0.5 L128.5 0.5 L159 20.5 L128.5 39 L0.5 39 Z" stroke="none"></path></g><g transform="translate(150,670)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath4)" d="M0.5 0.5 L128.5 0.5 L159 20.5 L128.5 39 L0.5 39 Z" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="36" xml:space="preserve" y="17">Add, Modulo</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="36" xml:space="preserve" y="33.1094">Group Order</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(800,290)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" height="68.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(800,290)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" fill="none" height="68.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="12" xml:space="preserve" y="21.4453">Master Public Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" d="M1 27.4453 L149 27.4453" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="41" xml:space="preserve" y="42.5547">(33 bytes</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="58.6641">compressed)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(660,300)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath5)" d="M0.5 0.5 L112.5 0.5 L139 20.5 L112.5 39 L0.5 39 Z" stroke="none"></path></g><g transform="translate(660,300)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath5)" d="M0.5 0.5 L112.5 0.5 L139 20.5 L112.5 39 L0.5 39 Z" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="23" xml:space="preserve" y="17">Elliptic Curve</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="36" xml:space="preserve" y="33.1094">Point Add</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(330,550)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" height="78.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(330,550)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" fill="none" height="78.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="18.3906">Intermediate</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="38" xml:space="preserve" y="34.5">Public Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" d="M1 40.5 L149 40.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="41" xml:space="preserve" y="55.6094">(33 bytes</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="71.7188">compressed)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(80,550)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" height="78.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(80,550)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" fill="none" height="78.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="18.3906">Intermediate</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="34.5">Private Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" d="M1 40.5 L149 40.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="39" xml:space="preserve" y="55.6094">(32 bytes)</text></g><g stroke-width="5" transform="translate(500,330)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath7)" d="M10.5 0.5 L10.5 79" fill="none"></path></g><g fill="yellow" stroke="yellow" transform="translate(150,430)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" stroke="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" fill="none" stroke="black"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M198.5 0.5 L198.5 12.5 L209 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="10px" transform="translate(150,430)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="14.375">Increment the key sequence and try</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="26.75">again if the SHA-512Half doesn't make</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="39.125">a valid private key.</text></g><g fill="yellow" stroke="yellow" transform="translate(140,140)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" stroke="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" fill="none" stroke="black"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M198.5 0.5 L198.5 12.5 L209 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="10px" transform="translate(140,140)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="14.375">Increment the key sequence and try</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="26.75">again if the SHA-512Half doesn't make</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="39.125">a valid private key.</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(370,330)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" height="68.5" stroke="none" width="108.5" x="0.5" y="0.5"></rect></g><g transform="translate(370,330)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" fill="none" height="68.5" width="108.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="31" xml:space="preserve" y="13.3906">Family</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="26" xml:space="preserve" y="29.5">Number</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" d="M1 35.5 L109 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="23" xml:space="preserve" y="50.6094">(4 bytes;</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="31" xml:space="preserve" y="66.7188">all 0's)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(370,410)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" height="68.5" stroke="none" width="108.5" x="0.5" y="0.5"></rect></g><g transform="translate(370,410)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" fill="none" height="68.5" width="108.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="30" xml:space="preserve" y="13.3906">Int Key</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="29.5">Sequence</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" d="M1 35.5 L109 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="23" xml:space="preserve" y="50.6094">(4 bytes;</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="66.7188">default 0)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(370,120)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" height="68.5" stroke="none" width="108.5" x="0.5" y="0.5"></rect></g><g transform="translate(370,120)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" fill="none" height="68.5" width="108.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="23" xml:space="preserve" y="13.3906">Root Key</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="29.5">Sequence</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" d="M1 35.5 L109 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="23" xml:space="preserve" y="50.6094">(4 bytes;</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="66.7188">default 0)</text></g><g stroke-width="5" transform="translate(500,80)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath9)" d="M10.5 0.5 L10.5 69" fill="none"></path></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(330,250)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" height="68.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(330,250)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" fill="none" height="68.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="21.4453">Root Public Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" d="M1 27.4453 L149 27.4453" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="41" xml:space="preserve" y="42.5547">(33 bytes</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="58.6641">compressed)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(50,250)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" height="68.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(50,250)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" fill="none" height="68.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="16" xml:space="preserve" y="29.5">Root Private Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" d="M1 35.5 L149 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="39" xml:space="preserve" y="50.6094">(32 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(340,40)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" height="68.5" stroke="none" width="138.5" x="0.5" y="0.5"></rect></g><g transform="translate(340,40)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" fill="none" height="68.5" width="138.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" font-family="sans-serif" font-size="14px" stroke="none" x="52" xml:space="preserve" y="29.5">Seed</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" d="M1 35.5 L139 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" font-family="sans-serif" font-size="14px" stroke="none" x="34" xml:space="preserve" y="50.6094">(16 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(50,40)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" height="68.5" stroke="none" width="138.5" x="0.5" y="0.5"></rect></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(50,40)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" fill="none" height="68.5" width="138.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" font-family="sans-serif" font-size="14px" stroke="none" x="30" xml:space="preserve" y="21.4453">Passphrase</text></g><g font-family="sans-serif" font-size="14px" transform="translate(50,40)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" d="M1 27.4453 L139 27.4453" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" stroke="none" x="34" xml:space="preserve" y="42.5547">(Optional)</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" stroke="none" x="34" xml:space="preserve" y="58.6641">Any string</text></g><g fill="rgb(37,167,104)" stroke="rgb(37,167,104)" stroke-dasharray="1,2" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(470,630)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath11)" d="M11.4662 50.2423 L160.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath11)" d="M23.5361 53.7508 L10.9831 50.3712 L20.1865 41.1898" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g fill="rgb(37,167,104)" stroke="rgb(37,167,104)" stroke-dasharray="1,2" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(760,350)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath12)" d="M60.296 11.479 L10.5 250.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath12)" d="M51.7385 20.6855 L60.398 10.9895 L64.4652 23.3369" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g fill="rgb(37,167,104)" stroke="rgb(37,167,104)" stroke-dasharray="1,2" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(480,230)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" d="M11.4806 30.3039 L110.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" d="M23.3047 34.5678 L10.9903 30.4019 L20.7552 21.8202" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g fill="rgb(37,167,104)" stroke="rgb(37,167,104)" stroke-dasharray="1,2" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(200,210)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath14)" d="M11.4969 40.4213 L390.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath14)" d="M22.7334 46.0544 L10.9984 40.4606 L21.7103 33.0948" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(470,350)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath15)" d="M10.5 350.5 L390.5 350.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath15)" d="M390.5 350.5 L390.5 11.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath15)" d="M397 22.2583 L390.5 11 L384 22.2583" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(470,350)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath15)" stroke="none" x="125.2573" xml:space="preserve" y="346">(Public key derivation</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath15)" stroke="none" x="118.2412" xml:space="preserve" y="362.1094">yields the same result.)</text></g><g transform="translate(300,680)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath16)" d="M29.5 10.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath16)" d="M18.7417 4 L30 10.5 L18.7417 17" fill="none"></path></g><g transform="translate(50,310)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath17)" d="M99.5 390.5 L10.5 390.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath17)" d="M10.5 390.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath17)" d="M88.7417 384 L100 390.5 L88.7417 397" fill="none"></path></g><g transform="translate(100,620)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath18)" d="M49.5 60.5 L10.5 60.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath18)" d="M10.5 60.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath18)" d="M38.7417 54 L50 60.5 L38.7417 67" fill="none"></path></g><g transform="translate(470,320)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath19)" d="M189.5 10.5 L150.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath19)" d="M150.5 10.5 L150.5 260.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath19)" d="M150.5 260.5 L10.5 260.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath19)" d="M178.7417 4 L190 10.5 L178.7417 17" fill="none"></path></g><g transform="translate(470,260)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath20)" d="M189.5 50.5 L150.5 50.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath20)" d="M150.5 50.5 L150.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath20)" d="M150.5 10.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath20)" d="M178.7417 44 L190 50.5 L178.7417 57" fill="none"></path></g><g transform="translate(220,580)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" d="M10.5 20.5 L109.5 20.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" d="M98.7417 27 L110 20.5 L98.7417 14" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" font-family="sans-serif" font-size="14px" stroke="none" x="24.7886" xml:space="preserve" y="16">Public Key</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" font-family="sans-serif" font-size="14px" stroke="none" x="24.9199" xml:space="preserve" y="32.1094">Derivation</text></g><g transform="translate(470,380)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath21)" d="M10.5 50.5 L20.5 50.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath21)" d="M20.5 50.5 L20.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath21)" d="M20.5 10.5 L39.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath21)" d="M28.7417 17 L40 10.5 L28.7417 4" fill="none"></path></g><g transform="translate(470,360)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M10.5 10.5 L39.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M28.7417 17 L40 10.5 L28.7417 4" fill="none"></path></g><g transform="translate(470,290)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath23)" d="M10.5 10.5 L20.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath23)" d="M20.5 10.5 L20.5 60.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath23)" d="M20.5 60.5 L39.5 60.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath23)" d="M28.7417 67 L40 60.5 L28.7417 54" fill="none"></path></g><g transform="translate(140,350)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" d="M10.5 199.5 L10.5 160.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" d="M10.5 160.5 L390.5 160.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" d="M390.5 160.5 L390.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" d="M390.5 10.5 L370.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" d="M17 188.7417 L10.5 200 L4 188.7417" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" font-family="sans-serif" font-size="14px" stroke="none" x="155.979" xml:space="preserve" y="156">SHA-512Half</text></g><g transform="translate(470,120)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M10.5 10.5 L39.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M28.7417 17 L40 10.5 L28.7417 4" fill="none"></path></g><g transform="translate(470,90)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M10.5 10.5 L39.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M28.7417 17 L40 10.5 L28.7417 4" fill="none"></path></g><g transform="translate(190,270)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath25)" d="M10.5 20.5 L139.5 20.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath25)" d="M128.7417 27 L140 20.5 L128.7417 14" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath25)" font-family="sans-serif" font-size="14px" stroke="none" x="39.7886" xml:space="preserve" y="16">Public Key</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath25)" font-family="sans-serif" font-size="14px" stroke="none" x="39.9199" xml:space="preserve" y="32.1094">Derivation</text></g><g transform="translate(110,100)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" d="M10.5 149.5 L10.5 110.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" d="M10.5 110.5 L440.5 110.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" d="M440.5 110.5 L440.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" d="M440.5 10.5 L400.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" d="M17 138.7417 L10.5 150 L4 138.7417" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" font-family="sans-serif" font-size="14px" stroke="none" x="180.979" xml:space="preserve" y="106">SHA-512Half</text></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(180,60)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath27)" d="M10.5 20.5 L159.5 20.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath27)" d="M148.7417 27 L160 20.5 L148.7417 14" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(180,60)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath27)" stroke="none" x="33.8989" xml:space="preserve" y="16">SHA-512, keep</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath27)" stroke="none" x="39.186" xml:space="preserve" y="32.1094">first 16 bytes</text></g></g></svg></a></figure>
 <p>Key derivation for secp256k1 XRP Ledger account keys involves more steps than Ed25519 key derivation for a couple reasons:</p>
 <ul>
@@ -455,7 +445,7 @@
 <p>Calculate the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the concatenated (seed+root sequence) value.</p>
 </li>
 <li>
-<p>If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. <a class="external-link" href="https://github.com/ripple/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. <a class="external-link" href="https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>A valid secp256k1 key must not be zero, and it must be numerically less than the <em>secp256k1 group order</em>. The secp256k1 group order is the constant value <code>0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141</code>.</p>
 </li>
 <li>
@@ -753,7 +743,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
 
-        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens Overview</a>
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
       
@@ -784,6 +774,16 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
@@ -844,11 +844,6 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -953,11 +948,6 @@
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1015,28 +1005,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
     </nav>
@@ -1466,16 +1434,6 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
   </div>
 
@@ -1712,57 +1670,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -1844,11 +1751,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1958,31 +1860,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2434,11 +2311,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
   </div>
 
@@ -2563,6 +2435,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_history.html">nft_history</a>
   </div>
 
       
@@ -2887,11 +2764,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-accounts.html">Accounts</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
   </div>
 
       

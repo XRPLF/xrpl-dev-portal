@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v15.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v16.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,16 +89,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"> 
-  <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
-    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
-  </div>
-  <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
-    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
-  </div>
-</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -289,7 +279,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="accountset">AccountSet<a aria-hidden="true" class="hover_anchor" href="#accountset"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetAccount.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>An AccountSet transaction modifies the properties of an <a href="accountroot.html">account in the XRP Ledger</a>.</p>
 <h2 id="example-accountset-json">Example AccountSet JSON<a aria-hidden="true" class="hover_anchor" href="#example-accountset-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -326,13 +316,13 @@
 <td style="text-align: left;"><a href="#domain"><code>Domain</code></a></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(Optional)</em> The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. <a class="external-link" href="https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34" target="_blank">Cannot be more than 256 bytes in length. <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. <a class="external-link" href="https://github.com/XRPLF/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34" target="_blank">Cannot be more than 256 bytes in length. <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>EmailHash</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash128</td>
-<td style="text-align: left;"><em>(Optional)</em> Hash of an email address to be used for generating an avatar image. Conventionally, clients use <a class="external-link" href="http://en.gravatar.com/site/implement/hash/" target="_blank">Gravatar <i aria-hidden="true" class="fa fa-external-link"></i></a> to display this image.</td>
+<td style="text-align: left;"><em>(Optional)</em> An arbitrary 128-bit value. Conventionally, clients treat this as the md5 hash of an email address to use for displaying a <a class="external-link" href="http://en.gravatar.com/site/implement/hash/" target="_blank">Gravatar <i aria-hidden="true" class="fa fa-external-link"></i></a> image.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>MessageKey</code></td>
@@ -362,7 +352,7 @@
 <td style="text-align: left;"><a href="ticksize.html"><code>TickSize</code></a></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt8</td>
-<td style="text-align: left;"><em>(Optional)</em> Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are <code>3</code> to <code>15</code> inclusive, or <code>0</code> to disable. <em>(Added by the <a href="known-amendments.html#ticksize">TickSize amendment</a>.)</em></td>
+<td style="text-align: left;"><em>(Optional)</em> Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are <code>3</code> to <code>15</code> inclusive, or <code>0</code> to disable. <em>(Added by the <a href="known-amendments.html#ticksize">TickSize amendment</a>)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>WalletLocator</code></td>
@@ -417,13 +407,13 @@
 <td style="text-align: left;"><code>asfAuthorizedNFTokenMinter</code></td>
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">(None)</td>
-<td style="text-align: left;">Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the <code>NFTokenMinter</code> field of the <a href="accountroot.html">AccountRoot</a> object. <em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></td>
+<td style="text-align: left;">Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the <code>NFTokenMinter</code> field of the <a href="accountroot.html">AccountRoot</a> object. To remove an authorized minter, enable this flag and omit the <code>NFTokenMinter</code> field. <em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>asfDefaultRipple</code></td>
 <td style="text-align: left;">8</td>
 <td style="text-align: left;"><code>lsfDefaultRipple</code></td>
-<td style="text-align: left;">Enable <a href="rippling.html">rippling</a> on this account's trust lines by default. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.27.3" target="_blank" title="New in: rippled 0.27.3"><img alt="New in: rippled 0.27.3" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.27.3-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">Enable <a href="rippling.html">rippling</a> on this account's trust lines by default.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>asfDepositAuth</code></td>
@@ -438,10 +428,34 @@
 <td style="text-align: left;">Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a <a href="cryptographic-keys.html">Regular Key</a> or a <a href="multi-signing.html">Signer List</a>.</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>asfDisallowIncomingCheck</code></td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;"><code>lsfDisallowIncomingCheck</code></td>
+<td style="text-align: left;">Block incoming Checks. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>asfDisallowIncomingNFTokenOffer</code></td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;"><code>lsfDisallowIncomingNFTokenOffer</code></td>
+<td style="text-align: left;">Block incoming NFTokenOffers. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>asfDisallowIncomingPayChan</code></td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;"><code>lsfDisallowIncomingPayChan</code></td>
+<td style="text-align: left;">Block incoming Payment Channels. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>asfDisallowIncomingTrustline</code></td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;"><code>lsfDisallowIncomingTrustline</code></td>
+<td style="text-align: left;">Block incoming trust lines. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>asfDisallowXRP</code></td>
 <td style="text-align: left;">3</td>
 <td style="text-align: left;"><code>lsfDisallowXRP</code></td>
-<td style="text-align: left;">XRP should not be sent to this account. (Enforced by client applications, not by <code>rippled</code>)</td>
+<td style="text-align: left;">XRP should not be sent to this account. (Advisory; not enforced by the XRP Ledger protocol.)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>asfGlobalFreeze</code></td>
@@ -469,7 +483,7 @@
 </tr>
 </tbody>
 </table>
-<p>To enable the <code>asfDisableMaster</code> or <code>asfNoFreeze</code> flags, you must <a href="transaction-basics.html#authorizing-transactions">authorize the transaction</a> by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can disable <code>asfDisableMaster</code> (that is, re-enable the master key pair) using a regular key pair or multi-signature. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.28.0" target="_blank" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>To enable the <code>asfDisableMaster</code> or <code>asfNoFreeze</code> flags, you must <a href="transaction-basics.html#authorizing-transactions">authorize the transaction</a> by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can disable <code>asfDisableMaster</code> (that is, re-enable the master key pair) using a regular key pair or multi-signature.</p>
 <p>The following <a href="transaction-common-fields.html#flags-field">Transaction flags</a> (<code>tf</code> flags), specific to the AccountSet transaction type, serve the same purpose. Due to limited space, some settings do not have associated <code>tf</code> flags, and new <code>tf</code> flags are not being added to the <code>AccountSet</code> transaction type. You can use a combination of <code>tf</code> and <code>asf</code> flags to enable multiple settings with a single transaction.</p>
 <table class="table-responsive">
 <thead>
@@ -521,14 +535,25 @@
 </table>
 <p class="devportal-callout caution"><strong>Caution:</strong> The numeric values of <code>tf</code> and <code>asf</code> flags in transactions do not match up with the values they set in the accounts "at rest" in the ledger. To read the flags of an account in the ledger, see <a href="accountroot.html#accountroot-flags"><code>AccountRoot</code> flags</a>.</p>
 <h3 id="blocking-incoming-transactions">Blocking Incoming Transactions<a aria-hidden="true" class="hover_anchor" href="#blocking-incoming-transactions"><i class="fa fa-link"></i></a></h3>
+<!-- This concept info should be moved to another topic after the IA.v2 migration. -->
 <p>Incoming transactions with unclear purposes may be an inconvenience for financial institutions, who would have to recognize when a customer made a mistake, and then potentially refund accounts or adjust balances depending on the mistake. The <code>asfRequireDest</code> and <code>asfDisallowXRP</code> flags are intended to protect users from accidentally sending funds in a way that is unclear about the reason the funds were sent.</p>
 <p>For example, a destination tag is typically used to identify which hosted balance should be credited when a financial institution receives a payment. If the destination tag is omitted, it may be unclear which account should be credited, creating a need for refunds, among other problems. By using the <code>asfRequireDest</code> tag, you can ensure that every incoming payment has a destination tag, which makes it harder for others to send you an ambiguous payment by accident.</p>
-<p>You can protect against unwanted incoming payments for non-XRP currencies by not creating trust lines in those currencies. Since XRP does not require trust, the <code>asfDisallowXRP</code> flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in <code>rippled</code> because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to send a transaction that disabled the flag, the account would be completely unusable.) Instead, client applications should disallow or discourage XRP payments to accounts with the <code>asfDisallowXRP</code> flag enabled.</p>
+<p>You can protect against unwanted incoming payments for non-XRP currencies by not creating trust lines in those currencies. Since XRP does not require trust, the <code>asfDisallowXRP</code> flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in the XRP Ledger protocol because it could potentially cause accounts to become unusable if they run out of XRP. Instead, client applications should disallow or discourage XRP payments to accounts with the <code>asfDisallowXRP</code> flag enabled.</p>
+<p>If you want to block <em>all</em> incoming payments, you can enable <a href="depositauth.html">Deposit Authorization</a>. This prevents any transaction from sending money to you, even XRP, unless your account is below the <a href="reserves.html">reserve requirement</a>.</p>
+<p>If the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> is enabled, you also have the option to block all incoming Checks, NFTokenOffers, Payment Channels, and trust lines. It is generally harmless to be on the receiving end of these objects, but they can block you from deleting your account and it can be confusing to have objects you didn't expect mixed in with the list of objects you created. To block incoming objects, use one or more of these account flags:</p>
+<ul>
+<li><code>asfDisallowIncomingCheck</code> - for Check objects</li>
+<li><code>asfDisallowIncomingNFTOffer</code> - for NFTokenOffer objects</li>
+<li><code>asfDisallowIncomingPayChan</code> - for PayChannel objects</li>
+<li><code>asfDisallowIncomingTrustline</code> - for RippleState (trust line) objects</li>
+</ul>
+<p>When a transaction would create one of these ledger entries, if the destination account has the corresponding flag enabled, the transaction fails with the result code <code>tecNO_PERMISSION</code>. Unlike Deposit Authorization, these settings do not prevent you from receiving payments in general. Also, enabling this setting doesn't stop you from creating these types of objects yourself (unless the destination of your transaction is also using the setting, of course).</p>
 <h2 id="transferrate">TransferRate<a aria-hidden="true" class="hover_anchor" href="#transferrate"><i class="fa fa-link"></i></a></h2>
-<p>The <code>TransferRate</code> field specifies a fee to charge whenever counterparties transfer the currency you issue. See <a href="transfer-fees.html">Transfer Fees</a> for more information.</p>
-<p>In <code>rippled</code>'s WebSocket and JSON-RPC APIs, the transfer fee is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
+<p>The <code>TransferRate</code> field specifies a fee to charge whenever counterparties transfer the currency you issue.</p>
+<p>In the HTTP and WebSocket APIs, the transfer fee is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify <code>0</code> as a shortcut for <code>1000000000</code>, meaning no fee.</p>
+<p>See <a href="transfer-fees.html">Transfer Fees</a> for more information.</p>
 <h2 id="nftokenminter">NFTokenMinter<a aria-hidden="true" class="hover_anchor" href="#nftokenminter"><i class="fa fa-link"></i></a></h2>
-<p>To remove an authorized minter, set <code>ClearFlag</code> to 10 (<code>asfAuthorizedNFTokenMinter</code>).</p>
+<p>To remove an authorized minter, set <code>ClearFlag</code> to 10 (<code>asfAuthorizedNFTokenMinter</code>) and omit the <code>NFTokenMinter</code> field.</p>
 <!-- SPELLING_IGNORE: TransferRate -->
 <!-- -->
 <!-- -->
@@ -752,7 +777,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
 
-        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens Overview</a>
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
       
@@ -783,6 +808,16 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
@@ -843,11 +878,6 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -952,11 +982,6 @@
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1014,28 +1039,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
     </nav>
@@ -1465,16 +1468,6 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
   </div>
 
@@ -1711,57 +1704,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -1843,11 +1785,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1957,31 +1894,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2433,11 +2345,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
   </div>
 
@@ -2562,6 +2469,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_history.html">nft_history</a>
   </div>
 
       
@@ -2886,11 +2798,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-accounts.html">Accounts</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
   </div>
 
       

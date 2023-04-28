@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 31 possible spelling errors:
+Found 43 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, gis, gits
+  gifs: gils, giff, gibs
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -22,47 +22,77 @@ Found 31 possible spelling errors:
 <Page 'Minting NFTs into Collections' (nft-collections.html)> Unknown Words:
   nftokentaxon: 
 
-<Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
-  stablefoo: 
-  unbalances: unbalanced, unbalance
-  machowski: 
+<Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
+  blackhole: blockhole, black-hole
+
+<Page 'NFT APIs' (nft-apis.html)> Unknown Words:
+  nft_history: 
+  slas: slap, sylas, sas
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: xls, lsd
+  xlsd: lsd, xls
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  disallowincoming: 
-  depositpreauthamendment: 
-  fixnonfungibletokensv1_2: 
-  immediateofferkilled: 
   fixuniversalnumber: 
   xrpfees: 
+  fixnonfungibletokensv1_2: 
+  disallowincoming: 
+  immediateofferkilled: 
+  depositpreauthamendment: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
-  asfdisallowincomingcheck: 
-  asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
-  30d: 3-d, 3rd, 3d
+  asfdisallowincomingnftoffer: 
+  asfdisallowincomingcheck: 
+  asfdisallowincomingpaychan: 
+  30d: 3rd, 3-d, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3rd, 3-d, 3d
+
+<Page 'AccountRoot' (accountroot.html)> Unknown Words:
+  disallowincoming: 
+  nftokenoffers: nftokenoffer
+
+<Page 'FeeSettings' (feesettings.html)> Unknown Words:
+  xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
+  disallowincoming: 
+  nftokenoffers: nftokenoffer
   nftokenminter: 
 
-<Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+<Page 'CheckCreate' (checkcreate.html)> Unknown Words:
+  disallowincoming: 
+
+<Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
+  disallowincoming: 
+  nftokenoffers: nftokenoffer
+
+<Page 'OfferCreate' (offercreate.html)> Unknown Words:
+  immediateofferkilled: 
+
+<Page 'PaymentChannelCreate' (paymentchannelcreate.html)> Unknown Words:
+  disallowincoming: 
+
+<Page 'TrustSet' (trustset.html)> Unknown Words:
+  disallowincoming: 
+
+<Page 'SetFee' (setfee.html)> Unknown Words:
+  xrpfees: 
+
+<Page 'nft_history' (nft_history.html)> Unknown Words:
+  nft_history: 
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 36 discouraged words/phrases:
+Found 29 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -80,15 +110,9 @@ Page: <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)>
 Page: <Page 'Running an NFT Auction' (nftoken-auctions.html)>
    Discouraged word: purchase (1 instances); suggest 'buy' instead.
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'Automated Market Makers' (automated-market-makers.html)>
-   Discouraged phrase: market maker (2 instances); suggest 'liquidity provider' instead.
-   Discouraged word: remainder (1 instances); suggest 'rest' instead.
 Page: <Page 'Amendments' (amendments.html)>
    Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
 Page: <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)>
-   Discouraged word: facilitate (1 instances); suggest 'ease, help' instead.
-   Discouraged word: sufficient (2 instances); suggest 'enough' instead.
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
    Discouraged phrase: defaults to (1 instances); suggest 'the default is' instead.
 Page: <Page 'Known Amendments' (known-amendments.html)>
    Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
@@ -100,31 +124,22 @@ Page: <Page '2. Create Trust Line and Send Currency' (create-trustline-send-curr
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-stand-alone-mode.html)>
    Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
-Page: <Page 'tem Codes' (tem-codes.html)>
-   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+Page: <Page 'ledger_data' (ledger_data.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 ------------------
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.2 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.0 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
-  Automated Readability Index: Grade level 10.8
+  Automated Readability Index: Grade level 10.9
   Coleman-Liau Index: Grade level 11.5
-  Linsear Write Formula: Grade level 8.5
+  Linsear Write Formula: Grade level 8.4
 
 
 Most difficult pages by Flesch Reading Ease:
-<Page 'Interoperability' (xrpl-interoperability.html)> Readability Scores:
-  Flesch Reading Ease Score: 27.8 (Very Confusing)
-  Dale-Chall Readability Score: 10.2 (higher than average college level)
-  SMOG Index: Grade level 0.0
-  Gunning FOG Index: Grade level 12.8
-  Automated Readability Index: Grade level 17.4
-  Coleman-Liau Index: Grade level 17.9
-  Linsear Write Formula: Grade level 12.5
-
 <Page 'XRP-API' (xrp-api.html)> Readability Scores:
   Flesch Reading Ease Score: 29.2 (Very Confusing)
   Dale-Chall Readability Score: 12.5 (higher than average college level)
@@ -143,13 +158,22 @@ Most difficult pages by Flesch Reading Ease:
   Coleman-Liau Index: Grade level 16.3
   Linsear Write Formula: Grade level 7.5
 
+<Page 'Consensus Research' (consensus-research.html)> Readability Scores:
+  Flesch Reading Ease Score: 33.2 (Difficult)
+  Dale-Chall Readability Score: 11.4 (higher than average college level)
+  SMOG Index: Grade level 16.9
+  Gunning FOG Index: Grade level 14.5
+  Automated Readability Index: Grade level 17.8
+  Coleman-Liau Index: Grade level 17.1
+  Linsear Write Formula: Grade level 15.6
+
 -------------------
 Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 741
-  Characters: 4,600
+  Words: 743
+  Characters: 4,623
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

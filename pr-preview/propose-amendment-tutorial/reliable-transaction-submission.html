@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v15.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v16.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,16 +89,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<div class="top-banner fixed-top"> 
-  <div class="d-none d-md-flex justify-content-center">
-    <span><p class="mb-0 no-wrap">The XRP Ledger now has Native NFT support. The NFT-Devnet XLS-20d preview server has been decommissioned.</p></span>
-    <span><a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></span>
-  </div>
-  <div class="d-md-none d-block justify-content-center">
-    <span><p class="mb-0">The NFT-Devnet XLS-20d preview server</p></span>
-    <span><p class="mb-0">has been decommissioned.<a href="/blog/2023/nft-devnet-decommission.html" class="btn btn-outline-secondary">Learn More</a></p></span>
-  </div>
-</div>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -368,37 +358,37 @@
 <h3 id="verification">Verification<a aria-hidden="true" class="hover_anchor" href="#verification"><i class="fa fa-link"></i></a></h3>
 <p>During normal operation, applications may check the status of submitted transactions by their hashes; or, depending on the API used, receive notifications when transactions have been validated (or failed).  This normal operation may be interrupted, for example by network failures or power failures.  In case of such interruption applications need to reliably verify the status of transactions which may or may not have been submitted to the network before the interruption.</p>
 <p>On restart, or the determination of a new last validated ledger (pseudocode):</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="k">For</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">persisted</span><span class="w"> </span><span class="nv">transaction</span><span class="w"> </span><span class="nv">without</span><span class="w"> </span><span class="nv">validated</span><span class="w"> </span><span class="nb">result</span>:
-<span class="w">    </span><span class="nv">Query</span><span class="w"> </span><span class="nv">transaction</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">hash</span>
-<span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="ss">(</span><span class="nb">result</span><span class="w"> </span><span class="nv">appears</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">any</span><span class="w"> </span><span class="nv">validated</span><span class="w"> </span><span class="nv">ledger</span><span class="ss">)</span>
-<span class="w">        </span>#<span class="w"> </span><span class="nv">Outcome</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">final</span>
-<span class="w">        </span><span class="nv">Persist</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">final</span><span class="w"> </span><span class="nb">result</span>
-<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="ss">(</span><span class="nb">result</span><span class="w"> </span><span class="nv">code</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">tesSUCCESS</span><span class="ss">)</span>
-<span class="w">            </span><span class="nv">Application</span><span class="w"> </span><span class="nv">may</span><span class="w"> </span><span class="nv">act</span><span class="w"> </span><span class="nv">based</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">successful</span><span class="w"> </span><span class="nv">transaction</span>
-<span class="w">        </span><span class="k">Else</span>
-<span class="w">            </span><span class="nv">The</span><span class="w"> </span><span class="nv">transaction</span><span class="w"> </span><span class="nv">failed</span><span class="w"> </span><span class="ss">(</span><span class="mi">1</span><span class="ss">)</span>
-<span class="w">            </span><span class="k">If</span><span class="w"> </span><span class="nv">appropriate</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">application</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">failure</span><span class="w"> </span><span class="nv">type</span>,<span class="w"> </span><span class="nv">submit</span><span class="w"> </span><span class="nv">with</span>
-<span class="w">                </span><span class="nv">new</span><span class="w"> </span><span class="nv">LastLedgerSequence</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">Fee</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="nx">For</span><span class="w"> </span><span class="nx">each</span><span class="w"> </span><span class="nx">persisted</span><span class="w"> </span><span class="nx">transaction</span><span class="w"> </span><span class="nx">without</span><span class="w"> </span><span class="nx">validated</span><span class="w"> </span><span class="nx">result</span><span class="p">:</span>
+<span class="w">    </span><span class="nx">Query</span><span class="w"> </span><span class="nx">transaction</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">hash</span>
+<span class="w">    </span><span class="nx">If</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="nx">appears</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">any</span><span class="w"> </span><span class="nx">validated</span><span class="w"> </span><span class="nx">ledger</span><span class="p">)</span>
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="nx">Outcome</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">final</span>
+<span class="w">        </span><span class="nx">Persist</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="k">final</span><span class="w"> </span><span class="nx">result</span>
+<span class="w">        </span><span class="nx">If</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">tesSUCCESS</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">Application</span><span class="w"> </span><span class="nx">may</span><span class="w"> </span><span class="nx">act</span><span class="w"> </span><span class="nx">based</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">successful</span><span class="w"> </span><span class="nx">transaction</span>
+<span class="w">        </span><span class="nx">Else</span>
+<span class="w">            </span><span class="nx">The</span><span class="w"> </span><span class="nx">transaction</span><span class="w"> </span><span class="nx">failed</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">If</span><span class="w"> </span><span class="nx">appropriate</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">application</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">failure</span><span class="w"> </span><span class="k">type</span><span class="p">,</span><span class="w"> </span><span class="nx">submit</span><span class="w"> </span><span class="nx">with</span>
+<span class="w">                </span><span class="nx">new</span><span class="w"> </span><span class="nx">LastLedgerSequence</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">Fee</span>
 
-<span class="w">    </span><span class="k">Else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">(</span><span class="nv">LastLedgerSequence</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nv">newest</span><span class="w"> </span><span class="nv">validated</span><span class="w"> </span><span class="nv">ledger</span><span class="ss">)</span>
-<span class="w">        </span>#<span class="w"> </span><span class="nv">Outcome</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">yet</span><span class="w"> </span><span class="nv">final</span>
-<span class="w">        </span><span class="k">Wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">more</span><span class="w"> </span><span class="nv">ledgers</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">validated</span>
+<span class="w">    </span><span class="nx">Else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">LastLedgerSequence</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">newest</span><span class="w"> </span><span class="nx">validated</span><span class="w"> </span><span class="nx">ledger</span><span class="p">)</span>
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="nx">Outcome</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">yet</span><span class="w"> </span><span class="k">final</span>
+<span class="w">        </span><span class="nx">Wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">more</span><span class="w"> </span><span class="nx">ledgers</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">validated</span>
 
-<span class="w">    </span><span class="k">Else</span>
-<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="ss">(</span><span class="nv">server</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">continuous</span><span class="w"> </span><span class="nv">ledger</span><span class="w"> </span><span class="nv">history</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">ledger</span><span class="w"> </span><span class="nv">when</span><span class="w"> </span><span class="nv">the</span>
-<span class="w">              </span><span class="nv">transaction</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">submitted</span><span class="w"> </span><span class="nv">up</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">including</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">ledger</span>
-<span class="w">              </span><span class="nv">identified</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">LastLedgerSequence</span><span class="ss">)</span>
+<span class="w">    </span><span class="nx">Else</span>
+<span class="w">        </span><span class="nx">If</span><span class="w"> </span><span class="p">(</span><span class="nx">server</span><span class="w"> </span><span class="nx">has</span><span class="w"> </span><span class="nx">continuous</span><span class="w"> </span><span class="nx">ledger</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">ledger</span><span class="w"> </span><span class="nx">when</span><span class="w"> </span><span class="nx">the</span>
+<span class="w">              </span><span class="nx">transaction</span><span class="w"> </span><span class="nx">was</span><span class="w"> </span><span class="nx">submitted</span><span class="w"> </span><span class="nx">up</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">including</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">ledger</span>
+<span class="w">              </span><span class="nx">identified</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">LastLedgerSequence</span><span class="p">)</span>
 
-<span class="w">            </span>#<span class="w"> </span><span class="nv">Sanity</span><span class="w"> </span><span class="nv">check</span>
-<span class="w">            </span><span class="k">If</span><span class="w"> </span><span class="ss">(</span><span class="nv">sender</span><span class="w"> </span><span class="nv">account</span><span class="w"> </span><span class="nv">sequence</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nv">transaction</span><span class="w"> </span><span class="nv">sequence</span><span class="ss">)</span>
-<span class="w">                </span><span class="nv">A</span><span class="w"> </span><span class="nv">different</span><span class="w"> </span><span class="nv">transaction</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">this</span><span class="w"> </span><span class="nv">sequence</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">final</span><span class="w"> </span><span class="nv">outcome</span>.
-<span class="w">                </span><span class="nv">Manual</span><span class="w"> </span><span class="nv">intervention</span><span class="w"> </span><span class="nv">suggested</span><span class="w"> </span><span class="ss">(</span><span class="mi">3</span><span class="ss">)</span>
-<span class="w">            </span><span class="k">Else</span>
-<span class="w">                </span><span class="nv">The</span><span class="w"> </span><span class="nv">transaction</span><span class="w"> </span><span class="nv">failed</span><span class="w"> </span><span class="ss">(</span><span class="mi">2</span><span class="ss">)</span>
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="nx">Sanity</span><span class="w"> </span><span class="nx">check</span>
+<span class="w">            </span><span class="nx">If</span><span class="w"> </span><span class="p">(</span><span class="nx">sender</span><span class="w"> </span><span class="nx">account</span><span class="w"> </span><span class="nx">sequence</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">transaction</span><span class="w"> </span><span class="nx">sequence</span><span class="p">)</span>
+<span class="w">                </span><span class="nx">A</span><span class="w"> </span><span class="nx">different</span><span class="w"> </span><span class="nx">transaction</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">this</span><span class="w"> </span><span class="nx">sequence</span><span class="w"> </span><span class="nx">has</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="k">final</span><span class="w"> </span><span class="nx">outcome</span><span class="p">.</span>
+<span class="w">                </span><span class="nx">Manual</span><span class="w"> </span><span class="nx">intervention</span><span class="w"> </span><span class="nx">suggested</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">Else</span>
+<span class="w">                </span><span class="nx">The</span><span class="w"> </span><span class="nx">transaction</span><span class="w"> </span><span class="nx">failed</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">Else</span>
-<span class="w">            </span>#<span class="w"> </span><span class="nv">Outcome</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">final</span>,<span class="w"> </span><span class="nv">but</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">known</span><span class="w"> </span><span class="nv">due</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">ledger</span><span class="w"> </span><span class="nv">gap</span>
-<span class="w">            </span><span class="k">Wait</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">acquire</span><span class="w"> </span><span class="nv">continuous</span><span class="w"> </span><span class="nv">ledger</span><span class="w"> </span><span class="nv">history</span>
+<span class="w">        </span><span class="nx">Else</span>
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="nx">Outcome</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">final</span><span class="p">,</span><span class="w"> </span><span class="nx">but</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">known</span><span class="w"> </span><span class="nx">due</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">ledger</span><span class="w"> </span><span class="nx">gap</span>
+<span class="w">            </span><span class="nx">Wait</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">acquire</span><span class="w"> </span><span class="nx">continuous</span><span class="w"> </span><span class="nx">ledger</span><span class="w"> </span><span class="nx">history</span>
 </code></pre></div>
 <h4 id="failure-cases">Failure Cases<a aria-hidden="true" class="hover_anchor" href="#failure-cases"><i class="fa fa-link"></i></a></h4>
 <p>The difference between the two transaction failure cases (labeled (1) and (2) in the pseudo-code) is whether the transaction was included in a validated ledger. In both cases, you should decide carefully how to process the failure.</p>
@@ -968,7 +958,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
 
-        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens Overview</a>
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
       
@@ -999,6 +989,16 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
@@ -1059,11 +1059,6 @@
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1168,11 +1163,6 @@
     <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="federated-sidechains.html">Federated Sidechains</a>
-  </div>
-
     </nav>
 
   </div>
@@ -1230,28 +1220,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_8" aria-expanded="false" aria-controls="tree_nav_group_1_8"></a>
-
-        <a class="nav-link" href="xrpl-interoperability.html">Interoperability <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="intro-to-evm-sidechain.html">Introduction to EVM Compatible XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-hooks.readme.io/">Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
     </nav>
@@ -1681,16 +1649,6 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
   </div>
 
@@ -1927,57 +1885,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="evm-sidechains.html">Interoperability - EVM Sidechain</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_1" aria-expanded="false" aria-controls="tree_nav_group_2_11_1"></a>
-
-        <a class="nav-link" href="get-started-evm-sidechain.html">Get Started with the EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="connect-metamask-to-xrpl-evm-sidechain.html">Connect MetaMask to XRP Ledger Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_2" aria-expanded="false" aria-controls="tree_nav_group_2_11_2"></a>
-
-        <a class="nav-link" href="join-evm-sidechain-devnet.html">Join the XRP Ledger EVM Sidechain Devnet <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-validator-security.html">EVM Sidechain Validator Security <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="evm-sidechain-run-a-validator-node.html">Run a Validator Node on an EVM Sidechain <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-    </nav>
-
-  </div>
-
     </nav>
 
   </div>
@@ -2059,11 +1966,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="amendments-object.html">Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2173,31 +2075,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2649,11 +2526,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
   </div>
 
@@ -2778,6 +2650,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_history.html">nft_history</a>
   </div>
 
       
@@ -3102,11 +2979,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="label-accounts.html">Accounts</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="label-amm.html">AMM</a>
   </div>
 
       
