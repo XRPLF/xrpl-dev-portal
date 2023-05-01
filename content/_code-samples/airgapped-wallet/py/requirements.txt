@@ -20,7 +20,7 @@ qrcode==7.2
 rfc3986==1.5.0
 six==1.16.0
 sniffio==1.2.0
-sqlparse==0.4.2
+sqlparse==0.4.4
 typing-extensions==3.10.0.0
 websockets==9.1
 xrpl-py==1.1.1
