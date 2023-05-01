@@ -1,0 +1,100 @@
+/* Tutorials ---------------------------------------------------------------- */
+#tutorial-cards {
+  .card:nth-child(1) .card-footer {
+    background-image: url(../img/cards/4col-light-blue-3.svg);
+  }
+  .card:nth-child(2) .card-footer {
+    background-image: url(../img/cards/4col-purple-blue-2.svg);
+  }
+  .card:nth-child(3) .card-footer {
+    background-image: url(../img/cards/4col-magenta-3.svg);
+  }
+  .card:nth-child(4) .card-footer {
+    background-image: url(../img/cards/4col-green-2.svg);
+  }
+  .card:nth-child(5) .card-footer {
+    background-image: url(../img/cards/4col-orange-yellow-2.svg);
+  }
+  .card:nth-child(6) .card-footer {
+    background-image: url(../img/cards/4col-blue-purple.svg);
+  }
+  .card:nth-child(7) .card-footer {
+    background-image: url(../img/cards/4col-yellow-2.svg);
+  }
+  .card:nth-child(8) .card-footer {
+    background-image: url(../img/cards/4col-orange-2.svg);
+  }
+}
+
+.tutorial-card-grid {
+  grid-gap: 40px !important;
+  row-gap: 0 !important;
+  &.card-grid {
+    .card {
+      margin-bottom: 2.5rem;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
+      padding: 0;
+      min-height: 0;
+
+      .card-body {
+        padding: 32px;
+      }
+
+      .card-title {
+        margin-bottom: 16px;
+        margin-top: 0;
+
+        &.external-link::after {
+          background-size: 0.9rem;
+          vertical-align: middle;
+          margin-left: 12px;
+          margin-bottom: 12px;
+          margin-right: 10px;
+          width: 1.5rem;
+        }
+
+        &.nav-link {
+          padding: 0;
+        }
+      }
+
+      .card-footer {
+        font-size: 0;
+        padding: 1rem;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-top: 0;
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .card-icon-container {
+      width: 50px;
+      height: 50px;
+      background: $gray-600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      margin-bottom: 12px;
+
+      img {
+        width: 70%;
+        height: 70%;
+      }
+    }
+  }
+}
+
+.col-lg-6 > .tutorial-sidebar {
+  flex: 0 0 70%;
+  max-width: 70%;
+}
+
+

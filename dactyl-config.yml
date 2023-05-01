@@ -1218,8 +1218,8 @@ pages:
         html: tutorials.html
         parent: docs.html
         top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
+        template: pagetype-tutorials.html.jinja
+        blurb: The XRP Ledger tutorials walk you through the steps to learn and get started with the XRP Ledger and to use the ledger for advanced use cases.
         targets:
             - en
 
