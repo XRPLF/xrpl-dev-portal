@@ -7,7 +7,7 @@ labels:
 ---
 # NFT Payload Storage
 
-NFTs are created on the block chain. But the payload of the NFT, including media, metadata, and attributes can be stored in a variety of ways, including on-chain, decentralized off-chain, and centralized off-chain.
+NFTs are created on the blockchain. But the payload of the NFT, including media, metadata, and attributes can be stored in a variety of ways, including on-chain, decentralized off-chain, and centralized off-chain.
 
 ## On-chain
 
