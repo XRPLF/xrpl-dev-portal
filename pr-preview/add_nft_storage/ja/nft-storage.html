@@ -256,9 +256,9 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nft-payload-storage">NFT Payload Storage</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#on-chain">On-chain</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#decentralized-off-xrpl">Decentralized, off XRPL</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#centralized-off-xrpl">Centralized, off XRPL</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#on-the-xrp-ledger">On the XRP Ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#decentralized-off-the-xrp-ledger">Decentralized, off the XRP Ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#centralized-off-the-xrp-ledger">Centralized, off the XRP Ledger</a></li>
       </ul>
   </div>
       </aside>
@@ -282,14 +282,14 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="nft-payload-storage">NFT Payload Storage<a aria-hidden="true" class="hover_anchor" href="#nft-payload-storage"><i class="fa fa-link"></i></a></h1>
-<p>NFTs are created on the blockchain. But the payload of the NFT, including media, metadata, and attributes can be stored in a variety of ways, including on-chain, decentralized off-chain, and centralized off-chain.</p>
-<h2 id="on-chain">On-chain<a aria-hidden="true" class="hover_anchor" href="#on-chain"><i class="fa fa-link"></i></a></h2>
+<p>NFTs are created on the blockchain. But the payload of the NFT, including media, metadata, and attributes can be stored in a variety of ways, including on the XRP Ledger; decentralized, off the XRP Ledger; and centralized, off the XRP Ledger.</p>
+<h2 id="on-the-xrp-ledger">On the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#on-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
 <p>If your data is smaller than 256 bytes, you can consider using a <code>data://</code> URI and embedding it directly in the URI field. This has the advantage of storing the data in a reliable, persistent, and responsive database.</p>
-<h2 id="decentralized-off-xrpl">Decentralized, off XRPL<a aria-hidden="true" class="hover_anchor" href="#decentralized-off-xrpl"><i class="fa fa-link"></i></a></h2>
+<h2 id="decentralized-off-the-xrp-ledger">Decentralized, off the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#decentralized-off-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
 <p>You can use any of the existing decentralized storage solutions for your NFT metadata.</p>
 <p>IPFS and Arweave offer solutions for decentralization. However, fetching the metadata efficiently can be a problem. Querying IPFS or Arweave directly to fetch metadata is not fast enough for modern websites that require immediate responses from users that are scrolling through multiple pages of NFTs that include high-quality media.</p>
-<p>For a list of cloud storage solutions, the blog post <a class="external-link" href="https://xrpl.org/blog/2023/nft-payload-storage.html" target="_blank">NFT Payload Storage <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="centralized-off-xrpl">Centralized, off XRPL<a aria-hidden="true" class="hover_anchor" href="#centralized-off-xrpl"><i class="fa fa-link"></i></a></h2>
+<p>See the blog post <a class="external-link" href="https://xrpl.org/blog/2023/nft-payload-storage.html" target="_blank">NFT Payload Storage <i aria-hidden="true" class="fa fa-external-link"></i></a> for some examples of cloud storage solutions.</p>
+<h2 id="centralized-off-the-xrp-ledger">Centralized, off the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#centralized-off-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
 <p>You can use the URI field to point to a webserver you maintain from which the payload is served.</p>
 <p>As an alternative, and to save space on the ledger, you can set the <code>Domain</code> field of the issuer using <code>AccountSet</code> and treat the NFT ID of the token as a path on that domain. For example, if the NFT has an ID of <code>123ABC</code> and the domain on the issuer is <code>example.com</code>, you could serve the payload from <code>example.com/tokens/123ABC</code>.</p>
     </div>
