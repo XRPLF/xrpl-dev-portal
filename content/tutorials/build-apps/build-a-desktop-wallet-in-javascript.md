@@ -103,14 +103,12 @@ To display our results to the user, we need to create the view components that w
 
 <!-- MULTICODE_BLOCK_START -->
 
-*Preloader*
+*view/1_preload.js*
 {{ include_code("_code-samples/build-a-wallet/js/view/1_preload.js", language="js") }}
 
-*Template*
-`view/1_hello.html`
+*view/1_hello.html*
 {{ include_code("_code-samples/build-a-wallet/js/view/1_hello.html", language="html") }}
 
-*Renderer*
 `view/1_renderer.js`
 {{ include_code("_code-samples/build-a-wallet/js/view/1_renderer.js", language="js") }}
 
@@ -311,6 +309,10 @@ npm run tx-history
 After finishing this step the application should look like this:
 
 ![Screenshot: Step 5, use salted password](img/javascript-wallet-5.png)
+
+By now we always query the user for an account address at application startup. We more or less have a monitoring tool for accounts that queries publicly available data. Because we want to have real wallet functionality including sending XRP, we will have to deal with private keys and seeds, which will have to be handled properly.
+
+In this step we will query the user for an account seed and save this seed with a salted password. 
 
 ### 6. Styling
 
