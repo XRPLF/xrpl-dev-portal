@@ -97,7 +97,7 @@ First, we will create an entrypoint for our application, for this we create the 
 `1_hello.js`
 {{ include_code("_code-samples/build-a-wallet/js/1_hello.js", language="js") }}
 
-The main parts are two functions, one that creates the application window and one that executes  a so called [ledger request](https://xrpl.org/ledger.html#ledger). The result of the ledger request is then distributed by broadcasting an event with the result as the payload. The event will then get picked up by the frontend which uses the payload to display the index of the last closed / settled ledger on the XRPL.
+This code has two parts: one that creates the application window and one that calls the XRP Ledger API's [ledger method](ledger.html). The code then broadcasts an event with the API response as the payload. The frontend picks up this event and uses the payload to display the index of most recently validated ledger.
 
 To display our results to the user, we need to create the view components that we specified in the `createWindow()` function. For this, we will create a `view` folder and add the following files there:
 
@@ -152,7 +152,7 @@ In JavaScript, our client is connecting to the XRPL via [WebSockets](https://en.
 
 {{ include_code("_code-samples/build-a-wallet/js/2_async-subscribe.js", language="js", lines="42-45") }}
 
-When we [subscribe method](https://xrpl.org/subscribe.html) to the `ledger` stream, anytime there is a new validated ledger our code will be updated. The routing of the ´ledgerClosed´ event from the XRPL to the internal event `update-ledger-data`is happening here: 
+When we [subscribe](subscribe.html) to the `ledger` stream, our code gets a ´ledgerClosed´ event whenever there is a new validated ledger. The following code passes these events to the view as `update-ledger-data` events: 
 
 {{ include_code("_code-samples/build-a-wallet/js/2_async-subscribe.js", language="js", lines="48-50") }}
 
