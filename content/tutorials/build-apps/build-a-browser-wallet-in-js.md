@@ -124,7 +124,7 @@ To make that happen, we need to connect to the XRP Ledger and look up the accoun
 
 7. In the `helpers` folder, add [render-xrpl-logo.js]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/helpers/render-xrpl-logo.js) to handle displaying a logo.
 
-8. Finally create a new folder named `assets` in `src` directory and add [xrpl.svg]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/assets/xrpl.svg) file. 
+8. Finally create a new folder named `assets` in the `src/` directory and add the file [`xrpl.svg`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/assets/xrpl.svg) there. 
 
 These files are used to render the XRPL logo for aesthetic purposes.
 
