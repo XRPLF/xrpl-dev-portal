@@ -345,7 +345,7 @@
 <td style="text-align: left;"><a href="#signersフィールド">Signers</a></td>
 <td style="text-align: left;">配列</td>
 <td style="text-align: left;">配列</td>
-<td style="text-align: left;"><em>（省略可）</em> このトランザクションを承認するための<a href="multi-signing.html">マルチ署名</a>を表すオブジェクトの配列。</td>
+<td style="text-align: left;"><em>（省略可）</em> このトランザクションを承認するための<a href="multi-signing.html">マルチシグ</a>を表すオブジェクトの配列。</td>
 </tr>
 <tr>
 <td style="text-align: left;">SourceTag</td>
@@ -357,7 +357,7 @@
 <td style="text-align: left;">SigningPubKey</td>
 <td style="text-align: left;">文字列</td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>（署名時に自動追加）</em> このトランザクションへの署名に使用される秘密鍵に対応する公開鍵の16進表現。空文字列の場合は、代わりに<code>Signers</code>フィールドにマルチ署名が保持されていることを示します。</td>
+<td style="text-align: left;"><em>（署名時に自動追加）</em> このトランザクションへの署名に使用される秘密鍵に対応する公開鍵の16進表現。空文字列の場合は、代わりに<code>Signers</code>フィールドにマルチシグが保持されていることを示します。</td>
 </tr>
 <tr>
 <td style="text-align: left;">TxnSignature</td>
@@ -410,7 +410,7 @@
 </tr>
 </tbody>
 </table>
-<p><a href="sign.html">signメソッド</a>（または「署名と送信」モードの<a href="submit.html">submitメソッド</a>）を使用すると、<code>rippled</code>は、<code>Flags</code>フィールドがすでに存在している場合を除き、<code>tfFullyCanonicalSig</code>フラグを有効にした状態で<code>Flags</code>フィールドを追加します。<code>tfFullyCanonicalSig</code>フラグは、<code>Flags</code>が明示的に指定されている場合、自動的には有効に<strong><em>なりません</em></strong>。また、<a href="sign_for.html">sign_forメソッド</a>を使用してマルチ署名済みトランザクションに署名を追加する場合も、自動的には有効に<strong><em>なりません</em></strong>。</p>
+<p><a href="sign.html">signメソッド</a>（または「署名と送信」モードの<a href="submit.html">submitメソッド</a>）を使用すると、<code>rippled</code>は、<code>Flags</code>フィールドがすでに存在している場合を除き、<code>tfFullyCanonicalSig</code>フラグを有効にした状態で<code>Flags</code>フィールドを追加します。<code>tfFullyCanonicalSig</code>フラグは、<code>Flags</code>が明示的に指定されている場合、自動的には有効に<strong><em>なりません</em></strong>。また、<a href="sign_for.html">sign_forメソッド</a>を使用してマルチシグトランザクションに署名を追加する場合も、自動的には有効に<strong><em>なりません</em></strong>。</p>
 <p class="devportal-callout 警告"><strong>警告:</strong> <code>tfFullyCanonicalSig</code>を有効にしない場合は、不正使用者がトランザクションの署名を改変して、期待されるものとは別のハッシュを使用してトランザクションを成功させることが理論上可能になります。最悪の場合、同一の支払を何回も送信するようシステムに仕掛けられるおそれがあります。この問題を回避するには、署名するすべてのトランザクションで<code>tfFullyCanonicalSig</code>フラグを有効にします。</p>
 <h3 id="フラグの範囲">フラグの範囲<a aria-hidden="true" class="hover_anchor" href="#フラグの範囲"><i class="fa fa-link"></i></a></h3>
 <p>トランザクションの<code>Flags</code>フィールドでは、さまざまなレベルや状況に適用されるフラグを設定できます。個々の状況に関するフラグは、以下の範囲に限定されます。</p>
@@ -492,7 +492,7 @@
 }
 </code></pre></div>
 <h2 id="signersフィールド">Signersフィールド<a aria-hidden="true" class="hover_anchor" href="#signersフィールド"><i class="fa fa-link"></i></a></h2>
-<p><code>Signers</code>フィールドには、最大8つのキーペアから取得された署名を保持し、トランザクションを承認するための<a href="multi-signing.html">マルチ署名</a>が含まれています。<code>Signers</code>リストはオブジェクトの配列であり、各オブジェクトが1つの<code>Signer</code>フィールドを保持しています。<code>Signer</code>フィールドには、以下の入れ子フィールドがあります。</p>
+<p><code>Signers</code>フィールドには、最大8つのキーペアから取得された署名を保持し、トランザクションを承認するための<a href="multi-signing.html">マルチシグ</a>が含まれています。<code>Signers</code>リストはオブジェクトの配列であり、各オブジェクトが1つの<code>Signer</code>フィールドを保持しています。<code>Signer</code>フィールドには、以下の入れ子フィールドがあります。</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -524,7 +524,7 @@
 </tbody>
 </table>
 <p><code>SigningPubKey</code>は、<code>Account</code>アドレスに関連付けられているキーでなければなりません。参照されている<code>Account</code>が、レジャーにあり資金供給済みアカウントである場合、SigningPubKeyには、そのアカウントの現在のレギュラーキー（設定されている場合）を指定できます。また、<a href="accountroot.html#accountrootのフラグ">lsfDisableMaster</a>フラグが有効になっている場合を除き、そのアカウントのマスターキーを指定することもできます。参照されている<code>Account</code>アドレスが、レジャーの資金供給済みのアカウントではない場合、<code>SigningPubKey</code>は、そのアドレスに関連付けられているマスターキーでなければなりません。</p>
-<p>署名の検証は大量の演算能力を消費するタスクであるため、マルチ署名済みトランザクションをネットワークに中継するには、追加のXRPがコストとしてかかります。マルチ署名に含まれている署名ごとに、トランザクションに必要な<a href="transaction-cost.html">トランザクションコスト</a>が増加します。例えば、トランザクションをネットワークに中継するための現在の最小トランザクションコストが<code>10000</code>dropである場合、<code>Signers</code>配列に3つのエントリーが含まれているマルチ署名済みトランザクションを中継するには、<code>Fee</code>の値を少なくとも<code>40000</code>dropにする必要があります。</p>
+<p>署名の検証は大量の演算能力を消費するタスクであるため、マルチシグトランザクションをネットワークに中継するには、追加のXRPがコストとしてかかります。マルチシグに含まれている署名ごとに、トランザクションに必要な<a href="transaction-cost.html">トランザクションコスト</a>が増加します。例えば、トランザクションをネットワークに中継するための現在の最小トランザクションコストが<code>10000</code>dropである場合、<code>Signers</code>配列に3つのエントリーが含まれているマルチシグトランザクションを中継するには、<code>Fee</code>の値を少なくとも<code>40000</code>dropにする必要があります。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -619,7 +619,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -790,6 +790,11 @@
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+  </div>
+
     </nav>
 
   </div>
@@ -848,11 +853,6 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -961,7 +961,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1008,7 +1008,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1190,12 +1190,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       
@@ -1759,11 +1759,6 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/check.html">Check</a>
   </div>
 
@@ -1869,31 +1864,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2345,11 +2315,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2474,6 +2439,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       
@@ -2798,11 +2768,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

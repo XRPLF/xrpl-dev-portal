@@ -51,6 +51,7 @@ https://xrpl.org/nftoken-authorized-minting.html
 https://xrpl.org/nftoken-auctions.html
 https://xrpl.org/nft-collections.html
 https://xrpl.org/nft-fixed-supply.html
+https://xrpl.org/nft-apis.html
 https://xrpl.org/freezes.html
 https://xrpl.org/common-misconceptions-about-freezes.html
 https://xrpl.org/rippling.html
@@ -345,6 +346,7 @@ https://xrpl.org/server_state.html
 https://xrpl.org/clio-methods.html
 https://xrpl.org/server_info-clio.html
 https://xrpl.org/ledger-clio.html
+https://xrpl.org/nft_history.html
 https://xrpl.org/nft_info.html
 https://xrpl.org/utility-methods.html
 https://xrpl.org/json.html
@@ -395,7 +397,6 @@ https://xrpl.org/xrp-api.html
 https://xrpl.org/data-api.html
 https://xrpl.org/xrp-ledger-toml.html
 https://xrpl.org/label-accounts.html
-https://xrpl.org/label-amm.html
 https://xrpl.org/label-blockchain.html
 https://xrpl.org/label-checks.html
 https://xrpl.org/label-rippled.html
@@ -437,6 +438,7 @@ https://xrpl.org/ambassadors.html
 https://xrpl.org/developer-funding.html
 https://xrpl.org/report-a-scam.html
 https://xrpl.org/explore.html
+https://xrpl.org/wallet.html
 https://xrpl.org/wallets.html
 https://xrpl.org/exchanges.html
 https://xrpl.org/businesses.html

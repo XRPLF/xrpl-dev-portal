@@ -281,7 +281,7 @@
     <div class="content">
         <h1 id="sign">sign<a aria-hidden="true" class="hover_anchor" href="#sign"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><code>sign</code>メソッドは<a href="transaction-formats.html">JSONフォーマットのトランザクション</a>と<a href="cryptographic-keys.html">シード値</a>を受け取り、トランザクションの署名済みバイナリー表現を返します。<a href="multi-signing.html">マルチ署名済みトランザクション</a>に署名を付与する場合は、代わりに<a href="sign_for.html">sign_forメソッド</a>を使用します。</p>
+<p><code>sign</code>メソッドは<a href="transaction-formats.html">JSONフォーマットのトランザクション</a>と<a href="cryptographic-keys.html">シード値</a>を受け取り、トランザクションの署名済みバイナリー表現を返します。<a href="multi-signing.html">マルチシグトランザクション</a>に署名を付与する場合は、代わりに<a href="sign_for.html">sign_forメソッド</a>を使用します。</p>
 <p><em>By default, this method is <a href="admin-api-methods.html">admin-only</a>. It can be used as a public method if the server admin has <a href="enable-public-signing.html">enabled public signing</a>.</em></p>
 <!--_ -->
 <p class="devportal-callout 注意"><strong>注意:</strong> 独自の<code>rippled</code>サーバーを運用している場合を除き、このコマンドを使用するのではなく、<a href="client-libraries.html">クライアントライブラリ</a>を実行してください。詳細については<a href="set-up-secure-signing.html">安全な署名の設定</a>を参照してください。 </p>
@@ -624,7 +624,7 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -795,6 +795,11 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+  </div>
+
     </nav>
 
   </div>
@@ -853,11 +858,6 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -966,7 +966,7 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -1013,7 +1013,7 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1195,12 +1195,12 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       
@@ -1764,11 +1764,6 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/check.html">Check</a>
   </div>
 
@@ -1874,31 +1869,6 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2350,11 +2320,6 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2479,6 +2444,11 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       
@@ -2803,11 +2773,6 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

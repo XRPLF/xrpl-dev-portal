@@ -305,7 +305,7 @@
 <ul>
 <li>送信元アドレスと数学的に関連付けられている、マスター秘密鍵による単一の署名。<a href="accountset.html">AccountSetトランザクション</a>を使用して、マスターキーペアを無効または有効にできます。</li>
 <li>アドレスに関連付けられているレギュラー秘密鍵と一致する単一の署名。<a href="setregularkey.html">SetRegularKeyトランザクション</a>を使用して、レギュラーキーペアを追加、削除、または置き換えることができます。</li>
-<li>アドレスが所有する署名者のリストと一致する<a href="multi-signing.html">マルチ署名</a>。<a href="signerlistset.html">SignerListSetトランザクション</a>を使用して、署名者のリストを追加、削除、または置換することができます。</li>
+<li>アドレスが所有する署名者のリストと一致する<a href="multi-signing.html">マルチシグ</a>。<a href="signerlistset.html">SignerListSetトランザクション</a>を使用して、署名者のリストを追加、削除、または置換することができます。</li>
 </ul>
 <p>署名の種類に関係なく、あらゆるタイプのトランザクションを承認できます。ただし、次の例外があります。</p>
 <ul>
@@ -323,7 +323,7 @@
 <li><code>rippled</code>サーバーにトランザクションを送信します。トランザクションが適切に作成されている場合、サーバーはそのトランザクションを現行バージョンのレジャーに暫定的に適用し、そのトランザクションをピアツーピアネットワークの他のメンバーに中継します。</li>
 <li><a href="consensus.html">コンセンサスプロセス</a>によって、次の検証済みレジャーに含まれる暫定的なトランザクションが決定されます。</li>
 <li><code>rippled</code>サーバーはそれらのトランザクションを正規順序で前のレジャーに適用し、それらの結果を共有します。</li>
-<li>十分に<a href="rippled-server-modes.html#バリデータを運用する理由">信頼できるバリデータ</a> がまったく同じレジャーを作成した場合、そのレジャーは <em>検証済み</em> であると宣言され、そのレジャーの<a href="transaction-results.html">トランザクションの結果</a>は不変となります。</li>
+<li>十分に<a href="rippled-server-modes.html#バリデータ">信頼できるバリデータ</a>がまったく同じレジャーを作成した場合、そのレジャーは <em>検証済み</em> であると宣言され、そのレジャーの<a href="transaction-results.html">トランザクションの結果</a>は不変となります。</li>
 </ol>
 <p>XRP決済の送信に関する対話型チュートリアルについては、<a href="send-xrp.html">Send XRP</a>を参照してください。</p>
 <h3 id="未署名のトランザクションの例">未署名のトランザクションの例<a aria-hidden="true" class="hover_anchor" href="#未署名のトランザクションの例"><i class="fa fa-link"></i></a></h3>
@@ -556,7 +556,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -727,6 +727,11 @@
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+  </div>
+
     </nav>
 
   </div>
@@ -785,11 +790,6 @@
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -898,7 +898,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">rippledサーバー</a>
+        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
       
@@ -945,7 +945,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">The Clio Server</a>
+    <a class="nav-link nav-leaf" href="/ja/the-clio-server.html">Clioサーバー</a>
   </div>
 
     </nav>
@@ -1127,12 +1127,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       
@@ -1696,11 +1696,6 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/check.html">Check</a>
   </div>
 
@@ -1806,31 +1801,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2282,11 +2252,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
   </div>
 
@@ -2411,6 +2376,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       
@@ -2735,11 +2705,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/label-amm.html">AMM</a>
   </div>
 
       

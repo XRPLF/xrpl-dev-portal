@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 45 possible spelling errors:
+Found 44 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gies, gis, gids
+  gifs: ifs, gits, gif
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -27,54 +27,53 @@ Found 45 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: black-hole, blockhole
+  blackhole: blockhole, black-hole
 
-<Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
-  stablefoo: 
-  unbalances: unbalance, unbalanced
-  machowski: 
+<Page 'NFT APIs' (nft-apis.html)> Unknown Words:
+  nft_history: 
+  slas: slat, slams, slag
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  immediateofferkilled: 
+  fixnonfungibletokensv1_2: 
+  disallowincoming: 
   fixuniversalnumber: 
   xrpfees: 
   depositpreauthamendment: 
-  fixnonfungibletokensv1_2: 
-  immediateofferkilled: 
-  disallowincoming: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
   asfdisallowincomingcheck: 
   asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
-  30d: 3d, 3rd, 3-d
+  asfdisallowincomingpaychan: 
+  30d: 3-d, 3rd, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+  30d: 3-d, 3rd, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -88,13 +87,13 @@ Found 45 possible spelling errors:
 <Page 'SetFee' (setfee.html)> Unknown Words:
   xrpfees: 
 
-<Page 'ledger_entry' (ledger_entry.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+<Page 'nft_history' (nft_history.html)> Unknown Words:
+  nft_history: 
 
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 31 discouraged words/phrases:
+Found 28 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -112,9 +111,6 @@ Page: <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)>
 Page: <Page 'Running an NFT Auction' (nftoken-auctions.html)>
    Discouraged word: purchase (1 instances); suggest 'buy' instead.
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'Automated Market Makers' (automated-market-makers.html)>
-   Discouraged phrase: market maker (2 instances); suggest 'liquidity provider' instead.
-   Discouraged word: remainder (1 instances); suggest 'rest' instead.
 Page: <Page 'Amendments' (amendments.html)>
    Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
 Page: <Page 'Known Amendments' (known-amendments.html)>
@@ -127,19 +123,19 @@ Page: <Page '2. Create Trust Line and Send Currency' (create-trustline-send-curr
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-stand-alone-mode.html)>
    Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
-Page: <Page 'tem Codes' (tem-codes.html)>
-   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+Page: <Page 'ledger_data' (ledger_data.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 ------------------
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.3 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.1 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
   Automated Readability Index: Grade level 10.8
   Coleman-Liau Index: Grade level 11.5
-  Linsear Write Formula: Grade level 8.5
+  Linsear Write Formula: Grade level 8.4
 
 
 Most difficult pages by Flesch Reading Ease:
@@ -175,8 +171,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 750
-  Characters: 4,657
+  Words: 743
+  Characters: 4,622
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
