@@ -106,6 +106,14 @@
       text-decoration: none;
     }
 
+    code {
+      color: $green-600;
+      background-color: $green-1000;
+      border-radius: 4px;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+
     .card-icon-container {
       width: 50px;
       height: 50px;
