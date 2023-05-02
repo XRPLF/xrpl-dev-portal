@@ -154,7 +154,7 @@ In JavaScript, our client is connecting to the XRPL via [WebSockets](https://en.
 
 {{ include_code("_code-samples/build-a-wallet/js/2_async-subscribe.js", language="js", lines="42-45") }}
 
-When we [subscribe method](https://xrpl.org/subscribe.html) to the `ledger` stream, anytime there is a new validated ledger our code will be updated. The routing of the ´ledgerClosed´ event from the XRPL to the internal event `update-ledger-data`is happening here: 
+When we [subscribe](subscribe.html) to the `ledger` stream, our code gets a ´ledgerClosed´ event whenever there is a new validated ledger. The following code passes these events to the view as `update-ledger-data` events: 
 
 {{ include_code("_code-samples/build-a-wallet/js/2_async-subscribe.js", language="js", lines="48-50") }}
 
