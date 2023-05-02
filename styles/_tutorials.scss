@@ -1,28 +1,60 @@
 /* Tutorials ---------------------------------------------------------------- */
-#tutorial-cards {
-  .card:nth-child(1) .card-footer {
-    background-image: url(../img/cards/4col-light-blue-3.svg);
+.tutorial-content {
+  #beginner-cards {
+    .card:nth-child(1) .card-footer {
+      background-image: url(../img/cards/4col-magenta-3.svg);
+    }
   }
-  .card:nth-child(2) .card-footer {
-    background-image: url(../img/cards/4col-purple-blue-2.svg);
+
+  #sdk-cards {
+    .card:nth-child(1) .card-footer {
+      background-image: url(../img/cards/4col-light-blue-3.svg);
+    }
+    .card:nth-child(2) .card-footer {
+      background-image: url(../img/cards/4col-magenta-3.svg);
+    }
+    .card:nth-child(3) .card-footer {
+      background-image: url(../img/cards/4col-green-2.svg);
+    }
+    .card:nth-child(4) .card-footer {
+      background-image: url(../img/cards/4col-yellow-2.svg);
+    }
   }
-  .card:nth-child(3) .card-footer {
-    background-image: url(../img/cards/4col-magenta-3.svg);
+
+  #use-cases-cards {
+    .card:nth-child(1) .card-footer {
+      background-image: url(../img/cards/3col-green-purple.svg);
+    }
+    .card:nth-child(2) .card-footer {
+      background-image: url(../img/cards/3-col-light-blue-2.svg);
+    }
+    .card:nth-child(3) .card-footer {
+      background-image: url(../img/cards/3-col-purple.svg);
+    }
   }
-  .card:nth-child(4) .card-footer {
-    background-image: url(../img/cards/4col-green-2.svg);
+
+  #servers-cards {
+    .card:nth-child(1) .card-footer {
+      background-image: url(../img/cards/4col-orange-yellow.svg);
+    }
+    .card:nth-child(2) .card-footer {
+      background-image: url(../img/cards/3-col-light-blue-2.svg);
+    }
+    .card:nth-child(3) .card-footer {
+      background-image: url(../img/cards/3-col-pink2.svg);
+    }
+    .card:nth-child(4) .card-footer {
+      background-image: url(../img/cards/3-col-purple-blue.svg);
+    }
   }
-  .card:nth-child(5) .card-footer {
-    background-image: url(../img/cards/4col-orange-yellow-2.svg);
-  }
-  .card:nth-child(6) .card-footer {
-    background-image: url(../img/cards/4col-blue-purple.svg);
-  }
-  .card:nth-child(7) .card-footer {
-    background-image: url(../img/cards/4col-yellow-2.svg);
-  }
-  .card:nth-child(8) .card-footer {
-    background-image: url(../img/cards/4col-orange-2.svg);
+
+  #businesses-cards {
+    .card:nth-child(1) .card-footer {
+      background-image: url(../img/cards/4col-light-blue-3.svg);
+    }
+    .card:nth-child(2) .card-footer {
+      background-image: url(../img/cards/3col-green.svg);
+    }
   }
 }
 

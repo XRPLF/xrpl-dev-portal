@@ -195,7 +195,7 @@
         {% for category in categoriesTutorials %}
         <h5 id="{{category.id}}">{{category.title}}</h5>
         <p>{{category.description}}</p>
-        <div id="tutorial-cards" class="card-grid card-grid-3xN tutorial-card-grid">
+        <div id="{{category.id}}-cards" class="card-grid card-grid-3xN tutorial-card-grid">
           {% for child in category.children %}
           {{ tutorialCard(child.title, child.description, child.href, child.img, child.external)}}
           {% endfor %}
