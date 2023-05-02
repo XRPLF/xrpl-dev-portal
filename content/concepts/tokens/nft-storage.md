@@ -7,13 +7,13 @@ labels:
 ---
 # NFT Payload Storage
 
-NFTs are created on the blockchain. But the payload of the NFT, including media, metadata, and attributes can be stored in a variety of ways, including on-chain, decentralized off-chain, and centralized off-chain.
+NFTs are created on the blockchain. But the payload of the NFT, including media, metadata, and attributes can be stored in a variety of ways, including on the XRP Ledger; decentralized, off the XRP Ledger; and centralized, off the XRP Ledger.
 
-## On-chain
+## On the XRP Ledger
 
 If your data is smaller than 256 bytes, you can consider using a `data://` URI and embedding it directly in the URI field. This has the advantage of storing the data in a reliable, persistent, and responsive database.
 
-## Decentralized, off XRPL
+## Decentralized, off the XRP Ledger
 
 You can use any of the existing decentralized storage solutions for your NFT metadata.
 
@@ -21,14 +21,8 @@ IPFS and Arweave offer solutions for decentralization. However, fetching the met
 
 See the blog post [NFT Payload Storage](https://xrpl.org/blog/2023/nft-payload-storage.html) for some examples of cloud storage solutions.
 
-## Centralized, off XRPL
+## Centralized, off the XRP Ledger
 
 You can use the URI field to point to a webserver you maintain from which the payload is served.
 
 As an alternative, and to save space on the ledger, you can set the `Domain` field of the issuer using `AccountSet` and treat the NFT ID of the token as a path on that domain. For example, if the NFT has an ID of `123ABC` and the domain on the issuer is `example.com`, you could serve the payload from `example.com/tokens/123ABC`.
-
-
-
-
-
-
