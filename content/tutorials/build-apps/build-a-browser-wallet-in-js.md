@@ -202,7 +202,8 @@ Now that you have a functional wallet, you can take it in several new directions
 - You could add support for displaying multiple tokens, beyond just XRP
 - You could support creating [offers](offers.html) in the [decentralized exchange](decentralized-exchange.html)
 - You could add new ways to request payments, such as with QR codes or URIs that open in your wallet.
-- Or you could support better account security including allowing users to set [regular key pairs](cryptographic-keys.html#regular-key-pair) or handle [multi-signing](multi-signing.html).
+- You could support better account security including allowing users to set [regular key pairs](cryptographic-keys.html#regular-key-pair) or handle [multi-signing](multi-signing.html).
+- Or you could take your code to production by following the [Building for Production with Vite](https://vitejs.dev/guide/build.html#public-base-path) guide.
 
 <!--{## common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
