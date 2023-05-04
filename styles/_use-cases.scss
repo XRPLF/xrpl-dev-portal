@@ -21,7 +21,7 @@
   color: #eae7e6;
   font-size: 5.16em;
   font-weight: 400;
-  font-family: 'Space Mono', sans-serif;
+  font-family: "Space Mono", sans-serif;
 }
 
 .use-case-step-length {
@@ -29,7 +29,114 @@
   color: #888;
   font-size: 1rem;
 }
+.use-case-circle {
+  display: inline-block;
+  width: 230px;
+  height: 230px;
+  border: 1px solid #343437;
+  border-radius: 50%;
+}
+.use-case-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 230px;
+  height: 230px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  margin-bottom: 30px;
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 0;
+  }
+}
 
+.circle-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px; /* Adjust the space between the elements */
+}
+
+.circle-img {
+  width: 40px;
+  height: 40px;
+}
+
+.circle-text {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+.join-xrpl-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.colorful-join-text-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 5%; /* Percentage-based padding to make it responsive */
+  box-sizing: border-box;
+}
+@include media-breakpoint-up(lg) {
+  .colorful-join-text-wrapper {
+    padding: 0 4%; /* Percentage-based padding to make it responsive */
+  }
+}
+
+.colorful-join-text {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+  background: linear-gradient(
+    90deg,
+    #feff01 0%,
+    #ff2d9a 30.82%,
+    #e24cff 64.01%,
+    #9a52ff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@include media-breakpoint-up(lg) {
+  .colorful-join-text {
+    width: 750px;
+  }
+}
+
+.pill-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.69087px 29.527px;
+  width: 73.05px;
+  height: 37.38px;
+  /* Blue-Purple/Blue-Purple 50 */
+  background: #7919ff;
+  /* Blue-Purple/Blue-Purple 60 */
+  border: 3.69087px solid #5f00e5;
+  border-radius: 184.543px;
+}
+
+.pill-number {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22.1452px;
+  color: #f0e5ff;
+}
 .use-case-steps h2 {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -66,10 +173,10 @@
   padding-top: 2px;
 }
 .related-tasks-links a:hover::after {
-  padding-left: .5em;
+  padding-left: 0.5em;
 }
 .related-tasks-links a::after {
   content: " ➝";
   padding-left: 0;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
