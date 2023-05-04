@@ -1,6 +1,6 @@
 ---
 html: install-clio-on-ubuntu.html
-parent: manage-the-clio-server.html
+parent: xrpl-infrastructure.html
 blurb: Install a precompiled Clio binary on Ubuntu Linux.
 labels:
   - Clio Server
@@ -151,4 +151,4 @@ Before you install Clio, you must meet the following requirements.
 ## See Also
 
 - **Concepts:**
-    - [The Clio Server](the-clio-server.html)
+    - [The Clio Server](clio-server.html)
