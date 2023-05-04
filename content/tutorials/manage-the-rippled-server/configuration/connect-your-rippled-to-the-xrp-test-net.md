@@ -187,8 +187,6 @@ AMM
 
 <!-- MULTICODE_BLOCK_END -->
 
-(On Mainnet, Testnet, and Devnet, no you)
-
 **Warning:** Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.
 
 ## 4. Restart the server.
