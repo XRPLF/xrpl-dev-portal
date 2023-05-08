@@ -29,22 +29,150 @@
   color: #888;
   font-size: 1rem;
 }
-.use-case-circle {
-  display: inline-block;
-  width: 230px;
-  height: 230px;
-  border: 1px solid #343437;
-  border-radius: 50%;
+.arrows-container {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
 }
+
+.arrow-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.arrow-button img {
+  width: 40px;
+  height: 40px;
+}
+
+.left-arrow {
+  margin-left: 40px;
+}
+
+.right-arrow {
+  margin-right: 40px;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content-uses {
+  position: relative; /* Add position: relative to modal-content-uses */
+  background-color: #232325;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  width: 60% !important;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content-uses::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    #b480ff -0.32%,
+    #5f00e6 32.7%,
+    #1aa4ff 61.53%,
+    #19ff83 100.32%,
+    #19ff83 100.32%
+  );
+}
+.content-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-image {
+  display: block;
+}
+
+.section-text-title {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  color: #ffffff;
+}
+.section-text-description {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #c1c1c2;
+}
+
+.section-separator {
+  width: 50%;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+.section-logos {
+  font-size: 16px;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .use-case-circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 230px;
-  height: 230px;
-  border: 1px solid grey;
+  width: 185px;
+  height: 185px;
+  border: 1px solid #343437;
   border-radius: 50%;
   margin-bottom: 30px;
+  cursor: pointer;
+  @include media-breakpoint-up(md) {
+    width: 230px;
+    height: 230px;
+  }
   @include media-breakpoint-up(lg) {
     margin-bottom: 0;
   }

@@ -364,65 +364,123 @@
       {% set uses = [
           {"id": "infrastructure",
             "title": _("Infrastructure"),
-            "description": _("Build and operate components or systems that help the functionality of the XRP Ledger, such as Nodes, dev tools, storage, security and more.")},
+            "number": 7,
+            "src": "assets/img/uses/infrastructure.png"
+            },
 
           {"id": "developer_tooling",
             "title": _("Developer Tooling"),
-            "description": _("Developers can leverage open-source libraries, SDKs and more to help build their project and access essential XRP Ledger functionality.")},
+            "number": 4,
+            "src": "assets/img/uses/infrastructure.png"
+          },
+          {"id": "interoperability",
+            "title": _("Interoperability"),
+            "number": 3,
+            "src": "assets/img/uses/infrastructure.png"
 
+          },
           {"id": "wallet",
             "title": _("Wallet"),
-            "description": _("Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP.")},
+            "number": 4,
+            "src": "assets/img/uses/infrastructure.png"
 
+          },
           {"id": "nfts",
             "title": _("NFTs"),
-            "description": _("XRPL supports the issuance of IOUs that represent a currency of any value, as well as non-fungible tokens (NFTs).")},
+            "number": 7,
+            "src": "assets/img/uses/infrastructure.png"
 
+          },
           {"id": "exchanges",
             "title": _("Exchanges"),
-            "description": _("Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities.")},
+            "number": 2,
+            "src": "assets/img/uses/infrastructure.png"
 
+          },
           {"id": "gaming",
             "title": _("Gaming"),
-            "description": _("The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability.")},
+            "number": 5,
+            "src": "assets/img/uses/infrastructure.png"
 
+          },
           {"id": "security",
             "title": _("Security"),
-            "description": _("Build services and tools that help prevent and combat fraudulent activity with the XRPL.")},
+            "number": 1,
+            "src": "assets/img/uses/infrastructure.png"
+
+          },
 
           {"id": "payments",
             "title": _("Payments"),
-            "description": _("Leverage the efficiency and speed of the XRP Ledger to move value all over the globe.")},
-
-          {"id": "web_monetization",
-            "title": _("Web Monetization"),
-            "description": _("Support creators and their content directly leveraging the power of the XRP Ledger.")},
-
-          {"id": "sustainability",
-            "title": _("Sustainability"),
-            "description": _("Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs).")},
+            "number": 2,
+            "src": "assets/img/uses/infrastructure.png"
+          },
 
           {"id": "cbdc",
             "title": _("CBDC"),
-            "description": _("A private version of the XRP Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs).")},
+            "number": 1,
+            "src": "assets/img/uses/infrastructure.png"
+          },
 
-          {"id": "custody",
-            "title": _("Custody"),
-            "description": _("Use the XRP Ledger to build crypto custody and securely hold, store and use your assets.")},
+          {"id": "carbon_markets",
+            "title": _("Carbon Markets"),
+            "number": 2,
+            "src": "assets/img/uses/infrastructure.png"
+
+          },
+
+          {"id": "other",
+            "title": _("Other"),
+            "number": 1,
+                        "src": "assets/img/uses/infrastructure.png"
+
+          },
       ] %}
-      {% for use in uses %}
-      <li class="col use-case-circle ls-none p-3">
-        <div class="circle-content">
-          <img class="circle-img" src="assets/img/uses/infrastructure.png" alt="use-logos">
-          <p class="circle-text">Your Text Here</p>
-          <div class="pill-box">
-            <span class="pill-number">1</span>
-          </div>
-        </div>
-      </li>
-      {% endfor %}
+ {% for use in uses %}
+<li class="col use-case-circle ls-none p-3 open-modal" data-id="{{use.id}}" data-title="{{use.title}}" data-number="{{use.number}}" data-src="{{use.src}}">
+  <div class="circle-content">
+    <img class="circle-img" src={{use.src}} alt="use-logos">
+    <p class="circle-text">{{use.title}}</p>
+    <div class="pill-box">
+      <span class="pill-number">{{use.number}}</span>
+    </div>
+  </div>
+</li>
+{% endfor %}
+
     </ul>
   </section>
+
+<div class="modal" id="myModal">
+  
+  <div class="modal-content-uses">
+      <div class="arrows-container">
+      <button class="arrow-button left-arrow" id="leftArrow">
+        <img src="assets/img/uses/left-arrow.png" alt="left arrow">
+      </button>
+      <button class="arrow-button right-arrow" id="rightArrow">
+        <img src="assets/img/uses/right-arrow.png" alt="right arrow">
+      </button>
+    </div>
+
+    <div class="content-section">
+      <img class="section-image" src="your-image-url.png" alt="section image" width="40" height="40">
+    </div>
+    <div class="content-section">
+      <p class="section-text-title">Title</p>
+    </div>
+    <div class="content-section">
+      <p class="section-text-description">Description</p>
+    </div>
+    <div class="content-section">
+      <hr class="section-separator">
+    </div>
+    <div class="content-section">
+      <p class="section-logos">Group of logos here...</p>
+    </div>
+  </div>
+</div>
+
 
   <section class="join-xrpl-section py-26">
   <div class="colorful-join-text-wrapper">
@@ -513,6 +571,8 @@
 {% endblock analytics %}
 
 
+
 {% block endbody %}
+<script type="application/javascript" src="{{currentpage.prefix}}assets/js/modal.js"></script>
 <script type="application/javascript" src="{{currentpage.prefix}}assets/js/use-cases.js"></script>
 {% endblock %}
