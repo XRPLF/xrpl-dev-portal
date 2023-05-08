@@ -109,7 +109,7 @@ To display our results to the user, we need to create the view components that w
 *view/1_hello.html*
 {{ include_code("_code-samples/build-a-wallet/js/view/1_hello.html", language="html") }}
 
-`view/1_renderer.js`
+*view/1_renderer.js*
 {{ include_code("_code-samples/build-a-wallet/js/view/1_renderer.js", language="js") }}
 
 <!-- MULTICODE_BLOCK_END-->
