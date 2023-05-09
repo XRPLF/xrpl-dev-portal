@@ -42,7 +42,7 @@ if (typeof module !== "undefined") {
     })
 
     const signed = wallet.sign(prepared)  
-    print("Submitting a payment transaction with our memo field...")
+    console.log("Submitting a payment transaction with our memo field...")
     const submit_result = await client.submitAndWait(signed.tx_blob)
 xrpl.convertHexToString
     const tx_MemoData = xrpl.convertHexToString(string=submit_result.result.Memos[0].Memo.MemoData);
