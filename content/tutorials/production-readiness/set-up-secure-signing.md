@@ -95,7 +95,7 @@ Here are examples of how to sign transaction instructions locally using the foll
 
 * **Python** - [`xrpl-py`](https://github.com/XRPLF/xrpl-py)
 
-* **Java** - [`xrpl4j-crypto-bouncycastle`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/index.html)
+* **Java** - [`xrpl4j`](https://github.com/XRPLF/xrpl4j)
 
 <!-- MULTICODE_BLOCK_START -->
 
