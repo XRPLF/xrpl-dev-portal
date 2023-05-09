@@ -17,7 +17,7 @@ AccountInfoRequestParams requestParams = AccountInfoRequestParams.builder()
 AccountInfoResult accountInfoResult = xrplClient.accountInfo(requestParams);
 UnsignedInteger sequence = accountInfoResult.accountData().sequence();
 
-// Request current fee information from rippled
+// Request current fee information from rippled                                                               
 FeeResult feeResult = xrplClient.fee();
 XrpCurrencyAmount openLedgerFee = feeResult.drops().openLedgerFee();
 
@@ -89,7 +89,7 @@ while (!transactionValidated && !transactionExpired) {
     }
 }
 
-// Check transaction results
+// Check transaction results --------------------------------------------------
 System.out.println(transactionResult);
 System.out.println("Explorer link: https://testnet.xrpl.org/transactions/" + signedPayment.hash());
 transactionResult.metadata().ifPresent(metadata -> {
