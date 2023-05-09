@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 42 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: kifs, gins, gids
-  ringtee: 
+  gifs: gif, gils, giff
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -23,45 +23,45 @@ Found 42 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: black-hole, blockhole
+  blackhole: blockhole, black-hole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slats, slays, slabs
+  slas: salas, spas, sylas
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
   fixnonfungibletokensv1_2: 
-  xrpfees: 
-  fixuniversalnumber: 
-  disallowincoming: 
   depositpreauthamendment: 
   immediateofferkilled: 
+  disallowincoming: 
+  xrpfees: 
+  fixuniversalnumber: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingnftoffer: 
-  asfdisallowincomingcheck: 
   asfdisallowincomingpaychan: 
   asfdisallowincomingtrustline: 
-  30d: 3rd, 3-d, 3d
+  asfdisallowincomingcheck: 
+  30d: 3-d, 3rd, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3-d, 3rd, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
@@ -168,7 +168,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 55
   Words: 745
-  Characters: 4,633
+  Characters: 4,632
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
