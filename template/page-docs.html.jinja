@@ -78,12 +78,10 @@
   {% endmacro %}
 
   {% macro devToolsCard(link, title, description) %}
-    <div class="col dev-tools-links">
-      <a href="{{ link }}">
-        <h6 class="btn-arrow">{{ title }}</h6>
-      </a>
-      <p> {{ description }}</p>
-    </div>
+    <a href="{{ link }}" class="col dev-tools-link">
+      <h6 class="btn-arrow">{{ title }}</h6>
+      <p class="no-underline"> {{ description }}</p>
+    </a>
   {% endmacro %}
 
 

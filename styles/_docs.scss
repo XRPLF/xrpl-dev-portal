@@ -40,6 +40,10 @@
   .dev-tools-img {
     content:url(../../img/graphics/dev-tools-light.svg)
   }
+
+  .dev-tools-link:hover p {
+    color: #000
+  }
 }
 
 .dark {
@@ -71,6 +75,10 @@
     .connections-illustration {
       content:url(../../img/graphics/nodes-dark.png)
     }
+
+    .dev-tools-link:hover p {
+      color: #E0E0E1;
+    }
   }
 
   .quickstart-image {
@@ -98,7 +106,7 @@
 
 .page-docs-index {
 
-  .dev-tools-links {
+  .dev-tools-link {
     h6::before {
       margin-top: -20px;
       height: 20px;
@@ -110,12 +118,13 @@
       background: none!important;
     }
 
-    p:hover {
+    &:hover p {
       text-decoration: none !important;
       background: none !important;
+      display: inline-block; // Inline blocks don't have underlines
     }
 
-    a:hover{
+    a:hover {
       color:#9A52FF;
       text-decoration: none !important;
     }
