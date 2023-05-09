@@ -1,0 +1,14 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "send-a-memo.js",
+  "scripts": {
+    "start": "node send-a-memo.js"
+  },
+  "author": "",
+  "license": "ISC",
+    "dependencies": {
+      "xrpl": "^2.0.0"
+    }
+}
