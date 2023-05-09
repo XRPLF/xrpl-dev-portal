@@ -29,25 +29,25 @@
   {% endmacro %}
 
   {% macro flatCard(href, title, description, linkText, imgClass) %}
-    <div class="card video-image flat-card">
+    <a href="{{href}}" class="card flat-card float-up-on-hover">
       <img 
         class="mb-2 {{imgClass}}"
         alt={{title}}
       />
       <h5 class="row">
-        <a href="{{href}}" class="nav-link">{{ title }}</a>
+        <div class="nav-link">{{ title }}</div>
       </h5>
       <p class="row faded-text flat-card-padding">
         {{ description }}
       </p>
       <div class="col align-button-on-bottom">
-        {{ primaryButton(href, linkText, false) }}
+        <div class="btn btn-primary btn-arrow-out" id="{{href}}-button">{{ linkText }}</div>
       </div>
-    </div>
+    </a>
   {% endmacro %}
 
   {% macro videoCard(url, title, src)%}
-    <div class="col">
+    <div class="col float-up-on-hover">
       <iframe id="video1" style="display:none;" src="{{url}}" title="{{title}}" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <a href="{{url}}" id="playvideo" class="btn1" data-url={{url}}>
         <img
@@ -55,9 +55,9 @@
           id={{title}}
           src={{src}}
         />
+        <h6 class="pt-3">{{ title }}</h6>
       </a>
 
-      <h6 class="pt-3">{{ title }}</h6>
     </div>
   {% endmacro %}
 
@@ -278,25 +278,24 @@
     <h4 class="pb-4">Getting Started</h4>
     <div class="card-grid card-grid-2xN quickstart-card">
       <div class="col">
-        <div class="card video-image">
+        <a href="./xrpl-quickstart.html" class="card float-up-on-hover">
           <h5 class="mt-7"> Quickstart to XRP Ledger </h5>
           <p class="mb-8 mt-4">
             An introduction to fundamental aspects of the XRP Ledger.
           </p>
           <div class="dg-lg-block mb-3">
-            <a
+            <div
               class="btn btn-primary btn-arrow get-started-button"
-              href="./xrpl-quickstart.html"
             >
               Get Started
-            </a>
+            </div>
           </div>
           <img
             alt="quick-start"
             id="quick-start-img"
             class="quickstart-image"
           />
-        </div>
+        </a>
       </div>
       <div class="col">
         <div class="card-grid card-grid-2xN video-grid">

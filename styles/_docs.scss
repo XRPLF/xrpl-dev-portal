@@ -273,6 +273,28 @@
   }
 }
 
+.float-up-on-hover {
+  transition: all 0.35s ease-out;
+  cursor: pointer;
+  &:hover {
+    -webkit-transform: translateY(-16px);
+    -moz-transform: translateY(-16px);
+    -ms-transform: translateY(-16px);
+    -o-transform: translateY(-16px);
+    transform: translateY(-16px);
+  }
+
+  // Make the floating idempotent
+  .video-image {
+    &:hover {
+      -webkit-transform: none;
+      -moz-transform: none;
+      -ms-transform: none;
+      -o-transform: none;
+      transform: none;
+    }
+  }
+}
 
 .align-button-on-bottom {
   
