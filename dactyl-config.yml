@@ -219,7 +219,7 @@ pages:
         targets:
             - en
 
-    -   name: XRPL オーバービュー
+    -   name: XRPLの概要
         template: page-xrpl-overview.html.jinja
         html: xrp-ledger-overview.html
         parent: index.html
@@ -280,7 +280,7 @@ pages:
         targets:
             - en
 
-    -   name: 沿革
+    -   name: 歴史
         template: page-history.html.jinja
         html: history.html
         parent: xrp-ledger-overview.html
@@ -321,7 +321,7 @@ pages:
         parent: xrp-ledger-overview.html
         blurb: XRP LedgerのネイティブデジタルアセットであるXRPの詳細はこちら。
         top_nav_grouping: XRP
-        top_nav_name: XRP Overview
+        top_nav_name: XRPの概要
         sidebar: disabled
         targets:
             - ja
