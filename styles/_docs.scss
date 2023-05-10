@@ -110,6 +110,11 @@
 
 .page-docs-index {
 
+  section {
+    padding-top: 64px;
+    padding-bottom:64px;
+  }
+
   .dev-tools-link {
     h6::before {
       margin-top: -20px;
@@ -306,11 +311,13 @@
   }
 }
 
-.align-button-on-bottom {
-  
-  .btn-primary {
-    position: absolute;
-    bottom: 0;
+// On mobile the vertical spacing is correct without adjustment.
+@media (min-width: 992px) {
+  .align-button-on-bottom {
+    .btn-primary {
+      position: absolute;
+      bottom: 0;
+    }
   }
 }
 
