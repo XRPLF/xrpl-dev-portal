@@ -365,81 +365,61 @@
           {"id": "infrastructure",
             "title": _("Infrastructure"),
             "number": 7,
-            "src": "assets/img/uses/infrastructure.png"
             },
 
           {"id": "developer_tooling",
             "title": _("Developer Tooling"),
             "number": 4,
-            "src": "assets/img/uses/infrastructure.png"
           },
           {"id": "interoperability",
             "title": _("Interoperability"),
             "number": 3,
-            "src": "assets/img/uses/infrastructure.png"
-
           },
           {"id": "wallet",
             "title": _("Wallet"),
             "number": 4,
-            "src": "assets/img/uses/infrastructure.png"
-
           },
           {"id": "nfts",
             "title": _("NFTs"),
             "number": 7,
-            "src": "assets/img/uses/infrastructure.png"
-
           },
           {"id": "exchanges",
             "title": _("Exchanges"),
             "number": 2,
-            "src": "assets/img/uses/infrastructure.png"
-
           },
           {"id": "gaming",
             "title": _("Gaming"),
             "number": 5,
-            "src": "assets/img/uses/infrastructure.png"
-
           },
           {"id": "security",
             "title": _("Security"),
             "number": 1,
-            "src": "assets/img/uses/infrastructure.png"
-
           },
 
           {"id": "payments",
             "title": _("Payments"),
             "number": 2,
-            "src": "assets/img/uses/infrastructure.png"
           },
 
           {"id": "cbdc",
             "title": _("CBDC"),
             "number": 1,
-            "src": "assets/img/uses/infrastructure.png"
           },
 
           {"id": "carbon_markets",
             "title": _("Carbon Markets"),
             "number": 2,
-            "src": "assets/img/uses/infrastructure.png"
-
           },
 
           {"id": "other",
             "title": _("Other"),
             "number": 1,
-                        "src": "assets/img/uses/infrastructure.png"
-
           },
       ] %}
  {% for use in uses %}
 <li class="col use-case-circle ls-none p-3 open-modal" data-id="{{use.id}}" data-title="{{use.title}}" data-number="{{use.number}}" data-src="{{use.src}}">
   <div class="circle-content">
-    <img class="circle-img" src={{use.src}} alt="use-logos">
+    <img class="circle-img" id={{use.id}} alt="use-logos">
     <p class="circle-text">{{use.title}}</p>
     <div class="pill-box">
       <span class="pill-number">{{use.number}}</span>
