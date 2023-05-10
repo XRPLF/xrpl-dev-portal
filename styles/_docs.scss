@@ -113,8 +113,8 @@
     }
 
     h6:hover {
-      color:#9A52FF;
-      text-decoration: none;
+      text-decoration: underline;
+      text-decoration-color: #9A52FF;
       background: none!important;
     }
 
@@ -139,8 +139,8 @@
   .langs {
     
     h5:hover {
-      color:#9A52FF;
-      text-decoration: none !important;
+      text-decoration: underline;
+      text-decoration-color: #9A52FF;
       background: none!important;
     }
 
@@ -155,13 +155,13 @@
       height: 1.5rem;
     }
 
-    a {
-      color:#E0E0E1;
+    // a {
+    //   color:#E0E0E1;
 
-      .light {
-        color: #000;
-      }
-    }
+    //   .light {
+    //     color: #000;
+    //   }
+    // }
 
     h5 {
       margin-block-start: 0 !important;
