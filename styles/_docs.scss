@@ -75,10 +75,6 @@
     .connections-illustration {
       content:url(../../img/graphics/nodes-dark.png)
     }
-
-    .dev-tools-link:hover p {
-      color: #E0E0E1;
-    }
   }
 
   .quickstart-image {
@@ -87,6 +83,10 @@
 
   .dev-tools-img {
     content:url(../../img/graphics/dev-tools-dark.png)
+  }
+
+  .dev-tools-link:hover p {
+    color: #fff;
   }
 }
 
