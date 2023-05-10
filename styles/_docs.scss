@@ -88,6 +88,10 @@
   .dev-tools-link:hover p {
     color: #fff;
   }
+
+  .flat-card-grid .nav-link:hover {
+    color: #E0E0E1;
+  }
 }
 
 // Video Cards
@@ -154,14 +158,6 @@
       width: 1.5rem;
       height: 1.5rem;
     }
-
-    // a {
-    //   color:#E0E0E1;
-
-    //   .light {
-    //     color: #000;
-    //   }
-    // }
 
     h5 {
       margin-block-start: 0 !important;
@@ -262,6 +258,11 @@
   .nav-link {
     border: none !important;
 
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: #9A52FF;
+    }
+    
     &::after {
       content: none !important;
     }
