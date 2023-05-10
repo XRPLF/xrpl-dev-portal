@@ -4,10 +4,10 @@
     background-image: url(../img/icons/arrow-up-right.svg);
     background-repeat: no-repeat;
     display: inline-block;
-    background-size: 10px;
+    background-size: 15px;
     padding: 0 4px 0 8px;
     width: 14px;
-    background-position: left 0 bottom 4px;
+    background-position: left 0 bottom 2px;
     transition: background-position 100ms ease-in-out;
 
     // Note: the background position is based on the padding, so it might
@@ -17,7 +17,7 @@
   }
 
   &:hover::after {
-    background-position: left 4px bottom 8px;
+    background-position: left 4px bottom 2px;
   }
 
   .fa-external-link {
@@ -28,7 +28,7 @@
 .top-nav .dropdown .external-link,
 .xrpl-footer .external-link {
   &::after {
-    background-position: left 8px bottom 3px;
+    background-position: left 6px bottom 1px;
     width: 2rem;
 
     @-moz-document url-prefix() {
@@ -41,7 +41,7 @@
   }
 
   &:hover::after {
-    background-position: left 12px bottom 6px;
+    background-position: left 8px bottom 3px;
   }
 }
 
