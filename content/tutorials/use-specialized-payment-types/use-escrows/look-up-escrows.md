@@ -8,9 +8,8 @@ labels:
 ---
 # Look up Escrows
 
-All pending escrows are stored in the ledger as [Escrow objects](escrow.html), and you can look them up by the sender's address or the destination address.
+All pending escrows are stored in the ledger as [Escrow objects](escrow.html). You can look them up by the sender's address or the destination address.
 
-<!--> Note to Dennis: Is anyone going to be looking up escrows created before 2017? Seems like an extremely niche case to be taking up page space. Remove this maybe? <-->
 **Note:** You can only look up pending escrow objects by destination address if those escrows were created after the [fix1523 amendment][] was enabled on 2017-11-14.
 
 Use the [account_objects][] method, where the sender or destination address is the `account` value.

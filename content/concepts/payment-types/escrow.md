@@ -1,64 +1,37 @@
 ---
 html: escrow.html
 parent: payment-types.html
-blurb: Escrows set aside XRP and deliver it later when certain conditions are met. Escrows can depend on time limits, cryptographic conditions, or both.
+blurb: Escrow holds funds until specified conditions are met.
 labels:
   - Escrow
   - Smart Contracts
 ---
 # Escrow
 
-The XRP Ledger enables you to send conditional payments using an escrow. An escrow locks up XRP, which can't be used or destroyed until certain conditions are met. You can specify conditions by:
+Traditionally, an escrow is a contract between two parties to facilitate risky financial transactions. An impartial third party receives and holds funds, and only releases them to the intended recipient when conditions specified by the contract are met. This method ensures both parties meet their obligations.
+
+The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP, which can't be used or destroyed until conditions are met. You can specify conditions by:
 
 - Time.
 - Crypto-condition.
 - A combination of both.
 
-Once the escrow conditions are met, the funds are unlocked and can be delivered to the recipient.
 
-## Usage
+## Escrow Lifecycle
 
-<!--{# Diagram sources: https://docs.google.com/presentation/d/1C-_TLkkoQEH7KJ6Gjwa1gO6EX17SLiJ8lxvFcAl6Rxo/ #}-->
+1. The sender creates an escrow using the `EscrowCreate` transaction. This transaction defines:
 
-[![Escrow Flow Diagram (Successful finish)](img/escrow-success-flow.png)](img/escrow-success-flow.png)
+    - An amount of XRP to lock up.
+    - The conditions to release the XRP.
+    - The recipient of the XRP.
 
-**Step 1:** To send an escrow, the sender uses an [EscrowCreate transaction][] to lock up some XRP. This transaction defines a finish time, an expiration time, or both. The transaction may also define a crypto-condition that must be fulfilled to finish the escrow. This transaction must define an intended recipient for the XRP; the recipient _may_ be the same as the sender.
+2. When the transaction is processed, the XRP Ledger creates an `Escrow` object that holds the escrowed XRP.
 
-**Step 2:** After this transaction has been processed, the XRP Ledger has an [Escrow object](escrow-object.html) that holds the escrowed XRP. This object contains the properties of the escrow as defined by the transaction that created it. If this escrow has a finish time, no one can access the XRP before then.
+3. The recipient sends an `EscrowFinish` transaction to deliver the XRP. If the conditions have been met, this destroys the `Escrow` object and delivers the XRP to the recipient.
 
-**Step 3:** The recipient, or any other XRP Ledger address, sends an [EscrowFinish transaction][] to deliver the XRP. If the correct conditions are met, this destroys the Escrow object in the ledger and credits the XRP to the intended recipient. If the escrow has a crypto-condition, this transaction must include a fulfillment for that condition. If the escrow has an expiration time that has already passed, the EscrowFinish transaction instead fails with the code [`tecNO_PERMISSION`](tec-codes.html).
+    **Note:** If the escrow has an expiration time and isn't successfully finished before then, the escrow becomes expired. An expired escrow remains in the ledger until an `EscrowCancel` transaction cancels it, destroying the `Escrow` object and returning the XRP to the sender.
 
-### Expiration Case
-
-[![Escrow Flow Diagram (Expired escrow)](img/escrow-cancel-flow.png)](img/escrow-cancel-flow.png)
-
-All escrows start the same way, so **Steps 1 and 2** are the same as in the successful case.
-
-**Step 3a:** If the escrow has an expiration time, and it has not been successfully finished before then, the escrow is considered expired. It continues to exist in the XRP Ledger, but can no longer successfully finish. (Expired objects remain in the ledger until a transaction modifies them. Time-based triggers cannot change the ledger contents.)
-
-**Step 4a:** The sender, or any other XRP Ledger address, sends an [EscrowCancel transaction][] to cancel the expired escrow. This destroys the [Escrow object](escrow-object.html) in the ledger and returns the XRP to the sender.
-
-<!-- SPELLING_IGNORE: 3a, 4a -->
-
-
-## Limitations
-
-Escrow is designed as a feature to enable the XRP Ledger to be used in the [Interledger Protocol][] and with other smart contracts. The current version has a modest scope to avoid complexity.
-
-- Escrow only works with XRP, not tokens.
-- Escrow requires sending at least two transactions: one to create the escrow, and one to finish or cancel it. Thus, it may not be financially sensible to escrow payments for very small amounts, because the participants must destroy the [transaction cost](transaction-cost.html) of the two transactions.
-    - When using Crypto-Conditions, the [cost of the transaction to finish the escrow](#escrowfinish-transaction-cost) is higher than usual.
-- All escrows must be created with a "finish-after" time or a [crypto-condition][], or both. If the escrow does not have a finish-after time, it must have an expiration time.
-
-    **Note:** The [fix1571 amendment][] changed the requirements for creating an escrow. Escrows created before that amendment could provide an expiration time with no condition or finish-after time. Anyone can finish such escrows immediately (sending the funds to the intended recipient).
-
-- None of the time values can be in the past when the escrow-creating transaction executes.
-- Timed releases and expirations are limited to the resolution of XRP Ledger closes. This means that, in practice, times may be rounded to approximately 5 second intervals, depending on exactly when the ledgers close.
-- The only supported [crypto-condition][] type is PREIMAGE-SHA-256.
-
-Escrow provides strong guarantees that are best suited for high-value, low-quantity payments. [Payment Channels](use-payment-channels.html) are better suited for fast, low-value payments. Of course, unconditional [Payments](payment.html) are also preferable for many use cases.
-
-## State Diagram
+## Escrow States
 
 The following diagram shows the states an Escrow can progress through:
 
@@ -73,17 +46,18 @@ The diagram shows three different cases for three possible combinations of the e
 - **Conditional Escrow (right):** If the escrow specifies a crypto-condition (`Condition` field) and not a finish-after time, the escrow becomes **Conditionally Ready** immediately when it is created. During this time, anyone can finish the escrow, but only if they supply the correct fulfillment to the crypto-condition. If no one finishes the escrow before its expiration time (`CancelAfter` field), the escrow becomes **Expired**. (An escrow without a finish-after time _must_ have an expiration time.) In the expired state, the escrow can no longer be finished, and anyone can cancel it.
 
 
+## Limitations
 
-## Availability of Escrow
+Escrow is designed as a feature to enable the XRP Ledger to be used in the [Interledger Protocol][] and with other smart contracts. The current version has a modest scope to avoid complexity.
 
-Conditional payments have been enabled by the ["Escrow" Amendment](known-amendments.html#escrow) to the XRP Ledger Consensus Protocol since 2017-03-31. A previous version of the same functionality was available on the [XRP Ledger Test Net](xrp-test-net-faucet.html) by the name "Suspended Payments" (SusPay) in 2016.
+- Escrow only works with XRP, not tokens.
+- The costs can make it infeasible for small amounts.
+    - Escrow requires two transactions: one to create the escrow, and one to finish or cancel it. Crypto-Conditions incur a higher [transaction cost](transaction-cost.html) than usual.
+    - While the escrow is incomplete, the sender is responsible for the [reserve requirement](reserves.html) of the `Escrow` object.
+- You can't create an escrow with past time values.
+- Timed releases and expirations resolve according to [ledger close times](ledgers.html#ledger-close-times). In practice, actual release and expiration times can vary by about five seconds as ledgers close.
+- The only supported [crypto-condition][] type is PREIMAGE-SHA-256.
 
-When testing in [stand-alone mode][], you can force the Escrow feature to be enabled locally regardless of the amendment status. Add the following stanza to your `rippled.cfg`:
-
-    [features]
-    Escrow
-
-You can check the status of the Escrow amendment using the [feature method][].
 
 ## EscrowFinish Transaction Cost
 
