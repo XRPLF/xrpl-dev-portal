@@ -17,7 +17,7 @@ AccountInfoRequestParams requestParams = AccountInfoRequestParams.builder()
 AccountInfoResult accountInfoResult = xrplClient.accountInfo(requestParams);
 UnsignedInteger sequence = accountInfoResult.accountData().sequence();
 
-// Request current fee information from rippled                                                               
+// Request current fee information from rippled
 FeeResult feeResult = xrplClient.fee();
 XrpCurrencyAmount openLedgerFee = feeResult.drops().openLedgerFee();
 
