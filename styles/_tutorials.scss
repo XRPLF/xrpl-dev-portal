@@ -137,4 +137,33 @@
   max-width: 70%;
 }
 
+@mixin sidebar-bullet {
+  content: "\2022";
+  color: $blue-purple-500;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 16px;
+  z-index: 1;
+  font-size: 20px;
+}
 
+.tutorial-sidebar {
+  .nav-link {
+    display: inline-block;
+  }
+  .nav-link:hover {
+    border: none;
+    padding-left: 0;
+  }
+  .nav-link:hover::before {
+    @include sidebar-bullet;
+    margin-left: -4px;
+  }
+  .active::before {
+    @include sidebar-bullet;
+    margin-left: -5px;
+  }
+  .active {
+    padding-left: 0;
+  }
+}
