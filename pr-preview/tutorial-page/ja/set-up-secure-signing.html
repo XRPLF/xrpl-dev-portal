@@ -400,36 +400,30 @@
 
 <div class="code_sample java" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">////////////////////////////////////////////////////////////////////////////</span>
 <span class="c1">// Sign using a SingleKeySignatureService:</span>
-<span class="c1">// This implementation of SignatureService simply holds a PrivateKey in</span>
-<span class="c1">// memory and signs Transactions using that PrivateKey. This may be</span>
-<span class="c1">// suitable for some applications, but is likely not secure enough for</span>
-<span class="c1">// server side applications, as keys must be stored and kept in memory.</span>
+<span class="c1">// This implementation of SignatureService signs Transactions using a</span>
+<span class="c1">// supplied PrivateKey. This may be suitable for some applications, but is</span>
+<span class="c1">// likely not secure enough for server side applications, as keys should not</span>
+<span class="c1">// be stored in memory whenever possible.</span>
 <span class="c1">////////////////////////////////////////////////////////////////////////////</span>
 
 <span class="c1">// Create a random wallet</span>
-<span class="n">WalletFactory</span><span class="w"> </span><span class="n">walletFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultWalletFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
-<span class="n">Wallet</span><span class="w"> </span><span class="n">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletFactory</span><span class="p">.</span><span class="na">randomWallet</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="na">wallet</span><span class="p">();</span>
+<span class="n">KeyPair</span><span class="w"> </span><span class="n">randomKeyPair</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Seed</span><span class="p">.</span><span class="na">ed25519Seed</span><span class="p">().</span><span class="na">deriveKeyPair</span><span class="p">();</span>
+<span class="n">PublicKey</span><span class="w"> </span><span class="n">publicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">randomKeyPair</span><span class="p">.</span><span class="na">publicKey</span><span class="p">();</span>
+<span class="n">PrivateKey</span><span class="w"> </span><span class="n">privateKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">randomKeyPair</span><span class="p">.</span><span class="na">privateKey</span><span class="p">()</span>
 
-<span class="c1">// Construct a SingleKeySignatureService from the Wallet private key</span>
-<span class="n">PrivateKey</span><span class="w"> </span><span class="n">privateKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PrivateKey</span><span class="p">.</span><span class="na">fromBase16EncodedPrivateKey</span><span class="p">(</span>
-<span class="w">  </span><span class="n">wallet</span><span class="p">.</span><span class="na">privateKey</span><span class="p">().</span><span class="na">get</span><span class="p">()</span>
-<span class="p">);</span>
-<span class="n">SingleKeySignatureService</span><span class="w"> </span><span class="n">signatureService</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="k">new</span><span class="w"> </span><span class="n">SingleKeySignatureService</span><span class="p">(</span><span class="n">privateKey</span><span class="p">);</span>
+<span class="c1">// Construct a SignatureService</span>
+<span class="n">SignatureService</span><span class="o">&lt;</span><span class="n">PrivateKey</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signatureService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BcSignatureService</span><span class="p">();</span>
 
 <span class="c1">// Construct and sign the Payment</span>
 <span class="n">Payment</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Payment</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">  </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">wallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">())</span>
+<span class="w">  </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">publicKey</span><span class="p">.</span><span class="na">deriveAddress</span><span class="p">())</span>
 <span class="w">  </span><span class="p">.</span><span class="na">destination</span><span class="p">(</span><span class="n">Address</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">))</span>
 <span class="w">  </span><span class="p">.</span><span class="na">amount</span><span class="p">(</span><span class="n">XrpCurrencyAmount</span><span class="p">.</span><span class="na">ofDrops</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
 <span class="w">  </span><span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">XrpCurrencyAmount</span><span class="p">.</span><span class="na">ofDrops</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 <span class="w">  </span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="mi">16126889</span><span class="p">))</span>
-<span class="w">  </span><span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">signatureService</span><span class="p">.</span><span class="na">getPublicKey</span><span class="p">(</span><span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">publicKey</span><span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedPayment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span>
-<span class="w">  </span><span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">,</span>
-<span class="w">  </span><span class="n">payment</span>
-<span class="p">);</span>
+<span class="n">SingleSignedTransaction</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedPayment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="n">privateKey</span><span class="p">,</span><span class="w"> </span><span class="n">payment</span><span class="p">);</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Signed Payment: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">signedPayment</span><span class="p">.</span><span class="na">signedTransaction</span><span class="p">());</span>
 
 
@@ -447,25 +441,26 @@
 <span class="c1">// implementation.</span>
 <span class="c1">////////////////////////////////////////////////////////////////////////////</span>
 
-<span class="c1">// Construct a DerivedKeysSignatureService with a server secret</span>
-<span class="c1">// (in this case "shh")</span>
-<span class="n">DerivedKeysSignatureService</span><span class="w"> </span><span class="n">signatureService</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="k">new</span><span class="w"> </span><span class="n">DerivedKeysSignatureService</span><span class="p">(</span><span class="s">"shh"</span><span class="p">::</span><span class="n">getBytes</span><span class="p">,</span><span class="w"> </span><span class="n">VersionType</span><span class="p">.</span><span class="na">ED25519</span><span class="p">);</span>
+<span class="c1">// Construct a DerivedKeysSignatureService with a server secret (in this case "shh")</span>
+<span class="n">SignatureService</span><span class="o">&lt;</span><span class="n">PrivateKeyReference</span><span class="o">&gt;</span><span class="w"> </span><span class="n">derivedKeySignatureService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BcDerivedKeySignatureService</span><span class="p">(</span>
+<span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ServerSecret</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"shh"</span><span class="p">.</span><span class="na">getBytes</span><span class="p">())</span>
+<span class="p">);</span>
 
-<span class="c1">// Choose a walletId. This can be anything as long as it is unique to your system.</span>
-<span class="n">String</span><span class="w"> </span><span class="n">walletId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"sample-wallet"</span><span class="p">;</span>
-<span class="n">KeyMetadata</span><span class="w"> </span><span class="n">keyMetadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KeyMetadata</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">  </span><span class="p">.</span><span class="na">platformIdentifier</span><span class="p">(</span><span class="s">"jks"</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">keyringIdentifier</span><span class="p">(</span><span class="s">"n/a"</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">keyIdentifier</span><span class="p">(</span><span class="n">walletId</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">keyVersion</span><span class="p">(</span><span class="s">"1"</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">keyPassword</span><span class="p">(</span><span class="s">"password"</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="n">PrivateKeyReference</span><span class="w"> </span><span class="n">privateKeyReference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PrivateKeyReference</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nd">@Override</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">KeyType</span><span class="w"> </span><span class="nf">keyType</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">KeyType</span><span class="p">.</span><span class="na">ED25519</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nd">@Override</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">keyIdentifier</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"sample-keypair"</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
 
 <span class="c1">// Get the public key and classic address for the given walletId</span>
-<span class="n">PublicKey</span><span class="w"> </span><span class="n">publicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signatureService</span><span class="p">.</span><span class="na">getPublicKey</span><span class="p">(</span><span class="n">keyMetadata</span><span class="p">);</span>
-<span class="n">Address</span><span class="w"> </span><span class="n">classicAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultKeyPairService</span><span class="p">.</span><span class="na">getInstance</span><span class="p">()</span>
-<span class="w">  </span><span class="p">.</span><span class="na">deriveAddress</span><span class="p">(</span><span class="n">publicKey</span><span class="p">.</span><span class="na">value</span><span class="p">());</span>
+<span class="n">PublicKey</span><span class="w"> </span><span class="n">publicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">derivedKeySignatureService</span><span class="p">.</span><span class="na">derivePublicKey</span><span class="p">(</span><span class="n">privateKeyReference</span><span class="p">);</span>
+<span class="n">Address</span><span class="w"> </span><span class="n">classicAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">publicKey</span><span class="p">.</span><span class="na">deriveAddress</span><span class="p">();</span>
 
 <span class="c1">// Construct and sign the Payment</span>
 <span class="n">Payment</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Payment</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
@@ -474,11 +469,10 @@
 <span class="w">  </span><span class="p">.</span><span class="na">amount</span><span class="p">(</span><span class="n">XrpCurrencyAmount</span><span class="p">.</span><span class="na">ofDrops</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
 <span class="w">  </span><span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">XrpCurrencyAmount</span><span class="p">.</span><span class="na">ofDrops</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 <span class="w">  </span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="mi">16126889</span><span class="p">))</span>
-<span class="w">  </span><span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">publicKey</span><span class="p">.</span><span class="na">base16Encoded</span><span class="p">())</span>
+<span class="w">  </span><span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">publicKey</span><span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 
-<span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedPayment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signatureService</span>
-<span class="w">  </span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="n">keyMetadata</span><span class="p">,</span><span class="w"> </span><span class="n">payment</span><span class="p">);</span>
+<span class="n">SingleSignedTransaction</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedPayment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">derivedKeySignatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="n">privateKeyReference</span><span class="p">,</span><span class="w"> </span><span class="n">payment</span><span class="p">);</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Signed Payment: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">signedPayment</span><span class="p">.</span><span class="na">signedTransaction</span><span class="p">());</span>
 </code></pre></div></div>
 </div>
@@ -1115,6 +1109,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-js.html">Build A Browser Wallet Using JS</a>
   </div>
 
     </nav>
