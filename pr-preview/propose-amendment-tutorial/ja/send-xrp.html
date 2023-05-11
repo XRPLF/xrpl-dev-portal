@@ -412,9 +412,9 @@
 <div class="code_sample java" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Prepare transaction --------------------------------------------------------</span>
 <span class="c1">// Look up your Account Info</span>
 <span class="n">AccountInfoRequestParams</span><span class="w"> </span><span class="n">requestParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">  </span><span class="p">.</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="w">  </span><span class="p">.</span><span class="na">ledgerSpecifier</span><span class="p">(</span><span class="n">LedgerSpecifier</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span>
+<span class="p">.</span><span class="na">build</span><span class="p">();</span>
 <span class="n">AccountInfoResult</span><span class="w"> </span><span class="n">accountInfoResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span><span class="n">requestParams</span><span class="p">);</span>
 <span class="n">UnsignedInteger</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accountInfoResult</span><span class="p">.</span><span class="na">accountData</span><span class="p">().</span><span class="na">sequence</span><span class="p">();</span>
 
@@ -424,17 +424,15 @@
 
 <span class="c1">// Get the latest validated ledger index</span>
 <span class="n">LedgerIndex</span><span class="w"> </span><span class="n">validatedLedger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">ledger</span><span class="p">(</span>
-<span class="w">    </span><span class="n">LedgerRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">      </span><span class="p">.</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span>
-<span class="w">      </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
-<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="n">LedgerRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="na">ledgerSpecifier</span><span class="p">(</span><span class="n">LedgerSpecifier</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="na">ledgerIndex</span><span class="p">()</span>
 <span class="w">  </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">"LedgerIndex not available."</span><span class="p">));</span>
 
-<span class="c1">// Workaround for https://github.com/XRPLF/xrpl4j/issues/84</span>
-<span class="n">UnsignedInteger</span><span class="w"> </span><span class="n">lastLedgerSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span>
-<span class="w">  </span><span class="n">validatedLedger</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">UnsignedLong</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="mi">4</span><span class="p">)).</span><span class="na">unsignedLongValue</span><span class="p">().</span><span class="na">intValue</span><span class="p">()</span>
-<span class="p">);</span>
+<span class="c1">// LastLedgerSequence is the current ledger index + 4</span>
+<span class="n">UnsignedInteger</span><span class="w"> </span><span class="n">lastLedgerSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">validatedLedger</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="mi">4</span><span class="p">)).</span><span class="na">unsignedIntegerValue</span><span class="p">();</span>
 
 <span class="c1">// Construct a Payment</span>
 <span class="n">Payment</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Payment</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
@@ -443,7 +441,7 @@
 <span class="w">  </span><span class="p">.</span><span class="na">destination</span><span class="p">(</span><span class="n">Address</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">))</span>
 <span class="w">  </span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">openLedgerFee</span><span class="p">)</span>
-<span class="w">  </span><span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">testWallet</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span>
+<span class="w">  </span><span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">randomKeyPair</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span>
 <span class="w">  </span><span class="p">.</span><span class="na">lastLedgerSequence</span><span class="p">(</span><span class="n">lastLedgerSequence</span><span class="p">)</span>
 <span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Constructed Payment: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">payment</span><span class="p">);</span>
@@ -493,16 +491,10 @@
 
 <div class="code_sample java" id="code-2-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="c1">// Sign transaction -----------------------------------------------------------</span>
 <span class="c1">// Construct a SignatureService to sign the Payment</span>
-<span class="n">PrivateKey</span><span class="w"> </span><span class="n">privateKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PrivateKey</span><span class="p">.</span><span class="na">fromBase16EncodedPrivateKey</span><span class="p">(</span>
-<span class="w">  </span><span class="n">testWallet</span><span class="p">.</span><span class="na">privateKey</span><span class="p">().</span><span class="na">get</span><span class="p">()</span>
-<span class="p">);</span>
-<span class="n">SignatureService</span><span class="w"> </span><span class="n">signatureService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SingleKeySignatureService</span><span class="p">(</span><span class="n">privateKey</span><span class="p">);</span>
+<span class="n">SignatureService</span><span class="o">&lt;</span><span class="n">PrivateKey</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signatureService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BcSignatureService</span><span class="p">();</span>
 
 <span class="c1">// Sign the Payment</span>
-<span class="n">SignedTransaction</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedPayment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span>
-<span class="w">  </span><span class="n">KeyMetadata</span><span class="p">.</span><span class="na">EMPTY</span><span class="p">,</span>
-<span class="w">  </span><span class="n">payment</span>
-<span class="p">);</span>
+<span class="n">SingleSignedTransaction</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedPayment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="n">randomKeyPair</span><span class="p">.</span><span class="na">privateKey</span><span class="p">(),</span><span class="w"> </span><span class="n">payment</span><span class="p">);</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Signed Payment: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">signedPayment</span><span class="p">.</span><span class="na">signedTransaction</span><span class="p">());</span>
 </code></pre></div></div>
 </div>
@@ -536,8 +528,8 @@
 </code></pre></div></div>
 
 <div class="code_sample java" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="c1">// Submit transaction ---------------------------------------------------------</span>
-<span class="n">SubmitResult</span><span class="o">&lt;</span><span class="n">Transaction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">prelimResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">submit</span><span class="p">(</span><span class="n">signedPayment</span><span class="p">);</span>
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">prelimResult</span><span class="p">);</span>
+<span class="n">SubmitResult</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">paymentSubmitResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">submit</span><span class="p">(</span><span class="n">signedPayment</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">paymentSubmitResult</span><span class="p">);</span>
 </code></pre></div></div>
 </div>
 <p>このメソッドは、ローカルでトランザクションを適用しようと試みたときの<strong>一時的な</strong>結果を返します。この結果は、トランザクションが検証済みレジャーに含まれた時点で変わる_可能性があります_。当初は成功していたトランザクションが最終的に失敗となったり、当初失敗していたトランザクションが最終的に成功する場合があります。しかしながら、一時的な結果はほとんどの場合は最終結果と一致するため、ここで<code>tesSUCCESS</code>が表示されたらひとまず安心しても問題ありません。😁</p>
@@ -575,40 +567,35 @@
 </code></pre></div></div>
 
 <div class="code_sample java" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="c1">// Wait for validation --------------------------------------------------------</span>
+<span class="n">TransactionResult</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">transactionResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
 <span class="kt">boolean</span><span class="w"> </span><span class="n">transactionValidated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="kt">boolean</span><span class="w"> </span><span class="n">transactionExpired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">transactionValidated</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">transactionExpired</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
-<span class="w">  </span><span class="n">LedgerIndex</span><span class="w"> </span><span class="n">latestValidatedLedgerIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">ledger</span><span class="p">(</span>
-<span class="w">      </span><span class="n">LedgerRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">ledgerIndex</span><span class="p">(</span><span class="n">LedgerIndex</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">).</span><span class="na">build</span><span class="p">()</span>
-<span class="w">    </span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">ledgerIndex</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">      </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">"Ledger response did not contain a LedgerIndex."</span><span class="p">)</span>
-<span class="w">    </span><span class="p">);</span>
 
-<span class="w">  </span><span class="n">TransactionResult</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">transactionResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">transaction</span><span class="p">(</span>
-<span class="w">    </span><span class="n">TransactionRequestParams</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">signedPayment</span><span class="p">.</span><span class="na">hash</span><span class="p">()),</span>
-<span class="w">    </span><span class="n">Payment</span><span class="p">.</span><span class="na">class</span>
-<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="n">LedgerIndex</span><span class="w"> </span><span class="n">latestValidatedLedgerIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">ledger</span><span class="p">(</span>
+<span class="w">    </span><span class="n">LedgerRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">ledgerSpecifier</span><span class="p">(</span><span class="n">LedgerSpecifier</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">ledgerIndex</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">"Ledger response did not contain a LedgerIndex."</span><span class="p">));</span>
+
+<span class="w">  </span><span class="n">transactionResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">transaction</span><span class="p">(</span><span class="n">TransactionRequestParams</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">signedPayment</span><span class="p">.</span><span class="na">hash</span><span class="p">()),</span><span class="w"> </span><span class="n">Payment</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
 
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">transactionResult</span><span class="p">.</span><span class="na">validated</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Payment was validated with result code "</span><span class="w"> </span><span class="o">+</span>
-<span class="w">      </span><span class="n">transactionResult</span><span class="p">.</span><span class="na">metadata</span><span class="p">().</span><span class="na">get</span><span class="p">().</span><span class="na">transactionResult</span><span class="p">());</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Payment was validated with result code "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">transactionResult</span><span class="p">.</span><span class="na">metadata</span><span class="p">().</span><span class="na">get</span><span class="p">().</span><span class="na">transactionResult</span><span class="p">());</span>
 <span class="w">    </span><span class="n">transactionValidated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">lastLedgerSequenceHasPassed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FluentCompareTo</span><span class="p">.</span>
-<span class="w">      </span><span class="nf">is</span><span class="p">(</span><span class="n">latestValidatedLedgerIndex</span><span class="p">.</span><span class="na">unsignedLongValue</span><span class="p">())</span>
-<span class="w">      </span><span class="p">.</span><span class="na">greaterThan</span><span class="p">(</span><span class="n">UnsignedLong</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">lastLedgerSequence</span><span class="p">.</span><span class="na">intValue</span><span class="p">()));</span>
+<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">lastLedgerSequenceHasPassed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FluentCompareTo</span><span class="p">.</span><span class="na">is</span><span class="p">(</span><span class="n">latestValidatedLedgerIndex</span><span class="p">.</span><span class="na">unsignedIntegerValue</span><span class="p">())</span>
+<span class="w">      </span><span class="p">.</span><span class="na">greaterThan</span><span class="p">(</span><span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">lastLedgerSequence</span><span class="p">.</span><span class="na">intValue</span><span class="p">()));</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lastLedgerSequenceHasPassed</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"LastLedgerSequence has passed. Last tx response: "</span>
-<span class="w">        </span><span class="n">transactionResult</span><span class="p">);</span>
-<span class="w">    </span><span class="p">);</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"LastLedgerSequence has passed. Last tx response: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">transactionResult</span><span class="p">);</span>
 <span class="w">      </span><span class="n">transactionExpired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Payment not yet validated."</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
@@ -664,16 +651,13 @@
 
 <div class="code_sample java" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="c1">// Check transaction results --------------------------------------------------</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">transactionResult</span><span class="p">);</span>
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Explorer link: https://testnet.xrpl.org/transactions/"</span><span class="w"> </span><span class="o">+</span>
-<span class="w">    </span><span class="n">signedPayment</span><span class="p">.</span><span class="na">hash</span><span class="p">());</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Explorer link: https://testnet.xrpl.org/transactions/"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">signedPayment</span><span class="p">.</span><span class="na">hash</span><span class="p">());</span>
 <span class="n">transactionResult</span><span class="p">.</span><span class="na">metadata</span><span class="p">().</span><span class="na">ifPresent</span><span class="p">(</span><span class="n">metadata</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Result code: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">metadata</span><span class="p">.</span><span class="na">transactionResult</span><span class="p">());</span>
-
 <span class="w">  </span><span class="n">metadata</span><span class="p">.</span><span class="na">deliveredAmount</span><span class="p">().</span><span class="na">ifPresent</span><span class="p">(</span><span class="n">deliveredAmount</span><span class="w"> </span><span class="o">-&gt;</span>
-<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"XRP Delivered: "</span><span class="w"> </span><span class="o">+</span>
-<span class="w">      </span><span class="p">((</span><span class="n">XrpCurrencyAmount</span><span class="p">)</span><span class="w"> </span><span class="n">deliveredAmount</span><span class="p">).</span><span class="na">toXrp</span><span class="p">())</span>
-<span class="w">  </span><span class="p">);</span>
-<span class="p">});</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"XRP Delivered: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">((</span><span class="n">XrpCurrencyAmount</span><span class="p">)</span><span class="w"> </span><span class="n">deliveredAmount</span><span class="p">).</span><span class="na">toXrp</span><span class="p">()));</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">);</span>
 </code></pre></div></div>
 </div>
 <p class="devportal-callout 注意"><strong>注意:</strong> APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、<code>rippled</code> APIの<a href="tx.html">txメソッド</a>を使用した場合は、応答内の<code>"validated": true</code>を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、<a href="finality-of-results.html">結果のファイナリティー</a>を参照してください。</p>
@@ -1355,6 +1339,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-js.html">Build A Browser Wallet Using JS</a>
   </div>
 
     </nav>

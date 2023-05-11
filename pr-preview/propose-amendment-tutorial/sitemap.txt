@@ -116,6 +116,7 @@ https://xrpl.org/monitor-incoming-payments-with-websocket.html
 https://xrpl.org/use-simple-xrp-payments.html
 https://xrpl.org/build-apps.html
 https://xrpl.org/build-a-desktop-wallet-in-python.html
+https://xrpl.org/build-a-browser-wallet-in-js.html
 https://xrpl.org/production-readiness.html
 https://xrpl.org/set-up-secure-signing.html
 https://xrpl.org/look-up-transaction-results.html
