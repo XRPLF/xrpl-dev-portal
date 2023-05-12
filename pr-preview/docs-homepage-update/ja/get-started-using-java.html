@@ -311,26 +311,28 @@
 <code>xrpl4j</code> is split into multiple artifacts, which can be imported as needed.</p>
 <p>In this tutorial, you need the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/index.html" target="_blank">xrpl4j-client <i aria-hidden="true" class="fa fa-external-link"></i></a>, <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-address-codec/latest/index.html" target="_blank">xrpl4j-address-codec <i aria-hidden="true" class="fa fa-external-link"></i></a>, <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/index.html" target="_blank">xrpl4j-keypairs <i aria-hidden="true" class="fa fa-external-link"></i></a>, and <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-model/latest/index.html" target="_blank">xrpl4j-model <i aria-hidden="true" class="fa fa-external-link"></i></a> modules. <!-- SPELLING_IGNORE: keypairs --></p>
 <p>To install with Maven, add the following to your project's <code>pom.xml</code> file and then run <code>mvn install</code>:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="nt">&lt;dependencies&gt;</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="nt">&lt;dependencyManagement&gt;</span>
+<span class="w">  </span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.xrpl<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>xrpl4j-bom<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">      </span><span class="nt">&lt;version&gt;</span>3.0.1<span class="nt">&lt;/version&gt;</span>
+<span class="w">      </span><span class="nt">&lt;type&gt;</span>pom<span class="nt">&lt;/type&gt;</span>
+<span class="w">      </span><span class="nt">&lt;scope&gt;</span>import<span class="nt">&lt;/scope&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/dependencyManagement&gt;</span>
+</code></pre></div>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.xrpl<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>xrpl4j-core<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">      </span><span class="nt">&lt;version&gt;</span>3.0.1<span class="nt">&lt;/version&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
 <span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
 <span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.xrpl<span class="nt">&lt;/groupId&gt;</span>
 <span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>xrpl4j-client<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">      </span><span class="nt">&lt;version&gt;</span>2.0.0<span class="nt">&lt;/version&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
-<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
-<span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.xrpl<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>xrpl4j-address-codec<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">      </span><span class="nt">&lt;version&gt;</span>2.0.0<span class="nt">&lt;/version&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
-<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
-<span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.xrpl<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>xrpl4j-keypairs<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">      </span><span class="nt">&lt;version&gt;</span>2.0.0<span class="nt">&lt;/version&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
-<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
-<span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.xrpl<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>xrpl4j-model<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">      </span><span class="nt">&lt;version&gt;</span>2.0.0<span class="nt">&lt;/version&gt;</span>
+<span class="w">      </span><span class="nt">&lt;version&gt;</span>3.0.1<span class="nt">&lt;/version&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
 <span class="nt">&lt;/dependencies&gt;</span>
 </code></pre></div>
@@ -345,10 +347,10 @@
 </ol>
 <h3 id="1-connect-to-the-xrp-ledger">1. Connect to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#1-connect-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
 <p>To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with <code>xrpl4j</code>,
-you can use an <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html" target="_blank"><code>XrplClient</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1">// Construct a network client</span>
-<span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span>
-<span class="w">  </span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://s.altnet.rippletest.net:51234/"</span><span class="p">);</span>
+you can use an <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/3.0.1/org/xrpl/xrpl4j/client/XrplClient.html" target="_blank"><code>XrplClient</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Construct a network client</span>
+<span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://s.altnet.rippletest.net:51234/"</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Constructing an XrplClient connected to "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rippledUrl</span><span class="p">);</span>
 <span class="n">XrplClient</span><span class="w"> </span><span class="n">xrplClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="connect-to-the-production-xrp-ledger">Connect to the production XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#connect-to-the-production-xrp-ledger"><i class="fa fa-link"></i></a></h4>
@@ -356,14 +358,14 @@ you can use an <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xr
 <ul>
 <li>
 <p>By <a href="install-rippled.html">installing the core server</a> (<code>rippled</code>) and running a node yourself. The core server connects to the Mainnet by default, but you can <a href="connect-your-rippled-to-the-xrp-test-net.html">change the configuration to use Testnet or Devnet</a>. <a href="xrpl-servers.html#独自サーバーを運用する理由">There are good reasons to run your own core server</a>. If you run your own server, you can connect to it like so:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="nt">final</span><span class="w"> </span><span class="nt">HttpUrl</span><span class="w"> </span><span class="nt">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">HttpUrl</span><span class="p">.</span><span class="nc">get</span><span class="o">(</span><span class="s2">"http://localhost:5005/"</span><span class="o">);</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="nt">final</span><span class="w"> </span><span class="nt">HttpUrl</span><span class="w"> </span><span class="nt">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">HttpUrl</span><span class="p">.</span><span class="nc">get</span><span class="o">(</span><span class="s2">"http://localhost:5005/"</span><span class="o">);</span>
 <span class="nt">XrplClient</span><span class="w"> </span><span class="nt">xrplClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">new</span><span class="w"> </span><span class="nt">XrplClient</span><span class="o">(</span><span class="nt">rippledUrl</span><span class="o">);</span>
 </code></pre></div>
 <p>See the example <a class="external-link" href="https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562" target="_blank">core server config file <i aria-hidden="true" class="fa fa-external-link"></i></a> for more information about default values.</p>
 </li>
 <li>
 <p>By using one of the available <a href="public-servers.html">public servers</a>:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="nt">final</span><span class="w"> </span><span class="nt">HttpUrl</span><span class="w"> </span><span class="nt">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">HttpUrl</span><span class="p">.</span><span class="nc">get</span><span class="o">(</span><span class="s2">"https://s2.ripple.com:51234/"</span><span class="o">);</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="nt">final</span><span class="w"> </span><span class="nt">HttpUrl</span><span class="w"> </span><span class="nt">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">HttpUrl</span><span class="p">.</span><span class="nc">get</span><span class="o">(</span><span class="s2">"https://s2.ripple.com:51234/"</span><span class="o">);</span>
 <span class="nt">XrplClient</span><span class="w"> </span><span class="nt">xrplClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">new</span><span class="w"> </span><span class="nt">XrplClient</span><span class="o">(</span><span class="nt">rippledUrl</span><span class="o">);</span>
 </code></pre></div>
 </li>
@@ -371,12 +373,12 @@ you can use an <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xr
 <h3 id="2-get-account">2. Get account<a aria-hidden="true" class="hover_anchor" href="#2-get-account"><i class="fa fa-link"></i></a></h3>
 <p>To store value and execute transactions on the XRP Ledger, you need to get an account: a <a href="cryptographic-keys.html#キーの生成">set of keys</a> and an <a href="accounts.html#アドレス">address</a> that's been <a href="accounts.html#アカウントの作成">funded with enough XRP</a> to meet the <a href="reserves.html">account reserve</a>. The address is the identifier of your account and you use the <a href="cryptographic-keys.html#キーの生成">private key</a> to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a <a href="set-up-secure-signing.html">secure signing method</a>.</p>
 <p>To generate a new account, <code>xrpl4j</code> provides the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html" target="_blank"><code>DefaultWalletFactory</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// Create a Wallet using a WalletFactory</span>
-<span class="n">WalletFactory</span><span class="w"> </span><span class="n">walletFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultWalletFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
-<span class="n">Wallet</span><span class="w"> </span><span class="n">testWallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletFactory</span><span class="p">.</span><span class="na">randomWallet</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="na">wallet</span><span class="p">();</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="c1">// Create a random KeyPair</span>
+<span class="n">KeyPair</span><span class="w"> </span><span class="n">randomKeyPair</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Seed</span><span class="p">.</span><span class="na">ed25519Seed</span><span class="p">().</span><span class="na">deriveKeyPair</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Generated KeyPair: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">randomKeyPair</span><span class="p">);</span>
 </code></pre></div>
 <p>The result of a call to <code>walletFactory.randomWallet(true).wallet()</code> is a <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/Wallet.html" target="_blank"><code>Wallet</code> instance <i aria-hidden="true" class="fa fa-external-link"></i></a>:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">testWallet</span><span class="p">);</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">testWallet</span><span class="p">);</span>
 
 <span class="c1">// print output</span>
 <span class="n">Wallet</span><span class="w"> </span><span class="p">{</span>
@@ -388,19 +390,17 @@ you can use an <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xr
 <span class="p">}</span>
 </code></pre></div>
 <p>For testing and development purposes, you can use a <code>FaucetClient</code> connected to the XRP Ledger <a href="parallel-networks.html">Testnet</a>:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Fund the account using the testnet Faucet</span>
-<span class="n">FaucetClient</span><span class="w"> </span><span class="n">faucetClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FaucetClient</span>
-<span class="w">  </span><span class="p">.</span><span class="na">construct</span><span class="p">(</span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://faucet.altnet.rippletest.net"</span><span class="p">));</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Fund the account using the testnet Faucet</span>
+<span class="n">FaucetClient</span><span class="w"> </span><span class="n">faucetClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FaucetClient</span><span class="p">.</span><span class="na">construct</span><span class="p">(</span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://faucet.altnet.rippletest.net"</span><span class="p">));</span>
 <span class="n">faucetClient</span><span class="p">.</span><span class="na">fundAccount</span><span class="p">(</span><span class="n">FundAccountRequest</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">));</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Funded the account using the Testnet faucet."</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="3-query-the-xrp-ledger">3. Query the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#3-query-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
 <p>You can query the XRP Ledger to get information about <a href="account-methods.html">a specific account</a>, <a href="tx.html">a specific transaction</a>, the state of a <a href="ledger-methods.html">current or a historical ledger</a>, and <a href="path-and-order-book-methods.html">the XRP Ledger's decentralized exchange</a>. You need to make these queries, among other reasons, to look up account info to follow best practices for <a href="reliable-transaction-submission.html">reliable transaction submission</a>.</p>
 <p>Here, we'll use the <a href="#1-connect-to-the-xrp-ledger"><code>XrplClient</code> we constructed</a> to look up information about the <a href="#2-get-account">account we got</a> in the previous step.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Look up your Account Info</span>
-<span class="n">AccountInfoRequestParams</span><span class="w"> </span><span class="n">requestParams</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">);</span>
-<span class="n">AccountInfoResult</span><span class="w"> </span><span class="n">accountInfoResult</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span><span class="n">requestParams</span><span class="p">);</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1">// Look up your Account Info</span>
+<span class="n">AccountInfoRequestParams</span><span class="w"> </span><span class="n">requestParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">);</span>
+<span class="n">AccountInfoResult</span><span class="w"> </span><span class="n">accountInfoResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span><span class="n">requestParams</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="4-putting-it-all-together">4. Putting it all together<a aria-hidden="true" class="hover_anchor" href="#4-putting-it-all-together"><i class="fa fa-link"></i></a></h3>
 <p>Using these building blocks, we can create a Java app that:</p>
@@ -409,64 +409,69 @@ you can use an <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xr
 <li>Connects to the XRP Ledger.</li>
 <li>Looks up and prints information about the account you created.</li>
 </ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1">// Construct a network client</span>
-<span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span>
-<span class="w">  </span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://s.altnet.rippletest.net:51234/"</span><span class="p">);</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="c1">// Construct a network client</span>
+<span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://s.altnet.rippletest.net:51234/"</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Constructing an XrplClient connected to "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rippledUrl</span><span class="p">);</span>
 <span class="n">XrplClient</span><span class="w"> </span><span class="n">xrplClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span>
 
-<span class="c1">// Create a Wallet using a WalletFactory</span>
-<span class="n">WalletFactory</span><span class="w"> </span><span class="n">walletFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultWalletFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
-<span class="n">Wallet</span><span class="w"> </span><span class="n">testWallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletFactory</span><span class="p">.</span><span class="na">randomWallet</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="na">wallet</span><span class="p">();</span>
+<span class="c1">// Create a random KeyPair</span>
+<span class="n">KeyPair</span><span class="w"> </span><span class="n">randomKeyPair</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Seed</span><span class="p">.</span><span class="na">ed25519Seed</span><span class="p">().</span><span class="na">deriveKeyPair</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Generated KeyPair: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">randomKeyPair</span><span class="p">);</span>
 
-<span class="c1">// Get the Classic and X-Addresses from testWallet</span>
-<span class="n">Address</span><span class="w"> </span><span class="n">classicAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">testWallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">();</span>
-<span class="n">XAddress</span><span class="w"> </span><span class="n">xAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">testWallet</span><span class="p">.</span><span class="na">xAddress</span><span class="p">();</span>
+<span class="c1">// Derive the Classic and X-Addresses from testWallet</span>
+<span class="n">Address</span><span class="w"> </span><span class="n">classicAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">randomKeyPair</span><span class="p">.</span><span class="na">publicKey</span><span class="p">().</span><span class="na">deriveAddress</span><span class="p">();</span>
+<span class="n">XAddress</span><span class="w"> </span><span class="n">xAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AddressCodec</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">classicAddressToXAddress</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Classic Address: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">classicAddress</span><span class="p">);</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"X-Address: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">xAddress</span><span class="p">);</span>
 
 <span class="c1">// Fund the account using the testnet Faucet</span>
-<span class="n">FaucetClient</span><span class="w"> </span><span class="n">faucetClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FaucetClient</span>
-<span class="w">  </span><span class="p">.</span><span class="na">construct</span><span class="p">(</span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://faucet.altnet.rippletest.net"</span><span class="p">));</span>
+<span class="n">FaucetClient</span><span class="w"> </span><span class="n">faucetClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FaucetClient</span><span class="p">.</span><span class="na">construct</span><span class="p">(</span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://faucet.altnet.rippletest.net"</span><span class="p">));</span>
 <span class="n">faucetClient</span><span class="p">.</span><span class="na">fundAccount</span><span class="p">(</span><span class="n">FundAccountRequest</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">));</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Funded the account using the Testnet faucet."</span><span class="p">);</span>
 
 <span class="c1">// Look up your Account Info</span>
-<span class="n">AccountInfoRequestParams</span><span class="w"> </span><span class="n">requestParams</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">);</span>
-<span class="n">AccountInfoResult</span><span class="w"> </span><span class="n">accountInfoResult</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span><span class="n">requestParams</span><span class="p">);</span>
+<span class="n">AccountInfoRequestParams</span><span class="w"> </span><span class="n">requestParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">);</span>
+<span class="n">AccountInfoResult</span><span class="w"> </span><span class="n">accountInfoResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span><span class="n">requestParams</span><span class="p">);</span>
 
 <span class="c1">// Print the result</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">accountInfoResult</span><span class="p">);</span>
 </code></pre></div>
 <p>To run the app, you can download the code from <a class="external-link" href="https://github.com/XRPLF/xrpl4j-sample" target="_blank">Github <i aria-hidden="true" class="fa fa-external-link"></i></a> and run <code>GetAccountInfo</code> either
 from your IDE or from the command line.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">git<span class="w"> </span>clone<span class="w"> </span>https://github.com/XRPLF/xrpl4j-sample.git
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">git<span class="w"> </span>clone<span class="w"> </span>https://github.com/XRPLF/xrpl4j-sample.git
 <span class="nb">cd</span><span class="w"> </span>xrpl4j-sample
 mvn<span class="w"> </span>compile<span class="w"> </span>exec:java<span class="w"> </span>-Dexec.mainClass<span class="o">=</span><span class="s2">"org.xrpl.xrpl4j.samples.GetAccountInfo"</span>
 </code></pre></div>
 <p>You should see output similar to this example:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">Running<span class="w"> </span>the<span class="w"> </span>GetAccountInfo<span class="w"> </span>sample...
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">Running<span class="w"> </span>the<span class="w"> </span>GetAccountInfo<span class="w"> </span>sample...
 Constructing<span class="w"> </span>an<span class="w"> </span>XrplClient<span class="w"> </span>connected<span class="w"> </span>to<span class="w"> </span>https://s.altnet.rippletest.net:51234/
-Generated<span class="w"> </span>a<span class="w"> </span>wallet<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>public<span class="w"> </span>key:<span class="w"> </span>ED015D922B5EACF09DF01168141FF27FA6229B0FAB9B4CD88D2B6DA036090EFAA4
+Generated<span class="w"> </span>KeyPair:<span class="w"> </span>KeyPair<span class="o">{</span>
+<span class="w">  </span><span class="nv">privateKey</span><span class="o">=</span>PrivateKey<span class="o">{</span><span class="nv">value</span><span class="o">=[</span>redacted<span class="o">]</span>,<span class="w"> </span><span class="nv">destroyed</span><span class="o">=</span>false<span class="o">}</span>,<span class="w"> </span>
+<span class="w">  </span><span class="nv">publicKey</span><span class="o">=</span>PublicKey<span class="o">{</span><span class="nv">value</span><span class="o">=</span>UnsignedByteArray<span class="o">{</span><span class="nv">unsignedBytes</span><span class="o">=</span>List<span class="o">(</span><span class="nv">size</span><span class="o">=</span><span class="m">33</span><span class="o">)}</span>,<span class="w"> </span>
+<span class="w">  </span><span class="nv">base58Value</span><span class="o">=</span>aKGgrZL2WTc85HJSkQGuKfinem5oMH1uCJankSWFATGUhqvygxir,<span class="w"> </span>
+<span class="w">  </span><span class="nv">base16Value</span><span class="o">=</span>EDFB1073327CCBDA342AD685AF1C04530294866B9CB10C21126DC004BFDBA287D1,<span class="w"> </span>
+<span class="w">  </span><span class="nv">keyType</span><span class="o">=</span>ED25519
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
 Classic<span class="w"> </span>Address:<span class="w"> </span>rBXHGshqXu3Smy9FUsQTmo49bGpQUQEm3X
 X-Address:<span class="w"> </span>T7yMiiJJCmgY2yg5WB2davUedDeBFAG5B8r9KHjKCxDdvv3
 Funded<span class="w"> </span>the<span class="w"> </span>account<span class="w"> </span>using<span class="w"> </span>the<span class="w"> </span>Testnet<span class="w"> </span>faucet.
 AccountInfoResult<span class="o">{</span>
-<span class="w">    </span><span class="nv">status</span><span class="o">=</span>success,
-<span class="w">    </span><span class="nv">accountData</span><span class="o">=</span>AccountRootObject<span class="o">{</span>
-<span class="w">        </span><span class="nv">ledgerEntryType</span><span class="o">=</span>ACCOUNT_ROOT,
-<span class="w">        </span><span class="nv">account</span><span class="o">=</span>rBXHGshqXu3Smy9FUsQTmo49bGpQUQEm3X,
-<span class="w">        </span><span class="nv">balance</span><span class="o">=</span><span class="m">1000000000</span>,
-<span class="w">        </span><span class="nv">flags</span><span class="o">=</span><span class="m">0</span>,
-<span class="w">        </span><span class="nv">ownerCount</span><span class="o">=</span><span class="m">0</span>,
-<span class="w">        </span><span class="nv">previousTransactionId</span><span class="o">=</span><span class="m">0000000000000000000000000000000000000000000000000000000000000000</span>,
-<span class="w">        </span><span class="nv">previousTransactionLedgerSequence</span><span class="o">=</span><span class="m">0</span>,
-<span class="w">        </span><span class="nv">sequence</span><span class="o">=</span><span class="m">17178149</span>,
-<span class="w">        </span><span class="nv">signerLists</span><span class="o">=[]</span>,
-<span class="w">        </span><span class="nv">index</span><span class="o">=</span>0DC1B13C73A7F3D2D82446526D0C5D08E88F89BA442D54291117F1A08E447685
-<span class="w">    </span><span class="o">}</span>,
-<span class="w">    </span><span class="nv">ledgerCurrentIndex</span><span class="o">=</span><span class="m">17178149</span>,
-<span class="w">    </span><span class="nv">validated</span><span class="o">=</span><span class="nb">false</span>
+<span class="w">  </span><span class="nv">status</span><span class="o">=</span>success,<span class="w"> </span>
+<span class="w">  </span><span class="nv">accountData</span><span class="o">=</span>AccountRootObject<span class="o">{</span>
+<span class="w">    </span><span class="nv">ledgerEntryType</span><span class="o">=</span>ACCOUNT_ROOT,<span class="w"> </span>
+<span class="w">    </span><span class="nv">account</span><span class="o">=</span>rDNwS2t4afhBogKqSFFmsDi1k7gmeGhz4p,<span class="w"> </span>
+<span class="w">    </span><span class="nv">balance</span><span class="o">=</span><span class="m">10000000000</span>,<span class="w"> </span>
+<span class="w">    </span><span class="nv">flags</span><span class="o">=</span><span class="m">0</span>,<span class="w"> </span>
+<span class="w">    </span><span class="nv">ownerCount</span><span class="o">=</span><span class="m">0</span>,
+<span class="w">    </span><span class="nv">previousTransactionId</span><span class="o">=</span><span class="m">0000000000000000000000000000000000000000000000000000000000000000</span>,<span class="w"> </span>
+<span class="w">    </span><span class="nv">previousTransactionLedgerSequence</span><span class="o">=</span><span class="m">0</span>,<span class="w"> </span>
+<span class="w">    </span><span class="nv">sequence</span><span class="o">=</span><span class="m">37649083</span>,<span class="w"> </span>
+<span class="w">    </span><span class="nv">signerLists</span><span class="o">=[]</span>,
+<span class="w">    </span><span class="nv">index</span><span class="o">=</span>F607809578C2A413774B9A240480B8B7B10C3E296CA609337D2F41813F566B92
+<span class="w">  </span><span class="o">}</span>,<span class="w"> </span>
+<span class="w">  </span><span class="nv">ledgerCurrentIndex</span><span class="o">=</span><span class="m">37649083</span>,<span class="w"> </span>
+<span class="w">  </span><span class="nv">validated</span><span class="o">=</span><span class="nb">false</span>
 <span class="o">}</span>
 </code></pre></div>
 <h4 id="interpreting-the-response">Interpreting the response<a aria-hidden="true" class="hover_anchor" href="#interpreting-the-response"><i class="fa fa-link"></i></a></h4>
