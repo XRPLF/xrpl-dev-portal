@@ -28,11 +28,14 @@ contextBridge.exposeInMainWorld('electronAPI', {
     onSendXrpTransactionFinish: (callback) => {
         ipcRenderer.on('send-xrp-transaction-finish', callback)
     },
+
+    // Step 8 code additions - start
     onDestinationAccountChange: (callback) => {
         ipcRenderer.send('destination-account-change', callback)
     },
     onUpdateDomainVerificationData: (callback) => {
         ipcRenderer.on('update-domain-verification-data', callback)
     },
+    // Step 8 code additions - start
 
 })

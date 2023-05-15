@@ -22,10 +22,13 @@ contextBridge.exposeInMainWorld('electronAPI', {
     onUpdateTransactionData: (callback) => {
         ipcRenderer.on('update-transaction-data', callback)
     },
+
+    // Step 7 code additions - start
     onClickSendXrp: (paymentData) => {
         ipcRenderer.send('send-xrp-action', paymentData)
     },
     onSendXrpTransactionFinish: (callback) => {
         ipcRenderer.on('send-xrp-transaction-finish', callback)
     }
+    // Step 7 code additions - start
 })

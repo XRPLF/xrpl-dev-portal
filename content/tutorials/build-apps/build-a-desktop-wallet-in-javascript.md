@@ -314,6 +314,21 @@ By now we always query the user for an account address at application startup. W
 
 In this step we will query the user for an account seed and save this seed with a salted password. 
 
+<!-- MULTICODE_BLOCK_START -->
+*5_password.js*
+{{ include_code("_code-samples/build-a-wallet/js/5_password.js", language="js") }}
+
+*view/5_preload.js*
+{{ include_code("_code-samples/build-a-wallet/js/view/5_preload.js", language="js") }}
+
+*view/5_password.html*
+{{ include_code("_code-samples/build-a-wallet/js/view/5_password.html", language="html") }}
+
+*view/5_renderer.js*
+{{ include_code("_code-samples/build-a-wallet/js/view/5_renderer.js", language="js") }}
+
+<!-- MULTICODE_BLOCK_END-->
+
 ### 6. Styling
 
 **Full code for this step:**

@@ -75,6 +75,7 @@ window.electronAPI.onUpdateTransactionData((_event, transactions) => {
     }
 })
 
+// Step 7 code additions - start
 const modalButton = document.getElementById('send-xrp-modal-button')
 const modalDialog = new bootstrap.Modal(document.getElementById('send-xrp-modal'))
 modalButton.addEventListener('click', () => {
@@ -100,3 +101,4 @@ window.electronAPI.onSendXrpTransactionFinish((_event) => {
     destinationTagEl.value = ''
     amountEl.value = ''
 })
+// Step 7 code additions - start
