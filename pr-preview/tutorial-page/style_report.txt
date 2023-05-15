@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 42 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gils, gibs, gits
+  gifs: ifs, gins, gift
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -27,23 +27,23 @@ Found 42 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slaws, stas, slab
+  slas: alas, sias, slams
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  disallowincoming: 
-  xrpfees: 
-  depositpreauthamendment: 
   fixuniversalnumber: 
+  disallowincoming: 
   immediateofferkilled: 
+  depositpreauthamendment: 
   fixnonfungibletokensv1_2: 
+  xrpfees: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
-  asfdisallowincomingnftoffer: 
   asfdisallowincomingcheck: 
+  asfdisallowincomingpaychan: 
   asfdisallowincomingtrustline: 
+  asfdisallowincomingnftoffer: 
   30d: 3d, 3rd, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
