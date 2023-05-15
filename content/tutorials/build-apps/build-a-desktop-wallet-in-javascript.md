@@ -114,7 +114,7 @@ To display our results to the user, we need to create the view components that w
 
 <!-- MULTICODE_BLOCK_END-->
 
-The template part of the view is defined in `view/1_hello.html`, the wiring of our main application is done in `view/1_preload.js`. The scripts to be used by our view can be found in `view/_1_renderer.js`, we could as well have them put in the template file, but that would make the template unreadable at some point.
+The file `view/1_preload.js` does the main wiring of the application. The file `view/1_hello.html` defines the template part of the view. The file `view/1_renderer.js` contains scripts used in the template; you could also have put these in the HTML file, but it's a good practice to separate them so the code is more readable.
 
 This example shows how to do Inter Process Communication (IPC) in Electron. Technically, JavaScript has no true parallel processes or threading, because it follows a single-threaded event-driven paradigm. Nonetheless Electron provides us with two IPC modules called `ipcMain` and `ipcRenderer`. We can roughly equate those two to a backend process and a frontend process when we think in terms of client-server applications. It works as follows:
 
