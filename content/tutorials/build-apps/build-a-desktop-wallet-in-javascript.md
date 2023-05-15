@@ -225,7 +225,7 @@ In `view/3_account.html`, we have added a HTML dialog element, which we will use
 {{ include_code("_code-samples/build-a-wallet/js/view/3_account.html", language="html", lines="30-41") }}
 
 To make the HTML dialog work, the following code snippet has been added to `view/3_renderer.js`:
-{{ include_code("_code-samples/build-a-wallet/js/view/3_renderer.js", language="js", lines="1-20") }}
+{{ include_code("_code-samples/build-a-wallet/js/view/3_renderer.js", language="js", lines="1-22") }}
 
 In order to handle the address the user entered and send it to the main process, we have added the following snippet to `exposeInMainWorld` in `view/3_preload.js`:
 {{ include_code("_code-samples/build-a-wallet/js/view/3_preload.js", language="js", lines="4-6") }}
@@ -278,7 +278,7 @@ Our preloader (`view/4_preload.js`) will be complemented with a function that al
 
 In the renderer (`view/4_renderer.js`), we define the callback that displays the latest transaction list:
 
-{{ include_code("_code-samples/build-a-wallet/js/view/4_renderer.js", language="js", lines="47-60") }}
+{{ include_code("_code-samples/build-a-wallet/js/view/4_renderer.js", language="js", lines="47-63") }}
 
 In our main file (`4_tx-history`), we already have queried the relevant data in the `client.on('transaction')` subscription. We just have to send it to the renderer by triggering the 'update-transaction-data' event:
 

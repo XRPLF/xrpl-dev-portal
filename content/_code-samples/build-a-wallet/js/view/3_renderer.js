@@ -1,3 +1,4 @@
+// Step 3 code additions - start
 document.addEventListener('DOMContentLoaded', openAccountAddressDialog);
 
 function openAccountAddressDialog(){
@@ -18,6 +19,7 @@ function openAccountAddressDialog(){
 
     accountAddressDialog.showModal()
 }
+// Step 3 code additions - end
 
 const ledgerIndexEl = document.getElementById('ledger-index')
 const ledgerHashEl = document.getElementById('ledger-hash')
