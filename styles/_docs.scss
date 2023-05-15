@@ -42,7 +42,7 @@
   }
 
   .dev-tools-link:hover p {
-    color: #000
+    color: $black
   }
 }
 
@@ -86,11 +86,11 @@
   }
 
   .dev-tools-link:hover p {
-    color: #fff;
+    color: $white;
   }
 
   .flat-card-grid .nav-link:hover {
-    color: #E0E0E1;
+    color: $gray-200;
   }
 }
 
@@ -149,7 +149,7 @@
     
     h5:hover {
       text-decoration: underline;
-      text-decoration-color: #9A52FF;
+      text-decoration-color: $purple;
       background: none!important;
     }
 
