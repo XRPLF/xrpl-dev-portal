@@ -65,11 +65,16 @@
           }
         }
     }
+
     .cancel {
       margin: 0 !important;
       margin-top: 8px !important;
       color: $blue-purple-300 !important;
       font-weight: 600 !important;
+    }
+
+    .widget-header-icon {
+      background-image: url("./assets/img/fb-thumb.svg") !important;
     }
   }
   #closeFeedback {
