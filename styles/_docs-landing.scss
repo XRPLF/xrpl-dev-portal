@@ -123,7 +123,7 @@
 
     h6:hover {
       text-decoration: underline;
-      text-decoration-color: #9A52FF;
+      text-decoration-color: $purple;
       background: none!important;
     }
 
@@ -134,7 +134,7 @@
     }
 
     a:hover {
-      color:#9A52FF;
+      color: $purple;
       text-decoration: none !important;
     }
 
@@ -265,7 +265,7 @@
 
     &:hover {
       text-decoration: underline;
-      text-decoration-color: #9A52FF;
+      text-decoration-color: $purple;
     }
     
     &::after {
