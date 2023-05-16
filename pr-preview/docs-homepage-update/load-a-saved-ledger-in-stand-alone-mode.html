@@ -311,12 +311,13 @@
 <p>To load a specific historical ledger, start the server with the <code>--load</code> parameter along with the <code>--ledger</code> parameter, providing the ledger index or identifying hash of the ledger version to load:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="n">rippled</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="o">--</span><span class="nb">load</span><span class="w"> </span><span class="o">--</span><span class="n">ledger</span><span class="w"> </span><span class="mi">19860944</span><span class="w"> </span><span class="o">--</span><span class="n">conf</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">rippled</span><span class="o">.</span><span class="n">cfg</span>
 </code></pre></div>
+<p>This makes the saved ledger version the "current" (open) ledger for the server when it starts.</p>
 <p>For more information on the options you can use when starting <code>rippled</code> in stand-alone mode, see <a href="commandline-usage.html#stand-alone-mode-options">Commandline Usage: Stand-Alone Mode Options</a>.</p>
 <h2 id="6-manually-advance-the-ledger">6. Manually advance the ledger.<a aria-hidden="true" class="hover_anchor" href="#6-manually-advance-the-ledger"><i class="fa fa-link"></i></a></h2>
-<p>In stand-alone mode, you must manually advance the ledger with the <code>ledger_accept</code> method:</p>
+<p>To process the saved ledger, manually advance it with the <code>ledger_accept</code> method:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">rippled ledger_accept --conf=/path/to/rippled.cfg
 </code></pre></div>
-<p>If a transaction depends on the result of a transaction from a different address, advance the ledger to ensure they are processed in the correct order. Otherwise, you can submit multiple transactions from a single address <code>rippled</code> sorts transactions from the same address by ascending <code>Sequence</code> number.</p>
+<p>This puts the transactions in canonical order and processes them to make a closed ledger.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>References:</strong><ul>
