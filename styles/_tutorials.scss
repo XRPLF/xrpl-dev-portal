@@ -1,57 +1,52 @@
 /* Tutorials ---------------------------------------------------------------- */
+@mixin card-footer-color ($offset){
+  .card:nth-child(9n + #{$offset}) .card-footer {
+    background-image: url(../img/cards/3col-magenta-orange.svg);
+  }
+  .card:nth-child(9n + #{$offset} + 1) .card-footer {
+    background-image: url(../img/cards/3col-green-blue.svg);
+  }
+  .card:nth-child(9n + #{$offset} + 2) .card-footer {
+    background-image: url(../img/cards/3-col-pink.svg);
+  }
+  .card:nth-child(9n + #{$offset} + 3) .card-footer {
+    background-image: url(../img/cards/3-col-light-blue.svg);
+  }
+  .card:nth-child(9n + #{$offset} + 4) .card-footer {
+    background-image: url(../img/cards/3-col-pink.svg);
+  }
+  .card:nth-child(9n + #{$offset} + 5) .card-footer {
+    background-image: url(../img/cards/3col-magenta-orange.svg);
+  }
+  .card:nth-child(9n + #{$offset} + 6) .card-footer {
+    background-image: url(../img/cards/3-col-purple-blue.svg);
+  }
+  .card:nth-child(9n + #{$offset} + 7) .card-footer {
+    background-image: url(../img/cards/3col-light-green.svg);
+  }
+  .card:nth-child(9n + #{$offset} + 8) .card-footer {
+    background-image: url(../img/cards/3-col-dark-blue.svg);
+  }
+}
 .tutorial-content {
   #beginner-cards {
-    .card:nth-child(1) .card-footer {
-      background-image: url(../img/cards/4col-magenta-3.svg);
-    }
+    @include card-footer-color(0);
   }
 
   #sdk-cards {
-    .card:nth-child(1) .card-footer {
-      background-image: url(../img/cards/4col-light-blue-3.svg);
-    }
-    .card:nth-child(2) .card-footer {
-      background-image: url(../img/cards/4col-magenta-3.svg);
-    }
-    .card:nth-child(3) .card-footer {
-      background-image: url(../img/cards/4col-green-2.svg);
-    }
-    .card:nth-child(4) .card-footer {
-      background-image: url(../img/cards/4col-yellow-2.svg);
-    }
+    @include card-footer-color(2);
   }
 
   #use-cases-cards {
-    .card:nth-child(1) .card-footer {
-      background-image: url(../img/cards/3col-green-purple.svg);
-    }
-    .card:nth-child(2) .card-footer {
-      background-image: url(../img/cards/3-col-light-blue-2.svg);
-    }
+    @include card-footer-color(4);
   }
 
   #servers-cards {
-    .card:nth-child(1) .card-footer {
-      background-image: url(../img/cards/4col-orange-yellow.svg);
-    }
-    .card:nth-child(2) .card-footer {
-      background-image: url(../img/cards/3-col-light-blue-2.svg);
-    }
-    .card:nth-child(3) .card-footer {
-      background-image: url(../img/cards/3-col-pink2.svg);
-    }
-    .card:nth-child(4) .card-footer {
-      background-image: url(../img/cards/3-col-purple-blue.svg);
-    }
+    @include card-footer-color(6);
   }
 
   #businesses-cards {
-    .card:nth-child(1) .card-footer {
-      background-image: url(../img/cards/4col-light-blue-3.svg);
-    }
-    .card:nth-child(2) .card-footer {
-      background-image: url(../img/cards/3col-green.svg);
-    }
+    @include card-footer-color(8);
   }
 }
 
