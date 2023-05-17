@@ -771,15 +771,19 @@ pre code {
   // }
   .widget-form-wrapper {
     background-color: $white !important;
+
     div {
       background-color: $white !important;
     }
+
     textarea {
       background-color: $gray-100 !important;
     }
+
     .widget-header-title {
       color: $gray-900 !important;
     }
+
     .cancel {
       color: $blue-purple-500 !important;
     }
@@ -789,9 +793,11 @@ pre code {
     .widget-header {
       background-color: $white !important;
     }
+
     .widget-header-title {
       color: $gray-900 !important;
     }
+
     .widget-header-icon {
       filter: invert(100%);
     }
