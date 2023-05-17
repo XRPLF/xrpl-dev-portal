@@ -3,6 +3,9 @@
   .docked-widget {
     border: none !important;
     background-color: transparent !important;
+    position: static !important;
+    box-shadow: none !important;
+    width: auto !important;
   }
   .widget-form-wrapper {
     position: static !important;
@@ -72,11 +75,8 @@
       color: $blue-purple-300 !important;
       font-weight: 600 !important;
     }
-
-    .widget-header-icon {
-      background-image: url("./assets/img/fb-thumb.svg") !important;
-    }
   }
+
   #closeFeedback {
     display: none;
   }
