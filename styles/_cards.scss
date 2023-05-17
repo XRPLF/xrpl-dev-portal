@@ -144,6 +144,10 @@ a.card:hover h3 {
   border: 2px solid #232325;
 }
 
+.light .circled-logo {
+  border: none;
+}
+
 .card-deck {
   margin-top: 2.5rem;
   margin-left: (-$card-deck-margin);

@@ -400,7 +400,7 @@ pages:
         html: docs.html
         parent: index.html
         template: page-docs.html.jinja
-        sidebar: disabled
+        sidebar: left_only
         top_nav_name: Docs
         top_nav_shortcuts:
             # Programming Languages
@@ -467,6 +467,16 @@ pages:
         filters:
             - labels
         targets:
+            - ja
+    
+    -   name: Documentation Index
+        longer_name: Full Documentation Index
+        template: page-docs-index.html.jinja
+        html: docs-index.html
+        parent: docs.html
+        sidebar: disabled
+        targets:
+            - en
             - ja
 
 # Concepts ---------------------------------------------------------------------
