@@ -1,0 +1,148 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.main_content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.main_logo {
+  align-self: center;
+}
+
+.logo_link {
+  align-self: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #848080f5);
+}
+
+.wallet_details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.ledger_details, .send_xrp_container, .tx_history_container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.send_xrp_container label {
+  padding: 10px 0 0 0;
+}
+
+.invalid {
+  border: 1px solid red !important;
+}
+
+.send_xrp_container input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background: lightgray;
+  color: black;
+  outline: none;
+}
+
+.heading_h3 {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 0 0 10px 0;
+}
+
+.links {
+  display: flex;
+  gap: 12px;
+}
+
+button {
+  padding: 5px 12px;
+  background: inherit;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+button:hover {
+  color: black;
+  background: white;
+}
+
+.submit_tx_button {
+  color: black;
+  background: white;
+  margin: 30px 0 0 0;
+}
+
+.submit_tx_button:disabled {
+  color: gray;
+  background: lightgray;
+  cursor: not-allowed;
+}
+
+.tx_history_data {
+  display: table;
+  text-align: center;
+  border-spacing: 10px;
+}
+
+.tx_history_data th {
+  border-bottom: 1px solid white;
+  padding: 0 0 5px 0;
+}

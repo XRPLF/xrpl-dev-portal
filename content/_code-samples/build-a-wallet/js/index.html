@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./src/assets/xrpl.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple XRPL Wallet</title>
+    <link rel="preload" href="./src/send-xrp/send-xrp.html">
+    <link rel="preload" href="./src/transaction-history/transaction-history.html">
+    <link rel="preload" href="index.css" as="style"> 
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="main_content">
+        <div class="main_logo" id="heading_logo"></div>
+        <div class="links">
+          <button class="send_xrp" id="send_xrp_button">Send XRP</button>
+          <button class="transaction_history" id="transaction_history_button">Transaction History</button>
+        </div>
+        <div class="wallet_details" id="wallet">
+            <div class="heading_h3">Account Info:</div>
+            <div id="loading_wallet_details">Loading Wallet Details...</div>
+            <span class="wallet_address"></span>
+            <span class="wallet_balance"></span>
+            <span class="wallet_reserve"></span>
+            <span class="wallet_xaddress"></span>
+            <span class="view_more"><a id="view_more_button">View More</a></span>
+        </div>
+        <div class="ledger_details">
+            <div class="heading_h3">Latest Validated Ledger:</div>
+            <div id="loading_ledger_details">Loading Ledger Details...</div>
+            <span class="ledger_index" id="ledger_index"></span>
+            <span class="ledger_hash" id="ledger_hash"></span>
+            <span class="close_time" id="close_time"></span>
+        </div>
+    </div>
+    </div>
+    <script type="module" src="/index.js"></script>
+  </body>
+</html>

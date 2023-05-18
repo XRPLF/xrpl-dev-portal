@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="../assets/xrpl.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Simple XRPL Wallet</title>
+        <link rel="preload" href="../../index.css" as="style"> 
+        <link rel="stylesheet" href="../../index.css">
+      </head>
+<body>
+    <div id="app">
+        <div class="main_content">
+          <div class="main_logo" id="heading_logo"></div>
+          <div class="links">
+            <button class="home" id="home_button">Home</button>
+            <button class="transaction_history" id="transaction_history_button">Transaction History</button>
+          </div>
+          <div class="send_xrp_container">
+            <div class="heading_h3">Send XRP</div>
+            <div class="available_balance" id="available_balance"></div>
+            <label for="destination_address">Destination Address:</label>
+            <input type="text" id="destination_address" placeholder="Destination Address" maxlength="35" />
+            <span class="isvalid_destination_address" id="isvalid_destination_address"></span>
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" placeholder="Amount" type="mobile" />
+            <label for="destination_tag">Destination Tag:</label>
+            <input type="text" id="destination_tag" placeholder="Destination Tag" />
+            <button class="submit_tx_button" id="submit_tx_button">Submit Transaction</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./send-xrp.js"></script>
+</body>
+</html>

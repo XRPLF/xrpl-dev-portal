@@ -61,17 +61,19 @@ To load a specific historical ledger, start the server with the `--load` paramet
 rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 ```
 
+This makes the saved ledger version the "current" (open) ledger for the server when it starts.
+
 For more information on the options you can use when starting `rippled` in stand-alone mode, see [Commandline Usage: Stand-Alone Mode Options](commandline-usage.html#stand-alone-mode-options).
 
 ## 6. Manually advance the ledger.
 
-In stand-alone mode, you must manually advance the ledger with the `ledger_accept` method:
+To process the saved ledger, manually advance it with the `ledger_accept` method:
 
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg
 ```
 
-If a transaction depends on the result of a transaction from a different address, advance the ledger to ensure they are processed in the correct order. Otherwise, you can submit multiple transactions from a single address `rippled` sorts transactions from the same address by ascending `Sequence` number.
+This puts the transactions in canonical order and processes them to make a closed ledger.
 
 
 ## See Also

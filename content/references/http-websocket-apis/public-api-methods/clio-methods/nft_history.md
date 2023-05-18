@@ -156,7 +156,8 @@ An example of a successful response:
 *JSON-RPC*
 
 ```json
-"result": {
+{
+  "result": {
     "ledger_index_min": 21377274,
     "ledger_index_max": 27876163,
     "transactions": [
@@ -274,7 +275,8 @@ With the `binary` parameter set to _true_, you receive a compact response that u
 *JSON-RPC*
 
 ```json
-"result": {
+{
+  "result": {
     "ledger_index_min": 21377274,
     "ledger_index_max": 27876275,
     "transactions": [
