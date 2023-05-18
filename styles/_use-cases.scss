@@ -59,7 +59,6 @@
   margin-right: 40px;
 }
 
-
 .modal {
   display: none;
   position: fixed;
@@ -125,6 +124,7 @@
   color: #ffffff;
 }
 .section-text-description {
+  max-width: 320px;
   font-family: "Work Sans";
   font-style: normal;
   font-weight: 400;
@@ -132,6 +132,40 @@
   line-height: 24px;
   text-align: center;
   color: #c1c1c2;
+}
+
+.apps-built {
+  position: relative;
+  top: 17px;
+  left: 50px;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #e0e0e1;
+}
+
+.numbers-animation {
+  width: 218px;
+  height: 96px;
+}
+.arrow-animation {
+  position: relative;
+  right: 23px;
+  top: -11px;
+  width: 60px !important;
+}
+.explore-projects {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #7919ff;
+  position: relative;
+  top: -9px;
+  right: 27px;
 }
 
 .section-separator {
@@ -216,7 +250,6 @@
     padding: 0 4%; /* Percentage-based padding to make it responsive */
   }
 }
-
 .colorful-join-text {
   display: block;
   width: 100%;
@@ -233,9 +266,70 @@
     #e24cff 64.01%,
     #9a52ff 100%
   );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+#numbersAnimation {
+  display: block;
+}
+#numbersAnimationLight {
+  display: none;
+}
+html.light {
+  .section-separator{
+    background: #C1C1C2;
+  }
+  .section-text-description {
+    color: #343437;
+  }
+  .modal-content-uses {
+    background: #ffffff;
+  }
+  #numbersAnimation {
+    display: none;
+  }
+  #numbersAnimationLight {
+    display: block;
+  }
+
+  .apps-built {
+    position: relative;
+    top: 17px;
+    left: 50px;
+    font-family: "Work Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #232325;
+  }
+  .colorful-join-text {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-family: "Work Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+    background: linear-gradient(
+      90deg,
+      #b480ff -0.32%,
+      #5f00e6 32.7%,
+      #1aa4ff 61.53%,
+      #19ff83 100.32%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  @include media-breakpoint-up(lg) {
+    .colorful-join-text {
+      width: 750px;
+    }
+  }
 }
 
 @include media-breakpoint-up(lg) {

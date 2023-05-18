@@ -1,14 +1,14 @@
 $(document).ready(() => {
-  // Add two new variables for arrow buttons
-  var leftArrow = document.getElementById("leftArrow");
-  var rightArrow = document.getElementById("rightArrow");
+  // Add two new constiables for arrow buttons
+  const leftArrow = document.getElementById("leftArrow");
+  const rightArrow = document.getElementById("rightArrow");
   // Handle arrow button clicks
   function handleArrowClick(direction) {
     // Get the current data index
-    var currentIndex = parseInt(modal.getAttribute("data-index"));
+    const currentIndex = parseInt(modal.getAttribute("data-index"));
 
     // Calculate the new index based on the direction
-    var newIndex = direction === "left" ? currentIndex - 1 : currentIndex + 1;
+    const newIndex = direction === "left" ? currentIndex - 1 : currentIndex + 1;
 
     // Update the modal content with the new data
     updateModalContent(useCaseData[newIndex]);
@@ -25,46 +25,55 @@ $(document).ready(() => {
   // Add click event listeners for arrow buttons
   leftArrow.addEventListener("click", () => handleArrowClick("left"));
   rightArrow.addEventListener("click", () => handleArrowClick("right"));
-  var modal = document.getElementById("myModal");
-  var openModalBtns = document.querySelectorAll("li.open-modal");
-  var useCaseData = [];
+  const modal = document.getElementById("myModal");
+  const openModalBtns = document.querySelectorAll("li.open-modal");
+  const useCaseData = [];
 
   // Populate the useCaseData array with data from the li elements
   openModalBtns.forEach(function (btn) {
-    var id = btn.getAttribute("data-id");
-    var title = btn.getAttribute("data-title");
-    var number = btn.getAttribute("data-number");
-    var src = btn.getAttribute("data-src");
+    const id = btn.getAttribute("data-id");
+    const title = btn.getAttribute("data-title");
+    const description = btn.getAttribute("data-description");
+    const number = btn.getAttribute("data-number");
+    const src = btn.getAttribute("data-src");
 
-    useCaseData.push({ id, title, number, src });
+    useCaseData.push({ id, title, number, src, description });
   });
 
   // Get the elements in the modal that will be updated
-  var modalImage = document.querySelector(".modal .section-image");
-  var modalTextDescription = document.querySelector(
+  const modalImage = document.querySelector(".modal .section-image");
+  const modalTextDescription = document.querySelector(
     ".modal .section-text-description"
   );
-  var modalTextTitle = document.querySelector(".modal .section-text-title");
-  var modalLogos = document.querySelector(".modal .section-logos");
+  const modalTextTitle = document.querySelector(".modal .section-text-title");
+  const modalLogos = document.querySelector(".modal .section-logos");
   // Add a function to update the modal content
-  function updateModalContent({id, title, number, src }) {
+  function updateModalContent({ id, title, number, src, description, index }) {
+    const arrowContainer = document.getElementById("arrows-container");
     modalImage.src = src;
     modalImage.alt = title + " logo";
-    modalTextDescription.textContent = title;
+    modalTextDescription.textContent = description;
     modalTextTitle.textContent = title;
     modalLogos.textContent = "Group of logos for " + title + " here...";
+    if (id === "infrastructure") {
+      arrowContainer.style.justifyContent = "end";
+    } else {
+      arrowContainer.style.justifyContent = "space-between";
+    }
   }
   openModalBtns.forEach(function (btn, index) {
     btn.onclick = function () {
+      const arrowContainer = document.getElementById("arrows-container");
       // Read the data-* attributes from the clicked li
-      var id = btn.getAttribute("data-id");
-      var title = btn.getAttribute("data-title");
-      var number = btn.getAttribute("data-number");
-      var src = btn.getAttribute("data-src");
+      const id = btn.getAttribute("data-id");
+      const title = btn.getAttribute("data-title");
+      const description = btn.getAttribute("data-description");
+      const number = btn.getAttribute("data-number");
+      const src = btn.getAttribute("data-src");
       // Update the modal content with the data from the clicked li
-      modalImage.src = src;
+      modalImage.id = id;
       modalImage.alt = title + " logo";
-      modalTextDescription.textContent = title;
+      modalTextDescription.textContent = description;
       modalTextTitle.textContent = title;
       modalLogos.textContent = "Group of logos for " + title + " here...";
 
@@ -72,7 +81,7 @@ $(document).ready(() => {
       modal.setAttribute("data-index", index);
 
       // Update the modal content with the data from the clicked li
-      updateModalContent({ id, title, number, src });
+      updateModalContent({ id, title, number, src, description, index });
 
       // Show or hide the arrow buttons based on the index
       leftArrow.style.display = index === 0 ? "none" : "block";
@@ -80,6 +89,12 @@ $(document).ready(() => {
         index === useCaseData.length - 1 ? "none" : "block";
 
       modal.style.display = "block";
+
+      if (id === 'infrastructure') {
+        arrowContainer.style.justifyContent = "end";
+      } else {
+        arrowContainer.style.justifyContent = "space-between";
+      }
     };
   });
 

@@ -352,11 +352,20 @@
   </section>
 
   <section class="container-new py-26">
-    <div class="col-lg-5 p-3 mb-3 mb-lg-5">
+    <div class="col-lg-5 p-3">
       <div class="d-flex flex-column-reverse">
+      <div class="d-flex justify-content-start align-items-center"> 
+        <div class="arrow-animation" id="arrowAnimation"> </div>
+        <span class="explore-projects">Explore Featured Projects </span>
+      </div>
         <p class="text-sm">{% trans %}The XRPL has a rich ecosystem with many contributors globally. Explore the community of developers, validators, and partners.{% endtrans %}</p>
         <h6 class="eyebrow mb-3">{% trans %}Introducing the XRPL Ecosystem{% endtrans %}</h6>
       </div>
+    </div>
+    <div class="col-lg-5 offset-lg-2 p-5 d-flex">
+          <div class="mb-4 pb-3 numbers-animation" id="numbersAnimation"></div>
+          <div class="mb-4 pb-3 numbers-animation" id="numbersAnimationLight"></div>
+          <div class="apps-built">Apps/exchanges <br/> built on the <br/> XRPL </div>
     </div>
 
 
@@ -365,59 +374,71 @@
           {"id": "infrastructure",
             "title": _("Infrastructure"),
             "number": 7,
+            "description" : "Build and operate components or systems that help the functionality of the XRP Ledger, such as Nodes, dev tools, storage, security and more."
             },
 
           {"id": "developer_tooling",
             "title": _("Developer Tooling"),
             "number": 4,
+            "description" : "Developers can leverage open-source libraries, SDKs and more to help build their project and access essential XRP Ledger functionality."
           },
           {"id": "interoperability",
             "title": _("Interoperability"),
             "number": 3,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at orci eget ligula cursus mollis quis a lacus."
           },
           {"id": "wallet",
             "title": _("Wallet"),
             "number": 4,
+            "description": "Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP."
           },
           {"id": "nfts",
             "title": _("NFTs"),
             "number": 7,
+            "description": "XRPL supports the issuance of IOUs that represent a currency of any value, as well as non-fungible tokens (NFTs)."
           },
           {"id": "exchanges",
             "title": _("Exchanges"),
             "number": 2,
+            "description": "Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities."
           },
           {"id": "gaming",
             "title": _("Gaming"),
             "number": 5,
+            "description": "The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability."
           },
           {"id": "security",
             "title": _("Security"),
             "number": 1,
+            "description": "Build services and tools that help prevent and combat fraudulent activity with the XRPL."
           },
 
           {"id": "payments",
             "title": _("Payments"),
             "number": 2,
+            "description": "Leverage the efficiency and speed of the XRP Ledger to move value all over the globe."
           },
 
           {"id": "cbdc",
             "title": _("CBDC"),
             "number": 1,
+            "description": "A private version of the XRP Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs)."
           },
 
           {"id": "carbon_markets",
             "title": _("Carbon Markets"),
             "number": 2,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at orci eget ligula cursus mollis quis a lacus."
           },
 
           {"id": "other",
             "title": _("Other"),
             "number": 1,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at orci eget ligula cursus mollis quis a lacus."
           },
       ] %}
  {% for use in uses %}
-<li class="col use-case-circle ls-none p-3 open-modal" data-id="{{use.id}}" data-title="{{use.title}}" data-number="{{use.number}}" data-src="{{use.src}}">
+<li class="col use-case-circle ls-none p-3 open-modal" data-id="{{use.id}}" data-title="{{use.title}}" data-description="{{use.description}}" data-number="{{use.number}}" data-src="{{use.src}}">
   <div class="circle-content">
     <img class="circle-img" id={{use.id}} alt="use-logos">
     <p class="circle-text">{{use.title}}</p>
@@ -434,7 +455,7 @@
 <div class="modal" id="myModal">
   
   <div class="modal-content-uses">
-      <div class="arrows-container">
+      <div class="arrows-container" id="arrows-container">
       <button class="arrow-button left-arrow" id="leftArrow">
         <img src="assets/img/uses/left-arrow.png" alt="left arrow">
       </button>
@@ -553,6 +574,45 @@
 
 
 {% block endbody %}
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/bodymovin.min.js"></script>
 <script type="application/javascript" src="{{currentpage.prefix}}assets/js/modal.js"></script>
 <script type="application/javascript" src="{{currentpage.prefix}}assets/js/use-cases.js"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/ecosystem/numbers-animation.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/ecosystem/numbers-animation-light.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/ecosystem/arrow-animation.json"></script>
+
+<script type="text/javascript">
+  function numAnimate(){
+    bodymovin.loadAnimation({
+      container: document.getElementById('numbersAnimation'),
+      renderer: 'svg',
+      loop: false,
+      autoplay: true,
+      animationData: numAnimation
+    });
+  };
+
+  function numAnimateLight(){
+    bodymovin.loadAnimation({
+      container: document.getElementById('numbersAnimationLight'),
+      renderer: 'svg',
+      loop: false,
+      autoplay: true,
+      animationData: numAnimationLight
+    });
+  };
+
+  function arrowAnimate(){
+    bodymovin.loadAnimation({
+      container: document.getElementById('arrowAnimation'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: arrowAnimation
+    });
+  };
+  numAnimate();
+  numAnimateLight()
+  arrowAnimate()
+</script>
 {% endblock %}
