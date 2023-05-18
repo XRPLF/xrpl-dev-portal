@@ -47,7 +47,7 @@ This is the most complex workflow of the three.
 
 1. The seller creates an NFT using `NFTokenMint`.
 1. The bidders make offers using `NFTokenCreateOffer`, setting the broker as the destination.
-1. The broker selects the winning bid, subtracts the amount to be collected as a fee, then requests the seller sign a sell off for this amount via `NFTokenCreateOffer`.
+1. The broker selects the winning bid, subtracts the amount to be collected as a fee, then requests the seller sign a sell offer for this amount via `NFTokenCreateOffer`.
 1. The seller signs the requested offer, setting the broker as the destination.
 1. The broker completes the sale using `NFTokenAcceptOffer`, and receives the broker fee.
 1. The broker cancels any remaining bids using `NFTokenCancelOffer`.
