@@ -23,7 +23,7 @@ if (typeof module !== "undefined") {
     // Enter memo data to insert into a transaction
     const MemoData = xrpl.convertStringToHex(string="Example Memo - 123 -=+");
     const MemoType = xrpl.convertStringToHex(string="Text");
-    // MemoFormat values: # MemoFormat values: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+    // MemoFormat values: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
     const MemoFormat = xrpl.convertStringToHex(string="text/plain");
 
     // Send AccountSet transaction 
@@ -42,7 +42,7 @@ if (typeof module !== "undefined") {
     })
 
     const signed = wallet.sign(prepared)  
-    print("Submitting a payment transaction with our memo field...")
+    console.log("Submitting a payment transaction with our memo field...")
     const submit_result = await client.submitAndWait(signed.tx_blob)
 xrpl.convertHexToString
     const tx_MemoData = xrpl.convertHexToString(string=submit_result.result.Memos[0].Memo.MemoData);

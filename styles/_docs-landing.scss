@@ -1,0 +1,352 @@
+.sdk-img {
+  align-self: center;
+}
+
+.light {
+  .sdk-img {
+    content:url(../../img/graphics/sdk-white.png);
+  }
+
+  .ref-book-illustration {
+    content:url(../../img/graphics/ref-book-light.png)
+  }
+
+  .tutorial-illustration {
+    content:url(../../img/graphics/tutorials-illustration-light.png)
+  }
+
+  .concepts-doc-illustration {
+    content:url(../../img/graphics/concepts-docs-light.png)
+  }
+
+  .use-cases {
+    .wallet-illustration {
+      content:url(../../img/graphics/wallet-light.svg)
+    }
+
+    .token-illustration {
+      content:url(../../img/graphics/tokens-light.png)
+    }
+
+    .connections-illustration {
+      content:url(../../img/graphics/nodes-light.svg)
+    }
+  }
+
+  .quickstart-image {
+    content:url(../../img/graphics/getting-started-pages-light.png)
+  }
+
+  .dev-tools-img {
+    content:url(../../img/graphics/dev-tools-light.svg)
+  }
+
+  .dev-tools-link:hover p {
+    color: $black
+  }
+}
+
+.dark {
+  .sdk-img {
+    content:url(../../img/graphics/sdk-black.png);
+  }
+
+  .ref-book-illustration {
+    content:url(../../img/graphics/ref-book.png)
+  }
+
+  .tutorial-illustration {
+    content:url(../../img/graphics/tutorials-illustration.png)
+  }
+
+  .concepts-doc-illustration {
+    content:url(../../img/graphics/concepts-doc.png)
+  }
+
+  .use-cases {
+    .wallet-illustration {
+      content:url(../../img/graphics/wallet-dark.png)
+    }
+
+    .token-illustration {
+      content:url(../../img/graphics/tokens-dark.png)
+    }
+
+    .connections-illustration {
+      content:url(../../img/graphics/nodes-dark.png)
+    }
+  }
+
+  .quickstart-image {
+    content:url(../../img/graphics/getting-started-pages-dark.svg)
+  }
+
+  .dev-tools-img {
+    content:url(../../img/graphics/dev-tools-dark.png)
+  }
+
+  .dev-tools-link:hover p {
+    color: $white;
+  }
+
+  .flat-card-grid .nav-link:hover {
+    color: $gray-200;
+  }
+}
+
+// Video Cards
+.get-started-img, .flat-card {
+    max-width:100%;
+    max-height:100%;
+}
+
+.faded-text {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15.5667px;
+  line-height: 23px;
+}
+
+.page-docs-index {
+
+  section {
+    padding-top: 64px;
+    padding-bottom:64px;
+  }
+
+  .dev-tools-link {
+    h6::before {
+      margin-top: -20px;
+      height: 20px;
+    }
+
+    h6:hover {
+      text-decoration: underline;
+      text-decoration-color: $purple;
+      background: none!important;
+    }
+
+    &:hover p {
+      text-decoration: none !important;
+      background: none !important;
+      display: inline-block; // Inline blocks don't have underlines
+    }
+
+    a:hover {
+      color: $purple;
+      text-decoration: none !important;
+    }
+
+    .btn-arrow::after{
+      content: url(../img/icons/arrow-right-purple.svg);
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .langs {
+    
+    h5:hover {
+      text-decoration: underline;
+      text-decoration-color: $purple;
+      background: none!important;
+    }
+
+    a:hover{
+      text-decoration: none !important;
+    }
+
+    .btn-arrow::after{
+      content: url(../img/icons/arrow-right-purple.svg);
+      vertical-align: baseline;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    h5 {
+      margin-block-start: 0 !important;
+    }
+  }
+
+  h1 {
+    font-size: 3.875rem;
+  }
+} 
+
+@media (max-width: 765px) {
+  .page-docs-index {
+    h1 {
+      font-size: 3rem;
+    }
+
+    .flat-card-grid {
+      grid-gap: 24px;
+  
+      .flat-card {
+        padding: 32px 12px;
+      }
+    }
+
+  }
+
+  .page-docs-index::before {
+    display: none;
+  }
+}
+
+#langs-cards {
+  grid-gap: 40px;
+}
+
+@media (max-width: 991.98px) {
+  /* Fix dropdown size with top banner present */
+  .page-docs-index .langs-cards {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+  }
+}
+
+.dev-tools-img {
+  max-width:100%; 
+  max-height: 100%;
+  margin:auto;
+}
+
+.page-docs {
+  .h4::before {
+    margin-top: 0;
+    height: 0;
+  }
+
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .video-grid {
+    grid-gap: 35px;
+  }
+
+  .title-space {
+    margin-bottom: 16px;
+  }
+
+  .circled-logo {
+    margin-left:0.1rem;
+  }
+}
+
+.flat-card-grid {
+  grid-gap: 15px;
+  max-width: 100%;
+  min-height: 384px;
+
+  .flat-card {
+    padding: 32px 50px;
+    height: 100%;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .flat-card-padding {
+    margin-bottom: 75px;
+  }
+
+  img {
+    width: auto;
+    height: 115px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav-link {
+    border: none !important;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: $purple;
+    }
+    
+    &::after {
+      content: none !important;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .flat-card-padding {
+      margin-bottom: 0;
+    }
+
+    .nav-link::after {
+      content: ' ' !important;
+    }
+  
+    .flat-card .btn {
+      display: none;
+    }
+  }
+}
+
+.float-up-on-hover {
+  transition: all 0.35s ease-out;
+  cursor: pointer;
+  &:hover {
+    -webkit-transform: translateY(-16px);
+    -moz-transform: translateY(-16px);
+    -ms-transform: translateY(-16px);
+    -o-transform: translateY(-16px);
+    transform: translateY(-16px);
+  }
+
+  // Make the floating idempotent
+  .video-image {
+    &:hover {
+      -webkit-transform: none;
+      -moz-transform: none;
+      -ms-transform: none;
+      -o-transform: none;
+      transform: none;
+    }
+  }
+}
+
+// On mobile the vertical spacing is correct without adjustment.
+@media (min-width: 992px) {
+  .align-button-on-bottom {
+    .btn-primary {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+
+.center-image {
+  display: flex;
+  justify-content: center;
+}
+
+.quickstart-card {
+  .quickstart-image {
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: -20px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-left: -32px;
+    margin-right: -32px;
+    margin-bottom: -32px;
+    width: calc(100% + 64px);
+  }
+}
+
+.explore-links {
+  .card-grid {
+    grid-gap: 40px;
+  }
+}
+
+.full-documentation-link {
+  margin-top: -35px;
+}

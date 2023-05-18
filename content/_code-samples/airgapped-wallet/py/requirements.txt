@@ -5,7 +5,7 @@ certifi==2022.12.7
 cffi==1.15.0
 colorama==0.4.4
 cryptography==39.0.1
-Django==3.2.18
+Django==3.2.19
 ECPy==1.2.5
 h11==0.12.0
 httpcore==0.13.6
@@ -20,7 +20,7 @@ qrcode==7.2
 rfc3986==1.5.0
 six==1.16.0
 sniffio==1.2.0
-sqlparse==0.4.2
+sqlparse==0.4.4
 typing-extensions==3.10.0.0
 websockets==9.1
 xrpl-py==1.1.1

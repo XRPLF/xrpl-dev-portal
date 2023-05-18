@@ -456,32 +456,7 @@
       }
     }
   }
-
-  .btn-arrow-out::after {
-    background-position: left 0px bottom 0px;
-    content: "\00a0";
-    background-image: url(../img/icons/arrow-up-right-white.svg);
-    background-repeat: no-repeat;
-    display: inline-block;
-    padding: 4px 8px 4px 12px;
-    transition: background-position 0.3s ease-in-out;
-    margin-left: 4px;
-  }
-
-  .btn-arrow-out:hover::after {
-    background-position: left 4px bottom 4px;
-  }
-  
-  @media (max-width: 767.98px) {
-    .btn-arrow-out {
-      display: block;
-      width: 100%;
-    }
-  }
-
-
 }
-
 
 .page-funding {
 
@@ -497,28 +472,6 @@
     position: absolute;
     top: 132px;
     left: -4px;
-  }
-
-  @media (max-width: 767.98px) {
-    .btn-arrow-out {
-      display: block;
-      width: 100%;
-    }
-  }
-
-  .btn-arrow-out::after {
-    background-position: left 0px bottom 0px;
-    content: "\00a0";
-    background-image: url(../img/icons/arrow-up-right-white.svg);
-    background-repeat: no-repeat;
-    display: inline-block;
-    padding: 4px 8px 4px 12px;
-    transition: background-position 0.3s ease-in-out;
-    margin-left: 4px;
-  }
-
-  .btn-arrow-out:hover::after {
-    background-position: left 4px bottom 4px;
   }
 
 // even out height on large
@@ -552,29 +505,6 @@
   .btn {
     padding: .75rem;
   }
-
-  @media (max-width: 767.98px) {
-    .btn-arrow-out {
-      display: block;
-      width: 100%;
-    }
-  }
-
-  .btn-arrow-out::after {
-    background-position: left 0px bottom 0px;
-    content: "\00a0";
-    background-image: url(../img/icons/arrow-up-right-white.svg);
-    background-repeat: no-repeat;
-    display: inline-block;
-    padding: 4px 8px 4px 12px;
-    transition: background-position 0.3s ease-in-out;
-    margin-left: 4px;
-  }
-
-  .btn-arrow-out:hover::after {
-    background-position: left 4px bottom 4px;
-  }
-
 
   #container-scroll {
     height:160px; 
@@ -698,27 +628,6 @@
     padding: .75rem;
   }
 
-  @media (max-width: 767.98px) {
-    .btn-arrow-out {
-      display: block;
-      width: 100%;
-    }
-  }
-
-  .btn-arrow-out::after {
-    background-position: left 0px bottom 0px;
-    content: "\00a0";
-    background-image: url(../img/icons/arrow-up-right-white.svg);
-    background-repeat: no-repeat;
-    display: inline-block;
-    padding: 4px 8px 4px 12px;
-    transition: background-position 0.3s ease-in-out;
-    margin-left: 4px;
-  }
-
-  .btn-arrow-out:hover::after {
-    background-position: left 4px bottom 4px;
-  }
   .event-card {
       max-width: 311px;
       margin: 32px auto;
@@ -1060,7 +969,8 @@
 
 .page-docs-index {
   &::before {
-    background-image: url(../img/backgrounds/bg-docs.png);
+    background-image: url(../../img/backgrounds/docs-splash.svg);
+    background-position-x: right;
   }
 
   .center-search {
@@ -1072,21 +982,6 @@
     .ds-input {
       height: 56px;
       padding: .75rem 1rem .75rem .5rem;
-    }
-  }
-
-  section {
-    @include media-breakpoint-down(md) {
-      margin-bottom: 2.5rem;
-    }
-
-    @include media-breakpoint-up(lg) {
-      .row .col-lg-6:first-child {
-        padding-right: 40px;
-      }
-      .row .col-lg-6:last-child {
-        padding-left: 40px;
-      }
     }
   }
 
@@ -1375,27 +1270,6 @@
   }
   .btn {
     padding: 0.75rem;
-  }
-
-  @media (max-width: 767.98px) {
-    .btn-arrow-out {
-      display: block;
-      width: 100%;
-    }
-  }
-  .btn-arrow-out::after {
-    background-position: left 0px bottom 0px;
-    content: "\00a0";
-    background-image: url(../img/icons/arrow-up-right-white.svg);
-    background-repeat: no-repeat;
-    display: inline-block;
-    padding: 4px 8px 4px 12px;
-    transition: background-position 0.3s ease-in-out;
-    margin-left: 4px;
-  }
-
-  .btn-arrow-out:hover::after {
-    background-position: left 4px bottom 4px;
   }
 }
 html.light {
