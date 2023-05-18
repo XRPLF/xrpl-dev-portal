@@ -76,14 +76,14 @@ import xrpl
 import json
 ```
 
-### getAccount
+### get_account
 
 This method lets you get an existing account by providing a seed value. If you provide no seed value, the method creates a new account for you.
 
 Import required methods.
 
 ```python
-def getAccount(_seed):
+def get_account(_seed):
     from xrpl.clients import JsonRpcClient
     from xrpl.wallet import Wallet
 ```
@@ -110,12 +110,12 @@ If you do not enter a seed, generate and return a new wallet. If you provide a s
     return(new_wallet)
 ```
 
-### getAccountInfo
+### get_account_info
 
-Pass the account ID to the getAccountInfo method.
+Pass the account ID to the `get_account_info` method.
 
 ```python
-def getAccountInfo(_accountId):
+def get_account_info(_accountId):
 ```
 
 Import required methods and the JSON library.
@@ -154,12 +154,12 @@ Return the account data.
     return response.result['account_data']
 ```
 
-### sendXRP
+### send_xrp
 
 Transfer XRP to another account by passing the client seed, amount to transfer, and the destination account.
 
 ```python
-def sendXRP(_seed, _amount, _destination):
+def send_xrp(_seed, _amount, _destination):
 ```
 
 Get the sending wallet.
@@ -215,21 +215,21 @@ import json
 Import the methods from mod1.py.
 
 ```python
-from mod1 import getAccount
-from mod1 import getAccountInfo
-from mod1 import sendXRP
+from mod1 import get_account
+from mod1 import get_accountInfo
+from mod1 import send_xrp
 ```
 
 ### getStandbyAccount
 
 ```python
-def getStandbyAccount():
+def get_standby_account():
 ```
 
 Use the value in the standby Seed field (or an empty value) to request a new account.
 
 ```python
-    new_wallet = getAccount(ent_standby_seed.get())
+    new_wallet = get_account(ent_standby_seed.get())
 ```
 
 Clear the **Standby Seed** and **Standby Account** fields.
@@ -246,13 +246,13 @@ Insert the account ID and seed values in the standby fields.
     ent_standby_seed.insert(0, new_wallet.seed)
 ```
 
-### get StandbyAccountInfo
+### get_standby_account_info
 
-With an account ID, anyone can request information about the account. Get the standby account value and use it to populate a `getAccountInfo` request.
+With an account ID, anyone can request information about the account. Get the standby account value and use it to populate a `get_account_info` request.
 
 ```python
-def getStandbyAccountInfo():
-    accountInfo = getAccountInfo(ent_standby_account.get())
+def get_standby_account_info():
+    accountInfo = get_account_info(ent_standby_account.get())
 ```
 
 Clear the Standby **Balance** field and insert the value from the account info response.
@@ -269,15 +269,16 @@ Clear the Standby **Results** text area and fill it with the full JSON response.
     text_standby_results.insert("1.0",json.dumps(accountInfo, indent=4))
 ```
 
-### standbySendXRP
+### standby_send_xrp
 
 ```python
-def standbySendXRP():
+def standby_send_xrp():
 ```
 
+Call the `send_xrp` method, passing the standby seed, the amount, and the destination value.
+
 ```python
-Call the sendXRP method, passing the standby seed, the amount, and the destination value.
-    response = sendXRP(ent_standby_seed.get(),ent_standby_amount.get(),
+    response = send_xrp(ent_standby_seed.get(),ent_standby_amount.get(),
         ent_standby_destination.get())
 ```
 
@@ -288,11 +289,11 @@ Clear the standby **Results** field and insert the JSON response.
     text_standby_results.insert("1.0",json.dumps(response.result, indent=4))
 ```
 
-Use `getStandbyAccountInfo()` and `getOperationalAccountInfo()` to update the balance field for both accounts.
+Use `get_standby_account_info()` and `get_operational_account_info()` to update the balance field for both accounts.
 
 ```python
-    getStandbyAccountInfo()
-    getOperationalAccountInfo()
+    get_standby_account_info()
+    get_operational_account_info()
 ```
 
 ### Reciprocal Transactions and Requests
@@ -300,24 +301,25 @@ Use `getStandbyAccountInfo()` and `getOperationalAccountInfo()` to update the ba
 The following four methods are the same as the previous standby transactions, but for the operational account.
     
 ```python
-def getOperationalAccount():
-    new_wallet = getAccount(ent_operational_seed.get())
+def get_operational_account():
+    new_wallet = get_account(ent_operational_seed.get())
     ent_operational_account.delete(0, tk.END)
     ent_operational_account.insert(0, new_wallet.classic_address)
     ent_operational_seed.delete(0, tk.END)
     ent_operational_seed.insert(0, new_wallet.seed)
-def getOperationalAccountInfo():
-    accountInfo = getAccountInfo(ent_operational_account.get())
+def get_operational_account_info():
+    account_info = get_account_info(ent_operational_account.get())
     ent_operational_balance.delete(0, tk.END)
     ent_operational_balance.insert(0,accountInfo['Balance'])
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0",json.dumps(accountInfo, indent=4))
-def operationalSendXRP():
-    response = sendXRP(ent_operational_seed.get(),ent_operational_amount.get(), ent_operational_destination.get())
+def operational_send_xrp():
+    response = send_xrp(ent_operational_seed.get(),ent_operational_amount.get(),
+                        ent_operational_destination.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0",json.dumps(response.result,indent=4))
-    getStandbyAccountInfo()
-    getOperationalAccountInfo()
+    get_standby_account_info()
+    get_operational_account_info()
 ```
 
 Create UI elements, starting with the main window.
@@ -405,22 +407,25 @@ text_operational_results.grid(row=6, column=5, sticky="nw")
 Create the standby account buttons and add them to the grid.
 
 ```python
-btn_get_standby_account = tk.Button(master=frm_form, text="Get Standby Account", command = getStandbyAccount)
+btn_get_standby_account = tk.Button(master=frm_form, text="Get Standby Account", command = get_standby_account)
 btn_get_standby_account.grid(row=0, column=2, sticky = "nsew")
-btn_get_standby_account_info = tk.Button(master=frm_form, text="Get Standby Account Info", command = getStandbyAccountInfo)
+btn_get_standby_account_info = tk.Button(master=frm_form, text="Get Standby Account Info", command = get_standby_account_info)
 btn_get_standby_account_info.grid(row=1, column=2, sticky = "nsew")
-btn_standby_send_xrp = tk.Button(master=frm_form, text="Send XRP >", command = standbySendXRP)
+btn_standby_send_xrp = tk.Button(master=frm_form, text="Send XRP >", command = standby_send_xrp)
 btn_standby_send_xrp.grid(row=2, column = 2, sticky = "nsew")
 ```
 
 Create the operational account buttons and add them to the grid.
 
 ```python
-btn_get_operational_account = tk.Button(master=frm_form, text="Get Operational Account", command = getOperationalAccount)
+btn_get_operational_account = tk.Button(master=frm_form, text="Get Operational Account",
+                                        command = get_operational_account)
 btn_get_operational_account.grid(row=0, column=3, sticky = "nsew")
-btn_get_op_account_info = tk.Button(master=frm_form, text="Get Op Account Info", command = getOperationalAccountInfo)
+btn_get_op_account_info = tk.Button(master=frm_form, text="Get Op Account Info", 
+                                    command = get_operational_account_info)
 btn_get_op_account_info.grid(row=1, column=3, sticky = "nsew")
-btn_op_send_xrp = tk.Button(master=frm_form, text="< Send XRP", command = operationalSendXRP)
+btn_op_send_xrp = tk.Button(master=frm_form, text="< Send XRP",
+                            command = operational_send_xrp)
 btn_op_send_xrp.grid(row=2, column = 3, sticky = "nsew")
 ```
 

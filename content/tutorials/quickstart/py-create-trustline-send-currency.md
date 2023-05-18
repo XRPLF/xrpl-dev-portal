@@ -7,9 +7,7 @@ labels:
   - Payments
   - Quickstart
   - Tokens
-
 ---
-
 # 2. Create Trust Line and Send Currency (Python)
 
 This example shows how to:
@@ -89,9 +87,9 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## mod2.py
 
-Module 2 provides the logic for creating trust lines and sending currency tokens between accounts.
+Module 2 provides the logic for creating trust lines and sending issued currency tokens between accounts.
 
-Import dependencies and set the _testnet___url_.
+Import dependencies and set the `testnet_url`.
 
 ```python
 import xrpl
@@ -107,7 +105,7 @@ testnet_url = "https://s.altnet.rippletest.net:51234"
 Pass the wallet seed, the issuer account, the currency code, and the maximum amount of currency to send.
 
 ```python
-def createTrustline(_seed, _issuer, _currency, _amount):
+def create_trust_line(_seed, _issuer, _currency, _amount):
 ```
 
 Get the wallet and a new client instance.
@@ -151,12 +149,12 @@ Return the results.
 ```python
     return response.result
 ```
-## sendCurrency 
+## send_currency 
 
 Send currency to another account based on the sender wallet, destination account, the currency type, and the amount of the currency.
 
 ```python
-def sendCurrency(_seed, _destination, _currency, _amount):
+def send_currency(_seed, _destination, _currency, _amount):
 ```
 
 Get the sending wallet and a client instance on Testnet.
@@ -202,15 +200,15 @@ Return the JSON response, or an error message if the transaction fails.
     return response.result
 ```
 
-### getBalances 
+### get_balance 
 
 Update the **XRP Balance** fields and list the balance information for issued currencies in the **Results** text areas.
 
 ```python
-def getBalance(_sb_account_id, _op_account_id):
+def get_balance(_sb_account_id, _op_account_id):
 ```
 
-Import the `account_info` request model.
+Import the `AccountInfo` request method.
 
 ```python
     from xrpl.models.requests.account_info import AccountInfo
@@ -241,13 +239,13 @@ Return the result.
     return response.result
 ```
 
-### configureAccount
+### configure_account
 
 This example shows how to set and clear configuration flags using the `AccountSet` method. The `ASF_DEFAULT_RIPPLE` flag is pertinent to experimentation with transfer of issued currencies to third-party accounts, so it is demonstrated here. You can set any of the configuration flags using the same structure, substituting the particular flags you want to set. See [AccountSet Flags](accountset.html).
 
 Send the account seed and a Boolean value for whether to enable or disable rippling.
 ```python
-def configureAccount(_seed, _default_setting):
+def configure_account(_seed, _default_setting):
 ```
 
 Get the account wallet and instantiate a client.
@@ -307,14 +305,14 @@ import json
 Import methods from `mod2.py`.
 
 ```python
-from mod2 import createTrustLine
-from mod2 import sendCurrency
-from mod2 import getBalance
-from mod2 import configureAccount
+from mod2 import create_trust_line
+from mod2 import send_currency
+from mod2 import get_balance
+from mod2 import configure_account
 
-from mod1 import getAccount
-from mod1 import getAccountInfo
-from mod1 import sendXRP
+from mod1 import get_account
+from mod1 import get_account_info
+from mod1 import send_xrp
 
 #############################################
 ## Handlers #################################
@@ -324,91 +322,92 @@ from mod1 import sendXRP
 Module 2 Handlers.
 
 ```python
-def standbyCreateTrustLine():
-    results = createTrustLine(ent_standby_seed.get(),
+def standby_create_trust_line():
+    results = create_trust_line(ent_standby_seed.get(),
         ent_standby_destination.get(),
         ent_standby_currency.get(),
         ent_standby_amount.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
-def standbySendCurrency():
-    results = sendCurrency(ent_standby_seed.get(),
+def standby_send_currency():
+    results = send_currency(ent_standby_seed.get(),
         ent_standby_destination.get(),
         ent_standby_currency.get(),
         ent_standby_amount.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
-def standbyConfigureAccount():
-    results = configureAccount(
+def standby_configure_account():
+    results = configure_account(
         ent_standby_seed.get(),
         standbyRippling)
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
-def operationalCreateTrustLine():
-    results = createTrustLine(ent_operational_seed.get(),
+def operational_create_trust_line():
+    results = create_trust_line(ent_operational_seed.get(),
         ent_operational_destination.get(),
         ent_operational_currency.get(),
         ent_operational_amount.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
-def operationalSendCurrency():
-    results = sendCurrency(ent_operational_seed.get(),
+def operational_send_currency():
+    results = send_currency(ent_operational_seed.get(),
         ent_operational_destination.get(),
         ent_operational_currency.get(),
         ent_operational_amount.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
-def operationalConfigureAccount():
-    results = configureAccount(
+def operational_configure_account():
+    results = configure_account(
         ent_operational_seed.get(),
         operationalRippling)
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
-def getBalances():
-    results = getBalance(ent_operational_account.get(), ent_standby_account.get())
+def get_balances():
+    results = get_balance(ent_operational_account.get(), ent_standby_account.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))    
-    results = getBalance(ent_standby_account.get(), ent_operational_account.get())
+    results = get_balance(ent_standby_account.get(), ent_operational_account.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))    
 
 # Module 1 Handlers
-def getStandbyAccount():
-    new_wallet = getAccount(ent_standby_seed.get())
+def get_standby_account():
+    new_wallet = get_account(ent_standby_seed.get())
     ent_standby_account.delete(0, tk.END)
     ent_standby_seed.delete(0, tk.END)
     ent_standby_account.insert(0, new_wallet.classic_address)
     ent_standby_seed.insert(0, new_wallet.seed)
-def getStandbyAccountInfo():
-    accountInfo = getAccountInfo(ent_standby_account.get())
+def get_standby_account_info():
+    accountInfo = get_account_info(ent_standby_account.get())
     ent_standby_balance.delete(0, tk.END)
     ent_standby_balance.insert(0,accountInfo['Balance'])
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0",json.dumps(accountInfo, indent=4))
-def standbySendXRP():
-    response = sendXRP(ent_standby_seed.get(),ent_standby_amount.get(), ent_standby_destination.get())
+def standby_send_xrp():
+    response = send_xrp(ent_standby_seed.get(),ent_standby_amount.get(),
+                       ent_standby_destination.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0",json.dumps(response.result, indent=4))
-    getStandbyAccountInfo()
-    getOperationalAccountInfo()
-def getOperationalAccount():
-    new_wallet = getAccount(ent_operational_seed.get())
+    get_standby_account_info()
+    get_operational_account_info()
+def get_operational_account():
+    new_wallet = get_account(ent_operational_seed.get())
     ent_operational_account.delete(0, tk.END)
     ent_operational_account.insert(0, new_wallet.classic_address)
     ent_operational_seed.delete(0, tk.END)
     ent_operational_seed.insert(0, new_wallet.seed)
-def getOperationalAccountInfo():
-    accountInfo = getAccountInfo(ent_operational_account.get())
+def get_operational_account_info():
+    accountInfo = get_account_info(ent_operational_account.get())
     ent_operational_balance.delete(0, tk.END)
     ent_operational_balance.insert(0,accountInfo['Balance'])
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0",json.dumps(accountInfo, indent=4))
-def operationalSendXRP():
-    response = sendXRP(ent_operational_seed.get(),ent_operational_amount.get(), ent_operational_destination.get())
+def operational_send_xrp():
+    response = send_xrp(ent_operational_seed.get(),ent_operational_amount.get(), ent_operational_destination.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0",json.dumps(response.result,indent=4))
-    getStandbyAccountInfo()
-    getOperationalAccountInfo()
+    get_standby_account_info()
+    get_operational_account_info()
 
 # Create a new window with the title "Quickstart Module 2"
 window = tk.Tk()
@@ -521,54 +520,80 @@ cb_operational_allow_rippling.grid(row=7,column=5, sticky="w")
 lbl_operational_results.grid(row=8, column=4, sticky="ne")
 text_operational_results.grid(row=8, column=5, sticky="nw")
 cb_operational_allow_rippling.select()
+```
 
 #############################################
 ## Buttons ##################################
 #############################################
 
 # Create the Standby Account Buttons
-btn_get_standby_account = tk.Button(master=frm_form, text="Get Standby Account", command = getStandbyAccount)
+
+```python
+btn_get_standby_account = tk.Button(master=frm_form, text="Get Standby Account",
+                                    command = get_standby_account)
 btn_get_standby_account.grid(row=0, column=2, sticky = "nsew")
-btn_get_standby_account_info = tk.Button(master=frm_form, text="Get Standby Account Info", command = getStandbyAccountInfo)
+btn_get_standby_account_info = tk.Button(master=frm_form,
+                                         text="Get Standby Account Info",
+                                         command = get_standby_account_info)
 btn_get_standby_account_info.grid(row=1, column=2, sticky = "nsew")
-btn_standby_send_xrp = tk.Button(master=frm_form, text="Send XRP >", command = standbySendXRP)
-btn_standby_send_xrp.grid(row=2, column=2, sticky = "nsew")
+btn_standby_send_xrp = tk.Button(master=frm_form, text="Send XRP >",
+                                 command = standby_send_xrp)
+btn_standby_send_xrp.grid(row=2, column = 2, sticky = "nsew")
 ```
 
 Add buttons **Create Trust Line**, **Send Currency**, **Get Balances**, and **Configure Account**.
 
 ```python
-btn_standby_create_trustline = tk.Button(master=frm_form, text="Create Trust Line", command = standbyCreateTrustLine)
-btn_standby_create_trustline.grid(row=3, column=2, sticky = "nsew")
-btn_standby_send_currency = tk.Button(master=frm_form, text="Send Currency >", command = standbySendCurrency)
+btn_standby_create_trust_line = tk.Button(master=frm_form,
+                                         text="Create Trust Line",
+                                         command = standby_create_trust_line)
+btn_standby_create_trust_line.grid(row=3, column=2, sticky = "nsew")
+btn_standby_send_currency = tk.Button(master=frm_form, text="Send Currency >",
+                                      command = standby_send_currency)
 btn_standby_send_currency.grid(row=4, column=2, sticky = "nsew")
-btn_standby_send_currency = tk.Button(master=frm_form, text="Get Balances", command = getBalances)
+btn_standby_send_currency = tk.Button(master=frm_form, text="Get Balances",
+                                      command = get_balances)
 btn_standby_send_currency.grid(row=5, column=2, sticky = "nsew")
-btn_standby_configure_account = tk.Button(master=frm_form, text="Configure Account", command = standbyConfigureAccount)
+btn_standby_configure_account = tk.Button(master=frm_form,
+                                          text="Configure Account",
+                                          command = standby_configure_account)
 btn_standby_configure_account.grid(row=7,column=0, sticky = "nsew")
-
+```
 
 # Create the Operational Account Buttons
-btn_get_operational_account = tk.Button(master=frm_form, text="Get Operational Account", command = getOperationalAccount)
+
+```python
+btn_get_operational_account = tk.Button(master=frm_form,
+                                        text="Get Operational Account",
+                                        command = get_operational_account)
 btn_get_operational_account.grid(row=0, column=3, sticky = "nsew")
-btn_get_op_account_info = tk.Button(master=frm_form, text="Get Op Account Info", command = getOperationalAccountInfo)
+btn_get_op_account_info = tk.Button(master=frm_form, text="Get Op Account Info",
+                                    command = get_operational_account_info)
 btn_get_op_account_info.grid(row=1, column=3, sticky = "nsew")
-btn_op_send_xrp = tk.Button(master=frm_form, text="< Send XRP", command = operationalSendXRP)
+btn_op_send_xrp = tk.Button(master=frm_form, text="< Send XRP",
+                            command = operational_send_xrp)
 btn_op_send_xrp.grid(row=2, column = 3, sticky = "nsew")
 ```
 
 Add operational buttons **Create Trust Line**, **Send Currency**, **Get Balances**, and **Configure Account**.
 
 ```python
-btn_op_create_trustline = tk.Button(master=frm_form, text="Create Trust Line", command = operationalCreateTrustLine)
-btn_op_create_trustline.grid(row=3, column=3, sticky = "nsew")
-btn_op_send_currency = tk.Button(master=frm_form, text="< Send Currency", command = operationalSendCurrency)
+btn_op_create_trust_line = tk.Button(master=frm_form, text="Create Trust Line",
+                                    command = operational_create_trust_line)
+btn_op_create_trust_line.grid(row=3, column=3, sticky = "nsew")
+btn_op_send_currency = tk.Button(master=frm_form, text="< Send Currency",
+                                 command = operational_send_currency)
 btn_op_send_currency.grid(row=4, column=3, sticky = "nsew")
-btn_op_get_balances = tk.Button(master=frm_form, text="Get Balances", command = getBalances)
+btn_op_get_balances = tk.Button(master=frm_form, text="Get Balances",
+                                command = get_balances)
 btn_op_get_balances.grid(row=5, column=3, sticky = "nsew")
-btn_op_configure_account = tk.Button(master=frm_form, text="Configure Account", command = operationalConfigureAccount)
+btn_op_configure_account = tk.Button(master=frm_form, text="Configure Account",
+                                     command = operational_configure_account)
 btn_op_configure_account.grid(row=7,column=4, sticky = "nsew")
+```
 
 # Start the application
+
+```python
 window.mainloop()
 ```
