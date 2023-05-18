@@ -1,0 +1,584 @@
+---
+html: py-mint-and-burn-nftokens.html
+parent: xrpl-quickstart.html
+blurb: Quickstart step 3, mint and burn NFTokens.
+labels:
+  - Quickstart
+  - Tokens
+  - Non-fungible tokens, NFTs
+---
+
+# 3. Mint and Burn NFTokens (Python)
+
+This example shows how to:
+
+1. Mint new Non-fungible Tokens (NFTs).
+2. Get a list of existing NFTs.
+3. Delete (Burn) an NFT.
+
+[![Quickstart 3 interface with mint NFT fields](img/quickstart-py10.png)](img/quickstart-py10.png)
+
+# Usage
+
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try the sample in your own browser.
+
+## Get Accounts
+
+1. Open and run `lesson3-mint-token.py`.
+2. Get test accounts.
+    1. If you have existing Testnet account seeds:
+        1. Paste the account seeds in the **Seed** fields.
+        2. Click **Get Standby Account**.
+        3. Click **Get Operational Account**.
+    2. If you do not have existing Testnet accounts:
+        1. Click **Get New Standby Account**.
+        2. Click **Get New Operational Account**.
+    3. Click **Get Standby Account Info**.
+    4. Click **Get Op Account Info**.
+
+[![Get accounts](img/quickstart-py11.png)](img/quickstart-py11.png)
+
+## Mint an NFT
+
+To mint a non-fungible token object:
+
+1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT can be transferred to another account. Otherwise, the NFT can only be transferred back to the issuing account. See [NFToken Mint](https://xrpl.org/nftokenmint.html#:~:text=Example%20NFTokenMint%20JSON-,NFTokenMint%20Fields,-NFTokenMint%20Flags) for information about all of the available flags for minting NFTokens.
+2. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT. You can use the sample URI provided if you do not have one of your own.
+3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFToken that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFToken to be transferrable, set this field to 0.
+4. Optionally a **Taxon** value as an integer. If you choose not to use a taxon, enter _0_.
+4. Click **Mint NFToken**.
+
+[![Mint NFToken fields](img/quickstart-py12.png)](img/quickstart-py12.png)
+
+
+## Get Tokens
+
+Click **Get NFTokens** to get a list of NFTokens owned by the account.
+
+[![Get NFTokens](img/quickstart-py13.png)](img/quickstart-py13.png)
+
+## Burn a Token
+
+The current owner of an NFT can always destroy (or _burn_) an NFT.
+
+To permanently destroy an NFT:
+
+1. Enter the **Token ID**.
+2. Click **Burn NFToken**.
+
+[![Burn NFTokens](img/quickstart-py14.png)](img/quickstart-py14.png)
+
+# Code Walkthrough
+
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to examine the code samples.
+
+## mod3.py
+
+This module contains the new methods `mintToken()`, `getTokens()`, and `burnToken()`.
+
+Import dependencies and set global variable.
+
+```python
+import xrpl
+import json
+from xrpl.clients import JsonRpcClient
+from xrpl.wallet import Wallet
+
+testnet_url = "https://s.altnet.rippletest.net:51234"
+```
+
+## mintToken
+
+Pass the arguments account seed, NFT URI, transaction flags, the transfer fee, and optional taxon.
+
+```python
+def mintToken(_seed, _uri, _flags, _transfer_fee, _taxon):
+```
+
+Get the account wallet and a client instance.
+
+```python
+    mint_wallet = Wallet(_seed, sequence = 16237283)
+    client = JsonRpcClient(testnet_url)
+```
+
+Define the mint transaction. Note that the NFT URI must be converted to a hex string.
+
+```python
+    mint_tx = xrpl.models.transactions.NFTokenMint(
+        account = mint_wallet.classic_address,
+        uri = xrpl.utils.str_to_hex(_uri),
+        flags = int(_flags),
+        transfer_fee = int(_transfer_fee),
+        nftoken_taxon = int(_taxon)
+    )
+```
+
+Sign and fill the transaction.
+
+```python
+    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
+        mint_tx, mint_wallet, client)
+```
+
+Submit the transaction and return results.
+
+```python
+    try:
+        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+    except xrpl.transaction.XRPLReliableSubmissionException as e:
+        response = f"Submit failed: {e}"
+    return response.result
+```
+
+## getTokens
+
+```python
+def getTokens(_account):
+```
+
+Import dependencies and declare  variable.
+
+```python
+    from xrpl.clients import JsonRpcClient
+    from xrpl.models.requests import AccountNFTs
+    import json
+```
+
+Instantiate a client.
+
+```python
+    client = JsonRpcClient(testnet_url)
+```
+
+Prepare the `AccountNFTs` request.
+
+```python
+    acct_nfts = AccountNFTs(
+        account=_account
+    )
+```
+
+Send the request and return the result.
+
+```python
+    response = client.request(acct_nfts)
+    return response.result
+```
+
+## burnToken 
+
+Pass the owner's seed value and the NFT ID.
+
+```python
+def burnToken(_seed, _nftoken_id):
+```
+
+Get the owner wallet and client instance.
+
+```python
+    owner_wallet = Wallet(_seed, sequence = 16237283)
+    client = JsonRpcClient(testnet_url)
+```
+
+Define the NFTokenBurn transaction.
+
+```python
+    burn_tx = xrpl.models.transactions.NFTokenBurn(
+        account = owner_wallet.classic_address,
+        nftoken_id = _nftoken_id    
+    )
+```
+
+Sign and fill the transaction.
+
+```python
+    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
+        burn_tx, owner_wallet, client)
+```
+
+Submit the transaction and return results.
+
+```python
+    try:
+        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+    except xrpl.transaction.XRPLReliableSubmissionException as e:
+        response = f"Submit failed: {e}"
+    return response.result
+```
+
+
+## lesson3-mint-token.py
+<!-- SPELLING_IGNORE: lesson3 -->
+
+This module builds on `lesson2-create-trustline-send-currency.py`. Changes are noted below.
+
+```python
+import tkinter as tk
+import xrpl
+import json
+```
+
+Import methods from `mod3.py`.
+
+```python
+from mod3 import mintToken
+from mod3 import getTokens
+from mod3 import burnToken
+
+from mod2 import createTrustLine
+from mod2 import sendCurrency
+from mod2 import getBalance
+from mod2 import configureAccount
+
+from mod1 import getAccount
+from mod1 import getAccountInfo
+from mod1 import sendXRP
+
+#############################################
+## Handlers #################################
+#############################################
+```
+
+Module 3 Handlers
+
+```python
+def standbyMintToken():
+    results = mintToken(
+        ent_standby_seed.get(),
+        ent_standby_uri.get(),
+        ent_standby_flags.get(),
+        ent_standby_transfer_fee.get(),
+        ent_standby_taxon.get()
+    )
+    text_standby_results.delete("1.0", tk.END)
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
+def standbyGetTokens():
+    results = getTokens(ent_standby_account.get())
+    text_standby_results.delete("1.0", tk.END)
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
+def standbyBurnToken():
+    results = burnToken(
+        ent_standby_seed.get(),
+        ent_standby_nft_id.get()
+    )
+    text_standby_results.delete("1.0", tk.END)
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
+def operationalMintToken():
+    results = mintToken(
+        ent_operational_seed.get(),
+        ent_operational_uri.get(),
+        ent_operational_flags.get(),
+        ent_operational_transfer_fee.get(),
+        ent_operational_taxon.get()
+    )
+    text_operational_results.delete("1.0", tk.END)
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
+def operationalGetTokens():
+    results = getTokens(ent_operational_account.get())
+    text_operational_results.delete("1.0", tk.END)
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
+def operationalBurnToken():
+    results = burnToken(
+        ent_operational_seed.get(),
+        ent_operational_nft_id.get()
+    )
+    text_operational_results.delete("1.0", tk.END)
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+# Module 2 Handlers
+
+def standbyCreateTrustline():
+    results = createTrustline(ent_standby_seed.get(),
+        ent_standby_destination.get(),
+        ent_standby_currency.get(),
+        ent_standby_amount.get())
+    text_standby_results.delete("1.0", tk.END)
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
+def standbySendCurrency():
+    results = sendCurrency(ent_standby_seed.get(),
+        ent_standby_destination.get(),
+        ent_standby_currency.get(),
+        ent_standby_amount.get())
+    text_standby_results.delete("1.0", tk.END)
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
+def standbyConfigureAccount():
+    results = configureAccount(
+        ent_standby_seed.get(),
+        standbyRippling)
+    text_standby_results.delete("1.0", tk.END)
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
+def operationalCreateTrustline():
+    results = createTrustline(ent_operational_seed.get(),
+        ent_operational_destination.get(),
+        ent_operational_currency.get(),
+        ent_operational_amount.get())
+    text_operational_results.delete("1.0", tk.END)
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
+def operationalSendCurrency():
+    results = sendCurrency(ent_operational_seed.get(),
+        ent_operational_destination.get(),
+        ent_operational_currency.get(),
+        ent_operational_amount.get())
+    text_operational_results.delete("1.0", tk.END)
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
+def operationalConfigureAccount():
+    results = configureAccount(
+        ent_operational_seed.get(),
+        operationalRippling)
+    text_operational_results.delete("1.0", tk.END)
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
+def getBalances():
+    results = getBalance(ent_operational_account.get(), ent_standby_account.get())
+    text_standby_results.delete("1.0", tk.END)
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))    
+    results = getBalance(ent_standby_account.get(), ent_operational_account.get())
+    text_operational_results.delete("1.0", tk.END)
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))    
+
+# Module 1 Handlers
+def getStandbyAccount():
+    new_wallet = getAccount(ent_standby_seed.get())
+    ent_standby_account.delete(0, tk.END)
+    ent_standby_seed.delete(0, tk.END)
+    ent_standby_account.insert(0, new_wallet.classic_address)
+    ent_standby_seed.insert(0, new_wallet.seed)
+def getStandbyAccountInfo():
+    accountInfo = getAccountInfo(ent_standby_account.get())
+    ent_standby_balance.delete(0, tk.END)
+    ent_standby_balance.insert(0,accountInfo['Balance'])
+    text_standby_results.delete("1.0", tk.END)
+    text_standby_results.insert("1.0",json.dumps(accountInfo, indent=4))
+def standbySendXRP():
+    response = sendXRP(ent_standby_seed.get(),ent_standby_amount.get(), ent_standby_destination.get())
+    text_standby_results.delete("1.0", tk.END)
+    text_standby_results.insert("1.0",json.dumps(response.result, indent=4))
+    getStandbyAccountInfo()
+    getOperationalAccountInfo()
+def getOperationalAccount():
+    new_wallet = getAccount(ent_operational_seed.get())
+    ent_operational_account.delete(0, tk.END)
+    ent_operational_account.insert(0, new_wallet.classic_address)
+    ent_operational_seed.delete(0, tk.END)
+    ent_operational_seed.insert(0, new_wallet.seed)
+def getOperationalAccountInfo():
+    accountInfo = getAccountInfo(ent_operational_account.get())
+    ent_operational_balance.delete(0, tk.END)
+    ent_operational_balance.insert(0,accountInfo['Balance'])
+    text_operational_results.delete("1.0", tk.END)
+    text_operational_results.insert("1.0",json.dumps(accountInfo, indent=4))
+def operationalSendXRP():
+    response = sendXRP(ent_operational_seed.get(),ent_operational_amount.get(), ent_operational_destination.get())
+    text_operational_results.delete("1.0", tk.END)
+    text_operational_results.insert("1.0",json.dumps(response.result,indent=4))
+    getStandbyAccountInfo()
+    getOperationalAccountInfo()
+
+# Create a new window with the title "Quickstart Module 3"
+window = tk.Tk()
+window.title("Quickstart Module 3")
+
+standbyRippling = tk.BooleanVar()
+operationalRippling = tk.BooleanVar()
+
+# Form frame
+frm_form = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
+frm_form.pack()
+
+# Create the Label and Entry widgets for "Standby Account"
+lbl_standy_seed = tk.Label(master=frm_form, text="Standby Seed")
+ent_standby_seed = tk.Entry(master=frm_form, width=50)
+lbl_standby_account = tk.Label(master=frm_form, text="Standby Account")
+ent_standby_account = tk.Entry(master=frm_form, width=50)
+lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_standby_balance = tk.Entry(master=frm_form, width=50)
+lbl_standy_amount = tk.Label(master=frm_form, text="Amount")
+ent_standby_amount = tk.Entry(master=frm_form, width=50)
+lbl_standby_destination = tk.Label(master=frm_form, text="Destination")
+ent_standby_destination = tk.Entry(master=frm_form, width=50)
+lbl_standby_currency = tk.Label(master=frm_form, text="Currency")
+ent_standby_currency = tk.Entry(master=frm_form, width=50)
+cb_standby_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=standbyRippling, onvalue=True, offvalue=False)
+```
+
+Add **NFT URI**, **Flags**, **Transfer Fee**, **Taxon**, **NFToken ID** fields.
+
+```python
+lbl_standby_uri = tk.Label(master=frm_form, text="NFT URI")
+ent_standby_uri = tk.Entry(master=frm_form, width=50)
+lbl_standby_flags = tk.Label(master=frm_form, text="Flags")
+ent_standby_flags = tk.Entry(master=frm_form, width=50)
+lbl_standby_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
+ent_standby_transfer_fee = tk.Entry(master=frm_form, width="50")
+lbl_standby_taxon = tk.Label(master=frm_form, text="Taxon")
+ent_standby_taxon = tk.Entry(master=frm_form, width="50")
+lbl_standby_nft_id = tk.Label(master=frm_form, text="NFToken ID")
+ent_standby_nft_id = tk.Entry(master=frm_form, width="50")
+lbl_standby_results = tk.Label(master=frm_form,text='Results')
+text_standby_results = tk.Text(master=frm_form, height = 20, width = 65)
+
+# Place field in a grid.
+lbl_standy_seed.grid(row=0, column=0, sticky="w")
+ent_standby_seed.grid(row=0, column=1)
+lbl_standby_account.grid(row=2, column=0, sticky="e")
+ent_standby_account.grid(row=2, column=1)
+lbl_standy_amount.grid(row=3, column=0, sticky="e")
+ent_standby_amount.grid(row=3, column=1)
+lbl_standby_destination.grid(row=4, column=0, sticky="e")
+ent_standby_destination.grid(row=4, column=1)
+lbl_standby_balance.grid(row=5, column=0, sticky="e")
+ent_standby_balance.grid(row=5, column=1)
+lbl_standby_currency.grid(row=6, column=0, sticky="e")
+ent_standby_currency.grid(row=6, column=1)
+cb_standby_allow_rippling.grid(row=7,column=1, sticky="w")
+```
+
+Place new UI elements in the grid.
+
+```python
+lbl_standby_uri.grid(row=8, column=0, sticky="e")
+ent_standby_uri.grid(row=8, column=1, sticky="w")
+lbl_standby_flags.grid(row=9, column=0, sticky="e")
+ent_standby_flags.grid(row=9, column=1, sticky="w")
+lbl_standby_transfer_fee.grid(row=10, column=0, sticky="e")
+ent_standby_transfer_fee.grid(row=10, column=1, sticky="w")
+lbl_standby_taxon.grid(row=11, column=0, sticky="e")
+ent_standby_taxon.grid(row=11, column=1, sticky="w")
+lbl_standby_nft_id.grid(row=12, column=0, sticky="e")
+ent_standby_nft_id.grid(row=12, column=1, sticky="w")
+lbl_standby_results.grid(row=13, column=0, sticky="ne")
+text_standby_results.grid(row=13, column=1, sticky="nw")
+cb_standby_allow_rippling.select()
+
+###############################################
+## Operational Account ########################
+###############################################
+
+# Create the Label and Entry widgets for "Operational Account"
+lbl_operational_seed = tk.Label(master=frm_form, text="Operational Seed")
+ent_operational_seed = tk.Entry(master=frm_form, width=50)
+lbl_operational_account = tk.Label(master=frm_form, text="Operational Account")
+ent_operational_account = tk.Entry(master=frm_form, width=50)
+lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_operational_balance = tk.Entry(master=frm_form, width=50)
+lbl_operational_amount = tk.Label(master=frm_form, text="Amount")
+ent_operational_amount = tk.Entry(master=frm_form, width=50)
+lbl_operational_destination = tk.Label(master=frm_form, text="Destination")
+ent_operational_destination = tk.Entry(master=frm_form, width=50)
+lbl_operational_currency = tk.Label(master=frm_form, text="Currency")
+ent_operational_currency = tk.Entry(master=frm_form, width=50)
+cb_operational_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=operationalRippling, onvalue=True, offvalue=False)
+```
+
+Add fields for **NFT URI**, **Flags**, **Transfer Fee**, **Taxon**, and **NFToken ID**.
+
+```python
+lbl_operational_uri = tk.Label(master=frm_form, text="NFT URI")
+ent_operational_uri = tk.Entry(master=frm_form, width=50)
+lbl_operational_flags = tk.Label(master=frm_form, text="Flags")
+ent_operational_flags = tk.Entry(master=frm_form, width=50)
+lbl_operational_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
+ent_operational_transfer_fee = tk.Entry(master=frm_form, width="50")
+lbl_operational_taxon = tk.Label(master=frm_form, text="Taxon")
+ent_operational_taxon = tk.Entry(master=frm_form, width="50")
+lbl_operational_nft_id = tk.Label(master=frm_form, text="NFToken ID")
+ent_operational_nft_id = tk.Entry(master=frm_form, width="50")
+lbl_operational_results = tk.Label(master=frm_form,text='Results')
+text_operational_results = tk.Text(master=frm_form, height = 20, width = 65)
+
+#Place the widgets in a grid
+lbl_operational_seed.grid(row=0, column=4, sticky="e")
+ent_operational_seed.grid(row=0, column=5, sticky="w")
+lbl_operational_account.grid(row=2,column=4, sticky="e")
+ent_operational_account.grid(row=2,column=5, sticky="w")
+lbl_operational_amount.grid(row=3, column=4, sticky="e")
+ent_operational_amount.grid(row=3, column=5, sticky="w")
+lbl_operational_destination.grid(row=4, column=4, sticky="e")
+ent_operational_destination.grid(row=4, column=5, sticky="w")
+lbl_operational_balance.grid(row=5, column=4, sticky="e")
+ent_operational_balance.grid(row=5, column=5, sticky="w")
+lbl_operational_currency.grid(row=6, column=4, sticky="e")
+ent_operational_currency.grid(row=6, column=5)
+cb_operational_allow_rippling.grid(row=7,column=5, sticky="w")
+```
+
+Place new UI elements in the grid.
+
+```python
+lbl_operational_uri.grid(row=8, column=4, sticky="e")
+ent_operational_uri.grid(row=8, column=5, sticky="w")
+lbl_operational_flags.grid(row=9, column=4, sticky="e")
+ent_operational_flags.grid(row=9, column=5, sticky="w")
+lbl_operational_transfer_fee.grid(row=10, column=4, sticky="e")
+ent_operational_transfer_fee.grid(row=10, column=5, sticky="w")
+lbl_operational_taxon.grid(row=11, column=4, sticky="e")
+ent_operational_taxon.grid(row=11, column=5, sticky="w")
+lbl_operational_nft_id.grid(row=12, column=4, sticky="e")
+ent_operational_nft_id.grid(row=12, column=5, sticky="w")
+lbl_operational_results.grid(row=13, column=4, sticky="ne")
+text_operational_results.grid(row=13, column=5, sticky="nw")
+
+cb_operational_allow_rippling.select()
+
+#############################################
+## Buttons ##################################
+#############################################
+
+# Create the Standby Account Buttons
+btn_get_standby_account = tk.Button(master=frm_form, text="Get Standby Account", command = getStandbyAccount)
+btn_get_standby_account.grid(row=0, column=2, sticky = "nsew")
+btn_get_standby_account_info = tk.Button(master=frm_form, text="Get Standby Account Info", command = getStandbyAccountInfo)
+btn_get_standby_account_info.grid(row=1, column=2, sticky = "nsew")
+btn_standby_send_xrp = tk.Button(master=frm_form, text="Send XRP >", command = standbySendXRP)
+btn_standby_send_xrp.grid(row=2, column=2, sticky = "nsew")
+btn_standby_create_trustline = tk.Button(master=frm_form, text="Create Trustine", command = standbyCreateTrustline)
+btn_standby_create_trustline.grid(row=3, column=2, sticky = "nsew")
+btn_standby_send_currency = tk.Button(master=frm_form, text="Send Currency >", command = standbySendCurrency)
+btn_standby_send_currency.grid(row=4, column=2, sticky = "nsew")
+btn_standby_send_currency = tk.Button(master=frm_form, text="Get Balances", command = getBalances)
+btn_standby_send_currency.grid(row=5, column=2, sticky = "nsew")
+btn_standby_configure_account = tk.Button(master=frm_form, text="Configure Account", command = standbyConfigureAccount)
+btn_standby_configure_account.grid(row=7,column=0, sticky = "nsew")
+```
+
+Add buttons for **Mint NFToken**, **Get NFTokens**, and **Burn NFToken**.
+
+```python
+btn_standby_mint_token = tk.Button(master=frm_form, text="Mint NFToken", command = standbyMintToken)
+btn_standby_mint_token.grid(row=8, column=2, sticky="nsew")
+btn_standby_get_tokens = tk.Button(master=frm_form, text="Get NFTokens", command = standbyGetTokens)
+btn_standby_get_tokens.grid(row=9, column=2, sticky="nsew")
+btn_standby_burn_token = tk.Button(master=frm_form, text="Burn NFToken", command = standbyBurnToken)
+btn_standby_burn_token.grid(row=10, column=2, sticky="nsew")
+
+
+# Create the Operational Account Buttons
+btn_get_operational_account = tk.Button(master=frm_form, text="Get Operational Account", command = getOperationalAccount)
+btn_get_operational_account.grid(row=0, column=3, sticky = "nsew")
+btn_get_op_account_info = tk.Button(master=frm_form, text="Get Op Account Info", command = getOperationalAccountInfo)
+btn_get_op_account_info.grid(row=1, column=3, sticky = "nsew")
+btn_op_send_xrp = tk.Button(master=frm_form, text="< Send XRP", command = operationalSendXRP)
+btn_op_send_xrp.grid(row=2, column = 3, sticky = "nsew")
+btn_op_create_trustline = tk.Button(master=frm_form, text="Create Trustine", command = operationalCreateTrustline)
+btn_op_create_trustline.grid(row=3, column=3, sticky = "nsew")
+btn_op_send_currency = tk.Button(master=frm_form, text="< Send Currency", command = operationalSendCurrency)
+btn_op_send_currency.grid(row=4, column=3, sticky = "nsew")
+btn_op_get_balances = tk.Button(master=frm_form, text="Get Balances", command = getBalances)
+btn_op_get_balances.grid(row=5, column=3, sticky = "nsew")
+btn_op_configure_account = tk.Button(master=frm_form, text="Configure Account", command = operationalConfigureAccount)
+btn_op_configure_account.grid(row=7,column=4, sticky = "nsew")
+```
+Add buttons for **Mint NFToken**, **Get NFTokens**, and **Burn NFToken**.
+
+```python
+btn_op_mint_token = tk.Button(master=frm_form, text="Mint NFToken", command = operationalMintToken)
+btn_op_mint_token.grid(row=8, column=3, sticky="nsew")
+btn_op_get_tokens = tk.Button(master=frm_form, text="Get NFTokens", command = operationalGetTokens)
+btn_op_get_tokens.grid(row=9, column=3, sticky="nsew")
+btn_op_burn_token = tk.Button(master=frm_form, text="Burn NFToken", command = operationalBurnToken)
+btn_op_burn_token.grid(row=10, column=3, sticky="nsew")
+
+# Start the application
+window.mainloop()
+```
+

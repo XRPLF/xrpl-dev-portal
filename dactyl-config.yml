@@ -1280,6 +1280,24 @@ pages:
             - en
             - ja
 
+        # TODO: translate
+    -   md: tutorials/quickstart/py-create-accounts-send-xrp.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-create-trustline-send-currency.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-mint-and-burn-nftokens.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/get-started/get-started.md
         targets:
             - en
