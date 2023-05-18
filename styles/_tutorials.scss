@@ -1,33 +1,25 @@
+$footer-images: 3col-magenta-orange, 3col-green-blue, 3col-orange, 3col-purple, 3-col-green-purple, 3col-magenta, 3col-light-green, 3col-orange-yellow, 3-col-dark-blue;
+
 /* Tutorials ---------------------------------------------------------------- */
-@mixin card-footer-color ($offset){
-  .card:nth-child(9n + #{$offset}) .card-footer {
-    background-image: url(../img/cards/3col-magenta-orange.svg);
+@mixin card-footer-color($offset){
+  $index: 0;
+  @for $i from $offset + 1 through length($footer-images) {
+    $index: $index + 1;
+
+    .card:nth-child(9n + #{$index}) .card-footer {
+      background-image: url("../img/cards/#{nth($footer-images, $i)}.svg");
+    }
   }
-  .card:nth-child(9n + #{$offset} + 1) .card-footer {
-    background-image: url(../img/cards/3col-green-blue.svg);
-  }
-  .card:nth-child(9n + #{$offset} + 2) .card-footer {
-    background-image: url(../img/cards/3-col-pink.svg);
-  }
-  .card:nth-child(9n + #{$offset} + 3) .card-footer {
-    background-image: url(../img/cards/3-col-light-blue.svg);
-  }
-  .card:nth-child(9n + #{$offset} + 4) .card-footer {
-    background-image: url(../img/cards/3-col-pink.svg);
-  }
-  .card:nth-child(9n + #{$offset} + 5) .card-footer {
-    background-image: url(../img/cards/3col-magenta-orange.svg);
-  }
-  .card:nth-child(9n + #{$offset} + 6) .card-footer {
-    background-image: url(../img/cards/3-col-purple-blue.svg);
-  }
-  .card:nth-child(9n + #{$offset} + 7) .card-footer {
-    background-image: url(../img/cards/3col-light-green.svg);
-  }
-  .card:nth-child(9n + #{$offset} + 8) .card-footer {
-    background-image: url(../img/cards/3-col-dark-blue.svg);
+
+  @for $i from 1 through $offset + 1 {
+    $index: $index + 1;
+
+    .card:nth-child(9n + #{$index}) .card-footer {
+      background-image: url("../img/cards/#{nth($footer-images, $i)}.svg");
+    }
   }
 }
+
 .tutorial-content {
   #beginner-cards {
     @include card-footer-color(0);
