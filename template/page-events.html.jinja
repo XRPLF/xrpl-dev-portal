@@ -82,22 +82,34 @@
         <input value="hackathon" id="hackathon-upcoming" name="hackathon-upcoming" type="checkbox" class="events-filter" checked />
         <label for="hackathon-upcoming">Hackathons</label>
       </div>
+            <div class="form-check form-check-inline">
+        <input value="ama" id="ama-upcoming" name="ama-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="ama-upcoming">AMAs</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="cc" id="cc-upcoming" name="cc-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="cc-upcoming">Community Calls</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="zone" id="zone-upcoming" name="zone-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="zone-upcoming">XRPL Zone</label>
+      </div>
     </div>
   </div>
 {% set events = [
 { "name": "Hackathon: 2021",      
       "description": "Explore the exciting project submissions from the fall 2021 XRPL Hackathon that focused on the NFT and Hooks smart contract functionalities on the ledger.",
-      "type": "hackathon-past",
+      "type": "hackathon",
       "link": "https://xrpl-hackathon-2021.devpost.com/project-gallery",
       "location": "Virtual",
       "date": "September 13-October 6, 2021",
-      "image": "event-hack-2021.svg",
+      "image": "Hackathons.png",
       "end_date": "October 6, 2021",
       },
       
     { "name": "XRPL Community Meetup: San Diego",      
       "description": "The first official Meetup hosted by the XRPL Community. Community members in Southern California gathered around a firepit and shared their experiences with the XRPL.",
-      "type": "meetup-past",
+      "type": "meetup",
       "link": "https://www.meetup.com/xrpl-community/events/281806645/",
       "location": "San Diego, CA",
       "date": "Saturday, November 20, 2021",
@@ -107,7 +119,7 @@
 
     { "name": "XRPL Community Meetup: Atlanta",      
       "description": "The inaugural Meetup in the Southeast region of the United States got community members excited to meet like-minded individuals in their area.",
-      "type": "meetup-past",
+      "type": "meetup",
       "link": "https://www.meetup.com/xrpl-community/events/281980446/",
       "location": "Atlanta, GA",
       "date": "Saturday, November 27, 2021",
@@ -117,7 +129,7 @@
 
     { "name": "XRPL Community Meetup: San Francisco",      
       "description": "Community members in the Bay Area with diverse backgrounds in technology and beyond met in downtown San Francisco.",
-      "type": "meetup-past",
+      "type": "meetup",
       "link": "https://www.meetup.com/xrpl-community/events/281806676/",
       "location": "San Francisco, CA",
       "date": "Monday, November 29, 2021",
@@ -127,7 +139,7 @@
 
     { "name": "XRPL Community Meetup: Miami",      
       "description": "One of the biggest Meetups held so far, this was the first of an ongoing series of local XRPL Community Meetup events in Miami. ",
-      "type": "meetup-past",
+      "type": "meetup",
       "link": "https://www.meetup.com/xrpl-community/events/281829463/",
       "location": "Miami, FL ",
       "date": "Thursday, December 9, 2021",
@@ -137,7 +149,7 @@
 
     { "name": "XRPL Community Meetup: Nashville",      
       "description": "Nashville-based members of the XRPL Community came together to network, learn, share ideas, and form new partnerships. ",
-      "type": "meetup-past",
+      "type": "meetup",
       "link": "https://www.meetup.com/xrp-ledger-nashville-community/events/282538189/",
       "location": "Nashville, TN",
       "date": "Saturday, December 18, 2021",
@@ -149,7 +161,7 @@
     { "name": "NYC Meetup/Hackathon XRPL Celebration",
       "id": "upcoming-xrpl-new-york",
       "description": "The NYC/XRP community and Dev Null Productions cordially invites you to attend our 10th meetup, being held in celebration of the on-going XRPL Hackathon, at the unique and artistic TALS studio in Midtown Manhattan.",
-      "type": "meetup-past",
+      "type": "meetup",
       "link": "https://www.meetup.com/NYC-XRP/events/284485901/",
       "location": "NYC, NY",
       "date": "March 30, 2022",
@@ -160,7 +172,7 @@
     { "name": "XRPL Community Meetup: London",
       "id": "upcoming-xrpl-london",
       "description": "Join for an evening of programming and networking with members of the XRPL Community in London, co-organised by Peerkat - the NFT platform for creators on the XRPL.",
-      "type": "meetup-past",
+      "type": "meetup",
       "link": "https://www.meetup.com/xrp-ledger-london-community/events/283536458/",
       "location": "IDEALondon",
       "date": "March 31, 2022",
@@ -171,7 +183,7 @@
     { "name": "XRPL Community Meetup: Toronto",
       "id": "upcoming-xrpl-toronto",
       "description": "Join us for our first Toronto meetup with an evening of programming and networking with other members of the XRP Ledger Community with special guests from the XUMM Wallet and ARK PLATES teams!",
-      "type": "meetup-past",
+      "type": "meetup",
       "link": "https://www.meetup.com/xrpl-toronto-community-meetup/events/284177188/",
       "location": "Toronto",
       "date": "March 31, 2022",
@@ -182,7 +194,7 @@
     { "name": "XRPL Community Meetup: San Diego",
       "id": "upcoming-xrpl-san-diego",
       "description": "Get together with other San Diego-based members of the XRP Ledger Community to network and discuss all things XRPL! Join us for our second San Diego XRPL Meetup.",
-      "type": "meetup-past",
+      "type": "meetup",
       "link": "https://www.meetup.com/xrp-ledger-san-diego-community/events/284663355/",
       "location": "San Diego, CA",
       "date": "April 1st 2022",
@@ -193,7 +205,7 @@
     { "name": "XRPL Community Meetup: Irvine LA",
       "id": "upcoming-xrpl-irvine",
       "description": "Get together with other LA-based members of the XRP Ledger Community to network and discuss all things XRPL.",
-      "type": "meetup-past",
+      "type": "meetup",
       "link": "https://www.meetup.com/xrp-ledger-la-community-meetup/events/284824635/",
       "location": "UC Irvine, CA",
       "date": "April 3rd 2022",
@@ -204,7 +216,7 @@
     { "name": "XRPL Community Meetup: Miami #2",
       "id": "upcoming-xrpl-miami-2",
       "description": "We're excited to host our second Miami meetup for XRP Ledger community members on April 6th from 6-8pm, featuring Marco Neri, Developer Advocate at Ripple, who will join us to give a presentation on the XRP Ledger.",
-      "type": "meetup-past",
+      "type": "meetup",
       "link": "https://www.meetup.com/xrp-ledger-miami-community/events/284463736/",
       "location": "The LAB Miami, FL",
       "date": "April 6th 2022",
@@ -215,109 +227,131 @@
     { "name": "Hackathon:<br />New Year, New NFT",
       "id": "upcoming-xrpl-hackathon-new-year",
       "description": "Build Functional NFTs that span across a full range of use cases.",
-      "type": "hackathon-past",
+      "type": "hackathon",
       "link": "https://xrplnft2022.devpost.com/",
       "location": "Virtual",
       "date": "January 31 - March 14, 2022",
-      "image": "event-hack-nft@2x.png",
+      "image": "Hackathons.png",
       "end_date": "March 14, 2022",
       },
       
 
     { "name": "Hackathon: Creating Real World Impact",      
       "description": "Build apps to improve lives in the real world using any of the SDKs and APIs for the XRP Ledger.",
-      "type": "hackathon-past",
+      "type": "hackathon",
       "link": "https://xrplimpact.devpost.com/",
       "location": "Virtual",
       "date": "May 26 - Jul 11, 2022",
-      "image": "event-hack-nft@2x.png",
+      "image": "Hackathons.png",
       "end_date" : "July 11, 2022",
       },
 
     { "name": "Conference:<br />Apex 2021",      
       "description": "View sessions from the Apex 2021 stages in Las Vegas and Tallinn.",
-      "type": "conference-past",
+      "type": "conference",
       "link": "https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZgnreb8ODgxJW032M9Z2XZ",
       "location": "Las Vegas, Tallinn",
       "date": "September 29-30, 2021",
-      "image": "event-conference-apex-2021.png",
+      "image": "Conference.png",
       "end_date": "September 30, 2022",
       },
 
     { "name": "Hackathon:<br />NFT Launch Party",      
     "description": "Build Functional NFTs that span across a full range of use cases.",
-    "type": "hackathon-past",
+    "type": "hackathon",
     "link": "https://xrplnft.devpost.com/",
     "location": "Virtual",
     "date": "Oct 31 - Dec 12, 2022",
-    "image": "event-hack-nft@2x.png",
+    "image": "Hackathons.png",
     "end_date": "December 12, 2022",
     },
     { "name": "XRPL Zone @ Consensus",      
     "description": "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects.",
-    "type": "conference-upcoming",
+    "type": "zone",
     "link": "https://xrplzone-consensus.splashthat.com/",
     "location": "Austin, Texas",
     "date": "April 27, 2023",
-    "image": "xrpl-card@2x.jpg",
+    "image": "XRPLZone.png",
     "end_date": "April 27, 2023"
     },
     { "name": "XRPL Developer AMAs",      
     "description": "A chat with Crossmark about wallet development on the XRP Ledger!",
-    "type": "conference-upcoming",
+    "type": "ama",
     "link": "https://discord.com/invite/xrpl",
     "location": "XRPL Developers Discord",
     "date": "April 14, 2023",
-    "image": "event-hack-nft@2x.png",
+    "image": "AMAs.png",
     "end_date": "April 14, 2023"
     },
     { "name": "NFTs with xrp.cafe",      
     "description": "A cozy discussion with xrp.cafe about NFTs and the future of NFT infrastructure on the XRP Ledger.",
-    "type": "conference-past",
+    "type": "ama",
     "link": "https://dev.to/ripplexdev/xrpcafe-ama-on-xrpl-developers-discord-36gp",
     "location": "XRPL Developers Discord",
     "date": "January 1, 2023",
-    "image": "event-hack-nft@2x.png",
+    "image": "AMAs.png",
     "end_date": "January 1, 2023"
     },
     { "name": "Community Calls #2",      
     "description": "A community call about XRPL amendments with Chris McKay.",
-    "type": "conference-past",
+    "type": "cc",
     "link": "https://youtu.be/oNJ1Qqns2Gw",
     "location": "XRPL Developers Discord",
     "date": "August 8, 2022",
-    "image": "event-hack-nft@2x.png",
+    "image": "CommunityCalls.png",
     "end_date": "August 8, 2022"
     },
     { "name": "Community Calls #1",      
     "description": "An open discussion about the development of XLS-20 and NFTs on the XRP Ledger.",
-    "type": "conference-past",
+    "type": "cc",
     "link": "https://youtu.be/KpSt0PFT2QM",
     "location": "XRPL Developers Discord",
     "date": "June 02, 2022",
-    "image": "event-hack-nft@2x.png",
+    "image": "CommunityCalls.png",
     "end_date": "June 02, 2022"
     },
     { "name": "AMAs: POS and Crypto Payments with FriiPay",      
     "description": "A discussion with FriiPay about payment rails and POS integrations through the XRP Ledger",
-    "type": "conference-past",
+    "type": "ama",
     "link": "https://dev.to/ripplexdev/xrpl-developer-ama-pos-and-crypto-payments-with-friipay-13hm",
     "location": "XRPL Developers Discord",
     "date": "February 15, 2023",
-    "image": "event-hack-nft@2x.png",
+    "image": "AMAs.png",
     "end_date": "February 15, 2023"
     },
     { "name": "AMAs: On-chain Data with Bithomp",      
     "description": "A discuss with Bithomp about data infrastructure and their NFT integrations in one of the most popular explorers on the XRP Ledger.",
-    "type": "conference-past",
+    "type": "ama",
     "link": "https://dev.to/ripplexdev/xrpl-developer-ama-bithomp-4a8d",
     "location": "XRPL Developers Discord",
     "date": "March 15, 2023",
-    "image": "event-hack-nft@2x.png",
+    "image": "AMAs.png",
     "end_date": "March 15, 2023"
     },
+    {
+    "name": "XRPL Community Meetup: Madrid",      
+    "description": "Get together with other Madrid-based members of the XRP Ledger community to network and discuss all things XRPL.",
+    "type": "meetup",
+    "link": "https://www.meetup.com/xrp-ledger-espana-madrid-y-barcelona/events/292597878",
+    "location": "Madrid",
+    "date": "April 29, 2023",
+    "image": "Madrid.png",
+    "end_date": "April 29, 2023" 
+    },
+    {
+    "name": "APEX 2023: The XRPL Developer Summit",      
+    "description": "Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.",
+    "type": "conference",
+    "link": "http://apexdevsummit.com",
+    "location": "Amsterdam",
+    "date": "September 6 - 8, 2023",
+    "image": "Conference.png",
+    "end_date": "September 8, 2023" 
+    }
 ]
 %}
+
+  {# Available Types - conference, hackathon, ama, cc, zone, meetup #}
 
   {% set results = categorize_dates(events) %}
   {% set upcoming = results.upcoming %}
@@ -362,6 +396,18 @@
       <div class="form-check form-check-inline">
         <input value="hackathon" id="hackathon-past" name="hackathon-past" type="checkbox" class="events-filter" checked />
         <label for="hackathon-past">Hackathons</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="ama" id="ama-past" name="ama-past" type="checkbox" class="events-filter" checked />
+        <label for="ama-past">AMAs</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="cc" id="cc-past" name="cc-past" type="checkbox" class="events-filter" checked />
+        <label for="cc-past">Community Calls</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="zone" id="zone-past" name="zone-past" type="checkbox" class="events-filter" checked />
+        <label for="zone-past">XRPL Zone</label>
       </div>
     </div>
   </div>
@@ -410,6 +456,27 @@
       $('.hackathon-upcoming').hide();
     }
   });
+    $('#ama-upcoming').change(function () {
+    if ($('#ama-upcoming').is(':checked')) {
+        $('.ama-upcoming').show();
+    } else {
+      $('.ama-upcoming').hide();
+    }
+  });
+  $('#cc-upcoming').change(function () {
+    if ($('#cc-upcoming').is(':checked')) {
+        $('.cc-upcoming').show();
+    } else {
+      $('.cc-upcoming').hide();
+    }
+  });
+  $('#zone-upcoming').change(function () {
+    if ($('#zone-upcoming').is(':checked')) {
+        $('.zone-upcoming').show();
+    } else {
+      $('.zone-upcoming').hide();
+    }
+  });
 
   $('#conference-past').change(function () {
     if ($('#conference-past').is(':checked')) {
@@ -430,6 +497,27 @@
         $('.hackathon-past').show();
     } else {
       $('.hackathon-past').hide();
+    }
+  });
+    $('#ama-past').change(function () {
+    if ($('#ama-past').is(':checked')) {
+        $('.ama-past').show();
+    } else {
+      $('.ama-past').hide();
+    }
+  });
+    $('#cc-past').change(function () {
+    if ($('#cc-past').is(':checked')) {
+        $('.cc-past').show();
+    } else {
+      $('.cc-past').hide();
+    }
+  });
+    $('#zone-past').change(function () {
+    if ($('#zone-past').is(':checked')) {
+        $('.zone-past').show();
+    } else {
+      $('.zone-past').hide();
     }
   });
 

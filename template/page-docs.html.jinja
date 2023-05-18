@@ -1,125 +1,425 @@
 {% extends "base.html.jinja" %}
 
-{% block mainclasses %}landing page-docs-index landing-builtin-bg{% endblock %}
+{% block mainclasses %}landing page-docs page-docs-index landing-builtin-bg overflow-hidden styled-page{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
+{% block left_sidebar %}
+  {% set tree_top = pages|selectattr("html", "defined_and_equalto", "docs.html")|first %}
+  {% include 'component-tree-nav.html.jinja' %}
+{% endblock %}
+
 {% block main %}
-  <section class="py-26 text-center">
-    <div class="col-xl-4 col-lg-6 mx-auto text-center">
-      <div class="d-flex flex-column-reverse w-100">
-        <h1 class="mb-18">{% trans %}What Would You Like to Learn?{% endtrans %}</h1>
-        <h6 class="eyebrow mb-3">{% trans %}XRP Ledger Documentation{% endtrans %}</h6>
+  <section class="text-center title-space">
+    <div class="col-lg-9 mx-auto text-center">
+      <div class="d-flex flex-column-reverse">
+        <h1 class="">{% trans %}XRP Ledger Developer Resources{% endtrans %}</h1>
+        <h6 class="eyebrow mb-3">{% trans %}Documentation{% endtrans %}</h6>
       </div>
     </div>
   </section>
 
-  <section class="container-new mb-50-until-sm" id="docs-browse-by">
-    <div class="row">
-      <div class="col-lg-6 mb-10" id="popular-topics">
-        <h2 class="h4">{% trans %}Browse By Popular Topics{% endtrans %}</h2>
-        <ul class="nav flex-column">
-          {% for pg_html in currentpage.popular_pages %}
-          {% set page = pages|selectattr("html", "defined_and_equalto", pg_html)|first %}
-          {% if page.html is not defined %}
-            {% include "ERROR: Couldn't find page "+pg_html+" from popular_pages" %}
-          {% endif %}
-          <li class="nav-item"><a href="{% if '//' not in page.html %}{{target.prefix}}{% endif %}{{page.html}}" class="nav-link">{{page.name}}</a>
-          {% endfor %}
-        </ul>
-      </div><!--/#popular-topics-->
+  {# Macros #}
+  {% macro primaryButton(href, text, isArrowUp) %}
+    {% if isArrowUp %}
+      <a class="btn btn-primary btn-arrow-out" id="{{href}}-button" href="{{href}}">{{ text }}</a>
+    {% else %}
+      <a class="btn btn-primary btn-arrow" id="{{href}}-button" href="{{href}}">{{ text }}</a>
+    {% endif %}
+  {% endmacro %}
 
-      <div class="col-lg-6" id="browse-by-label">
-        <h2 class="h4">{% trans %}Browse By Label{% endtrans %}</h2>
-        {% include 'component-tag-cloud.html.jinja' %}
-      </div><!--/#browse-by-label-->
+  {% macro flatCard(href, title, description, linkText, imgClass) %}
+    <a href="{{href}}" class="card flat-card float-up-on-hover">
+      <img 
+        class="mb-2 {{imgClass}}"
+        alt={{title}}
+      />
+      <h5 class="row">
+        <div class="nav-link">{{ title }}</div>
+      </h5>
+      <p class="row faded-text flat-card-padding">
+        {{ description }}
+      </p>
+      <div class="col align-button-on-bottom">
+        <div class="btn btn-primary btn-arrow" id="{{href}}-button">{{ linkText }}</div>
+      </div>
+    </a>
+  {% endmacro %}
+
+  {% macro videoCard(url, title, src)%}
+    <div class="col float-up-on-hover">
+      <iframe id="video1" style="display:none;" src="{{url}}" title="{{title}}" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <a href="{{url}}" id="playvideo" class="btn1" data-url={{url}}>
+        <img
+          class="get-started-img video-image"
+          id={{title}}
+          src={{src}}
+        />
+        <h6 class="pt-3">{{ title }}</h6>
+      </a>
+
+    </div>
+  {% endmacro %}
+
+  {% macro useCasesCard(subItems, title, imgClass, id) %}
+    <div class="col">
+      <img
+        class="use-cases-img img-fluid mb-2 shadow {{imgClass}}"
+        alt="{{title}}"
+        id={{id}}
+      >
+      <h5 class="mt-4">{{title}} </h5>
+      <ul class="nav flex-column">
+      {% for item in subItems %}
+        <li class="nav-item"><a href="{{item.link}}" class="nav-link">{{item.description}}</a>
+      {% endfor %}
+      </ul>
+    </div>
+  {% endmacro %}
+
+  {% macro devToolsCard(link, title, description) %}
+    <a href="{{ link }}" class="col dev-tools-link">
+      <h6 class="btn-arrow">{{ title }}</h6>
+      <p> {{ description }}</p>
+    </a>
+  {% endmacro %}
+
+
+  {% set recommendedPages = [
+      {
+        "description": _("rippled API Reference"),
+        "link": "./manage-the-rippled-server.html",
+      },
+      {
+        "description": _("XRP Faucet"),
+        "link": "./xrp-testnet-faucet.html",
+      },
+      {
+        "description": _("Getting Started with Python"),
+        "link": "./get-started-using-python.html#get-started-using-python",
+      },
+      {
+        "description": _("Websocket API Tool"),
+        "link": "./websocket-api-tool.html",
+      },
+      { "description": _("XRP Ledger Explorer"), "link": "https://livenet.xrpl.org" },
+  ] %}
+
+  {%
+    set intermediateVideos = [
+      {
+        "src": "./assets/img/backgrounds/docs-advanced-payment-features@2x.png",
+        "title": "Advanced Payment Features",
+        "url": "https://www.youtube.com/embed/e2Iwsk37LMk?rel=0&amp;showinfo=0&amp;autoplay=1",
+      },
+      {
+        "src": "./assets/img/backgrounds/docs-governance@2x.png",
+        "title": "Governance and the Amendment Process",
+        "url": "https://www.youtube.com/embed/4GbRdanHoR4?rel=0&amp;showinfo=0&amp;autoplay=1",
+      },
+      {
+        "src": "./assets/img/backgrounds/docs-sidechains@2x.png",
+        "title": "Federated Sidechains",
+        "url": "https://www.youtube.com/embed/NhH4LM8NxgY?rel=0&amp;showinfo=0&amp;autoplay=1",
+      },
+    ]
+  %}
+  {% set useCases = [
+    {
+      "title": "On-Chain Finance",
+      "id": "on-chain-finance-use-cases",
+      "imgClass": "wallet-illustration",
+      "subItems": [
+        {
+          "description": "Trade on the decentralized exchange",
+          "link": "./trade-in-the-decentralized-exchange.html",
+        },
+        {
+          "description": "Make payments",
+          "link": "./send-xrp.html",
+        },
+        {
+          "description": "Use specialized payment types",
+          "link": "./use-specialized-payment-types.html"
+        }
+      ],
+    },
+    {
+      "title": "Tokens",
+      "id": "token-use-cases",
+      "imgClass": "token-illustration",
+      "subItems": [
+        {
+          "description": "Non-fungible Tokens",
+          "link": "./non-fungible-tokens.html",
+        },
+        {
+          "description": "Issue a stablecoin",
+          "link": "./issue-a-fungible-token.html",
+        },
+        {
+          "description": "Assign an authorized minter",
+          "link": "./authorize-minter.html",
+        },
+      ],
+    },
+    {
+      "title": "Payments",
+      "id": "payments-use-cases",
+      "imgClass": "connections-illustration",
+      "subItems": [
+        {
+          "description": "Peer to peer payments",
+          "link": "./direct-xrp-payments.html",
+        },
+        {
+          "description": "Cross-currency payments",
+          "link": "./cross-currency-payments.html",
+        },
+        {
+          "description": "Escrows",
+          "link": "./escrow.html",
+        },
+      ],
+    },
+  ]
+  %}
+  {%
+    set getStartedVideos = [
+    {
+      "src": "./assets/img/backgrounds/docs-intro-to-XRP-ledger@2x.png",
+      "title": "Intro to XRP Ledger",
+      "url": "https://www.youtube.com/embed/sVTybJ3cNyo?rel=0&amp;showinfo=0&amp;autoplay=1",
+    },
+    {
+      "src": "./assets/img/backgrounds/docs-accounts@2x.png",
+      "title": "Accounts",
+      "url": "https://www.youtube.com/embed/eO8jE6PftX8?rel=0&amp;showinfo=0&amp;autoplay=1",
+    },
+    {
+      "src": "./assets/img/backgrounds/docs-decentralized-exchange@2x.png",
+      "title": "Decentralized Exchange",
+      "url": "https://www.youtube.com/embed/VWNrHBDfXvA?rel=0&amp;showinfo=0&amp;autoplay=1",
+    },
+    {
+      "src": "./assets/img/backgrounds/docs-tokenization@2x.png",
+      "title": "Tokenization",
+      "url": "https://www.youtube.com/embed/Oj4cWOiWf4A?rel=0&amp;showinfo=0&amp;autoplay=1",
+    },
+    ]
+  %}
+  {%
+    set devTools = [
+    {
+      "title": "Faucets",
+      "link": "./xrp-testnet-faucet.html",
+      "description":
+        "Get credentials and test-XRP for XRP Ledger Testnet or Devnet.",
+    },
+    {
+      "title": "WebSocket Tool",
+      "link": "./websocket-api-tool.html",
+      "description":
+        "Send sample requests and get responses from the rippled API.",
+    },
+    {
+      "title": "XRP Ledger Explorer",
+      "link": "https://livenet.xrpl.org",
+      "description":
+        "View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.",
+    },
+    {
+      "title": "Transaction Sender",
+      "link": "./tx-sender.html",
+      "description":
+        "Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.",
+    },
+  ]
+  %}
+
+  <section class="container-new ">
+    <div class="nav card-grid flat-card-grid card-grid-3xN">
+      <div class="col">
+        {{ flatCard("./concepts.html", 
+                    "Concepts", 
+                    "Learn the \"what\" and the \"why\" behind fundamental aspects of the XRP Ledger.", 
+                    "Read the Docs",
+                    "concepts-doc-illustration") }}
+      </div>
+      <div class="col">
+        {{ flatCard("./tutorials.html", 
+                    "Tutorials", 
+                    "Get step-by-step guidance to perform common tasks with the XRP Ledger.", 
+                    "View Tutorials",
+                    "tutorial-illustration") }}
+      </div>
+      <div class="col">
+        {{ flatCard("./references.html", 
+                    "References", 
+                    "Look up reference documentation for the XRP Ledger protocol, API methods, and more.", 
+                    "View References",
+                    "ref-book-illustration") }}
+      </div>
     </div>
   </section>
 
-  <section class="container-new mb-50-until-sm" id="software-and-sdks">
-    <div class="d-flex flex-column-reverse w-100">
-      <h2 class="h4">{% trans %}Software and SDKs{% endtrans %}</h2>
-      <h6 class="eyebrow mb-3">{% trans %}Start Developing{% endtrans %}</h6>
+  <section class="container-new">
+    <h4 class="pb-4">{% trans %}Use Cases{% endtrans %}</h4>
+    <div class="card-grid card-grid-3xN use-cases">
+      {% for useCase in useCases %}
+        {{ useCasesCard(useCase.subItems, useCase.title, useCase.imgClass, useCase.id)}}
+      {% endfor %}
     </div>
+  </section>
 
-      {% set curated_cards = [
-        "get-started-using-javascript.html",
-        "get-started-using-python.html",
-        "get-started-using-java.html",
-        "get-started-using-http-websocket-apis.html"
-      ] %}
-      {% set mobile_cols = 2 %}
-      {% set show_blurbs = False %}
-      {% include 'component-curated-cards.html.jinja' %}
-  </section><!--/#software-and-sdks-->
-
-  <section class="container-new mb-50-until-sm" id="doc-types">
-    <div class="d-flex flex-column-reverse w-100">
-      <h2 class="h4">{% trans %}Article types{% endtrans %}</h2>
-      <h6 class="eyebrow mb-3">{% trans %}Dive In{% endtrans %}</h6>
+  <section class="container-new ">
+    <h4 class="pb-4">{% trans %}Getting Started{% endtrans %}</h4>
+    <div class="card-grid card-grid-2xN quickstart-card">
+      <div class="col">
+        <a href="./xrpl-quickstart.html" class="card float-up-on-hover">
+          <h5 class="mt-7">{% trans %}Quickstart to XRP Ledger{% endtrans %}</h5>
+          <p class="mb-8 mt-4">
+            {% trans %}An introduction to fundamental aspects of the XRP Ledger{% endtrans %}.
+          </p>
+          <div class="dg-lg-block mb-3">
+            <div
+              class="btn btn-primary btn-arrow get-started-button"
+            >
+              {% trans %}Get Started{% endtrans %}
+            </div>
+          </div>
+          <img
+            alt="quick-start"
+            id="quick-start-img"
+            class="quickstart-image"
+          />
+        </a>
+      </div>
+      <div class="col">
+        <div class="card-grid card-grid-2xN video-grid">
+          {% set test = "./assets/img/backgrounds/docs-intro-to-XRP-ledger@2x.png"%}
+          {% for video in getStartedVideos %}
+            {{ videoCard(video.url, video.title, video.src) }}
+          {% endfor %}
+        </div>
+        <div class="align-button-on-bottom">
+          {{ primaryButton("https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi", "Watch Full Series", true) }}
+        </div>
+      </div>
     </div>
-    {% set curated_cards = currentpage.children|selectattr("html","ne","by-label.html")|selectattr("html","ne","faq.html")|selectattr("html","ne","https://learn.xrpl.org/")|selectattr("html","ne","dev-tools.html")|map(attribute="html")|list %}
-    {% set mobile_cols = 1 %}
-    {% set show_blurbs = True %}
-    {% include 'component-curated-cards.html.jinja' %}
-  </section><!--/#doc-types-->
+  </section>
 
-  <section class="container-new mb-50-until-sm" id="run-a-network-node">
-    <div class="d-flex flex-column-reverse w-100">
-      <h2 class="h4">{% trans %}Run an XRP Ledger network node{% endtrans %}</h2>
-      <h6 class="eyebrow mb-3">{% trans %}Participate in the Network{% endtrans %}</h6>
+  <section class="container-new ">
+    <div class="d-flex flex-column-reverse col-sm-8 p-0">
+      <h3 class="h4 h2-sm">{% trans %}Interact with the XRP Ledger in a language of your choice{% endtrans %}</h3>
+      <h6 class="eyebrow mb-3">{% trans %}Explore SDKs{% endtrans %}</h6>
     </div>
-    {% set curated_cards = [
-      "the-rippled-server.html",
-      "install-rippled.html",
-      "run-rippled-as-a-validator.html",
-      "troubleshoot-the-rippled-server.html"
-    ] %}
-    {% include 'component-curated-cards.html.jinja' %}
-  </section><!--/#run-a-network-node-->
+    <div class="card-grid card-grid-2xN">
+      <div class="col">
+        <div class="card-grid langs-cards card-grid-2xN mt-10" id="langs-cards">
+          <div class="col langs">
+            <a href="./get-started-using-javascript.html">
+              <img
+                src="./assets/img/logos/javascript.svg"
+                class="circled-logo"
+              >
+              <h5 class="btn-arrow">{% trans %}Javascript{% endtrans %}</h5>
+            </a>
+          </div>
+          <div class="col langs">
+            <a href="./get-started-using-python.html">
+              <img
+                src="./assets/img/logos/python.svg"
+                class="circled-logo"
+              >
+              <h5 class="btn-arrow">{% trans %}Python{% endtrans %}</h5>
+            </a>
+          </div>
+          <div class="col langs">
+            <a href="./get-started-using-java.html">
+              <img
+                src="./assets/img/logos/java.svg"
+                class="circled-logo"
+              >
+              <h5 class="btn-arrow">{% trans %}Java{% endtrans %}</h5>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col center-image">
+        <img
+          class="img-fluid sdk-img"
+        />
+      </div>
+    </div>
+  </section>
 
-<section class="container-new mb-50-until-sm" id="docs-hot-topic">
-  <div class="d-flex flex-column-reverse w-100">
-    <h2 class="h4">{% trans %}NFTs{% endtrans %}</h2>
-    <h6 class="eyebrow mb-3">{% trans %}Hot Topic{% endtrans %}</h6>
-  </div>
-  <div class="row">
-    <div class="col-lg-6">
-      <p class="longform">{% trans %}Interested in non-fungible tokens, but concerned about their <a href="impact.html">large carbon footprint</a>? Read more about issuing NFTs on the XRP Ledger:{% endtrans %}</p>
+  <section class="container-new ">
+    <h4 class="pb-4">Intermediate Learning Sources</h4>
+    <div class="card-grid card-grid-3xN">
+      {% for video in intermediateVideos %}
+        {{ videoCard(video.url, video.title, video.src) }}
+      {% endfor %}
     </div>
-    <div class="col-lg-6">
-      <ul class="nav flex-column">
-        <li class="nav-item"><a href="nft-conceptual-overview.html" class="nav-link">NFT Conceptual Overview</a></li>
-        <li class="nav-item"><a href="nftoken.html" class="nav-link">NFToken Format</a></li>
-      </ul>
-    </div>
-  </div>
-</section><!--/#docs-hot-topic-->
+  </section>
 
-<section class="container-new mb-50-until-sm doc-index">
-  <div class="d-flex flex-column-reverse w-100">
-    <h2 id="full-doc-index" class="h4">{% trans %}Full documentation index{% endtrans %}</h2>
-    <h6 class="eyebrow mb-3">{% trans %}See Everything{% endtrans %}</h6>
-  </div>
-
-  <div class="row">
-    {% for page in currentpage.children if page.html not in ("by-label.html", "faq.html") %}
-    {% set parent_html = page.html %}
-    {% set depth = 6 %}
-    {% set show_blurbs = False %}
-    <div class="col-md-6 mt-20">
-      <a href="{% if '//' not in page.html %}{{target.prefix}}{% endif %}{{page.html}}"><h5 class="mb-3">{{page.name}}</h5></a>
-      {% include 'children.html' %}
+  <section class="container-new ">
+    <div class="card-grid card-grid-2xN">
+      <div class="col d-flex align-items-center justify-content-center">
+        <img
+          class="dev-tools-img"
+        >
+      </div>
+      <div class="col explore-links">
+        <div class="d-flex flex-column-reverse w-100">
+          <h4 class="mb-10">{% trans %}Explore, Test, Verify{% endtrans %}</h4>
+          <h6 class="mb-3">{% trans %}Explore Dev Tools{% endtrans %}</h6>
+        </div>
+        <p class="mb-20">
+          {% trans %}Use these web-based tools to assist during all stages of development, from getting your first payment to testing your implementation for best practices.{% endtrans %}
+        </p>
+        <div class="card-grid card-grid-2xN">
+          {% for card in devTools %}
+            {{ devToolsCard(card.link, card.title, card.description) }}
+          {% endfor %}
+        </div>
+        {{ primaryButton("./dev-tools.html", "View All tools", false) }}
+      </div>
     </div>
-    {% endfor %}
-  </div>
-</section><!--/.doc-index-->
+  </section>
+
+  <section class="container-new " id="docs-browse-by">
+    <div class="row card-grid card-grid-2xN">
+      <div class="col" id="popular-topics">
+       
+          <h2 class="h4">{% trans %}Browse By Recommended Pages{% endtrans %}</h2>
+          <ul class="nav flex-column">
+            {% for page in recommendedPages %}
+              <li class="nav-item"><a href="{{page.link}}" class="nav-link">{{page.description}}</a>
+            {% endfor %}
+          </ul>
+      </div><!--/#popular-topics-->
+      <div class="col">
+        <div class="card cta-card p-8-sm p-10-until-sm br-8">
+          <img src="./img/backgrounds/cta-home-purple.svg" class="d-none-sm cta cta-top-left">
+          <img src="./img/backgrounds/cta-home-green.svg" class="cta cta-bottom-right">
+          <div class="z-index-1 position-relative">
+            <h2 class="h4 mb-8-sm mb-10-until-sm">{% trans %}Get Free Test XRP{% endtrans %}</h2>
+            <p class="mb-10">{% trans %}Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.{% endtrans %}</p>
+            <a class="btn btn-primary btn-arrow" href="xrp-testnet-faucet.html">{% trans %}Generate Testnet Credentials{% endtrans %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- Browse by recommended and Generate Testnet Credentials -->
+  <section class="container-new">
+    <a href="./docs-index.html" class="ml-auto">{% trans %}See full documenation index{% endtrans %}</a>
+  </section>
 {% endblock %}
 
 {% block endbody %}
 
 {% endblock %}
-
 
 {% block analytics %}
     <script type="application/javascript">

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="../assets/xrpl.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Simple XRPL Wallet</title>
+        <link rel="preload" href="../../index.css" as="style"> 
+        <link rel="stylesheet" href="../../index.css">
+      </head>
+<body>
+    <div id="app">
+        <div class="main_content">
+          <div class="main_logo" id="heading_logo"></div>
+          <div class="links">
+            <button class="home" id="home_button">Home</button>
+            <button class="send_xrp" id="send_xrp_button">Send XRP</button>
+          </div>
+          <div class="tx_history_container">
+            <div class="heading_h3">Transaction History</div>
+            <div class="tx_history_data" id="tx_history_data"></div>
+            <button class="load_more_button" id="load_more_button">Load More</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./transaction-history.js"></script>
+</body>
+</html>

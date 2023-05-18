@@ -184,13 +184,15 @@ Transaction instructions may contain fields of any of the following types:
 | [Hash256][]   | 5         | 256        | No                   | A 256-bit arbitrary binary value. This usually represents the "SHA-512Half" hash of a transaction, ledger version, or ledger data object. |
 | [PathSet][]   | 18        | Variable   | No                   | A set of possible [payment paths](paths.html) for a [cross-currency payment](cross-currency-payments.html). |
 | [STArray][]   | 15        | Variable   | No                   | An array containing a variable number of members, which can be different types depending on the field. Two cases of this include [memos](transaction-common-fields.html#memos-field) and lists of signers used in [multi-signing](multi-signing.html). |
-<!-- | [STIssue][]   | 24        | 160 or 320 | No                   | :not_enabled: An asset definition, XRP or a token, with no quantity. | -->
 | [STObject][]  | 14        | Variable   | No                   | An object containing one or more nested fields. |
 | [UInt8][]     | 16        | 8          | No                   | An 8-bit unsigned integer. |
 | [UInt16][]    | 1         | 16         | No                   | A 16-bit unsigned integer. The `TransactionType` is a special case of this type, with specific strings mapping to integer values. |
 | [UInt32][]    | 2         | 32         | No                   | A 32-bit unsigned integer. The `Flags` and `Sequence` fields on all transactions are examples of this type. |
 
 [Length-prefixed]: #length-prefixing
+
+<!-- | [STIssue][]   | 24        | 160 or 320 | No                   | :not_enabled: An asset definition, XRP or a token, with no quantity. | -->
+
 
 In addition to all of the above field types, the following types may appear in other contexts, such as [ledger objects](ledger-object-types.html) and [transaction metadata](transaction-metadata.html):
 
