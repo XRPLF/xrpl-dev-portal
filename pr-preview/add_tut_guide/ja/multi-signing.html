@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>マルチ署名 - XRPL.org (日本語)</title>
+    <title>マルチシグ - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="マルチ署名 | XRPL.org (日本語)">
+    <meta property="og:title" content="マルチシグ | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/multi-signing.html" />
-    <meta property="og:description" content="マルチ署名を使用することで、トランザクション送信時のセキュリティが強化されます。" />
-    <meta name="description" content="マルチ署名を使用することで、トランザクション送信時のセキュリティが強化されます。" />
+    <meta property="og:description" content="マルチシグを使用することで、トランザクション送信時のセキュリティが強化されます。" />
+    <meta name="description" content="マルチシグを使用することで、トランザクション送信時のセキュリティが強化されます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v16.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v17.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -135,6 +135,9 @@
               <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
             </div>
           </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="/ja/docs-index.html">Documentation Index</a>
+          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
@@ -257,9 +260,14 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#マルチ署名">マルチ署名</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#マルチシグ">マルチシグ</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#署名者リスト">署名者リスト</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#マルチ署名済みトランザクションの送信">マルチ署名済みトランザクションの送信</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#signer-weight">Signer Weight</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#quorum">Quorum</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#wallet-locator">Wallet Locator</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#signer-weightとquorumの使用例">Signer WeightとQuorumの使用例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#マルチシグトランザクションの送信">マルチシグトランザクションの送信</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -275,13 +283,13 @@
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/payment-system-basics.html">支払いシステムの基本</a></li>
     <li class="active breadcrumb-item"><a href="/ja/accounts.html">アカウント</a></li>
-    <li class="active breadcrumb-item">マルチ署名</li>
+    <li class="active breadcrumb-item">マルチシグ</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="マルチ署名">マルチ署名<a aria-hidden="true" class="hover_anchor" href="#マルチ署名"><i class="fa fa-link"></i></a></h1>
-<p>マルチ署名は、複数のシークレットキーを組み合わせて使用してXRP Ledgerの<a href="transaction-basics.html#トランザクションの承認">トランザクションを承認する</a>手法です。アドレスで有効な承認手法（マルチ署名、<a href="cryptographic-keys.html#マスターキーペア">マスターキーペア</a>、<a href="cryptographic-keys.html#レギュラーキーペア">レギュラーキーペア</a>など）を自由に組み合わせて使用できます。（唯一の要件は、 <em>少なくとも1つの</em> 手法を有効にする必要があることです。）</p>
-<p>マルチ署名には次のメリットがあります。</p>
+        <h1 id="マルチシグ">マルチシグ<a aria-hidden="true" class="hover_anchor" href="#マルチシグ"><i class="fa fa-link"></i></a></h1>
+<p>マルチシグは、複数のシークレットキーを組み合わせて使用してXRP Ledgerの<a href="transaction-basics.html#トランザクションの承認">トランザクションを承認する</a>手法です。アドレスで有効な承認手法（マルチシグ、<a href="cryptographic-keys.html#マスターキーペア">マスターキーペア</a>、<a href="cryptographic-keys.html#レギュラーキーペア">レギュラーキーペア</a>など）を自由に組み合わせて使用できます。（唯一の要件は、 <em>少なくとも1つの</em> 手法を有効にする必要があることです。）</p>
+<p>マルチシグには次のメリットがあります。</p>
 <ul>
 <li>複数のデバイスからのキーを要求できます。これにより、不正使用者があなたの代わりにトランザクションを送信するには複数のマシンを悪用しなければならなくなります。</li>
 <li>複数のユーザー間で1つのアドレスの管理を共有できます。この場合、各ユーザーが、そのアドレスからトランザクションを送信する際に必要な複数のキーのいずれか1つだけを所有します。</li>
@@ -289,21 +297,56 @@
 <li>その他のメリットもあります。</li>
 </ul>
 <h2 id="署名者リスト">署名者リスト<a aria-hidden="true" class="hover_anchor" href="#署名者リスト"><i class="fa fa-link"></i></a></h2>
-<p>マルチ署名を使用するには、あなたの代理として署名できるアドレスのリストを作成する必要があります。</p>
-<p><a href="signerlistset.html">SignerListSetトランザクション</a>は、あなたのアドレスからのトランザクションを承認できるアドレスを定義します。SignerListには最大8個のアドレスを指定できます。SignerListのquorum値とweight値を使用して、必要な署名の数と組み合わせを制御できます。</p>
-<h2 id="マルチ署名済みトランザクションの送信">マルチ署名済みトランザクションの送信<a aria-hidden="true" class="hover_anchor" href="#マルチ署名済みトランザクションの送信"><i class="fa fa-link"></i></a></h2>
-<p>マルチ署名済みトランザクションを正常に送信するには、以下のすべての条件を満たす必要があります。</p>
+<p>マルチシグを使用するには、あなたの代理として署名できるアドレスのリストを作成する必要があります。</p>
+<p><a href="signerlistset.html">SignerListSetトランザクション</a>は、<em>署名者リスト</em>（自分のアドレスからのトランザクションを承認できるアドレスのセット）を定義します。署名者リストには、1～32のアドレスを含めることができます。このリストには、自分のアドレスを含めることはできず、重複して登録することはできません。リストの <em>Signer Weight</em> と <em>Quorum</em> の設定を使用することで、どのような組み合わせでどれだけの署名が必要かを制御することができます。</p>
+<p><em>(<a href="known-amendments.html#expandedsignerlist">ExpandedSignerList amendment</a>により更新されました。)</em></p>
+<h3 id="signer-weight">Signer Weight<a aria-hidden="true" class="hover_anchor" href="#signer-weight"><i class="fa fa-link"></i></a></h3>
+<p>リスト内の各署名者にウェイトを割り当てます。ウェイトは、リスト上の他の署名者と比較して、その署名者の相対的な権限を表します。値が高いほど、より多くの権限を持つことになります。個々のウェイト値は、2<sup>16</sup>-1を超えることはできません。</p>
+<h3 id="quorum">Quorum<a aria-hidden="true" class="hover_anchor" href="#quorum"><i class="fa fa-link"></i></a></h3>
+<p>リストの定足数(quorum)の値は、トランザクションを承認するために必要な最小のウェイト合計です。クォーラムは0より大きく、署名者リストのウェイト値の合計以下でなければならない。つまり、与えられた署名者のウェイトでクォーラムを達成することが可能でなければなりません。</p>
+<h3 id="wallet-locator">Wallet Locator<a aria-hidden="true" class="hover_anchor" href="#wallet-locator"><i class="fa fa-link"></i></a></h3>
+<p>また、リスト内の各署名者のエントリに最大256ビットの任意のデータを追加することができます。このデータはネットワークで必要とされたり使用されたりすることはありませんが、スマートコントラクトや他のアプリケーションが署名者に関する他のデータを特定したり確認したりするために使用することができます。</p>
+<p><em>(<a href="known-amendments.html#expandedsignerlist">ExpandedSignerList amendment</a>によって追加されました。)</em></p>
+<h3 id="signer-weightとquorumの使用例">Signer WeightとQuorumの使用例<a aria-hidden="true" class="hover_anchor" href="#signer-weightとquorumの使用例"><i class="fa fa-link"></i></a></h3>
+<p>ウェイトと定足数により、アカウントを管理する責任ある参加者への相対的な信頼と権限に基づき、トランザクションごとに適切なレベルの監視を設定することができます。</p>
+<p>共有アカウントのユースケースの場合、定足数1のリストを作成し、すべての参加者に1のウェイトを与えることができます。</p>
+<p>非常に重要なアカウントの場合、定足数を3に設定し、重みを1とする3人の参加者を設定することができます。すべての参加者がトランザクションごとに同意して承認する必要があります。</p>
+<p>CEOのウェイトを3、副社長3人のウェイトを各2、取締役3人のウェイトを各1に割り当てたとする。このアカウントのトランザクションを承認するには、取締役3名全員（合計ウェイト3）、副社長1名と取締役1名（合計ウェイト3）、副社長2名（合計ウェイト4）、またはCEO（合計ウェイト3）の承認が必要となります。</p>
+<p>先の3つのユースケースでは、レギュラーキーを設定せずにマスターキーを無効にすることで、マルチシグが唯一の<a href="transaction-basics.html#トランザクションの識別">トランザクションの承認</a>の方法となるようにします。</p>
+<p>"バックアッププラン"としてマルチシグリストを作成するシナリオがあるかもしれません。アカウント所有者は、通常、トランザクションにレギュラーキー(マルチシグではない)を使用します。もしアカウント所有者が秘密鍵を紛失した場合、通常の鍵に代わるトランザクションにマルチシグするよう友人に依頼することができます。</p>
+<h2 id="マルチシグトランザクションの送信">マルチシグトランザクションの送信<a aria-hidden="true" class="hover_anchor" href="#マルチシグトランザクションの送信"><i class="fa fa-link"></i></a></h2>
+<p>マルチシグトランザクションを正常に送信するには、以下のすべての条件を満たす必要があります。</p>
 <ul>
-<li>トランザクションを送信するアドレス（<code>Account</code>に指定されるアドレス）は、<a href="signerlist.html">レジャーに<code>SignerList</code></a>を所有する必要があります。</li>
+<li>トランザクションを送信するアドレス（<code>Account</code>に指定されるアドレス）は、<a href="signerlist.html">レジャーに<code>SignerList</code></a>を所有する必要があります。この方法については、<a href="set-up-multi-signing.html">マルチシグを設定する</a>を参照してください。</li>
 <li>トランザクションに<code>SigningPubKey</code>フィールドを空の文字列として含める必要があります。</li>
 <li>トランザクションに、署名の配列が指定されている<a href="transaction-common-fields.html#signersフィールド"><code>Signers</code>フィールド</a>を含める必要があります。</li>
-<li><code>Signers</code>配列に含まれている署名は、SignerListで定義されている署名と一致している必要があります。</li>
-<li>指定された署名で、これらの署名者に関連付けられている<code>weight</code>の合計が、SignerListの<code>quorum</code>以上である必要があります。</li>
+<li><code>Signers</code>配列に含まれている署名は、<code>SignerList</code>で定義されている署名と一致している必要があります。</li>
+<li>指定された署名で、これらの署名者に関連付けられている<code>weight</code>の合計が、<code>SignerList</code>の<code>quorum</code>以上である必要があります。</li>
 <li><a href="transaction-cost.html">トランザクションコスト</a>（<code>Fee</code>フィールドで指定）は、通常のトランザクションコストの（N+1）倍以上である必要があります。このNは、指定される署名の数です。</li>
 <li>トランザクションのすべてのフィールドは、署名収集前に定義する必要があります。フィールドの<a href="transaction-common-fields.html#自動入力可能なフィールド">自動入力</a>は実行できません。</li>
-<li><code>Signers</code> 配列がバイナリ形式で指定される場合、この配列は署名者アドレスの数値に基づいて、低い値から順にソートされている必要があります。（JSONとして提出される場合は、<a href="submit_multisigned.html">submit_multisignedメソッド</a> がこの処理を自動的に実行します。）</li>
+<li><code>Signers</code>配列がバイナリ形式で指定される場合、この配列は署名者アドレスの数値に基づいて、低い値から順にソートされている必要があります。（JSONとして提出される場合は、<a href="submit_multisigned.html">submit_multisignedメソッド</a>がこの処理を自動的に実行します。）</li>
 </ul>
-<p>詳細は、<a href="set-up-multi-signing.html">マルチ署名の設定</a>を参照してください。</p>
+<p>詳細は、<a href="set-up-multi-signing.html">マルチシグの設定</a>を参照してください。</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>チュートリアル:</strong><ul>
+<li><a href="set-up-multi-signing.html">マルチシグを設定する</a></li>
+<li><a href="send-a-multi-signed-transaction.html">マルチシグトランザクションを送信する</a></li>
+</ul>
+</li>
+<li><strong>コンセプト:</strong><ul>
+<li><a href="cryptographic-keys.html">暗号鍵</a></li>
+<li><a href="transaction-cost.html#特別なトランザクションコスト">マルチシグトランザクションの特別なトランザクションコスト</a></li>
+</ul>
+</li>
+<li><strong>リファレンス:</strong><ul>
+<li><a href="signerlistset.html">SignerListSetトランザクション</a></li>
+<li><a href="signerlist.html">SignerListオブジェクト</a></li>
+<li><a href="sign_for.html">sign_forメソッド</a></li>
+<li><a href="submit_multisigned.html">submit_multisignedメソッド</a></li>
+</ul>
+</li>
+</ul>
 <!-- -->
 <!-- API object types -->
 <!-- -->
@@ -339,21 +382,26 @@
     <a class="nav-link" href="/ja/docs.html">ドキュメント</a>
   </div>
     
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/docs-index.html">Documentation Index</a>
+  </div>
+
+    
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="true" aria-controls="tree_nav_group_1"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="true" aria-controls="tree_nav_group_2"></a>
 
         <a class="nav-link" href="/ja/concepts.html">コンセプト</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_1">
+    <nav class="nav flex-column show " id="tree_nav_group_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_1" aria-expanded="false" aria-controls="tree_nav_group_1_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
 
         <a class="nav-link" href="/ja/introduction.html">基本</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
@@ -376,19 +424,19 @@
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_1_2" aria-expanded="true" aria-controls="tree_nav_group_1_2"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="true" aria-controls="tree_nav_group_2_2"></a>
 
         <a class="nav-link" href="/ja/payment-system-basics.html">支払いシステムの基本</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_1_2">
+    <nav class="nav flex-column show " id="tree_nav_group_2_2">
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_1_2_1" aria-expanded="true" aria-controls="tree_nav_group_1_2_1"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_2_2_1" aria-expanded="true" aria-controls="tree_nav_group_2_2_1"></a>
 
         <a class="nav-link" href="/ja/accounts.html">アカウント</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_1_2_1">
+    <nav class="nav flex-column show " id="tree_nav_group_2_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cryptographic-keys.html">暗号鍵</a>
@@ -396,7 +444,7 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチ署名</a>
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
   </div>
 
       
@@ -431,11 +479,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_2_4" aria-expanded="false" aria-controls="tree_nav_group_1_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_2_4"></a>
 
         <a class="nav-link" href="/ja/transaction-basics.html">トランザクションの基本</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-cost.html">トランザクションコスト</a>
@@ -462,11 +510,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_3" aria-expanded="false" aria-controls="tree_nav_group_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
 
         <a class="nav-link" href="/ja/payment-types.html">支払いのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
@@ -504,11 +552,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4" aria-expanded="false" aria-controls="tree_nav_group_1_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="/ja/tokens.html">トークン</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
@@ -522,11 +570,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_3" aria-expanded="false" aria-controls="tree_nav_group_1_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
         <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
@@ -562,6 +610,11 @@
     <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+  </div>
+
     </nav>
 
   </div>
@@ -569,11 +622,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_4_4" aria-expanded="false" aria-controls="tree_nav_group_1_4_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_4"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_4_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -615,16 +668,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_5" aria-expanded="false" aria-controls="tree_nav_group_1_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -647,11 +695,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6" aria-expanded="false" aria-controls="tree_nav_group_1_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="/ja/consensus-network.html">コンセンサスネットワーク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus.html">コンセンサス</a>
@@ -695,11 +743,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_6_9" aria-expanded="false" aria-controls="tree_nav_group_1_6_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_9" aria-expanded="false" aria-controls="tree_nav_group_2_6_9"></a>
 
         <a class="nav-link" href="/ja/amendments.html">Amendment</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_6_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
@@ -731,11 +779,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7" aria-expanded="false" aria-controls="tree_nav_group_1_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/rippled-server-modes.html">rippledサーバーのモード</a>
@@ -749,11 +797,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1_7_3" aria-expanded="false" aria-controls="tree_nav_group_1_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_7_3"></a>
 
         <a class="nav-link" href="/ja/ledger-history.html">レジャー履歴</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_1_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/online-deletion.html">オンライン削除</a>
@@ -794,19 +842,19 @@
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
 
         <a class="nav-link" href="/ja/tutorials.html">チュートリアル</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
         <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
@@ -849,11 +897,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
 
         <a class="nav-link" href="/ja/get-started.html">始めましょう</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/public-servers.html">公開サーバー</a>
@@ -896,14 +944,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="/ja/build-apps.html">アプリケーションの構築</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-js.html">Build A Browser Wallet Using JS</a>
   </div>
 
     </nav>
@@ -913,11 +966,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_4"></a>
 
         <a class="nav-link" href="/ja/production-readiness.html">本番環境への準備</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/set-up-secure-signing.html">安全な署名の設定</a>
@@ -940,11 +993,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_5"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -962,12 +1015,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチ署名の設定</a>
+    <a class="nav-link nav-leaf" href="/ja/set-up-multi-signing.html">マルチシグの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a>
+    <a class="nav-link nav-leaf" href="/ja/send-a-multi-signed-transaction.html">マルチシグトランザクションの送信</a>
   </div>
 
       
@@ -992,19 +1045,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_1" aria-expanded="false" aria-controls="tree_nav_group_3_6_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1037,11 +1090,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_2" aria-expanded="false" aria-controls="tree_nav_group_3_6_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1054,11 +1107,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6_3" aria-expanded="false" aria-controls="tree_nav_group_3_6_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1100,11 +1153,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1137,11 +1190,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_8" aria-expanded="false" aria-controls="tree_nav_group_3_8"></a>
 
         <a class="nav-link" href="/ja/xrp-ledger-businesses.html">ビジネスとしてのXRP Ledger</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a>
@@ -1164,19 +1217,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9" aria-expanded="false" aria-controls="tree_nav_group_3_9"></a>
 
         <a class="nav-link" href="/ja/manage-the-rippled-server.html">rippledサーバの管理</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_1" aria-expanded="false" aria-controls="tree_nav_group_2_9_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_1" aria-expanded="false" aria-controls="tree_nav_group_3_9_1"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -1230,11 +1283,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_2" aria-expanded="false" aria-controls="tree_nav_group_2_9_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_2" aria-expanded="false" aria-controls="tree_nav_group_3_9_2"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -1302,11 +1355,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_3" aria-expanded="false" aria-controls="tree_nav_group_2_9_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_3" aria-expanded="false" aria-controls="tree_nav_group_3_9_3"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">ピアリングの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -1354,11 +1407,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_4" aria-expanded="false" aria-controls="tree_nav_group_2_9_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_4" aria-expanded="false" aria-controls="tree_nav_group_3_9_4"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -1381,11 +1434,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9_5" aria-expanded="false" aria-controls="tree_nav_group_2_9_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_9_5" aria-expanded="false" aria-controls="tree_nav_group_3_9_5"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_9_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -1432,11 +1485,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_10" aria-expanded="false" aria-controls="tree_nav_group_3_10"></a>
 
         <a class="nav-link" href="/ja/manage-the-clio-server.html">Clioサーバの管理</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
@@ -1453,27 +1506,27 @@
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
 
         <a class="nav-link" href="/ja/references.html">リファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
 
         <a class="nav-link" href="/ja/protocol-reference.html">XRP Ledgerプロトコルリファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_1" aria-expanded="false" aria-controls="tree_nav_group_4_1_1"></a>
 
         <a class="nav-link" href="/ja/basic-data-types.html">基本的なデータ型</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/base58-encodings.html">base58エンコード</a>
@@ -1496,11 +1549,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_2"></a>
 
         <a class="nav-link" href="/ja/ledger-data-formats.html">レジャーのデータ型</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-header.html">レジャーヘッダー</a>
@@ -1514,11 +1567,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_2_3"></a>
 
         <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -1610,11 +1663,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3"></a>
 
         <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-common-fields.html">トランザクションの共通フィールド</a>
@@ -1623,11 +1676,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_2"></a>
 
         <a class="nav-link" href="/ja/transaction-types.html">トランザクションのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
@@ -1755,11 +1808,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_3"></a>
 
         <a class="nav-link" href="/ja/pseudo-transaction-types.html">疑似トランザクション</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/enableamendment.html">EnableAmendment</a>
@@ -1782,11 +1835,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_1_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_1_3_4"></a>
 
         <a class="nav-link" href="/ja/transaction-results.html">トランザクションの結果</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/tec-codes.html">tecコード</a>
@@ -1842,19 +1895,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
 
         <a class="nav-link" href="/ja/client-libraries.html">クライアントライブラリ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_2_1"></a>
 
         <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript/TypeScript クライアントライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">ripple-lib 1.xからxrpl.js 2.xへの移行ガイド</a>
@@ -1886,19 +1939,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
 
         <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_1"></a>
 
         <a class="nav-link" href="/ja/api-conventions.html">APIの規則</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/request-formatting.html">要求フォーマット</a>
@@ -1936,19 +1989,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2"></a>
 
         <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_1"></a>
 
         <a class="nav-link" href="/ja/account-methods.html">Accountメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account_channels.html">account_channels</a>
@@ -2006,11 +2059,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_2"></a>
 
         <a class="nav-link" href="/ja/ledger-methods.html">Ledgerメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger.html">ledger</a>
@@ -2043,11 +2096,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_3"></a>
 
         <a class="nav-link" href="/ja/transaction-methods.html">Transactionメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
@@ -2080,11 +2133,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_4"></a>
 
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
@@ -2122,11 +2175,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_5"></a>
 
         <a class="nav-link" href="/ja/payment-channel-methods.html">Payment Channelメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/channel_authorize.html">channel_authorize</a>
@@ -2144,11 +2197,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_6"></a>
 
         <a class="nav-link" href="/ja/subscription-methods.html">Subscriptionメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/subscribe.html">subscribe</a>
@@ -2166,11 +2219,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_7"></a>
 
         <a class="nav-link" href="/ja/server-info-methods.html">Server Infoメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/fee.html">fee</a>
@@ -2198,11 +2251,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_8"></a>
 
         <a class="nav-link" href="/ja/clio-methods.html">Clio Serverメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info</a>
@@ -2211,6 +2264,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
   </div>
 
       
@@ -2225,11 +2283,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_3_3_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_4_3_2_9"></a>
 
         <a class="nav-link" href="/ja/utility-methods.html">ユーティリティメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/json.html">json</a>
@@ -2256,19 +2314,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3"></a>
 
         <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_1"></a>
 
         <a class="nav-link" href="/ja/key-generation-methods.html">キー生成メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/validation_create.html">validation_create</a>
@@ -2286,11 +2344,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_2"></a>
 
         <a class="nav-link" href="/ja/logging-and-data-management-methods.html">ログとデータの管理メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/can_delete.html">can_delete</a>
@@ -2338,11 +2396,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_3"></a>
 
         <a class="nav-link" href="/ja/server-control-methods.html">サーバ操作メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger_accept.html">ledger_accept</a>
@@ -2365,11 +2423,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_4"></a>
 
         <a class="nav-link" href="/ja/signing-methods.html">署名メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
@@ -2387,11 +2445,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_5"></a>
 
         <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
@@ -2424,11 +2482,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_3_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_4_3_3_6"></a>
 
         <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>
@@ -2485,11 +2543,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_5" aria-expanded="false" aria-controls="tree_nav_group_4_3_5"></a>
 
         <a class="nav-link" href="/ja/peer-port-methods.html">ピアポートメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
@@ -2527,11 +2585,11 @@
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
 
         <a class="nav-link" href="/ja/by-label.html">ラベル別に閲覧</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/label-accounts.html">アカウント</a>
@@ -2629,11 +2687,11 @@
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPCツール</a>
@@ -2700,6 +2758,7 @@
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
+            <li class="nav-item"><a href="/ja/docs-index.html" class="nav-link">Documentation Index</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>

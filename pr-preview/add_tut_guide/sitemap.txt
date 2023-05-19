@@ -11,6 +11,7 @@ https://xrpl.org/faq.html
 https://xrpl.org/privacy-policy.html
 https://xrpl.org/technical-faq.html
 https://xrpl.org/docs.html
+https://xrpl.org/docs-index.html
 https://xrpl.org/concepts.html
 https://xrpl.org/introduction.html
 https://xrpl.org/intro-to-consensus.html
@@ -50,6 +51,7 @@ https://xrpl.org/nftoken-authorized-minting.html
 https://xrpl.org/nftoken-auctions.html
 https://xrpl.org/nft-collections.html
 https://xrpl.org/nft-fixed-supply.html
+https://xrpl.org/nft-apis.html
 https://xrpl.org/freezes.html
 https://xrpl.org/common-misconceptions-about-freezes.html
 https://xrpl.org/rippling.html
@@ -114,6 +116,7 @@ https://xrpl.org/monitor-incoming-payments-with-websocket.html
 https://xrpl.org/use-simple-xrp-payments.html
 https://xrpl.org/build-apps.html
 https://xrpl.org/build-a-desktop-wallet-in-python.html
+https://xrpl.org/build-a-browser-wallet-in-js.html
 https://xrpl.org/production-readiness.html
 https://xrpl.org/set-up-secure-signing.html
 https://xrpl.org/look-up-transaction-results.html
@@ -344,6 +347,7 @@ https://xrpl.org/server_state.html
 https://xrpl.org/clio-methods.html
 https://xrpl.org/server_info-clio.html
 https://xrpl.org/ledger-clio.html
+https://xrpl.org/nft_history.html
 https://xrpl.org/nft_info.html
 https://xrpl.org/utility-methods.html
 https://xrpl.org/json.html
