@@ -7,8 +7,6 @@ parent: contribute.html
 
 Each XRP Ledger tutorial follows the same format.
 
-## Description
-
 1. A brief description of the features illustrated in the tutorial.
 2. Prerequisites for running the code, if needed, or links to the sample code.
 3. Usage examples of the features in the tutorial.
