@@ -31,7 +31,7 @@ Provide links to any required software and to all of the example code needed to 
 
 ## Usage Example
 
-![Usage](/img/tut-struct3.png)
+![Usage](img/tut-struct3.png)
 
 Start by providing a finished, working example of the tutorial application. This is an opportunity for immediate success working with the software to solve a problem.
 
