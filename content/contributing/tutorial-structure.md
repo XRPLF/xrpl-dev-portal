@@ -5,7 +5,7 @@ parent: contribute.html
 
 # Tutorial Structure
 
-Each new XRPLF tutorial follows the same basic format.
+Each XRP Ledger tutorial follows the same format.
 
 ## Description
 
