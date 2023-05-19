@@ -310,7 +310,7 @@
 <ol>
 <li>The seller creates an NFT using <code>NFTokenMint</code>.</li>
 <li>The bidders make offers using <code>NFTokenCreateOffer</code>, setting the broker as the destination.</li>
-<li>The broker selects the winning bid, subtracts the amount to be collected as a fee, then requests the seller sign a sell off for this amount via <code>NFTokenCreateOffer</code>.</li>
+<li>The broker selects the winning bid, subtracts the amount to be collected as a fee, then requests the seller sign a sell offer for this amount via <code>NFTokenCreateOffer</code>.</li>
 <li>The seller signs the requested offer, setting the broker as the destination.</li>
 <li>The broker completes the sale using <code>NFTokenAcceptOffer</code>, and receives the broker fee.</li>
 <li>The broker cancels any remaining bids using <code>NFTokenCancelOffer</code>.</li>
