@@ -1237,7 +1237,7 @@ pages:
         html: tutorials.html
         parent: docs.html
         top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
+        template: pagetype-tutorials.html.jinja
         blurb: XRP Ledgerで一般的なタスクを実行するためのステップバイステップのガイダンスを紹介します。
         targets:
             - ja
