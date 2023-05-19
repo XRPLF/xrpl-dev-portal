@@ -43,7 +43,7 @@ Provide links to any required software and to all of the example code needed to 
 
 Start by providing a finished, working example of the tutorial application. This is an opportunity for immediate success working with the software to solve a problem.
 
-Use screenshots for each step of the tutorial – these allow the user to understand the tutorial without having to run the code themselves. Of course we _want _them to run the code, but this gives them a choice.
+Use screenshots for each step of the tutorial – these allow the user to understand the tutorial without having to run the code themselves. Of course we _want_ them to run the code, but this gives them a choice.
 
 Describe the sunny day scenario. The application should run without problems if there is an uninterrupted connection to the internet. Don’t provide a lot of troubleshooting information, unless it’s pertinent to the tutorial.
 
