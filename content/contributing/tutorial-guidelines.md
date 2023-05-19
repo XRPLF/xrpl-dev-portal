@@ -62,7 +62,7 @@ Tutorials further combine a number of features to work together to solve a busin
 
 ## Use Cases
 
-Use cases describe how to pull together features of the XRPL to create a practical application that solves a business problem. They provide context and assistance with the decision making process for what elements to include, then provide links to the appropriate topics for each step of implementation. 
+Use cases describe how to pull together multiple features to create a practical application that solves a business problem. They provide context and assistance with the decision making process, then provide links to the appropriate topics for each step of implementation. 
 
 
 # Tutorial Components
