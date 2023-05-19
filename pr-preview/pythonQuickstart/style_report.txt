@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 61 possible spelling errors:
+Found 60 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gies, gif, gibs
+  gifs: kifs, gis, gits
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -27,55 +27,54 @@ Found 61 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slab, sias, skas
+  slas: slays, elas, salas
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  immediateofferkilled: 
   depositpreauthamendment: 
   disallowincoming: 
-  fixnonfungibletokensv1_2: 
-  fixuniversalnumber: 
   xrpfees: 
+  fixuniversalnumber: 
+  immediateofferkilled: 
+  fixnonfungibletokensv1_2: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
   asfdisallowincomingnftoffer: 
-  asfdisallowincomingcheck: 
   asfdisallowincomingtrustline: 
-  30d: 3-d, 3d, 3rd
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingcheck: 
+  30d: 3rd, 3-d, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mod., mode, modi
-  getaccount: 
-  getaccountinfo: 
-  sendxrp: 
+  mod1: mod., modi, mod
+  get_account: 
+  get_account_info: 
+  send_xrp: 
   lesson1: lessons, lesson
-  tkinter: tinter, twinter
+  tkinter: twinter, tinter
   getstandbyaccount: 
-  standbyaccountinfo: 
-  standbysendxrp: 
+  get_standby_account_info: 
+  standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mod., mode, modi
-  testnet___url: 
-  sendcurrency: 
-  getbalances: 
-  configureaccount: 
+  mod2: mod., modi, mod
+  send_currency: 
+  get_balance: 
+  configure_account: 
   lesson2: lessons, lesson
 
 <Page '3. Mint and Burn NFTokens (Python)' (py-mint-and-burn-nftokens.html)> Unknown Words:
-  mod3: mod., mode, modi
+  mod3: mod., modi, mod
   minttoken: 
   gettokens: 
-  burntoken: 
+  burn_token: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3rd, 3-d, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   disallowincoming: 
@@ -207,7 +206,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 55
   Words: 743
-  Characters: 4,619
+  Characters: 4,620
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
