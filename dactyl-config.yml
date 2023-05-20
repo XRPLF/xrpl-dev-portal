@@ -565,6 +565,14 @@ pages:
         blurb: Browse the documentation based on practical use cases.
         targets:
             - en
+
+    -   name: ユースケース
+        html: use-cases.html
+        parent: docs.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: 実践的なユースケースに基づいたドキュメントを閲覧することができます。
+        targets:
             - ja
 
 
@@ -576,6 +584,14 @@ pages:
         blurb: Practical examples for using different types of payment on the XRP Ledger.
         targets:
             - en
+
+    -   name: Payments
+        html: payments-uc.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPレジャーでさまざまな種類の支払いを使用するための実践的な例を紹介します。
+        targets:
             - ja
 
     -   md: use-cases/payments/peer-to-peer-payments-uc.md
@@ -604,6 +620,14 @@ pages:
         blurb: Work with a variety of tokens supported by the XRP Ledger.
         targets:
             - en
+
+    -   name: Tokenization
+        html: tokenization.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPレジャーがサポートする様々なトークンと連携することができます。
+        targets:
             - ja
 
     -   md: use-cases/tokenization/stablecoin-issuer.md
@@ -645,6 +669,14 @@ pages:
         blurb: Enabling fast, secure financial transactions without a central authority.
         targets:
             - en
+
+    -   name: 分散型金融
+        html: defi-uc.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: 非中央集権で迅速かつ安全な金融トランザクションを可能にします。
+        targets:
             - ja
 
     -   md: use-cases/defi/algorithmic-trading.md
@@ -1876,7 +1908,7 @@ pages:
         targets:
             - en
 
-    -   name: 専門化した支払いタイプの使用
+    -   name: 高度な支払いタイプの使用
         html: use-specialized-payment-types.html
         parent: tasks.html
         template: pagetype-category.html.jinja
@@ -2120,6 +2152,13 @@ pages:
         nav_omit: true
         targets:
             - en
+
+    -   name: 相互運用性 - EVM Sidechain
+        html: evm-sidechains.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
+        nav_omit: true
+        targets:
             - ja
 
     # Redirect for "Get Started with the EVM Sidechain" tutorial page
@@ -4249,8 +4288,7 @@ pages:
         targets:
             - en
 
-        # TODO: Translate page name.
-    -   name: スタンドアロンモードでrippledをテスト
+    -   name: テストと監査
         html: use-stand-alone-mode.html
         parent: infrastructure.html
         blurb: 新機能や実験用に、スタンドアロンモードを使用してフルネットワークで機能をテストできます。
@@ -4290,7 +4328,7 @@ pages:
         targets:
             - en
 
-    -   name: rippledのトラブルシューティング
+    -   name: トラブルシューティング
         html: troubleshoot-the-rippled-server.html
         parent: infrastructure.html
         blurb: rippledサーバーのあらゆる種類の問題をトラブルシューティングします。
