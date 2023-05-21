@@ -130,7 +130,7 @@ const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // テ
 
 ### 4. XRP Ledgerの参照
 
-クライアントの`request()`メソッドを使って、XRP Ledgerの[WebSocket API](https://xrpl.org/request-formatting.html)にアクセスします。例えば、以下のようになります。
+クライアントの`request()`メソッドを使って、XRP Ledgerの[WebSocket API](request-formatting.html)にアクセスします。例えば、以下のようになります。
 
 {{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Get info", end_before="// Listen to ledger close events", language="js") }}
 

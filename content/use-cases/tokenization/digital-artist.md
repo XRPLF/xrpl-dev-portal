@@ -78,7 +78,7 @@ When listing NFTs for sale, it can be useful to use object metadata to organize 
 
 See:
 
-- [Clio setup](https://xrpl.org/install-clio-on-ubuntu.html) 
+- [Clio setup](install-clio-on-ubuntu.html) 
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 
