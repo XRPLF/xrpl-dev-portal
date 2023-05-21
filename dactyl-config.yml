@@ -506,7 +506,7 @@ pages:
         html: introduction.html
         parent: docs.html
         template: pagetype-category.html.jinja
-        blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
+        blurb: XRPレジャー(XRPL)の主要な機能を簡単に紹介します。これを読んでXRPLのハイレベルな理解を深め、その後、特に興味のある分野についての詳細を読むことができます。XRPレジャーは、アカウント間のトークンのデジタルトランザクションを永続的に記録するブロックチェーンです。以下のセクションは、その文章で紹介された概念を拡張するものです。
         targets:
             - ja
 
@@ -514,12 +514,20 @@ pages:
         parent: introduction.html
         targets:
             - en
+
+    -  md: concepts/introduction/what-is-xrpl.ja.md
+       parent: introduction.html
+       targets:
             - ja
 
     -   md: concepts/introduction/what-is-xrp.md
         parent: introduction.html
         targets:
             - en
+
+    -  md: concepts/introduction/what-is-xrp.ja.md
+       parent: introduction.html
+       targets:
             - ja
     
         # Redirect from old XRP page
@@ -536,12 +544,20 @@ pages:
         parent: introduction.html
         targets:
             - en
+
+    -  md: concepts/introduction/crypto-wallets.ja.md
+       parent: introduction.html
+       targets:
             - ja
 
     -   md: concepts/introduction/txn-and-requests.md
         parent: introduction.html
         targets:
             - en
+
+    -  md: concepts/introduction/txn-and-requests.ja.md
+       parent: introduction.html
+       targets:
             - ja
 
     -   md: concepts/introduction/software-ecosystem.md
@@ -549,7 +565,6 @@ pages:
         targets:
             - en
 
-        # TODO: update based on EN changes
     -   md: concepts/introduction/software-ecosystem.ja.md
         parent: introduction.html
         targets:

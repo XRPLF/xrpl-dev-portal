@@ -25,9 +25,9 @@ Here is a sample transaction in JSON format. This transaction transfers 1 XRP fr
 ```json
 {
   "TransactionType": "Payment",
-  "Account": rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn,
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
   "Amount": 1000000,
-  "Destination": ra5nK24KXen9AHvsdFTKHSANinZseWnPcX
+  "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
 }
 ```
 
