@@ -17,36 +17,36 @@ You can learn more in the tutorial [Assign an Authorized Minter](authorize-minte
 
 ## Set up a rippled instance
 
-If you want to set up a larger site with high volume, it might be worth investing in your own XRP Ledger server instance. See [Install rippled](https://xrpl.org/install-rippled.html).
+If you want to set up a larger site with high volume, it might be worth investing in your own XRP Ledger server instance. See [Install rippled](install-rippled.html).
 
 ## Set up your marketplace
 
-Rather than designing NFTs yourself, you coordinate with an NFT creator to become an authorized minter and generate NFTs on their behalf. This allows the creator to focus on making new NFTs while you handle production and sales of the NFTs. See [Authorized Minter](https://xrpl.org/nftoken-authorized-minting.html).
+Rather than designing NFTs yourself, you coordinate with an NFT creator to become an authorized minter and generate NFTs on their behalf. This allows the creator to focus on making new NFTs while you handle production and sales of the NFTs. See [Authorized Minter](nftoken-authorized-minting.html).
 
-Once you finish creating NFTs, the creator can revoke your privileges and reassert control over the NFTs. You might also transfer the tokens to a marketplace that will handle sales of the NFTs. You can act as a broker to match sell offers to buy offers. See [Running an NFT auction](https://xrpl.org/nftoken-auctions.html).
+Once you finish creating NFTs, the creator can revoke your privileges and reassert control over the NFTs. You might also transfer the tokens to a marketplace that will handle sales of the NFTs. You can act as a broker to match sell offers to buy offers. See [Running an NFT auction](nftoken-auctions.html).
 
-To mint your first NFTs on behalf of another account, see [Authorizing Another Account to Mint Your NFTs](https://xrpl.org/authorize-minter.html).
+To mint your first NFTs on behalf of another account, see [Authorizing Another Account to Mint Your NFTs](authorize-minter.html).
 
-If you, as the owner or issuer, want to be able to burn the token in the future, set the `Flags` field to _1._ To make the NFT transferable, set the `Flags` field to _8_. Set the `Flags` field to _9_ to make the NFT both burnable and transferable. See[ Burnable flag](https://xrpl.org/nftoken.html#nftoken-flags) and [Transferable flag](https://xrpl.org/nftoken.html#nftoken-flags).
+If you, as the owner or issuer, want to be able to burn the token in the future, set the `Flags` field to _1._ To make the NFT transferable, set the `Flags` field to _8_. Set the `Flags` field to _9_ to make the NFT both burnable and transferable. See[ Burnable flag](nftoken.html#nftoken-flags) and [Transferable flag](nftoken.html#nftoken-flags).
 
-You can arrange for the creator to receive royalties from future sales by setting a <code>transfer fee<em>. </em></code>This is a value from 0-50000 representing 0-50% of the sale price. See [Transfer Fee](https://xrpl.org/nftoken.html#transferfee).
+You can arrange for the creator to receive royalties from future sales by setting a <code>transfer fee<em>. </em></code>This is a value from 0-50000 representing 0-50% of the sale price. See [Transfer Fee](nftoken.html#transferfee).
 
 The NFToken URL is a link to the location where the content of the NFT is stored. One option is create an IPFS account and store the NFToken content at a persistent URL. See [Best Practices for Storing NFT Data](https://docs.ipfs.io/how-to/best-practices-for-nft-data).
 
 Considerations that might be most interesting to you:
 
-* [Minting NFTs into Collections](https://xrpl.org/nft-collections.html)
+* [Minting NFTs into Collections](nft-collections.html)
 Use the TokenTaxon field to gather a set of NFTs centered around a specific theme or purpose. 
-* [Guaranteeing a Fixed Supply of NFTs](https://xrpl.org/nft-fixed-supply.html)
-You can assure scarcity of NFTs you create by creating them with what might be characterized as a “burner” account that you use to mint a set number of NFTs for another account, then delete the account you used to mint the NFTs. See [Guaranteeing a Fixed Supply of NFTs](https://xrpl.org/nft-fixed-supply.html).
+* [Guaranteeing a Fixed Supply of NFTs](nft-fixed-supply.html)
+You can assure scarcity of NFTs you create by creating them with what might be characterized as a “burner” account that you use to mint a set number of NFTs for another account, then delete the account you used to mint the NFTs. See [Guaranteeing a Fixed Supply of NFTs](nft-fixed-supply.html).
 
 ## Transferring NFTs
 
-You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](https://xrpl.org/transfer-nftokens.html).
+You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nftokens.html).
 
-You can sell your NFTs in an auction format. See [Running an NFT Auction](https://xrpl.org/nftoken-auctions.html#running-an-nft-auction).
+You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html#running-an-nft-auction).
 
-You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](https://xrpl.org/broker-sale.html).
+You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](broker-sale.html).
 
 ### Reserve requirements
 
@@ -74,12 +74,12 @@ When listing NFTs for sale, it can be useful to use object metadata to organize 
 
 See:
 
-- [Clio setup](https://xrpl.org/install-clio-on-ubuntu.html) 
+- [Clio setup](install-clio-on-ubuntu.html) 
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 
 <!-- 
-[Clio setup](https://xrpl.org/install-clio-on-ubuntu.html) 
+[Clio setup](install-clio-on-ubuntu.html) 
 
 [https://api.xrpldata.com/docs/static/index.html#/](https://api.xrpldata.com/docs/static/index.html#/)
 

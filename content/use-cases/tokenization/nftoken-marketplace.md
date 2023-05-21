@@ -20,7 +20,7 @@ NFToken Marketplaces act as intermediaries between NFToken creators and collecto
 
 ## Set up a rippled instance
 
-When you set up a serious marketplace site with high volume, it justifies the decision to set up your own XRP Ledger server instance. See [Install rippled](https://xrpl.org/install-rippled.html).
+When you set up a serious marketplace site with high volume, it justifies the decision to set up your own XRP Ledger server instance. See [Install rippled](install-rippled.html).
 
 
 ### Setting up a wallet
@@ -74,7 +74,7 @@ When listing NFTs for sale, it can be useful to use object metadata to organize 
 
 See:
 
-- [Clio setup](https://xrpl.org/install-clio-on-ubuntu.html) 
+- [Clio setup](install-clio-on-ubuntu.html) 
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 

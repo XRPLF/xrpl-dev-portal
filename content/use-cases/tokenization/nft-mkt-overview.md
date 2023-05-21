@@ -118,7 +118,7 @@ When listing NFTs for sale, it can be useful to use object metadata to organize 
 
 See:
 
-- [Clio setup](https://xrpl.org/install-clio-on-ubuntu.html) 
+- [Clio setup](install-clio-on-ubuntu.html) 
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 
@@ -156,7 +156,7 @@ Although IPFS / Arweave are great solutions to promote decentralization, fetchin
 
 Cloudflare, Infura, and many other providers are increasingly focusing on storing these decentralized files and retrieving them fast for users.
 
-See [NFT Caching](https://xrpl.org/nftoken.html#retrieving-nftoken-data-and-metadata).
+See [NFT Caching](nftoken.html#retrieving-nftoken-data-and-metadata).
 
 <!-- 
 You can also consider a solution such as Pinata. [https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing](https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing) 
