@@ -144,7 +144,7 @@ Our "Hello Ledger" application from Step 1. so far only shows the latest validat
 
 ![Screenshot: Step 2, show ledger updates](img/javascript-wallet-2.png)
 
-The code has been refactored so that the main logic now resides in a main() function. This allows us to handle the application ready event by using an one-liner at the end of the code. We will do such refactorings regularly along our journey in order to keep the code well managed and readable.
+The code has been refactored (`1_hello.js` to `2_async-subscribe.js`) so that the main logic now resides in a main() function. This allows us to handle the application ready event by using an one-liner at the end of the code. We will do such refactorings regularly along our journey in order to keep the code well managed and readable.
 
 {{ include_code("_code-samples/build-a-wallet/js/2_async-subscribe.js", language="js", lines="33-53") }}
 
