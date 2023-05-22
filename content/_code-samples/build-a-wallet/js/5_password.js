@@ -54,11 +54,10 @@ const main = async () => {
         await subscribe(client, wallet, appWindow)
 
         await initialize(client, wallet, appWindow)
-
     })
 
-    // We have to wait for the application frontend to be ready, otherise
-    // we might run into a race condition and the ope-dialog events
+    // We have to wait for the application frontend to be ready, otherwise
+    // we might run into a race condition and the open-dialog events
     // get triggered before the callbacks are attached
     appWindow.once('ready-to-show', () => {
         // If there is no seed present yet, ask for it, otherwise query for the password

@@ -312,11 +312,14 @@ After finishing this step the application should look like this:
 
 By now we always query the user for an account address at application startup. We more or less have a monitoring tool for accounts that queries publicly available data. Because we want to have real wallet functionality including sending XRP, we will have to deal with private keys and seeds, which will have to be handled properly.
 
-In this step we will query the user for an account seed and save this seed with a salted password. 
+In this step we will query the user for an account seed and  a password save this seed with a salted password. 
 
 <!-- MULTICODE_BLOCK_START -->
 *5_password.js*
 {{ include_code("_code-samples/build-a-wallet/js/5_password.js", language="js") }}
+
+*library/5_helpers.js*
+{{ include_code("_code-samples/build-a-wallet/js/library/5_helpers.js", language="js") }}
 
 *view/5_preload.js*
 {{ include_code("_code-samples/build-a-wallet/js/view/5_preload.js", language="js") }}
@@ -326,8 +329,69 @@ In this step we will query the user for an account seed and save this seed with 
 
 *view/5_renderer.js*
 {{ include_code("_code-samples/build-a-wallet/js/view/5_renderer.js", language="js") }}
-
 <!-- MULTICODE_BLOCK_END-->
+
+For this step we will first create a new helper function `library/5_helpers.js`. Add the following required imports to the top of the file:
+
+include_code("_code-samples/build-a-wallet/js/library/5_helpers.js", language="js", lines="1-6")
+
+For saving a seed to disk, create the following function in that helper file:
+
+include_code("_code-samples/build-a-wallet/js/library/5_helpers.js", language="js", lines="86-109")
+
+Here, a random string of 20 bytes is created, hex-encoded and saved in a file  `Wallet/salt.txt`. This tutorial assumes that you know what a salt is but if you're new to cryptography this snippet from wikipedia explains what a "salt" is quite well:
+
+In cryptography, a salt is random data that is used as an additional input to a one-way function that hashes data, a password or passphrase. Salts are used to safeguard passwords in storage. Historically, only the output from an invocation of a cryptographic hash function on the password was stored on a system, but, over time, additional safeguards were developed to protect against duplicate or common passwords being identifiable (as their hashes are identical).Salting is one such protection.
+
+Next on a key suitable for symmetric encryption is generated using [Password-Based Key Derivation Function 2](https://en.wikipedia.org/wiki/PBKDF2) which basically hashes and re-hashes the password with the salt multiple times. This key is then used to encrypt the seed with a scheme called [Fernet](https://github.com/csquared/fernet.js). the encrypted key is the saved to `Wallet/seed.txt`. To implement the functionality to load and decrypt the seed add the following function to `library/5_helpers.js`:
+
+include_code("_code-samples/build-a-wallet/js/library/5_helpers.js", language="js", lines="43-77")
+
+This reverses the process as it loads the salt and the encrypted seed from disk, derives a key as before and decrypts the seed.
+
+The functionality for fetching the ledger and account data we want to send to the frontend also gets implemented in the current helper file. This helps to unclutter our main logic file `5_password.js`, which would become unreadable by now. Two functions need to be added, one for fetching the initial data on application startup and one doing the subscriptions:
+
+include_code("_code-samples/build-a-wallet/js/library/5_helpers.js", language="js", lines="16-33")
+
+include_code("_code-samples/build-a-wallet/js/library/5_helpers.js", language="js", lines="43-59")
+
+Finally the helper functions get exported to be used in the main code:
+
+include_code("_code-samples/build-a-wallet/js/library/5_helpers.js", language="js", lines="139")
+
+The main file again gets refactored from `4_transactions.js` to `5_password.js`, note that the main() function has completely changed:
+
+include_code("_code-samples/build-a-wallet/5_password.js", language="js")
+
+In the main function, first there is a check if the `Wallet`directory used to store the salt and the encrypted seed does exist. If not, it will be created. Then the application listens for the event when the user enters his seed:
+
+include_code("_code-samples/build-a-wallet/5_password.js", language="js", lines="36-39")
+
+This event will trigger the seed dialog in the frontend to close and the password dialog to open up. Then the application listens for the event which is triggered when the password is entered. The application checks if there is already a saved seed to be encrypted, or if it is the first time when the seed will be saved:
+
+include_code("_code-samples/build-a-wallet/5_password.js", language="js", lines="41-57")
+
+After the seed is available to the application a wallet is created using the seed, and after creating and connecting the client the heavy lifting is done by the `nitialize` and `subscribe` functions which were implemented in `library/5_helpers.js`. Finally, the application listens to the `ready-to-show` electron event which more or less equivalent to a `domReady` event when we would be dealing with a browser-only environment. Here we trigger the opening of the password or seed dialog at application startup.
+
+Finally, our view files will be updated by adding the following snippets:
+
+`view/5_preload.js`
+{{ include_code("_code-samples/build-a-wallet/js/view/5_preload.js", language="js", lines="5-16") }}
+
+`view/5_password.html`
+{{ include_code("_code-samples/build-a-wallet/js/view/5_password.html", language="html", lines="46-72") }}
+
+This replaces the `account-address-dialog`from Step 4, as the address can be derived from the wallet instantiated with the seed. In `view/5_renderer.js` we replace the dialog logic at the top of the file with the following code:
+
+`view/5_renderer.js`
+{{ include_code("_code-samples/build-a-wallet/js/view/5_renderer.js", language="js", lines="2-38") }}
+
+To get the application running at this stage of development, run the following command:
+
+```console
+npm run password
+```
+
 
 ### 6. Styling
 
