@@ -408,6 +408,29 @@ After finishing this step the application should look like this:
 
 ![Screenshot: Step 6, style application with css](img/javascript-wallet-6.png)
 
+In this step, the application will get a facelift. First, copy the folder `bootstrap` and its contents to your project directory. Also, copy the file `view/custom.css` to the `view`directory. The Template for this Step, `view/6_styling.html` gets a complete overhaul:
+
+`view/6_styling.html`
+{{ include_code("_code-samples/build-a-wallet/desktop-js/view/6_styling.html", language="html") }}
+
+Note that the Bootstrap Stylesheets and the custom styles get included in the header of the file:
+
+{{ include_code("_code-samples/build-a-wallet/desktop-js/view/6_styling.html", language="html", lines="10-11") }}
+
+Bootstraps minified Javascript files get included in the bottom of the template: 
+
+{{ include_code("_code-samples/build-a-wallet/desktop-js/view/6_styling.html", language="html", lines="118-119") }}
+
+Note that `view/5_render.js` and `view/5_preload.js` do get used in this tutorial as nothing has changed in those files. In the main file, which gets refactored from `5_password.js` to `6_styling.js` the only thing that changes is the inclusion of the updated template file:
+
+{{ include_code("_code-samples/build-a-wallet/desktop-js/6_styling.js", language="js", lines="21") }}
+
+That's it for this Step - to get the application running at this stage of development, run the following command:
+
+```console
+npm run styling
+```
+
 ### 7. Send XRP
 
 **Full code for this step:** 
