@@ -444,14 +444,45 @@ npm run styling
 [`view/7_send-xrp.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/7_send-xrp.html).
 [`view/7_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/7_renderer.js).
 
-Up until now we have enabled our app to query and display data from the XRPL. Now it's time to actively participate in
-the ledger by enabling out application to send transactions. For now, we can stick to sending direct XRP payments 
-because there are more complexities involved in sending issued tokens. 
-
-But before that, it is time to take that wallflowery appearance of our application and give it a more usable and 
-nicer looking UI. 
+Up until now we have enabled our app to query and display data from the XRPL. Now it's time to actively participate in the ledger by enabling our application to send transactions. For now, we can stick to sending direct XRP payments because there are more complexities involved in sending issued tokens. After finishing this step the application should look like this:
 
 ![Screenshot: Step 7, send xrp dialog](img/javascript-wallet-7.png)
+
+First, create the file `library/7_helpers.js` and add the following contents:
+
+include_code("_code-samples/build-a-wallet/desktop-js/library/7_helpers.js", language="js")
+
+Here a raw payment transaction (short: tx) is created which contains all the necessary information that defines a payment from a user perspective. This payment transaction is then "autofilled", which basically adds a few fields the transaction needs to be processed correctly on the ledger. If you are interested, you could console.log the resulting prepared payment transaction. 
+
+After that, the transaction needs to be signed, which is done using the wallet object, after which it gets submitted using the `submitAndWait` function, which basically sends the signed transaction and waits for the next closed ledger to include said transaction after which it is regarded final.
+
+Our template, after saving it as `view/7_send-xrp.html` gets updated with a bootstrap modal dialog at the end of the `<main>`tag:
+
+{{ include_code("_code-samples/build-a-wallet/desktop-js/view/7_send-xrp.html", language="html", lines="92-124") }}
+
+The renderer evolves from `view/5_renderer.js` (remember, no modification in Step 6) to `view/7_renderer.js` by adding the following code at the end of the file:
+
+include_code("_code-samples/build-a-wallet/desktop-js/view/7_renderer.js", language="js", lines="79-103")
+
+The preload file from Step 5 also basically stays the same baring the addition of two event listeners at the end of the `exposeInMainWorld` function:
+
+include_code("_code-samples/build-a-wallet/desktop-js/view/7_preload.js", language="js", lines="27-32")
+
+It might become evident by now that the changes needed to add to the applications functionality have become smaller, this is because of smart refactoring early on. The main file, now `7_send-xrp-js` differs from the last step by two small additions:
+
+The new helper function gets included at the imports section at the top:
+
+include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="6")
+
+Additionally a listener to the `send-xrp-action` event and payload from the frontend has to be implemented:
+
+include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="59-62")
+
+That's basically it, the only thing that is missing to modify the imports of the preloader and the template:
+
+include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="18")
+
+include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="22")
 
 To get the application running at this stage of development, run the following command:
 
