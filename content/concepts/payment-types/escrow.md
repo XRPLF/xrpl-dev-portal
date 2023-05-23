@@ -10,11 +10,15 @@ labels:
 
 Traditionally, an escrow is a contract between two parties to facilitate risky financial transactions. An impartial third party receives and holds funds, and only releases them to the intended recipient when conditions specified by the contract are met. This method ensures both parties meet their obligations.
 
-The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP, which can't be used or destroyed until conditions are met. You can set an escrow to release:
+The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP, which can't be used or destroyed until conditions are met.
 
-- When a certain amount of time passes.
-- After meeting cryptographic conditions.
-- After a combination of both.
+## Types of Escrow
+
+The XRP Ledger supports three types of escrow:
+
+- **Time-based Escrow:** Funds only become available after a certain amount of time passes.
+- **Conditional Escrow:** This escrow is created with a corresponding condition and fulfillment. The condition serves as a lock on the funds and won't release until the correct fulfillment key is provided.
+- **Combination Escrow:** This escrow combines the features of time-based and conditional escrow. The escrow is completely inaccessible until the specified time passes, after which the funds can be release by providing the correct fulfillment.
 
 ## Escrow Lifecycle
 
@@ -73,15 +77,9 @@ reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 ```
 
 
-## Why Escrow?
+## Use cases
 
-The age-old practice of [Escrow](https://en.wikipedia.org/wiki/Escrow) enables many kinds of financial transactions that would be considered risky otherwise, especially online. By letting a trusted third party hold the money while a transaction or evaluation period is underway, both sides can be assured that the other must hold up their end of the bargain.
-
-The Escrow feature takes this idea further by replacing the third party with an automated system built into the XRP Ledger, so that the lock up and release of funds is impartial and can be automated.
-
-Fully automated escrow, backed by the integrity of the XRP Ledger itself, solves important problems for Ripple, and we think there are many other use cases that escrow enables. Ripple encourages the industry to find new and unique ways to put escrow to use.
-
-### Use Case: Time-based Lock-Up
+### Time-based Lock-Up
 
 **Background:** Ripple holds a large amount of the total XRP, which it sells methodically as a way to fund and incentivize the healthy development of the XRP Ledger and related technologies. At the same time, owning such a large chunk of XRP causes problems for the company, such as:
 
@@ -92,14 +90,6 @@ Fully automated escrow, backed by the integrity of the XRP Ledger itself, solves
 **Solution:** By placing 55 billion XRP into time-based escrows, Ripple ensures that the supply of XRP in circulation is predictable and increases at a slow but steady rate. Others who hold XRP know that Ripple cannot flood the market, even if the company's priorities or strategy changes.
 
 Placing the money into escrow does not directly protect Ripple's holdings from malicious actors, but it sharply reduces the amount of XRP that can be quickly stolen or redirected if a malicious actor gains temporary control over Ripple's XRP accounts. This reduces the risk of catastrophic losses of XRP and increases the time for Ripple to detect, prevent, and track down unintended uses of Ripple's XRP assets.
-
-### Use Case: Interledger Payments
-
-**Background:** In the quickly-developing world of financial technology, one of the core challenges is coordinating activities that cross multiple digital money systems, or ledgers. Many proposed solutions to this problem (including early views of the XRP Ledger!) can be reduced to creating "one ledger to rule them all." Ripple believes no single system can meet the needs of everyone in the world: in fact, some desirable features are mutually exclusive. Instead, Ripple believes that an interconnected network of ledgers—an _interledger_—is the true future of financial technology. The [Interledger Protocol][] defines standards for making as many systems as possible connect securely and smoothly.
-
-The most fundamental principle of inter-ledger payments is _conditional transfers_. Multi-hop payments have a risk problem: the more hops in the middle, the more places the payment can fail. Interledger solves this with the financial equivalent of a "[two-phase commit](https://en.wikipedia.org/wiki/Two-phase_commit_protocol)", where the two steps are (1) prepare conditional transfers, then (2) fulfill the conditions to execute the transfers. The Interledger project defined a [crypto-conditions][] specification to standardize automated ways to define and verify conditions, and settled on SHA-256 hashes as a "common denominator" of such conditions.
-
-**Solution:** The Escrow feature makes the XRP Ledger ideal for bridging multi-hop payments using the Interledger Protocol, because it natively supports transfers that deliver XRP based on PREIMAGE-SHA-256 crypto-conditions, and it executes those transfers within seconds of being presented with the matching fulfillment.
 
 
 ## See Also
@@ -117,7 +107,6 @@ For more information about Escrow in the XRP Ledger, see the following:
 - [Ledger Reference](ledger-data-formats.html)
     - [Escrow object](escrow-object.html)
 
-For more information on Interledger and how conditional transfers enable secure payments across multiple ledgers, see [Interledger Architecture](https://interledger.org/rfcs/0001-interledger-architecture/).
 
 For more information on Ripple's 55-billion XRP lock-up, see [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
 
