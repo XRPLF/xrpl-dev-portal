@@ -1,12 +1,12 @@
 ---
-html: set-up-secure-signing.html
-parent: production-readiness.html
+html: secure-signing.html
+parent: transactions.html
 blurb: 安全にトランザクションを送信できる環境を設定します。
 labels:
   - セキュリティ
   - 開発
 ---
-# 安全な署名の設定
+# 安全な署名
 
 [トランザクション](transaction-basics.html)をXRP Ledgerに送信するには、[秘密鍵](cryptographic-keys.html)のセキュリティを損なわない方法でトランザクションにデジタル署名する必要があります。（他の人があなたの秘密鍵にアクセスできる場合、その人はあなたと同じようにあなたのアカウントを操作できるため、すべての資金が盗まれたり消却されたりする可能性があります。）このページでは、トランザクションに安全に署名できる環境の設定方法について説明します。
 
