@@ -661,12 +661,20 @@ pages:
         parent: tokenization.html
         targets:
             - en
+
+    -   md: use-cases/tokenization/stablecoin-issuer.ja.md
+        parent: tokenization.html
+        targets:
             - ja
 
     -   md: use-cases/tokenization/nft-mkt-overview.md
         parent: tokenization.html
         targets:
             - en
+
+    -   md: use-cases/tokenization/nft-mkt-overview.ja.md
+        parent: tokenization.html
+        targets:
             - ja
 
         # TODO: these files aren't nested under "NFT mkt overview" but they are in the nav
@@ -674,18 +682,31 @@ pages:
         parent: nft-mkt-overview.html
         targets:
             - en
+
+        # TODO: these files aren't nested under "NFT mkt overview" but they are in the nav
+    -   md: use-cases/tokenization/nftoken-marketplace.ja.md
+        parent: nft-mkt-overview.html
+        targets:
             - ja
 
     -   md: use-cases/tokenization/authorized-minter.md
         parent: nft-mkt-overview.html
         targets:
             - en
+
+    -   md: use-cases/tokenization/authorized-minter.ja.md
+        parent: nft-mkt-overview.html
+        targets:
             - ja
 
     -   md: use-cases/tokenization/digital-artist.md
         parent: nft-mkt-overview.html
         targets:
             - en
+
+    -   md: use-cases/tokenization/digital-artist.ja.md
+        parent: nft-mkt-overview.html
+        targets:
             - ja
             
     -   name: Decentralized Finance
