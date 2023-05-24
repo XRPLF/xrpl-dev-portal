@@ -6,7 +6,7 @@ labels:
   - Tokens
   - Security
 ---
-# Issuing and Operational Addresses
+# Account Types
 
 {% include '_snippets/issuing-and-operational-addresses-intro.md' %}
 <!--{#_ #}-->
