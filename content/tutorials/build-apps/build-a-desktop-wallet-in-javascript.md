@@ -200,31 +200,40 @@ We will get the address of the account we want to monitor by using a HTML dialog
 
 ![Screenshot: Step 3, show account information](img/javascript-wallet-3.png)
 
-First, we will create a new directory, aptly named `library`. In this directory we then create a file `3_helpers.js` with the following content:
+First, we will create a new directory named `library`. In this directory we then create a file `3_helpers.js` with the following content:
 
+`3_helpers.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/3_helpers.js", language="js") }}
 
 Here we define three utility functions that will transform data we receive from the ledger, so it can be conveniently used in the frontend. as we progress in this tutorial, we will keep this pattern of putting reusable functionality in the library.
 
-Our main file will be called `3_account.js` and have the following content:
+Our new main file will be called `3_account.js` and have the following content:
 
 {{ include_code("_code-samples/build-a-wallet/desktop-js/3_account.js", language="js") }}
 
-The content of our view files will be complemented as follows:
+As you may have noticed, this is kind of an evolution from the last step. As these are rather grave changes, it's best to just copy and paste them, the relevant changes will be explained.
 
-`view/3_preload.js`
+To update the view logic, create the following files:
+
+<!-- MULTICODE_BLOCK_START -->
+*view/3_preload.js*
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_preload.js", language="js") }}
 
-`view/3_account.html`
+*view/3_account.html*
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_account.html", language="html") }}
 
-`view/3_renderer.js`
+*view/3_renderer.js*
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_renderer.js", language="js") }}
+<!-- MULTICODE_BLOCK_END -->
 
-In `view/3_account.html`, we have added a HTML dialog element, which we will use to query the user for the account address we want to monitor:
+In the new template, we have added a HTML dialog element, which we will use to query the user for the account address we want to monitor:
+
+`view/3_account.html`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_account.html", language="html", lines="30-41") }}
 
-To make the HTML dialog work, the following code snippet has been added to `view/3_renderer.js`:
+To make the HTML dialog work, the following code snippet has been added to the new renderer:
+
+`view/3_renderer.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_renderer.js", language="js", lines="1-22") }}
 
 In order to handle the address the user entered and send it to the main process, we have added the following snippet to `exposeInMainWorld` in `view/3_preload.js`:
@@ -236,8 +245,8 @@ As we will know the account we want to query the leger for is known only after t
 
 ```javascript
 ipcMain.on('address-entered', async (event, address) =>  {
-  ...
-}
+  // ...
+})
 ```
 
 To have some initial data to display for the account we have to add the following code to our main file:
@@ -268,20 +277,24 @@ At this point, our wallet shows the account's balance getting updated, but doesn
 
 ![Screenshot: Step 4, show transaction history](img/javascript-wallet-4.png)
 
-First we will add a section to the template (`view/4_tx-history.html`) file to display the transaction list of a given account by adding the following code after the fieldset for the latest validated ledger:
+First, save the template file from last step as `view/4_tx-history.html`.Update this file to display the transaction list of a given account by adding the following code after the fieldset for the latest validated ledger:
 
+`view/4_tx-history.html`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/4_tx-history.html", language="html", lines="29-44") }}
 
 Our preloader (`view/4_preload.js`) will be complemented with a function that allows us to subscribe to the 'update-transaction-data' event:
 
+`view/4_preload.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/4_preload.js", language="js", lines="13-15") }}
 
 In the renderer (`view/4_renderer.js`), we define the callback that displays the latest transaction list:
 
+`view/4_renderer.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/4_renderer.js", language="js", lines="47-63") }}
 
-In our main file (`4_tx-history`), we already have queried the relevant data in the `client.on('transaction')` subscription. We just have to send it to the renderer by triggering the 'update-transaction-data' event:
+Create a new main file `4_tx-history` with the contents of the file from `3_account.js`. There is already a query for the relevant data in the `client.on('transaction')` subscription. We just have to send it to the renderer by triggering the 'update-transaction-data' event:
 
+`4_tx-history`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/4_tx-history.js", language="js", lines="62-63") }}
 
 As this is only called as soon as a new transaction is recorded, our transaction table is empty at first, so we need to issue an initial call for the account transactions:
@@ -333,11 +346,11 @@ In this step we will query the user for an account seed and  a password save thi
 
 For this step we will first create a new helper function `library/5_helpers.js`. Add the following required imports to the top of the file:
 
-include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="1-6")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="1-6") }}
 
 For saving a seed to disk, create the following function in that helper file:
 
-include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="86-109")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="86-109") }}
 
 Here, a random string of 20 bytes is created, hex-encoded and saved in a file  `Wallet/salt.txt`. This tutorial assumes that you know what a salt is but if you're new to cryptography this snippet from wikipedia explains what a "salt" is quite well:
 
@@ -345,31 +358,31 @@ In cryptography, a salt is random data that is used as an additional input to a 
 
 Next on a key suitable for symmetric encryption is generated using [Password-Based Key Derivation Function 2](https://en.wikipedia.org/wiki/PBKDF2) which basically hashes and re-hashes the password with the salt multiple times. This key is then used to encrypt the seed with a scheme called [Fernet](https://github.com/csquared/fernet.js). the encrypted key is the saved to `Wallet/seed.txt`. To implement the functionality to load and decrypt the seed add the following function to `library/5_helpers.js`:
 
-include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="43-77")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="43-77") }}
 
 This reverses the process as it loads the salt and the encrypted seed from disk, derives a key as before and decrypts the seed.
 
 The functionality for fetching the ledger and account data we want to send to the frontend also gets implemented in the current helper file. This helps to unclutter our main logic file `5_password.js`, which would become unreadable by now. Two functions need to be added, one for fetching the initial data on application startup and one doing the subscriptions:
 
-include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="16-33")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="16-33") }}
 
-include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="43-59")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="43-59") }}
 
 Finally the helper functions get exported to be used in the main code:
 
-include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="139")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="139") }}
 
 The main file again gets refactored from `4_transactions.js` to `5_password.js`, note that the main() function has completely changed:
 
-include_code("_code-samples/build-a-wallet/5_password.js", language="js")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/5_password.js", language="js") }}
 
 In the main function, first there is a check if the `Wallet`directory used to store the salt and the encrypted seed does exist. If not, it will be created. Then the application listens for the event when the user enters his seed:
 
-include_code("_code-samples/build-a-wallet/5_password.js", language="js", lines="36-39")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/5_password.js", language="js", lines="36-39") }}
 
 This event will trigger the seed dialog in the frontend to close and the password dialog to open up. Then the application listens for the event which is triggered when the password is entered. The application checks if there is already a saved seed to be encrypted, or if it is the first time when the seed will be saved:
 
-include_code("_code-samples/build-a-wallet/5_password.js", language="js", lines="41-57")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/5_password.js", language="js", lines="41-57") }}
 
 After the seed is available to the application a wallet is created using the seed, and after creating and connecting the client the heavy lifting is done by the `nitialize` and `subscribe` functions which were implemented in `library/5_helpers.js`. Finally, the application listens to the `ready-to-show` electron event which more or less equivalent to a `domReady` event when we would be dealing with a browser-only environment. Here we trigger the opening of the password or seed dialog at application startup.
 
@@ -450,6 +463,7 @@ Up until now we have enabled our app to query and display data from the XRPL. No
 
 First, create the file `library/7_helpers.js` and add the following contents:
 
+`library/7_helpers.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/7_helpers.js", language="js") }}
 
 Here a raw payment transaction (short: tx) is created which contains all the necessary information that defines a payment from a user perspective. This payment transaction is then "autofilled", which basically adds a few fields the transaction needs to be processed correctly on the ledger. If you are interested, you could console.log the resulting prepared payment transaction. 
@@ -458,23 +472,27 @@ After that, the transaction needs to be signed, which is done using the wallet o
 
 Our template, after saving it as `view/7_send-xrp.html` gets updated with a bootstrap modal dialog at the end of the `<main>`tag:
 
+`view/7_send-xrp.html`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/7_send-xrp.html", language="html", lines="92-124") }}
 
 The renderer evolves from `view/5_renderer.js` (remember, no modification in Step 6) to `view/7_renderer.js` by adding the following code at the end of the file:
 
+`view/7_renderer.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/7_renderer.js", language="js", lines="79-103") }}
 
 The preload file from Step 5 also basically stays the same baring the addition of two event listeners at the end of the `exposeInMainWorld` function:
 
+`view/7_preload.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/7_preload.js", language="js", lines="27-32") }}
 
 It might become evident by now that the changes needed to add to the applications functionality have become smaller, this is because of smart refactoring early on. The main file, now `7_send-xrp-js` differs from the last step by two small additions:
 
 The new helper function gets included at the imports section at the top:
 
+`7_send-xrp.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="6") }}
 
-Additionally a listener to the `send-xrp-action` event and payload from the frontend has to be implemented:
+Add a listener to the `send-xrp-action` event and payload from the frontend has to be implemented:
 
 {{ include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="59-62") }}
 
@@ -511,14 +529,81 @@ One type of check we could make is to verify the domain name associated with an 
 
 ![Screenshot: Step 8, use domain verification](img/javascript-wallet-8.png)
 
+As in the previous steps, the library get updated with a new helper class. First, create the file `library/8_helpers.js` and add the following contents:
 
+`library/8_helpers.js`
+{{ include_code("_code-samples/build-a-wallet/desktop-js/library/8_helpers.js", language="js") }}
 
+Create a new main logic file named `8_domain-verification.js` in the root directory with the contents of `7_send-xrp.js`and modify it as follows, starting with the import of the new `validate`helper function: 
+
+`8_domain-verification.js`
+{{ include_code("_code-samples/build-a-wallet/desktop-js/8_domain-verification.js", language="js", lines="6") }}
+
+At the end of the callback function `ipcMain.on('send-xrp-action', callback)` add the following event handler:
+
+{{ include_code("_code-samples/build-a-wallet/desktop-js/8_domain-verification.js", language="js", lines="66-70") }}
+
+The code in the helper class basically issues an [`account_info`](account_info.html) request to look up the account in the ledger.
+
+If the account does exist, the code checks for the [`lsfDisallowXRP` flag](accountroot.html#accountroot-flags). Note that this is an `lsf` (ledger state flag) value because this is an object from the ledger state data; these are different than the flag values the [AccountSet transaction][] uses to configure the same settings.
+
+And again, the modified template and preloader have to be included:
+{{ include_code("_code-samples/build-a-wallet/desktop-js/8_domain-verification.js", language="js", lines="15-23") }}
+
+Finally, the code decodes the account's `Domain` field, if present, and performs domain verification using the method imported above.
+
+After this, it's time to update the view logic, namely template, preloader and renderer. In `view/8_domain-verification.html` add the following lines just before the `<input>` element with `id="input-destination-address`:
+
+`view/8_domain-verification.html`
+{{ include_code("_code-samples/build-a-wallet/desktop-js/view/8_domain-verification.html", language="html", lines="101-103") }}
+
+Now modify the line at the end of the file including the new renderer script:
+
+{{ include_code("_code-samples/build-a-wallet/desktop-js/view/8_domain-verification.html", language="html", lines="158") }}
+
+The renderer script again is created by saving `view/7_renderer.js` as `view/8_renderer.js` and adding the following code after `const sendXrpButtonEl`:
+
+`view/8_renderer.js`:
+```javascript
+const accountVerificationEl = document.querySelector('.accountVerificationIndicator span')
+
+destinationAddressEl.addEventListener('input', (event) => {
+    window.electronAPI.onDestinationAccountChange(destinationAddressEl.value)
+})
+
+window.electronAPI.onUpdateDomainVerificationData((_event, result) => {
+    accountVerificationEl.textContent = `Domain: ${result.domain || 'n/a'} Verified: ${result.verified}`
+})
+```
+
+The updated preloader `view/8_preloader.js` is also modified the same way by adding the following two event listeners:
+
+`view/8_preload.js`
+{{ include_code("_code-samples/build-a-wallet/desktop-js/view/8_preload.js", language="js", lines="33-38") }}
 
 To get the application running at this stage of development, run the following command:
 
 ```console
 npm run domain-verification
 ```
+
+Test your wallet app the same way you did in the previous steps. To test domain verification, try entering the following addresses in the "To" box of the Send XRP dialog:
+
+| Address                              | Domain       | Verified? |
+|:-------------------------------------|:-------------|:----------|
+| `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW` | `mduo13.com` | ✅ Yes    |
+| `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` | `xrpl.org`   | ❌ No     |
+| `rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe` | (Not set)    | ❌ No     |
+
+To test X-addresses, try the following addresses:
+
+| Address                                           | Destination Tag | Test Net? |
+|:--------------------------------------------------|:----------------|:----------|
+| `T7YChPFWifjCAXLEtg5N74c7fSAYsvPKxzQAET8tbZ8q3SC` | 0               | Yes       |
+| `T7YChPFWifjCAXLEtg5N74c7fSAYsvJVm6xKZ14AmjegwRM` | None            | Yes       |
+| `X7d3eHCXzwBeWrZec1yT24iZerQjYLjJrFT7A8ZMzzYWCCj` | 0               | No        |
+| `X7d3eHCXzwBeWrZec1yT24iZerQjYLeTFXz1GU9RBnWr7gZ` | None            | No        |
+| `X7d3eHCXzwBeWrZec1yT24iZerQjYLeTFXz1GU9RBnWr7gZ` | None            | No        |
 
 ## Next Steps & Topics for further research
 
