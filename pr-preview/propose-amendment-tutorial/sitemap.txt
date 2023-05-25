@@ -11,6 +11,7 @@ https://xrpl.org/faq.html
 https://xrpl.org/privacy-policy.html
 https://xrpl.org/technical-faq.html
 https://xrpl.org/docs.html
+https://xrpl.org/docs-index.html
 https://xrpl.org/concepts.html
 https://xrpl.org/introduction.html
 https://xrpl.org/intro-to-consensus.html
@@ -434,6 +435,8 @@ https://xrpl.org/xrp-test-net-faucet.html
 https://xrpl.org/tx-sender.html
 https://xrpl.org/contribute.html
 https://xrpl.org/contribute-code.html
+https://xrpl.org/tutorial-guidelines.html
+https://xrpl.org/tutorial-structure.html
 https://xrpl.org/events.html
 https://xrpl.org/ambassadors.html
 https://xrpl.org/developer-funding.html

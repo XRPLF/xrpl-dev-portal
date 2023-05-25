@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 43 possible spelling errors:
+Found 44 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gifts, rifs, gies
+  gifs: gigs, giff, gif
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -23,11 +23,11 @@ Found 43 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: blockhole, black-hole
+  blackhole: black-hole, blockhole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slask, slae, slays
+  slas: swas, alas, slad
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
@@ -36,24 +36,24 @@ Found 43 possible spelling errors:
   xlsd: xls, lsd
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  xrpfees: 
   fixuniversalnumber: 
+  immediateofferkilled: 
+  depositpreauthamendment: 
   disallowincoming: 
   fixnonfungibletokensv1_2: 
-  depositpreauthamendment: 
-  immediateofferkilled: 
+  xrpfees: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
-  asfdisallowincomingcheck: 
   asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
-  30d: 3rd, 3d, 3-d
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingcheck: 
+  30d: 3rd, 3-d, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3d, 3-d
+  30d: 3rd, 3-d, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   disallowincoming: 
@@ -89,10 +89,13 @@ Found 43 possible spelling errors:
 <Page 'nft_history' (nft_history.html)> Unknown Words:
   nft_history: 
 
+<Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
+  screenshots: screenshot
+
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 35 discouraged words/phrases:
+Found 44 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -132,17 +135,28 @@ Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-st
    Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
 Page: <Page 'ledger_data' (ledger_data.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Tutorial Guidelines' (tutorial-guidelines.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+   Discouraged word: frequently (1 instances); suggest 'often' instead.
+   Discouraged word: performed (1 instances); suggest 'done' instead.
+   Discouraged phrase: a number of (1 instances); suggest 'some' instead.
+   Discouraged word: assistance (1 instances); suggest 'aid, help' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Tutorial Structure' (tutorial-structure.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
 ------------------
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.1 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.0 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
-  Automated Readability Index: Grade level 10.8
+  Automated Readability Index: Grade level 10.9
   Coleman-Liau Index: Grade level 11.5
-  Linsear Write Formula: Grade level 8.4
+  Linsear Write Formula: Grade level 8.5
 
 
 Most difficult pages by Flesch Reading Ease:
@@ -178,8 +192,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 743
-  Characters: 4,625
+  Words: 742
+  Characters: 4,615
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
