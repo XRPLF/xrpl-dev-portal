@@ -22,12 +22,6 @@ XRP Ledger Checks may have expiration times after which they may no longer be ca
 
 - Flexible check cashes. The recipient can redeem the Check for between a minimum and maximum amount.
 
-### Use Case: Payment Authorization
-
-**Problem:** To comply with regulations like BSA, KYC, AML, and CFT, financial institutions must provide documentation about the source of funds they receive. Such regulations seek to prevent the illicit transfer of funds by requiring institutions to know the source and destination of all payments processed by the institution. Because of the nature of the XRP Ledger, anyone could potentially send XRP (and, under the right circumstances, tokens) to an institution's account on the XRP Ledger. Dealing with such unwanted payments adds significant cost and time delays to these institutions' compliance departments, including potential fines or penalties.
-
-**Solution:** Institutions can enable [Deposit Authorization](depositauth.html) on their XRP Ledger accounts by [setting the `asfDepositAuth` flag in an `AccountSet` transaction](accountset.html). This makes the account unable to receive Payment transactions. Accounts with Deposit Authorization enabled can only receive funds through Escrow, Payment Channels, or Checks. Checks are the most straightforward, familiar, and flexible way to transfer funds if Deposit Authorization is enabled.
-
 
 ## Check Lifecycle
 
