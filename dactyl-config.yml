@@ -4247,7 +4247,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - en
 
@@ -4255,7 +4255,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - ja
 
@@ -4263,7 +4263,7 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - en
 
@@ -4271,7 +4271,7 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - ja
 
