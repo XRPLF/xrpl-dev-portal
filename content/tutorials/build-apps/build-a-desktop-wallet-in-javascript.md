@@ -450,7 +450,7 @@ Up until now we have enabled our app to query and display data from the XRPL. No
 
 First, create the file `library/7_helpers.js` and add the following contents:
 
-include_code("_code-samples/build-a-wallet/desktop-js/library/7_helpers.js", language="js")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/library/7_helpers.js", language="js") }}
 
 Here a raw payment transaction (short: tx) is created which contains all the necessary information that defines a payment from a user perspective. This payment transaction is then "autofilled", which basically adds a few fields the transaction needs to be processed correctly on the ledger. If you are interested, you could console.log the resulting prepared payment transaction. 
 
@@ -462,27 +462,27 @@ Our template, after saving it as `view/7_send-xrp.html` gets updated with a boot
 
 The renderer evolves from `view/5_renderer.js` (remember, no modification in Step 6) to `view/7_renderer.js` by adding the following code at the end of the file:
 
-include_code("_code-samples/build-a-wallet/desktop-js/view/7_renderer.js", language="js", lines="79-103")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/view/7_renderer.js", language="js", lines="79-103") }}
 
 The preload file from Step 5 also basically stays the same baring the addition of two event listeners at the end of the `exposeInMainWorld` function:
 
-include_code("_code-samples/build-a-wallet/desktop-js/view/7_preload.js", language="js", lines="27-32")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/view/7_preload.js", language="js", lines="27-32") }}
 
 It might become evident by now that the changes needed to add to the applications functionality have become smaller, this is because of smart refactoring early on. The main file, now `7_send-xrp-js` differs from the last step by two small additions:
 
 The new helper function gets included at the imports section at the top:
 
-include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="6")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="6") }}
 
 Additionally a listener to the `send-xrp-action` event and payload from the frontend has to be implemented:
 
-include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="59-62")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="59-62") }}
 
 That's basically it, the only thing that is missing to modify the imports of the preloader and the template:
 
-include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="18")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="18") }}
 
-include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="22")
+{{ include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="22") }}
 
 To get the application running at this stage of development, run the following command:
 
@@ -510,6 +510,9 @@ One of the biggest shortcomings of the wallet app from the previous step is that
 One type of check we could make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](xrp-ledger-toml.html#account-verification). When an account's domain is verified, we can could show it like this:
 
 ![Screenshot: Step 8, use domain verification](img/javascript-wallet-8.png)
+
+
+
 
 To get the application running at this stage of development, run the following command:
 
