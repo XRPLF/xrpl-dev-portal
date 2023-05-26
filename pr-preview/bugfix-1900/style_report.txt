@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 43 possible spelling errors:
+Found 44 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gips, gis, gigs
+  gifs: gins, gibs, kifs
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -27,18 +27,21 @@ Found 43 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: swas, slat, sylas
+  slas: sylas, sias, slab
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
+<Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
+  xlsd: lsd, xls
+
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  depositpreauthamendment: 
-  xrpfees: 
   disallowincoming: 
-  fixuniversalnumber: 
-  fixnonfungibletokensv1_2: 
   immediateofferkilled: 
+  depositpreauthamendment: 
+  fixuniversalnumber: 
+  xrpfees: 
+  fixnonfungibletokensv1_2: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
@@ -53,23 +56,23 @@ Found 43 possible spelling errors:
   30d: 3rd, 3-d, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -92,7 +95,7 @@ Found 43 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 43 discouraged words/phrases:
+Found 44 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -112,6 +115,8 @@ Page: <Page 'Running an NFT Auction' (nftoken-auctions.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Amendments' (amendments.html)>
    Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+Page: <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)>
+   Discouraged phrase: defaults to (1 instances); suggest 'the default is' instead.
 Page: <Page 'Known Amendments' (known-amendments.html)>
    Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
 Page: <Page 'XRPL Quickstart' (xrpl-quickstart.html)>
@@ -151,7 +156,7 @@ Average Page Readability Scores:
   Gunning FOG Index: Grade level 9.1
   Automated Readability Index: Grade level 10.9
   Coleman-Liau Index: Grade level 11.5
-  Linsear Write Formula: Grade level 8.5
+  Linsear Write Formula: Grade level 8.4
 
 
 Most difficult pages by Flesch Reading Ease:
@@ -187,8 +192,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 743
-  Characters: 4,624
+  Words: 742
+  Characters: 4,615
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
