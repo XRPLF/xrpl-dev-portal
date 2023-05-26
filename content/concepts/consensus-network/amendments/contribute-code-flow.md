@@ -7,7 +7,7 @@ labels:
 ---
 # Contribute Code to the XRP Ledger
 
-The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. If you want to contribute code, it's important to work with the community in defining the specifications of your changes and testing the code before adding it to `rippled`.
+The software that powers the XRP Ledger is open source. Anyone can download, modify, extend, or explore it. If you want to contribute code, it's important to work with the community to define the specifications of your changes and test the code before adding it to `rippled`.
 
 
 ## XRP Ledger Standards
@@ -18,8 +18,8 @@ Changes to `rippled` are tracked by an XRP Ledger Standard (XLS), a document tha
 
 Creating an XLS has its own process, but can be summarized as:
 
-1. Starting a discussion and gathering feedback.
-2. Creating an XLS draft in the standards repo.
+1. Start a discussion and gather feedback.
+2. Create an XLS draft in the standards repo.
 3. Publishing the XLS draft as a Candidate Specification.
 
 For details, see the [XLS contributing guide](https://github.com/XRPLF/XRPL-Standards/blob/master/CONTRIBUTING.md).
@@ -68,7 +68,7 @@ The general development path breaks down as follows:
 
 5. On a quarterly basis, a release candidate is built from approved PRs on `develop`. The package is deployed to Testnet and a few nodes on Mainnet. If no issues are found with the release candidate, the code is merged into `master` and nodes on Mainnet can upgrade to this build.
 
-6. New amendments go through the consensus process and validators vote on enabling them or not.
+6. New amendments go through the consensus process and validators vote on whether to enable them.
 
 
 ## Code Flowchart
