@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 44 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gigs, giff, gif
+  gifs: gigs, gift, giss
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -27,7 +27,7 @@ Found 44 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: swas, alas, slad
+  slas: elas, spas, sls
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
@@ -37,42 +37,42 @@ Found 44 possible spelling errors:
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
   fixuniversalnumber: 
-  immediateofferkilled: 
-  depositpreauthamendment: 
-  disallowincoming: 
   fixnonfungibletokensv1_2: 
+  depositpreauthamendment: 
   xrpfees: 
+  disallowincoming: 
+  immediateofferkilled: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingnftoffer: 
-  asfdisallowincomingtrustline: 
-  asfdisallowincomingpaychan: 
   asfdisallowincomingcheck: 
-  30d: 3rd, 3-d, 3d
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingtrustline: 
+  asfdisallowincomingnftoffer: 
+  30d: 3d, 3rd, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3d, 3rd, 3-d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -156,7 +156,7 @@ Average Page Readability Scores:
   Gunning FOG Index: Grade level 9.1
   Automated Readability Index: Grade level 10.9
   Coleman-Liau Index: Grade level 11.5
-  Linsear Write Formula: Grade level 8.5
+  Linsear Write Formula: Grade level 8.4
 
 
 Most difficult pages by Flesch Reading Ease:
