@@ -55,6 +55,8 @@ button[disabled="disabled"] {
   &::after {
     display: inline-block;
     content: url(../img/icons/arrow-right.svg);
+    position: relative;
+    top: 1px;
     vertical-align: middle;
     padding-left: 8px;
     -webkit-transition: transform 0.3s ease-out;
