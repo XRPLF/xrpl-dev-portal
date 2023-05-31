@@ -33,7 +33,7 @@ Before you install Clio, you must meet the following requirements.
 
             docker run --rm -it --network=host --name cassandra cassandra:4.0.4
 
-- You need gRPC access to one or more `rippled` servers in [P2P mode](install-rippled.html). The `rippled` servers can either be local or remote, but you must trust them. The most reliable way to do this is to [install `rippled` yourself](install-rippled.html).
+- You need gRPC access to one or more `rippled` servers in P2P mode. The `rippled` servers can either be local or remote, but you must trust them. The most reliable way to do this is to [install `rippled` yourself](install-rippled.html).
 
 
 ## Installation Steps

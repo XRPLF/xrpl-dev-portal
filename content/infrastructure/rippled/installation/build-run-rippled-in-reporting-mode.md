@@ -35,7 +35,7 @@ Multiple reporting mode servers can share access to the same network accessible 
 
     **Note:** If you choose to use Cassandra as the database, the disk requirements for `rippled` will be lower as the data will not be stored on your local disk.  
 
-2. In order to run reporting mode, you also need to run at least one `rippled` server in [P2P mode](install-rippled.html). 
+2. You also need to run at least one `rippled` server in P2P mode.
 
 3. A compatible version of CMake must be installed.
 
@@ -100,7 +100,7 @@ If you’re running `rippled` in reporting mode for your local network, you can 
 NuDB is installed as part of your `rippled` build setup and does not require any additional installation steps.
 
 
-### Procedure
+### Steps
 
 1. Build `rippled` for reporting mode on [Ubuntu or macOS](https://github.com/XRPLF/rippled/blob/release/BUILD.md).
 
