@@ -374,8 +374,6 @@
 <h1 id="retrieving-nftoken-data-and-metadata">Retrieving NFToken Data and Metadata<a aria-hidden="true" class="hover_anchor" href="#retrieving-nftoken-data-and-metadata"><i class="fa fa-link"></i></a></h1>
 <p>To minimize the footprint of <code>NFTokens</code> without sacrificing functionality or imposing unnecessary restrictions, XRPL NFTs do not have arbitrary data fields. Instead, data is maintained separately and referenced by the <code>NFToken</code>. The URI provides a reference to immutable content for the <code>Hash</code> and any mutable data for the <code>NFToken</code> object.</p>
 <p>The <code>URI</code> field is especially useful for referring to non-traditional Peer-to-Peer (P2P) URLs. For example, a minter that stores <code>NFToken</code> data or metadata using the Inter Planetary File System (IPFS) can use the <code>URI</code> field to refer to data on IPFS in different ways, each of which is suited to different use-cases. For more context on types of IPFS links that can be used to store NFT data, see <a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them" target="_blank">Best Practices for Storing NFT Data using IPFS <i aria-hidden="true" class="fa fa-external-link"></i></a>,</p>
-<p>An alternative to the URI approach is for issuers of <code>NFToken</code> objects to set the <code>Domain</code> field of their issuing account to the correct domain, and offer an API for clients that want to lookup the data or metadata associated with a particular <code>NFToken</code>. Note that using this mechanism <em>requires</em> the minter to acquire a domain name and set the domain name for their minting account, but does not require the minter to necessarily run a server nor other service to provide the ability to query this data; instead, a minter can "redirect" queries to a data provider (for example, to a marketplace, registry or other service).</p>
-<p>Your implementation should first attempt to check for the presence of the <code>URI</code> field to retrieve the associated data or metadata. If the <code>URI</code> field does not exist, the implementation should check for the presence of <code>Domain</code> field. If neither field exists, nothing happens. Implementations must be prepared to handle HTTP redirections (for example, using HTTP responses 301, 302, 307 and 308) from the URI.</p>
 <h2 id="txt-record-format">TXT Record Format<a aria-hidden="true" class="hover_anchor" href="#txt-record-format"><i class="fa fa-link"></i></a></h2>
 <p>The format for a text record is as follows.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{nftokenid}"
@@ -788,6 +786,11 @@
         <a class="nav-link" href="amendments.html">Amendments</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_6_9">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="contribute-code-flow.html">Contribute Code to the XRP Ledger</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="known-amendments.html">Known Amendments</a>
