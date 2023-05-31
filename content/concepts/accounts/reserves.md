@@ -60,7 +60,7 @@ To calculate an address's total reserve requirement, multiply `OwnerCount` by `r
 
 During transaction processing, the [transaction cost](transaction-cost.html) destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement. You can even destroy _all_ of your XRP this way.
 
-When your account holds less XRP than its current reserve requirement, you cannot send XRP to others, or create new objects that would increase your account's reserve requirement. Even so, the account continues to exist in the ledger and you can still send transactions that don't do these things, as long as you have enough XRP to pay the transaction cost. You can go back above the reserve requirement by receiving enough XRP, or if the [reserve requirement decreases](#changing-the-reserve-requirements) below the amount you have.
+When your account holds less XRP than its current reserve requirement, you cannot send XRP to others, or create new objects that would increase your account's reserve requirement. Even so, the account continues to exist in the ledger and you can still send transactions that don't do these things, as long as you have enough XRP to pay the transaction cost. You can go back above the reserve requirement by receiving enough XRP, or if the reserve requirement decreases below the amount you have.
 
 **Tip:** If your address is below the reserve requirement, you can send an [OfferCreate transactions][] to acquire more XRP and get back above the reserve requirement. However, since you cannot create an [Offer entry in the ledger](offer.html) while you are below the reserve, this transaction can only consume Offers that are already in the order books.
 
