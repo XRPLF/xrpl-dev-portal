@@ -539,7 +539,7 @@ The server may report a last validated ledger index less than the specified `Las
 Finally the server may show one or more gaps in the transaction history. The `completed_ledgers` field shown in the response above indicates that ledgers 10256383 through 10256411 are missing from this rippled instance.  Our example transaction can only appear in ledgers 10268597 - 10268600 (based on when it was submitted and `LastLedgerSequence`), so the gap shown here is not relevant.  However, if the gap indicated a ledger in that range was missing, then an application would need to query another rippled server (or wait for this one to retrieve the missing ledgers) to determine that a `txnNotFound` result is immutable.
 
 
-## Additional Resources
+## See Also
 
 - [Transaction Formats](transaction-formats.html)
 - [Transaction Cost](transaction-cost.html)

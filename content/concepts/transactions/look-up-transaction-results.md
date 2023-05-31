@@ -442,12 +442,12 @@ Most other transactions create a specific type of ledger entry and [adjust the s
 ## See Also
 
 - **Concepts:**
-    - [Finality of Results](finality-of-results.html) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
-- **Tutorials:**
+    - [Finality of Results](finality-of-results.html)
     - [Reliable Transaction Submission](reliable-transaction-submission.html)
+- **Tutorials:**
     - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)
 - **References:**
-    - [Ledger Object Types Reference](ledger-object-types.html) - All possible fields of all types of ledger objects
+    - [Ledger Entry Types Reference](ledger-object-types.html) - All possible fields of all types of ledger entries
     - [Transaction Metadata](transaction-metadata.html) - Summary of the metadata format and fields that appear in metadata
     - [Transaction Results](transaction-results.html) - Tables of all possible result codes for transactions.
 

@@ -12,10 +12,9 @@ Multi-signing in the XRP Ledger is a method of [authorizing transactions](transa
 
 Benefits of multi-signing include:
 
-* You can require keys from different devices, so that a malicious actor must compromise multiple machines to send transactions on your behalf.
-* You can share custody of an address between multiple people, each of whom only has one of several keys necessary to send transactions from that address.
-* You can delegate the power to send transactions from your address to a group of people, who can control your address if you are unavailable or unable to sign normally.
-* ... and more.
+- You can require keys from different devices, so that a malicious actor must compromise multiple machines to send transactions on your behalf.
+- You can share custody of an address between multiple people, each of whom only has one of several keys necessary to send transactions from that address.
+- You can delegate the power to send transactions from your address to a group of people, who can control your address if you are unavailable or unable to sign normally.
 
 ## Signer Lists
 
