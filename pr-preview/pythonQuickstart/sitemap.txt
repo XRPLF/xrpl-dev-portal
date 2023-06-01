@@ -106,6 +106,9 @@ https://xrpl.org/batch-minting.html
 https://xrpl.org/py-create-accounts-send-xrp.html
 https://xrpl.org/py-create-trustline-send-currency.html
 https://xrpl.org/py-mint-and-burn-nftokens.html
+https://xrpl.org/py-transfer-nftokens.html
+https://xrpl.org/py-broker-sale.html
+https://xrpl.org/py-authorize-minter.html
 https://xrpl.org/get-started.html
 https://xrpl.org/public-servers.html
 https://xrpl.org/get-started-using-python.html

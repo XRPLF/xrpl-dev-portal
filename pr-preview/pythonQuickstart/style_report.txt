@@ -1,11 +1,11 @@
 -------------
 Spell Checker
 -------------
-Found 62 possible spelling errors:
+Found 72 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gift, ifs, gis
-  ringtee: 
+  gifs: ifs, gis, gift
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -27,57 +27,73 @@ Found 62 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: sias, slag, silas
+  slas: slay, slav, sias
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: xls, lsd
+  xlsd: lsd, xls
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  fixnonfungibletokensv1_2: 
-  xrpfees: 
   immediateofferkilled: 
-  depositpreauthamendment: 
-  fixuniversalnumber: 
   disallowincoming: 
+  fixnonfungibletokensv1_2: 
+  fixuniversalnumber: 
+  xrpfees: 
+  depositpreauthamendment: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingtrustline: 
   asfdisallowincomingpaychan: 
   asfdisallowincomingnftoffer: 
   asfdisallowincomingcheck: 
-  30d: 3-d, 3rd, 3d
+  30d: 3rd, 3-d, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: modo, mody, mods
+  mod1: modo, mod., mods
   get_account: 
   get_account_info: 
   send_xrp: 
-  lesson1: lesson, lessons
-  tkinter: twinter, tinter
+  lesson1: lessons, lesson
+  tkinter: tinter, twinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: modo, mody, mods
+  mod2: modo, mod., mods
   send_currency: 
   get_balance: 
   configure_account: 
-  lesson2: lesson, lessons
+  lesson2: lessons, lesson
 
 <Page '3. Mint and Burn NFTokens (Python)' (py-mint-and-burn-nftokens.html)> Unknown Words:
-  mod3: modo, mody, mods
+  mod3: modo, mod., mods
   minttoken: 
   gettokens: 
   burn_token: 
 
+<Page '4. Transfer NFTokens' (py-transfer-nftokens.html)> Unknown Words:
+  mod4: modo, mod., mods
+  offer___index: 
+  alloffers: 
+  lesson4: lessons, lesson
+
+<Page 'Broker an NFT Sale' (py-broker-sale.html)> Unknown Words:
+  buy___offer___index: 
+  sell___offer___index: 
+  broker___fee: 
+  lesson5: lessons, lesson
+
+<Page 'Assign an Authorized Minter' (py-authorize-minter.html)> Unknown Words:
+  mod6: modo, mod., mods
+  mint_other: 
+
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3rd, 3-d, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   nftokenoffers: nftokenoffer
@@ -119,7 +135,7 @@ Found 62 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 56 discouraged words/phrases:
+Found 66 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -157,6 +173,13 @@ Page: <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustli
    Discouraged word: wallet (5 instances); suggest 'address, client application, account' instead.
 Page: <Page '3. Mint and Burn NFTokens (Python)' (py-mint-and-burn-nftokens.html)>
    Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+Page: <Page '4. Transfer NFTokens' (py-transfer-nftokens.html)>
+   Discouraged word: wallet (6 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Broker an NFT Sale' (py-broker-sale.html)>
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'Assign an Authorized Minter' (py-authorize-minter.html)>
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
 Page: <Page 'Build A Browser Wallet Using JS' (build-a-browser-wallet-in-js.html)>
    Discouraged word: simple (1 instances); suggest '(omit)' instead.
    Discouraged word: render (1 instances); suggest 'give, make' instead.
@@ -182,7 +205,7 @@ Page: <Page 'Tutorial Structure' (tutorial-structure.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.1 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.2 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
@@ -224,8 +247,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 740
-  Characters: 4,601
+  Words: 737
+  Characters: 4,585
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
