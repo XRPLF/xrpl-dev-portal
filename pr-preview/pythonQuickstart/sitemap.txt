@@ -74,6 +74,7 @@ https://xrpl.org/transaction-queue.html
 https://xrpl.org/about-canceling-a-transaction.html
 https://xrpl.org/transaction-malleability.html
 https://xrpl.org/amendments.html
+https://xrpl.org/contribute-code-flow.html
 https://xrpl.org/known-amendments.html
 https://xrpl.org/fee-voting.html
 https://xrpl.org/consensus-research.html
@@ -437,6 +438,8 @@ https://xrpl.org/xrp-test-net-faucet.html
 https://xrpl.org/tx-sender.html
 https://xrpl.org/contribute.html
 https://xrpl.org/contribute-code.html
+https://xrpl.org/tutorial-guidelines.html
+https://xrpl.org/tutorial-structure.html
 https://xrpl.org/events.html
 https://xrpl.org/ambassadors.html
 https://xrpl.org/developer-funding.html

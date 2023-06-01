@@ -1,11 +1,11 @@
 -------------
 Spell Checker
 -------------
-Found 60 possible spelling errors:
+Found 62 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: kifs, gis, gits
-  kuressaare: 
+  gifs: gift, ifs, gis
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -23,77 +23,80 @@ Found 60 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: black-hole, blockhole
+  blackhole: blockhole, black-hole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slays, elas, salas
+  slas: sias, slag, silas
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
+<Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
+  xlsd: xls, lsd
+
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  depositpreauthamendment: 
-  disallowincoming: 
-  xrpfees: 
-  fixuniversalnumber: 
-  immediateofferkilled: 
   fixnonfungibletokensv1_2: 
+  xrpfees: 
+  immediateofferkilled: 
+  depositpreauthamendment: 
+  fixuniversalnumber: 
+  disallowincoming: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
   asfdisallowincomingpaychan: 
+  asfdisallowincomingnftoffer: 
   asfdisallowincomingcheck: 
-  30d: 3rd, 3-d, 3d
+  30d: 3-d, 3rd, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mod., modi, mod
+  mod1: modo, mody, mods
   get_account: 
   get_account_info: 
   send_xrp: 
-  lesson1: lessons, lesson
+  lesson1: lesson, lessons
   tkinter: twinter, tinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mod., modi, mod
+  mod2: modo, mody, mods
   send_currency: 
   get_balance: 
   configure_account: 
-  lesson2: lessons, lesson
+  lesson2: lesson, lessons
 
 <Page '3. Mint and Burn NFTokens (Python)' (py-mint-and-burn-nftokens.html)> Unknown Words:
-  mod3: mod., modi, mod
+  mod3: modo, mody, mods
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3-d, 3rd, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -110,10 +113,13 @@ Found 60 possible spelling errors:
 <Page 'nft_history' (nft_history.html)> Unknown Words:
   nft_history: 
 
+<Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
+  screenshots: screenshot
+
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 46 discouraged words/phrases:
+Found 56 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -133,6 +139,8 @@ Page: <Page 'Running an NFT Auction' (nftoken-auctions.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Amendments' (amendments.html)>
    Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+Page: <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)>
+   Discouraged phrase: defaults to (1 instances); suggest 'the default is' instead.
 Page: <Page 'Known Amendments' (known-amendments.html)>
    Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
 Page: <Page 'XRPL Quickstart' (xrpl-quickstart.html)>
@@ -159,11 +167,22 @@ Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-st
    Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
 Page: <Page 'ledger_data' (ledger_data.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Tutorial Guidelines' (tutorial-guidelines.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+   Discouraged word: frequently (1 instances); suggest 'often' instead.
+   Discouraged word: performed (1 instances); suggest 'done' instead.
+   Discouraged phrase: a number of (1 instances); suggest 'some' instead.
+   Discouraged word: assistance (1 instances); suggest 'aid, help' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Tutorial Structure' (tutorial-structure.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
 ------------------
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.2 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.1 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
@@ -205,8 +224,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 743
-  Characters: 4,620
+  Words: 740
+  Characters: 4,601
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
