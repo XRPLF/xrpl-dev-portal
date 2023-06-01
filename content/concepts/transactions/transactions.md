@@ -6,7 +6,7 @@ labels:
   - Payments
   - Transaction Sending
 ---
-# Transaction Basics
+# Transactions
 
 A _Transaction_ is the only way to modify the XRP Ledger. Transactions are only final if signed, submitted, and accepted into a validated ledger version following the [consensus process](consensus.html). Some ledger rules also generate _[pseudo-transactions](pseudo-transaction-types.html)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost][].
 
@@ -87,7 +87,7 @@ Here is an example of an unsigned [Payment transaction][] in JSON:
 }
 ```
 
-The XRP Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the `Account`) field. For instructions on how to do this securely, see [Set Up Secure Signing](set-up-secure-signing.html).
+The XRP Ledger only relays and executes a transaction if the transaction object has been authorized by the sending address (in the `Account`) field. For instructions on how to do this securely, see [Set Up Secure Signing](secure-signing.html).
 
 ## Example Signed Transaction Blob
 
@@ -204,9 +204,8 @@ Example response from the `tx` command:
 
 - **Concepts:**
     - [Payment Types](payment-types.html)
-    - [Consensus Network](consensus-network.html)
 - **Tutorials:**
-    - [Set Up Secure Signing](set-up-secure-signing.html)
+    - [Set Up Secure Signing](secure-signing.html)
     - [Send XRP](send-xrp.html)
     - [Look Up Transaction Results](look-up-transaction-results.html)
     - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)

@@ -200,7 +200,7 @@ AWSインスタンスストア（`ephemeral`ストレージ）では適切なパ
 
 - **コンセプト:**
     - [`rippled`サーバー](xrpl-servers.html)
-    - [コンセンサスについて](intro-to-consensus.html)
+    - [コンセンサスについて](consensus.html)
 - **チュートリアル:**
     - [`rippled`の構成](configure-rippled.html)
         - [オンライ削除の設定](configure-online-deletion.html) - サーバーが一度に保持するレジャー履歴のバージョン数を調整します。

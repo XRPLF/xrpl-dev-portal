@@ -173,7 +173,6 @@ Best practices for applications submitting transactions include:
 ## See Also
 
 - **Concepts:**
-    - [Introduction to Consensus](intro-to-consensus.html)
     - [Consensus Research](consensus-research.html)
     - [The Consensus Mechanism (YouTube)](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
 - **Tutorials:**

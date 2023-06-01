@@ -137,7 +137,7 @@ Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](h
 
 ### 5. Listen for Events
 
-You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](intro-to-consensus.html) produces a new [ledger version](ledgers.html). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the `on(eventType, callback)` method of the client.
+You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](consensus.html) produces a new [ledger version](ledgers.html). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the `on(eventType, callback)` method of the client.
 
 {{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Listen to ledger close events", end_before="// Disconnect when done", language="js") }}
 
@@ -148,7 +148,7 @@ Now that you know how to use `xrpl.js` to connect to the XRP Ledger, get an acco
 
 * [Send XRP](send-xrp.html).
 * [Issue a Fungible Token](issue-a-fungible-token.html)
-* [Set up secure signing](set-up-secure-signing.html) for your account.
+* [Set up secure signing](secure-signing.html) for your account.
 
 
 ## See Also

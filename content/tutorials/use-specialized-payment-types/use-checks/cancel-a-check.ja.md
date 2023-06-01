@@ -22,7 +22,7 @@ _[Checks Amendment][]が必要です。_
 - 現在レジャーに記録されているCheckオブジェクトのIDが必要です。
     - たとえばこのチュートリアルの例では、IDが`49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0`のCheckを取り消しますが、この手順を自身で実行する場合は異なるIDを使用する必要があります。
 - CheckCancelトランザクションを送信する資金供給のあるアカウントの**アドレス**と**シークレットキー**。Checkが有効期限切れでない限り、このアドレスは、Checkの送金元または受取人のいずれかでなければなりません。
-- トランザクションに[安全に署名できる手段](set-up-secure-signing.html)。
+- トランザクションに[安全に署名できる手段](secure-signing.html)。
 - [クライアントライブラリ](client-libraries.html)またはHTTPライブラリ、WebSocketライブラリなど。
 
 

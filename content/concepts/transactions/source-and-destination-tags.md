@@ -1,6 +1,6 @@
 ---
 html: source-and-destination-tags.html
-parent: transaction-basics.html
+parent: transactions.html
 blurb: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses.
 labels:
   - Payments
@@ -11,7 +11,7 @@ labels:
 
 _Source tags_ and _destination tags_ are a feature of XRP Ledger [payments](payment-types.html) that can indicate specific purposes for payments from and to multi-purpose addresses. Source and destination tags do not have direct on-ledger functionality; source and destination tags merely provide information about how off-ledger systems should process a payment. In transactions, both source and destination tags are formatted as 32-bit unsigned integers.
 
-Destination tags indicate the beneficiary or destination for a payment. For example, a payment to an [exchange](list-xrp-as-an-exchange.html) or [gateway](become-an-xrp-ledger-gateway.html) address can use a destination tag to indicate which customer to credit for the amount of the payment in that business's own systems. A payment to a merchant could indicate what item or cart the payment is buying.
+Destination tags indicate the beneficiary or destination for a payment. For example, a payment to an [exchange](list-xrp-as-an-exchange.html) or [stablecoin issuer](stablecoin-issuer.html) address can use a destination tag to indicate which customer to credit for the amount of the payment in that business's own systems. A payment to a merchant could indicate what item or cart the payment is buying.
 
 Source tags indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to send a return, or "bounced", payment. When returning an incoming payment, you should use the source tag from the incoming payment as the destination tag of the outgoing (return) payment.
 
@@ -47,7 +47,6 @@ For an XRP Ledger address that may receive payments intended for several custome
 ## See Also
 
 - [Require Destination Tags](require-destination-tags.html)
-- [XRP Ledger Businesses](xrp-ledger-businesses.html)
 - [Payment Types](payment-types.html)
 
 

@@ -1,6 +1,6 @@
 ---
 html: list-xrp-as-an-exchange.html
-parent: xrp-ledger-businesses.html
+parent: defi-uc.html
 blurb: Run a digital asset exchange? Follow these steps to add XRP.
 labels:
   - XRP
@@ -41,17 +41,17 @@ To support XRP, Alpha Exchange must:
 
 See also:
 
-* [Compliance Guidelines](become-an-xrp-ledger-gateway.html#compliance-guidelines) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
+* [Compliance Guidelines](stablecoin-issuer.html#compliance-guidelines) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
 
-* [Requirements for Sending to XRP Ledger](become-an-xrp-ledger-gateway.html#requirements-for-sending-to-xrp-ledger)
+* [Requirements for Sending to XRP Ledger](stablecoin-issuer.html#requirements-for-sending-to-xrp-ledger)
 
-* [Requirements for Receiving from XRP Ledger](become-an-xrp-ledger-gateway.html#requirements-for-receiving-from-xrp-ledger)
+* [Requirements for Receiving from XRP Ledger](stablecoin-issuer.html#requirements-for-receiving-from-xrp-ledger)
 
-* [Precautions](become-an-xrp-ledger-gateway.html#precautions)
+* [Precautions](stablecoin-issuer.html#precautions)
 
 ### Partial Payments
 
-Before integrating, exchanges should be aware of the [partial payments](partial-payments.html) feature. This feature allows XRP Ledger users to send successful payments that reduce the amount received instead of increasing the `SendMax`. This feature can be useful for [returning payments](become-an-xrp-ledger-gateway.html#bouncing-payments) without incurring additional cost as the sender.
+Before integrating, exchanges should be aware of the [partial payments](partial-payments.html) feature. This feature allows XRP Ledger users to send successful payments that reduce the amount received instead of increasing the `SendMax`. This feature can be useful for [returning payments](stablecoin-issuer.html#bouncing-payments) without incurring additional cost as the sender.
 
 #### Partial Payments Warning
 
@@ -61,7 +61,7 @@ When the [`tfPartialPayment` flag](payment.html#payment-flags) is enabled, the `
 
 ### Accounts
 
-XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are [not easy to delete](accounts.html#deletion-of-accounts). To offset the costs associated with storing accounts, each account must hold a separate [reserve of XRP](reserves.html) that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts. <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet, easy -->
+XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are [not easy to delete](deleting-accounts.html). To offset the costs associated with storing accounts, each account must hold a separate [reserve of XRP](reserves.html) that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts. <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet, easy -->
 
 To follow Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](issuing-and-operational-addresses.html) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
 
@@ -91,8 +91,6 @@ To follow Ripple's recommended best practices, Alpha Exchange should create at l
 
 
 See also:
-
-* ["Suggested Business Practices" in the _Gateway Guide_](become-an-xrp-ledger-gateway.html#suggested-business-practices)
 
 * [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
 
@@ -311,7 +309,7 @@ A user named Charlie wants to deposit 50,000 XRP to Alpha Exchange. Doing this i
 
 1. Charlie submits a payment of 50,000  XRP to Alpha Exchange's [cold wallet](#accounts).
 
-    a. Charlie adds an identifier (in this case, `789`) to the payment to associate it with his account at Alpha Exchange. This is called a [_destination tag_](become-an-xrp-ledger-gateway.html#source-and-destination-tags). (To use this, Alpha Exchange should have set the `asfRequireDest` flag on all of its accounts to require all incoming payments to have a destination tag like Charlie's. For more information, see [AccountSet Flags](accountset.html#accountset-flags)).
+    a. Charlie adds an identifier (in this case, `789`) to the payment to associate it with his account at Alpha Exchange. This is called a [_destination tag_](source-and-destination-tags.html). (To use this, Alpha Exchange should have set the `asfRequireDest` flag on all of its accounts to require all incoming payments to have a destination tag like Charlie's. For more information, see [AccountSet Flags](accountset.html#accountset-flags)).
 
 2. The software at Alpha Exchange detects the incoming payment, and recognizes `789` as the destination tag for Charlie’s account.
 
@@ -614,7 +612,7 @@ Off-Ledger Balances</td>
 - **Tutorials:**
     - [Install `rippled`](install-rippled.html)
     - [Send XRP](send-xrp.html)
-    - [Set Up Secure Signing](set-up-secure-signing.html)
+    - [Set Up Secure Signing](secure-signing.html)
     - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)
 - **References:**
     - [Payment transaction][]

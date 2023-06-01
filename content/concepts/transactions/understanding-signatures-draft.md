@@ -20,7 +20,7 @@ To verify whether a single-signed transaction is valid, a `rippled` server check
 
 1. This key hashes to an address that's authorized by the transaction's sender.
 
-    The default is that only the address of an account is authorized to send all transactions for that account. That address is [derived from](accounts.html#address-encoding) the public key from the master key pair that was generated during address creation. Regular keys add a different address (derived from a different key pair) that's authorized to send most transactions. And of course, you can also disable the [master key](cryptographic-keys.html) or add a [multi-signing list](reference-transaction-format.html#multi-signing). ***TODO: address from Ryan: "And of course" - Nit: this seems a little informal. Maybe just drop it and go into the next sentence? JHA take a closer look at what this sentence is trying to say.***
+    The default is that only the address of an account is authorized to send all transactions for that account. That address is [derived from](addresses.html#address-encoding) the public key from the master key pair that was generated during address creation. Regular keys add a different address (derived from a different key pair) that's authorized to send most transactions. And of course, you can also disable the [master key](cryptographic-keys.html) or add a [multi-signing list](reference-transaction-format.html#multi-signing). ***TODO: address from Ryan: "And of course" - Nit: this seems a little informal. Maybe just drop it and go into the next sentence? JHA take a closer look at what this sentence is trying to say.***
 
 2. This key matches the signature on the transaction.
 
@@ -63,7 +63,7 @@ Verifying a [multi-signed transaction](reference-transaction-format.html#multi-s
 
 The public key of one signer. Verifying a [multi-signed transaction](reference-transaction-format.html#multi-signing) involves making sure each such key is authorized to sign for the `AccountID` of the signer.
 
-Multi-signature `AccountIDs` are a little special. If one is an address that doesn't exist in the ledger, then the `SigningPubKey` must hash to the `AccountID` value using the standard rules for [deriving an AccountID](accounts.html#address-encoding) from a public key. If the address does exist in the ledger, then either:
+Multi-signature `AccountIDs` are a little special. If one is an address that doesn't exist in the ledger, then the `SigningPubKey` must hash to the `AccountID` value using the standard rules for [deriving an AccountID](addresses.html#address-encoding) from a public key. If the address does exist in the ledger, then either:
 
 1. The `SigningPubKey` must hash to the `AccountID` and the address must not have the master key disabled.
 

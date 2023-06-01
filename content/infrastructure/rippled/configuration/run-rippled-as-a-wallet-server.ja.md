@@ -12,9 +12,9 @@ labels:
 
 ウォレットサーバーは、次のすべてのことを行います。
 
-- [ピアネットワーク](consensus-network.html)に接続
+- [ピアネットワーク](peer-protocol.html)に接続
 
-- 暗号署名された[トランザクション](transaction-basics.html)を中継
+- 暗号署名された[トランザクション](transactions.html)を中継
 
 - 完全な共有グローバル[レジャー](ledgers.html)のローカルコピーを維持
 
@@ -44,13 +44,11 @@ labels:
 
 - **コンセプト:**
     - [XRP Ledgerの概要](xrp-ledger-overview.html)
-    - [コンセンサスネットワーク](consensus-network.html)
     - [`rippled`サーバー](xrpl-servers.html)
 - **チュートリアル:**
     - [rippledサーバーのクラスター化](cluster-rippled-servers.html)
     - [`rippled`のインストール](install-rippled.html)
     - [容量の計画](capacity-planning.html)
-    - [XRP Ledgerのビジネス](xrp-ledger-businesses.html)
 - **リファレンス:**
     - [Validator Keysツールガイド](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)
     - [consensus_infoメソッド][]

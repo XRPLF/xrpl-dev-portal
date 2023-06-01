@@ -24,7 +24,7 @@ To send a Check with this tutorial, you need the following:
 - The **address** and **secret key** of a funded account to send the Check from.
     - You can use the [XRP Ledger Test Net Faucet](xrp-test-net-faucet.html) to get a funded address and secret with 10,000 Test Net XRP.
 - The **address** of a funded account to receive the Check.
-- A [secure way to sign transactions](set-up-secure-signing.html).
+- A [secure way to sign transactions](secure-signing.html).
 - A [client library](client-libraries.html) or any HTTP or WebSocket library.
 
 ## {{send_n.next()}}. Prepare the CheckCreate transaction

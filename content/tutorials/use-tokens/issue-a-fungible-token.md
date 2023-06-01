@@ -10,7 +10,7 @@ labels:
 ---
 # Issue a Fungible Token
 
-Anyone can issue various types of tokens in the XRP Ledger, ranging from informal "IOUs" to fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more. This tutorial shows the technical steps of creating a token in the ledger. For more information on how XRP Ledger tokens work, see [Issued Currencies](issued-currencies.html); for more on the business decisions involved in issuing a stablecoin, see [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html). <!-- STYLE_OVERRIDE: ious -->
+Anyone can issue various types of tokens in the XRP Ledger, ranging from informal "IOUs" to fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more. This tutorial shows the technical steps of creating a token in the ledger. For more information on how XRP Ledger tokens work, see [Issued Currencies](issued-currencies.html); for more on the business decisions involved in issuing a stablecoin, see [Stablecoin Issuer](stablecoin-issuer.html). <!-- STYLE_OVERRIDE: ious -->
 
 ## Prerequisites
 
@@ -59,7 +59,7 @@ In this tutorial, the hot address receives the tokens you issue from the cold ad
 
 **Caution:** Ripple provides the [Testnet and Devnet](parallel-networks.html) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet.
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
 
 
 ### {{n.next()}}. Connect to the Network

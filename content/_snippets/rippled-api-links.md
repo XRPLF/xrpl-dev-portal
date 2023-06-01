@@ -15,8 +15,8 @@
 [XRPのdrop数]: basic-data-types.html#通貨額の指定
 [Hash]: basic-data-types.html#hashes
 [ハッシュ]: basic-data-types.html#ハッシュ
-[identifying hash]: transaction-basics.html#identifying-transactions
-[識別用ハッシュ]: transaction-basics.html#トランザクションの識別
+[identifying hash]: transactions.html#identifying-transactions
+[識別用ハッシュ]: transactions.html#トランザクションの識別
 [Internal Type]: serialization.html
 [内部の型]: serialization.html
 [Ledger Index]: basic-data-types.html#ledger-index

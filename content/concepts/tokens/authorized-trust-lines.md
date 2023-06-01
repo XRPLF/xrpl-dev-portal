@@ -120,8 +120,6 @@ In the response's `result.lines` array, find the object whose `currency` field i
 - **Concepts:**
     - [Deposit Authorization](depositauth.html)
     - [Freezing Issued Currencies](freezes.html)
-- **Tutorials:**
-    - [Become a Stablecoin Issuer](become-an-xrp-ledger-gateway.html)
 - **References:**
     - [account_lines method][]
     - [account_info method][]

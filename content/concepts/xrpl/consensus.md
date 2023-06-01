@@ -60,14 +60,6 @@ It's OK if a small proportion of validators don't work properly all the time. As
 For a longer exploration of how the XRP Ledger Consensus Protocol responds to various challenges, attacks, and failure cases, see [Consensus Protections Against Attacks and Failure Modes](consensus-protections.html).
 
 
-## See Also
-
-- [Consensus Network Concepts](consensus-network.html) for several articles describing the mechanics of the XRP Ledger Consensus Protocol in greater depth.
-- [Run `rippled` as a Validator](run-rippled-as-a-validator.html) for instructions on running your own validator.
-- [Decentralization Strategy Update (Ripple Dev Blog)](https://xrpl.org/blog/2017/decent-strategy-update.html) for a description of Ripple's goals and plans for decentralizing the XRP Ledger.
-
-<!--{# TODO: Replace the Decent Strategy Update w/ a newer article when we have one #}-->
-
 ----
 
 ## Footnotes

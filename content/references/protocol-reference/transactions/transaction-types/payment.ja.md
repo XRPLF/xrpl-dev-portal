@@ -105,7 +105,7 @@ Payment型のトランザクションについては、[`Flags`フィールド](
 
 ## Partial Payments
 
-Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに[支払いを返金](become-an-xrp-ledger-gateway.html#bouncing-payments)する場合です。その一方で、成功したトランザクションの`Amount`フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。
+Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに[支払いを返金](stablecoin-issuer.html#bouncing-payments)する場合です。その一方で、成功したトランザクションの`Amount`フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。
 
 Partial Paymentsとは、**tfPartialPayment**フラグが有効になっている[Paymentトランザクション][]です。Partial Paymentsは、`SendMax`値を超える金額を送金することなく、`DeliverMin`フィールド以上の正の金額（`DeliverMin`が指定されていない場合、任意の正の金額）を送金する場合に成功します。
 

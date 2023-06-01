@@ -402,7 +402,7 @@ pages:
         template: page-docs.html.jinja
         sidebar: left_only
         top_nav_name: Docs
-        top_nav_shortcuts:
+        top_nav_shortcuts: #TODO: update shortcuts (en+ja)
             # Programming Languages
             - get-started-using-python.html
             - get-started-using-javascript.html
@@ -414,7 +414,6 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
             - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
         popular_pages: # TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
@@ -423,7 +422,6 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
             - public-api-methods.html
         blurb: Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.
         top_nav_blurb: Dive into XRP Ledger technology and start integrating.
@@ -451,7 +449,6 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
             - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
         popular_pages: # TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
@@ -460,7 +457,6 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
             - public-api-methods.html
         blurb: XRP Ledgerのドキュメントと、元帳を構築して統合するために必要なすべての情報を紹介します。
         top_nav_blurb: XRP Ledgerの技術に飛び込んで、統合を始めましょう。
@@ -956,6 +952,14 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/transactions/transaction-malleability.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/transaction-malleability.ja.md
+        targets:
+            - ja
+
     # TODO: match filename to page title
     -   md: concepts/transactions/about-canceling-a-transaction.md
         targets:
@@ -1290,6 +1294,50 @@ pages:
             - ja
     
    ## REDIRECTS FROM OLD CONCEPT PAGES/LANDINGS -------------------------------
+    -   name: Intro to Consensus
+        html: intro-to-consensus.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: consensus.html
+        targets:
+            - en
+            - ja
+
+    -   name: Secure Signing
+        html: set-up-secure-signing.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: secure-signing.html
+        targets:
+            - en
+            - ja
+
+    -   name: Transactions
+        html: transaction-basics.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: transactions.html
+        targets:
+            - en
+            - ja
+
+    -   name: Stablecoin Issuer
+        html: become-an-xrp-ledger-gateway.html.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: stablecoin-issuer.html
+        targets:
+            - en
+            - ja
+
+    -   name: Consensus
+        html: consensus-network.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: consensus.html
+        targets:
+            - en
+            - ja
 
     -   name: Complex Payment Types
         html: complex-payment-types.html
@@ -1848,6 +1896,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation to match English updates
     -   md: tutorials/use-specialized-payment-types/use-checks/use-checks.ja.md
         targets:
             - ja
@@ -4589,25 +4638,25 @@ pages:
 
 # Amendments -------------------------------------------------------------------
 
-    -   name: Amendments
-        template: page-references.html.jinja
-        html: amendment-heading.html
+    -   md: amendments/amendments.md
         parent: docs.html
-        top_nav_grouping: Article Types
-        sidebar: disabled
-        blurb: Complete references for different interfaces to the XRP Ledger.
         targets:
             - en
 
-    -   md: amendments/amendments.md
-        parent: amendment-heading.html
+    -   md: amendments/amendments.ja.md
+        parent: docs.html
         targets:
-            - en
+            - ja
 
     -   md: amendments/known-amendments.md
-        parent: amendment-heading.html
+        parent: amendments.html
         targets:
             - en
+
+    -   md: amendments/known-amendments.ja.md
+        parent: amendments.html
+        targets:
+            - ja
 
         # TODO: translate
     -   md: amendments/contribute-code-flow.md
@@ -4618,22 +4667,6 @@ pages:
 
 # --------------- end "Docs" section -------------------------------------------
 # Old use Cases: these have been removed. Only redirects remain.
-
-#     -   name: Use Cases
-#         html: use-cases.html
-#         template: pagetype-redirect.html.jinja
-#         nav_omit: true
-#         redirect_url: uses.html
-#         targets:
-#             - en
-# 
-#     -   name: ユースケース
-#         html: use-cases.html
-#         template: pagetype-redirect.html.jinja
-#         nav_omit: true
-#         redirect_url: uses.html
-#         targets:
-#             - ja
 
     -   name: Run a rippled Validator
         html: run-a-rippled-validator.html

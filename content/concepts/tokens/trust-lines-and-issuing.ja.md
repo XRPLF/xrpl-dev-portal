@@ -73,8 +73,6 @@ labels:
 - **コンセプト:**
     - [分散型取引所](decentralized-exchange.html)
     - [リップリング](rippling.html)
-- **チュートリアル:**
-    - [XRP Ledgerゲートウェイの開設](become-an-xrp-ledger-gateway.html)
 - **リファレンス:**
     - [account_linesメソッド][] - 指定されたアカウントに関連付けられたトラストラインを確認
     - [gateway_balancesメソッド][] - 発行者の発行残高を確認

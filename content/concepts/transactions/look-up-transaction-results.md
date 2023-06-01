@@ -8,7 +8,7 @@ labels:
 ---
 # Look Up Transaction Results
 
-To use the XRP Ledger effectively, you need to be able to understand [transaction](transaction-basics.html) outcomes: did the transaction succeed? What did it do? If it failed, why?
+To use the XRP Ledger effectively, you need to be able to understand [transaction](transactions.html) outcomes: did the transaction succeed? What did it do? If it failed, why?
 
 The XRP Ledger is a shared system, with all data recorded publicly and carefully, securely updated with each new [ledger version](ledgers.html). Anyone can look up the exact outcome of any transaction and read the [transaction metadata](transaction-metadata.html) to see what it did.
 
@@ -361,7 +361,7 @@ In the following excerpt, we see that `r9UUEX...`'s balance increases by 1 billi
 
 Look for a `CreatedNode` of type `PayChannel` when creating a payment channel. You should also find a `ModifiedNode` of type `AccountRoot` showing the decrease in the sender's balance. Look for an `Account` field in the `FinalFields` to confirm that the address matches the sender, and look at the difference in the `Balance` fields to see the change in XRP balance.
 
-The metadata also lists the newly-created payment channel in the destination's [owner directory](directorynode.html). This prevents an account from [being deleted](accounts.html#deletion-of-accounts) if it is the destination of an open payment channel. (This behavior was added by the [fixPayChanRecipientOwnerDir amendment](known-amendments.html#fixpaychanrecipientownerdir).)
+The metadata also lists the newly-created payment channel in the destination's [owner directory](directorynode.html). This prevents an account from [being deleted](deleting-accounts.html) if it is the destination of an open payment channel. (This behavior was added by the [fixPayChanRecipientOwnerDir amendment](known-amendments.html#fixpaychanrecipientownerdir).)
 
 There are several ways to request to close a payment channel, aside from the immutable `CancelAfter` time of the channel (which is only set on creation). If a transaction schedules a channel to close, there is  a `ModifiedNode` entry of type `PayChannel` for the channel, with the newly-added close time in the `Expiration` field of the `FinalFields`. The following example shows the changes to a `PayChannel` in a case where the sender requested to close the channel without redeeming a claim:
 
@@ -434,7 +434,7 @@ Most other transactions create a specific type of ledger entry and [adjust the s
 
 ### Pseudo-Transactions
 
-[Pseudo-transactions](pseudo-transaction-types.html) also have metadata, but they do not follow all the rules of normal transactions. They are not tied to a real account (the `Account` value is the [base58-encoded form of the number 0](accounts.html#special-addresses)), so they do not modify an AccountRoot object in the ledger to increase the `Sequence` number or destroy XRP. Pseudo-transactions only make specific changes to special ledger objects:
+[Pseudo-transactions](pseudo-transaction-types.html) also have metadata, but they do not follow all the rules of normal transactions. They are not tied to a real account (the `Account` value is the [base58-encoded form of the number 0](addresses.html#special-addresses)), so they do not modify an AccountRoot object in the ledger to increase the `Sequence` number or destroy XRP. Pseudo-transactions only make specific changes to special ledger objects:
 
 - [EnableAmendment pseudo-transactions][] modify the [Amendments ledger object](amendments-object.html) to track which amendments are enabled, and which ones are pending with majority support and for how long.
 - [SetFee pseudo-transactions][] modify the [FeeSettings ledger object](feesettings.html) to change the base levels for the [transaction cost](transaction-cost.html) and [reserve requirements](reserves.html).

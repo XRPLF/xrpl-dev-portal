@@ -12,7 +12,7 @@ The `RippleState` object type connects two accounts in a single currency. Concep
 
 ## High vs. Low Account
 
-There can only be one `RippleState` object per currency for any given pair of accounts. Since no account is privileged in the XRP Ledger, a `RippleState` object sorts account addresses numerically, to ensure a canonical form. Whichever address is numerically lower when [decoded](accounts.html#address-encoding) is deemed the "low account" and the other is the "high account". The net balance of the trust line is stored from the low account's perspective.
+There can only be one `RippleState` object per currency for any given pair of accounts. Since no account is privileged in the XRP Ledger, a `RippleState` object sorts account addresses numerically, to ensure a canonical form. Whichever address is numerically lower when [decoded](addresses.html#address-encoding) is deemed the "low account" and the other is the "high account". The net balance of the trust line is stored from the low account's perspective.
 
 The ["issuer"](trust-lines-and-issuing.html) for the balance in a trust line depends on whether the balance is positive or negative. If a `RippleState` object shows a positive balance, the high account is the issuer. If the balance is negative, the low account is the issuer. Often, the issuer has its limit set to 0 and the other account has a positive limit, but this is not reliable because limits can change without affecting an existing balance.
 
@@ -52,7 +52,7 @@ A `RippleState` object has the following fields:
 
 | Name                | JSON Type | Internal Type | Required? | Description |
 |:--------------------|:----------|:--------------|:----------|:------------|
-| `Balance`           | Object    | Amount        | Yes       | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the high account holds tokens issued by the low account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](accounts.html#special-addresses). |
+| `Balance`           | Object    | Amount        | Yes       | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the high account holds tokens issued by the low account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](addresses.html#special-addresses). |
 | `Flags`             | Number    | UInt32        | Yes       | A bit-map of boolean options enabled for this object. |
 | `HighLimit`         | Object    | Amount        | Yes       | The limit that the high account has set on the trust line. The `issuer` is the address of the high account that set this limit. |
 | `HighNode`          | String    | UInt64        | Yes       | (Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this object, in case the directory consists of multiple pages. |

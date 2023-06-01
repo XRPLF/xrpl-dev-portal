@@ -499,7 +499,7 @@ _Python_
 ## See Also
 
 - **Concepts:**
-    - [Transaction Basics](transaction-basics.html)
+    - [Transactions](transactions.html)
     - [Finality of Results](finality-of-results.html) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
 - **Tutorials:**
     - [Reliable Transaction Submission](reliable-transaction-submission.html)

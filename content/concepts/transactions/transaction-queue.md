@@ -35,7 +35,7 @@ The transaction queue plays an important role in selecting the transactions that
 
 The `rippled` server uses a variety of heuristics to estimate which transactions are "likely to be included in a ledger." The current implementation uses the following rules to decide which transactions to queue:
 
-- Transactions must be properly-formed and [authorized](transaction-basics.html#authorizing-transactions) with valid signatures.
+- Transactions must be properly-formed and [authorized](transactions.html#authorizing-transactions) with valid signatures.
 - Transactions with an `AccountTxnID` field cannot be queued.
 - A single sending address can have at most 10 transactions queued at the same time.
 - To queue a transaction, the sender must have enough XRP for all of the following:

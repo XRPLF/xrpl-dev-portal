@@ -40,10 +40,10 @@ To enable public signing, perform the following steps:
 ## See Also
 
 - **Concepts:**
-    - [Transaction Basics](transaction-basics.html)
+    - [Transactions](transactions.html)
     - [Cryptographic Keys](cryptographic-keys.html)
 - **Tutorials:**
-    - [Set Up Secure Signing](set-up-secure-signing.html)
+    - [Set Up Secure Signing](secure-signing.html)
     - [Get Started Using HTTP / WebSocket APIs](get-started-using-http-websocket-apis.html)
     - [Get Started Using JavaScript](get-started-using-javascript.html)
 - **References:**

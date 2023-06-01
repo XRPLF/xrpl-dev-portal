@@ -1,6 +1,6 @@
 ---
 html: transaction-cost.html
-parent: transaction-basics.html
+parent: transactions.html
 blurb: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
 labels:
   - Fees
@@ -29,7 +29,7 @@ Some transactions have different transaction costs:
 | [Key Reset Transaction](#key-reset-transaction) | 0 |
 | [Multi-signed Transaction](multi-signing.html) | 10 drops × (1 + Number of Signatures Provided) |
 | [EscrowFinish Transaction with Fulfillment](escrowfinish.html) | 10 drops × (33 + (Fulfillment size in bytes ÷ 16)) |
-| [AccountDelete Transaction](accounts.html#deletion-of-accounts) | 2,000,000 drops |
+| [AccountDelete Transaction](deleting-accounts.html) | 2,000,000 drops |
 
 
 ## Beneficiaries of the Transaction Cost

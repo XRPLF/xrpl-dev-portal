@@ -112,7 +112,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
 ### {{n.next()}}. Get account
 
-To store value and execute transactions on the XRP Ledger, you need to get an account: a [set of keys](cryptographic-keys.html#key-components) and an [address](accounts.html#addresses) that's been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html). The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a [secure signing method](set-up-secure-signing.html).
+To store value and execute transactions on the XRP Ledger, you need to get an account: a [set of keys](cryptographic-keys.html#key-components) and an [address](accounts.html#addresses) that's been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html). The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a [secure signing method](secure-signing.html).
 
 To generate a new account, `xrpl4j` provides the [`DefaultWalletFactory`](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html).
 
@@ -222,7 +222,7 @@ For a detailed description of every response field, see [account_info](account_i
 Now that you know how to use `xrpl4j` to connect to the XRP Ledger, get an account, and look up information about it, you can also use `xrpl4j` to:
 
 * [Send XRP](send-xrp.html).
-* [Set up secure signing](set-up-secure-signing.html) for your account.
+* [Set up secure signing](secure-signing.html) for your account.
 
 
 <!--{# common link defs #}-->

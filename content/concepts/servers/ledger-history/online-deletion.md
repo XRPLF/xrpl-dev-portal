@@ -7,7 +7,7 @@ labels:
   - Core Server
 ---
 # Online Deletion
-[[Source]<br/>](https://github.com/ripple/rippled/blob/master/src/ripple/app/misc/SHAMapStoreImp.cpp "Source")
+[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/misc/SHAMapStoreImp.cpp "Source")
 
 The online deletion feature lets the `rippled` server delete the server's local copy of old ledger versions to keep disk usage from rapidly growing over time. The default config file sets online deletion to run automatically, but online deletion can also be configured to run only when prompted. [New in: rippled 0.27.0][]
 
@@ -119,7 +119,7 @@ When it comes time for online deletion, the server first walks through the oldes
 
 - **Concepts:**
     - [Ledgers](ledgers.html)
-    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus](consensus.html)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.html)
     - [Configure `rippled`](configure-rippled.html)

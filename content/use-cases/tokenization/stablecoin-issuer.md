@@ -365,7 +365,7 @@ There are several interfaces you can use to connect to the XRP Ledger, depending
 
 Any time you submit an XRP Ledger transaction, it must be signed using your secret key. The secret key gives full control over your XRP Ledger address. **Never** send your secret key to a server run by someone else. Either use your own server, or sign the transactions locally using a client library.
 
-For instructions and examples of secure configurations, see [Set Up Secure Signing](set-up-secure-signing.html).
+For instructions and examples of secure configurations, see [Set Up Secure Signing](secure-signing.html).
 
 ## Issuer Setup
 
@@ -532,7 +532,7 @@ You can publish information about what currencies you issue, and which XRP Ledge
     - [Source and Destination Tags](source-and-destination-tags.html)
 - **Tutorials:**
     - [Install `rippled`](install-rippled.html)
-    - [Set Up Secure Signing](set-up-secure-signing.html)
+    - [Set Up Secure Signing](secure-signing.html)
     - [Issue a Fungible Token](issue-a-fungible-token.html)
     - [Enable No Freeze](enable-no-freeze.html)
     - [Freeze a Trust Line](freeze-a-trust-line.html)

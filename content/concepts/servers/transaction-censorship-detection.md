@@ -11,7 +11,7 @@ labels:
 
 The XRP Ledger is designed to be censorship resistant. In support of this design, the XRP Ledger provides an automated transaction censorship detector that is available on all `rippled` servers, enabling all participants to see if censorship is affecting the network.
 
-While a `rippled` server is in sync with the network, the detector tracks all transactions that should have been accepted in the last round of [consensus](intro-to-consensus.html) and included in the last validated ledger. The detector issues log messages of increasing severity when it sees transactions that have not been included in a validated ledger after several rounds of consensus.
+While a `rippled` server is in sync with the network, the detector tracks all transactions that should have been accepted in the last round of [consensus](consensus.html) and included in the last validated ledger. The detector issues log messages of increasing severity when it sees transactions that have not been included in a validated ledger after several rounds of consensus.
 
 
 

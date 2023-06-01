@@ -12,9 +12,9 @@ A stock server is a multipurpose configuration for `rippled`. With a stock serve
 
 A stock server does all of the following:
 
-- Connects to a [network of peers](consensus-network.html)
+- Connects to a [network of peers](peer-protocol.html)
 
-- Relays cryptographically signed [transactions](transaction-basics.html)
+- Relays cryptographically signed [transactions](transactions.html)
 
 - Maintains a local copy of the complete shared global [ledger](ledgers.html)
 
@@ -37,13 +37,11 @@ For more information, see [Troubleshooting `rippled`](troubleshoot-the-rippled-s
 
 - **Concepts:**
     - [XRP Ledger Overview](xrp-ledger-overview.html)
-    - [Consensus Network](consensus-network.html)
     - [The `rippled` Server](xrpl-servers.html)
 - **Tutorials:**
     - [Cluster rippled Servers](cluster-rippled-servers.html)
     - [Install `rippled`](install-rippled.html)
     - [Capacity Planning](capacity-planning.html)
-    - [XRP Ledger Businesses](xrp-ledger-businesses.html)
 - **References:**
     - [Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)
     - [consensus_info method][]

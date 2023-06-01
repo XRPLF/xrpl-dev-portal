@@ -73,7 +73,6 @@ If a standby address is compromised, the consequences are like an operational ad
     - [Accounts](accounts.html)
     - [Cryptographic Keys](cryptographic-keys.html)
 - **Tutorials:**
-    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
     - [Assign a Regular Key Pair](assign-a-regular-key-pair.html)
     - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
 - **References:**

@@ -98,7 +98,7 @@ Rippleは[代替となるテスト用および開発用ネットワーク](paral
   - [WebSocket APIツール](websocket-api-tool.html) - 接続オプションで「Testnet公開サーバー」を選択します。
 - **コンセプト:**
   - [並列ネットワーク](parallel-networks.html)
-  - [コンセンサスについて](intro-to-consensus.html)
+  - [コンセンサスについて](consensus.html)
 - **チュートリアル:**
   - [バリデータとしてのrippledの実行](run-rippled-as-a-validator.html)
   - [スタンドアロンモードでの`rippled`のオフラインテスト](use-stand-alone-mode.html)

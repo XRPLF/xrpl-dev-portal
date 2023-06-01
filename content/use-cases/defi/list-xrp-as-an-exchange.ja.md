@@ -1,6 +1,6 @@
 ---
 html: list-xrp-as-an-exchange.html
-parent: xrp-ledger-businesses.html
+parent: defi-uc.html
 blurb: デジタルアセット取引所でXRPを上場するために必要な手順の概要を説明します。
 labels:
   - XRP
@@ -41,17 +41,17 @@ XRPをサポートするために、Alpha Exchangeでは以下を行う必要が
 
 関連項目:
 
-* [ゲートウェイコンプライアンス](become-an-xrp-ledger-gateway.html#compliance-guidelines) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
+* [ゲートウェイコンプライアンス](stablecoin-issuer.html#compliance-guidelines) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
 
-* [Requirements for Sending to XRP Ledger](become-an-xrp-ledger-gateway.html#requirements-for-sending-to-xrp-ledger)
+* [Requirements for Sending to XRP Ledger](stablecoin-issuer.html#requirements-for-sending-to-xrp-ledger)
 
-* [Requirements for Receiving from XRP Ledger](become-an-xrp-ledger-gateway.html#requirements-for-receiving-from-xrp-ledger)
+* [Requirements for Receiving from XRP Ledger](stablecoin-issuer.html#requirements-for-receiving-from-xrp-ledger)
 
-* [ゲートウェイの注意事項](become-an-xrp-ledger-gateway.html#precautions)
+* [ゲートウェイの注意事項](stablecoin-issuer.html#precautions)
 
 ### Partial Payments
 
-追加の前に、取引所は[Partial Payments](partial-payments.html)機能について知っておく必要があります。この機能を使用すると、XRP Ledgerのユーザーは、`SendMax`を増やさずに、受取金額を減額して、支払いを正常に送信できます。この機能は、送信者側に追加費用が発生せず、[支払いの返金](become-an-xrp-ledger-gateway.html#bouncing-payments)に便利です。
+追加の前に、取引所は[Partial Payments](partial-payments.html)機能について知っておく必要があります。この機能を使用すると、XRP Ledgerのユーザーは、`SendMax`を増やさずに、受取金額を減額して、支払いを正常に送信できます。この機能は、送信者側に追加費用が発生せず、[支払いの返金](stablecoin-issuer.html#bouncing-payments)に便利です。
 
 #### Partial Paymentsに関する警告
 
@@ -93,8 +93,6 @@ Rippleが推奨するベストプラクティスに従い、Alpha Exchangeは、
 
 
 関連項目:
-
-* ["Suggested Business Practices" in the _Gateway Guide_](become-an-xrp-ledger-gateway.html#suggested-business-practices)
 
 * [発行アドレスと運用アドレス](issuing-and-operational-addresses.html)
 
@@ -313,7 +311,7 @@ CharlieというユーザーがAlpha Exchangeに50,000XRPを入金したいと�
 
 1. Charlieは50,000XRPの支払いを、Alpha Exchangeの[コールドウォレット](#アカウント)に送信します。
 
-    a. Charlieは識別子（このケースでは`789`）を支払いに追加し、Alpha Exchangeにある自身のアカウントに関連付けます。これは、[ _宛先タグ_ ](become-an-xrp-ledger-gateway.html#source-and-destination-tags)と呼ばれます。（これを使用するには、Alpha Exchangeは、すべての入金でCharlieのような宛先タグを必要とするように、すべてのアカウントでasfRequireDestフラグをオンに設定している必要があります。詳細については、[AccountSet Flags](accountset.html#accountsetのフラグ)を参照してください。）
+    a. Charlieは識別子（このケースでは`789`）を支払いに追加し、Alpha Exchangeにある自身のアカウントに関連付けます。これは、[ _宛先タグ_ ](source-and-destination-tags.html)と呼ばれます。（これを使用するには、Alpha Exchangeは、すべての入金でCharlieのような宛先タグを必要とするように、すべてのアカウントでasfRequireDestフラグをオンに設定している必要があります。詳細については、[AccountSet Flags](accountset.html#accountsetのフラグ)を参照してください。）
 
 2. Alpha Exchangeのソフトウェアは、受信される支払を検出し、`789`をチャーリーのアカウントの宛先タグとして認識します。
 

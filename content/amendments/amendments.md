@@ -1,6 +1,6 @@
 ---
 html: amendments.html
-parent: consensus-network.html
+parent: docs.html
 blurb: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion.
 labels:
   - Blockchain
@@ -67,7 +67,7 @@ The [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussion
 ## See Also
 
 - **Concepts:**
-    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus](introconsensus.html)
 - **Tutorials:**
     - [Run rippled as a Validator](run-rippled-as-a-validator.html)
     - [Configure Amendment Voting](configure-amendment-voting.html)

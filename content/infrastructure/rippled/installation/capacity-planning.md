@@ -199,7 +199,7 @@ You can save bandwidth by [enabling compression on peer-to-peer communications](
 
 - **Concepts:**
     - [The `rippled` Server](xrpl-servers.html)
-    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus](consensus.html)
 - **Tutorials:**
     - [Configure rippled](configure-rippled.html)
         - [Configure Online Deletion](configure-online-deletion.html) - Adjust how many historical ledger versions your server should keep at a time.

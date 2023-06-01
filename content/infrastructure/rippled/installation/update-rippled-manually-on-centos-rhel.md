@@ -47,7 +47,7 @@ To update manually, complete the following steps:
 
 - **Concepts:**
     - [The `rippled` Server](xrpl-servers.html)
-    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus](consensus.html)
 - **Tutorials:**
     - [`rippled` v1.3.x Migration Instructions](rippled-1-3-migration-instructions.html) <!-- Note: remove when versions older than v1.3 are basically extinct -->
     - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)

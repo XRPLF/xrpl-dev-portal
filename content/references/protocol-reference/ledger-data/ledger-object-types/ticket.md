@@ -37,7 +37,7 @@ A `Ticket` object has the following fields:
 | `Flags`             | Number    | UInt32        | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Ticket` objects. The value is always `0`. |
 | `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0054`, mapped to the string `Ticket`, indicates that this object is a {{currentpage.name}} object. |
 | `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
-| `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the [transaction](transaction-basics.html) that most recently modified this object. |
+| `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the [transaction](transactions.html) that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `TicketSequence`    | Number    | UInt32        | Yes       | The [Sequence Number][] this Ticket sets aside. |
 

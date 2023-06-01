@@ -23,11 +23,11 @@ No, the XRP Ledger is a decentralized, public blockchain. Any changes that would
 
 #### Isn’t Proof of Work the best validation mechanism?
 
-Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. [The XRP Ledger’s consensus mechanism](intro-to-consensus.html) solves the same problem in a far faster, cheaper and more energy efficient way.
+Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. [The XRP Ledger’s consensus mechanism](consensus.html) solves the same problem in a far faster, cheaper and more energy efficient way.
 
 #### How can a blockchain be sustainable?
 
-It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “[consensus](intro-to-consensus.html)” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be [one of the first truly carbon neutral blockchains](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/).
+It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “[consensus](consensus.html)” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be [one of the first truly carbon neutral blockchains](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/).
 
 #### Can currencies other than XRP be traded through XRPL?
 

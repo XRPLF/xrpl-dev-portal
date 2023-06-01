@@ -13,7 +13,7 @@ The `sign` method takes a [transaction in JSON format](transaction-formats.html)
 {% include '_snippets/public-signing-note.md' %}
 <!--_ -->
 
-**Caution:** Unless you run the `rippled` server yourself, you should do local signing using a [client library](client-libraries.html) instead of using this command. For more information, see [Set Up Secure Signing](set-up-secure-signing.html).
+**Caution:** Unless you run the `rippled` server yourself, you should do local signing using a [client library](client-libraries.html) instead of using this command. For more information, see [Set Up Secure Signing](secure-signing.html).
 
 ## Request Format
 An example of the request format:
@@ -76,7 +76,7 @@ rippled sign s██████████████████████
 
 <!-- MULTICODE_BLOCK_END -->
 
-To sign a transaction, you must provide a secret key that can [authorize the transaction](transaction-basics.html#authorizing-transactions). Typically you provide a seed value that the server derives the secret key from. You can do this in a few ways:
+To sign a transaction, you must provide a secret key that can [authorize the transaction](transactions.html#authorizing-transactions). Typically you provide a seed value that the server derives the secret key from. You can do this in a few ways:
 
 * Provide the seed in the `secret` field and omit the `key_type` field. This value can be formatted as an XRP Ledger [base58][] seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
 * Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)

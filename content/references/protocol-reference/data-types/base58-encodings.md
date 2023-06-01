@@ -24,7 +24,7 @@ The following table lists all the encodings the XRP Ledger uses:
 
 ## See Also
 
-- [Address Encoding](accounts.html#address-encoding) - detailed information on address encoding
+- [Address Encoding](addresses.html#address-encoding) - detailed information on address encoding
 - [Cryptographic Keys](cryptographic-keys.html) - types of cryptographic keys in the XRP Ledger and how they're used
 - [wallet_propose Reference][wallet_propose method] - API method for generating account keys
 - [validation_create Reference][validation_create method] - API method for generating validator keys

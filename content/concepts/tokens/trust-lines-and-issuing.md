@@ -77,8 +77,6 @@ When an account owns 3 or more objects in the ledger, the full owner reserve app
 - **Concepts:**
     - [Decentralized Exchange](decentralized-exchange.html)
     - [Rippling](rippling.html)
-- **Tutorials:**
-    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
 - **References:**
     - [account_lines method][] - Look up trust lines attached to a given account
     - [gateway_balances method][] - Look up an issuer's total balance issued

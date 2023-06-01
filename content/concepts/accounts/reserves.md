@@ -11,7 +11,7 @@ top_nav_grouping: Popular Pages
 
 The XRP Ledger applies _reserve requirements_, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match improvements in technology so that a current commodity-level machine can always fit the current ledger in RAM.
 
-To have an account, an address must hold a minimum amount of XRP in the shared global ledger. To fund a new address, you must receive enough XRP at that address to meet the reserve requirement. You cannot send the reserved XRP to others, but you can recover some of the XRP by [deleting the account](accounts.html#deletion-of-accounts).
+To have an account, an address must hold a minimum amount of XRP in the shared global ledger. To fund a new address, you must receive enough XRP at that address to meet the reserve requirement. You cannot send the reserved XRP to others, but you can recover some of the XRP by [deleting the account](deleting-accounts.html).
 
 The reserve requirement changes from time to time due to the [Fee Voting](fee-voting.html) process, where validators can agree to new reserve settings.
 

@@ -1,6 +1,6 @@
 ---
 html: finality-of-results.html
-parent: transaction-basics.html
+parent: transactions.html
 blurb: Learn when the outcome of a transaction is final and immutable.
 labels:
   - Transaction Sending
@@ -8,7 +8,7 @@ labels:
 ---
 # Finality of Results
 
-The order in which transactions apply to the consensus [ledger](ledgers.html) is not final until a ledger is closed and the exact transaction set is approved by the [consensus process](intro-to-consensus.html). A transaction that succeeded initially could still fail, and a transaction that failed initially could still succeed. Additionally, a transaction that was rejected by the consensus process in one round could achieve consensus in a later round.
+The order in which transactions apply to the consensus [ledger](ledgers.html) is not final until a ledger is closed and the exact transaction set is approved by the [consensus process](consensus.html). A transaction that succeeded initially could still fail, and a transaction that failed initially could still succeed. Additionally, a transaction that was rejected by the consensus process in one round could achieve consensus in a later round.
 
 A validated ledger can include successful transactions (`tes` result codes) as well as failed transactions (`tec` result codes). No transaction with any other result is included in a ledger.
 

@@ -63,7 +63,7 @@ XRP LedgerのXRP以外の残高はすべて、2つのXRP Ledgerアドレス間�
   - [アカウント](accounts.html)
   - [暗号鍵](cryptographic-keys.html)
 - **チュートリアル:**
-  - [XRP Ledgerゲートウェイの開設](become-an-xrp-ledger-gateway.html)
+  - [XRP Ledgerゲートウェイの開設](stablecoin-issuer.html)
   - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.html)
   - [レギュラーキーペアの変更または削除](change-or-remove-a-regular-key-pair.html)
 - **リファレンス:**

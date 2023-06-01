@@ -92,7 +92,7 @@ labels:
 
 - **コンセプト:**
     - [`rippled`サーバー](xrpl-servers.html)
-    - [コンセンサスについて](intro-to-consensus.html)
+    - [コンセンサスについて](consensus.html)
 - **チュートリアル:**
     - [rippledの構成](configure-rippled.html)
     - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)

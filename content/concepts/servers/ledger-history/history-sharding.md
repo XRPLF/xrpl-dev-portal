@@ -37,7 +37,7 @@ History shards are recorded in a deterministic format, so that any two servers a
 
 - **Concepts:**
     - [Ledgers](ledgers.html)
-    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus](consensus.html)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.html)
     - [Configure `rippled`](configure-rippled.html)

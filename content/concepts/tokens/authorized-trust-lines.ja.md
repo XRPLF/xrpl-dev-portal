@@ -116,8 +116,6 @@ POST http://localhost:8088/
 - **コンセプト:**
     - [Deposit Authorization](depositauth.html)
     - [トークンの凍結](freezes.html)
-- **チュートリアル:**
-    - [ステーブルコインを発行する](become-an-xrp-ledger-gateway.html)
 - **リファレンス:**
     - [account_linesメソッド][]
     - [account_infoメソッド][]

@@ -18,7 +18,7 @@ Syncing with the network normally takes about 5 to 15 minutes. During that time,
 
 - Loads a recommended validator list (typically from `vl.ripple.com`) to determine which validators it trusts.
 - [Discovers peer servers](peer-protocol.html#peer-discovery) and connects to them.
-- Downloads the [header](ledger-header.html) and full [state information](ledgers.html#tree-format) of the latest ledger from its peers, and uses that to build its internal database of ledger data.
+- Downloads the [header](ledger-header.html) and full [state information](ledger-structure.html#tree-format) of the latest ledger from its peers, and uses that to build its internal database of ledger data.
 - Listens to its trusted validators to find which ledger hashes have been recently validated.
 - Collects newly-broadcast transactions and attempts to apply them to its in-progress ledger.
 

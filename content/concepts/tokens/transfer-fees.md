@@ -72,8 +72,6 @@ Some [client libraries](client-libraries.html) have convenience functions for ge
     - [Fees (Disambiguation)](fees.html)
     - [Transaction Cost](transaction-cost.html)
     - [Paths](paths.html)
-- **Tutorials:**
-    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
 - **References:**
     - [account_lines method][]
     - [account_info method][]

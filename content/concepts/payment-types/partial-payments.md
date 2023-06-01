@@ -8,7 +8,7 @@ labels:
 ---
 # Partial Payments
 
-In the default case, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the exact amount to deliver, after charging for exchange rates and [transfer fees](transfer-fees.html). The "Partial Payment" flag ([`tfPartialPayment`](payment.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](become-an-xrp-ledger-gateway.html#bouncing-payments) without incurring additional costs to oneself.
+In the default case, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the exact amount to deliver, after charging for exchange rates and [transfer fees](transfer-fees.html). The "Partial Payment" flag ([`tfPartialPayment`](payment.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](stablecoin-issuer.html#bouncing-payments) without incurring additional costs to oneself.
 
 The amount of XRP used for the [transaction cost](transaction-cost.html) is always deducted from the sender’s account, regardless of the type of transaction.
 
@@ -118,7 +118,7 @@ Using [the `delivered_amount` field](#the-delivered_amount-field) when processin
 - **Tools:**
     - [Transaction Sender](tx-sender.html)
 - **Concepts:**
-    - [Transaction Basics](transaction-basics.html)
+    - [Transactions](transactions.html)
 - **Tutorials:**
     - [Look Up Transaction Results](look-up-transaction-results.html)
     - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)

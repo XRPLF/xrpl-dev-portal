@@ -58,15 +58,6 @@ XRP Ledgerのコンセンサスメカニズムは、小さな信頼が大きな�
 
 XRP Ledger コンセンサスプロトコルで、さまざまな課題や攻撃、失敗の事例にどのように対応するかについての詳細な説明については、[攻撃と失敗モードに対するコンセンサスの保護](consensus-protections.html)を参照してください。
 
-
-## 関連項目
-
-- XRP Ledger コンセンサスプロトコルの仕組みの詳細に関する記事は、[コンセンサスネットワークの概念](consensus-network.html)を参照してください。
-- 独自のバリデータを実行する手順については、[バリデータとしての`rippled`の実行](run-rippled-as-a-validator.html)を参照してください。
-- XRP Ledgerの分散化に関するRippleの目標および計画については、[分散化戦略についてのアップデート (Ripple Dev Blog)](https://ripple.com/dev-blog/decentralization-strategy-update/)を参照してください。
-
-<!--{# TODO: Replace the Decent Strategy Update w/ a newer article when we have one #}-->
-
 ----
 
 ## 脚注

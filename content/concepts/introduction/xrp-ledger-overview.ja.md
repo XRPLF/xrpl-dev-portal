@@ -105,4 +105,4 @@ XRP Ledgerの拡張機能として次のものがあります。
 
 XRP Ledgerを他の暗号資産ネットワークとは異なるものにしている最も大きな特徴は、XRP Ledger上に完全な取引機能が含まれている点です。このシステム内で、事業者（通常は「ゲートウェイ」と言います）は希望の通貨を顧客に自由に発行でき、その顧客はその特定ゲートウェイによってXRPに発行された通貨や他のゲートウェイによって発行された通貨を自由に取引できます。このようにXRP Ledgerでは、取引注文によって流動性を確保しつつ、複数通貨間の一元的な取引を実行することができます。
 
-分散型取引所がどのように機能するかの詳細は、[分散型取引所](decentralized-exchange.html)を参照してください。ゲートウェイビジネスモデルの詳細は、[Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)を参照してください。
+分散型取引所がどのように機能するかの詳細は、[分散型取引所](decentralized-exchange.html)を参照してください。ゲートウェイビジネスモデルの詳細は、[Stablecoin Issuer](stablecoin-issuer.html)を参照してください。

@@ -137,7 +137,7 @@ const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // テ
 
 ### 5. イベントのListen
 
-XRP Ledgerの[コンセンサス プロセス](intro-to-consensus.html)が新しい[レジャーバージョン](ledgers.html)を生成したときなど、`xrpl.js`ではさまざまなタイプのイベントのハンドラを設定することができます。そのためには、まず[subscribeメソッド][]を呼び出して欲しいイベントの種類を取得し、クライアントの`on(eventType, callback)`メソッドを使ってイベントハンドラをアタッチします。
+XRP Ledgerの[コンセンサス プロセス](consensus.html)が新しい[レジャーバージョン](ledgers.html)を生成したときなど、`xrpl.js`ではさまざまなタイプのイベントのハンドラを設定することができます。そのためには、まず[subscribeメソッド][]を呼び出して欲しいイベントの種類を取得し、クライアントの`on(eventType, callback)`メソッドを使ってイベントハンドラをアタッチします。
 
 {{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Listen to ledger close events", end_before="// Disconnect when done", language="js") }}
 
@@ -149,7 +149,7 @@ XRP Ledgerの[コンセンサス プロセス](intro-to-consensus.html)が新し
 
 * [XRPの送信](send-xrp.html).
 * [代替可能トークンの発行](issue-a-fungible-token.html)
-* アカウントに[安全な署名](set-up-secure-signing.html) を設定する。
+* アカウントに[安全な署名](secure-signing.html) を設定する。
 
 
 ## 関連記事

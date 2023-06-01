@@ -21,7 +21,7 @@ An account consists of an address, an XRP balance, a sequence number, and a hist
 - An **XRP balance**. Some of this XRP is set aside for the [Reserve](reserves.html).
 - A **sequence number**, which helps make sure any transactions this account sends are applied in the correct order and only once. To execute a transaction, the transaction's sequence number and its sender's sequence number must match. Then, as part of applying the transaction, the account's sequence number increases by 1. (See also: [Basic Data Types: Account Sequence](basic-data-types.html#account-sequence).)
 - A **history of transactions** that affected this account and its balances.
-- One or more ways to [authorize transactions](transaction-basics.html#authorizing-transactions), possibly including:
+- One or more ways to [authorize transactions](transactions.html#authorizing-transactions), possibly including:
     - A master key pair intrinsic to the account. (This can be disabled but not changed.)
     - A "regular" key pair that can be rotated.
     - A signer list for [multi-signing](multi-signing.html). (Stored separately from the account's core data.)

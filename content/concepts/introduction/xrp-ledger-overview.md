@@ -104,4 +104,4 @@ A sample of advanced features in the XRP Ledger:
 
 One of the biggest features that sets the XRP Ledger apart from other cryptocurrency networks is that it also contains a full currency exchange that runs on the XRP Ledger. Within this system, businesses (typically called "gateways") can freely issue any currency they want to customers, and those customers can freely trade tokens for XRP or other tokens. The XRP Ledger can execute atomic cross-currency transactions this way, using orders in the exchange to provide liquidity.
 
-For more information on how the decentralized exchange works, see [Decentralized Exchange](decentralized-exchange.html). For more information on the gateway business model, see the [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html).
+For more information on how the decentralized exchange works, see [Decentralized Exchange](decentralized-exchange.html). For more information on the gateway business model, see the [Stablecoin Issuer](stablecoin-issuer.html).

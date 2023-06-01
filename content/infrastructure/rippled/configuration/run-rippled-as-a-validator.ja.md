@@ -12,9 +12,9 @@ top_nav_name: UNLに参加しよう
 
 [バリデータモード](rippled-server-modes.html)で実行されている[`rippled`サーバー](xrpl-servers.html)は、ストックサーバーが実行するあらゆる処理を実行します。
 
-- [ピアのネットワーク](consensus-network.html)への接続
+- [ピアのネットワーク](peer-protocol.html)への接続
 
-- 暗号署名された[トランザクション](transaction-basics.html)の中継
+- 暗号署名された[トランザクション](transactions.html)の中継
 
 - 完全な共有グローバル[レジャー](ledgers.html)のローカルコピーの維持
 
@@ -293,13 +293,11 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 
 - **コンセプト:**
   - [XRP Ledgerの概要](xrp-ledger-overview.html)
-  - [コンセンサスネットワーク](consensus-network.html)
   - [`rippled`サーバー](xrpl-servers.html)
 - **チュートリアル:**
   - [rippledサーバーのクラスター化](cluster-rippled-servers.html)
   - [`rippled`のインストール](install-rippled.html)
   - [容量の計画](capacity-planning.html)
-  - [XRP Ledgerのビジネス](xrp-ledger-businesses.html)
 - **リファレンス:**
   - [Validator Keysツールガイド](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)
   - [consensus_infoメソッド][]

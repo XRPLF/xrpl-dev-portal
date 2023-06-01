@@ -35,7 +35,7 @@ Linuxでは、`rippled`が1回限りの`cron`構成を使用して最新バー�
 
 - **コンセプト:**
     - [`rippled`サーバー](xrpl-servers.html)
-    - [コンセンサスについて](intro-to-consensus.html)
+    - [コンセンサスについて](consensus.html)
 - **チュートリアル:**
     - [容量の計画](capacity-planning.html)
     - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)

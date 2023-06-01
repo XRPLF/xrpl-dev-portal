@@ -209,7 +209,7 @@ In addition to all of the above field types, the following types may appear in o
 ### AccountID Fields
 [AccountID]: #accountid-fields
 
-Fields of this type contain the 160-bit identifier for an XRP Ledger [account](accounts.html). In JSON, these fields are represented as [base58][] XRP Ledger "addresses", with additional checksum data so that typos are unlikely to result in valid addresses. (This encoding, sometimes called "Base58Check", prevents accidentally sending money to the wrong address.) The binary format for these fields does not contain any checksum data nor does it include the `0x00` "type prefix" used in [address base58 encoding](accounts.html#address-encoding). (However, since the binary format is used mostly for signed transactions, a typo or other error in transcribing a signed transaction would invalidate the signature, preventing it from sending money.)
+Fields of this type contain the 160-bit identifier for an XRP Ledger [account](accounts.html). In JSON, these fields are represented as [base58][] XRP Ledger "addresses", with additional checksum data so that typos are unlikely to result in valid addresses. (This encoding, sometimes called "Base58Check", prevents accidentally sending money to the wrong address.) The binary format for these fields does not contain any checksum data nor does it include the `0x00` "type prefix" used in [address base58 encoding](addresses.html#address-encoding). (However, since the binary format is used mostly for signed transactions, a typo or other error in transcribing a signed transaction would invalidate the signature, preventing it from sending money.)
 
 AccountIDs that appear as stand-alone fields (such as `Account` and `Destination`) are [length-prefixed](#length-prefixing) despite being a fixed 160 bits in length. As a result, the length indicator for these fields is always the byte `0x14`. AccountIDs that appear as children of special fields ([Amount `issuer`][Amount] and [PathSet `account`][PathSet]) are _not_ length-prefixed.
 
@@ -229,7 +229,7 @@ The "Amount" type is a special field type that represents an amount of currency,
 
     1. 64 bits indicating the amount in the [token amount format](#token-amount-format). The first bit is `1` to indicate that this is not XRP.
     2. 160 bits indicating the [currency code](currency-formats.html#currency-codes). The standard API converts 3-character codes such as "USD" into 160-bit codes using the [standard currency code format](currency-formats.html#standard-currency-codes), but custom 160-bit codes are also possible.
-    3. 160 bits indicating the issuer's Account ID. (See also: [Account Address Encoding](accounts.html#address-encoding))
+    3. 160 bits indicating the issuer's Account ID. (See also: [Account Address Encoding](addresses.html#address-encoding))
 
 You can tell which of the two sub-types it is based on the first bit: `0` for XRP; `1` for tokens.
 

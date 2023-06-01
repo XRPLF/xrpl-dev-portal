@@ -113,7 +113,7 @@ The XRP Ledger's consensus algorithm provides a robust alternative to proof of w
 ## See Also
 
 - **Concepts:**
-    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus](consensus.html)
     - [Consensus Research](consensus-research.html)
     - [XRPL Consensus Mechanism Video](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
 - **Tutorials:**

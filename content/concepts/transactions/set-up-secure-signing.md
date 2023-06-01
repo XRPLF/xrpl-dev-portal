@@ -8,7 +8,7 @@ labels:
 ---
 # Secure Signing
 
-To submit [transactions](transaction-basics.html) to the XRP Ledger, you need a way to digitally sign them without compromising the security of your [secret keys](cryptographic-keys.html). (If others gain access to your secret keys, they have as much control over your accounts as you do, and can steal or destroy all your money.) This page summarizes how to set up such an environment so you can sign transactions securely.
+To submit [transactions](transactions.html) to the XRP Ledger, you need a way to digitally sign them without compromising the security of your [secret keys](cryptographic-keys.html). (If others gain access to your secret keys, they have as much control over your accounts as you do, and can steal or destroy all your money.) This page summarizes how to set up such an environment so you can sign transactions securely.
 
 **Tip:** If you are not submitting transactions to the network, you can safely use a trustworthy public server, such as the ones run by Ripple, to monitor for incoming transactions or read other network activity. All transactions, balances, and data in the XRP Ledger are public.
 

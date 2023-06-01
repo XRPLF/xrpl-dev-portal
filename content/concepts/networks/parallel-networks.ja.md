@@ -34,7 +34,7 @@ Rippleでは、TestnetとDevnetでメインサーバーを運用しています�
 - **ツール:**
   - [XRP Testnet Faucet](xrp-test-net-faucet.html)
 - **コンセプト:**
-  - [コンセンサスについて](intro-to-consensus.html)
+  - [コンセンサスについて](consensus.html)
   - [Amendment](amendments.html)
 - **チュートリアル:**
   - [XRP Testnetへの`rippled`の接続](connect-your-rippled-to-the-xrp-test-net.html)

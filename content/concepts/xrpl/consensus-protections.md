@@ -9,7 +9,7 @@ labels:
 
 The XRP Ledger Consensus Protocol is a _byzantine fault tolerant_ consensus mechanism, which means it's designed to work even if all kinds of things can go wrong: participants depend on an unreliable open network to communicate, and malicious actors may be attempting to control or interrupt the system at any given time. On top of that, the set of participants in the XRP Ledger Consensus Protocol isn't known in advance and can change over time.
 
-Confirming transactions quickly while maintaining [the desired properties of the network](intro-to-consensus.html#consensus-protocol-properties) is a complex challenge, and it's impossible to build a perfect system. The XRP Ledger Consensus Protocol is designed to work as well as it can in most situations, and to fail as gracefully as possible in the situations where it can't.
+Confirming transactions quickly while maintaining the desired properties of the network is a complex challenge, and it's impossible to build a perfect system. The XRP Ledger Consensus Protocol is designed to work as well as it can in most situations, and to fail as gracefully as possible in the situations where it can't.
 
 This page describes some of the types of challenges that the XRP Ledger Consensus Protocol faces and how it handles them.
 
@@ -68,7 +68,6 @@ Research is ongoing to design an improved consensus protocol that allows more he
 
 ## See Also
 
-- For an **intro-level overview** of consensus, see [Intro to Consensus](intro-to-consensus.html).
 - For a **detailed description** of the consensus protocol, see [Consensus](consensus.html).
 - For an explanation of the **design decisions and background** behind the consensus protocol, see [Consensus Principles and Rules](consensus-principles-and-rules.html).
 - For **academic research** exploring the properties and limitations of the protocol, see [Consensus Research](consensus-research.html).

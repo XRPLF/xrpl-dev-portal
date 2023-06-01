@@ -218,7 +218,7 @@ You can use [server_info in the WebSocket Tool](websocket-api-tool.html#server_i
     - [WebSocket API Tool](websocket-api-tool.html) - Select 'Testnet Public Server' or 'Devnet Public Server' in the connection options.
 - **Concepts:**
     - [Parallel Networks](parallel-networks.html)
-    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus](consensus.html)
 - **Tutorials:**
     - [Run rippled as a Validator](run-rippled-as-a-validator.html)
     - [Test `rippled` Offline in Stand-Alone Mode](use-stand-alone-mode.html)

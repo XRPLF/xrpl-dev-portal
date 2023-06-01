@@ -23,7 +23,7 @@ Before 2014, single-signed transactions could be malleable due to properties of 
 In the XRP Ledger, a transaction cannot execute unless:
 
 - All [fields of a transaction](transaction-common-fields.html) are signed, except the signature itself.
-- The key pair(s) used to sign the transaction are [authorized to send transactions on behalf of that account](transaction-basics.html#authorizing-transactions).
+- The key pair(s) used to sign the transaction are [authorized to send transactions on behalf of that account](transactions.html#authorizing-transactions).
 - The signature is _canonical_ and matches the transaction instructions.
 
 Any change to the signed fields, no matter how small, would invalidate the signature, so no part of the transaction can be malleable except for the signature itself. In most cases, any change to a signature itself also invalidates the signature, but there are some specific exceptions, described below.
@@ -134,7 +134,7 @@ The process to exploit a vulnerable system follows a series of steps like the fo
 ## See Also
 
 - **Concepts:**
-    - [Transaction Basics](transaction-basics.html)
+    - [Transactions](transactions.html)
     - [Finality of Results](finality-of-results.html)
 - **Tutorials:**
     - [Look Up Transaction Results](look-up-transaction-results.html)

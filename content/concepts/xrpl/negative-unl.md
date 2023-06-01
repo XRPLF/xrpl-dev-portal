@@ -1,6 +1,6 @@
 ---
 html: negative-unl.html
-parent: consensus-network.html
+parent: consensus.html
 blurb: Understand how Negative UNL improves the ledger's resilience during partial outages.
 labels:
   - Blockchain
@@ -73,7 +73,7 @@ Each flag ledger, all of the following changes apply:
 
 1. Changes to the Negative UNL that were scheduled in the previous flag ledger go into effect for the following ledger version. The consensus process for validating this flag ledger itself does not use the scheduled change.
 
-    **Note:** This is one of the only times a ledger's state data is modified without a [transaction](transaction-basics.html) or [pseudo-transaction](pseudo-transaction-types.html).
+    **Note:** This is one of the only times a ledger's state data is modified without a [transaction](transactions.html) or [pseudo-transaction](pseudo-transaction-types.html).
 
 2. If the Negative UNL is not full, each server proposes adding **up to 1** validator to the Negative UNL from among its trusted validators with less than 50% reliability.
 3. If the Negative UNL is not empty, each server proposes removing **up to 1** validator from the Negative UNL. A server can propose removing a validator from the Negative UNL for two reasons:

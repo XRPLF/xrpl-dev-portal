@@ -88,7 +88,7 @@ The available AccountSet flags are:
 | `asfRequireAuth`                  | 2             | `lsfRequireAuth`                  | Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it. |
 | `asfRequireDest`                  | 1             | `lsfRequireDestTag`               | Require a destination tag to send transactions to this account. |
 
-To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](transaction-basics.html#authorizing-transactions) by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can disable `asfDisableMaster` (that is, re-enable the master key pair) using a regular key pair or multi-signature.
+To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](transactions.html#authorizing-transactions) by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can disable `asfDisableMaster` (that is, re-enable the master key pair) using a regular key pair or multi-signature.
 
 The following [Transaction flags](transaction-common-fields.html#flags-field) (`tf` flags), specific to the AccountSet transaction type, serve the same purpose. Due to limited space, some settings do not have associated `tf` flags, and new `tf` flags are not being added to the `AccountSet` transaction type. You can use a combination of `tf` and `asf` flags to enable multiple settings with a single transaction.
 

@@ -8,7 +8,7 @@ labels:
 ---
 # Cryptographic Keys
 
-In the XRP Ledger, a digital signature _authorizes_ a [transaction](transaction-basics.html) to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.
+In the XRP Ledger, a digital signature _authorizes_ a [transaction](transactions.html) to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.
 
 To make a digital signature, you use a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as a [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](multi-signing.html), regardless of what algorithm was used to generate it.
 
@@ -81,9 +81,9 @@ The `key_type` field in the [wallet_propose method][] refers to the cryptographi
 
 ## Master Key Pair
 
-The master key pair consists of a private key and a public key. The address of an account is derived from the account's master key pair, so they are [intrinsically related](accounts.html#address-encoding). You cannot change or remove the master key pair, but you can disable it.
+The master key pair consists of a private key and a public key. The address of an account is derived from the account's master key pair, so they are intrinsically related. You cannot change or remove the master key pair, but you can disable it.
 
-The [wallet_propose method][] is one way of generating a master key pair. The response from this method shows the account's seed, address, and master public key together. For some other ways of setting up master key pairs, see [Set Up Secure Signing](set-up-secure-signing.html).
+The [wallet_propose method][] is one way of generating a master key pair. The response from this method shows the account's seed, address, and master public key together. For some other ways of setting up master key pairs, see [Secure Signing](secure-signing.html).
 
 **Warning:** If a malicious actor learns your master private key (or seed), they have full control over your account, unless your master key pair is disabled. They can take all the money your account holds and do other irreparable harm. Treat your secret values with care!
 
@@ -97,7 +97,7 @@ Keeping your master key pair offline means not putting the secret information (p
 
 **Only** the master key pair can authorize transactions to do certain things:
 
-- Send an account's very first transaction, because accounts cannot be initialized with another way of [authorizing transactions](transaction-basics.html#authorizing-transactions).
+- Send an account's very first transaction, because accounts cannot be initialized with another way of [authorizing transactions](transactions.html#authorizing-transactions).
 
 - Disable the master key pair.
 
@@ -105,7 +105,7 @@ Keeping your master key pair offline means not putting the secret information (p
 
 - Send a special [key reset transaction](transaction-cost.html#key-reset-transaction) with a transaction cost of 0 XRP.
 
-A regular key or [multi-signature](multi-signing.html) can do anything else the same as the master key pair. Notably, after you have disabled the master key pair, you can re-enable it using a regular key pair or multi-signature. You can also [delete an account](accounts.html#deletion-of-accounts) if it meets the requirements for deletion.
+A regular key or [multi-signature](multi-signing.html) can do anything else the same as the master key pair. Notably, after you have disabled the master key pair, you can re-enable it using a regular key pair or multi-signature. You can also [delete an account](deleting-accounts.html) if it meets the requirements for deletion.
 
 
 ## Regular Key Pair
@@ -134,7 +134,7 @@ The XRP Ledger supports the following cryptographic signing algorithms:
 
 When you generate a key pair with the [wallet_propose method][], you can specify the `key_type` to choose which cryptographic signing algorithm to use to derive the keys. If you generated a key type other than the default, you must also specify the `key_type` when signing transactions.
 
-The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of [deriving an address](accounts.html#address-encoding) is the same for secp256k1 and Ed25519 key pairs.
+The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of [deriving an address](addresses.html#address-encoding) is the same for secp256k1 and Ed25519 key pairs.
 
 
 ### Future Algorithms
@@ -237,7 +237,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
 6. When serializing an account's public key to its [base58][] format, use the account public key prefix, `0x23`.
 
-    See [Address Encoding](accounts.html#address-encoding) for information and sample code to convert from an account's public key to its address.
+    See [Address Encoding](addresses.html#address-encoding) for information and sample code to convert from an account's public key to its address.
 
 
 ## See Also

@@ -36,7 +36,7 @@ Ripple runs the main servers in the Testnet and Devnet; you can also [connect yo
 - **Tools:**
     - [XRP Testnet Faucet](xrp-test-net-faucet.html)
 - **Concepts:**
-    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus](consensus.html)
     - [Amendments](amendments.html)
 - **Tutorials:**
     - [Connect Your `rippled` to the XRP Testnet](connect-your-rippled-to-the-xrp-test-net.html)

@@ -97,7 +97,6 @@ To configure your server to acquire and store full history, complete the followi
 
 - **Concepts:**
     - [Ledger History](ledger-history.html)
-    - [Consensus Network](consensus-network.html)
     - [rippled Server Modes](rippled-server-modes.html)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.html), particularly [Disk Space](capacity-planning.html#disk-space)

@@ -8,7 +8,7 @@ labels:
 ---
 # Multi-Signing
 
-Multi-signing in the XRP Ledger is a method of [authorizing transactions](transaction-basics.html#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](cryptographic-keys.html#master-key-pair), and a [regular key pair](cryptographic-keys.html#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)
+Multi-signing in the XRP Ledger is a method of [authorizing transactions](transactions.html#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](cryptographic-keys.html#master-key-pair), and a [regular key pair](cryptographic-keys.html#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)
 
 Benefits of multi-signing include:
 
@@ -50,7 +50,7 @@ For a very important account, you might set the quorum to 3, with 3 participants
 
 Another account might also have a quorum of 3. You assign your CEO a weight of 3, 3 Vice Presidents a weight of 2 each, and 3 Directors a weight of 1 each. To approve a transaction for this account requires the approval of all 3 Directors (total weight of 3), 1 Vice President and 1 Director (total weight of 3), 2 Vice Presidents (total weight of 4), or the CEO (total weight of 3). <!-- STYLE_OVERRIDE: vice -->
 
-In each of the previous three use cases, you would disable the master key without configuring a regular key, so that multi-signing is the only way of [authorizing transactions](transaction-basics.html#authorizing-transactions).
+In each of the previous three use cases, you would disable the master key without configuring a regular key, so that multi-signing is the only way of [authorizing transactions](transactions.html#authorizing-transactions).
 
 There might be a scenario where you create a multi-signing list as a "backup plan." The account owner normally uses a regular key for their transactions (not a multi-signing key). For safety, the owner adds a signer list containing 3 friends, each with a weight of 1, and a quorum of 3. If the account owner were to lose the private key, they can ask their friends to multi-sign a transaction to replace the regular key.
 
