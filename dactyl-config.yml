@@ -481,6 +481,7 @@ pages:
 
 # Introduction -----------------------------------------------------------------
 
+    # TODO: these are placed under "Docs" in nav but the files are under "Docs/Concepts"
     -   name: Introduction
         html: introduction.html
         parent: docs.html
@@ -491,36 +492,69 @@ pages:
 
     -   name: 基本
         html: introduction.html
-        parent: concepts.html
+        parent: docs.html
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
         targets:
             - ja
-    
-    - md: concepts/introduction/what-is-xrpl.md
-      parent: introduction.html
-      targets:
-         - en
-         - ja
-    
-    - md: concepts/introduction/what-is-xrp.md
-      parent: introduction.html
-      targets:
-         - en
-         - ja
 
-    - md: concepts/introduction/crypto-wallets.md
-      parent: introduction.html
-      targets:
-         - en
-         - ja
-         
-    - md: concepts/introduction/txn-and-requests.md
-      parent: introduction.html
-      targets:
-         - en
-         - ja
-         
+    -   md: concepts/introduction/what-is-xrpl.md
+        parent: introduction.html
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/introduction/what-is-xrp.md
+        parent: introduction.html
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/introduction/crypto-wallets.md
+        parent: introduction.html
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/introduction/txn-and-requests.md
+        parent: introduction.html
+        targets:
+            - en
+            - ja
+
+        # TODO: update or remove (en+ja)
+    -   md: concepts/introduction/xrp-ledger-overview.md
+        parent: introduction.html
+        targets:
+            - en
+
+    -   md: concepts/introduction/xrp-ledger-overview.ja.md
+        parent: introduction.html
+        targets:
+            - ja
+
+        # TODO: update or remove (en+ja)
+    -   md: concepts/introduction/software-ecosystem.md
+        parent: introduction.html
+        targets:
+            - en
+
+    -   md: concepts/introduction/software-ecosystem.ja.md
+        parent: introduction.html
+        targets:
+            - ja
+            
+        # TODO: update or remove (en+ja)
+    -   md: concepts/introduction/xrp.md
+        parent: introduction.html
+        targets:
+            - en
+
+    -   md: concepts/introduction/xrp.ja.md
+        parent: introduction.html
+        targets:
+            - ja
+
 # Use Cases --------------------------------------------------------------------
 
     -   name: Use Cases
@@ -583,6 +617,7 @@ pages:
             - en
             - ja
 
+        # TODO: these files aren't nested under "NFT mkt overview" but they are in the nav
     -   md: use-cases/tokenization/nftoken-marketplace.md
         parent: nft-mkt-overview.html
         targets:
@@ -600,22 +635,6 @@ pages:
         targets:
             - en
             - ja
-
-    -   md: use-cases/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
-        parent: use-cases.html
-        targets:
-            - en
-            - ja
-
-    -   md: use-cases/xrp-ledger-businesses/list-xrp-as-an-exchange.md
-        parent: use-cases.html
-        targets:
-            - en
-            
-    -   md: use-cases/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
-        parent: use-cases.html
-        targets:            
-            - ja
             
     -   name: Decentralized Finance
         html: defi-uc.html
@@ -627,21 +646,28 @@ pages:
             - en
             - ja
 
+        # TODO: fix, rename this stub use case
     -   md: use-cases/defi/moneychanger-uc.md
         parent: defi-uc.html
         targets:
             - en
             - ja
 
-    -   md: use-cases/defi/amm-uc.md
+    -   md: use-cases/defi/list-xrp-as-an-exchange.md
         parent: defi-uc.html
         targets:
             - en
+            
+    -   md: use-cases/defi/list-xrp-as-an-exchange.ja.md
+        parent: defi-uc.html
+        targets:            
             - ja
 
+        # TODO: possibly remove the whole Interop use case while it's not production-ready?
     -   name: Interoperability
         html: interoperability-uc.html
         parent: use-cases.html
+        status: not_enabled
         top_nav_grouping: Article Types
         template: pagetype-category.html.jinja
         blurb: Practical ways to connect the XRP Ledger to external chains.
@@ -651,12 +677,14 @@ pages:
 
     -   md: use-cases/interoperability/sidechains-uc.md
         parent: interoperability-uc.html
+        status: not_enabled
         targets:
             - en
             - ja
 
     -   md: use-cases/interoperability/xrpl-hooks-uc.md
         parent: interoperability-uc.html
+        status: not_enabled
         targets:
             - en
             - ja
@@ -680,132 +708,167 @@ pages:
         blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
         targets:
             - ja
-
-    -   md: concepts/introduction/intro-to-consensus.md
+    
+    # Servers -----------------------------------------------------------------
+    # TODO: this section should probably be moved to "infrastructure"
+    -   md: concepts/servers/xrpl-servers.md
         targets:
             - en
 
-    -   md: concepts/introduction/intro-to-consensus.ja.md
+    -   md: concepts/servers/xrpl-servers.ja.md
         targets:
             - ja
 
-    -   md: concepts/introduction/xrp.md
+    -   md: concepts/servers/rippled-server-modes.md
         targets:
             - en
 
-    -   md: concepts/introduction/xrp.ja.md
+    -   md: concepts/servers/rippled-server-modes.ja.md
         targets:
             - ja
 
-    -   md: concepts/introduction/software-ecosystem.md
+    -   md: concepts/servers/clustering.md
         targets:
             - en
 
-    -   md: concepts/introduction/software-ecosystem.ja.md
+    -   md: concepts/servers/clustering.ja.md
         targets:
             - ja
 
-    -   name: Payment System Basics
-        html: payment-system-basics.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system.
+    -   md: concepts/servers/ledger-history/ledger-history.md
         targets:
             - en
 
-    -   name: 支払いシステムの基本
-        html: payment-system-basics.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerの主な用途は決済処理です。主要なコンセプトを詳しく学んで、XRP Ledgerの決済システムの理解を深めましょう。
+    -   md: concepts/servers/ledger-history/ledger-history.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/accounts.md
+    -   md: concepts/servers/ledger-history/online-deletion.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/accounts.ja.md
+    -   md: concepts/servers/ledger-history/online-deletion.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/cryptographic-keys.md
+    -   md: concepts/servers/ledger-history/history-sharding.md
         targets:
             - en
 
-        # TODO: update translation based on latest English version
-    -   md: concepts/payment-system-basics/accounts/cryptographic-keys.ja.md
+    -   md: concepts/servers/ledger-history/history-sharding.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/multi-signing.md
+    -   md: concepts/servers/peer-protocol.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/multi-signing.ja.md
+    -   md: concepts/servers/peer-protocol.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/reserves.md
+    -   md: concepts/servers/transaction-censorship-detection.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/reserves.ja.md
+    -   md: concepts/servers/transaction-censorship-detection.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/tickets.md
+    -   md: concepts/servers/the-clio-server.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/tickets.ja.md
+    -   md: concepts/servers/the-clio-server.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/depositauth.md
+    # Ledgers -----------------------------------------------------------------
+
+        # TODO: this folder is "xrpl" in files but "Ledgers" in nav
+    -   md: concepts/xrpl/ledgers.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/depositauth.ja.md
+        # TODO: update translation. Some parts split into "ledger structure"
+    -   md: concepts/xrpl/ledgers.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/fees.md
+        # TODO: translate. Some parts taken from "ledgers"
+    -   md: concepts/xrpl/ledger-structure.md
+        targets:
+            - en
+            - ja
+    
+        # TODO: translate. Content mostly split off from "ledgers.md"
+    -   md: concepts/xrpl/open-closed-validated-ledgers.md
+        targets:
+            - en
+            - ja
+
+        # TODO: "consensus" subpages are nested in nav but not filesystem; also, might be a mismatch with other contents here
+    -   md: concepts/xrpl/consensus.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/fees.ja.md
+    -   md: concepts/xrpl/consensus.ja.md
+        targets:
+            - ja
+    
+    -   md: concepts/xrpl/consensus-structure.md
+        targets:
+            - en
+
+    -   md: concepts/xrpl/consensus-structure.ja.md
+        targets:
+            - ja
+    
+    -   md: concepts/xrpl/consensus-principles-and-rules.md
+        targets:
+            - en
+
+    -   md: concepts/xrpl/consensus-principles-and-rules.ja.md
+        targets:
+            - ja
+    
+    -   md: concepts/xrpl/consensus-protections.md
+        targets:
+            - en
+
+    -   md: concepts/xrpl/consensus-protections.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/ledgers.md
+    -   md: concepts/xrpl/fee-voting.md
         targets:
             - en
 
-        # TODO: translation needs to be updated based on ledgers.md
-    -   md: concepts/payment-system-basics/ledgers.ja.md
+    -   md: concepts/xrpl/fee-voting.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.md
+    -   md: concepts/xrpl/negative-unl.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.ja.md
+    -   md: concepts/xrpl/negative-unl.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.md
+    -   md: concepts/xrpl/consensus-research.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.ja.md
+    -   md: concepts/xrpl/consensus-research.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.md
+        # TODO: translate. Content mostly split off from "ledgers.md"
+    -   md: concepts/xrpl/ledger-close-times.md
         targets:
             - en
+            - ja
 
     -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.ja.md
         targets:
@@ -1120,61 +1183,6 @@ pages:
         targets:
             - ja
 
-    -   name: Consensus Network
-        html: consensus-network.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing.
-        targets:
-            - en
-
-    -   name: コンセンサスネットワーク
-        html: consensus-network.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerは、コンセンサス・アルゴリズムを用いて二重支払い問題を解決し、トランザクションの実行順序を決定します。コンセンサスでは、トランザクション処理のルールも定められています。
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus-principles-and-rules.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus-principles-and-rules.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus-protections.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus-protections.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/invariant-checking.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/invariant-checking.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/negative-unl.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/negative-unl.ja.md
-        targets:
-            - ja
 
     -   md: concepts/consensus-network/transaction-queue.md
         targets:
@@ -1221,21 +1229,6 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/consensus-network/fee-voting.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/fee-voting.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus-research.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus-research.ja.md
-        targets:
-            - ja
 
     # TODO: add pseudo-transactions concept page
 
@@ -1256,77 +1249,7 @@ pages:
             - en
             - ja
 
-    -   md: concepts/xrpl-servers/xrpl-servers.md
-        targets:
-            - en
 
-    -   md: concepts/xrpl-servers/xrpl-servers.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/rippled-server-modes.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/rippled-server-modes.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/clustering.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/clustering.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/ledger-history/ledger-history.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/ledger-history/ledger-history.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/ledger-history/online-deletion.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/ledger-history/online-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/ledger-history/history-sharding.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/ledger-history/history-sharding.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/peer-protocol.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/peer-protocol.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/transaction-censorship-detection.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/transaction-censorship-detection.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/the-clio-server.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/the-clio-server.ja.md
-        targets:
-            - ja
 
     # Redirect for "Interoperability" landing page
     -   name: Interoperability

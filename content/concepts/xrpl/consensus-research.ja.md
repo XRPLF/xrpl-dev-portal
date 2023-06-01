@@ -1,6 +1,6 @@
 ---
 html: consensus-research.html
-parent: consensus-network.html
+parent: consensus.html
 blurb: コンセンサスアルゴリズムに関する学術論文と関連研究。
 labels:
   - ブロックチェーン

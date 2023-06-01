@@ -1,6 +1,6 @@
 ---
 html: fee-voting.html
-parent: consensus-network.html
+parent: consensus.html
 blurb: How validators vote on fees (transaction cost and reserve requirements).
 labels:
   - Fees

@@ -1,6 +1,6 @@
 ---
 html: consensus-research.html
-parent: consensus-network.html
+parent: consensus.html
 blurb: Scholarly articles on consensus algorithms and related research.
 labels:
   - Blockchain

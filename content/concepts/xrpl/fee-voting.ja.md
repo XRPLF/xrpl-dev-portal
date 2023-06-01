@@ -1,6 +1,6 @@
 ---
 html: fee-voting.html
-parent: consensus-network.html
+parent: consensus.html
 blurb: トランザクションコストと必要準備金の変更投票について。
 labels:
   - 手数料
