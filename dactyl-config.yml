@@ -400,7 +400,7 @@ pages:
         html: docs.html
         parent: index.html
         template: page-docs.html.jinja
-        sidebar: disabled
+        sidebar: left_only
         top_nav_name: Docs
         top_nav_shortcuts:
             # Programming Languages
@@ -467,6 +467,16 @@ pages:
         filters:
             - labels
         targets:
+            - ja
+    
+    -   name: Documentation Index
+        longer_name: Full Documentation Index
+        template: page-docs-index.html.jinja
+        html: docs-index.html
+        parent: docs.html
+        sidebar: disabled
+        targets:
+            - en
             - ja
 
 # Concepts ---------------------------------------------------------------------
@@ -1043,6 +1053,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/consensus-network/amendments/contribute-code-flow.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/consensus-network/amendments/known-amendments.md
         targets:
             - en
@@ -1406,6 +1421,11 @@ pages:
           - en
           - ja # TODO: translate this page
 
+    -   md: tutorials/build-apps/build-a-browser-wallet-in-js.md
+        targets:
+          - en
+          - ja # TODO: translate this page
+          
     -   name: Production Readiness
         html: production-readiness.html
         parent: tutorials.html
@@ -4473,7 +4493,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - en
 
@@ -4481,7 +4501,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - ja
 
@@ -4489,7 +4509,7 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - en
 
@@ -4497,7 +4517,7 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - ja
 
@@ -4712,6 +4732,24 @@ pages:
     -   md: contributing/contribute-code.md
         html: contribute-code.html
         parent: contribute.html
+        top_nav_omit: true
+        targets:
+            - en
+            - ja
+
+    # TODO: translate
+    -   md: contributing/tutorial-guidelines.md
+        html: tutorial-guidelines.html
+        parent: contribute-code.html
+        top_nav_omit: true
+        targets:
+            - en
+            - ja
+
+    # TODO: translate
+    -   md: contributing/tutorial-structure.md
+        html: tutorial-structure.html
+        parent: tutorial-guidelines.html
         top_nav_omit: true
         targets:
             - en

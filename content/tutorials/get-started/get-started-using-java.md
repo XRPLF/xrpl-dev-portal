@@ -45,26 +45,30 @@ In this tutorial, you need the [xrpl4j-client](https://javadoc.io/doc/org.xrpl/x
 To install with Maven, add the following to your project's `pom.xml` file and then run `mvn install`:
 
 ```xml
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.xrpl</groupId>
+      <artifactId>xrpl4j-bom</artifactId>
+      <version>3.0.1</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+```
+
+```xml
 <dependencies>
     <dependency>
       <groupId>org.xrpl</groupId>
+      <artifactId>xrpl4j-core</artifactId>
+      <version>3.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.xrpl</groupId>
       <artifactId>xrpl4j-client</artifactId>
-      <version>2.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.xrpl</groupId>
-      <artifactId>xrpl4j-address-codec</artifactId>
-      <version>2.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.xrpl</groupId>
-      <artifactId>xrpl4j-keypairs</artifactId>
-      <version>2.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.xrpl</groupId>
-      <artifactId>xrpl4j-model</artifactId>
-      <version>2.0.0</version>
+      <version>3.0.1</version>
     </dependency>
 </dependencies>
 ```
@@ -86,9 +90,9 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 ### {{n.next()}}. Connect to the XRP Ledger
 
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl4j`,
-you can use an [`XrplClient`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html):
+you can use an [`XrplClient`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/3.0.1/org/xrpl/xrpl4j/client/XrplClient.html):
 
-{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Construct a network client", end_before="// Create a Wallet using a WalletFactory", language="java") }}
+{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Construct a network client", end_before="// Create a random KeyPair", language="java") }}
 
 #### Connect to the production XRP Ledger
 
@@ -112,7 +116,7 @@ To store value and execute transactions on the XRP Ledger, you need to get an ac
 
 To generate a new account, `xrpl4j` provides the [`DefaultWalletFactory`](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html).
 
-{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Create a Wallet using a WalletFactory", end_before="// Get the Classic and X-Addresses from testWallet", language="java") }}
+{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Create a random KeyPair", end_before="// Derive the Classic and X-Addresses from testWallet", language="java") }}
 
 
 The result of a call to `walletFactory.randomWallet(true).wallet()` is a [`Wallet` instance](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/Wallet.html):
@@ -170,26 +174,33 @@ You should see output similar to this example:
 ```sh
 Running the GetAccountInfo sample...
 Constructing an XrplClient connected to https://s.altnet.rippletest.net:51234/
-Generated a wallet with the following public key: ED015D922B5EACF09DF01168141FF27FA6229B0FAB9B4CD88D2B6DA036090EFAA4
+Generated KeyPair: KeyPair{
+  privateKey=PrivateKey{value=[redacted], destroyed=false}, 
+  publicKey=PublicKey{value=UnsignedByteArray{unsignedBytes=List(size=33)}, 
+  base58Value=aKGgrZL2WTc85HJSkQGuKfinem5oMH1uCJankSWFATGUhqvygxir, 
+  base16Value=EDFB1073327CCBDA342AD685AF1C04530294866B9CB10C21126DC004BFDBA287D1, 
+  keyType=ED25519
+  }
+}
 Classic Address: rBXHGshqXu3Smy9FUsQTmo49bGpQUQEm3X
 X-Address: T7yMiiJJCmgY2yg5WB2davUedDeBFAG5B8r9KHjKCxDdvv3
 Funded the account using the Testnet faucet.
 AccountInfoResult{
-    status=success,
-    accountData=AccountRootObject{
-        ledgerEntryType=ACCOUNT_ROOT,
-        account=rBXHGshqXu3Smy9FUsQTmo49bGpQUQEm3X,
-        balance=1000000000,
-        flags=0,
-        ownerCount=0,
-        previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000,
-        previousTransactionLedgerSequence=0,
-        sequence=17178149,
-        signerLists=[],
-        index=0DC1B13C73A7F3D2D82446526D0C5D08E88F89BA442D54291117F1A08E447685
-    },
-    ledgerCurrentIndex=17178149,
-    validated=false
+  status=success, 
+  accountData=AccountRootObject{
+    ledgerEntryType=ACCOUNT_ROOT, 
+    account=rDNwS2t4afhBogKqSFFmsDi1k7gmeGhz4p, 
+    balance=10000000000, 
+    flags=0, 
+    ownerCount=0,
+    previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000, 
+    previousTransactionLedgerSequence=0, 
+    sequence=37649083, 
+    signerLists=[],
+    index=F607809578C2A413774B9A240480B8B7B10C3E296CA609337D2F41813F566B92
+  }, 
+  ledgerCurrentIndex=37649083, 
+  validated=false
 }
 ```
 

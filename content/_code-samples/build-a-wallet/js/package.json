@@ -1,0 +1,21 @@
+{
+    "name": "simple-xrpl-wallet",
+    "type": "module",
+    "scripts": {
+        "dev": "vite"
+    },
+    "devDependencies": {
+        "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+        "crypto-browserify": "^3.12.0",
+        "events": "^3.3.0",
+        "https-browserify": "^1.0.0",
+        "rollup-plugin-polyfill-node": "^0.12.0",
+        "stream-browserify": "^3.0.0",
+        "stream-http": "^3.2.0",
+        "vite": "^4.1.0"
+    },
+    "dependencies": {
+        "dotenv": "^16.0.3",
+        "xrpl": "^2.7.0-beta.2"
+    }
+}

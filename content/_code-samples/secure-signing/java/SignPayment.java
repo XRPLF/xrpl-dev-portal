@@ -1,35 +1,29 @@
 ////////////////////////////////////////////////////////////////////////////
 // Sign using a SingleKeySignatureService:
-// This implementation of SignatureService simply holds a PrivateKey in
-// memory and signs Transactions using that PrivateKey. This may be
-// suitable for some applications, but is likely not secure enough for
-// server side applications, as keys must be stored and kept in memory.
+// This implementation of SignatureService signs Transactions using a
+// supplied PrivateKey. This may be suitable for some applications, but is
+// likely not secure enough for server side applications, as keys should not
+// be stored in memory whenever possible.
 ////////////////////////////////////////////////////////////////////////////
 
 // Create a random wallet
-WalletFactory walletFactory = DefaultWalletFactory.getInstance();
-Wallet wallet = walletFactory.randomWallet(true).wallet();
+KeyPair randomKeyPair = Seed.ed25519Seed().deriveKeyPair();
+PublicKey publicKey = randomKeyPair.publicKey();
+PrivateKey privateKey = randomKeyPair.privateKey()
 
-// Construct a SingleKeySignatureService from the Wallet private key
-PrivateKey privateKey = PrivateKey.fromBase16EncodedPrivateKey(
-  wallet.privateKey().get()
-);
-SingleKeySignatureService signatureService =
-  new SingleKeySignatureService(privateKey);
+// Construct a SignatureService
+SignatureService<PrivateKey> signatureService = new BcSignatureService();
 
 // Construct and sign the Payment
 Payment payment = Payment.builder()
-  .account(wallet.classicAddress())
+  .account(publicKey.deriveAddress())
   .destination(Address.of("rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"))
   .amount(XrpCurrencyAmount.ofDrops(1000))
   .fee(XrpCurrencyAmount.ofDrops(10))
   .sequence(UnsignedInteger.valueOf(16126889))
-  .signingPublicKey(signatureService.getPublicKey(KeyMetadata.EMPTY))
+  .signingPublicKey(publicKey)
   .build();
-SignedTransaction<Payment> signedPayment = signatureService.sign(
-  KeyMetadata.EMPTY,
-  payment
-);
+SingleSignedTransaction<Payment> signedPayment = signatureService.sign(privateKey, payment);
 System.out.println("Signed Payment: " + signedPayment.signedTransaction());
 
 
@@ -47,25 +41,26 @@ System.out.println("Signed Payment: " + signedPayment.signedTransaction());
 // implementation.
 ////////////////////////////////////////////////////////////////////////////
 
-// Construct a DerivedKeysSignatureService with a server secret
-// (in this case "shh")
-DerivedKeysSignatureService signatureService =
-  new DerivedKeysSignatureService("shh"::getBytes, VersionType.ED25519);
+// Construct a DerivedKeysSignatureService with a server secret (in this case "shh")
+SignatureService<PrivateKeyReference> derivedKeySignatureService = new BcDerivedKeySignatureService(
+  () -> ServerSecret.of("shh".getBytes())
+);
 
-// Choose a walletId. This can be anything as long as it is unique to your system.
-String walletId = "sample-wallet";
-KeyMetadata keyMetadata = KeyMetadata.builder()
-  .platformIdentifier("jks")
-  .keyringIdentifier("n/a")
-  .keyIdentifier(walletId)
-  .keyVersion("1")
-  .keyPassword("password")
-  .build();
+PrivateKeyReference privateKeyReference = new PrivateKeyReference() {
+  @Override
+  public KeyType keyType() {
+    return KeyType.ED25519;
+  }
+
+  @Override
+  public String keyIdentifier() {
+    return "sample-keypair";
+  }
+};
 
 // Get the public key and classic address for the given walletId
-PublicKey publicKey = signatureService.getPublicKey(keyMetadata);
-Address classicAddress = DefaultKeyPairService.getInstance()
-  .deriveAddress(publicKey.value());
+PublicKey publicKey = derivedKeySignatureService.derivePublicKey(privateKeyReference);
+Address classicAddress = publicKey.deriveAddress();
 
 // Construct and sign the Payment
 Payment payment = Payment.builder()
@@ -74,9 +69,8 @@ Payment payment = Payment.builder()
   .amount(XrpCurrencyAmount.ofDrops(1000))
   .fee(XrpCurrencyAmount.ofDrops(10))
   .sequence(UnsignedInteger.valueOf(16126889))
-  .signingPublicKey(publicKey.base16Encoded())
+  .signingPublicKey(publicKey)
   .build();
 
-SignedTransaction<Payment> signedPayment = signatureService
-  .sign(keyMetadata, payment);
+SingleSignedTransaction<Payment> signedPayment = derivedKeySignatureService.sign(privateKeyReference, payment);
 System.out.println("Signed Payment: " + signedPayment.signedTransaction());
