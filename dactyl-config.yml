@@ -1298,6 +1298,24 @@ pages:
             - en
             - ja
 
+        # TODO: translate
+    -   md: tutorials/quickstart/py-transfer-nftokens.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-broker-sale.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-authorize-minter.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/get-started/get-started.md
         targets:
             - en
