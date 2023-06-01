@@ -1,6 +1,6 @@
 ---
 html: parallel-networks.html
-parent: consensus-network.html
+parent: concepts.html
 blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger.
 labels:
   - Blockchain

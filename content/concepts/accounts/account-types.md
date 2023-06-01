@@ -1,6 +1,6 @@
 ---
 html: issuing-and-operational-addresses.html
-parent: tokens.html
+parent: accounts.html
 blurb: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk.
 labels:
   - Tokens

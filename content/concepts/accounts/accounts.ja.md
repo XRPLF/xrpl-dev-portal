@@ -1,6 +1,6 @@
 ---
 html: accounts.html
-parent: payment-system-basics.html
+parent: concepts.html
 blurb: XRP Ledgerのアカウントについて説明します。アカウントはトランザクションを送信でき、XRPを保有できます。
 labels:
   - アカウント

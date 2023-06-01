@@ -1,6 +1,6 @@
 ---
 html: accounts.html
-parent: payment-system-basics.html
+parent: concepts.html
 blurb: Learn about accounts in the XRP Ledger. Accounts can send transactions and hold XRP.
 labels:
   - Accounts

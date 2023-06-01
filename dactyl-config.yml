@@ -965,6 +965,14 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/transactions/tickets.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/tickets.ja.md
+        targets:
+            - ja
+
     -   md: concepts/transactions/reliable-transaction-submission.md
         targets:
             - en
@@ -1215,60 +1223,74 @@ pages:
         targets:
             - ja
 
-
-    #CURSOR
-
-
-
-
-
-
-    -   md: concepts/payment-system-basics/accounts/accounts.md
+    # Accounts ----------------------------------------------------------------
+    -   md: concepts/accounts/accounts.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/accounts.ja.md
+    -   md: concepts/accounts/accounts.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/cryptographic-keys.md
+    -   md: concepts/accounts/account-types.md
+        targets:
+            - en
+
+        #TODO: update translation. Mostly just the title has changed
+    -   md: concepts/accounts/account-types.ja.md
+        targets:
+            - ja
+
+        #TODO: translate. Draws heavily on content that used to be in accounts.md
+    -   md: concepts/accounts/deleting-accounts.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/accounts/reserves.md
+        targets:
+            - en
+
+    -   md: concepts/accounts/reserves.ja.md
+        targets:
+            - ja
+
+        #TODO: translate. Draws heavily on content that used to be in accounts.md
+    -   md: concepts/accounts/addresses.md
+        targets:
+            - en
+            - ja
+    
+    -   md: concepts/accounts/cryptographic-keys.md
         targets:
             - en
 
         # TODO: update translation based on latest English version
-    -   md: concepts/payment-system-basics/accounts/cryptographic-keys.ja.md
+    -   md: concepts/accounts/cryptographic-keys.ja.md
         targets:
             - ja
 
-
-    -   md: concepts/payment-system-basics/accounts/reserves.md
+    -   md: concepts/accounts/depositauth.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/reserves.ja.md
+    -   md: concepts/accounts/depositauth.ja.md
         targets:
             - ja
-
-    -   md: concepts/payment-system-basics/accounts/tickets.md
-        targets:
-            - en
-
-    -   md: concepts/payment-system-basics/accounts/tickets.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/payment-system-basics/accounts/depositauth.md
-        targets:
-            - en
-
-    -   md: concepts/payment-system-basics/accounts/depositauth.ja.md
-        targets:
-            - ja
-
     
+    # Networks ----------------------------------------------------------------
+    # TODO: This probably needs to move more/again. Maybe it "parallel" networks could become the landing page "networks" instead
 
+    -   md: concepts/networks/parallel-networks.md
+        targets:
+            - en
 
-        # Redirect from the old landing name/URL
+    -   md: concepts/networks/parallel-networks.ja.md
+        targets:
+            - ja
+    
+   ## REDIRECTS FROM OLD CONCEPT PAGES/LANDINGS -------------------------------
+
     -   name: Complex Payment Types
         html: complex-payment-types.html
         template: pagetype-redirect.html.jinja
@@ -1278,9 +1300,6 @@ pages:
             - en
             - ja
 
-
-
-        # Redirects from old (emptyish) landing pages.
     -   name: Tokens
         html: issued-currencies.html
         template: pagetype-redirect.html.jinja
@@ -1322,67 +1341,15 @@ pages:
             - en
             - ja
 
-
-
-    -   md: concepts/consensus-network/transaction-queue.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/transaction-queue.ja.md
-        targets:
-            - ja
-
-
-    -   md: concepts/consensus-network/transaction-malleability.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/transaction-malleability.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/amendments/amendments.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/amendments/amendments.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/amendments/contribute-code-flow.md
-        targets:
-            - en
-            - ja
-
-    -   md: concepts/consensus-network/amendments/known-amendments.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/amendments/known-amendments.ja.md
-        targets:
-            - ja
-
-
-    # TODO: add pseudo-transactions concept page
-
-    -   md: concepts/consensus-network/parallel-networks.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/parallel-networks.ja.md
-        targets:
-            - ja
-
     # Redirect for now obsolete "Federated Sidechains" page
     -   name: Federated Sidechains
         html: federated-sidechains.html
         template: pagetype-redirect.html.jinja
         redirect_url: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
-        nav_omit: true        targets:
+        nav_omit: true
+        targets:
             - en
             - ja
-
-
 
     # Redirect for "Interoperability" landing page
     -   name: Interoperability
@@ -4641,20 +4608,16 @@ pages:
         parent: amendment-heading.html
         targets:
             - en
-#             
-#     -   md: amendments/amendment-heading.ja.md
-#         targets:
-#             - ja
-#             
-#     -   md: amendments/known-amendments.ja.md
-#         parent: known-amendment-heading.ja.html
-#         targets:
-#             - ja
-            
+
+        # TODO: translate
+    -   md: amendments/contribute-code-flow.md
+        targets:
+            - en
+            - ja
 
 
 # --------------- end "Docs" section -------------------------------------------
-# Use Cases: these have been removed. Only redirects remain.
+# Old use Cases: these have been removed. Only redirects remain.
 
 #     -   name: Use Cases
 #         html: use-cases.html
