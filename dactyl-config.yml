@@ -523,15 +523,15 @@ pages:
             - ja
 
         # TODO: update or remove (en+ja)
-    -   md: concepts/introduction/xrp-ledger-overview.md
-        parent: introduction.html
-        targets:
-            - en
+    # -   md: concepts/introduction/xrp-ledger-overview.md
+    #     parent: introduction.html
+    #     targets:
+    #         - en
 
-    -   md: concepts/introduction/xrp-ledger-overview.ja.md
-        parent: introduction.html
-        targets:
-            - ja
+    # -   md: concepts/introduction/xrp-ledger-overview.ja.md
+    #     parent: introduction.html
+    #     targets:
+    #         - ja
 
         # TODO: update or remove (en+ja)
     -   md: concepts/introduction/software-ecosystem.md
@@ -1942,465 +1942,6 @@ pages:
 
     # TODO: translate this page & blurb
     -   md: tutorials/use-tokens/freeze-a-trust-line.md
-        targets:
-            - en
-            - ja
-
-    # TODO: "Send a Cross-Currency Payment"
-
-    # TODO: Set up issuing/operational addresses, monitor changes to balances,
-    # enable/disable rippling, use auth'd trust lines
-
-    -   name: Manage the rippled Server
-        html: manage-the-rippled-server.html
-        parent: tutorials.html
-        blurb: Install, configure, and manage the core server that powers the XRP Ledger.
-        cta_text: Run rippled
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: rippledサーバの管理
-        html: manage-the-rippled-server.html
-        parent: tutorials.html
-        blurb: XRP Ledgerを動かすコアサーバーをインストール、設定、管理しましょう。
-        cta_text: インストールしよう
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   name: Install rippled
-        html: install-rippled.html
-        parent: manage-the-rippled-server.html
-        top_nav_name: Install & Configure
-        blurb: Install and update the rippled server.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: rippledのインストール
-        html: install-rippled.html
-        parent: manage-the-rippled-server.html
-        blurb: rippledサーバーをインストールして更新します。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/system-requirements.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/system-requirements.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum.ja.md
-        targets:
-            - ja
-
-    # Redirect old Alien-based install
-    -   name: Install rippled on Ubuntu with Alien
-        html: install-rippled-on-ubuntu-with-alien.html
-        parent: install-rippled.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: install-rippled-on-ubuntu.html
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.ja.md
-        targets:
-            - ja
-
-    # Redirect old CentOS/RHEL install
-    -   name: Update rippled Automatically on CentOS/RHEL
-        html: update-rippled-automatically-on-centos-rhel.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: update-rippled-automatically-on-linux.html
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-automatically-on-linux.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-automatically-on-linux.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-centos-rhel.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-centos-rhel.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-ubuntu.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-ubuntu.ja.md
-        targets:
-            - ja
-
-        # Redirect to build instructions on rippled repo.
-    -   name: Build and Run rippled on Ubuntu
-        html: build-run-rippled-ubuntu.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
-        targets:
-            - en
-            - ja
-
-        # Redirect to b uild instructions on rippled repo.
-    -   name: Build and Run rippled on macOS
-        html: build-run-rippled-macos.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
-        targets:
-            - en
-            - ja
-        
-    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-in-reporting-mode.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.ja.md
-        targets:
-            - ja
-
-    -   name: Configure rippled
-        html: configure-rippled.html
-        parent: manage-the-rippled-server.html
-        blurb: Customize your rippled server configuration.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: rippledの設定
-        html: configure-rippled.html
-        parent: manage-the-rippled-server.html
-        blurb: rippledサーバーの構成をカスタマイズします。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-stock-server.md
-        targets:
-            - en
-
-        # TODO: update this translation and rename the file like in the English version
-    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.ja.md
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/manage-the-rippled-server/configuration/test-amendments.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.ja.md
-        targets:
-            - ja
-
-        # TODO: translate page
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-grpc.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-a-private-server.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-a-private-server.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
-        targets:
-            - en
-
-    # TODO: translate this page. # For now we just have a translated blurb.
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
-        blurb: rippledサーバーがステータスとピアについてどの程度の情報を公表するか設定します。
-        untranslated_warning: true
-        targets:
-            - ja
-
-    # TODO: translate this page
-    -   md: tutorials/manage-the-rippled-server/configure-peering/enable-link-compression.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.ja.md
-        targets:
-            - ja
-
-    -   name: Test rippled Functionality in Stand-Alone Mode
-        html: use-stand-alone-mode.html
-        parent: manage-the-rippled-server.html
-        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: スタンドアロンモードでrippledをテスト
-        html: use-stand-alone-mode.html
-        parent: manage-the-rippled-server.html
-        blurb: 新機能や実験用に、スタンドアロンモードを使用してフルネットワークで機能をテストできます。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.ja.md
-        targets:
-            - ja
-
-    -   name: Troubleshooting
-        html: troubleshoot-the-rippled-server.html
-        parent: manage-the-rippled-server.html
-        blurb: Troubleshoot all kinds of problems with the rippled server.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: rippledのトラブルシューティング
-        html: troubleshoot-the-rippled-server.html
-        parent: manage-the-rippled-server.html
-        blurb: rippledサーバーのあらゆる種類の問題をトラブルシューティングします。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.ja.md
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.md
-        targets:
-            - en
-
-        # TODO: translate the blurb in this page's frontmatter
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.ja.md
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-is-amendment-blocked.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/fix-sqlite-tx-db-page-size-issue.ja.md
-        targets:
-            - ja
-
-    -   name: Manage the Clio Server
-        html: manage-the-clio-server.html
-        parent: tutorials.html
-        blurb: Install, configure, and manage the Clio server.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: Clioサーバの管理
-        html: manage-the-clio-server.html
-        parent: tutorials.html
-        blurb: Clioサーバーのインストール、設定、管理しましょう。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/manage-the-clio-server/install-clio-on-ubuntu.md
         targets:
             - en
             - ja
@@ -4166,6 +3707,465 @@ pages:
     -   md: references/xrp-ledger-toml.ja.md
         targets:
             - ja
+
+# Infrastructure ---------------------------------------------------------------
+
+        # TODO: translate blurb
+    -   name: Infrastructure
+        html: infrastructure.html
+        parent: docs.html
+        blurb: Install, configure, and manage the software that powers the XRP Ledger.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+        # Redirect old landing
+    -   name: Manage the rippled server
+        html: manage-the-rippled-server.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: install-rippled-on-ubuntu.html
+        targets:
+            - en
+            - ja
+
+    -   name: Install rippled
+        html: install-rippled.html
+        parent: infrastructure.html
+        top_nav_name: Install & Configure
+        blurb: Install and update the rippled server.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+
+    -   name: rippledのインストール
+        html: install-rippled.html
+        parent: infrastructure.html
+        blurb: rippledサーバーをインストールして更新します。
+        template: pagetype-category.html.jinja
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/installation/system-requirements.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/system-requirements.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/installation/install-rippled-on-centos-rhel-with-yum.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/install-rippled-on-centos-rhel-with-yum.ja.md
+        targets:
+            - ja
+
+    # Redirect old Alien-based install
+    -   name: Install rippled on Ubuntu with Alien
+        html: install-rippled-on-ubuntu-with-alien.html
+        parent: install-rippled.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: install-rippled-on-ubuntu.html
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/installation/install-rippled-on-ubuntu.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/install-rippled-on-ubuntu.ja.md
+        targets:
+            - ja
+
+    # Redirect old CentOS/RHEL install
+    -   name: Update rippled Automatically on CentOS/RHEL
+        html: update-rippled-automatically-on-centos-rhel.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: update-rippled-automatically-on-linux.html
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/installation/update-rippled-automatically-on-linux.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/update-rippled-automatically-on-linux.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/installation/update-rippled-manually-on-centos-rhel.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/update-rippled-manually-on-centos-rhel.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/installation/update-rippled-manually-on-ubuntu.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/update-rippled-manually-on-ubuntu.ja.md
+        targets:
+            - ja
+
+        # Redirect to build instructions on rippled repo.
+    -   name: Build and Run rippled on Ubuntu
+        html: build-run-rippled-ubuntu.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
+        targets:
+            - en
+            - ja
+
+        # Redirect to build instructions on rippled repo.
+    -   name: Build and Run rippled on macOS
+        html: build-run-rippled-macos.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
+        targets:
+            - en
+            - ja
+        
+    -   md: infrastructure/rippled/installation/build-run-rippled-in-reporting-mode.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/installation/capacity-planning.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/capacity-planning.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/installation/rippled-1-3-migration-instructions.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/rippled-1-3-migration-instructions.ja.md
+        targets:
+            - ja
+
+    -   name: Configure rippled
+        html: configure-rippled.html
+        parent: infrastructure.html
+        blurb: Customize your rippled server configuration.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+
+    -   name: rippledの設定
+        html: configure-rippled.html
+        parent: infrastructure.html
+        blurb: rippledサーバーの構成をカスタマイズします。
+        template: pagetype-category.html.jinja
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/run-rippled-as-a-validator.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/run-rippled-as-a-validator.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/run-rippled-as-a-stock-server.md
+        targets:
+            - en
+
+        # TODO: update this translation and rename the file like in the English version
+    -   md: infrastructure/rippled/configuration/run-rippled-as-a-wallet-server.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-amendment-voting.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-amendment-voting.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/rippled/configuration/test-amendments.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/rippled/configuration/configure-statsd.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-online-deletion.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-online-deletion.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-history-sharding.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-history-sharding.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-full-history.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-full-history.ja.md
+        targets:
+            - ja
+
+        # TODO: translate page
+    -   md: infrastructure/rippled/configuration/configure-grpc.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/configuration/enable-public-signing.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/enable-public-signing.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/configure-peering.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configure-peering/configure-peering.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/cluster-rippled-servers.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configure-peering/cluster-rippled-servers.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/configure-a-private-server.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configure-peering/configure-a-private-server.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/configure-the-peer-crawler.md
+        targets:
+            - en
+
+    # TODO: translate this page. # For now we just have a translated blurb.
+    -   md: infrastructure/rippled/configure-peering/configure-the-peer-crawler.md
+        blurb: rippledサーバーがステータスとピアについてどの程度の情報を公表するか設定します。
+        untranslated_warning: true
+        targets:
+            - ja
+
+    # TODO: translate this page
+    -   md: infrastructure/rippled/configure-peering/enable-link-compression.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/forward-ports-for-peering.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configure-peering/forward-ports-for-peering.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/manually-connect-to-a-specific-peer.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configure-peering/manually-connect-to-a-specific-peer.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/set-max-number-of-peers.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configure-peering/set-max-number-of-peers.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/use-a-peer-reservation.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configure-peering/use-a-peer-reservation.ja.md
+        targets:
+            - ja
+
+    -   name: Test rippled Functionality in Stand-Alone Mode
+        html: use-stand-alone-mode.html
+        parent: infrastructure.html
+        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+
+    -   name: スタンドアロンモードでrippledをテスト
+        html: use-stand-alone-mode.html
+        parent: infrastructure.html
+        blurb: 新機能や実験用に、スタンドアロンモードを使用してフルネットワークで機能をテストできます。
+        template: pagetype-category.html.jinja
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.ja.md
+        targets:
+            - ja
+
+    -   name: Troubleshooting
+        html: troubleshoot-the-rippled-server.html
+        parent: infrastructure.html
+        blurb: Troubleshoot all kinds of problems with the rippled server.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+
+    -   name: rippledのトラブルシューティング
+        html: troubleshoot-the-rippled-server.html
+        parent: infrastructure.html
+        blurb: rippledサーバーのあらゆる種類の問題をトラブルシューティングします。
+        template: pagetype-category.html.jinja
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/troubleshooting/diagnosing-problems.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/troubleshooting/diagnosing-problems.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/rippled/troubleshooting/health-check-interventions.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/troubleshooting/understanding-log-messages.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/troubleshooting/understanding-log-messages.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/troubleshooting/server-doesnt-sync.md
+        targets:
+            - en
+
+        # TODO: translate the blurb in this page's frontmatter
+    -   md: infrastructure/rippled/troubleshooting/server-doesnt-sync.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/rippled/troubleshooting/server-is-amendment-blocked.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/troubleshooting/server-wont-start.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/troubleshooting/server-wont-start.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/troubleshooting/fix-sqlite-tx-db-page-size-issue.ja.md
+        targets:
+            - ja
+
+    -   name: Clio Server
+        html: manage-the-clio-server.html
+        parent: infrastructure.html
+        blurb: Install, configure, and manage the Clio server.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+
+    -   name: Clioサーバの管理
+        html: manage-the-clio-server.html
+        parent: infrastructure.html
+        blurb: Clioサーバーのインストール、設定、管理しましょう。
+        template: pagetype-category.html.jinja
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/clio/install-clio-on-ubuntu.md
+        targets:
+            - en
+            - ja
+
 
     # Landing pages for labels -------------------------------------------------
     -   name: Accounts
