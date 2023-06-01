@@ -1,11 +1,11 @@
 ---
-html: about-canceling-a-transaction.html
-parent: consensus-network.html
+html: canceling-a-transaction.html
+parent: finality-of-results.html
 blurb: 送信済みのトランザクションのキャンセルがいつどのように可能か説明します。
 labels:
   - トランザクション送信
 ---
-# トランザクションの取消しについて
+# トランザクションの取消し
 
 XRP Ledgerの重要かつ意図的な機能の1つに、トランザクションが検証済みレジャーに組み込まれると、即時に最終的なトランザクションになるという機能があります。
 

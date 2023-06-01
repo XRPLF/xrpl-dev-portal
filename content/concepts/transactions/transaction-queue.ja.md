@@ -1,6 +1,6 @@
 ---
 html: transaction-queue.html
-parent: consensus-network.html
+parent: transactions.html
 blurb: コンセンサスに至る前にトランザクションをどのようにキューに入れることができるか説明します。
 labels:
   - トランザクション送信

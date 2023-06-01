@@ -1,6 +1,6 @@
 ---
 html: look-up-transaction-results.html
-parent: transactions.html
+parent: finality-of-results.html
 blurb: Find the results of previously-submitted transactions.
 labels:
   - Payments

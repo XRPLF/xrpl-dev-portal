@@ -1,11 +1,11 @@
 ---
-html: about-canceling-a-transaction.html
-parent: consensus-network.html
+html: canceling-a-transaction.html
+parent: finality-of-results.html
 blurb: Understand when and how it's possible to cancel a transaction that has already been sent.
 labels:
   - Transaction Sending
 ---
-# About Canceling a Transaction
+# Canceling a Transaction
 
 An important and intentional feature of the XRP Ledger is that a [transaction](transaction-basics.html)'s outcome is [final](finality-of-results.html) as soon as it has been incorporated in a [ledger version](ledgers.html) that is validated by the [consensus process](consensus.html).
 

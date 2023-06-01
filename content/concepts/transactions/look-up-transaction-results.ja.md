@@ -1,6 +1,6 @@
 ---
 html: look-up-transaction-results.html
-parent: transactions.html
+parent: finality-of-results.html
 blurb: 以前に送信したトランザクションの結果を確認します。
 labels:
   - 支払い
