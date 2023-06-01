@@ -471,6 +471,7 @@ pages:
         html: docs-index.html
         parent: docs.html
         sidebar: disabled
+        nav_omit: true
         targets:
             - en
             - ja
