@@ -308,7 +308,7 @@
 <li>Authorize an account to create NFTokens for your account.</li>
 <li>Mint a NFToken for another account, when authorized.</li>
 </ol>
-<p><a href="img/quickstart30.png"><img alt="Token Test Harness" src="img/quickstart30.png"/></a></p>
+<p><a href="img/quickstart-py30.png"><img alt="Token Test Harness" src="img/quickstart-py30.png"/></a></p>
 <h1 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try the sample in your own browser.</p>
 <h2 id="get-accounts">Get Accounts<a aria-hidden="true" class="hover_anchor" href="#get-accounts"><i class="fa fa-link"></i></a></h2>
@@ -341,7 +341,7 @@
 <li>Paste the <strong>Operational Account</strong> value in the standby <strong>Authorized Minter</strong> field.</li>
 <li>Click <strong>Set Minter</strong>.</li>
 </ol>
-<p><a href="img/quickstart31.png"><img alt="Authorized Minter" src="img/quickstart31.png"/></a></p>
+<p><a href="img/quickstart-py31.png"><img alt="Authorized Minter" src="img/quickstart-py31.png"/></a></p>
 <h2 id="mint-a-nftoken-for-another-account">Mint a NFToken for Another Account<a aria-hidden="true" class="hover_anchor" href="#mint-a-nftoken-for-another-account"><i class="fa fa-link"></i></a></h2>
 <p>This example uses the Operational account, which was authorized in the previous step, to mint a token on behalf of the Standby account.</p>
 <p>To mint a non-fungible token for another account:</p>
@@ -354,7 +354,7 @@
 <li>Paste the <strong>Standby Account</strong> value in the Operational account <strong>Issuer</strong> field.</li>
 <li>Click the Operational account <strong>Mint Other</strong> button.</li>
 </ol>
-<p><a href="img/quickstart32.png"><img alt="Minted NFToken for Another Account" src="img/quickstart32.png"/></a></p>
+<p><a href="img/quickstart-py32.png"><img alt="Minted NFToken for Another Account" src="img/quickstart-py32.png"/></a></p>
 <p>Once the item is minted, the authorized minter can sell the NFToken normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.</p>
 <h2 id="create-a-sell-offer">Create a Sell Offer<a aria-hidden="true" class="hover_anchor" href="#create-a-sell-offer"><i class="fa fa-link"></i></a></h2>
 <p>To create a NFToken sell offer:</p>
@@ -366,7 +366,7 @@
 <li>Click <strong>Create Sell Offer</strong>.</li>
 </ol>
 <p>The important piece of information in the response is the NFToken Offer Index, labeled as <code>nft_offer_index</code>, which is used to accept the sell offer.</p>
-<p><a href="img/quickstart33.png"><img alt="NFToken Sell Offer" src="img/quickstart33.png"/></a></p>
+<p><a href="img/quickstart-py33.png"><img alt="NFToken Sell Offer" src="img/quickstart-py33.png"/></a></p>
 <h2 id="accept-sell-offer">Accept Sell Offer<a aria-hidden="true" class="hover_anchor" href="#accept-sell-offer"><i class="fa fa-link"></i></a></h2>
 <p>Once a sell offer is available, you can create a new account to accept the offer and buy the NFToken.</p>
 <p>To accept an available sell offer:</p>
@@ -377,9 +377,9 @@
 <li>Enter the <strong>NFToken Offer Index</strong> (labeled as <code>nft_offer_index</code> in the NFToken offer results. This is different from the <code>nft_id</code>).</li>
 <li>Click <strong>Accept Sell Offer</strong>.</li>
 </ol>
-<p><a href="img/quickstart34.png"><img alt="Transaction Results" src="img/quickstart34.png"/></a></p>
+<p><a href="img/quickstart-py34.png"><img alt="Transaction Results" src="img/quickstart-py34.png"/></a></p>
 <p>The Buyer account was debited the 100 XRP price plus 10 drops as the transaction cost. The Seller (Authorized Minter) account is credited 90 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction. The original Standby account receives a transfer fee of 10 XRP.</p>
-<p><a href="img/quickstart35.png"><img alt="Transaction Results" src="img/quickstart35.png"/></a></p>
+<p><a href="img/quickstart-py35.png"><img alt="Transaction Results" src="img/quickstart-py35.png"/></a></p>
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try each of the samples.</p>
 <h2 id="mod6py">mod6.py<a aria-hidden="true" class="hover_anchor" href="#mod6py"><i class="fa fa-link"></i></a></h2>
