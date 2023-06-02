@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 72 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: giff, gifu, gins
+  gifs: giss, gips, kifs
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -23,73 +23,73 @@ Found 72 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: black-hole, blockhole
+  blackhole: blockhole, black-hole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slam, slav, skas
+  slas: sas, sias, slats
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: lsd, xls
+  xlsd: xls, lsd
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  immediateofferkilled: 
-  xrpfees: 
+  fixnonfungibletokensv1_2: 
+  disallowincoming: 
   fixuniversalnumber: 
   depositpreauthamendment: 
-  disallowincoming: 
-  fixnonfungibletokensv1_2: 
+  immediateofferkilled: 
+  xrpfees: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
-  asfdisallowincomingnftoffer: 
-  asfdisallowincomingcheck: 
   asfdisallowincomingtrustline: 
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingcheck: 
+  asfdisallowincomingnftoffer: 
   30d: 3rd, 3-d, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: modo, mody, mods
+  mod1: mod, mods, mode
   get_account: 
   get_account_info: 
   send_xrp: 
-  lesson1: lesson, lessons
-  tkinter: twinter, tinter
+  lesson1: lessons, lesson
+  tkinter: tinter, twinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: modo, mody, mods
+  mod2: mod, mods, mode
   send_currency: 
   get_balance: 
   configure_account: 
-  lesson2: lesson, lessons
+  lesson2: lessons, lesson
 
 <Page '3. Mint and Burn NFTokens (Python)' (py-mint-and-burn-nftokens.html)> Unknown Words:
-  mod3: modo, mody, mods
+  mod3: mod, mods, mode
   minttoken: 
   gettokens: 
   burn_token: 
 
-<Page '4. Transfer NFTokens' (py-transfer-nftokens.html)> Unknown Words:
-  mod4: modo, mody, mods
+<Page '4. Transfer NFTokens (Python)' (py-transfer-nftokens.html)> Unknown Words:
+  mod4: mod, mods, mode
   offer___index: 
   alloffers: 
-  lesson4: lesson, lessons
+  lesson4: lessons, lesson
 
-<Page 'Broker an NFT Sale' (py-broker-sale.html)> Unknown Words:
+<Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)> Unknown Words:
   broker___fee: 
-  sell___offer___index: 
   buy___offer___index: 
-  lesson5: lesson, lessons
+  sell___offer___index: 
+  lesson5: lessons, lesson
 
-<Page 'Assign an Authorized Minter' (py-authorize-minter.html)> Unknown Words:
-  mod6: modo, mody, mods
+<Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)> Unknown Words:
+  mod6: mod, mods, mode
   mint_other: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
@@ -173,12 +173,12 @@ Page: <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustli
    Discouraged word: wallet (5 instances); suggest 'address, client application, account' instead.
 Page: <Page '3. Mint and Burn NFTokens (Python)' (py-mint-and-burn-nftokens.html)>
    Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
-Page: <Page '4. Transfer NFTokens' (py-transfer-nftokens.html)>
+Page: <Page '4. Transfer NFTokens (Python)' (py-transfer-nftokens.html)>
    Discouraged word: wallet (6 instances); suggest 'address, client application, account' instead.
-Page: <Page 'Broker an NFT Sale' (py-broker-sale.html)>
+Page: <Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)>
    Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
    Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
-Page: <Page 'Assign an Authorized Minter' (py-authorize-minter.html)>
+Page: <Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)>
    Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
 Page: <Page 'Build A Browser Wallet Using JS' (build-a-browser-wallet-in-js.html)>
    Discouraged word: simple (1 instances); suggest '(omit)' instead.
