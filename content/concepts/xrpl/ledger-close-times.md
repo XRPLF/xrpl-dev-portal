@@ -23,7 +23,7 @@ The following examples show the rounding behavior of ledger close times, from th
 2. The validator observes that most other validators (on its UNL) proposed a close time of 12:00:02, and one other proposed a close time of 12:00:03. It changes its proposed close time to match the consensus of **12:00:02**.
 3. The validator rounds this value to the nearest close time interval, resulting in **12:00:00**.
 4. Since 12:00:00 is not greater than the previous ledger's close time, the validator adjusts the close time to be exactly 1 second after the previous ledger's close time. The result is an adjusted close time of **12:00:01**.
-5. The validator builds the ledger with these details, calculates the resulting hash, and confirms in the [validation step](consensus.html#validation) that others did the same.
+5. The validator builds the ledger with these details, calculates the resulting hash, and confirms in the validation step that others did the same.
 
 Non-validating servers do all the same steps, except they don't propose their recorded close times to the rest of the network.
 

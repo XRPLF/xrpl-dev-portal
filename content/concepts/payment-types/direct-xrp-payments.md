@@ -36,8 +36,6 @@ The basis of any financial system is transferring value. The quickest and simple
 
 ## See Also
 
-- **Concepts:**
-    - [Payment System Basics](payment-system-basics.html)
 - **Tutorials:**
     - [Send XRP (Interactive Tutorial)](send-xrp.html)
     - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)

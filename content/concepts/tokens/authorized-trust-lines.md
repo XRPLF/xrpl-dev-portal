@@ -31,7 +31,7 @@ With a stablecoin on the XRP Ledger and use Authorized Trust Lines, the process 
 
 ## As a Precaution
 
-Even if you don't intend to use Authorized Trust Lines, you can enable the Require Auth setting on [operational and standby accounts](issuing-and-operational-addresses.html), and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is only a precaution, and does not stop the operational and standby accounts from transferring the _issuer's_ tokens, as intended.
+Even if you don't intend to use Authorized Trust Lines, you can enable the Require Auth setting on [operational and standby accounts](account-types.html), and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is only a precaution, and does not stop the operational and standby accounts from transferring the _issuer's_ tokens, as intended.
 
 
 ## Technical Details

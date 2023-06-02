@@ -243,7 +243,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 ## See Also
 
 - **Concepts:**
-    - [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
+    - [Issuing and Operational Addresses](account-types.html)
 - **Tutorials:**
     - [Assign a Regular Key Pair](assign-a-regular-key-pair.html)
     - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)

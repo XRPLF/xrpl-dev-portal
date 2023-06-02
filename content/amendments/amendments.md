@@ -67,7 +67,7 @@ The [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussion
 ## See Also
 
 - **Concepts:**
-    - [Consensus](introconsensus.html)
+    - [Consensus](consensus.html)
 - **Tutorials:**
     - [Run rippled as a Validator](run-rippled-as-a-validator.html)
     - [Configure Amendment Voting](configure-amendment-voting.html)

@@ -692,7 +692,7 @@ Now that you're familiar with the benefits of assigning a regular key pair to an
 - **Concepts:**
     - [Cryptographic Keys](cryptographic-keys.html)
     - [Multi-Signing](multi-signing.html)
-    - [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
+    - [Issuing and Operational Addresses](account-types.html)
 - **Tutorials:**
     - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
     - [Set Up Multi-Signing](set-up-multi-signing.html)

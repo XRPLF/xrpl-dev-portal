@@ -1,6 +1,6 @@
 ---
 html: ledgers.html
-parent: payment-system-basics.html
+parent: concepts.html
 blurb: XRP Ledgerは、rippledによって内部データベースに保持されている一連の個別レジャー（レジャーバージョン）で構成されています。これらのレジャーの構造と内容について説明します。
 labels:
   - ブロックチェーン
@@ -46,7 +46,7 @@ The `rippled` server makes a distinction between ledger versions that are _open_
 
 Unintuitively, the XRP Ledger never "closes" an open ledger to convert it into a closed ledger. Instead, the server throws away the open ledger, creates a new closed ledger by applying transactions on top of a previous closed ledger, then creates a new open ledger using the latest closed ledger as a base. This is a consequence of [how consensus solves the double-spend problem](consensus-principles-and-rules.html#問題の単純化).
 
-For an open ledger, servers apply transactions in the order those transactions appear, but different servers may see transactions in different orders. Since there is no central timekeeper to decide which transaction was actually first, servers may disagree on the exact order of transactions that were sent around the same time. Thus, the process for calculating a closed ledger version that is eligible for [validation](consensus.html#検証) is different than the process of building an open ledger from proposed transactions in the order they arrive. To create a "closed" ledger, each XRP Ledger server starts with a set of transactions and a previous, or "parent", ledger version. The server puts the transactions in a canonical order, then applies them to the previous ledger in that order. The canonical order is designed to be deterministic and efficient, but hard to game, to increase the difficulty of front-running Offers in the [decentralized exchange](decentralized-exchange.html).
+For an open ledger, servers apply transactions in the order those transactions appear, but different servers may see transactions in different orders. Since there is no central timekeeper to decide which transaction was actually first, servers may disagree on the exact order of transactions that were sent around the same time. Thus, the process for calculating a closed ledger version that is eligible for [validation](consensus-structure.html#検証) is different than the process of building an open ledger from proposed transactions in the order they arrive. To create a "closed" ledger, each XRP Ledger server starts with a set of transactions and a previous, or "parent", ledger version. The server puts the transactions in a canonical order, then applies them to the previous ledger in that order. The canonical order is designed to be deterministic and efficient, but hard to game, to increase the difficulty of front-running Offers in the [decentralized exchange](decentralized-exchange.html).
 
 Thus, an open ledger is only ever used as a temporary workspace, which is a major reason why transactions' [tentative results may vary from their final results](finality-of-results.html).
 
@@ -68,7 +68,7 @@ The following examples demonstrate the rounding behavior of ledger close times, 
 2. The validator observes that most other validators (on its UNL) proposed a close time of 12:00:02, and one other proposed a close time of 12:00:03. It changes its proposed close time to match the consensus of **12:00:02**.
 3. The validator rounds this value to the nearest close time interval, resulting in **12:00:00**.
 4. Since 12:00:00 is not greater than the previous ledger's close time, the validator adjusts the close time to be exactly 1 second after the previous ledger's close time. The result is an adjusted close time of **12:00:01**.
-5. The validator builds the ledger with these details, calculates the resulting hash, and confirms in the [validation step](consensus.html#検証) that others did the same.
+5. The validator builds the ledger with these details, calculates the resulting hash, and confirms in the [validation step](consensus-structure.html#検証) that others did the same.
 
 Non-validating servers do all the same steps, except they don't propose their recorded close times to the rest of the network.
 

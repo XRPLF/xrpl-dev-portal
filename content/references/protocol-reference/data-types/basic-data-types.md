@@ -82,7 +82,7 @@ Many API methods require you to specify an instance of the ledger, with the data
 
 3. Specify a ledger by one of the following shortcuts, in the `ledger_index` parameter:
 
-    * `validated` for the most recent ledger that has been [validated by consensus](consensus.html#validation)
+    * `validated` for the most recent ledger that has been [validated by consensus](consensus-structure.html#validation)
 
             "ledger_index": "validated"
 

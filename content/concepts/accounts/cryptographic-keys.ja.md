@@ -241,7 +241,7 @@ XRP Ledgerアカウントキーでのsecp256k1鍵導出に、Ed25519鍵導出よ
 ## 関連項目
 
 - **コンセプト:**
-    - [発行アドレスと運用アドレス](issuing-and-operational-addresses.html)
+    - [発行アドレスと運用アドレス](account-types.html)
 - **チュートリアル:**
     - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.html)
     - [レギュラーキーペアの変更または削除](change-or-remove-a-regular-key-pair.html)

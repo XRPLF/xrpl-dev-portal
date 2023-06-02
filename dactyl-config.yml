@@ -147,7 +147,7 @@ targets:
             "cryptographic-keys.html#private-key": "cryptographic-keys.html#キーの生成"
             "basic-data-types.html#specifying-currency-amounts": "basic-data-types.html#通貨額の指定"
             "transaction-cost.html#current-transaction-cost": "transaction-cost.html#現在のトランザクションコスト"
-            "ledgers.html#open-closed-and-validated-ledgers": "ledgers.html#ツリーの形式"
+            #"ledgers.html#open-closed-and-validated-ledgers": "ledgers.html#ツリーの形式"
             "account_info.html#response-format": "account_info.html#応答フォーマット"
             # Fix link from untranslated rate-limiting.html:
             "get-started-using-http-websocket-apis.html#admin-access": "get-started-using-http-websocket-apis.html#管理者アクセス権限"
@@ -562,6 +562,7 @@ pages:
         blurb: Browse the documentation based on practical use cases.
         targets:
             - en
+            - ja
 
 
     -   name: Payments
@@ -1345,6 +1346,24 @@ pages:
         template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: payment-types.html
+        targets:
+            - en
+            - ja
+
+    -   name: Canceling a Transaction
+        html: about-canceling-a-transaction.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: canceling-a-transaction.html
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+    -   name: Account Types
+        html: issuing-and-operational-addresses.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: account-types.html
+        nav_omit: true
         targets:
             - en
             - ja
@@ -4217,425 +4236,425 @@ pages:
             - ja
 
 
-    # Landing pages for labels -------------------------------------------------
-    -   name: Accounts
-        html: label-accounts.html
-        parent: by-label.html
-        landing_for: Accounts
-        template: pagetype-label.html.jinja
-        blurb: Pages relating to accounts in the XRP Ledger.
-        filters:
-            - labels
-        targets:
-            - en
+    # # Landing pages for labels -------------------------------------------------
+    # -   name: Accounts
+    #     html: label-accounts.html
+    #     parent: by-label.html
+    #     landing_for: Accounts
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages relating to accounts in the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: アカウント
-        html: label-accounts.html
-        parent: by-label.html
-        landing_for: アカウント
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerのアカウントに関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: アカウント
+    #     html: label-accounts.html
+    #     parent: by-label.html
+    #     landing_for: アカウント
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerのアカウントに関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
 
-    -   name: Blockchain
-        html: label-blockchain.html
-        parent: by-label.html
-        landing_for: Blockchain
-        template: pagetype-label.html.jinja
-        blurb: Pages about how the XRP Ledger functions as a blockchain.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Blockchain
+    #     html: label-blockchain.html
+    #     parent: by-label.html
+    #     landing_for: Blockchain
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about how the XRP Ledger functions as a blockchain.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: ブロックチェーン
-        html: label-blockchain.html
-        parent: by-label.html
-        landing_for: ブロックチェーン
-        template: pagetype-label.html.jinja
-        blurb: ブロックチェーンとしてのXRP Ledgerの機能に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: ブロックチェーン
+    #     html: label-blockchain.html
+    #     parent: by-label.html
+    #     landing_for: ブロックチェーン
+    #     template: pagetype-label.html.jinja
+    #     blurb: ブロックチェーンとしてのXRP Ledgerの機能に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Checks
-        html: label-checks.html
-        parent: by-label.html
-        landing_for: Checks
-        template: pagetype-label.html.jinja
-        blurb: Pages about the Checks feature.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Checks
+    #     html: label-checks.html
+    #     parent: by-label.html
+    #     landing_for: Checks
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about the Checks feature.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: Checks
-        html: label-checks.html
-        parent: by-label.html
-        landing_for: Checks
-        template: pagetype-label.html.jinja
-        blurb: Checks機能に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: Checks
+    #     html: label-checks.html
+    #     parent: by-label.html
+    #     landing_for: Checks
+    #     template: pagetype-label.html.jinja
+    #     blurb: Checks機能に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Core Server
-        html: label-rippled.html
-        parent: by-label.html
-        landing_for: Core Server
-        template: pagetype-label.html.jinja
-        blurb: Pages about the XRP Ledger's core server implementation, rippled.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Core Server
+    #     html: label-rippled.html
+    #     parent: by-label.html
+    #     landing_for: Core Server
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about the XRP Ledger's core server implementation, rippled.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: コアサーバー
-        html: label-rippled.html
-        parent: by-label.html
-        landing_for: コアサーバー
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerのコアサーバー「rippled」に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: コアサーバー
+    #     html: label-rippled.html
+    #     parent: by-label.html
+    #     landing_for: コアサーバー
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerのコアサーバー「rippled」に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Cross-Currency
-        html: label-cross-currency.html
-        parent: by-label.html
-        landing_for: Cross-Currency
-        template: pagetype-label.html.jinja
-        blurb: Pages about exchanging currencies, tokens, and XRP in payments or the decentralized exchange.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Cross-Currency
+    #     html: label-cross-currency.html
+    #     parent: by-label.html
+    #     landing_for: Cross-Currency
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about exchanging currencies, tokens, and XRP in payments or the decentralized exchange.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: 複数通貨間
-        html: label-cross-currency.html
-        parent: by-label.html
-        landing_for: 複数通貨間
-        template: pagetype-label.html.jinja
-        blurb: 決済や分散型取引所での通貨、トークン、XRPの交換に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: 複数通貨間
+    #     html: label-cross-currency.html
+    #     parent: by-label.html
+    #     landing_for: 複数通貨間
+    #     template: pagetype-label.html.jinja
+    #     blurb: 決済や分散型取引所での通貨、トークン、XRPの交換に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Data Retention
-        html: label-data-retention.html
-        parent: by-label.html
-        landing_for: Data Retention
-        template: pagetype-label.html.jinja
-        blurb: Pages about how and for how long XRP Ledger software stores data.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Data Retention
+    #     html: label-data-retention.html
+    #     parent: by-label.html
+    #     landing_for: Data Retention
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about how and for how long XRP Ledger software stores data.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: データ保持
-        html: label-data-retention.html
-        parent: by-label.html
-        landing_for: データ保持
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerのソフトウェアがデータを保存する方法と期間に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: データ保持
+    #     html: label-data-retention.html
+    #     parent: by-label.html
+    #     landing_for: データ保持
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerのソフトウェアがデータを保存する方法と期間に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Decentralized Exchange
-        html: label-decentralized-exchange.html
-        parent: by-label.html
-        landing_for: Decentralized Exchange
-        template: pagetype-label.html.jinja
-        blurb: Pages about the Decentralized Exchange built into the XRP Ledger.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Decentralized Exchange
+    #     html: label-decentralized-exchange.html
+    #     parent: by-label.html
+    #     landing_for: Decentralized Exchange
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about the Decentralized Exchange built into the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: 分散型取引所
-        html: label-decentralized-exchange.html
-        parent: by-label.html
-        landing_for: 分散型取引所
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerの分散型取引所に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: 分散型取引所
+    #     html: label-decentralized-exchange.html
+    #     parent: by-label.html
+    #     landing_for: 分散型取引所
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerの分散型取引所に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Development
-        html: label-development.html
-        parent: by-label.html
-        landing_for: Development
-        template: pagetype-label.html.jinja
-        blurb: Pages about developing apps that use the XRP Ledger.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Development
+    #     html: label-development.html
+    #     parent: by-label.html
+    #     landing_for: Development
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about developing apps that use the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: 開発
-        html: label-development.html
-        parent: by-label.html
-        landing_for: 開発
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerを使うアプリケーションの開発に関するページ。
-        filters:
-            - labels
-        targets:
-             - ja
+    # -   name: 開発
+    #     html: label-development.html
+    #     parent: by-label.html
+    #     landing_for: 開発
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerを使うアプリケーションの開発に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #          - ja
 
-    -   name: Escrow
-        html: label-escrow.html
-        parent: by-label.html
-        landing_for: Escrow
-        template: pagetype-label.html.jinja
-        blurb: Pages about the Escrow feature.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Escrow
+    #     html: label-escrow.html
+    #     parent: by-label.html
+    #     landing_for: Escrow
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about the Escrow feature.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: Escrow
-        html: label-escrow.html
-        parent: by-label.html
-        landing_for: Escrow
-        template: pagetype-label.html.jinja
-        blurb: Escrow機能に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: Escrow
+    #     html: label-escrow.html
+    #     parent: by-label.html
+    #     landing_for: Escrow
+    #     template: pagetype-label.html.jinja
+    #     blurb: Escrow機能に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Fees
-        html: label-fees.html
-        parent: by-label.html
-        landing_for: Fees
-        template: pagetype-label.html.jinja
-        blurb: Pages about fees and related costs of transacting in the XRP Ledger.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Fees
+    #     html: label-fees.html
+    #     parent: by-label.html
+    #     landing_for: Fees
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about fees and related costs of transacting in the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: 手数料
-        html: label-fees.html
-        parent: by-label.html
-        landing_for: 手数料
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerのトランザクション処理時の手数料とコストに関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: 手数料
+    #     html: label-fees.html
+    #     parent: by-label.html
+    #     landing_for: 手数料
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerのトランザクション処理時の手数料とコストに関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: "Non-fungible Tokens, NFTs"
-        html: label-nfts.html
-        landing_for: "Non-fungible Tokens, NFTs"
-        template: pagetype-label.html.jinja
-        blurb: Pages about non-fungible tokens.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: "Non-fungible Tokens, NFTs"
+    #     html: label-nfts.html
+    #     landing_for: "Non-fungible Tokens, NFTs"
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about non-fungible tokens.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: "非代替性トークン, NFT"
-        html: label-nfts.html
-        landing_for: "非代替性トークン, NFT"
-        template: pagetype-label.html.jinja
-        blurb: NFTに関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: "非代替性トークン, NFT"
+    #     html: label-nfts.html
+    #     landing_for: "非代替性トークン, NFT"
+    #     template: pagetype-label.html.jinja
+    #     blurb: NFTに関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Payment Channels
-        html: label-payment-channels.html
-        parent: by-label.html
-        landing_for: Payment Channels
-        template: pagetype-label.html.jinja
-        blurb: Pages about the Payment Channels feature.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Payment Channels
+    #     html: label-payment-channels.html
+    #     parent: by-label.html
+    #     landing_for: Payment Channels
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about the Payment Channels feature.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: Payment Channel
-        html: label-payment-channels.html
-        parent: by-label.html
-        landing_for: Payment Channel
-        template: pagetype-label.html.jinja
-        blurb: Payment Channel機能に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: Payment Channel
+    #     html: label-payment-channels.html
+    #     parent: by-label.html
+    #     landing_for: Payment Channel
+    #     template: pagetype-label.html.jinja
+    #     blurb: Payment Channel機能に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Payments
-        html: label-payments.html
-        parent: by-label.html
-        landing_for: Payments
-        template: pagetype-label.html.jinja
-        blurb: About sending payments (of XRP or tokens) in the XRP Ledger.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Payments
+    #     html: label-payments.html
+    #     parent: by-label.html
+    #     landing_for: Payments
+    #     template: pagetype-label.html.jinja
+    #     blurb: About sending payments (of XRP or tokens) in the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: 支払い
-        html: label-payments.html
-        parent: by-label.html
-        landing_for: 支払い
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerでの支払い機能に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: 支払い
+    #     html: label-payments.html
+    #     parent: by-label.html
+    #     landing_for: 支払い
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerでの支払い機能に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Smart Contracts
-        html: label-smart-contracts.html
-        parent: by-label.html
-        landing_for: Smart Contracts
-        template: pagetype-label.html.jinja
-        blurb: Pages about XRP Ledger features that can be used to build smart contracts.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Smart Contracts
+    #     html: label-smart-contracts.html
+    #     parent: by-label.html
+    #     landing_for: Smart Contracts
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about XRP Ledger features that can be used to build smart contracts.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: スマートコントラクト
-        html: label-smart-contracts.html
-        parent: by-label.html
-        landing_for: スマートコントラクト
-        template: pagetype-label.html.jinja
-        blurb: スマートコントラクトを構築する際に利用できるXRP Ledgerの特徴に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: スマートコントラクト
+    #     html: label-smart-contracts.html
+    #     parent: by-label.html
+    #     landing_for: スマートコントラクト
+    #     template: pagetype-label.html.jinja
+    #     blurb: スマートコントラクトを構築する際に利用できるXRP Ledgerの特徴に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Security
-        html: label-security.html
-        parent: by-label.html
-        landing_for: Security
-        template: pagetype-label.html.jinja
-        blurb: Pages about security issues and precautions.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Security
+    #     html: label-security.html
+    #     parent: by-label.html
+    #     landing_for: Security
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about security issues and precautions.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: セキュリティ
-        html: label-security.html
-        parent: by-label.html
-        landing_for: セキュリティ
-        template: pagetype-label.html.jinja
-        blurb: セキュリティ問題と予防措置に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: セキュリティ
+    #     html: label-security.html
+    #     parent: by-label.html
+    #     landing_for: セキュリティ
+    #     template: pagetype-label.html.jinja
+    #     blurb: セキュリティ問題と予防措置に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Tokens
-        html: label-tokens.html
-        parent: by-label.html
-        landing_for: Tokens
-        template: pagetype-label.html.jinja
-        blurb: Pages about issuing tokens in the XRP Ledger.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Tokens
+    #     html: label-tokens.html
+    #     parent: by-label.html
+    #     landing_for: Tokens
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about issuing tokens in the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: トークン
-        html: label-tokens.html
-        parent: by-label.html
-        landing_for: トークン
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerでの発行トークンに関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: トークン
+    #     html: label-tokens.html
+    #     parent: by-label.html
+    #     landing_for: トークン
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerでの発行トークンに関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Transaction Sending
-        html: label-transaction-sending.html
-        parent: by-label.html
-        landing_for: Transaction Sending
-        template: pagetype-label.html.jinja
-        blurb: Pages about sending transactions in the XRP Ledger.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Transaction Sending
+    #     html: label-transaction-sending.html
+    #     parent: by-label.html
+    #     landing_for: Transaction Sending
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about sending transactions in the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: トランザクション送信
-        html: label-transaction-sending.html
-        parent: by-label.html
-        landing_for: トランザクション送信
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerでのトランザクション送信に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: トランザクション送信
+    #     html: label-transaction-sending.html
+    #     parent: by-label.html
+    #     landing_for: トランザクション送信
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerでのトランザクション送信に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: XRP
-        html: label-xrp.html
-        parent: by-label.html
-        landing_for: XRP
-        template: pagetype-label.html.jinja
-        blurb: Pages about XRP, the native digital asset built into the XRP Ledger.
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: XRP
+    #     html: label-xrp.html
+    #     parent: by-label.html
+    #     landing_for: XRP
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about XRP, the native digital asset built into the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: XRP
-        html: label-xrp.html
-        parent: by-label.html
-        landing_for: XRP
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerのネイティブ暗号資産「XRP」に関するページ。
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: XRP
+    #     html: label-xrp.html
+    #     parent: by-label.html
+    #     landing_for: XRP
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerのネイティブ暗号資産「XRP」に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
-    -   name: Browse By Label
-        html: by-label.html
-        parent: docs.html
-        template: page-by-label.html.jinja
-        sidebar: left_only
-        blurb: See all pages labeled with a specific topic or idea.
-        top_nav_omit: true
-        filters:
-            - labels
-        targets:
-            - en
+    # -   name: Browse By Label
+    #     html: by-label.html
+    #     parent: docs.html
+    #     template: page-by-label.html.jinja
+    #     sidebar: left_only
+    #     blurb: See all pages labeled with a specific topic or idea.
+    #     top_nav_omit: true
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
 
-    -   name: ラベル別に閲覧
-        html: by-label.html
-        parent: docs.html
-        template: page-by-label.html.jinja
-        sidebar: left_only
-        blurb: 特定のトピックでラベル付けされたページを表示します。
-        top_nav_omit: true
-        filters:
-            - labels
-        targets:
-            - ja
+    # -   name: ラベル別に閲覧
+    #     html: by-label.html
+    #     parent: docs.html
+    #     template: page-by-label.html.jinja
+    #     sidebar: left_only
+    #     blurb: 特定のトピックでラベル付けされたページを表示します。
+    #     top_nav_omit: true
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
 # Amendments -------------------------------------------------------------------
 

@@ -40,7 +40,7 @@ When you initially submit a transaction, the `rippled` server tentatively applie
 
     - Combinations of two or more of these factors can also occur.
 
-- The [order transactions apply in a closed ledger](ledgers.html#open-closed-and-validated-ledgers) is usually different than the order those transactions were tentatively applied to a current open ledger; depending on the transactions involved, this can cause a tentatively-successful transaction to fail or a tentatively-failed transaction to succeed. Some examples include:
+- The [order transactions apply in a closed ledger](open-closed-validated-ledgers.html) is usually different than the order those transactions were tentatively applied to a current open ledger; depending on the transactions involved, this can cause a tentatively-successful transaction to fail or a tentatively-failed transaction to succeed. Some examples include:
 
     - If two transactions would each fully consume the same Offer in the [decentralized exchange](decentralized-exchange.html), whichever one comes first succeeds, and the other fails. Since the order in which those transactions apply may change, the one that succeeded can fail and the one that failed can succeed. Since oOffers can be partially executed, they could also still succeed, but to a greater or lesser extent.
 

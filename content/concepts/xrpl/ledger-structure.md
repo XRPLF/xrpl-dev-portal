@@ -37,7 +37,7 @@ The ledger version contains _state data_ for all accounts, along with some misce
 
 Every transaction has a minor cost that removes a small amount of XRP from the available pool. The ledger version keeps track of the full amount of _available XRP_ still in circulation, in drops. The number of actual XRP in circulation is smaller than the amount in the ledger due to some XRP having been sent to "black hole" accounts where the access information is unknown, either by default or design.
 
-[![Available XRP](img/ledger6-available-xrp.png)](img/ledger6-available-zrp.png)
+[![Available XRP](img/ledger6-available-xrp.png)](img/ledger6-available-xrp.png)
 
 _Close Flags_ is a bit map of flags related to the close of the ledger. Currently, the only flag defined is **sLCF_NoConsensusTime** (value 1). It means that validators disagreed on the close time, but otherwise built the same ledger, so they have decided to "agree to disagree" on the close time. Other flags might be defined in future amendments to the XRP Ledger.
 
@@ -54,7 +54,7 @@ _Close Time_ is the official timestamp when the final validated ledger version i
 
 ## Tree Format
 
-As its name might suggest, a ledger's state tree is a tree data structure. Each entry in the state tree is identified by a 256-bit ID. In JSON, a ledger entry's ID is the `index` field, which contains a 64-character hexadecimal string like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every entry in the state tree has an ID that you can use to look up that entry; every transaction has an identifying hash that you can use to look up the transaction in the transaction tree. Do not confuse the `index` (ID) of a ledger entry with the [`ledger_index` (sequence number) of a ledger][Ledger Index].
+As its name might suggest, a ledger's state tree is a tree data structure. Each entry in the state tree is identified by a 256-bit ID. In JSON, a ledger entry's ID is the `index` field, which contains a 64-character hexadecimal string like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every entry in the state tree has an ID that you can use to look up that entry; every transaction has an identifying hash that you can use to look up the transaction in the transaction tree. Do not confuse the `index` (ID) of a ledger entry with the `ledger_index` (sequence number) of a ledger.
 
 **Tip:** Sometimes, a ledger entry is called a "ledger node". For example, transaction metadata returns a list of `AffectedNodes`. Do not confuse this with a "node" (server) in the peer-to-peer network.
 

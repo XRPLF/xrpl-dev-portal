@@ -1,6 +1,6 @@
 ---
 html: fees.html
-parent: payment-system-basics.html
+parent: transactions.html
 blurb: レジャーを悪用から守る中立的な手数料（誰にも支払われません）や、ユーザーが互いから徴収できる手数料など、XRP Ledgerで許可されている手数料のタイプについて説明します。
 labels:
   - 手数料

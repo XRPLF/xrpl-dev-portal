@@ -60,7 +60,7 @@ The value of a stablecoin issuer's tokens in the XRP Ledger comes directly from 
 
 {% include '_snippets/issuing-and-operational-addresses-intro.md' %}
 
-Main article: [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
+Main article: [Issuing and Operational Addresses](account-types.html)
 
 
 ## Fees and Revenue Sources
@@ -247,7 +247,7 @@ There are several prerequisites that ACME must meet for this to happen:
     - ACME may create a XRP Ledger collateral account in ACME's system of record.
     - ACME can store the funds allocated to the XRP Ledger in a separate bank account.
     - If the stablecoin is backed by cryptocurrency, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof of its reserves.
-- ACME should control two separate XRP Ledger addresses. See [Issuing and Operational Addresses](issuing-and-operational-addresses.html) for details.
+- ACME should control two separate XRP Ledger addresses. See [Issuing and Operational Addresses](account-types.html) for details.
     - ACME must enable the Default Ripple flag on its issuing address for customers to send and receive its tokens.
 - Alice must create an accounting relationship (trust line) from her XRP Ledger address to ACME's issuing address. She can do this from any XRP Ledger client application as long as she knows ACME's issuing address.
     - ACME should publicize its issuing address on its website where customers can find it. It can also use an [`xrp-ledger.toml` file](xrp-ledger-toml.html) to publish the issuing address to automated systems.
@@ -427,7 +427,7 @@ The Tick Size is an account-level setting and applies to all tokens issued by th
 
 Tick Size only controls the precision of _exchange rates_, not the precision of the token itself. Users can send and hold very large or very small amounts regardless of the Tick Size set by the token's issuer.
 
-For more information, see [Tick Size](tick-size.html).
+For more information, see [Tick Size](ticksize.html).
 
 
 ### Transfer Fees

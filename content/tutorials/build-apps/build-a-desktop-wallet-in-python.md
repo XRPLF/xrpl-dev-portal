@@ -211,7 +211,7 @@ Add a new `prompt_for_account()` method to the `TWaXLFrame` class:
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def prompt_for_account", end_before="def update_ledger") }}
 
-The constructor calls this method to prompt the user for their [address](accounts.html#addresses) or [master seed](cryptographic-keys.html#seed), then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:
+The constructor calls this method to prompt the user for their [address](addresses.html) or [master seed](cryptographic-keys.html#seed), then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:
 
 1. Create a new instance of a dialog class, such as a [`wx.TextEntryDialog`](https://docs.wxpython.org/wx.TextEntryDialog.html).
 2. Use `showModal()` to display it to the user and get a return code based on which button the user clicked.

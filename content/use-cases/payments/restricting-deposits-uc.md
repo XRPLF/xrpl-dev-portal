@@ -49,7 +49,7 @@ See: [Use Checks](use-checks.html).
 
 If you require a guarantee of funds at the time of deposit, another option is to have deposits made with an escrow. Like regular escrows, a sender sets aside funds on the ledger, effectively locking them up until certain conditions are met. This guarantees the funds will be available when you close the escrow to release the funds.
 
-See: [Use Escrows](use-escrows).
+See: [Use Escrows](use-escrows.html).
 
 
 <!-- Need a better understanding of Payment Channels use cases.

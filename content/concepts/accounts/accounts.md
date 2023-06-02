@@ -54,7 +54,7 @@ The typical way to get an account in the XRP Ledger is as follows:
 - **Concepts:**
     - [Reserves](reserves.html)
     - [Cryptographic Keys](cryptographic-keys.html)
-    - [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
+    - [Issuing and Operational Addresses](account-types.html)
 - **References:**
     - [account_info method][]
     - [wallet_propose method][]

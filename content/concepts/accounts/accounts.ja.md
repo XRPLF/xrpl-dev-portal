@@ -169,7 +169,7 @@ XRP Ledgerのアドレスは、[base58][]_形式のディクショナリ_`rpshna
 - **コンセプト:**
   - [準備金](reserves.html)
   - [暗号鍵](cryptographic-keys.html)
-  - [発行アドレスと運用アドレス](issuing-and-operational-addresses.html)
+  - [発行アドレスと運用アドレス](account-types.html)
 - **リファレンス:**
   - [account_infoメソッド][]
   - [wallet_proposeメソッド][]

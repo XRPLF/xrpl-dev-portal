@@ -9,7 +9,7 @@ labels:
 # validators
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
 
-The `validators` command returns human readable information about the current list of published and [trusted validators](introconsensus.html#trust-based-validation) used by the server.
+The `validators` command returns human readable information about the current list of published and [trusted validators](consensus.html#trust-based-validation) used by the server.
 
 *The `validators` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users!*
 

@@ -55,7 +55,7 @@ The diagram shows three different cases for three possible combinations of the e
     - Escrow requires two transactions: one to create the escrow, and one to finish or cancel it. Crypto-Conditions incur a higher [transaction cost](transaction-cost.html) than usual.
     - While the escrow is incomplete, the sender is responsible for the [reserve requirement](reserves.html) of the `Escrow` object.
 - You can't create an escrow with past time values.
-- Timed releases and expirations resolve according to [ledger close times](ledgers.html#ledger-close-times). In practice, actual release and expiration times can vary by about five seconds as ledgers close.
+- Timed releases and expirations resolve according to [ledger close times](ledger-close-times.html). In practice, actual release and expiration times can vary by about five seconds as ledgers close.
 - The only supported crypto-condition type is PREIMAGE-SHA-256.
 
 

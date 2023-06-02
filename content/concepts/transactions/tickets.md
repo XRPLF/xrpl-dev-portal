@@ -53,8 +53,8 @@ Any account can create and use Tickets on any type of transaction. However, some
 - Each account cannot have more than 250 Tickets in the ledger at a time. You cannot create more than 250 Tickets at a time, either.
 - You _can_ use a Ticket to create more Tickets. If you do, the Ticket you used does not count towards the total number of Tickets you can have at once.
 - Each Ticket counts toward the [owner reserve](reserves.html), so you must set aside 2 XRP for each Ticket you have not used yet. The XRP becomes available for you to use again after the Ticket is used.
-- Within an individual ledger, transactions that use Tickets execute after other transactions from the same sender. If an account has multiple transactions using Tickets in the same ledger version, those Tickets execute in order from lowest Ticket Sequence to highest. (For more information, see the documentation on consensus's [canonical order](consensus.html#calculate-and-share-validations).)
-- To "cancel" a Ticket, use the Ticket to [perform a no-op](about-canceling-a-transaction.html) [AccountSet transaction][]. This deletes the Ticket so that you don't have to meet its reserve requirement.
+- Within an individual ledger, transactions that use Tickets execute after other transactions from the same sender. If an account has multiple transactions using Tickets in the same ledger version, those Tickets execute in order from lowest Ticket Sequence to highest. (For more information, see the documentation on consensus's [canonical order](consensus-structure.html#calculate-and-share-validations).)
+- To "cancel" a Ticket, use the Ticket to [perform a no-op](canceling-a-transaction.html) [AccountSet transaction][]. This deletes the Ticket so that you don't have to meet its reserve requirement.
 
 ## See Also
 
