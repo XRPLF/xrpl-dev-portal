@@ -1008,4 +1008,14 @@ $placeholder-color: $gray-600;
 
 }
 
+.tutorial-card-grid {
+  code {
+    background-color: $green-100;
+  }
+
+  .card-icon-container {
+    background: $gray-300;
+  }
+}
+
 
