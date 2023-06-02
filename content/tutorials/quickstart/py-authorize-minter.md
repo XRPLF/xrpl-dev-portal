@@ -9,7 +9,7 @@ labels:
   - NFTs, NFTokens
 ---
 
-# Assign an Authorized Minter
+# Assign an Authorized Minter (Python)
 
 You can assign another account permission to mint NFTokens for you.
 
