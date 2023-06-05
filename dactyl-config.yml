@@ -530,12 +530,12 @@ pages:
     #     targets:
     #         - ja
 
-        # TODO: update or remove (en+ja)
     -   md: concepts/introduction/software-ecosystem.md
         parent: introduction.html
         targets:
             - en
 
+        # TODO: update based on EN changes
     -   md: concepts/introduction/software-ecosystem.ja.md
         parent: introduction.html
         targets:
