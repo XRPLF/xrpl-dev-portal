@@ -5,7 +5,7 @@ from decimal import Decimal
 from xrpl.asyncio.clients import AsyncWebsocketClient
 from xrpl.asyncio.transaction import (
     safe_sign_and_autofill_transaction,
-    send_reliable_submission,
+    submit_and_wait,
 )
 from xrpl.asyncio.wallet import generate_faucet_wallet
 from xrpl.models.currencies import (
@@ -175,7 +175,7 @@ async def main() -> int:
 
         # Submit the transaction and wait for response (validated or rejected)
         print("Sending OfferCreate transaction...")
-        result = await send_reliable_submission(signed_tx, client)
+        result = await submit_and_wait(signed_tx, client)
         if result.is_successful():
             print(f"Transaction succeeded: "
                   f"https://testnet.xrpl.org/transactions/{signed_tx.get_hash()}")

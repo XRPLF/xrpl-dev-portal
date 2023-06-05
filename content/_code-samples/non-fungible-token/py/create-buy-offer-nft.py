@@ -1,4 +1,4 @@
-from xrpl.transaction import safe_sign_and_autofill_transaction, send_reliable_submission
+from xrpl.transaction import submit_and_wait
 from xrpl.models.transactions.nftoken_create_offer import NFTokenCreateOffer
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.models.requests import AccountNFTs
@@ -56,9 +56,8 @@ else:
         amount=buy_offer_amount, # 10 XRP in drops, 1 XRP = 1,000,000 drops
     )
 
-    # Sign buy_tx using the issuer account
-    buy_tx_signed = safe_sign_and_autofill_transaction(transaction=buy_tx, wallet=buyer_wallet, client=client)
-    buy_tx_signed = send_reliable_submission(transaction=buy_tx_signed, client=client)
+    # Sign and submit buy_tx using the issuer account
+    buy_tx_signed = submit_and_wait(transaction=buy_tx, client=client, wallet=buyer_wallet)
     buy_tx_result = buy_tx_signed.result
 
     print(f"\n  NFTokenCreateOffer tx result: {buy_tx_result['meta']['TransactionResult']}")

@@ -25,13 +25,9 @@ cold_settings_tx = xrpl.models.transactions.AccountSet(
     domain=bytes.hex("example.com".encode("ASCII")),
     set_flag=xrpl.models.transactions.AccountSetFlag.ASF_DEFAULT_RIPPLE,
 )
-cst_prepared = xrpl.transaction.safe_sign_and_autofill_transaction(
-    transaction=cold_settings_tx,
-    wallet=cold_wallet,
-    client=client,
-)
+
 print("Sending cold address AccountSet transaction...")
-response = xrpl.transaction.send_reliable_submission(cst_prepared, client)
+response = xrpl.transaction.submit_and_wait(cold_settings_tx, client, cold_wallet)
 print(response)
 
 
@@ -40,13 +36,9 @@ hot_settings_tx = xrpl.models.transactions.AccountSet(
     account=hot_wallet.classic_address,
     set_flag=xrpl.models.transactions.AccountSetFlag.ASF_REQUIRE_AUTH,
 )
-hst_prepared = xrpl.transaction.safe_sign_and_autofill_transaction(
-    transaction=hot_settings_tx,
-    wallet=hot_wallet,
-    client=client,
-)
+
 print("Sending hot address AccountSet transaction...")
-response = xrpl.transaction.send_reliable_submission(hst_prepared, client)
+response = xrpl.transaction.submit_and_wait(hot_settings_tx, client, hot_wallet)
 print(response)
 
 
@@ -60,13 +52,9 @@ trust_set_tx = xrpl.models.transactions.TrustSet(
         value="10000000000", # Large limit, arbitrarily chosen
     )
 )
-ts_prepared = xrpl.transaction.safe_sign_and_autofill_transaction(
-    transaction=trust_set_tx,
-    wallet=hot_wallet,
-    client=client,
-)
+
 print("Creating trust line from hot address to issuer...")
-response = xrpl.transaction.send_reliable_submission(ts_prepared, client)
+response = xrpl.transaction.submit_and_wait(trust_set_tx, client, hot_wallet)
 print(response)
 
 
@@ -81,13 +69,9 @@ send_token_tx = xrpl.models.transactions.Payment(
         value=issue_quantity
     )
 )
-pay_prepared = xrpl.transaction.safe_sign_and_autofill_transaction(
-    transaction=send_token_tx,
-    wallet=cold_wallet,
-    client=client,
-)
+
 print(f"Sending {issue_quantity} {currency_code} to {hot_wallet.classic_address}...")
-response = xrpl.transaction.send_reliable_submission(pay_prepared, client)
+response = xrpl.transaction.submit_and_wait(send_token_tx, client, cold_wallet)
 print(response)
 
 

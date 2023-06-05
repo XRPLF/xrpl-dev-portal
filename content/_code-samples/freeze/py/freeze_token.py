@@ -1,8 +1,7 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import IssuedCurrencyAmount, TrustSet
 from xrpl.models.transactions import TrustSetFlag
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
-                              send_reliable_submission)
+from xrpl.transaction import submit_and_wait
 from xrpl.wallet import generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to testnet
@@ -25,13 +24,10 @@ trustset = TrustSet(account=sender_wallet.classic_address, limit_amount=IssuedCu
     value = value),
     flags=TrustSetFlag.TF_SET_FREEZE) 
 
-# Sign transaction
-stxn = safe_sign_and_autofill_transaction(trustset, sender_wallet, client)
-
 print("Now setting a trustline with the TF_SET_FREEZE flag enabled...")
 
-# Submit transaction and wait for result
-stxn_response = send_reliable_submission(stxn, client)
+# Autofill, sign, then submit transaction and wait for result
+stxn_response = submit_and_wait(trustset, client, sender_wallet)
 
 # Parse response for result
 stxn_result = stxn_response.result

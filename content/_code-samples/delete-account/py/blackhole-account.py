@@ -1,6 +1,6 @@
 from xrpl.clients import JsonRpcClient
-from xrpl.models.transactions import AccountSet, SetRegularKey, AccountSetFlag, Payment
-from xrpl.transaction import safe_sign_and_autofill_transaction, send_reliable_submission
+from xrpl.models.transactions import AccountSet, SetRegularKey, AccountSetFlag
+from xrpl.transaction import submit_and_wait
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.models.requests import AccountInfo
 
@@ -31,9 +31,8 @@ tx_regulary_key = SetRegularKey(
     regular_key=blackhole_address
 )
 
-# Sign the transaction
-tx_regulary_key_signed = safe_sign_and_autofill_transaction(tx_regulary_key, wallet=test_wallet, client=client)
-submit_tx_regular = send_reliable_submission(client=client, transaction=tx_regulary_key_signed)
+# Sign and submit the transaction
+submit_tx_regular = submit_and_wait(transaction=tx_regulary_key, client=client, wallet=test_wallet)
 submit_tx_regular = submit_tx_regular.result
 print(f"\n Submitted a SetRegularKey tx.  Result: {submit_tx_regular['meta']['TransactionResult']}")
 print(f"                            Tx content: {submit_tx_regular}")
@@ -45,9 +44,8 @@ tx_disable_master_key = AccountSet(
     set_flag=AccountSetFlag.ASF_DISABLE_MASTER
 )
 
-# Sign the transaction
-tx_disable_master_key_signed = safe_sign_and_autofill_transaction(tx_disable_master_key, wallet=test_wallet, client=client)
-submit_tx_disable = send_reliable_submission(client=client, transaction=tx_disable_master_key_signed)
+# Sign and submit the transaction
+submit_tx_disable = submit_and_wait(transaction=tx_disable_master_key, client=client, wallet=test_wallet)
 submit_tx_disable = submit_tx_disable.result
 print(f"\n Submitted a DisableMasterKey tx.  Result: {submit_tx_disable['meta']['TransactionResult']}")
 print(f"                               Tx content: {submit_tx_disable}")

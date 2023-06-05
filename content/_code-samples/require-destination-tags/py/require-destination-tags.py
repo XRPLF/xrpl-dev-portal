@@ -3,7 +3,7 @@ import asyncio
 from xrpl.asyncio.clients import AsyncWebsocketClient
 from xrpl.asyncio.transaction import (
     safe_sign_and_autofill_transaction,
-    send_reliable_submission,
+    submit_and_wait,
 )
 from xrpl.asyncio.wallet import generate_faucet_wallet
 from xrpl.models.requests import AccountInfo
@@ -32,7 +32,7 @@ async def main() -> int:
 
         # Submit the transaction and wait for response (validated or rejected)
         print("Submitting transaction...")
-        submit_result = await send_reliable_submission(signed_tx, client)
+        submit_result = await submit_and_wait(signed_tx, client)
         print("Submit result:", submit_result)
 
         # Confirm Account Settings --------------------------------------------------

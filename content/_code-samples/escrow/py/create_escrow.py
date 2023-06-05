@@ -1,10 +1,8 @@
-import json
 from datetime import datetime, timedelta
 
 from xrpl.clients import JsonRpcClient
 from xrpl.models import EscrowCreate
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
-                              send_reliable_submission)
+from xrpl.transaction import submit_and_wait
 from xrpl.utils import datetime_to_ripple_time, xrp_to_drops
 from xrpl.wallet import generate_faucet_wallet
 
@@ -38,9 +36,8 @@ create_txn = EscrowCreate(
     cancel_after=expiry_date,
     condition=condition)
 
-# Sign and send transaction 
-stxn = safe_sign_and_autofill_transaction(create_txn, sender_wallet, client)
-stxn_response = send_reliable_submission(stxn, client)
+# Autofill, sign, then submit transaction and wait for result
+stxn_response = submit_and_wait(create_txn, client, sender_wallet)
 
 # Return result of transaction
 stxn_result = stxn_response.result

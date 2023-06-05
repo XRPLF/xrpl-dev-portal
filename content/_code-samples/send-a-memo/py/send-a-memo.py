@@ -1,6 +1,6 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models.transactions import Payment, Memo
-from xrpl.transaction import safe_sign_and_autofill_transaction, send_reliable_submission
+from xrpl.transaction import safe_sign_and_autofill_transaction, submit_and_wait
 from xrpl.wallet import generate_faucet_wallet
 
 # This code sample validates and sends a transaction with a Memo attached
@@ -46,7 +46,7 @@ payment_tx_signed = safe_sign_and_autofill_transaction(payment_tx, wallet=test_w
 print(f"\n  Encoded Transaction MEMO: {payment_tx_signed.memos}")
 
 # Send the transaction to the node
-submit_tx_regular = send_reliable_submission(client=client, transaction=payment_tx_signed)
+submit_tx_regular = submit_and_wait(transaction=payment_tx_signed, client=client)
 submit_tx_regular = submit_tx_regular.result
 
 tx_MemoData = bytes.fromhex(submit_tx_regular['Memos'][0]['Memo']['MemoData']).decode('utf-8')

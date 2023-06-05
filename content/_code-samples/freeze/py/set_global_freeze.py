@@ -1,7 +1,6 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import AccountSet, AccountSetFlag
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
-                              send_reliable_submission)
+from xrpl.transaction import submit_and_wait
 from xrpl.wallet import generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to testnet
@@ -17,9 +16,8 @@ accountset = AccountSet(account=sender_wallet.classic_address,
 
 print("Preparing and submitting Account set transaction with ASF_GLOBAL_FREEZE ...")
 
-# Sign and submit transaction
-stxn = safe_sign_and_autofill_transaction(accountset, sender_wallet, client)
-stxn_response = send_reliable_submission(stxn, client)
+# Autofill, sign, then submit transaction and wait for result
+stxn_response = submit_and_wait(accountset, client, sender_wallet)
 
 # Parse response for result
 stxn_result = stxn_response.result

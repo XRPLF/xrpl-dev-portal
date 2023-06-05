@@ -35,12 +35,12 @@ print("Identifying hash:", tx_id)
 
 # Submit transaction -----------------------------------------------------------
 try:
-    tx_response = xrpl.transaction.send_reliable_submission(signed_tx, client)
+    tx_response = xrpl.transaction.submit_and_wait(signed_tx, client)
 except xrpl.transaction.XRPLReliableSubmissionException as e:
     exit(f"Submit failed: {e}")
 
 # Wait for validation ----------------------------------------------------------
-# send_reliable_submission() handles this automatically, but it can take 4-7s.
+# submit_and_wait() handles this automatically, but it can take 4-7s.
 
 # Check transaction results ----------------------------------------------------
 import json

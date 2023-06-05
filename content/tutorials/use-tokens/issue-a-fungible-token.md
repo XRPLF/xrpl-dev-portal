@@ -202,6 +202,7 @@ Most transactions are accepted into the next ledger version after they're submit
 The code samples in this tutorial use helper functions to wait for validation when submitting a transaction:
 
 - **JavaScript:** The `submit_and_verify()` function, as defined in the [submit-and-verify code sample](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/submit-and-verify).
+<!-- TODO: Update this to point to `submit_and_wait` once the reference docs for it go live -->
 - **Python:** The `send_reliable_submission()` [method of the xrpl-py library](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission).
 - **Java:** The `submitAndWaitForValidation()` method in the [sample Java class](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/issue-a-token/java/IssueToken.java).
 

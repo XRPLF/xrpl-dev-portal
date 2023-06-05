@@ -10,7 +10,7 @@ from xrpl.transaction import (
     autofill,
     autofill_and_sign,
     multisign,
-    send_reliable_submission,
+    submit_and_wait,
     sign,
 )
 from xrpl.utils import str_to_hex
@@ -36,7 +36,7 @@ signer_list_set_tx = SignerListSet(
 signed_signer_list_set_tx = autofill_and_sign(signer_list_set_tx, master_wallet, client)
 
 print("Constructed SignerListSet and submitting it to the ledger...")
-signed_list_set_tx_response = send_reliable_submission(
+signed_list_set_tx_response = submit_and_wait(
     signed_signer_list_set_tx, client
 )
 print("SignerListSet submitted, here's the response:")

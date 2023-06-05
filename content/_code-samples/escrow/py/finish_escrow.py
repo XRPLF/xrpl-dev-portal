@@ -1,8 +1,7 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import EscrowFinish
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
-                              send_reliable_submission)
-from xrpl.wallet import Wallet, generate_faucet_wallet
+from xrpl.transaction import submit_and_wait
+from xrpl.wallet import generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to the testnetwork
 
@@ -28,15 +27,12 @@ sender_wallet = generate_faucet_wallet(client=client)
 # Build escrow finish transaction
 finish_txn = EscrowFinish(account=sender_wallet.classic_address, owner=escrow_creator, offer_sequence=escrow_sequence, condition=condition, fulfillment=fulfillment)
 
-# Sign transaction with wallet
-stxn = safe_sign_and_autofill_transaction(finish_txn, sender_wallet, client)
-
-# Send transaction and wait for response
-stxn_response = send_reliable_submission(stxn, client)
+# Autofill, sign, then submit transaction and wait for result
+stxn_response = submit_and_wait(finish_txn, client, sender_wallet)
 
 # Parse response and return result
 stxn_result = stxn_response.result
 
-# Parse result and print out the transaction result and transaction hash 
-print(stxn_result["meta"]["TransactionResult"]) 
+# Parse result and print out the transaction result and transaction hash
+print(stxn_result["meta"]["TransactionResult"])
 print(stxn_result["hash"])
