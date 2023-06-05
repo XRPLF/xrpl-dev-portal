@@ -23,4 +23,4 @@ sniffio==1.2.0
 sqlparse==0.4.4
 typing-extensions==3.10.0.0
 websockets==9.1
-xrpl-py==1.1.1
+xrpl-py==2.0.0
