@@ -133,10 +133,10 @@ The XRP Ledger checks all the following invariants on each transaction:
 ### ValidNFTokenPage
 
 - **Invariant Condition(s):**
-    - The number of minted or burned tokens can only be changed by `NFTokenMint` or `NFTokenBurn` transactions.
+    - The number of minted or burned NFTs can only be changed by `NFTokenMint` or `NFTokenBurn` transactions.
     - A successful NFTokenMint transaction must increase the number of NFTs.
     - A failed NFTokenMint transaction must not change the number of minted NFTs.
-    - A NFTokenMint transaction must not change the number of burned NFTs.
+    - A NFTokenMint transaction cannot change the number of burned NFTs.
     - A successful NFTokenBurn transaction must increase the number of burned NFTs.
     - A failed NFTokenBurn transaction must not change the number of burned NFTs.
     - A NFTokenBurn transaction cannot change the number of minted NFTs.
