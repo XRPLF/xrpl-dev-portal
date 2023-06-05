@@ -130,7 +130,7 @@ const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // Tes
 
 ### 4. Query the XRP Ledger
 
-Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](https://xrpl.org/request-formatting.html). For example:
+Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](request-formatting.html). For example:
 
 {{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Get info", end_before="// Listen to ledger close events", language="js") }}
 

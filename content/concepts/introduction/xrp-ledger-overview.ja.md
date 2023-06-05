@@ -96,7 +96,7 @@ XRP Ledgerの拡張機能として次のものがあります。
 - [Escrow](escrow.html)により、宣言した時間が経過するまで、または暗号条件が満たされるまで、XRPはロックされます。
 - [DepositAuth](depositauth.html)により、ユーザーは自分に対して送金できる相手か、送金できない相手かを決めることができます。
 - [分散型取引所](#台帳上の分散型取引所)により、ユーザーは台帳上で債務およびXRPを取引することができます。
-- [Invariant Checking](https://xrpl.org/blog/2017/invariant-checking.html)により、独立したレイヤーで取引実行時のバグから取引を保護することができます。
+- [Invariant Checking](invariant-checking.html)により、独立したレイヤーで取引実行時のバグから取引を保護することができます。
 - [Amendment](amendments.html)により、現行機能にスムーズにアップグレードすることができ、移行に際してエコシステムに被害を及ぼしたり、不確定要素を発生させることなく、継続して技術を発展させることができます。
 
 

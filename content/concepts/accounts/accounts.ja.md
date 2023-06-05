@@ -12,7 +12,7 @@ XRP Ledgerの「アカウント」は、XRPの所有者と[トランザクショ
 
 - 識別用の**アドレス**。例えば、`rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`
 
-  **注記:** XRPコミュニティは、取引所およびウォレットで[宛先タグ](https://xrpl.org/source-and-destination-tags.html)の代わりに使用できる新しいフォーマット、**X**アドレスを[提案](https://github.com/XRPLF/XRPL-Standards/issues/6)（これをサポートする[コーデック](https://github.com/xrp-community/xrpl-tagged-address-codec)も開発）しました。これらの「パック化」したアドレスは、`r`ではなく`X`で開始します。詳細は、[XRPL 𝗫-address format](https://xrpaddress.info/)のサイトを参照してください。
+  **注記:** XRPコミュニティは、取引所およびウォレットで[宛先タグ](source-and-destination-tags.html)の代わりに使用できる新しいフォーマット、**X**アドレスを[提案](https://github.com/XRPLF/XRPL-Standards/issues/6)（これをサポートする[コーデック](https://github.com/xrp-community/xrpl-tagged-address-codec)も開発）しました。これらの「パック化」したアドレスは、`r`ではなく`X`で開始します。詳細は、[XRPL 𝗫-address format](https://xrpaddress.info/)のサイトを参照してください。
 
 - **XRPの残高**。このXRPの一部は、[準備金](reserves.html)用に確保されています。
 - **シーケンス番号**。このアカウントから送信されるトランザクションがすべて、正しい順序で、それぞれ1回のみ適用されるようにします。トランザクションを実行するには、トランザクションのシーケンス番号と送金元のシーケンス番号が一致する必要があります。その後も、トランザクションが適用されている限り、アカウントのシーケンス番号は1ずつ増加します。（関連項目: [基本的なデータタイプ: アカウントシーケンス](basic-data-types.html#アカウントシーケンス)）
