@@ -112,19 +112,11 @@ To prepare the transaction:
 
 
 
-##### Sign
+##### Sign and submit
 
-To sign the transaction:
+To sign and submit the transaction:
 
-{{ include_code("_code-samples/get-started/py/prepare-payment.py", start_with="# Sign the transaction", end_before="# Print signed tx", language="py") }}
-
-
-
-##### Send
-
-To send the transaction:
-
-{{ include_code("_code-samples/get-started/py/prepare-payment.py", start_with="# Submit and send the transaction", end_before="# Print tx response", language="py") }}
+{{ include_code("_code-samples/get-started/py/prepare-payment.py", start_with="# Sign and submit the transaction", end_before="# Print tx response", language="py") }}
 
 
 ##### Derive an X-address
