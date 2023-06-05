@@ -172,6 +172,16 @@
   h1 {
     font-size: 3.875rem;
   }
+
+  .arrow-purple::after {
+    content: url(../img/icons/arrow-right-purple.svg);
+  }
+
+  .documentation-index:hover, .documentation-index::after {
+    color: $purple;
+    text-decoration: none !important;
+    background: none !important;
+  }
 } 
 
 @media (max-width: 765px) {

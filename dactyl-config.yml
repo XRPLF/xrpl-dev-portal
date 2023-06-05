@@ -1053,6 +1053,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/consensus-network/amendments/contribute-code-flow.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/consensus-network/amendments/known-amendments.md
         targets:
             - en
@@ -1228,8 +1233,8 @@ pages:
         html: tutorials.html
         parent: docs.html
         top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
+        template: pagetype-tutorials.html.jinja
+        blurb: The XRP Ledger tutorials walk you through the steps to learn and get started with the XRP Ledger and to use the ledger for advanced use cases.
         targets:
             - en
 
@@ -1237,7 +1242,7 @@ pages:
         html: tutorials.html
         parent: docs.html
         top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
+        template: pagetype-tutorials.html.jinja
         blurb: XRP Ledgerで一般的なタスクを実行するためのステップバイステップのガイダンスを紹介します。
         targets:
             - ja
@@ -4488,7 +4493,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - en
 
@@ -4496,7 +4501,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - ja
 
@@ -4504,7 +4509,7 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - en
 
@@ -4512,7 +4517,7 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code.html
+        redirect_url: contribute-code-flow.html
         targets:
             - ja
 
@@ -4727,6 +4732,24 @@ pages:
     -   md: contributing/contribute-code.md
         html: contribute-code.html
         parent: contribute.html
+        top_nav_omit: true
+        targets:
+            - en
+            - ja
+
+    # TODO: translate
+    -   md: contributing/tutorial-guidelines.md
+        html: tutorial-guidelines.html
+        parent: contribute-code.html
+        top_nav_omit: true
+        targets:
+            - en
+            - ja
+
+    # TODO: translate
+    -   md: contributing/tutorial-structure.md
+        html: tutorial-structure.html
+        parent: tutorial-guidelines.html
         top_nav_omit: true
         targets:
             - en

@@ -20,7 +20,6 @@ Example {{currentpage.name}} JSON
 }
 ```
 
-
 Unlike full-fledged [ledger entries](ledger-object-types.html), `NFToken` has no field to identify the object type or current owner of the object. `NFToken` objects are grouped into pages that implicitly define the object type and identify the owner.
 
 
@@ -37,12 +36,9 @@ This composite field uniquely identifies a token, and consists of the following 
 4. A 32-bit issuer-specified [`NFTokenTaxon`](https://www.merriam-webster.com/dictionary/taxon)
 5. An (automatically generated) monotonically increasing 32-bit sequence number.
 
-
 ![Token ID Breakdown](img/nftoken1.png "Token ID Breakdown")
 
-
 The 16-bit flags, transfer fee fields, the 32-bit `NFTokenTaxon`, and the sequence number fields are stored in big-endian format.
-
 
 ## NFToken Flags
 
@@ -59,19 +55,16 @@ Flags are properties or other options associated with the `NFToken` object.
 
 `NFToken` flags are immutable: they can only be set during the [NFTokenMint transaction][] and cannot be changed later.
 
-
 ### Example
 
 The example sets three flags: `lsfBurnable` (`0x0001`), `lsfOnlyXRP` (`0x0002`), `lsfTransferable` (`0x0008`). 1+2+8 = 11, or `0x000B` in big endian format.
 
 ![Flags](img/nftokena.png "Flags")
 
-
 ### TransferFee
 <!-- SPELLING_IGNORE: transferfee -->
 
 The `TransferFee` value specifies the percentage fee, in units of 1/100,000, charged by the issuer for secondary sales of the token. Valid values for this field are between 0 and 50,000, inclusive. A value of 1 is equivalent to 0.001% or 1/10 of a basis point (bps), allowing transfer rates between 0% and 50%.
-
 
 ### Example
 
@@ -79,15 +72,11 @@ This value sets the transfer fee to 314, or 0.314%.
 
 ![Transfer Fee](img/nftokenb.png "Transfer Fee")
 
-
-
 ### Issuer Identification
 
 The third section of the `NFTokenID` is a big endian representation of the issuer’s public address.
 
 ![Issuer Address](img/nftokenc.png "Issuer Address")
-
-
 
 ### NFTokenTaxon
 <!-- SPELLING_IGNORE: nftokentaxon -->
@@ -114,37 +103,27 @@ The URI field points to the data or metadata associated with the `NFToken`. This
 
 **Caution:** The URI is immutable, so no one can update it if, for example, it links to a website that no longer exists.
 
-
 # Retrieving NFToken Data and Metadata
 
 To minimize the footprint of `NFTokens` without sacrificing functionality or imposing unnecessary restrictions, XRPL NFTs do not have arbitrary data fields. Instead, data is maintained separately and referenced by the `NFToken`. The URI provides a reference to immutable content for the `Hash` and any mutable data for the `NFToken` object.
 
 The `URI` field is especially useful for referring to non-traditional Peer-to-Peer (P2P) URLs. For example, a minter that stores `NFToken` data or metadata using the Inter Planetary File System (IPFS) can use the `URI` field to refer to data on IPFS in different ways, each of which is suited to different use-cases. For more context on types of IPFS links that can be used to store NFT data, see [Best Practices for Storing NFT Data using IPFS](https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them),
 
-An alternative to the URI approach is for issuers of `NFToken` objects to set the `Domain` field of their issuing account to the correct domain, and offer an API for clients that want to lookup the data or metadata associated with a particular `NFToken`. Note that using this mechanism _requires_ the minter to acquire a domain name and set the domain name for their minting account, but does not require the minter to necessarily run a server nor other service to provide the ability to query this data; instead, a minter can "redirect" queries to a data provider (for example, to a marketplace, registry or other service).
-
-Your implementation should first attempt to check for the presence of the `URI` field to retrieve the associated data or metadata. If the `URI` field does not exist, the implementation should check for the presence of `Domain` field. If neither field exists, nothing happens. Implementations must be prepared to handle HTTP redirections (for example, using HTTP responses 301, 302, 307 and 308) from the URI.
-
-
 ## TXT Record Format
 
 The format for a text record is as follows.
-
 
 ```
 xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{nftokenid}"
 ```
 
-
 Replace the string `{nftokenid}` with the requested `NFTokenID` as a 64-byte hex string when you attempt to query information.
 
 Your implementation should check for the presence of `TXT` records and use those query strings if present. If no string is present, implementations should attempt to use a default URL. Assuming the domain is _example.com_, the default URL would be:
 
-
 ```
 https://example.com/.well-known/xrpl-nft/{nftokenid}
 ```
-
 
 You create `NFToken` objects using the `NFTokenMint` transaction. You can optionally destroy `NFToken` objects using the `NFTokenBurn` transaction.
 
