@@ -51,6 +51,7 @@ $(document).ready(() => {
   function updateModalContent({ id, title, number, src, description, index }) {
     const arrowContainer = document.getElementById("arrows-container");
     modalImage.src = src;
+    modalImage.id = id
     modalImage.alt = title + " logo";
     modalTextDescription.textContent = description;
     modalTextTitle.textContent = title;
