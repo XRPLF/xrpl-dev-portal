@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v17.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v18.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -224,6 +224,22 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <div class="tutorial-sidebar">
+    <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+      Page Toolbar
+      <span class="chevron"><span></span><span></span></span>
+    </a>
+    <div id="page-toc-wrapper" class="collapse d-lg-block">
+      <ul class="page-toc nav flex-column" role="directory">
+          <li class="nav-item"><a class="nav-link" href="#main-page-header">Tutorials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#beginner">Beginner Tutorials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sdk">Get started with SDKs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#use-cases">XRP Ledger Use Cases</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servers">Manage the XRP Ledger Servers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#businesses">XRP Ledger Businesses</a></li>
+        </ul>
+    </div>
+  </div>
       </aside>
 
       <!-- main column -->
@@ -240,23 +256,158 @@
     <article class="content">
       <h1 id="main-page-header">チュートリアル</h1>
 <p class="blurb">XRP Ledgerで一般的なタスクを実行するためのステップバイステップのガイダンスを紹介します。</p>
+      <div class="tutorial-content">
+        <h5 id="beginner">Beginner Tutorials</h5>
+        <p></p>
+        <div id="beginner-cards" class="card-grid card-grid-3xN tutorial-card-grid">
+                  <a class="card" href="xrpl-quickstart.html" target="_blank">
+            <div class="card-body">
+              <h4 class="card-title h5">Quickstart</h4>
+              
+              <p class="card-text">This Quickstart tutorial walks you through a test harness interface to try out the XRP Ledger.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
 
+        </div>
+        <h5 id="sdk">Get started with SDKs</h5>
+        <p>These tutorials walk you through the basics of building a very simple XRP Ledger-connected application using SDKs.</p>
+        <div id="sdk-cards" class="card-grid card-grid-3xN tutorial-card-grid">
+                  <a class="card" href="get-started-using-python.html" target="_blank">
+            <div class="card-body">
+              <div class="card-icon-container">
+                <img src="./assets/img/logos/python.svg" alt="Python Screenshot" />
+              </div>
+              <h4 class="card-title h5 nav-link external-link">Python</h4>
+              
+              <p class="card-text">Using xrpl.py, a pure Python library.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
 
-<div class="children-display">
-  <ul>
-          <li class="level-1"><a href="/ja/xrpl-quickstart.html">XRPL Quickstart</a><p class="blurb child-blurb">Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTokens.</p></li>
-      <li class="level-1"><a href="/ja/get-started.html">始めましょう</a><p class="blurb child-blurb">XRP Ledgerを使用する際に必要となるリソースの一部をご紹介します。</p></li>
-      <li class="level-1"><a href="/ja/build-apps.html">アプリケーションの構築</a><p class="blurb child-blurb">XRP Ledgerを利用したアプリケーションやサービスを開発しましょう。</p></li>
-      <li class="level-1"><a href="/ja/production-readiness.html">本番環境への準備</a><p class="blurb child-blurb">以下のベストプラクティスに従って、XRPレジャーを使用するための堅牢で安全な本番システムを構築しましょう。</p></li>
-      <li class="level-1"><a href="/ja/manage-account-settings.html">アカウントの設定の利用</a><p class="blurb child-blurb">XRP Ledgerアカウントを設定して、思い通りの支払いをしましょう。</p></li>
-      <li class="level-1"><a href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a><p class="blurb child-blurb">EscrowやPayment Channelなどの高度な機能を使用して、XRP Ledgerでスマートアプリケーションを構築しましょう。</p></li>
-      <li class="level-1"><a href="/ja/use-tokens.html">トークンの利用</a><p class="blurb child-blurb">XRP Ledgerでトークン(代替型やそれ以外)を発行し、取引しましょう</p></li>
-      <li class="level-1"><a href="/ja/xrp-ledger-businesses.html">ビジネスとしてのXRP Ledger</a><p class="blurb child-blurb">このセクションでは、XRPを上場している取引所やXRP Ledgerで通貨を発行しているゲートウェイなど、XRP Ledgerとインターフェースを持つビジネスを運営するための様々なベストプラクティスをご紹介しています。</p></li>
-      <li class="level-1"><a href="/ja/manage-the-rippled-server.html">rippledサーバの管理</a><p class="blurb child-blurb">XRP Ledgerを動かすコアサーバーをインストール、設定、管理しましょう。</p></li>
-      <li class="level-1"><a href="/ja/manage-the-clio-server.html">Clioサーバの管理</a><p class="blurb child-blurb">Clioサーバーのインストール、設定、管理しましょう。</p></li>
+                  <a class="card" href="get-started-using-java.html" target="_blank">
+            <div class="card-body">
+              <div class="card-icon-container">
+                <img src="./assets/img/logos/java.svg" alt="Java Screenshot" />
+              </div>
+              <h4 class="card-title h5 nav-link external-link">Java</h4>
+              
+              <p class="card-text">Using xrpl4j, a pure Java library.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
 
-  </ul>
-</div>    </article>
+                  <a class="card" href="get-started-using-javascript.html" target="_blank">
+            <div class="card-body">
+              <div class="card-icon-container">
+                <img src="./assets/img/logos/javascript.svg" alt="Javascript Screenshot" />
+              </div>
+              <h4 class="card-title h5 nav-link external-link">Javascript</h4>
+              
+              <p class="card-text">Using the xrpl.js client library.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
+
+                  <a class="card" href="http-websocket-apis.html" target="_blank">
+            <div class="card-body">
+              <div class="card-icon-container">
+                <img src="./assets/img/logos/globe.svg" alt="HTTP & Websocket APIs Screenshot" />
+              </div>
+              <h4 class="card-title h5 nav-link external-link">HTTP & Websocket APIs</h4>
+              
+              <p class="card-text">Access the XRP Ledger directly through the APIs of its core server.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
+
+        </div>
+        <h5 id="use-cases">XRP Ledger Use Cases</h5>
+        <p></p>
+        <div id="use-cases-cards" class="card-grid card-grid-3xN tutorial-card-grid">
+                  <a class="card" href="payment.html" target="_blank">
+            <div class="card-body">
+              <h4 class="card-title h5">Payments</h4>
+              
+              <p class="card-text">Send and receive payments on the XRP Ledger.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
+
+                  <a class="card" href="tokens.html" target="_blank">
+            <div class="card-body">
+              <h4 class="card-title h5">Tokens</h4>
+              
+              <p class="card-text">Create and trade fungible and non-fungible tokens on the XRP Ledger.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
+
+        </div>
+        <h5 id="servers">Manage the XRP Ledger Servers</h5>
+        <p></p>
+        <div id="servers-cards" class="card-grid card-grid-3xN tutorial-card-grid">
+                  <a class="card" href="install-rippled.html" target="_blank">
+            <div class="card-body">
+              <h4 class="card-title h5 nav-link external-link">Install rippled Server</h4>
+              
+              <p class="card-text">These tutorials describe the steps to install and update the core XRP Ledger server.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
+
+                  <a class="card" href="configure-rippled.html" target="_blank">
+            <div class="card-body">
+              <h4 class="card-title h5 nav-link external-link">Configure rippled Server</h4>
+              
+              <p class="card-text">These tutorials describe the steps to customize your <code>rippled</code> server configuration.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
+
+                  <a class="card" href="use-stand-alone-mode.html" target="_blank">
+            <div class="card-body">
+              <h4 class="card-title h5 nav-link external-link">Run rippled in Standalone Mode</h4>
+              
+              <p class="card-text">These tutorials describe the steps to run <code>rippled</code> in stand-alone mode and test features without a full network.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
+
+                  <a class="card" href="install-clio-on-ubuntu.html" target="_blank">
+            <div class="card-body">
+              <h4 class="card-title h5">Install Clio Server</h4>
+              
+              <p class="card-text">This tutorial describes the steps to install the Clio server on Ubuntu platform.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
+
+        </div>
+        <h5 id="businesses">XRP Ledger Businesses</h5>
+        <p>This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger.</p>
+        <div id="businesses-cards" class="card-grid card-grid-3xN tutorial-card-grid">
+                  <a class="card" href="list-xrp-as-an-exchange.html" target="_blank">
+            <div class="card-body">
+              <h4 class="card-title h5">List XRP as an Exchange</h4>
+              
+              <p class="card-text">Run a digital asset exchange? Follow these steps to add XRP.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
+
+                  <a class="card" href="become-an-xrp-ledger-gateway.html#become-a-stablecoin-issuer" target="_blank">
+            <div class="card-body">
+              <h4 class="card-title h5">Become a Stablecoin Issuer</h4>
+              
+              <p class="card-text">Stablecoin issuers link tokens in the XRP Ledger to assets in the outside world.</p>
+            </div>
+            <div class="card-footer">&nbsp;</div>
+          </a>
+
+        </div>
+      </div>
+    </article>
   </section>
       </main>
       <!-- Left sidebar last so it's at the end for mobile -->
@@ -634,6 +785,11 @@
         <a class="nav-link" href="/ja/amendments.html">Amendment</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_6_9">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/contribute-code-flow.html">Contribute Code to the XRP Ledger</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
