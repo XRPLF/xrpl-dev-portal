@@ -59,7 +59,7 @@ If you, as the issuer, want to be able to burn the token in the future, set the 
 
 You can collect royalties from future sales by setting a <code>transfer fee<em>. </em></code>This is a value from 0-50000 representing 0-50% of the sale price. See [Transfer Fee](nftoken.html#transferfee).
 
-You can mint NFTs in logical collections using the `TokenTaxon` field. See [Minting NFTs into Collections](nft-collections.html#minting-nfts-into-collections).
+You can mint NFTs in logical collections using the `TokenTaxon` field. See [Minting NFTs into Collections](nft-collections.html).
 
 You can mint your own NFTs with content you create yourself, but you can also become an authorized minter to generate NFTs on behalf of another creator. This allows the creator to focus on making new NFTs while you handle production and sales of the NFTs.
 
@@ -82,7 +82,7 @@ When you set up your account, keep in mind that there is a base reserve requirem
 
 You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nftokens.html).
 
-You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html#running-an-nft-auction).
+You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html).
 
 You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](broker-sale.html).
 

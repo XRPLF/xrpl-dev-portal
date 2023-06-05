@@ -183,7 +183,6 @@ targets:
             "transaction-cost.html#fee-levels": "transaction-cost.html#手数料レベル"
             "offers.html#lifecycle-of-an-offer": "offers.html#オファーのライフサイクル"
             "subscribe.html#order-book-streams": "subscribe.html#オーダーブックストリーム"
-            "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
             "ledger-header.html#close-flags": "ledger-header.html#closeフラグ"
             # Fix link from untranslated account_nfts.html
             "nftoken.html#nftokentaxon": "nftoken.html#分類群"
@@ -199,9 +198,25 @@ targets:
             # Fix link from untranslated health-check.html:
             "amendments.html#amendment-blocked-servers": "amendments.html#amendment-blocked"
             # Fix link from nft-reserve-requirements.html:
-            "reserves.html#base-reserve-and-owner-reserve": "reserves.html#基本準備金と所有者準備金"
+            #"reserves.html#base-reserve-and-owner-reserve": "reserves.html#基本準備金と所有者準備金"
             # Fix link from nft-reserve-requirements.html:
-            "reserves.html#going-below-the-reserve-requirement": "reserves.html#必要準備金を下回る"
+            #"reserves.html#going-below-the-reserve-requirement": "reserves.html#必要準備金を下回る"
+            # Fix links from untranslated NFT use cases:
+            "nft-reserve-requirements.html#nftokenoffer-reserve": "nft-reserve-requirements.html#nftokenofferの準備金"
+            "nft-reserve-requirements.html#owner-reserve": "nft-reserve-requirements.html#所有者準備金"
+            "reserves.html#base-reserve-and-owner-reserve": "reserves.html#基本準備金と所有者準備金"
+            "nftoken.html#transferfee": "nftoken.html#送金手数料"
+            "nftoken-batch-minting.html#mint-on-demand-lazy-minting": "nftoken-batch-minting.html#オンデマンドmint-遅延minting"
+            "nftoken-batch-minting.html#scripted-minting": "nftoken-batch-minting.html#スクリプトminting"
+            "nftoken.html#retrieving-nftoken-data-and-metadata": "nftoken.html#nftoken-データとメタデータの取得"
+            # Fix link from untranslated Clio ledger method page:
+            "transactions.html#authorizing-transactions": "transactions.html#トランザクションの承認"
+            # Fix link from untranslated addresses.html:
+            "cryptographic-keys.html#key-derivation": "cryptographic-keys.html#鍵導出"
+            # Fix links from untranslated open-closed-validated-ledgers.html:
+            "consensus-principles-and-rules.html#simplifying-the-problem": "consensus-principles-and-rules.html#問題の単純化"
+            "consensus-structure.html#validation": "consensus-structure.html#検証"
+
 
 
 pages:
@@ -818,6 +833,7 @@ pages:
         targets:
             - en
 
+        # TODO: update title to match English
     -   md: concepts/xrpl/consensus-structure.ja.md
         targets:
             - ja

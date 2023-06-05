@@ -44,7 +44,7 @@ You can assure scarcity of NFTs you create by creating them with what might be c
 
 You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nftokens.html).
 
-You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html#running-an-nft-auction).
+You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html).
 
 You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](broker-sale.html).
 

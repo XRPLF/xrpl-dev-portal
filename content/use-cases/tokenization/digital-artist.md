@@ -33,7 +33,7 @@ To create your first NFTs, follow the instructions in the tutorial _Mint and Bur
 
 * You can collect royalties from future sales by setting a <code>transfer fee<em>. </em></code>This is a value from 0-50000 representing 0-50% of the sale price. See [Transfer Fee](nftoken.html#transferfee).
 * The NFToken URL is a link to the location where the content of the NFT is stored. One option is create an IPFS account and store the NFToken content at a persistent URL. See [Best Practices for Storing NFT Data](https://docs.ipfs.io/how-to/best-practices-for-nft-data). [Add link to blog post about alternative NFT cache options.]
-* You can mint NFTs in logical collections using the <code>TokenTaxon</code> field. See [Minting NFTs into Collections](nft-collections.html#minting-nfts-into-collections).
+* You can mint NFTs in logical collections using the <code>TokenTaxon</code> field. See [Minting NFTs into Collections](nft-collections.html).
 * If you, as the issuer, want to be able to burn the token in the future, set the <code>Flags</code> field to <em>1.</em> To make the NFT transferable, set the <code>Flags</code> field to <em>8</em>. Set the <code>Flags</code> field to <em>9</em> to make the NFT both burnable and transferable. See[ Burnable flag](nftoken.html#nftoken-flags) and [Transferable flag](nftoken.html#nftoken-flags).
 
 See [Mint and Burn NFTokens](mint-and-burn-nftokens.html).
@@ -42,7 +42,7 @@ See [Mint and Burn NFTokens](mint-and-burn-nftokens.html).
 
 You transfer NFTs by creating a sell offer. See [Transfer NFTokens](transfer-nftokens.html).
 
-You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html#running-an-nft-auction).
+You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html).
 
 ### Reserve requirements
 
