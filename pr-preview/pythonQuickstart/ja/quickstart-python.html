@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>XRPL Quickstart - XRPL.org (日本語)</title>
+    <title>Quickstart (Python) - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="XRPL Quickstart | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/xrpl-quickstart.html" />
-    <meta property="og:description" content="Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTokens." />
-    <meta name="description" content="Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTokens." />
+    <meta property="og:title" content="Quickstart (Python) | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/quickstart-python.html" />
+    <meta property="og:description" content="Use a Python test harness to send XRP, trade currencies, and mint and trade NFTokens." />
+    <meta name="description" content="Use a Python test harness to send XRP, trade currencies, and mint and trade NFTokens." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="ja" />
-    <link rel="alternate" href="https://xrpl.org/xrpl-quickstart.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/xrpl-quickstart.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/xrpl-quickstart.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/quickstart-python.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/quickstart-python.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/quickstart-python.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -40,10 +40,10 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       "event": "page_info",
-      "page_type": "Document",
+      "page_type": "Hub Page",
       "page_group": "Docs",
       "page_funnel": "Tutorials",
-      "page_labels": ['Accounts', 'Cross-Currency', 'Non-fungible Tokens, NFTs', 'Payments', 'Quickstart', 'Tokens', 'XRP']
+      "page_labels": []
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -67,21 +67,6 @@
 
 
 
-    <!-- expandable code samples -->
-    <script src="/ja/assets/js/expandcode.js"></script>
-    <!-- multi-code selection tabs -->
-    <script src="/ja/assets/js/multicodetab.js"></script>
-    <!-- copy code button -->
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".multicode").minitabs();
-            make_code_expandable();
-            new ClipboardJS('.clipboard-btn');
-        });
-    </script>
-
-
 </head>
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
@@ -103,14 +88,14 @@
         <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
           <div class="navcol col-for-xrp-ledger">
             <h5 class="dropdown-item">XRP Ledger</h5>
-            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPLの概要</a>
             <a class="dropdown-item" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
-            <a class="dropdown-item" href="/ja/history.html">沿革</a>
+            <a class="dropdown-item" href="/ja/history.html">歴史</a>
             <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
-            <a class="dropdown-item" href="/ja/xrp-overview.html">XRP Overview</a>
+            <a class="dropdown-item" href="/ja/xrp-overview.html">XRPの概要</a>
           </div><!--./col-->
           <div class="navcol col-for-sustainability">
             <h5 class="dropdown-item">Sustainability</h5>
@@ -217,7 +202,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/xrpl-quickstart.html">
+          <a class="dropdown-item" href="/quickstart-python.html">
             English
           </a>
           <hr />
@@ -239,56 +224,10 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
-  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
-    Page Toolbar
-    <span class="chevron"><span></span><span></span></span>
-  </a>
-  <div id="page-toc-wrapper" class="collapse d-lg-block">
-<div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/pythonQuickstart/content/tutorials/quickstart/xrpl-quickstart.md?pr=/XRPLF/xrpl-dev-portal/pull/1911" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
-</div><!-- /.github-edit --><div class="labels-wrap">
-  <ul class="list-inline">
-    <li class="list-inline-item">
-      <span class="label label-accounts">Accounts</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Accounts" -->
-    </li>
-    <li class="list-inline-item">
-      <span class="label label-cross-currency">Cross-Currency</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Cross-Currency" -->
-    </li>
-    <li class="list-inline-item">
-      <span class="label label-non-fungible-tokens-nfts">Non-fungible Tokens, NFTs</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Non-fungible Tokens, NFTs" -->
-    </li>
-    <li class="list-inline-item">
-      <span class="label label-payments">Payments</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Payments" -->
-    </li>
-    <li class="list-inline-item">
-      <span class="label label-quickstart">Quickstart</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Quickstart" -->
-    </li>
-    <li class="list-inline-item">
-      <span class="label label-tokens">Tokens</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Tokens" -->
-    </li>
-    <li class="list-inline-item">
-      <a href="/ja/label-xrp.html" class="label label-xrp">XRP</a>
-    </li>
-  </ul>
-</div><!--/.labels-wrap-->
-    <div class="toc-header">
-      <h4>目次</h4>
-    </div>
-    <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#xrpl-quickstart">XRPL Quickstart</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
-      </ul>
-  </div>
       </aside>
 
       <!-- main column -->
-      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+      <main class="main col-md-7 col-lg-6 order-md-3  landing landing-children padded-main" role="main" id="main_content_body">
 <nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
   <ul class="breadcrumb">
     
@@ -296,63 +235,29 @@
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tutorials.html">チュートリアル</a></li>
-    <li class="active breadcrumb-item">XRPL Quickstart</li>
+    <li class="active breadcrumb-item"><a href="/ja/quickstart.html">Quickstart</a></li>
+    <li class="active breadcrumb-item">Quickstart (Python)</li>
   </ul>
-</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
-    <div class="content">
-        <h1 id="xrpl-quickstart">XRPL Quickstart<a aria-hidden="true" class="hover_anchor" href="#xrpl-quickstart"><i class="fa fa-link"></i></a></h1>
-<p>The XRP Ledger (XRPL) is a robust, secure, customizable service. You can create your own interface to try out the capabilities and support your specific business needs.</p>
-<p>This quickstart describes a test harness interface you can build to try out the XRP Ledger. The test harness displays multiple accounts, so that you can transfer tokens from one account to the other and see the results in real time. The image below shows the Token Test Harness at the completion of step 4.</p>
-<p><img alt="Quickstart Tutorial Window" src="img/quickstart1.png"/></p>
-<p>That is a lot of fields and buttons, all working together to perform some significant practical tasks. But getting <em>started</em> with the XRP Ledger is not that complicated. When you eat the elephant a bite at a time, none of the tasks are difficult to consume.</p>
-<p>Typically, the example functions for interacting with the XRP Ledger involve four steps.</p>
-<ol>
-<li>Connect to the XRP Ledger and instantiate your wallet.</li>
-<li>Make changes to the XRP Ledger using transactions.</li>
-<li>Get the state of accounts and tokens on the XRP Ledger using requests.</li>
-<li>Disconnect from the XRP Ledger.</li>
-</ol>
-<p>Each lesson shows you how to build the Token Test Harness one section at a time. Each module lets you try out meaningful interactions with the test ledger, with complete JavaScript and HTML code samples and a code walkthrough. There is also a link to the complete source code for each section that can be modified with a text editor and run in a browser. If you cannot wait, you can follow the prerequisites below, then jump to lesson 4, <a href="transfer-nftokens.html">Transfer NFTokens</a>, and try out the complete test harness right away.</p>
-<p>This quickstart tutorial introduces you to the API used to implement features and explore the capabilities of XRP Ledger. It does not represent <em>all</em> of the capabilities of the API and this example is not intended for production or secure payment use.</p>
-<p>Much of this is “brute force” code that sacrifices conciseness for readability. Each example builds on the previous step, adding a new JavaScript file and the supporting UI. We expect the applications you build to greatly improve upon these examples. Your feedback and contributions are most welcome.</p>
-<p>In this quickstart, you can:</p>
-<ol>
-<li><a href="create-accounts-send-xrp.html">Create Accounts and Send XRP</a></li>
-<li><a href="create-trustline-send-currency.html">Create Trust Line and Send Currency</a>.</li>
-<li><a href="mint-and-burn-nftokens.html">Mint and Burn NFTokens</a>.</li>
-<li><a href="transfer-nftokens.html">Transfer NFTokens</a>.</li>
-</ol>
-<p>There are also expanded lessons demonstrating how to <a href="broker-sale.html">Broker a NFToken Sale</a>, <a href="authorize-minter.html">Assign an Authorized Minter</a>, and <a href="batch-minting.html">Batch Mint NFTokens</a>.</p>
-<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
-<p>To get started, create a new folder on your local disk and install the JavaScript library using <code>npm</code>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">    npm install xrpl
-</code></pre></div>
-<p>Download and expand the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive.</p>
-<p class="devportal-callout note"><strong>Note:</strong> Without the Quickstart Samples, you will not be able to try the examples that follow.</p>
-    </div>
-  </article>
-<!-- Feedback Widget -->
-<!-- <script src="/ja/assets/vendor/feedback-widget.js"></script> -->
-<!-- <div id="feedback-content"></div> -->
-<script>
-  // // Options
-  // const options = {
-  //   analyticsConfig: [
-  //     // { name: 'ga', id: 'UA-45576805-2' },
-  //     // { name: 'gtm', id: 'GTM-THHW334' },
-  //   ],
-  //   analyticsName: 'Feedback Widget Tracker',
-  //   theme: 'xrpl',
-  //   currentPath: window.location.pathname,
-  //   parentElement: '#feedback-content',
-  // };
-  // 
-  // // Init WidgetClass
-  // const r = new WidgetClass(options);
-</script>      </main>
+</nav><!--/.breadcrumbs-wrap-->  <section class="pt-3 p-md-3">
+    <article class="content">
+      <h1 id="main-page-header">Quickstart (Python)</h1>
+<p class="blurb">Use a Python test harness to send XRP, trade currencies, and mint and trade NFTokens.</p>
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="/ja/py-quickstart-intro.html">Quickstart Introduction (Python)</a><p class="blurb child-blurb">Use a Python test harness to send XRP, trade currencies, and mint and trade NFTokens.</p></li>
+      <li class="level-1"><a href="/ja/py-create-accounts-send-xrp.html">1. Create Accounts and Send XRP (Python)</a><p class="blurb child-blurb">Quickstart 1, create two accounts and transfer XRP between them.</p></li>
+      <li class="level-1"><a href="/ja/py-create-trustline-send-currency.html">2. Create Trust Line and Send Currency (Python)</a><p class="blurb child-blurb">Quickstart step 2, create trust lines and send currency.</p></li>
+      <li class="level-1"><a href="/ja/py-mint-and-burn-nftokens.html">3. Mint and Burn NFTokens (Python)</a><p class="blurb child-blurb">Quickstart step 3, mint and burn NFTokens.</p></li>
+      <li class="level-1"><a href="/ja/py-transfer-nftokens.html">4. Transfer NFTokens (Python)</a><p class="blurb child-blurb">Use a Python test harness to create and accept NFT buy and sell offers.</p></li>
+      <li class="level-1"><a href="/ja/py-broker-sale.html">Broker an NFT Sale (Python)</a><p class="blurb child-blurb">Broker a sale between a sell offer and a buy offer.</p></li>
+      <li class="level-1"><a href="/ja/py-authorize-minter.html">Assign an Authorized Minter (Python)</a><p class="blurb child-blurb">Authorize another account to mint NFTokens for you.</p></li>
+
+  </ul>
+</div>    </article>
+  </section>
+      </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
 
@@ -833,13 +738,26 @@
 
     <nav class="nav flex-column show " id="tree_nav_group_3">
       
-  <div class="nav-item active">
+  <div class="nav-item active-parent">
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="true" aria-controls="tree_nav_group_3_1"></a>
 
-        <a class="nav-link" href="/ja/xrpl-quickstart.html">XRPL Quickstart</a>
+        <a class="nav-link" href="/ja/quickstart.html">Quickstart</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
+
+        <a class="nav-link" href="/ja/quickstart-javascript.html">Quickstart (JavaScript)</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/quickstart-intro.html">Quickstart Introduction (JavaScript)</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
@@ -875,6 +793,23 @@
     <a class="nav-link nav-leaf" href="/ja/batch-minting.html">Batch Mint NFTokens</a>
   </div>
 
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="true" aria-controls="tree_nav_group_3_1_2"></a>
+
+        <a class="nav-link" href="/ja/quickstart-python.html">Quickstart (Python)</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-quickstart-intro.html">Quickstart Introduction (Python)</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/py-create-accounts-send-xrp.html">1. Create Accounts and Send XRP (Python)</a>
@@ -903,6 +838,10 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/py-authorize-minter.html">Assign an Authorized Minter (Python)</a>
+  </div>
+
+    </nav>
+
   </div>
 
     </nav>
@@ -2757,11 +2696,11 @@
         <div class="col-lg">
           <h5>概要</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
+            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPLの概要</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
-            <li class="nav-item"><a href="/ja/history.html" class="nav-link">沿革</a></li>
+            <li class="nav-item"><a href="/ja/history.html" class="nav-link">歴史</a></li>
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
-            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRPの概要</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
             <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
@@ -2807,7 +2746,7 @@
     <div class="d-lg-flex row">
       <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
       <span class="flex-grow-1">&nbsp;</span>
-      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース。</a>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース</a>
       </div>
     </div><!-- /.absolute_bottom_footer -->
 
@@ -2815,7 +2754,7 @@
 </footer>
 
 <!-- Jump to top button -->
-<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="ページの先頭へ"><i class="fa fa-arrow-up"></i></a>
 <script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
 
 <!-- Non-blocking resources -->

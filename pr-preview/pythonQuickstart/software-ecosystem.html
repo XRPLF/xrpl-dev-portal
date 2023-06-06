@@ -297,7 +297,7 @@
 </li>
 </ul>
 <h3 id="rippled-the-core-server">rippled: The Core Server<a aria-hidden="true" class="hover_anchor" href="#rippled-the-core-server"><i class="fa fa-link"></i></a></h3>
-<p>The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliable, efficient server to enforce the rules of consensus and transaction processing. Ripple manages and publishes a reference implementation of this server software, called <a href="xrpl-servers.html"><strong><code>rippled</code></strong></a> (pronounced "ripple-dee"). The server is available under <a class="external-link" href="https://github.com/ripple/rippled/blob/develop/LICENSE.md" target="_blank">a permissive open-source license <i aria-hidden="true" class="fa fa-external-link"></i></a>, so anyone can inspect and modify their own instance of the server, and re-publish with few restrictions.</p>
+<p>The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliable, efficient server to enforce the rules of consensus and transaction processing. XRPL Foundation manages and publishes a reference implementation of this server software, called <a href="xrpl-servers.html"><strong><code>rippled</code></strong></a> (pronounced "ripple-dee"). The server is available under <a class="external-link" href="https://github.com/ripple/rippled/blob/develop/LICENSE.md" target="_blank">a permissive open-source license <i aria-hidden="true" class="fa fa-external-link"></i></a>, so anyone can inspect and modify their own instance of the server, and re-publish with few restrictions.</p>
 <p>Every instance of <code>rippled</code> syncs to the same network (unless it's configured to follow a <a href="parallel-networks.html">parallel network such as a test net</a>) and has access to all communications across the network. Every <code>rippled</code> server on the network keeps a complete copy of the latest state data for the entire XRP Ledger, along with a slice of recent transactions and a record of the changes those transactions made, and every server processes every transaction independently while verifying that its outcome matches the rest of the network. Servers can be configured to keep more <a href="ledger-history.html">ledger history</a> and to participate in the consensus process as a <a href="rippled-server-modes.html#validators">validator</a>.</p>
 <p>This server exposes <a href="http-websocket-apis.html"><code>rippled</code> APIs</a> for users to look up data, administer the server, and submit transactions.</p>
 <h3 id="programming-libraries">Programming Libraries<a aria-hidden="true" class="hover_anchor" href="#programming-libraries"><i class="fa fa-link"></i></a></h3>
@@ -830,9 +830,22 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
-        <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
+        <a class="nav-link" href="quickstart.html">Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
+
+        <a class="nav-link" href="quickstart-javascript.html">Quickstart (JavaScript)</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="quickstart-intro.html">Quickstart Introduction (JavaScript)</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
@@ -868,6 +881,23 @@
     <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTokens</a>
   </div>
 
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
+
+        <a class="nav-link" href="quickstart-python.html">Quickstart (Python)</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-quickstart-intro.html">Quickstart Introduction (Python)</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-create-accounts-send-xrp.html">1. Create Accounts and Send XRP (Python)</a>
@@ -896,6 +926,10 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter (Python)</a>
+  </div>
+
+    </nav>
+
   </div>
 
     </nav>
