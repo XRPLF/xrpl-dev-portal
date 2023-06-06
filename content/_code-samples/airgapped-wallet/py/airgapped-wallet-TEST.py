@@ -63,10 +63,9 @@ def sign_transaction(xrp_amount, destination, ledger_seq, wallet_seq, password):
     seed = crypt.decrypt(seed)
 
     print("4. Initializing wallet using decrypted private key")
-    _wallet = wallet.Wallet(seed=seed.decode(), sequence=0)
+    _wallet = wallet.Wallet.from_seed(seed=seed.decode())
 
     validated_seq = ledger_seq
-    _wallet.sequence = wallet_seq
 
     print("5. Constructing payment transaction...")
     my_tx_payment = Payment(
@@ -75,7 +74,7 @@ def sign_transaction(xrp_amount, destination, ledger_seq, wallet_seq, password):
         destination=destination,
         last_ledger_sequence=validated_seq + 100,
         # +100 to catch up with the ledger when we transmit the signed tx blob to Machine 2
-        sequence=_wallet.sequence,
+        sequence=wallet_seq,
         fee="10"
     )
 

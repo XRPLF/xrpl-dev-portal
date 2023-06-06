@@ -1,4 +1,4 @@
-xrpl-py==2.0.0
+xrpl-py==2.0.0beta
 wxPython==4.1.1
 toml==0.10.2
 requests==2.25.1
