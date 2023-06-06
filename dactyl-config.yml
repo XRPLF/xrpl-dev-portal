@@ -1234,7 +1234,7 @@ pages:
 
         # TODO: translate
     -   name: Quickstart
-        html: quickstart.html
+        html: xrpl-quickstart.html
         parent: tutorials.html
         blurb: Quickly experiment with the basics of XRPL development.
         cta_text: Quickstart tutorials
@@ -1246,7 +1246,7 @@ pages:
         # TODO: translate
     -   name: Quickstart (JavaScript)
         html: quickstart-javascript.html
-        parent: quickstart.html
+        parent: xrpl-quickstart.html
         template: pagetype-category.html.jinja
         blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTokens.
         targets:
@@ -1311,7 +1311,7 @@ pages:
 
     -   name: Quickstart (Python)
         html: quickstart-python.html
-        parent: quickstart.html
+        parent: xrpl-quickstart.html
         template: pagetype-category.html.jinja
         blurb: Use a Python test harness to send XRP, trade currencies, and mint and trade NFTokens.
         targets:

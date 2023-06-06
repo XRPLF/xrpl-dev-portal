@@ -1,6 +1,6 @@
 ---
 html: py-create-trustline-send-currency.html
-parent: xrpl-quickstart.html
+parent: quickstart-python.html
 blurb: Quickstart step 2, create trust lines and send currency.
 labels:
   - Cross-Currency

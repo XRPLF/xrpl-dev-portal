@@ -1,6 +1,6 @@
 ---
 html: py-broker-sale.html
-parent: xrpl-quickstart.html
+parent: quickstart-python.html
 blurb: Broker a sale between a sell offer and a buy offer.
 labels:
   - Accounts

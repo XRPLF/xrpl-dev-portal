@@ -1,6 +1,6 @@
 ---
 html: py-transfer-nftokens.html
-parent: xrpl-quickstart.html
+parent: quickstart-python.html
 blurb: Use a Python test harness to create and accept NFT buy and sell offers.
 labels:
   - Quickstart

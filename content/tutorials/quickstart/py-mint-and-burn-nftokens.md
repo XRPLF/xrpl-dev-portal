@@ -1,6 +1,6 @@
 ---
 html: py-mint-and-burn-nftokens.html
-parent: xrpl-quickstart.html
+parent: quickstart-python.html
 blurb: Quickstart step 3, mint and burn NFTokens.
 labels:
   - Quickstart

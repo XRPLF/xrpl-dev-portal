@@ -1,6 +1,6 @@
 ---
 html: py-authorize-minter.html
-parent: xrpl-quickstart.html
+parent: quickstart-python.html
 blurb: Authorize another account to mint NFTokens for you.
 labels:
   - Accounts

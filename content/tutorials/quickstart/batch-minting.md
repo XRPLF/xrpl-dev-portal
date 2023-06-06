@@ -1,6 +1,6 @@
 ---
 html: batch-minting.html
-parent: xrpl-quickstart.html
+parent: quickstart-javascript.html
 blurb: Broker a sale between a sell offer and a buy offer.
 labels:
   - Accounts
