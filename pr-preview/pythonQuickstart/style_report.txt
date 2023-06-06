@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 72 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: ifs, gifu, gifts
+  gifs: gigs, ifs, gins
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -27,73 +27,73 @@ Found 72 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slav, salas, blas
+  slas: silas, slat, sias
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: xls, lsd
+  xlsd: lsd, xls
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  disallowincoming: 
-  immediateofferkilled: 
-  fixuniversalnumber: 
-  depositpreauthamendment: 
-  xrpfees: 
   fixnonfungibletokensv1_2: 
+  immediateofferkilled: 
+  depositpreauthamendment: 
+  disallowincoming: 
+  fixuniversalnumber: 
+  xrpfees: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingnftoffer: 
   asfdisallowincomingcheck: 
-  asfdisallowincomingpaychan: 
   asfdisallowincomingtrustline: 
-  30d: 3-d, 3d, 3rd
+  asfdisallowincomingpaychan: 
+  30d: 3d, 3rd, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mod, mod., modo
+  mod1: mods, mod, modo
   get_account: 
   get_account_info: 
   send_xrp: 
-  lesson1: lesson, lessons
-  tkinter: tinter, twinter
+  lesson1: lessons, lesson
+  tkinter: twinter, tinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mod, mod., modo
+  mod2: mods, mod, modo
   send_currency: 
   get_balance: 
   configure_account: 
-  lesson2: lesson, lessons
+  lesson2: lessons, lesson
 
 <Page '3. Mint and Burn NFTokens (Python)' (py-mint-and-burn-nftokens.html)> Unknown Words:
-  mod3: mod, mod., modo
+  mod3: mods, mod, modo
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page '4. Transfer NFTokens (Python)' (py-transfer-nftokens.html)> Unknown Words:
-  mod4: mod, mod., modo
+  mod4: mods, mod, modo
   offer___index: 
   alloffers: 
-  lesson4: lesson, lessons
+  lesson4: lessons, lesson
 
 <Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)> Unknown Words:
-  sell___offer___index: 
-  broker___fee: 
   buy___offer___index: 
-  lesson5: lesson, lessons
+  broker___fee: 
+  sell___offer___index: 
+  lesson5: lessons, lesson
 
 <Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)> Unknown Words:
-  mod6: mod, mod., modo
+  mod6: mods, mod, modo
   mint_other: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3d, 3rd, 3-d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   disallowincoming: 

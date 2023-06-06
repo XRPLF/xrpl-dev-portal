@@ -95,7 +95,7 @@ https://xrpl.org/the-rippled-server.html
 https://xrpl.org/nft-concepts.html
 https://xrpl.org/nft-conceptual-overview.html
 https://xrpl.org/tutorials.html
-https://xrpl.org/quickstart.html
+https://xrpl.org/xrpl-quickstart.html
 https://xrpl.org/quickstart-javascript.html
 https://xrpl.org/quickstart-intro.html
 https://xrpl.org/create-accounts-send-xrp.html
