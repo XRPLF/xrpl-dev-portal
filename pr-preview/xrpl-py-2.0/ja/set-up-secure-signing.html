@@ -381,17 +381,23 @@
 <span class="kn">import</span> <span class="nn">os</span>  
 <span class="n">my_secret</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"MYSECRET"</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
-<span class="n">wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">my_secret</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="mi">16237283</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span> <span class="c1"># "raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q"</span>
+<span class="n">wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">my_secret</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span>  <span class="c1"># "raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q"</span>
+
+<span class="c1"># For offline signing, you need to know your address's next Sequence number.</span>
+<span class="c1"># Alternatively, you could use a Ticket in place of the Sequence number.</span>
+<span class="c1"># This is useful when you need multiple signatures and may want to process transactions out-of-order.</span>
+<span class="c1"># For details, see: https://xrpl.org/tickets.html</span>
+<span class="n">sequence</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="kn">from</span> <span class="nn">xrpl.models.transactions</span> <span class="kn">import</span> <span class="n">Payment</span>
 <span class="kn">from</span> <span class="nn">xrpl.utils</span> <span class="kn">import</span> <span class="n">xrp_to_drops</span>
 <span class="n">my_payment</span> <span class="o">=</span> <span class="n">Payment</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">amount</span><span class="o">=</span><span class="n">xrp_to_drops</span><span class="p">(</span><span class="mi">22</span><span class="p">),</span>
     <span class="n">fee</span><span class="o">=</span><span class="s2">"10"</span><span class="p">,</span>
     <span class="n">destination</span><span class="o">=</span><span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
-    <span class="n">sequence</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">sequence</span><span class="p">,</span> <span class="c1"># this needs to be incremented upon every successful transaction</span>
+    <span class="n">sequence</span><span class="o">=</span><span class="n">sequence</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Payment object:"</span><span class="p">,</span> <span class="n">my_payment</span><span class="p">)</span>
 
