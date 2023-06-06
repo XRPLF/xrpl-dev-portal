@@ -24,7 +24,7 @@ else:
     client = JsonRpcClient(JSON_RPC_URL)
 
     # Initialize wallet from seed
-    issuer_wallet = Wallet(seed=seed, sequence=0)
+    issuer_wallet = Wallet.from_seed(seed=seed)
     issuerAddr = issuer_wallet.classic_address
 
     # Get buyer account credentials from the testnet faucet

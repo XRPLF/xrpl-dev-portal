@@ -541,7 +541,7 @@ class TWaXLFrame(wx.Frame):
             try:
                 # Check if it's a valid seed
                 seed_bytes, alg = xrpl.core.addresscodec.decode_seed(value)
-                wallet = xrpl.wallet.Wallet(seed=value, sequence=0)
+                wallet = xrpl.wallet.Wallet.from_seed(seed=value)
                 x_address = wallet.get_xaddress(is_test=self.test_network)
                 classic_address = wallet.classic_address
             except Exception as e:

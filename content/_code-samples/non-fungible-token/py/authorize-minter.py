@@ -14,7 +14,7 @@ seed = ""
 custom_wallet = None
 
 if seed:
-    custom_wallet = Wallet(seed=seed, sequence=0)
+    custom_wallet = Wallet.from_seed(seed=seed)
 
 # Connect to a testnet node
 print("Connecting to Testnet...")

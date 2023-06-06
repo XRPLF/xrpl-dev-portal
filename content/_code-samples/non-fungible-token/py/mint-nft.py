@@ -24,7 +24,7 @@ if seed == "":
     issuer_wallet = generate_faucet_wallet(client=client)
     issuerAddr = issuer_wallet.classic_address
 else:
-    issuer_wallet = Wallet(seed=seed, sequence=0)
+    issuer_wallet = Wallet.from_seed(seed=seed)
     issuerAddr = issuer_wallet.classic_address
 
 print(f"\nIssuer Account: {issuerAddr}")

@@ -1,6 +1,6 @@
 # Example Credentials ----------------------------------------------------------
 from xrpl.wallet import Wallet
-test_wallet = Wallet(seed="sn3nxiW7v8KXzPzAqzyHXbSSKNuN9", sequence=16237283)
+test_wallet = Wallet.from_seed(seed="sn3nxiW7v8KXzPzAqzyHXbSSKNuN9")
 print(test_wallet.classic_address) # "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"
 
 # Connect ----------------------------------------------------------------------

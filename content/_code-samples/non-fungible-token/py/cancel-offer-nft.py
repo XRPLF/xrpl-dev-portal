@@ -22,7 +22,7 @@ else:
     client = JsonRpcClient(JSON_RPC_URL)
 
     # Initialize wallet from seed
-    wallet = Wallet(seed=seed, sequence=0)
+    wallet = Wallet.from_seed(seed=seed)
     Addr = wallet.classic_address
 
     print(f"\n  Account: {Addr}")
