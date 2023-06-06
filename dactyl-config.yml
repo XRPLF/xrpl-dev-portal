@@ -1233,85 +1233,136 @@ pages:
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/xrpl-quickstart.md
+    -   name: Quickstart
+        html: quickstart.html
+        parent: tutorials.html
+        blurb: Quickly experiment with the basics of XRPL development.
+        cta_text: Quickstart tutorials
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   name: Quickstart (JavaScript)
+        html: quickstart-javascript.html
+        parent: quickstart.html
+        template: pagetype-category.html.jinja
+        blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTokens.
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/quickstart-intro.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/create-accounts-send-xrp.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/create-trustline-send-currency.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/mint-and-burn-nftokens.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/transfer-nftokens.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
-        # TODO: translate
+        # TODO: translate        
     -   md: tutorials/quickstart/broker-sale.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/authorize-minter.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/batch-minting.md
+        parent: quickstart-javascript.html
+        targets:
+            - en
+            - ja
+
+    -   name: Quickstart (Python)
+        html: quickstart-python.html
+        parent: quickstart.html
+        template: pagetype-category.html.jinja
+        blurb: Use a Python test harness to send XRP, trade currencies, and mint and trade NFTokens.
+        targets:
+            - en
+            - ja
+            
+        # TODO: translate
+    -   md: tutorials/quickstart/py-quickstart-intro.md
+        parent: quickstart-python.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/py-create-accounts-send-xrp.md
+        parent: quickstart-python.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/py-create-trustline-send-currency.md
+        parent: quickstart-python.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/py-mint-and-burn-nftokens.md
+        parent: quickstart-python.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/py-transfer-nftokens.md
+        parent: quickstart-python.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/py-broker-sale.md
+        parent: quickstart-python.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/py-authorize-minter.md
+        parent: quickstart-python.html
         targets:
             - en
             - ja

@@ -12,7 +12,7 @@ labels:
 
 This example shows how to:
 
-1. Create accounts on the Testnet, funded with 1000 test XRP with no actual value. 
+1. Create accounts on the Testnet, funded with 10000 test XRP with no actual value. 
 2. Retrieve the accounts from seed values.
 3. Transfer XRP between accounts.
 
@@ -28,7 +28,7 @@ To get started, create a new folder on your local disk and install the Python li
     pip3 install xrpl-py
 ```
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive.
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/python/){.github-code-download} archive.
 
 **Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
 
