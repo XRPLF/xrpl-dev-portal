@@ -70,7 +70,7 @@ A `ModifiedNode` object contains the following fields:
 
 ## NFT Fields
 
-An `NFT` transaction response can contain the following fields:
+Transactions involving NFTs can contain the following fields in the metadata:
 
 | Field               | Value                     | Description                |
 |:--------------------|:--------------------------|:---------------------------|
