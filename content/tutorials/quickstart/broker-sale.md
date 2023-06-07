@@ -9,9 +9,9 @@ labels:
   - XRP
 ---
 
-# Broker a NFToken Sale
+# Broker an NFT Sale
 
-Earlier examples showed how to make buy and sell offers directly between two accounts. Another option is to use a third account as a broker for the sale. The broker acts on behalf of the NFToken owner. The seller creates an offer with the broker account as its destination. The broker gathers and evaluates buy offers and chooses which one to accept, adding an agreed-upon fee for arranging the sale. When the broker account accepts a sell offer with a buy offer, the funds and ownership of the NFToken are transferred simultaneously, completing the deal. This allows an account to act as a marketplace or personal agent for NFToken creators and traders.
+Earlier examples showed how to make buy and sell offers directly between two accounts. Another option is to use a third account as a broker for the sale. The broker acts on behalf of the NFT owner. The seller creates an offer with the broker account as its destination. The broker gathers and evaluates buy offers and chooses which one to accept, adding an agreed-upon fee for arranging the sale. When the broker account accepts a sell offer with a buy offer, the funds and ownership of the NFT are transferred simultaneously, completing the deal. This allows an account to act as a marketplace or personal agent for NFT creators and traders.
 
 # Usage
 
@@ -42,10 +42,10 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Prepare a Brokered Transaction
 
-1. Use the Standby account to create a NFToken Sell Offer with the Broker account as the destination.
+1. Use the Standby account to create an NFT Sell Offer with the Broker account as the destination.
 	1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
 	2. Set the **Flags** field to _1_.
-	3. Enter the **NFToken ID** of the NFToken you want to sell.
+	3. Enter the **NFT ID** of the NFT you want to sell.
 	4. Optionally, enter a number of days until **Expiration**.
 	5. Enter the Broker account number as the **Destination**.
 	6. Click **Create Sell Offer**.
@@ -53,9 +53,9 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 [![Sell Offer with Destination](img/quickstart23.png)](img/quickstart23.png)
 
-2. Use the Operational account to create a NFToken Buy Offer.
+2. Use the Operational account to create an NFT Buy Offer.
 	1. Enter the **Amount** of your offer.
-	2. Enter the **NFToken ID**.
+	2. Enter the **NFT ID**.
 	3. Enter the owner’s account string in the **Owner** field.
 	4. Optionally enter the number of days until **Expiration**.
 	5. Click **Create Buy Offer**.
@@ -64,15 +64,15 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Get Offers
 
-1. Enter the **NFToken ID**.
+1. Enter the **NFT ID**.
 2. Click **Get Offers**.
 
 [![Get Offers](img/quickstart25.png)](img/quickstart25.png)
 
 ## Broker the Sale
 
-1. Copy the _nft_offer_index_ of the sell offer and paste it in the **Sell NFToken Offer Index** field.
-2. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy NFToken Offer Index** field.
+1. Copy the _nft_offer_index_ of the sell offer and paste it in the **Sell NFT Offer Index** field.
+2. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy NFT Offer Index** field.
 3. Enter a **Broker Fee**, in drops.
 4. Click **Broker Sale**.
 
@@ -83,7 +83,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 After accepting a buy offer, a best practice for the broker is to cancel all other offers, if the broker has permissions to do so. Use **Get Offers** to get the full list of buy offers. To cancel an offer:
 
-1. Enter the _nft_offer_index_ of the buy offer you want to cancel in the **Buy NFToken Offer Index** field.
+1. Enter the _nft_offer_index_ of the buy offer you want to cancel in the **Buy NFT Offer Index** field.
 2. Click **Cancel Offer**.
 
 [![Cancel Offer](img/quickstart27.png)](img/quickstart27.png)
@@ -724,15 +724,15 @@ Revise the HTML form to add a new Broker section at the top.
 			</td>
 		  </tr>
 		  <tr>
-			<td align="right">NFToken ID</td>
+			<td align="right">NFT ID</td>
 			<td><input type="text" id="brokerTokenIdField" value="" size="80"/></td>
 		  </tr>
 		  <tr>
-			<td align="right">Sell NFToken Offer Index</td>
+			<td align="right">Sell NFT Offer Index</td>
 			<td><input type="text" id="brokerTokenSellOfferIndexField" value="" size="80"/></td>
 		  </tr>
 		  <tr>
-			<td align="right">Buy NFToken Offer Index</td>
+			<td align="right">Buy NFT Offer Index</td>
 			<td><input type="text" id="brokerTokenBuyOfferIndexField" value="" size="80"/></td>
 		  </tr>
 		  <tr>
@@ -824,7 +824,7 @@ Revise the HTML form to add a new Broker section at the top.
                       </td>
                     </tr>
                     <tr>
-                      <td align="right">NFToken URL</td>
+                      <td align="right">NFT URL</td>
                       <td><input type="text" id="standbyTokenUrlField"
                         value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
                       </td>
@@ -834,11 +834,11 @@ Revise the HTML form to add a new Broker section at the top.
                       <td><input type="text" id="standbyFlagsField" value="1" size="10"/></td>
                     </tr>
                     <tr>
-                      <td align="right">NFToken ID</td>
+                      <td align="right">NFT ID</td>
                       <td><input type="text" id="standbyTokenIdField" value="" size="80"/></td>
                     </tr>
                     <tr>
-                      <td align="right">NFToken Offer Index</td>
+                      <td align="right">NFT Offer Index</td>
                       <td><input type="text" id="standbyTokenOfferIndexField" value="" size="80"/></td>
                     </tr>
                     <tr>
@@ -875,11 +875,11 @@ Revise the HTML form to add a new Broker section at the top.
                         <br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>
                         <br/><br/>
-                        <button type="button" onClick="mintToken()">Mint NFToken</button>
+                        <button type="button" onClick="mintToken()">Mint NFT</button>
                         <br/>
-                        <button type="button" onClick="getTokens()">Get NFTokens</button>
+                        <button type="button" onClick="getTokens()">Get NFTs</button>
                         <br/>
-                        <button type="button" onClick="burnToken()">Burn NFToken</button>
+                        <button type="button" onClick="burnToken()">Burn NFT</button>
                         <br/><br/>
                         <button type="button" onClick="createSellOffer()">Create Sell Offer</button>
                         <br/>
@@ -917,11 +917,11 @@ Revise the HTML form to add a new Broker section at the top.
                         <br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>
                         <br/><br/>
-                        <button type="button" onClick="oPmintToken()">Mint NFToken</button>
+                        <button type="button" onClick="oPmintToken()">Mint NFT</button>
                         <br/>
-                        <button type="button" onClick="oPgetTokens()">Get NFTokens</button>
+                        <button type="button" onClick="oPgetTokens()">Get NFTs</button>
                         <br/>
-                        <button type="button" onClick="oPburnToken()">Burn NFToken</button>
+                        <button type="button" onClick="oPburnToken()">Burn NFT</button>
                         <br/><br/>
                         <button type="button" onClick="oPcreateSellOffer()">Create Sell Offer</button>
                         <br/>
@@ -1009,7 +1009,7 @@ Revise the HTML form to add a new Broker section at the top.
                             </td>
                           </tr>
                           <tr>
-                            <td align="right">NFToken URL</td>
+                            <td align="right">NFT URL</td>
                             <td><input type="text" id="operationalTokenUrlField"
                               value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
                             </td>
@@ -1019,11 +1019,11 @@ Revise the HTML form to add a new Broker section at the top.
                             <td><input type="text" id="operationalFlagsField" value="1" size="10"/></td>
                           </tr>
                           <tr>
-                            <td align="right">NFToken ID</td>
+                            <td align="right">NFT ID</td>
                             <td><input type="text" id="operationalTokenIdField" value="" size="80"/></td>
                           </tr>
                           <tr>
-                            <td align="right">NFToken Offer Index</td>
+                            <td align="right">NFT Offer Index</td>
                             <td><input type="text" id="operationalTokenOfferIndexField" value="" size="80"/></td>
                           </tr>
                           <tr>

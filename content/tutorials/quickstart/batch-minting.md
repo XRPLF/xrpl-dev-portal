@@ -9,11 +9,11 @@ labels:
   - XRP
 ---
 
-# Batch Mint NFTokens
+# Batch Mint NFTs
 
-You can create an application that mints multiple NFTokens at one time. You can use a `for` loop to send one transaction after another.
+You can create an application that mints multiple NFTs at one time. You can use a `for` loop to send one transaction after another.
 
-A best practice is to use `Tickets` to reserve the transaction sequence numbers. If you create an application that creates NFTokens without using tickets, if any transaction fails for any reason, the application stops with an error. If you use tickets, the application continues to send transactions, and you can look into the reason for the failure afterward.
+A best practice is to use `Tickets` to reserve the transaction sequence numbers. If you create an application that creates NFTs without using tickets, if any transaction fails for any reason, the application stops with an error. If you use tickets, the application continues to send transactions, and you can look into the reason for the failure afterward.
 
 [![Batch Mint](img/quickstart33-batch-mint.png)](img/quickstart33-batch-mint.png)
 
@@ -32,21 +32,21 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 **Note:** Running this command throws an error in the JavaScript console because the `getAccountsFromSeeds` function in `ripplex1-send-xrp.js` looks for the operational seed field, which is not included in this form. You can ignore the error (or fix it in your own implementation).
 
-## Batch Mint NFTokens
+## Batch Mint NFTs
 
-This example lets you mint multiple NFTokens for a single unique item. The NFToken might represent "prints" of an original artwork, tickets to an event, or another limited set of unique items. 
+This example lets you mint multiple NFTs for a single unique item. The NFT might represent "prints" of an original artwork, tickets to an event, or another limited set of unique items. 
 
 To batch mint a non-fungible token objects:
 
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFToken object can be transferred to another account. Otherwise, the NFToken object can only be transferred back to the issuing account. See [NFTokenMint](nftokenmint.html) for information about all of the available flags for minting NFTokens.
-2. Enter the **Token URL**. This is a URI that points to the data or metadata associated with the NFToken object. You can use the sample URI provided if you do not have one of your own.
-3. Enter a **Token Count** of up to 200 NFTokens to create in one batch.
-4. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFToken. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFToken to be transferrable, set this field to 0.
+1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](nftokenmint.html) for information about all of the available flags for minting NFTs.
+2. Enter the **Token URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
+3. Enter a **Token Count** of up to 200 NFTs to create in one batch.
+4. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 5. Click **Batch Mint**.
 
-## Get Batch NFTokens
+## Get Batch NFTs
 
-Click **Get Batch NFTokens** to get the current list of NFTokens for your account.
+Click **Get Batch NFTs** to get the current list of NFTs for your account.
 
 The difference between this function and the `getTokens()` function used earlier is that it allows for larger lists of tokens, and sends multiple requests if the tokens exceed the number of objects allowed in a single request.
 
@@ -104,16 +104,16 @@ Disconnect from the XRP Ledger.
 } 
 ```
 
-## Get Batch NFTokens
+## Get Batch NFTs
 
-This version of `getTokens()` allows for a larger set of NFTokens by watching for a `marker` at the end of each batch of NFTokens.
+This version of `getTokens()` allows for a larger set of NFTs by watching for a `marker` at the end of each batch of NFTs.
 
 ```javascript
 // *******************************************************
 // **************** Get Batch Tokens *********************
 // *******************************************************
       
-async function getBatchNFTokens() {
+async function getBatchNFTs() {
 ```
 
 Connect to the XRP Ledger and get the account.
@@ -125,7 +125,7 @@ Connect to the XRP Ledger and get the account.
   results = 'Connecting to ' + net + '...'
   standbyResultField.value = results
   await client.connect()
-  results += '\nConnected. Getting NFTokens...'
+  results += '\nConnected. Getting NFTs...'
   standbyResultField.value = results
 ```
 
@@ -141,7 +141,7 @@ Request the `account_nfts`. Set the `limit` to 400, the maximum amount, to retri
   results += JSON.stringify(nfts,null,2)
 ```
 
-If the list of `NFTokens` exceeds your limit, the result includes a `marker` field that you can use as a parameter for the next `account_nfts` request. The `marker` indicates where the next batch of records starts. While the `marker` field is present, continue to request another batch of NFToken records.
+If the list of `NFTs` exceeds your limit, the result includes a `marker` field that you can use as a parameter for the next `account_nfts` request. The `marker` indicates where the next batch of records starts. While the `marker` field is present, continue to request another batch of NFT records.
 
 ```javascript
   while (nfts.result.marker)
@@ -171,7 +171,7 @@ Disconnect from the XRP Ledger.
 
 ## Batch Mint
 
-This script mints multiple copies of the same NFToken. 
+This script mints multiple copies of the same NFT. 
 
 ```javascript
 // *******************************************************
@@ -210,10 +210,10 @@ Get the account information, particularly the `Sequence` number.
 
 Next, create ticket numbers for the batch. Without tickets, if one transaction fails, all others in the batch fail. With tickets, there can be failures, but the rest can still succeed, and you can investigate any problems afterward.
 
-Parse the NFToken Count field value to an integer.
+Parse the NFT Count field value to an integer.
 
 ```javascript
-  const nftokenCount = parseInt(standbyNFTokenCountField.value)
+  const nftCount = parseInt(standbyNFTCountField.value)
 ```
 
 Create the `TicketCreate` transaction hash, automatically filling default values. Provide the `Sequence` number to indicate a starting point for the XRP Ledger.
@@ -222,7 +222,7 @@ Create the `TicketCreate` transaction hash, automatically filling default values
   const ticketTransaction = await client.autofill({
     "TransactionType": "TicketCreate",
     "Account": standby_wallet.address,
-    "TicketCount": nftokenCount,
+    "TicketCount": nftCount,
     "Sequence": my_sequence
   })
 ```
@@ -249,7 +249,7 @@ Populate the `tickets` array variable.
 ```javascript
   let tickets = []
 
-  for (let i=0; i < nftokenCount; i++) {
+  for (let i=0; i < nftCount; i++) {
     tickets[i] = response.result.account_objects[i].TicketSequence
   }
 ```
@@ -257,14 +257,14 @@ Populate the `tickets` array variable.
 Report the function progress.
 
 ```javascript
-  results += "Tickets generated, minting NFTokens.\n\n"
+  results += "Tickets generated, minting NFTs.\n\n"
   standbyResultField.value = results
 ```
 
-Use a `for` loop to create the NFTokens one at a time, up to the number you specified.
+Use a `for` loop to create the NFTs one at a time, up to the number you specified.
 
 ```javascript
-  for (let i=0; i < nftokenCount; i++) {
+  for (let i=0; i < nftCount; i++) {
 		const transactionBlob = {
 			"TransactionType": "NFTokenMint",
 			"Account": standby_wallet.classicAddress,
@@ -290,7 +290,7 @@ Submit the signed transaction hash.
   }
 ```
 
-Use the same logic as `getBatchNFTokens`, above, to get the list of current NFTokens.
+Use the same logic as `getBatchNFTs`, above, to get the list of current NFTs.
   
 ```javascript
   results += "\n\nNFTs:\n"
@@ -317,7 +317,7 @@ Report the results.
 
 ```javascript
 	results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
-	results += '\n\nnftokens: ' + JSON.stringify(nfts, null, 2)
+	results += '\n\nnfts: ' + JSON.stringify(nfts, null, 2)
 	standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
 	standbyResultField.value = results
 ```
@@ -447,7 +447,7 @@ For this form:
 								</td>
 							</tr>
 							<tr>
-								<td align="right">NFToken URL</td>
+								<td align="right">NFT URL</td>
 								<td><input type="text" id="standbyTokenUrlField"
 									value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
 								</td>
@@ -457,15 +457,15 @@ For this form:
 								<td><input type="text" id="standbyFlagsField" value="8" size="10"/></td>
 							</tr>
 							<tr>
-								<td align="right">NFToken ID</td>
+								<td align="right">NFT ID</td>
 								<td><input type="text" id="standbyTokenIdField" value="" size="80"/></td>
 							</tr>
 							<tr>
 								<td align="right">
-									NFToken Count
+									NFT Count
 								    </td>
 								    <td>
-									    <input type="text" id="standbyNFTokenCountField" size="40"></input>
+									    <input type="text" id="standbyNFTCountField" size="40"></input>
 									    <br>
 								    </td>
 							    </tr>
@@ -480,11 +480,11 @@ For this form:
 					<td align="left" valign="top">
 					  <button type="button" onClick="batchMint()">Batch Mint</button>
 						<br/>
-						<button type="button" onClick="getBatchNFTokens()">Get Batch NFTokens</button>
+						<button type="button" onClick="getBatchNFTs()">Get Batch NFTs</button>
 						<br/>
 						<p align="left">
 									
-<!-- Note the increased maxlength to hold the most possible NFToken info. -->
+<!-- Note the increased maxlength to hold the most possible NFT info. -->
 
             <textarea id="standbyResultField" cols="80" rows="20" maxlength="524288"></textarea>
             </p>

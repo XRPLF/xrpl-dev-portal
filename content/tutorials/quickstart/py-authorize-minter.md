@@ -1,7 +1,7 @@
 ---
 html: py-authorize-minter.html
 parent: quickstart-python.html
-blurb: Authorize another account to mint NFTokens for you.
+blurb: Authorize another account to mint NFTs for you.
 labels:
   - Accounts
   - Quickstart
@@ -11,12 +11,12 @@ labels:
 
 # Assign an Authorized Minter (Python)
 
-You can assign another account permission to mint NFTokens for you.
+You can assign another account permission to mint NFTs for you.
 
 This example shows how to:
 
-1. Authorize an account to create NFTokens for your account.
-2. Mint a NFToken for another account, when authorized.
+1. Authorize an account to create NFTs for your account.
+2. Mint an NFT for another account, when authorized.
 
 [![Token Test Harness](img/quickstart-py30.png)](img/quickstart-py30.png)
 
@@ -41,9 +41,9 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         3. Click **Get Operational Account**.
         4. Click **Get Operational Account Info**.
         
-## Authorize an Account to Create NFTokens
+## Authorize an Account to Create NFTs
 
-To authorize another account to create NFTokens for your account (for example, allow the operational account to mint NFTs for the standby account):
+To authorize another account to create NFTs for your account (for example, allow the operational account to mint NFTs for the standby account):
 
 1. Copy the **Operational Account** value.
 2. Paste the **Operational Account** value in the standby **Authorized Minter** field.
@@ -51,7 +51,7 @@ To authorize another account to create NFTokens for your account (for example, a
 
 [![Authorized Minter](img/quickstart-py31.png)](img/quickstart-py31.png)
 
-## Mint a NFToken for Another Account
+## Mint an NFT for Another Account
 
 This example uses the Operational account, which was authorized in the previous step, to mint a token on behalf of the Standby account.
 
@@ -59,40 +59,40 @@ To mint a non-fungible token for another account:
 
 1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. 
 2. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT. You can use the sample URI provided if you do not have one of your own.
-3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFToken. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFToken to be transferrable, set this field to 0.
+3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 4. Enter a **Taxon** for the NFT. If you don't have a use for the field, set it to _0_.
 4. Copy the **Standby Account** value.
 5. Paste the **Standby Account** value in the Operational account **Issuer** field.
 6. Click the Operational account **Mint Other** button.
 
-[![Minted NFToken for Another Account](img/quickstart-py32.png)](img/quickstart-py32.png)
+[![Minted NFT for Another Account](img/quickstart-py32.png)](img/quickstart-py32.png)
 
-Once the item is minted, the authorized minter can sell the NFToken normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.
+Once the item is minted, the authorized minter can sell the NFT normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.
 
 ## Create a Sell Offer
 
-To create a NFToken sell offer:
+To create a NFT sell offer:
 
 1. On the Operational account side, enter the **Amount** of the sell offer in drops (millionths of an XRP), for example 100000000 (100 XRP).
 2. Set the **Flags** field to _1_.
-3. Enter the **NFToken ID** of the minted NFToken you want to sell.
+3. Enter the **NFT ID** of the minted NFT you want to sell.
 4. Optionally, enter a number of seconds until **Expiration**.
 5. Click **Create Sell Offer**.
 
-The important piece of information in the response is the NFToken Offer Index, labeled as `nft_offer_index`, which is used to accept the sell offer.
+The important piece of information in the response is the NFT Offer Index, labeled as `nft_offer_index`, which is used to accept the sell offer.
 
-[![NFToken Sell Offer](img/quickstart-py33.png)](img/quickstart-py33.png)
+[![NFT Sell Offer](img/quickstart-py33.png)](img/quickstart-py33.png)
 
 ## Accept Sell Offer
 
-Once a sell offer is available, you can create a new account to accept the offer and buy the NFToken.
+Once a sell offer is available, you can create a new account to accept the offer and buy the NFT.
 
 To accept an available sell offer:
 
 1. Clear the **Standby Seed** field.
 2. Click **Get Standby Account**.
 3. Click **Get Standby Account Info**.
-4. Enter the **NFToken Offer Index** (labeled as `nft_offer_index` in the NFToken offer results. This is different from the `nft_id`).
+4. Enter the **NFT Offer Index** (labeled as `nft_offer_index` in the NFT offer results. This is different from the `nft_id`).
 5. Click **Accept Sell Offer**.
 
 [![Transaction Results](img/quickstart-py34.png)](img/quickstart-py34.png)

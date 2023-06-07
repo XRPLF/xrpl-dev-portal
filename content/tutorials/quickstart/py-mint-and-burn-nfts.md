@@ -1,14 +1,14 @@
 ---
 html: py-mint-and-burn-nftokens.html
 parent: quickstart-python.html
-blurb: Quickstart step 3, mint and burn NFTokens.
+blurb: Quickstart step 3, mint and burn NFTs.
 labels:
   - Quickstart
   - Tokens
   - Non-fungible tokens, NFTs
 ---
 
-# 3. Mint and Burn NFTokens (Python)
+# 3. Mint and Burn NFTs (Python)
 
 This example shows how to:
 
@@ -42,20 +42,20 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 To mint a non-fungible token object:
 
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT can be transferred to another account. Otherwise, the NFT can only be transferred back to the issuing account. See [NFToken Mint](https://xrpl.org/nftokenmint.html#:~:text=Example%20NFTokenMint%20JSON-,NFTokenMint%20Fields,-NFTokenMint%20Flags) for information about all of the available flags for minting NFTokens.
+1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT can be transferred to another account. Otherwise, the NFT can only be transferred back to the issuing account. See [NFToken Mint](https://xrpl.org/nftokenmint.html#:~:text=Example%20NFTokenMint%20JSON-,NFTokenMint%20Fields,-NFTokenMint%20Flags) for information about all of the available flags for minting NFTs.
 2. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT. You can use the sample URI provided if you do not have one of your own.
-3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFToken that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFToken to be transferrable, set this field to 0.
+3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 4. Optionally a **Taxon** value as an integer. If you choose not to use a taxon, enter _0_.
-4. Click **Mint NFToken**.
+4. Click **Mint NFT**.
 
-[![Mint NFToken fields](img/quickstart-py12.png)](img/quickstart-py12.png)
+[![Mint NFT fields](img/quickstart-py12.png)](img/quickstart-py12.png)
 
 
 ## Get Tokens
 
-Click **Get NFTokens** to get a list of NFTokens owned by the account.
+Click **Get NFTs** to get a list of NFTs owned by the account.
 
-[![Get NFTokens](img/quickstart-py13.png)](img/quickstart-py13.png)
+[![Get NFTs](img/quickstart-py13.png)](img/quickstart-py13.png)
 
 ## Burn a Token
 
@@ -64,9 +64,9 @@ The current owner of an NFT can always destroy (or _burn_) an NFT.
 To permanently destroy an NFT:
 
 1. Enter the **Token ID**.
-2. Click **Burn NFToken**.
+2. Click **Burn NFT**.
 
-[![Burn NFTokens](img/quickstart-py14.png)](img/quickstart-py14.png)
+[![Burn NFTs](img/quickstart-py14.png)](img/quickstart-py14.png)
 
 # Code Walkthrough
 
@@ -402,7 +402,7 @@ ent_standby_currency = tk.Entry(master=frm_form, width=50)
 cb_standby_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=standbyRippling, onvalue=True, offvalue=False)
 ```
 
-Add **NFT URI**, **Flags**, **Transfer Fee**, **Taxon**, **NFToken ID** fields.
+Add **NFT URI**, **Flags**, **Transfer Fee**, **Taxon**, **NFT ID** fields.
 
 ```python
 lbl_standby_uri = tk.Label(master=frm_form, text="NFT URI")
@@ -413,7 +413,7 @@ lbl_standby_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
 ent_standby_transfer_fee = tk.Entry(master=frm_form, width="50")
 lbl_standby_taxon = tk.Label(master=frm_form, text="Taxon")
 ent_standby_taxon = tk.Entry(master=frm_form, width="50")
-lbl_standby_nft_id = tk.Label(master=frm_form, text="NFToken ID")
+lbl_standby_nft_id = tk.Label(master=frm_form, text="NFT ID")
 ent_standby_nft_id = tk.Entry(master=frm_form, width="50")
 lbl_standby_results = tk.Label(master=frm_form,text='Results')
 text_standby_results = tk.Text(master=frm_form, height = 20, width = 65)
@@ -471,7 +471,7 @@ ent_operational_currency = tk.Entry(master=frm_form, width=50)
 cb_operational_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=operationalRippling, onvalue=True, offvalue=False)
 ```
 
-Add fields for **NFT URI**, **Flags**, **Transfer Fee**, **Taxon**, and **NFToken ID**.
+Add fields for **NFT URI**, **Flags**, **Transfer Fee**, **Taxon**, and **NFT ID**.
 
 ```python
 lbl_operational_uri = tk.Label(master=frm_form, text="NFT URI")
@@ -482,7 +482,7 @@ lbl_operational_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
 ent_operational_transfer_fee = tk.Entry(master=frm_form, width="50")
 lbl_operational_taxon = tk.Label(master=frm_form, text="Taxon")
 ent_operational_taxon = tk.Entry(master=frm_form, width="50")
-lbl_operational_nft_id = tk.Label(master=frm_form, text="NFToken ID")
+lbl_operational_nft_id = tk.Label(master=frm_form, text="NFT ID")
 ent_operational_nft_id = tk.Entry(master=frm_form, width="50")
 lbl_operational_results = tk.Label(master=frm_form,text='Results')
 text_operational_results = tk.Text(master=frm_form, height = 20, width = 65)
@@ -551,16 +551,16 @@ btn_standby_configure_account = tk.Button(master=frm_form,
                                           command = standby_configure_account)
 ```
 
-Add buttons for **Mint NFToken**, **Get NFTokens**, and **Burn NFToken**.
+Add buttons for **Mint NFT**, **Get NFTs**, and **Burn NFT**.
 
 ```python
-btn_standby_mint_token = tk.Button(master=frm_form, text="Mint NFToken",
+btn_standby_mint_token = tk.Button(master=frm_form, text="Mint NFT",
                                    command = standby_mint_token)
 btn_standby_mint_token.grid(row=8, column=2, sticky="nsew")
-btn_standby_get_tokens = tk.Button(master=frm_form, text="Get NFTokens",
+btn_standby_get_tokens = tk.Button(master=frm_form, text="Get NFTs",
                                    command = standby_get_tokens)
 btn_standby_get_tokens.grid(row=9, column=2, sticky="nsew")
-btn_standby_burn_token = tk.Button(master=frm_form, text="Burn NFToken",
+btn_standby_burn_token = tk.Button(master=frm_form, text="Burn NFT",
                                    command = standby_burn_token)
 btn_standby_burn_token.grid(row=10, column=2, sticky="nsew")
 
@@ -589,16 +589,16 @@ btn_op_configure_account = tk.Button(master=frm_form, text="Configure Account",
                                      command = operational_configure_account)
 btn_op_configure_account.grid(row=7,column=4, sticky = "nsew")
 ```
-Add buttons for **Mint NFToken**, **Get NFTokens**, and **Burn NFToken**.
+Add buttons for **Mint NFT**, **Get NFTs**, and **Burn NFT**.
 
 ```python
-btn_op_mint_token = tk.Button(master=frm_form, text="Mint NFToken",
+btn_op_mint_token = tk.Button(master=frm_form, text="Mint NFT",
                               command = operational_mint_token)
 btn_op_mint_token.grid(row=8, column=3, sticky="nsew")
-btn_op_get_tokens = tk.Button(master=frm_form, text="Get NFTokens",
+btn_op_get_tokens = tk.Button(master=frm_form, text="Get NFTs",
                               command = operational_get_tokens)
 btn_op_get_tokens.grid(row=9, column=3, sticky="nsew")
-btn_op_burn_token = tk.Button(master=frm_form, text="Burn NFToken",
+btn_op_burn_token = tk.Button(master=frm_form, text="Burn NFT",
                               command = operational_burn_token)
 btn_op_burn_token.grid(row=10, column=3, sticky="nsew")
 

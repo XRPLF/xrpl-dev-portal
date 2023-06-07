@@ -11,7 +11,7 @@ labels:
 
 # Broker an NFT Sale (Python)
 
-Earlier examples showed how to make buy and sell offers directly between two accounts. Another option is to use a third account as a broker for the sale. The broker acts on behalf of the NFT owner. The seller creates an offer with the broker account as its destination. The broker gathers and evaluates buy offers and chooses which one to accept, adding an agreed-upon fee for arranging the sale. When the broker account accepts a sell offer with a buy offer, the funds and ownership of the NFToken are transferred simultaneously, completing the deal. This allows an account to act as a marketplace or personal agent for NFToken creators and traders.
+Earlier examples showed how to make buy and sell offers directly between two accounts. Another option is to use a third account as a broker for the sale. The broker acts on behalf of the NFT owner. The seller creates an offer with the broker account as its destination. The broker gathers and evaluates buy offers and chooses which one to accept, adding an agreed-upon fee for arranging the sale. When the broker account accepts a sell offer with a buy offer, the funds and ownership of the NFT are transferred simultaneously, completing the deal. This allows an account to act as a marketplace or personal agent for NFT creators and traders.
 
 # Usage
 
@@ -48,9 +48,9 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Prepare a Brokered Transaction
 
-1. Use the Standby account to create a NFToken Sell Offer with the Broker account as the destination.
+1. Use the Standby account to create an NFT Sell Offer with the Broker account as the destination.
 	1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
-	2. Enter the **NFToken ID** of the NFToken you want to sell.
+	2. Enter the **NFT ID** of the NFT you want to sell.
 	3. Optionally, enter a number of seconds until **Expiration**.
 	4. Enter the Broker account number as the **Destination**.
 	5. Click **Create Sell Offer**.
@@ -59,9 +59,9 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 [![Sell Offer with Destination](img/quickstart25.png)](img/quickstart25.png)
 
-2. Use the Operational account to create a NFToken Buy Offer.
+2. Use the Operational account to create a NFT Buy Offer.
 	1. Enter the **Amount** of your offer.
-	2. Enter the **NFToken ID**.
+	2. Enter the **NFT ID**.
 	3. Enter the owner’s account string in the **Owner** field.
 	4. Optionally enter the number of seconds until **Expiration**.
 	5. Click **Create Buy Offer**.
@@ -70,15 +70,15 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Get Offers
 
-1. Enter the **NFToken ID**.
+1. Enter the **NFT ID**.
 2. Click **Get Offers**.
 
 [![Get Offers](img/quickstart27.png)](img/quickstart27.png)
 
 ## Broker the Sale
 
-1. Copy the _nft_offer_index_ of the sell offer and paste it in the **Sell NFToken Offer Index** field.
-2. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy NFToken Offer Index** field.
+1. Copy the _nft_offer_index_ of the sell offer and paste it in the **Sell NFT Offer Index** field.
+2. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy NFT Offer Index** field.
 3. Enter a **Broker Fee**, in drops.
 4. Click **Broker Sale**.
 
@@ -89,7 +89,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 After accepting a buy offer, a best practice for the broker is to cancel all other offers, if the broker has permissions to do so. Use **Get Offers** to get the full list of buy offers. To cancel an offer:
 
-1. Enter the _nft_offer_index_ of the buy offer you want to cancel in the **Buy NFToken Offer Index** field.
+1. Enter the _nft_offer_index_ of the buy offer you want to cancel in the **Buy NFT Offer Index** field.
 2. Click **Cancel Offer**.
 
 [![Cancel Offer](img/quickstart29.png)](img/quickstart29.png)
@@ -499,11 +499,11 @@ lbl_broker_balance = tk.Label(master=frm_broker, text="XRP Balance")
 ent_broker_balance = tk.Entry(master=frm_broker, width=50)
 lbl_broker_amount = tk.Label(master=frm_broker, text="Amount")
 ent_broker_amount = tk.Entry(master=frm_broker, width=50)
-lbl_broker_nft_id = tk.Label(master=frm_broker, text="NFToken ID")
+lbl_broker_nft_id = tk.Label(master=frm_broker, text="NFT ID")
 ent_broker_nft_id = tk.Entry(master=frm_broker, width=50)
-lbl_broker_sell_nft_idx = tk.Label(master=frm_broker, text="Sell NFToken Offer Index")
+lbl_broker_sell_nft_idx = tk.Label(master=frm_broker, text="Sell NFT Offer Index")
 ent_broker_sell_nft_idx = tk.Entry(master=frm_broker, width=50)
-lbl_broker_buy_nft_idx = tk.Label(master=frm_broker, text="Buy NFToken Offer Index")
+lbl_broker_buy_nft_idx = tk.Label(master=frm_broker, text="Buy NFT Offer Index")
 ent_broker_buy_nft_idx = tk.Entry(master=frm_broker, width=50)
 lbl_broker_owner = tk.Label(master=frm_broker, text="Owner")
 ent_broker_owner = tk.Entry(master=frm_broker, width=50)
@@ -583,9 +583,9 @@ lbl_standby_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
 ent_standby_transfer_fee = tk.Entry(master=frm_form, width="50")
 lbl_standby_taxon = tk.Label(master=frm_form, text="Taxon")
 ent_standby_taxon = tk.Entry(master=frm_form, width="50")
-lbl_standby_nft_id = tk.Label(master=frm_form, text="NFToken ID")
+lbl_standby_nft_id = tk.Label(master=frm_form, text="NFT ID")
 ent_standby_nft_id = tk.Entry(master=frm_form, width="50")
-lbl_standby_nft_offer_index = tk.Label(master=frm_form, text="NFToken Offer Index")
+lbl_standby_nft_offer_index = tk.Label(master=frm_form, text="NFT Offer Index")
 ent_standby_nft_offer_index = tk.Entry(master=frm_form, width="50")
 lbl_standby_owner = tk.Label(master=frm_form, text="Owner")
 ent_standby_owner = tk.Entry(master=frm_form, width="50")
@@ -657,9 +657,9 @@ lbl_operational_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
 ent_operational_transfer_fee = tk.Entry(master=frm_form, width="50")
 lbl_operational_taxon = tk.Label(master=frm_form, text="Taxon")
 ent_operational_taxon = tk.Entry(master=frm_form, width="50")
-lbl_operational_nft_id = tk.Label(master=frm_form, text="NFToken ID")
+lbl_operational_nft_id = tk.Label(master=frm_form, text="NFT ID")
 ent_operational_nft_id = tk.Entry(master=frm_form, width="50")
-lbl_operational_nft_offer_index = tk.Label(master=frm_form, text="NFToken Offer Index")
+lbl_operational_nft_offer_index = tk.Label(master=frm_form, text="NFT Offer Index")
 ent_operational_nft_offer_index = tk.Entry(master=frm_form, width="50")
 lbl_operational_owner = tk.Label(master=frm_form, text="Owner")
 ent_operational_owner = tk.Entry(master=frm_form, width="50")
@@ -734,13 +734,13 @@ btn_standby_configure_account = tk.Button(master=frm_form,
                                           text="Configure Account",
                                           command = standby_configure_account)
 btn_standby_configure_account.grid(row=7,column=0, sticky = "nsew")
-btn_standby_mint_token = tk.Button(master=frm_form, text="Mint NFToken",
+btn_standby_mint_token = tk.Button(master=frm_form, text="Mint NFT",
                                    command = standby_mint_token)
 btn_standby_mint_token.grid(row=8, column=2, sticky="nsew")
-btn_standby_get_tokens = tk.Button(master=frm_form, text="Get NFTokens",
+btn_standby_get_tokens = tk.Button(master=frm_form, text="Get NFTs",
                                    command = standby_get_tokens)
 btn_standby_get_tokens.grid(row=9, column=2, sticky="nsew")
-btn_standby_burn_token = tk.Button(master=frm_form, text="Burn NFToken",
+btn_standby_burn_token = tk.Button(master=frm_form, text="Burn NFT",
                                    command = standby_burn_token)
 btn_standby_burn_token.grid(row=10, column=2, sticky="nsew")
 btn_standby_create_sell_offer = tk.Button(master=frm_form, text="Create Sell Offer",
@@ -787,13 +787,13 @@ btn_op_get_balances.grid(row=6, column=3, sticky = "nsew")
 btn_op_configure_account = tk.Button(master=frm_form, text="Configure Account",
                                      command = operational_configure_account)
 btn_op_configure_account.grid(row=7,column=4, sticky = "nsew")
-btn_op_mint_token = tk.Button(master=frm_form, text="Mint NFToken",
+btn_op_mint_token = tk.Button(master=frm_form, text="Mint NFT",
                               command = operational_mint_token)
 btn_op_mint_token.grid(row=8, column=3, sticky="nsew")
-btn_op_get_tokens = tk.Button(master=frm_form, text="Get NFTokens",
+btn_op_get_tokens = tk.Button(master=frm_form, text="Get NFTs",
                               command = operational_get_tokens)
 btn_op_get_tokens.grid(row=9, column=3, sticky="nsew")
-btn_op_burn_token = tk.Button(master=frm_form, text="Burn NFToken",
+btn_op_burn_token = tk.Button(master=frm_form, text="Burn NFT",
                               command = operational_burn_token)
 btn_op_burn_token.grid(row=10, column=3, sticky="nsew")
 btn_op_create_sell_offer = tk.Button(master=frm_form, text="Create Sell Offer",

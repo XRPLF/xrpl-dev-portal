@@ -1248,7 +1248,7 @@ pages:
         html: quickstart-javascript.html
         parent: xrpl-quickstart.html
         template: pagetype-category.html.jinja
-        blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTokens.
+        blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs.
         targets:
             - en
             - ja
@@ -1275,14 +1275,14 @@ pages:
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/mint-and-burn-nftokens.md
+    -   md: tutorials/quickstart/mint-and-burn-nfts.md
         parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/transfer-nftokens.md
+    -   md: tutorials/quickstart/transfer-nfts.md
         parent: quickstart-javascript.html
         targets:
             - en
@@ -1313,7 +1313,7 @@ pages:
         html: quickstart-python.html
         parent: xrpl-quickstart.html
         template: pagetype-category.html.jinja
-        blurb: Use a Python test harness to send XRP, trade currencies, and mint and trade NFTokens.
+        blurb: Use a Python test harness to send XRP, trade currencies, and mint and trade NFTs.
         targets:
             - en
             - ja
@@ -1340,14 +1340,14 @@ pages:
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/py-mint-and-burn-nftokens.md
+    -   md: tutorials/quickstart/py-mint-and-burn-nfts.md
         parent: quickstart-python.html
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/py-transfer-nftokens.md
+    -   md: tutorials/quickstart/py-transfer-nfts.md
         parent: quickstart-python.html
         targets:
             - en

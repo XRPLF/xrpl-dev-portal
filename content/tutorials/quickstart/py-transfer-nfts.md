@@ -1,5 +1,5 @@
 ---
-html: py-transfer-nftokens.html
+html: py-transfer-nfts.html
 parent: quickstart-python.html
 blurb: Use a Python test harness to create and accept NFT buy and sell offers.
 labels:
@@ -8,18 +8,18 @@ labels:
   - Non-fungible Tokens, NFTs
 ---
 
-# 4. Transfer NFTokens (Python)
+# 4. Transfer NFTs (Python)
 
 This example shows how to:
 
-1. Create NFToken Sell Offers.
-2. Create NFToken Buy Offers.
-3. Accept NFToken Sell Offers.
-4. Accept NFToken Buy Offers.
-5. Get a list of offers for a particular NFToken.
+1. Create NFT Sell Offers.
+2. Create NFT Buy Offers.
+3. Accept NFT Sell Offers.
+4. Accept NFT Buy Offers.
+5. Get a list of offers for a particular NFT.
 6. Cancel an offer.
 
-[![Quickstart form with NFToken transfer fields](img/quickstart-py15.png)](img/quickstart-py15.png)
+[![Quickstart form with NFT transfer fields](img/quickstart-py15.png)](img/quickstart-py15.png)
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
 
@@ -27,7 +27,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Get Accounts
 
-1. Open `4.transfer-nftokens.html` in a browser.
+1. Open `4.transfer-nfts.html` in a browser.
 2. Choose your ledger instance (**Testnet** or **Devnet**).
 3. Get test accounts.
     1. If you have existing test account seeds
@@ -47,29 +47,29 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Create a Sell Offer
 
-To create a NFToken sell offer:
+To create a NFT sell offer:
 
 1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
-2. Enter the **NFToken ID** of the NFToken you want to sell.
+2. Enter the **NFT ID** of the NFT you want to sell.
 3. Optionally, enter a **Destination** account, the only account that can accept the offer.
 4. Optionally, enter a number of seconds until **Expiration**.
 5. Click **Create Sell Offer**.
 6. Click **Get Offers**.
 
-The important piece of information in the response is the NFToken Offer Index, labeled as `nft_offer_index`, which you use to accept the sell offer.
+The important piece of information in the response is the NFT Offer Index, labeled as `nft_offer_index`, which you use to accept the sell offer.
 
-[![NFToken Sell Offer](img/quickstart-py17.png)](img/quickstart-py17.png)
+[![NFT Sell Offer](img/quickstart-py17.png)](img/quickstart-py17.png)
 
 ## Accept Sell Offer
 
-Once a sell offer is available, another account can opt to accept the offer and buy the NFToken.
+Once a sell offer is available, another account can opt to accept the offer and buy the NFT.
 
 To accept an available sell offer:
 
-1. Enter the **NFToken Offer Index** (labeled as `nft_offer_index` in the token offer results. This is different from the `NFTokenID`.)
+1. Enter the **NFT Offer Index** (labeled as `nft_offer_index` in the token offer results. This is different from the `NFTokenID`.)
 2. Click **Accept Sell Offer**.
 3. Click **Get Standby Account Info** and **Get Op Account Info** to update the XRP balances.
-4. Click **Get NFTokens** for each account to see that the NFT has moved from the Standby account to the Operational account.
+4. Click **Get NFTs** for each account to see that the NFT has moved from the Standby account to the Operational account.
 
 [![Accept Sell Offer](img/quickstart-py18.png)](img/quickstart-py18.png)
 
@@ -80,30 +80,30 @@ You can offer to buy an NFT from another account.
 To create an offer to buy an NFT:
 
 1. Enter the **Amount** of your offer.
-2. Enter the **NFToken ID**.
+2. Enter the **NFT ID**.
 3. Enter the owner’s account string in the **Owner** field.
 4. Optionally enter the number of seconds until **Expiration**.
 5. Click **Create Buy Offer**.
-6. On the Operational side, enter the **NFToken ID**.
+6. On the Operational side, enter the **NFT ID**.
 7. Click **Get Offers** to view the offer and copy the `nft_offer_index`.
 
-[![NFToken Buy Offer](img/quickstart-py19.png)](img/quickstart-py19.png)
+[![NFT Buy Offer](img/quickstart-py19.png)](img/quickstart-py19.png)
 
 ## Accept a Buy Offer
 
 To accept an offer to buy an NFT:
 
-1. Enter the **NFToken Offer Index** (the `nft_offer_index` of the NFT buy offer).
+1. Enter the **NFT Offer Index** (the `nft_offer_index` of the NFT buy offer).
 2. Click **Accept Buy Offer**.
 3. Click **Get Standby Account Info** and **Get Op Account Info** to update the XRP balances.
-4. Click **Get NFTokens** for both accounts to see that the NFT has moved from the Operational account to the Standby account.
+4. Click **Get NFTs** for both accounts to see that the NFT has moved from the Operational account to the Standby account.
 
 [![Accept Buy Offer](img/quickstart-py20.png)](img/quickstart-py20.png)
 
 ## Get Offers
 
 To list the buy and sell offers associated with an NFT:
-1. Enter the **NFToken ID**.
+1. Enter the **NFT ID**.
 2. Click **Get Offers**.
 
 [![Get offers](img/quickstart21.png)](img/quickstart21.png)
@@ -112,7 +112,7 @@ To list the buy and sell offers associated with an NFT:
 
 To cancel a buy or sell offer that you have created:
 
-1. Enter the **NFToken Offer Index**.
+1. Enter the **NFT Offer Index**.
 2. Click **Cancel Offer**.
 
 [![Cancel offer](img/quickstart22.png)](img/quickstart22.png)
@@ -144,7 +144,7 @@ testnet_url = "https://s.altnet.rippletest.net:51234"
 Pass the arguments _seed_, _amount_, _NFT ID_, _expiration_ (in seconds, optional), and _destination_ (optional).
 
 ```python
-def create_sell_offer(_seed, _amount, _nftoken_id, _expiration, _destination):
+def create_sell_offer(_seed, _amount, _nft_id, _expiration, _destination):
 ```
 
 Get the owner wallet and create a client connection.
@@ -168,7 +168,7 @@ Define the sell offer transaction.
 ```python
     sell_offer_tx = xrpl.models.transactions.NFTokenCreateOffer(
         account = owner_wallet.classic_address,
-        nftoken_id = _nftoken_id,
+        nftoken_id = _nft_id,
         amount = _amount,
 ```
 
@@ -428,7 +428,7 @@ The creator of an offer can cancel it at any time before it is accepted. Anyone 
 Pass the seed and the NFT Offer ID to be canceled.
 
 ```python
-def cancel_offer(_seed, _nftoken_offer_ids):
+def cancel_offer(_seed, _nft_offer_ids):
 ```
 
 Get the wallet and a client instance.
@@ -441,7 +441,7 @@ Get the wallet and a client instance.
 The `nftoken_offers` parameter is an array, rather than a single ID. You can revise the code to accept several offer IDs at one time. Here, the value is added to a new array variable.
 
 ```python
-    tokenOfferIDs = [_nftoken_offer_ids]
+    tokenOfferIDs = [_nft_offer_ids]
 ```
 
 Define the cancel offer transaction.
@@ -775,14 +775,14 @@ lbl_standby_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
 ent_standby_transfer_fee = tk.Entry(master=frm_form, width="50")
 lbl_standby_taxon = tk.Label(master=frm_form, text="Taxon")
 ent_standby_taxon = tk.Entry(master=frm_form, width="50")
-lbl_standby_nft_id = tk.Label(master=frm_form, text="NFToken ID")
+lbl_standby_nft_id = tk.Label(master=frm_form, text="NFT ID")
 ent_standby_nft_id = tk.Entry(master=frm_form, width="50")
 ```
 
 Add fields for the *NFT Offer Index*, *Owner*, *Expiration*, and *Transfer Fee*.
 
 ```python
-lbl_standby_nft_offer_index = tk.Label(master=frm_form, text="NFToken Offer Index")
+lbl_standby_nft_offer_index = tk.Label(master=frm_form, text="NFT Offer Index")
 ent_standby_nft_offer_index = tk.Entry(master=frm_form, width="50")
 lbl_standby_owner = tk.Label(master=frm_form, text="Owner")
 ent_standby_owner = tk.Entry(master=frm_form, width="50")
@@ -854,14 +854,14 @@ lbl_operational_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
 ent_operational_transfer_fee = tk.Entry(master=frm_form, width="50")
 lbl_operational_taxon = tk.Label(master=frm_form, text="Taxon")
 ent_operational_taxon = tk.Entry(master=frm_form, width="50")
-lbl_operational_nft_id = tk.Label(master=frm_form, text="NFToken ID")
+lbl_operational_nft_id = tk.Label(master=frm_form, text="NFT ID")
 ent_operational_nft_id = tk.Entry(master=frm_form, width="50")
 ```
 
-Add fields for *NFToken Offer Index*, *Owner*, *Expiration*, and *Transfer Fee*.
+Add fields for *NFT Offer Index*, *Owner*, *Expiration*, and *Transfer Fee*.
 
 ```python
-lbl_operational_nft_offer_index = tk.Label(master=frm_form, text="NFToken Offer Index")
+lbl_operational_nft_offer_index = tk.Label(master=frm_form, text="NFT Offer Index")
 ent_operational_nft_offer_index = tk.Entry(master=frm_form, width="50")
 lbl_operational_owner = tk.Label(master=frm_form, text="Owner")
 ent_operational_owner = tk.Entry(master=frm_form, width="50")
@@ -936,13 +936,13 @@ btn_standby_configure_account = tk.Button(master=frm_form,
                                           text="Configure Account",
                                           command = standby_configure_account)
 btn_standby_configure_account.grid(row=7,column=0, sticky = "nsew")
-btn_standby_mint_token = tk.Button(master=frm_form, text="Mint NFToken",
+btn_standby_mint_token = tk.Button(master=frm_form, text="Mint NFT",
                                    command = standby_mint_token)
 btn_standby_mint_token.grid(row=8, column=2, sticky="nsew")
-btn_standby_get_tokens = tk.Button(master=frm_form, text="Get NFTokens",
+btn_standby_get_tokens = tk.Button(master=frm_form, text="Get NFTs",
                                    command = standby_get_tokens)
 btn_standby_get_tokens.grid(row=9, column=2, sticky="nsew")
-btn_standby_burn_token = tk.Button(master=frm_form, text="Burn NFToken",
+btn_standby_burn_token = tk.Button(master=frm_form, text="Burn NFT",
                                    command = standby_burn_token)
 btn_standby_burn_token.grid(row=10, column=2, sticky="nsew")
 ```
@@ -993,13 +993,13 @@ btn_op_get_balances.grid(row=6, column=3, sticky = "nsew")
 btn_op_configure_account = tk.Button(master=frm_form, text="Configure Account",
                                      command = operational_configure_account)
 btn_op_configure_account.grid(row=7,column=4, sticky = "nsew")
-btn_op_mint_token = tk.Button(master=frm_form, text="Mint NFToken",
+btn_op_mint_token = tk.Button(master=frm_form, text="Mint NFT",
                               command = operational_mint_token)
 btn_op_mint_token.grid(row=8, column=3, sticky="nsew")
-btn_op_get_tokens = tk.Button(master=frm_form, text="Get NFTokens",
+btn_op_get_tokens = tk.Button(master=frm_form, text="Get NFTs",
                               command = operational_get_tokens)
 btn_op_get_tokens.grid(row=9, column=3, sticky="nsew")
-btn_op_burn_token = tk.Button(master=frm_form, text="Burn NFToken",
+btn_op_burn_token = tk.Button(master=frm_form, text="Burn NFT",
                               command = operational_burn_token)
 btn_op_burn_token.grid(row=10, column=3, sticky="nsew")
 ```
