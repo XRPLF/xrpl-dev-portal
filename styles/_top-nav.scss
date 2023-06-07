@@ -1,3 +1,33 @@
+// marquee
+@keyframes marquee-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-826px);
+  }
+}
+.marquee-wrap {
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.marquee-item {
+  width: 6192px;
+  height: 32px;
+  background-image: url(../img/apex-banner.png);
+  background-position: 0%;
+  background-repeat: repeat-x;
+  background-size: auto 32px;
+  flex: none;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  position: relative;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee-horizontal 16s linear infinite;
+}
 /* Top navigation ----------------------------------------------------------- */
 .top-nav {
   background-color: $gray-900;
@@ -8,8 +38,8 @@
   .navbar-brand {
     text-decoration: none;
     white-space: pre;
-    -webkit-transition: opacity .2s ease, color .2s ease;
-    transition: opacity .2s ease, color .2s ease;
+    -webkit-transition: opacity 0.2s ease, color 0.2s ease;
+    transition: opacity 0.2s ease, color 0.2s ease;
     padding-left: 2rem;
 
     .logo {
@@ -51,7 +81,6 @@
     }
   }
 
-
   // Dropdowns -----------------------------------------------------------------
   // Shared styles
   .dropdown-toggle {
@@ -68,7 +97,7 @@
     }
     .dropdown-item {
       line-height: 1rem;
-      padding: .75rem 0;
+      padding: 0.75rem 0;
       white-space: normal;
 
       &.dropdown-hero {
@@ -82,7 +111,7 @@
           background-color: $gray-800;
           border-radius: $border-radius-sm;
           flex-grow: 0;
-          padding: .75rem;
+          padding: 0.75rem;
           margin-right: 2rem;
           margin-top: auto;
           margin-bottom: auto;
@@ -190,7 +219,7 @@
       border-radius: 0 0 $border-radius-lg $border-radius-lg;
       padding: 2.5rem;
 
-      .dropdown-item{
+      .dropdown-item {
         &.dropdown-hero {
           padding: 0;
         }
@@ -275,7 +304,7 @@
       @media (min-width: 992px) and (max-width: 1030px) {
         // Fix for top nav overflow in this range
         .nav-link {
-          padding: $nav-link-padding-y 1.6rem;//TODO:checkme
+          padding: $nav-link-padding-y 1.6rem; //TODO:checkme
         }
       }
     }
@@ -295,7 +324,7 @@
     @include media-breakpoint-up(xl) {
       #topnav-search {
         margin-left: 4rem;
-        margin-right: .5rem;
+        margin-right: 0.5rem;
       }
     }
   } // End desktop styles
@@ -323,7 +352,7 @@
           display: block;
           width: 100%;
           height: 3px;
-          transition: all .2s ease;
+          transition: all 0.2s ease;
         }
         &::before {
           top: 0;
@@ -369,7 +398,7 @@
       margin: 0;
       width: 100%;
       overflow: auto;
-      transition: all .2s ease;
+      transition: all 0.2s ease;
       height: 0;
       display: block;
       padding: 0;
@@ -451,19 +480,19 @@
         border: 0;
         font-family: FontAwesome;
         color: $blue-purple-400;
-        font-size: .75rem;
-        transition: all .2s ease;
+        font-size: 0.75rem;
+        transition: all 0.2s ease;
         overflow: clip;
         width: 1rem;
       }
 
       &::before {
-        content:"\f053"; // < chevron
+        content: "\f053"; // < chevron
         display: inline-block;
         margin-bottom: -5px; // fix weird placement on Chrome
       }
       &::after {
-        content:"\f054"; // > chevron
+        content: "\f054"; // > chevron
         position: absolute;
         right: 2rem;
       }
@@ -487,7 +516,7 @@
     #top-main-nav {
       padding-top: 72px;
       position: relative;
-      transition: padding-top .2s ease;
+      transition: padding-top 0.2s ease;
 
       // Hide search and other sub-menus when one sub-menu is expanded
       // (js required to add the class on the dropdown event)
@@ -512,7 +541,7 @@
       top: 0;
       width: 100%;
       height: 72px;
-      transition: all .2s ease;
+      transition: all 0.2s ease;
 
       .input-group {
         flex-wrap: nowrap; // Fix search bar splitting into two lines on iPhone 5
@@ -527,7 +556,6 @@
         display: static;
       }
     }
-
   } // end mobile specific styles ----------------------------------------------
 
   // nav "hero" images
@@ -537,9 +565,7 @@
   #top-nav-hero-contribute {
     content: url("../img/icons/contribute.svg");
   }
-
 }
-
 
 // Fix so anchors don't jump under the fixed header ----------------------------
 .main h1:before,
@@ -567,17 +593,17 @@ a {
 .chevron {
   position: relative;
   display: inline-block;
-  width: .75rem;
-  height: .5625rem;
+  width: 0.75rem;
+  height: 0.5625rem;
 
   span {
     position: absolute;
-    top: .25rem;
+    top: 0.25rem;
     display: inline-block;
-    width: .5rem;
-    height: .15rem;
+    width: 0.5rem;
+    height: 0.15rem;
     background-color: $blue-purple-400;
-    transition: all .2s ease;
+    transition: all 0.2s ease;
     border: none;
   }
   &:not(.expander) span {
@@ -628,9 +654,9 @@ a {
     background-size: 3rem;
     background-color: transparent;
     transform-origin: center;
-    margin-left: -.5rem;
-    margin-right: .5rem;
-    transition: transform .4s ease, background-position .4s ease;
+    margin-left: -0.5rem;
+    margin-right: 0.5rem;
+    transition: transform 0.4s ease, background-position 0.4s ease;
     // Default: dark mode, show moon
     transform: rotate(15deg);
     background-position: top left;
