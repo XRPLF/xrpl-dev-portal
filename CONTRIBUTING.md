@@ -41,8 +41,9 @@ The portal is built using [Dactyl](https://github.com/ripple/dactyl).
 
 Dactyl requires [Python 3](https://python.org/). Install it with [pip](https://pip.pypa.io/en/stable/):
 
-`sudo pip3 install dactyl
-`
+```
+pip3 install dactyl
+```
 
 ## Building the Site
 
