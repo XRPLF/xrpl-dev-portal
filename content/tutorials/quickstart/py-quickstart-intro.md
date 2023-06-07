@@ -30,7 +30,7 @@ Typically, the example functions for interacting with the XRP Ledger involve fou
 
 Each lesson shows you how to build the Token Test Harness one section at a time. Each module lets you try out meaningful interactions with the test ledger, with complete Python code samples and a code walkthrough. There is also a link to the complete source code for each section that can be modified with a text editor and run in a Python environment. You can try out the examples in any order.
 
-This quickstart tutorial introduces you to the API used to implement features and explore the capabilities of XRP Ledger. It does not represent *all* of the capabilities of the API and this example is not intended for production or secure payment use.
+This quickstart tutorial introduces you to the API used to implement features and explore the capabilities of XRP Ledger. It does not represent _all_ of the capabilities of the API and this example is not intended for production or secure payment use.
 
 Much of this is “brute force” code that sacrifices conciseness for readability. Each example builds on the previous step, adding a new Python UI file and a module to support the new behavior in the lesson. We expect the applications you build to greatly improve upon these examples. Your feedback and contributions are most welcome.
 
@@ -51,5 +51,5 @@ To get started, create a new folder on your local disk and install the Python li
 ```
     pip3 install xrpl-py
 ```
-
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/python/{.github-code-download}.
 **Note:** Without the Quickstart Samples, you will not be able to try the examples that follow.

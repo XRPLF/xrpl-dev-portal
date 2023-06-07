@@ -1,5 +1,5 @@
 ---
-html: py-mint-and-burn-nftokens.html
+html: py-mint-and-burn-nfts.html
 parent: quickstart-python.html
 blurb: Quickstart step 3, mint and burn NFTs.
 labels:
