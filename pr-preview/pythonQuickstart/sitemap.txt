@@ -109,7 +109,7 @@ https://xrpl.org/quickstart-python.html
 https://xrpl.org/py-quickstart-intro.html
 https://xrpl.org/py-create-accounts-send-xrp.html
 https://xrpl.org/py-create-trustline-send-currency.html
-https://xrpl.org/py-mint-and-burn-nftokens.html
+https://xrpl.org/py-mint-and-burn-nfts.html
 https://xrpl.org/py-transfer-nfts.html
 https://xrpl.org/py-broker-sale.html
 https://xrpl.org/py-authorize-minter.html

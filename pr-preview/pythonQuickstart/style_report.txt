@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 72 possible spelling errors:
+Found 73 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gif, gits, rifs
+  gifs: rifs, ifs, gids
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -27,7 +27,7 @@ Found 72 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slab, ssas, slap
+  slas: slab, slav, slays
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
@@ -36,83 +36,86 @@ Found 72 possible spelling errors:
   xlsd: xls, lsd
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  immediateofferkilled: 
-  fixuniversalnumber: 
-  depositpreauthamendment: 
   xrpfees: 
   fixnonfungibletokensv1_2: 
   disallowincoming: 
+  fixuniversalnumber: 
+  immediateofferkilled: 
+  depositpreauthamendment: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingnftoffer: 
+  asfdisallowincomingtrustline: 
   asfdisallowincomingpaychan: 
   asfdisallowincomingcheck: 
-  asfdisallowincomingtrustline: 
-  30d: 3-d, 3rd, 3d
+  asfdisallowincomingnftoffer: 
+  30d: 3-d, 3d, 3rd
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
+<Page 'Quickstart Introduction (Python)' (py-quickstart-intro.html)> Unknown Words:
+  _code: code
+
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mody, mod, mode
+  mod1: mods, modo, mode
   get_account: 
   get_account_info: 
   send_xrp: 
   lesson1: lesson, lessons
-  tkinter: tinter, twinter
+  tkinter: twinter, tinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mody, mod, mode
+  mod2: mods, modo, mode
   send_currency: 
   get_balance: 
   configure_account: 
   lesson2: lesson, lessons
 
-<Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nftokens.html)> Unknown Words:
-  mod3: mody, mod, mode
+<Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nfts.html)> Unknown Words:
+  mod3: mods, modo, mode
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page '4. Transfer NFTs (Python)' (py-transfer-nfts.html)> Unknown Words:
-  mod4: mody, mod, mode
+  mod4: mods, modo, mode
   offer___index: 
   alloffers: 
   lesson4: lesson, lessons
 
 <Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)> Unknown Words:
   sell___offer___index: 
-  buy___offer___index: 
   broker___fee: 
+  buy___offer___index: 
   lesson5: lesson, lessons
 
 <Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)> Unknown Words:
-  mod6: mody, mod, mode
+  mod6: mods, modo, mode
   mint_other: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3-d, 3d, 3rd
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -173,7 +176,7 @@ Page: <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-
 Page: <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
    Discouraged word: wallet (5 instances); suggest 'address, client application, account' instead.
-Page: <Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nftokens.html)>
+Page: <Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nfts.html)>
    Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
 Page: <Page '4. Transfer NFTs (Python)' (py-transfer-nfts.html)>
    Discouraged word: wallet (6 instances); suggest 'address, client application, account' instead.
