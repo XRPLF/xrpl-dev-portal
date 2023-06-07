@@ -142,6 +142,7 @@ The XRP Ledger checks all the following invariants on each transaction:
     - A NFTokenBurn transaction cannot change the number of minted NFTs.
     
 ### NFTokenCountTracking
+
 - **Invariant Condition(s):**
     - The page is correctly associated with the owner.
     - The page is correctly ordered between the next and previous links.
