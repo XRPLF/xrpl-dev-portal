@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 44 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gids, gips, gins
-  ringtee: 
+  gifs: gif, gibs, gils
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -27,7 +27,7 @@ Found 44 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: swas, sas, sla
+  slas: alas, stas, slae
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
@@ -36,17 +36,17 @@ Found 44 possible spelling errors:
   xlsd: lsd, xls
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  depositpreauthamendment: 
-  fixuniversalnumber: 
   immediateofferkilled: 
-  disallowincoming: 
+  depositpreauthamendment: 
   fixnonfungibletokensv1_2: 
+  disallowincoming: 
+  fixuniversalnumber: 
   xrpfees: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingpaychan: 
-  asfdisallowincomingtrustline: 
   asfdisallowincomingnftoffer: 
   asfdisallowincomingcheck: 
+  asfdisallowincomingtrustline: 
   30d: 3rd, 3-d, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
@@ -56,23 +56,23 @@ Found 44 possible spelling errors:
   30d: 3rd, 3-d, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
