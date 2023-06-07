@@ -1,5 +1,5 @@
 ---
-html: transfer-nftokens.html
+html: transfer-nfts.html
 parent: quickstart-javascript.html
 blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs.
 labels:
