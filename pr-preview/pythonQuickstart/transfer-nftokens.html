@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>4. Transfer NFTokens - XRPL.org</title>
+    <title>4. Transfer NFTs - XRPL.org</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="4. Transfer NFTokens | XRPL.org">
+    <meta property="og:title" content="4. Transfer NFTs | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/transfer-nftokens.html" />
-    <meta property="og:description" content="Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTokens." />
-    <meta name="description" content="Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTokens." />
+    <meta property="og:description" content="Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs." />
+    <meta name="description" content="Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -241,7 +241,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/pythonQuickstart/content/tutorials/quickstart/transfer-nftokens.md?pr=/XRPLF/xrpl-dev-portal/pull/1911" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/pythonQuickstart/content/tutorials/quickstart/transfer-nfts.md?pr=/XRPLF/xrpl-dev-portal/pull/1911" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -260,7 +260,7 @@
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#4-transfer-nftokens">4. Transfer NFTokens</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#4-transfer-nfts">4. Transfer NFTs</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#usage">Usage</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#get-accounts">Get Accounts</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#create-a-sell-offer">Create a Sell Offer</a></li>
@@ -293,26 +293,26 @@
     <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
     <li class="active breadcrumb-item"><a href="xrpl-quickstart.html">Quickstart</a></li>
     <li class="active breadcrumb-item"><a href="quickstart-javascript.html">Quickstart (JavaScript)</a></li>
-    <li class="active breadcrumb-item">4. Transfer NFTokens</li>
+    <li class="active breadcrumb-item">4. Transfer NFTs</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="4-transfer-nftokens">4. Transfer NFTokens<a aria-hidden="true" class="hover_anchor" href="#4-transfer-nftokens"><i class="fa fa-link"></i></a></h1>
+        <h1 id="4-transfer-nfts">4. Transfer NFTs<a aria-hidden="true" class="hover_anchor" href="#4-transfer-nfts"><i class="fa fa-link"></i></a></h1>
 <p>This example shows how to:</p>
 <ol>
-<li>Create NFToken Sell Offers.</li>
-<li>Create NFToken Buy Offers.</li>
-<li>Accept NFToken Sell Offers.</li>
-<li>Accept NFToken Buy Offers.</li>
-<li>Get a list of offers for a particular NFToken.</li>
+<li>Create NFT Sell Offers.</li>
+<li>Create NFT Buy Offers.</li>
+<li>Accept NFT Sell Offers.</li>
+<li>Accept NFT Buy Offers.</li>
+<li>Get a list of offers for a particular NFT.</li>
 <li>Cancel an offer.</li>
 </ol>
-<p><a href="img/quickstart13.png"><img alt="Quickstart form with NFToken transfer fields" src="img/quickstart13.png"/></a></p>
+<p><a href="img/quickstart13.png"><img alt="Quickstart form with NFT transfer fields" src="img/quickstart13.png"/></a></p>
 <p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try each of the samples in your own browser.</p>
 <h1 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h1>
 <h2 id="get-accounts">Get Accounts<a aria-hidden="true" class="hover_anchor" href="#get-accounts"><i class="fa fa-link"></i></a></h2>
 <ol>
-<li>Open <code>4.transfer-nftokens.html</code> in a browser.</li>
+<li>Open <code>4.transfer-nfts.html</code> in a browser.</li>
 <li>Choose your ledger instance (<strong>Testnet</strong> or <strong>Devnet</strong>).</li>
 <li>Get test accounts.<ol>
 <li>If you have existing test account seeds<ol>
@@ -330,51 +330,51 @@
 </ol>
 <p><a href="img/quickstart14.png"><img alt="Form with account information" src="img/quickstart14.png"/></a></p>
 <h2 id="create-a-sell-offer">Create a Sell Offer<a aria-hidden="true" class="hover_anchor" href="#create-a-sell-offer"><i class="fa fa-link"></i></a></h2>
-<p>To create a NFToken sell offer:</p>
+<p>To create a NFT sell offer:</p>
 <ol>
 <li>Enter the <strong>Amount</strong> of the sell offer in drops (millionths of an XRP).</li>
 <li>Set the <strong>Flags</strong> field to <em>1</em>.</li>
-<li>Enter the <strong>NFToken ID</strong> of the NFToken you want to sell.</li>
+<li>Enter the <strong>NFT ID</strong> of the NFT you want to sell.</li>
 <li>Optionally, enter a number of days until <strong>Expiration</strong>.</li>
 <li>Click <strong>Create Sell Offer</strong>.</li>
 </ol>
-<p>The important piece of information in the response is the NFToken Offer Index, labeled as <code>nft_offer_index</code>, which you use to accept the sell offer.</p>
-<p><a href="img/quickstart15.png"><img alt="NFToken Sell Offer" src="img/quickstart15.png"/></a></p>
+<p>The important piece of information in the response is the NFT Offer Index, labeled as <code>nft_offer_index</code>, which you use to accept the sell offer.</p>
+<p><a href="img/quickstart15.png"><img alt="NFT Sell Offer" src="img/quickstart15.png"/></a></p>
 <h2 id="accept-sell-offer">Accept Sell Offer<a aria-hidden="true" class="hover_anchor" href="#accept-sell-offer"><i class="fa fa-link"></i></a></h2>
-<p>Once a sell offer is available, another account can opt to accept the offer and buy the NFToken.</p>
+<p>Once a sell offer is available, another account can opt to accept the offer and buy the NFT.</p>
 <p>To accept an available sell offer:</p>
 <ol>
-<li>Enter the <strong>NFToken Offer Index</strong> (labeled as <code>nft_offer_index</code> in the token offer results. This is different from the <code>NFTokenID</code>.)</li>
+<li>Enter the <strong>NFT Offer Index</strong> (labeled as <code>nft_offer_index</code> in the token offer results. This is different from the <code>NFTokenID</code>.)</li>
 <li>Click <strong>Accept Sell Offer</strong>.</li>
 </ol>
 <p><a href="img/quickstart16.png"><img alt="Accept Sell Offer" src="img/quickstart16.png"/></a></p>
 <h2 id="create-a-buy-offer">Create a Buy Offer<a aria-hidden="true" class="hover_anchor" href="#create-a-buy-offer"><i class="fa fa-link"></i></a></h2>
-<p>You can offer to buy a NFToken from another account.</p>
-<p>To create an offer to buy a NFToken:</p>
+<p>You can offer to buy a NFT from another account.</p>
+<p>To create an offer to buy a NFT:</p>
 <ol>
 <li>Enter the <strong>Amount</strong> of your offer.</li>
-<li>Enter the <strong>NFToken ID</strong>.</li>
+<li>Enter the <strong>NFT ID</strong>.</li>
 <li>Enter the owner’s account string in the <strong>Owner</strong> field.</li>
 <li>Optionally enter the number of days until <strong>Expiration</strong>.</li>
 <li>Click <strong>Create Buy Offer</strong>.</li>
 </ol>
-<p><a href="img/quickstart17.png"><img alt="NFToken Buy Offer" src="img/quickstart17.png"/></a></p>
+<p><a href="img/quickstart17.png"><img alt="NFT Buy Offer" src="img/quickstart17.png"/></a></p>
 <h2 id="accept-a-buy-offer">Accept a Buy Offer<a aria-hidden="true" class="hover_anchor" href="#accept-a-buy-offer"><i class="fa fa-link"></i></a></h2>
-<p>To accept an offer to buy a NFToken:</p>
+<p>To accept an offer to buy an NFT:</p>
 <ol>
-<li>Enter the <strong>NFToken Offer Index</strong> (the <code>nft_offer_index</code> of the NFToken buy offer).</li>
+<li>Enter the <strong>NFT Offer Index</strong> (the <code>nft_offer_index</code> of the NFT buy offer).</li>
 <li>Click <strong>Accept Buy Offer</strong>.</li>
 </ol>
 <p><a href="img/quickstart18.png"><img alt="Accept Buy Offer" src="img/quickstart18.png"/></a></p>
 <h2 id="get-offers">Get Offers<a aria-hidden="true" class="hover_anchor" href="#get-offers"><i class="fa fa-link"></i></a></h2>
-<p>To list the buy and sell offers associated with a NFToken:
-1. Enter the <strong>NFToken ID</strong>.
+<p>To list the buy and sell offers associated with an NFT:
+1. Enter the <strong>NFT ID</strong>.
 2. Click <strong>Get Offers</strong>.</p>
 <p><a href="img/quickstart19.png"><img alt="Get offers" src="img/quickstart19.png"/></a></p>
 <h2 id="cancel-offer">Cancel Offer<a aria-hidden="true" class="hover_anchor" href="#cancel-offer"><i class="fa fa-link"></i></a></h2>
 <p>To cancel a buy or sell offer that you have created:</p>
 <ol>
-<li>Enter the <strong>NFToken Offer Index</strong>.</li>
+<li>Enter the <strong>NFT Offer Index</strong>.</li>
 <li>Click <strong>Cancel Offer</strong>.</li>
 </ol>
 <p><a href="img/quickstart20.png"><img alt="Cancel offer" src="img/quickstart20.png"/></a></p>
@@ -421,7 +421,7 @@
 <span class="w">    </span><span class="nx">transactionBlob</span><span class="p">.</span><span class="nx">Expiration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">expirationDate</span>
 <span class="w">  </span><span class="p">}</span>
 </code></pre></div>
-<p>If the Destination field is not empty, append it to the transaction. When the destination is set, only the destination account can buy the NFToken.</p>
+<p>If the Destination field is not empty, append it to the transaction. When the destination is set, only the destination account can buy the NFT.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="nx">standbyDestinationField</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">transactionBlob</span><span class="p">.</span><span class="nx">Destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">standbyDestinationField</span><span class="p">.</span><span class="nx">value</span>
 <span class="w">  </span><span class="p">}</span>
@@ -1240,7 +1240,7 @@
                       <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                     <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
                     <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-                      <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFToken URL<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                      <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFT URL<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                       <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"standbyTokenUrlField"</span>
                         <span class="na">value </span><span class="o">=</span> <span class="s">"ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"</span> <span class="na">size</span><span class="o">=</span><span class="s">"80"</span><span class="p">/&gt;</span>
                       <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
@@ -1250,11 +1250,11 @@
                       <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"standbyFlagsField"</span> <span class="na">value</span><span class="o">=</span><span class="s">"1"</span> <span class="na">size</span><span class="o">=</span><span class="s">"10"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                     <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
                     <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-                      <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFToken ID<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                      <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFT ID<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                       <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"standbyTokenIdField"</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span> <span class="na">size</span><span class="o">=</span><span class="s">"80"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                     <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
                     <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-                      <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFToken Offer Index<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                      <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFT Offer Index<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                       <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"standbyTokenOfferIndexField"</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span> <span class="na">size</span><span class="o">=</span><span class="s">"80"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                     <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
                     <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
@@ -1291,11 +1291,11 @@
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
                         <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"getBalances()"</span><span class="p">&gt;</span>Get Balances<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"mintToken()"</span><span class="p">&gt;</span>Mint NFToken<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"mintToken()"</span><span class="p">&gt;</span>Mint NFT<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"getTokens()"</span><span class="p">&gt;</span>Get NFTokens<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"getTokens()"</span><span class="p">&gt;</span>Get NFTs<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"burnToken()"</span><span class="p">&gt;</span>Burn NFToken<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"burnToken()"</span><span class="p">&gt;</span>Burn NFT<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
                         <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"createSellOffer()"</span><span class="p">&gt;</span>Create Sell Offer<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
@@ -1333,11 +1333,11 @@
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
                         <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"getBalances()"</span><span class="p">&gt;</span>Get Balances<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"oPmintToken()"</span><span class="p">&gt;</span>Mint NFToken<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"oPmintToken()"</span><span class="p">&gt;</span>Mint NFT<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"oPgetTokens()"</span><span class="p">&gt;</span>Get NFTokens<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"oPgetTokens()"</span><span class="p">&gt;</span>Get NFTs<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"oPburnToken()"</span><span class="p">&gt;</span>Burn NFToken<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"oPburnToken()"</span><span class="p">&gt;</span>Burn NFT<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
                         <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"oPcreateSellOffer()"</span><span class="p">&gt;</span>Create Sell Offer<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
@@ -1425,7 +1425,7 @@
                             <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                           <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
                           <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-                            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFToken URL<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFT URL<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                             <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"operationalTokenUrlField"</span>
                               <span class="na">value </span><span class="o">=</span> <span class="s">"ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"</span> <span class="na">size</span><span class="o">=</span><span class="s">"80"</span><span class="p">/&gt;</span>
                             <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
@@ -1435,11 +1435,11 @@
                             <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"operationalFlagsField"</span> <span class="na">value</span><span class="o">=</span><span class="s">"1"</span> <span class="na">size</span><span class="o">=</span><span class="s">"10"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                           <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
                           <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-                            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFToken ID<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFT ID<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                             <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"operationalTokenIdField"</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span> <span class="na">size</span><span class="o">=</span><span class="s">"80"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                           <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
                           <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-                            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFToken Offer Index<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">align</span><span class="o">=</span><span class="s">"right"</span><span class="p">&gt;</span>NFT Offer Index<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                             <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"operationalTokenOfferIndexField"</span> <span class="na">value</span><span class="o">=</span><span class="s">""</span> <span class="na">size</span><span class="o">=</span><span class="s">"80"</span><span class="p">/&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
                           <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
                           <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
@@ -2011,17 +2011,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+    <a class="nav-link nav-leaf" href="mint-and-burn-nfts.html">3. Mint and Burn NFTs</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTs</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker an NFT Sale</a>
   </div>
 
       
@@ -2031,7 +2031,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTokens</a>
+    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -2063,12 +2063,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="py-mint-and-burn-nftokens.html">3. Mint and Burn NFTokens (Python)</a>
+    <a class="nav-link nav-leaf" href="py-mint-and-burn-nftokens.html">3. Mint and Burn NFTs (Python)</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="py-transfer-nftokens.html">4. Transfer NFTokens (Python)</a>
+    <a class="nav-link nav-leaf" href="py-transfer-nfts.html">4. Transfer NFTs (Python)</a>
   </div>
 
       

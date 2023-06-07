@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>4. Transfer NFTokens (Python) - XRPL.org (日本語)</title>
+    <title>4. Transfer NFTs (Python) - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="4. Transfer NFTokens (Python) | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/py-transfer-nftokens.html" />
+    <meta property="og:title" content="4. Transfer NFTs (Python) | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/py-transfer-nfts.html" />
     <meta property="og:description" content="Use a Python test harness to create and accept NFT buy and sell offers." />
     <meta name="description" content="Use a Python test harness to create and accept NFT buy and sell offers." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
@@ -15,9 +15,9 @@
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="ja" />
-    <link rel="alternate" href="https://xrpl.org/py-transfer-nftokens.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/py-transfer-nftokens.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/py-transfer-nftokens.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/py-transfer-nfts.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/py-transfer-nfts.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/py-transfer-nfts.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -217,7 +217,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/py-transfer-nftokens.html">
+          <a class="dropdown-item" href="/py-transfer-nfts.html">
             English
           </a>
           <hr />
@@ -245,7 +245,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/pythonQuickstart/content/tutorials/quickstart/py-transfer-nftokens.md?pr=/XRPLF/xrpl-dev-portal/pull/1911" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/pythonQuickstart/content/tutorials/quickstart/py-transfer-nfts.md?pr=/XRPLF/xrpl-dev-portal/pull/1911" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -266,7 +266,7 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#4-transfer-nftokens-python">4. Transfer NFTokens (Python)</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#4-transfer-nfts-python">4. Transfer NFTs (Python)</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#usage">Usage</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#get-accounts">Get Accounts</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#create-a-sell-offer">Create a Sell Offer</a></li>
@@ -299,29 +299,29 @@
     <li class="active breadcrumb-item"><a href="/ja/tutorials.html">チュートリアル</a></li>
     <li class="active breadcrumb-item"><a href="/ja/xrpl-quickstart.html">Quickstart</a></li>
     <li class="active breadcrumb-item"><a href="/ja/quickstart-python.html">Quickstart (Python)</a></li>
-    <li class="active breadcrumb-item">4. Transfer NFTokens (Python)</li>
+    <li class="active breadcrumb-item">4. Transfer NFTs (Python)</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
       <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="4-transfer-nftokens-python">4. Transfer NFTokens (Python)<a aria-hidden="true" class="hover_anchor" href="#4-transfer-nftokens-python"><i class="fa fa-link"></i></a></h1>
+        <h1 id="4-transfer-nfts-python">4. Transfer NFTs (Python)<a aria-hidden="true" class="hover_anchor" href="#4-transfer-nfts-python"><i class="fa fa-link"></i></a></h1>
 <p>This example shows how to:</p>
 <ol>
-<li>Create NFToken Sell Offers.</li>
-<li>Create NFToken Buy Offers.</li>
-<li>Accept NFToken Sell Offers.</li>
-<li>Accept NFToken Buy Offers.</li>
-<li>Get a list of offers for a particular NFToken.</li>
+<li>Create NFT Sell Offers.</li>
+<li>Create NFT Buy Offers.</li>
+<li>Accept NFT Sell Offers.</li>
+<li>Accept NFT Buy Offers.</li>
+<li>Get a list of offers for a particular NFT.</li>
 <li>Cancel an offer.</li>
 </ol>
-<p><a href="img/quickstart-py15.png"><img alt="Quickstart form with NFToken transfer fields" src="img/quickstart-py15.png"/></a></p>
+<p><a href="img/quickstart-py15.png"><img alt="Quickstart form with NFT transfer fields" src="img/quickstart-py15.png"/></a></p>
 <p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try each of the samples in your own browser.</p>
 <h1 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h1>
 <h2 id="get-accounts">Get Accounts<a aria-hidden="true" class="hover_anchor" href="#get-accounts"><i class="fa fa-link"></i></a></h2>
 <ol>
-<li>Open <code>4.transfer-nftokens.html</code> in a browser.</li>
+<li>Open <code>4.transfer-nfts.html</code> in a browser.</li>
 <li>Choose your ledger instance (<strong>Testnet</strong> or <strong>Devnet</strong>).</li>
 <li>Get test accounts.<ol>
 <li>If you have existing test account seeds<ol>
@@ -345,25 +345,25 @@
 </ol>
 <p><a href="img/quickstart-py16.png"><img alt="Form with account information" src="img/quickstart-py16.png"/></a></p>
 <h2 id="create-a-sell-offer">Create a Sell Offer<a aria-hidden="true" class="hover_anchor" href="#create-a-sell-offer"><i class="fa fa-link"></i></a></h2>
-<p>To create a NFToken sell offer:</p>
+<p>To create a NFT sell offer:</p>
 <ol>
 <li>Enter the <strong>Amount</strong> of the sell offer in drops (millionths of an XRP).</li>
-<li>Enter the <strong>NFToken ID</strong> of the NFToken you want to sell.</li>
+<li>Enter the <strong>NFT ID</strong> of the NFT you want to sell.</li>
 <li>Optionally, enter a <strong>Destination</strong> account, the only account that can accept the offer.</li>
 <li>Optionally, enter a number of seconds until <strong>Expiration</strong>.</li>
 <li>Click <strong>Create Sell Offer</strong>.</li>
 <li>Click <strong>Get Offers</strong>.</li>
 </ol>
-<p>The important piece of information in the response is the NFToken Offer Index, labeled as <code>nft_offer_index</code>, which you use to accept the sell offer.</p>
-<p><a href="img/quickstart-py17.png"><img alt="NFToken Sell Offer" src="img/quickstart-py17.png"/></a></p>
+<p>The important piece of information in the response is the NFT Offer Index, labeled as <code>nft_offer_index</code>, which you use to accept the sell offer.</p>
+<p><a href="img/quickstart-py17.png"><img alt="NFT Sell Offer" src="img/quickstart-py17.png"/></a></p>
 <h2 id="accept-sell-offer">Accept Sell Offer<a aria-hidden="true" class="hover_anchor" href="#accept-sell-offer"><i class="fa fa-link"></i></a></h2>
-<p>Once a sell offer is available, another account can opt to accept the offer and buy the NFToken.</p>
+<p>Once a sell offer is available, another account can opt to accept the offer and buy the NFT.</p>
 <p>To accept an available sell offer:</p>
 <ol>
-<li>Enter the <strong>NFToken Offer Index</strong> (labeled as <code>nft_offer_index</code> in the token offer results. This is different from the <code>NFTokenID</code>.)</li>
+<li>Enter the <strong>NFT Offer Index</strong> (labeled as <code>nft_offer_index</code> in the token offer results. This is different from the <code>NFTokenID</code>.)</li>
 <li>Click <strong>Accept Sell Offer</strong>.</li>
 <li>Click <strong>Get Standby Account Info</strong> and <strong>Get Op Account Info</strong> to update the XRP balances.</li>
-<li>Click <strong>Get NFTokens</strong> for each account to see that the NFT has moved from the Standby account to the Operational account.</li>
+<li>Click <strong>Get NFTs</strong> for each account to see that the NFT has moved from the Standby account to the Operational account.</li>
 </ol>
 <p><a href="img/quickstart-py18.png"><img alt="Accept Sell Offer" src="img/quickstart-py18.png"/></a></p>
 <h2 id="create-a-buy-offer">Create a Buy Offer<a aria-hidden="true" class="hover_anchor" href="#create-a-buy-offer"><i class="fa fa-link"></i></a></h2>
@@ -371,32 +371,32 @@
 <p>To create an offer to buy an NFT:</p>
 <ol>
 <li>Enter the <strong>Amount</strong> of your offer.</li>
-<li>Enter the <strong>NFToken ID</strong>.</li>
+<li>Enter the <strong>NFT ID</strong>.</li>
 <li>Enter the owner’s account string in the <strong>Owner</strong> field.</li>
 <li>Optionally enter the number of seconds until <strong>Expiration</strong>.</li>
 <li>Click <strong>Create Buy Offer</strong>.</li>
-<li>On the Operational side, enter the <strong>NFToken ID</strong>.</li>
+<li>On the Operational side, enter the <strong>NFT ID</strong>.</li>
 <li>Click <strong>Get Offers</strong> to view the offer and copy the <code>nft_offer_index</code>.</li>
 </ol>
-<p><a href="img/quickstart-py19.png"><img alt="NFToken Buy Offer" src="img/quickstart-py19.png"/></a></p>
+<p><a href="img/quickstart-py19.png"><img alt="NFT Buy Offer" src="img/quickstart-py19.png"/></a></p>
 <h2 id="accept-a-buy-offer">Accept a Buy Offer<a aria-hidden="true" class="hover_anchor" href="#accept-a-buy-offer"><i class="fa fa-link"></i></a></h2>
 <p>To accept an offer to buy an NFT:</p>
 <ol>
-<li>Enter the <strong>NFToken Offer Index</strong> (the <code>nft_offer_index</code> of the NFT buy offer).</li>
+<li>Enter the <strong>NFT Offer Index</strong> (the <code>nft_offer_index</code> of the NFT buy offer).</li>
 <li>Click <strong>Accept Buy Offer</strong>.</li>
 <li>Click <strong>Get Standby Account Info</strong> and <strong>Get Op Account Info</strong> to update the XRP balances.</li>
-<li>Click <strong>Get NFTokens</strong> for both accounts to see that the NFT has moved from the Operational account to the Standby account.</li>
+<li>Click <strong>Get NFTs</strong> for both accounts to see that the NFT has moved from the Operational account to the Standby account.</li>
 </ol>
 <p><a href="img/quickstart-py20.png"><img alt="Accept Buy Offer" src="img/quickstart-py20.png"/></a></p>
 <h2 id="get-offers">Get Offers<a aria-hidden="true" class="hover_anchor" href="#get-offers"><i class="fa fa-link"></i></a></h2>
 <p>To list the buy and sell offers associated with an NFT:
-1. Enter the <strong>NFToken ID</strong>.
+1. Enter the <strong>NFT ID</strong>.
 2. Click <strong>Get Offers</strong>.</p>
 <p><a href="img/quickstart21.png"><img alt="Get offers" src="img/quickstart21.png"/></a></p>
 <h2 id="cancel-offer">Cancel Offer<a aria-hidden="true" class="hover_anchor" href="#cancel-offer"><i class="fa fa-link"></i></a></h2>
 <p>To cancel a buy or sell offer that you have created:</p>
 <ol>
-<li>Enter the <strong>NFToken Offer Index</strong>.</li>
+<li>Enter the <strong>NFT Offer Index</strong>.</li>
 <li>Click <strong>Cancel Offer</strong>.</li>
 </ol>
 <p><a href="img/quickstart22.png"><img alt="Cancel offer" src="img/quickstart22.png"/></a></p>
@@ -418,7 +418,7 @@
 </code></pre></div>
 <h2 id="create-sell-offer">Create Sell Offer<a aria-hidden="true" class="hover_anchor" href="#create-sell-offer"><i class="fa fa-link"></i></a></h2>
 <p>Pass the arguments <em>seed</em>, <em>amount</em>, <em>NFT ID</em>, <em>expiration</em> (in seconds, optional), and <em>destination</em> (optional).</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">def</span> <span class="nf">create_sell_offer</span><span class="p">(</span><span class="n">_seed</span><span class="p">,</span> <span class="n">_amount</span><span class="p">,</span> <span class="n">_nftoken_id</span><span class="p">,</span> <span class="n">_expiration</span><span class="p">,</span> <span class="n">_destination</span><span class="p">):</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">def</span> <span class="nf">create_sell_offer</span><span class="p">(</span><span class="n">_seed</span><span class="p">,</span> <span class="n">_amount</span><span class="p">,</span> <span class="n">_nft_id</span><span class="p">,</span> <span class="n">_expiration</span><span class="p">,</span> <span class="n">_destination</span><span class="p">):</span>
 </code></pre></div>
 <p>Get the owner wallet and create a client connection.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">    <span class="n">owner_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="p">(</span><span class="n">_seed</span><span class="p">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">16237283</span><span class="p">)</span>
@@ -433,7 +433,7 @@
 <p>Define the sell offer transaction.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">    <span class="n">sell_offer_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">NFTokenCreateOffer</span><span class="p">(</span>
         <span class="n">account</span> <span class="o">=</span> <span class="n">owner_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
-        <span class="n">nftoken_id</span> <span class="o">=</span> <span class="n">_nftoken_id</span><span class="p">,</span>
+        <span class="n">nftoken_id</span> <span class="o">=</span> <span class="n">_nft_id</span><span class="p">,</span>
         <span class="n">amount</span> <span class="o">=</span> <span class="n">_amount</span><span class="p">,</span>
 </code></pre></div>
 <p>If the sale is designated for a specific destination account, include the <code>destination</code> argument.</p>
@@ -585,14 +585,14 @@
 <h2 id="cancel-offer-1">Cancel Offer<a aria-hidden="true" class="hover_anchor" href="#cancel-offer-1"><i class="fa fa-link"></i></a></h2>
 <p>The creator of an offer can cancel it at any time before it is accepted. Anyone can cancel and offer if its expiration data has expired.</p>
 <p>Pass the seed and the NFT Offer ID to be canceled.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-38" id="codeblock-38button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-38"><span class="k">def</span> <span class="nf">cancel_offer</span><span class="p">(</span><span class="n">_seed</span><span class="p">,</span> <span class="n">_nftoken_offer_ids</span><span class="p">):</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-38" id="codeblock-38button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-38"><span class="k">def</span> <span class="nf">cancel_offer</span><span class="p">(</span><span class="n">_seed</span><span class="p">,</span> <span class="n">_nft_offer_ids</span><span class="p">):</span>
 </code></pre></div>
 <p>Get the wallet and a client instance.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-39" id="codeblock-39button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-39">    <span class="n">owner_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="p">(</span><span class="n">_seed</span><span class="p">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">16237283</span><span class="p">)</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">testnet_url</span><span class="p">)</span>
 </code></pre></div>
 <p>The <code>nftoken_offers</code> parameter is an array, rather than a single ID. You can revise the code to accept several offer IDs at one time. Here, the value is added to a new array variable.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-40" id="codeblock-40button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-40">    <span class="n">tokenOfferIDs</span> <span class="o">=</span> <span class="p">[</span><span class="n">_nftoken_offer_ids</span><span class="p">]</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-40" id="codeblock-40button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-40">    <span class="n">tokenOfferIDs</span> <span class="o">=</span> <span class="p">[</span><span class="n">_nft_offer_ids</span><span class="p">]</span>
 </code></pre></div>
 <p>Define the cancel offer transaction.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-41" id="codeblock-41button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-41">    <span class="n">cancel_offer_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">NFTokenCancelOffer</span><span class="p">(</span>
@@ -906,11 +906,11 @@
 <span class="n">ent_standby_transfer_fee</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
 <span class="n">lbl_standby_taxon</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Taxon"</span><span class="p">)</span>
 <span class="n">ent_standby_taxon</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_standby_nft_id</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFToken ID"</span><span class="p">)</span>
+<span class="n">lbl_standby_nft_id</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFT ID"</span><span class="p">)</span>
 <span class="n">ent_standby_nft_id</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
 </code></pre></div>
 <p>Add fields for the <em>NFT Offer Index</em>, <em>Owner</em>, <em>Expiration</em>, and <em>Transfer Fee</em>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-47" id="codeblock-47button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-47"><span class="n">lbl_standby_nft_offer_index</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFToken Offer Index"</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-47" id="codeblock-47button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-47"><span class="n">lbl_standby_nft_offer_index</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFT Offer Index"</span><span class="p">)</span>
 <span class="n">ent_standby_nft_offer_index</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
 <span class="n">lbl_standby_owner</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Owner"</span><span class="p">)</span>
 <span class="n">ent_standby_owner</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
@@ -982,11 +982,11 @@
 <span class="n">ent_operational_transfer_fee</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
 <span class="n">lbl_operational_taxon</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Taxon"</span><span class="p">)</span>
 <span class="n">ent_operational_taxon</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_operational_nft_id</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFToken ID"</span><span class="p">)</span>
+<span class="n">lbl_operational_nft_id</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFT ID"</span><span class="p">)</span>
 <span class="n">ent_operational_nft_id</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
 </code></pre></div>
-<p>Add fields for <em>NFToken Offer Index</em>, <em>Owner</em>, <em>Expiration</em>, and <em>Transfer Fee</em>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-48" id="codeblock-48button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-48"><span class="n">lbl_operational_nft_offer_index</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFToken Offer Index"</span><span class="p">)</span>
+<p>Add fields for <em>NFT Offer Index</em>, <em>Owner</em>, <em>Expiration</em>, and <em>Transfer Fee</em>.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-48" id="codeblock-48button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-48"><span class="n">lbl_operational_nft_offer_index</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFT Offer Index"</span><span class="p">)</span>
 <span class="n">ent_operational_nft_offer_index</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
 <span class="n">lbl_operational_owner</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Owner"</span><span class="p">)</span>
 <span class="n">ent_operational_owner</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
@@ -1061,13 +1061,13 @@
                                           <span class="n">text</span><span class="o">=</span><span class="s2">"Configure Account"</span><span class="p">,</span>
                                           <span class="n">command</span> <span class="o">=</span> <span class="n">standby_configure_account</span><span class="p">)</span>
 <span class="n">btn_standby_configure_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_mint_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Mint NFToken"</span><span class="p">,</span>
+<span class="n">btn_standby_mint_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Mint NFT"</span><span class="p">,</span>
                                    <span class="n">command</span> <span class="o">=</span> <span class="n">standby_mint_token</span><span class="p">)</span>
 <span class="n">btn_standby_mint_token</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_get_tokens</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get NFTokens"</span><span class="p">,</span>
+<span class="n">btn_standby_get_tokens</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get NFTs"</span><span class="p">,</span>
                                    <span class="n">command</span> <span class="o">=</span> <span class="n">standby_get_tokens</span><span class="p">)</span>
 <span class="n">btn_standby_get_tokens</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_burn_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Burn NFToken"</span><span class="p">,</span>
+<span class="n">btn_standby_burn_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Burn NFT"</span><span class="p">,</span>
                                    <span class="n">command</span> <span class="o">=</span> <span class="n">standby_burn_token</span><span class="p">)</span>
 <span class="n">btn_standby_burn_token</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
 </code></pre></div>
@@ -1115,13 +1115,13 @@
 <span class="n">btn_op_configure_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Configure Account"</span><span class="p">,</span>
                                      <span class="n">command</span> <span class="o">=</span> <span class="n">operational_configure_account</span><span class="p">)</span>
 <span class="n">btn_op_configure_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_mint_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Mint NFToken"</span><span class="p">,</span>
+<span class="n">btn_op_mint_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Mint NFT"</span><span class="p">,</span>
                               <span class="n">command</span> <span class="o">=</span> <span class="n">operational_mint_token</span><span class="p">)</span>
 <span class="n">btn_op_mint_token</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_get_tokens</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get NFTokens"</span><span class="p">,</span>
+<span class="n">btn_op_get_tokens</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get NFTs"</span><span class="p">,</span>
                               <span class="n">command</span> <span class="o">=</span> <span class="n">operational_get_tokens</span><span class="p">)</span>
 <span class="n">btn_op_get_tokens</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_burn_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Burn NFToken"</span><span class="p">,</span>
+<span class="n">btn_op_burn_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Burn NFT"</span><span class="p">,</span>
                               <span class="n">command</span> <span class="o">=</span> <span class="n">operational_burn_token</span><span class="p">)</span>
 <span class="n">btn_op_burn_token</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
 </code></pre></div>
@@ -1681,17 +1681,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nfts.html">3. Mint and Burn NFTs</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a>
+    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTs</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/broker-sale.html">Broker a NFToken Sale</a>
+    <a class="nav-link nav-leaf" href="/ja/broker-sale.html">Broker an NFT Sale</a>
   </div>
 
       
@@ -1701,7 +1701,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/batch-minting.html">Batch Mint NFTokens</a>
+    <a class="nav-link nav-leaf" href="/ja/batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -1733,12 +1733,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/py-mint-and-burn-nftokens.html">3. Mint and Burn NFTokens (Python)</a>
+    <a class="nav-link nav-leaf" href="/ja/py-mint-and-burn-nftokens.html">3. Mint and Burn NFTs (Python)</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/py-transfer-nftokens.html">4. Transfer NFTokens (Python)</a>
+    <a class="nav-link nav-leaf" href="/ja/py-transfer-nfts.html">4. Transfer NFTs (Python)</a>
   </div>
 
       

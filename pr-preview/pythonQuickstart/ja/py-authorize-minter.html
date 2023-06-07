@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Assign an Authorized Minter (Python) | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/py-authorize-minter.html" />
-    <meta property="og:description" content="Authorize another account to mint NFTokens for you." />
-    <meta name="description" content="Authorize another account to mint NFTokens for you." />
+    <meta property="og:description" content="Authorize another account to mint NFTs for you." />
+    <meta name="description" content="Authorize another account to mint NFTs for you." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -272,8 +272,8 @@
         <li class="nav-item level-1"><a class="nav-link" href="#assign-an-authorized-minter-python">Assign an Authorized Minter (Python)</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#usage">Usage</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#get-accounts">Get Accounts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#authorize-an-account-to-create-nftokens">Authorize an Account to Create NFTokens</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#mint-a-nftoken-for-another-account">Mint a NFToken for Another Account</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#authorize-an-account-to-create-nfts">Authorize an Account to Create NFTs</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#mint-an-nft-for-another-account">Mint an NFT for Another Account</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#create-a-sell-offer">Create a Sell Offer</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accept-sell-offer">Accept Sell Offer</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#code-walkthrough">Code Walkthrough</a></li>
@@ -303,11 +303,11 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="assign-an-authorized-minter-python">Assign an Authorized Minter (Python)<a aria-hidden="true" class="hover_anchor" href="#assign-an-authorized-minter-python"><i class="fa fa-link"></i></a></h1>
-<p>You can assign another account permission to mint NFTokens for you.</p>
+<p>You can assign another account permission to mint NFTs for you.</p>
 <p>This example shows how to:</p>
 <ol>
-<li>Authorize an account to create NFTokens for your account.</li>
-<li>Mint a NFToken for another account, when authorized.</li>
+<li>Authorize an account to create NFTs for your account.</li>
+<li>Mint an NFT for another account, when authorized.</li>
 </ol>
 <p><a href="img/quickstart-py30.png"><img alt="Token Test Harness" src="img/quickstart-py30.png"/></a></p>
 <h1 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h1>
@@ -335,47 +335,47 @@
 </ol>
 </li>
 </ol>
-<h2 id="authorize-an-account-to-create-nftokens">Authorize an Account to Create NFTokens<a aria-hidden="true" class="hover_anchor" href="#authorize-an-account-to-create-nftokens"><i class="fa fa-link"></i></a></h2>
-<p>To authorize another account to create NFTokens for your account (for example, allow the operational account to mint NFTs for the standby account):</p>
+<h2 id="authorize-an-account-to-create-nfts">Authorize an Account to Create NFTs<a aria-hidden="true" class="hover_anchor" href="#authorize-an-account-to-create-nfts"><i class="fa fa-link"></i></a></h2>
+<p>To authorize another account to create NFTs for your account (for example, allow the operational account to mint NFTs for the standby account):</p>
 <ol>
 <li>Copy the <strong>Operational Account</strong> value.</li>
 <li>Paste the <strong>Operational Account</strong> value in the standby <strong>Authorized Minter</strong> field.</li>
 <li>Click <strong>Set Minter</strong>.</li>
 </ol>
 <p><a href="img/quickstart-py31.png"><img alt="Authorized Minter" src="img/quickstart-py31.png"/></a></p>
-<h2 id="mint-a-nftoken-for-another-account">Mint a NFToken for Another Account<a aria-hidden="true" class="hover_anchor" href="#mint-a-nftoken-for-another-account"><i class="fa fa-link"></i></a></h2>
+<h2 id="mint-an-nft-for-another-account">Mint an NFT for Another Account<a aria-hidden="true" class="hover_anchor" href="#mint-an-nft-for-another-account"><i class="fa fa-link"></i></a></h2>
 <p>This example uses the Operational account, which was authorized in the previous step, to mint a token on behalf of the Standby account.</p>
 <p>To mint a non-fungible token for another account:</p>
 <ol>
 <li>Set the <strong>Flags</strong> field. For testing purposes, we recommend setting the value to <em>8</em>. </li>
 <li>Enter the <strong>NFT URI</strong>. This is a URI that points to the data or metadata associated with the NFT. You can use the sample URI provided if you do not have one of your own.</li>
-<li>Enter the <strong>Transfer Fee</strong>, a percentage of the proceeds that the original creator receives from future sales of the NFToken. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the <strong>Flags</strong> field to allow the NFToken to be transferrable, set this field to 0.</li>
+<li>Enter the <strong>Transfer Fee</strong>, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the <strong>Flags</strong> field to allow the NFT to be transferrable, set this field to 0.</li>
 <li>Enter a <strong>Taxon</strong> for the NFT. If you don't have a use for the field, set it to <em>0</em>.</li>
 <li>Copy the <strong>Standby Account</strong> value.</li>
 <li>Paste the <strong>Standby Account</strong> value in the Operational account <strong>Issuer</strong> field.</li>
 <li>Click the Operational account <strong>Mint Other</strong> button.</li>
 </ol>
-<p><a href="img/quickstart-py32.png"><img alt="Minted NFToken for Another Account" src="img/quickstart-py32.png"/></a></p>
-<p>Once the item is minted, the authorized minter can sell the NFToken normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.</p>
+<p><a href="img/quickstart-py32.png"><img alt="Minted NFT for Another Account" src="img/quickstart-py32.png"/></a></p>
+<p>Once the item is minted, the authorized minter can sell the NFT normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.</p>
 <h2 id="create-a-sell-offer">Create a Sell Offer<a aria-hidden="true" class="hover_anchor" href="#create-a-sell-offer"><i class="fa fa-link"></i></a></h2>
-<p>To create a NFToken sell offer:</p>
+<p>To create a NFT sell offer:</p>
 <ol>
 <li>On the Operational account side, enter the <strong>Amount</strong> of the sell offer in drops (millionths of an XRP), for example 100000000 (100 XRP).</li>
 <li>Set the <strong>Flags</strong> field to <em>1</em>.</li>
-<li>Enter the <strong>NFToken ID</strong> of the minted NFToken you want to sell.</li>
+<li>Enter the <strong>NFT ID</strong> of the minted NFT you want to sell.</li>
 <li>Optionally, enter a number of seconds until <strong>Expiration</strong>.</li>
 <li>Click <strong>Create Sell Offer</strong>.</li>
 </ol>
-<p>The important piece of information in the response is the NFToken Offer Index, labeled as <code>nft_offer_index</code>, which is used to accept the sell offer.</p>
-<p><a href="img/quickstart-py33.png"><img alt="NFToken Sell Offer" src="img/quickstart-py33.png"/></a></p>
+<p>The important piece of information in the response is the NFT Offer Index, labeled as <code>nft_offer_index</code>, which is used to accept the sell offer.</p>
+<p><a href="img/quickstart-py33.png"><img alt="NFT Sell Offer" src="img/quickstart-py33.png"/></a></p>
 <h2 id="accept-sell-offer">Accept Sell Offer<a aria-hidden="true" class="hover_anchor" href="#accept-sell-offer"><i class="fa fa-link"></i></a></h2>
-<p>Once a sell offer is available, you can create a new account to accept the offer and buy the NFToken.</p>
+<p>Once a sell offer is available, you can create a new account to accept the offer and buy the NFT.</p>
 <p>To accept an available sell offer:</p>
 <ol>
 <li>Clear the <strong>Standby Seed</strong> field.</li>
 <li>Click <strong>Get Standby Account</strong>.</li>
 <li>Click <strong>Get Standby Account Info</strong>.</li>
-<li>Enter the <strong>NFToken Offer Index</strong> (labeled as <code>nft_offer_index</code> in the NFToken offer results. This is different from the <code>nft_id</code>).</li>
+<li>Enter the <strong>NFT Offer Index</strong> (labeled as <code>nft_offer_index</code> in the NFT offer results. This is different from the <code>nft_id</code>).</li>
 <li>Click <strong>Accept Sell Offer</strong>.</li>
 </ol>
 <p><a href="img/quickstart-py34.png"><img alt="Transaction Results" src="img/quickstart-py34.png"/></a></p>
@@ -977,17 +977,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+    <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nfts.html">3. Mint and Burn NFTs</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTokens</a>
+    <a class="nav-link nav-leaf" href="/ja/transfer-nftokens.html">4. Transfer NFTs</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/broker-sale.html">Broker a NFToken Sale</a>
+    <a class="nav-link nav-leaf" href="/ja/broker-sale.html">Broker an NFT Sale</a>
   </div>
 
       
@@ -997,7 +997,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/batch-minting.html">Batch Mint NFTokens</a>
+    <a class="nav-link nav-leaf" href="/ja/batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -1029,12 +1029,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/py-mint-and-burn-nftokens.html">3. Mint and Burn NFTokens (Python)</a>
+    <a class="nav-link nav-leaf" href="/ja/py-mint-and-burn-nftokens.html">3. Mint and Burn NFTs (Python)</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/py-transfer-nftokens.html">4. Transfer NFTokens (Python)</a>
+    <a class="nav-link nav-leaf" href="/ja/py-transfer-nfts.html">4. Transfer NFTs (Python)</a>
   </div>
 
       
