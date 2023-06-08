@@ -312,7 +312,8 @@
 
 <div class="code_sample python" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1"># Example Credentials ----------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
-<span class="n">test_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">xrpl.constants</span> <span class="kn">import</span> <span class="n">CryptoAlgorithm</span>
+<span class="n">test_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">CryptoAlgorithm</span><span class="o">.</span><span class="n">SECP256K1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">test_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">)</span> <span class="c1"># "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"</span>
 </code></pre></div></div>
 
