@@ -391,7 +391,7 @@
 <span class="n">my_secret</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"MYSECRET"</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
 <span class="n">wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">my_secret</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span>  <span class="c1"># "raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>  <span class="c1"># "raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q"</span>
 
 <span class="c1"># For offline signing, you need to know your address's next Sequence number.</span>
 <span class="c1"># Alternatively, you could use a Ticket in place of the Sequence number.</span>

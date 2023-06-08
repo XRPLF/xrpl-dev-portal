@@ -379,7 +379,7 @@
 <span class="n">tx_response</span> <span class="o">=</span> <span class="n">submit_and_wait</span><span class="p">(</span><span class="n">my_tx_payment</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">test_wallet</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="derive-an-x-address">Derive an X-address<a aria-hidden="true" class="hover_anchor" href="#derive-an-x-address"><i class="fa fa-link"></i></a></h5>
-<p>You can use <code>xrpl-py</code>'s <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.core.addresscodec.html" target="_blank"><code>xrpl.core.addresscodec</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> module to derive an <a class="external-link" href="https://xrpaddress.info/" target="_blank">X-address <i aria-hidden="true" class="fa fa-external-link"></i></a> from the <code>Wallet.classic_address</code> field:</p>
+<p>You can use <code>xrpl-py</code>'s <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.core.addresscodec.html" target="_blank"><code>xrpl.core.addresscodec</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> module to derive an <a class="external-link" href="https://xrpaddress.info/" target="_blank">X-address <i aria-hidden="true" class="fa fa-external-link"></i></a> from the <code>Wallet.address</code> field:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1"># Derive an x-address from the classic address:</span>
 <span class="c1"># https://xrpaddress.info/</span>
 <span class="kn">from</span> <span class="nn">xrpl.core</span> <span class="kn">import</span> <span class="n">addresscodec</span>
@@ -423,7 +423,7 @@
 <span class="n">test_wallet</span> <span class="o">=</span> <span class="n">generate_faucet_wallet</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Create an account str from the wallet</span>
-<span class="n">test_account</span> <span class="o">=</span> <span class="n">test_wallet</span><span class="o">.</span><span class="n">classic_address</span>
+<span class="n">test_account</span> <span class="o">=</span> <span class="n">test_wallet</span><span class="o">.</span><span class="n">address</span>
 
 <span class="c1"># Derive an x-address from the classic address:</span>
 <span class="c1"># https://xrpaddress.info/</span>

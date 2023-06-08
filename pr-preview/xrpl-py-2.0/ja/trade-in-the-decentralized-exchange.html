@@ -585,7 +585,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Requesting orderbook information..."</span><span class="p">)</span>
         <span class="n">orderbook_info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
             <span class="n">BookOffers</span><span class="p">(</span>
-                <span class="n">taker</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+                <span class="n">taker</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
                 <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"current"</span><span class="p">,</span>
                 <span class="n">taker_gets</span><span class="o">=</span><span class="n">we_want</span><span class="p">[</span><span class="s2">"currency"</span><span class="p">],</span>
                 <span class="n">taker_pays</span><span class="o">=</span><span class="n">we_spend</span><span class="p">[</span><span class="s2">"currency"</span><span class="p">],</span>
@@ -641,7 +641,7 @@
             <span class="nb">print</span><span class="p">(</span><span class="s2">"Requesting second orderbook information..."</span><span class="p">)</span>
             <span class="n">orderbook2_info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
                 <span class="n">BookOffers</span><span class="p">(</span>
-                    <span class="n">taker</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+                    <span class="n">taker</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
                     <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"current"</span><span class="p">,</span>
                     <span class="n">taker_gets</span><span class="o">=</span><span class="n">we_spend</span><span class="p">[</span><span class="s2">"currency"</span><span class="p">],</span>
                     <span class="n">taker_pays</span><span class="o">=</span><span class="n">we_want</span><span class="p">[</span><span class="s2">"currency"</span><span class="p">],</span>
@@ -788,7 +788,7 @@
         <span class="c1"># hard-coded TakerGets and TakerPays amounts.</span>
 
         <span class="n">tx</span> <span class="o">=</span> <span class="n">OfferCreate</span><span class="p">(</span>
-            <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+            <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
             <span class="n">taker_gets</span><span class="o">=</span><span class="n">we_spend</span><span class="p">[</span><span class="s2">"value"</span><span class="p">],</span>
             <span class="n">taker_pays</span><span class="o">=</span><span class="n">we_want</span><span class="p">[</span><span class="s2">"currency"</span><span class="p">]</span><span class="o">.</span><span class="n">to_amount</span><span class="p">(</span><span class="n">we_want</span><span class="p">[</span><span class="s2">"value"</span><span class="p">]),</span>
         <span class="p">)</span>
@@ -988,18 +988,18 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Getting address balances as of validated ledger..."</span><span class="p">)</span>
         <span class="n">balances</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
             <span class="n">AccountLines</span><span class="p">(</span>
-                <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+                <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
                 <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="p">)</span>
         <span class="n">pprint</span><span class="o">.</span><span class="n">pp</span><span class="p">(</span><span class="n">balances</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
 
         <span class="c1"># Check Offers --------------------------------------------------------------</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Getting outstanding Offers from </span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="si">}</span><span class="s2"> "</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Getting outstanding Offers from </span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2"> "</span>
               <span class="sa">f</span><span class="s2">"as of validated ledger..."</span><span class="p">)</span>
         <span class="n">acct_offers</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
             <span class="n">AccountOffers</span><span class="p">(</span>
-                <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+                <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
                 <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="p">)</span>

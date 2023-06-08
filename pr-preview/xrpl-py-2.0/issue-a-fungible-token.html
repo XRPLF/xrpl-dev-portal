@@ -463,7 +463,7 @@
 
 <div class="code_sample python" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1"># Configure issuer (cold address) settings -------------------------------------</span>
 <span class="n">cold_settings_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSet</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">transfer_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">tick_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="n">domain</span><span class="o">=</span><span class="nb">bytes</span><span class="o">.</span><span class="n">hex</span><span class="p">(</span><span class="s2">"example.com"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"ASCII"</span><span class="p">)),</span>
@@ -671,7 +671,7 @@
 
 <div class="code_sample python" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1"># Configure hot address settings -----------------------------------------------</span>
 <span class="n">hot_settings_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSet</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">set_flag</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSetFlag</span><span class="o">.</span><span class="n">ASF_REQUIRE_AUTH</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -856,10 +856,10 @@
 <div class="code_sample python" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1"># Create trust line from hot to cold address -----------------------------------</span>
 <span class="n">currency_code</span> <span class="o">=</span> <span class="s2">"FOO"</span>
 <span class="n">trust_set_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">TrustSet</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">limit_amount</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">amounts</span><span class="o">.</span><span class="n">issued_currency_amount</span><span class="o">.</span><span class="n">IssuedCurrencyAmount</span><span class="p">(</span>
         <span class="n">currency</span><span class="o">=</span><span class="n">currency_code</span><span class="p">,</span>
-        <span class="n">issuer</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+        <span class="n">issuer</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
         <span class="n">value</span><span class="o">=</span><span class="s2">"10000000000"</span><span class="p">,</span> <span class="c1"># Large limit, arbitrarily chosen</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -1047,16 +1047,16 @@
 <div class="code_sample python" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="c1"># Send token -------------------------------------------------------------------</span>
 <span class="n">issue_quantity</span> <span class="o">=</span> <span class="s2">"3840"</span>
 <span class="n">send_token_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">Payment</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
-    <span class="n">destination</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+    <span class="n">destination</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">amount</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">amounts</span><span class="o">.</span><span class="n">issued_currency_amount</span><span class="o">.</span><span class="n">IssuedCurrencyAmount</span><span class="p">(</span>
         <span class="n">currency</span><span class="o">=</span><span class="n">currency_code</span><span class="p">,</span>
-        <span class="n">issuer</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+        <span class="n">issuer</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
         <span class="n">value</span><span class="o">=</span><span class="n">issue_quantity</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sending </span><span class="si">{</span><span class="n">issue_quantity</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">currency_code</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sending </span><span class="si">{</span><span class="n">issue_quantity</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">currency_code</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">submit_and_wait</span><span class="p">(</span><span class="n">send_token_tx</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">cold_wallet</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1181,16 +1181,16 @@
 <div class="code_sample python" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="c1"># Check balances ---------------------------------------------------------------</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Getting hot address balances..."</span><span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">requests</span><span class="o">.</span><span class="n">AccountLines</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">,</span>
 <span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Getting cold address balances..."</span><span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">requests</span><span class="o">.</span><span class="n">GatewayBalances</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">,</span>
-    <span class="n">hotwallet</span><span class="o">=</span><span class="p">[</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">]</span>
+    <span class="n">hotwallet</span><span class="o">=</span><span class="p">[</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">]</span>
 <span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>

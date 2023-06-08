@@ -400,7 +400,7 @@
 
 <div class="code_sample python" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">        <span class="c1"># Send AccountSet transaction -----------------------------------------------</span>
         <span class="n">tx</span> <span class="o">=</span> <span class="n">AccountSet</span><span class="p">(</span>
-            <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+            <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
             <span class="n">set_flag</span><span class="o">=</span><span class="n">AccountSetFlag</span><span class="o">.</span><span class="n">ASF_REQUIRE_DEST</span><span class="p">,</span>
         <span class="p">)</span>
 
@@ -481,7 +481,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Requesting account information..."</span><span class="p">)</span>
         <span class="n">account_info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
             <span class="n">AccountInfo</span><span class="p">(</span>
-                <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+                <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
                 <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="p">)</span>
@@ -489,9 +489,9 @@
         <span class="c1"># Verify that the AccountRoot lsfRequireDestTag flag is set</span>
         <span class="n">flags</span> <span class="o">=</span> <span class="n">account_info</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">"account_data"</span><span class="p">][</span><span class="s2">"Flags"</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">flags</span> <span class="o">&amp;</span> <span class="mh">0x00020000</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Require Destination Tag for account </span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="si">}</span><span class="s2"> is enabled."</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Require Destination Tag for account </span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2"> is enabled."</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Require Destination Tag for account </span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="si">}</span><span class="s2"> is DISABLED."</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Require Destination Tag for account </span><span class="si">{</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2"> is DISABLED."</span><span class="p">)</span>
 </code></pre></div></div>
 </div>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="5" data-totalsteps="6" id="interactive-confirm_settings">

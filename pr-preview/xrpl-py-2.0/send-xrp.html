@@ -313,7 +313,7 @@
 <div class="code_sample python" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1"># Example Credentials ----------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
 <span class="n">test_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">test_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span> <span class="c1"># "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">)</span> <span class="c1"># "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"</span>
 </code></pre></div></div>
 
 <div class="code_sample java" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Create a KeyPair</span>
@@ -435,7 +435,7 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 
 <div class="code_sample python" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1"># Prepare transaction ----------------------------------------------------------</span>
 <span class="n">my_payment</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">Payment</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">test_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">test_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">amount</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">xrp_to_drops</span><span class="p">(</span><span class="mi">22</span><span class="p">),</span>
     <span class="n">destination</span><span class="o">=</span><span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
 <span class="p">)</span>
@@ -767,7 +767,7 @@ example transaction</button>
 
 <div class="code_sample python" id="code-7-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23"><span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
 <span class="n">my_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span> <span class="c1"># Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">)</span> <span class="c1"># Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>            <span class="c1"># Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
 </code></pre></div></div>
 
