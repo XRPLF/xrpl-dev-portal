@@ -30,6 +30,7 @@ default_filters:
     - css_tables
     - slug
     - copy_code_to_clipboard
+    - enforce_filenames
 
 callout_class: "devportal-callout"
 callout_types:
