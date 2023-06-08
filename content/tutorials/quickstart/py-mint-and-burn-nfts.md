@@ -27,9 +27,10 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 1. Open and run `lesson3-mint-token.py`.
 2. Get test accounts.
     1. If you have existing Testnet account seeds:
-        1. Paste the account seeds in the **Seed** fields.
+        1. Paste the standby account seed in the **Standby Seed** field.
         2. Click **Get Standby Account**.
-        3. Click **Get Operational Account**.
+        3. Paste the operational account seed in the **Operational Seed** field.
+        4. Click **Get Operational Account**.
     2. If you do not have existing Testnet accounts:
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.

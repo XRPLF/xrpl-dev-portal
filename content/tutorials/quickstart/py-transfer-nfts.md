@@ -103,10 +103,11 @@ To accept an offer to buy an NFT:
 ## Get Offers
 
 To list the buy and sell offers associated with an NFT:
+
 1. Enter the **NFT ID**.
 2. Click **Get Offers**.
 
-[![Get offers](img/quickstart21.png)](img/quickstart21.png)
+[![Get offers](img/quickstart-py21.png)](img/quickstart-py21.png)
 
 ## Cancel Offer
 
@@ -115,7 +116,7 @@ To cancel a buy or sell offer that you have created:
 1. Enter the **NFT Offer Index**.
 2. Click **Cancel Offer**.
 
-[![Cancel offer](img/quickstart22.png)](img/quickstart22.png)
+[![Cancel offer](img/quickstart-py22.png)](img/quickstart-py22.png)
 
 # Code Walkthrough
 
