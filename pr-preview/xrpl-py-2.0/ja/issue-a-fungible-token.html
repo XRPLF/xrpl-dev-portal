@@ -475,7 +475,7 @@
     <span class="n">transfer_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">tick_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="n">domain</span><span class="o">=</span><span class="nb">bytes</span><span class="o">.</span><span class="n">hex</span><span class="p">(</span><span class="s2">"example.com"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"ASCII"</span><span class="p">)),</span>
-    <span class="n">set_flag</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSetFlag</span><span class="o">.</span><span class="n">ASF_DEFAULT_RIPPLE</span><span class="p">,</span>
+    <span class="n">set_flag</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSetAsfFlag</span><span class="o">.</span><span class="n">ASF_DEFAULT_RIPPLE</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Sending cold address AccountSet transaction..."</span><span class="p">)</span>
@@ -680,7 +680,7 @@
 <div class="code_sample python" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1"># Configure hot address settings -----------------------------------------------</span>
 <span class="n">hot_settings_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSet</span><span class="p">(</span>
     <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
-    <span class="n">set_flag</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSetFlag</span><span class="o">.</span><span class="n">ASF_REQUIRE_AUTH</span><span class="p">,</span>
+    <span class="n">set_flag</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSetAsfFlag</span><span class="o">.</span><span class="n">ASF_REQUIRE_AUTH</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Sending hot address AccountSet transaction..."</span><span class="p">)</span>
