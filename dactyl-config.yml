@@ -854,15 +854,6 @@ pages:
         targets:
             - ja
 
-        # TODO: maybe nest invariant checking under consensus protections?
-    -   md: concepts/xrpl/invariant-checking.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl/invariant-checking.ja.md
-        targets:
-            - ja
-
     -   md: concepts/xrpl/fee-voting.md
         targets:
             - en
@@ -910,22 +901,23 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/transactions/transaction-cost.md
+        # TODO: maybe nest invariant checking under consensus protections?
+    -   md: concepts/xrpl/invariant-checking.md
         targets:
             - en
 
-    -   md: concepts/transactions/transaction-cost.ja.md
+    -   md: concepts/xrpl/invariant-checking.ja.md
         targets:
             - ja
 
-    -   md: concepts/transactions/transaction-queue.md
+    -   md: concepts/transactions/reliable-transaction-submission.md
         targets:
             - en
 
-    -   md: concepts/transactions/transaction-queue.ja.md
+    -   md: concepts/transactions/reliable-transaction-submission.ja.md
         targets:
             - ja
-    
+
         # TODO: rename these to "secure-signing.md"
     -   md: concepts/transactions/set-up-secure-signing.md
         targets:
@@ -951,6 +943,22 @@ pages:
     -   md: concepts/transactions/source-and-destination-tags.md
         blurb: 多目的アドレスとの間で支払いのやり取りをする具体的な目的を示すためにソースタグと宛先タグを使用します。
         untranslated_warning: true
+        targets:
+            - ja
+
+    -   md: concepts/transactions/transaction-cost.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/transaction-cost.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/transactions/transaction-queue.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/transaction-queue.ja.md
         targets:
             - ja
 
@@ -992,14 +1000,6 @@ pages:
             - en
 
     -   md: concepts/transactions/tickets.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/transactions/reliable-transaction-submission.md
-        targets:
-            - en
-
-    -   md: concepts/transactions/reliable-transaction-submission.ja.md
         targets:
             - ja
 
