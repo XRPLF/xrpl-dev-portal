@@ -482,7 +482,7 @@
 </code></pre></div></div>
 
 <div class="code_sample python" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1"># Sign transaction -------------------------------------------------------------</span>
-<span class="n">signed_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span>
+<span class="n">signed_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">autofill_and_sign</span><span class="p">(</span>
         <span class="n">my_payment</span><span class="p">,</span> <span class="n">test_wallet</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
 <span class="n">max_ledger</span> <span class="o">=</span> <span class="n">signed_tx</span><span class="o">.</span><span class="n">last_ledger_sequence</span>
 <span class="n">tx_id</span> <span class="o">=</span> <span class="n">signed_tx</span><span class="o">.</span><span class="n">get_hash</span><span class="p">()</span>
