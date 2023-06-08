@@ -130,7 +130,7 @@ class XRPLMonitorThread(Thread):
         # Autofill provides a sequence number, but this may fail if you try to
         # send too many transactions too fast. You can send transactions more
         # rapidly if you track the sequence number more carefully.
-        tx_signed = await xrpl.asyncio.transaction.safe_sign_and_autofill_transaction(
+        tx_signed = await xrpl.asyncio.transaction.autofill_and_sign(
                 tx, self.wallet, self.client)
         await xrpl.asyncio.transaction.submit_transaction(tx_signed, self.client)
         wx.CallAfter(self.gui.add_pending_tx, tx_signed)
