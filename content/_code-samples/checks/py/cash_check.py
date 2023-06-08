@@ -1,7 +1,7 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import CheckCash, IssuedCurrencyAmount
 from xrpl.transaction import submit_and_wait
-from xrpl.utils import str_to_hex, xrp_to_drops
+from xrpl.utils import xrp_to_drops
 from xrpl.wallet import generate_faucet_wallet
 
 # Connect to a network
@@ -53,7 +53,7 @@ sender_wallet = generate_faucet_wallet(client=client)
 
 # Build check cash transaction
 check_txn = CheckCash(account=sender_wallet.address, check_id=check_id, amount=IssuedCurrencyAmount(
-    currency=str_to_hex(token),
+    currency=token,
     issuer=issuer,
     value=amount))
 
