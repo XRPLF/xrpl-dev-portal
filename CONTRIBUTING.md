@@ -124,6 +124,7 @@ Use the following conventions when creating a page:
 - The HTML filename and MD filename should match exactly except for the file extension.
 - The filenames should closely match the title of the page, including words like "and" and "the", but should be in all lowercase with hyphens instead of spaces and punctuation. For example, `cash-a-check-for-an-exact-amount.md`. If you change the title of a page, change the filename too. (If it has already been published at another URL, leave a redirect from the old URL.)
 - Always start a page with a h1 header.
+- Don't link to the top h1 anchor of a page, link to the page itself without an anchor. This helps prevent broken links in translation. It's OK to link to later headers.
 - Don't use any formatting (like _italics_ or `code font`) in the title of the page.
 - Don't hard-wrap text in Markdown files.
 - For code samples, try to keep lines no longer than 80 columns wide.
