@@ -64,7 +64,7 @@ async def main() -> int:
         print("Requesting orderbook information...")
         orderbook_info = await client.request(
             BookOffers(
-                taker=wallet.classic_address,
+                taker=wallet.address,
                 ledger_index="current",
                 taker_gets=we_want["currency"],
                 taker_pays=we_spend["currency"],
@@ -120,7 +120,7 @@ async def main() -> int:
             print("Requesting second orderbook information...")
             orderbook2_info = await client.request(
                 BookOffers(
-                    taker=wallet.classic_address,
+                    taker=wallet.address,
                     ledger_index="current",
                     taker_gets=we_spend["currency"],
                     taker_pays=we_want["currency"],
@@ -164,7 +164,7 @@ async def main() -> int:
         # hard-coded TakerGets and TakerPays amounts.
 
         tx = OfferCreate(
-            account=wallet.classic_address,
+            account=wallet.address,
             taker_gets=we_spend["value"],
             taker_pays=we_want["currency"].to_amount(we_want["value"]),
         )
@@ -225,18 +225,18 @@ async def main() -> int:
         print("Getting address balances as of validated ledger...")
         balances = await client.request(
             AccountLines(
-                account=wallet.classic_address,
+                account=wallet.address,
                 ledger_index="validated",
             )
         )
         pprint.pp(balances.result)
 
         # Check Offers --------------------------------------------------------------
-        print(f"Getting outstanding Offers from {wallet.classic_address} "
+        print(f"Getting outstanding Offers from {wallet.address} "
               f"as of validated ledger...")
         acct_offers = await client.request(
             AccountOffers(
-                account=wallet.classic_address,
+                account=wallet.address,
                 ledger_index="validated",
             )
         )

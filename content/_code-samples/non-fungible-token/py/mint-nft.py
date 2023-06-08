@@ -22,10 +22,10 @@ client = JsonRpcClient(JSON_RPC_URL)
 if seed == "":
     print("Requesting address from the Testnet faucet...")
     issuer_wallet = generate_faucet_wallet(client=client)
-    issuerAddr = issuer_wallet.classic_address
+    issuerAddr = issuer_wallet.address
 else:
     issuer_wallet = Wallet.from_seed(seed=seed)
-    issuerAddr = issuer_wallet.classic_address
+    issuerAddr = issuer_wallet.address
 
 print(f"\nIssuer Account: {issuerAddr}")
 print(f"          Seed: {issuer_wallet.seed}")

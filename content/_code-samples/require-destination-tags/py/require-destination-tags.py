@@ -22,7 +22,7 @@ async def main() -> int:
 
         # Send AccountSet transaction -----------------------------------------------
         tx = AccountSet(
-            account=wallet.classic_address,
+            account=wallet.address,
             set_flag=AccountSetFlag.ASF_REQUIRE_DEST,
         )
 
@@ -39,7 +39,7 @@ async def main() -> int:
         print("Requesting account information...")
         account_info = await client.request(
             AccountInfo(
-                account=wallet.classic_address,
+                account=wallet.address,
                 ledger_index="validated",
             )
         )
@@ -47,9 +47,9 @@ async def main() -> int:
         # Verify that the AccountRoot lsfRequireDestTag flag is set
         flags = account_info.result["account_data"]["Flags"]
         if flags & 0x00020000 != 0:
-            print(f"Require Destination Tag for account {wallet.classic_address} is enabled.")
+            print(f"Require Destination Tag for account {wallet.address} is enabled.")
         else:
-            print(f"Require Destination Tag for account {wallet.classic_address} is DISABLED.")
+            print(f"Require Destination Tag for account {wallet.address} is DISABLED.")
 
     # End main()
     return 0

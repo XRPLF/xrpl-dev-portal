@@ -132,7 +132,7 @@ class XRPLMonitorThread(Thread):
         ))
         if response.is_successful():
             print("set regular key: got account")
-            if response.result["account_data"].get("RegularKey") == wallet.classic_address:
+            if response.result["account_data"].get("RegularKey") == wallet.address:
                 print("set regular key: regular key matches")
                 self.wallet = wallet
                 wx.CallAfter(self.gui.enable_readwrite)
@@ -640,7 +640,7 @@ class TWaXLFrame(wx.Frame):
                 seed_bytes, alg = xrpl.core.addresscodec.decode_seed(value)
                 wallet = xrpl.wallet.Wallet.from_seed(seed=value)
                 x_address = wallet.get_xaddress(is_test=self.test_network)
-                classic_address = wallet.classic_address
+                classic_address = wallet.address
             except Exception as e:
                 print(e)
                 exit(1)

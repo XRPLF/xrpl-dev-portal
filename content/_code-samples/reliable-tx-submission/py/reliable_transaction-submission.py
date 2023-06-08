@@ -20,14 +20,14 @@ wallet2 = generate_faucet_wallet(client, debug=True)
 
 # Both balances should be zero since nothing has been sent yet
 print("Balances of wallets before Payment tx")
-print(get_balance(wallet1.classic_address, client))
-print(get_balance(wallet2.classic_address, client))
+print(get_balance(wallet1.address, client))
+print(get_balance(wallet2.address, client))
 
 # Create a Payment transaction
 payment_tx = Payment(
-    account=wallet1.classic_address,
+    account=wallet1.address,
     amount="1000",
-    destination=wallet2.classic_address,
+    destination=wallet2.address,
 )
 
 # Autofill, sign, and submit the transaction
@@ -42,5 +42,5 @@ print("Validated:", tx_response.result["validated"])
 
 # Check balances after 1000 was sent from wallet1 to wallet2
 print("Balances of wallets after Payment tx:")
-print(get_balance(wallet1.classic_address, client))
-print(get_balance(wallet2.classic_address, client))
+print(get_balance(wallet1.address, client))
+print(get_balance(wallet2.address, client))

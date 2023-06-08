@@ -11,7 +11,7 @@ sender_wallet = generate_faucet_wallet(client)
 print("Successfully generated test wallet")
 
 # Build accountset transaction to enable global freeze
-accountset = AccountSet(account=sender_wallet.classic_address,
+accountset = AccountSet(account=sender_wallet.address,
     set_flag=AccountSetFlag.ASF_GLOBAL_FREEZE)
 
 print("Preparing and submitting Account set transaction with ASF_GLOBAL_FREEZE ...")
@@ -24,5 +24,5 @@ stxn_result = stxn_response.result
 
 # Print result and transaction hash
 if stxn_result["meta"]["TransactionResult"] == "tesSUCCESS":
-  print(f'Successfully enabled global freeze for {sender_wallet.classic_address}')
+  print(f'Successfully enabled global freeze for {sender_wallet.address}')
   print(stxn_result["hash"])

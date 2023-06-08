@@ -10,7 +10,7 @@ client = JsonRpcClient(JSON_RPC_URL)
 
 # Generate a wallet and request faucet
 test_wallet = generate_faucet_wallet(client=client)
-myAddr = test_wallet.classic_address
+myAddr = test_wallet.address
 
 # Construct a TicketCreate transaction, 2 ticket created for future use
 tx = TicketCreate(

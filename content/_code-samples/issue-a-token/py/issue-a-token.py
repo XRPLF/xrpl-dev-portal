@@ -19,7 +19,7 @@ hot_wallet = generate_faucet_wallet(client, debug=True)
 
 # Configure issuer (cold address) settings -------------------------------------
 cold_settings_tx = xrpl.models.transactions.AccountSet(
-    account=cold_wallet.classic_address,
+    account=cold_wallet.address,
     transfer_rate=0,
     tick_size=5,
     domain=bytes.hex("example.com".encode("ASCII")),
@@ -33,7 +33,7 @@ print(response)
 
 # Configure hot address settings -----------------------------------------------
 hot_settings_tx = xrpl.models.transactions.AccountSet(
-    account=hot_wallet.classic_address,
+    account=hot_wallet.address,
     set_flag=xrpl.models.transactions.AccountSetFlag.ASF_REQUIRE_AUTH,
 )
 
@@ -45,10 +45,10 @@ print(response)
 # Create trust line from hot to cold address -----------------------------------
 currency_code = "FOO"
 trust_set_tx = xrpl.models.transactions.TrustSet(
-    account=hot_wallet.classic_address,
+    account=hot_wallet.address,
     limit_amount=xrpl.models.amounts.issued_currency_amount.IssuedCurrencyAmount(
         currency=currency_code,
-        issuer=cold_wallet.classic_address,
+        issuer=cold_wallet.address,
         value="10000000000", # Large limit, arbitrarily chosen
     )
 )
@@ -61,16 +61,16 @@ print(response)
 # Send token -------------------------------------------------------------------
 issue_quantity = "3840"
 send_token_tx = xrpl.models.transactions.Payment(
-    account=cold_wallet.classic_address,
-    destination=hot_wallet.classic_address,
+    account=cold_wallet.address,
+    destination=hot_wallet.address,
     amount=xrpl.models.amounts.issued_currency_amount.IssuedCurrencyAmount(
         currency=currency_code,
-        issuer=cold_wallet.classic_address,
+        issuer=cold_wallet.address,
         value=issue_quantity
     )
 )
 
-print(f"Sending {issue_quantity} {currency_code} to {hot_wallet.classic_address}...")
+print(f"Sending {issue_quantity} {currency_code} to {hot_wallet.address}...")
 response = xrpl.transaction.submit_and_wait(send_token_tx, client, cold_wallet)
 print(response)
 
@@ -78,15 +78,15 @@ print(response)
 # Check balances ---------------------------------------------------------------
 print("Getting hot address balances...")
 response = client.request(xrpl.models.requests.AccountLines(
-    account=hot_wallet.classic_address,
+    account=hot_wallet.address,
     ledger_index="validated",
 ))
 print(response)
 
 print("Getting cold address balances...")
 response = client.request(xrpl.models.requests.GatewayBalances(
-    account=cold_wallet.classic_address,
+    account=cold_wallet.address,
     ledger_index="validated",
-    hotwallet=[hot_wallet.classic_address]
+    hotwallet=[hot_wallet.address]
 ))
 print(response)

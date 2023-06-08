@@ -38,13 +38,13 @@ client = JsonRpcClient(JSON_RPC_URL)
 # Get issuer, minter, buyer account credentials from the Testnet Faucet
 print("Requesting address from the Testnet faucet...")
 issuer_wallet = generate_faucet_wallet(client=client)
-issuerAddr = issuer_wallet.classic_address
+issuerAddr = issuer_wallet.address
 
 nftoken_minter_wallet = generate_faucet_wallet(client=client)
-minterAddr = nftoken_minter_wallet.classic_address
+minterAddr = nftoken_minter_wallet.address
 
 buyer_wallet = generate_faucet_wallet(client=client)
-buyerAddr = buyer_wallet.classic_address
+buyerAddr = buyer_wallet.address
 
 print(f"              Minter Account: {issuerAddr}"
       f"\n   Authorized Minter Account: {minterAddr}"

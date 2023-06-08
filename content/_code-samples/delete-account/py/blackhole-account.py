@@ -17,9 +17,9 @@ client = JsonRpcClient(JSON_RPC_URL)
 # Get credentials from the Testnet Faucet
 print("Requesting an account from the Testnet faucet...")
 test_wallet = generate_faucet_wallet(client=client)
-myAddr = test_wallet.classic_address
+myAddr = test_wallet.address
 
-print(f"\n Account: {test_wallet.classic_address}")
+print(f"\n Account: {test_wallet.address}")
 print(f"    Seed: {test_wallet.seed}")
 
 # This is a well known blackhole address

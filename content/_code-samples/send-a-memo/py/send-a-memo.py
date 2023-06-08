@@ -14,7 +14,7 @@ client = JsonRpcClient(JSON_RPC_URL)
 # Get account credentials from the Testnet Faucet
 print("Requesting an account from the Testnet faucet...")
 test_wallet = generate_faucet_wallet(client=client)
-myAddr = test_wallet.classic_address
+myAddr = test_wallet.address
 
 memo_data = "Example Memo - 123 -=+"
 memo_type = "Text"

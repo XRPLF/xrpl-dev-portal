@@ -328,7 +328,7 @@ _Python_
 ```py
 from xrpl.wallet import Wallet
 my_wallet = Wallet.create()
-print(my_wallet.classic_address) # Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
+print(my_wallet.address) # Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 print(my_wallet.seed)            # Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
 

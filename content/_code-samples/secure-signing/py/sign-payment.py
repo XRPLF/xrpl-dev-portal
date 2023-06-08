@@ -3,7 +3,7 @@ import os
 my_secret = os.getenv("MYSECRET")
 from xrpl.wallet import Wallet
 wallet = Wallet.from_seed(seed=my_secret)
-print(wallet.classic_address)  # "raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q"
+print(wallet.address)  # "raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q"
 
 # For offline signing, you need to know your address's next Sequence number.
 # Alternatively, you could use a Ticket in place of the Sequence number.

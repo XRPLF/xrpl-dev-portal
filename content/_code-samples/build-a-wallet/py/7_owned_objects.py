@@ -590,7 +590,7 @@ class TWaXLFrame(wx.Frame):
                 seed_bytes, alg = xrpl.core.addresscodec.decode_seed(value)
                 wallet = xrpl.wallet.Wallet.from_seed(seed=value)
                 x_address = wallet.get_xaddress(is_test=self.test_network)
-                classic_address = wallet.classic_address
+                classic_address = wallet.address
             except Exception as e:
                 print(e)
                 exit(1)

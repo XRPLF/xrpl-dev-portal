@@ -11,14 +11,14 @@ token_name = "FOO"
 # Amount a trustline can handle, for this transaction it is set to 0
 value = "100"
 
-target_addr = generate_faucet_wallet(client=client).classic_address
+target_addr = generate_faucet_wallet(client=client).address
 
 sender_wallet = generate_faucet_wallet(client=client)
 
 print("Successfully generated test wallets")
 
 # Build trustline freeze transaction
-trustset = TrustSet(account=sender_wallet.classic_address, limit_amount=IssuedCurrencyAmount(
+trustset = TrustSet(account=sender_wallet.address, limit_amount=IssuedCurrencyAmount(
     currency= token_name,
     issuer=target_addr,
     value = value),
@@ -33,6 +33,6 @@ stxn_response = submit_and_wait(trustset, client, sender_wallet)
 stxn_result = stxn_response.result
 
 if(stxn_result["meta"]["TransactionResult"] == 'tesSUCCESS'):
-    print(f"Froze {token_name} issued by {target_addr} for address {sender_wallet.classic_address}")
+    print(f"Froze {token_name} issued by {target_addr} for address {sender_wallet.address}")
 if(stxn_result["meta"]["TransactionResult"] == 'tesSUCCESS'):
-    print(f"Froze {token_name} issued by {target_addr} for address {sender_wallet.classic_address}")
+    print(f"Froze {token_name} issued by {target_addr} for address {sender_wallet.address}")

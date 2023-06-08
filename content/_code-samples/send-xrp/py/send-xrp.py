@@ -1,7 +1,7 @@
 # Example Credentials ----------------------------------------------------------
 from xrpl.wallet import Wallet
 test_wallet = Wallet.from_seed(seed="sn3nxiW7v8KXzPzAqzyHXbSSKNuN9")
-print(test_wallet.classic_address) # "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"
+print(test_wallet.address) # "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"
 
 # Connect ----------------------------------------------------------------------
 import xrpl
@@ -17,7 +17,7 @@ test_wallet = generate_faucet_wallet(client, debug=True)
 
 # Prepare transaction ----------------------------------------------------------
 my_payment = xrpl.models.transactions.Payment(
-    account=test_wallet.classic_address,
+    account=test_wallet.address,
     amount=xrpl.utils.xrp_to_drops(22),
     destination="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
 )

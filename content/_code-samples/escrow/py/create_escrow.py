@@ -29,7 +29,7 @@ sender_wallet = generate_faucet_wallet(client=client)
 
 # Build escrow create transaction
 create_txn = EscrowCreate(
-    account=sender_wallet.classic_address,
+    account=sender_wallet.address,
     amount=xrp_to_drops(amount_to_escrow), 
     destination=receiver_addr,
     finish_after=claim_date, 

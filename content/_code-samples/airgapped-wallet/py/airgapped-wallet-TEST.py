@@ -69,7 +69,7 @@ def sign_transaction(xrp_amount, destination, ledger_seq, wallet_seq, password):
 
     print("5. Constructing payment transaction...")
     my_tx_payment = Payment(
-        account=_wallet.classic_address,
+        account=_wallet.address,
         amount=xrp_to_drops(xrp=xrp_amount),
         destination=destination,
         last_ledger_sequence=validated_seq + 100,

@@ -20,7 +20,7 @@ amount = 10.00
 sender_wallet = generate_faucet_wallet(client=client)
 
 # Build check cash transaction
-check_txn = CheckCash(account=sender_wallet.classic_address, check_id=check_id, amount=xrp_to_drops(amount))
+check_txn = CheckCash(account=sender_wallet.address, check_id=check_id, amount=xrp_to_drops(amount))
 
 # Autofill, sign, then submit transaction and wait for result
 stxn_response = submit_and_wait(check_txn, client, sender_wallet)
@@ -46,13 +46,13 @@ token = "USD"
 amount = 10.00
 
 # Token issuer address
-issuer = generate_faucet_wallet(client=client).classic_address
+issuer = generate_faucet_wallet(client=client).address
 
 # Create sender wallet object
 sender_wallet = generate_faucet_wallet(client=client)
 
 # Build check cash transaction
-check_txn = CheckCash(account=sender_wallet.classic_address, check_id=check_id, amount=IssuedCurrencyAmount(
+check_txn = CheckCash(account=sender_wallet.address, check_id=check_id, amount=IssuedCurrencyAmount(
     currency=str_to_hex(token),
     issuer=issuer,
     value=amount))

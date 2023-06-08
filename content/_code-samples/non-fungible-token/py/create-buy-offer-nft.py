@@ -25,12 +25,12 @@ else:
 
     # Initialize wallet from seed
     issuer_wallet = Wallet.from_seed(seed=seed)
-    issuerAddr = issuer_wallet.classic_address
+    issuerAddr = issuer_wallet.address
 
     # Get buyer account credentials from the testnet faucet
     print("Requesting address from the Testnet faucet...")
     buyer_wallet = generate_faucet_wallet(client=client)
-    buyerAddr = buyer_wallet.classic_address
+    buyerAddr = buyer_wallet.address
 
     print(f"\n   Minter Account: {issuerAddr}")
     print(f"             Seed: {issuer_wallet.seed}")

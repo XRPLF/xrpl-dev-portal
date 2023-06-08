@@ -23,7 +23,7 @@ else:
 
     # Initialize wallet from seed
     issuer_wallet = Wallet.from_seed(seed=seed)
-    issuerAddr = issuer_wallet.classic_address
+    issuerAddr = issuer_wallet.address
 
     print(f"\nIssuer Account: {issuerAddr}")
     print(f"          Seed: {issuer_wallet.seed}")

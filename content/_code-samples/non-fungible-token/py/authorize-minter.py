@@ -23,12 +23,12 @@ client = JsonRpcClient(JSON_RPC_URL)
 
 # Initialize wallet from seed
 issuer_wallet = generate_faucet_wallet(client=client, wallet=custom_wallet)
-issuerAddr = issuer_wallet.classic_address
+issuerAddr = issuer_wallet.address
 
 # Get minter account credentials from the testnet faucet
 print("Requesting address from the Testnet faucet...")
 nftoken_minter_wallet = generate_faucet_wallet(client=client)
-minterAddr = nftoken_minter_wallet.classic_address
+minterAddr = nftoken_minter_wallet.address
 
 print(f"\nMinter Account: {issuerAddr}")
 print(f"          Seed: {issuer_wallet.seed}")

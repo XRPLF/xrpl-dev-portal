@@ -20,12 +20,12 @@ regular_key_wallet = generate_faucet_wallet(client, debug=True)
 
 # Both balances should be zero since nothing has been sent yet
 print("Balances before payment:")
-print(get_balance(wallet1.classic_address, client))
-print(get_balance(wallet2.classic_address, client))
+print(get_balance(wallet1.address, client))
+print(get_balance(wallet2.address, client))
 
 # Assign key pair (regular_key_wallet) to wallet1 using SetRegularKey transaction
 tx = SetRegularKey(
-    account=wallet1.classic_address, regular_key=regular_key_wallet.classic_address
+    account=wallet1.address, regular_key=regular_key_wallet.address
 )
 
 set_regular_key_response = submit_and_wait(tx, client, wallet1)
@@ -36,8 +36,8 @@ print(set_regular_key_response)
 # Since regular_key_wallet is linked to wallet1,
 # walet1 can send payment to wallet2 and have regular_key_wallet sign it
 payment = Payment(
-    account=wallet1.classic_address,
-    destination=wallet2.classic_address,
+    account=wallet1.address,
+    destination=wallet2.address,
     amount="1000",
 )
 
@@ -48,5 +48,5 @@ print(payment_response)
 
 # Balance after sending 1000 from wallet1 to wallet2
 print("Balances after payment:")
-print(get_balance(wallet1.classic_address, client))
-print(get_balance(wallet2.classic_address, client))
+print(get_balance(wallet1.address, client))
+print(get_balance(wallet2.address, client))

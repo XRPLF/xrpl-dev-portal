@@ -21,7 +21,7 @@ client = JsonRpcClient(JSON_RPC_URL)
 
 # Generate a wallet and request faucet
 test_wallet = generate_faucet_wallet(client=client)
-myAddr = test_wallet.classic_address
+myAddr = test_wallet.address
 
 print("Setting up all the signers' accounts via the testnet faucet, this may take a while...")
 signer_1_wallet = generate_faucet_wallet(client=client)
@@ -30,9 +30,9 @@ signer_3_wallet = generate_faucet_wallet(client=client)
 
 # Set the list of accounts that are able to authorize transactions on behalf of our Account via a multi-sig transaction
 signers = [
-        SignerEntry(account=signer_1_wallet.classic_address, signer_weight=1),
-        SignerEntry(account=signer_2_wallet.classic_address, signer_weight=1),
-        SignerEntry(account=signer_3_wallet.classic_address, signer_weight=1)
+        SignerEntry(account=signer_1_wallet.address, signer_weight=1),
+        SignerEntry(account=signer_2_wallet.address, signer_weight=1),
+        SignerEntry(account=signer_3_wallet.address, signer_weight=1)
 ]
 
 # Display all the signers' account address
