@@ -3,7 +3,7 @@ from xrpl.transaction import submit_and_wait
 from xrpl.models.transactions.nftoken_mint import NFTokenMint, NFTokenMintFlag
 from xrpl.models.transactions.nftoken_accept_offer import NFTokenAcceptOffer
 from xrpl.models.transactions.nftoken_cancel_offer import NFTokenCancelOffer
-from xrpl.models.transactions.account_set import AccountSet, AccountSetFlag
+from xrpl.models.transactions.account_set import AccountSet, AccountSetAsfFlag
 from xrpl.models.transactions.nftoken_burn import NFTokenBurn
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.models.requests import AccountNFTs
@@ -94,7 +94,7 @@ else:
 print(f"\n - Authorizing account {minterAddr} as a NFT minter on account {issuerAddr}...")
 authorize_minter_tx = AccountSet(
     account=issuerAddr,
-    set_flag=AccountSetFlag.ASF_AUTHORIZED_NFTOKEN_MINTER,
+    set_flag=AccountSetAsfFlag.ASF_AUTHORIZED_NFTOKEN_MINTER,
     nftoken_minter=minterAddr
 )
 

@@ -1,5 +1,5 @@
 from xrpl.clients import JsonRpcClient
-from xrpl.models.transactions import AccountSet, SetRegularKey, AccountSetFlag
+from xrpl.models.transactions import AccountSet, SetRegularKey, AccountSetAsfFlag
 from xrpl.transaction import submit_and_wait
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.models.requests import AccountInfo
@@ -41,7 +41,7 @@ print(f"                            Tx content: {submit_tx_regular}")
 # This permanently blackholes an account!
 tx_disable_master_key = AccountSet(
     account=myAddr,
-    set_flag=AccountSetFlag.ASF_DISABLE_MASTER
+    set_flag=AccountSetAsfFlag.ASF_DISABLE_MASTER
 )
 
 # Sign and submit the transaction

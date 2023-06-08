@@ -9,7 +9,7 @@ from xrpl.asyncio.wallet import generate_faucet_wallet
 from xrpl.models.requests import AccountInfo
 from xrpl.models.transactions import (
     AccountSet,
-    AccountSetFlag,
+    AccountSetAsfFlag,
 )
 
 
@@ -23,7 +23,7 @@ async def main() -> int:
         # Send AccountSet transaction -----------------------------------------------
         tx = AccountSet(
             account=wallet.address,
-            set_flag=AccountSetFlag.ASF_REQUIRE_DEST,
+            set_flag=AccountSetAsfFlag.ASF_REQUIRE_DEST,
         )
 
         # Sign and autofill the transaction (ready to submit)

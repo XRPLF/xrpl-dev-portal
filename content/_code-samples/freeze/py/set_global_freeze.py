@@ -1,5 +1,5 @@
 from xrpl.clients import JsonRpcClient
-from xrpl.models import AccountSet, AccountSetFlag
+from xrpl.models import AccountSet, AccountSetAsfFlag
 from xrpl.transaction import submit_and_wait
 from xrpl.wallet import generate_faucet_wallet
 
@@ -12,7 +12,7 @@ print("Successfully generated test wallet")
 
 # Build accountset transaction to enable global freeze
 accountset = AccountSet(account=sender_wallet.address,
-    set_flag=AccountSetFlag.ASF_GLOBAL_FREEZE)
+    set_flag=AccountSetAsfFlag.ASF_GLOBAL_FREEZE)
 
 print("Preparing and submitting Account set transaction with ASF_GLOBAL_FREEZE ...")
 

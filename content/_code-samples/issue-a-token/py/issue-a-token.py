@@ -23,7 +23,7 @@ cold_settings_tx = xrpl.models.transactions.AccountSet(
     transfer_rate=0,
     tick_size=5,
     domain=bytes.hex("example.com".encode("ASCII")),
-    set_flag=xrpl.models.transactions.AccountSetFlag.ASF_DEFAULT_RIPPLE,
+    set_flag=xrpl.models.transactions.AccountSetAsfFlag.ASF_DEFAULT_RIPPLE,
 )
 
 print("Sending cold address AccountSet transaction...")
@@ -34,7 +34,7 @@ print(response)
 # Configure hot address settings -----------------------------------------------
 hot_settings_tx = xrpl.models.transactions.AccountSet(
     account=hot_wallet.address,
-    set_flag=xrpl.models.transactions.AccountSetFlag.ASF_REQUIRE_AUTH,
+    set_flag=xrpl.models.transactions.AccountSetAsfFlag.ASF_REQUIRE_AUTH,
 )
 
 print("Sending hot address AccountSet transaction...")
