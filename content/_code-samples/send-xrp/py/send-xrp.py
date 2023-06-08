@@ -1,6 +1,7 @@
 # Example Credentials ----------------------------------------------------------
 from xrpl.wallet import Wallet
-test_wallet = Wallet.from_seed(seed="sn3nxiW7v8KXzPzAqzyHXbSSKNuN9")
+from xrpl.constants import CryptoAlgorithm
+test_wallet = Wallet.from_seed(seed="sn3nxiW7v8KXzPzAqzyHXbSSKNuN9", algorithm=CryptoAlgorithm.SECP256K1)
 print(test_wallet.address) # "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"
 
 # Connect ----------------------------------------------------------------------
