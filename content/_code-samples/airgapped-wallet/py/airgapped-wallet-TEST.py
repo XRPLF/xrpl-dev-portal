@@ -12,6 +12,7 @@ from xrpl.core import keypairs
 from xrpl.utils import xrp_to_drops
 from xrpl.models.transactions import Payment
 from xrpl.transaction import safe_sign_transaction
+from xrpl.wallet.main import Wallet
 
 
 def create_wallet(silent: False):
@@ -63,7 +64,7 @@ def sign_transaction(xrp_amount, destination, ledger_seq, wallet_seq, password):
     seed = crypt.decrypt(seed)
 
     print("4. Initializing wallet using decrypted private key")
-    _wallet = wallet.Wallet.from_seed(seed=seed.decode())
+    _wallet = Wallet.from_seed(seed=seed.decode())
 
     validated_seq = ledger_seq
 

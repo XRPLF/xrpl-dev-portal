@@ -8,7 +8,7 @@ from pathlib import Path, PureWindowsPath, PurePath
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-from xrpl import wallet
+from xrpl.wallet import Wallet
 from xrpl.core import keypairs
 from xrpl.utils import xrp_to_drops
 from xrpl.models.transactions import Payment
@@ -58,7 +58,7 @@ def sign_transaction(_xrp_amount, _destination, _ledger_seq, _wallet_seq, passwo
 
     # Decrypts the wallet's private key
     _seed = crypt.decrypt(_seed)
-    _wallet = wallet.Wallet.from_seed(seed=_seed.decode())
+    _wallet = Wallet.from_seed(seed=_seed.decode())
 
     validated_seq = _ledger_seq
 
