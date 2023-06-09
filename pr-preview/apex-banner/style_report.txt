@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 44 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gif, gibs, gils
-  kuressaare: 
+  gifs: kifs, gits, gips
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -23,56 +23,56 @@ Found 44 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: black-hole, blockhole
+  blackhole: blockhole, black-hole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: alas, stas, slae
+  slas: sals, slav, sas
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: lsd, xls
+  xlsd: xls, lsd
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  immediateofferkilled: 
   depositpreauthamendment: 
+  xrpfees: 
+  immediateofferkilled: 
+  fixuniversalnumber: 
   fixnonfungibletokensv1_2: 
   disallowincoming: 
-  fixuniversalnumber: 
-  xrpfees: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
   asfdisallowincomingnftoffer: 
-  asfdisallowincomingcheck: 
   asfdisallowincomingtrustline: 
-  30d: 3rd, 3-d, 3d
+  asfdisallowincomingcheck: 
+  asfdisallowincomingpaychan: 
+  30d: 3-d, 3d, 3rd
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3-d, 3d, 3rd
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
