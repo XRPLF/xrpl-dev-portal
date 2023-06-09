@@ -676,31 +676,6 @@ pages:
         targets:            
             - ja
 
-        # TODO: possibly remove the whole Interop use case while it's not production-ready?
-    -   name: Interoperability
-        html: interoperability-uc.html
-        parent: use-cases.html
-        status: not_enabled
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Practical ways to connect the XRP Ledger to external chains.
-        targets:
-            - en
-            - ja
-
-    -   md: use-cases/interoperability/sidechains-uc.md
-        parent: interoperability-uc.html
-        status: not_enabled
-        targets:
-            - en
-            - ja
-
-    -   md: use-cases/interoperability/xrpl-hooks-uc.md
-        parent: interoperability-uc.html
-        status: not_enabled
-        targets:
-            - en
-            - ja
 
 # Concepts ---------------------------------------------------------------------
 
