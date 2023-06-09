@@ -8,19 +8,7 @@ labels:
 
 # What is the XRP Ledger?
 
-![Howdy, I'm Dennis Dawson](img/introduction1-howdy.png)
-
-I started working with the XRP Ledger in late 2021. At the time, I could completely relate to this tongue-in-cheek meme I found on the interwebs:
-
-<table border="2">
-<tr><td>
-"Cryptocurrency combines everything I don't understand about money with everything I don't understand about computers."
-</td></tr>
-</table>
-
-This quote gave me a boost in confidence. It helped me get past my imposter syndrome. If you can relate to that notion, what follows is  my best attempt at describing the XRP Ledger.
-
-XRP is a digital currency in which transactions are verified and records maintained by the XRP Ledger, a decentralized system using blockchain cryptography, rather than a centralized authority. Now, to break down that sentence...
+XRP is a digital currency in which transactions are verified and records maintained by the XRP Ledger, a decentralized system using blockchain cryptography, rather than a centralized authority.
 
 ## What Is a Blockchain?
 
