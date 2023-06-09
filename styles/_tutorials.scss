@@ -43,9 +43,16 @@ $footer-images: 3col-magenta-orange, 3col-green-blue, 3col-orange, 3col-purple, 
 }
 
 .tutorial-card-grid {
-  grid-gap: 40px !important;
+  grid-gap: 16px !important;
   row-gap: 0 !important;
   &.card-grid {
+    &.card-grid-3xN {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+      @include media-breakpoint-up(xl) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
     .card {
       margin-bottom: 2.5rem;
       background-position: bottom;
