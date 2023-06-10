@@ -11,51 +11,53 @@ The consensus protocol takes a previous ledger version as a starting point, form
 
 Each ledger version contains _state data_, a _transaction set_, and a _header_ containing metadata.
 
-***TODO: the text in this section has several mistakes, inaccuracies, and phrasing issues, which still need to be corrected.***
+<!-- TODO: update the diagrams to match the redone order -->
 
-[![Ledger Version](img/ledger.png)](img/ledger.png)
-
-The _ledger index_ identifies the ledger version position in the chain at the time of its validation. It builds on the version with an index that is one lower, back to the starting point known as the _genesis ledger_. This forms a public history of all transactions and results.
-
-[![Sequence Number](img/ledger1-sequence-number.png)](img/ledger1-sequence-number.png)
-
-Each ledger version also identifies itself with a unique 64-character hexidecimal _hash number_.
-
-[![Hash Number](img/ledger2-unique-hash.png)](img/ledger2-unique-hash.png)
-
-Ledger versions are largely defined as the difference between the current version and its _parent version_, identified by its unique hash number.
-
-[![Parent Version](img/ledger3-parent-version.png)](img/ledger3-parent-version.png)
-
-Every change made from version to version is the result of a validated transaction. The ledger version stores information about transactions in its scope.
-
-[![Transactions](img/ledger4-transactions.png)](img/ledger4-transactions.png)
-
-The ledger version contains _state data_ for all accounts, along with some miscellaneous housekeeping information. 99% or more of the data tends to be the same from version to version. While every rippled server keeps a copy of the entire ledger history, each ledger version saves only the updates to the state data.
+## State Data
 
 [![State Data](img/ledger5-state-data.png)](img/ledger5-state-data.png)
 
-Every transaction has a minor cost that removes a small amount of XRP from the available pool. The ledger version keeps track of the full amount of _available XRP_ still in circulation, in drops. The number of actual XRP in circulation is smaller than the amount in the ledger due to some XRP having been sent to "black hole" accounts where the access information is unknown, either by default or design.
+The _state data_ represents a snapshot of all accounts, balances, settings, and other information as of this ledger version. When a server connects to the network, one of the first things it does is download a full set of the current state data so that it can process new transactions and answer queries about the current state. Since every server in the network has a full copy of the state data, all data is public and every copy is equally valid.
 
-[![Available XRP](img/ledger6-available-xrp.png)](img/ledger6-available-xrp.png)
+The state data consists of individual objects called _ledger entries_, stored in a tree format. Each ledger entry has a unique 256-bit ID that you can use to look it up in the state tree.
 
-_Close Flags_ is a bit map of flags related to the close of the ledger. Currently, the only flag defined is **sLCF_NoConsensusTime** (value 1). It means that validators disagreed on the close time, but otherwise built the same ledger, so they have decided to "agree to disagree" on the close time. Other flags might be defined in future amendments to the XRP Ledger.
+## Transaction Set
 
-[![Close Flags](img/ledger7-close-flags.png)](img/ledger7-close-flags.png)
+[![Transactions](img/ledger4-transactions.png)](img/ledger4-transactions.png)
 
-_Close Time_ is the official timestamp when the final validated ledger version is created and closed.
+Every change made to the ledger is the result of a transaction. Each ledger version contains a _transaction set_ which is a group of transactions that have been newly applied in a specific order. If you take the previous ledger version's state data, and apply this ledger's transaction set on top of it, you get this ledger's state data as a result.
 
-[![Close Time](img/ledger8-close-time.png)](img/ledger8-close-time.png)
+Every transaction in a ledger's transaction set has both of the following parts:
 
-80% or more of the validators in the server's Unique Node List must agree on the contents of the ledger. Once it is validated, it is immutable. The ledger can only be changed by subsequent transactions.
+- _Transaction instructions_ showing what its sender told the ledger to do.
+- _Transaction metadata_ showing exactly how the transaction was processed and how it affected the ledger's state data.
+
+
+## Ledger Header
+
+[![Ledger Version](img/ledger.png)](img/ledger.png)
+
+The _ledger header_ is a block of data that summarizes a ledger version. Like the cover of a report, it uniquely identifies the ledger version, lists its contents, and shows the time it was created, along with some other notes. The ledger header contains the following information:
+
+- The _ledger index_, which identifies the ledger version's position in the chain. It builds on the ledger with an index that is one lower, back to the starting point known as the _genesis ledger_. This forms a public history of all transactions and results.
+- The _ledger hash_, which uniquely identifies the ledger's contents. The hash is calculated so that if any detail of the ledger version changes, the hash is completely different, which makes it also like a checksum that shows that none of the data in the ledger has been lost, modified, or corrupted.
+- The _parent ledger hash_. A ledger version is largely defined by the difference from the _parent ledger_ that came before it, so the header also contains the unique hash of its parent ledger.
+- The _close time_, the official timestamp when this ledger's contents were finalized. This number is rounded off by a number of seconds, usually 10.
+- A _state data hash_ and _transaction set hash_, which act as a checksum on those contents.
+- A few other notes like the total amount of XRP in existence and the amount the close time was rounded by.
+
+A ledger's transaction set and state data can be unlimited in size, but the ledger header is always a fixed size.
+
+
+## Validation Status
 
 [![Validated Ledger](img/ledger.png)](img/ledger.png)
 
+When a consensus of validators in a server's Unique Node List agree on the contents of a ledger version, that ledger version is marked as validated and immutable. The ledger's contents can only change by subsequent transactions making a new ledger version, continuing the chain.
 
-## Tree Format
+When a ledger version is first created, it is not yet validated. Due to differences in when candidate transactions arrive at different servers, the network may build and propose multiple different ledger versions to be the next step in the chain. The [consensus protocol](consensus.html) decides which one of them becomes validated. (Any candidate transactions that weren't in the validated ledger version can typically be included in the next ledger version's transaction set instead.)
 
-As its name might suggest, a ledger's state tree is a tree data structure. Each entry in the state tree is identified by a 256-bit ID. In JSON, a ledger entry's ID is the `index` field, which contains a 64-character hexadecimal string like `"193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"`. Every entry in the state tree has an ID that you can use to look up that entry; every transaction has an identifying hash that you can use to look up the transaction in the transaction tree. Do not confuse the `index` (ID) of a ledger entry with the `ledger_index` (sequence number) of a ledger.
 
-**Tip:** Sometimes, a ledger entry is called a "ledger node". For example, transaction metadata returns a list of `AffectedNodes`. Do not confuse this with a "node" (server) in the peer-to-peer network.
+## Ledger Index or Ledger Hash?
 
-In the case of transactions, the identifying hash is based on the signed transaction instructions, but the contents of the transaction object when you look it up also contain the results and metadata of the transaction, which are not taken into account when generating the hash.
+There are two different ways of identifying a ledger version, its ledger index and its ledger hash. These two fields can both identify a ledger, but they serve different purposes. The ledger index tells you _when_ to place a ledger in history, but not necessarily what its contents are. Two ledgers with the same ledger index might be the same, but they might be from different chains, or they could even be different candidates to be the next ledger on the same chain. Two ledgers with the same ledger hash are always completely identical, but the hash by itself doesn't tell you which one came first.
