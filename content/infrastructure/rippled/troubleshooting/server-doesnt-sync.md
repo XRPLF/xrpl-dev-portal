@@ -16,10 +16,10 @@ These instructions assume you have [installed `rippled`](install-rippled.html) o
 
 Syncing with the network normally takes about 5 to 15 minutes. During that time, the server does several things:
 
-- Loads a recommended validator list (typically from `vl.ripple.com`) to determine which validators it trusts.
+- Loads a recommended validator list (for example, from `vl.ripple.com`) to determine which validators it trusts.
 - [Discovers peer servers](peer-protocol.html#peer-discovery) and connects to them.
-- Downloads the [header](ledger-header.html) and full [state information](ledger-structure.html#tree-format) of the latest ledger from its peers, and uses that to build its internal database of ledger data.
 - Listens to its trusted validators to find which ledger hashes have been recently validated.
+- Downloads the full latest ledger from its peers, and uses that to build its internal database of ledger data.
 - Collects newly-broadcast transactions and attempts to apply them to its in-progress ledger.
 
 If the server is unable to keep up with the network while doing these tasks, the server does not sync to the network.
