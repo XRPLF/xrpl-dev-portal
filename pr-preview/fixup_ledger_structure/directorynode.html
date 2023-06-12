@@ -287,10 +287,10 @@
     <div class="content">
         <h1 id="directorynode">DirectoryNode<a aria-hidden="true" class="hover_anchor" href="#directorynode"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>DirectoryNode</code> object type provides a list of links to other objects in the ledger's state tree. A single conceptual <em>Directory</em>　takes the form of a doubly linked list, with one or more DirectoryNode objects each containing up to 32 <a href="ledger-structure.html#tree-format">IDs</a> of other objects. The first object is called the root of the directory, and all objects other than the root object can be added or deleted as necessary.</p>
+<p>The <code>DirectoryNode</code> ledger entry type provides a list of links to other entries in the ledger's state data. A single conceptual <em>Directory</em>　takes the form of a doubly linked list, with one or more DirectoryNode entries each containing up to 32 <a href="ledger-object-ids.html">IDs of other entries</a>. The first DirectoryNode entry is called the root of the directory, and all entries other than the root can be added or deleted as necessary.</p>
 <p>There are two kinds of Directories:</p>
 <ul>
-<li><strong>Owner directories</strong> list other objects owned by an account, such as <a href="ripplestate.html"><code>RippleState</code> (trust line)</a> or <a href="offer.html"><code>Offer</code></a> objects.</li>
+<li><strong>Owner directories</strong> list other entries owned by an account, such as <a href="ripplestate.html"><code>RippleState</code> (trust line)</a> or <a href="offer.html"><code>Offer</code></a> entries.</li>
 <li><strong>Offer directories</strong> list the offers available in the <a href="decentralized-exchange.html">decentralized exchange</a>. A single Offer directory contains all the offers that have the same exchange rate for the same token (currency code and issuer).</li>
 </ul>
 <h2 id="example-directorynode-json">Example DirectoryNode JSON<a aria-hidden="true" class="hover_anchor" href="#example-directorynode-json"><i class="fa fa-link"></i></a></h2>

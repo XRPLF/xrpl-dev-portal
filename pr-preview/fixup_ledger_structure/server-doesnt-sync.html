@@ -289,10 +289,10 @@
 <h2 id="normal-syncing-behavior">Normal Syncing Behavior<a aria-hidden="true" class="hover_anchor" href="#normal-syncing-behavior"><i class="fa fa-link"></i></a></h2>
 <p>Syncing with the network normally takes about 5 to 15 minutes. During that time, the server does several things:</p>
 <ul>
-<li>Loads a recommended validator list (typically from <code>vl.ripple.com</code>) to determine which validators it trusts.</li>
+<li>Loads a recommended validator list (for example, from <code>vl.ripple.com</code>) to determine which validators it trusts.</li>
 <li><a href="peer-protocol.html#peer-discovery">Discovers peer servers</a> and connects to them.</li>
-<li>Downloads the <a href="ledger-header.html">header</a> and full <a href="ledger-structure.html#tree-format">state information</a> of the latest ledger from its peers, and uses that to build its internal database of ledger data.</li>
 <li>Listens to its trusted validators to find which ledger hashes have been recently validated.</li>
+<li>Downloads the full latest ledger from its peers, and uses that to build its internal database of ledger data.</li>
 <li>Collects newly-broadcast transactions and attempts to apply them to its in-progress ledger.</li>
 </ul>
 <p>If the server is unable to keep up with the network while doing these tasks, the server does not sync to the network.</p>

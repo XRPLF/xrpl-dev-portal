@@ -518,7 +518,7 @@
 <tr>
 <td style="text-align: left;"><code>offer</code></td>
 <td style="text-align: left;">Object or String</td>
-<td style="text-align: left;">The <a href="offer.html">Offer object</a> to retrieve. If a string, interpret as the <a href="ledger-structure.html#tree-format">unique object ID</a> to the Offer. If an object, requires the sub-fields <code>account</code> and <code>seq</code> to uniquely identify the offer.</td>
+<td style="text-align: left;">The <a href="offer.html">Offer object</a> to retrieve. If a string, interpret as the Offer's <a href="ledger-object-ids.html">ledger entry ID</a>. If an object, requires the sub-fields <code>account</code> and <code>seq</code> to uniquely identify the offer.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>offer.account</code></td>
@@ -528,7 +528,7 @@
 <tr>
 <td style="text-align: left;"><code>offer.seq</code></td>
 <td style="text-align: left;">Unsigned Integer</td>
-<td style="text-align: left;"><em>(Required if <code>offer</code> is specified as an object)</em> The <a href="basic-data-types.html#account-sequence">Sequence Number</a> of the transaction that created the Offer object.</td>
+<td style="text-align: left;"><em>(Required if <code>offer</code> is specified as an object)</em> The <a href="basic-data-types.html#account-sequence">Sequence Number</a> of the transaction that created the Offer entry.</td>
 </tr>
 </tbody>
 </table>
