@@ -1514,7 +1514,13 @@ pages:
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/escrow-time.md
+    -   md: tutorials/quickstart/create-time-based-escrows.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/create-conditional-escrows.md
         targets:
             - en
             - ja
