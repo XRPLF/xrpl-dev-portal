@@ -3,13 +3,13 @@ Spell Checker
 -------------
 Found 62 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: ifs, gifts, gips
-  ringtee: 
+  gifs: kifs, gins, gids
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'What is the XRP Ledger?' (what-is-xrpl.html)> Unknown Words:
-  livenet: livener, livened
+  livenet: livened, livener
 
 <Page 'What is XRP?' (what-is-xrp.html)> Unknown Words:
   opencoin: 
@@ -20,14 +20,14 @@ Found 62 possible spelling errors:
 
 <Page 'Transactions and Requests' (txn-and-requests.html)> Unknown Words:
   transactiontype: 
-  ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
   rf1bigexwwqoi8z2uefytexswujyfv2jpn: 
+  ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
 
 <Page 'Peer-to-Peer Payments' (peer-to-peer-payments-uc.html)> Unknown Words:
   requiremen: requirement
 
 <Page 'Restricting Deposits' (restricting-deposits-uc.html)> Unknown Words:
-  deposite: deposits, deposita, deposit
+  deposite: deposito, deposita, deposit
   unathorized: unauthorized
 
 <Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Unknown Words:
@@ -41,7 +41,7 @@ Found 62 possible spelling errors:
   tokentaxon: 
 
 <Page 'Finality of Results' (finality-of-results.html)> Unknown Words:
-  ooffers: offers, coffers, goffers
+  ooffers: coffers, doffers, offers
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
   24n: 
@@ -58,17 +58,17 @@ Found 62 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: blockhole, black-hole
+  blackhole: black-hole, blockhole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: stas, slay, sls
+  slas: sla, slay, slats
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Create Time-based Escrows' (time-escrows.html)> Unknown Words:
-  ripple8: rippled, ripples, ripplet
+  ripple8: ripplet, rippled, rippler
   numofseconds: 
   offersequence: 
 
@@ -76,23 +76,23 @@ Found 62 possible spelling errors:
   30d: 3-d, 3rd, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -113,21 +113,21 @@ Found 62 possible spelling errors:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  xrpfees: 
   depositpreauthamendment: 
-  disallowincoming: 
-  fixnonfungibletokensv1_2: 
-  immediateofferkilled: 
   fixuniversalnumber: 
+  fixnonfungibletokensv1_2: 
+  disallowincoming: 
+  xrpfees: 
+  immediateofferkilled: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingcheck: 
-  asfdisallowincomingnftoffer: 
-  asfdisallowincomingtrustline: 
   asfdisallowincomingpaychan: 
+  asfdisallowincomingcheck: 
+  asfdisallowincomingtrustline: 
+  asfdisallowincomingnftoffer: 
   30d: 3-d, 3rd, 3d
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: lsd, xls
+  xlsd: xls, lsd
 
 <Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
   screenshots: screenshot
