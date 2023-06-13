@@ -1,6 +1,6 @@
 ---
 html: rippled-server-modes.html
-parent: xrpl-servers.html
+parent: networks-and-servers.html
 blurb: ストックサーバー、バリデータサーバー、スタンドアロンモードで運用されるrippledサーバーなど、rippledサーバーのモードについて説明します。
 labels:
   - コアサーバー

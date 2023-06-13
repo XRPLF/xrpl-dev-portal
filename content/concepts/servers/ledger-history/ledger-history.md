@@ -1,6 +1,6 @@
 ---
 html: ledger-history.html
-parent: xrpl-servers.html
+parent: networks-and-servers.html
 blurb: rippled servers store a variable amount of transaction and state history locally.
 labels:
   - Data Retention

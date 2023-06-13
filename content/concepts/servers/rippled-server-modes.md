@@ -1,6 +1,6 @@
 ---
 html: rippled-server-modes.html
-parent: xrpl-servers.html
+parent: networks-and-servers.html
 blurb: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
 labels:
   - Core Server

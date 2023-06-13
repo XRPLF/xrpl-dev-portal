@@ -141,7 +141,7 @@ targets:
             # Fix link from untranslated manifest.html:
             "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポートモード"
             # Fix links for untranslated get-started-using-python.html:
-            "xrpl-servers.html#reasons-to-run-your-own-server": "xrpl-servers.html#独自サーバーを運用する理由"
+            "networks-and-servers.html#reasons-to-run-your-own-server": "networks-and-servers.html#独自サーバーを運用する理由"
             "cryptographic-keys.html#key-components": "cryptographic-keys.html#キーの生成"
             "accounts.html#addresses": "accounts.html#アドレス"
             "cryptographic-keys.html#private-key": "cryptographic-keys.html#キーの生成"
@@ -697,14 +697,24 @@ pages:
         targets:
             - ja
     
-    # Servers -----------------------------------------------------------------
-    # TODO: this section should probably be moved to "infrastructure"
-    -   md: concepts/servers/xrpl-servers.md
+    # Networks and Servers -----------------------------------------------------------------
+
+    -   md: concepts/servers/networks-and-servers.md
         targets:
             - en
 
-    -   md: concepts/servers/xrpl-servers.ja.md
+    -   md: concepts/servers/networks-and-servers.ja.md
         targets:
+            - ja
+
+    # Redirect from the old xrpl-servers.html
+    -   name: XRP Ledger Servers
+        html: xrpl-servers.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: networks-and-servers.html
+        targets:
+            - en
             - ja
 
     -   md: concepts/servers/rippled-server-modes.md
@@ -761,6 +771,38 @@ pages:
 
     -   md: concepts/servers/transaction-censorship-detection.ja.md
         targets:
+            - ja
+
+    -   md: concepts/networks/parallel-networks.md
+        targets:
+            - en
+
+    -   md: concepts/networks/parallel-networks.ja.md
+        targets:
+            - ja
+
+        # Amendments -------------------------------------------------------------------
+
+    -   md: amendments/amendments.md
+        targets:
+            - en
+
+    -   md: amendments/amendments.ja.md
+        targets:
+            - ja
+
+    -   md: amendments/known-amendments.md
+        targets:
+            - en
+
+    -   md: amendments/known-amendments.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: amendments/contribute-code-flow.md
+        targets:
+            - en
             - ja
 
     -   md: concepts/servers/the-clio-server.md
@@ -1274,18 +1316,8 @@ pages:
     -   md: concepts/accounts/depositauth.ja.md
         targets:
             - ja
-    
-    # Networks ----------------------------------------------------------------
-    # TODO: This probably needs to move more/again. Maybe it "parallel" networks could become the landing page "networks" instead
 
-    -   md: concepts/networks/parallel-networks.md
-        targets:
-            - en
 
-    -   md: concepts/networks/parallel-networks.ja.md
-        targets:
-            - ja
-    
    ## REDIRECTS FROM OLD CONCEPT PAGES/LANDINGS -------------------------------
     -   name: Intro to Consensus
         html: intro-to-consensus.html
@@ -1434,7 +1466,7 @@ pages:
     -   name: The rippled Server
         html: the-rippled-server.html
         template: pagetype-redirect.html.jinja
-        redirect_url: xrpl-servers.html
+        redirect_url: networks-and-servers.html
         blurb: Learn about the core servers that power the XRP Ledger.
         nav_omit: true
         targets:
@@ -4646,34 +4678,6 @@ pages:
     #         - labels
     #     targets:
     #         - ja
-
-# Amendments -------------------------------------------------------------------
-
-    -   md: amendments/amendments.md
-        parent: docs.html
-        targets:
-            - en
-
-    -   md: amendments/amendments.ja.md
-        parent: docs.html
-        targets:
-            - ja
-
-    -   md: amendments/known-amendments.md
-        parent: amendments.html
-        targets:
-            - en
-
-    -   md: amendments/known-amendments.ja.md
-        parent: amendments.html
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: amendments/contribute-code-flow.md
-        targets:
-            - en
-            - ja
 
 
 # --------------- end "Docs" section -------------------------------------------
