@@ -127,7 +127,8 @@ https://xrpl.org/quickstart.html
 https://xrpl.org/xrpl-quickstart.html
 https://xrpl.org/create-accounts-send-xrp.html
 https://xrpl.org/create-trustline-send-currency.html
-https://xrpl.org/time-escrows.html
+https://xrpl.org/create-time-based-escrows.html
+https://xrpl.org/create-conditional-escrows.html
 https://xrpl.org/nft-quickstart.html
 https://xrpl.org/mint-and-burn-nftokens.html
 https://xrpl.org/transfer-nftokens.html
