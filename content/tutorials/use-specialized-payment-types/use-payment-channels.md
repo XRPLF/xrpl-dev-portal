@@ -648,7 +648,7 @@ This concludes the tutorial of Payment Channel usage. Ripple encourages users to
 ## See Also
 
 - **Concepts:**
-    - [XRP](xrp.html)
+    - [What is XRP?](what-is-xrp.html)
     - [Payment Types](payment-types.html)
         - [Payment Channels](payment-channels.html)
 - **Tutorials:**
