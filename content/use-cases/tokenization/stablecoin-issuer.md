@@ -33,7 +33,7 @@ For more information, see [Trust Lines and Issuing](trust-lines-and-issuing.html
 
 Token issuers do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to meet the reserve requirement and pay the cost of sending transactions through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy issuer.
 
-For more information, see [XRP](xrp.html), [Reserves](reserves.html), and [Transaction Cost](transaction-cost.html)
+For more information, see [What is XRP?](what-is-xrp.html), [Reserves](reserves.html), and [Transaction Cost](transaction-cost.html)
 
 
 ### Liquidity and Trading
