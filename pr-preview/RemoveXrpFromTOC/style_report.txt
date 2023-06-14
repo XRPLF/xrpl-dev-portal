@@ -3,13 +3,13 @@ Spell Checker
 -------------
 Found 64 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gift, rifs, gifts
+  gifs: gibs, gis, gies
   kuressaare: 
   ringtee: 
   lõõtsa: 
 
 <Page 'What is the XRP Ledger?' (what-is-xrpl.html)> Unknown Words:
-  livenet: livener, livened
+  livenet: livened, livener
 
 <Page 'What is XRP?' (what-is-xrp.html)> Unknown Words:
   opencoin: 
@@ -27,7 +27,7 @@ Found 64 possible spelling errors:
   requiremen: requirement
 
 <Page 'Restricting Deposits' (restricting-deposits-uc.html)> Unknown Words:
-  deposite: depositee, deposits, deposito
+  deposite: deposita, deposit, deposits
   unathorized: unauthorized
 
 <Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Unknown Words:
@@ -35,7 +35,7 @@ Found 64 possible spelling errors:
 
 <Page 'NFT Marketplace Overview' (nft-mkt-overview.html)> Unknown Words:
   arweave: 
-  infura: infra, infula
+  infura: infula, infra
 
 <Page 'Authorized Minter' (authorized-minter.html)> Unknown Words:
   tokentaxon: 
@@ -45,7 +45,7 @@ Found 64 possible spelling errors:
   slcf_noconsensustime: 
 
 <Page 'Finality of Results' (finality-of-results.html)> Unknown Words:
-  ooffers: offers, doffers, coffers
+  ooffers: coffers, goffers, offers
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
   24n: 
@@ -66,18 +66,18 @@ Found 64 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slat, slap, sias
+  slas: skas, ssas, slask
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Create Time-based Escrows' (time-escrows.html)> Unknown Words:
-  ripple8: rippler, ripplet, rippled
+  ripple8: ripplet, ripple, rippled
   numofseconds: 
   offersequence: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3-d, 3rd, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   nftokenoffers: nftokenoffer
@@ -117,18 +117,18 @@ Found 64 possible spelling errors:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  xrpfees: 
-  fixuniversalnumber: 
   disallowincoming: 
+  fixuniversalnumber: 
   depositpreauthamendment: 
+  xrpfees: 
   immediateofferkilled: 
   fixnonfungibletokensv1_2: 
   nftokenoffers: nftokenoffer
+  asfdisallowincomingcheck: 
   asfdisallowincomingtrustline: 
   asfdisallowincomingnftoffer: 
   asfdisallowincomingpaychan: 
-  asfdisallowincomingcheck: 
-  30d: 3-d, 3d, 3rd
+  30d: 3-d, 3rd, 3d
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
   xlsd: lsd, xls
