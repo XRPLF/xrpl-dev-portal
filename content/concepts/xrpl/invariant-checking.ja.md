@@ -146,7 +146,6 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 
 - **その他:**
     - [Authorized Trust Lines](authorized-trust-lines.html)
-    - [XRPの特性](xrp.html#xrpの特性)
     - [トランザクションの残高変化の計算](https://xrpl.org/blog/2015/calculating-balance-changes-for-a-transaction.html#calculating-balance-changes-for-a-transaction)
 
 
