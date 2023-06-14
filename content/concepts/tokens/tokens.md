@@ -62,7 +62,7 @@ For a tutorial of the technical steps involved in issuing a token, see [Issue a 
 ## See Also
 
 - **Concepts:**
-    - [XRP](xrp.html)
+    - [What is XRP?](what-is-xrp.html)
     - [Cross-Currency Payments](cross-currency-payments.html)
     - [Decentralized Exchange](decentralized-exchange.html)
 - **Tutorials:**
