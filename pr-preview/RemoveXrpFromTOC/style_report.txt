@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 64 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gis, gigs, gits
+  gifs: gifu, gits, gifts
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -20,22 +20,22 @@ Found 64 possible spelling errors:
 
 <Page 'Transactions and Requests' (txn-and-requests.html)> Unknown Words:
   transactiontype: 
-  rf1bigexwwqoi8z2uefytexswujyfv2jpn: 
   ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
+  rf1bigexwwqoi8z2uefytexswujyfv2jpn: 
 
 <Page 'Peer-to-Peer Payments' (peer-to-peer-payments-uc.html)> Unknown Words:
   requiremen: requirement
 
 <Page 'Restricting Deposits' (restricting-deposits-uc.html)> Unknown Words:
-  deposite: depositee, deposito, deposit
+  deposite: deposita, deposito, deposits
   unathorized: unauthorized
 
 <Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Unknown Words:
-  xapps: apps, lapps, capps
+  xapps: capps, apps, lapps
 
 <Page 'NFT Marketplace Overview' (nft-mkt-overview.html)> Unknown Words:
   arweave: 
-  infura: infra, infula
+  infura: infula, infra
 
 <Page 'Authorized Minter' (authorized-minter.html)> Unknown Words:
   tokentaxon: 
@@ -45,7 +45,7 @@ Found 64 possible spelling errors:
   slcf_noconsensustime: 
 
 <Page 'Finality of Results' (finality-of-results.html)> Unknown Words:
-  ooffers: goffers, coffers, offers
+  ooffers: goffers, offers, doffers
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
   24n: 
@@ -66,18 +66,18 @@ Found 64 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slats, slays, silas
+  slas: slar, slag, slavs
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Create Time-based Escrows' (time-escrows.html)> Unknown Words:
-  ripple8: ripple, ripplex, ripplet
+  ripple8: rippled, ripplet, ripplex
   numofseconds: 
   offersequence: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+  30d: 3rd, 3d, 3-d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   disallowincoming: 
@@ -95,8 +95,8 @@ Found 64 possible spelling errors:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -118,20 +118,20 @@ Found 64 possible spelling errors:
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
   disallowincoming: 
-  xrpfees: 
-  immediateofferkilled: 
   fixuniversalnumber: 
+  xrpfees: 
   fixnonfungibletokensv1_2: 
+  immediateofferkilled: 
   depositpreauthamendment: 
   nftokenoffers: nftokenoffer
+  asfdisallowincomingtrustline: 
   asfdisallowincomingpaychan: 
   asfdisallowincomingnftoffer: 
-  asfdisallowincomingtrustline: 
   asfdisallowincomingcheck: 
-  30d: 3d, 3rd, 3-d
+  30d: 3rd, 3d, 3-d
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: lsd, xls
+  xlsd: xls, lsd
 
 <Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
   screenshots: screenshot
@@ -251,7 +251,7 @@ Average Page Readability Scores:
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
-  Automated Readability Index: Grade level 10.9
+  Automated Readability Index: Grade level 10.8
   Coleman-Liau Index: Grade level 11.5
   Linsear Write Formula: Grade level 8.7
 
@@ -290,7 +290,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 54
   Words: 719
-  Characters: 4,466
+  Characters: 4,467
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
