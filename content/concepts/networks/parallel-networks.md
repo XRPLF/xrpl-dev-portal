@@ -13,7 +13,7 @@ To help members of the XRP Ledger community interact with XRP Ledger technology 
 
 | Network | Upgrade Cadence | Description                                      |
 |:--------|:----------------|:-------------------------------------------------|
-| Mainnet | Stable releases | _The_ [XRP Ledger](xrp-ledger-overview.html), a  decentralized cryptographic ledger powered by a network of peer-to-peer servers and the home of [XRP](xrp.html). |
+| Mainnet | Stable releases | _The_ [XRP Ledger](xrp-ledger-overview.html), a  decentralized cryptographic ledger powered by a network of peer-to-peer servers and the home of [XRP](what-is-xrp.html). |
 | Testnet | Stable releases | An "alternate universe" network that acts as a testing ground for software built on the XRP Ledger, without impacting production XRP Ledger users and without risking real money. The [amendment status](known-amendments.html) of the Testnet is intended to closely mirror the Mainnet, although slight variations in timing may occur due to the unpredictable nature of decentralized systems. |
 | Devnet  | Beta releases   | A preview of coming attractions, where unstable changes to the core XRP Ledger software may be tested out. Developers can use this altnet to interact with and learn about planned new XRP Ledger features and amendments that are not yet enabled on the Mainnet. |
 | [Hooks Testnet V2](https://hooks-testnet-v2.xrpl-labs.com/) | [Hooks server](https://github.com/XRPL-Labs/xrpld-hooks) | A preview of on-chain smart contract functionality using [hooks](https://write.as/xumm/xrpl-labs-is-working-on-the-transaction-hooks-amendment-for-the-xrp-ledger). |
