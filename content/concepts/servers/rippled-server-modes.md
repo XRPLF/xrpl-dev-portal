@@ -36,7 +36,7 @@ P2P Mode servers connect to [Mainnet](parallel-networks.html) by default.
 
 ### API Servers
 
-All P2P Mode servers provide [APIs](http-websocket-apis.html) for purposes like submitting transactions, checking balances and settings, and administering the server. If you query the XRP Ledger for data or submit transactions for business use, it can be useful to [run your own server](xrpl-servers.html#reasons-to-run-your-own-server).
+All P2P Mode servers provide [APIs](http-websocket-apis.html) for purposes like submitting transactions, checking balances and settings, and administering the server. If you query the XRP Ledger for data or submit transactions for business use, it can be useful to [run your own server](networks-and-servers.html#reasons-to-run-your-own-server).
 
 #### Full History Servers
 

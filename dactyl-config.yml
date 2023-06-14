@@ -4127,7 +4127,7 @@ pages:
         targets:
             - ja
 
-    -   name: Test rippled Functionality in Stand-Alone Mode
+    -   name: Testing and Auditing
         html: use-stand-alone-mode.html
         parent: infrastructure.html
         blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network.
@@ -4135,6 +4135,7 @@ pages:
         targets:
             - en
 
+        # TODO: Translate page name.
     -   name: スタンドアロンモードでrippledをテスト
         html: use-stand-alone-mode.html
         parent: infrastructure.html
