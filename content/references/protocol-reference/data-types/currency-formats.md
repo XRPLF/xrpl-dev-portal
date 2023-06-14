@@ -8,7 +8,7 @@ label:
 ---
 # Currency Formats
 
-The XRP Ledger has two kinds of digital asset: [XRP](what-is-xrp.html) and [tokens](tokens.html). Both types have high precision, although their formats are different.
+The XRP Ledger has two kinds of digital asset: XRP and [tokens](tokens.html). Both types have high precision, although their formats are different.
 
 ## Comparison
 
