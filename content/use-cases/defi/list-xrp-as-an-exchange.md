@@ -196,7 +196,7 @@ For more information, see [Specifying Currency Amounts][].
 
 With exchanges like _Alpha Exchange_, XRP can be "on-ledger" or "off-ledger":
 
-* **On-Ledger XRP**: XRP that can be queried through the public XRP Ledger by specifying the public [address](addresses.html) of the XRP holder. The counterparty to these balances is the XRP Ledger. For more information, see [XRP](xrp.html).
+* **On-Ledger XRP**: XRP that can be queried through the public XRP Ledger by specifying the public [address](addresses.html) of the XRP holder. The counterparty to these balances is the XRP Ledger. For more information, see [XRP](what-is-xrp.html).
 
 * **Off-Ledger XRP**: XRP that is held by the accounting system of an exchange and can be queried through the exchange interface. Off-ledger XRP balances are credit-based. The counterparty is the exchange holding the XRP.
 
