@@ -555,17 +555,6 @@ pages:
         parent: introduction.html
         targets:
             - ja
-            
-        # TODO: update or remove (en+ja)
-    -   md: concepts/introduction/xrp.md
-        parent: introduction.html
-        targets:
-            - en
-
-    -   md: concepts/introduction/xrp.ja.md
-        parent: introduction.html
-        targets:
-            - ja
 
 # Use Cases --------------------------------------------------------------------
 
