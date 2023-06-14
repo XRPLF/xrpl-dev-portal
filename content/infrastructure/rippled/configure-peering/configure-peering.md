@@ -1,6 +1,7 @@
 ---
 html: configure-peering.html
-parent: manage-the-rippled-server.html
+name: Peering
+parent: infrastructure.html
 template: pagetype-category.html.jinja
 blurb: Configure how your server connects to the peer-to-peer network.
 labels:

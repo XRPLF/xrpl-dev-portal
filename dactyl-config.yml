@@ -741,22 +741,6 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/servers/ledger-history/online-deletion.md
-        targets:
-            - en
-
-    -   md: concepts/servers/ledger-history/online-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/servers/ledger-history/history-sharding.md
-        targets:
-            - en
-
-    -   md: concepts/servers/ledger-history/history-sharding.ja.md
-        targets:
-            - ja
-
     -   md: concepts/servers/peer-protocol.md
         targets:
             - en
@@ -3963,6 +3947,14 @@ pages:
         targets:
             - ja
 
+    -   name: Server Modes
+        html: server-modes.html
+        parent: configure-rippled.html
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
     -   md: infrastructure/rippled/configuration/run-rippled-as-a-validator.md
         targets:
             - en
@@ -3977,6 +3969,62 @@ pages:
 
         # TODO: update this translation and rename the file like in the English version
     -   md: infrastructure/rippled/configuration/run-rippled-as-a-wallet-server.ja.md
+        targets:
+            - ja
+
+    -   name: Data Retention
+        html: data-retention.html
+        parent: configure-rippled.html
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-full-history.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-full-history.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/servers/ledger-history/online-deletion.md
+        targets:
+            - en
+
+    -   md: concepts/servers/ledger-history/online-deletion.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-online-deletion.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-online-deletion.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/servers/ledger-history/history-sharding.md
+        targets:
+            - en
+
+    -   md: concepts/servers/ledger-history/history-sharding.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-history-sharding.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-history-sharding.ja.md
         targets:
             - ja
 
@@ -4005,38 +4053,6 @@ pages:
             - en
 
     -   md: infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.ja.md
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-online-deletion.md
-        targets:
-            - en
-
-    -   md: infrastructure/rippled/configuration/configure-online-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.md
-        targets:
-            - en
-
-    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-history-sharding.md
-        targets:
-            - en
-
-    -   md: infrastructure/rippled/configuration/configure-history-sharding.ja.md
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-full-history.md
-        targets:
-            - en
-
-    -   md: infrastructure/rippled/configuration/configure-full-history.ja.md
         targets:
             - ja
 
@@ -4234,22 +4250,6 @@ pages:
             - en
 
     -   md: infrastructure/rippled/troubleshooting/fix-sqlite-tx-db-page-size-issue.ja.md
-        targets:
-            - ja
-
-    -   name: Clio Server
-        html: manage-the-clio-server.html
-        parent: infrastructure.html
-        blurb: Install, configure, and manage the Clio server.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: Clioサーバの管理
-        html: manage-the-clio-server.html
-        parent: infrastructure.html
-        blurb: Clioサーバーのインストール、設定、管理しましょう。
-        template: pagetype-category.html.jinja
         targets:
             - ja
 

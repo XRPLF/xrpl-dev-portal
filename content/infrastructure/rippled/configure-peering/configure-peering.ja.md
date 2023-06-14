@@ -1,6 +1,7 @@
 ---
 html: configure-peering.html
-parent: manage-the-rippled-server.html
+name: Peering
+parent: infrastructure.html
 template: pagetype-category.html.jinja
 blurb: サーバーをピアツーピアネットワークに接続する方法を設定します。
 labels:
