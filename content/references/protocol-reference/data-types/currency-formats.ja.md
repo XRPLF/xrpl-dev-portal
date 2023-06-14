@@ -8,7 +8,7 @@ labels:
 ---
 # 通貨フォーマット
 
-XRP Ledgerには2種類の通貨（[XRP](what-is-xrp.html)と[発行済み通貨](issued-currencies.html)）があります。XRP Ledgerでは、これらの通貨のフォーマットは異なりますが、いずれの通貨も高精度です。
+XRP Ledgerには2種類の通貨 XRP と[発行済み通貨](issued-currencies.html)）があります。XRP Ledgerでは、これらの通貨のフォーマットは異なりますが、いずれの通貨も高精度です。
 
 ## 文字列フォーマット
 
