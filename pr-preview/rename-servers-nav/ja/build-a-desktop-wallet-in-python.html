@@ -518,7 +518,7 @@
     <span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </code></pre></div>
 <p>Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to be use WebSocket URL to connect.</p>
-<p class="devportal-callout tip"><strong>Tip:</strong> If you <a href="xrpl-servers.html#reasons-to-run-your-own-server">run your own <code>rippled</code> server</a> you can connect to it using <code>ws://localhost:6006</code> as the URL. You can also use the WebSocket URLs of <a href="public-servers.html">public servers</a> to connect to the Mainnet or other test networks.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> If you <a href="networks-and-servers.html#独自サーバーを運用する理由">run your own <code>rippled</code> server</a> you can connect to it using <code>ws://localhost:6006</code> as the URL. You can also use the WebSocket URLs of <a href="public-servers.html">public servers</a> to connect to the Mainnet or other test networks.</p>
 <h4 id="troubleshooting-ssl-certificate-errors">Troubleshooting SSL Certificate Errors<a aria-hidden="true" class="hover_anchor" href="#troubleshooting-ssl-certificate-errors"><i class="fa fa-link"></i></a></h4>
 <p>If you get an error like this, you may need to make sure your operating system's certificate authority store is updated:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate
