@@ -24,5 +24,5 @@ print("Payment object:", my_payment)
 
 # Sign transaction -------------------------------------------------------------
 import xrpl.transaction 
-signed = xrpl.transaction.safe_sign_transaction(my_payment, wallet)
+signed = xrpl.transaction.sign(my_payment, wallet)
 print("Signed transaction blob:", signed)

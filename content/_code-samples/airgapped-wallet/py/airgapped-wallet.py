@@ -12,7 +12,7 @@ from xrpl.wallet import Wallet
 from xrpl.core import keypairs
 from xrpl.utils import xrp_to_drops
 from xrpl.models.transactions import Payment
-from xrpl.transaction import safe_sign_transaction
+from xrpl.transaction import sign
 
 
 def create_wallet():
@@ -75,7 +75,7 @@ def sign_transaction(_xrp_amount, _destination, _ledger_seq, _wallet_seq, passwo
 
     # Signs transaction and displays the signed_tx blob in QR code
     # Scan the QR code and transmit the signed_tx blob to an online machine (Machine 2) to relay it to the XRPL
-    my_tx_payment_signed = safe_sign_transaction(transaction=my_tx_payment, wallet=_wallet)
+    my_tx_payment_signed = sign(transaction=my_tx_payment, wallet=_wallet)
 
     img = qrcode.make(my_tx_payment_signed.to_dict())
     img.save(get_path("/Wallet/transactionID.png"))

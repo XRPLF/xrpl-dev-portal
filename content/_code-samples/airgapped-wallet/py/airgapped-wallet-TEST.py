@@ -11,7 +11,7 @@ from xrpl import wallet
 from xrpl.core import keypairs
 from xrpl.utils import xrp_to_drops
 from xrpl.models.transactions import Payment
-from xrpl.transaction import safe_sign_transaction
+from xrpl.transaction import sign
 from xrpl.wallet.main import Wallet
 
 
@@ -80,7 +80,7 @@ def sign_transaction(xrp_amount, destination, ledger_seq, wallet_seq, password):
     )
 
     print("6. Signing transaction...")
-    my_tx_payment_signed = safe_sign_transaction(transaction=my_tx_payment, wallet=_wallet)
+    my_tx_payment_signed = sign(transaction=my_tx_payment, wallet=_wallet)
 
     img = qrcode.make(my_tx_payment_signed.to_dict())
 

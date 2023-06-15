@@ -132,7 +132,7 @@ class XRPLMonitorThread(Thread):
         # rapidly if you track the sequence number more carefully.
         tx_signed = await xrpl.asyncio.transaction.autofill_and_sign(
                 tx, self.wallet, self.client)
-        await xrpl.asyncio.transaction.submit_transaction(tx_signed, self.client)
+        await xrpl.asyncio.transaction.submit(tx_signed, self.client)
         wx.CallAfter(self.gui.add_pending_tx, tx_signed)
 
 

@@ -1,5 +1,5 @@
 from xrpl.models.transactions import TicketCreate, AccountSet, SignerListSet, SignerEntry
-from xrpl.transaction import safe_sign_and_submit_transaction, autofill, multisign, sign
+from xrpl.transaction import sign_and_submit, autofill, multisign, sign
 from xrpl.models.requests.account_objects import AccountObjects, AccountObjectType
 from xrpl.models.requests.submit_multisigned import SubmitMultisigned
 from xrpl.wallet import generate_faucet_wallet
@@ -55,7 +55,7 @@ tx_set_signer_list = SignerListSet(
 
 # Sign transaction locally and submit
 print("Submitting a SignerListSet transaction to update our account to use our new Signers...")
-tx_set_signer_list_signed = safe_sign_and_submit_transaction(transaction=tx_set_signer_list, wallet=test_wallet, client=client)
+tx_set_signer_list_signed = sign_and_submit(transaction=tx_set_signer_list, wallet=test_wallet, client=client)
 
 # Construct a TicketCreate transaction, 3 tickets will be created
 tx_create_ticket = TicketCreate(
@@ -65,7 +65,7 @@ tx_create_ticket = TicketCreate(
 
 # Sign transaction locally and submit
 print("Submitting a TicketCreate transaction to get Ticket Sequences for future transactions...")
-tx_create_ticket_signed = safe_sign_and_submit_transaction(transaction=tx_create_ticket, wallet=test_wallet, client=client)
+tx_create_ticket_signed = sign_and_submit(transaction=tx_create_ticket, wallet=test_wallet, client=client)
 
 # Get a Ticket Sequence
 get_ticket_sequence = client.request(AccountObjects(
