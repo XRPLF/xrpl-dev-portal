@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 44 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, gifts, giss
+  gifs: gigs, gins, giff
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -23,11 +23,11 @@ Found 44 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: black-hole, blockhole
+  blackhole: blockhole, black-hole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: sals, slay, slash
+  slas: sias, silas, slabs
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
@@ -36,24 +36,24 @@ Found 44 possible spelling errors:
   xlsd: lsd, xls
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  fixuniversalnumber: 
+  fixnonfungibletokensv1_2: 
+  xrpfees: 
   immediateofferkilled: 
   disallowincoming: 
-  xrpfees: 
   depositpreauthamendment: 
-  fixnonfungibletokensv1_2: 
-  fixuniversalnumber: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
   asfdisallowincomingcheck: 
-  asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
-  30d: 3d, 3rd, 3-d
+  asfdisallowincomingnftoffer: 
+  asfdisallowincomingpaychan: 
+  30d: 3-d, 3rd, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+  30d: 3-d, 3rd, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   disallowincoming: 
@@ -71,8 +71,8 @@ Found 44 possible spelling errors:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
