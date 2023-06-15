@@ -2,7 +2,7 @@
 from xrpl.account import get_balance
 from xrpl.clients import JsonRpcClient
 from xrpl.models.transactions import Payment, SetRegularKey
-from xrpl.transaction import autofill_and_sign, submit_and_wait
+from xrpl.transaction import submit_and_wait
 from xrpl.wallet import generate_faucet_wallet
 
 # References
