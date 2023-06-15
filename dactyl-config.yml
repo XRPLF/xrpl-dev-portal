@@ -521,6 +521,16 @@ pages:
         targets:
             - en
             - ja
+    
+        # Redirect from old XRP page
+    -   name: XRP
+        html: xrp.html
+        redirect_url: what-is-xrp.html
+        nav_omit: true
+        template: pagetype-redirect.html.jinja
+        targets:
+            - en
+            - ja
 
     -   md: concepts/introduction/crypto-wallets.md
         parent: introduction.html
@@ -533,17 +543,6 @@ pages:
         targets:
             - en
             - ja
-
-        # TODO: update or remove (en+ja)
-    # -   md: concepts/introduction/xrp-ledger-overview.md
-    #     parent: introduction.html
-    #     targets:
-    #         - en
-
-    # -   md: concepts/introduction/xrp-ledger-overview.ja.md
-    #     parent: introduction.html
-    #     targets:
-    #         - ja
 
     -   md: concepts/introduction/software-ecosystem.md
         parent: introduction.html
