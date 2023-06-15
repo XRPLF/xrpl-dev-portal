@@ -3709,15 +3709,6 @@ pages:
         targets:
             - ja
 
-    -   md: references/http-websocket-apis/commandline-usage.md
-        targets:
-            - en
-
-        # TODO: update translation
-    -   md: references/http-websocket-apis/commandline-usage.ja.md
-        targets:
-            - ja
-
     # TODO: translate title & blurb
     -   name: Peer Port Methods
         html: peer-port-methods.html
@@ -3804,6 +3795,15 @@ pages:
         redirect_url: install-rippled-on-ubuntu.html
         targets:
             - en
+            - ja
+
+    -   md: infrastructure/rippled/commandline-usage.md
+        targets:
+            - en
+
+        # TODO: update translation
+    -   md: infrastructure/rippled/commandline-usage.ja.md
+        targets:
             - ja
 
     -   name: Install rippled
