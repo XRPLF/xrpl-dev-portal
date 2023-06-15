@@ -27,7 +27,7 @@ async def main() -> int:
         )
 
         # Sign and autofill the transaction (ready to submit)
-        signed_tx = await autofill_and_sign(tx, wallet, client)
+        signed_tx = await autofill_and_sign(tx, client, wallet)
         print("Transaction hash:", signed_tx.get_hash())
 
         # Submit the transaction and wait for response (validated or rejected)

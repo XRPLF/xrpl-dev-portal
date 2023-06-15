@@ -42,7 +42,7 @@ payment_tx = Payment(
 
 # Sign the transaction
 print("Submitting a payment transaction with our memo...")
-payment_tx_signed = autofill_and_sign(payment_tx, wallet=test_wallet, client=client)
+payment_tx_signed = autofill_and_sign(payment_tx, client=client, wallet=test_wallet)
 print(f"\n  Encoded Transaction MEMO: {payment_tx_signed.memos}")
 
 # Send the transaction to the node

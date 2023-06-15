@@ -33,7 +33,7 @@ signer_list_set_tx = SignerListSet(
     signer_quorum=2,
     signer_entries=signer_entries,
 )
-signed_signer_list_set_tx = autofill_and_sign(signer_list_set_tx, master_wallet, client)
+signed_signer_list_set_tx = autofill_and_sign(signer_list_set_tx, client, master_wallet)
 
 print("Constructed SignerListSet and submitting it to the ledger...")
 signed_list_set_tx_response = submit_and_wait(

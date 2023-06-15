@@ -26,7 +26,7 @@ print("Payment object:", my_payment)
 
 # Sign transaction -------------------------------------------------------------
 signed_tx = xrpl.transaction.autofill_and_sign(
-        my_payment, test_wallet, client)
+        my_payment, client, test_wallet)
 max_ledger = signed_tx.last_ledger_sequence
 tx_id = signed_tx.get_hash()
 print("Signed transaction:", signed_tx)

@@ -47,4 +47,4 @@ payment_tx = Payment(
     paths=paths,
 )
 
-print("signed: ", autofill_and_sign(payment_tx, wallet, client))
+print("signed: ", autofill_and_sign(payment_tx, client, wallet))

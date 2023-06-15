@@ -185,7 +185,7 @@ class XRPLMonitorThread(Thread):
         # send too many transactions too fast. You can send transactions more
         # rapidly if you track the sequence number more carefully.
         tx_signed = await xrpl.asyncio.transaction.autofill_and_sign(
-                tx, self.wallet, self.client)
+                tx, self.client, self.wallet)
         await xrpl.asyncio.transaction.submit(tx_signed, self.client)
         wx.CallAfter(self.gui.add_pending_tx, tx_signed)
 

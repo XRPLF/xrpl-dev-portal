@@ -19,7 +19,7 @@ tx = TicketCreate(
 )
 
 # Sign transaction locally and submit
-my_tx_payment_signed = sign_and_submit(transaction=tx, wallet=test_wallet, client=client)
+my_tx_payment_signed = sign_and_submit(transaction=tx, client=client, wallet=test_wallet)
 
 # Get a Ticket Sequence
 get_ticket_sequence = AccountObjects(

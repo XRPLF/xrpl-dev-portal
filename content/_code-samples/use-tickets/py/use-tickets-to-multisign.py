@@ -55,7 +55,7 @@ tx_set_signer_list = SignerListSet(
 
 # Sign transaction locally and submit
 print("Submitting a SignerListSet transaction to update our account to use our new Signers...")
-tx_set_signer_list_signed = sign_and_submit(transaction=tx_set_signer_list, wallet=test_wallet, client=client)
+tx_set_signer_list_signed = sign_and_submit(transaction=tx_set_signer_list, client=client, wallet=test_wallet)
 
 # Construct a TicketCreate transaction, 3 tickets will be created
 tx_create_ticket = TicketCreate(
@@ -65,7 +65,7 @@ tx_create_ticket = TicketCreate(
 
 # Sign transaction locally and submit
 print("Submitting a TicketCreate transaction to get Ticket Sequences for future transactions...")
-tx_create_ticket_signed = sign_and_submit(transaction=tx_create_ticket, wallet=test_wallet, client=client)
+tx_create_ticket_signed = sign_and_submit(transaction=tx_create_ticket, client=client, wallet=test_wallet)
 
 # Get a Ticket Sequence
 get_ticket_sequence = client.request(AccountObjects(
