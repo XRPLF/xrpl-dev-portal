@@ -1,6 +1,6 @@
 ---
 html: rippled-server-modes.html
-parent: xrpl-servers.html
+parent: networks-and-servers.html
 blurb: ストックサーバー、バリデータサーバー、スタンドアロンモードで運用されるrippledサーバーなど、rippledサーバーのモードについて説明します。
 labels:
   - コアサーバー
@@ -35,7 +35,7 @@ P2Pモードのサーバーは、デフォルトで[Mainnet](parallel-networks.h
 
 ### APIサーバー
 
-全てのP2Pモードサーバーは、トランザクションの送信、残高や設定の確認、サーバーの管理などの目的で、[API](http-websocket-apis.html)を提供しています。もしあなたがXRP Ledgerにデータを照会したり、ビジネス用途でトランザクションを送信するのであれば、[独自サーバーを運営する](xrpl-servers.html#独自サーバーを運用する理由)ことが有効でしょう。
+全てのP2Pモードサーバーは、トランザクションの送信、残高や設定の確認、サーバーの管理などの目的で、[API](http-websocket-apis.html)を提供しています。もしあなたがXRP Ledgerにデータを照会したり、ビジネス用途でトランザクションを送信するのであれば、[独自サーバーを運営する](networks-and-servers.html#独自サーバーを運用する理由)ことが有効でしょう。
 
 #### 全履歴サーバー
 

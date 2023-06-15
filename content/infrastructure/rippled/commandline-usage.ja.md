@@ -1,6 +1,7 @@
 ---
 html: commandline-usage.html
-parent: http-websocket-apis.html
+name: Commandline Usage
+parent: infrastructure.html
 blurb: rippledサーバーのコマンドライン使用オプションです。
 curated_anchors:
   - name: 使用できるモード
