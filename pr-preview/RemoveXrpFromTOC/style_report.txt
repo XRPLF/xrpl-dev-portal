@@ -3,13 +3,13 @@ Spell Checker
 -------------
 Found 64 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, gies, gigs
-  ringtee: 
+  gifs: gits, ifs, rifs
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'What is the XRP Ledger?' (what-is-xrpl.html)> Unknown Words:
-  livenet: livened, livener
+  livenet: livener, livened
 
 <Page 'What is XRP?' (what-is-xrp.html)> Unknown Words:
   opencoin: 
@@ -20,18 +20,18 @@ Found 64 possible spelling errors:
 
 <Page 'Transactions and Requests' (txn-and-requests.html)> Unknown Words:
   transactiontype: 
-  rf1bigexwwqoi8z2uefytexswujyfv2jpn: 
   ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
+  rf1bigexwwqoi8z2uefytexswujyfv2jpn: 
 
 <Page 'Peer-to-Peer Payments' (peer-to-peer-payments-uc.html)> Unknown Words:
   requiremen: requirement
 
 <Page 'Restricting Deposits' (restricting-deposits-uc.html)> Unknown Words:
-  deposite: deposits, deposito, deposited
+  deposite: deposited, deposito, deposit
   unathorized: unauthorized
 
 <Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Unknown Words:
-  xapps: apps, capps, lapps
+  xapps: capps, apps, lapps
 
 <Page 'NFT Marketplace Overview' (nft-mkt-overview.html)> Unknown Words:
   arweave: 
@@ -40,12 +40,35 @@ Found 64 possible spelling errors:
 <Page 'Authorized Minter' (authorized-minter.html)> Unknown Words:
   tokentaxon: 
 
+<Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
+  0b0: 
+
+<Page 'Amendments' (amendments.html)> Unknown Words:
+  11d: 
+
+<Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  depositpreauthamendment: 
+  fixuniversalnumber: 
+  fixnonfungibletokensv1_2: 
+  immediateofferkilled: 
+  xrpfees: 
+  disallowincoming: 
+  nftokenoffers: nftokenoffer
+  asfdisallowincomingcheck: 
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingnftoffer: 
+  asfdisallowincomingtrustline: 
+  30d: 3-d, 3rd, 3d
+
+<Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
+  xlsd: lsd, xls
+
 <Page 'Ledger Structure' (ledger-structure.html)> Unknown Words:
   hexidecimal: hexadecimal
   slcf_noconsensustime: 
 
 <Page 'Finality of Results' (finality-of-results.html)> Unknown Words:
-  ooffers: goffers, offers, coffers
+  ooffers: doffers, coffers, offers
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
   24n: 
@@ -66,37 +89,34 @@ Found 64 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slaps, slask, slams
-
-<Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  0b0: 
+  slas: sas, slay, slab
 
 <Page 'Create Time-based Escrows' (time-escrows.html)> Unknown Words:
-  ripple8: ripple, ripplex, rippled
+  ripple8: rippler, rippled, ripplet
   numofseconds: 
   offersequence: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+  30d: 3-d, 3rd, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -112,26 +132,6 @@ Found 64 possible spelling errors:
 
 <Page 'nft_history' (nft_history.html)> Unknown Words:
   nft_history: 
-
-<Page 'Amendments' (amendments.html)> Unknown Words:
-  11d: 
-
-<Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  disallowincoming: 
-  depositpreauthamendment: 
-  immediateofferkilled: 
-  xrpfees: 
-  fixuniversalnumber: 
-  fixnonfungibletokensv1_2: 
-  nftokenoffers: nftokenoffer
-  asfdisallowincomingcheck: 
-  asfdisallowincomingnftoffer: 
-  asfdisallowincomingtrustline: 
-  asfdisallowincomingpaychan: 
-  30d: 3d, 3rd, 3-d
-
-<Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: lsd, xls
 
 <Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
   screenshots: screenshot
@@ -192,6 +192,12 @@ Page: <Page 'Digital Artist' (digital-artist.html)>
 Page: <Page 'Decentralized Exchange' (moneychanger-uc.html)>
    Discouraged word: therefore (1 instances); suggest 'so' instead.
    Discouraged phrase: limited number (1 instances); suggest 'limits' instead.
+Page: <Page 'Amendments' (amendments.html)>
+   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+Page: <Page 'Known Amendments' (known-amendments.html)>
+   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
+Page: <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)>
+   Discouraged phrase: defaults to (1 instances); suggest 'the default is' instead.
 Page: <Page 'Ledgers' (ledgers.html)>
    Discouraged word: simply (1 instances); suggest '(omit)' instead.
    Discouraged phrase: a number of (1 instances); suggest 'some' instead.
@@ -226,12 +232,6 @@ Page: <Page 'ledger_data' (ledger_data.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-stand-alone-mode.html)>
    Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
-Page: <Page 'Amendments' (amendments.html)>
-   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
-Page: <Page 'Known Amendments' (known-amendments.html)>
-   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
-Page: <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)>
-   Discouraged phrase: defaults to (1 instances); suggest 'the default is' instead.
 Page: <Page 'Tutorial Guidelines' (tutorial-guidelines.html)>
    Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
    Discouraged word: frequently (1 instances); suggest 'often' instead.
@@ -290,7 +290,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 54
   Words: 719
-  Characters: 4,467
+  Characters: 4,468
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

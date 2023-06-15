@@ -120,7 +120,6 @@
             <a class="dropdown-item" href="tutorials.html">Tutorials</a>
             <a class="dropdown-item" href="references.html">References</a>
             <a class="dropdown-item" href="infrastructure.html">Infrastructure</a>
-            <a class="dropdown-item" href="amendments.html">Amendments</a>
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
@@ -284,21 +283,25 @@
 
 <div class="children-display">
   <ul>
-          <li class="level-1"><a href="xrpl-servers.html">XRP Ledger Servers</a></li>
+          <li class="level-1"><a href="networks-and-servers.html">Networks and Servers</a></li>
               <li class="level-2"><a href="rippled-server-modes.html">rippled Server Modes</a></li>
         
       <li class="level-2"><a href="clustering.html">Clustering</a></li>
         
       <li class="level-2"><a href="ledger-history.html">Ledger History</a></li>
-              <li class="level-3"><a href="online-deletion.html">Online Deletion</a></li>
         
-      <li class="level-3"><a href="history-sharding.html">History Sharding</a></li>
-        
-
       <li class="level-2"><a href="peer-protocol.html">Peer Protocol</a></li>
         
       <li class="level-2"><a href="transaction-censorship-detection.html">Transaction Censorship Detection</a></li>
         
+      <li class="level-2"><a href="parallel-networks.html">Parallel Networks</a></li>
+        
+      <li class="level-2"><a href="amendments.html">Amendments</a></li>
+              <li class="level-3"><a href="known-amendments.html">Known Amendments</a></li>
+        
+      <li class="level-3"><a href="contribute-code-flow.html">Contribute Code to the XRP Ledger</a></li>
+        
+
       <li class="level-2"><a href="the-clio-server.html">The Clio Server</a></li>
         
 
@@ -424,8 +427,6 @@
       <li class="level-2"><a href="depositauth.html">Deposit Authorization</a></li>
         
 
-      <li class="level-1"><a href="parallel-networks.html">Parallel Networks</a></li>
-        
 
   </ul>
 </div>    </div>
@@ -883,8 +884,6 @@
         
 
 
-      <li class="level-2"><a href="commandline-usage.html">rippled Commandline Usage Reference</a></li>
-        
       <li class="level-2"><a href="peer-port-methods.html">Peer Port Methods</a></li>
               <li class="level-3"><a href="health-check.html">Health Check</a></li>
         
@@ -906,7 +905,9 @@
 
 <div class="children-display">
   <ul>
-          <li class="level-1"><a href="install-rippled.html">Install rippled</a></li>
+          <li class="level-1"><a href="commandline-usage.html">Commandline Usage</a></li>
+        
+      <li class="level-1"><a href="install-rippled.html">Install rippled</a></li>
               <li class="level-2"><a href="system-requirements.html">System Requirements</a></li>
         
       <li class="level-2"><a href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a></li>
@@ -927,10 +928,26 @@
         
 
       <li class="level-1"><a href="configure-rippled.html">Configure rippled</a></li>
-              <li class="level-2"><a href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
+              <li class="level-2"><a href="server-modes.html">Server Modes</a></li>
+              <li class="level-3"><a href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
         
-      <li class="level-2"><a href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a></li>
+      <li class="level-3"><a href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a></li>
         
+
+      <li class="level-2"><a href="data-retention.html">Data Retention</a></li>
+              <li class="level-3"><a href="configure-full-history.html">Configure Full History</a></li>
+        
+      <li class="level-3"><a href="online-deletion.html">Online Deletion</a></li>
+        
+      <li class="level-3"><a href="configure-online-deletion.html">Configure Online Deletion</a></li>
+        
+      <li class="level-3"><a href="configure-advisory-deletion.html">Configure Advisory Deletion</a></li>
+        
+      <li class="level-3"><a href="history-sharding.html">History Sharding</a></li>
+        
+      <li class="level-3"><a href="configure-history-sharding.html">Configure History Sharding</a></li>
+        
+
       <li class="level-2"><a href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
         
       <li class="level-2"><a href="test-amendments.html">Test Amendments</a></li>
@@ -939,20 +956,30 @@
         
       <li class="level-2"><a href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
         
-      <li class="level-2"><a href="configure-online-deletion.html">Configure Online Deletion</a></li>
-        
-      <li class="level-2"><a href="configure-advisory-deletion.html">Configure Advisory Deletion</a></li>
-        
-      <li class="level-2"><a href="configure-history-sharding.html">Configure History Sharding</a></li>
-        
-      <li class="level-2"><a href="configure-full-history.html">Configure Full History</a></li>
-        
       <li class="level-2"><a href="configure-grpc.html">Configure gRPC</a></li>
         
       <li class="level-2"><a href="enable-public-signing.html">Enable Public Signing</a></li>
         
 
-      <li class="level-1"><a href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a></li>
+      <li class="level-1"><a href="configure-peering.html">Peering</a></li>
+              <li class="level-2"><a href="cluster-rippled-servers.html">Cluster rippled Servers</a></li>
+        
+      <li class="level-2"><a href="configure-a-private-server.html">Configure a Private Server</a></li>
+        
+      <li class="level-2"><a href="configure-the-peer-crawler.html">Configure the Peer Crawler</a></li>
+        
+      <li class="level-2"><a href="enable-link-compression.html">Enable Link Compression</a></li>
+        
+      <li class="level-2"><a href="forward-ports-for-peering.html">Forward Ports for Peering</a></li>
+        
+      <li class="level-2"><a href="manually-connect-to-a-specific-peer.html">Manually Connect to a Specific Peer</a></li>
+        
+      <li class="level-2"><a href="set-max-number-of-peers.html">Set Maximum Number of Peers</a></li>
+        
+      <li class="level-2"><a href="use-a-peer-reservation.html">Use a Peer Reservation</a></li>
+        
+
+      <li class="level-1"><a href="use-stand-alone-mode.html">Testing and Auditing</a></li>
               <li class="level-2"><a href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a></li>
         
       <li class="level-2"><a href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a></li>
@@ -976,23 +1003,7 @@
       <li class="level-2"><a href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue</a></li>
         
 
-      <li class="level-1"><a href="manage-the-clio-server.html">Clio Server</a></li>
-        
       <li class="level-1"><a href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a></li>
-        
-
-  </ul>
-</div>    </div>
-    <div class="col-md-6 mt-20">
-    <a href="amendments.html"><h5 class="mb-3">Amendments</h5></a>
-
-
-
-<div class="children-display">
-  <ul>
-          <li class="level-1"><a href="known-amendments.html">Known Amendments</a></li>
-        
-      <li class="level-1"><a href="contribute-code-flow.html">Contribute Code to the XRP Ledger</a></li>
         
 
   </ul>
@@ -1074,7 +1085,6 @@
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
-            <li class="nav-item"><a href="amendments.html" class="nav-link">Amendments</a></li>
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>

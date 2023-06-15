@@ -131,7 +131,6 @@
             <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
             <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
             <a class="dropdown-item" href="/ja/infrastructure.html">Infrastructure</a>
-            <a class="dropdown-item" href="/ja/amendments.html">Amendment</a>
           </div><!--./col-->
           <div class="navcol col-for-online-tools">
             <h5 class="dropdown-item">Online Tools</h5>
@@ -248,16 +247,12 @@
 
 <div class="children-display">
   <ul>
-          <li class="level-1"><a href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a><p class="blurb child-blurb">サーバーがコンセンサスレジャーで投票できるようにします。</p></li>
-      <li class="level-1"><a href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a><p class="blurb child-blurb">XRPを統合する人のための汎用的な構成。</p></li>
+          <li class="level-1"><a href="/ja/server-modes.html">Server Modes</a><p class="blurb child-blurb">XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。</p></li>
+      <li class="level-1"><a href="/ja/data-retention.html">Data Retention</a><p class="blurb child-blurb">XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。</p></li>
       <li class="level-1"><a href="/ja/configure-amendment-voting.html">修正投票機能の設定</a><p class="blurb child-blurb">プロトコル修正に伴うサーバーの投票を設定する。</p></li>
       <li class="level-1"><a href="/ja/test-amendments.html">Test Amendments</a><p class="blurb child-blurb">You can test proposed amendments before they're enabled on the network.</p></li>
       <li class="level-1"><a href="/ja/configure-statsd.html">Configure StatsD</a><p class="blurb child-blurb">Monitor your rippled server with StatsD metrics.</p></li>
       <li class="level-1"><a href="/ja/connect-your-rippled-to-the-xrp-test-net.html">XRPL Altnetへのrippledの接続</a><p class="blurb child-blurb">rippledサーバーをTest Netに接続して、模造の資金を使って新しい機能を試したり、機能をテストしたりします。</p></li>
-      <li class="level-1"><a href="/ja/configure-online-deletion.html">オンライン削除の設定</a><p class="blurb child-blurb">サーバーでどこまで古いトランザクション履歴を保持するかを設定します。</p></li>
-      <li class="level-1"><a href="/ja/configure-advisory-deletion.html">指示による削除の設定</a><p class="blurb child-blurb">指示による削除を使用して、新しい履歴ができたときではなく、スケジュールで古いレジャー履歴を削除します。</p></li>
-      <li class="level-1"><a href="/ja/configure-history-sharding.html">履歴シャーディングの設定</a><p class="blurb child-blurb">履歴XRPレジャーデータのシャードを保存するようにサーバーを設定します。</p></li>
-      <li class="level-1"><a href="/ja/configure-full-history.html">全履歴の設定</a><p class="blurb child-blurb">完全履歴サーバーは、運用のコストは高いものの、XRP Ledgerでこれまでに発生したすべてのトランザクションの記録を提供します。</p></li>
       <li class="level-1"><a href="/ja/configure-grpc.html">Configure gRPC</a><p class="blurb child-blurb">Enable and configure the gRPC API.</p></li>
       <li class="level-1"><a href="/ja/enable-public-signing.html">パブリック署名の有効化</a><p class="blurb child-blurb">他の人があなたのサーバーを使ってトランザクションに署名できるようにします。（非推奨）</p></li>
 
@@ -429,7 +424,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
 
-        <a class="nav-link" href="/ja/xrpl-servers.html">XRP Ledger サーバー</a>
+        <a class="nav-link" href="/ja/networks-and-servers.html">Networks and Servers</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
       
@@ -444,24 +439,7 @@
 
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_3" aria-expanded="false" aria-controls="tree_nav_group_4_1_3"></a>
-
-        <a class="nav-link" href="/ja/ledger-history.html">レジャー履歴</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/online-deletion.html">オンライン削除</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/history-sharding.html">履歴シャーディング</a>
-  </div>
-
-    </nav>
-
+    <a class="nav-link nav-leaf" href="/ja/ledger-history.html">レジャー履歴</a>
   </div>
 
       
@@ -472,6 +450,33 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-censorship-detection.html">取引検閲の検知</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_7" aria-expanded="false" aria-controls="tree_nav_group_4_1_7"></a>
+
+        <a class="nav-link" href="/ja/amendments.html">Amendment</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/contribute-code-flow.html">Contribute Code to the XRP Ledger</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -856,11 +861,6 @@
 
     </nav>
 
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/parallel-networks.html">並列ネットワーク</a>
   </div>
 
     </nav>
@@ -2260,17 +2260,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/commandline-usage.html">rippledコマンドライン使用リファレンス</a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_4"></a>
 
         <a class="nav-link" href="/ja/peer-port-methods.html">ピアポートメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
@@ -2315,12 +2310,17 @@
     <nav class="nav flex-column show " id="tree_nav_group_7">
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/commandline-usage.html">Commandline Usage</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_1" aria-expanded="false" aria-controls="tree_nav_group_7_1"></a>
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_2" aria-expanded="false" aria-controls="tree_nav_group_7_2"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -2374,11 +2374,19 @@
       
   <div class="nav-item active">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_7_2" aria-expanded="true" aria-controls="tree_nav_group_7_2"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_7_3" aria-expanded="true" aria-controls="tree_nav_group_7_3"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_7_2">
+    <nav class="nav flex-column show " id="tree_nav_group_7_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_7_3_1"></a>
+
+        <a class="nav-link" href="/ja/server-modes.html">Server Modes</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -2387,6 +2395,52 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_7_3_2"></a>
+
+        <a class="nav-link" href="/ja/data-retention.html">Data Retention</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-full-history.html">全履歴の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/online-deletion.html">オンライン削除</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-online-deletion.html">オンライン削除の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-advisory-deletion.html">指示による削除の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/history-sharding.html">履歴シャーディング</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-history-sharding.html">履歴シャーディングの設定</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
@@ -2411,26 +2465,6 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-online-deletion.html">オンライン削除の設定</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-advisory-deletion.html">指示による削除の設定</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-history-sharding.html">履歴シャーディングの設定</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-full-history.html">全履歴の設定</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
   </div>
 
@@ -2446,11 +2480,63 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3" aria-expanded="false" aria-controls="tree_nav_group_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
+
+        <a class="nav-link" href="/ja/configure-peering.html">Peering</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-a-private-server.html">プライベートサーバーの設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/forward-ports-for-peering.html">ピアリングのポート転送</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/manually-connect-to-a-specific-peer.html">特定のピアへの手動接続</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/set-max-number-of-peers.html">ピアの最大数の設定</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/use-a-peer-reservation.html">ピアリザベーションの使用</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_5" aria-expanded="false" aria-controls="tree_nav_group_7_5"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -2473,11 +2559,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_6" aria-expanded="false" aria-controls="tree_nav_group_7_6"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -2519,34 +2605,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/manage-the-clio-server.html">Clioサーバの管理</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_8" aria-expanded="false" aria-controls="tree_nav_group_8"></a>
-
-        <a class="nav-link" href="/ja/amendments.html">Amendment</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_8">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/contribute-code-flow.html">Contribute Code to the XRP Ledger</a>
   </div>
 
     </nav>
@@ -2561,11 +2620,11 @@
     
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_10" aria-expanded="false" aria-controls="tree_nav_group_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_9" aria-expanded="false" aria-controls="tree_nav_group_9"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPCツール</a>
@@ -2639,7 +2698,6 @@
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/infrastructure.html" class="nav-link">Infrastructure</a></li>
-            <li class="nav-item"><a href="/ja/amendments.html" class="nav-link">Amendment</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
