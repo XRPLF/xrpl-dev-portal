@@ -51,27 +51,9 @@
   }
 }
 
-body {
-  padding-top: 46px;
-}
-
 .top-nav {
-  @include media-breakpoint-only(xs) {
-    top: 43px; // adjust as needed
-  }
-  @include media-breakpoint-only(sm) {
-    top: 43px; // adjust as needed
-  }
-
-  // Medium devices (tablets, 768px and up)
-  @include media-breakpoint-only(md) {
-    top: 46px; // adjust as needed
-  }
-
-  // Large devices (desktops, 992px and up)
-  @include media-breakpoint-up(lg) {
-    top: 40px; // adjust as needed
-  }
+    position: sticky;
+    width: 100%;
 }
 
 .right-sidebar,

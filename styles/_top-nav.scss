@@ -12,41 +12,31 @@
   align-items: center;
   display: flex;
 }
-#apex-banner {
+.banner-container {
+  display: block;
   width: 100%;
-  @include media-breakpoint-only(xs) {
-    content: url(../img/apex-banner-sm.png);
-    height: 46px;
-  }
+  position: relative; // Or use 'static' if you don't need to position child elements relatively
 
-  @include media-breakpoint-only(sm) {
-    content: url(../img/apex-banner-sm.png);
-    height: 46px;
-  }
+  #apex-banner {
+    width: 100%;
+    height: auto;
 
-  // Medium devices (tablets, 768px and up)
-  @include media-breakpoint-only(md) {
-    content: url(../img/apex-banner-md.png);
-    height: 46px;
-  }
+    @include media-breakpoint-only(xs) {
+      content: url(../img/apex-banner-sm.png);
+    }
 
-  // Large devices (desktops, 992px and up)
-  @include media-breakpoint-up(lg) {
-    content: url(../img/apex-banner.png);
-    height: 40px;
+    @include media-breakpoint-only(sm) {
+      content: url(../img/apex-banner-sm.png);
+    }
+
+    @include media-breakpoint-only(md) {
+      content: url(../img/apex-banner-md.png);
+    }
+
+    @include media-breakpoint-up(lg) {
+      content: url(../img/apex-banner.png);
+    }
   }
-  
-  // background-position: 0%;
-  // background-repeat: repeat-x;
-  // background-size: auto 32px;
-  // flex: none;
-  // justify-content: flex-start;
-  // align-items: center;
-  // display: flex;
-  // position: relative;
-  // white-space: nowrap;
-  // will-change: transform;
-  // animation: marquee-horizontal 16s linear infinite;
 }
 /* Top navigation ----------------------------------------------------------- */
 .top-nav {
