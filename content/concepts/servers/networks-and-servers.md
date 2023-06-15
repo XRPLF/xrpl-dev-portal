@@ -1,10 +1,10 @@
 ---
-html: xrpl-servers.html
+html: networks-and-servers.html
 parent: concepts.html
 blurb: rippled is the core peer-to-peer server that manages the XRP Ledger.
 template: pagetype-category.html.jinja
 ---
-# XRP Ledger Servers
+# Networks and Servers
 
 There are two main types of server software that power the XRP Ledger:
 

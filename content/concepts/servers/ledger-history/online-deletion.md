@@ -1,6 +1,6 @@
 ---
 html: online-deletion.html
-parent: ledger-history.html
+parent: data-retention.html
 blurb: Online deletion purges outdated transaction and state history.
 labels:
   - Data Retention

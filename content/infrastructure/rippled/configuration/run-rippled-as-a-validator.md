@@ -1,6 +1,6 @@
 ---
 html: run-rippled-as-a-validator.html
-parent: configure-rippled.html
+parent: server-modes.html
 blurb: Have your server vote on the consensus ledger.
 labels:
   - Core Server

@@ -144,7 +144,7 @@ Finally, change the code to start the app (at the end of the file) slightly:
 
 Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to be use WebSocket URL to connect.
 
-**Tip:** If you [run your own `rippled` server](xrpl-servers.html#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](public-servers.html) to connect to the Mainnet or other test networks.
+**Tip:** If you [run your own `rippled` server](networks-and-servers.html#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](public-servers.html) to connect to the Mainnet or other test networks.
 
 #### Troubleshooting SSL Certificate Errors
 

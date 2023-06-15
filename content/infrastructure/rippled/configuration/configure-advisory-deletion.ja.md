@@ -1,6 +1,6 @@
 ---
 html: configure-advisory-deletion.html
-parent: configure-rippled.html
+parent: data-retention.html
 blurb: 指示による削除を使用して、新しい履歴ができたときではなく、スケジュールで古いレジャー履歴を削除します。
 labels:
   - コアサーバー

@@ -1,6 +1,6 @@
 ---
 html: peer-protocol.html
-parent: xrpl-servers.html
+parent: networks-and-servers.html
 blurb: The peer protocol specifies the language rippled servers speak to each other.
 labels:
   - Core Server

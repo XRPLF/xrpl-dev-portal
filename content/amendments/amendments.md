@@ -1,6 +1,6 @@
 ---
 html: amendments.html
-parent: docs.html
+parent: networks-and-servers.html
 blurb: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion.
 labels:
   - Blockchain

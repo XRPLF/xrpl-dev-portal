@@ -1,6 +1,6 @@
 ---
 html: configure-advisory-deletion.html
-parent: configure-rippled.html
+parent: data-retention.html
 blurb: Use advisory deletion to delete older ledger history on a schedule rather than as new history becomes available.
 labels:
   - Core Server

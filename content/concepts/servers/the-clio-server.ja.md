@@ -1,6 +1,6 @@
 ---
 html: the-clio-server.html
-parent: xrpl-servers.html
+parent: networks-and-servers.html
 blurb: Clioは、API呼び出しに最適化されたXRP Ledgerサーバーです。
 ---
 # Clioサーバー

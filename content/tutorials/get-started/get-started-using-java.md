@@ -98,7 +98,7 @@ you can use an [`XrplClient`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/3.0.
 
 The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](parallel-networks.html). When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
 
-* By [installing the core server](install-rippled.html) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](connect-your-rippled-to-the-xrp-test-net.html). [There are good reasons to run your own core server](xrpl-servers.html#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
+* By [installing the core server](install-rippled.html) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](connect-your-rippled-to-the-xrp-test-net.html). [There are good reasons to run your own core server](networks-and-servers.html#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
         final HttpUrl rippledUrl = HttpUrl.get("http://localhost:5005/");
         XrplClient xrplClient = new XrplClient(rippledUrl);
