@@ -908,7 +908,7 @@
 </table>
 <p class="devportal-callout note"><strong>Note:</strong> If the modified ledger object has <code>PreviousTxnID</code> and <code>PreviousTxnLgrSeq</code> fields, the transaction always updates them with the transaction's own identifying hash and the index of the ledger version that included the transaction, but these fields' new value is not listed in the <code>FinalFields</code> of the <code>ModifiedNode</code> object, and their previous values are listed at the top level of the <code>ModifiedNode</code> object rather than in the nested <code>PreviousFields</code> object.</p>
 <h2 id="nft-fields">NFT Fields<a aria-hidden="true" class="hover_anchor" href="#nft-fields"><i class="fa fa-link"></i></a></h2>
-<p>Transactions involving NFTs can contain the following fields in the metadata:</p>
+<p>Transactions involving NFTs can contain the following fields in the metadata. These values are added by the Clio server at request time and are not stored in the hashed binary  metadata:</p>
 <table class="table-responsive">
 <thead>
 <tr>
