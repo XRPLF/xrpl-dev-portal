@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 44 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gits, gins, rifs
-  ringtee: 
+  gifs: gifts, gifu, giff
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -27,26 +27,26 @@ Found 44 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slam, slask, swas
+  slas: blas, elas, slan
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: xls, lsd
+  xlsd: lsd, xls
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
   immediateofferkilled: 
+  disallowincoming: 
+  fixuniversalnumber: 
+  xrpfees: 
   depositpreauthamendment: 
   fixnonfungibletokensv1_2: 
-  xrpfees: 
-  fixuniversalnumber: 
-  disallowincoming: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingnftoffer: 
-  asfdisallowincomingtrustline: 
   asfdisallowincomingcheck: 
+  asfdisallowincomingtrustline: 
   asfdisallowincomingpaychan: 
+  asfdisallowincomingnftoffer: 
   30d: 3d, 3rd, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
