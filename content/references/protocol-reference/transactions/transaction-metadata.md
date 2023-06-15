@@ -70,7 +70,7 @@ A `ModifiedNode` object contains the following fields:
 
 ## NFT Fields
 
-Transactions involving NFTs can contain the following fields in the metadata:
+Transactions involving NFTs can contain the following fields in the metadata. These values are added by the Clio server at request time and are not stored in the hashed binary  metadata:
 
 | Field               | Value                     | Description                |
 |:--------------------|:--------------------------|:---------------------------|
