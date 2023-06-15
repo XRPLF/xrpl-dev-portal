@@ -1711,22 +1711,16 @@ pages:
           - en
           - ja # TODO: translate this page
           
+        # Redirect old Production Readiness category. 
+        # There's no equivalent category now, so go to Tutorials top
     -   name: Production Readiness
         html: production-readiness.html
-        parent: tutorials.html
-        template: pagetype-category.html.jinja
-        blurb: Follow these best practices to build a robust, safe production system for using the XRP Ledger.
+        redirect_url: tutorials.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
         targets:
             - en
-
-    -   name: 本番環境への準備
-        html: production-readiness.html
-        parent: tutorials.html
-        template: pagetype-category.html.jinja
-        blurb: 以下のベストプラクティスに従って、XRPレジャーを使用するための堅牢で安全な本番システムを構築しましょう。
-        targets:
             - ja
-
 
         # Redirect for this page's new home outside of tutorials
     -   name: Cancel or Skip a Transaction
