@@ -8,7 +8,7 @@ labels:
 
 # What is the XRP Ledger?
 
-The XRP Ledger is a decentralized blockchain that uses XRP to process and record financial transactions.
+The XRP Ledger is a decentralized blockchain that uses its own digital currency to process and record financial transactions.
 
 
 ## What Is a Blockchain?
