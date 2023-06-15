@@ -403,7 +403,7 @@
 
 <span class="c1"># Sign transaction -------------------------------------------------------------</span>
 <span class="kn">import</span> <span class="nn">xrpl.transaction</span> 
-<span class="n">signed</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">safe_sign_transaction</span><span class="p">(</span><span class="n">my_payment</span><span class="p">,</span> <span class="n">wallet</span><span class="p">)</span>
+<span class="n">signed</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">my_payment</span><span class="p">,</span> <span class="n">wallet</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Signed transaction blob:"</span><span class="p">,</span> <span class="n">signed</span><span class="p">)</span>
 </code></pre></div></div>
 
