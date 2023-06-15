@@ -8,7 +8,8 @@ labels:
 
 # What is the XRP Ledger?
 
-XRP is a digital currency in which transactions are verified and records maintained by the XRP Ledger, a decentralized system using blockchain cryptography, rather than a centralized authority.
+The XRP Ledger is a decentralized blockchain that uses XRP to process and record financial transactions.
+
 
 ## What Is a Blockchain?
 
@@ -49,11 +50,6 @@ This creates an open, distributed ledger that records transactions between parti
 Once recorded, the data in any given block cannot be altered retroactively, unless a majority of the validators agree to the change. If so, all subsequent blocks are changed in the same way (a very rare and extreme occurrence).
 
 
-## What Is the XRPL?
-
-The XRP Ledger (XRPL) is the blockchain on which XRP currency is based and exchanged. All accounts on the XRPL can transfer XRP between one another and must hold a minimum amount of XRP as a reserve.
-
-
 ### What Is In the XRPL Ecosystem?
 
 The basis of the XRP Ledger is a peer-to-peer network of always-on rippled (pronounced _ripple-dee_) servers sharing transactions, engaging in the consensus process, and processing transactions. Everything else in the XRP Ledger ecosystem is directly or indirectly built on top of this peer-to-peer network.
@@ -66,9 +62,11 @@ Middleware provides indirect access to XRP Ledger data. Applications in this lay
 
 Apps and Services provide user-level interaction with the XRP Ledger, or provide a basis for even higher-level apps and services.
 
+
 ### How Does the Federated Consensus Process Work?
 
 Most of the rippled servers in the XRPL monitor or propose transactions. An important subset of servers are run as validators. These trusted servers accumulate lists of new transactions into a new possible ledger instance (a new block in the block chain). They share their lists with all of the other validators. The validators incorporate proposed changes from one another and distribute a new version of the ledger proposal. When 80% of the validators agree on a set of transactions, they create a new ledger instance at the end of the chain and start the process again. This consensus process takes 4-6 seconds. You can monitor as ledger instances are created in real time by visiting [https://livenet.xrpl.org/](https://livenet.xrpl.org/).
+
 
 ### What Networks Are Available?
 
