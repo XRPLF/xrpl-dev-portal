@@ -365,7 +365,6 @@ https://xrpl.org/print.html
 https://xrpl.org/validator_info.html
 https://xrpl.org/validator_list_sites.html
 https://xrpl.org/validators.html
-https://xrpl.org/commandline-usage.html
 https://xrpl.org/peer-port-methods.html
 https://xrpl.org/health-check.html
 https://xrpl.org/peer-crawler.html
@@ -375,6 +374,7 @@ https://xrpl.org/data-api.html
 https://xrpl.org/xrp-ledger-toml.html
 https://xrpl.org/infrastructure.html
 https://xrpl.org/manage-the-rippled-server.html
+https://xrpl.org/commandline-usage.html
 https://xrpl.org/install-rippled.html
 https://xrpl.org/system-requirements.html
 https://xrpl.org/install-rippled-on-centos-rhel-with-yum.html
