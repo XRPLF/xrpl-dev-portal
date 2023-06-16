@@ -1,6 +1,6 @@
 ---
 html: invariant-checking.html
-parent: transactions.html
+parent: consensus.html
 blurb: 不変性チェックとは何か、なぜ存在するのか、どのように機能するのか、どのような不変性チェックが有効なのかを理解することができます。
 labels:
   - ブロックチェーン
