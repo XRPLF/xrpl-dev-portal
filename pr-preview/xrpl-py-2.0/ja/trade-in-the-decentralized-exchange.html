@@ -794,7 +794,7 @@
         <span class="p">)</span>
 
         <span class="c1"># Sign and autofill the transaction (ready to submit)</span>
-        <span class="n">signed_tx</span> <span class="o">=</span> <span class="k">await</span> <span class="n">autofill_and_sign</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">wallet</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+        <span class="n">signed_tx</span> <span class="o">=</span> <span class="k">await</span> <span class="n">autofill_and_sign</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">wallet</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Transaction:"</span><span class="p">,</span> <span class="n">signed_tx</span><span class="p">)</span>
 
         <span class="c1"># Submit the transaction and wait for response (validated or rejected)</span>
