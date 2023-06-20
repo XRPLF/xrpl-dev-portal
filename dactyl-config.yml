@@ -345,7 +345,7 @@ pages:
         sidebar: disabled
         targets:
             - ja
-    
+
 
         # Redirect old Carbon Calculator page to Impact
     -   name: Carbon Calculator
@@ -468,7 +468,7 @@ pages:
             - labels
         targets:
             - ja
-    
+
     -   name: Documentation Index
         longer_name: Full Documentation Index
         template: page-docs-index.html.jinja
@@ -765,7 +765,7 @@ pages:
         blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
         targets:
             - ja
-            
+
     -   name: Tokens
         html: issued-currencies-overview.html
         template: pagetype-redirect.html.jinja
@@ -1425,7 +1425,12 @@ pages:
         targets:
           - en
           - ja # TODO: translate this page
-          
+
+    - md: tutorials/build-apps/build-a-desktop-wallet-in-javascript.md
+      targets:
+          - en
+          - ja # TODO: translate this page
+
     -   name: Production Readiness
         html: production-readiness.html
         parent: tutorials.html
@@ -1921,7 +1926,7 @@ pages:
         targets:
             - en
             - ja
-        
+
     -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-in-reporting-mode.md
         targets:
             - en
@@ -2607,7 +2612,7 @@ pages:
         html: ammbid.html
         template: pagetype-redirect.html.jinja
         redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammbid/
-        nav_omit: true        
+        nav_omit: true
         targets:
             - en
             - ja
@@ -3524,7 +3529,7 @@ pages:
         targets:
             - ja
 
-    -   name: Clio Server 
+    -   name: Clio Server
         html: clio-methods.html
         parent: public-api-methods.html
         blurb: Use these methods to retrieve information using Clio server APIs.
@@ -4575,7 +4580,7 @@ pages:
         targets:
             - en
             - ja
-    
+
     -   name: XRPL Learning Portal
         html: https://learn.xrpl.org/
         parent: docs.html
@@ -4764,7 +4769,7 @@ pages:
         blurb: The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.
         top_nav_name: Events
         top_nav_hero_image: top-nav-hero-contribute
-        filters: 
+        filters:
             - categorize_dates
         targets:
             - en
@@ -4778,7 +4783,7 @@ pages:
         blurb: XRP Ledger (XRPL) はコミュニティ主導のパブリックブロックチェーンです。ここでは、その参加方法について説明します。
         top_nav_name: イベント
         top_nav_hero_image: top-nav-hero-contribute
-        filters: 
+        filters:
             - categorize_dates
         targets:
             - ja
@@ -4896,7 +4901,7 @@ pages:
         nav_omit: true
         targets:
             - ja
-            
+
     -   name: Wallet
         html: wallet.html
         template: pagetype-redirect.html.jinja
