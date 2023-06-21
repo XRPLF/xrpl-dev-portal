@@ -2,4 +2,4 @@
 
 Create a test harness for XRPL features using JavaScript or Python.
 
-For the full explanation, see the [XRPL Quickstart Tutorial](https://xrpl.org/quickstart.html).
+For the full explanation, see the XRPL Quickstart Tutorial.
