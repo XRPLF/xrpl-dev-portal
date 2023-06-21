@@ -797,93 +797,106 @@ pages:
         targets:
             - ja
 
-    # Ledgers -----------------------------------------------------------------
-
-        # TODO: this folder is "xrpl" in files but "Ledgers" in nav
-    -   md: concepts/xrpl/ledgers.md
-        targets:
-            - en
-
-        # TODO: update translation. Some parts split into "ledger structure"
-    -   md: concepts/xrpl/ledgers.ja.md
-        targets:
-            - ja
-
-        # TODO: translate. Some parts taken from "ledgers"
-    -   md: concepts/xrpl/ledger-structure.md
-        targets:
-            - en
-            - ja
-    
-        # TODO: translate. Content mostly split off from "ledgers.md"
-    -   md: concepts/xrpl/open-closed-validated-ledgers.md
-        targets:
-            - en
-            - ja
+    # Consensus Protocol ------------------------------------------------------
 
         # TODO: "consensus" subpages are nested in nav but not filesystem; also, might be a mismatch with other contents here
-    -   md: concepts/xrpl/consensus.md
+    -   md: concepts/consensus-protocol/consensus.md
         targets:
             - en
 
-    -   md: concepts/xrpl/consensus.ja.md
+    -   md: concepts/consensus-protocol/consensus.ja.md
         targets:
             - ja
     
-    -   md: concepts/xrpl/consensus-structure.md
+    -   md: concepts/consensus-protocol/consensus-structure.md
         targets:
             - en
 
         # TODO: update title to match English
-    -   md: concepts/xrpl/consensus-structure.ja.md
+    -   md: concepts/consensus-protocol/consensus-structure.ja.md
         targets:
             - ja
     
-    -   md: concepts/xrpl/consensus-principles-and-rules.md
+    -   md: concepts/consensus-protocol/consensus-principles-and-rules.md
         targets:
             - en
 
-    -   md: concepts/xrpl/consensus-principles-and-rules.ja.md
+    -   md: concepts/consensus-protocol/consensus-principles-and-rules.ja.md
         targets:
             - ja
     
-    -   md: concepts/xrpl/consensus-protections.md
+    -   md: concepts/consensus-protocol/consensus-protections.md
         targets:
             - en
 
-    -   md: concepts/xrpl/consensus-protections.ja.md
+    -   md: concepts/consensus-protocol/consensus-protections.ja.md
         targets:
             - ja
 
-    -   md: concepts/xrpl/fee-voting.md
+        # TODO: maybe nest invariant checking under consensus protections?
+    -   md: concepts/consensus-protocol/invariant-checking.md
         targets:
             - en
 
-    -   md: concepts/xrpl/fee-voting.ja.md
+    -   md: concepts/consensus-protocol/invariant-checking.ja.md
         targets:
             - ja
 
-    -   md: concepts/xrpl/negative-unl.md
+    -   md: concepts/consensus-protocol/fee-voting.md
         targets:
             - en
 
-    -   md: concepts/xrpl/negative-unl.ja.md
+    -   md: concepts/consensus-protocol/fee-voting.ja.md
         targets:
             - ja
 
-    -   md: concepts/xrpl/consensus-research.md
+    -   md: concepts/consensus-protocol/negative-unl.md
         targets:
             - en
 
-    -   md: concepts/xrpl/consensus-research.ja.md
+    -   md: concepts/consensus-protocol/negative-unl.ja.md
         targets:
+            - ja
+
+    -   md: concepts/consensus-protocol/consensus-research.md
+        targets:
+            - en
+
+    -   md: concepts/consensus-protocol/consensus-research.ja.md
+        targets:
+            - ja
+
+    # Ledgers -----------------------------------------------------------------
+
+    -   md: concepts/ledgers/ledgers.md
+        targets:
+            - en
+
+        # TODO: update translation. Some parts split into "ledger structure"
+    -   md: concepts/ledgers/ledgers.ja.md
+        targets:
+            - ja
+
+        # TODO: translate. Some parts taken from "ledgers.md"
+    -   md: concepts/ledgers/ledger-structure.md
+        targets:
+            - en
+            - ja
+    
+        # TODO: translate. Content mostly split off from "ledgers.md"
+    -   md: concepts/ledgers/open-closed-validated-ledgers.md
+        targets:
+            - en
             - ja
 
         # TODO: translate. Content mostly split off from "ledgers.md"
-    -   md: concepts/xrpl/ledger-close-times.md
+    -   md: concepts/ledgers/ledger-close-times.md
         targets:
             - en
             - ja
+
+        # TODO: add a "ledger history" page that doesn't go too deep into
+        #       server management topics.
 
     # Transactions ------------------------------------------------------------
     -   md: concepts/transactions/transactions.md
@@ -899,15 +912,6 @@ pages:
             - en
 
     -   md: concepts/transactions/fees.ja.md
-        targets:
-            - ja
-
-        # TODO: maybe nest invariant checking under consensus protections?
-    -   md: concepts/xrpl/invariant-checking.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl/invariant-checking.ja.md
         targets:
             - ja
 
@@ -1717,22 +1721,16 @@ pages:
           - en
           - ja # TODO: translate this page
           
+        # Redirect old Production Readiness category. 
+        # There's no equivalent category now, so go to Tutorials top
     -   name: Production Readiness
         html: production-readiness.html
-        parent: tutorials.html
-        template: pagetype-category.html.jinja
-        blurb: Follow these best practices to build a robust, safe production system for using the XRP Ledger.
+        redirect_url: tutorials.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
         targets:
             - en
-
-    -   name: 本番環境への準備
-        html: production-readiness.html
-        parent: tutorials.html
-        template: pagetype-category.html.jinja
-        blurb: 以下のベストプラクティスに従って、XRPレジャーを使用するための堅牢で安全な本番システムを構築しましょう。
-        targets:
             - ja
-
 
         # Redirect for this page's new home outside of tutorials
     -   name: Cancel or Skip a Transaction
