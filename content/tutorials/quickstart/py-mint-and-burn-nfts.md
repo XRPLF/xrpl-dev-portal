@@ -84,6 +84,8 @@ import xrpl
 import json
 from xrpl.clients import JsonRpcClient
 from xrpl.wallet import Wallet
+from xrpl.models.requests import AccountNFTs
+
 
 testnet_url = "https://s.altnet.rippletest.net:51234"
 ```
@@ -93,25 +95,25 @@ testnet_url = "https://s.altnet.rippletest.net:51234"
 Pass the arguments account seed, NFT URI, transaction flags, the transfer fee, and optional taxon.
 
 ```python
-def mint_token(_seed, _uri, _flags, _transfer_fee, _taxon):
+def mint_token(seed, uri, flags, transfer_fee, taxon):
 ```
 
 Get the account wallet and a client instance.
 
 ```python
-    mint_wallet = Wallet(_seed, sequence = 16237283)
-    client = JsonRpcClient(testnet_url)
+    mint_wallet=Wallet(seed, sequence=16237283)
+    client=JsonRpcClient(testnet_url)
 ```
 
 Define the mint transaction. Note that the NFT URI must be converted to a hex string.
 
 ```python
-    mint_tx = xrpl.models.transactions.NFTokenMint(
-        account = mint_wallet.classic_address,
-        uri = xrpl.utils.str_to_hex(_uri),
-        flags = int(_flags),
-        transfer_fee = int(_transfer_fee),
-        nftoken_taxon = int(_taxon)
+    mint_tx=xrpl.models.transactions.NFTokenMint(
+        account=mint_wallet.classic_address,
+        uri=xrpl.utils.str_to_hex(uri),
+        flags=int(flags),
+        transfer_fee=int(transfer_fee),
+        nftoken_taxon=int(taxon)
     )
 ```
 
@@ -125,45 +127,40 @@ Sign and fill the transaction.
 Submit the transaction and return results.
 
 ```python
+    reply=""
     try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response = f"Submit failed: {e}"
-    return response.result
+        reply=f"Submit failed: {e}"
+    return reply
 ```
 
 ## getTokens
 
 ```python
-def get_tokens(_account):
-```
-
-Import dependencies.
-
-```python
-    from xrpl.clients import JsonRpcClient
-    from xrpl.models.requests import AccountNFTs
-    import json
+def get_tokens(account):
+    """get_tokens"""
 ```
 
 Instantiate a client.
 
 ```python
-    client = JsonRpcClient(testnet_url)
+    client=JsonRpcClient(testnet_url)
 ```
 
 Prepare the `AccountNFTs` request.
 
 ```python
-    acct_nfts = AccountNFTs(
-        account=_account
+    acct_nfts=AccountNFTs(
+        account=account
     )
 ```
 
 Send the request and return the result.
 
 ```python
-    response = client.request(acct_nfts)
+    response=client.request(acct_nfts)
     return response.result
 ```
 
@@ -172,40 +169,43 @@ Send the request and return the result.
 Pass the owner's seed value and the NFT ID.
 
 ```python
-def burn_token(_seed, _nftoken_id):
+def burn_token(seed, nftoken_id):
+    """burn_token"""
 ```
 
 Get the owner wallet and client instance.
 
 ```python
-    owner_wallet = Wallet(_seed, sequence = 16237283)
-    client = JsonRpcClient(testnet_url)
+    owner_wallet=Wallet(seed, sequence=16237283)
+    client=JsonRpcClient(testnet_url)
 ```
 
 Define the NFTokenBurn transaction.
 
 ```python
-    burn_tx = xrpl.models.transactions.NFTokenBurn(
-        account = owner_wallet.classic_address,
-        nftoken_id = _nftoken_id    
+    burn_tx=xrpl.models.transactions.NFTokenBurn(
+        account=owner_wallet.classic_address,
+        nftoken_id=nftoken_id    
     )
 ```
 
 Sign and fill the transaction.
 
 ```python
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        burn_tx, owner_wallet, client)
+    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
+        burn_tx, owner_wallet, client)   
 ```
 
 Submit the transaction and return results.
 
 ```python
+    reply=""
     try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response = f"Submit failed: {e}"
-    return response.result
+        reply=f"Submit failed: {e}"
+    return reply
 ```
 
 
@@ -218,23 +218,27 @@ This module builds on `lesson2-create-trustline-send-currency.py`. Changes are n
 import tkinter as tk
 import xrpl
 import json
+import tkinter as tk
+import xrpl
+import json
+
+from mod1 import get_account, get_account_info, send_xrp
+from mod2 import (
+    create_trust_line,
+    send_currency,
+    get_balance,
+    configure_account,
+)
 ```
 
 Import methods from `mod3.py`.
 
 ```python
-from mod3 import mint_token
-from mod3 import get_tokens
-from mod3 import burn_token
-
-from mod2 import create_trust_line
-from mod2 import send_currency
-from mod2 import get_balance
-from mod2 import configure_account
-
-from mod1 import get_account
-from mod1 import get_account_info
-from mod1 import send_xrp
+from mod3 import (
+    mint_token,
+    get_tokens,
+    burn_token,
+)
 
 #############################################
 ## Handlers #################################
@@ -254,10 +258,14 @@ def standby_mint_token():
     )
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_get_tokens():
     results = get_tokens(ent_standby_account.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_burn_token():
     results = burn_token(
         ent_standby_seed.get(),
@@ -265,6 +273,8 @@ def standby_burn_token():
     )
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_mint_token():
     results = mint_token(
         ent_operational_seed.get(),
@@ -275,10 +285,14 @@ def operational_mint_token():
     )
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_get_tokens():
     results = get_tokens(ent_operational_account.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_burn_token():
     results = burn_token(
         ent_operational_seed.get(),
@@ -287,15 +301,18 @@ def operational_burn_token():
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
 
+
 # Module 2 Handlers
 
-def standby_create_trustline():
-    results = create_trustline(ent_standby_seed.get(),
+def standby_create_trust_line():
+    results = create_trust_line(ent_standby_seed.get(),
         ent_standby_destination.get(),
         ent_standby_currency.get(),
         ent_standby_amount.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_send_currency():
     results = send_currency(ent_standby_seed.get(),
         ent_standby_destination.get(),
@@ -303,12 +320,16 @@ def standby_send_currency():
         ent_standby_amount.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_configure_account():
     results = configure_account(
         ent_standby_seed.get(),
         standbyRippling)
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_create_trust_line():
     results = create_trust_line(ent_operational_seed.get(),
         ent_operational_destination.get(),
@@ -316,6 +337,8 @@ def operational_create_trust_line():
         ent_operational_amount.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_send_currency():
     results = send_currency(ent_operational_seed.get(),
         ent_operational_destination.get(),
@@ -323,19 +346,23 @@ def operational_send_currency():
         ent_operational_amount.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_configure_account():
     results = configure_account(
         ent_operational_seed.get(),
         operationalRippling)
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def get_balances():
     results = get_balance(ent_operational_account.get(), ent_standby_account.get())
     text_standby_results.delete("1.0", tk.END)
-    text_standby_results.insert("1.0", json.dumps(results, indent=4))    
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
     results = get_balance(ent_standby_account.get(), ent_operational_account.get())
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))    
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
 
 # Module 1 Handlers
 def get_standby_account():
@@ -344,12 +371,16 @@ def get_standby_account():
     ent_standby_seed.delete(0, tk.END)
     ent_standby_account.insert(0, new_wallet.classic_address)
     ent_standby_seed.insert(0, new_wallet.seed)
+
+
 def get_standby_account_info():
     accountInfo = get_account_info(ent_standby_account.get())
     ent_standby_balance.delete(0, tk.END)
     ent_standby_balance.insert(0,accountInfo['Balance'])
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0",json.dumps(accountInfo, indent=4))
+
+
 def standby_send_xrp():
     response = send_xrp(ent_standby_seed.get(),ent_standby_amount.get(),
                        ent_standby_destination.get())
@@ -357,26 +388,35 @@ def standby_send_xrp():
     text_standby_results.insert("1.0",json.dumps(response.result, indent=4))
     get_standby_account_info()
     get_operational_account_info()
+
+
 def get_operational_account():
     new_wallet = get_account(ent_operational_seed.get())
     ent_operational_account.delete(0, tk.END)
     ent_operational_account.insert(0, new_wallet.classic_address)
     ent_operational_seed.delete(0, tk.END)
     ent_operational_seed.insert(0, new_wallet.seed)
+
+
 def get_operational_account_info():
     accountInfo = get_account_info(ent_operational_account.get())
     ent_operational_balance.delete(0, tk.END)
     ent_operational_balance.insert(0,accountInfo['Balance'])
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0",json.dumps(accountInfo, indent=4))
+
+
 def operational_send_xrp():
     response = send_xrp(ent_operational_seed.get(),ent_operational_amount.get(), ent_operational_destination.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0",json.dumps(response.result,indent=4))
     get_standby_account_info()
     get_operational_account_info()
+```
 
-# Create a new window with the title "Quickstart Module 3"
+Create a new window with the title "Quickstart Module 3."
+
+```python
 window = tk.Tk()
 window.title("Quickstart Module 3")
 
@@ -388,22 +428,22 @@ frm_form = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
 frm_form.pack()
 
 # Create the Label and Entry widgets for "Standby Account"
-lbl_standy_seed = tk.Label(master=frm_form, text="Standby Seed")
-ent_standby_seed = tk.Entry(master=frm_form, width=50)
-lbl_standby_account = tk.Label(master=frm_form, text="Standby Account")
-ent_standby_account = tk.Entry(master=frm_form, width=50)
-lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_standby_balance = tk.Entry(master=frm_form, width=50)
-lbl_standy_amount = tk.Label(master=frm_form, text="Amount")
-ent_standby_amount = tk.Entry(master=frm_form, width=50)
-lbl_standby_destination = tk.Label(master=frm_form, text="Destination")
-ent_standby_destination = tk.Entry(master=frm_form, width=50)
-lbl_standby_currency = tk.Label(master=frm_form, text="Currency")
-ent_standby_currency = tk.Entry(master=frm_form, width=50)
+lbl_operational_seed = tk.Label(master=frm_form, text="Operational Seed")
+ent_operational_seed = tk.Entry(master=frm_form, width=50)
+lbl_operational_account = tk.Label(master=frm_form, text="Operational Account")
+ent_operational_account = tk.Entry(master=frm_form, width=50)
+lbl_operational_amount = tk.Label(master=frm_form, text="Amount")
+ent_operational_amount = tk.Entry(master=frm_form, width=50)
+lbl_operational_destination = tk.Label(master=frm_form, text="Destination")
+ent_operational_destination = tk.Entry(master=frm_form, width=50)
+lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_operational_balance = tk.Entry(master=frm_form, width=50)
+lbl_operational_currency = tk.Label(master=frm_form, text="Currency")
+ent_operational_currency = tk.Entry(master=frm_form, width=50)
 cb_standby_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=standbyRippling, onvalue=True, offvalue=False)
 ```
 
-Add **NFT URI**, **Flags**, **Transfer Fee**, **Taxon**, **NFT ID** fields.
+Add **NFT URI**, **Flags**, **Transfer Fee**, **Taxon**, and **NFT ID** fields.
 
 ```python
 lbl_standby_uri = tk.Label(master=frm_form, text="NFT URI")
@@ -461,12 +501,12 @@ lbl_operational_seed = tk.Label(master=frm_form, text="Operational Seed")
 ent_operational_seed = tk.Entry(master=frm_form, width=50)
 lbl_operational_account = tk.Label(master=frm_form, text="Operational Account")
 ent_operational_account = tk.Entry(master=frm_form, width=50)
-lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_operational_balance = tk.Entry(master=frm_form, width=50)
 lbl_operational_amount = tk.Label(master=frm_form, text="Amount")
 ent_operational_amount = tk.Entry(master=frm_form, width=50)
 lbl_operational_destination = tk.Label(master=frm_form, text="Destination")
 ent_operational_destination = tk.Entry(master=frm_form, width=50)
+lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_operational_balance = tk.Entry(master=frm_form, width=50)
 lbl_operational_currency = tk.Label(master=frm_form, text="Currency")
 ent_operational_currency = tk.Entry(master=frm_form, width=50)
 cb_operational_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=operationalRippling, onvalue=True, offvalue=False)

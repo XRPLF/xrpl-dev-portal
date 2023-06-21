@@ -96,6 +96,7 @@ import xrpl
 import json
 from xrpl.clients import JsonRpcClient
 from xrpl.wallet import Wallet
+from xrpl.models.requests.account_info import AccountInfo
 
 testnet_url = "https://s.altnet.rippletest.net:51234"
 ```
@@ -105,25 +106,26 @@ testnet_url = "https://s.altnet.rippletest.net:51234"
 Pass the wallet seed, the issuer account, the currency code, and the maximum amount of currency to send.
 
 ```python
-def create_trust_line(_seed, _issuer, _currency, _amount):
+def create_trust_line(seed, issuer, currency, amount):
+    """create_trust_line"""
 ```
 
 Get the wallet and a new client instance.
 
 ```python
-    receiving_wallet = Wallet(_seed, sequence = 16237283)
+    receiving_wallet = Wallet(seed, sequence = 16237283)
     client = JsonRpcClient(testnet_url)
 ```
 
 Define the `TrustSet` transaction.
 
 ```python
-    trustline_tx = xrpl.models.transactions.TrustSet(
-        account = receiving_wallet.classic_address,
-        limit_amount = xrpl.models.amounts.IssuedCurrencyAmount(
-            currency = _currency,
-            issuer = _issuer,
-            value = int(_amount)
+    trustline_tx=xrpl.models.transactions.TrustSet(
+        account=receiving_wallet.classic_address,
+        limit_amount=xrpl.models.amounts.IssuedCurrencyAmount(
+            currency=currency,
+            issuer=issuer,
+            value=int(amount)
         )
     )
 ```
@@ -132,72 +134,77 @@ Sign the transaction.
 
 ```python
     signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        trustline_tx, receiving_wallet, client)   
+        trustline_tx, receiving_wallet, client)
 ```
 
 Submit the transaction to the XRP Ledger.
 
 ```python
+    reply = ""
     try:
         response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply = response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response = f"Submit failed: {e}"
+        reply = f"Submit failed: {e}"
 ```
 
 Return the results.
 
 ```python
-    return response.result
+    return reply
 ```
 ## send_currency 
 
 Send currency to another account based on the sender wallet, destination account, the currency type, and the amount of the currency.
 
 ```python
-def send_currency(_seed, _destination, _currency, _amount):
+def send_currency(seed, destination, currency, amount):
+    """send_currency"""
 ```
 
 Get the sending wallet and a client instance on Testnet.
 
 ```python
-    sending_wallet = Wallet(_seed, sequence = 16237283)
-    client = JsonRpcClient(testnet_url)
+    sending_wallet=Wallet(seed, sequence=16237283)
+    client=JsonRpcClient(testnet_url)
 ```
 
 Define the payment transaction. The amount requires further description to identify the type of currency and issuer.
 
 ```python
-    send_currency_tx = xrpl.models.transactions.Payment(
-        account = sending_wallet.classic_address,
-        amount =  xrpl.models.amounts.IssuedCurrencyAmount(
-            currency = _currency,
-            value = int(_amount),
-            issuer = sending_wallet.classic_address
+    send_currency_tx=xrpl.models.transactions.Payment(
+        account=sending_wallet.classic_address,
+        amount=xrpl.models.amounts.IssuedCurrencyAmount(
+            currency=currency,
+            value=int(amount),
+            issuer=sending_wallet.classic_address
         ),
-        destination=_destination
+        destination=destination
     )
 ```
 
 Sign and fill the transaction. 
 
 ```python
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        send_currency_tx, sending_wallet, client) 
+    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
+        send_currency_tx, sending_wallet, client)
 ```
 
 Submit the transaction and get the response.
 
 ```python
+    reply = ""
     try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply = response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response = f"Submit failed: {e}"
+        reply = f"Submit failed: {e}"
 ```
 
 Return the JSON response, or an error message if the transaction fails.
 
 ```python
-    return response.result
+    return reply
 ```
 
 ### get_balance 
@@ -205,30 +212,24 @@ Return the JSON response, or an error message if the transaction fails.
 Update the **XRP Balance** fields and list the balance information for issued currencies in the **Results** text areas.
 
 ```python
-def get_balance(_sb_account_id, _op_account_id):
-```
-
-Import the `AccountInfo` request method.
-
-```python
-    from xrpl.models.requests.account_info import AccountInfo
+def get_balance(sb_account_id, op_account_id):
+    """get_balance"""
 ```
 
 Connect to the XRP Ledger and instantiate a client.
 
 ```python
-    JSON_RPC_URL = 'wss://s.altnet.rippletest.net:51234'
-    client = JsonRpcClient(JSON_RPC_URL)
+    JSON_RPC_URL='wss://s.altnet.rippletest.net:51234'
+    client=JsonRpcClient(JSON_RPC_URL)
 ```
 
 Create the `GatewayBalances` request. 
 
 ```python
-    balance = xrpl.models.requests.GatewayBalances(
-        account=_sb_account_id ,
-        strict=True,
+    balance=xrpl.models.requests.GatewayBalances(
+        account=sb_account_id,
         ledger_index="validated",
-        hotwallet=[_op_account_id]
+        hotwallet=[op_account_id]
     )
 ```
 
@@ -245,51 +246,54 @@ This example shows how to set and clear configuration flags using the `AccountSe
 
 Send the account seed and a Boolean value for whether to enable or disable rippling.
 ```python
-def configure_account(_seed, _default_setting):
+def configure_account(seed, default_setting):
+    """configure_account"
 ```
 
 Get the account wallet and instantiate a client.
 
 ```python
-    wallet = Wallet(_seed, sequence = 16237283)
-    client = JsonRpcClient(testnet_url)
+    wallet=Wallet(seed, sequence = 16237283)
+    client=JsonRpcClient(testnet_url)
 ```
 
-If  `_default_setting` is true, create a `set_flag` transaction to enable rippling. If false, create a `clear_flag` transaction to disable rippling.
+If  `default_setting` is true, create a `set_flag` transaction to enable rippling. If false, create a `clear_flag` transaction to disable rippling.
 
 ```python
-    if (_default_setting.get()):
-        setting_tx = xrpl.models.transactions.AccountSet(
-            account =  wallet.classic_address,
+    if (default_setting):
+        setting_tx=xrpl.models.transactions.AccountSet(
+            account=wallet.classic_address,
             set_flag=xrpl.models.transactions.AccountSetFlag.ASF_DEFAULT_RIPPLE
         )
     else:
-        setting_tx = xrpl.models.transactions.AccountSet(
-            account =  wallet.classic_address,
-            clear_flag = xrpl.models.transactions.AccountSetFlag.ASF_DEFAULT_RIPPLE
+        setting_tx=xrpl.models.transactions.AccountSet(
+            account=wallet.classic_address,
+            clear_flag=xrpl.models.transactions.AccountSetFlag.ASF_DEFAULT_RIPPLE
         )
 ```
 
 Sign and fill the transaction.
 
 ```python
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
+    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
         setting_tx, wallet, client)
 ```
 
 Submit the transaction and get results.
 
 ```python
+    reply = ""
     try:
         response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply = response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response.result = f"Submit failed: {e}"
+        reply = f"Submit failed: {e}"
 ```
 
 Return the results.
 
 ```python
-    return response.result
+    return reply
 ```
 
 ## lesson2-send-currency.py
@@ -305,18 +309,13 @@ import json
 Import methods from `mod2.py`.
 
 ```python
-from mod2 import create_trust_line
-from mod2 import send_currency
-from mod2 import get_balance
-from mod2 import configure_account
-
-from mod1 import get_account
-from mod1 import get_account_info
-from mod1 import send_xrp
-
-#############################################
-## Handlers #################################
-#############################################
+from mod1 import get_account, get_account_info, send_xrp
+from mod2 import (
+    create_trust_line,
+    send_currency,
+    get_balance,
+    configure_account,
+)
 ```
 
 Module 2 Handlers.
@@ -329,6 +328,8 @@ def standby_create_trust_line():
         ent_standby_amount.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_send_currency():
     results = send_currency(ent_standby_seed.get(),
         ent_standby_destination.get(),
@@ -336,12 +337,16 @@ def standby_send_currency():
         ent_standby_amount.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_configure_account():
     results = configure_account(
         ent_standby_seed.get(),
         standbyRippling)
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_create_trust_line():
     results = create_trust_line(ent_operational_seed.get(),
         ent_operational_destination.get(),
@@ -349,6 +354,8 @@ def operational_create_trust_line():
         ent_operational_amount.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_send_currency():
     results = send_currency(ent_operational_seed.get(),
         ent_operational_destination.get(),
@@ -356,19 +363,24 @@ def operational_send_currency():
         ent_operational_amount.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_configure_account():
     results = configure_account(
         ent_operational_seed.get(),
         operationalRippling)
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def get_balances():
     results = get_balance(ent_operational_account.get(), ent_standby_account.get())
     text_standby_results.delete("1.0", tk.END)
-    text_standby_results.insert("1.0", json.dumps(results, indent=4))    
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
     results = get_balance(ent_standby_account.get(), ent_operational_account.get())
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))    
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
 
 # Module 1 Handlers
 def get_standby_account():
@@ -377,12 +389,16 @@ def get_standby_account():
     ent_standby_seed.delete(0, tk.END)
     ent_standby_account.insert(0, new_wallet.classic_address)
     ent_standby_seed.insert(0, new_wallet.seed)
+
+
 def get_standby_account_info():
     accountInfo = get_account_info(ent_standby_account.get())
     ent_standby_balance.delete(0, tk.END)
     ent_standby_balance.insert(0,accountInfo['Balance'])
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0",json.dumps(accountInfo, indent=4))
+
+
 def standby_send_xrp():
     response = send_xrp(ent_standby_seed.get(),ent_standby_amount.get(),
                        ent_standby_destination.get())
@@ -390,18 +406,24 @@ def standby_send_xrp():
     text_standby_results.insert("1.0",json.dumps(response.result, indent=4))
     get_standby_account_info()
     get_operational_account_info()
+
+
 def get_operational_account():
     new_wallet = get_account(ent_operational_seed.get())
     ent_operational_account.delete(0, tk.END)
     ent_operational_account.insert(0, new_wallet.classic_address)
     ent_operational_seed.delete(0, tk.END)
     ent_operational_seed.insert(0, new_wallet.seed)
+
+
 def get_operational_account_info():
     accountInfo = get_account_info(ent_operational_account.get())
     ent_operational_balance.delete(0, tk.END)
     ent_operational_balance.insert(0,accountInfo['Balance'])
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0",json.dumps(accountInfo, indent=4))
+
+
 def operational_send_xrp():
     response = send_xrp(ent_operational_seed.get(),ent_operational_amount.get(), ent_operational_destination.get())
     text_operational_results.delete("1.0", tk.END)
@@ -410,6 +432,7 @@ def operational_send_xrp():
     get_operational_account_info()
 
 # Create a new window with the title "Quickstart Module 2"
+
 window = tk.Tk()
 window.title("Quickstart Module 2")
 
@@ -427,12 +450,12 @@ lbl_standy_seed = tk.Label(master=frm_form, text="Standby Seed")
 ent_standby_seed = tk.Entry(master=frm_form, width=50)
 lbl_standby_account = tk.Label(master=frm_form, text="Standby Account")
 ent_standby_account = tk.Entry(master=frm_form, width=50)
-lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_standby_balance = tk.Entry(master=frm_form, width=50)
 lbl_standy_amount = tk.Label(master=frm_form, text="Amount")
 ent_standby_amount = tk.Entry(master=frm_form, width=50)
 lbl_standby_destination = tk.Label(master=frm_form, text="Destination")
 ent_standby_destination = tk.Entry(master=frm_form, width=50)
+lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_standby_balance = tk.Entry(master=frm_form, width=50)
 ```
 
 Add **Currency** field.
@@ -481,12 +504,12 @@ lbl_operational_seed = tk.Label(master=frm_form, text="Operational Seed")
 ent_operational_seed = tk.Entry(master=frm_form, width=50)
 lbl_operational_account = tk.Label(master=frm_form, text="Operational Account")
 ent_operational_account = tk.Entry(master=frm_form, width=50)
-lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_operational_balance = tk.Entry(master=frm_form, width=50)
 lbl_operational_amount = tk.Label(master=frm_form, text="Amount")
 ent_operational_amount = tk.Entry(master=frm_form, width=50)
 lbl_operational_destination = tk.Label(master=frm_form, text="Destination")
 ent_operational_destination = tk.Entry(master=frm_form, width=50)
+lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_operational_balance = tk.Entry(master=frm_form, width=50)
 ```
 
 Add field for **Currency** and checkbox to **Allow Rippling**.
@@ -522,11 +545,7 @@ text_operational_results.grid(row=8, column=5, sticky="nw")
 cb_operational_allow_rippling.select()
 ```
 
-#############################################
-## Buttons ##################################
-#############################################
-
-# Create the Standby Account Buttons
+Create the Standby Account Buttons.
 
 ```python
 btn_get_standby_account = tk.Button(master=frm_form, text="Get Standby Account",
@@ -560,7 +579,7 @@ btn_standby_configure_account = tk.Button(master=frm_form,
 btn_standby_configure_account.grid(row=7,column=0, sticky = "nsew")
 ```
 
-# Create the Operational Account Buttons
+Create the Operational Account buttons.
 
 ```python
 btn_get_operational_account = tk.Button(master=frm_form,

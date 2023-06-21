@@ -145,13 +145,14 @@ testnet_url = "https://s.altnet.rippletest.net:51234"
 Pass the arguments _seed_, _amount_, _NFT ID_, _expiration_ (in seconds, optional), and _destination_ (optional).
 
 ```python
-def create_sell_offer(_seed, _amount, _nft_id, _expiration, _destination):
+def create_sell_offer(seed, amount, nftoken_id, expiration, destination):
+    """create_sell_offer"""
 ```
 
 Get the owner wallet and create a client connection.
 
 ```python
-    owner_wallet = Wallet(_seed, sequence = 16237283)
+    owner_wallet = Wallet(seed, sequence=16237283)
     client = JsonRpcClient(testnet_url)
 ```
 
@@ -159,58 +160,60 @@ If there is an expiration value, convert the current date and time to Ripple tim
 
 ```python
     expiration_date = datetime.now()
-    if (_expiration != ''):
+    if expiration != '':
         expiration_date = xrpl.utils.datetime_to_ripple_time(expiration_date)
-        expiration_date = expiration_date + int(_expiration)
+        expiration_date = expiration_date + int(expiration)
 ```
 
 Define the sell offer transaction.
 
 ```python
-    sell_offer_tx = xrpl.models.transactions.NFTokenCreateOffer(
-        account = owner_wallet.classic_address,
-        nftoken_id = _nft_id,
-        amount = _amount,
+    sell_offer_tx=xrpl.models.transactions.NFTokenCreateOffer(
+        account=owner_wallet.classic_address,
+        nftoken_id=nftoken_id,
+        amount=amount,
 ```
 
 If the sale is designated for a specific destination account, include the `destination` argument.
 
 ```python
-        destination=_destination if _destination != '' else None,
+        destination=destination if destination != '' else None,
 ```
 
 If the expiration date is present, include the `expiration` argument.
 
 ```python
-        expiration = expiration_date if _expiration != '' else None,
+        expiration=expiration_date if expiration != '' else None,
 ```
 Set the `flags` value to _1_, indicating that this is a sell offer.
 
 ```python
-        flags = 1
+        flags=1
     )
 ```
 
 Sign the transaction.
 
 ```python
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        sell_offer_tx, owner_wallet, client)   
+    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
+        sell_offer_tx, owner_wallet, client)
 ```
 
 Submit the transaction.
 
 ```python
+    reply=""
     try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response = f"Submit failed: {e}"
+        reply=f"Submit failed: {e}"
 ```
 
 Return the result.
 
 ```python
-    return response.result
+    return reply
 ```
 
 ## Accept Sell Offer
@@ -218,40 +221,43 @@ Return the result.
 Pass the buyer's seed value and the NFT sell offer index.
 
 ```python
-def accept_sell_offer(_seed, _offer_index):
+def accept_sell_offer(seed, offer_index):
+    """accept_sell_offer"""
 ```
 
 Get the wallet and a client instance.
 
 ```python
-    buyer_wallet = Wallet(_seed, sequence = 16237283)
-    client = JsonRpcClient(testnet_url)
+    buyer_wallet=Wallet(seed, sequence=16237283)
+    client=JsonRpcClient(testnet_url)
 ```
 
 Define the accept offer transaction
 
 ```python
-    accept_offer_tx = xrpl.models.transactions.NFTokenAcceptOffer(
-       account = buyer_wallet.classic_address,
-       nftoken_sell_offer = _offer_index
+    accept_offer_tx=xrpl.models.transactions.NFTokenAcceptOffer(
+       account=buyer_wallet.classic_address,
+       nftoken_sell_offer=offer_index
     )
 ```
 
 Sign and fill the transaction.
 
 ```python
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
+    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
         accept_offer_tx, buyer_wallet, client)
 ```
 
 Submit the transaction and report the results.
 
 ```python
+    reply=""
     try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response = f"Submit failed: {e}"
-    return response.result
+        reply=f"Submit failed: {e}"
+    return reply
 ```
 
 ## Create Buy Offer
@@ -259,69 +265,72 @@ Submit the transaction and report the results.
 Pass the buyer _seed_,  _amount_, _NFT ID_, _owner_, _expiration_ (in seconds, optional), and _destination_ account (optional).
 
 ```python
-def create_buy_offer(_seed, _amount, _nft_id, _owner, _expiration, _destination):
+def create_buy_offer(seed, amount, nft_id, owner, expiration, destination):
+    """create_buy_offer"""
 ```
 
 Get the buyer wallet and a client instance.
 
 ```python
-    buyer_wallet = Wallet(_seed, sequence = 16237283)
-    client = JsonRpcClient(testnet_url)
+    buyer_wallet=Wallet(seed, sequence=16237283)
+    client=JsonRpcClient(testnet_url)
 ```
 
 If the _expiration_ value is present, get the current date and time, convert it to Ripple time, and add the _expiration_ value.
 
 ```python
-    expiration_date = datetime.now()
-    if (_expiration != ''):
-        expiration_date = xrpl.utils.datetime_to_ripple_time(expiration_date)
-        expiration_date = expiration_date + int(_expiration)
+    expiration_date=datetime.now()
+    if (expiration!=''):
+        expiration_date=xrpl.utils.datetime_to_ripple_time(expiration_date)
+        expiration_date=expiration_date + int(expiration)
 ```
 
 Define the buy offer transaction.
 
 ```python
-    buy_offer_tx = xrpl.models.transactions.NFTokenCreateOffer(
-        account = buyer_wallet.classic_address,
-        nftoken_id = _nft_id,
-        amount = _amount,
-        owner = _owner,
+    buy_offer_tx=xrpl.models.transactions.NFTokenCreateOffer(
+        account=buyer_wallet.classic_address,
+        nftoken_id=nft_id,
+        amount=amount,
+        owner=owner,
 ```
 
 IF the _expiration_ value is present, include the _expiration_ argument.
 
 ```python
-        expiration = expiration_date if _expiration != '' else None,
+        expiration=expiration_date if expiration!='' else None,
 ```
 
 If the _destination_ value is present, include the _destination_ argument.
 
 ```python
-        destination=_destination if _destination != '' else None,
+        destination=destination if destination!='' else None,
 ```
 
 Set the _flags_ value to _0_, indicating that this is a "buy" offer.
 
 ```python
-        flags = 0
+        flags=0
     )
 ```
 
 Sign and fill the transaction.
 
 ```python
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        buy_offer_tx, buyer_wallet, client)
+    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
+        buy_offer_tx, buyer_wallet, client)   
 ```
 
 Submit the transaction and report the results.
 
 ```python
+    reply=""
     try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response = f"Submit failed: {e}"
-    return response.result
+        reply=f"Submit failed: {e}"
+    return reply
 ```
 
 ## Accept Buy Offer
@@ -329,40 +338,43 @@ Submit the transaction and report the results.
 Pass the buyer's _seed_ value and the NFT _offer___index_.
 
 ```python
-def accept_buy_offer(_seed, _offer_index):
+def accept_buy_offer(seed, offer_index):
+    """accept_buy_offer"""
 ```
 
 Get the buyer wallet and a client instance.
 
 ```python
-    buyer_wallet = Wallet(_seed, sequence = 16237283)
-    client = JsonRpcClient(testnet_url)
+    buyer_wallet=Wallet(seed, sequence=16237283)
+    client=JsonRpcClient(testnet_url)
 ```
 
 Define the accept offer transaction.
 
 ```python
-    accept_offer_tx = xrpl.models.transactions.NFTokenAcceptOffer(
-       account = buyer_wallet.classic_address,
-       nftoken_buy_offer = _offer_index
+    accept_offer_tx=xrpl.models.transactions.NFTokenAcceptOffer(
+       account=buyer_wallet.classic_address,
+       nftoken_buy_offer=offer_index
     )
 ```
 
 Sign and fill the transaction.
 
 ```python   
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
+    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
         accept_offer_tx, buyer_wallet, client)
 ```
 
 Submit the transaction and report the results
 
 ```python
+    reply=""
     try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response = f"Submit failed: {e}"
-    return response.result
+        reply=f"Submit failed: {e}"
+    return reply
 ```
 
 ## Get Offers
@@ -372,53 +384,54 @@ This is a request, rather than a transaction, so there is no need for a wallet.
 Pass the _NFT ID_.
 
 ```python
-def get_offers(_nft_id):
+def get_offers(nft_id):
+    """get_offers"""
 ```
 
 Create a client instance.
 
 ```python
-    client = JsonRpcClient(testnet_url)
+    client=JsonRpcClient(testnet_url)
 ```
 
 Define the request for buy offers.
 
 ```python
-    offers = NFTBuyOffers(
-        nft_id=_nft_id
-		)
-```
-
-Send the request and capture the response.
-
-```python
-    response = client.request(offers)
-```
-
-Create the _allOffers_ variable to accumulate the offer responses.
-
-```python
-    allOffers = "Buy Offers:\n" + json.dumps(response.result, indent=4)
-```
-
-Define the request for sell offers.
-
-```python
-    offers = NFTSellOffers(
-        nft_id=_nft_id
+    offers=NFTBuyOffers(
+        nft_id=nft_id
     )
 ```
 
 Send the request and capture the response.
 
 ```python
-    response = client.request(offers)
+    response=client.request(offers)
+```
+
+Create the _allOffers_ variable to accumulate the offer responses.
+
+```python
+    allOffers="Buy Offers:\n"+json.dumps(response.result, indent=4)
+```
+
+Define the request for sell offers.
+
+```python
+    offers=NFTSellOffers(
+        nft_id=nft_id
+    )
+```
+
+Send the request and capture the response.
+
+```python
+    response=client.request(offers)
 ```
 
 Add the response to the _allOffers_ variable and return the results.
 
 ```python
-    allOffers += "\n\nSell Offers:\n" + json.dumps(response.result, indent=4)
+    allOffers+="\n\nSell Offers:\n"+json.dumps(response.result, indent=4)
     return allOffers
 ```
 
@@ -429,29 +442,31 @@ The creator of an offer can cancel it at any time before it is accepted. Anyone 
 Pass the seed and the NFT Offer ID to be canceled.
 
 ```python
-def cancel_offer(_seed, _nft_offer_ids):
+def cancel_offer(seed, nftoken_offer_ids):
+    """cancel_offer"""
 ```
 
 Get the wallet and a client instance.
 
 ```python
-    owner_wallet = Wallet(_seed, sequence = 16237283)
-    client = JsonRpcClient(testnet_url)
+    owner_wallet=Wallet(seed, sequence=16237283)
+    client=JsonRpcClient(testnet_url)
 ```
 
 The `nftoken_offers` parameter is an array, rather than a single ID. You can revise the code to accept several offer IDs at one time. Here, the value is added to a new array variable.
 
 ```python
-    tokenOfferIDs = [_nft_offer_ids]
+    tokenOfferIDs=[nftoken_offer_ids]
 ```
 
 Define the cancel offer transaction.
 
 ```python
-    cancel_offer_tx = xrpl.models.transactions.NFTokenCancelOffer(
-            account = owner_wallet.classic_address,
-            nftoken_offers = tokenOfferIDs
-        )
+    nftSellOffers="No sell offers"
+    cancel_offer_tx=xrpl.models.transactions.NFTokenCancelOffer(
+				account=owner_wallet.classic_address,
+				nftoken_offers=tokenOfferIDs
+		)
 ```
 
 Sign the transaction.
@@ -464,11 +479,13 @@ Sign the transaction.
 Submit the transaction and return the result.
 
 ```python
+    reply=""
     try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response = f"Submit failed: {e}"
-    return response.result
+        reply=f"Submit failed: {e}"
+    return reply
 ```
 
 ## lesson4-transfer-tokens.py
@@ -479,34 +496,32 @@ This module builds on `lesson3-mint-token.py`. Changes are noted below.
 import tkinter as tk
 import xrpl
 import json
+
+from mod1 import get_account, get_account_info, send_xrp
+from mod2 import (
+    create_trust_line,
+    send_currency,
+    get_balance,
+    configure_account,
+)
+from mod3 import (
+    mint_token,
+    get_tokens,
+    burn_token,
+)
 ```
 
 Import new methods from `mod4.py`.
 
 ```python
-from mod4 import create_sell_offer
-from mod4 import create_buy_offer
-from mod4 import get_offers
-from mod4 import cancel_offer
-from mod4 import accept_sell_offer
-from mod4 import accept_buy_offer
-
-from mod3 import mint_token
-from mod3 import get_tokens
-from mod3 import burn_token
-
-from mod2 import create_trust_line
-from mod2 import send_currency
-from mod2 import get_balance
-from mod2 import configure_account
-
-from mod1 import get_account
-from mod1 import get_account_info
-from mod1 import send_xrp
-
-#############################################
-## Handlers #################################
-#############################################
+from mod4 import (
+    create_sell_offer,
+    create_buy_offer,
+    get_offers,
+    cancel_offer,
+    accept_sell_offer,
+    accept_buy_offer,
+)
 
 ```
 
@@ -759,12 +774,12 @@ lbl_standy_seed = tk.Label(master=frm_form, text="Standby Seed")
 ent_standby_seed = tk.Entry(master=frm_form, width=50)
 lbl_standby_account = tk.Label(master=frm_form, text="Standby Account")
 ent_standby_account = tk.Entry(master=frm_form, width=50)
-lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_standby_balance = tk.Entry(master=frm_form, width=50)
 lbl_standy_amount = tk.Label(master=frm_form, text="Amount")
 ent_standby_amount = tk.Entry(master=frm_form, width=50)
 lbl_standby_destination = tk.Label(master=frm_form, text="Destination")
 ent_standby_destination = tk.Entry(master=frm_form, width=50)
+lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_standby_balance = tk.Entry(master=frm_form, width=50)
 lbl_standby_currency = tk.Label(master=frm_form, text="Currency")
 ent_standby_currency = tk.Entry(master=frm_form, width=50)
 cb_standby_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=standbyRippling, onvalue=True, offvalue=False)
@@ -838,12 +853,12 @@ lbl_operational_seed = tk.Label(master=frm_form, text="Operational Seed")
 ent_operational_seed = tk.Entry(master=frm_form, width=50)
 lbl_operational_account = tk.Label(master=frm_form, text="Operational Account")
 ent_operational_account = tk.Entry(master=frm_form, width=50)
-lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_operational_balance = tk.Entry(master=frm_form, width=50)
 lbl_operational_amount = tk.Label(master=frm_form, text="Amount")
 ent_operational_amount = tk.Entry(master=frm_form, width=50)
 lbl_operational_destination = tk.Label(master=frm_form, text="Destination")
 ent_operational_destination = tk.Entry(master=frm_form, width=50)
+lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_operational_balance = tk.Entry(master=frm_form, width=50)
 lbl_operational_currency = tk.Label(master=frm_form, text="Currency")
 ent_operational_currency = tk.Entry(master=frm_form, width=50)
 cb_operational_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=operationalRippling, onvalue=True, offvalue=False)

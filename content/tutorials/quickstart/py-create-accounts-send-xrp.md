@@ -69,11 +69,14 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 The mod1.py module contains the business logic for interacting with the XRP Ledger.
 
-Import the XRPL and JSON libraries.
+Import the XRPL and JSON libraries, and the module 1 methods.
 
 ```python
 import xrpl
 import json
+import xrpl.clients
+import xrpl.wallet
+
 ```
 
 ### get_account
@@ -83,9 +86,8 @@ This method lets you get an existing account by providing a seed value. If you p
 Import required methods.
 
 ```python
-def get_account(_seed):
-    from xrpl.clients import JsonRpcClient
-    from xrpl.wallet import Wallet
+def get_account(seed):
+    """get_account"""
 ```
 
 This example uses the _Testnet_ ledger. You can update the URI to choose a different XRP Ledger instance.
@@ -97,16 +99,16 @@ This example uses the _Testnet_ ledger. You can update the URI to choose a diffe
 Request a new client from the XRP Ledger.
 
 ```python
-    client = JsonRpcClient(JSON_RPC_URL)
+    client = xrpl.clients.JsonRpcClient(JSON_RPC_URL)
 ```
 
 If you do not enter a seed, generate and return a new wallet. If you provide a seed value, return the wallet for that seed.
 
 ```python
-    if (_seed == ''):
+    if (seed == ''):
         new_wallet = xrpl.wallet.generate_faucet_wallet(client)
     else:
-        new_wallet = Wallet(_seed, sequence = 79396029)
+        new_wallet = xrpl.wallet.Wallet(seed, sequence = 79396029)
     return(new_wallet)
 ```
 
@@ -115,29 +117,22 @@ If you do not enter a seed, generate and return a new wallet. If you provide a s
 Pass the account ID to the `get_account_info` method.
 
 ```python
-def get_account_info(_accountId):
-```
-
-Import required methods and the JSON library.
-
-```python
-    from xrpl.clients import JsonRpcClient
-    from xrpl.models.requests.account_info import AccountInfo
-    import json
+def get_account_info(accountId):
+    """get_account_info"""
 ```
 
 Get a client instance from Testnet. 
 
 ```python
     JSON_RPC_URL = 'wss://s.altnet.rippletest.net:51234'
-    client = JsonRpcClient(JSON_RPC_URL)
+    client = xrpl.clients.JsonRpcClient(JSON_RPC_URL)
 ```
 
 Create the account info request, passing the account ID and the ledger index (in this case, the latest validated ledger). 
 
 ```python
-    acct_info = AccountInfo(
-        account=_accountId,
+    acct_info = xrpl.models.requests.account_info.AccountInfo(
+        account=accountId,
         ledger_index="validated"
     )
 ```
@@ -145,7 +140,7 @@ Create the account info request, passing the account ID and the ledger index (in
 Send the request to the XRP Ledger instance.
 
 ```python
-    response = client.request(acct_info)
+    response=client.request(acct_info)
 ```
 
 Return the account data.
@@ -159,26 +154,24 @@ Return the account data.
 Transfer XRP to another account by passing the client seed, amount to transfer, and the destination account.
 
 ```python
-def send_xrp(_seed, _amount, _destination):
+def send_xrp(seed, amount, destination):
 ```
 
 Get the sending wallet.
 
 ```python
-    from xrpl.clients import JsonRpcClient
-    from xrpl.wallet import Wallet
-    sending_wallet = Wallet(_seed, sequence = 16237283)
+    sending_wallet = xrpl.wallet.Wallet(seed, sequence = 16237283)
     testnet_url = "https://s.altnet.rippletest.net:51234"
-    client = JsonRpcClient(testnet_url)
+    client = xrpl.clients.JsonRpcClient(testnet_url)
 ```
 
 Create a transaction request, passing the sending account, amount, and destination account.
 
 ```python
-    payment = xrpl.models.transactions.Payment(
+    payment=xrpl.models.transactions.Payment(
         account=sending_wallet.classic_address,
-        amount=xrpl.utils.xrp_to_drops(int(_amount)),
-        destination=_destination,
+        amount=xrpl.utils.xrp_to_drops(int(amount)),
+        destination=destination,
     )
 ```
 
@@ -214,10 +207,8 @@ import json
 
 Import the methods from mod1.py.
 
-```python
-from mod1 import get_account
-from mod1 import get_accountInfo
-from mod1 import send_xrp
+```python	
+from .mod1 import get_account, get_account_info, send_xrp
 ```
 
 ### getStandbyAccount
@@ -307,12 +298,16 @@ def get_operational_account():
     ent_operational_account.insert(0, new_wallet.classic_address)
     ent_operational_seed.delete(0, tk.END)
     ent_operational_seed.insert(0, new_wallet.seed)
+
+
 def get_operational_account_info():
     account_info = get_account_info(ent_operational_account.get())
     ent_operational_balance.delete(0, tk.END)
     ent_operational_balance.insert(0,accountInfo['Balance'])
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0",json.dumps(accountInfo, indent=4))
+
+
 def operational_send_xrp():
     response = send_xrp(ent_operational_seed.get(),ent_operational_amount.get(),
                         ent_operational_destination.get())
@@ -343,12 +338,12 @@ lbl_standy_seed = tk.Label(master=frm_form, text="Standby Seed")
 ent_standby_seed = tk.Entry(master=frm_form, width=50)
 lbl_standby_account = tk.Label(master=frm_form, text="Standby Account")
 ent_standby_account = tk.Entry(master=frm_form, width=50)
-lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_standby_balance = tk.Entry(master=frm_form, width=50)
 lbl_standy_amount = tk.Label(master=frm_form, text="Amount")
 ent_standby_amount = tk.Entry(master=frm_form, width=50)
 lbl_standby_destination = tk.Label(master=frm_form, text="Destination")
 ent_standby_destination = tk.Entry(master=frm_form, width=50)
+lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_standby_balance = tk.Entry(master=frm_form, width=50)
 lbl_standby_results = tk.Label(master=frm_form,text='Results')
 text_standby_results = tk.Text(master=frm_form, height = 20, width = 65)
 ```
@@ -377,12 +372,12 @@ lbl_operational_seed = tk.Label(master=frm_form, text="Operational Seed")
 ent_operational_seed = tk.Entry(master=frm_form, width=50)
 lbl_operational_account = tk.Label(master=frm_form, text="Operational Account")
 ent_operational_account = tk.Entry(master=frm_form, width=50)
-lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_operational_balance = tk.Entry(master=frm_form, width=50)
 lbl_operational_amount = tk.Label(master=frm_form, text="Amount")
 ent_operational_amount = tk.Entry(master=frm_form, width=50)
 lbl_operational_destination = tk.Label(master=frm_form, text="Destination")
 ent_operational_destination = tk.Entry(master=frm_form, width=50)
+lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_operational_balance = tk.Entry(master=frm_form, width=50)
 lbl_operational_results = tk.Label(master=frm_form,text='Results')
 text_operational_results = tk.Text(master=frm_form, height = 20, width = 65)
 ```
