@@ -390,30 +390,32 @@
 </code></pre></div>
 <h2 id="broker-sale">Broker Sale<a aria-hidden="true" class="hover_anchor" href="#broker-sale"><i class="fa fa-link"></i></a></h2>
 <p>Pass the <em>seed</em>, <em>sell___offer___index</em>, <em>buy___offer___index</em>, and <em>broker___fee</em>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">def</span> <span class="nf">broker_sale</span><span class="p">(</span><span class="n">_seed</span><span class="p">,</span> <span class="n">_sell_offer_index</span><span class="p">,</span> <span class="n">_buy_offer_index</span><span class="p">,</span> <span class="n">_broker_fee</span><span class="p">):</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">def</span> <span class="nf">broker_sale</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">sell_offer_index</span><span class="p">,</span> <span class="n">buy_offer_index</span><span class="p">,</span> <span class="n">broker_fee</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""broker_sale"""</span>
 </code></pre></div>
 <p>Get the broker wallet and establish a client connection.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">    <span class="n">broker_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="p">(</span><span class="n">_seed</span><span class="p">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">16237283</span><span class="p">)</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">testnet_url</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">    <span class="n">broker_wallet</span><span class="o">=</span><span class="n">Wallet</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="mi">16237283</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">=</span><span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">testnet_url</span><span class="p">)</span>
 </code></pre></div>
 <p>Define the accept offer transaction, matching a sell offer with the selected buy offer.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">    <span class="n">accept_offer_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">NFTokenAcceptOffer</span><span class="p">(</span>
-       <span class="n">account</span> <span class="o">=</span> <span class="n">broker_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
-       <span class="n">nftoken_sell_offer</span> <span class="o">=</span> <span class="n">_sell_offer_index</span><span class="p">,</span>
-       <span class="n">nftoken_buy_offer</span> <span class="o">=</span> <span class="n">_buy_offer_index</span><span class="p">,</span>
-       <span class="n">nftoken_broker_fee</span> <span class="o">=</span> <span class="n">_broker_fee</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">    <span class="n">accept_offer_tx</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">NFTokenAcceptOffer</span><span class="p">(</span>
+       <span class="n">account</span><span class="o">=</span><span class="n">broker_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+       <span class="n">nftoken_sell_offer</span><span class="o">=</span><span class="n">sell_offer_index</span><span class="p">,</span>
+       <span class="n">nftoken_buy_offer</span><span class="o">=</span><span class="n">buy_offer_index</span><span class="p">,</span>
+       <span class="n">nftoken_broker_fee</span><span class="o">=</span><span class="n">broker_fee</span>
     <span class="p">)</span>
 </code></pre></div>
 <p>Sign and fill the transaction.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">    <span class="n">signed_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span>
-        <span class="n">accept_offer_tx</span><span class="p">,</span> <span class="n">broker_wallet</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span> 
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">    <span class="n">signed_tx</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span>
+        <span class="n">accept_offer_tx</span><span class="p">,</span> <span class="n">broker_wallet</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
 </code></pre></div>
 <p>Submit the transaction and report the results.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">    <span class="k">try</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">send_reliable_submission</span><span class="p">(</span><span class="n">signed_tx</span><span class="p">,</span><span class="n">client</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">    <span class="n">reply</span><span class="o">=</span><span class="s2">""</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">send_reliable_submission</span><span class="p">(</span><span class="n">signed_tx</span><span class="p">,</span><span class="n">client</span><span class="p">)</span>
+        <span class="n">reply</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">result</span>
     <span class="k">except</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">XRPLReliableSubmissionException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Submit failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
-    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">result</span>
+        <span class="n">reply</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Submit failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <h2 id="lesson5-broker-nftspy">lesson5-broker-nfts.py<a aria-hidden="true" class="hover_anchor" href="#lesson5-broker-nftspy"><i class="fa fa-link"></i></a></h2>
 <p>Revise the form from lesson 4 to add a new Broker section at the top. Changes are highlighted below.</p>
@@ -422,27 +424,27 @@
 <span class="kn">import</span> <span class="nn">json</span>
 </code></pre></div>
 <p>Import the <code>broker_sale</code> method.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="kn">from</span> <span class="nn">mod5</span> <span class="kn">import</span> <span class="n">broker_sale</span>
-
-<span class="kn">from</span> <span class="nn">mod4</span> <span class="kn">import</span> <span class="n">create_sell_offer</span>
-<span class="kn">from</span> <span class="nn">mod4</span> <span class="kn">import</span> <span class="n">create_buy_offer</span>
-<span class="kn">from</span> <span class="nn">mod4</span> <span class="kn">import</span> <span class="n">get_offers</span>
-<span class="kn">from</span> <span class="nn">mod4</span> <span class="kn">import</span> <span class="n">cancel_offer</span>
-<span class="kn">from</span> <span class="nn">mod4</span> <span class="kn">import</span> <span class="n">accept_sell_offer</span>
-<span class="kn">from</span> <span class="nn">mod4</span> <span class="kn">import</span> <span class="n">accept_buy_offer</span>
-
-<span class="kn">from</span> <span class="nn">mod3</span> <span class="kn">import</span> <span class="n">mint_token</span>
-<span class="kn">from</span> <span class="nn">mod3</span> <span class="kn">import</span> <span class="n">get_tokens</span>
-<span class="kn">from</span> <span class="nn">mod3</span> <span class="kn">import</span> <span class="n">burn_token</span>
-
-<span class="kn">from</span> <span class="nn">mod2</span> <span class="kn">import</span> <span class="n">create_trust_line</span>
-<span class="kn">from</span> <span class="nn">mod2</span> <span class="kn">import</span> <span class="n">send_currency</span>
-<span class="kn">from</span> <span class="nn">mod2</span> <span class="kn">import</span> <span class="n">get_balance</span>
-<span class="kn">from</span> <span class="nn">mod2</span> <span class="kn">import</span> <span class="n">configure_account</span>
-
-<span class="kn">from</span> <span class="nn">mod1</span> <span class="kn">import</span> <span class="n">get_account</span>
-<span class="kn">from</span> <span class="nn">mod1</span> <span class="kn">import</span> <span class="n">get_account_info</span>
-<span class="kn">from</span> <span class="nn">mod1</span> <span class="kn">import</span> <span class="n">send_xrp</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="kn">from</span> <span class="nn">mod1</span> <span class="kn">import</span> <span class="n">get_account</span><span class="p">,</span> <span class="n">get_account_info</span><span class="p">,</span> <span class="n">send_xrp</span>
+<span class="kn">from</span> <span class="nn">mod2</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">create_trust_line</span><span class="p">,</span>
+    <span class="n">send_currency</span><span class="p">,</span>
+    <span class="n">get_balance</span><span class="p">,</span>
+    <span class="n">configure_account</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">mod3</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">mint_token</span><span class="p">,</span>
+    <span class="n">get_tokens</span><span class="p">,</span>
+    <span class="n">burn_token</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">mod4</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">create_sell_offer</span><span class="p">,</span>
+    <span class="n">create_buy_offer</span><span class="p">,</span>
+    <span class="n">get_offers</span><span class="p">,</span>
+    <span class="n">cancel_offer</span><span class="p">,</span>
+    <span class="n">accept_sell_offer</span><span class="p">,</span>
+    <span class="n">accept_buy_offer</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">mod5</span> <span class="kn">import</span> <span class="n">broker_sale</span>
 
 <span class="c1">#############################################</span>
 <span class="c1">## Handlers #################################</span>
@@ -457,12 +459,16 @@
     <span class="n">ent_broker_seed</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">ent_broker_account</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span>
     <span class="n">ent_broker_seed</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_wallet</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+
+
 <span class="k">def</span> <span class="nf">get_broker_account_info</span><span class="p">():</span>
     <span class="n">accountInfo</span> <span class="o">=</span> <span class="n">get_account_info</span><span class="p">(</span><span class="n">ent_broker_account</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">ent_broker_balance</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">ent_broker_balance</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">accountInfo</span><span class="p">[</span><span class="s1">'Balance'</span><span class="p">])</span>
     <span class="n">text_broker_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_broker_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">accountInfo</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">broker_broker_sale</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">broker_sale</span><span class="p">(</span>
         <span class="n">ent_broker_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -471,18 +477,22 @@
         <span class="n">ent_broker_fee</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="p">)</span>
     <span class="n">text_broker_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_broker_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>    
+    <span class="n">text_broker_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">broker_get_offers</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">get_offers</span><span class="p">(</span><span class="n">ent_broker_nft_id</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_broker_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_broker_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+
+
 <span class="k">def</span> <span class="nf">broker_cancel_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">cancel_offer</span><span class="p">(</span>
         <span class="n">ent_broker_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
         <span class="n">ent_broker_buy_nft_idx</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="p">)</span>
     <span class="n">text_broker_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_broker_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>    
+    <span class="n">text_broker_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
 <span class="c1"># Module 4 Handlers</span>
@@ -497,6 +507,8 @@
     <span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">standby_accept_sell_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">accept_sell_offer</span> <span class="p">(</span>
         <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -504,6 +516,8 @@
     <span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">standby_create_buy_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">create_buy_offer</span><span class="p">(</span>
         <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -515,6 +529,8 @@
     <span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">standby_accept_buy_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">accept_buy_offer</span> <span class="p">(</span>
         <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -522,17 +538,23 @@
     <span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">standby_get_offers</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">get_offers</span><span class="p">(</span><span class="n">ent_standby_nft_id</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+
+
 <span class="k">def</span> <span class="nf">standby_cancel_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">cancel_offer</span><span class="p">(</span>
         <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
         <span class="n">ent_standby_nft_offer_index</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>    
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">op_create_sell_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">create_sell_offer</span><span class="p">(</span>
         <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -543,6 +565,8 @@
     <span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">op_accept_sell_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">accept_sell_offer</span> <span class="p">(</span>
         <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -550,6 +574,8 @@
     <span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">op_create_buy_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">create_buy_offer</span><span class="p">(</span>
         <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -560,7 +586,9 @@
         <span class="n">ent_operational_destination</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>  
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">op_accept_buy_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">accept_buy_offer</span> <span class="p">(</span>
         <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -568,17 +596,21 @@
     <span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">op_get_offers</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">get_offers</span><span class="p">(</span><span class="n">ent_operational_nft_id</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+
+
 <span class="k">def</span> <span class="nf">op_cancel_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">cancel_offer</span><span class="p">(</span>
         <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
         <span class="n">ent_operational_nft_offer_index</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>    
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
 
@@ -594,10 +626,14 @@
     <span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">standby_get_tokens</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">get_tokens</span><span class="p">(</span><span class="n">ent_standby_account</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">standby_burn_token</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">burn_token</span><span class="p">(</span>
         <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -605,6 +641,8 @@
     <span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">operational_mint_token</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">mint_token</span><span class="p">(</span>
         <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -615,10 +653,14 @@
     <span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">operational_get_tokens</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">get_tokens</span><span class="p">(</span><span class="n">ent_operational_account</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">operational_burn_token</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">burn_token</span><span class="p">(</span>
         <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -626,6 +668,7 @@
     <span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
 
 <span class="c1"># Module 2 Handlers</span>
 
@@ -636,6 +679,8 @@
         <span class="n">ent_standby_amount</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">standby_send_currency</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">send_currency</span><span class="p">(</span><span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
         <span class="n">ent_standby_destination</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -643,12 +688,16 @@
         <span class="n">ent_standby_amount</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">standby_configure_account</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">configure_account</span><span class="p">(</span>
         <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
         <span class="n">standbyRippling</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">operational_create_trust_line</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">create_trust_line</span><span class="p">(</span><span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
         <span class="n">ent_operational_destination</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -656,6 +705,8 @@
         <span class="n">ent_operational_amount</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">operational_send_currency</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">send_currency</span><span class="p">(</span><span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
         <span class="n">ent_operational_destination</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -663,19 +714,24 @@
         <span class="n">ent_operational_amount</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">operational_configure_account</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">configure_account</span><span class="p">(</span>
         <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
         <span class="n">operationalRippling</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">get_balances</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">get_balance</span><span class="p">(</span><span class="n">ent_operational_account</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">ent_standby_account</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>    
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">get_balance</span><span class="p">(</span><span class="n">ent_standby_account</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">ent_operational_account</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>    
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
 
 <span class="c1"># Module 1 Handlers</span>
 <span class="k">def</span> <span class="nf">get_standby_account</span><span class="p">():</span>
@@ -684,12 +740,16 @@
     <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">ent_standby_account</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span>
     <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_wallet</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+
+
 <span class="k">def</span> <span class="nf">get_standby_account_info</span><span class="p">():</span>
     <span class="n">accountInfo</span> <span class="o">=</span> <span class="n">get_account_info</span><span class="p">(</span><span class="n">ent_standby_account</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">ent_standby_balance</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">ent_standby_balance</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">accountInfo</span><span class="p">[</span><span class="s1">'Balance'</span><span class="p">])</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">accountInfo</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">standby_send_xrp</span><span class="p">():</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">send_xrp</span><span class="p">(</span><span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span><span class="n">ent_standby_amount</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
                        <span class="n">ent_standby_destination</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
@@ -697,45 +757,50 @@
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
     <span class="n">get_standby_account_info</span><span class="p">()</span>
     <span class="n">get_operational_account_info</span><span class="p">()</span>
+
+
 <span class="k">def</span> <span class="nf">get_operational_account</span><span class="p">():</span>
     <span class="n">new_wallet</span> <span class="o">=</span> <span class="n">get_account</span><span class="p">(</span><span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">ent_operational_account</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">ent_operational_account</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span>
     <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_wallet</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+
+
 <span class="k">def</span> <span class="nf">get_operational_account_info</span><span class="p">():</span>
     <span class="n">accountInfo</span> <span class="o">=</span> <span class="n">get_account_info</span><span class="p">(</span><span class="n">ent_operational_account</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">ent_operational_balance</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">ent_operational_balance</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">accountInfo</span><span class="p">[</span><span class="s1">'Balance'</span><span class="p">])</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">accountInfo</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
 <span class="k">def</span> <span class="nf">operational_send_xrp</span><span class="p">():</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">send_xrp</span><span class="p">(</span><span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span><span class="n">ent_operational_amount</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">ent_operational_destination</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
     <span class="n">get_standby_account_info</span><span class="p">()</span>
     <span class="n">get_operational_account_info</span><span class="p">()</span>
-
-<span class="c1"># Create a new window with the title "Quickstart - Broker Sale"</span>
-<span class="n">window</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+</code></pre></div>
+<p>Create a new window with the title <em>Quickstart - Broker Sale</em>.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="n">window</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">window</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Quickstart - Broker Sale"</span><span class="p">)</span>
 
 <span class="n">myscrollbar</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s2">"vertical"</span><span class="p">)</span>
 <span class="n">myscrollbar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="s2">"y"</span><span class="p">)</span>
 
 
-
 <span class="n">standbyRippling</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">BooleanVar</span><span class="p">()</span>
 <span class="n">operationalRippling</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">BooleanVar</span><span class="p">()</span>
 </code></pre></div>
-<p>Add a new Frame to hold the Broker fields and buttons.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="c1"># Broker frame</span>
+<p>Add a new frame to hold the broker fields and buttons.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1"># Broker frame</span>
 
 <span class="n">frm_broker</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">relief</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">SUNKEN</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">frm_broker</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
 </code></pre></div>
 <p>Define the broker entry fields.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="n">lbl_broker_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Broker Seed"</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="n">lbl_broker_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Broker Seed"</span><span class="p">)</span>
 <span class="n">ent_broker_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_broker_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Broker Account"</span><span class="p">)</span>
 <span class="n">ent_broker_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
@@ -757,7 +822,7 @@
 <span class="n">text_broker_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">65</span><span class="p">)</span>
 </code></pre></div>
 <p>Place the fields in a grid.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="n">lbl_broker_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="n">lbl_broker_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
 <span class="n">ent_broker_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">lbl_broker_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
 <span class="n">ent_broker_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -778,8 +843,8 @@
 <span class="n">lbl_broker_results</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">text_broker_results</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-<p>Define and place the Broker buttons.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="n">btn_broker_get_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Broker Account"</span><span class="p">,</span>
+<p>Define and place the broker buttons.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="n">btn_broker_get_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Broker Account"</span><span class="p">,</span>
                                    <span class="n">command</span> <span class="o">=</span> <span class="n">get_broker_account</span><span class="p">)</span>
 <span class="n">btn_broker_get_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
 <span class="n">btn_broker_get_account_info</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Broker Account Info"</span><span class="p">,</span>
@@ -804,12 +869,12 @@
 <span class="n">ent_standby_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_standby_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Standby Account"</span><span class="p">)</span>
 <span class="n">ent_standby_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_standby_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"XRP Balance"</span><span class="p">)</span>
-<span class="n">ent_standby_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_standy_amount</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Amount"</span><span class="p">)</span>
 <span class="n">ent_standby_amount</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_standby_destination</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Destination"</span><span class="p">)</span>
 <span class="n">ent_standby_destination</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_standby_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"XRP Balance"</span><span class="p">)</span>
+<span class="n">ent_standby_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_standby_currency</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Currency"</span><span class="p">)</span>
 <span class="n">ent_standby_currency</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">cb_standby_allow_rippling</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Allow Rippling"</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">standbyRippling</span><span class="p">,</span> <span class="n">onvalue</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">offvalue</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -829,8 +894,6 @@
 <span class="n">ent_standby_owner</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
 <span class="n">lbl_standby_expiration</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Expiration"</span><span class="p">)</span>
 <span class="n">ent_standby_expiration</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_standby_transfer_fee</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Transfer Fee"</span><span class="p">)</span>
-<span class="n">ent_standby_transfer_fee</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
 <span class="n">lbl_standby_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s1">'Results'</span><span class="p">)</span>
 <span class="n">text_standby_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">65</span><span class="p">)</span>
 
@@ -878,12 +941,12 @@
 <span class="n">ent_operational_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_operational_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Operational Account"</span><span class="p">)</span>
 <span class="n">ent_operational_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_operational_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"XRP Balance"</span><span class="p">)</span>
-<span class="n">ent_operational_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_operational_amount</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Amount"</span><span class="p">)</span>
 <span class="n">ent_operational_amount</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_operational_destination</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Destination"</span><span class="p">)</span>
 <span class="n">ent_operational_destination</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_operational_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"XRP Balance"</span><span class="p">)</span>
+<span class="n">ent_operational_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_operational_currency</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Currency"</span><span class="p">)</span>
 <span class="n">ent_operational_currency</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">cb_operational_allow_rippling</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Allow Rippling"</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">operationalRippling</span><span class="p">,</span> <span class="n">onvalue</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">offvalue</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -903,8 +966,6 @@
 <span class="n">ent_operational_owner</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
 <span class="n">lbl_operational_expiration</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Expiration"</span><span class="p">)</span>
 <span class="n">ent_operational_expiration</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_operational_transfer_fee</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Transfer Fee"</span><span class="p">)</span>
-<span class="n">ent_operational_transfer_fee</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
 <span class="n">lbl_operational_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">"Results"</span><span class="p">)</span>
 <span class="n">text_operational_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">65</span><span class="p">)</span>
 
