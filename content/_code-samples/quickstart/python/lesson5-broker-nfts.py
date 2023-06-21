@@ -2,27 +2,27 @@ import tkinter as tk
 import xrpl
 import json
 
+from mod1 import get_account, get_account_info, send_xrp
+from mod2 import (
+    create_trust_line,
+    send_currency,
+    get_balance,
+    configure_account,
+)
+from mod3 import (
+    mint_token,
+    get_tokens,
+    burn_token,
+)
+from mod4 import (
+    create_sell_offer,
+    create_buy_offer,
+    get_offers,
+    cancel_offer,
+    accept_sell_offer,
+    accept_buy_offer,
+)
 from mod5 import broker_sale
-
-from mod4 import create_sell_offer
-from mod4 import create_buy_offer
-from mod4 import get_offers
-from mod4 import cancel_offer
-from mod4 import accept_sell_offer
-from mod4 import accept_buy_offer
-
-from mod3 import mint_token
-from mod3 import get_tokens
-from mod3 import burn_token
-
-from mod2 import create_trust_line
-from mod2 import send_currency
-from mod2 import get_balance
-from mod2 import configure_account
-
-from mod1 import get_account
-from mod1 import get_account_info
-from mod1 import send_xrp
 
 #############################################
 ## Handlers #################################
@@ -36,12 +36,16 @@ def get_broker_account():
     ent_broker_seed.delete(0, tk.END)
     ent_broker_account.insert(0, new_wallet.classic_address)
     ent_broker_seed.insert(0, new_wallet.seed)
+
+
 def get_broker_account_info():
     accountInfo = get_account_info(ent_broker_account.get())
     ent_broker_balance.delete(0, tk.END)
     ent_broker_balance.insert(0,accountInfo['Balance'])
     text_broker_results.delete("1.0", tk.END)
     text_broker_results.insert("1.0",json.dumps(accountInfo, indent=4))
+
+
 def broker_broker_sale():
     results = broker_sale(
         ent_broker_seed.get(),
@@ -50,18 +54,22 @@ def broker_broker_sale():
         ent_broker_fee.get()
     )
     text_broker_results.delete("1.0", tk.END)
-    text_broker_results.insert("1.0", json.dumps(results, indent=4))    
+    text_broker_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def broker_get_offers():
     results = get_offers(ent_broker_nft_id.get())
     text_broker_results.delete("1.0", tk.END)
     text_broker_results.insert("1.0", results)
+
+
 def broker_cancel_offer():
     results = cancel_offer(
         ent_broker_seed.get(),
         ent_broker_buy_nft_idx.get()
     )
     text_broker_results.delete("1.0", tk.END)
-    text_broker_results.insert("1.0", json.dumps(results, indent=4))    
+    text_broker_results.insert("1.0", json.dumps(results, indent=4))
 
 
 # Module 4 Handlers
@@ -76,6 +84,8 @@ def standby_create_sell_offer():
     )
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_accept_sell_offer():
     results = accept_sell_offer (
         ent_standby_seed.get(),
@@ -83,6 +93,8 @@ def standby_accept_sell_offer():
     )
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_create_buy_offer():
     results = create_buy_offer(
         ent_standby_seed.get(),
@@ -94,6 +106,8 @@ def standby_create_buy_offer():
     )
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_accept_buy_offer():
     results = accept_buy_offer (
         ent_standby_seed.get(),
@@ -101,17 +115,23 @@ def standby_accept_buy_offer():
     )
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_get_offers():
     results = get_offers(ent_standby_nft_id.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", results)
+
+
 def standby_cancel_offer():
     results = cancel_offer(
         ent_standby_seed.get(),
         ent_standby_nft_offer_index.get()
     )
     text_standby_results.delete("1.0", tk.END)
-    text_standby_results.insert("1.0", json.dumps(results, indent=4))    
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def op_create_sell_offer():
     results = create_sell_offer(
         ent_operational_seed.get(),
@@ -122,6 +142,8 @@ def op_create_sell_offer():
     )
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def op_accept_sell_offer():
     results = accept_sell_offer (
         ent_operational_seed.get(),
@@ -129,6 +151,8 @@ def op_accept_sell_offer():
     )
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def op_create_buy_offer():
     results = create_buy_offer(
         ent_operational_seed.get(),
@@ -139,7 +163,9 @@ def op_create_buy_offer():
         ent_operational_destination.get()
     )
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))  
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def op_accept_buy_offer():
     results = accept_buy_offer (
         ent_operational_seed.get(),
@@ -147,17 +173,21 @@ def op_accept_buy_offer():
     )
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def op_get_offers():
     results = get_offers(ent_operational_nft_id.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", results)
+
+
 def op_cancel_offer():
     results = cancel_offer(
         ent_operational_seed.get(),
         ent_operational_nft_offer_index.get()
     )
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))    
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
 
 
 
@@ -173,10 +203,14 @@ def standby_mint_token():
     )
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_get_tokens():
     results = get_tokens(ent_standby_account.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_burn_token():
     results = burn_token(
         ent_standby_seed.get(),
@@ -184,6 +218,8 @@ def standby_burn_token():
     )
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_mint_token():
     results = mint_token(
         ent_operational_seed.get(),
@@ -194,10 +230,14 @@ def operational_mint_token():
     )
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_get_tokens():
     results = get_tokens(ent_operational_account.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_burn_token():
     results = burn_token(
         ent_operational_seed.get(),
@@ -205,6 +245,7 @@ def operational_burn_token():
     )
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
 
 # Module 2 Handlers
 
@@ -215,6 +256,8 @@ def standby_create_trust_line():
         ent_standby_amount.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_send_currency():
     results = send_currency(ent_standby_seed.get(),
         ent_standby_destination.get(),
@@ -222,12 +265,16 @@ def standby_send_currency():
         ent_standby_amount.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def standby_configure_account():
     results = configure_account(
         ent_standby_seed.get(),
         standbyRippling)
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_create_trust_line():
     results = create_trust_line(ent_operational_seed.get(),
         ent_operational_destination.get(),
@@ -235,6 +282,8 @@ def operational_create_trust_line():
         ent_operational_amount.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_send_currency():
     results = send_currency(ent_operational_seed.get(),
         ent_operational_destination.get(),
@@ -242,19 +291,24 @@ def operational_send_currency():
         ent_operational_amount.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def operational_configure_account():
     results = configure_account(
         ent_operational_seed.get(),
         operationalRippling)
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
+
 def get_balances():
     results = get_balance(ent_operational_account.get(), ent_standby_account.get())
     text_standby_results.delete("1.0", tk.END)
-    text_standby_results.insert("1.0", json.dumps(results, indent=4))    
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
     results = get_balance(ent_standby_account.get(), ent_operational_account.get())
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))    
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
+
 
 # Module 1 Handlers
 def get_standby_account():
@@ -263,12 +317,16 @@ def get_standby_account():
     ent_standby_seed.delete(0, tk.END)
     ent_standby_account.insert(0, new_wallet.classic_address)
     ent_standby_seed.insert(0, new_wallet.seed)
+
+
 def get_standby_account_info():
     accountInfo = get_account_info(ent_standby_account.get())
     ent_standby_balance.delete(0, tk.END)
     ent_standby_balance.insert(0,accountInfo['Balance'])
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0",json.dumps(accountInfo, indent=4))
+
+
 def standby_send_xrp():
     response = send_xrp(ent_standby_seed.get(),ent_standby_amount.get(),
                        ent_standby_destination.get())
@@ -276,18 +334,24 @@ def standby_send_xrp():
     text_standby_results.insert("1.0",json.dumps(response.result, indent=4))
     get_standby_account_info()
     get_operational_account_info()
+
+
 def get_operational_account():
     new_wallet = get_account(ent_operational_seed.get())
     ent_operational_account.delete(0, tk.END)
     ent_operational_account.insert(0, new_wallet.classic_address)
     ent_operational_seed.delete(0, tk.END)
     ent_operational_seed.insert(0, new_wallet.seed)
+
+
 def get_operational_account_info():
     accountInfo = get_account_info(ent_operational_account.get())
     ent_operational_balance.delete(0, tk.END)
     ent_operational_balance.insert(0,accountInfo['Balance'])
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0",json.dumps(accountInfo, indent=4))
+
+
 def operational_send_xrp():
     response = send_xrp(ent_operational_seed.get(),ent_operational_amount.get(), ent_operational_destination.get())
     text_operational_results.delete("1.0", tk.END)
@@ -301,7 +365,6 @@ window.title("Quickstart - Broker Sale")
 
 myscrollbar=tk.Scrollbar(window,orient="vertical")
 myscrollbar.pack(side="right",fill="y")
-
 
 
 standbyRippling = tk.BooleanVar()
@@ -370,7 +433,7 @@ btn_broker_get_offers.grid(row=3, column=2, sticky = "nsew")
 btn_broker_cancel_offer = tk.Button(master=frm_broker, text="Cancel Offer",
                                     command = broker_cancel_offer)
 btn_broker_cancel_offer.grid(row=4, column=2, sticky="nsew")
-    
+
 # Form frame
 frm_form = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
 frm_form.pack()
@@ -380,12 +443,12 @@ lbl_standy_seed = tk.Label(master=frm_form, text="Standby Seed")
 ent_standby_seed = tk.Entry(master=frm_form, width=50)
 lbl_standby_account = tk.Label(master=frm_form, text="Standby Account")
 ent_standby_account = tk.Entry(master=frm_form, width=50)
-lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_standby_balance = tk.Entry(master=frm_form, width=50)
 lbl_standy_amount = tk.Label(master=frm_form, text="Amount")
 ent_standby_amount = tk.Entry(master=frm_form, width=50)
 lbl_standby_destination = tk.Label(master=frm_form, text="Destination")
 ent_standby_destination = tk.Entry(master=frm_form, width=50)
+lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_standby_balance = tk.Entry(master=frm_form, width=50)
 lbl_standby_currency = tk.Label(master=frm_form, text="Currency")
 ent_standby_currency = tk.Entry(master=frm_form, width=50)
 cb_standby_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=standbyRippling, onvalue=True, offvalue=False)
@@ -405,8 +468,6 @@ lbl_standby_owner = tk.Label(master=frm_form, text="Owner")
 ent_standby_owner = tk.Entry(master=frm_form, width="50")
 lbl_standby_expiration = tk.Label(master=frm_form, text="Expiration")
 ent_standby_expiration = tk.Entry(master=frm_form, width="50")
-lbl_standby_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
-ent_standby_transfer_fee = tk.Entry(master=frm_form, width="50")
 lbl_standby_results = tk.Label(master=frm_form,text='Results')
 text_standby_results = tk.Text(master=frm_form, height = 10, width = 65)
 
@@ -457,12 +518,12 @@ lbl_operational_seed = tk.Label(master=frm_form, text="Operational Seed")
 ent_operational_seed = tk.Entry(master=frm_form, width=50)
 lbl_operational_account = tk.Label(master=frm_form, text="Operational Account")
 ent_operational_account = tk.Entry(master=frm_form, width=50)
-lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_operational_balance = tk.Entry(master=frm_form, width=50)
 lbl_operational_amount = tk.Label(master=frm_form, text="Amount")
 ent_operational_amount = tk.Entry(master=frm_form, width=50)
 lbl_operational_destination = tk.Label(master=frm_form, text="Destination")
 ent_operational_destination = tk.Entry(master=frm_form, width=50)
+lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_operational_balance = tk.Entry(master=frm_form, width=50)
 lbl_operational_currency = tk.Label(master=frm_form, text="Currency")
 ent_operational_currency = tk.Entry(master=frm_form, width=50)
 cb_operational_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=operationalRippling, onvalue=True, offvalue=False)
@@ -482,8 +543,6 @@ lbl_operational_owner = tk.Label(master=frm_form, text="Owner")
 ent_operational_owner = tk.Entry(master=frm_form, width="50")
 lbl_operational_expiration = tk.Label(master=frm_form, text="Expiration")
 ent_operational_expiration = tk.Entry(master=frm_form, width="50")
-lbl_operational_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
-ent_operational_transfer_fee = tk.Entry(master=frm_form, width="50")
 lbl_operational_results = tk.Label(master=frm_form,text="Results")
 text_operational_results = tk.Text(master=frm_form, height = 10, width = 65)
 

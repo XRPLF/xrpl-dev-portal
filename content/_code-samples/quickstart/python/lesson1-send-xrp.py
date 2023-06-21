@@ -2,14 +2,12 @@ import tkinter as tk
 import xrpl
 import json
 
-from mod1 import get_account
-from mod1 import get_account_info
-from mod1 import send_xrp
+from mod1 import get_account, get_account_info, send_xrp
 
 #############################################
 ## Handlers #################################
 #############################################
-    
+
 # sb seed: snk7pMfHPZoUpwMQuFApo3XTLRJhn
 # op seed: spmiHeaCDMFX56SNZVsCbi34WEE52
 
@@ -19,12 +17,16 @@ def get_standby_account():
     ent_standby_seed.delete(0, tk.END)
     ent_standby_account.insert(0, new_wallet.classic_address)
     ent_standby_seed.insert(0, new_wallet.seed)
+
+
 def get_standby_account_info():
     accountInfo = get_account_info(ent_standby_account.get())
     ent_standby_balance.delete(0, tk.END)
     ent_standby_balance.insert(0,accountInfo['Balance'])
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0",json.dumps(accountInfo, indent=4))
+
+
 def standby_send_xrp():
     response = send_xrp(ent_standby_seed.get(),ent_standby_amount.get(),
                        ent_standby_destination.get())
@@ -32,24 +34,31 @@ def standby_send_xrp():
     text_standby_results.insert("1.0",json.dumps(response.result, indent=4))
     get_standby_account_info()
     get_operational_account_info()
+
+
 def get_operational_account():
     new_wallet = get_account(ent_operational_seed.get())
     ent_operational_account.delete(0, tk.END)
     ent_operational_account.insert(0, new_wallet.classic_address)
     ent_operational_seed.delete(0, tk.END)
     ent_operational_seed.insert(0, new_wallet.seed)
+
+
 def get_operational_account_info():
     accountInfo = get_account_info(ent_operational_account.get())
     ent_operational_balance.delete(0, tk.END)
     ent_operational_balance.insert(0,accountInfo['Balance'])
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0",json.dumps(accountInfo, indent=4))
+
+
 def operational_send_xrp():
     response = send_xrp(ent_operational_seed.get(),ent_operational_amount.get(), ent_operational_destination.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0",json.dumps(response.result,indent=4))
     get_standby_account_info()
     get_operational_account_info()
+
 
 # Create a new window with the title "Quickstart Module 1"
 window = tk.Tk()
@@ -64,12 +73,12 @@ lbl_standy_seed = tk.Label(master=frm_form, text="Standby Seed")
 ent_standby_seed = tk.Entry(master=frm_form, width=50)
 lbl_standby_account = tk.Label(master=frm_form, text="Standby Account")
 ent_standby_account = tk.Entry(master=frm_form, width=50)
-lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_standby_balance = tk.Entry(master=frm_form, width=50)
 lbl_standy_amount = tk.Label(master=frm_form, text="Amount")
 ent_standby_amount = tk.Entry(master=frm_form, width=50)
 lbl_standby_destination = tk.Label(master=frm_form, text="Destination")
 ent_standby_destination = tk.Entry(master=frm_form, width=50)
+lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_standby_balance = tk.Entry(master=frm_form, width=50)
 lbl_standby_results = tk.Label(master=frm_form,text='Results')
 text_standby_results = tk.Text(master=frm_form, height = 20, width = 65)
 
@@ -96,12 +105,12 @@ lbl_operational_seed = tk.Label(master=frm_form, text="Operational Seed")
 ent_operational_seed = tk.Entry(master=frm_form, width=50)
 lbl_operational_account = tk.Label(master=frm_form, text="Operational Account")
 ent_operational_account = tk.Entry(master=frm_form, width=50)
-lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
-ent_operational_balance = tk.Entry(master=frm_form, width=50)
 lbl_operational_amount = tk.Label(master=frm_form, text="Amount")
 ent_operational_amount = tk.Entry(master=frm_form, width=50)
 lbl_operational_destination = tk.Label(master=frm_form, text="Destination")
 ent_operational_destination = tk.Entry(master=frm_form, width=50)
+lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_operational_balance = tk.Entry(master=frm_form, width=50)
 lbl_operational_results = tk.Label(master=frm_form,text='Results')
 text_operational_results = tk.Text(master=frm_form, height = 20, width = 65)
 
