@@ -126,36 +126,39 @@ This function sets the authorized minter for an account. Each account can have 0
 Get the wallet of the account granting permission and instantiate a client.
 
 ```python
-def set_minter(_seed, _minter):
-    granter_wallet = Wallet(_seed, sequence = 16237283)
-    client = JsonRpcClient(testnet_url)
+def set_minter(seed, minter):
+    """set_minter"""
+    granter_wallet=Wallet(seed, sequence = 16237283)
+    client=JsonRpcClient(testnet_url)
 ```
 
 Define the AccountSet transaction that grants permission to another account to mint tokens on behalf of the granter account.
 
 ```python
-    set_minter_tx = xrpl.models.transactions.AccountSet(
-        account = granter_wallet.classic_address,
-        nftoken_minter = _minter,
-        set_flag = xrpl.models.transactions.AccountSetFlag.ASF_AUTHORIZED_NFTOKEN_MINTER
+    set_minter_tx=xrpl.models.transactions.AccountSet(
+        account=granter_wallet.classic_address,
+        nftoken_minter=minter,
+        set_flag=xrpl.models.transactions.AccountSetFlag.ASF_AUTHORIZED_NFTOKEN_MINTER
     )    
 ```
 
 Sign the transaction
 
 ```python
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        set_minter_tx, granter_wallet, client)   
+    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
+        set_minter_tx, granter_wallet, client)
 ```
 
 Submit the transaction and return the results.
 
 ```python
+    reply=""
     try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response = f"Submit failed: {e}"
-    return response.result
+        reply=f"Submit failed: {e}"
+    return reply
 ```
 
 ### mint_other
@@ -163,37 +166,40 @@ Submit the transaction and return the results.
 Get the minter wallet and instantiate a client connection to the XRP ledger.
 
 ``` python
-def mint_other(_seed, _uri, _flags, _transfer_fee, _taxon, _issuer):
-    minter_wallet = Wallet(_seed, sequence = 16237283)
-    client = JsonRpcClient(testnet_url)
+def mint_other(seed, uri, flags, transfer_fee, taxon, issuer):
+    """mint_other"""
+    minter_wallet=Wallet(seed, sequence=16237283)
+    client=JsonRpcClient(testnet_url)
 ```
 
 Define the `NFTokenMint` transaction. The new parameter in this method is the _issuer_ field, identifying the account on whose behalf the token is being minted.
 
 ```python
-    mint_other_tx = xrpl.models.transactions.NFTokenMint(
-        account = minter_wallet.classic_address,
-        uri = xrpl.utils.str_to_hex(_uri),
-        flags = int(_flags),
-        transfer_fee = int(_transfer_fee),
-        nftoken_taxon = int(_taxon),
-        issuer = _issuer
+    mint_other_tx=xrpl.models.transactions.NFTokenMint(
+        account=minter_wallet.classic_address,
+        uri=xrpl.utils.str_to_hex(uri),
+        flags=int(flags),
+        transfer_fee=int(transfer_fee),
+        nftoken_taxon=int(taxon),
+        issuer=issuer
     )
 ```
 
 Sign and fill the transaction.
 
 ```python
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        mint_other_tx, minter_wallet, client)   
+    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
+        mint_other_tx, minter_wallet, client)
 ```
 
 Submit the transaction and report the results.
 
 ```python
+    reply=""
     try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
-        response = f"Submit failed: {e}"
-    return response.result
+        reply=f"Submit failed: {e}"
+    return reply
 ```
