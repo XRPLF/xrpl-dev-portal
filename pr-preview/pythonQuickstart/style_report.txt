@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 72 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gies, kifs, giss
-  kuressaare: 
+  gifs: rifs, gins, gips
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -27,7 +27,7 @@ Found 72 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: swas, sias, slaps
+  slas: slats, slat, spas
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
@@ -36,11 +36,11 @@ Found 72 possible spelling errors:
   xlsd: xls, lsd
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  disallowincoming: 
   xrpfees: 
+  disallowincoming: 
   immediateofferkilled: 
-  fixuniversalnumber: 
   depositpreauthamendment: 
+  fixuniversalnumber: 
   fixnonfungibletokensv1_2: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingnftoffer: 
@@ -53,43 +53,43 @@ Found 72 possible spelling errors:
   0b0: 
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mody, mode, mods
+  mod1: mod., modo, mody
   get_account: 
   get_account_info: 
   send_xrp: 
   lesson1: lessons, lesson
-  tkinter: twinter, tinter
+  tkinter: tinter, twinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mody, mode, mods
+  mod2: mod., modo, mody
   send_currency: 
   get_balance: 
   configure_account: 
   lesson2: lessons, lesson
 
 <Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: mody, mode, mods
+  mod3: mod., modo, mody
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page '4. Transfer NFTs (Python)' (py-transfer-nfts.html)> Unknown Words:
-  mod4: mody, mode, mods
+  mod4: mod., modo, mody
   offer___index: 
   alloffers: 
   lesson4: lessons, lesson
 
 <Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)> Unknown Words:
-  sell___offer___index: 
   broker___fee: 
+  sell___offer___index: 
   buy___offer___index: 
   lesson5: lessons, lesson
 
 <Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)> Unknown Words:
-  mod6: mody, mode, mods
+  mod6: mod., modo, mody
   mint_other: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
