@@ -21,6 +21,7 @@
 
     @include media-breakpoint-up(lg) {
       content: url(../img/apex-banner.png);
+      max-height: 48px;
     }
   }
 }
