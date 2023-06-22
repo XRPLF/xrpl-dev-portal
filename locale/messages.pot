@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-08 20:41-0700\n"
+"POT-Creation-Date: 2023-06-22 16:46-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.12.1\n"
+"Generated-By: Babel 2.11.0\n"
 
 #: template/component-footer.html.jinja:23
 msgid "Open Source."
@@ -29,11 +29,23 @@ msgstr ""
 msgid "Edit page"
 msgstr ""
 
-#: template/component-top-nav.html.jinja:79 template/page-404.html.jinja:11
+#: template/component-top-nav.html.jinja:3
+msgid "Register for <span class=\"apex-highlight\">APEX Dev Summit 2023</span>"
+msgstr ""
+
+#: template/component-top-nav.html.jinja:6
+msgid "Amsterdam"
+msgstr ""
+
+#: template/component-top-nav.html.jinja:10
+msgid "Register Now"
+msgstr ""
+
+#: template/component-top-nav.html.jinja:81 template/page-404.html.jinja:11
 msgid "Search"
 msgstr ""
 
-#: template/component-top-nav.html.jinja:80
+#: template/component-top-nav.html.jinja:82
 msgid "Search site..."
 msgstr ""
 
@@ -72,66 +84,228 @@ msgid ""
 "start building on the XRPL."
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:80
-msgid "Process to become a Campus Ambassador"
-msgstr ""
-
-#: template/page-ambassadors.html.jinja:81
-msgid "How it Works"
-msgstr ""
-
-#: template/page-ambassadors.html.jinja:84
-msgid "Apply now to become an XRPL Campus Ambassador."
-msgstr ""
-
-#: template/page-ambassadors.html.jinja:178
+#: template/page-ambassadors.html.jinja:78
 msgid "Why become an XRPL Campus Ambassador?"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:179
+#: template/page-ambassadors.html.jinja:79
 #: template/page-xrp-overview.html.jinja:63
 msgid "Benefits"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:181
+#: template/page-ambassadors.html.jinja:81
 msgid "Join a global cohort of students empowering others to build on the XRPL."
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:332
+#: template/page-ambassadors.html.jinja:94
+msgid "Exclusive Opportunities"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:95
+msgid ""
+" Get access and invitations to Ambassador-only events, conferences, and "
+"opportunities"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:102
+#: template/page-ambassadors.html.jinja:150
+msgid "Education"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:103
+#: template/page-ambassadors.html.jinja:151
+msgid "Tutorials and workshops from leading XRPL and blockchain developers"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:111
+msgid "New XRPL swag for Ambassadors and swag to share with other students"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:120
+#: template/page-ambassadors.html.jinja:159
+msgid ""
+"Serve as an advocate and receive support from notable members of the "
+"community"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:128
+msgid ""
+"Gain hands-on experience building communities and grow your professional "
+"network in the blockchain industry"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:136
+#: template/page-ambassadors.html.jinja:166
+msgid "Stipend"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:137
+#: template/page-ambassadors.html.jinja:167
+msgid ""
+"Receive a stipend to fund your ideas and initiatives that fuel XRPL "
+"growth on your campus"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:158
+msgid "Mentorship"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:187
 msgid "Should You Apply?"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:333
+#: template/page-ambassadors.html.jinja:188
 msgid "Eligibility for XRPL Campus Ambassadors"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:335
+#: template/page-ambassadors.html.jinja:190
 msgid ""
 "Students currently enrolled in an undergraduate or postgraduate program "
 "at an accredited college or university are eligible to apply."
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:422
+#: template/page-ambassadors.html.jinja:202
+msgid "A Leader"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:203
+msgid ""
+"Interested in leading meetups and workshops for your local campus "
+"community"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:211
+#: template/page-ambassadors.html.jinja:250
+msgid "Active"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:212
+#: template/page-ambassadors.html.jinja:251
+msgid ""
+"An active participant in the XRPL community or interested in blockchain "
+"and crypto technologies"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:219
+msgid "Curious"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:220
+msgid "Eager to learn more about technical blockchain topics and the XRPL"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:228
+#: template/page-ambassadors.html.jinja:257
+msgid "Passionate"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:229
+#: template/page-ambassadors.html.jinja:258
+msgid ""
+"Passionate about increasing XRPL education and awareness through events, "
+"content, and classroom engagement"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:236
+msgid "Creative"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:237
+msgid "Ability to think outside the box to grow the XRPL student community"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:331
+msgid "Process to become a Campus Ambassador"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:332
+msgid "How it Works"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:335
+msgid "Apply now to become an XRPL Campus Ambassador."
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:354 template/page-uses.html.jinja:309
+#: template/page-uses.html.jinja:334
+msgid "Apply"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:355
+msgid "Submit an application to be considered for the Campus Ambassador program."
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:363
+#: template/page-ambassadors.html.jinja:393
+msgid "Interview"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:364
+#: template/page-ambassadors.html.jinja:394
+msgid ""
+"Tell the XRPL community-led panel more about yourself and your interest "
+"in the program during an interview."
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:371
+msgid "Join"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:372
+msgid ""
+"Congrats on your new role! Join the global cohort of Ambassadors and meet"
+" with community participants during onboarding."
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:380
+#: template/page-ambassadors.html.jinja:400
+msgid "Learn"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:381
+#: template/page-ambassadors.html.jinja:401
+msgid ""
+"Participate in personalized learning and training sessions for "
+"Ambassadors on the XRPL and blockchain technology."
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:414
+msgid "Apply for Fall 2023"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:431
 msgid "Join a global cohort of Student Ambassadors"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:423
+#: template/page-ambassadors.html.jinja:432
 msgid "Global Community"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:449
+#: template/page-ambassadors.html.jinja:458
 msgid "Stay connected to the XRPL Campus Ambassadors"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:450 template/page-impact.html.jinja:148
+#: template/page-ambassadors.html.jinja:459 template/page-impact.html.jinja:148
 #: template/page-impact.html.jinja:169
 msgid "Connect"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:453
+#: template/page-ambassadors.html.jinja:462
 msgid ""
 "To stay up-to-date on the latest activity, meetups, and events of the "
 "XRPL Campus Ambassadors be sure to follow these channels:"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:478
+msgid "Attend an XRPL Meetup in your local area"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:485
+msgid "Read more about the activity of the XRPL Ambassadors"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:497
+msgid "Join the conversation on the XRPL Developer Discord"
 msgstr ""
 
 #: template/page-code-samples.html.jinja:13
@@ -170,7 +344,7 @@ msgstr ""
 msgid "Join the Conversation"
 msgstr ""
 
-#: template/page-community.html.jinja:87 template/page-docs.html.jinja:69
+#: template/page-community.html.jinja:87
 msgid "Run an XRP Ledger network node"
 msgstr ""
 
@@ -359,63 +533,118 @@ msgstr ""
 msgid "Open a pull Request"
 msgstr ""
 
-#: template/page-docs.html.jinja:11
-msgid "What Would You Like to Learn?"
-msgstr ""
-
-#: template/page-docs.html.jinja:12
-msgid "XRP Ledger Documentation"
-msgstr ""
-
-#: template/page-docs.html.jinja:20
-msgid "Browse By Popular Topics"
-msgstr ""
-
-#: template/page-docs.html.jinja:33
-msgid "Browse By Label"
-msgstr ""
-
-#: template/page-docs.html.jinja:41
-msgid "Software and SDKs"
-msgstr ""
-
-#: template/page-docs.html.jinja:42
-msgid "Start Developing"
-msgstr ""
-
-#: template/page-docs.html.jinja:58
-msgid "Article types"
-msgstr ""
-
-#: template/page-docs.html.jinja:59
-msgid "Dive In"
-msgstr ""
-
-#: template/page-docs.html.jinja:70
-msgid "Participate in the Network"
-msgstr ""
-
-#: template/page-docs.html.jinja:83 template/page-uses.html.jinja:378
-msgid "NFTs"
-msgstr ""
-
-#: template/page-docs.html.jinja:84
-msgid "Hot Topic"
-msgstr ""
-
-#: template/page-docs.html.jinja:88
-msgid ""
-"Interested in non-fungible tokens, but concerned about their <a "
-"href=\"impact.html\">large carbon footprint</a>? Read more about issuing "
-"NFTs on the XRP Ledger:"
-msgstr ""
-
-#: template/page-docs.html.jinja:101
+#: template/page-docs-index.html.jinja:8
 msgid "Full documentation index"
 msgstr ""
 
-#: template/page-docs.html.jinja:102
+#: template/page-docs-index.html.jinja:9
 msgid "See Everything"
+msgstr ""
+
+#: template/page-docs.html.jinja:16
+msgid "XRP Ledger Developer Resources"
+msgstr ""
+
+#: template/page-docs.html.jinja:17
+msgid "Documentation"
+msgstr ""
+
+#: template/page-docs.html.jinja:90
+msgid "rippled API Reference"
+msgstr ""
+
+#: template/page-docs.html.jinja:94
+msgid "XRP Faucet"
+msgstr ""
+
+#: template/page-docs.html.jinja:98
+msgid "Getting Started with Python"
+msgstr ""
+
+#: template/page-docs.html.jinja:102
+msgid "Websocket API Tool"
+msgstr ""
+
+#: template/page-docs.html.jinja:105
+msgid "XRP Ledger Explorer"
+msgstr ""
+
+#: template/page-docs.html.jinja:267
+msgid "Use Cases"
+msgstr ""
+
+#: template/page-docs.html.jinja:276
+msgid "Getting Started"
+msgstr ""
+
+#: template/page-docs.html.jinja:280
+msgid "Quickstart to XRP Ledger"
+msgstr ""
+
+#: template/page-docs.html.jinja:282
+msgid "An introduction to fundamental aspects of the XRP Ledger"
+msgstr ""
+
+#: template/page-docs.html.jinja:288 template/page-home.html.jinja:122
+msgid "Get Started"
+msgstr ""
+
+#: template/page-docs.html.jinja:314
+msgid "Interact with the XRP Ledger in a language of your choice"
+msgstr ""
+
+#: template/page-docs.html.jinja:315
+msgid "Explore SDKs"
+msgstr ""
+
+#: template/page-docs.html.jinja:326
+msgid "Javascript"
+msgstr ""
+
+#: template/page-docs.html.jinja:335
+msgid "Python"
+msgstr ""
+
+#: template/page-docs.html.jinja:344
+msgid "Java"
+msgstr ""
+
+#: template/page-docs.html.jinja:375
+msgid "Explore, Test, Verify"
+msgstr ""
+
+#: template/page-docs.html.jinja:376
+msgid "Explore Dev Tools"
+msgstr ""
+
+#: template/page-docs.html.jinja:379
+msgid ""
+"Use these web-based tools to assist during all stages of development, "
+"from getting your first payment to testing your implementation for best "
+"practices."
+msgstr ""
+
+#: template/page-docs.html.jinja:395
+msgid "Browse By Recommended Pages"
+msgstr ""
+
+#: template/page-docs.html.jinja:407
+msgid "Get Free Test XRP"
+msgstr ""
+
+#: template/page-docs.html.jinja:408
+msgid ""
+"Connect to the XRP Ledger Testnet network to develop and test your apps "
+"built on the XRP Ledger, without risking real money or impacting "
+"production XRP Ledger users."
+msgstr ""
+
+#: template/page-docs.html.jinja:409
+msgid "Generate Testnet Credentials"
+msgstr ""
+
+#: template/page-docs.html.jinja:416
+msgid "See full documentation index"
 msgstr ""
 
 #: template/page-events.html.jinja:27
@@ -453,11 +682,11 @@ msgstr ""
 msgid "Upcoming Events"
 msgstr ""
 
-#: template/page-events.html.jinja:381
+#: template/page-events.html.jinja:399
 msgid "Explore past community-hosted events"
 msgstr ""
 
-#: template/page-events.html.jinja:382
+#: template/page-events.html.jinja:400
 msgid "Past Events"
 msgstr ""
 
@@ -876,10 +1105,6 @@ msgstr ""
 msgid "Choose a path to start building on the XRPL"
 msgstr ""
 
-#: template/page-home.html.jinja:122
-msgid "Get Started"
-msgstr ""
-
 #: template/page-home.html.jinja:127
 msgid "Quickstart"
 msgstr ""
@@ -970,8 +1195,8 @@ msgstr ""
 #: template/page-home.html.jinja:179
 msgid ""
 "Lower fees, faster transactions, and custom token functionality make the "
-"XRPL ideally suited for building an ecosystem for NFTs. Explore <a "
-"href='docs.html#docs-hot-topic'>proposed standards</a> for issuing NFTs."
+"XRPL ideally suited for building an ecosystem for NFTs. Explore the XRP "
+"Ledger's NFT capabilities."
 msgstr ""
 
 #: template/page-home.html.jinja:197
@@ -1610,10 +1835,6 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: template/page-uses.html.jinja:309 template/page-uses.html.jinja:334
-msgid "Apply"
-msgstr ""
-
 #: template/page-uses.html.jinja:315 template/page-uses.html.jinja:448
 msgid "Featured Categories"
 msgstr ""
@@ -1666,6 +1887,10 @@ msgstr ""
 msgid ""
 "Build digital wallets to store passwords and interact with various "
 "blockchains to send and receive digital assets, including XRP."
+msgstr ""
+
+#: template/page-uses.html.jinja:378
+msgid "NFTs"
 msgstr ""
 
 #: template/page-uses.html.jinja:379
