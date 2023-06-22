@@ -586,7 +586,7 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 ## fixNFTokenRemint
 [fixNFTokenRemint]: #fixnftokenremint
 
-| Amendment    | fixTokenRemint     |
+| Amendment    | fixNFTokenRemint     |
 |:-------------|:-------------------|
 | Amendment ID | AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E |
 | Status | In Development |
