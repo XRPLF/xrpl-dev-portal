@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 46 possible spelling errors:
+Found 45 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gis, giff, gips
+  gifs: gips, gils, gies
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -27,35 +27,34 @@ Found 46 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: elas, smas, sals
+  slas: slat, sylas, slash
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: lsd, xls
+  xlsd: xls, lsd
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  xrpfees: 
-  depositpreauthamendment: 
-  fixnonfungibletokensv1_2: 
-  immediateofferkilled: 
-  fixnftokenremint: 
   fixuniversalnumber: 
+  fixnonfungibletokensv1_2: 
+  fixnftokenremint: 
   disallowincoming: 
+  depositpreauthamendment: 
+  xrpfees: 
+  immediateofferkilled: 
   nftokenoffers: nftokenoffer
+  asfdisallowincomingtrustline: 
+  asfdisallowincomingcheck: 
   asfdisallowincomingnftoffer: 
   asfdisallowincomingpaychan: 
-  asfdisallowincomingcheck: 
-  asfdisallowincomingtrustline: 
-  fixtokenremint: 
-  30d: 3d, 3-d, 3rd
+  30d: 3rd, 3d, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3-d, 3rd
+  30d: 3rd, 3d, 3-d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   nftokenoffers: nftokenoffer
@@ -201,7 +200,7 @@ Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
   Sentences: 551
   Words: 7,620
-  Characters: 55,901
+  Characters: 55,903
 
 <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Length Metrics:
   Sentences: 380
