@@ -30,11 +30,15 @@ Unlike full-fledged [ledger entries](ledger-object-types.html), `NFToken` has no
 
 This composite field uniquely identifies a token, and consists of the following sections.
 
-A. 16 bits that identify flags or settings specific to the NFToken
-B. 16 bits that encode the transfer fee associated with this NFToken, if any
-C. A 160-bit account identifier of the issuer
-D. A 32-bit issuer-specified [`NFTokenTaxon`](https://www.merriam-webster.com/dictionary/taxon)
-E. An (automatically generated) monotonically increasing 32-bit sequence number.
+A) 16 bits that identify flags or settings specific to the NFToken
+
+B) 16 bits that encode the transfer fee associated with this NFToken, if any
+
+C) A 160-bit account identifier of the issuer
+
+D) A 32-bit issuer-specified [`NFTokenTaxon`](https://www.merriam-webster.com/dictionary/taxon)
+
+E) An (automatically generated) monotonically increasing 32-bit sequence number.
 
 ![Token ID Breakdown](img/nftoken1.png "Token ID Breakdown")
 
