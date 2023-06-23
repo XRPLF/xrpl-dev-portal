@@ -198,7 +198,7 @@ XRPの額は、XRP Ledgerで、符号なし整数の _drop_ として示され�
 
  _Alpha Exchange_ のような取引所では、XRPは「台帳上」または「台帳外」に存在します。
 
-* **台帳上のXRP**: XRP保有者のパブリック[アドレス](accounts.html#アドレス)を指定し、パブリックのXRP Ledgerを通じて照会できるXRP。これらの残高の取引相手はXRP Ledgerです。詳細については、[XRP](xrp.html)を参照してください。
+* **台帳上のXRP**: XRP保有者のパブリック[アドレス](accounts.html#アドレス)を指定し、パブリックのXRP Ledgerを通じて照会できるXRP。これらの残高の取引相手はXRP Ledgerです。詳細については、[XRP](what-is-xrp.html)を参照してください。
 
 * **台帳外のXRP**: 取引所の会計システムに保持されている、取引所のインターフェイスで照会できるXRP。台帳外のXRP残高はクレジットペースです。取引相手は、XRPを保有している取引所です。
 

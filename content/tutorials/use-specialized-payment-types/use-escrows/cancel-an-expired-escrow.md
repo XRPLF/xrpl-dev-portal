@@ -139,7 +139,7 @@ In the above example, `r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT` is the sender of the 
 ## See Also
 
 - **Concepts:**
-    - [XRP](xrp.html)
+    - [What is XRP?](what-is-xrp.html)
     - [Payment Types](payment-types.html)
         - [Escrow](escrow.html)
 - **Tutorials:**

@@ -58,7 +58,7 @@ XRP Ledgerにおけるトークンは、[XRPと異なる性質](currency-formats
 ## 関連項目
 
 - **コンセプト:**
-  - [XRP](xrp.html)
+  - [XRP?](what-is-xrp.html)
   - [複数通貨間の支払い](cross-currency-payments.html)
   - [分散型取引所](decentralized-exchange.html)
 - **チュートリアル:**

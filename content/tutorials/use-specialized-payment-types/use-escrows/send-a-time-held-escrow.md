@@ -212,7 +212,7 @@ Response:
 ## See Also
 
 - **Concepts:**
-    - [XRP](xrp.html)
+    - [What is XRP?](what-is-xrp.html)
     - [Payment Types](payment-types.html)
         - [Escrow](escrow.html)
 - **Tutorials:**

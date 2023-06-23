@@ -146,7 +146,6 @@ The XRP Ledger checks all the following invariants on each transaction:
 
 - **Other:**
     - [Authorized Trust Lines](authorized-trust-lines.html)
-    - [XRP Properties](xrp.html#xrp-properties)
     - [Calculating Balance Changes for a Transaction](https://xrpl.org/blog/2015/calculating-balance-changes-for-a-transaction.html#calculating-balance-changes-for-a-transaction)
 
 
