@@ -43,7 +43,7 @@
     text-align: center;
 
     @include media-breakpoint-up(md) {
-      flex-grow: 0.3; // use extra space to pad this text "just a little"
+      padding: 0 1rem;
     }
   }
   .apex-highlight {
