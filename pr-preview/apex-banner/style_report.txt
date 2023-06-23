@@ -1,11 +1,11 @@
 -------------
 Spell Checker
 -------------
-Found 44 possible spelling errors:
+Found 45 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gift, kifs, rifs
-  ringtee: 
+  gifs: gif, ifs, gins
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -27,7 +27,7 @@ Found 44 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slay, slabs, slash
+  slas: slays, slaws, slad
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
@@ -36,24 +36,25 @@ Found 44 possible spelling errors:
   xlsd: xls, lsd
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  xrpfees: 
+  disallowincoming: 
   fixnonfungibletokensv1_2: 
   immediateofferkilled: 
-  fixuniversalnumber: 
-  disallowincoming: 
-  xrpfees: 
+  fixnftokenremint: 
   depositpreauthamendment: 
+  fixuniversalnumber: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingtrustline: 
   asfdisallowincomingpaychan: 
-  asfdisallowincomingcheck: 
   asfdisallowincomingnftoffer: 
-  30d: 3d, 3-d, 3rd
+  asfdisallowincomingcheck: 
+  asfdisallowincomingtrustline: 
+  30d: 3rd, 3-d, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3-d, 3rd
+  30d: 3rd, 3-d, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   nftokenoffers: nftokenoffer
@@ -154,7 +155,7 @@ Average Page Readability Scores:
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
-  Automated Readability Index: Grade level 10.9
+  Automated Readability Index: Grade level 10.8
   Coleman-Liau Index: Grade level 11.5
   Linsear Write Formula: Grade level 8.4
 
@@ -192,14 +193,14 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 742
-  Characters: 4,615
+  Words: 743
+  Characters: 4,619
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
-  Sentences: 539
-  Words: 7,452
-  Characters: 54,728
+  Sentences: 551
+  Words: 7,620
+  Characters: 55,903
 
 <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Length Metrics:
   Sentences: 380

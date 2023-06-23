@@ -89,8 +89,17 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<a href="http://register.apexdevsummit.com/cfs" target="_blank" title="Register now for APEX Dev Summit 2023 in Amsterdam" class="w-inline-block banner-container">
-  <img id="apex-banner" />
+<a href="http://register.apexdevsummit.com/cfs" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
+  <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
+  <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
+  <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
+  <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
+  <div class="apex-circled">Amsterdam</div>
+  <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
+  <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
+  <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
+  <div class="apex-circled d-none d-lg-block">Register Now</div>
+  <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
 </a>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
@@ -287,6 +296,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokenremint">fixNFTokenRemint</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
@@ -353,6 +363,11 @@
 <tr>
 <td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
 <td style="text-align: left;">TBD</td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixnftokenremint">fixNFTokenRemint</a></td>
+<td style="text-align: left;">v1.11.0</td>
 <td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 </tr>
 <tr>
@@ -1573,6 +1588,43 @@
 </table>
 <p>This amendment fixes a bug in the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell a <code>NFToken</code> for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.</p>
 <p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. This amendment is obsolete because its effects are included as part of <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
+<h2 id="fixnftokenremint">fixNFTokenRemint<a aria-hidden="true" class="hover_anchor" href="#fixnftokenremint"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixNFTokenRemint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Amendment <code>fixNFTokenRemint</code> would change the way NFT sequence numbers are constructed to prevent a situation where the same NFT could be minted more than once with the same sequence number, creating a possible collision scenario. This amendment would change the construction of NFT sequence numbers to:</p>
+<ul>
+<li>
+<p>Create a new <code>AccountRoot</code> field, <code>FirstNFTSequence</code>, that stays constant over time. This field is set to the current account sequence when the account issues its first NFT. Otherwise, it is not set.</p>
+</li>
+<li>
+<p>Compute the sequence of a newly minted NFT as <code>FirstNFTSequence</code> + <code>MintedNFTokens</code> (after which, <code>MintedNFTokens</code> increments by 1).</p>
+</li>
+</ul>
+<p>The amendment also introduces a new account deletion restriction. An account can only be deleted if <code>FirstNFTSequence</code> + <code>MintedNFTokens</code> + 256 is less than the current ledger sequence (256 was chosen as a heuristic restriction for account deletion and already exists in the account deletion constraint). Without this restriction, an NFT could still be re-minted under certain conditions.</p>
 <h2 id="fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2<a aria-hidden="true" class="hover_anchor" href="#fixnonfungibletokensv1_2"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
