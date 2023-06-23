@@ -1,25 +1,24 @@
 ---
-html: time-escrows.html
+html: create-conditional-escrows.html
 parent: xrpl-quickstart.html
-blurb: Create, finish, or cancel time-based escrow transactions.
+blurb: Create, finish, or cancel condition-based escrow transactions.
 labels:
   - Accounts
   - Quickstart
   - Transaction Sending
   - XRP
 ---
-# Create Time-based Escrows
+# Create Conditional Escrows
 
 This example shows how to:
 
+1. Create escrow payments that become available when any account enters a fulfillment code.
 
-1. Create escrow payments that become available at a specified time and expire at a specified time.
-2. Finish an escrow payment.
-3. Retrieve information on escrows attached to an account.
-3. Cancel an escrow payment and return the XRP to the sending account.
+2. Complete a conditional escrow transaction.
 
+3. Cancel a conditional escrow transaction.
 
-![Escrow Tester Form](img/quickstart-escrow1.png)
+[![Conditional Escrow Tester Form](img/conditional-escrow1.png)](img/conditional-escrow1.png)
 
 
 ## Prerequisites
@@ -28,9 +27,26 @@ Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-p
 
 ## Usage
 
-To get test accounts:
+### Create Escrow
 
-1. Open `8.escrow.html` in a browser
+You  create a condition-based escrow using a fulfillment code associated with a condition code. Create the condition/fulfillment pair using the `five-bells-condition` application.
+
+Install `five-bells-condition`:
+
+1. In a terminal window, navigate to your local `Quickstart` directory (for convenience).
+2. Enter the command `npm install five-bells-condition`.
+
+To create a condition/fulfillment pair:
+
+1. In a terminal window, navigate to your `Quickstart` directory.
+2. Enter the command `node getConditionAndFulfillment.js`.
+3. Copy and save the generated Condition and Fulfillment pair.
+
+[![Condition and Fulfillment](img/conditional-escrow2.png)](img/conditional-escrow2.png)
+
+To get test accounts:
+ 
+1. Open `9.escrow-condition.html` in a browser
 2. Choose **Testnet** or **Devnet**.
 3. Get test accounts.
     1. If you have existing account seeds
@@ -40,64 +56,49 @@ To get test accounts:
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
 
-![Escrow Tester with Account Information](img/quickstart-escrow2.png)
+[![Escrow Tester with Account Information](img/conditional-escrow3.png)](img/conditional-escrow3.png)
 
-## Create Escrow
+### Create Conditional Escrow:
 
-You can create a time-based escrow with a minimum time to finish the escrow and a cancel time after which the funds in escrow are no longer available to the recipient. This is a test harness: while a practical scenario might express time in days or weeks, this form lets you set the finish and cancel times in seconds so that you can quickly run through a variety of scenarios. (There are 86,400 seconds in a day, if you want to play with longer term escrows.)
+When you create a conditional escrow, you need to specify the `Condition` value you generated above. You must also set a cancel date and time, after which the escrow is no longer available.  
 
-To create a time-based escrow:
+To create a conditional escrow:
 
 1. Enter an **Amount** to transfer.
 2. Copy the **Operational Account** value.
-3. Past it in the **Destination Account** field.
-4. Set the **Escrow Finish (seconds)** value. For example, enter _10_.
-5. Set the **Escrow Cancel (seconds)** value. For example, enter _120_.
+3. Paste it in the **Destination Account** field.
+4. Enter the **Escrow Condition** value.
+5. Enter the **Escrow Cancel (seconds)** value.
 6. Click **Create Escrow**.
-7. Copy the _Sequence Number_ of the escrow called out in the **Standby Result** field.
+7. Copy and save the _Sequence Number_ of the escrow called out in the **Standby Result** field.
 
-The escrow is created on the XRP Ledger instance, reserving 100 XRP plus the transaction cost. When you create an escrow, capture and save the **Sequence Number** so that you can use it to finish the escrow transaction.
+The escrow is created on the XRP Ledger instance, reserving your requested XRP amount plus the transaction cost.
 
-![Completed Escrow Transaction](img/quickstart-escrow3.png)
+When you create an escrow, capture and save the _Sequence Number_ so that you can use it to finish the escrow transaction.
 
-## Finish Escrow
+[![Created Escrow Transaction](img/conditional-escrow4.png)](img/conditional-escrow4.png)
 
-The recipient of the XRP held in escrow can finish the transaction any time within the time window after the Escrow Finish date and time but before the Escrow Cancel date and time. Following on the example above, you can use the _Sequence Number_ to finish the transaction once 10 seconds have passed.
+## Finish Conditional Escrow
+
+Any account can finish the conditional escrow any time before the _Escrow Cancel_ time. Following on the example above, you can use the _Sequence Number_ to finish the transaction once the Escrow Cancel time has passed.
 
 To finish a time-based escrow:
 
 1. Paste the sequence number in the Operational account **Escrow Sequence Number** field.
-2. Click **Finish Escrow**.
+2. Enter the `Fulfillment` code for the `Condition`.
+3. Click **Finish Conditional Escrow**.
 
 The transaction completes and balances are updated for both the Standby and Operational accounts.
 
-![Completed Escrow Transaction](img/quickstart-escrow4.png)
+[![Finished Escrow Transaction](img/conditional-escrow5.png)](img/conditional-escrow5.png)
 
 ## Get Escrows
 
-Click **Get Escrows** for either the Standby account or the Operational account to see their current list of escrows. If you click the buttons now, there are no escrows at the moment.
-
-For the purposes of this tutorial, follow the steps in [Create Escrow](#create-escrow), above, to create a new escrow transaction, perhaps setting **Escrow Cancel (seconds)** field to _600_ seconds to give you extra time to explore. Remember to capture the _Sequence Number_ from the transaction results.
-
-Click **Get Escrows** for both the Standby and the Operational account. The `account_info` request returns the same `account_object` for both accounts, demonstrating the link between the accounts created by the escrow transaction.
-
-![Get Escrows results](img/quickstart-escrow5.png)
-
+Click **Get Escrows** for either the Standby account or the Operational account to see their current list of escrows. 
 
 ## Cancel Escrow
 
-When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. If you try to cancel the transaction prior to the **Escrow Cancel** time, you are charged for the transaction, but the actual escrow cannot be cancelled until the time limit is reached.
-
-You can wait the allotted time for the escrow you created in the previous step, then use it to try out the **Cancel Escrow** button
-
-To cancel an expired escrow:
-
-1. Enter the sequence number in the Standby **Escrow Sequence Number** field.
-2. Click **Cancel Escrow**.
-
-The funds are returned to the Standby account, less the initial transaction fee.
-
-![Cancel Escrow results](img/quickstart-escrow6.png)
+When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. Any account can cancel an escrow once the cancel time has elapsed. Accounts that try to cancel the transaction prior to the **Escrow Cancel** time are charged the nominal transaction cost (12 drops), but the actual escrow cannot be cancelled until after the Escrow Cancel time.
 
 ## Oh No! I Forgot to Save the Sequence Number!
 
@@ -117,60 +118,75 @@ If you forget to save the sequence number, you can find it in the escrow transac
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} in the source repository for this website.
 
-## ripple8-escrow.js
+## getConditionAndFulfillment.js
 
-This example can be used with any XRP Ledger network, _Testnet_, or _Devnet_. You can update the code to choose different or additional XRP Ledger networks.
+To generate a condition/fulfillment pair, use Node.js to run the `getConditionAndFulfillment.js` script.
 
-### Add Seconds to Date
-
-This function accomplishes two things. It creates a new date object and adds the number of seconds taken from a form field. Then, it adjusts the date from the JavaScript format to the XRP Ledger format.
-
-You provide the _numOfSeconds_ argument, the second parameter is a new Date object.
 ```javascript
-function addSeconds(numOfSeconds, date = new Date()) {
+function getConditionAndFulfillment() {
 ```
 
-Set the _seconds_ value to the date seconds plus the number of seconds you provide.
+Instantiate the `five-bells-condition` and `crypto` libraries.
 
 ```javascript
-  date.setSeconds(date.getSeconds() + numOfSeconds);
+  const cc = require('five-bells-condition')
+  const crypto = require('crypto')
 ```
 
-JavaScript dates are in milliseconds. Divide the date by 1000 to base it on seconds.
+Create a random 32-byte seed string.
 
 ```javascript
-  date = Math.floor(date / 1000)
+  const preimageData = crypto.randomBytes(32)
 ```
 
-Subtract the number of seconds in the Ripple epoch to convert the value to an XRP Ledger compatible date value.
+Create a fulfillment object.
 
 ```javascript
-  date = date - 946684800
+  const fulfillment = new cc.PreimageSha256()
 ```
 
-Return the result.
+Generate a fulfillment code.
 
 ```javascript
-  return date;
+  fulfillment.setPreimage(preimageData)
+```
+
+Generate the condition value based on the fulfillment value.
+
+```javascript
+  const condition = fulfillment.getConditionBinary().toString('hex').toUpperCase()
+```
+
+Return the condition.
+
+```javascript
+  console.log('Condition:', condition)
+```
+
+Convert the fulfillment code to a hexadecimal string.
+
+```javascript
+  const fulfillment_hex = fulfillment.serializeBinary().toString('hex').toUpperCase()
+```
+
+Return the fulfillment code. Keep it secret until you want to finish the escrow.
+
+```javascript
+  console.log('Fulfillment:', fulfillment_hex)
 }
+getConditionAndFulfillment()
 ```
 
-### Create Time-based Escrow
+## ripplex9-escrow-condition.js
+
+
+### Create Conditional Escrow 
 
 ```javascript
-async function createTimeEscrow() {
+async function createConditionalEscrow() {
 ```
 
-Instantiate two new date objects, then set the dates to the current date plus the set number of seconds for the finish and cancel dates.
-
-```javascript
-  let escrow_finish_date = new Date()
-  let escrow_cancel_date = new Date()
-  escrow_finish_date = addSeconds(parseInt(standbyEscrowFinishDateField.value))
-  escrow_cancel_date = addSeconds(parseInt(standbyEscrowCancelDateField.value))
-```
-
-Connect to the ledger.
+Connect to your preferred ledger.
 
 ```javascript
   results  = "Connecting to the selected ledger.\n"
@@ -179,21 +195,39 @@ Connect to the ledger.
   results = "Connecting to " + net + "....\n"
   const client = new xrpl.Client(net)
   await client.connect()
-  results  += "Connected. Creating time-based escrow.\n"
+
+  results  += "Connected. Creating conditional escrow.\n"
   standbyResultField.value = results
 ```
 
-Get the wallet information based on the account seed values.
+Instantiate the standby and operational wallets
 
 ```javascript
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
+```
+
+Capture the amount to send in the escrow.
+
+```javascript
   const sendAmount = standbyAmountField.value
+```
+
+Update the results field.
+
+```javascript 
   results += "\nstandby_wallet.address: = " + standby_wallet.address
   standbyResultField.value = results
 ```
 
-Define the `EscrowCreate` transaction, automatically filling values in common fields.
+Create a date value and add your requested number of seconds.
+
+```javascript
+  let escrow_cancel_date = new Date()
+  escrow_cancel_date = addSeconds(parseInt(standbyEscrowCancelDateField.value))
+```
+
+Prepare the `EscrowCreate` transaction.
 
 ```javascript
   const escrowTx = await client.autofill({
@@ -201,60 +235,66 @@ Define the `EscrowCreate` transaction, automatically filling values in common fi
     "Account": standby_wallet.address,
     "Amount": xrpl.xrpToDrops(sendAmount),
     "Destination": standbyDestinationField.value,
-    "FinishAfter": escrow_finish_date,
-    "CancelAfter": escrow_cancel_date
+    "CancelAfter": escrow_cancel_date,
+    "Condition": standbyEscrowConditionField.value
   })
 ```
 
-Sign the escrow transaction definition.
+Sign the transaction.
 
 ```javascript
   const signed = standby_wallet.sign(escrowTx)
 ```
 
-Submit the transaction.
+Submit the transaction and wait for the results.
 
 ```javascript
   const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
-Report the results.
+Report the results and update balance fields.
 
 ```javascript
   results += "\nSequence Number (Save!): " + JSON.stringify(tx.result.Sequence)
-  results += "\n\nBalance changes: " + 
+  results  += "\n\nBalance changes: " + 
   JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
   standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
   operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
   standbyResultField.value = results
 ```
 
-Disconnect from the XRP Ledger.
+Disconnect from the XRPL
 
 ```javascript
-  client.disconnect()
+client.disconnect()
+
 } // End of createTimeEscrow()
 ```
 
-### Finish Time-based Escrow
+###  Finish Conditional Escrow 
+
+Finish the escrow by submitting the condition and fulfillment codes.
 
 ```javascript
-async function finishEscrow() {
+async function finishConditionalEscrow() {
 ```
 
-Connect to the XRP Ledger and get the account wallets.
+Connect to your preferred XRP Ledger instance.
 
 ```javascript
   results  = "Connecting to the selected ledger.\n"
   operationalResultField.value = results
   let net = getNet()
-  results = 'Connecting to ' + getNet() + '....'
+  results += 'Connecting to ' + getNet() + '....'
   const client = new xrpl.Client(net)
   await client.connect()
-
   results  += "\nConnected. Finishing escrow.\n"
   operationalResultField.value = results
+```
 
+Get the standby and operational account wallets.
+
+```javascript
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   const sendAmount = operationalAmountField.value
@@ -263,237 +303,29 @@ Connect to the XRP Ledger and get the account wallets.
   operationalResultField.value = results
 ```
 
-Define the transaction. The _Owner_ is the account that created the escrow. The _OfferSequence_ is the sequence number of the escrow transaction. Automatically fill in the common fields for the transaction.
+Prepare the transaction.
 
 ```javascript
   const prepared = await client.autofill({
     "TransactionType": "EscrowFinish",
     "Account": operationalAccountField.value,
     "Owner": standbyAccountField.value,
-    "OfferSequence": parseInt(operationalEscrowSequenceField.value)
-  })
-```
-
-Sign the transaction definition.
-
-```javascript
-  const signed = operational_wallet.sign(prepared)
-```
-
-Submit the signed transaction to the XRP ledger.
-
-```javascript
-
-  const tx = await client.submitAndWait(signed.tx_blob)
-```
-
-Report the results.
-
-```javascript
-  results  += "\nBalance changes: " + 
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  operationalResultField.value = results
-
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-```
-
-Disconnect from the XRP Ledger.
-
-```javascript
-  client.disconnect()
-} // End of finishEscrow()
-```
-
-### Get Standby Escrows
-
-Get the escrows associated with the Standby account.
-
-```javascript
-async function getStandbyEscrows() {
-```
-
-Connect to the network. The information you are looking for is public information, so there is no need to instantiate your wallet.
-
-```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  standbyResultField.value = results
-  
-  await client.connect()   
-  results += '\nConnected.'
-  standbyResultField.value = results
-
-  results= "\nGetting standby account escrows...\n"
-```
-
-Create the `account_objects` request. Specify that you want objects of the type _escrow_.
-
-```javascript
-  const escrow_objects = await client.request({
-    "id": 5,
-    "command": "account_objects",
-    "account": standbyAccountField.value,
-    "ledger_index": "validated",
-    "type": "escrow"
-  })
-```
-
-Report the results.
-
-```javascript
-  results += JSON.stringify(escrow_objects.result, null, 2)
-  standbyResultField.value = results
-```
-
-Disconnect from the XRP Ledger
-
-```javascript
-  client.disconnect()
-} // End of getStandbyEscrows()
-```
-
-### Get Operational Escrows
-
-This function is the same as `getStandbyEscrows()`, but for the Operational account.
-
-```javascript
-async function getOperationalEscrows() {
-```
-
-Connect to the network. The information you are looking for is public information, so there is no need to instantiate your wallet.
-
-```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  operationalResultField.value = results
-  
-  await client.connect()   
-  results += '\nConnected.'
-  operationalResultField.value = results
-
-  results= "\nGetting operational account escrows...\n"
-```
-
-Create the `account_objects` request. Specify that you want objects of the type _escrow_.
-
-```javascript
-  const escrow_objects = await client.request({
-    "id": 5,
-    "command": "account_objects",
-    "account": operationalAccountField.value,
-    "ledger_index": "validated",
-    "type": "escrow"
-  })
-```
-
-Report the results.
-
-```javascript
-  results += JSON.stringify(escrow_objects.result, null, 2)
-  operationalResultField.value = results
-```
-
-Disconnect from the XRP Ledger instance.
-
-```javascript
-  client.disconnect()
-} // End of getOperationalEscrows()
-```
-
-### Get Transaction Info 
-
-```javascript
-async function getTransaction() {
-```
-
-Connect to the XRP Ledger.
-
-```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  operationalResultField.value = results
-  
-  await client.connect()   
-  results += '\nConnected.'
-  operationalResultField.value = results
-
-  results= "\nGetting transaction information...\n"
-```
-  
-Prepare and send the transaction information request. The only required parameter is the transaction ID.
-  
-```javascript
-  const tx_info = await client.request({
-    "id": 1,
-    "command": "tx",
-    "transaction": operationalTransactionField.value,
-  })
-```
-Report the results.
-  
-```javascript
-  results += JSON.stringify(tx_info.result, null, 2)
-  operationalResultField.value = results
-```
-  
-Disconnect from the XRP Ledger instance.  
-  
-```javascript
-  client.disconnect()
-} // End of getTransaction()
-```
-
-### Cancel Escrow
-
-Cancel an escrow after it passes the expiration date.
-
-```javascript
-async function cancelEscrow() {
-```
-
-Connect to the XRP Ledger instance.
-
-```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  standbyResultField.value = results
-  
-  await client.connect()   
-  results += '\nConnected.'
-  standbyResultField.value = results
-```
-
-Get the account wallets.
-
-```javascript
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-```
-
-Prepare the EscrowCancel transaction.
-
-```javascript
-  const prepared = await client.autofill({
-    "TransactionType": "EscrowCancel",
-    "Account": standby_wallet.address,
-    "Owner": standbyAccountField.value,
-    "OfferSequence": parseInt(standbyEscrowSequenceNumberField.value)
+    "OfferSequence": parseInt(operationalEscrowSequenceField.value),
+    "Condition": standbyEscrowConditionField.value,
+    "Fulfillment": operationalFulfillmentField.value
   })
 ```
 
 Sign the transaction.
+
 ```javascript
-  const signed = standby_wallet.sign(prepared)
+
+  const signed = operational_wallet.sign(prepared)
 ```
 
-Submit the transaction and wait for the response.
+Submit the transaction and wait for the results.
 
-``` javascript
+```javascript
   const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
@@ -502,24 +334,26 @@ Report the results.
 ```javascript
   results  += "\nBalance changes: " + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  standbyResultField.value = results
+  operationalResultField.value = results
   standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
   operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
 ```
 
-Disconnect from the XRP Ledger instance.
+Disconnect from the XRPL.
 
 ```javascript
   client.disconnect()
-}
+
+} // End of finishEscrow()
 ```
 
-## 8.escrow.html
+
+## 9.escrow-condition.html
 
 ```html
 <html>
   <head>
-    <title>Escrow Test Harness</title>
+    <title>Conditional Escrow Test Harness</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <style>
        body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
@@ -532,6 +366,7 @@ Disconnect from the XRP Ledger instance.
     <script src='ripplex1-send-xrp.js'></script>
     <script src='ripplex2-send-currency.js'></script>
     <script src='ripplex8-escrow.js'></script>
+    <script src='ripplex9-escrow-condition.js'></script>
   </head>
   
 <!-- ************************************************************** -->
@@ -539,7 +374,7 @@ Disconnect from the XRP Ledger instance.
 <!-- ************************************************************** -->
 
   <body>
-    <h1>Escrow Test Harness</h1>
+    <h1>Conditional Escrow Test Harness</h1>
     <form id="theForm">
       Choose your ledger instance:  
       &nbsp;&nbsp;
@@ -573,7 +408,6 @@ Disconnect from the XRP Ledger instance.
                         <br>
                       </td>
                     </tr>
-
                     <tr>
                       <td align="right">
                         XRP Balance
@@ -603,10 +437,10 @@ Disconnect from the XRP Ledger instance.
                     </tr>
                     <tr>
                       <td align="right">
-                        Escrow Finish (seconds)
+                        Escrow Condition
                       </td>
                       <td>
-                        <input type="text" id="standbyEscrowFinishDateField" size="40"></input>
+                        <input type="text" id="standbyEscrowConditionField" size="40"></input>
                         <br>
                       </td>
                     </tr>
@@ -676,7 +510,7 @@ Disconnect from the XRP Ledger instance.
                         <br/><br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>       
                         <br/>
-                        <button type="button" onClick="createTimeEscrow()">Create Escrow</button>
+                        <button type="button" onClick="createConditionalEscrow()">Create Conditional Escrow</button>
                         <br/>
                         <button type="button" onClick="getStandbyEscrows()">Get Escrows</button>
                         <br/>
@@ -703,7 +537,7 @@ Disconnect from the XRP Ledger instance.
                         <br/><br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>
                         <br/>
-                        <button type="button" onClick="finishEscrow()">Finish Escrow</button>
+                        <button type="button" onClick="finishConditionalEscrow()">Finish Conditional Escrow</button>
                         <br/>
                         <button type="button" onClick="getOperationalEscrows()">Get Escrows</button>
                         <br/>
@@ -742,10 +576,10 @@ Disconnect from the XRP Ledger instance.
                           </tr>
                           <tr>
                             <td align="right">
-                              Destination
+                              Fulfillment Code
                             </td>
                             <td>
-                              <input type="text" id="operationalDestinationField" size="40"></input>
+                              <input type="text" id="operationalFulfillmentField" size="40"></input>
                               <br>
                             </td>
                           </tr>
@@ -759,7 +593,8 @@ Disconnect from the XRP Ledger instance.
                               <br>
                             </td>
                           </tr>
-                          <tr>                            <td align="right">
+                          <tr>
+                            <td align="right">
                               Transaction to Look Up
                             </td>
                             <td>
