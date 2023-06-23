@@ -1,6 +1,6 @@
 ---
 html: run-rippled-as-a-validator.html
-parent: configure-rippled.html
+parent: server-modes.html
 blurb: サーバーがコンセンサスレジャーで投票できるようにします。
 labels:
   - コアサーバー

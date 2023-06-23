@@ -1,6 +1,6 @@
 ---
 html: parallel-networks.html
-parent: concepts.html
+parent: networks-and-servers.html
 blurb: テストネットワークおよび代替レジャーチェーンと本番環境のXRP Ledgerとの関係について説明します。
 labels:
   - ブロックチェーン

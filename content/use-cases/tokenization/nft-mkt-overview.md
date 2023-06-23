@@ -45,7 +45,7 @@ If you want to set up a larger site with high volume, it might be worth investin
 
 See also:
 
-* [Pros and cons of running your own server](xrpl-servers.html#reasons-to-run-your-own-server).
+* [Pros and cons of running your own server](networks-and-servers.html#reasons-to-run-your-own-server).
 
 ## Set Up Basic Blockchain Functions
 

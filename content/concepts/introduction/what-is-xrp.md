@@ -53,3 +53,12 @@ The XRP Ledger was built over 2011 – early 2012 by Jed McCaleb, Arthur Britto 
 At the time of its creation, there were 100 billion XRP. XRP are held in escrow and sold at intervals that help to maintain the stability of the currency and ensure that the general supply grows predictably.
 
 ![One Hundred Billion with a "B"](img/introduction14-hundred-billion.png)
+
+### Naming
+
+Originally, the XRP Ledger was called "Ripple" for the way the technology allowed payments [to ripple through multiple hops and currencies](rippling.html). For the native asset built into the ledger, the creators chose the ticker symbol "XRP" from the term "ripple credits" or "ripples" and the X prefix for non-national currencies in the ISO 4217 standard. The company registered itself as "Ripple Labs". The name "XRP" came to be used to refer to the asset in all contexts, to avoid confusion with the similar names for the technology and company, and eventually the company shortened its own name to "Ripple". In May 2018, [the community selected a new "X" symbol](https://twitter.com/xrpsymbol/status/1006925937571713025) to represent XRP to differentiate it from the triskelion logo that had previously been used for both the company and the digital asset.
+
+| XRP "X" Logo                           | Ripple triskelion                   |
+|:---------------------------------------|:------------------------------------|
+| !["X" logo](assets/img/xrp-x-logo.png) | ![Triskelion](img/ripple-triskelion.png) |
+

@@ -95,7 +95,7 @@ const xrpl = require("xrpl")
 
 前節のサンプルコードでは、利用可能な[並列ネットワーク](parallel-networks.html)の1つであるTestnetに接続する方法を紹介しました。本番環境に移行するには、XRP Ledger Mainnetに接続する必要があります。それには2つの方法があります。
 
-* [コアサーバをインストール](install-rippled.html) (`rippled`)して、自分でノードを動かしてみましょう。コアサーバーはデフォルトではMainnetに接続しますが、設定を変更してTestnetやDevnetを使うこともできます](connect-your-rippled-to-thexrp-test-net.html)。[独自のコアサーバーを運用するのには良い理由があります](xrpl-servers.html#reasons-to-run-your-own-server)。独自のサーバーを走らせた場合、次のようにして接続することができます。
+* [コアサーバをインストール](install-rippled.html) (`rippled`)して、自分でノードを動かしてみましょう。コアサーバーはデフォルトではMainnetに接続しますが、設定を変更してTestnetやDevnetを使うこともできます](connect-your-rippled-to-thexrp-test-net.html)。[独自のコアサーバーを運用するのには良い理由があります](networks-and-servers.html#reasons-to-run-your-own-server)。独自のサーバーを走らせた場合、次のようにして接続することができます。
 
         const MY_SERVER = "ws://localhost:6006/"
         const client = new xrpl.Client(MY_SERVER)

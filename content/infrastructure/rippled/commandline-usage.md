@@ -1,6 +1,7 @@
 ---
 html: commandline-usage.html
-parent: http-websocket-apis.html
+name: Commandline Usage
+parent: infrastructure.html
 blurb: Commandline usage options for the rippled server.
 curated_anchors:
   - name: Available Modes
@@ -16,7 +17,7 @@ curated_anchors:
 labels:
   - Core Server
 ---
-# rippled Commandline Usage Reference
+# Commandline Usage
 
 The `rippled` executable usually runs as a daemon that powers the XRP Ledger, although it can also run in other modes. This page describes all the options you can pass to `rippled` when running it from the command line.
 

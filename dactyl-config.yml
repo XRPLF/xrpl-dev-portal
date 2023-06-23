@@ -141,7 +141,7 @@ targets:
             # Fix link from untranslated manifest.html:
             "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポートモード"
             # Fix links for untranslated get-started-using-python.html:
-            "xrpl-servers.html#reasons-to-run-your-own-server": "xrpl-servers.html#独自サーバーを運用する理由"
+            "networks-and-servers.html#reasons-to-run-your-own-server": "networks-and-servers.html#独自サーバーを運用する理由"
             "cryptographic-keys.html#key-components": "cryptographic-keys.html#キーの生成"
             "accounts.html#addresses": "accounts.html#アドレス"
             "cryptographic-keys.html#private-key": "cryptographic-keys.html#キーの生成"
@@ -685,14 +685,24 @@ pages:
         targets:
             - ja
     
-    # Servers -----------------------------------------------------------------
-    # TODO: this section should probably be moved to "infrastructure"
-    -   md: concepts/servers/xrpl-servers.md
+    # Networks and Servers -----------------------------------------------------------------
+
+    -   md: concepts/servers/networks-and-servers.md
         targets:
             - en
 
-    -   md: concepts/servers/xrpl-servers.ja.md
+    -   md: concepts/servers/networks-and-servers.ja.md
         targets:
+            - ja
+
+    # Redirect from the old xrpl-servers.html
+    -   name: XRP Ledger Servers
+        html: xrpl-servers.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: networks-and-servers.html
+        targets:
+            - en
             - ja
 
     -   md: concepts/servers/rippled-server-modes.md
@@ -719,22 +729,6 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/servers/ledger-history/online-deletion.md
-        targets:
-            - en
-
-    -   md: concepts/servers/ledger-history/online-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/servers/ledger-history/history-sharding.md
-        targets:
-            - en
-
-    -   md: concepts/servers/ledger-history/history-sharding.ja.md
-        targets:
-            - ja
-
     -   md: concepts/servers/peer-protocol.md
         targets:
             - en
@@ -751,6 +745,38 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/networks/parallel-networks.md
+        targets:
+            - en
+
+    -   md: concepts/networks/parallel-networks.ja.md
+        targets:
+            - ja
+
+        # Amendments -------------------------------------------------------------------
+
+    -   md: amendments/amendments.md
+        targets:
+            - en
+
+    -   md: amendments/amendments.ja.md
+        targets:
+            - ja
+
+    -   md: amendments/known-amendments.md
+        targets:
+            - en
+
+    -   md: amendments/known-amendments.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: amendments/contribute-code-flow.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/servers/the-clio-server.md
         targets:
             - en
@@ -759,93 +785,106 @@ pages:
         targets:
             - ja
 
-    # Ledgers -----------------------------------------------------------------
-
-        # TODO: this folder is "xrpl" in files but "Ledgers" in nav
-    -   md: concepts/xrpl/ledgers.md
-        targets:
-            - en
-
-        # TODO: update translation. Some parts split into "ledger structure"
-    -   md: concepts/xrpl/ledgers.ja.md
-        targets:
-            - ja
-
-        # TODO: translate. Some parts taken from "ledgers"
-    -   md: concepts/xrpl/ledger-structure.md
-        targets:
-            - en
-            - ja
-    
-        # TODO: translate. Content mostly split off from "ledgers.md"
-    -   md: concepts/xrpl/open-closed-validated-ledgers.md
-        targets:
-            - en
-            - ja
+    # Consensus Protocol ------------------------------------------------------
 
         # TODO: "consensus" subpages are nested in nav but not filesystem; also, might be a mismatch with other contents here
-    -   md: concepts/xrpl/consensus.md
+    -   md: concepts/consensus-protocol/consensus.md
         targets:
             - en
 
-    -   md: concepts/xrpl/consensus.ja.md
+    -   md: concepts/consensus-protocol/consensus.ja.md
         targets:
             - ja
     
-    -   md: concepts/xrpl/consensus-structure.md
+    -   md: concepts/consensus-protocol/consensus-structure.md
         targets:
             - en
 
         # TODO: update title to match English
-    -   md: concepts/xrpl/consensus-structure.ja.md
+    -   md: concepts/consensus-protocol/consensus-structure.ja.md
         targets:
             - ja
     
-    -   md: concepts/xrpl/consensus-principles-and-rules.md
+    -   md: concepts/consensus-protocol/consensus-principles-and-rules.md
         targets:
             - en
 
-    -   md: concepts/xrpl/consensus-principles-and-rules.ja.md
+    -   md: concepts/consensus-protocol/consensus-principles-and-rules.ja.md
         targets:
             - ja
     
-    -   md: concepts/xrpl/consensus-protections.md
+    -   md: concepts/consensus-protocol/consensus-protections.md
         targets:
             - en
 
-    -   md: concepts/xrpl/consensus-protections.ja.md
+    -   md: concepts/consensus-protocol/consensus-protections.ja.md
         targets:
             - ja
 
-    -   md: concepts/xrpl/fee-voting.md
+        # TODO: maybe nest invariant checking under consensus protections?
+    -   md: concepts/consensus-protocol/invariant-checking.md
         targets:
             - en
 
-    -   md: concepts/xrpl/fee-voting.ja.md
+    -   md: concepts/consensus-protocol/invariant-checking.ja.md
         targets:
             - ja
 
-    -   md: concepts/xrpl/negative-unl.md
+    -   md: concepts/consensus-protocol/fee-voting.md
         targets:
             - en
 
-    -   md: concepts/xrpl/negative-unl.ja.md
+    -   md: concepts/consensus-protocol/fee-voting.ja.md
         targets:
             - ja
 
-    -   md: concepts/xrpl/consensus-research.md
+    -   md: concepts/consensus-protocol/negative-unl.md
         targets:
             - en
 
-    -   md: concepts/xrpl/consensus-research.ja.md
+    -   md: concepts/consensus-protocol/negative-unl.ja.md
         targets:
+            - ja
+
+    -   md: concepts/consensus-protocol/consensus-research.md
+        targets:
+            - en
+
+    -   md: concepts/consensus-protocol/consensus-research.ja.md
+        targets:
+            - ja
+
+    # Ledgers -----------------------------------------------------------------
+
+    -   md: concepts/ledgers/ledgers.md
+        targets:
+            - en
+
+        # TODO: update translation. Some parts split into "ledger structure"
+    -   md: concepts/ledgers/ledgers.ja.md
+        targets:
+            - ja
+
+        # TODO: translate. Some parts taken from "ledgers.md"
+    -   md: concepts/ledgers/ledger-structure.md
+        targets:
+            - en
+            - ja
+    
+        # TODO: translate. Content mostly split off from "ledgers.md"
+    -   md: concepts/ledgers/open-closed-validated-ledgers.md
+        targets:
+            - en
             - ja
 
         # TODO: translate. Content mostly split off from "ledgers.md"
-    -   md: concepts/xrpl/ledger-close-times.md
+    -   md: concepts/ledgers/ledger-close-times.md
         targets:
             - en
             - ja
+
+        # TODO: add a "ledger history" page that doesn't go too deep into
+        #       server management topics.
 
     # Transactions ------------------------------------------------------------
     -   md: concepts/transactions/transactions.md
@@ -861,15 +900,6 @@ pages:
             - en
 
     -   md: concepts/transactions/fees.ja.md
-        targets:
-            - ja
-
-        # TODO: maybe nest invariant checking under consensus protections?
-    -   md: concepts/xrpl/invariant-checking.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl/invariant-checking.ja.md
         targets:
             - ja
 
@@ -1262,18 +1292,8 @@ pages:
     -   md: concepts/accounts/depositauth.ja.md
         targets:
             - ja
-    
-    # Networks ----------------------------------------------------------------
-    # TODO: This probably needs to move more/again. Maybe it "parallel" networks could become the landing page "networks" instead
 
-    -   md: concepts/networks/parallel-networks.md
-        targets:
-            - en
 
-    -   md: concepts/networks/parallel-networks.ja.md
-        targets:
-            - ja
-    
    ## REDIRECTS FROM OLD CONCEPT PAGES/LANDINGS -------------------------------
     -   name: Intro to Consensus
         html: intro-to-consensus.html
@@ -1422,7 +1442,7 @@ pages:
     -   name: The rippled Server
         html: the-rippled-server.html
         template: pagetype-redirect.html.jinja
-        redirect_url: xrpl-servers.html
+        redirect_url: networks-and-servers.html
         blurb: Learn about the core servers that power the XRP Ledger.
         nav_omit: true
         targets:
@@ -1683,22 +1703,16 @@ pages:
           - en
           - ja # TODO: translate this page
           
+        # Redirect old Production Readiness category. 
+        # There's no equivalent category now, so go to Tutorials top
     -   name: Production Readiness
         html: production-readiness.html
-        parent: tutorials.html
-        template: pagetype-category.html.jinja
-        blurb: Follow these best practices to build a robust, safe production system for using the XRP Ledger.
+        redirect_url: tutorials.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
         targets:
             - en
-
-    -   name: 本番環境への準備
-        html: production-readiness.html
-        parent: tutorials.html
-        template: pagetype-category.html.jinja
-        blurb: 以下のベストプラクティスに従って、XRPレジャーを使用するための堅牢で安全な本番システムを構築しましょう。
-        targets:
             - ja
-
 
         # Redirect for this page's new home outside of tutorials
     -   name: Cancel or Skip a Transaction
@@ -3681,15 +3695,6 @@ pages:
         targets:
             - ja
 
-    -   md: references/http-websocket-apis/commandline-usage.md
-        targets:
-            - en
-
-        # TODO: update translation
-    -   md: references/http-websocket-apis/commandline-usage.ja.md
-        targets:
-            - ja
-
     # TODO: translate title & blurb
     -   name: Peer Port Methods
         html: peer-port-methods.html
@@ -3776,6 +3781,15 @@ pages:
         redirect_url: install-rippled-on-ubuntu.html
         targets:
             - en
+            - ja
+
+    -   md: infrastructure/rippled/commandline-usage.md
+        targets:
+            - en
+
+        # TODO: update translation
+    -   md: infrastructure/rippled/commandline-usage.ja.md
+        targets:
             - ja
 
     -   name: Install rippled
@@ -3919,6 +3933,14 @@ pages:
         targets:
             - ja
 
+    -   name: Server Modes
+        html: server-modes.html
+        parent: configure-rippled.html
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
     -   md: infrastructure/rippled/configuration/run-rippled-as-a-validator.md
         targets:
             - en
@@ -3933,6 +3955,62 @@ pages:
 
         # TODO: update this translation and rename the file like in the English version
     -   md: infrastructure/rippled/configuration/run-rippled-as-a-wallet-server.ja.md
+        targets:
+            - ja
+
+    -   name: Data Retention
+        html: data-retention.html
+        parent: configure-rippled.html
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-full-history.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-full-history.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/servers/ledger-history/online-deletion.md
+        targets:
+            - en
+
+    -   md: concepts/servers/ledger-history/online-deletion.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-online-deletion.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-online-deletion.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/servers/ledger-history/history-sharding.md
+        targets:
+            - en
+
+    -   md: concepts/servers/ledger-history/history-sharding.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-history-sharding.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/configure-history-sharding.ja.md
         targets:
             - ja
 
@@ -3961,38 +4039,6 @@ pages:
             - en
 
     -   md: infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.ja.md
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-online-deletion.md
-        targets:
-            - en
-
-    -   md: infrastructure/rippled/configuration/configure-online-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.md
-        targets:
-            - en
-
-    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-history-sharding.md
-        targets:
-            - en
-
-    -   md: infrastructure/rippled/configuration/configure-history-sharding.ja.md
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-full-history.md
-        targets:
-            - en
-
-    -   md: infrastructure/rippled/configuration/configure-full-history.ja.md
         targets:
             - ja
 
@@ -4083,7 +4129,7 @@ pages:
         targets:
             - ja
 
-    -   name: Test rippled Functionality in Stand-Alone Mode
+    -   name: Testing and Auditing
         html: use-stand-alone-mode.html
         parent: infrastructure.html
         blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network.
@@ -4091,6 +4137,7 @@ pages:
         targets:
             - en
 
+        # TODO: Translate page name.
     -   name: スタンドアロンモードでrippledをテスト
         html: use-stand-alone-mode.html
         parent: infrastructure.html
@@ -4189,22 +4236,6 @@ pages:
             - en
 
     -   md: infrastructure/rippled/troubleshooting/fix-sqlite-tx-db-page-size-issue.ja.md
-        targets:
-            - ja
-
-    -   name: Clio Server
-        html: manage-the-clio-server.html
-        parent: infrastructure.html
-        blurb: Install, configure, and manage the Clio server.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: Clioサーバの管理
-        html: manage-the-clio-server.html
-        parent: infrastructure.html
-        blurb: Clioサーバーのインストール、設定、管理しましょう。
-        template: pagetype-category.html.jinja
         targets:
             - ja
 
@@ -4634,34 +4665,6 @@ pages:
     #         - labels
     #     targets:
     #         - ja
-
-# Amendments -------------------------------------------------------------------
-
-    -   md: amendments/amendments.md
-        parent: docs.html
-        targets:
-            - en
-
-    -   md: amendments/amendments.ja.md
-        parent: docs.html
-        targets:
-            - ja
-
-    -   md: amendments/known-amendments.md
-        parent: amendments.html
-        targets:
-            - en
-
-    -   md: amendments/known-amendments.ja.md
-        parent: amendments.html
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: amendments/contribute-code-flow.md
-        targets:
-            - en
-            - ja
 
 
 # --------------- end "Docs" section -------------------------------------------
