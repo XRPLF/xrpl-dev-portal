@@ -33,6 +33,12 @@
     }
   }
 
+  .d-xxl-block { // nonstandard-breakpoint for this banner only
+    @media (min-width: 1400px) {
+      display: block !important;
+    }
+  }
+
   .apex-reg {
     text-align: center;
 
