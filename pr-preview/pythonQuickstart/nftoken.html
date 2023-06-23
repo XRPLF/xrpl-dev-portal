@@ -187,6 +187,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
             <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -298,13 +299,11 @@
 <!-- SPELLING_IGNORE: nftokenid -->
 <p><code>NFTokenID</code>, optional, string, Hash256</p>
 <p>This composite field uniquely identifies a token, and consists of the following sections.</p>
-<ol>
-<li>16 bits that identify flags or settings specific to the NFToken</li>
-<li>16 bits that encode the transfer fee associated with this NFToken, if any</li>
-<li>A 160-bit account identifier of the issuer</li>
-<li>A 32-bit issuer-specified <a class="external-link" href="https://www.merriam-webster.com/dictionary/taxon" target="_blank"><code>NFTokenTaxon</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li>An (automatically generated) monotonically increasing 32-bit sequence number.</li>
-</ol>
+<p>A) 16 bits that identify flags or settings specific to the NFToken</p>
+<p>B) 16 bits that encode the transfer fee associated with this NFToken, if any</p>
+<p>C) A 160-bit account identifier of the issuer</p>
+<p>D) A 32-bit issuer-specified <a class="external-link" href="https://www.merriam-webster.com/dictionary/taxon" target="_blank"><code>NFTokenTaxon</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>E) An (automatically generated) monotonically increasing 32-bit sequence number.</p>
 <p><img alt="Token ID Breakdown" src="img/nftoken1.png" title="Token ID Breakdown"/></p>
 <p>The 16-bit flags, transfer fee fields, the 32-bit <code>NFTokenTaxon</code>, and the sequence number fields are stored in big-endian format.</p>
 <h2 id="nftoken-flags">NFToken Flags<a aria-hidden="true" class="hover_anchor" href="#nftoken-flags"><i class="fa fa-link"></i></a></h2>
@@ -2888,6 +2887,7 @@
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
