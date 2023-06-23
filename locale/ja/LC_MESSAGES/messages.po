@@ -1286,8 +1286,8 @@ msgid ""
 "XRPL ideally suited for building an ecosystem for NFTs. Explore the XRP "
 "Ledger's NFT capabilities."
 msgstr ""
-"手数料の低減、取引の高速化、カスタムトークンの機能性により、XRPLはNFTのエコシステム構築に理想的なものとなっています。NFT発行のための<a"
-" href='docs.html#docs-hot-topic'>提案されている標準規格</a>を参照してください。"
+"手数料の低減、取引の高速化、カスタムトークンの機能性により、XRPLはNFTのエコシステム構築に理想的なものとなっています。NFT発行のための"
+"提案されている標準規格を参照してください。"
 
 #: template/page-home.html.jinja:197
 #, fuzzy
