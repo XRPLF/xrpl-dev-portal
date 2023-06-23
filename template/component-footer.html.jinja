@@ -5,9 +5,9 @@
         <div class="col-lg">
           <h5>{% if parent_page.top_nav_name is defined %}{{ parent_page.top_nav_name }}{% else %}{{parent_page.name}}{% endif %}</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item "><a href="{% if '//' not in parent_page.html %}{{currentpage.prefix}}{% endif %}{{parent_page.html}}" class="nav-link">{{parent_page.name}}</a></li>
+            <li class="nav-item"><a href="{% if '//' not in parent_page.html %}{{currentpage.prefix}}{% endif %}{{parent_page.html}}" class="nav-link">{{parent_page.name}}</a></li>
           {% for page in parent_page.children %}
-            <li class="nav-item "><a href="{% if '//' not in page.html %}{{currentpage.prefix}}{% endif %}{{page.html}}" class="footer-nav-item nav-link{% if '//' in page.html %} external-link{% endif %}">{% if page.top_nav_name is defined %}{{page.top_nav_name}}{% else %}{{page.name}}{% endif %}</a></li>
+            <li class="nav-item"><a href="{% if '//' not in page.html %}{{currentpage.prefix}}{% endif %}{{page.html}}" class="nav-link{% if '//' in page.html %} external-link{% endif %}">{% if page.top_nav_name is defined %}{{page.top_nav_name}}{% else %}{{page.name}}{% endif %}</a></li>
           {% endfor %}
           </ul>
         </div><!--/.col -->
