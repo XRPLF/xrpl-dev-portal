@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 45 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gins, gift, giff
-  ringtee: 
+  gifs: gids, gies, gift
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -27,53 +27,53 @@ Found 45 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slabs, slaw, smas
+  slas: sias, slask, silas
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: xls, lsd
+  xlsd: lsd, xls
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  fixnftokenremint: 
-  xrpfees: 
   immediateofferkilled: 
-  disallowincoming: 
-  fixuniversalnumber: 
-  depositpreauthamendment: 
   fixnonfungibletokensv1_2: 
+  depositpreauthamendment: 
+  disallowincoming: 
+  xrpfees: 
+  fixuniversalnumber: 
+  fixnftokenremint: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingcheck: 
   asfdisallowincomingnftoffer: 
   asfdisallowincomingpaychan: 
   asfdisallowincomingtrustline: 
-  30d: 3-d, 3rd, 3d
+  asfdisallowincomingcheck: 
+  30d: 3rd, 3-d, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3rd, 3-d, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
