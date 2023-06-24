@@ -89,7 +89,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<a href="http://register.apexdevsummit.com/cfs" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
+<a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
   <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
   <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
   <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
@@ -254,7 +254,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/apex-banner/content/tutorials/production-readiness/reliable-transaction-submission.md?pr=/XRPLF/xrpl-dev-portal/pull/1937" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/apex-banner/content/tutorials/production-readiness/reliable-transaction-submission.md?pr=/XRPLF/xrpl-dev-portal/pull/1974" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -485,7 +485,7 @@
 <span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span>
+<span class="w">      </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
@@ -510,7 +510,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>In this example, the account's sequence is <strong>4</strong> (note <code>"Sequence": 4</code>, in <code>"account_data"</code>) as of the last validated ledger (note <code>"ledger": "validated"</code> in the request, and <code>"validated": "true"</code> in the response).</p>
+<p>In this example, the account's sequence is <strong>4</strong> (note <code>"Sequence": 4</code>, in <code>"account_data"</code>) as of the last validated ledger (note <code>"ledger_index": "validated"</code> in the request, and <code>"validated": "true"</code> in the response).</p>
 <p>If an application were to submit three transactions signed by this account, they would use sequence numbers 4, 5, and 6.  To submit multiple transactions without waiting for validation of each, an application should keep a running account sequence number.</p>
 <h4 id="determine-the-last-validated-ledger">Determine the Last Validated Ledger<a aria-hidden="true" class="hover_anchor" href="#determine-the-last-validated-ledger"><i class="fa fa-link"></i></a></h4>
 <p>The <a href="server_state.html">server_state method</a> returns the ledger index of the last validated ledger.</p>
