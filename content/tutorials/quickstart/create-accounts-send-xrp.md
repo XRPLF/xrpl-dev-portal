@@ -1,6 +1,6 @@
 ---
 html: create-accounts-send-xrp.html
-parent: xrpl-quickstart.html
+parent: quickstart-javascript.html
 blurb: Quickstart 1, create two accounts and transfer XRP between them.
 labels:
   - Accounts
@@ -55,7 +55,7 @@ To transfer XRP from the Standby account to the Operational account:
 To transfer XRP from the Operational account to the Standby account:
 
 1. On the Operational (right) side of the form, enter the **Amount** of XRP to send.
-2. Copy and paste the **Standby Account** field to the Standby **Destination** field.
+2. Copy and paste the **Standby Account** field to the Operational **Destination** field.
 3. Click **&lt;Send XRP** to transfer XRP from the Operational account to the Standby account.
 
 [![Transferred XRP](img/quickstart4.png)](img/quickstart4.png)
