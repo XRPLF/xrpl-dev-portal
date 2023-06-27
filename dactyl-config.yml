@@ -2423,6 +2423,7 @@ pages:
         targets:
             - ja
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.md
         targets:
             - en
@@ -2574,6 +2575,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with rippled 1.11.0 changes
     -   md: references/protocol-reference/transactions/transaction-common-fields.ja.md
         targets:
             - ja
@@ -3162,6 +3164,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_currencies.ja.md
         targets:
             - ja
@@ -3170,6 +3173,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_info.ja.md
         targets:
             - ja
@@ -3178,6 +3182,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_lines.ja.md
         targets:
             - ja
@@ -3192,6 +3197,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.ja.md
         targets:
             - ja
@@ -3200,6 +3206,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_offers.ja.md
         targets:
             - ja
@@ -3891,6 +3898,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.ja.md
         targets:
             - ja
