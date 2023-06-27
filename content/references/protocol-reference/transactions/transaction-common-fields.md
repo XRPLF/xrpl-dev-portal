@@ -131,7 +131,7 @@ Example of a transaction with a Memos field:
 ## NetworkID Field
 [New in: rippled 1.11.0][]
 
-The `NetworkID` field is a protection against "cross-chain" transaction replay attacks, preventing the same transaction from being copied over and executing on a [parallel network](parallel-network.html) that it wasn't intended for. For compatibility with existing chains, the `NetworkID` field **MUST BE OMITTED** for any network with a Network ID of 1024 or less, but **MUST BE INCLUDED** for any network with a Network ID of 1025 or greater. The following table shows the status and values for various known networks:
+The `NetworkID` field is a protection against "cross-chain" transaction replay attacks, preventing the same transaction from being copied over and executing on a [parallel network](parallel-networks.html) that it wasn't intended for. For compatibility with existing chains, the `NetworkID` field **MUST BE OMITTED** for any network with a Network ID of 1024 or less, but **MUST BE INCLUDED** for any network with a Network ID of 1025 or greater. The following table shows the status and values for various known networks:
 
 | Network       | ID | `NetworkID` Field |
 |---------------|----|-------------------|
