@@ -68,7 +68,7 @@ The request includes the following parameters:
 | `Field`   | Type    | Description                                            |
 |:----------|:--------|:-------------------------------------------------------|
 | `feature` | String  | _(Optional)_ The unique ID of an amendment, as hexadecimal; or the short name of the amendment. If provided, limits the response to one amendment. Otherwise, the response lists all amendments. |
-| `vetoed`  | Boolean | _(Optional; ignored unless `feature` also specified)_ If true, instructs the server to vote against the amendment specified by `feature`. If false, instructs the server to vote in favor of the amendment. On the commandline, use 'accept' or 'reject rather than 'true' or 'false'. You cannot vote in favor of an amendment that is marked as obsolete in the server's source code. [Updated in: rippled 1.11.0][] |
+| `vetoed`  | Boolean | _(Optional; ignored unless `feature` also specified)_ If `true`, instructs the server to vote against the amendment specified by `feature`. If false, instructs the server to vote in favor of the amendment. On the commandline, use 'accept' or 'reject rather than 'true' or 'false'. You cannot vote in favor of an amendment that is marked as _obsolete_ in the server's source code. [Updated in: rippled 1.11.0][] |
 
 **Note:** You can configure your server to vote in favor of a new amendment, even if the server does not currently know how to apply that amendment, by specifying the amendment ID in the `feature` field. For example, you might want to do this if you plan to upgrade soon to a new `rippled` version that _does_ support the amendment.
 
