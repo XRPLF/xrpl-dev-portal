@@ -19,7 +19,7 @@ Every transaction has the same set of common fields, plus additional fields base
 | [`Flags`](#flags-field) | Number        | UInt32            | _(Optional)_ Set of bit-flags for this transaction. |
 | `LastLedgerSequence` | Number           | UInt32            | _(Optional; strongly recommended)_ Highest ledger index this transaction can appear in. Specifying this field places a strict upper limit on how long the transaction can wait to be validated or rejected. See [Reliable Transaction Submission](reliable-transaction-submission.html) for more details. |
 | [`Memos`](#memos-field) | Array of Objects | Array          | _(Optional)_ Additional arbitrary information used to identify this transaction. |
-| [`NetworkID`](#networkid-field) | Number | UInt32           | _(Network-specific)_ The network ID of the chain this transaction is intended for. **MUST BE OMITTED** for Mainnet and some test networks. **REQUIRED** on sidechains whose network ID is 1025 or higher. |
+| [`NetworkID`](#networkid-field) | Number | UInt32           | _(Network-specific)_ The network ID of the chain this transaction is intended for. **MUST BE OMITTED** for Mainnet and some test networks. **REQUIRED** on chains whose network ID is 1025 or higher. |
 | [`Signers`](#signers-field) | Array     | Array             | _(Optional)_ Array of objects that represent a [multi-signature](multi-signing.html) which authorizes this transaction. |
 | `SourceTag`        | Number             | UInt32            | _(Optional)_ Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
 | `SigningPubKey`    | String           | Blob              | _(Automatically added when signing)_ Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
@@ -131,7 +131,7 @@ Example of a transaction with a Memos field:
 ## NetworkID Field
 [New in: rippled 1.11.0][]
 
-The `NetworkID` field is a protection against "cross-chain" transaction replay attacks, preventing the same transaction from being copied over and executing on a [parallel network](parallel-networks.html) that it wasn't intended for. For compatibility with existing chains, the `NetworkID` field **MUST BE OMITTED** for any network with a Network ID of 1024 or less, but **MUST BE INCLUDED** for any network with a Network ID of 1025 or greater. The following table shows the status and values for various known networks:
+The `NetworkID` field is a protection against "cross-chain" transaction replay attacks, preventing the same transaction from being copied over and executing on a [parallel network](parallel-networks.html) that it wasn't intended for. For compatibility with existing chains, the `NetworkID` field must be omitted on any network with a Network ID of 1024 or less, but must be included on any network with a Network ID of 1025 or greater. The following table shows the status and values for various known networks:
 
 | Network       | ID | `NetworkID` Field |
 |---------------|----|-------------------|
@@ -139,6 +139,8 @@ The `NetworkID` field is a protection against "cross-chain" transaction replay a
 | Testnet       | 1  | Disallowed        |
 | Devnet        | 2  | Disallowed        |
 | AMM Devnet    | 25 | Disallowed        |
+| Sidechains Devnet Locking Chain | 2551 | Disallowed, but will become required after an update |
+| Sidechains Devnet Issuing Chain | 2552 | Disallowed, but will become required after an update |
 | Hooks V3 Testnet | 21338 | Required    |
 
 Transaction replay attacks are theoretically possible, but require specific conditions on the second network. All of the following must be true:
