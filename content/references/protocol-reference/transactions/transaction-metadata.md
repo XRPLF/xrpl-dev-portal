@@ -70,12 +70,12 @@ A `ModifiedNode` object contains the following fields:
 
 ## NFT Fields
 
-Transactions involving NFTs can contain the following fields in the metadata. These values are added by the Clio server at request time and are not stored in the hashed binary  metadata:
+Transactions (`tx` and `account_tx`) involving NFTs can contain the following fields in the metadata. These values are added by the Clio server at request time and are not stored in the hashed binary metadata:
 
 | Field               | Value                     | Description                |
 |:--------------------|:--------------------------|:---------------------------|
-| `nftoken_id`        | String                    | Shows the `NFTokenID` for the `NFToken` that changed on the ledger as a result of the transaction. See [NFTokenID](nftoken.html#nftokenid) |
-| `nftoken_ids`       | Array                     | Shows all the `NFTokenIDs` for the `NFTokens` that changed on the ledger as a result of the transaction. |
+| `nftoken_id`        | String                    | Shows the `NFTokenID` for the `NFToken` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenMint` or `NFTokenAcceptOffer`. See [NFTokenID](nftoken.html#nftokenid). |
+| `nftoken_ids`       | Array                     | Shows all the `NFTokenIDs` for the `NFTokens` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenCancelOffer`. |
 | `offer_id`          | String                    | Shows the `OfferID`of a new `NFTokenOffer` in a response from a `NFTokenCreateOffer` transaction.
 
 ## delivered_amount
