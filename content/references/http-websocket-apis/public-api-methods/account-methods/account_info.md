@@ -24,7 +24,6 @@ An example of an account_info request:
   "id": 2,
   "command": "account_info",
   "account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
-  "strict": true,
   "ledger_index": "current",
   "queue": true
 }
@@ -38,7 +37,6 @@ An example of an account_info request:
     "params": [
         {
             "account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
-            "strict": true,
             "ledger_index": "current",
             "queue": true
         }
@@ -49,8 +47,8 @@ An example of an account_info request:
 *Commandline*
 
 ```sh
-#Syntax: account_info account [ledger_index|ledger_hash] [strict]
-rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated strict
+#Syntax: account_info account [ledger_index|ledger_hash]
+rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -59,13 +57,13 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated strict
 
 The request contains the following parameters:
 
-| `Field`        | Type                       | Description                    |
-|:---------------|:---------------------------|:-------------------------------|
-| `account`      | String - [Address][]       | The account to look up. [Updated in: rippled 1.11.0][] |
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `queue`        | Boolean                    | _(Optional)_ If `true`, return stats about [queued transactions](transaction-queue.html) sent by this account. Can only be used when querying for the data from the current open ledger. Not available from servers in [Reporting Mode][]. |
-| `signer_lists` | Boolean                    | _(Optional)_ If `true`, return any [SignerList objects](signerlist.html) associated with this account. [New in: rippled 0.31.0][] |
+| `Field`        | Type                 | Required? | Description |
+|:---------------|:---------------------|:----------|-------------|
+| `account`      | String - [Address][] | Yes       | The account to look up. [Updated in: rippled 1.11.0][] |
+| `ledger_hash`  | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `queue`        | Boolean              | No        | If `true`, return stats about [queued transactions](transaction-queue.html) sent by this account. Can only be used when querying for the data from the current open ledger. Not available from servers in [Reporting Mode][]. |
+| `signer_lists` | Boolean              | No        | If `true`, return any [SignerList objects](signerlist.html) associated with this account. |
 
 The following fields are deprecated and should not be provided: `ident`, `ledger`, `strict`.
 
@@ -219,10 +217,10 @@ The `account_flags` field contains the following nested fields:
 | `defaultRipple`        | Boolean | If `true`, the account allows [rippling](rippling.html) on its trust lines by default. |
 | `depositAuth`          | Boolean | If `true`, the account is using [Deposit Authorization](depositauth.html) and does not accept any payments from unknown parties. |
 | `disableMasterKey`     | Boolean | If `true`, the account's [master key pair](cryptographic-keys.html) is disabled. |
-| `disallowIncomingCheck` | Boolean | If `true`, the account does not allow others to send [Checks](checks.html) to it. |
-| `disallowIncomingNFTokenOffer` | Boolean | If `true`, the account does not allow others to make [NFT buy or sell offers](non-fungible-token-transfers.html) to it. |
-| `disallowIncomingPayChan` | Boolean | If `true`, the account does not allow others to make [Payment Channels](payment-channels.html) to it. |
-| `disallowIncomingTrustline` | Boolean | If `true`, the account does not allow others to make [trust lines](trust-lines-and-issuing.html) to it. |
+| `disallowIncomingCheck` | Boolean | If `true`, the account does not allow others to send [Checks](checks.html) to it. _(Requires the [DisallowIncoming amendment][])_ |
+| `disallowIncomingNFTokenOffer` | Boolean | If `true`, the account does not allow others to make [NFT buy or sell offers](non-fungible-token-transfers.html) to it. _(Requires the [DisallowIncoming amendment][])_ |
+| `disallowIncomingPayChan` | Boolean | If `true`, the account does not allow others to make [Payment Channels](payment-channels.html) to it. _(Requires the [DisallowIncoming amendment][])_ |
+| `disallowIncomingTrustline` | Boolean | If `true`, the account does not allow others to make [trust lines](trust-lines-and-issuing.html) to it. _(Requires the [DisallowIncoming amendment][])_ |
 | `disallowIncomingXRP`  | Boolean | If `true`, the account does not want to receive XRP from others. (This is advisory, and not enforced at a protocol level.) |
 | `globalFreeze`         | Boolean | If `true`, all tokens issued by the account are currently frozen. |
 | `noFreeze`             | Boolean | If `true`, the account has permanently given up the abilities to freeze individual trust lines or end a global freeze. See [No Freeze](freezes.html#no-freeze) for details. |
