@@ -300,7 +300,6 @@
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_currencies"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -311,15 +310,14 @@
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">"account_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: account_currencies account [ledger_index|ledger_hash] [strict]</span>
-rippled<span class="w"> </span>account_currencies<span class="w"> </span>rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn<span class="w"> </span>validated<span class="w"> </span>strict
+<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: account_currencies account [ledger_index|ledger_hash]</span>
+rippled<span class="w"> </span>account_currencies<span class="w"> </span>rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn<span class="w"> </span>validated
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#account_currencies">Try it!</a></p>
@@ -329,33 +327,32 @@ rippled<span class="w"> </span>account_currencies<span class="w"> </span>rG1QQv2
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Required?</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>account</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">A unique identifier for the account, most commonly the account's <a href="basic-data-types.html#addresses">Address</a>.</td>
+<td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
+<td style="text-align: left;">Yes</td>
+<td>Look up currencies this account can send or receive. [Updated in: rippled 1.11.0][]</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+<td style="text-align: left;">No</td>
+<td>A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">String or Unsigned Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>strict</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, then the <code>account</code> field only accepts a public key or XRP Ledger address. Otherwise, <code>account</code> can be a secret or passphrase (not recommended). The default is <code>false</code>.</td>
+<td style="text-align: left;">Number or String</td>
+<td style="text-align: left;">No</td>
+<td>The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 </tbody>
 </table>
-<p>The following field is deprecated and should not be provided: <code>account_index</code>.</p>
+<p>The following fields are deprecated and should not be provided: <code>account_index</code>, <code>strict</code>.</p>
 <h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>

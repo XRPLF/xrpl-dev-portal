@@ -304,7 +304,6 @@
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_info"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"queue"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
@@ -315,7 +314,6 @@
 <span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current"</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">"queue"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">        </span><span class="p">}</span>
@@ -323,8 +321,8 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: account_info account [ledger_index|ledger_hash] [strict]</span>
-rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn<span class="w"> </span>validated<span class="w"> </span>strict
+<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: account_info account [ledger_index|ledger_hash]</span>
+rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn<span class="w"> </span>validated
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#account_info">Try it!</a></p>
@@ -334,34 +332,40 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Required?</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>account</code></td>
 <td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
-<td style="text-align: left;">The account to look up. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="Updated in: rippled 1.11.0"><img alt="Updated in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">Yes</td>
+<td>The account to look up. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="Updated in: rippled 1.11.0"><img alt="Updated in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+<td style="text-align: left;">No</td>
+<td>A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">String or Unsigned Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+<td style="text-align: left;">Number or String</td>
+<td style="text-align: left;">No</td>
+<td>The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>queue</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, return stats about <a href="transaction-queue.html">queued transactions</a> sent by this account. Can only be used when querying for the data from the current open ledger. Not available from servers in <a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a>.</td>
+<td style="text-align: left;">No</td>
+<td>If <code>true</code>, return stats about <a href="transaction-queue.html">queued transactions</a> sent by this account. Can only be used when querying for the data from the current open ledger. Not available from servers in <a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>signer_lists</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, return any <a href="signerlist.html">SignerList objects</a> associated with this account. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">No</td>
+<td>If <code>true</code>, return any <a href="signerlist.html">SignerList objects</a> associated with this account.</td>
 </tr>
 </tbody>
 </table>
@@ -559,22 +563,22 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
 <tr>
 <td style="text-align: left;"><code>disallowIncomingCheck</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">If <code>true</code>, the account does not allow others to send <a href="checks.html">Checks</a> to it.</td>
+<td style="text-align: left;">If <code>true</code>, the account does not allow others to send <a href="checks.html">Checks</a> to it. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>disallowIncomingNFTokenOffer</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">If <code>true</code>, the account does not allow others to make <a href="non-fungible-token-transfers.html">NFT buy or sell offers</a> to it.</td>
+<td style="text-align: left;">If <code>true</code>, the account does not allow others to make <a href="non-fungible-token-transfers.html">NFT buy or sell offers</a> to it. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>disallowIncomingPayChan</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">If <code>true</code>, the account does not allow others to make <a href="payment-channels.html">Payment Channels</a> to it.</td>
+<td style="text-align: left;">If <code>true</code>, the account does not allow others to make <a href="payment-channels.html">Payment Channels</a> to it. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>disallowIncomingTrustline</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">If <code>true</code>, the account does not allow others to make <a href="trust-lines-and-issuing.html">trust lines</a> to it.</td>
+<td style="text-align: left;">If <code>true</code>, the account does not allow others to make <a href="trust-lines-and-issuing.html">trust lines</a> to it. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>disallowIncomingXRP</code></td>

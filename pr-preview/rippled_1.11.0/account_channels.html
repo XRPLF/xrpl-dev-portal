@@ -328,39 +328,46 @@ rippled<span class="w"> </span>account_channels<span class="w"> </span>rf1BiGeXw
 <tr>
 <th style="text-align: left;">Field</th>
 <th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Required?</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>account</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The unique identifier of an account, typically the account's <a href="basic-data-types.html#addresses">Address</a>. The request returns channels where this account is the channel's owner/source.</td>
+<td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
+<td style="text-align: left;">Yes</td>
+<td>Look up channels where this account is the channel's owner/source.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>destination_account</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> The unique identifier of an account, typically the account's <a href="basic-data-types.html#addresses">Address</a>. If provided, filter results to payment channels whose destination is this account.</td>
+<td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
+<td style="text-align: left;">No</td>
+<td>A second account; if provided, filter results to payment channels whose destination is this account.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+<td style="text-align: left;">No</td>
+<td>A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">String or Unsigned Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+<td style="text-align: left;">Number or String</td>
+<td style="text-align: left;">No</td>
+<td>The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>limit</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> Limit the number of transactions to retrieve. Cannot be less than 10 or more than 400. The default is 200.</td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">No</td>
+<td>Limit the number of transactions to retrieve. Cannot be less than 10 or more than 400. The default is 200.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
 <td style="text-align: left;"><a href="markers-and-pagination.html">Marker</a></td>
-<td style="text-align: left;"><em>(Optional)</em> Value from a previous paginated response. Resume retrieving data where that response left off. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="Updated in: rippled 1.5.0"><img alt="Updated in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">No</td>
+<td>Value from a previous paginated response. Resume retrieving data where that response left off.</td>
 </tr>
 </tbody>
 </table>

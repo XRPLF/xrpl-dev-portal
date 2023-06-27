@@ -358,7 +358,7 @@
 <td style="text-align: left;"><a href="#networkid-field"><code>NetworkID</code></a></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;"><em>(Network-specific)</em> The network ID of the chain this transaction is intended for. <strong>MUST BE OMITTED</strong> for Mainnet and some test networks. <strong>REQUIRED</strong> on sidechains whose network ID is 1025 or higher.</td>
+<td style="text-align: left;"><em>(Network-specific)</em> The network ID of the chain this transaction is intended for. <strong>MUST BE OMITTED</strong> for Mainnet and some test networks. <strong>REQUIRED</strong> on chains whose network ID is 1025 or higher.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#signers-field"><code>Signers</code></a></td>
@@ -520,7 +520,7 @@
 </code></pre></div>
 <h2 id="networkid-field">NetworkID Field<a aria-hidden="true" class="hover_anchor" href="#networkid-field"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="New in: rippled 1.11.0"><img alt="New in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>NetworkID</code> field is a protection against "cross-chain" transaction replay attacks, preventing the same transaction from being copied over and executing on a <a href="parallel-networks.html">parallel network</a> that it wasn't intended for. For compatibility with existing chains, the <code>NetworkID</code> field <strong>MUST BE OMITTED</strong> for any network with a Network ID of 1024 or less, but <strong>MUST BE INCLUDED</strong> for any network with a Network ID of 1025 or greater. The following table shows the status and values for various known networks:</p>
+<p>The <code>NetworkID</code> field is a protection against "cross-chain" transaction replay attacks, preventing the same transaction from being copied over and executing on a <a href="parallel-networks.html">parallel network</a> that it wasn't intended for. For compatibility with existing chains, the <code>NetworkID</code> field must be omitted on any network with a Network ID of 1024 or less, but must be included on any network with a Network ID of 1025 or greater. The following table shows the status and values for various known networks:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -549,6 +549,16 @@
 <td>AMM Devnet</td>
 <td>25</td>
 <td>Disallowed</td>
+</tr>
+<tr>
+<td>Sidechains Devnet Locking Chain</td>
+<td>2551</td>
+<td>Disallowed, but will become required after an update</td>
+</tr>
+<tr>
+<td>Sidechains Devnet Issuing Chain</td>
+<td>2552</td>
+<td>Disallowed, but will become required after an update</td>
 </tr>
 <tr>
 <td>Hooks V3 Testnet</td>
