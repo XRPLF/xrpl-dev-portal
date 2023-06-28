@@ -49,7 +49,7 @@ The value of cryptocurrency comes from the faith that holders place in the curre
 
 The XRP Ledger was built over 2011 – early 2012 by Jed McCaleb, Arthur Britto and David Schwartz. In September 2012, Jed and Arthur, along with Chris Larsen formed Ripple (the company, called OpenCoin Inc. at the time) and decided to gift 80 billion XRP to Ripple in exchange for Ripple developing on the XRP Ledger. The Ripple name is based on the way the technology they built allows payments to "ripple" through multiple hops and currencies. The _X_ prefix is the ISO 4217 standard for non-national currencies. In choosing the ticker symbol, the creators chose _XRP_ to refer to the asset in all contexts.
 
-![Dennis with one XRP](img/introduction13-x-prefix.png)
+![Man with one XRP](img/introduction13-x-prefix.png)
 
 At the time of its creation, there were 100 billion XRP. XRP are held in escrow and sold at intervals that help to maintain the stability of the currency and ensure that the general supply grows predictably.
 
