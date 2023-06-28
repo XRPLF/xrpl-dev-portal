@@ -17,9 +17,9 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 ```json
 {
   "LedgerEntryType": "NFTokenPage",
-  "PreviousTokenPage":
+  "PreviousPageMin":
     "598EDFD7CF73460FB8C695d6a9397E907378C8A841F7204C793DCBEF5406",
-  "PreviousTokenNext":
+  "NextPageMin":
     "598EDFD7CF73460FB8C695d6a9397E9073781BA3B78198904F659AAA252A",
   "PreviousTxnID":
     "95C8761B22894E328646F7A70035E9DFBECC90EDD83E43B7B973F626D21A0822",
