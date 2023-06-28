@@ -1,11 +1,11 @@
 -------------
 Spell Checker
 -------------
-Found 64 possible spelling errors:
+Found 66 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: rifs, gifu, gins
-  kuressaare: 
+  gifs: gifts, gits, giss
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'What is the XRP Ledger?' (what-is-xrpl.html)> Unknown Words:
@@ -20,18 +20,18 @@ Found 64 possible spelling errors:
 
 <Page 'Transactions and Requests' (txn-and-requests.html)> Unknown Words:
   transactiontype: 
-  ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
   rf1bigexwwqoi8z2uefytexswujyfv2jpn: 
+  ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
 
 <Page 'Peer-to-Peer Payments' (peer-to-peer-payments-uc.html)> Unknown Words:
   requiremen: requirement
 
 <Page 'Restricting Deposits' (restricting-deposits-uc.html)> Unknown Words:
-  deposite: deposit, deposited, deposita
+  deposite: deposits, depositee, deposita
   unathorized: unauthorized
 
 <Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Unknown Words:
-  xapps: apps, lapps, capps
+  xapps: capps, apps, lapps
 
 <Page 'NFT Marketplace Overview' (nft-mkt-overview.html)> Unknown Words:
   arweave: 
@@ -47,28 +47,28 @@ Found 64 possible spelling errors:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  fixnonfungibletokensv1_2: 
   fixuniversalnumber: 
+  depositpreauthamendment: 
   immediateofferkilled: 
   disallowincoming: 
-  depositpreauthamendment: 
-  fixnonfungibletokensv1_2: 
   xrpfees: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
-  asfdisallowincomingtrustline: 
   asfdisallowincomingnftoffer: 
   asfdisallowincomingcheck: 
-  30d: 3rd, 3-d, 3d
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingtrustline: 
+  30d: 3-d, 3rd, 3d
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: lsd, xls
+  xlsd: xls, lsd
 
 <Page 'Ledger Structure' (ledger-structure.html)> Unknown Words:
   hexidecimal: hexadecimal
   slcf_noconsensustime: 
 
 <Page 'Finality of Results' (finality-of-results.html)> Unknown Words:
-  ooffers: doffers, coffers, offers
+  ooffers: coffers, offers, doffers
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
   24n: 
@@ -89,15 +89,19 @@ Found 64 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: sylas, sias, slask
+  slas: slays, sals, slan
 
-<Page 'Create Time-based Escrows' (time-escrows.html)> Unknown Words:
-  ripple8: rippler, rippled, ripple
+<Page 'Create Time-based Escrows' (create-time-based-escrows.html)> Unknown Words:
+  ripple8: ripplex, rippled, ripple
   numofseconds: 
   offersequence: 
 
+<Page 'Create Conditional Escrows' (create-conditional-escrows.html)> Unknown Words:
+  getconditionandfulfillment: 
+  ripplex9: ripplex
+
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3-d, 3rd, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   nftokenoffers: nftokenoffer
@@ -139,7 +143,7 @@ Found 64 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 102 discouraged words/phrases:
+Found 103 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -217,9 +221,11 @@ Page: <Page 'Create Accounts and Send XRP' (create-accounts-send-xrp.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Create Trust Line and Send Currency' (create-trustline-send-currency.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'Create Time-based Escrows' (time-escrows.html)>
+Page: <Page 'Create Time-based Escrows' (create-time-based-escrows.html)>
    Discouraged phrase: prior to (1 instances); suggest 'before' instead.
    Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Create Conditional Escrows' (create-conditional-escrows.html)>
+   Discouraged phrase: prior to (1 instances); suggest 'before' instead.
 Page: <Page 'Build A Browser Wallet Using JS' (build-a-browser-wallet-in-js.html)>
    Discouraged word: simple (1 instances); suggest '(omit)' instead.
    Discouraged word: render (1 instances); suggest 'give, make' instead.
@@ -251,7 +257,7 @@ Average Page Readability Scores:
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
-  Automated Readability Index: Grade level 10.9
+  Automated Readability Index: Grade level 10.8
   Coleman-Liau Index: Grade level 11.5
   Linsear Write Formula: Grade level 8.7
 
@@ -290,7 +296,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 54
   Words: 719
-  Characters: 4,466
+  Characters: 4,465
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
@@ -300,8 +306,8 @@ Longest pages by character count:
 
 <Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Length Metrics:
   Sentences: 398
-  Words: 6,408
-  Characters: 39,996
+  Words: 6,410
+  Characters: 40,005
 
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Length Metrics:
   Sentences: 299

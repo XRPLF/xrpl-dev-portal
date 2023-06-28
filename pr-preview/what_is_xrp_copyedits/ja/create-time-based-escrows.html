@@ -7,7 +7,7 @@
     <title>Create Time-based Escrows - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Create Time-based Escrows | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/time-escrows.html" />
+    <meta property="og:url" content="https://xrpl.org/create-time-based-escrows.html" />
     <meta property="og:description" content="Create, finish, or cancel time-based escrow transactions." />
     <meta name="description" content="Create, finish, or cancel time-based escrow transactions." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
@@ -15,9 +15,9 @@
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="ja" />
-    <link rel="alternate" href="https://xrpl.org/time-escrows.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/time-escrows.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/time-escrows.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/create-time-based-escrows.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/create-time-based-escrows.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/create-time-based-escrows.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -219,7 +219,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/time-escrows.html">
+          <a class="dropdown-item" href="/create-time-based-escrows.html">
             English
           </a>
           <hr />
@@ -247,7 +247,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/what_is_xrp_copyedits/content/tutorials/quickstart/escrow-time.md?pr=/XRPLF/xrpl-dev-portal/pull/1960" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/what_is_xrp_copyedits/content/tutorials/quickstart/create-time-based-escrows.md?pr=/XRPLF/xrpl-dev-portal/pull/1960" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -320,9 +320,9 @@
 <li>Retrieve information on escrows attached to an account.</li>
 <li>Cancel an escrow payment and return the XRP to the sending account.</li>
 </ol>
-<p><img alt="Escrow Tester Form" src="img/quickstart-escrow1.png"/></p>
+<p><a href="img/quickstart-escrow1.png"><img alt="Escrow Tester Form" src="img/quickstart-escrow1.png"/></a></p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
-<p>Download and expand the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive.</p>
+<p>Download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h2>
 <p>To get test accounts:</p>
 <ol>
@@ -342,21 +342,21 @@
 </ol>
 </li>
 </ol>
-<p><img alt="Escrow Tester with Account Information" src="img/quickstart-escrow2.png"/></p>
+<p><a href="img/quickstart-escrow2.png"><img alt="Escrow Tester with Account Information" src="img/quickstart-escrow2.png"/></a></p>
 <h2 id="create-escrow">Create Escrow<a aria-hidden="true" class="hover_anchor" href="#create-escrow"><i class="fa fa-link"></i></a></h2>
 <p>You can create a time-based escrow with a minimum time to finish the escrow and a cancel time after which the funds in escrow are no longer available to the recipient. This is a test harness: while a practical scenario might express time in days or weeks, this form lets you set the finish and cancel times in seconds so that you can quickly run through a variety of scenarios. (There are 86,400 seconds in a day, if you want to play with longer term escrows.)</p>
 <p>To create a time-based escrow:</p>
 <ol>
 <li>Enter an <strong>Amount</strong> to transfer.</li>
 <li>Copy the <strong>Operational Account</strong> value.</li>
-<li>Past it in the <strong>Destination Account</strong> field.</li>
+<li>Paste it in the <strong>Destination Account</strong> field.</li>
 <li>Set the <strong>Escrow Finish (seconds)</strong> value. For example, enter <em>10</em>.</li>
 <li>Set the <strong>Escrow Cancel (seconds)</strong> value. For example, enter <em>120</em>.</li>
 <li>Click <strong>Create Escrow</strong>.</li>
 <li>Copy the <em>Sequence Number</em> of the escrow called out in the <strong>Standby Result</strong> field.</li>
 </ol>
 <p>The escrow is created on the XRP Ledger instance, reserving 100 XRP plus the transaction cost. When you create an escrow, capture and save the <strong>Sequence Number</strong> so that you can use it to finish the escrow transaction.</p>
-<p><img alt="Completed Escrow Transaction" src="img/quickstart-escrow3.png"/></p>
+<p><a href="img/quickstart-escrow3.png"><img alt="Completed Escrow Transaction" src="img/quickstart-escrow3.png"/></a></p>
 <h2 id="finish-escrow">Finish Escrow<a aria-hidden="true" class="hover_anchor" href="#finish-escrow"><i class="fa fa-link"></i></a></h2>
 <p>The recipient of the XRP held in escrow can finish the transaction any time within the time window after the Escrow Finish date and time but before the Escrow Cancel date and time. Following on the example above, you can use the <em>Sequence Number</em> to finish the transaction once 10 seconds have passed.</p>
 <p>To finish a time-based escrow:</p>
@@ -365,12 +365,12 @@
 <li>Click <strong>Finish Escrow</strong>.</li>
 </ol>
 <p>The transaction completes and balances are updated for both the Standby and Operational accounts.</p>
-<p><img alt="Completed Escrow Transaction" src="img/quickstart-escrow4.png"/></p>
+<p><a href="img/quickstart-escrow4.png"><img alt="Completed Escrow Transaction" src="img/quickstart-escrow4.png"/></a></p>
 <h2 id="get-escrows">Get Escrows<a aria-hidden="true" class="hover_anchor" href="#get-escrows"><i class="fa fa-link"></i></a></h2>
 <p>Click <strong>Get Escrows</strong> for either the Standby account or the Operational account to see their current list of escrows. If you click the buttons now, there are no escrows at the moment.</p>
 <p>For the purposes of this tutorial, follow the steps in <a href="#create-escrow">Create Escrow</a>, above, to create a new escrow transaction, perhaps setting <strong>Escrow Cancel (seconds)</strong> field to <em>600</em> seconds to give you extra time to explore. Remember to capture the <em>Sequence Number</em> from the transaction results.</p>
 <p>Click <strong>Get Escrows</strong> for both the Standby and the Operational account. The <code>account_info</code> request returns the same <code>account_object</code> for both accounts, demonstrating the link between the accounts created by the escrow transaction.</p>
-<p><img alt="Get Escrows results" src="img/quickstart-escrow5.png"/></p>
+<p><a href="img/quickstart-escrow5.png"><img alt="Get Escrows results" src="img/quickstart-escrow5.png"/></a></p>
 <h2 id="cancel-escrow">Cancel Escrow<a aria-hidden="true" class="hover_anchor" href="#cancel-escrow"><i class="fa fa-link"></i></a></h2>
 <p>When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. If you try to cancel the transaction prior to the <strong>Escrow Cancel</strong> time, you are charged for the transaction, but the actual escrow cannot be cancelled until the time limit is reached.</p>
 <p>You can wait the allotted time for the escrow you created in the previous step, then use it to try out the <strong>Cancel Escrow</strong> button</p>
@@ -380,7 +380,7 @@
 <li>Click <strong>Cancel Escrow</strong>.</li>
 </ol>
 <p>The funds are returned to the Standby account, less the initial transaction fee.</p>
-<p><img alt="Cancel Escrow results" src="img/quickstart-escrow6.png"/></p>
+<p><a href="img/quickstart-escrow6.png"><img alt="Cancel Escrow results" src="img/quickstart-escrow6.png"/></a></p>
 <h2 id="oh-no-i-forgot-to-save-the-sequence-number">Oh No! I Forgot to Save the Sequence Number!<a aria-hidden="true" class="hover_anchor" href="#oh-no-i-forgot-to-save-the-sequence-number"><i class="fa fa-link"></i></a></h2>
 <p>If you forget to save the sequence number, you can find it in the escrow transaction record.</p>
 <ol>
@@ -659,7 +659,7 @@
 <h2 id="8escrowhtml">8.escrow.html<a aria-hidden="true" class="hover_anchor" href="#8escrowhtml"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-44" id="codeblock-44button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-44"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Escrow Test Harness<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Time-based Escrow Test Harness<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">'https://fonts.googleapis.com/css?family=Work Sans'</span> <span class="na">rel</span><span class="o">=</span><span class="s">'stylesheet'</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
 <span class="w">       </span><span class="nt">body</span><span class="p">{</span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s2">"Work Sans"</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#fafafa</span><span class="p">;}</span>
@@ -667,7 +667,7 @@
 <span class="w">       </span><span class="nt">input</span><span class="o">,</span><span class="w"> </span><span class="nt">button</span><span class="w"> </span><span class="p">{</span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="kt">px</span><span class="p">;</span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;}</span>
 <span class="w">       </span><span class="nt">button</span><span class="p">{</span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s2">"Work Sans"</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;}</span>
 <span class="w">       </span><span class="nt">td</span><span class="p">{</span><span class="k">vertical-align</span><span class="p">:</span><span class="w"> </span><span class="kc">middle</span><span class="p">;}</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>    
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">'https://unpkg.com/xrpl@2.2.3'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">'ripplex1-send-xrp.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">'ripplex2-send-currency.js'</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
@@ -679,7 +679,7 @@
 <span class="cm">&lt;!-- ************************************************************** --&gt;</span>
 
   <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Escrow Test Harness<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Time-based Escrow Test Harness<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">"theForm"</span><span class="p">&gt;</span>
       Choose your ledger instance:  
       <span class="ni">&amp;nbsp;&amp;nbsp;</span>
@@ -816,7 +816,7 @@
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
                         <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"getBalances()"</span><span class="p">&gt;</span>Get Balances<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>       
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"createTimeEscrow()"</span><span class="p">&gt;</span>Create Escrow<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"createTimeEscrow()"</span><span class="p">&gt;</span>Create Time-based Escrow<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
                         <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"getStandbyEscrows()"</span><span class="p">&gt;</span>Get Escrows<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
@@ -843,7 +843,7 @@
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
                         <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"getBalances()"</span><span class="p">&gt;</span>Get Balances<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"finishEscrow()"</span><span class="p">&gt;</span>Finish Escrow<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"finishEscrow()"</span><span class="p">&gt;</span>Finish Time-based Escrow<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
                         <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onClick</span><span class="o">=</span><span class="s">"getOperationalEscrows()"</span><span class="p">&gt;</span>Get Escrows<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
                         <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
@@ -1024,11 +1024,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/software-ecosystem.html">ソフトウェアエコシステム</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp.html">XRP</a>
   </div>
 
     </nav>
@@ -1222,27 +1217,9 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
 
-        <a class="nav-link" href="/ja/ledgers.html">レジャー</a>
+        <a class="nav-link" href="/ja/consensus.html">コンセンサスプロトコル</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2_2" aria-expanded="false" aria-controls="tree_nav_group_4_2_2"></a>
-
-        <a class="nav-link" href="/ja/consensus.html">コンセンサスについて</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_2_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus-structure.html">コンセンサス</a>
@@ -1256,6 +1233,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus-protections.html">攻撃および障害モードに対するコンセンサスの保護</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/invariant-checking.html">不変性チェック</a>
   </div>
 
       
@@ -1279,6 +1261,24 @@
 
       
   <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+
+        <a class="nav-link" href="/ja/ledgers.html">レジャー</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
   </div>
 
@@ -1289,19 +1289,14 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4" aria-expanded="false" aria-controls="tree_nav_group_4_4"></a>
 
         <a class="nav-link" href="/ja/transactions.html">トランザクション</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/fees.html">手数料（曖昧さの回避）</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/invariant-checking.html">不変性チェック</a>
   </div>
 
       
@@ -1332,11 +1327,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3_8" aria-expanded="false" aria-controls="tree_nav_group_4_3_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_4_7"></a>
 
         <a class="nav-link" href="/ja/finality-of-results.html">結果のファイナリティー</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/look-up-transaction-results.html">トランザクションの結果の確認</a>
@@ -1363,11 +1358,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4" aria-expanded="false" aria-controls="tree_nav_group_4_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5" aria-expanded="false" aria-controls="tree_nav_group_4_5"></a>
 
         <a class="nav-link" href="/ja/payment-types.html">支払いのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
@@ -1405,19 +1400,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5" aria-expanded="false" aria-controls="tree_nav_group_4_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6" aria-expanded="false" aria-controls="tree_nav_group_4_6"></a>
 
         <a class="nav-link" href="/ja/tokens.html">トークン</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5_1" aria-expanded="false" aria-controls="tree_nav_group_4_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
 
         <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
@@ -1475,11 +1470,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5_4" aria-expanded="false" aria-controls="tree_nav_group_4_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -1512,11 +1507,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5_9" aria-expanded="false" aria-controls="tree_nav_group_4_5_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_9" aria-expanded="false" aria-controls="tree_nav_group_4_6_9"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_5_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1543,11 +1538,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6" aria-expanded="false" aria-controls="tree_nav_group_4_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_7"></a>
 
         <a class="nav-link" href="/ja/accounts.html">アカウント</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
@@ -1632,7 +1627,12 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/time-escrows.html">Create Time-based Escrows</a>
+    <a class="nav-link nav-leaf" href="/ja/create-time-based-escrows.html">Create Time-based Escrows</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-conditional-escrows.html">Create Conditional Escrows</a>
   </div>
 
     </nav>
@@ -1751,17 +1751,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/production-readiness.html">本番環境への準備</a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1809,19 +1804,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1854,11 +1849,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_2" aria-expanded="false" aria-controls="tree_nav_group_5_5_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1871,11 +1866,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checksの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1917,11 +1912,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7" aria-expanded="false" aria-controls="tree_nav_group_5_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
