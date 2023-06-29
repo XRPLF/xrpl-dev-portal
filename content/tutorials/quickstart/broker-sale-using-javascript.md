@@ -1,6 +1,6 @@
 ---
-html: broker-sale.html
-parent: xrpl-quickstart.html
+html: broker-sale-using-javascript.html
+parent: nftokens-using-javascript.html
 blurb: Broker a sale between a sell offer and a buy offer.
 labels:
   - Accounts
@@ -8,8 +8,7 @@ labels:
   - Broker
   - XRP
 ---
-
-# Broker a NFToken Sale
+# Broker a NFToken Sale Using JavaScript
 
 Earlier examples showed how to make buy and sell offers directly between two accounts. Another option is to use a third account as a broker for the sale. The broker acts on behalf of the NFToken owner. The seller creates an offer with the broker account as its destination. The broker gathers and evaluates buy offers and chooses which one to accept, adding an agreed-upon fee for arranging the sale. When the broker account accepts a sell offer with a buy offer, the funds and ownership of the NFToken are transferred simultaneously, completing the deal. This allows an account to act as a marketplace or personal agent for NFToken creators and traders.
 

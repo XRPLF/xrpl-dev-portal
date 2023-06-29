@@ -1,6 +1,6 @@
 ---
-html: xrpl-quickstart.html
-parent: tutorials.html
+html: send-payments-using-javascript.html
+parent: modular-tutorials-in-javascript.html
 blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTokens.
 labels:
   - Accounts
@@ -11,7 +11,7 @@ labels:
   - Tokens
   - XRP
 ---
-# XRPL Quickstart
+# Send Payments Using JavaScript
 
 The XRP Ledger (XRPL) is a robust, secure, customizable service. You can create your own interface to try out the capabilities and support your specific business needs.
 

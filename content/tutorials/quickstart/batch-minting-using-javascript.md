@@ -1,6 +1,6 @@
 ---
-html: batch-minting.html
-parent: xrpl-quickstart.html
+html: batch-minting-using-javascript.html
+parent: nftokens-using-javascript.html
 blurb: Broker a sale between a sell offer and a buy offer.
 labels:
   - Accounts
@@ -8,8 +8,7 @@ labels:
   - Broker
   - XRP
 ---
-
-# Batch Mint NFTokens
+# Batch Mint NFTokens Using JavaScript
 
 You can create an application that mints multiple NFTokens at one time. You can use a `for` loop to send one transaction after another.
 

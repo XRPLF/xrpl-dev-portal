@@ -1,6 +1,5 @@
 ---
 html: get-started.html
-parent: tutorials.html
 blurb: XRP Ledgerを使用する際に必要となるリソースの一部をご紹介します。
 filters:
   - js_editor

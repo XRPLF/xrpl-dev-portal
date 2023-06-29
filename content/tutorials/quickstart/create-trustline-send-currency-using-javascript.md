@@ -1,6 +1,6 @@
 ---
-html: create-trustline-send-currency.html
-parent: xrpl-quickstart.html
+html: create-trustline-send-currency-using-javascript.html
+parent: send-payments-using-javascript.html
 blurb: Create Trust Lines and send currency.
 labels:
   - Cross-Currency
@@ -9,8 +9,7 @@ labels:
   - Tokens
 
 ---
-
-# Create Trust Line and Send Currency
+# Create Trust Line and Send Currency Using JavaScript
 
 This example shows how to:
 

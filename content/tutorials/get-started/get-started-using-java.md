@@ -1,6 +1,6 @@
 ---
 html: get-started-using-java.html
-parent: get-started.html
+parent: java.html
 funnel: Build
 doc_type: Tutorials
 category: Get Started
@@ -12,7 +12,6 @@ labels:
   - Development
 showcase_icon: assets/img/logos/java.svg
 ---
-
 # Get Started Using Java
 
 This tutorial walks you through the basics of building an XRP Ledger-connected application using [`xrpl4j`](https://github.com/XRPLF/xrpl4j), a pure Java library built to interact with the XRP Ledger.

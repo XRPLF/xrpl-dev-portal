@@ -1492,106 +1492,24 @@ pages:
         targets:
             - ja
 
-    -   name: Quickstart
-        html: quickstart.html
-        parent: tutorials.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/xrpl-quickstart.md
-        parent: quickstart.html
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/create-accounts-send-xrp.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/create-trustline-send-currency.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/create-time-based-escrows.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/create-conditional-escrows.md
-        targets:
-            - en
-            - ja
-            
-    -   name: NFTokens Quickstart
-        html: nft-quickstart.html
-        parent: quickstart.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Mint and sell NFTokens on the XRP Ledger.
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/mint-and-burn-nftokens.md
-        parent: nft-quickstart.html
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/transfer-nftokens.md
-        parent: nft-quickstart.html
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/broker-sale.md
-        parent: nft-quickstart.html
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/authorize-minter.md
-        parent: nft-quickstart.html
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/batch-minting.md
-        parent: nft-quickstart.html
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/get-started/get-started.md
-        targets:
-            - en
-
-    -   md: tutorials/get-started/get-started.ja.md
-        targets:
-            - ja
-
     -   md: tutorials/get-started/public-servers.md
         targets:
             - en
 
     -   md: tutorials/get-started/public-servers.ja.md
         targets:
+            - ja
+    
+    # Python -------------------------------------------------------------------
+
+    -   name: Python
+        html: python.html
+        parent: tutorials.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPL tutorials in Python.
+        targets:
+            - en
             - ja
 
         # TODO: translate
@@ -1600,8 +1518,29 @@ pages:
             - en
             - ja
 
-        # TODO: translate
-    -   md: tutorials/get-started/get-started-using-java.md
+    -   name: Modular Tutorials in Python
+        html: modular-tutorials-in-python.html
+        parent: python.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Modular XRPL tutorials in Python.
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/build-apps/build-a-desktop-wallet-in-python.md
+        targets:
+          - en
+          - ja # TODO: translate this page
+
+    # JavaScript ---------------------------------------------------------------
+
+    -   name: JavaScript
+        html: javascript.html
+        parent: tutorials.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPL tutorials in JavaScript.
         targets:
             - en
             - ja
@@ -1639,12 +1578,119 @@ pages:
             - en
             - ja
 
-    -   md: tutorials/get-started/get-started-using-http-websocket-apis.md
+    -   name: Modular Tutorials in JavaScript
+        html: modular-tutorials-in-javascript.html
+        parent: javascript.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Modular XRPL tutorials in JavaScript.
         targets:
             - en
+            - ja
 
-    -   md: tutorials/get-started/get-started-using-http-websocket-apis.ja.md
+        # TODO: translate
+    -   md: tutorials/quickstart/send-payments-using-javascript.md
         targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/create-accounts-send-xrp-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/create-trustline-send-currency-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/create-time-based-escrows-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/create-conditional-escrows-using-javascript.md
+        targets:
+            - en
+            - ja
+
+    -   name: NFTokens Using JavaScript
+        html: nftokens-using-javascript.html
+        parent: modular-tutorials-in-javascript.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Mint and sell NFTokens on the XRP Ledger.
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/mint-and-burn-nftokens-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/transfer-nftokens-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/broker-sale-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/authorize-minter-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/batch-minting-using-javascript.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/build-apps/build-a-browser-wallet-using-javascript.md
+        targets:
+          - en
+          - ja # TODO: translate this page
+
+    # Java ---------------------------------------------------------------------
+
+    -   name: Java
+        html: java.html
+        parent: tutorials.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPL tutorials in Java.
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/get-started/get-started-using-java.md
+        targets:
+            - en
+            - ja
+
+    # HTTP / Websocket Tutorials ---------------------------------------------------
+
+    -   name: HTTP / Websocket APIs
+        html: http-websocket-apis-tutorials.html
+        parent: tutorials.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPL tutorials for HTTP / Websocket APIs.
+        targets:
+            - en
             - ja
 
         # Redirect for old HTTP/WebSocket APIs URL
@@ -1657,11 +1703,11 @@ pages:
             - en
             - ja
 
-    -   md: tutorials/get-started/send-xrp.md
+    -   md: tutorials/get-started/get-started-using-http-websocket-apis.md
         targets:
             - en
 
-    -   md: tutorials/get-started/send-xrp.ja.md
+    -   md: tutorials/get-started/get-started-using-http-websocket-apis.ja.md
         targets:
             - ja
 
@@ -1673,66 +1719,23 @@ pages:
         targets:
             - ja
 
-        # Send old "Use Direct XRP Payments" landing to "Get Started" instead
-    -   name: Use Direct XRP Payments
-        html: use-simple-xrp-payments.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: get-started.html
-        targets:
-            - en
-            - ja
+    # Tasks --------------------------------------------------------------------
 
-    -   name: Build Apps
-        html: build-apps.html
+    -   name: Tasks
+        html: tasks.html
         parent: tutorials.html
+        top_nav_grouping: Article Types
         template: pagetype-category.html.jinja
-        blurb: Develop applications and services that use the XRP Ledger.
-        targets:
-            - en
-
-    -   name: アプリケーションの構築
-        html: build-apps.html
-        parent: tutorials.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerを利用したアプリケーションやサービスを開発しましょう。
-        targets:
-            - ja
-
-    -   md: tutorials/build-apps/build-a-desktop-wallet-in-python.md
-        targets:
-          - en
-          - ja # TODO: translate this page
-
-    -   md: tutorials/build-apps/build-a-browser-wallet-in-js.md
-        targets:
-          - en
-          - ja # TODO: translate this page
-          
-        # Redirect old Production Readiness category. 
-        # There's no equivalent category now, so go to Tutorials top
-    -   name: Production Readiness
-        html: production-readiness.html
-        redirect_url: tutorials.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
+        blurb: Common tasks on the XRP Ledger.
         targets:
             - en
             - ja
 
-        # Redirect for this page's new home outside of tutorials
-    -   name: Cancel or Skip a Transaction
-        html: cancel-or-skip-a-transaction.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: about-canceling-a-transaction.html
-        targets:
-            - en
-            - ja
+        # Manage Account Settings ----------------------------------------------
 
     -   name: Manage Account Settings
         html: manage-account-settings.html
-        parent: tutorials.html
+        parent: tasks.html
         template: pagetype-category.html.jinja
         blurb: Set up your XRP Ledger account to send and receive payments the way you want it to.
         targets:
@@ -1740,7 +1743,7 @@ pages:
 
     -   name: アカウントの設定の利用
         html: manage-account-settings.html
-        parent: tutorials.html
+        parent: tasks.html
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerアカウントを設定して、思い通りの支払いをしましょう。
         targets:
@@ -1813,11 +1816,19 @@ pages:
         targets:
             - ja
 
-    # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
+    -   md: tutorials/get-started/send-xrp.md
+        targets:
+            - en
+
+    -   md: tutorials/get-started/send-xrp.ja.md
+        targets:
+            - ja
+
+        # Use Specialized Payment Types -------------------------------------------------------- 
 
     -   name: Use Specialized Payment Types
         html: use-specialized-payment-types.html
-        parent: tutorials.html
+        parent: tasks.html
         template: pagetype-category.html.jinja
         blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger.
         targets:
@@ -1825,7 +1836,7 @@ pages:
 
     -   name: 専門化した支払いタイプの使用
         html: use-specialized-payment-types.html
-        parent: tutorials.html
+        parent: tasks.html
         template: pagetype-category.html.jinja
         blurb: EscrowやPayment Channelなどの高度な機能を使用して、XRP Ledgerでスマートアプリケーションを構築しましょう。
         targets:
@@ -1968,9 +1979,11 @@ pages:
         targets:
             - ja
 
+        # Use Tokens ------------------------------------------------------------------ 
+
     -   name: Use Tokens
         html: use-tokens.html
-        parent: tutorials.html
+        parent: tasks.html
         blurb: Create and trade tokens (fungible or otherwise) in the XRP Ledger.
         template: pagetype-category.html.jinja
         targets:
@@ -1978,7 +1991,7 @@ pages:
 
     -   name: トークンの利用
         html: use-tokens.html
-        parent: tutorials.html
+        parent: tasks.html
         blurb: XRP Ledgerでトークン(代替型やそれ以外)を発行し、取引しましょう
         template: pagetype-category.html.jinja
         targets:
@@ -2013,6 +2026,49 @@ pages:
         targets:
             - en
             - ja
+
+        # Redirect to tutorial parent nav.
+    -   name: Get Started
+        html: get-started.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: tutorials.html
+        targets:
+            - en
+            - ja
+
+        # Send old "Use Direct XRP Payments" landing to "Get Started" instead
+    -   name: Use Direct XRP Payments
+        html: use-simple-xrp-payments.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: send-xrp.html
+        targets:
+            - en
+            - ja
+
+        # Redirect old Production Readiness category. 
+        # There's no equivalent category now, so go to Tutorials top
+    -   name: Production Readiness
+        html: production-readiness.html
+        redirect_url: tutorials.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+        # Redirect for this page's new home outside of tutorials
+    -   name: Cancel or Skip a Transaction
+        html: cancel-or-skip-a-transaction.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: about-canceling-a-transaction.html
+        targets:
+            - en
+            - ja
+
+    # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
 
     # Redirect for "Interoperability - EVM Sidechain" tutorial landing page
     -   name: Interoperability - EVM Sidechain
@@ -2791,7 +2847,7 @@ pages:
             - ja
 
 
-    # HTTP / Websocket APIs ----------------------------------------------------
+    # HTTP / Websocket APIs References ----------------------------------------------------
 
     -   name: HTTP / WebSocket APIs
         html: http-websocket-apis.html

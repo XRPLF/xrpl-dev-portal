@@ -1,11 +1,12 @@
 ---
-parent: build-apps.html
+html: build-a-browser-wallet-using-javascript.html
+parent: javascript.html
 targets:
   - en
   - ja # TODO: translate this page
 blurb: Build a graphical browser wallet for the XRPL using Javascript.
 ---
-# Build A Browser Wallet Using JS
+# Build A Browser Wallet Using JavaScript
 <!-- STYLE_OVERRIDE: wallet -->
 
 This tutorial demonstrates how to build a browser wallet for the XRP Ledger using the Javascript programming language and various libraries. This application can be used as a starting point for building a more complete and powerful application, as a reference point for building comparable apps, or as a learning experience to better understand how to integrate XRP Ledger functionality into a larger project.
