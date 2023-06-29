@@ -175,3 +175,4 @@ The response follows the [standard format][], with a successful result containin
 
 
 {% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
