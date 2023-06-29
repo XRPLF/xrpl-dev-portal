@@ -68,6 +68,15 @@ A `ModifiedNode` object contains the following fields:
 
 **Note:** If the modified ledger object has `PreviousTxnID` and `PreviousTxnLgrSeq` fields, the transaction always updates them with the transaction's own identifying hash and the index of the ledger version that included the transaction, but these fields' new value is not listed in the `FinalFields` of the `ModifiedNode` object, and their previous values are listed at the top level of the `ModifiedNode` object rather than in the nested `PreviousFields` object.
 
+## NFT Fields
+
+Transactions (`tx` and `account_tx`) involving NFTs can contain the following fields in the metadata. These values are added by the Clio server at request time and are not stored in the hashed binary metadata:
+
+| Field               | Value                     | Description                |
+|:--------------------|:--------------------------|:---------------------------|
+| `nftoken_id`        | String                    | Shows the `NFTokenID` for the `NFToken` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenMint` or `NFTokenAcceptOffer`. See [NFTokenID](nftoken.html#nftokenid). |
+| `nftoken_ids`       | Array                     | Shows all the `NFTokenIDs` for the `NFTokens` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenCancelOffer`. |
+| `offer_id`          | String                    | Shows the `OfferID`of a new `NFTokenOffer` in a response from a `NFTokenCreateOffer` transaction.
 
 ## delivered_amount
 
