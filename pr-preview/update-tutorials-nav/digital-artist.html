@@ -289,7 +289,7 @@
 <p>When you create a NFToken, you create a unique token on the XRPL that is effectively a placeholder for an actual physical or digital asset. When you create the NFToken, you provide a URL to a digital file that is the item itself, such as a digital artwork, or a URL to a placeholder that represents an item in the physical world.</p>
 <p>As a digital artist, you’re focused on creating NFTs, presumably to sell on the XRP Ledger (it’s  also possible you might create NFTs as a way of establishing provenance for your creations).</p>
 <p>You can create NFTokens using an app such as the <a class="external-link" href="https://xumm.app" target="_blank">Xumm app <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<p>For a more hands-on experience, you can follow the steps in the <a href="mint-and-burn-nftokens.html">Quickstart Tutorial 3 - Mint and Burn NFTokens</a>. </p>
+<p>For a more hands-on experience, you can follow the steps in the <a href="mint-and-burn-nftokens-using-javascript.html">Quickstart Tutorial 3 - Mint and Burn NFTokens</a>. </p>
 <p><a href="img/nft-mkt-digital-artist.png"><img alt="Digital Artist Flow" src="img/nft-mkt-digital-artist.png" title="Digital Artist Flow"/></a></p>
 <h2 id="use-a-public-server">Use a public server<a aria-hidden="true" class="hover_anchor" href="#use-a-public-server"><i class="fa fa-link"></i></a></h2>
 <p>As you get started, you will likely have comparatively few transactions. You can work with one of the free XRP Ledger public servers. As your business grows, you might consider your own NFT Ledger instance to handle increased sales traffic. See <a href="public-servers.html">Public servers</a>.</p>
@@ -302,9 +302,9 @@
 <li>You can mint NFTs in logical collections using the <code>TokenTaxon</code> field. See <a href="nft-collections.html">Minting NFTs into Collections</a>.</li>
 <li>If you, as the issuer, want to be able to burn the token in the future, set the <code>Flags</code> field to <em>1.</em> To make the NFT transferable, set the <code>Flags</code> field to <em>8</em>. Set the <code>Flags</code> field to <em>9</em> to make the NFT both burnable and transferable. See<a href="nftoken.html#nftoken-flags"> Burnable flag</a> and <a href="nftoken.html#nftoken-flags">Transferable flag</a>.</li>
 </ul>
-<p>See <a href="mint-and-burn-nftokens.html">Mint and Burn NFTokens</a>.</p>
+<p>See <a href="mint-and-burn-nftokens-using-javascript.html">Mint and Burn NFTokens</a>.</p>
 <h2 id="sell-nfts">Sell NFTs<a aria-hidden="true" class="hover_anchor" href="#sell-nfts"><i class="fa fa-link"></i></a></h2>
-<p>You transfer NFTs by creating a sell offer. See <a href="transfer-nftokens.html">Transfer NFTokens</a>.</p>
+<p>You transfer NFTs by creating a sell offer. See <a href="transfer-nftokens-using-javascript.html">Transfer NFTokens</a>.</p>
 <p>You can sell your NFTs in an auction format. See <a href="nftoken-auctions.html">Running an NFT Auction</a>.</p>
 <h3 id="reserve-requirements">Reserve requirements<a aria-hidden="true" class="hover_anchor" href="#reserve-requirements"><i class="fa fa-link"></i></a></h3>
 <p>There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.</p>
@@ -317,7 +317,7 @@
 <li>Trivial <a href="transfer-fees.html">transfer fees</a></li>
 </ol>
 <h3 id="checkout">Checkout<a aria-hidden="true" class="hover_anchor" href="#checkout"><i class="fa fa-link"></i></a></h3>
-<p>The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see <a href="transfer-nftokens.html">Transfer NFTokens</a>.</p>
+<p>The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see <a href="transfer-nftokens-using-javascript.html">Transfer NFTokens</a>.</p>
 <p>For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See <a href="trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange">Trade in the Decentralized Exchange</a>.</p>
 <!-- 
 
