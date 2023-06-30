@@ -47,5 +47,4 @@ The XRP Ledger is an opensource project with publicly available client libraries
 - [Cryptographic Keys](cryptographic-keys.html)
 - [Client Libraries](client-libraries.html)
 - [Ledgers](ledgers.html)
-- [XRPL Quickstart](xrpl-quickstart.html)
 - [Build a Desktop Wallet in Python](build-a-desktop-wallet-in-python.html)

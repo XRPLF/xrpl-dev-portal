@@ -1,6 +1,6 @@
 ---
-html: create-accounts-send-xrp.html
-parent: xrpl-quickstart.html
+html: create-accounts-send-xrp-using-javascript.html
+parent: send-payments-using-javascript.html
 blurb: Create two accounts and transfer XRP between them.
 labels:
   - Accounts
@@ -8,7 +8,7 @@ labels:
   - Transaction Sending
   - XRP
 ---
-# Create Accounts and Send XRP
+# Create Accounts and Send XRP Using JavaScript
 
 This example shows how to:
 

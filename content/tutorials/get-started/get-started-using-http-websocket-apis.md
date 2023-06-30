@@ -1,6 +1,6 @@
 ---
 html: get-started-using-http-websocket-apis.html
-parent: get-started.html
+parent: http-websocket-apis-tutorials.html
 blurb: Unleash the full power of the XRP Ledger's native APIs.
 cta_text: Get Started
 top_nav_name: HTTP / WebSocket

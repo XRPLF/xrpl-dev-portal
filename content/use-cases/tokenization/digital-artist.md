@@ -17,7 +17,7 @@ As a digital artist, you’re focused on creating NFTs, presumably to sell on th
 
 You can create NFTokens using an app such as the [Xumm app](https://xumm.app).
 
-For a more hands-on experience, you can follow the steps in the [Quickstart Tutorial 3 - Mint and Burn NFTokens](mint-and-burn-nftokens.html). 
+For a more hands-on experience, you can follow the steps in the [Quickstart Tutorial 3 - Mint and Burn NFTokens](mint-and-burn-nftokens-using-javascript.html). 
 
 [![Digital Artist Flow](img/nft-mkt-digital-artist.png "Digital Artist Flow")](img/nft-mkt-digital-artist.png)
 
@@ -36,11 +36,11 @@ To create your first NFTs, follow the instructions in the tutorial _Mint and Bur
 * You can mint NFTs in logical collections using the <code>TokenTaxon</code> field. See [Minting NFTs into Collections](nft-collections.html).
 * If you, as the issuer, want to be able to burn the token in the future, set the <code>Flags</code> field to <em>1.</em> To make the NFT transferable, set the <code>Flags</code> field to <em>8</em>. Set the <code>Flags</code> field to <em>9</em> to make the NFT both burnable and transferable. See[ Burnable flag](nftoken.html#nftoken-flags) and [Transferable flag](nftoken.html#nftoken-flags).
 
-See [Mint and Burn NFTokens](mint-and-burn-nftokens.html).
+See [Mint and Burn NFTokens](mint-and-burn-nftokens-using-javascript.html).
 
 ## Sell NFTs
 
-You transfer NFTs by creating a sell offer. See [Transfer NFTokens](transfer-nftokens.html).
+You transfer NFTs by creating a sell offer. See [Transfer NFTokens](transfer-nftokens-using-javascript.html).
 
 You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html).
 
@@ -60,7 +60,7 @@ See:
 
 ### Checkout
 
-The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nftokens.html).
+The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nftokens-using-javascript.html).
 
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange).
 

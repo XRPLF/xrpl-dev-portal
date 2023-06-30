@@ -1,6 +1,6 @@
 ---
 html: get-started-using-python.html
-parent: get-started.html
+parent: python.html
 blurb: Build a Python app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
 top_nav_name: Python
@@ -9,7 +9,6 @@ labels:
   - Development
 showcase_icon: assets/img/logos/python.svg
 ---
-
 # Get Started Using Python
 
 This tutorial walks you through the basics of building an XRP Ledger-connected application using [`xrpl-py`](https://github.com/XRPLF/xrpl-py), a pure [Python](https://www.python.org) library built to interact with the XRP Ledger using native Python models and methods.

@@ -1,14 +1,13 @@
 ---
-html: mint-and-burn-nftokens.html
-parent: xrpl-quickstart.html
+html: mint-and-burn-nftokens-using-javascript.html
+parent: nftokens-using-javascript.html
 blurb: Mint and burn NFTokens.
 labels:
   - Quickstart
   - Tokens
   - Non-fungible tokens, NFTs
 ---
-
-# Mint and Burn NFTokens
+# Mint and Burn NFTokens Using JavaScript
 
 This example shows how to:
 

@@ -1,6 +1,6 @@
 ---
-html: authorize-minter.html
-parent: xrpl-quickstart.html
+html: authorize-minter-using-javascript.html
+parent: nftokens-using-javascript.html
 blurb: Authorize another account to mint NFTokens for you.
 labels:
   - Accounts
@@ -8,8 +8,7 @@ labels:
   - XRP
   - NFTs, NFTokens
 ---
-
-# Assign an Authorized Minter
+# Assign an Authorized Minter Using JavaScript
 
 You can assign another account permission to mint NFTokens for you.
 
@@ -205,7 +204,7 @@ Report success
   standbyResultField.value = results    
 ```
       
-This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nftokens.html#mint-token), with the addition of the `Issuer` field.
+This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nftokens-using-javascript.html#mint-token), with the addition of the `Issuer` field.
 
 ```javascript
   const tx_json = {
