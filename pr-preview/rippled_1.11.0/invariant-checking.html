@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Invariant Checking | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/invariant-checking.html" />
-    <meta property="og:description" content="Understand what Invariant Checking is, why it exists, how it works, and what invariant checks are active." />
-    <meta name="description" content="Understand what Invariant Checking is, why it exists, how it works, and what invariant checks are active." />
+    <meta property="og:description" content="Understand what invariant checking is, why it exists, how it works, and what invariant checks are active." />
+    <meta name="description" content="Understand what invariant checking is, why it exists, how it works, and what invariant checks are active." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -282,6 +282,8 @@
         <li class="nav-item level-3"><a class="nav-link" href="#no-bad-offers">No Bad Offers</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#no-zero-escrow">No Zero Escrow</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#valid-new-account-root">Valid New Account Root</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#validnftokenpage">ValidNFTokenPage</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokencounttracking">NFTokenCountTracking</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
       </ul>
   </div>
@@ -416,6 +418,31 @@
 <li>A new <a href="accountroot.html">account root</a> must be the consequence of a payment.</li>
 <li>A new account root must have the right starting <a href="basic-data-types.html#account-sequence">sequence</a>.</li>
 <li>A transaction must not create more than one new <a href="accounts.html">account</a>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="validnftokenpage">ValidNFTokenPage<a aria-hidden="true" class="hover_anchor" href="#validnftokenpage"><i class="fa fa-link"></i></a></h3>
+<ul>
+<li><strong>Invariant Condition(s):</strong><ul>
+<li>The number of minted or burned NFTs can only be changed by <code>NFTokenMint</code> or <code>NFTokenBurn</code> transactions.</li>
+<li>A successful NFTokenMint transaction must increase the number of NFTs.</li>
+<li>A failed NFTokenMint transaction must not change the number of minted NFTs.</li>
+<li>A NFTokenMint transaction cannot change the number of burned NFTs.</li>
+<li>A successful NFTokenBurn transaction must increase the number of burned NFTs.</li>
+<li>A failed NFTokenBurn transaction must not change the number of burned NFTs.</li>
+<li>A NFTokenBurn transaction cannot change the number of minted NFTs.</li>
+</ul>
+</li>
+</ul>
+<h3 id="nftokencounttracking">NFTokenCountTracking<a aria-hidden="true" class="hover_anchor" href="#nftokencounttracking"><i class="fa fa-link"></i></a></h3>
+<ul>
+<li><strong>Invariant Condition(s):</strong><ul>
+<li>The page is correctly associated with the owner.</li>
+<li>The page is correctly ordered between the next and previous links.</li>
+<li>The page contains a valid number of NFTs.</li>
+<li>The NFTs on this page do not belong on a lower or higher page.</li>
+<li>The NFTs are correctly sorted on the page.</li>
+<li>Each URI, if present, is not empty.</li>
 </ul>
 </li>
 </ul>

@@ -272,6 +272,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#creatednode-fields">CreatedNode Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#deletednode-fields">DeletedNode Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#modifiednode-fields">ModifiedNode Fields</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nft-fields">NFT Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#delivered_amount">delivered_amount</a></li>
       </ul>
   </div>
@@ -919,6 +920,34 @@
 </tbody>
 </table>
 <p class="devportal-callout note"><strong>Note:</strong> If the modified ledger object has <code>PreviousTxnID</code> and <code>PreviousTxnLgrSeq</code> fields, the transaction always updates them with the transaction's own identifying hash and the index of the ledger version that included the transaction, but these fields' new value is not listed in the <code>FinalFields</code> of the <code>ModifiedNode</code> object, and their previous values are listed at the top level of the <code>ModifiedNode</code> object rather than in the nested <code>PreviousFields</code> object.</p>
+<h2 id="nft-fields">NFT Fields<a aria-hidden="true" class="hover_anchor" href="#nft-fields"><i class="fa fa-link"></i></a></h2>
+<p>Transactions (<code>tx</code> and <code>account_tx</code>) involving NFTs can contain the following fields in the metadata. These values are added by the Clio server at request time and are not stored in the hashed binary metadata:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Value</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>nftoken_id</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Shows the <code>NFTokenID</code> for the <code>NFToken</code> that changed on the ledger as a result of the transaction. Only present if the transaction is <code>NFTokenMint</code> or <code>NFTokenAcceptOffer</code>. See <a href="nftoken.html#nftokenid">NFTokenID</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nftoken_ids</code></td>
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;">Shows all the <code>NFTokenIDs</code> for the <code>NFTokens</code> that changed on the ledger as a result of the transaction. Only present if the transaction is <code>NFTokenCancelOffer</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>offer_id</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Shows the <code>OfferID</code>of a new <code>NFTokenOffer</code> in a response from a <code>NFTokenCreateOffer</code> transaction.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="delivered_amount">delivered_amount<a aria-hidden="true" class="hover_anchor" href="#delivered_amount"><i class="fa fa-link"></i></a></h2>
 <p>The <code>Amount</code> of a <a href="payment.html">Payment transaction</a> indicates the amount to deliver to the <code>Destination</code>, so if the transaction was successful, then the destination received that much -- <strong>except if the transaction was a <a href="partial-payments.html">partial payment</a></strong>. (In that case, any positive amount up to <code>Amount</code> might have arrived.) Rather than choosing whether or not to trust the <code>Amount</code> field, you should use the <code>delivered_amount</code> field of the metadata to see how much actually reached its destination.</p>
 <p>The <code>rippled</code> server provides a <code>delivered_amount</code> field in JSON transaction metadata for all successful Payment transactions. This field is formatted like a normal currency amount. However, the delivered amount is not available for transactions that meet both of the following criteria:</p>
