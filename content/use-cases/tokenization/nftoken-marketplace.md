@@ -34,11 +34,11 @@ Current wallet options on XRPL: This is a good opportunity for XRPL to highlight
 
 ### Transferring NFTs
 
-You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nftokens.html).
+You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nftokens-using-javascript.html).
 
 You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html).
 
-You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](broker-sale.html).
+You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](broker-sale-using-javascript.html).
 
 
 ### Reserve requirements
@@ -60,11 +60,11 @@ You can learn more about brokered sales in the topic [Trading Tokens on the XRP 
 
 Learn more about token transfer fees in the topic [Transfer Fees](transfer-fees.html).
 
-You can get started building a brokered sales marketplace by following the steps in the [Broker a NFToken Sale](broker-sale.html). 
+You can get started building a brokered sales marketplace by following the steps in the [Broker a NFToken Sale](broker-sale-using-javascript.html). 
 
 ### Checkout
 
-The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nftokens.html).
+The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nftokens-using-javascript.html).
 
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange).
 
