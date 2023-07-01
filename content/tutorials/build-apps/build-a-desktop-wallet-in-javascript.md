@@ -27,14 +27,10 @@ You can find the complete source code for all of this tutorial's examples in the
 
 ## Rationale
 
-This tutorial takes you through the process of creating a XRP Wallet application from scratch. Starting with a simple,
-"Hello World" like example with minimal functionality, step-by-step we will add more and more complex features.
+This tutorial will take you through the process of creating a XRP Wallet application from scratch. Starting with a simple,
+"Hello World" like example with minimal functionality, we will step-by-step add more complex features.
 
-As JavaScript is a programming language that originated in the web browser ecosystem, it's not natively 
-supporting the creation of desktop applications. We have to pick a frameworks that enable us to write 
-desktop applications with JavaScript. For this tutorial we will use the [Electron Framework](https://www.electronjs.org/), as it is well 
-established, documented and will get us up and running without having to care for dependencies and stuff that would make 
-us divert too much from the goals of this tutorial.
+We will use the well-established [Electron Framework](https://www.electronjs.org/) to let us use JavaScript to write this desktop application. 
 
 ## Goals
 
