@@ -119,11 +119,11 @@ The file `view/1_preload.js` does the main wiring of the application. The file `
 
 This example shows how to do Inter Process Communication (IPC) in Electron. Technically, JavaScript has no true parallel processes or threading, because it follows a single-threaded event-driven paradigm. Nonetheless Electron provides us with two IPC modules called `ipcMain` and `ipcRenderer`. We can roughly equate those two to a backend process and a frontend process when we think in terms of client-server applications. It works as follows:
 
-1. Create a function that enables the frontend to subscribe to backend events (in `view/1_preload.js`)
-2. Make the function available by preloading it (webPreferences.preload during window creation)
-3. Create a frontend view
-4. Use that function in the frontend (e.g. 1_renderer.js, loaded in 1_hello.html) to attach a callback that handles frontend updates when the event is dispatched
-5. Dispatch the event from the backend (e.g. appWindow.webContents.send('update-ledger-index', value))
+1. We start by create a function that enables the frontend to subscribe to backend events (in `view/1_preload.js`)
+2. Then we make the function available by preloading it (webPreferences.preload during window creation)
+3. This creates a frontend view
+4. On the frontend, we can then use that function to attach a callback that handles frontend updates when the event is dispatched (e.g. How `1_renderer.js` is loaded in `1_hello.html`)
+5. Lastly, we dispatch the event from the backend (e.g. appWindow.webContents.send('update-ledger-index', value))
 
 In the package.json file we have already defined some prepared commands to run our application according to the steps comprising the
 structure of this tutorial. To get the application running at this early stage of development, run the following command:
