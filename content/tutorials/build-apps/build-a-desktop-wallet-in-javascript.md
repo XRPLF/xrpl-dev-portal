@@ -141,7 +141,7 @@ npm run hello
 [`view/2_async.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/2_async.html),
 [`view/2_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/2_renderer.js).
 
-Our "Hello Ledger" application from Step 1. so far only shows the latest validated ledger sequence at the time when we opened it. So let's take things up a notch and add some dashboard like functionality where our wallet app will keep in sync with the ledger and display the latest specs and stats like a clock that is keeping track on time:
+Our "Hello Ledger" application from Step 1. so far only shows the latest validated ledger sequence at the time when we opened it. So let's take things up a notch and add some dashboard like functionality where our wallet app will keep in sync with the ledger and display the latest specs and stats like a clock that is keeping track of time:
 
 ![Screenshot: Step 2, show ledger updates](img/javascript-wallet-2.png)
 
