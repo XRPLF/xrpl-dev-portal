@@ -66,7 +66,9 @@ To initialize the project, create a package.json file with the following content
 
 {{ include_code("_code-samples/build-a-wallet/desktop-js/package.json", language="js", lines="1-28") }}
 
-Here we define the libraries our application will use in the `dependencies` section as well as shortcuts for running our application in the `scripts` section. To install those dependencies, run the following command:
+Here we define the libraries our application will use in the `dependencies` section as well as shortcuts for running our application in the `scripts` section. 
+
+After you create your package.json file, install those dependencies by running the following command: 
 ```console
 npm install
 ```
