@@ -97,7 +97,10 @@ First, we will create an entrypoint for our application, for this we create the 
 
 This code has two parts: one that creates the application window and one that calls the XRP Ledger API's [ledger method](ledger.html). The code then broadcasts an event with the API response as the payload. The frontend picks up this event and uses the payload to display the index of most recently validated ledger.
 
-To display our results to the user, we need to create the view components that we specified in the `createWindow()` function. For this, we will create a `view` folder and add the following files there:
+In order to make that work, we need to implement the views referenced in `createWindow()` to tell the frontend how to display the payload. 
+
+1. Create a `view` folder next to your `package.lock` file.
+2. In the `view` folder, add the following 3 files:
 
 <!-- MULTICODE_BLOCK_START -->
 
