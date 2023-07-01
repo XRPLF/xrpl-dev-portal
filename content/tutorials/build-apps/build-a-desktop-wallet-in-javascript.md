@@ -62,7 +62,7 @@ and asynchronous (async) code in JavaScript.
 
 ### 0. Project setup
 
-To initialize the project we will create a package.json file with the following content:
+To initialize the project, create a package.json file with the following content:
 
 {{ include_code("_code-samples/build-a-wallet/desktop-js/package.json", language="js", lines="1-28") }}
 
