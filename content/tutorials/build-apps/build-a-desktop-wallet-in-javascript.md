@@ -60,15 +60,36 @@ and asynchronous (async) code in JavaScript.
 
 ## Steps
 
-### 0. Project setup
+### 0. Project setup - Hello World
 
-To initialize the project, create a package.json file with the following content:
+1. To initialize the project, create a package.json file with the following content:
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/package.json", language="js", lines="1-28") }}
+```json
+{
+  "name": "xrpl-javascript-desktop-wallet",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ./index.js"
+  },
+  "dependencies": {
+    "async": "^3.2.4",
+    "fernet": "^0.4.0",
+    "node-fetch": "^2.6.9",
+    "pbkdf2-hmac": "^1.1.0",
+    "open": "^8.4.0",
+    "toml": "^3.0.0",
+    "xrpl": "^2.6.0"
+  },
+  "devDependencies": {
+    "electron": "22.3.2"
+  }
+}
+```
 
 Here we define the libraries our application will use in the `dependencies` section as well as shortcuts for running our application in the `scripts` section. 
 
-After you create your package.json file, install those dependencies by running the following command: 
+2. After you create your package.json file, install those dependencies by running the following command: 
 ```console
 npm install
 ```
@@ -76,51 +97,214 @@ npm install
 This installs the Electron Framework, the xrpl.js client library and a couple of helpers we are going to need for our
 application to work. 
 
-### 1. Hello XRP Ledger
+2. In the root folder, create an `index.js` file with the following content:
+
+```javascript
+const { app, BrowserWindow } = require('electron')
+
+const path = require('path')
+
+/**
+ * This is our main function, it creates our application window, preloads the code we will need to communicate
+ * between the renderer Process and the main Process, loads a layout and performs the main logic
+ */
+const createWindow = () => {
+
+  // Creates the application window
+  const appWindow = new BrowserWindow({
+    width: 1024,
+    height: 768
+  })
+
+  // Loads a layout
+  appWindow.loadFile(path.join(__dirname, 'view', 'template.html'))
+
+  return appWindow
+}
+
+// Here we have to wait for the application to signal that it is ready
+// to execute our code. In this case we just create a main window.
+app.whenReady().then(() => {
+  createWindow()
+})
+```
+
+3. Make a new folder named `view` in the root directory of the project.
+
+4. Now, inside the `view` folder, add a `template.html` file with the following content:
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <title>XRPL Wallet Tutorial (JavaScript / Electron)</title>
+</head>
+
+<body>
+
+  <h3>Build a XRPL Wallet</h3>
+  <span>Hello world!</span>
+
+</body>
+
+</html>
+```
+5. Now, start the application with the following command:
+
+```console
+npm run start
+```
+
+To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
+
+```console
+npm run hello
+```
+
+In the next steps we will continually expand on this very setup. To better keep track of all the changes that will be made, the files in the [reference section]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/) are numbered/prefixed with the respective step number:
+
+**Full code for this step:**
+[`0_hello.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/0_hello.js),
+[`view/0_hello.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/0_hello.html),
+
+### 1. Ledger Index
 
 **Full code for this step:** 
-[`1_hello.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/1_hello.js),
+[`1_ledger-index.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/1_ledger-index.js),
 [`view/1_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/1_preload.js),
-[`view/1_hello.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/1_hello.html),
+[`view/1_ledger-index.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/1_ledger-index.html),
 [`view/1_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/1_renderer.js).
 
-Our first step is to write a "Hello World" like application, that interacts on a very basic level with the XRP Ledger 
-and displays some high-level information about the current ledger state on the screen. Nothing too fancy so far, as we 
-will take care of styling and GUI related coding in a later step:
+Our first step was to have a running "Hello World" application. Now we want to expand on that so that the application can interact on a very basic level with the XRP Ledger and display some information about the current ledger state on the screen. After completing this step, the - for the time being unstyled - application should look like this:
 
 ![Screenshot: Step 1, hello world equivalent](img/javascript-wallet-1.png)
 
-First, we will create an entrypoint for our application, for this we create the file `1_hello.js` with the following content:
+1. Update `index.js` by adding the following snippet below the import section at the top of the file below the `path` import:
+```javascript
+const xrpl = require("xrpl")
 
-`1_hello.js`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/1_hello.js", language="js") }}
+const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
-This code has two parts: one that creates the application window and one that calls the XRP Ledger API's [ledger method](ledger.html). The code then broadcasts an event with the API response as the payload. The frontend picks up this event and uses the payload to display the index of most recently validated ledger.
+/**
+ * This function creates a WebService client, which connects to the XRPL and fetches the latest ledger index.
+ *
+ * @returns {Promise<number>}
+ */
+const getValidatedLedgerIndex = async () => {
+  const client = new xrpl.Client(TESTNET_URL)
 
-In order to make that work, we need to implement the views referenced in `createWindow()` to tell the frontend how to display the payload. 
+  await client.connect()
 
-1. Create a `view` folder next to your `package.lock` file.
-2. In the `view` folder, add the following 3 files:
+  // Reference: https://xrpl.org/ledger.html#ledger
+  const ledgerRequest = {
+    "command": "ledger",
+    "ledger_index": "validated"
+  }
 
-<!-- MULTICODE_BLOCK_START -->
+  const ledgerResponse = await client.request(ledgerRequest)
 
-*view/1_preload.js*
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/1_preload.js", language="js") }}
+  await client.disconnect()
 
-*view/1_hello.html*
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/1_hello.html", language="html") }}
+  return ledgerResponse.result.ledger_index
+}
+```
 
-*view/1_renderer.js*
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/1_renderer.js", language="js") }}
+This helper function calls the XRP Ledger API's [ledger method](ledger.html) and returns the ledger index from the response.
 
-<!-- MULTICODE_BLOCK_END-->
+2. In order to prepare the frontend to receive data from the main application, modify the `createWindow`method in `index.js` by adding the following code:
 
-The file `view/1_preload.js` does the main wiring of the application. The file `view/1_hello.html` defines the template part of the view. The file `view/1_renderer.js` contains scripts used in the template; you could also have put these in the HTML file, but it's a good practice to separate them so the code is more readable.
+```javascript
+  // Creates the application window
+const appWindow = new BrowserWindow({
+  width: 1024,
+  height: 768,
+  // Step 1 code additions - start
+  webPreferences: {
+    preload: path.join(__dirname, 'view', 'preload.js'),
+  },
+  // Step 1 code additions - end
+})
+```
+3. Now in the `view` folder, create a file `preload.js`with the following content:
+
+```javascript
+const { contextBridge, ipcRenderer } = require('electron');
+
+// Expose functionality from main process (aka. "backend") to be used by the renderer process(aka. "backend")
+contextBridge.exposeInMainWorld('electronAPI', {
+  // By calling "onUpdateLedgerIndex" in the frontend process we can now attach a callback function to
+  // by making onUpdateLedgerIndex available at the window level.
+  // The subscribed function gets triggered whenever the backend process triggers the event 'update-ledger-index'
+  onUpdateLedgerIndex: (callback) => {
+    ipcRenderer.on('update-ledger-index', callback)
+  }
+})
+```
+
+4. In `view/template.html`, modify the line responsible for displaying the static text "Hello world!" to contain a placeholder for the ledger:index:
+
+```html
+<body>
+    <!-- Step 1 code additions - start -->
+    <h3>Build a XRPL Wallet</h3>
+    Latest validated ledger index: <strong id="ledger-index"></strong>
+    <!-- Step 1 code additions - end -->
+</body>
+```
+
+5. In `view/template.html` add the following line at the bottom of the file:
+
+```html
+</body>
+<!-- Step 1 code additions - start -->
+<script src="renderer.js"></script>
+<!-- Step 1 code additions - end -->
+</html>
+```
+
+5. Now create the `renderer.js` file in the `view`folder with the following code:
+
+```javascript
+const ledgerIndexEl = document.getElementById('ledger-index')
+
+// Here we define the callback function that performs the content update
+// whenever 'update-ledger-index' is called by the main process
+window.electronAPI.onUpdateLedgerIndex((_event, value) => {
+    ledgerIndexEl.innerText = value
+})
+
+```
+
+6. To wire up our main application to broadcast the ledger index to the frontend, modify `index.js` by adding the following snippet:
+
+```javascript
+// Here we have to wait for the application to signal that it is ready
+// to execute our code. In this case we create a main window, query
+// the ledger for its latest index and submit the result to the main
+// window where it will be displayed
+app.whenReady().then(() => {
+  // Step 1 code additions - start
+  const appWindow = createWindow()
+  
+  getValidatedLedgerIndex().then((value) => {
+    appWindow.webContents.send('update-ledger-index', value)
+  })
+  // Step 2 code additions - end
+  
+})
+```
+
+Here we call our helper function and then broadcast the result in an event named `update-ledger-index` which can be picked up by the frontend. 
+
 
 This example shows how to do Inter Process Communication (IPC) in Electron. Technically, JavaScript has no true parallel processes or threading, because it follows a single-threaded event-driven paradigm. Nonetheless Electron provides us with two IPC modules called `ipcMain` and `ipcRenderer`. We can roughly equate those two to a backend process and a frontend process when we think in terms of client-server applications. It works as follows:
 
-1. We start by create a function that enables the frontend to subscribe to backend events (in `view/1_preload.js`)
-2. Then we make the function available by preloading it (webPreferences.preload during window creation)
+1. We started by creating a function that enables the frontend to subscribe to backend events (in `view/preload.js`)
+2. Then we make the function available by preloading it (`webPreferences.preload` in `index.js` during window creation)
 3. This creates a frontend view
 4. On the frontend, we can then use that function to attach a callback that handles frontend updates when the event is dispatched (e.g. How `1_renderer.js` is loaded in `1_hello.html`)
 5. Lastly, we dispatch the event from the backend (e.g. appWindow.webContents.send('update-ledger-index', value))
@@ -129,7 +313,13 @@ In the package.json file we have already defined some prepared commands to run o
 structure of this tutorial. To get the application running at this early stage of development, run the following command:
 
 ```console
-npm run hello
+npm run start
+```
+
+To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
+
+```console
+npm run ledger-index
 ```
 
 
@@ -145,7 +335,7 @@ Our "Hello Ledger" application from Step 1. so far only shows the latest validat
 
 ![Screenshot: Step 2, show ledger updates](img/javascript-wallet-2.png)
 
-The code has been refactored (`1_hello.js` to `2_async-subscribe.js`) so that the main logic now resides in a main() function. This allows us to handle the application ready event by using an one-liner at the end of the code. We will do such refactorings regularly along our journey in order to keep the code well managed and readable.
+The code has been refactored (`1_ledger-index.js` to `2_async-subscribe.js`) so that the main logic now resides in a main() function. This allows us to handle the application ready event by using an one-liner at the end of the code. We will do such refactorings regularly along our journey in order to keep the code well managed and readable.
 
 {{ include_code("_code-samples/build-a-wallet/desktop-js/2_async-subscribe.js", language="js", lines="33-53") }}
 
