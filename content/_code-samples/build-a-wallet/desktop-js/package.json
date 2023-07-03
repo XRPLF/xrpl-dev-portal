@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "hello": "electron ./1_hello.js",
+    "hello": "electron ./0_hello.js",
+    "ledger-index": "electron ./1_ledger-index.js",
     "async-poll": "electron ./2_async-poll.js",
     "async-subscribe": "electron ./2_async-subscribe.js",
     "account": "electron ./3_account.js",

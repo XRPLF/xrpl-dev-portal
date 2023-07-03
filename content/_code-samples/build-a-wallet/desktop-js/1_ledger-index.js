@@ -44,7 +44,7 @@ const createWindow = () => {
     })
 
     // Loads a layout
-    appWindow.loadFile(path.join(__dirname, 'view', '1_hello.html'))
+    appWindow.loadFile(path.join(__dirname, 'view', '1_ledger-index.html'))
 
     return appWindow
 }
