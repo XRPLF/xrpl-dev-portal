@@ -6,7 +6,6 @@ const xrpl = require("xrpl");
 // Reference: https://xrpl.org/basic-data-types.html
 const RIPPLE_EPOCH = 946684800;
 
-
 const prepareAccountData = (rawAccountData, reserve) => {
     const numOwners = rawAccountData.OwnerCount || 0
 
@@ -25,7 +24,7 @@ const prepareAccountData = (rawAccountData, reserve) => {
 }
 
 const prepareLedgerData = (rawLedgerData) => {
-    const timestamp = RIPPLE_EPOCH + rawLedgerData.ledger_time
+    const timestamp = RIPPLE_EPOCH + (rawLedgerData.ledger_time ?? rawLedgerData.close_time)
     const dateTime = new Date(timestamp * 1000)
     const dateTimeString = dateTime.toLocaleDateString() + ' ' + dateTime.toLocaleTimeString()
 
@@ -35,7 +34,6 @@ const prepareLedgerData = (rawLedgerData) => {
         ledgerCloseTime: dateTimeString
     }
 }
-
 
 const prepareReserve = (ledger) => {
     const reserveBaseXrp = xrpl.dropsToXrp(ledger.reserve_base)

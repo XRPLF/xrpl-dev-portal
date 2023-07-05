@@ -19,7 +19,7 @@ const createWindow = () => {
         },
     })
 
-    appWindow.loadFile(path.join(__dirname, 'view', '2_async.html'))
+    appWindow.loadFile(path.join(__dirname, 'view', '2_async-subscribe.html'))
 
     return appWindow
 }

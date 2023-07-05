@@ -97,7 +97,7 @@ npm install
 This installs the Electron Framework, the xrpl.js client library and a couple of helpers we are going to need for our
 application to work. 
 
-2. In the root folder, create an `index.js` file with the following content:
+3. In the root folder, create an `index.js` file with the following content:
 
 ```javascript
 const { app, BrowserWindow } = require('electron')
@@ -129,9 +129,9 @@ app.whenReady().then(() => {
 })
 ```
 
-3. Make a new folder named `view` in the root directory of the project.
+4. Make a new folder named `view` in the root directory of the project.
 
-4. Now, inside the `view` folder, add a `template.html` file with the following content:
+5. Now, inside the `view` folder, add a `template.html` file with the following content:
 
 ```html
 <!DOCTYPE html>
@@ -153,7 +153,7 @@ app.whenReady().then(() => {
 
 </html>
 ```
-5. Now, start the application with the following command:
+6. Now, start the application with the following command:
 
 ```console
 npm run start
@@ -165,7 +165,7 @@ To run th reference application found in `content/_code-samples/build-a-wallet/d
 npm run hello
 ```
 
-In the next steps we will continually expand on this very setup. To better keep track of all the changes that will be made, the files in the [reference section]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/) are numbered/prefixed with the respective step number:
+In the next steps we will continually expand on this very basic setup. To better keep track of all the changes that will be made, the files in the [reference section]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/) are numbered/prefixed with the respective step number:
 
 **Full code for this step:**
 [`0_hello.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/0_hello.js),
@@ -183,7 +183,8 @@ Our first step was to have a running "Hello World" application. Now we want to e
 
 ![Screenshot: Step 1, hello world equivalent](img/javascript-wallet-1.png)
 
-1. Update `index.js` by adding the following snippet below the import section at the top of the file below the `path` import:
+1. Update `index.js` by adding the following snippet in the import section at the top of the file below the `path` import:
+
 ```javascript
 const xrpl = require("xrpl")
 
@@ -213,22 +214,23 @@ const getValidatedLedgerIndex = async () => {
 }
 ```
 
-This helper function calls the XRP Ledger API's [ledger method](ledger.html) and returns the ledger index from the response.
+This helper function does the following: It establishes a WebSocket connection to the XRP Ledger, calls the XRP Ledger API's [ledger method](ledger.html) and returns the ledger index from the response.
 
-2. In order to prepare the frontend to receive data from the main application, modify the `createWindow`method in `index.js` by adding the following code:
+2. In order to attach a preloader script, modify the `createWindow` method in `index.js` by adding the following code:
 
 ```javascript
   // Creates the application window
-const appWindow = new BrowserWindow({
-  width: 1024,
-  height: 768,
-  // Step 1 code additions - start
-  webPreferences: {
-    preload: path.join(__dirname, 'view', 'preload.js'),
-  },
-  // Step 1 code additions - end
-})
+  const appWindow = new BrowserWindow({
+    width: 1024,
+    height: 768,
+    // Step 1 code additions - start
+    webPreferences: {
+      preload: path.join(__dirname, 'view', 'preload.js'),
+    },
+    // Step 1 code additions - end
+  })
 ```
+
 3. Now in the `view` folder, create a file `preload.js`with the following content:
 
 ```javascript
@@ -245,14 +247,18 @@ contextBridge.exposeInMainWorld('electronAPI', {
 })
 ```
 
-4. In `view/template.html`, modify the line responsible for displaying the static text "Hello world!" to contain a placeholder for the ledger:index:
+This preloader script is used to expose functions to the browsers window object which can be used to subscribe frontend logic to events broadcast from the main logic in `index.js`.
+
+In the browser, `window.electronAPI.onUpdateLedgerIndex(callback)` can now be used tp pass a callback function via `ipcRenderer.on('eventName', callback)` that will be triggered by `appWindow.webContents.send('eventName', value)`.
+
+4. Now, in `view/template.html`, modify the line responsible for displaying the static text "Hello world!" to contain a placeholder for the ledger:index:
 
 ```html
 <body>
-    <!-- Step 1 code additions - start -->
+    <!-- Step 1 code modifications - start -->
     <h3>Build a XRPL Wallet</h3>
     Latest validated ledger index: <strong id="ledger-index"></strong>
-    <!-- Step 1 code additions - end -->
+    <!-- Step 1 code modifications - end -->
 </body>
 ```
 
@@ -266,7 +272,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 </html>
 ```
 
-5. Now create the `renderer.js` file in the `view`folder with the following code:
+6. Now create the `renderer.js` file in the `view`folder with the following code:
 
 ```javascript
 const ledgerIndexEl = document.getElementById('ledger-index')
@@ -276,10 +282,9 @@ const ledgerIndexEl = document.getElementById('ledger-index')
 window.electronAPI.onUpdateLedgerIndex((_event, value) => {
     ledgerIndexEl.innerText = value
 })
-
 ```
 
-6. To wire up our main application to broadcast the ledger index to the frontend, modify `index.js` by adding the following snippet:
+7. To wire up our main application to send the ledger index to the frontend, modify `index.js` by adding the following snippet:
 
 ```javascript
 // Here we have to wait for the application to signal that it is ready
@@ -298,19 +303,16 @@ app.whenReady().then(() => {
 })
 ```
 
-Here we call our helper function and then broadcast the result in an event named `update-ledger-index` which can be picked up by the frontend. 
-
+Here we first call our helper function `getValidatedLedgerIndex()` and then broadcast an event named `update-ledger-index` and an attached payload which can be handled by the frontend. 
 
 This example shows how to do Inter Process Communication (IPC) in Electron. Technically, JavaScript has no true parallel processes or threading, because it follows a single-threaded event-driven paradigm. Nonetheless Electron provides us with two IPC modules called `ipcMain` and `ipcRenderer`. We can roughly equate those two to a backend process and a frontend process when we think in terms of client-server applications. It works as follows:
 
-1. We started by creating a function that enables the frontend to subscribe to backend events (in `view/preload.js`)
-2. Then we make the function available by preloading it (`webPreferences.preload` in `index.js` during window creation)
-3. This creates a frontend view
-4. On the frontend, we can then use that function to attach a callback that handles frontend updates when the event is dispatched (e.g. How `1_renderer.js` is loaded in `1_hello.html`)
-5. Lastly, we dispatch the event from the backend (e.g. appWindow.webContents.send('update-ledger-index', value))
+1. We started by creating a function that enables the frontend to subscribe to backend events via the ContextBridge (in `view/preload.js`)
+2. Then we make the function available by putting it in a preloader script to ensure it is loaded and can be used by the frontend.
+3. On the frontend, we can then use that function to attach a callback that handles frontend updates when the event is dispatched. We could do this in the console, in a `<script>` tag in the frontend or in our case in a separate file.
+5. Lastly, we dispatch the event from the main logic in `index.js`via `appWindow.webContents.send('update-ledger-index', value)`.
 
-In the package.json file we have already defined some prepared commands to run our application according to the steps comprising the
-structure of this tutorial. To get the application running at this early stage of development, run the following command:
+To get the application running at this early stage of development, run the following command:
 
 ```console
 npm run start
@@ -323,57 +325,106 @@ npm run ledger-index
 ```
 
 
-### 2.A. Show Ledger Updates by using WebSocket subscriptions
+### 2. Show Ledger Updates by using WebSocket subscriptions
 
 **Full code for this step:** 
 [`2_async-subscribe.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/2_async-subscribe.js),
 [`view/2_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/2_preload.js),
-[`view/2_async.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/2_async.html),
+[`view/2_async-subscribe.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/2_async.html),
 [`view/2_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/2_renderer.js).
 
-Our "Hello Ledger" application from Step 1. so far only shows the latest validated ledger sequence at the time when we opened it. So let's take things up a notch and add some dashboard like functionality where our wallet app will keep in sync with the ledger and display the latest specs and stats like a clock that is keeping track of time:
+Our application so far only shows the latest validated ledger sequence at the time when we opened it. Let's take things up a notch and add some dashboard like functionality where our wallet app will keep in sync with the ledger and display the latest specs and stats like a clock that is keeping track of time. The result will look something like this:
 
 ![Screenshot: Step 2, show ledger updates](img/javascript-wallet-2.png)
 
-The code has been refactored (`1_ledger-index.js` to `2_async-subscribe.js`) so that the main logic now resides in a main() function. This allows us to handle the application ready event by using an one-liner at the end of the code. We will do such refactorings regularly along our journey in order to keep the code well managed and readable.
+1. In `index.js` remove the `getValidatedLedgerIndex` function. Then update the `app.whenReady().then()` section at the bottom of the file section in the following way:
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/2_async-subscribe.js", language="js", lines="33-53") }}
+```javascript
+/**
+ * This function creates a XRPL client, subscribes to 'ledger' events from the XRPL and broadcasts those by
+ * dispatching the 'update-ledger-data' event which will be picked up by the frontend
+ *
+ * @returns {Promise<void>}
+ */
+const main = async () => {
+          const appWindow = createWindow()
 
-The most relevant piece of code here is the swapping of a single call to the ledger for a subscription: Our client is now connecting to the XRPL via [WebSockets](https://en.wikipedia.org/wiki/WebSocket). This establishes a permanent bidirectional connection to the XRPL, which allows us to subscribe to events that the server sends out. This saves resources on the server, which now only sends out data we explicitly asked for when a change happens, as well as the client which does not have to sort through incoming data for relevant changes. This also reduces the complexity of the application and saves us a couple of lines of code. The subscription is happening here: 
+          const client = new xrpl.Client(TESTNET_URL)
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/2_async-subscribe.js", language="js", lines="42-45") }}
+          await client.connect()
 
-When we [subscribe](subscribe.html) to the `ledger` stream, our code gets a ´ledgerClosed´ event whenever there is a new validated ledger. The following code passes these events to the view as `update-ledger-data` events: 
+          // Subscribe client to 'ledger' events
+          // Reference: https://xrpl.org/subscribe.html
+          await client.request({
+            "command": "subscribe",
+            "streams": ["ledger"]
+          })
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/2_async-subscribe.js", language="js", lines="48-50") }}
+          // Dispatch 'update-ledger-data' event
+          client.on("ledgerClosed", async (ledger) => {
+            appWindow.webContents.send('update-ledger-data', ledger)
+          })
+        }
 
-To get the application running at this stage of development, run the following command:
-
-```console
-npm run async-subscribe
+app.whenReady().then(main)
 ```
 
+Here, we have reduced the `app.whenReady` logic to an oneliner and put the necessary functionality into a separate `main()` function. The most relevant piece of code here is the swapping of a single call to the ledger for a subscription: Our client is now connecting to the XRPL via [WebSockets](https://en.wikipedia.org/wiki/WebSocket). This establishes a permanent bidirectional connection to the XRPL, which allows us to subscribe to events that the server sends out. This saves resources on the server, which now only sends out data we explicitly asked for when a change happens, as well as the client which does not have to sort through incoming data for relevant changes. This also reduces the complexity of the application and saves us a couple of lines of code.
 
-### 2.B. Show Ledger Updates by Using Polling
+2. Then, update `preload.js` by renaming the `onUpdateLedgerIndex` to `onUpdateLedgerData` and the `update-ledger-index` event to `update-ledger-data`:
 
-**Full code for this step:** 
-[`2_async-poll.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/2_async-poll.js),
-[`view/2_preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/2_preload.js),
-[`view/2_async.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/2_async.html),
-[`view/2_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/2_renderer.js).
+```javascript
+const { contextBridge, ipcRenderer } = require('electron');
 
-In Step 2.A. we used the [subscribe method](https://xrpl.org/subscribe.html) to get the latest changes on the XRPL as soon as they happen. This is the preferred way to get such updates, because it not only reduces the complexity of our application and the data we have to handle, but also is less resource intensive on the servers. 
+contextBridge.exposeInMainWorld('electronAPI', {
+  onUpdateLedgerData: (callback) => {
+    ipcRenderer.on('update-ledger-data', callback)
+  }
+})
+```
 
-For completeness's sake we will also implement a polling solution to get a feeling on how this would be done in cases where Websocket subscriptions are not an option.
+This renaming might seem a bit nit-picky, but now we actually pass on an object of values instead of a single integer.
 
-The main difference is that instead of a subscription, The [ledger request](https://xrpl.org/ledger.html#ledger) with which we are familiar from Step 1. is used in an infinite loop:
+3. Next, modify the `view/template.html` file by adding placeholders to the `<body>` section:
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/2_async-poll.js", language="js", lines="58-72") }}
+```html
+<body>
+    <!-- Step 2 code additions - start -->
+    <h3>Build a XRPL Wallet - Part 2/8</h3>
+    Latest validated ledger <br />
+    Ledger Index: <strong id="ledger-index"></strong><br />
+    Ledger Hash: <strong id="ledger-hash"></strong><br />
+    Close Time: <strong id="ledger-close-time"></strong><br />
+    <!-- Step 2 code additions - end -->
+</body>
+```
 
-To get the application running using polling, run the following command:
+4. Modify the `view/render.js` file to handle the new placeholders. Note that the renamed preloader function is now reflected in `window.electronAPI.onUpdateLedgerData`:
+
+```javascript
+const ledgerIndexEl = document.getElementById('ledger-index')
+const ledgerHashEl = document.getElementById('ledger-hash')
+const ledgerCloseTimeEl = document.getElementById('ledger-close-time')
+
+window.electronAPI.onUpdateLedgerData((_event, value) => {
+    ledgerIndexEl.innerText = value.ledger_index
+    ledgerHashEl.innerText = value.ledger_hash
+    ledgerCloseTimeEl.innerText = value.ledger_time
+})
+```
+
+This should make our application listen to regular updates of the ledger and display them in the frontend.
+
+Now run the application with the following command:
 
 ```console
-npm run async-poll
+npm run start
+```
+
+To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
+
+```console
+npm run ledger-index
 ```
 
 ### 3. Display an Account
@@ -385,54 +436,99 @@ npm run async-poll
 [`view/3_account.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/3_account.html).
 [`view/3_renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/3_renderer.js).
 
-Now that we have a permanent connection to the XRPL and some code to bring the delivered data to life on our screen, it's time to add some "wallet" functionality by managing an individual account. 
+We now have a permanent connection to the XRPL and some code to bring the delivered data to life on our screen, it's time to add some "wallet" functionality by managing an individual account. 
 
-We will get the address of the account we want to monitor by using a HTML dialog element. We will furthermore refactor the application by encapsulating some functionality in a library. After finishing this step the application should look like this:
+We will ask the user for address of the account to monitor by using a HTML dialog element. We will furthermore refactor the application by encapsulating some functionality in a library. After finishing this step the application should look like this:
 
 ![Screenshot: Step 3, show account information](img/javascript-wallet-3.png)
 
-First, we will create a new directory named `library`. In this directory we then create a file `3_helpers.js` with the following content:
+1. In the project root, create a new directory named `library`. Inside this directory, create a file `3_helpers.js` with the following content:
 
 `3_helpers.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/3_helpers.js", language="js") }}
 
-Here we define three utility functions that will transform data we receive from the ledger, so it can be conveniently used in the frontend. as we progress in this tutorial, we will keep this pattern of putting reusable functionality in the library.
+Here we define three utility functions that will transform data we receive from the ledger into flat value objects for easy digestion in the frontend code. As we progress in this tutorial, we will keep this pattern of adding functionality by adding files that are prefixed by the step number.
 
-Our new main file will be called `3_account.js` and have the following content:
+2. Modify `index.js` and add `ipcMain` to the imports from the `require('electron')`line. Then add the new helper file at the bottom of the include section:
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/3_account.js", language="js") }}
+```javascript
+const { app, BrowserWindow, ipcMain} = require('electron')
+const path = require('path')
+const xrpl = require("xrpl")
+// Step 3 code additions - start
+const { prepareReserve, prepareAccountData, prepareLedgerData} = require('./library/3_helpers')
+// Step 3 code additions - end
 
-As you may have noticed, this is kind of an evolution from the last step. As these are rather grave changes, it's best to just copy and paste them, the relevant changes will be explained.
+const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
+```
 
-To update the view logic, create the following files:
+3. Modify `index.js` in the following way:
 
-<!-- MULTICODE_BLOCK_START -->
-*view/3_preload.js*
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_preload.js", language="js") }}
+```javascript
+const main = async () => {
+  const appWindow = createWindow()
 
-*view/3_account.html*
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_account.html", language="html") }}
+  ipcMain.on('address-entered', async (event, address) =>  {
 
-*view/3_renderer.js*
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_renderer.js", language="js") }}
-<!-- MULTICODE_BLOCK_END -->
+    let reserve = null
 
-In the new template, we have added a HTML dialog element, which we will use to query the user for the account address we want to monitor:
+    const client = new xrpl.Client(TESTNET_URL)
 
-`view/3_account.html`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_account.html", language="html", lines="30-41") }}
+    await client.connect()
 
-To make the HTML dialog work, the following code snippet has been added to the new renderer:
+    // Step 3 code modifications - start
+    
+    // Reference: https://xrpl.org/subscribe.html
+    await client.request({
+      "command": "subscribe",
+      "streams": ["ledger"],
+      "accounts": [address]
+    })
 
-`view/3_renderer.js`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_renderer.js", language="js", lines="1-22") }}
+    // Reference: https://xrpl.org/subscribe.html#ledger-stream
+    client.on("ledgerClosed", async (rawLedgerData) => {
+      reserve = prepareReserve(rawLedgerData)
+      const ledger = prepareLedgerData(rawLedgerData)
+      appWindow.webContents.send('update-ledger-data', ledger)
+    })
 
-In order to handle the address the user entered and send it to the main process, we have added the following snippet to `exposeInMainWorld` in `view/3_preload.js`:
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_preload.js", language="js", lines="4-6") }}
+    // Initial Ledger Request -> Get account details on startup
+    // Reference: https://xrpl.org/ledger.html
+    const ledgerResponse = await client.request({
+      "command": "ledger"
+    })
+    const initialLedgerData = prepareLedgerData(ledgerResponse.result.closed.ledger)
+    appWindow.webContents.send('update-ledger-data', initialLedgerData)
 
-Note that, in contrast to our previous code, where we subscribed callbacks to events from the main process, we now send an event to the main process from the renderer context. For this we use `ipcRenderer.send()` instead of `ipcRenderer.on()`. Note that the use in the renderer also differs, while we subscribe to events from the main process immediately as soon as an `renderer.js` is loaded, we use our preloaded function only after an user interaction has taken place (`window.electronAPI.onEnterAccountAddress(address)`).
+    // Reference: https://xrpl.org/subscribe.html#transaction-streams
+    client.on("transaction", async (transaction) => {
+      // Reference: https://xrpl.org/account_info.html
+      const accountInfoRequest = {
+        "command": "account_info",
+        "account": address,
+        "ledger_index": transaction.ledger_index
+      }
+      const accountInfoResponse = await client.request(accountInfoRequest)
+      const accountData = prepareAccountData(accountInfoResponse.result.account_data, reserve)
+      appWindow.webContents.send('update-account-data', accountData)
+    })
 
-As we will know the account we want to query the leger for is known only after the user enters an address, we wrap our application logic with an event handler:
+    // Initial Account Request -> Get account details on startup
+    // Reference: https://xrpl.org/account_info.html
+    const accountInfoResponse = await client.request({
+      "command": "account_info",
+      "account": address,
+      "ledger_index": "current"
+    })
+    const accountData = prepareAccountData(accountInfoResponse.result.account_data)
+    appWindow.webContents.send('update-account-data', accountData)
+
+    // Step 3 code modifications - end
+  })
+}
+```
+
+As the account we want to query is known only after the user enters an address, we had to wrap our application logic into an event handler:
 
 ```javascript
 ipcMain.on('address-entered', async (event, address) =>  {
@@ -440,19 +536,102 @@ ipcMain.on('address-entered', async (event, address) =>  {
 })
 ```
 
-To have some initial data to display for the account we have to add the following code to our main file:
+In addition to the subscription to the ledger stream we also can subscribe the client to specific addresses, and we use this feature here to subscribe to an account address which we are going to prompt the user for:
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/3_account.js", language="js", lines="50-61") }}
+```javascript
+await client.request({
+  "command": "subscribe",
+  "streams": ["ledger"],
+  "accounts": [address]
+})
+```
 
-To keep the displayed balance of the account up-to-date, we use a transactions subscription for our account. As soon as a new transaction is registered, we issue an account_info request and send the data to the renderer:
+After this subscription our code attached listeners to the `ledgerClosed` and the `transactions` event. As soon as a `transaction` event is triggered, we do an `account_info` request to get the latest account status, as a transaction is an operation that changes the accounts state.
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/3_account.js", language="js", lines="63-71") }}
+In addition to the subscriptions we added each an initial `ledger` and `accountInfo` request to have some data at application startup, otherwise we would see empty fields until something happened on the ledger which would trigger one of our subscriptions.
 
-To get the application running at this stage of development, run the following command:
+4. Now, add the following code to `preload.js`:
+
+```javascript
+const { contextBridge, ipcRenderer } = require('electron');
+
+contextBridge.exposeInMainWorld('electronAPI', {
+  onUpdateLedgerData: (callback) => {
+    ipcRenderer.on('update-ledger-data', callback)
+  },
+
+  // Step 3 code additions - start
+  onEnterAccountAddress: (address) => {
+    ipcRenderer.send('address-entered', address)
+  },
+  onUpdateAccountData: (callback) => {
+    ipcRenderer.on('update-account-data', callback)
+  }
+  //Step 3 code additions - end
+})
+```
+
+Here we can observe a notable difference to the previous step. Until now we just used `ipcRenderer` to pick up on events from the main logic, now we are using it bidirectional to send events from the frontend to the main logic:
+
+```javascript
+onEnterAccountAddress: (address) => {
+    ipcRenderer.send('address-entered', address)
+}
+```
+
+5. Then, modify the `view/template.html` by replacing the `<body>` with this markup: 
+
+```html
+<body>
+
+    <h3>Build a XRPL Wallet - Part 3/8</h3>
+
+    <fieldset>
+        <legend>Account</legend>
+        Classic Address: <strong id="account-address-classic"></strong><br/>
+        X-Address: <strong id="account-address-x"></strong><br/>
+        XRP Balance: <strong id="account-balance"></strong><br/>
+        XRP Reserved: <strong id="account-reserve"></strong><br/>
+    </fieldset>
+
+    <fieldset>
+        <legend>Latest validated ledger</legend>
+        Ledger Index: <strong id="ledger-index"></strong><br/>
+        Ledger Hash: <strong id="ledger-hash"></strong><br/>
+        Close Time: <strong id="ledger-close-time"></strong><br/>
+    </fieldset>
+
+    <dialog id="account-address-dialog">
+        <form method="dialog">
+            <div>
+                <label for="address-input">Enter account address:</label>
+                <input type="text" id="address-input" name="address-input" />
+            </div>
+            <div>
+                <button type="reset">Reset</button>
+                <button type="submit">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+
+</body>
+```
+
+6. To incorporate the refactored markup, handle the HTML dialog element and well as the new account data section replace the contents of `view/renderer.js` with the following code:
+
+{{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_renderer.js", language="js") }}
+
+Then run the application with:
+
+```console
+npm run start
+```
+
+To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run account
-```   
+```
 
 ### 4. Show Account's Transactions
 
@@ -468,36 +647,125 @@ At this point, our wallet shows the account's balance getting updated, but doesn
 
 ![Screenshot: Step 4, show transaction history](img/javascript-wallet-4.png)
 
-First, save the template file from last step as `view/4_tx-history.html`.Update this file to display the transaction list of a given account by adding the following code after the fieldset for the latest validated ledger:
+1. In the `library` folder, add a new file `4_helpers.js`. Then add the following helper function to that file:
 
-`view/4_tx-history.html`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/4_tx-history.html", language="html", lines="29-44") }}
+{{ include_code("_code-samples/build-a-wallet/desktop-js/library/4_helpers.js", language="js") }}
 
-Our preloader (`view/4_preload.js`) will be complemented with a function that allows us to subscribe to the 'update-transaction-data' event:
+2. Now, in `index.html`, require the new helper function at the bottom of the import section like so:
+3. 
+```javascript
+const { prepareReserve, prepareAccountData, prepareLedgerData} = require('./library/3_helpers')
+const { prepareTxData } = require('./library/4_helpers')
+```
 
-`view/4_preload.js`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/4_preload.js", language="js", lines="13-15") }}
+3. In the main file, update the listener function subscribed to the `transaction` event by adding the following snippet:
 
-In the renderer (`view/4_renderer.js`), we define the callback that displays the latest transaction list:
+```javascript
+// Wait for transaction on subscribed account and re-request account data
+client.on("transaction", async (transaction) => {
+  // Reference: https://xrpl.org/account_info.html
+  const accountInfoRequest = {
+    "command": "account_info",
+    "account": address,
+    "ledger_index": transaction.ledger_index
+  }
 
-`view/4_renderer.js`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/4_renderer.js", language="js", lines="47-63") }}
+  const accountInfoResponse = await client.request(accountInfoRequest)
+  const accountData = prepareAccountData(accountInfoResponse.result.account_data, reserve)
+  appWindow.webContents.send('update-account-data', accountData)
 
-Create a new main file `4_tx-history` with the contents of the file from `3_account.js`. There is already a query for the relevant data in the `client.on('transaction')` subscription. We just have to send it to the renderer by triggering the 'update-transaction-data' event:
+  // Step 3 code additions - start
+  const transactions = prepareTxData([{tx: transaction.transaction}])
+  appWindow.webContents.send('update-transaction-data', transactions)
+  // Step 4 code additions - end
+  
+})
+```
 
-`4_tx-history`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/4_tx-history.js", language="js", lines="62-63") }}
+4. In `view/preload.js`, add the following code at the bottom of `exposeInMainWorld()`:
 
-As this is only called as soon as a new transaction is recorded, our transaction table is empty at first, so we need to issue an initial call for the account transactions:
+```javascript
+onEnterAccountAddress: (address) => {
+  ipcRenderer.send('address-entered', address)
+},
+onUpdateAccountData: (callback) => {
+  ipcRenderer.on('update-account-data', callback)
+},
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/4_tx-history.js", language="js", lines="76-83") }}
+// Step 4 code additions - start
+onUpdateTransactionData: (callback) => {
+  ipcRenderer.on('update-transaction-data', callback)
+}
+// Step 4 code additions - end
+```
 
-That is it for this step, to get the application running at this stage of development, run the following command:
+5. Modify `view/template.html` by adding a new fieldset below the ones that are already there:
+
+```html
+        ...
+        Close Time: <strong id="ledger-close-time"></strong><br/>
+    </fieldset>
+
+    <!-- Step 4 code additions - start -->
+    <fieldset>
+        <legend>Transactions:</legend>
+        <table id="tx-table">
+            <thead>
+            <tr>
+                <th>Confirmed</th>
+                <th>Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Value Delivered</th>
+                <th>Hash</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </fieldset>
+    <!-- Step 5 code additions - end -->
+
+    <dialog id="account-address-dialog">
+        <form method="dialog">
+```
+
+The table here will be filled dynamically with the accounts transactions.
+
+6. Add the following code at the bottom of `view/renderer.js`:
+
+```javascript
+const txTableBodyEl = document.getElementById('tx-table').tBodies[0]
+window.testEl = txTableBodyEl
+
+window.electronAPI.onUpdateTransactionData((_event, transactions) => {
+    for (let transaction of transactions) {
+        txTableBodyEl.insertAdjacentHTML( 'beforeend',
+        "<tr>" +
+            "<td>" + transaction.confirmed + "</td>" +
+            "<td>" + transaction.type + "</td>" +
+            "<td>" + transaction.from + "</td>" +
+            "<td>" + transaction.to + "</td>" +
+            "<td>" + transaction.value + "</td>" +
+            "<td>" + transaction.hash + "</td>" +
+            "</tr>"
+        )
+    }
+})
+```
+
+If you have come this far - congrats. Now you might need an account address to monitor. If you already have one or know where to find an example, you can now run the application by executing:
+
+```console
+npm run start
+```
+
+If you are new to the XRPL an need an account address, [you can get accounts on the testnet](https://learn.xrpl.org/course/code-with-the-xrpl/lesson/create-accounts-and-send-xrp/). Here you can also use the sandbox to issue XRP transactions, which then should show up in our app.
+
+To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run tx-history
 ```
-
 
 ### 5. Saving the Private Keys with a Password
 
@@ -518,84 +786,187 @@ By now we always query the user for an account address at application startup. W
 
 In this step we will query the user for an account seed and  a password save this seed with a salted password. 
 
-<!-- MULTICODE_BLOCK_START -->
-*5_password.js*
-{{ include_code("_code-samples/build-a-wallet/desktop-js/5_password.js", language="js") }}
+1. In the `library` folder, add a new file `5_helpers.js` with the following content:
 
-*library/5_helpers.js*
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js") }}
 
-*view/5_preload.js*
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/5_preload.js", language="js") }}
+2. Modify the import section at the top of `index.js` to look like this:
 
-*view/5_password.html*
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/5_password.html", language="html") }}
+```javascript
+const xrpl = require("xrpl")
+const { initialize, subscribe, saveSaltedSeed, loadSaltedSeed } = require('./library/5_helpers')
 
-*view/5_renderer.js*
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/5_renderer.js", language="js") }}
-<!-- MULTICODE_BLOCK_END-->
+const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
-For this step we will first create a new helper function `library/5_helpers.js`. Add the following required imports to the top of the file:
+const WALLET_DIR = 'Wallet'
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="1-6") }}
+const createWindow = () => {
+```
 
-For saving a seed to disk, create the following function in that helper file:
+Note that we have reduced the imports to one line. The helper functions that we have written before now get used in our new helper class, which not only adds new functionality but encapsulates our subscriptions and initial requests in two helper functions. Those will be used as one-liners replacing a lot of lines that started to bloat our main logic file. 
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="86-109") }}
+We also added a new constant containing the directory name where we are going to store our encrypted seed.
 
-Here, a random string of 20 bytes is created, hex-encoded and saved in a file  `Wallet/salt.txt`. This tutorial assumes that you know what a salt is but if you're new to cryptography this snippet from wikipedia explains what a "salt" is quite well:
+3. In `index.js` replace the existing `main` function with the following one:
 
-In cryptography, a salt is random data that is used as an additional input to a one-way function that hashes data, a password or passphrase. Salts are used to safeguard passwords in storage. Historically, only the output from an invocation of a cryptographic hash function on the password was stored on a system, but, over time, additional safeguards were developed to protect against duplicate or common passwords being identifiable (as their hashes are identical).Salting is one such protection.
+```javascript
+const main = async () => {
+  const appWindow = createWindow()
 
-Next on a key suitable for symmetric encryption is generated using [Password-Based Key Derivation Function 2](https://en.wikipedia.org/wiki/PBKDF2) which basically hashes and re-hashes the password with the salt multiple times. This key is then used to encrypt the seed with a scheme called [Fernet](https://github.com/csquared/fernet.js). the encrypted key is the saved to `Wallet/seed.txt`. To implement the functionality to load and decrypt the seed add the following function to `library/5_helpers.js`:
+  // Create Wallet directory in case it does not exist yet
+  if (!fs.existsSync(WALLET_DIR)) {
+    fs.mkdirSync(path.join(__dirname, WALLET_DIR));
+  }
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="43-77") }}
+  let seed = null;
 
-This reverses the process as it loads the salt and the encrypted seed from disk, derives a key as before and decrypts the seed.
+  ipcMain.on('seed-entered', async (event, providedSeed) => {
+    seed = providedSeed
+    appWindow.webContents.send('open-password-dialog')
+  })
 
-The functionality for fetching the ledger and account data we want to send to the frontend also gets implemented in the current helper file. This helps to unclutter our main logic file `5_password.js`, which would become unreadable by now. Two functions need to be added, one for fetching the initial data on application startup and one doing the subscriptions:
+  ipcMain.on('password-entered', async (event, password) => {
+    if (!fs.existsSync(path.join(__dirname, WALLET_DIR , 'seed.txt'))) {
+      saveSaltedSeed('../' + WALLET_DIR, seed, password)
+    } else {
+      seed = loadSaltedSeed('../' + WALLET_DIR, password)
+    }
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="16-33") }}
+    const wallet = xrpl.Wallet.fromSeed(seed)
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="43-59") }}
+    const client = new xrpl.Client(TESTNET_URL)
 
-Finally the helper functions get exported to be used in the main code:
+    await client.connect()
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/library/5_helpers.js", language="js", lines="139") }}
+    await subscribe(client, wallet, appWindow)
 
-The main file again gets refactored from `4_transactions.js` to `5_password.js`, note that the main() function has completely changed:
+    await initialize(client, wallet, appWindow)
+  })
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/5_password.js", language="js") }}
+  // We have to wait for the application frontend to be ready, otherwise
+  // we might run into a race condition and the open-dialog events
+  // get triggered before the callbacks are attached
+  appWindow.once('ready-to-show', () => {
+    // If there is no seed present yet, ask for it, otherwise query for the password
+    // for the seed that has been saved
+    if (!fs.existsSync(path.join(__dirname, WALLET_DIR, 'seed.txt'))) {
+      appWindow.webContents.send('open-seed-dialog')
+    } else {
+      appWindow.webContents.send('open-password-dialog')
+    }
+  })
+}
+```
 
-In the main function, first there is a check if the `Wallet`directory used to store the salt and the encrypted seed does exist. If not, it will be created. Then the application listens for the event when the user enters his seed:
+The subscription to the `address-entered` frontend is gone, as we are now going to use a full-fledged wallet, for which we are going to prompt the user or a seed and a password to encrypt it with. If there already is a seed, the user will only be asked for his password which is in turn used to decrypt the seed.
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/5_password.js", language="js", lines="36-39") }}
+3. Then modify the `view/preload.js` file (Note that the `onEnterAccountAddress` function is no longer needed):
 
-This event will trigger the seed dialog in the frontend to close and the password dialog to open up. Then the application listens for the event which is triggered when the password is entered. The application checks if there is already a saved seed to be encrypted, or if it is the first time when the seed will be saved:
+```javascript
+contextBridge.exposeInMainWorld('electronAPI', {
+  // Step 5 code additions - start
+  onOpenSeedDialog: (callback) => {
+    ipcRenderer.on('open-seed-dialog', callback)
+  },
+  onEnterSeed: (seed) => {
+    ipcRenderer.send('seed-entered', seed)
+  },
+  onOpenPasswordDialog: (callback) => {
+    ipcRenderer.on('open-password-dialog', callback)
+  },
+  onEnterPassword: (password) => {
+    ipcRenderer.send('password-entered', password)
+  },
+  // Step 5 code additions - end
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/5_password.js", language="js", lines="41-57") }}
+  onUpdateLedgerData: (callback) => {
+    ipcRenderer.on('update-ledger-data', callback)
+  },
+```
 
-After the seed is available to the application a wallet is created using the seed, and after creating and connecting the client the heavy lifting is done by the `nitialize` and `subscribe` functions which were implemented in `library/5_helpers.js`. Finally, the application listens to the `ready-to-show` electron event which more or less equivalent to a `domReady` event when we would be dealing with a browser-only environment. Here we trigger the opening of the password or seed dialog at application startup.
+4. Then, in `view/templte.html`, replace the existing HTML dialog element for the account with the new ones for seed and password:
 
-Finally, our view files will be updated by adding the following snippets:
+```html
+    <dialog id="seed-dialog">
+        <form method="dialog">
+            <div>
+                <label for="seed-input">Enter seed:</label>
+                <input type="text" id="seed-input" name="seed-input" />
+            </div>
+            <div>
+                <button type="reset">Reset</button>
+                <button type="submit">Confirm</button>
+            </div>
+        </form>
+    </dialog>
 
-`view/5_preload.js`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/5_preload.js", language="js", lines="5-16") }}
+    <dialog id="password-dialog">
+        <form method="dialog">
+            <div>
+                <label for="password-input">Enter password (min-length 5):</label>
+                <input type="text" id="password-input" name="password-input" />
+            </div>
+            <div>
+                <button type="reset">Reset</button>
+                <button type="submit">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+```
 
-`view/5_password.html`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/5_password.html", language="html", lines="46-72") }}
+6. In `view/renderer.js` add at the top:
 
-This replaces the `account-address-dialog`from Step 4, as the address can be derived from the wallet instantiated with the seed. In `view/5_renderer.js` we replace the dialog logic at the top of the file with the following code:
+```javascript
+window.electronAPI.onOpenSeedDialog((_event) => {
+    const seedDialog = document.getElementById('seed-dialog');
+    const seedInput = seedDialog.querySelector('input');
+    const submitButton = seedDialog.querySelector('button[type="submit"]');
+    const resetButton = seedDialog.querySelector('button[type="reset"]');
 
-`view/5_renderer.js`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/5_renderer.js", language="js", lines="2-38") }}
+    submitButton.addEventListener('click', () => {
+        const seed = seedInput.value;
+        window.electronAPI.onEnterSeed(seed)
+        seedDialog.close()
+    });
 
-To get the application running at this stage of development, run the following command:
+    resetButton.addEventListener('click', () => {
+        seedInput.value = '';
+    });
+
+    seedDialog.showModal()
+})
+
+window.electronAPI.onOpenPasswordDialog((_event) => {
+    const passwordDialog = document.getElementById('password-dialog');
+    const passwordInput = passwordDialog.querySelector('input');
+    const submitButton = passwordDialog.querySelector('button[type="submit"]');
+    const resetButton = passwordDialog.querySelector('button[type="reset"]');
+
+    submitButton.addEventListener('click', () => {
+        const password = passwordInput.value;
+        window.electronAPI.onEnterPassword(password)
+        passwordDialog.close()
+    });
+
+    resetButton.addEventListener('click', () => {
+        passwordInput.value = '';
+    });
+
+    passwordDialog.showModal()
+});
+```
+
+You should now run the application twice: At the first run, you will be asked for a seed and a password. When you run it the second time it will prompt you for the password and you should be good to go instantly:
+
+```console
+npm run start
+```
+
+To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run password
 ```
-
 
 ### 6. Styling
 
@@ -612,24 +983,143 @@ After finishing this step the application should look like this:
 
 ![Screenshot: Step 6, style application with css](img/javascript-wallet-6.png)
 
-In this step, the application will get a facelift. First, copy the folder `bootstrap` and its contents to your project directory. Also, copy the file `view/custom.css` to the `view`directory. The Template for this Step, `view/6_styling.html` gets a complete overhaul:
+1. Copy the folder `bootstrap` and its contents to your project directory. 
 
-`view/6_styling.html`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/6_styling.html", language="html") }}
+2. Also, copy the file `view/custom.css` as well as `XRPLedger_DevPortal-white.svg` to the `view`directory.
 
-Note that the Bootstrap Stylesheets and the custom styles get included in the header of the file:
+3. Change the content of `view/template.html` with the following code:
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/6_styling.html", language="html", lines="10-11") }}
+````html
+<!DOCTYPE html>
+<html>
 
-Bootstraps minified Javascript files get included in the bottom of the template: 
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/6_styling.html", language="html", lines="118-119") }}
+  <title>XRPL Wallet Tutorial (JavaScript / Electron)</title>
 
-Note that `view/5_render.js` and `view/5_preload.js` do get used in this tutorial as nothing has changed in those files. In the main file, which gets refactored from `5_password.js` to `6_styling.js` the only thing that changes is the inclusion of the updated template file:
+  <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
+  <link rel="stylesheet" href="./custom.css"/>
+</head>
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/6_styling.js", language="js", lines="21") }}
+<body>
 
-That's it for this Step - to get the application running at this stage of development, run the following command:
+  <main>
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <img class="logo" height="40"/>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto" role="tablist">
+        <li class="nav-item">
+          <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard"
+                  type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+            Dashboard
+          </button>
+        </li>
+        <li>
+          <button class="nav-link" data-bs-toggle="tab" id="transactions-tab" data-bs-target="#transactions"
+                  type="button" role="tab" aria-controls="transactions" aria-selected="false">
+            Transactions
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="main-content tab-content d-flex flex-column flex-shrink-0 p-3 bg-light">
+
+      <div class="header border-bottom">
+        <h3>
+          Build a XRPL Wallet
+          <small class="text-muted">- Part 6/8</small>
+        </h3>
+      </div>
+
+      <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+        <h3>Account:</h3>
+        <ul class="list-group">
+          <li class="list-group-item">Classic Address: <strong id="account-address-classic"></strong></li>
+          <li class="list-group-item">X-Address: <strong id="account-address-x"></strong></li>
+          <li class="list-group-item">XRP Balance: <strong id="account-balance"></strong></li>
+          <li class="list-group-item">XRP Reserved: <strong id="account-reserve"></strong></li>
+        </ul>
+        <div class="spacer"></div>
+        <h3>
+          Ledger
+          <small class="text-muted">(Latest validated ledger)</small>
+        </h3>
+        <ul class="list-group">
+          <li class="list-group-item">Ledger Index: <strong id="ledger-index"></strong></li>
+          <li class="list-group-item">Ledger Hash: <strong id="ledger-hash"></strong></li>
+          <li class="list-group-item">Close Time: <strong id="ledger-close-time"></strong></li>
+        </ul>
+      </div>
+
+      <div class="tab-pane fade" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
+        <h3>Transactions:</h3>
+        <table id="tx-table" class="table">
+          <thead>
+          <tr>
+            <th>Confirmed</th>
+            <th>Type</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Value Delivered</th>
+            <th>Hash</th>
+          </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </main>
+
+  <dialog id="seed-dialog">
+    <form method="dialog">
+      <div>
+        <label for="seed-input">Enter seed:</label>
+        <input type="text" id="seed-input" name="seed-input" />
+      </div>
+      <div>
+        <button type="reset">Reset</button>
+        <button type="submit">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="password-dialog">
+    <form method="dialog">
+      <div>
+        <label for="password-input">Enter password (min-length: 5):</label>
+        <input type="text" id="password-input" name="password-input" />
+      </div>
+      <div>
+        <button type="reset">Reset</button>
+        <button type="submit">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+
+</body>
+
+<script src="../bootstrap/bootstrap.bundle.min.js"></script>
+<script src="renderer.js"></script>
+
+</html>
+````
+
+Here we basically added the [Boostrap Framework]() and a little custom styling to our application. We'll leave it at that for this Step - to get the application running at this stage of development, run the following command:
+
+```console
+npm run start
+```
+
+To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run styling
@@ -652,53 +1142,126 @@ Up until now we have enabled our app to query and display data from the XRPL. No
 
 ![Screenshot: Step 7, send xrp dialog](img/javascript-wallet-7.png)
 
-First, create the file `library/7_helpers.js` and add the following contents:
+1. Create the file `library/7_helpers.js` and add the following contents:
 
-`library/7_helpers.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/7_helpers.js", language="js") }}
 
-Here a raw payment transaction (short: tx) is created which contains all the necessary information that defines a payment from a user perspective. This payment transaction is then "autofilled", which basically adds a few fields the transaction needs to be processed correctly on the ledger. If you are interested, you could console.log the resulting prepared payment transaction. 
+2. Add the new function to the import section in `index.js`:
 
-After that, the transaction needs to be signed, which is done using the wallet object, after which it gets submitted using the `submitAndWait` function, which basically sends the signed transaction and waits for the next closed ledger to include said transaction after which it is regarded final.
+```javascript
+const { initialize, subscribe, saveSaltedSeed, loadSaltedSeed } = require('./library/5_helpers')
+const { sendXrp } = require('./library/7_helpers')
+```
 
-Our template, after saving it as `view/7_send-xrp.html` gets updated with a bootstrap modal dialog at the end of the `<main>`tag:
+3. Still in `index.js`, add an event listener handling the `send-xrp-event` from the frontend dialog:
+```javascript
+        await initialize(client, wallet, appWindow)
+        // Step 7 code additions - start
+        ipcMain.on('send-xrp-action', (event, paymentData) => {
+          sendXrp(paymentData, client, wallet).then((result) => {
+            appWindow.webContents.send('send-xrp-transaction-finish', result)
+          })
+        })
+        // Step 7 code additions - start
+    })
+```
 
-`view/7_send-xrp.html`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/7_send-xrp.html", language="html", lines="92-124") }}
+4. Modify `view/preload.js` by adding two new functions:
+```javascript
+    onClickSendXrp: (paymentData) => {
+      ipcRenderer.send('send-xrp-action', paymentData)
+    },
+    onSendXrpTransactionFinish: (callback) => {
+      ipcRenderer.on('send-xrp-transaction-finish', callback)
+    }
+```
 
-The renderer evolves from `view/5_renderer.js` (remember, no modification in Step 6) to `view/7_renderer.js` by adding the following code at the end of the file:
+5. In `view/template.html`, add a button to toggle the modal dialog housing the "Send XRP" logic:
+```html
+    <div class="header border-bottom">
+        <h3>
+            Build a XRPL Wallet
+            <small class="text-muted">- Part 7/8</small>
+        </h3>
+        <button type="button" class="btn btn-primary" id="send-xrp-modal-button">
+            Send XRP
+        </button>
+    </div>
+```
 
-`view/7_renderer.js`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/7_renderer.js", language="js", lines="79-103") }}
+6. In the same file, add said modal dialog:
+```html
+    <div class="modal fade" id="send-xrp-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="send-xrp-modal-label">Send XRP</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="r9jEyy3nrB8D7uRc5w2k3tizKQ1q8cpeHU" id="input-destination-address">
+                        <span class="input-group-text">To (Address)</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="12345" id="input-destination-tag">
+                        <span class="input-group-text">Destination Tag</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="100" id="input-xrp-amount">
+                        <span class="input-group-text">Amount of XRP</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="send-xrp-submit-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+```
 
-The preload file from Step 5 also basically stays the same baring the addition of two event listeners at the end of the `exposeInMainWorld` function:
+7. Update `view/renderer.js` by adding:
 
-`view/7_preload.js`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/7_preload.js", language="js", lines="27-32") }}
+```javascript
+const modalButton = document.getElementById('send-xrp-modal-button')
+const modalDialog = new bootstrap.Modal(document.getElementById('send-xrp-modal'))
+modalButton.addEventListener('click', () => {
+    modalDialog.show()
+})
 
-It might become evident by now that the changes needed to add to the applications functionality have become smaller, this is because of smart refactoring early on. The main file, now `7_send-xrp-js` differs from the last step by two small additions:
+const destinationAddressEl = document.getElementById('input-destination-address')
+const destinationTagEl = document.getElementById('input-destination-tag')
+const amountEl = document.getElementById('input-xrp-amount')
+const sendXrpButtonEl = document.getElementById('send-xrp-submit-button')
 
-The new helper function gets included at the imports section at the top:
+sendXrpButtonEl.addEventListener('click', () => {
+    modalDialog.hide()
+    const destinationAddress = destinationAddressEl.value
+    const destinationTag = destinationTagEl.value
+    const amount = amountEl.value
 
-`7_send-xrp.js`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="6") }}
+    window.electronAPI.onClickSendXrp({destinationAddress, destinationTag, amount})
+})
 
-Add a listener to the `send-xrp-action` event and payload from the frontend has to be implemented:
+window.electronAPI.onSendXrpTransactionFinish((_event) => {
+    destinationAddressEl.value = ''
+    destinationTagEl.value = ''
+    amountEl.value = ''
+})
+```
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="59-62") }}
+Now, Run the following command:
 
-That's basically it, the only thing that is missing to modify the imports of the preloader and the template:
+```console
+npm run start
+```
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="18") }}
-
-{{ include_code("_code-samples/build-a-wallet/desktop-js/7_send-xrp.js", language="js", lines="22") }}
-
-To get the application running at this stage of development, run the following command:
+To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run send-xrp
 ```
-
 
 ### 8. Domain Verification and Polish
 

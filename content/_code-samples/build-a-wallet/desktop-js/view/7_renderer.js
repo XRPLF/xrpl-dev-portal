@@ -101,4 +101,4 @@ window.electronAPI.onSendXrpTransactionFinish((_event) => {
     destinationTagEl.value = ''
     amountEl.value = ''
 })
-// Step 7 code additions - start
+// Step 7 code additions - end
