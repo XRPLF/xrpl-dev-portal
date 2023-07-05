@@ -184,9 +184,9 @@ class XRPLMonitorThread(Thread):
         # Autofill provides a sequence number, but this may fail if you try to
         # send too many transactions too fast. You can send transactions more
         # rapidly if you track the sequence number more carefully.
-        tx_signed = await xrpl.asyncio.transaction.safe_sign_and_autofill_transaction(
-                tx, self.wallet, self.client)
-        await xrpl.asyncio.transaction.submit_transaction(tx_signed, self.client)
+        tx_signed = await xrpl.asyncio.transaction.autofill_and_sign(
+                tx, self.client, self.wallet)
+        await xrpl.asyncio.transaction.submit(tx_signed, self.client)
         wx.CallAfter(self.gui.add_pending_tx, tx_signed)
 
 
@@ -541,9 +541,9 @@ class TWaXLFrame(wx.Frame):
             try:
                 # Check if it's a valid seed
                 seed_bytes, alg = xrpl.core.addresscodec.decode_seed(value)
-                wallet = xrpl.wallet.Wallet(seed=value, sequence=0)
+                wallet = xrpl.wallet.Wallet.from_seed(seed=value)
                 x_address = wallet.get_xaddress(is_test=self.test_network)
-                classic_address = wallet.classic_address
+                classic_address = wallet.address
             except Exception as e:
                 print(e)
                 exit(1)

@@ -202,7 +202,7 @@ Most transactions are accepted into the next ledger version after they're submit
 The code samples in this tutorial use helper functions to wait for validation when submitting a transaction:
 
 - **JavaScript:** The `submit_and_verify()` function, as defined in the [submit-and-verify code sample](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/submit-and-verify).
-- **Python:** The `send_reliable_submission()` [method of the xrpl-py library](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission).
+- **Python:** The `submit_and_wait()` [method of the xrpl-py library](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait).
 - **Java:** The `submitAndWaitForValidation()` method in the [sample Java class](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/issue-a-token/java/IssueToken.java).
 
 **Tip:** Technically, you can configure the hot address in parallel with configuring the issuer address. For simplicity, this tutorial waits for each transaction one at a time.
