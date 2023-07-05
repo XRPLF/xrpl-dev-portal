@@ -7,7 +7,6 @@ from pathlib import Path, PureWindowsPath, PurePath
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-from xrpl import wallet
 from xrpl.core import keypairs
 from xrpl.utils import xrp_to_drops
 from xrpl.models.transactions import Payment
