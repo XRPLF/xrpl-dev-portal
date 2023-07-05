@@ -7,7 +7,7 @@ labels:
   - XRP
 ---
 # AccountRoot
-[[Source]](https://github.com/xrplf/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/264280edd79b7f764536e02459f33f66a59c0531/src/ripple/protocol/impl/LedgerFormats.cpp#L36-L60 "Source")
 
 An `AccountRoot` ledger entry type describes a single [account](accounts.html), its settings, and XRP balance.
 
@@ -44,6 +44,7 @@ An `AccountRoot` object has the following fields:
 | `BurnedNFTokens`              | Number    | UInt32            | No        | How many total of this account's issued [non-fungible tokens](non-fungible-tokens.html) have been burned. This number is always equal or less than `MintedNFTokens`. |
 | `Domain`                      | String    | Blob              | No        | A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. [Cannot be more than 256 bytes in length.](https://github.com/xrplf/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
 | `EmailHash`                   | String    | Hash128           | No        | The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
+| `FirstNFTokenSequence`        | Number    | UInt32            | No        | The account's [Sequence Number][] at the time it minted its first [non-fungible-token](non-fungible-tokens.html). _(Added by the [fixNFTokenRemint amendment][] :not_enabled:)_ |
 | [`Flags`](#accountroot-flags) | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this account. |
 | `LedgerEntryType`             | String    | UInt16            | Yes       | The value `0x0061`, mapped to the string `AccountRoot`, indicates that this is an AccountRoot object. |
 | `MessageKey`                  | String    | Blob              | No        | A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. |

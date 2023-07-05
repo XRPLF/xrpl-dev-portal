@@ -22,7 +22,6 @@ Request('account_currencies', {
   body: {
     "command": "account_currencies",
     "account": DEFAULT_ADDRESS_1,
-    "strict": true,
     "ledger_index": "validated"
   }
 })
@@ -34,7 +33,6 @@ Request('account_info', {
     "id": 2,
     "command": "account_info",
     "account": DEFAULT_ADDRESS_1,
-    "strict": true,
     "ledger_index": "current",
     "queue": true
   }
@@ -106,7 +104,6 @@ Request('gateway_balances', {
     "id": "example_gateway_balances_1",
     "command": "gateway_balances",
     "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q", // btc2ripple
-    "strict": true,
     "hotwallet": [
       "rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ",
       "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"
