@@ -295,18 +295,19 @@
     <div class="content">
         <h1 id="account_objects">account_objects<a aria-hidden="true" class="hover_anchor" href="#account_objects"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>account_objects</code> command returns the raw <a href="ledger-object-types.html">ledger format</a> for all objects owned by an account. For a higher-level view of an account's trust lines and balances, see the <a href="account_lines.html">account_lines method</a> instead.</p>
-<p>The types of objects that may appear in the <code>account_objects</code> response for an account include:</p>
+<p>The <code>account_objects</code> command returns the raw <a href="ledger-object-types.html">ledger format</a> for all ledger entries owned by an account. For a higher-level view of an account's trust lines and balances, see the <a href="account_lines.html">account_lines method</a> instead.</p>
+<p>The types of objects that may appear in the <code>account_objects</code> response include:</p>
 <ul>
-<li><a href="offer.html">Offer objects</a> for orders that are currently live, unfunded, or expired but not yet removed. (See <a href="offers.html#lifecycle-of-an-offer">Lifecycle of an Offer</a> for more information.)</li>
-<li><a href="ripplestate.html">RippleState objects</a> for trust lines where this account's side is not in the default state.</li>
+<li><a href="offer.html">Offer entries</a> for orders that are currently live, unfunded, or expired but not yet removed. (See <a href="offers.html#lifecycle-of-an-offer">Lifecycle of an Offer</a> for more information.)</li>
+<li><a href="ripplestate.html">RippleState entries</a> for trust lines where this account's side is not in the default state.</li>
 <li>The account's <a href="signerlist.html">SignerList</a>, if the account has <a href="multi-signing.html">multi-signing</a> enabled.</li>
-<li><a href="escrow.html">Escrow objects</a> for held payments that have not yet been executed or canceled.</li>
-<li><a href="paychannel.html">PayChannel objects</a> for open payment channels.</li>
-<li><a href="check.html">Check objects</a> for pending Checks.</li>
-<li><a href="depositpreauth-object.html">DepositPreauth objects</a> for deposit preauthorizations. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a href="known-amendments.html#tickets">Ticket objects</a> for Tickets.</li>
-<li><a href="nftokenpage.html">NFTokenPage objects</a> for collections of NFTs.</li>
+<li><a href="escrow.html">Escrow entries</a> for held payments that have not yet been executed or canceled.</li>
+<li><a href="paychannel.html">PayChannel entries</a> for open payment channels.</li>
+<li><a href="check.html">Check entries</a> for pending Checks.</li>
+<li><a href="depositpreauth-object.html">DepositPreauth entries</a> for deposit preauthorizations.</li>
+<li><a href="tickets.html">Ticket entries</a> for Tickets.</li>
+<li><a href="nftokenoffer.html">NFTokenOffer entries</a> for offers to buy or sell an NFT.</li>
+<li><a href="nftokenpage.html">NFTokenPage entries</a> for collections of NFTs. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="New in: rippled 1.11.0"><img alt="New in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
@@ -392,7 +393,7 @@ rippled<span class="w"> </span>account_objects<span class="w"> </span>r9cZA1mLK5
 <td style="text-align: left;"><code>type</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">No</td>
-<td>Filter results by a ledger entry type. The valid types are: <code>check</code>, <code>deposit_preauth</code>, <code>escrow</code>, <code>nft_offer</code>, <code>offer</code>, <code>payment_channel</code>, <code>signer_list</code>, <code>state</code> (trust line), and <code>ticket</code>. <!-- Author's note: Omitted types that can't be owned by an account --></td>
+<td>Filter results by a ledger entry type. The valid types are: <code>check</code>, <code>deposit_preauth</code>, <code>escrow</code>, <code>nft_offer</code>, <code>nft_page</code>, <code>offer</code>, <code>payment_channel</code>, <code>signer_list</code>, <code>state</code> (trust line), and <code>ticket</code>. <!-- Author's note: Omitted types that can't be owned by an account --></td>
 </tr>
 </tbody>
 </table>

@@ -295,7 +295,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="accountroot">AccountRoot<a aria-hidden="true" class="hover_anchor" href="#accountroot"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/xrplf/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/264280edd79b7f764536e02459f33f66a59c0531/src/ripple/protocol/impl/LedgerFormats.cpp#L36-L60" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>An <code>AccountRoot</code> ledger entry type describes a single <a href="accounts.html">account</a>, its settings, and XRP balance.</p>
 <h2 id="example-accountroot-json">Example AccountRoot JSON<a aria-hidden="true" class="hover_anchor" href="#example-accountroot-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -369,6 +369,13 @@
 <td style="text-align: left;">Hash128</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">The md5 hash of an email address. Clients can use this to look up an avatar through services such as <a class="external-link" href="https://en.gravatar.com/" target="_blank">Gravatar <i aria-hidden="true" class="fa fa-external-link"></i></a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>FirstNFTokenSequence</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt32</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The account's <a href="basic-data-types.html#account-sequence">Sequence Number</a> at the time it minted its first <a href="non-fungible-tokens.html">non-fungible-token</a>. <em>(Added by the <a href="known-amendments.html#fixnftokenremint">fixNFTokenRemint amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#accountroot-flags"><code>Flags</code></a></td>

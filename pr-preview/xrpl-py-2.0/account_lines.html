@@ -331,8 +331,8 @@ rippled<span class="w"> </span>account_lines<span class="w"> </span>r9cZA1mLK5R5
 <tbody>
 <tr>
 <td style="text-align: left;"><code>account</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">A unique identifier for the account, most commonly the account's <a href="basic-data-types.html#addresses">Address</a>.</td>
+<td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
+<td style="text-align: left;">Look up trust lines connected to this account.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
@@ -341,23 +341,23 @@ rippled<span class="w"> </span>account_lines<span class="w"> </span>r9cZA1mLK5R5
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">String or Unsigned Integer</td>
+<td style="text-align: left;">Number or String</td>
 <td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>peer</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#addresses">Address</a> of a second account. If provided, show only lines of trust connecting the two accounts.</td>
+<td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
+<td style="text-align: left;"><em>(Optional)</em> A second account; if provided, filter results to trust lines connecting the two accounts.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>limit</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">(Optional, default varies) Limit the number of trust lines to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4" target="_blank" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;"><em>(Optional)</em> Limit the number of trust lines to retrieve. The server may return less than the specified limit, even if there are more pages of results. Must be within the inclusive range 10 to 400. The default is 200.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
 <td style="text-align: left;"><a href="markers-and-pagination.html">Marker</a></td>
-<td style="text-align: left;"><em>(Optional)</em> Value from a previous paginated response. Resume retrieving data where that response left off. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4" target="_blank" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> Value from a previous paginated response. Resume retrieving data where that response left off.</td>
 </tr>
 </tbody>
 </table>
