@@ -1,6 +1,6 @@
-from xrpl.transaction import safe_sign_and_autofill_transaction, send_reliable_submission
+from xrpl.transaction import submit_and_wait
 from xrpl.models.transactions.nftoken_mint import NFTokenMint, NFTokenMintFlag
-from xrpl.models.transactions.account_set import AccountSet, AccountSetFlag
+from xrpl.models.transactions.account_set import AccountSet, AccountSetAsfFlag
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.models.requests import AccountNFTs
 from xrpl.clients import JsonRpcClient
@@ -14,7 +14,7 @@ seed = ""
 custom_wallet = None
 
 if seed:
-    custom_wallet = Wallet(seed=seed, sequence=0)
+    custom_wallet = Wallet.from_seed(seed=seed)
 
 # Connect to a testnet node
 print("Connecting to Testnet...")
@@ -23,12 +23,12 @@ client = JsonRpcClient(JSON_RPC_URL)
 
 # Initialize wallet from seed
 issuer_wallet = generate_faucet_wallet(client=client, wallet=custom_wallet)
-issuerAddr = issuer_wallet.classic_address
+issuerAddr = issuer_wallet.address
 
 # Get minter account credentials from the testnet faucet
 print("Requesting address from the Testnet faucet...")
 nftoken_minter_wallet = generate_faucet_wallet(client=client)
-minterAddr = nftoken_minter_wallet.classic_address
+minterAddr = nftoken_minter_wallet.address
 
 print(f"\nMinter Account: {issuerAddr}")
 print(f"          Seed: {issuer_wallet.seed}")
@@ -40,13 +40,12 @@ print(f"                     Seed: {nftoken_minter_wallet.seed}")
 print(f"\nAuthorizing account {minterAddr} as a NFT minter on account {issuerAddr}...")
 authorize_minter_tx = AccountSet(
     account=issuerAddr,
-    set_flag=AccountSetFlag.ASF_AUTHORIZED_NFTOKEN_MINTER,
+    set_flag=AccountSetAsfFlag.ASF_AUTHORIZED_NFTOKEN_MINTER,
     nftoken_minter=minterAddr
 )
 
-# Sign authorize_minter_tx using issuer account
-authorize_minter_tx_signed = safe_sign_and_autofill_transaction(transaction=authorize_minter_tx, wallet=issuer_wallet, client=client)
-authorize_minter_tx_signed = send_reliable_submission(transaction=authorize_minter_tx_signed, client=client)
+# Sign and submit authorize_minter_tx using issuer account
+authorize_minter_tx_signed = submit_and_wait(transaction=authorize_minter_tx, client=client, wallet=issuer_wallet)
 authorize_minter_tx_result = authorize_minter_tx_signed.result
 print(f"\nAuthorize minter tx result: {authorize_minter_tx_result}")
 
@@ -67,8 +66,7 @@ mint_tx_1 = NFTokenMint(
 
 # Sign using previously authorized minter's account, this will result in the NFT's issuer field to be the Issuer Account
 # while the NFT's owner would be the Minter Account
-mint_tx_1_signed = safe_sign_and_autofill_transaction(transaction=mint_tx_1, wallet=nftoken_minter_wallet, client=client)
-mint_tx_1_signed = send_reliable_submission(transaction=mint_tx_1_signed, client=client)
+mint_tx_1_signed = submit_and_wait(transaction=mint_tx_1, client=client, wallet=nftoken_minter_wallet)
 mint_tx_1_result = mint_tx_1_signed.result
 print(f"\n Mint tx result: {mint_tx_1_result['meta']['TransactionResult']}")
 print(f"    Tx response: {mint_tx_1_result}")

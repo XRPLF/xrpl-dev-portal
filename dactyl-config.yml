@@ -219,7 +219,7 @@ pages:
         targets:
             - en
 
-    -   name: XRPL オーバービュー
+    -   name: XRPLの概要
         template: page-xrpl-overview.html.jinja
         html: xrp-ledger-overview.html
         parent: index.html
@@ -280,7 +280,7 @@ pages:
         targets:
             - en
 
-    -   name: 沿革
+    -   name: 歴史
         template: page-history.html.jinja
         html: history.html
         parent: xrp-ledger-overview.html
@@ -321,7 +321,7 @@ pages:
         parent: xrp-ledger-overview.html
         blurb: XRP LedgerのネイティブデジタルアセットであるXRPの詳細はこちら。
         top_nav_grouping: XRP
-        top_nav_name: XRP Overview
+        top_nav_name: XRPの概要
         sidebar: disabled
         targets:
             - ja
@@ -1233,8 +1233,8 @@ pages:
         html: tutorials.html
         parent: docs.html
         top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Get step-by-step guidance to perform common tasks with the XRP Ledger.
+        template: page-tutorials.html.jinja
+        blurb: The XRP Ledger tutorials walk you through the steps to learn and get started with the XRP Ledger and to use the ledger for advanced use cases.
         targets:
             - en
 
@@ -1242,55 +1242,142 @@ pages:
         html: tutorials.html
         parent: docs.html
         top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
+        template: page-tutorials.html.jinja
         blurb: XRP Ledgerで一般的なタスクを実行するためのステップバイステップのガイダンスを紹介します。
         targets:
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/xrpl-quickstart.md
+    -   name: Quickstart
+        html: xrpl-quickstart.html
+        parent: tutorials.html
+        blurb: Quickly experiment with the basics of XRPL development.
+        cta_text: Quickstart tutorials
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   name: Quickstart (JavaScript)
+        html: quickstart-javascript.html
+        parent: xrpl-quickstart.html
+        template: pagetype-category.html.jinja
+        blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs.
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/quickstart-intro.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/create-accounts-send-xrp.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/create-trustline-send-currency.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/mint-and-burn-nftokens.md
+    -   md: tutorials/quickstart/mint-and-burn-nfts.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/transfer-nftokens.md
+    -   md: tutorials/quickstart/transfer-nfts.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
-        # TODO: translate
+        # TODO: translate        
     -   md: tutorials/quickstart/broker-sale.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/authorize-minter.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/batch-minting.md
+        parent: quickstart-javascript.html
+        targets:
+            - en
+            - ja
+
+    -   name: Quickstart (Python)
+        html: quickstart-python.html
+        parent: xrpl-quickstart.html
+        template: pagetype-category.html.jinja
+        blurb: Use a Python test harness to send XRP, trade currencies, and mint and trade NFTs.
+        targets:
+            - en
+            - ja
+            
+        # TODO: translate
+    -   md: tutorials/quickstart/py-quickstart-intro.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-create-accounts-send-xrp.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-create-trustline-send-currency.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-mint-and-burn-nfts.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-transfer-nfts.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-broker-sale.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-authorize-minter.md
+        parent: quickstart-python.html
         targets:
             - en
             - ja
@@ -2423,6 +2510,7 @@ pages:
         targets:
             - ja
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.md
         targets:
             - en
@@ -2574,6 +2662,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with rippled 1.11.0 changes
     -   md: references/protocol-reference/transactions/transaction-common-fields.ja.md
         targets:
             - ja
@@ -3162,6 +3251,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_currencies.ja.md
         targets:
             - ja
@@ -3170,6 +3260,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_info.ja.md
         targets:
             - ja
@@ -3178,6 +3269,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_lines.ja.md
         targets:
             - ja
@@ -3192,6 +3284,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.ja.md
         targets:
             - ja
@@ -3200,6 +3293,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_offers.ja.md
         targets:
             - ja
@@ -3891,6 +3985,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.ja.md
         targets:
             - ja
@@ -4871,6 +4966,20 @@ pages:
         html: https://github.com/XRPLF/xrpl-dev-portal/
         parent: contribute.html
         blurb: このサイトのソースコードをGitHubで閲覧し、変更を提案することができます。
+        targets:
+            - ja
+
+    -   name: XRPL Brand Kit
+        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
+        parent: contribute.html
+        blurb: Review guidelines for using XRPL design assets.
+        targets:
+            - en
+
+    -   name: XRPL Brand Kit
+        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
+        parent: contribute.html
+        blurb: XRPL 設計資産の使用に関するガイドラインを確認してください。
         targets:
             - ja
 

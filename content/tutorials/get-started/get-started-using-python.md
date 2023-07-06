@@ -112,24 +112,16 @@ To prepare the transaction:
 
 
 
-##### Sign
+##### Sign and submit
 
-To sign the transaction:
+To sign and submit the transaction:
 
-{{ include_code("_code-samples/get-started/py/prepare-payment.py", start_with="# Sign the transaction", end_before="# Print signed tx", language="py") }}
-
-
-
-##### Send
-
-To send the transaction:
-
-{{ include_code("_code-samples/get-started/py/prepare-payment.py", start_with="# Submit and send the transaction", end_before="# Print tx response", language="py") }}
+{{ include_code("_code-samples/get-started/py/prepare-payment.py", start_with="# Sign and submit the transaction", end_before="# Print tx response", language="py") }}
 
 
 ##### Derive an X-address
 
-You can use `xrpl-py`'s [`xrpl.core.addresscodec`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.core.addresscodec.html) module to derive an [X-address](https://xrpaddress.info/) from the `Wallet.classic_address` field:
+You can use `xrpl-py`'s [`xrpl.core.addresscodec`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.core.addresscodec.html) module to derive an [X-address](https://xrpaddress.info/) from the `Wallet.address` field:
 
 {{ include_code("_code-samples/get-started/py/get-acct-info.py", start_with="# Derive an x-address from the classic address:", end_before="# Look up info about your account", language="py") }}
 

@@ -104,7 +104,7 @@ _Python_
 ```py
 keypair = xrpl.wallet.Wallet.create()
 print("seed:", keypair.seed)
-print("classic address:", keypair.classic_address)
+print("classic address:", keypair.address)
 ```
 
 _JavaScript_

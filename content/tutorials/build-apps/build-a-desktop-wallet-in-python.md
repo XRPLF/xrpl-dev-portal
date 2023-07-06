@@ -418,7 +418,7 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
         import xrpl
         w = xrpl.wallet.Wallet.create()
-        print(w.classic_address)
+        print(w.address)
         print(w.seed)
         exit()
 

@@ -9,19 +9,20 @@ labels:
 # account_objects
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
 
-The `account_objects` command returns the raw [ledger format][] for all objects owned by an account. For a higher-level view of an account's trust lines and balances, see the [account_lines method][] instead.
+The `account_objects` command returns the raw [ledger format][] for all ledger entries owned by an account. For a higher-level view of an account's trust lines and balances, see the [account_lines method][] instead.
 
-The types of objects that may appear in the `account_objects` response for an account include:
+The types of objects that may appear in the `account_objects` response include:
 
-- [Offer objects](offer.html) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](offers.html#lifecycle-of-an-offer) for more information.)
-- [RippleState objects](ripplestate.html) for trust lines where this account's side is not in the default state.
+- [Offer entries](offer.html) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](offers.html#lifecycle-of-an-offer) for more information.)
+- [RippleState entries](ripplestate.html) for trust lines where this account's side is not in the default state.
 - The account's [SignerList](signerlist.html), if the account has [multi-signing](multi-signing.html) enabled.
-- [Escrow objects](escrow.html) for held payments that have not yet been executed or canceled.
-- [PayChannel objects](paychannel.html) for open payment channels.
-- [Check objects](check.html) for pending Checks.
-- [DepositPreauth objects](depositpreauth-object.html) for deposit preauthorizations. [New in: rippled 1.1.0][]
-- [Ticket objects](known-amendments.html#tickets) for Tickets.
-- [NFTokenPage objects](nftokenpage.html) for collections of NFTs.
+- [Escrow entries](escrow.html) for held payments that have not yet been executed or canceled.
+- [PayChannel entries](paychannel.html) for open payment channels.
+- [Check entries](check.html) for pending Checks.
+- [DepositPreauth entries](depositpreauth-object.html) for deposit preauthorizations.
+- [Ticket entries](tickets.html) for Tickets.
+- [NFTokenOffer entries](nftokenoffer.html) for offers to buy or sell an NFT.
+- [NFTokenPage entries](nftokenpage.html) for collections of NFTs. [New in: rippled 1.11.0][]
 
 
 ## Request Format
@@ -80,7 +81,7 @@ The request includes the following parameters:
 | `ledger_index`           | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`                  | Number           | No        | The maximum number of objects to include in the results. Must be within the inclusive range `10` to `400` on non-admin connections. The default is `200`. |
 | `marker`                 | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
-| `type`                   | String           | No        | Filter results by a ledger entry type. The valid types are: `check`, `deposit_preauth`, `escrow`, `nft_offer`, `offer`, `payment_channel`, `signer_list`, `state` (trust line), and `ticket`. <!-- Author's note: Omitted types that can't be owned by an account --> |
+| `type`                   | String           | No        | Filter results by a ledger entry type. The valid types are: `check`, `deposit_preauth`, `escrow`, `nft_offer`, `nft_page`, `offer`, `payment_channel`, `signer_list`, `state` (trust line), and `ticket`. <!-- Author's note: Omitted types that can't be owned by an account --> |
 
 ## Response Format
 

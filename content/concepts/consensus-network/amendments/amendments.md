@@ -33,7 +33,7 @@ Every 256th ledger is called a **flag** ledger. The flag ledger doesn't have spe
 
 ## Amendment Voting
 
-Each version of `rippled` is compiled with a list of known amendments and the code to implement those amendments. Operators of `rippled` validators configure their servers to vote on each amendment and can change it at any time. If the operator doesn't choose a vote, the server uses a default vote defined by the source code.
+Each version of `rippled` is compiled with a list of [known amendments](known-amendments.html) and the code to implement those amendments. Operators of `rippled` validators configure their servers to vote on each amendment and can change it at any time. If the operator doesn't choose a vote, the server uses a default vote defined by the source code.
 
 **Note:** The default vote can change between software releases. [Updated in: rippled 1.8.1][]
 
@@ -72,6 +72,8 @@ The [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussion
     - [Run rippled as a Validator](run-rippled-as-a-validator.html)
     - [Configure Amendment Voting](configure-amendment-voting.html)
     - [Contribute Code to the XRP Ledger](contribute-code.html)
+- **References:**
+    - [Known Amendments](known-amendments.html)
 
 
 <!--{# common link defs #}-->

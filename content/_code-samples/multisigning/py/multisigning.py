@@ -10,7 +10,7 @@ from xrpl.transaction import (
     autofill,
     autofill_and_sign,
     multisign,
-    send_reliable_submission,
+    submit_and_wait,
     sign,
 )
 from xrpl.utils import str_to_hex
@@ -25,18 +25,18 @@ signer_wallet_1 = generate_faucet_wallet(client, debug=True)
 signer_wallet_2 = generate_faucet_wallet(client, debug=True)
 
 signer_entries = [
-    SignerEntry(account=signer_wallet_1.classic_address, signer_weight=1),
-    SignerEntry(account=signer_wallet_2.classic_address, signer_weight=1),
+    SignerEntry(account=signer_wallet_1.address, signer_weight=1),
+    SignerEntry(account=signer_wallet_2.address, signer_weight=1),
 ]
 signer_list_set_tx = SignerListSet(
-    account=master_wallet.classic_address,
+    account=master_wallet.address,
     signer_quorum=2,
     signer_entries=signer_entries,
 )
-signed_signer_list_set_tx = autofill_and_sign(signer_list_set_tx, master_wallet, client)
+signed_signer_list_set_tx = autofill_and_sign(signer_list_set_tx, client, master_wallet)
 
 print("Constructed SignerListSet and submitting it to the ledger...")
-signed_list_set_tx_response = send_reliable_submission(
+signed_list_set_tx_response = submit_and_wait(
     signed_signer_list_set_tx, client
 )
 print("SignerListSet submitted, here's the response:")
@@ -45,7 +45,7 @@ print(signed_list_set_tx_response)
 # Now that we've set up multisigning, let's try using it to submit an AccountSet
 # transaction.
 account_set_tx = AccountSet(
-    account=master_wallet.classic_address, domain=str_to_hex("example.com")
+    account=master_wallet.address, domain=str_to_hex("example.com")
 )
 autofilled_account_set_tx = autofill(account_set_tx, client, len(signer_entries))
 print("AccountSet transaction is ready to be multisigned")

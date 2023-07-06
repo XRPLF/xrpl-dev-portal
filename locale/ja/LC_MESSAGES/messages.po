@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2022-11-03 15:52-0700\n"
+"POT-Creation-Date: 2023-06-22 16:46-0700\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -20,65 +20,64 @@ msgstr ""
 
 #: template/component-footer.html.jinja:23
 msgid "Open Source."
-msgstr "オープンソース。"
+msgstr "オープンソース"
 
 #: template/component-footer.html.jinja:31
 msgid "Jump to top of page"
-msgstr "このページの先頭へ"
+msgstr "ページの先頭へ"
 
 #: template/component-github-edit.html.jinja:26
 msgid "Edit page"
 msgstr "ページを編集"
 
 #: template/component-top-nav.html.jinja:3
-msgid "Native NFT support is now available on the XRP Ledger"
-msgstr ""
+msgid "Register for <span class=\"apex-highlight\">APEX Dev Summit 2023</span>"
+msgstr "<span class=\"apex-highlight\">APEX Dev Summit 2023</span>に登録"
 
-#: template/component-top-nav.html.jinja:7
-msgid "Native NFT support is now available"
-msgstr ""
+#: template/component-top-nav.html.jinja:6
+msgid "Amsterdam"
+msgstr "アムステルダム"
 
-#: template/component-top-nav.html.jinja:8
-msgid "on the XRP Ledger"
-msgstr ""
+#: template/component-top-nav.html.jinja:10
+msgid "Register Now"
+msgstr "今すぐ登録"
 
 # Tooltip on the button to close the search box
-#: template/component-top-nav.html.jinja:79 template/page-404.html.jinja:11
-#: template/page-docs.html.jinja:18
+#: template/component-top-nav.html.jinja:81 template/page-404.html.jinja:11
 #, fuzzy
 msgid "Search"
 msgstr "検索"
 
-#: template/component-top-nav.html.jinja:80
+#: template/component-top-nav.html.jinja:82
 msgid "Search site..."
 msgstr "サイトを検索"
 
-#: template/page-404.html.jinja:12 template/page-docs.html.jinja:19
+#: template/page-404.html.jinja:12
 msgid "Search for articles, training, and code samples..."
 msgstr "記事、トレーニング、コードサンプルを検索..."
 
 #: template/page-ambassadors.html.jinja:27
 msgid "Become an XRP Ledger Campus Ambassador"
-msgstr ""
+msgstr "XRP Ledgerキャンパスアンバサダーになる"
 
 #: template/page-ambassadors.html.jinja:28
 msgid "Join the Student Cohort"
-msgstr ""
+msgstr "Student Cohortに参加"
 
 #: template/page-ambassadors.html.jinja:30
 msgid ""
 "The XRPL Campus Ambassador program engages, supports, connects, and "
 "recognizes a group of student champions of the XRPL and empowers them to "
-"further advance engagement on the XRP Ledger."
-msgstr ""
+"further advance engagement on the ledger."
+msgstr "XRPLキャンパスアンバサダープログラムは、XRPLの学生チャンピオンのグループを巻き込み、サポートし、つなげ、認識し、レジャーへの関与をさらに進めるための力を与えるものです。"
 
 #: template/page-ambassadors.html.jinja:45
 msgid "XRPL Campus Ambassadors"
-msgstr ""
+msgstr "XRPLキャンパスアンバサダー"
 
 #: template/page-ambassadors.html.jinja:46
 msgid "Current Students"
-msgstr ""
+msgstr "現役学生"
 
 #: template/page-ambassadors.html.jinja:48
 msgid ""
@@ -86,272 +85,238 @@ msgid ""
 "students who are passionate about blockchain technology. In their role, "
 "Campus Ambassadors help educate other students about crypto and how to "
 "start building on the XRPL."
-msgstr ""
+msgstr "XRPLキャンパスアンバサダープログラムは、ブロックチェーン技術に情熱を傾ける大学生の影響力を高めることを目的としています。その役割として、キャンパスアンバサダーは、暗号とXRPLでの構築を開始する方法について他の学生を教育することを支援します。"
 
-#: template/page-ambassadors.html.jinja:80
-msgid "Process to become a Campus Ambassador"
-msgstr ""
-
-#: template/page-ambassadors.html.jinja:81
-msgid "How it Works"
-msgstr ""
-
-#: template/page-ambassadors.html.jinja:84
-msgid "Apply now to become an XRPL Campus Ambassador."
-msgstr ""
-
-#: template/page-ambassadors.html.jinja:178
+#: template/page-ambassadors.html.jinja:78
 msgid "Why become an XRPL Campus Ambassador?"
-msgstr ""
+msgstr "XRPLキャンパスアンバサダーになる理由"
 
-#: template/page-ambassadors.html.jinja:179
+#: template/page-ambassadors.html.jinja:79
 #: template/page-xrp-overview.html.jinja:63
 msgid "Benefits"
 msgstr "メリット"
 
-#: template/page-ambassadors.html.jinja:181
+#: template/page-ambassadors.html.jinja:81
 msgid "Join a global cohort of students empowering others to build on the XRPL."
+msgstr "XRPLをベースに他の人に力を与える、世界的な学生グループに参加しましょう。"
+
+#: template/page-ambassadors.html.jinja:94
+msgid "Exclusive Opportunities"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:332
+#: template/page-ambassadors.html.jinja:95
+msgid ""
+" Get access and invitations to Ambassador-only events, conferences, and "
+"opportunities"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:102
+#: template/page-ambassadors.html.jinja:150
+msgid "Education"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:103
+#: template/page-ambassadors.html.jinja:151
+msgid "Tutorials and workshops from leading XRPL and blockchain developers"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:111
+msgid "New XRPL swag for Ambassadors and swag to share with other students"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:120
+#: template/page-ambassadors.html.jinja:159
+msgid ""
+"Serve as an advocate and receive support from notable members of the "
+"community"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:128
+msgid ""
+"Gain hands-on experience building communities and grow your professional "
+"network in the blockchain industry"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:136
+#: template/page-ambassadors.html.jinja:166
+msgid "Stipend"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:137
+#: template/page-ambassadors.html.jinja:167
+msgid ""
+"Receive a stipend to fund your ideas and initiatives that fuel XRPL "
+"growth on your campus"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:158
+msgid "Mentorship"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:187
 msgid "Should You Apply?"
-msgstr ""
+msgstr "応募できる？"
 
-#: template/page-ambassadors.html.jinja:333
+#: template/page-ambassadors.html.jinja:188
 msgid "Eligibility for XRPL Campus Ambassadors"
-msgstr ""
+msgstr "XRPLキャンパスアンバサダーの参加資格"
 
-#: template/page-ambassadors.html.jinja:335
+#: template/page-ambassadors.html.jinja:190
 msgid ""
 "Students currently enrolled in an undergraduate or postgraduate program "
 "at an accredited college or university are eligible to apply."
+msgstr "現在、認定された大学の学部または大学院に在籍している学生が応募可能です。"
+
+#: template/page-ambassadors.html.jinja:202
+msgid "A Leader"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:422
+#: template/page-ambassadors.html.jinja:203
+msgid ""
+"Interested in leading meetups and workshops for your local campus "
+"community"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:211
+#: template/page-ambassadors.html.jinja:250
+msgid "Active"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:212
+#: template/page-ambassadors.html.jinja:251
+msgid ""
+"An active participant in the XRPL community or interested in blockchain "
+"and crypto technologies"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:219
+msgid "Curious"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:220
+msgid "Eager to learn more about technical blockchain topics and the XRPL"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:228
+#: template/page-ambassadors.html.jinja:257
+msgid "Passionate"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:229
+#: template/page-ambassadors.html.jinja:258
+msgid ""
+"Passionate about increasing XRPL education and awareness through events, "
+"content, and classroom engagement"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:236
+msgid "Creative"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:237
+msgid "Ability to think outside the box to grow the XRPL student community"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:331
+msgid "Process to become a Campus Ambassador"
+msgstr "キャンパスアンバサダー就任までの流れ"
+
+#: template/page-ambassadors.html.jinja:332
+msgid "How it Works"
+msgstr "主な仕組み"
+
+#: template/page-ambassadors.html.jinja:335
+msgid "Apply now to become an XRPL Campus Ambassador."
+msgstr "XRPLキャンパスアンバサダーになりたい方は今すぐ応募しましょう。"
+
+#: template/page-ambassadors.html.jinja:354 template/page-uses.html.jinja:309
+#: template/page-uses.html.jinja:334
+msgid "Apply"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:355
+msgid "Submit an application to be considered for the Campus Ambassador program."
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:363
+#: template/page-ambassadors.html.jinja:393
+#, fuzzy
+msgid "Interview"
+msgstr "資金調達の概要"
+
+#: template/page-ambassadors.html.jinja:364
+#: template/page-ambassadors.html.jinja:394
+msgid ""
+"Tell the XRPL community-led panel more about yourself and your interest "
+"in the program during an interview."
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:371
+msgid "Join"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:372
+msgid ""
+"Congrats on your new role! Join the global cohort of Ambassadors and meet"
+" with community participants during onboarding."
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:380
+#: template/page-ambassadors.html.jinja:400
+msgid "Learn"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:381
+#: template/page-ambassadors.html.jinja:401
+msgid ""
+"Participate in personalized learning and training sessions for "
+"Ambassadors on the XRPL and blockchain technology."
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:414
+msgid "Apply for Fall 2023"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:431
 msgid "Join a global cohort of Student Ambassadors"
-msgstr ""
+msgstr "学生アンバサダーのグローバルなコミュニティに参加する"
 
-#: template/page-ambassadors.html.jinja:423
+#: template/page-ambassadors.html.jinja:432
 #, fuzzy
 msgid "Global Community"
-msgstr "XRPコミュニティ"
+msgstr "グローバルコミュニティ"
 
-#: template/page-ambassadors.html.jinja:449
+#: template/page-ambassadors.html.jinja:458
 msgid "Stay connected to the XRPL Campus Ambassadors"
-msgstr ""
+msgstr "XRPL キャンパスアンバサダーとの繋がりを持つ"
 
-#: template/page-ambassadors.html.jinja:450
+#: template/page-ambassadors.html.jinja:459 template/page-impact.html.jinja:148
+#: template/page-impact.html.jinja:169
 #, fuzzy
 msgid "Connect"
-msgstr "接続されていません"
+msgstr "繋がる"
 
-#: template/page-ambassadors.html.jinja:453
+#: template/page-ambassadors.html.jinja:462
 msgid ""
 "To stay up-to-date on the latest activity, meetups, and events of the "
 "XRPL Campus Ambassadors be sure to follow these channels:"
+msgstr "XRPL キャンパスアンバサダーの最新の活動、ミートアップ、イベントに関する最新情報を得るには、以下のチャンネルをフォローしてください。"
+
+#: template/page-ambassadors.html.jinja:478
+msgid "Attend an XRPL Meetup in your local area"
 msgstr ""
 
-#: template/page-calculator.html.jinja:27
-#, fuzzy
-msgid "Green Currency Interactive Tool"
-msgstr "インタラクティブツールを見る"
+#: template/page-ambassadors.html.jinja:485
+msgid "Read more about the activity of the XRPL Ambassadors"
+msgstr ""
 
-#: template/page-calculator.html.jinja:28
-msgid "How Green Is Your Currency?"
-msgstr "お使いの通貨はどのくらい環境にやさしいですか?"
-
-#: template/page-calculator.html.jinja:40
-msgid "Energy Consumption for Cash, Credit Cards and Crypto"
-msgstr "現金、クレジットカード、暗号資産のエネルギー消費量"
-
-#: template/page-calculator.html.jinja:41
-msgid ""
-"Moving money carries cost—and not just the fee on your transaction or the"
-" value of your payment."
-msgstr "資金を移動させるにはコストがかかります。これは取引手数料や支払額だけの話ではありません。"
-
-#: template/page-calculator.html.jinja:42
-msgid ""
-"Whether it’s in cash, on a credit card or with crypto, every transaction "
-"you make consumes energy, and therefore, emits pollutants into the "
-"environment."
-msgstr "現金、クレジットカード、暗号資産での取引は、いずれもエネルギーを消費しています。その結果、汚染物質が環境に排出されているのです。"
-
-#: template/page-calculator.html.jinja:43
-msgid ""
-"The impact of this is startling when you look at the total transactions "
-"across an entire year—for any one form of currency."
-msgstr "1年間で行われる総取引量を考えてみれば、1つの通貨形態だけでも、驚くほどの影響があります。"
-
-#: template/page-calculator.html.jinja:44
-msgid ""
-"Find out more about the environmental cost of some of the world’s most "
-"popular and innovative currencies, and start making more educated choices"
-" about how you transact."
-msgstr "世界中で特によく利用されている革新的な通貨の環境コストを詳しく確認することで、知識に基づいて取引方法を選べるようになります。"
-
-#: template/page-calculator.html.jinja:52
-msgid "How Does XRP Compare to Other Currencies?"
-msgstr "XRPを他の通貨と比較すると?"
-
-#: template/page-calculator.html.jinja:61
-msgid "Change Inputs"
-msgstr "入力の変更"
-
-#: template/page-calculator.html.jinja:66
-#, fuzzy
-msgid "Comparing<br class=\"until-sm\"/> Transaction Data"
-msgstr "取引データの<br/>比較"
-
-#: template/page-calculator.html.jinja:68
-msgid "Crypto"
-msgstr "暗号資産"
-
-#: template/page-calculator.html.jinja:69
-msgid "Credit Cards"
-msgstr "クレジットカード"
-
-#: template/page-calculator.html.jinja:70
-#: template/page-calculator.html.jinja:140
-msgid "Cash"
-msgstr "現金"
-
-#: template/page-calculator.html.jinja:89
-msgid "Twitter share"
-msgstr "Twitterでシェア"
-
-#: template/page-calculator.html.jinja:90
-msgid "LinkedIn share"
-msgstr "LinkedInでシェア"
-
-#: template/page-calculator.html.jinja:91
-msgid "Facebook share"
-msgstr "Facebookでシェア"
-
-#: template/page-calculator.html.jinja:95
-msgid "Learn more about the methodology"
-msgstr "測定方法について詳しく知る【英語】"
-
-#: template/page-calculator.html.jinja:101
-msgid "Energy Consumption of Portugal"
-msgstr "ポルトガルのエネルギー消費量"
-
-#: template/page-calculator.html.jinja:103
-#: template/page-calculator.html.jinja:188
-#: template/page-calculator.html.jinja:231
-msgid "Comparing <span class=\"slider-amt\"></span> Million Transactions in 2019"
-msgstr "2019年の取引額<span class=\"slider-amt\"></span>百万を比較"
-
-#: template/page-calculator.html.jinja:105
-#, fuzzy
-msgid ""
-"The country of Portugal consumes 46.94 billion Kilowatt hours (kWh) of "
-"energy annually. Explore how much energy today’s various currencies "
-"consume in relation to Portugal."
-msgstr "ポルトガルの国全体では年間でおよそ50TWh（10億キロワット時【kWh】）のエネルギーを消費しています。ポルトガルと比較して、現代のさまざまな通貨のエネルギー消費量をご覧ください。"
-
-#: template/page-calculator.html.jinja:111
-#: template/page-calculator.html.jinja:159
-#: template/page-calculator.html.jinja:171
-msgid "Portugal"
-msgstr "ポルトガル"
-
-#: template/page-calculator.html.jinja:116
-#: template/page-xrp-overview.html.jinja:65
-msgid "Bitcoin"
-msgstr "Bitcoin"
-
-#: template/page-calculator.html.jinja:118
-#: template/page-calculator.html.jinja:130
-#: template/page-calculator.html.jinja:142
-#: template/page-calculator.html.jinja:154
-#: template/page-calculator.html.jinja:166
-#: template/page-calculator.html.jinja:178
-msgid "kWh"
-msgstr "kWh"
-
-#: template/page-calculator.html.jinja:128
-msgid "Ethereum"
-msgstr "Ethereum"
-
-#: template/page-calculator.html.jinja:163
-msgid "Visa"
-msgstr "Visa"
-
-#: template/page-calculator.html.jinja:175
-#: template/page-calculator.html.jinja:176
-msgid "Mastercard"
-msgstr "Mastercard"
-
-#: template/page-calculator.html.jinja:186
-msgid "CO<sub>2</sub> Emissions from Airline Flights"
-msgstr "航空便によるCO<sub>2</sub>排出量"
-
-#: template/page-calculator.html.jinja:190
-msgid ""
-"A 12-hour flight from London to Hong Kong releases 3 tons of carbon "
-"dioxide (CO<sub>2</sub>). Discover how much CO<sub>2</sub> different "
-"forms of currency release in comparison to emissions from airline "
-"flights."
-msgstr "ロンドンから香港までの所要12時間の1回のフライトで、二酸化炭素（CO<sub>2</sub>）が3トン排出されます。航空便による排出量と比較して、さまざまな通貨形態でどれほどのCO<sub>2</sub>が排出されるかご確認ください。"
-
-#: template/page-calculator.html.jinja:198
-#: template/page-calculator.html.jinja:203
-#: template/page-calculator.html.jinja:208
-#: template/page-calculator.html.jinja:213
-#: template/page-calculator.html.jinja:218
-#: template/page-calculator.html.jinja:223
-msgid "metric tons of CO<sub>2</sub>"
-msgstr "CO<sub>2</sub>のメトリックトン"
-
-#: template/page-calculator.html.jinja:229
-msgid "Gas Consumption by the Gallon"
-msgstr "ガス消費量（ガロン）"
-
-#: template/page-calculator.html.jinja:233
-msgid ""
-"An Ultra Large Crude Carrier (ULCC) carries approximately 120 million "
-"gallons of gas. Measure the environmental impact between currencies in "
-"relation to the amount of gas they would consume in the real-world."
-msgstr "超大型原油タンカー（ULCC）は約1億2,000万ガロンのガスを運ぶことができます。それぞれの通貨が実際に消費するガスの量を比較して、環境への影響を測定してみましょう。"
-
-#: template/page-calculator.html.jinja:241
-#: template/page-calculator.html.jinja:246
-#: template/page-calculator.html.jinja:251
-#: template/page-calculator.html.jinja:256
-#: template/page-calculator.html.jinja:261
-#: template/page-calculator.html.jinja:266
-#: template/page-calculator.html.jinja:288
-msgid "Gallons of Gas"
-msgstr "ガロン"
-
-#: template/page-calculator.html.jinja:278
-msgid "Breaking Down Individual Transactions"
-msgstr "取引1回分の内訳"
-
-#: template/page-calculator.html.jinja:279
-msgid ""
-"Looking at individual transactions below, compare how a single "
-"transaction across each form of currency equates to kWh, CO<sub>2</sub> "
-"emissions, and gallons of gas."
-msgstr "各通貨形態の取引1回分がどのくらいのエネルギー消費量（kWh）、ガス消費量（ガロン）、CO<sub>2</sub>排出量に相当するか比較しました。以下の表をご覧ください。"
-
-#: template/page-calculator.html.jinja:286
-msgid "Kilowatt Hour"
-msgstr "キロワット時"
-
-#: template/page-calculator.html.jinja:287
-#, fuzzy
-msgid "CO<sub>2</sub> Emissions"
-msgstr "CO<sub>2</sub>排出量"
-
-#: template/page-calculator.html.jinja:323
-msgid "Paper Currency"
-msgstr "紙幣"
+#: template/page-ambassadors.html.jinja:497
+msgid "Join the conversation on the XRPL Developer Discord"
+msgstr ""
 
 #: template/page-code-samples.html.jinja:13
 msgid "Start Building with Example Code"
-msgstr "コードサンプルで構築する"
+msgstr "コードサンプルから開発を始める"
 
 #: template/page-code-samples.html.jinja:14
 msgid "Code Samples"
@@ -385,7 +350,7 @@ msgstr "以下のプラットフォームでコミュニティにアクセスで
 msgid "Join the Conversation"
 msgstr "参加する"
 
-#: template/page-community.html.jinja:87 template/page-docs.html.jinja:79
+#: template/page-community.html.jinja:87
 msgid "Run an XRP Ledger network node"
 msgstr "XRP Ledgerのネットワークノードを実行する"
 
@@ -411,7 +376,8 @@ msgstr ""
 "コミュニティに貢献する厳選されたオープンソースプロジェクトに資金を提供します。"
 
 #: template/page-community.html.jinja:128
-#: template/page-community.html.jinja:148 template/page-funding.html.jinja:298
+#: template/page-community.html.jinja:148 template/page-events.html.jinja:56
+#: template/page-funding.html.jinja:383
 msgid "Learn More"
 msgstr "もっと知る"
 
@@ -429,25 +395,27 @@ msgstr "オープンソースプロジェクトへの資金提供"
 
 #: template/page-community.html.jinja:164
 msgid "Showcase your XRPL project, application or product"
-msgstr ""
+msgstr "XRPLプロジェクト、アプリケーション、製品の紹介"
 
 #: template/page-community.html.jinja:165
 msgid "XRPL Community Spotlight"
-msgstr ""
+msgstr "XRPL コミュニティの紹介"
 
 #: template/page-community.html.jinja:167
 msgid ""
 "Get featured on the Developer Reflections blog or Use Cases page, and "
 "explore XRPL community highlights."
 msgstr ""
+"開発者向けブログ「Developer Reflections」や「Use "
+"Cases」ページでの紹介や、XRPLコミュニティのハイライトなどをご紹介します。"
 
 #: template/page-community.html.jinja:174
 msgid "Submit Your Projects"
-msgstr ""
+msgstr "プロジェクトを登録する"
 
 #: template/page-community.html.jinja:175
 msgid "Read the Blog"
-msgstr ""
+msgstr "ブログを読む"
 
 #: template/page-community.html.jinja:191
 #: template/page-community.html.jinja:216
@@ -504,11 +472,11 @@ msgstr "募集職種を見る"
 
 #: template/page-community.html.jinja:268
 msgid "Review guidelines for using XRPL design assets"
-msgstr ""
+msgstr "XRPLのデザインアセットを使用するためのガイドラインを確認"
 
 #: template/page-community.html.jinja:269
 msgid "XRPL Assets"
-msgstr ""
+msgstr "XRPLのアセット"
 
 #: template/page-community.html.jinja:271
 msgid ""
@@ -516,10 +484,12 @@ msgid ""
 "available for anyone to use. Check out this helpful framework for using "
 "XRPL visuals. "
 msgstr ""
+"テクノロジーそのものと同様に、XRPLアセットもオープンソースであり、誰でも利用することができます。XRPL "
+"のデータを使用するためのフレームワークをご覧ください。"
 
 #: template/page-community.html.jinja:279
 msgid "Download the PDF and Assets"
-msgstr ""
+msgstr "PDFとアセットをダウンロード"
 
 #: template/page-community.html.jinja:297
 #, fuzzy
@@ -549,159 +519,206 @@ msgstr "コントリビュータガイドラインを読む"
 msgid ""
 "Use the developer tools to test, explore, and validate XRP Ledger\n"
 "          API requests and behavior."
-msgstr ""
+msgstr "開発者ツールを使用して、XRP Ledger APIのリクエストと動作をテスト、調査、検証してみましょう。"
 
 #: template/page-dev-tools.html.jinja:16
 msgid "Dev Tools"
-msgstr ""
+msgstr "開発者ツール"
 
 #: template/page-dev-tools.html.jinja:28 template/page-dev-tools.html.jinja:74
 #, fuzzy
 msgid "Explorers"
-msgstr "利用例を見る"
+msgstr "エクスプローラ"
 
 #: template/page-dev-tools.html.jinja:31 template/page-dev-tools.html.jinja:89
 msgid "API Access"
-msgstr ""
+msgstr "APIアクセス"
 
 #: template/page-dev-tools.html.jinja:34 template/page-dev-tools.html.jinja:146
 #, fuzzy
 msgid "Other"
-msgstr "Ethereum"
+msgstr "その他"
 
 #: template/page-dev-tools.html.jinja:203
 msgid "Have an Idea For a Tool?"
-msgstr ""
+msgstr "ツールのアイデアをお持ちですか？"
 
 #: template/page-dev-tools.html.jinja:204
 msgid ""
 "Contribute to the XRP Ledger community by submitting your idea for a tool"
 " or open a pull request if you've developed a tool."
-msgstr ""
+msgstr "ツールのアイデアを提出したり、ツールを開発した場合はプルリクエストを開いて、XRP Ledgerコミュニティに貢献しましょう。"
 
 #: template/page-dev-tools.html.jinja:205
 msgid "Open a pull Request"
-msgstr ""
+msgstr "プルリクエストを作成する"
 
-#: template/page-docs.html.jinja:11
-msgid "What Would You Like to Learn?"
-msgstr "何を学びたいですか？"
-
-#: template/page-docs.html.jinja:12
-msgid "XRP Ledger Documentation"
-msgstr "XRP Ledger ドキュメント"
-
-#: template/page-docs.html.jinja:30
-msgid "Browse By Popular Topics"
-msgstr "人気のあるトピックから探す"
-
-#: template/page-docs.html.jinja:43
-msgid "Browse By Label"
-msgstr "ラベルから探す"
-
-#: template/page-docs.html.jinja:51
-msgid "Software and SDKs"
-msgstr "ソフトウェアとSDK"
-
-#: template/page-docs.html.jinja:52
-msgid "Start Developing"
-msgstr "開発を始める"
-
-#: template/page-docs.html.jinja:68
-msgid "Article types"
-msgstr "記事の種類"
-
-#: template/page-docs.html.jinja:69
-msgid "Dive In"
-msgstr ""
-
-#: template/page-docs.html.jinja:80
-msgid "Participate in the Network"
-msgstr "ネットワークに参加する"
-
-#: template/page-docs.html.jinja:93 template/page-uses.html.jinja:46
-#, fuzzy
-msgid "NFTs"
-msgstr "NFT"
-
-#: template/page-docs.html.jinja:94
-msgid "Hot Topic"
-msgstr "ホットな話題"
-
-#: template/page-docs.html.jinja:98
-msgid ""
-"Interested in non-fungible tokens, but concerned about their <a "
-"href=\"impact.html\">large carbon footprint</a>? Read more about issuing "
-"NFTs on the XRP Ledger:"
-msgstr ""
-"非代替性トークンに興味はあるが、<a href=\"impact.html\">二酸化炭素排出量<a/>が気になる？XRP "
-"LedgerでのNFTの発行について、詳しくはこちらをご覧ください。"
-
-#: template/page-docs.html.jinja:112
+#: template/page-docs-index.html.jinja:8
 #, fuzzy
 msgid "Full documentation index"
 msgstr "全ドキュメントの目次"
 
-#: template/page-docs.html.jinja:113
+#: template/page-docs-index.html.jinja:9
 msgid "See Everything"
 msgstr "全てを見る"
 
+#: template/page-docs.html.jinja:16
+msgid "XRP Ledger Developer Resources"
+msgstr ""
+
+#: template/page-docs.html.jinja:17
+#, fuzzy
+msgid "Documentation"
+msgstr "XRP Ledger ドキュメント"
+
+#: template/page-docs.html.jinja:90
+msgid "rippled API Reference"
+msgstr ""
+
+#: template/page-docs.html.jinja:94
+msgid "XRP Faucet"
+msgstr ""
+
+#: template/page-docs.html.jinja:98
+msgid "Getting Started with Python"
+msgstr ""
+
+#: template/page-docs.html.jinja:102
+msgid "Websocket API Tool"
+msgstr ""
+
+#: template/page-docs.html.jinja:105
+msgid "XRP Ledger Explorer"
+msgstr ""
+
+#: template/page-docs.html.jinja:267
+#, fuzzy
+msgid "Use Cases"
+msgstr "XRPLの利用例"
+
+#: template/page-docs.html.jinja:276
+#, fuzzy
+msgid "Getting Started"
+msgstr "始めましょう"
+
+#: template/page-docs.html.jinja:280
+msgid "Quickstart to XRP Ledger"
+msgstr ""
+
+#: template/page-docs.html.jinja:282
+msgid "An introduction to fundamental aspects of the XRP Ledger"
+msgstr ""
+
+#: template/page-docs.html.jinja:288 template/page-home.html.jinja:122
+msgid "Get Started"
+msgstr "始めましょう"
+
+#: template/page-docs.html.jinja:314
+msgid "Interact with the XRP Ledger in a language of your choice"
+msgstr ""
+
+#: template/page-docs.html.jinja:315
+#, fuzzy
+msgid "Explore SDKs"
+msgstr "エクスプローラ"
+
+#: template/page-docs.html.jinja:326
+msgid "Javascript"
+msgstr ""
+
+#: template/page-docs.html.jinja:335
+msgid "Python"
+msgstr ""
+
+#: template/page-docs.html.jinja:344
+msgid "Java"
+msgstr ""
+
+#: template/page-docs.html.jinja:375
+msgid "Explore, Test, Verify"
+msgstr ""
+
+#: template/page-docs.html.jinja:376
+msgid "Explore Dev Tools"
+msgstr ""
+
+#: template/page-docs.html.jinja:379
+msgid ""
+"Use these web-based tools to assist during all stages of development, "
+"from getting your first payment to testing your implementation for best "
+"practices."
+msgstr ""
+
+#: template/page-docs.html.jinja:395
+msgid "Browse By Recommended Pages"
+msgstr ""
+
+#: template/page-docs.html.jinja:407
+msgid "Get Free Test XRP"
+msgstr ""
+
+#: template/page-docs.html.jinja:408
+msgid ""
+"Connect to the XRP Ledger Testnet network to develop and test your apps "
+"built on the XRP Ledger, without risking real money or impacting "
+"production XRP Ledger users."
+msgstr ""
+
+#: template/page-docs.html.jinja:409
+msgid "Generate Testnet Credentials"
+msgstr ""
+
+#: template/page-docs.html.jinja:416
+#, fuzzy
+msgid "See full documentation index"
+msgstr "全ドキュメントの目次"
+
 #: template/page-events.html.jinja:27
 msgid "Find the XRPL Community Around the World"
-msgstr ""
+msgstr "世界中のXRPLコミュニティを見つけよう"
 
-#: template/page-events.html.jinja:28
+#: template/page-events.html.jinja:28 template/page-impact.html.jinja:133
+#: template/page-impact.html.jinja:161
 msgid "Events"
-msgstr ""
+msgstr "イベント"
 
-#: template/page-events.html.jinja:37
-msgid "Annual Summit: Apex"
-msgstr ""
-
-#: template/page-events.html.jinja:39
-msgid ""
-"Apex XRPL Developer Summit is the annual event where developers, "
-"contributors, and thought leaders come together to learn, build, share, "
-"network, and celebrate all things XRP Ledger."
-msgstr ""
-
-#: template/page-events.html.jinja:46
+#: template/page-events.html.jinja:42
 #, fuzzy
-msgid "Explore Apex"
-msgstr ""
+msgid "The XRPL Developer Summit"
+msgstr "XRPL開発者サミット"
 
-#: template/page-events.html.jinja:65
-msgid "Apex 2021 On-Demand"
-msgstr ""
+#: template/page-events.html.jinja:43
+msgid "Save the Date"
+msgstr "開催日"
 
-#: template/page-events.html.jinja:67
+#: template/page-events.html.jinja:45
 msgid ""
-"View sessions from the Apex 2021 stages in Las Vegas and Tallinn. Relive "
-"the keynote fireside chat with Alexis Ohanian and soak in the knowledge "
-"that was shared by passionate XRPL community members."
+"Apex is back and headed to Amsterdam. Apex XRPL Developer Summit is the "
+"annual event where developers, contributors, and thought leaders come "
+"together to learn, build, share, network, and celebrate all things XRP "
+"Ledger."
 msgstr ""
+"Apexが帰ってきました！アムステルダムに向かいましょう。Apex "
+"XRPL開発者サミットは、開発者、貢献者、思想家が集まり、学び、構築し、共有し、ネットワークし、XRP "
+"Ledgerのすべてを祝う年に一度のイベントです。"
 
-#: template/page-events.html.jinja:75
-msgid "Watch Sessions On-Demand"
-msgstr ""
-
-#: template/page-events.html.jinja:85
+#: template/page-events.html.jinja:66
 msgid ""
 "Check out meetups, hackathons, and other events hosted by the XRPL "
 "Community"
-msgstr ""
+msgstr "XRPLコミュニティが主催するミートアップ、ハッカソン、その他のイベントをチェックしましょう。"
 
-#: template/page-events.html.jinja:86
+#: template/page-events.html.jinja:67
 msgid "Upcoming Events"
-msgstr ""
+msgstr "今後のイベント情報"
 
-#: template/page-events.html.jinja:135
+#: template/page-events.html.jinja:399
 msgid "Explore past community-hosted events"
-msgstr ""
+msgstr "過去のコミュニティ主催のイベントを見る"
 
-#: template/page-events.html.jinja:136
+#: template/page-events.html.jinja:400
 msgid "Past Events"
-msgstr ""
+msgstr "過去のイベント"
 
 #: template/page-faq2.html.jinja:17 template/pagetype-doc.html.jinja:25
 msgid "Sorry, this page is not available in your language."
@@ -722,19 +739,19 @@ msgstr ""
 
 #: template/page-funding.html.jinja:27
 msgid "XRPL Developer Funding Programs"
-msgstr ""
+msgstr "XRPL開発者向け資金提供プログラム"
 
 #: template/page-funding.html.jinja:28
 msgid "Project Resources"
-msgstr ""
+msgstr "プロジェクト資金"
 
 #: template/page-funding.html.jinja:36
 msgid "Explore funding opportunities for developers and teams"
-msgstr ""
+msgstr "開発者やチームのための資金調達の方法を見つけましょう"
 
 #: template/page-funding.html.jinja:37
 msgid "Funding Overview"
-msgstr ""
+msgstr "資金調達の概要"
 
 #: template/page-funding.html.jinja:39
 msgid ""
@@ -742,69 +759,96 @@ msgid ""
 " or venture on the XRP Ledger (XRPL), there are a number of opportunities"
 " to fund your next innovation."
 msgstr ""
+"あなたがXRP "
+"Ledger（XRPL）上に次のプロジェクトやベンチャーを構築しようとしているソフトウェア開発者やチームであれば、次のイノベーションに資金を提供するチャンスは数多く存在します。"
 
 #: template/page-funding.html.jinja:50
 msgid "XRPL Hackathons"
-msgstr ""
+msgstr "XRPLハッカソン"
 
 #: template/page-funding.html.jinja:51
 msgid "Join an Event"
-msgstr ""
+msgstr "イベントに参加"
 
 #: template/page-funding.html.jinja:53
 msgid ""
 "Hackathons are open to all developers to explore and invent a project on "
 "the XRP Ledger. Visit the events page for updates on upcoming hackathons."
 msgstr ""
+"ハッカソンは、XRP "
+"Ledger上のプロジェクトを調査・考案するために、すべての開発者に開放されています。今後のハッカソンに関する最新情報は、イベントページでご確認ください。"
 
 #: template/page-funding.html.jinja:56 template/page-funding.html.jinja:121
 msgid "See Upcoming Events"
-msgstr ""
+msgstr "今後のイベントを見る"
 
 #: template/page-funding.html.jinja:135
 msgid "Fund Your Project"
-msgstr ""
+msgstr "プロジェクトの資金調達"
 
 #: template/page-funding.html.jinja:137
 #, fuzzy
 msgid ""
 "Developer grants for projects that contribute to the growing XRP Ledger "
 "community."
-msgstr ""
-"XRPL Grantsプログラムは、拡大を続ける XRP Ledger "
-"コミュニティに貢献する厳選されたオープンソースプロジェクトに資金を提供します。"
+msgstr "成長するXRP Ledgerコミュニティに貢献するプロジェクトに開発者助成金を提供します。"
 
 #: template/page-funding.html.jinja:145 template/page-funding.html.jinja:210
 msgid "Visit XRPL Grants"
-msgstr ""
+msgstr "XRPL Grantsを見る"
+
+#: template/page-funding.html.jinja:222
+#, fuzzy
+msgid "XRPL Accelerator"
+msgstr "XRPLアクセラレータ"
 
 #: template/page-funding.html.jinja:223
+msgid "Advance your project"
+msgstr "プロジェクトの推進"
+
+#: template/page-funding.html.jinja:225
+msgid ""
+"12-week program for entrepreneurs building on the XRP Ledger to scale "
+"their projects into thriving businesses."
+msgstr "XRP Ledgerをベースにした起業家向けの12週間のプログラムで、プロジェクトを繁栄するビジネスへとスケールアップさせることができます。"
+
+#: template/page-funding.html.jinja:228 template/page-funding.html.jinja:293
+msgid "View XRPL Accelerator"
+msgstr "XRPLアクセラレータを見る"
+
+#: template/page-funding.html.jinja:305
 msgid "XRPL Bounties"
 msgstr ""
 
-#: template/page-funding.html.jinja:224
+#: template/page-funding.html.jinja:306
 msgid "Go Deep"
-msgstr ""
+msgstr "より深く"
 
-#: template/page-funding.html.jinja:226
+#: template/page-funding.html.jinja:308
 msgid ""
 "Bounties are awards for developing software and integrations that enable "
 "and improve specific use cases for the XRP Ledger."
-msgstr ""
+msgstr "Bounties は、XRP Ledger の特定のユースケースを可能にし、改善するソフトウェアや統合を開発するための報奨金です。"
 
-#: template/page-funding.html.jinja:294
+#: template/page-funding.html.jinja:368
+msgid "Visit XRPL Bounties"
+msgstr "XRPL Bountiesを見る"
+
+#: template/page-funding.html.jinja:379
 msgid "Are you an independent creator?"
-msgstr ""
+msgstr "個人のクリエイターですか？"
 
-#: template/page-funding.html.jinja:295
+#: template/page-funding.html.jinja:380
 msgid "Ripple’s Creator Fund"
-msgstr ""
+msgstr "Ripple社のCreator Fund"
 
-#: template/page-funding.html.jinja:297
+#: template/page-funding.html.jinja:382
 msgid ""
 "If you’re a creator looking to mint NFTs on the XRP Ledger and do not "
 "have technical experience, check out Ripple’s Creator Fund."
 msgstr ""
+"XRP Ledger上でNFTを作成することを検討しているクリエイターで、技術的な経験がない場合は、Ripple社のCreator "
+"Fundをチェックしてみてください。"
 
 #: template/page-history.html.jinja:28
 msgid "Provide a Better Alternative to Bitcoin"
@@ -822,7 +866,9 @@ msgid ""
 "they set out to create a better version that improved upon its "
 "limitations—with the goal of creating a digital asset that was more "
 "sustainable and built specifically for payments."
-msgstr "Bitcoinに魅了されていた3人は、Bitcoinが持つ制約を改善したより優れたバージョンを作ることを目指し、さらに持続可能で決済に特化したデジタルアセットを構築するという目標を掲げました。"
+msgstr ""
+"2011年、David Schwartz、Jed McCaleb、Arthur Brittoの3人のエンジニアがXRP "
+"Ledger（XRPL）の開発を開始しました。Bitcoinに魅了されていた3人は、Bitcoinが持つ制約を改善したより優れたバージョンを作ることを目指し、さらに持続可能で決済に特化したデジタルアセットを構築するという目標を掲げました。"
 
 #: template/page-history.html.jinja:37
 #, fuzzy
@@ -832,13 +878,13 @@ msgid ""
 "September 2012 (quickly renamed OpenCoin and now named Ripple)."
 msgstr ""
 "XRP Ledgerが初めてローンチされたのは2012年6月のことです。そのすぐ後にChris "
-"Larsenが加わり、2012年9月にOpenCoinという会社を創設しました（現在はRippleという名前になっています）。"
+"Larsenが加わり、2012年9月にOpenCoinという会社を創設しました（その後社名はOpenCoinに変わり、現在はRippleという名前になっています）。"
 
 #: template/page-history.html.jinja:38
 msgid ""
 "The XRPL founders gifted 80 billion XRP, the platform’s native currency, "
 "to the company. Ripple has since put the majority in escrow."
-msgstr "XRPLの創設者は、プラットフォームのネイティブ通貨である800億XRPを同社に贈与しました。その後、リップル社はその大半をエスクローに預けています。"
+msgstr "XRPLの創設者は、プラットフォームのネイティブ通貨である800億XRPを同社に贈与しました。その後、Ripple社はその大半をエスクローに預けています。"
 
 #: template/page-history.html.jinja:54
 msgid "2011 XRP Ledger Development"
@@ -864,24 +910,19 @@ msgstr ""
 msgid ""
 "Their initial observations about the high energy consumption and "
 "scalability issues that would plague Bitcoin proved prescient. In 2019, "
-"estimates suggest Bitcoin mining used <a href=\"carbon-
-"calculator.html\">more energy than the entire country of Portugal</a>. "
-"Moreover, their initial read indicated that significant problems could "
-"arise if any miner obtained (or miners colluded to obtain) greater than "
-"50%% of the mining power. That risk persists with Bitcoin (and Ethereum) "
-"today as mining power has consolidated in China."
+"estimates suggest Bitcoin mining used more energy than the entire country"
+" of Portugal. Moreover, their initial read indicated that significant "
+"problems could arise if any miner obtained (or miners colluded to obtain)"
+" greater than 50%% of the mining power. That risk persists with Bitcoin "
+"(and Ethereum) today as mining power has consolidated in China."
 msgstr ""
-"莫大なエネルギー消費量とスケーラビリティの問題が将来的にBitcoinを悩ませるだろうという"
-"最初の気付きには先見の明があったことが実証されました。（2019年には、<a "
-"href=\"carbon-calculator.html\">Bitcoinのマイニングに使用されたエネルギー量</a>"
-"はポルトガルの国全体のエネルギー消費量を上回ったと推定されています）。また、3人は当初から、"
-"もしいずれかのマイナー（または共謀したマイナー集団）がマイニングパワーの50&#37;以上を"
-"獲得した場合、深刻な問題が発生するであろうと考えていました。Bitcoin（とEthereum）"
-"のマイニングパワーは中国に集中しているため、現在もなおそのリスクを抱えています。"
+"莫大なエネルギー消費量とスケーラビリティの問題が将来的にBitcoinを悩ませるだろうという最初の気付きには先見の明があったことが実証されました。（2019年には、<a"
+" href=\"carbon-"
+"calculator.html\">Bitcoinのマイニングに使用されたエネルギー量</a>はポルトガルの国全体のエネルギー消費量を上回ったと推定されています）。また、3人は当初から、もしいずれかのマイナー（または共謀したマイナー集団）がマイニングパワーの50&#37;以上を獲得した場合、深刻な問題が発生するであろうと考えていました。Bitcoin（とEthereum）のマイニングパワーは中国に集中しているため、現在もなおそのリスクを抱えています。"
 
 #: template/page-history.html.jinja:68
 msgid "XRPL Launches its Native Currency, XRP"
-msgstr ""
+msgstr "XRPL、ネイティブ通貨「XRP」がローンチ"
 
 #: template/page-history.html.jinja:71
 msgid ""
@@ -897,7 +938,7 @@ msgid ""
 msgstr ""
 "3人の開発者は、このようなBitcoinの基本的な限界を改善した分散型台帳を構築する作業を続け、当初そのコードを「Ripple」と命名しました。この台帳には、Bitcoin（BTC）と同じ命名規則に従って、当初は「ripples」（通貨コードとしてはXRP）と呼ばれるデジタル資産が含まれていました。当時、Rippleはオープンソースプロジェクト、独自のコンセンサスレジャー（Ripple"
 " Consensus Ledger）、トランザクションプロトコル（Ripple Transaction "
-"Protocol、RTXP）、ネットワーク（Ripple network）、デジタルアセット（「ripples」と呼称）を表す名称でした。"
+"ProtocolまたはRTXP）、ネットワーク（Ripple network）、デジタルアセット（「ripples」と呼称）を表す名称でした。"
 
 #: template/page-history.html.jinja:74
 #, fuzzy
@@ -968,7 +1009,7 @@ msgid ""
 "also remains a stakeholder and contributor to the broader XRPL community."
 msgstr ""
 "現在、この会社は自社の国際送金事業でXRPとXRP "
-"Ledgerを流動性管理に使用しています。Rippleは今でも、広範なXRPコミュニティのステークホルダーでありコントリビューターです。"
+"Ledgerを流動性管理に使用しています。Ripple社は今でも、広範なXRPコミュニティのステークホルダーでありコントリビューターです。"
 
 #: template/page-history.html.jinja:100
 msgid "XRPL Foundation Launched"
@@ -1071,7 +1112,7 @@ msgstr "1トランザクションあたり少額のコストで、さまざま�
 #: template/page-home.html.jinja:67
 #, fuzzy
 msgid "Vibrant Community"
-msgstr "XRPコミュニティ"
+msgstr "活発なコミュニティ"
 
 #: template/page-home.html.jinja:68
 msgid ""
@@ -1142,15 +1183,11 @@ msgstr "トークン"
 msgid ""
 "All currencies other than XRP can be represented in the XRP Ledger as "
 "tokens, sometimes called “IOUs”"
-msgstr "XRP以外のすべてトークンは、\"IOU\"と呼ばれることもある発行済み通貨としてXRP Ledgerで表示されます"
+msgstr "XRP以外のすべて通貨は、XRP Ledgerでは\"IOU\"と呼ばれることもあるトークンと表されます"
 
 #: template/page-home.html.jinja:121
 msgid "Choose a path to start building on the XRPL"
 msgstr "XRPL上で開発をスタートする方法を選びましょう"
-
-#: template/page-home.html.jinja:122
-msgid "Get Started"
-msgstr "始めましょう"
 
 #: template/page-home.html.jinja:127
 msgid "Quickstart"
@@ -1215,8 +1252,7 @@ msgstr "XRPLの新機能やユースケースを実現するために、コミ�
 msgid "Preview New Features"
 msgstr "新機能のプレビュー"
 
-#: template/page-home.html.jinja:173 template/page-home.html.jinja:177
-#: template/page-home.html.jinja:181
+#: template/page-home.html.jinja:173
 msgid "In Development"
 msgstr "開発中"
 
@@ -1235,251 +1271,151 @@ msgstr ""
 "href='https://hooks-testnet.xrpl-labs.com/' "
 "target='_blank'>Hooksの修正案と公開テストネット</a>をチェックしてみてください。"
 
+#: template/page-home.html.jinja:177
+msgid "Enabled"
+msgstr "利用可能"
+
 #: template/page-home.html.jinja:178
 msgid "Non-Fungible Tokens"
 msgstr "非代替性トークン"
 
 #: template/page-home.html.jinja:179
+#, fuzzy
 msgid ""
 "Lower fees, faster transactions, and custom token functionality make the "
-"XRPL ideally suited for building an ecosystem for NFTs. Explore <a "
-"href='docs.html#docs-hot-topic'>proposed standards</a> for issuing NFTs."
+"XRPL ideally suited for building an ecosystem for NFTs. Explore the XRP "
+"Ledger's NFT capabilities."
 msgstr ""
-"手数料の低減、取引の高速化、カスタムトークンの機能性により、XRPLはNFTのエコシステム構築に理想的なものとなっています。NFT発行のための<a"
-" href='docs.html#docs-hot-topic'>提案されている標準規格</a>を参照してください。"
+"手数料の低減、取引の高速化、カスタムトークンの機能性により、XRPLはNFTのエコシステム構築に理想的なものとなっています。NFT発行のための"
+"提案されている標準規格を参照してください。"
 
-#: template/page-home.html.jinja:201
+#: template/page-home.html.jinja:197
 #, fuzzy
 msgid "XRPL.org: by the community, for the community"
 msgstr "XRPL.org: コミュニティのために、コミュニティの力で"
 
-#: template/page-home.html.jinja:202
+#: template/page-home.html.jinja:198
 msgid "Get Involved"
 msgstr "参加する"
 
-#: template/page-home.html.jinja:204
+#: template/page-home.html.jinja:200
 msgid ""
 "XRPL.org is a community-driven resource by and for developers who build "
 "on the XRP Ledger (XRPL)."
 msgstr "XRPL.orgはXRP Ledger（XRPL）上に構築する開発者による、開発者のためのコミュニティ主導のリソースです。"
 
-#: template/page-home.html.jinja:205
+#: template/page-home.html.jinja:201 template/page-impact.html.jinja:114
+#: template/page-impact.html.jinja:179
 msgid "Join the Community"
 msgstr "コミュニティに参加"
 
-#: template/page-impact.html.jinja:28
-msgid "Faster, Cheaper, Green Money"
-msgstr "より速く、低コストで、環境にやさしい送金"
+#: template/page-impact.html.jinja:31
+msgid "The first major, global, public carbon-neutral blockchain"
+msgstr "最初の主要な、グローバルな、パブリックなカーボンニュートラル・ブロックチェーン"
 
-#: template/page-impact.html.jinja:29
-msgid "Impact"
-msgstr "インパクト"
-
-#: template/page-impact.html.jinja:36
+#: template/page-impact.html.jinja:32
 #, fuzzy
-msgid ""
-"The digital asset XRP is a truly global currency—ideally suited to enable"
-" today’s global economy."
-msgstr "デジタルアセットのXRPは真にグローバルな通貨であり、今日の国際経済を実現するのに最適です。"
+msgid "XRPL Sustainability & Impact"
+msgstr "XRPLの持続可能性と影響力"
 
-#: template/page-impact.html.jinja:37
-#, fuzzy
-msgid ""
-"As an optimal medium of exchange, XRP and the XRP Ledger on which it "
-"operates help to move money around the world faster, cheaper and more "
-"sustainably than any other currency available today. "
-msgstr ""
-"両替に最適な手段であるXRPとその基盤となるXRP "
-"Ledgerは、現在利用できる他のどの通貨よりも速く、低コストで持続可能な国際送金をサポートします。"
-
-#: template/page-impact.html.jinja:38
-msgid ""
-"It was designed this way, and it’s proving its impact in global payments "
-"and beyond."
-msgstr "このように設計されていることで、国際送金だけにとどまらず、さまざまなところでそのインパクトが実証されています。"
-
-#: template/page-impact.html.jinja:49
-msgid "Creating Economic Opportunity"
-msgstr "経済的機会の創出"
+#: template/page-impact.html.jinja:47
+msgid "Consensus protocol is efficient and sustainable"
+msgstr "コンセンサスプロトコルは効率的で持続可能"
 
 #: template/page-impact.html.jinja:50
+#, fuzzy
 msgid ""
-"For more than <a "
-"href=\"https://publications.iom.int/system/files/pdf/wmr_2020.pdf\" "
-"target=\"_blank\">272 million migrants</a> worldwide, sending and "
-"receiving money across borders is expensive, unreliable and complex."
-msgstr ""
+"Open and decentralized, blockchain and crypto are seeing an increase in "
+"adoption across the financial services industry, from retail and "
+"institutional investment to commercial use cases like CBDCs, NFTs and "
+"cross-border payments."
+msgstr "オープンで分散型のブロックチェーンと暗号資産は、リテールや機関投資家からCBDC、NFT、クロスボーダー決済などの商業ユースケースまで、金融サービス業界全体で導入が進んでいます。"
 
 #: template/page-impact.html.jinja:51
-msgid ""
-"XRP and the XRP Ledger are changing that. The technology has been adopted"
-" by financial institutions around the world to source liquidity for "
-"international transactions. Because of the unprecedented efficiency it "
-"offers, they’re able to bring down costs and improve services."
-msgstr ""
-"XRPとXRP "
-"Ledgerがそれを変えています。このテクノロジーは、国際取引の流動性を調達するために、世界中の金融機関に採用されています。前例のない効率性を実現しているため、コストを下げ、サービスを向上させることができるのです"
-
-#: template/page-impact.html.jinja:52
-#, fuzzy
-msgid ""
-"This means hundreds of millions of people worldwide who need to move "
-"money safely and securely across borders can do so more affordably and "
-"reliably than ever before."
-msgstr "つまり、安心かつ安全な国際送金を求める何億人もの人々が、かつてないほどの低コストと高い信頼性で送金できるようになるということです。"
-
-#: template/page-impact.html.jinja:59
-msgid "Building for the Future"
-msgstr "未来を見据えて構築されています"
-
-#: template/page-impact.html.jinja:60
-msgid ""
-"Digital assets and blockchain technology are the future of finance. Open "
-"and decentralized, they offer the first-ever global standards for value "
-"exchange broadly—whether it’s money, stocks, loyalty points, intellectual"
-" property or more."
-msgstr "デジタルアセットとブロックチェーン技術は未来の金融です。オープンで分散化されており、資金、株式、ロイヤルティポイント、知的財産などさまざまな価値を交換するための史上初の国際標準を提供します。"
-
-#: template/page-impact.html.jinja:61
-#, fuzzy
-msgid ""
-"This has spawned increasing adoption of the technology across the "
-"financial services industry, from retail and institutional investment to "
-"commercial use cases like CBDCs, NFTs and cross-border payments."
-msgstr "そのため、金融サービス業界でこの技術を採用する事例が増えています。その用途は、リテール、機関投資から、国際送金など商用の用途まで幅広いものです。"
-
-#: template/page-impact.html.jinja:62
 msgid ""
 "With usage growing, it’s critical that measures are taken today to ensure"
 " that the technology is environmentally sustainable tomorrow."
 msgstr "利用が広がるなか、この技術が将来的にも環境の観点から持続可能となるような対策を現時点で取っていくことが重要になります。"
 
-#: template/page-impact.html.jinja:66
-msgid "Projected BTC, ETH and XRP Transactions in USD"
-msgstr "BTC、ETH、XRPの米ドル建て取引額の予測"
+#: template/page-impact.html.jinja:77
+#, fuzzy
+msgid "What makes the XRPL sustainable?"
+msgstr "XRPLの持続可能な理由は？"
 
-#: template/page-impact.html.jinja:69
-msgid "2025"
-msgstr ""
-
-#: template/page-impact.html.jinja:72
-msgid "+195.3%%"
-msgstr ""
-
-#: template/page-impact.html.jinja:75
-msgid "$8.6T"
-msgstr ""
+#: template/page-impact.html.jinja:78
+msgid ""
+"XRPL’s unique consensus mechanism is eco-friendly—it does not require "
+"mining to settle transactions. This results in efficiency without "
+"sacrificing security, decentralization, or scalability."
+msgstr "XRPLのユニークなコンセンサスメカニズムは環境に優しく、トランザクションを処理するためにマイニングを必要としません。このため、セキュリティ、分散化、スケーラビリティを犠牲にすることなく、効率化を実現することができます。"
 
 #: template/page-impact.html.jinja:79
-msgid "2030"
+msgid ""
+"The trivial amount of energy it does consume is then neutralized with "
+"carbon credits through EW Zero, an open-source blockchain decarbonization"
+" tool."
 msgstr ""
+"そして、消費するわずかなエネルギーは、オープンソースのブロックチェーンによる脱炭素ツール「EW "
+"Zero」を通じて、カーボンクレジットで相殺されます。"
 
-#: template/page-impact.html.jinja:82
-msgid "+21.4%%"
-msgstr ""
+#: template/page-impact.html.jinja:93
+msgid "Featured companies & projects running on the XRP Ledger."
+msgstr "XRP Ledgerで活動する注目の企業＆プロジェクト。"
 
-#: template/page-impact.html.jinja:85
-msgid "$10.5T"
-msgstr ""
-
-#: template/page-impact.html.jinja:98
-msgid "Are All Digital Assets Alike?"
-msgstr "どのデジタルアセットも似たようなものでしょうか?"
-
-#: template/page-impact.html.jinja:99
+#: template/page-impact.html.jinja:94
 #, fuzzy
-msgid ""
-"All digital assets have different strengths that make them ideal for "
-"various use cases."
-msgstr "デジタルアセットにはそれぞれ独自の強みがあり、現代のさまざまな用途に適しています。"
+msgid "Sustainable Projects"
+msgstr "持続可能なプロジェクト"
 
-#: template/page-impact.html.jinja:100
+#: template/page-impact.html.jinja:96
+msgid ""
+"Learn more about companies and developers who are using the XRP Ledger to"
+" solve interesting problems efficiently and sustainably."
+msgstr "XRP Ledgerを利用して興味深い問題を効率的かつ持続的に解決している企業や開発者について、詳しくご紹介します。"
+
+#: template/page-impact.html.jinja:97
 #, fuzzy
-msgid ""
-"Bitcoin has historically been recognized as a store of value and Ether "
-"(ETH) for its smart contract capabilities."
-msgstr "Bitcoinは価値の貯蔵場所として広く認識されており、Ethereum（ETH）はスマートコントラクトでの使用に適しています。"
-
-#: template/page-impact.html.jinja:101
-msgid ""
-"XRP was designed to be optimal for global payments—it’s fast, cheap, "
-"scalable and energy-efficient. But the XRP Ledger is also increasingly "
-"popular for innovative blockchain use cases, like NFTs and DeFi."
-msgstr ""
-"XRPはグローバルな決済に最適なように設計されており、高速で安価、スケーラブルでエネルギー効率に優れています。それだけでなく、XRP "
-"Ledgerは、NFTやDeFiのような革新的なブロックチェーンのユースケースでもますます人気が高まっています。"
-
-#: template/page-impact.html.jinja:102
-#, fuzzy
-msgid ""
-"The same characteristics that make XRP ideal for global transactions mean"
-" it’s also better for our environment. XRP is green by nature."
-msgstr "また、送金に最適なこの特徴は、環境にもよい効果をもたらします。XRPは本質的に環境にやさしいデジタルアセットです。"
+msgid "See More"
+msgstr "利用例を見る"
 
 #: template/page-impact.html.jinja:109
-#, fuzzy
-msgid "What Makes the XRP Ledger Green?"
-msgstr "XRPとXRP Ledgerはなぜ環境にやさしいのでしょうか?"
-
-#: template/page-impact.html.jinja:110
-#, fuzzy
-msgid ""
-"Most currencies today—whether digital or physical—are not environmentally"
-" friendly. The potential for long-term impact on our planet could hold "
-"startling consequences. "
-msgstr "デジタル通貨でも物理的な通貨でも、現在利用されているほとんどの通貨は環境にやさしくありません。地球に長期的な影響を及ぼす可能性があり、深刻な結果が解消されないおそれがあります。"
+msgid "How can developers connect and contribute?"
+msgstr "開発者はどのように繋がり、貢献できるのでしょうか？"
 
 #: template/page-impact.html.jinja:111
 msgid ""
-"The XRP Ledger processes transactions through a unique “consensus” "
-"mechanism that consumes negligible energy and all XRP currency is already"
-" in circulation."
-msgstr ""
-"XRP "
-"Ledgerは消費エネルギーがごくわずかで、全てのXRP通貨が既に発行されており、独自の「コンセンサス」メカニズムを通じてトランザクションを処理します。"
+"If sustainability, security and decentralization are important to you, "
+"you’re invited to join the XRPL community in its quest to build a better "
+"world. Here are some ways to get involved:"
+msgstr "持続可能性、セキュリティ、分散化があなたにとって重要であれば、より良い世界を構築するためにXRPLコミュニティに参加してください。ここでは、その関わり方をご紹介します。"
 
-#: template/page-impact.html.jinja:112
-msgid ""
-"Cash also leaves a substantial carbon footprint, and the environmental "
-"impact goes beyond energy consumption—eutrophication (due to waste), "
-"photochemical ozone creation, greenhouse gas emissions and more factor "
-"into the equation."
-msgstr "現金も相当の二酸化炭素排出量があります。その環境への影響は、エネルギー消費量だけでなく、廃棄による富栄養化、光化学オゾンの発生、温室効果ガスの排出など、さまざまな要素がかかわってきます。"
+#: template/page-impact.html.jinja:125
+msgid "Blog"
+msgstr "ブログ"
 
-#: template/page-impact.html.jinja:113
-msgid ""
-"Other digital assets, like Bitcoin, rely on a different mechanism to both"
-" validate transactions and create new coins. This “proof-of-work” "
-"algorithm requires “mining.” Mining is an incredibly energy-intensive "
-"process for validating transactions that consumes more energy in a year "
-"than entire countries."
-msgstr "Bitcoinなど他のデジタルアセットは、取引の確認と新規コインの創出に、XRPとは異なる技術を使用しています。この「プルーフオブワーク」アルゴリズムでは「マイニング」が必要です。マイニングとは、取引の検証を行うために驚くほどのエネルギーを集中的に使用するプロセスです。その年間のエネルギー消費量は国全体の消費量を上回ります。"
+#: template/page-impact.html.jinja:140
+msgid "Code"
+msgstr "コード"
 
-#: template/page-impact.html.jinja:114
-msgid ""
-"Adopting XRP more broadly will help limit this waste and ensure a "
-"sustainable future for our planet and global economy."
-msgstr "XRPを幅広く採用すれば、この無駄を抑制して、私たちの地球と国際経済の持続可能な未来を実現できます。"
-
-#: template/page-impact.html.jinja:116
-msgid "Explore the Carbon Calculator"
-msgstr ""
+#: template/page-impact.html.jinja:149 template/page-impact.html.jinja:170
+msgid "Join the conversation on social media using #XRPLCommunity."
+msgstr "SNSで#XRPLCommunityを使って話題に加わろう。"
 
 #: template/page-references.html.jinja:9
 msgid "References and APIs"
-msgstr ""
+msgstr "リファレンスとAPI"
 
 #: template/page-references.html.jinja:10
 msgid "Everything You Need to Know"
-msgstr ""
+msgstr "全てはここに"
 
 #: template/page-rpc-tool.html.jinja:14
 msgid "Try an account like <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>."
-msgstr ""
+msgstr "<em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>のようなアカウントで試してみてください。"
 
 #: template/page-rpc-tool.html.jinja:15
 msgid "Get info"
-msgstr ""
+msgstr "情報を見る"
 
 #: template/page-rpc-tool.html.jinja:18
 #: template/page-validator-domain-verifier.html.jinja:20
@@ -1493,7 +1429,7 @@ msgstr "パーマリンク"
 #: template/page-rpc-tool.html.jinja:25
 #, fuzzy
 msgid "Explorer"
-msgstr "利用例を見る"
+msgstr "エクスプローラ"
 
 #: template/page-rpc-tool.html.jinja:30 template/page-rpc-tool.html.jinja:35
 #: template/page-rpc-tool.html.jinja:45 template/page-rpc-tool.html.jinja:50
@@ -1509,7 +1445,7 @@ msgstr "すべて展開"
 #: template/page-rpc-tool.html.jinja:72 template/page-rpc-tool.html.jinja:77
 #: template/page-rpc-tool.html.jinja:86 template/page-rpc-tool.html.jinja:92
 msgid "collapse all"
-msgstr ""
+msgstr "すべて閉じる"
 
 #: template/page-rpc-tool.html.jinja:55 template/page-rpc-tool.html.jinja:63
 #: template/page-rpc-tool.html.jinja:84 template/page-rpc-tool.html.jinja:90
@@ -1518,7 +1454,7 @@ msgstr "tx展開"
 
 #: template/page-rpc-tool.html.jinja:58 template/page-rpc-tool.html.jinja:66
 msgid "next 20"
-msgstr ""
+msgstr "次の20件"
 
 #: template/page-rpc-tool.html.jinja:59 template/page-rpc-tool.html.jinja:67
 msgid "prev 20"
@@ -1572,7 +1508,7 @@ msgstr "初期化"
 
 #: template/page-tx-sender.html.jinja:38
 msgid "Set up the necessary Testnet XRP addresses to send test payments."
-msgstr ""
+msgstr "テスト支払いに必要なTestnet XRPアドレスを設定する。"
 
 #: template/page-tx-sender.html.jinja:42
 msgid "Destination Address"
@@ -1586,7 +1522,9 @@ msgstr "このXRP Testnetのアドレスに送信"
 msgid ""
 "<strong>Caution:</strong> This X-address is intended for use on Mainnet. "
 "Testnet addresses have a \"T\" prefix instead."
-msgstr "<strong>注意：</strong>　このX-addressはMainnetで使用するためです。Testnetのアドレスは「T」で始まる。"
+msgstr ""
+"<strong>注意：</strong>　このX-"
+"addressはMainnetで使用するためのものです。Testnetのアドレスは「T」で始まります。"
 
 #: template/page-tx-sender.html.jinja:48
 msgid "Send Transaction"
@@ -1598,7 +1536,7 @@ msgstr "（ローディング中）"
 
 #: template/page-tx-sender.html.jinja:55
 msgid "Send XRP Payment"
-msgstr "XRPを支払いする"
+msgstr "XRPを送信する"
 
 #: template/page-tx-sender.html.jinja:58 template/page-tx-sender.html.jinja:116
 msgid "drops of XRP"
@@ -1606,7 +1544,7 @@ msgstr "XRPのdrop数"
 
 #: template/page-tx-sender.html.jinja:62
 msgid "Send a <a href=\"send-xrp.html\">simple XRP-to-XRP payment</a>."
-msgstr ""
+msgstr "XRP-to-XRPのシンプルな支払いを送信する"
 
 #: template/page-tx-sender.html.jinja:70
 msgid "(Getting ready to send partial payments)"
@@ -1622,8 +1560,8 @@ msgid ""
 "test your handling of <a href=\"partial-payments.html\">partial "
 "payments</a>."
 msgstr ""
-"高額なXRP額の<code>Amount</code>フィールドでわずかな金額を送り、<a href=\"partial-"
-"payments.html\">Partial Payment</a>の処理をテストため。"
+"<a href=\"partial-payments.html\">Partial "
+"Payment</a>の処理をテストするため高額なXRP額の<code>Amount</code>フィールドでわずかな金額を送信します。"
 
 #: template/page-tx-sender.html.jinja:88
 msgid "Create Escrow"
@@ -1645,7 +1583,7 @@ msgstr "指定された秒数の1XRPの時間ベースのEscrowを作成しま�
 
 #: template/page-tx-sender.html.jinja:102
 msgid "(Waiting to release Escrow when it's ready)"
-msgstr "（Escrowを有効を待っています。）"
+msgstr "（Escrowの解放を待っています。）"
 
 #: template/page-tx-sender.html.jinja:113
 msgid "Create Payment Channel"
@@ -1659,7 +1597,7 @@ msgstr "Payment Channelを作成して指定されたXRPの額を供給します
 
 #: template/page-tx-sender.html.jinja:129
 msgid "Send Issued Currency"
-msgstr "発行済み通貨を支払い"
+msgstr "トークンを送信"
 
 #: template/page-tx-sender.html.jinja:135
 msgid ""
@@ -1668,125 +1606,59 @@ msgid ""
 "item\">(the test sender)</span> for the currency in question. Otherwise, "
 "you'll get tecPATH_DRY."
 msgstr ""
+"宛先アドレスには、対象の通貨について<span class=\"sending-address-item\">(the test "
+"sender)</span>への<a href=\"trust-lines-and-"
+"issuing.html\">トラストライン</a>が必要です。設定されていない場合は、tecPATH_DRYとなります。"
 
 #: template/page-tx-sender.html.jinja:145
 msgid "Trust for"
-msgstr ""
+msgstr "トラストラインの設定"
 
 #: template/page-tx-sender.html.jinja:151
 msgid ""
 "The test sender creates a <a href=\"trust-lines-and-issuing.html\">trust "
 "line</a> to your account for the given currency."
 msgstr ""
+"テスト送信者は、指定された通貨について、あなたのアカウントに<a href=\"trust-lines-and-"
+"issuing.html\">トラストライン</a>を作成します。"
 
 #: template/page-uses.html.jinja:23
-msgid "Powering Innovative Technology"
+msgid "Aesthetes"
 msgstr ""
 
 #: template/page-uses.html.jinja:24
-#, fuzzy
-msgid "XRPL Use Cases"
-msgstr "利用例を見る"
-
-#: template/page-uses.html.jinja:34
-msgid "Micropayments"
-msgstr "マイクロペイメント"
-
-#: template/page-uses.html.jinja:35
-#, fuzzy
 msgid ""
-"Developers are using the XRP Ledger to build innovative products for "
-"gaming, content, and web monetization, among other applications where "
-"currency is at the center."
+"Aesthetes is a bridge between fine art and blockchain, enabling everyone,"
+" around the world, to buy and sell with just a click for fractional "
+"ownership of international physical art."
+msgstr "Aesthetesは、美術品とブロックチェーンの架け橋となり、世界中の誰もが、国際的な物理的アートの小口所有権を、クリックだけで売買できるようにします。"
+
+#: template/page-uses.html.jinja:31
+msgid "Anchain.AI"
 msgstr ""
-"企業はXRPとXRP "
-"Ledgerを活用して、決済を中心としたアプリケーションの中でも特に、ゲーム、コンテンツやウェブの収益化を実現する革新的な製品を構築しています。"
 
-#: template/page-uses.html.jinja:37
-#, fuzzy
-msgid "Cryptocurrency Wallets"
-msgstr "デジタル暗号資産ウォレット"
-
-#: template/page-uses.html.jinja:38
-#, fuzzy
+#: template/page-uses.html.jinja:32
 msgid ""
-"Use the Ledger to build digital wallets to store private and public "
-"passwords and interact with various blockchains to send and receive "
-"digital assets, including XRP."
-msgstr "個人の消費者は、モバイルウォレットを使って秘密パスワードと公開パスワードを保管し、さまざまなブロックチェーンとの間でXRPなどのデジタルアセットを送受金できます。"
+"AnChain.AI offers AI-powered intelligence enhancing blockchain security, "
+"risk, and compliance strategies."
+msgstr "AnChain.AIは、ブロックチェーンのセキュリティ、リスク、コンプライアンス戦略を強化するAIの力を借りた情報を提供します。"
+
+#: template/page-uses.html.jinja:39
+msgid "Audiotarky"
+msgstr ""
 
 #: template/page-uses.html.jinja:40
-msgid "Exchanges"
-msgstr "取引所"
-
-#: template/page-uses.html.jinja:41
 msgid ""
-"Build sophisticated exchanges where users can invest and trade crypto and"
-" non-blockchain assets such as stocks, ETFs, and commodities."
-msgstr ""
-
-#: template/page-uses.html.jinja:43
-#, fuzzy
-msgid "Stablecoins"
-msgstr "秒"
-
-#: template/page-uses.html.jinja:44
-msgid ""
-"Financial institutions can use Issued Currencies to issue stablecoins on "
-"the XRP Ledger. XRPL’s integrated decentralized exchange (DEX) allows "
-"neutral, counterparty-free digital assets to be seamlessly exchanged to "
-"and from “issued assets,” including stablecoins."
-msgstr ""
+"Audiotarky is a new music streaming platform that prioritises artists and"
+" privacy over algorithms and shareholders."
+msgstr "Audiotarkyは、アルゴリズムや株主よりも、アーティストやプライバシーを優先する新しい音楽ストリーミング・プラットフォームです。"
 
 #: template/page-uses.html.jinja:47
-msgid ""
-"XRPL allows issuance of IOUs which can represent a currency of any value,"
-" which can be extended to the issuance of non-fungible tokens (NFTs)."
+#, fuzzy
+msgid "BitGo"
 msgstr ""
 
-#: template/page-uses.html.jinja:49
-msgid "DeFi"
-msgstr ""
-
-#: template/page-uses.html.jinja:50
-msgid ""
-"Provide access to financial products and services online in a "
-"decentralized and borderless manner on XRPL, with decentralized smart "
-"contract protocols replacing the traditional role of financial "
-"institutions."
-msgstr ""
-
-#: template/page-uses.html.jinja:52
-msgid "CBDCs"
-msgstr ""
-
-#: template/page-uses.html.jinja:53
-msgid ""
-"The CBDC Private Ledger provides Central Banks a secure, controlled, and "
-"flexible solution to issue and manage Central Bank Issued Digital "
-"Currencies (CBDCs)."
-msgstr ""
-
-#: template/page-uses.html.jinja:72
-msgid "Businesses and projects running<br class=\"until-sm\"> on the XRP Ledger"
-msgstr ""
-
-#: template/page-uses.html.jinja:73
-msgid "Solving Real Problems Across Industries"
-msgstr "さまざまな業界の実際の問題を解決しています"
-
-#: template/page-uses.html.jinja:75
-msgid ""
-"There are companies and developer projects around the world that leverage"
-" the XRP Ledger to solve interesting problems across a variety of "
-"industries and use cases."
-msgstr ""
-
-#: template/page-uses.html.jinja:82
-msgid "Asset Custody"
-msgstr "アセットカストディ"
-
-#: template/page-uses.html.jinja:83
+#: template/page-uses.html.jinja:48
 msgid ""
 "BitGo provides custodial and non-custodial asset holdings for digital "
 "assets including XRP. BitGo's enterprise-level security empowers "
@@ -1794,34 +1666,79 @@ msgid ""
 " financial systems."
 msgstr "BitGoは、XRPなどのデジタルアセット向けのカストディ型および非カストディ型アセット保有サービスを提供しています。BitGoのエンタープライズレベルのセキュリティを活用して、さまざまな企業がXRPなどのデジタル通貨を新規や既存の金融システムに統合しています。"
 
-#: template/page-uses.html.jinja:87
-msgid "Payment Processing"
-msgstr "決済処理"
+#: template/page-uses.html.jinja:55
+msgid "Bithomp"
+msgstr ""
 
-#: template/page-uses.html.jinja:88
+#: template/page-uses.html.jinja:56
+msgid ""
+"Bithomp is an XRPL explorer and toolkit, used by many cryptocurrency "
+"exchanges. Bithomp was launched in 2015 with a mission to build the most "
+"user-friendly XRPL explorer."
+msgstr "Bithompは、多くの暗号通貨取引所で使用されているXRPLエクスプローラーおよびツールキットです。Bithompは、最もユーザーフレンドリーなXRPLエクスプローラーを構築することをミッションに、2015年に立ち上げられました。"
+
+#: template/page-uses.html.jinja:63
+msgid "bitpay"
+msgstr ""
+
+#: template/page-uses.html.jinja:64
 msgid ""
 "BitPay builds powerful, enterprise-grade tools for accepting and spending"
 " cryptocurrencies, including XRP."
 msgstr "BitPayは、XRPなどの暗号資産の受け入れや支払いが可能になる、強力なエンタープライズグレードのツールを構築しています。"
 
-#: template/page-uses.html.jinja:92
-msgid "Web Monetization"
-msgstr "ウェブ収益化"
-
-#: template/page-uses.html.jinja:93
-msgid ""
-"Coil provides web monetization as an alternative to traditional paid "
-"advertising. Coil uses the interledger protocol (ILP) to stream "
-"micropayments as users consume content. The XRPL’s payment channels "
-"provide an ideal system for settling these micropayments at high speed "
-"and low cost."
+#: template/page-uses.html.jinja:71
+msgid "Carbonland Trust"
 msgstr ""
 
-#: template/page-uses.html.jinja:97
-msgid "Online Gaming"
-msgstr "オンラインゲーム"
+#: template/page-uses.html.jinja:72
+msgid ""
+"Carbonland Trust offers transparent nature-based carbon credits, and "
+"inclusive access to voluntary carbon markets for landowners and "
+"corporations alike. "
+msgstr ""
+"Carbonland "
+"Trustは、透明性の高い自然由来の炭素クレジットを提供し、土地所有者や企業を問わず、自主的な炭素市場への包括的なアクセスを可能にします。"
 
-#: template/page-uses.html.jinja:98
+#: template/page-uses.html.jinja:79
+msgid "Casino Coin"
+msgstr ""
+
+#: template/page-uses.html.jinja:80
+msgid ""
+"CasinoCoin (CSC) is a digital currency developed specifically for the "
+"regulated gaming industry."
+msgstr "CasinoCoin（CSC）は、規制対象のゲーム業界向けに特別に開発されたデジタル通貨です。"
+
+#: template/page-uses.html.jinja:87
+#, fuzzy
+msgid "Cryptum"
+msgstr ""
+
+#: template/page-uses.html.jinja:88
+msgid ""
+"Cryptum is an API/SDK platform for integrating the XRP Ledger with any "
+"application."
+msgstr "Cryptumは、XRP Ledgerをあらゆるアプリケーションと統合するためのAPI/SDKプラットフォームです。"
+
+#: template/page-uses.html.jinja:95
+msgid "Evernode"
+msgstr ""
+
+#: template/page-uses.html.jinja:96
+msgid ""
+"Evernode proposes a permissionless, flexible, scalable Layer 2 smart "
+"contract network built from the XRP Ledger."
+msgstr ""
+"Evernodeは、XRP "
+"Ledgerで構築された、パーミッションレスで柔軟かつスケーラブルなレイヤー2スマートコントラクトネットワークを提供しています。"
+
+#: template/page-uses.html.jinja:103
+#, fuzzy
+msgid "Forte"
+msgstr ""
+
+#: template/page-uses.html.jinja:104
 msgid ""
 "Forte offers an unprecedented set of easy-to-use tools and services for "
 "game developers to integrate blockchain technology into their games, to "
@@ -1829,45 +1746,140 @@ msgid ""
 "world."
 msgstr "Forteはゲーム開発者向けに、ゲームにブロックチェーン技術を組み込むことができる、今までになかったような使いやすいツールとサービスを提供しています。これらを活用することで、世界中のゲーマーに新たな収益化と創造の機会をもたらすことができます。"
 
-#: template/page-uses.html.jinja:102
-#, fuzzy
-msgid "Wallet and Platforms"
-msgstr "ウォレットとアプリケーション"
-
-#: template/page-uses.html.jinja:103
-msgid ""
-"GateHub is a platform for the Internet of Value, built on the XRP Ledger "
-"protocol. It allows everyone to send, receive, trade and manage any type "
-"of assets."
+#: template/page-uses.html.jinja:111 template/page-xrp-overview.html.jinja:168
+msgid "Gatehub"
 msgstr ""
 
-#: template/page-uses.html.jinja:107
-msgid "Wallets and Apps"
-msgstr "ウォレットとアプリケーション"
-
-#: template/page-uses.html.jinja:108
-msgid ""
-"Exodus offers wallets and applications for securing, managing and "
-"exchanging crypto."
-msgstr "Exodusは、暗号資産の保護、管理、交換を行うためのウォレットとアプリケーションを提供しています。"
-
 #: template/page-uses.html.jinja:112
-msgid "On-Demand Liquidity"
-msgstr "On-Demand Liquidity"
-
-#: template/page-uses.html.jinja:113
 msgid ""
-"Ripple powers instant, lower-cost settlement of cross-border payments "
-"using XRP to source liquidity on demand. XRP is ideally suited for global"
-" payments because it's quicker, less costly, and more scalable than any "
-"other digital asset."
-msgstr "eRippleは、XRPを使用した国際送金の即時決済を低コストに実現して、流動性をオンデマンドで供給しています。XRPは他のどのデジタルアセットよりも、スピード、コスト、拡張性に優れているため、グローバルな決済に最適です。"
+"Gatehub XRP Ledger Markets is an explorer to track Gatehub's inssuances "
+"on the XRP Ledger."
+msgstr "Gatehub XRP Ledger Marketsは、XRP Ledger上のGatehubのインサンスを追跡するためのエクスプローラです。"
 
-#: template/page-uses.html.jinja:117
-msgid "Infrastructure"
-msgstr "インフラストラクチャ"
+#: template/page-uses.html.jinja:119
+#, fuzzy
+msgid "Gem Wallet"
+msgstr ""
 
-#: template/page-uses.html.jinja:118
+#: template/page-uses.html.jinja:120
+msgid ""
+"GemWallet is a web extension that enables users to make fast payments on "
+"the XRP Ledger via a browser. It's a safer alternative to copying and "
+"pasting private keys for use with web applications."
+msgstr ""
+"GemWalletは、XRP "
+"Ledger上でブラウザから高速決済を可能にするウェブ拡張機能です。ウェブアプリケーションで使用するための秘密鍵のコピー＆ペーストに代わる、より安全な方法です。"
+
+#: template/page-uses.html.jinja:127
+#, fuzzy
+msgid "Ledger City"
+msgstr ""
+
+#: template/page-uses.html.jinja:128
+msgid "Ledger City is a crypto real estate game powered by the XRP Ledger."
+msgstr "Ledger Cityは、XRP Ledgerを利用した暗号不動産ゲームです。"
+
+#: template/page-uses.html.jinja:135
+#, fuzzy
+msgid "Multichain"
+msgstr ""
+
+#: template/page-uses.html.jinja:136
+msgid ""
+"Multichain is the ultimate Router for web3. It is an infrastructure "
+"developed for arbitrary cross-chain interactions."
+msgstr "Multichainはweb3の究極のRouterであり、任意のクロスチェーンインタラクションのために開発されたインフラです。"
+
+#: template/page-uses.html.jinja:143
+#, fuzzy
+msgid "NFT Master"
+msgstr ""
+
+#: template/page-uses.html.jinja:144
+msgid ""
+"NFT Master is an NFT marketplace where creators can buy, mint and sell "
+"NFTs."
+msgstr "NFT Masterは、クリエイターがNFTを購入、ミント、販売することができるNFTマーケットプレイスです。"
+
+#: template/page-uses.html.jinja:151
+#, fuzzy
+msgid "OnTheDex"
+msgstr ""
+
+#: template/page-uses.html.jinja:152
+msgid ""
+"OnTheDex is a quality source of information for aggregator sites to take "
+"live feeds of XRPL token activity."
+msgstr "OnTheDexは、XRPLトークンの活動のライブフィードを取るためのアグリゲーターサイトのための質の高い情報源です。"
+
+#: template/page-uses.html.jinja:159
+#, fuzzy
+msgid "onXRP"
+msgstr ""
+
+#: template/page-uses.html.jinja:160
+msgid ""
+"onXRP is an NFT marketplace where creators can buy, mint and sell NFTs "
+"built by the XPUNKs."
+msgstr "onXRPは、クリエイターがXPUNKで構築したNFTを購入、造幣、販売することができるNFTマーケットプレイスです。"
+
+#: template/page-uses.html.jinja:167
+msgid "Peerkat"
+msgstr ""
+
+#: template/page-uses.html.jinja:168
+msgid "Peerkat is an NFT services and tooling provider for the XRPL community."
+msgstr "Peerkatは、XRPLコミュニティのためのNFTサービスおよびツールプロバイダーです。"
+
+#: template/page-uses.html.jinja:175
+#, fuzzy
+msgid "Ripple's CBDC Platform"
+msgstr "Ripple社のCBDC Platform\""
+
+#: template/page-uses.html.jinja:176
+msgid ""
+"Ripple's Central Bank Digital Currency (CBDC) solution enables banks to "
+"mint, manage, transact and redeem currency to easily manage the full CBDC"
+" lifecycle. Each solution is built on a private ledger that is based upon"
+" XRP Ledger technology."
+msgstr ""
+"Rippleの中央銀行デジタル通貨（CBDC）ソリューションは、銀行が通貨の造幣、管理、トランザクション、償還を行い、CBDCの全ライフサイクルを容易に管理することができます。各ソリューションは、XRP"
+" Ledger技術に基づくプライベートな台帳の上に構築されています。"
+
+#: template/page-uses.html.jinja:183
+#, fuzzy
+msgid "Ripple's On-Demand Liquidity"
+msgstr "Ripple社のOn-Demand Liquidity"
+
+#: template/page-uses.html.jinja:184
+msgid ""
+"Ripple powers real-time, low-cost cross-border payment settlement  by "
+"using XRP as a bridge currency between two fiat currencies."
+msgstr "Rippleは、XRP を 2 つのフィアット通貨間のブリッジ通貨として使用することで、リアルタイムかつ低コストの国境を越えた決済を実現します。"
+
+#: template/page-uses.html.jinja:191
+msgid "Sologenic DEX"
+msgstr ""
+
+#: template/page-uses.html.jinja:192
+msgid ""
+"Sologenic DEX is a popular decentralized exchange on the XRP Ledger made "
+"by Sologenic."
+msgstr "Sologenic DEXは、Sologenic社製のXRP Ledger上の人気の分散型取引所です。"
+
+#: template/page-uses.html.jinja:199
+msgid "Sologenic NFT"
+msgstr ""
+
+#: template/page-uses.html.jinja:200
+msgid "Sologenic NFT is an NFT marketplace designed by Sologenic."
+msgstr "Sologenic NFTは、Sologenicが設計したNFTマーケットプレイスです。"
+
+#: template/page-uses.html.jinja:207
+msgid "Towo Labs"
+msgstr ""
+
+#: template/page-uses.html.jinja:208
 msgid ""
 "Towo Labs was founded in 2019, to develop XRP Ledger and Interledger "
 "infrastructures and make non-custodial crypto management easier."
@@ -1875,42 +1887,281 @@ msgstr ""
 "Towo Labsは2019年に設立された会社です。XRP "
 "LedgerおよびInterledgerのインフラストラクチャの開発を手がけ、より簡単な非カストディ型暗号資産管理を実現するために取り組んでいます。"
 
-#: template/page-uses.html.jinja:122
-msgid "Music"
-msgstr "音楽"
-
-#: template/page-uses.html.jinja:123
-msgid ""
-"Raised in Space is a music/tech investment group focused on raising the "
-"value of music, innovating across the entire value chain of the music "
-"industry."
+#: template/page-uses.html.jinja:215
+#, fuzzy
+msgid "X-tokenize"
 msgstr ""
-"Raised in "
-"Spaceは、音楽の価値を高め、音楽業界のバリューチェーンのあらゆる部分でイノベーションを実現するために取り組んでいる、音楽/テクノロジー専門投資グループです。"
 
-#: template/page-uses.html.jinja:127
-msgid "Applications"
-msgstr "アプリケーション"
-
-#: template/page-uses.html.jinja:128
+#: template/page-uses.html.jinja:216
 msgid ""
-"From cold storage to apps for signing transactions, XRPL Labs is "
-"dedicated to building software on the XRP Ledger."
-msgstr "コールドストレージからトランザクション署名アプリケーションまで、XRPL LabsはXRP Ledgerでのソフトウェアの構築を専門としています。"
+"X-Tokenize is a command line tool to simplify the process of creating, "
+"managing and distributing issued currencies and eventually NFTs on the "
+"XRPL."
+msgstr "X-Tokenizeは、XRPL上で発行通貨、ひいてはNFTを作成、管理、配布するプロセスを簡素化するコマンドラインツールです。"
 
-#: template/page-uses.html.jinja:132
+#: template/page-uses.html.jinja:223
+#, fuzzy
+msgid "XP Market"
+msgstr ""
+
+#: template/page-uses.html.jinja:224
+msgid ""
+"XP Market is a price-tracking website for cryptoassets on the XRPL "
+"coupled with a decentralized exchange."
+msgstr "XP Marketは、分散型取引所と結合したXRPL上の暗号資産の価格追跡サイトです。"
+
+#: template/page-uses.html.jinja:231
+#, fuzzy
+msgid "XRP Cafe"
+msgstr ""
+
+#: template/page-uses.html.jinja:232
+msgid ""
+"XRP Cafe is an NFT marketplace built by the community that aims to be the"
+" easiest way to build, sell and mint NFTs."
+msgstr "XRP Cafeは、NFTを構築、販売、ミントする最も簡単な方法を目指して、コミュニティによって構築されたNFTマーケットプレイスです。"
+
+#: template/page-uses.html.jinja:239
+msgid "XRP Toolkit"
+msgstr ""
+
+#: template/page-uses.html.jinja:240
+msgid ""
+"XRP Toolkit is a platform for managing crypto assets and trading on the "
+"XRP Ledger's decentralized exchange."
+msgstr "XRP Toolkitは、暗号資産を管理し、XRP Ledgerの分散型取引所で取引するためのプラットフォームです。"
+
+#: template/page-uses.html.jinja:247
+#, fuzzy
+msgid "XRPL Rosetta"
+msgstr ""
+
+#: template/page-uses.html.jinja:248
+msgid "XRPL Rosetta explores fiat data on XRPL through visualization."
+msgstr "XRPL Rosettaは、XRPL上のフィアットデータを可視化することで素晴らしさを追求します。"
+
+#: template/page-uses.html.jinja:255
+msgid "XRPL.org Ledger Explorer"
+msgstr ""
+
+#: template/page-uses.html.jinja:256
+msgid "XRPL.org's Ledger Explorer is a block explorer of the XRP Ledger."
+msgstr "XRPL.orgのLedger Explorerは、XRP Ledgerのブロックエクスプローラーです。"
+
+#: template/page-uses.html.jinja:263
+#, fuzzy
+msgid "XRPScan"
+msgstr ""
+
+#: template/page-uses.html.jinja:264
+msgid ""
+"XRPSCAN is an explorer and analytics platform for the XRP Ledger. We "
+"provide a clean and simple way to look up accounts, ledgers and "
+"transactions."
+msgstr ""
+"XRPSCANは、XRP "
+"Ledgerのためのエクスプローラおよび分析プラットフォームです。アカウント、台帳、トランザクションを調べるためのクリーンでシンプルな方法を提供します。"
+
+#: template/page-uses.html.jinja:271
+#, fuzzy
+msgid "Xumm Wallet"
+msgstr ""
+
+#: template/page-uses.html.jinja:272
+msgid "Xumm Wallet is a non custodial wallet with superpower for the XRP Ledger."
+msgstr "Xumm Walletは、XRP Ledgerのための最高能力を備えた非カストディアルウォレットです。"
+
+#: template/page-uses.html.jinja:308 template/page-uses.html.jinja:335
+msgid "Cancel"
+msgstr ""
+
+#: template/page-uses.html.jinja:315 template/page-uses.html.jinja:448
+msgid "Featured Categories"
+msgstr "注目のカテゴリ"
+
+#: template/page-uses.html.jinja:322 template/page-uses.html.jinja:456
+msgid "Other Categories"
+msgstr "他のカテゴリ"
+
+#: template/page-uses.html.jinja:348
+msgid "Powering Innovative Technology"
+msgstr "革新的な製品を生み出す"
+
+#: template/page-uses.html.jinja:349
+#, fuzzy
+msgid "XRPL Use Cases"
+msgstr "XRPLの利用例"
+
+#: template/page-uses.html.jinja:357
+msgid "Powering innovative use cases and projects"
+msgstr "革新的なユースケースとプロジェクトを生み出す"
+
+#: template/page-uses.html.jinja:358
+#, fuzzy
+msgid "XRPL Ecosystem"
+msgstr "XRPLエコシステム"
+
+#: template/page-uses.html.jinja:366
+msgid "Infrastructure"
+msgstr "インフラストラクチャ"
+
+#: template/page-uses.html.jinja:367
+msgid ""
+"Build and operate components or systems that help the functionality of "
+"the XRP Ledger, such as Nodes, dev tools, storage, security and more."
+msgstr "ノード、開発ツール、ストレージ、セキュリティなど、XRP Ledgerの機能を助けるコンポーネントやシステムを構築・運用します。"
+
+#: template/page-uses.html.jinja:370
+#, fuzzy
+msgid "Developer Tooling"
+msgstr "開発者ツール"
+
+#: template/page-uses.html.jinja:371
+msgid ""
+"Developers can leverage open-source libraries, SDKs and more to help "
+"build their project and access essential XRP Ledger functionality."
+msgstr ""
+"開発者は、オープンソースのライブラリやSDKなどを活用することで、プロジェクトの構築やXRP "
+"Ledgerの必須機能へのアクセスを支援することができます。"
+
+#: template/page-uses.html.jinja:374
+#, fuzzy
+msgid "Wallet"
+msgstr "ウォレット"
+
+#: template/page-uses.html.jinja:375
+#, fuzzy
+msgid ""
+"Build digital wallets to store passwords and interact with various "
+"blockchains to send and receive digital assets, including XRP."
+msgstr "パスワードを保存するデジタルウォレットを構築し、様々なブロックチェーンとやり取りして、XRPを含むデジタル資産を送受信します。"
+
+#: template/page-uses.html.jinja:378
+#, fuzzy
+msgid "NFTs"
+msgstr "NFT"
+
+#: template/page-uses.html.jinja:379
+msgid ""
+"XRPL supports the issuance of IOUs that represent a currency of any "
+"value, as well as non-fungible tokens (NFTs)."
+msgstr "XRPLは、あらゆる価値の通貨を表すIOUのほか、非代替性トークン（NFT）の発行にも対応しています"
+
+#: template/page-uses.html.jinja:382
+msgid "Exchanges"
+msgstr "取引所"
+
+#: template/page-uses.html.jinja:383
+msgid ""
+"Build sophisticated exchanges where users can invest and trade crypto and"
+" assets such as stocks, ETFs, and commodities."
+msgstr "ユーザーが暗号と株式、ETF、コモディティなどの資産を投資・取引できる高度な取引所を構築します。"
+
+#: template/page-uses.html.jinja:386
+#, fuzzy
+msgid "Gaming"
+msgstr "ゲーム"
+
+#: template/page-uses.html.jinja:387
+msgid ""
+"The XRPL supports gaming at high speed given its reliable throughput, low"
+" fees, and sidechain interoperability."
+msgstr "XRPLは、信頼性の高いスループット、低い手数料、サイドチェーンの相互運用性から、高速なゲームに対応しています。"
+
+#: template/page-uses.html.jinja:390
 msgid "Security"
 msgstr "セキュリティ"
 
-#: template/page-uses.html.jinja:133
-#, fuzzy
+#: template/page-uses.html.jinja:391
 msgid ""
-"Xrplorer offers services and tools that help prevent and combat "
-"fraudulent activity on the XRPL as well as custom APIs and analytics that"
-" supplement the XRPL APIs where they are not enough."
+"Build services and tools that help prevent and combat fraudulent activity"
+" with the XRPL."
+msgstr "XRPLを使った不正行為の防止と対策に役立つサービスやツールを構築します。"
+
+#: template/page-uses.html.jinja:394
+#, fuzzy
+msgid "Payments"
+msgstr "ペイメント"
+
+#: template/page-uses.html.jinja:395
+msgid ""
+"Leverage the efficiency and speed of the XRP Ledger to move value all "
+"over the globe."
+msgstr "XRP Ledgerの効率とスピードを活用して、世界中で価値を移動させます。"
+
+#: template/page-uses.html.jinja:398
+msgid "Web Monetization"
+msgstr "ウェブ収益化"
+
+#: template/page-uses.html.jinja:399
+msgid ""
+"Support creators and their content directly leveraging the power of the "
+"XRP Ledger."
+msgstr "XRP Ledgerのパワーを活用し、クリエイターとそのコンテンツを直接サポートします。"
+
+#: template/page-uses.html.jinja:402
+#: template/page-xrpl-foundation.html.jinja:55
+msgid "Sustainability"
+msgstr "持続可能性"
+
+#: template/page-uses.html.jinja:403
+msgid ""
+"Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens "
+"(NFTs)."
+msgstr "XRP Ledgerを使用して、カーボンオフセットをNFT（Non-Fungible Token）としてトークン化します。"
+
+#: template/page-uses.html.jinja:406
+msgid "CBDC"
 msgstr ""
-"Xrplorerは、XRP Ledger上での不正行為の防止と撲滅を支援するサービスとツールのほか、XRP Ledger "
-"APIの機能を補うカスタムAPIや分析を提供しています。"
+
+#: template/page-uses.html.jinja:407
+msgid ""
+"A private version of the XRP Ledger provides Central Banks a secure, "
+"controlled, and flexible solution to issue and manage Central Bank Issued"
+" Digital Currencies (CBDCs)."
+msgstr ""
+"XRP "
+"Ledgerのプライベートバージョンは、中央銀行が中央銀行発行デジタル通貨（CBDC）を発行・管理するための、安全で統制のとれた柔軟なソリューションを提供します。"
+
+#: template/page-uses.html.jinja:410
+#, fuzzy
+msgid "Custody"
+msgstr "カストディ"
+
+#: template/page-uses.html.jinja:411
+msgid ""
+"Use the XRP Ledger to build crypto custody and securely hold, store and "
+"use your assets."
+msgstr "XRP Ledgerを使用して暗号カストディを構築し、資産を安全に保持、保管、使用することができます。"
+
+#: template/page-uses.html.jinja:414
+msgid "DeFi"
+msgstr ""
+
+#: template/page-uses.html.jinja:415
+msgid ""
+"Provide access to financial products and services replacing the "
+"traditional role of financial institutions."
+msgstr "従来の金融機関の役割に代わって、金融商品・サービスへのアクセスを提供します。"
+
+#: template/page-uses.html.jinja:431
+msgid "Businesses and projects running<br class=\"until-sm\"> on the XRP Ledger"
+msgstr "XRP Ledger上で活動するビジネスやプロジェクト"
+
+#: template/page-uses.html.jinja:432
+msgid "Solving Real Problems Across Industries"
+msgstr "さまざまな業界の実際の問題を解決しています"
+
+#: template/page-uses.html.jinja:434
+msgid ""
+"There are companies and developer projects around the world that leverage"
+" the XRP Ledger to solve interesting problems across a variety of "
+"industries and use cases."
+msgstr "XRP Ledgerを活用して、様々な業界やユースケースで興味深い問題を解決している企業や開発者プロジェクトが世界中に存在しています。"
+
+#: template/page-uses.html.jinja:438
+msgid "Filter by Categories"
+msgstr "カテゴリでフィルター"
 
 #: template/page-validator-domain-verifier.html.jinja:5
 msgid "Domain Verification Checker"
@@ -2000,7 +2251,7 @@ msgid ""
 "href=\"https://www.distributedagreement.com/2018/09/24/what-"
 "is-a-blockchain/\" target=\"_blank\">blockchain technology.</a>"
 msgstr ""
-"XRPとは、XRP Ledger（パーミッションを必要としない、オープンソースで分散型の<a "
+"XRPとは、XRP Ledger（パーミッションレスかつ、オープンソースで分散型の<a "
 "href=\"https://www.distributedagreement.com/2018/09/24/what-"
 "is-a-blockchain/\" target=\"_blank\">ブロックチェーン技術</a>）に固有のデジタルアセットです。"
 
@@ -2015,6 +2266,10 @@ msgstr "送金に特化したデジタルアセットとして2012年に作成�
 #: template/page-xrp-overview.html.jinja:64
 msgid "XRP"
 msgstr "XRP"
+
+#: template/page-xrp-overview.html.jinja:65
+msgid "Bitcoin"
+msgstr "Bitcoin"
 
 #: template/page-xrp-overview.html.jinja:70
 msgid "Fast"
@@ -2039,7 +2294,7 @@ msgstr "$0.0002（1取引あたり）"
 
 #: template/page-xrp-overview.html.jinja:77
 msgid "$0.50/tx"
-msgstr ""
+msgstr "$0.50（1取引あたり）"
 
 #: template/page-xrp-overview.html.jinja:80
 msgid "Scalable"
@@ -2061,7 +2316,7 @@ msgstr "持続可能性"
 
 #: template/page-xrp-overview.html.jinja:86
 msgid "Environmentally sustainable (negligible energy consumption)"
-msgstr ""
+msgstr "環境にやさしい（エネルギー消費量が少ない）"
 
 #: template/page-xrp-overview.html.jinja:87
 #, fuzzy, python-format
@@ -2078,13 +2333,13 @@ msgstr "XRPは中央の仲介機関を必要とせずに直接送金できるた
 
 #: template/page-xrp-overview.html.jinja:97
 msgid "Financial Institutions"
-msgstr ""
+msgstr "金融機関"
 
 #: template/page-xrp-overview.html.jinja:98
 msgid ""
 "Leverage XRP as a bridge currency to facilitate faster, more affordable "
 "cross-border payments around the world."
-msgstr ""
+msgstr "XRPをブリッジ通貨として活用し、世界中のクロスボーダー決済をより速く、より安価に実現します。"
 
 #: template/page-xrp-overview.html.jinja:102
 #, fuzzy
@@ -2093,20 +2348,22 @@ msgstr "個人"
 
 #: template/page-xrp-overview.html.jinja:103
 msgid "Use XRP to move different currencies around the world. "
-msgstr ""
+msgstr "XRPを使って、世界中のさまざまな通貨を移動させることができます。"
 
 #: template/page-xrp-overview.html.jinja:109
-msgid "XRP was designed with sustainability in mind."
-msgstr ""
+#, fuzzy
+msgid "The XRP Ledger was designed with sustainability in mind."
+msgstr "XRP Ledgerは、持続可能性を意識して設計されています。"
 
 #: template/page-xrp-overview.html.jinja:110
-msgid "Explore how the energy consumption of XRP compares to other currencies."
-msgstr ""
+msgid ""
+"Explore the impact of the world's first major, global, public carbon-"
+"neutral blockchain."
+msgstr "世界初の主要な、グローバルな、パブリックなカーボンニュートラル・ブロックチェーンがもたらす影響を探ります。"
 
 #: template/page-xrp-overview.html.jinja:111
-#, fuzzy
-msgid "Green Currency Calculator"
-msgstr "Green Currency Calculatorを見る"
+msgid "Impact"
+msgstr "インパクト"
 
 #: template/page-xrp-overview.html.jinja:117
 msgid "How Is XRP Used in Trading?"
@@ -2151,9 +2408,11 @@ msgid ""
 "technology company that makes it easier to build a high-performance, "
 "global payments business. XRP is a digital asset independent of this."
 msgstr ""
+"<a href=\"https://ripple.com\" "
+"target=\"_blank\">Ripple</a>は、高性能でグローバルな決済ビジネスを簡単に構築できるようにするテクノロジー企業です。XRPはこれとは独立したデジタル資産です。"
 
 #: template/page-xrp-overview.html.jinja:126
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "There is a finite amount of XRP. All XRP is already in existence today—no"
 " more than the original 100 billion can be created. The XRPL founders "
@@ -2163,6 +2422,9 @@ msgid ""
 " XRP Ledger itself. The XRPL's transaction processing rules, enforced by "
 "the consensus protocol, control the release of the XRP."
 msgstr ""
+"XRPの総量は有限です。すべてのXRPは現在すでに存在しており、当初の1,000億を越えることはできません。XRPLの創設者は、このプラットフォームのネイティブ通貨である800億XRPをRipple社に贈与しました。XRPの供給に予測可能性を持たせるため、Ripple社は550億XRP（供給可能な総量の55％）をXRP"
+" "
+"Ledgerを使用した一連のエスクローにロックしています。コンセンサスプロトコルによって強制されるXRPLのトランザクション処理ルールが、XRPの放出を制御しています。"
 
 #: template/page-xrp-overview.html.jinja:130
 msgid ""
@@ -2174,10 +2436,17 @@ msgid ""
 "=\"ripple-escrow-amount\">55B</span></span><br/>\n"
 "                XRP remains in escrow"
 msgstr ""
+"<span class=\"stat-highlight\" id=\"ripple-escrow-as-of\">December "
+"2017</span>時点 <br/>\n"
+"            <span class=\"d-inline-flex\"><img id=\"xrp-mark-overview\" "
+"class=\"mw-100 invertible-img mr-2\" src=\"./img/logos/xrp-mark.svg\" "
+"alt=\"XRP Logo Mark\"> <span class=\"numbers stat-highlight\" id"
+"=\"ripple-escrow-amount\">55B</span></span><br/>\n"
+"                XRPがエスクローに存在します。"
 
 #: template/page-xrp-overview.html.jinja:153
 msgid "What Wallets Support XRP?"
-msgstr ""
+msgstr "XRPをサポートするウォレットは？"
 
 #: template/page-xrp-overview.html.jinja:154
 #, fuzzy
@@ -2190,7 +2459,7 @@ msgstr "デジタルウォレットとは、XRPなどの暗号資産の送金、
 #: template/page-xrp-overview.html.jinja:157
 #, fuzzy
 msgid "Software Wallets"
-msgstr "ハードウェアウォレット:"
+msgstr "ソフトウェアウォレット"
 
 #: template/page-xrp-overview.html.jinja:162
 msgid "Xumm"
@@ -2208,26 +2477,22 @@ msgstr ""
 msgid "https://gatehub.net/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:168
-msgid "Gatehub"
-msgstr ""
-
 #: template/page-xrp-overview.html.jinja:177
 #, fuzzy
 msgid "Hardware Wallets"
-msgstr "ハードウェアウォレット:"
+msgstr "ハードウェアウォレット"
 
 #: template/page-xrp-overview.html.jinja:182
 #, fuzzy
 msgid "Ledger"
-msgstr "XRP Ledger"
+msgstr ""
 
 #: template/page-xrp-overview.html.jinja:186
 msgid "Trezor"
 msgstr ""
 
 #: template/page-xrp-overview.html.jinja:195
-#: template/page-xrp-overview.html.jinja:261
+#: template/page-xrp-overview.html.jinja:258
 msgid ""
 "Disclaimer: This information is drawn from other sources on the internet."
 "  XRPL.org does not endorse or recommend any exchanges or make any "
@@ -2242,14 +2507,14 @@ msgstr ""
 
 #: template/page-xrp-overview.html.jinja:199
 msgid "What Exchanges Support XRP?"
-msgstr ""
+msgstr "XRPをサポートしている取引所は？"
 
 #: template/page-xrp-overview.html.jinja:200
 #, fuzzy
 msgid ""
 "Exchanges are where people trade currencies. XRP is traded on more than "
 "100 markets and exchanges worldwide."
-msgstr "XRPは世界中の100以上の市場と取引所で取引されています"
+msgstr "取引所とは、人々が通貨を取引する場所です。XRPは、世界中の100以上の市場や取引所で取引されています。"
 
 #: template/page-xrp-overview.html.jinja:201
 msgid ""
@@ -2267,32 +2532,32 @@ msgstr "取引所について見る"
 msgid ""
 "Spot exchanges allow people to buy and sell cryptocurrencies at current "
 "(spot) market rates."
-msgstr ""
+msgstr "スポット取引所では、現在の（スポット）市場レートで暗号通貨を売買することができます。"
 
 #: template/page-xrp-overview.html.jinja:208
 msgid "Futures, Options and Swap Exchanges"
-msgstr ""
+msgstr "先物・オプション・スワップ取引所"
 
 #: template/page-xrp-overview.html.jinja:209
 #, fuzzy
 msgid ""
 "Futures, options and swap exchanges allow people to buy and sell "
 "standardized contracts of cryptocurrency market rates in the future."
-msgstr "スポット取引所では、暗号資産を現在の（スポット）市場価格で売買できます。先物、オプション、スワップ取引所では、将来の暗号資産市場価格の標準契約を売買できます。"
+msgstr "先物、オプション、スワップ取引所では、将来における暗号通貨市場レートの標準化された契約を売買することができます。"
 
 #: template/page-xrp-overview.html.jinja:212
 msgid "Custodial Exchanges"
-msgstr ""
+msgstr "カストディアル取引所"
 
 #: template/page-xrp-overview.html.jinja:213
 msgid ""
 "Custodial exchanges manage a user’s private keys, and publish centralized"
 " order books of buyers and sellers."
-msgstr ""
+msgstr "カストディアル取引所は、ユーザーの秘密鍵を管理し、買い手と売り手の集中的なオーダーブックを作成します。"
 
 #: template/page-xrp-overview.html.jinja:216
 msgid "Non-Custodial Exchanges"
-msgstr ""
+msgstr "ノンカストディアル取引所"
 
 #: template/page-xrp-overview.html.jinja:217
 #, fuzzy
@@ -2300,12 +2565,12 @@ msgid ""
 "Non-custodial exchanges, also known as decentralized exchanges, do not "
 "manage a user’s private keys, and publish decentralized order books of "
 "buyers and sellers on a blockchain."
-msgstr "カストディ型取引所は、ユーザーの秘密鍵を管理し、一元化された買い手と売り手のオーダーブックを公開します。非カストディ型取引所は、分散型取引所とも呼ばれ、ユーザーの秘密鍵は管理せず、ブロックチェーンに分散された売り手と買い手のオーダーブックを公開します。"
+msgstr "ノンカストディアル取引所は、分散型取引所とも呼ばれ、ユーザーの秘密鍵を管理せず、ブロックチェーン上で売り手と買い手の分散型オーダーブックを公開します。"
 
 #: template/page-xrp-overview.html.jinja:220
 #, fuzzy
 msgid "Top Exchanges, according to CryptoCompare"
-msgstr "主要な取引所（2020年8月時点でのCryptoCompareの調査による）"
+msgstr "CryptoCompareによる主要な取引所"
 
 #: template/page-xrp-overview.html.jinja:225
 msgid "Bitstamp"
@@ -2375,14 +2640,6 @@ msgstr ""
 msgid "Bittrex"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:250
-msgid "https://ftx.com/"
-msgstr ""
-
-#: template/page-xrp-overview.html.jinja:252
-msgid "FTX"
-msgstr ""
-
 #: template/page-xrpl-foundation.html.jinja:28
 msgid "Fostering the Development of the XRP Ledger"
 msgstr ""
@@ -2437,10 +2694,6 @@ msgid ""
 "Support a growing ecosystem of global developers to help with the Ledger "
 "adoption and use."
 msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:55
-msgid "Sustainability"
-msgstr "サステナビリティ"
 
 #: template/page-xrpl-foundation.html.jinja:56
 msgid "Encourage scalable and sustainable practices."
@@ -2506,11 +2759,11 @@ msgstr "ステータス"
 
 #: template/page-xrpl-overview.html.jinja:39
 msgid "XRPL Today and the Vision for Tomorrow"
-msgstr ""
+msgstr "XRPLの現在と未来へのビジョン"
 
 #: template/page-xrpl-overview.html.jinja:40
 msgid "XRPL | XRP Ledger Overview"
-msgstr ""
+msgstr "XRPL と XRP Ledger の概要"
 
 #: template/page-xrpl-overview.html.jinja:53
 #, fuzzy
@@ -2519,11 +2772,11 @@ msgstr "XRP Ledgerはどのような仕組みですか?"
 
 #: template/page-xrpl-overview.html.jinja:54
 msgid "XRP Ledger Basics"
-msgstr ""
+msgstr "XRP Ledgerの基礎知識"
 
 #: template/page-xrpl-overview.html.jinja:56
 msgid "The XRP Ledger is a decentralized public blockchain. "
-msgstr ""
+msgstr "XRP Ledgerは、分散型パブリックブロックチェーンです。"
 
 #: template/page-xrpl-overview.html.jinja:57
 msgid ""
@@ -2532,6 +2785,8 @@ msgid ""
 "software engineers, server operators, users, and businesses—maintains the"
 " ledger."
 msgstr ""
+"誰でも自分のコンピュータを、台帳を管理するピアツーピアのネットワークに接続することができます。ソフトウェア・エンジニア、サーバー・オペレーター、ユーザー、企業など、さまざまな人々が集まるグローバルなXRP"
+" Ledgerコミュニティが、台帳を管理しています。"
 
 #: template/page-xrpl-overview.html.jinja:59
 #: template/page-xrpl-overview.html.jinja:69
@@ -2542,15 +2797,15 @@ msgstr "技術を知る"
 #: template/page-xrpl-overview.html.jinja:59
 #: template/page-xrpl-overview.html.jinja:69
 msgid "Watch Explainer Videos "
-msgstr ""
+msgstr "解説動画を見る "
 
 #: template/page-xrpl-overview.html.jinja:80
 msgid "How the Consensus Protocol works"
-msgstr ""
+msgstr "コンセンサスプロトコルの仕組み"
 
 #: template/page-xrpl-overview.html.jinja:81
 msgid "Consensus"
-msgstr ""
+msgstr "コンセンサス"
 
 #: template/page-xrpl-overview.html.jinja:83
 msgid ""
@@ -2558,6 +2813,8 @@ msgid ""
 "href=\"run-a-rippled-validator.html\">validators</a> come to an agreement"
 " on the order and outcome of XRP transactions every 3-5 seconds."
 msgstr ""
+"XRPLはコンセンサスプロトコルを採用しており、<a href=\"run-a-rippled-"
+"validator.html\">バリデータ</a>と呼ばれる指定されたサーバーが、3～5秒ごとにXRPトランザクションの順序と結果について合意に至ります。"
 
 #: template/page-xrpl-overview.html.jinja:84
 #, fuzzy
@@ -2579,41 +2836,44 @@ msgid ""
 " time as the validator pool grows."
 msgstr ""
 "バリデータは誰でも運営できます。現在、レジャーでは、大学、取引所、企業、個人が運営している150以上の<a href=\"run-a"
-"-rippled-validator.html\" class=\"underline\">バリデータ</a>がアクティブです。"
+"-rippled-validator.html\" "
+"class=\"underline\">バリデータ</a>がアクティブです。さらに、コンセンサス・プロトコルは、バリデータ・プールが成長するにつれて、ブロックチェーンがより分散化されることを保証します。"
 
 #: template/page-xrpl-overview.html.jinja:97
 msgid "A Greener Blockchain"
-msgstr ""
+msgstr "より環境に優しいブロックチェーン"
 
 #: template/page-xrpl-overview.html.jinja:98
 msgid ""
 "Unlike most other blockchains, the XRP Ledger does not need mining, so <a"
 " href=\"impact.html\">no energy is wasted</a> in the transaction process."
-" Learn how this compares to other platforms with our <a href=\"carbon-"
-"calculator.html\">Green Currency Calculator</a>."
 msgstr ""
+"他の多くのブロックチェーンとは異なり、XRP Ledgerはマイニングを必要としないため、トランザクションのプロセスで<a "
+"href=\"impact.html\">エネルギーを無駄にすることはありません</a>。私たちの<a href=\"carbon-"
+"calculator.html\">Green Currency "
+"Calculator</a>で、これが他のプラットフォームと比較してどうなのかを学びましょう。"
 
 #: template/page-xrpl-overview.html.jinja:108
 msgid "XRPL provides powerful utility across the blockchain space"
-msgstr ""
+msgstr "XRPLはブロックチェーン領域全体で強力なユーティリティを提供"
 
 #: template/page-xrpl-overview.html.jinja:109
 msgid "XRPL Today"
-msgstr ""
+msgstr "XRPLの現在"
 
 #: template/page-xrpl-overview.html.jinja:111
 msgid ""
 "The ledger’s unique properties, such as its fast and efficient consensus "
 "algorithm and censorship-resistant transaction processing, are leveraged "
 "by thousands of developers."
-msgstr ""
+msgstr "高速で効率的なコンセンサスアルゴリズムや検閲に強いトランザクション処理など、この台帳のユニークな特性は、何千ものデベロッパーによって活用されています。"
 
 #: template/page-xrpl-overview.html.jinja:112
 msgid ""
 "With the XRPL, these developers are building innovative projects and "
 "applications across blockchain use cases including tokenization of "
 "assets, online gaming, asset custody, NFTs, and DeFi."
-msgstr ""
+msgstr "XRPLにより、開発者たちは、資産のトークン化、オンラインゲーム、資産保管、NFT、DeFiなどのブロックチェーンのユースケースにわたって革新的なプロジェクトやアプリケーションを構築しています。"
 
 #: template/page-xrpl-overview.html.jinja:113
 #, fuzzy
@@ -2622,18 +2882,18 @@ msgstr "利用例を見る"
 
 #: template/page-xrpl-overview.html.jinja:117
 msgid "Fulfilling the vision of the XRPL community"
-msgstr ""
+msgstr "XRPLコミュニティのビジョンを実現するために"
 
 #: template/page-xrpl-overview.html.jinja:118
 msgid "XRPL Tomorrow"
-msgstr ""
+msgstr "XRPLの未来"
 
 #: template/page-xrpl-overview.html.jinja:120
 msgid ""
 "While XRPL is the choice of developers who don’t want to sacrifice "
 "security or performance and who want to build on the greenest blockchain,"
 " that’s only the beginning."
-msgstr ""
+msgstr "XRPLは、セキュリティもパフォーマンスも犠牲にしたくない、最も環境に優しいブロックチェーンで作りたいという開発者に選ばれていますが、それはまだ始まりに過ぎません。"
 
 #: template/page-xrpl-overview.html.jinja:121
 msgid ""
@@ -2643,35 +2903,38 @@ msgid ""
 "vision statement. Stay tuned for more on this effort—we can’t wait to "
 "share it with you."
 msgstr ""
+"コミュニティ主導のブロックチェーンとして、XRPLのビジョンはコミュニティの努力によって生み出されるものでもあります。<a "
+"href=\"https://xrplf.org/\" "
+"target=\"_blank\">XRPL財団</a>は現在、コミュニティメンバーと協力して、共有ビジョンステートメントを定義しています。この取り組みについての詳細をご期待ください。皆さんと共有するのを心待ちにしています。"
 
 #: template/page-xrpl-overview.html.jinja:128
 msgid "Watch the explainer video series to learn more about the XRP Ledger"
-msgstr ""
+msgstr "XRP Ledgerの詳細については、説明用のビデオシリーズをご覧ください。"
 
 #: template/page-xrpl-overview.html.jinja:129
 msgid "Tune In"
-msgstr ""
+msgstr "視聴する"
 
 #: template/page-xrpl-overview.html.jinja:138
 msgid "The Consensus Mechanism"
-msgstr ""
+msgstr "コンセンサスの仕組み"
 
 #: template/page-xrpl-overview.html.jinja:146
 #, fuzzy
 msgid "Nodes and Validators"
-msgstr "ウォレットとアプリケーション"
+msgstr "ノードとバリデータ"
 
 #: template/page-xrpl-overview.html.jinja:154
 msgid "Sustainability of the XRP Ledger"
-msgstr ""
+msgstr "XRP Ledgerの持続可能性"
 
 #: template/page-xrpl-overview.html.jinja:159
 msgid "Watch Full Series on YouTube"
-msgstr ""
+msgstr "YouTubeで全てのシリーズを見る"
 
 #: template/page-xrpl-overview.html.jinja:167
 msgid "Tomorrow’s Blockchain Starts With You"
-msgstr ""
+msgstr "未来のブロックチェーンは、あなたから始まる"
 
 #: template/page-xrpl-overview.html.jinja:168
 msgid ""
@@ -2679,10 +2942,13 @@ msgid ""
 "builders like you. If you’re ready to start your next big blockchain "
 "project, explore the XRPL now and consider applying for an XRPL Grant."
 msgstr ""
+"XRP "
+"Ledgerのイノベーションは、皆さんのような開発者が共有するコミュニティーの経験を大切にしています。もしあなたが次の大きなブロックチェーン・プロジェクトを始める準備ができているなら、今すぐXRPLを試し、XRPL"
+" Grantへの応募を検討しましょう。"
 
 #: template/page-xrpl-overview.html.jinja:177
 msgid "Is XRPL a private blockchain, owned by Ripple?"
-msgstr ""
+msgstr "XRPLはRipple社が所有するプライベートブロックチェーンですか？"
 
 #: template/page-xrpl-overview.html.jinja:178
 #, python-format
@@ -2695,10 +2961,12 @@ msgid ""
 "Unique Node List (see “What are Unique Node Lists (UNLs)?” in the Full "
 "FAQ) — Ripple runs 6 of these nodes."
 msgstr ""
+"いいえ、XRP "
+"Ledgerは分散型のパブリックブロックチェーンです。取引処理やコンセンサスに影響を与えるような変更は、ネットワークの少なくとも80％の承認が必要です。Ripple社はネットワークへの貢献者ですが、その権利は他の貢献者と同じです。バリデーションの面では、ネットワーク上に150人以上のバリデーターが存在し、35人以上がユニークノードリスト（FAQ全文の「ユニークノードリスト（UNL）とは何ですか」参照）に登録されており、Ripple社はこれらのノードのうち1つを運営しています。"
 
 #: template/page-xrpl-overview.html.jinja:179
 msgid "Isn’t Proof of Work the best validation mechanism?"
-msgstr ""
+msgstr "Proof of Workが最良の検証メカニズムではないでしょうか？"
 
 #: template/page-xrpl-overview.html.jinja:180
 msgid ""
@@ -2707,10 +2975,12 @@ msgid ""
 "consensus mechanism solves the same problem in a far faster, cheaper and "
 "more energy efficient way."
 msgstr ""
+"Proof of Work（PoW）は、信頼できる第三者を必要とせずに二重消費問題を解決する最初の仕組みでした。しかし、XRP "
+"Ledgerのコンセンサスメカニズムは、同じ問題をはるかに速く、安く、エネルギー効率の良い方法で解決しています。"
 
 #: template/page-xrpl-overview.html.jinja:181
 msgid "How can a blockchain be sustainable?"
-msgstr ""
+msgstr "ブロックチェーンはどうして持続可能なのでしょうか？"
 
 #: template/page-xrpl-overview.html.jinja:182
 msgid ""
@@ -2721,14 +2991,18 @@ msgid ""
 "energy like proof of work does - and leverages carbon offsets to be <a "
 "href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-"
 "to-achieve-carbon-neutrality-by-2030/' target='_blank'>one of the first "
-"truly carbon neutral blockchains</a>. Explore the energy consumption of "
-"XRP compared to cash, credit cards and other popular cryptocurrencies "
-"with the <a href='carbon-calculator.html'>Green Currency Calculator</a>."
+"truly carbon neutral blockchains</a>."
 msgstr ""
+"ビットコインのエネルギー消費量は、2021年時点で、アルゼンチンが使用するエネルギーと同等であり、ビットコインの採掘者が使用する電力の多くは環境破壊につながる資源から供給されていると広く報告されています。XRP"
+" Ledgerは、Proof of "
+"Workのようにエネルギーを浪費しない「コンセンサス」メカニズムを通じてトランザクションを検証し、カーボンオフセットを活用して、<a "
+"href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-"
+"to-achieve-carbon-neutrality-by-2030/' "
+"target='_blank'>最初の真のカーボンニュートラルなブロックチェーンの1つとなっています。</a>"
 
 #: template/page-xrpl-overview.html.jinja:198
 msgid "View Full FAQ"
-msgstr ""
+msgstr "すべてのFAQを見る"
 
 # Table of contents
 #: template/pagetype-doc.html.jinja:45
@@ -3595,3 +3869,609 @@ msgstr "目次"
 #~ msgstr ""
 #~ "世界中の<a "
 #~ "href=\"https://www.un.org/sites/un2.un.org/files/wmr_2020.pdf\">2億7,200万人を超える移民</a>にとって、国際送金は高額なコストがかかり、信頼性が低くて複雑なのが現状です。"
+
+#~ msgid "Native NFT support is now available on the XRP Ledger"
+#~ msgstr ""
+
+#~ msgid "Native NFT support is now available"
+#~ msgstr ""
+
+#~ msgid "on the XRP Ledger"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The XRPL Campus Ambassador program "
+#~ "engages, supports, connects, and recognizes"
+#~ " a group of student champions of "
+#~ "the XRPL and empowers them to "
+#~ "further advance engagement on the XRP"
+#~ " Ledger."
+#~ msgstr ""
+
+#~ msgid "Green Currency Interactive Tool"
+#~ msgstr "インタラクティブツールを見る"
+
+#~ msgid "How Green Is Your Currency?"
+#~ msgstr "お使いの通貨はどのくらい環境にやさしいですか?"
+
+#~ msgid "Energy Consumption for Cash, Credit Cards and Crypto"
+#~ msgstr "現金、クレジットカード、暗号資産のエネルギー消費量"
+
+#~ msgid ""
+#~ "Moving money carries cost—and not just"
+#~ " the fee on your transaction or "
+#~ "the value of your payment."
+#~ msgstr "資金を移動させるにはコストがかかります。これは取引手数料や支払額だけの話ではありません。"
+
+#~ msgid ""
+#~ "Whether it’s in cash, on a credit"
+#~ " card or with crypto, every "
+#~ "transaction you make consumes energy, "
+#~ "and therefore, emits pollutants into the"
+#~ " environment."
+#~ msgstr "現金、クレジットカード、暗号資産での取引は、いずれもエネルギーを消費しています。その結果、汚染物質が環境に排出されているのです。"
+
+#~ msgid ""
+#~ "The impact of this is startling "
+#~ "when you look at the total "
+#~ "transactions across an entire year—for "
+#~ "any one form of currency."
+#~ msgstr "1年間で行われる総取引量を考えてみれば、1つの通貨形態だけでも、驚くほどの影響があります。"
+
+#~ msgid ""
+#~ "Find out more about the environmental"
+#~ " cost of some of the world’s "
+#~ "most popular and innovative currencies, "
+#~ "and start making more educated choices"
+#~ " about how you transact."
+#~ msgstr "世界中で特によく利用されている革新的な通貨の環境コストを詳しく確認することで、知識に基づいて取引方法を選べるようになります。"
+
+#~ msgid "How Does XRP Compare to Other Currencies?"
+#~ msgstr "XRPを他の通貨と比較すると?"
+
+#~ msgid "Change Inputs"
+#~ msgstr "入力の変更"
+
+#~ msgid "Comparing<br class=\"until-sm\"/> Transaction Data"
+#~ msgstr "取引データの<br/>比較"
+
+#~ msgid "Credit Cards"
+#~ msgstr "クレジットカード"
+
+#~ msgid "Cash"
+#~ msgstr "現金"
+
+#~ msgid "Twitter share"
+#~ msgstr "Twitterでシェア"
+
+#~ msgid "LinkedIn share"
+#~ msgstr "LinkedInでシェア"
+
+#~ msgid "Facebook share"
+#~ msgstr "Facebookでシェア"
+
+#~ msgid "Learn more about the methodology"
+#~ msgstr "測定方法について詳しく知る【英語】"
+
+#~ msgid "Energy Consumption of Portugal"
+#~ msgstr "ポルトガルのエネルギー消費量"
+
+#~ msgid ""
+#~ "Comparing <span class=\"slider-amt\"></span> "
+#~ "Million Transactions in 2019"
+#~ msgstr "2019年の取引額<span class=\"slider-amt\"></span>百万を比較"
+
+#~ msgid ""
+#~ "The country of Portugal consumes 46.94"
+#~ " billion Kilowatt hours (kWh) of "
+#~ "energy annually. Explore how much energy"
+#~ " today’s various currencies consume in "
+#~ "relation to Portugal."
+#~ msgstr "ポルトガルの国全体では年間でおよそ50TWh（10億キロワット時【kWh】）のエネルギーを消費しています。ポルトガルと比較して、現代のさまざまな通貨のエネルギー消費量をご覧ください。"
+
+#~ msgid "Portugal"
+#~ msgstr "ポルトガル"
+
+#~ msgid "kWh"
+#~ msgstr "kWh"
+
+#~ msgid "Ethereum"
+#~ msgstr "Ethereum"
+
+#~ msgid "Visa"
+#~ msgstr "Visa"
+
+#~ msgid "CO<sub>2</sub> Emissions from Airline Flights"
+#~ msgstr "航空便によるCO<sub>2</sub>排出量"
+
+#~ msgid ""
+#~ "A 12-hour flight from London to "
+#~ "Hong Kong releases 3 tons of "
+#~ "carbon dioxide (CO<sub>2</sub>). Discover how"
+#~ " much CO<sub>2</sub> different forms of "
+#~ "currency release in comparison to "
+#~ "emissions from airline flights."
+#~ msgstr "ロンドンから香港までの所要12時間の1回のフライトで、二酸化炭素（CO<sub>2</sub>）が3トン排出されます。航空便による排出量と比較して、さまざまな通貨形態でどれほどのCO<sub>2</sub>が排出されるかご確認ください。"
+
+#~ msgid "metric tons of CO<sub>2</sub>"
+#~ msgstr "CO<sub>2</sub>のメトリックトン"
+
+#~ msgid "Gas Consumption by the Gallon"
+#~ msgstr "ガス消費量（ガロン）"
+
+#~ msgid ""
+#~ "An Ultra Large Crude Carrier (ULCC) "
+#~ "carries approximately 120 million gallons "
+#~ "of gas. Measure the environmental impact"
+#~ " between currencies in relation to "
+#~ "the amount of gas they would "
+#~ "consume in the real-world."
+#~ msgstr "超大型原油タンカー（ULCC）は約1億2,000万ガロンのガスを運ぶことができます。それぞれの通貨が実際に消費するガスの量を比較して、環境への影響を測定してみましょう。"
+
+#~ msgid "Gallons of Gas"
+#~ msgstr "ガロン"
+
+#~ msgid "Breaking Down Individual Transactions"
+#~ msgstr "取引1回分の内訳"
+
+#~ msgid ""
+#~ "Looking at individual transactions below, "
+#~ "compare how a single transaction across"
+#~ " each form of currency equates to "
+#~ "kWh, CO<sub>2</sub> emissions, and gallons "
+#~ "of gas."
+#~ msgstr "各通貨形態の取引1回分がどのくらいのエネルギー消費量（kWh）、ガス消費量（ガロン）、CO<sub>2</sub>排出量に相当するか比較しました。以下の表をご覧ください。"
+
+#~ msgid "Kilowatt Hour"
+#~ msgstr "キロワット時"
+
+#~ msgid "CO<sub>2</sub> Emissions"
+#~ msgstr "CO<sub>2</sub>排出量"
+
+#~ msgid "Paper Currency"
+#~ msgstr "紙幣"
+
+#~ msgid "Annual Summit: Apex"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Apex XRPL Developer Summit is the "
+#~ "annual event where developers, contributors,"
+#~ " and thought leaders come together to"
+#~ " learn, build, share, network, and "
+#~ "celebrate all things XRP Ledger."
+#~ msgstr ""
+
+#~ msgid "Explore Apex"
+#~ msgstr ""
+
+#~ msgid "Apex 2021 On-Demand"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "View sessions from the Apex 2021 "
+#~ "stages in Las Vegas and Tallinn. "
+#~ "Relive the keynote fireside chat with"
+#~ " Alexis Ohanian and soak in the "
+#~ "knowledge that was shared by passionate"
+#~ " XRPL community members."
+#~ msgstr ""
+
+#~ msgid "Watch Sessions On-Demand"
+#~ msgstr ""
+
+#~ msgid "Faster, Cheaper, Green Money"
+#~ msgstr "より速く、低コストで、環境にやさしい送金"
+
+#~ msgid ""
+#~ "The digital asset XRP is a truly"
+#~ " global currency—ideally suited to enable"
+#~ " today’s global economy."
+#~ msgstr "デジタルアセットのXRPは真にグローバルな通貨であり、今日の国際経済を実現するのに最適です。"
+
+#~ msgid ""
+#~ "As an optimal medium of exchange, "
+#~ "XRP and the XRP Ledger on which"
+#~ " it operates help to move money "
+#~ "around the world faster, cheaper and "
+#~ "more sustainably than any other currency"
+#~ " available today. "
+#~ msgstr ""
+#~ "両替に最適な手段であるXRPとその基盤となるXRP "
+#~ "Ledgerは、現在利用できる他のどの通貨よりも速く、低コストで持続可能な国際送金をサポートします。"
+
+#~ msgid ""
+#~ "It was designed this way, and it’s"
+#~ " proving its impact in global "
+#~ "payments and beyond."
+#~ msgstr "このように設計されていることで、国際送金だけにとどまらず、さまざまなところでそのインパクトが実証されています。"
+
+#~ msgid "Creating Economic Opportunity"
+#~ msgstr "経済的機会の創出"
+
+#~ msgid ""
+#~ "For more than <a "
+#~ "href=\"https://publications.iom.int/system/files/pdf/wmr_2020.pdf\""
+#~ " target=\"_blank\">272 million migrants</a> "
+#~ "worldwide, sending and receiving money "
+#~ "across borders is expensive, unreliable "
+#~ "and complex."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "XRP and the XRP Ledger are "
+#~ "changing that. The technology has been"
+#~ " adopted by financial institutions around"
+#~ " the world to source liquidity for"
+#~ " international transactions. Because of the"
+#~ " unprecedented efficiency it offers, "
+#~ "they’re able to bring down costs "
+#~ "and improve services."
+#~ msgstr ""
+#~ "XRPとXRP "
+#~ "Ledgerがそれを変えています。このテクノロジーは、国際取引の流動性を調達するために、世界中の金融機関に採用されています。前例のない効率性を実現しているため、コストを下げ、サービスを向上させることができるのです"
+
+#~ msgid ""
+#~ "This means hundreds of millions of "
+#~ "people worldwide who need to move "
+#~ "money safely and securely across borders"
+#~ " can do so more affordably and "
+#~ "reliably than ever before."
+#~ msgstr "つまり、安心かつ安全な国際送金を求める何億人もの人々が、かつてないほどの低コストと高い信頼性で送金できるようになるということです。"
+
+#~ msgid "Building for the Future"
+#~ msgstr "未来を見据えて構築されています"
+
+#~ msgid ""
+#~ "Digital assets and blockchain technology "
+#~ "are the future of finance. Open "
+#~ "and decentralized, they offer the "
+#~ "first-ever global standards for value "
+#~ "exchange broadly—whether it’s money, stocks,"
+#~ " loyalty points, intellectual property or"
+#~ " more."
+#~ msgstr "デジタルアセットとブロックチェーン技術は未来の金融です。オープンで分散化されており、資金、株式、ロイヤルティポイント、知的財産などさまざまな価値を交換するための史上初の国際標準を提供します。"
+
+#~ msgid "Projected BTC, ETH and XRP Transactions in USD"
+#~ msgstr "BTC、ETH、XRPの米ドル建て取引額の予測"
+
+#~ msgid "2025"
+#~ msgstr ""
+
+#~ msgid "+195.3%%"
+#~ msgstr ""
+
+#~ msgid "$8.6T"
+#~ msgstr ""
+
+#~ msgid "2030"
+#~ msgstr ""
+
+#~ msgid "+21.4%%"
+#~ msgstr ""
+
+#~ msgid "$10.5T"
+#~ msgstr ""
+
+#~ msgid "Are All Digital Assets Alike?"
+#~ msgstr "どのデジタルアセットも似たようなものでしょうか?"
+
+#~ msgid ""
+#~ "All digital assets have different "
+#~ "strengths that make them ideal for "
+#~ "various use cases."
+#~ msgstr "デジタルアセットにはそれぞれ独自の強みがあり、現代のさまざまな用途に適しています。"
+
+#~ msgid ""
+#~ "Bitcoin has historically been recognized "
+#~ "as a store of value and Ether "
+#~ "(ETH) for its smart contract "
+#~ "capabilities."
+#~ msgstr "Bitcoinは価値の貯蔵場所として広く認識されており、Ethereum（ETH）はスマートコントラクトでの使用に適しています。"
+
+#~ msgid ""
+#~ "XRP was designed to be optimal for"
+#~ " global payments—it’s fast, cheap, scalable"
+#~ " and energy-efficient. But the XRP"
+#~ " Ledger is also increasingly popular "
+#~ "for innovative blockchain use cases, "
+#~ "like NFTs and DeFi."
+#~ msgstr ""
+#~ "XRPはグローバルな決済に最適なように設計されており、高速で安価、スケーラブルでエネルギー効率に優れています。それだけでなく、XRP "
+#~ "Ledgerは、NFTやDeFiのような革新的なブロックチェーンのユースケースでもますます人気が高まっています。"
+
+#~ msgid ""
+#~ "The same characteristics that make XRP"
+#~ " ideal for global transactions mean "
+#~ "it’s also better for our environment."
+#~ " XRP is green by nature."
+#~ msgstr "また、送金に最適なこの特徴は、環境にもよい効果をもたらします。XRPは本質的に環境にやさしいデジタルアセットです。"
+
+#~ msgid ""
+#~ "Most currencies today—whether digital or "
+#~ "physical—are not environmentally friendly. The"
+#~ " potential for long-term impact on"
+#~ " our planet could hold startling "
+#~ "consequences. "
+#~ msgstr "デジタル通貨でも物理的な通貨でも、現在利用されているほとんどの通貨は環境にやさしくありません。地球に長期的な影響を及ぼす可能性があり、深刻な結果が解消されないおそれがあります。"
+
+#~ msgid ""
+#~ "The XRP Ledger processes transactions "
+#~ "through a unique “consensus” mechanism "
+#~ "that consumes negligible energy and all"
+#~ " XRP currency is already in "
+#~ "circulation."
+#~ msgstr ""
+#~ "XRP "
+#~ "Ledgerは消費エネルギーがごくわずかで、全てのXRP通貨が既に発行されており、独自の「コンセンサス」メカニズムを通じてトランザクションを処理します。"
+
+#~ msgid ""
+#~ "Cash also leaves a substantial carbon"
+#~ " footprint, and the environmental impact"
+#~ " goes beyond energy consumption—eutrophication"
+#~ " (due to waste), photochemical ozone "
+#~ "creation, greenhouse gas emissions and "
+#~ "more factor into the equation."
+#~ msgstr "現金も相当の二酸化炭素排出量があります。その環境への影響は、エネルギー消費量だけでなく、廃棄による富栄養化、光化学オゾンの発生、温室効果ガスの排出など、さまざまな要素がかかわってきます。"
+
+#~ msgid ""
+#~ "Other digital assets, like Bitcoin, rely"
+#~ " on a different mechanism to both "
+#~ "validate transactions and create new "
+#~ "coins. This “proof-of-work” algorithm"
+#~ " requires “mining.” Mining is an "
+#~ "incredibly energy-intensive process for "
+#~ "validating transactions that consumes more "
+#~ "energy in a year than entire "
+#~ "countries."
+#~ msgstr "Bitcoinなど他のデジタルアセットは、取引の確認と新規コインの創出に、XRPとは異なる技術を使用しています。この「プルーフオブワーク」アルゴリズムでは「マイニング」が必要です。マイニングとは、取引の検証を行うために驚くほどのエネルギーを集中的に使用するプロセスです。その年間のエネルギー消費量は国全体の消費量を上回ります。"
+
+#~ msgid ""
+#~ "Adopting XRP more broadly will help "
+#~ "limit this waste and ensure a "
+#~ "sustainable future for our planet and"
+#~ " global economy."
+#~ msgstr "XRPを幅広く採用すれば、この無駄を抑制して、私たちの地球と国際経済の持続可能な未来を実現できます。"
+
+#~ msgid "Explore the Carbon Calculator"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Developers are using the XRP Ledger "
+#~ "to build innovative products for gaming,"
+#~ " content, and web monetization, among "
+#~ "other applications where currency is at"
+#~ " the center."
+#~ msgstr ""
+#~ "企業はXRPとXRP "
+#~ "Ledgerを活用して、決済を中心としたアプリケーションの中でも特に、ゲーム、コンテンツやウェブの収益化を実現する革新的な製品を構築しています。"
+
+#~ msgid "Cryptocurrency Wallets"
+#~ msgstr "デジタル暗号資産ウォレット"
+
+#~ msgid ""
+#~ "Build sophisticated exchanges where users "
+#~ "can invest and trade crypto and "
+#~ "non-blockchain assets such as stocks, "
+#~ "ETFs, and commodities."
+#~ msgstr ""
+
+#~ msgid "Stablecoins"
+#~ msgstr "秒"
+
+#~ msgid ""
+#~ "Financial institutions can use Issued "
+#~ "Currencies to issue stablecoins on the"
+#~ " XRP Ledger. XRPL’s integrated "
+#~ "decentralized exchange (DEX) allows neutral,"
+#~ " counterparty-free digital assets to "
+#~ "be seamlessly exchanged to and from "
+#~ "“issued assets,” including stablecoins."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "XRPL allows issuance of IOUs which "
+#~ "can represent a currency of any "
+#~ "value, which can be extended to "
+#~ "the issuance of non-fungible tokens "
+#~ "(NFTs)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Provide access to financial products and"
+#~ " services online in a decentralized "
+#~ "and borderless manner on XRPL, with "
+#~ "decentralized smart contract protocols "
+#~ "replacing the traditional role of "
+#~ "financial institutions."
+#~ msgstr ""
+
+#~ msgid "CBDCs"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The CBDC Private Ledger provides Central"
+#~ " Banks a secure, controlled, and "
+#~ "flexible solution to issue and manage"
+#~ " Central Bank Issued Digital Currencies "
+#~ "(CBDCs)."
+#~ msgstr ""
+
+#~ msgid "Payment Processing"
+#~ msgstr "決済処理"
+
+#~ msgid ""
+#~ "Coil provides web monetization as an "
+#~ "alternative to traditional paid advertising."
+#~ " Coil uses the interledger protocol "
+#~ "(ILP) to stream micropayments as users"
+#~ " consume content. The XRPL’s payment "
+#~ "channels provide an ideal system for "
+#~ "settling these micropayments at high "
+#~ "speed and low cost."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "GateHub is a platform for the "
+#~ "Internet of Value, built on the "
+#~ "XRP Ledger protocol. It allows everyone"
+#~ " to send, receive, trade and manage"
+#~ " any type of assets."
+#~ msgstr ""
+
+#~ msgid "Wallets and Apps"
+#~ msgstr "ウォレットとアプリケーション"
+
+#~ msgid ""
+#~ "Exodus offers wallets and applications "
+#~ "for securing, managing and exchanging "
+#~ "crypto."
+#~ msgstr "Exodusは、暗号資産の保護、管理、交換を行うためのウォレットとアプリケーションを提供しています。"
+
+#~ msgid ""
+#~ "Ripple powers instant, lower-cost "
+#~ "settlement of cross-border payments "
+#~ "using XRP to source liquidity on "
+#~ "demand. XRP is ideally suited for "
+#~ "global payments because it's quicker, "
+#~ "less costly, and more scalable than "
+#~ "any other digital asset."
+#~ msgstr "eRippleは、XRPを使用した国際送金の即時決済を低コストに実現して、流動性をオンデマンドで供給しています。XRPは他のどのデジタルアセットよりも、スピード、コスト、拡張性に優れているため、グローバルな決済に最適です。"
+
+#~ msgid "Music"
+#~ msgstr "音楽"
+
+#~ msgid ""
+#~ "Raised in Space is a music/tech "
+#~ "investment group focused on raising the"
+#~ " value of music, innovating across "
+#~ "the entire value chain of the "
+#~ "music industry."
+#~ msgstr ""
+#~ "Raised in "
+#~ "Spaceは、音楽の価値を高め、音楽業界のバリューチェーンのあらゆる部分でイノベーションを実現するために取り組んでいる、音楽/テクノロジー専門投資グループです。"
+
+#~ msgid "Applications"
+#~ msgstr "アプリケーション"
+
+#~ msgid ""
+#~ "From cold storage to apps for "
+#~ "signing transactions, XRPL Labs is "
+#~ "dedicated to building software on the"
+#~ " XRP Ledger."
+#~ msgstr ""
+#~ "コールドストレージからトランザクション署名アプリケーションまで、XRPL LabsはXRP "
+#~ "Ledgerでのソフトウェアの構築を専門としています。"
+
+#~ msgid ""
+#~ "Xrplorer offers services and tools that"
+#~ " help prevent and combat fraudulent "
+#~ "activity on the XRPL as well as"
+#~ " custom APIs and analytics that "
+#~ "supplement the XRPL APIs where they "
+#~ "are not enough."
+#~ msgstr ""
+#~ "Xrplorerは、XRP Ledger上での不正行為の防止と撲滅を支援するサービスとツールのほか、XRP "
+#~ "Ledger APIの機能を補うカスタムAPIや分析を提供しています。"
+
+#~ msgid "XRP was designed with sustainability in mind."
+#~ msgstr ""
+
+#~ msgid "Explore how the energy consumption of XRP compares to other currencies."
+#~ msgstr ""
+
+#~ msgid "Green Currency Calculator"
+#~ msgstr "Green Currency Calculatorを見る"
+
+#~ msgid ""
+#~ "There is a finite amount of XRP."
+#~ " All XRP is already in existence "
+#~ "today—no more than the original 100 "
+#~ "billion can be created. The XRPL "
+#~ "founders gifted 80 billion XRP, the "
+#~ "platform’s native currency, to Ripple. "
+#~ "To provide predictability to the XRP "
+#~ "supply, Ripple has locked 55 billion "
+#~ "XRP (55%% of the total possible "
+#~ "supply) into a series of escrows "
+#~ "using the XRP Ledger itself. The "
+#~ "XRPL's transaction processing rules, enforced"
+#~ " by the consensus protocol, control "
+#~ "the release of the XRP."
+#~ msgstr ""
+
+#~ msgid "https://ftx.com/"
+#~ msgstr ""
+
+#~ msgid "FTX"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Unlike most other blockchains, the XRP"
+#~ " Ledger does not need mining, so "
+#~ "<a href=\"impact.html\">no energy is "
+#~ "wasted</a> in the transaction process. "
+#~ "Learn how this compares to other "
+#~ "platforms with our <a href=\"carbon-"
+#~ "calculator.html\">Green Currency Calculator</a>."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It’s been widely reported that Bitcoin’s"
+#~ " energy consumption, as of 2021, is"
+#~ " equivalent to that used by "
+#~ "Argentina, with much of the electricity"
+#~ " Bitcoin miners use coming from "
+#~ "polluting sources. The XRP Ledger "
+#~ "confirms transactions through a “consensus”"
+#~ " mechanism - which does not waste "
+#~ "energy like proof of work does -"
+#~ " and leverages carbon offsets to be"
+#~ " <a href='https://ripple.com/ripple-press/ripple-"
+#~ "leads-sustainability-agenda-to-achieve-"
+#~ "carbon-neutrality-by-2030/' target='_blank'>one "
+#~ "of the first truly carbon neutral "
+#~ "blockchains</a>. Explore the energy "
+#~ "consumption of XRP compared to cash, "
+#~ "credit cards and other popular "
+#~ "cryptocurrencies with the <a href='carbon-"
+#~ "calculator.html'>Green Currency Calculator</a>."
+#~ msgstr ""
+
+#~ msgid "What Would You Like to Learn?"
+#~ msgstr "何を学びたいですか？"
+
+#~ msgid "Browse By Popular Topics"
+#~ msgstr "人気のあるトピックから探す"
+
+#~ msgid "Browse By Label"
+#~ msgstr "ラベルから探す"
+
+#~ msgid "Software and SDKs"
+#~ msgstr "ソフトウェアとSDK"
+
+#~ msgid "Start Developing"
+#~ msgstr "開発を始める"
+
+#~ msgid "Article types"
+#~ msgstr "記事の種類"
+
+#~ msgid "Dive In"
+#~ msgstr "掘り下げる"
+
+#~ msgid "Participate in the Network"
+#~ msgstr "ネットワークに参加する"
+
+#~ msgid "Hot Topic"
+#~ msgstr "ホットな話題"
+
+#~ msgid ""
+#~ "Interested in non-fungible tokens, but"
+#~ " concerned about their <a "
+#~ "href=\"impact.html\">large carbon footprint</a>? "
+#~ "Read more about issuing NFTs on "
+#~ "the XRP Ledger:"
+#~ msgstr ""
+#~ "非代替性トークンに興味はあるが、<a href=\"impact.html\">二酸化炭素排出量<a/>が気になる？XRP"
+#~ " LedgerでのNFTの発行について、詳しくはこちらをご覧ください。"
+
