@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v18.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v19.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,6 +89,18 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
+  <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
+  <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
+  <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
+  <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
+  <div class="apex-circled highlight-yellow">Amsterdam</div>
+  <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
+  <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
+  <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
+  <div class="apex-circled d-none d-lg-block highlight-purple">Register Now</div>
+  <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
+</a>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,6 +199,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
             <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -463,19 +476,15 @@
 
 <div class="code_sample python" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1"># Configure issuer (cold address) settings -------------------------------------</span>
 <span class="n">cold_settings_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSet</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">transfer_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">tick_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="n">domain</span><span class="o">=</span><span class="nb">bytes</span><span class="o">.</span><span class="n">hex</span><span class="p">(</span><span class="s2">"example.com"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"ASCII"</span><span class="p">)),</span>
-    <span class="n">set_flag</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSetFlag</span><span class="o">.</span><span class="n">ASF_DEFAULT_RIPPLE</span><span class="p">,</span>
+    <span class="n">set_flag</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSetAsfFlag</span><span class="o">.</span><span class="n">ASF_DEFAULT_RIPPLE</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">cst_prepared</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span>
-    <span class="n">transaction</span><span class="o">=</span><span class="n">cold_settings_tx</span><span class="p">,</span>
-    <span class="n">wallet</span><span class="o">=</span><span class="n">cold_wallet</span><span class="p">,</span>
-    <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
-<span class="p">)</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Sending cold address AccountSet transaction..."</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">send_reliable_submission</span><span class="p">(</span><span class="n">cst_prepared</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">submit_and_wait</span><span class="p">(</span><span class="n">cold_settings_tx</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">cold_wallet</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -572,7 +581,7 @@
 <p>The code samples in this tutorial use helper functions to wait for validation when submitting a transaction:</p>
 <ul>
 <li><strong>JavaScript:</strong> The <code>submit_and_verify()</code> function, as defined in the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/submit-and-verify" target="_blank">submit-and-verify code sample <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
-<li><strong>Python:</strong> The <code>send_reliable_submission()</code> <a class="external-link" href="https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission" target="_blank">method of the xrpl-py library <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
+<li><strong>Python:</strong> The <code>submit_and_wait()</code> <a class="external-link" href="https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait" target="_blank">method of the xrpl-py library <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 <li><strong>Java:</strong> The <code>submitAndWaitForValidation()</code> method in the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/issue-a-token/java/IssueToken.java" target="_blank">sample Java class <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 </ul>
 <p class="devportal-callout tip"><strong>Tip:</strong> Technically, you can configure the hot address in parallel with configuring the issuer address. For simplicity, this tutorial waits for each transaction one at a time.</p>
@@ -672,16 +681,12 @@
 
 <div class="code_sample python" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1"># Configure hot address settings -----------------------------------------------</span>
 <span class="n">hot_settings_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSet</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
-    <span class="n">set_flag</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSetFlag</span><span class="o">.</span><span class="n">ASF_REQUIRE_AUTH</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+    <span class="n">set_flag</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">AccountSetAsfFlag</span><span class="o">.</span><span class="n">ASF_REQUIRE_AUTH</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">hst_prepared</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span>
-    <span class="n">transaction</span><span class="o">=</span><span class="n">hot_settings_tx</span><span class="p">,</span>
-    <span class="n">wallet</span><span class="o">=</span><span class="n">hot_wallet</span><span class="p">,</span>
-    <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
-<span class="p">)</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Sending hot address AccountSet transaction..."</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">send_reliable_submission</span><span class="p">(</span><span class="n">hst_prepared</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">submit_and_wait</span><span class="p">(</span><span class="n">hot_settings_tx</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">hot_wallet</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -861,20 +866,16 @@
 <div class="code_sample python" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1"># Create trust line from hot to cold address -----------------------------------</span>
 <span class="n">currency_code</span> <span class="o">=</span> <span class="s2">"FOO"</span>
 <span class="n">trust_set_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">TrustSet</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">limit_amount</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">amounts</span><span class="o">.</span><span class="n">issued_currency_amount</span><span class="o">.</span><span class="n">IssuedCurrencyAmount</span><span class="p">(</span>
         <span class="n">currency</span><span class="o">=</span><span class="n">currency_code</span><span class="p">,</span>
-        <span class="n">issuer</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+        <span class="n">issuer</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
         <span class="n">value</span><span class="o">=</span><span class="s2">"10000000000"</span><span class="p">,</span> <span class="c1"># Large limit, arbitrarily chosen</span>
     <span class="p">)</span>
 <span class="p">)</span>
-<span class="n">ts_prepared</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span>
-    <span class="n">transaction</span><span class="o">=</span><span class="n">trust_set_tx</span><span class="p">,</span>
-    <span class="n">wallet</span><span class="o">=</span><span class="n">hot_wallet</span><span class="p">,</span>
-    <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
-<span class="p">)</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Creating trust line from hot address to issuer..."</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">send_reliable_submission</span><span class="p">(</span><span class="n">ts_prepared</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">submit_and_wait</span><span class="p">(</span><span class="n">trust_set_tx</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">hot_wallet</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1056,21 +1057,17 @@
 <div class="code_sample python" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="c1"># Send token -------------------------------------------------------------------</span>
 <span class="n">issue_quantity</span> <span class="o">=</span> <span class="s2">"3840"</span>
 <span class="n">send_token_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">Payment</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
-    <span class="n">destination</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+    <span class="n">destination</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">amount</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">amounts</span><span class="o">.</span><span class="n">issued_currency_amount</span><span class="o">.</span><span class="n">IssuedCurrencyAmount</span><span class="p">(</span>
         <span class="n">currency</span><span class="o">=</span><span class="n">currency_code</span><span class="p">,</span>
-        <span class="n">issuer</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+        <span class="n">issuer</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
         <span class="n">value</span><span class="o">=</span><span class="n">issue_quantity</span>
     <span class="p">)</span>
 <span class="p">)</span>
-<span class="n">pay_prepared</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span>
-    <span class="n">transaction</span><span class="o">=</span><span class="n">send_token_tx</span><span class="p">,</span>
-    <span class="n">wallet</span><span class="o">=</span><span class="n">cold_wallet</span><span class="p">,</span>
-    <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sending </span><span class="si">{</span><span class="n">issue_quantity</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">currency_code</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">send_reliable_submission</span><span class="p">(</span><span class="n">pay_prepared</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sending </span><span class="si">{</span><span class="n">issue_quantity</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">currency_code</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">submit_and_wait</span><span class="p">(</span><span class="n">send_token_tx</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">cold_wallet</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1194,16 +1191,16 @@
 <div class="code_sample python" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="c1"># Check balances ---------------------------------------------------------------</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Getting hot address balances..."</span><span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">requests</span><span class="o">.</span><span class="n">AccountLines</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">,</span>
 <span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Getting cold address balances..."</span><span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">requests</span><span class="o">.</span><span class="n">GatewayBalances</span><span class="p">(</span>
-    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">,</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">cold_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">,</span>
-    <span class="n">hotwallet</span><span class="o">=</span><span class="p">[</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">]</span>
+    <span class="n">hotwallet</span><span class="o">=</span><span class="p">[</span><span class="n">hot_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">]</span>
 <span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1254,23 +1251,23 @@
     </div>
   </article>
 <!-- Feedback Widget -->
-<!-- <script src="assets/vendor/feedback-widget.js"></script> -->
-<!-- <div id="feedback-content"></div> -->
+<script src="assets/vendor/feedback-widget.js"></script>
+<div id="feedback-content"></div>
 <script>
-  // // Options
-  // const options = {
-  //   analyticsConfig: [
-  //     // { name: 'ga', id: 'UA-45576805-2' },
-  //     // { name: 'gtm', id: 'GTM-THHW334' },
-  //   ],
-  //   analyticsName: 'Feedback Widget Tracker',
-  //   theme: 'xrpl',
-  //   currentPath: window.location.pathname,
-  //   parentElement: '#feedback-content',
-  // };
-  // 
-  // // Init WidgetClass
-  // const r = new WidgetClass(options);
+  // Options
+  const options = {
+    analyticsConfig: [
+      // { name: 'ga', id: 'UA-45576805-2' },
+      { name: 'gtm', id: 'GTM-KCQZ3L8' },
+    ],
+    analyticsName: 'Feedback Widget Tracker',
+    theme: 'xrpl',
+    currentPath: window.location.pathname,
+    parentElement: '#feedback-content',
+  };
+
+  // Init WidgetClass
+  const r = new WidgetClass(options);
 </script>      </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
@@ -1756,9 +1753,22 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
-        <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
+        <a class="nav-link" href="xrpl-quickstart.html">Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
+
+        <a class="nav-link" href="quickstart-javascript.html">Quickstart (JavaScript)</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="quickstart-intro.html">Quickstart Introduction (JavaScript)</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
@@ -1771,17 +1781,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+    <a class="nav-link nav-leaf" href="mint-and-burn-nfts.html">3. Mint and Burn NFTs</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+    <a class="nav-link nav-leaf" href="transfer-nfts.html">4. Transfer NFTs</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker an NFT Sale</a>
   </div>
 
       
@@ -1791,7 +1801,58 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTokens</a>
+    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTs</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
+
+        <a class="nav-link" href="quickstart-python.html">Quickstart (Python)</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-quickstart-intro.html">Quickstart Introduction (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-accounts-send-xrp.html">1. Create Accounts and Send XRP (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-trustline-send-currency.html">2. Create Trust Line and Send Currency (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-mint-and-burn-nfts.html">3. Mint and Burn NFTs (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-transfer-nfts.html">4. Transfer NFTs (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-broker-sale.html">Broker an NFT Sale (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter (Python)</a>
+  </div>
+
+    </nav>
+
   </div>
 
     </nav>
@@ -3685,6 +3746,7 @@
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->

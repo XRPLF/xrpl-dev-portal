@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v18.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v19.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,6 +89,18 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
+  <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
+  <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
+  <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
+  <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
+  <div class="apex-circled highlight-yellow">Amsterdam</div>
+  <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
+  <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
+  <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
+  <div class="apex-circled d-none d-lg-block highlight-purple">Register Now</div>
+  <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
+</a>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,6 +199,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
             <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -287,7 +300,6 @@
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_currencies"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -298,15 +310,14 @@
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">"account_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: account_currencies account [ledger_index|ledger_hash] [strict]</span>
-rippled<span class="w"> </span>account_currencies<span class="w"> </span>rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn<span class="w"> </span>validated<span class="w"> </span>strict
+<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: account_currencies account [ledger_index|ledger_hash]</span>
+rippled<span class="w"> </span>account_currencies<span class="w"> </span>rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn<span class="w"> </span>validated
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#account_currencies">Try it!</a></p>
@@ -316,33 +327,32 @@ rippled<span class="w"> </span>account_currencies<span class="w"> </span>rG1QQv2
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Required?</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>account</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">A unique identifier for the account, most commonly the account's <a href="basic-data-types.html#addresses">Address</a>.</td>
+<td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
+<td style="text-align: left;">Yes</td>
+<td>Look up currencies this account can send or receive. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="Updated in: rippled 1.11.0"><img alt="Updated in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+<td style="text-align: left;">No</td>
+<td>A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">String or Unsigned Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>strict</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, then the <code>account</code> field only accepts a public key or XRP Ledger address. Otherwise, <code>account</code> can be a secret or passphrase (not recommended). The default is <code>false</code>.</td>
+<td style="text-align: left;">Number or String</td>
+<td style="text-align: left;">No</td>
+<td>The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 </tbody>
 </table>
-<p>The following field is deprecated and should not be provided: <code>account_index</code>.</p>
+<p>The following fields are deprecated and should not be provided: <code>account_index</code>, <code>strict</code>.</p>
 <h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
@@ -473,26 +483,27 @@ rippled<span class="w"> </span>account_currencies<span class="w"> </span>rG1QQv2
 <!-- -->
 <!-- -->
 <!-- -->
+<!-- rippled release notes links -->
     </div>
   </article>
 <!-- Feedback Widget -->
-<!-- <script src="assets/vendor/feedback-widget.js"></script> -->
-<!-- <div id="feedback-content"></div> -->
+<script src="assets/vendor/feedback-widget.js"></script>
+<div id="feedback-content"></div>
 <script>
-  // // Options
-  // const options = {
-  //   analyticsConfig: [
-  //     // { name: 'ga', id: 'UA-45576805-2' },
-  //     // { name: 'gtm', id: 'GTM-THHW334' },
-  //   ],
-  //   analyticsName: 'Feedback Widget Tracker',
-  //   theme: 'xrpl',
-  //   currentPath: window.location.pathname,
-  //   parentElement: '#feedback-content',
-  // };
-  // 
-  // // Init WidgetClass
-  // const r = new WidgetClass(options);
+  // Options
+  const options = {
+    analyticsConfig: [
+      // { name: 'ga', id: 'UA-45576805-2' },
+      { name: 'gtm', id: 'GTM-KCQZ3L8' },
+    ],
+    analyticsName: 'Feedback Widget Tracker',
+    theme: 'xrpl',
+    currentPath: window.location.pathname,
+    parentElement: '#feedback-content',
+  };
+
+  // Init WidgetClass
+  const r = new WidgetClass(options);
 </script>      </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
@@ -978,9 +989,22 @@ rippled<span class="w"> </span>account_currencies<span class="w"> </span>rG1QQv2
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
 
-        <a class="nav-link" href="xrpl-quickstart.html">XRPL Quickstart</a>
+        <a class="nav-link" href="xrpl-quickstart.html">Quickstart</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_1" aria-expanded="false" aria-controls="tree_nav_group_3_1_1"></a>
+
+        <a class="nav-link" href="quickstart-javascript.html">Quickstart (JavaScript)</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="quickstart-intro.html">Quickstart Introduction (JavaScript)</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="create-accounts-send-xrp.html">1. Create Accounts and Send XRP</a>
@@ -993,17 +1017,17 @@ rippled<span class="w"> </span>account_currencies<span class="w"> </span>rG1QQv2
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="mint-and-burn-nftokens.html">3. Mint and Burn NFTokens</a>
+    <a class="nav-link nav-leaf" href="mint-and-burn-nfts.html">3. Mint and Burn NFTs</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="transfer-nftokens.html">4. Transfer NFTokens</a>
+    <a class="nav-link nav-leaf" href="transfer-nfts.html">4. Transfer NFTs</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="broker-sale.html">Broker a NFToken Sale</a>
+    <a class="nav-link nav-leaf" href="broker-sale.html">Broker an NFT Sale</a>
   </div>
 
       
@@ -1013,7 +1037,58 @@ rippled<span class="w"> </span>account_currencies<span class="w"> </span>rG1QQv2
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTokens</a>
+    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Mint NFTs</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1_2" aria-expanded="false" aria-controls="tree_nav_group_3_1_2"></a>
+
+        <a class="nav-link" href="quickstart-python.html">Quickstart (Python)</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-quickstart-intro.html">Quickstart Introduction (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-accounts-send-xrp.html">1. Create Accounts and Send XRP (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-trustline-send-currency.html">2. Create Trust Line and Send Currency (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-mint-and-burn-nfts.html">3. Mint and Burn NFTs (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-transfer-nfts.html">4. Transfer NFTs (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-broker-sale.html">Broker an NFT Sale (Python)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter (Python)</a>
+  </div>
+
+    </nav>
+
   </div>
 
     </nav>
@@ -2907,6 +2982,7 @@ rippled<span class="w"> </span>account_currencies<span class="w"> </span>rG1QQv2
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
