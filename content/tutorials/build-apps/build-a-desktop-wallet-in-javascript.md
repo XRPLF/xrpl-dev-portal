@@ -1283,44 +1283,86 @@ One type of check we could make is to verify the domain name associated with an 
 
 ![Screenshot: Step 8, use domain verification](img/javascript-wallet-8.png)
 
-As in the previous steps, the library get updated with a new helper class. First, create the file `library/8_helpers.js` and add the following contents:
+1. In the `library` folder, add a new file `4_helpers.js`. Then add the following contents to that file:
 
-`library/8_helpers.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/8_helpers.js", language="js") }}
-
-Create a new main logic file named `8_domain-verification.js` in the root directory with the contents of `7_send-xrp.js`and modify it as follows, starting with the import of the new `validate`helper function: 
-
-`8_domain-verification.js`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/8_domain-verification.js", language="js", lines="6") }}
-
-At the end of the callback function `ipcMain.on('send-xrp-action', callback)` add the following event handler:
-
-{{ include_code("_code-samples/build-a-wallet/desktop-js/8_domain-verification.js", language="js", lines="66-70") }}
 
 The code in the helper class basically issues an [`account_info`](account_info.html) request to look up the account in the ledger.
 
 If the account does exist, the code checks for the [`lsfDisallowXRP` flag](accountroot.html#accountroot-flags). Note that this is an `lsf` (ledger state flag) value because this is an object from the ledger state data; these are different than the flag values the [AccountSet transaction][] uses to configure the same settings.
 
-And again, the modified template and preloader have to be included:
-{{ include_code("_code-samples/build-a-wallet/desktop-js/8_domain-verification.js", language="js", lines="15-23") }}
+2. Import the new helper function in`index.js`:
+
+```javascript
+const { initialize, subscribe, saveSaltedSeed, loadSaltedSeed } = require('./library/5_helpers')
+const { sendXrp } = require('./library/7_helpers')
+// Step 8 code additions - start
+const { verify } = require('./library/8_helpers')
+// Step 8 code additions - end
+```
+
+3. At the end of the callback function `ipcMain.on('send-xrp-action', callback)` add the following event handler:
+
+```javascript
+ipcMain.on('send-xrp-action', (event, paymentData) => {
+  sendXrp(paymentData, client, wallet).then((result) => {
+    appWindow.webContents.send('send-xrp-transaction-finish', result)
+  })
+})
+
+// Step 8 code additions - start
+ipcMain.on('destination-account-change', (event, destinationAccount) => {
+  verify(destinationAccount, client).then((result) => {
+    appWindow.webContents.send('update-domain-verification-data', result)
+  })
+})
+// Step 8 code additions - end
+```
+
+3. Modify `view/preload.js` and add the following two functions to `'electronAPI'`:
+
+```javascript
+onDestinationAccountChange: (callback) => {
+  ipcRenderer.send('destination-account-change', callback)
+},
+onUpdateDomainVerificationData: (callback) => {
+  ipcRenderer.on('update-domain-verification-data', callback)
+}
+```
 
 Finally, the code decodes the account's `Domain` field, if present, and performs domain verification using the method imported above.
 
-After this, it's time to update the view logic, namely template, preloader and renderer. In `view/8_domain-verification.html` add the following lines just before the `<input>` element with `id="input-destination-address`:
+4. Update the view logic - in `view/template.html` add the following lines just before the `<input>` element with `id="input-destination-address`:
 
-`view/8_domain-verification.html`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/8_domain-verification.html", language="html", lines="101-103") }}
+```html
+<div class="input-group mb-3">
+    <div class="accountVerificationIndicator">
+        <span>Verification status:</span>
+    </div>
+    <input type="text" class="form-control" placeholder="rn95xwUymaMyzAKnZUGuynjZ6qk9RzV4Q7" id="input-destination-address">
+    <!-- Step 8 code additions - start -->
+    <span class="input-group-text">To (Address)</span>
+    <!-- Step 8 code additions - start -->
+</div>
+```
 
-Now modify the line at the end of the file including the new renderer script:
+5. Lastly, modify the renderer as described below:
 
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/8_domain-verification.html", language="html", lines="158") }}
-
-The renderer script again is created by saving `view/7_renderer.js` as `view/8_renderer.js` and adding the following code after `const sendXrpButtonEl`:
-
-`view/8_renderer.js`:
 ```javascript
-const accountVerificationEl = document.querySelector('.accountVerificationIndicator span')
+modalButton.addEventListener('click', () => {
+    modalDialog.show()
+})
 
+// Step 8 code additions - start
+const accountVerificationEl = document.querySelector('.accountVerificationIndicator span')
+// Step 8 code additions - end
+
+const destinationAddressEl = document.getElementById('input-destination-address')
+const destinationTagEl = document.getElementById('input-destination-tag')
+const amountEl = document.getElementById('input-xrp-amount')
+const sendXrpButtonEl = document.getElementById('send-xrp-submit-button')
+
+// Step 8 code additions - start
 destinationAddressEl.addEventListener('input', (event) => {
     window.electronAPI.onDestinationAccountChange(destinationAddressEl.value)
 })
@@ -1328,7 +1370,18 @@ destinationAddressEl.addEventListener('input', (event) => {
 window.electronAPI.onUpdateDomainVerificationData((_event, result) => {
     accountVerificationEl.textContent = `Domain: ${result.domain || 'n/a'} Verified: ${result.verified}`
 })
+// Step 8 code additions - end
+
+sendXrpButtonEl.addEventListener('click', () => {
+    modalDialog.hide()
+    const destinationAddress = destinationAddressEl.value
+    const destinationTag = destinationTagEl.value
+    const amount = amountEl.value
+
+    window.electronAPI.onClickSendXrp({destinationAddress, destinationTag, amount})
+})
 ```
+
 
 The updated preloader `view/8_preloader.js` is also modified the same way by adding the following two event listeners:
 
