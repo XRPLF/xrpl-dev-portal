@@ -647,8 +647,7 @@ pages:
             - en
             - ja
 
-        # TODO: fix, rename this stub use case
-    -   md: use-cases/defi/moneychanger-uc.md
+    -   md: use-cases/defi/algorithmic-trading.md
         parent: defi-uc.html
         targets:
             - en
