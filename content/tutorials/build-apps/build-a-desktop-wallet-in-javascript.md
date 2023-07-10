@@ -396,7 +396,7 @@ This renaming might seem a bit nit-picky, but now we actually pass on an object 
 <body>
     <!-- Step 2 code additions - start -->
     <h3>Build a XRPL Wallet - Part 2/8</h3>
-    Latest validated ledger <br />
+    <b>Latest validated ledger stats</b><br />
     Ledger Index: <strong id="ledger-index"></strong><br />
     Ledger Hash: <strong id="ledger-hash"></strong><br />
     Close Time: <strong id="ledger-close-time"></strong><br />
@@ -431,7 +431,7 @@ This time the application should be the same as in the last step, with the diffe
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
-npm run ledger-index
+npm run async
 ```
 
 ### 3. Display an Account
@@ -594,7 +594,7 @@ onEnterAccountAddress: (address) => {
     <h3>Build a XRPL Wallet - Part 3/8</h3>
 
     <fieldset>
-        <legend>Account</legend>
+        <legend>Account info</legend>
         Classic Address: <strong id="account-address-classic"></strong><br/>
         X-Address: <strong id="account-address-x"></strong><br/>
         XRP Balance: <strong id="account-balance"></strong><br/>
@@ -602,7 +602,7 @@ onEnterAccountAddress: (address) => {
     </fieldset>
 
     <fieldset>
-        <legend>Latest validated ledger</legend>
+        <legend>Latest validated ledger stats</legend>
         Ledger Index: <strong id="ledger-index"></strong><br/>
         Ledger Hash: <strong id="ledger-hash"></strong><br/>
         Close Time: <strong id="ledger-close-time"></strong><br/>
