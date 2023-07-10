@@ -285,7 +285,7 @@ window.electronAPI.onUpdateLedgerIndex((_event, value) => {
 })
 ```
 
-7. To wire up our main application to send the ledger index to the frontend, modify `index.js` by adding the following snippet:
+7. To wire up our main application to send the ledger index to the frontend, modify `index.js` by adding the following snippet replacing the last section in the file:
 
 ```javascript
 // Here we have to wait for the application to signal that it is ready
