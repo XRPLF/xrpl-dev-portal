@@ -340,7 +340,9 @@ Our application so far only shows the latest validated ledger sequence at the ti
 
 ![Screenshot: Step 2, show ledger updates](img/javascript-wallet-2.png)
 
-1. In `index.js` remove the `getValidatedLedgerIndex` function. Then update the `app.whenReady().then()` section at the bottom of the file section in the following way:
+1. In `index.js` remove the `getValidatedLedgerIndex` function.
+
+2. Then update the `app.whenReady().then()` section at the bottom of the file section in the following way:
 
 ```javascript
 /**
@@ -374,7 +376,7 @@ app.whenReady().then(main)
 
 Here, we have reduced the `app.whenReady` logic to an oneliner and put the necessary functionality into a separate `main()` function. The most relevant piece of code here is the swapping of a single call to the ledger for a subscription: Our client is now connecting to the XRPL via [WebSockets](https://en.wikipedia.org/wiki/WebSocket). This establishes a permanent bidirectional connection to the XRPL, which allows us to subscribe to events that the server sends out. This saves resources on the server, which now only sends out data we explicitly asked for when a change happens, as well as the client which does not have to sort through incoming data for relevant changes. This also reduces the complexity of the application and saves us a couple of lines of code.
 
-2. Then, update `preload.js` by renaming the `onUpdateLedgerIndex` to `onUpdateLedgerData` and the `update-ledger-index` event to `update-ledger-data`:
+3. Then, update `preload.js` by renaming the `onUpdateLedgerIndex` to `onUpdateLedgerData` and the `update-ledger-index` event to `update-ledger-data`:
 
 ```javascript
 const { contextBridge, ipcRenderer } = require('electron');
@@ -388,7 +390,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
 This renaming might seem a bit nit-picky, but now we actually pass on an object of values instead of a single integer.
 
-3. Next, modify the `view/template.html` file by adding placeholders to the `<body>` section:
+4. Next, modify the `view/template.html` file by adding placeholders to the `<body>` section:
 
 ```html
 <body>
@@ -402,7 +404,7 @@ This renaming might seem a bit nit-picky, but now we actually pass on an object 
 </body>
 ```
 
-4. Modify the `view/render.js` file to handle the new placeholders. Note that the renamed preloader function is now reflected in `window.electronAPI.onUpdateLedgerData`:
+5. Modify the `view/render.js` file to handle the new placeholders. Note that the renamed preloader function is now reflected in `window.electronAPI.onUpdateLedgerData`:
 
 ```javascript
 const ledgerIndexEl = document.getElementById('ledger-index')
