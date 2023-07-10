@@ -159,7 +159,7 @@ app.whenReady().then(() => {
 npm run start
 ```
 
-To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
+To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run hello
