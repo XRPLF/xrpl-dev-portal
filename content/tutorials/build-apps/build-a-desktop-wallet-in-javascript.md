@@ -319,7 +319,7 @@ To get the application running at this early stage of development, run the follo
 npm run start
 ```
 
-To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
+To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run ledger-index
@@ -422,7 +422,7 @@ Now run the application with the following command:
 npm run start
 ```
 
-To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
+To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run ledger-index
@@ -628,7 +628,7 @@ Then run the application with:
 npm run start
 ```
 
-To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
+To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run account
@@ -762,7 +762,7 @@ npm run start
 
 If you are new to the XRPL an need an account address, [you can get accounts on the testnet](https://learn.xrpl.org/course/code-with-the-xrpl/lesson/create-accounts-and-send-xrp/). Here you can also use the sandbox to issue XRP transactions, which then should show up in our app.
 
-To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
+To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run tx-history
@@ -963,7 +963,7 @@ You should now run the application twice: At the first run, you will be asked fo
 npm run start
 ```
 
-To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
+To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run password
@@ -1120,7 +1120,7 @@ Here we basically added the [Boostrap Framework]() and a little custom styling t
 npm run start
 ```
 
-To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
+To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run styling
@@ -1258,7 +1258,7 @@ Now, Run the following command:
 npm run start
 ```
 
-To run th reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
+To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
 npm run send-xrp
