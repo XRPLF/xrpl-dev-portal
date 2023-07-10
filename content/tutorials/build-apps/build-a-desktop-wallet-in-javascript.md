@@ -311,7 +311,7 @@ This example shows how to do Inter Process Communication (IPC) in Electron. Tech
 1. We started by creating a function that enables the frontend to subscribe to backend events via the ContextBridge (in `view/preload.js`)
 2. Then we make the function available by putting it in a preloader script to ensure it is loaded and can be used by the frontend.
 3. On the frontend, we can then use that function to attach a callback that handles frontend updates when the event is dispatched. We could do this in the console, in a `<script>` tag in the frontend or in our case in a separate file.
-5. Lastly, we dispatch the event from the main logic in `index.js`via `appWindow.webContents.send('update-ledger-index', value)`.
+4. Lastly, we dispatch the event from the main logic in `index.js`via `appWindow.webContents.send('update-ledger-index', value)`.
 
 To get the application running at this early stage of development, run the following command:
 
