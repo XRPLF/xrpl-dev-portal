@@ -252,7 +252,7 @@ This preloader script is used to expose functions to the browsers window object 
 
 In the browser, `window.electronAPI.onUpdateLedgerIndex(callback)` can now be used tp pass a callback function via `ipcRenderer.on('eventName', callback)` that will be triggered by `appWindow.webContents.send('eventName', value)`.
 
-4. Now, in `view/template.html`, modify the line responsible for displaying the static text "Hello world!" to contain a placeholder for the ledger:index:
+4. Now, in `view/template.html`, replace the body in order to show a placeholder for the ledger index instead of "Hello world!"
 
 ```html
 <body>
