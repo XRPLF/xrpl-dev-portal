@@ -159,6 +159,7 @@ app.whenReady().then(() => {
 npm run start
 ```
 
+You should see a window appear that displays the text "Build a XRPL Wallet" and "Hello world!"
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
