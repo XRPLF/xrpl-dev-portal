@@ -299,7 +299,7 @@ app.whenReady().then(() => {
   getValidatedLedgerIndex().then((value) => {
     appWindow.webContents.send('update-ledger-index', value)
   })
-  // Step 2 code additions - end
+  // Step 1 code additions - end
   
 })
 ```
