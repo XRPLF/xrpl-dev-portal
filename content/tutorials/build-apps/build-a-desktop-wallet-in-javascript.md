@@ -319,6 +319,8 @@ To get the application running at this early stage of development, run the follo
 npm run start
 ```
 
+You should see something like 'Latest validated ledger index: 39296259'. The number will be different since it is the latest ledger index as of when the app started. We'll make it continuously update later on.
+
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
@@ -421,6 +423,8 @@ Now run the application with the following command:
 ```console
 npm run start
 ```
+
+This time the application should be the same as in the last step, with the difference that the latest ledger index value gets updated roughly very 3-5 seconds.
 
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
@@ -622,11 +626,14 @@ onEnterAccountAddress: (address) => {
 
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/3_renderer.js", language="js") }}
 
-Then run the application with:
+Now you need an XRPL account address to monitor. If you already have one or know where to find an example, you can now run the application by executing:
 
 ```console
 npm run start
 ```
+If you are new to the XRPL and need an account address, [you can get accounts on the testnet](https://learn.xrpl.org/course/code-with-the-xrpl/lesson/create-accounts-and-send-xrp/). There you can also use the sandbox to issue XRP transactions, which then should show up in our app.
+
+On, startup, the application should display a simple dialog prompting the user for an XRPL account address. After entering the address the application should display some basic information about that account and about the ledger.
 
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
@@ -754,13 +761,13 @@ window.electronAPI.onUpdateTransactionData((_event, transactions) => {
 })
 ```
 
-If you have come this far - congrats. Now you might need an account address to monitor. If you already have one or know where to find an example, you can now run the application by executing:
+If you have come this far - congrats. Run the application by executing:
 
 ```console
 npm run start
 ```
 
-If you are new to the XRPL an need an account address, [you can get accounts on the testnet](https://learn.xrpl.org/course/code-with-the-xrpl/lesson/create-accounts-and-send-xrp/). Here you can also use the sandbox to issue XRP transactions, which then should show up in our app.
+Our application should by now display all the stuff from the last step plus an additional list of transactions associated with the given account.
 
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
@@ -957,11 +964,13 @@ window.electronAPI.onOpenPasswordDialog((_event) => {
 });
 ```
 
-You should now run the application twice: At the first run, you will be asked for a seed and a password. When you run it the second time it will prompt you for the password and you should be good to go instantly:
+Start up the application:
 
 ```console
 npm run start
 ```
+
+On first run, It should first prompt you for an account seed and then for a password. After you have created a wallet this way, you should close the application and start it up a second time: On second run it should prompt you for the password, and you should see the same result as in the last step.
 
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
@@ -1120,6 +1129,8 @@ Here we basically added the [Boostrap Framework]() and a little custom styling t
 npm run start
 ```
 
+This time the application should display a dashboard like layout with the XRP logo and a navigation ono the left side, and a content area comprising most of the screen. You should be able to switch from the dashboard to the transactions list and back.
+
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
@@ -1258,6 +1269,8 @@ Now, Run the following command:
 npm run start
 ```
 
+The application should now display a "Send XRP" button in the top right corner, which should open a Modal dialog on clicking. You can use this Dialog to send XRP tokens from this account to another, and the balance update as well as the transaction should be reflected in the app.
+
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
 ```console
@@ -1389,13 +1402,13 @@ The updated preloader `view/8_preloader.js` is also modified the same way by add
 `view/8_preload.js`
 {{ include_code("_code-samples/build-a-wallet/desktop-js/view/8_preload.js", language="js", lines="33-38") }}
 
-To get the application running at this stage of development, run the following command:
+Run the following command:
 
 ```console
-npm run domain-verification
+npm run start
 ```
 
-Test your wallet app the same way you did in the previous steps. To test domain verification, try entering the following addresses in the "To" box of the Send XRP dialog:
+Test your wallet app the same way you did in the previous steps. It should display a hint about the receiving account when opening up the "Send XRP" dialog and entering the address. To test domain verification, try entering the following addresses in the "To" box of the Send XRP dialog:
 
 | Address                              | Domain       | Verified? |
 |:-------------------------------------|:-------------|:----------|
@@ -1413,11 +1426,14 @@ To test X-addresses, try the following addresses:
 | `X7d3eHCXzwBeWrZec1yT24iZerQjYLeTFXz1GU9RBnWr7gZ` | None            | No        |
 | `X7d3eHCXzwBeWrZec1yT24iZerQjYLeTFXz1GU9RBnWr7gZ` | None            | No        |
 
+To run the reference application, run:
+
+```console
+npm run domain-verification
+```
+
 ## Next Steps & Topics for further research
 
-TBD
-
-- Promises / async
-- Electron framework
-- Event Handler
+- Error Handling 
+- Building the App
 
