@@ -304,7 +304,7 @@ app.whenReady().then(() => {
 })
 ```
 
-Here we first call our helper function `getValidatedLedgerIndex()` and then broadcast an event named `update-ledger-index` and an attached payload which can be handled by the frontend. 
+Here we first call our helper function `getValidatedLedgerIndex()` and then broadcast an event named `update-ledger-index`. This attaches a payload containing the latest ledger information which can be handled by the frontend. 
 
 This example shows how to do Inter Process Communication (IPC) in Electron. Technically, JavaScript has no true parallel processes or threading, because it follows a single-threaded event-driven paradigm. Nonetheless Electron provides us with two IPC modules called `ipcMain` and `ipcRenderer`. We can roughly equate those two to a backend process and a frontend process when we think in terms of client-server applications. It works as follows:
 
