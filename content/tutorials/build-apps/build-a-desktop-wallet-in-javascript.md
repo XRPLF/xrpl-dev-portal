@@ -404,7 +404,7 @@ This renaming might seem a bit nit-picky, but now we actually pass on an object 
 </body>
 ```
 
-5. Modify the `view/render.js` file to handle the new placeholders. Note that the renamed preloader function is now reflected in `window.electronAPI.onUpdateLedgerData`:
+5. Modify the `view/renderer.js` file to handle the new placeholders. Note that the renamed preloader function is now reflected in `window.electronAPI.onUpdateLedgerData`:
 
 ```javascript
 const ledgerIndexEl = document.getElementById('ledger-index')
