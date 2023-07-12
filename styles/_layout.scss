@@ -214,13 +214,15 @@ section {
   padding: 2rem;
 
   .external-link::after {
-    background-position: left 5px bottom 7px;
+    background-position: left 6px bottom 1px;
     width: 2rem;
 
   }
-  .external-link:hover::after {
-    background-position: left 9px bottom 10px;
+
+  &:hover::after {
+    transform: translate(3px, -3px); // Translate the arrow up and to the right
   }
+
 
   @include media-breakpoint-up(lg) {
     position: sticky;
