@@ -667,7 +667,7 @@ const { prepareReserve, prepareAccountData, prepareLedgerData} = require('./libr
 const { prepareTxData } = require('./library/4_helpers')
 ```
 
-3. In the main file, update the listener function subscribed to the `transaction` event by adding the following snippet:
+3. In `index.js`, update the listener function subscribed to the `transaction` event by adding the following snippet:
 
 ```javascript
 // Wait for transaction on subscribed account and re-request account data
