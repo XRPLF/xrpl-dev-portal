@@ -217,7 +217,7 @@ JSON-RPC Request:
   "params": [
     {
       "account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
-      "ledger": "validated"
+      "ledger_index": "validated"
     }
   ]
 }
@@ -246,7 +246,7 @@ Response body:
 }
 ```
 
-In this example, the account's sequence is **4** (note `"Sequence": 4`, in `"account_data"`) as of the last validated ledger (note `"ledger": "validated"` in the request, and `"validated": "true"` in the response).
+In this example, the account's sequence is **4** (note `"Sequence": 4`, in `"account_data"`) as of the last validated ledger (note `"ledger_index": "validated"` in the request, and `"validated": "true"` in the response).
 
 If an application were to submit three transactions signed by this account, they would use sequence numbers 4, 5, and 6.  To submit multiple transactions without waiting for validation of each, an application should keep a running account sequence number.
 

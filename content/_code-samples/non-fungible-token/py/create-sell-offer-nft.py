@@ -1,5 +1,5 @@
 from xrpl.models.transactions.nftoken_create_offer import NFTokenCreateOffer, NFTokenCreateOfferFlag
-from xrpl.transaction import safe_sign_and_autofill_transaction, send_reliable_submission
+from xrpl.transaction import submit_and_wait
 from xrpl.models.requests import AccountNFTs
 from xrpl.clients import JsonRpcClient
 from xrpl.models import NFTSellOffers
@@ -23,8 +23,8 @@ else:
     client = JsonRpcClient(JSON_RPC_URL)
 
     # Initialize wallet from seed
-    issuer_wallet = Wallet(seed=seed, sequence=0)
-    issuerAddr = issuer_wallet.classic_address
+    issuer_wallet = Wallet.from_seed(seed=seed)
+    issuerAddr = issuer_wallet.address
 
     print(f"\nIssuer Account: {issuerAddr}")
     print(f"          Seed: {issuer_wallet.seed}")
@@ -55,9 +55,8 @@ else:
         )
 
         # Sign sell_tx using the issuer account
-        sell_tx_signed = safe_sign_and_autofill_transaction(transaction=sell_tx, wallet=issuer_wallet, client=client)
-        sell_tx_signed = send_reliable_submission(transaction=sell_tx_signed, client=client)
-        sell_tx_result = sell_tx_signed.result
+        sell_tx_response = submit_and_wait(transaction=sell_tx, client=client, wallet=issuer_wallet)
+        sell_tx_result = sell_tx_response.result
 
         print(f"\n  Sell Offer tx result: {sell_tx_result['meta']['TransactionResult']}")
         print(f"           Tx response: {sell_tx_result}")

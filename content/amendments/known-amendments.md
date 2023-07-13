@@ -15,6 +15,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
 | [OwnerPaysFee][]                  | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [fixNFTokenRemint][]              | v1.11.0    | [In Development: TBD]("BADGE_LIGHTGREY") |
 | [DisallowIncoming][]              | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixNonFungibleTokensV1_2][]      | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixTrustLinesToSelf][]           | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
@@ -580,6 +581,25 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 This amendment fixes a bug in the [NonFungibleTokensV1][] amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell a `NFToken` for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.
 
 This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. This amendment is obsolete because its effects are included as part of [NonFungibleTokensV1_1][].
+
+
+## fixNFTokenRemint
+[fixNFTokenRemint]: #fixnftokenremint
+
+| Amendment    | fixNFTokenRemint     |
+|:-------------|:-------------------|
+| Amendment ID | AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E |
+| Status | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Amendment `fixNFTokenRemint` would change the way NFT sequence numbers are constructed to prevent a situation where the same NFT could be minted more than once with the same sequence number, creating a possible collision scenario. This amendment would change the construction of NFT sequence numbers to:
+
+- Create a new `AccountRoot` field, `FirstNFTSequence`, that stays constant over time. This field is set to the current account sequence when the account issues its first NFT. Otherwise, it is not set.
+
+- Compute the sequence of a newly minted NFT as `FirstNFTSequence` + `MintedNFTokens` (after which, `MintedNFTokens` increments by 1).
+
+The amendment also introduces a new account deletion restriction. An account can only be deleted if `FirstNFTSequence` + `MintedNFTokens` + 256 is less than the current ledger sequence (256 was chosen as a heuristic restriction for account deletion and already exists in the account deletion constraint). Without this restriction, an NFT could still be re-minted under certain conditions.
 
 
 ## fixNonFungibleTokensV1_2

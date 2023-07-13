@@ -201,7 +201,7 @@ JSON-RPC要求:
   "params": [
     {
       "account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
-      "ledger": "validated"
+      "ledger_index": "validated"
     }
   ]
 }
@@ -230,7 +230,7 @@ JSON-RPC要求:
 }
 ```
 
-この例では、最後に検証されたレジャーの時点において（要求の`"ledger": "validated"`と、応答の`"validated": "true"`を参照）、アカウントのシーケンスは**4**です（`"account_data"`の`"Sequence": 4`を参照）。
+この例では、最後に検証されたレジャーの時点において（要求の`"ledger_index": "validated"`と、応答の`"validated": "true"`を参照）、アカウントのシーケンスは**4**です（`"account_data"`の`"Sequence": 4`を参照）。
 
 アプリケーションが、このアカウントで署名された3つのトランザクションを送信する場合には、4、5、6のシーケンス番号を使用します。各トランザクションの検証を待たずに複数のトランザクションを送信するには、アプリケーションで継続的なアカウントシーケンス番号を使用します。
 

@@ -1526,7 +1526,49 @@ pages:
         targets:
             - en
             - ja
+            
+        # TODO: translate
+    -   md: tutorials/quickstart/send-payments-using-python.md
+        targets:
+            - en
+            - ja
 
+        # TODO: translate
+    -   md: tutorials/quickstart/py-create-accounts-send-xrp.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-create-trustline-send-currency.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-mint-and-burn-nfts.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-transfer-nfts.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-broker-sale.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-authorize-minter.md
+        targets:
+            - en
+            - ja
+    
     -   md: tutorials/build-apps/build-a-desktop-wallet-in-python.md
         targets:
           - en
@@ -1617,50 +1659,51 @@ pages:
             - en
             - ja
 
-    -   name: NFTokens Using JavaScript
-        html: nftokens-using-javascript.html
+    -   name: NFTs Using JavaScript
+        html: nfts-using-javascript.html
         parent: modular-tutorials-in-javascript.html
         top_nav_grouping: Article Types
         template: pagetype-category.html.jinja
-        blurb: Mint and sell NFTokens on the XRP Ledger.
+        blurb: Mint and sell NFTs on the XRP Ledger.
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/mint-and-burn-nftokens-using-javascript.md
+    -   md: tutorials/quickstart/mint-and-burn-nfts-using-javascript.md
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/transfer-nftokens-using-javascript.md
+    -   md: tutorials/quickstart/transfer-nfts-using-javascript.md
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/broker-sale-using-javascript.md
+    -   md: tutorials/quickstart/broker-an-nft-sale-using-javascript.md
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/authorize-minter-using-javascript.md
+    -   md: tutorials/quickstart/assign-an-authorized-minter-using-javascript.md
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/batch-minting-using-javascript.md
+    -   md: tutorials/quickstart/batch-mint-nfts-using-javascript.md
         targets:
             - en
             - ja
 
+        # TODO: translate
     -   md: tutorials/build-apps/build-a-browser-wallet-using-javascript.md
         targets:
           - en
-          - ja # TODO: translate this page
+          - ja
 
     # Java ---------------------------------------------------------------------
 
@@ -2238,6 +2281,7 @@ pages:
         targets:
             - ja
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.md
         targets:
             - en
@@ -2389,6 +2433,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with rippled 1.11.0 changes
     -   md: references/protocol-reference/transactions/transaction-common-fields.ja.md
         targets:
             - ja
@@ -2977,6 +3022,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_currencies.ja.md
         targets:
             - ja
@@ -2985,6 +3031,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_info.ja.md
         targets:
             - ja
@@ -2993,6 +3040,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_lines.ja.md
         targets:
             - ja
@@ -3007,6 +3055,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.ja.md
         targets:
             - ja
@@ -3015,6 +3064,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_offers.ja.md
         targets:
             - ja
@@ -3706,6 +3756,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.ja.md
         targets:
             - ja
@@ -5145,6 +5196,20 @@ pages:
         html: https://github.com/XRPLF/xrpl-dev-portal/
         parent: contribute.html
         blurb: このサイトのソースコードをGitHubで閲覧し、変更を提案することができます。
+        targets:
+            - ja
+
+    -   name: XRPL Brand Kit
+        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
+        parent: contribute.html
+        blurb: Review guidelines for using XRPL design assets.
+        targets:
+            - en
+
+    -   name: XRPL Brand Kit
+        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
+        parent: contribute.html
+        blurb: XRPL 設計資産の使用に関するガイドラインを確認してください。
         targets:
             - ja
 

@@ -2,6 +2,6 @@
   "id": 2,
   "command": "account_objects",
   "account": "r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT",
-  "ledger": "validated",
+  "ledger_index": "validated",
   "type": "escrow"
 }

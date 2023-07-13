@@ -226,7 +226,7 @@ Example Request:
   "id": "example_check_individual_freeze",
   "command": "account_lines",
   "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-  "ledger": "validated",
+  "ledger_index": "validated",
   "peer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
 }
 

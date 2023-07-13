@@ -1,7 +1,7 @@
 ---
 html: invariant-checking.html
 parent: consensus.html
-blurb: Understand what Invariant Checking is, why it exists, how it works, and what invariant checks are active.
+blurb: Understand what invariant checking is, why it exists, how it works, and what invariant checks are active.
 labels:
   - Blockchain
   - Security
@@ -130,6 +130,26 @@ The XRP Ledger checks all the following invariants on each transaction:
     - A new account root must have the right starting [sequence](basic-data-types.html#account-sequence).
     - A transaction must not create more than one new [account](accounts.html).
 
+### ValidNFTokenPage
+
+- **Invariant Condition(s):**
+    - The number of minted or burned NFTs can only be changed by `NFTokenMint` or `NFTokenBurn` transactions.
+    - A successful NFTokenMint transaction must increase the number of NFTs.
+    - A failed NFTokenMint transaction must not change the number of minted NFTs.
+    - A NFTokenMint transaction cannot change the number of burned NFTs.
+    - A successful NFTokenBurn transaction must increase the number of burned NFTs.
+    - A failed NFTokenBurn transaction must not change the number of burned NFTs.
+    - A NFTokenBurn transaction cannot change the number of minted NFTs.
+    
+### NFTokenCountTracking
+
+- **Invariant Condition(s):**
+    - The page is correctly associated with the owner.
+    - The page is correctly ordered between the next and previous links.
+    - The page contains a valid number of NFTs.
+    - The NFTs on this page do not belong on a lower or higher page.
+    - The NFTs are correctly sorted on the page.
+    - Each URI, if present, is not empty.
 
 ## See Also
 

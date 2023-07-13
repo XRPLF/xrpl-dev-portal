@@ -2,7 +2,7 @@
 from xrpl.account import get_balance
 from xrpl.clients import JsonRpcClient
 from xrpl.models.transactions import Payment, SetRegularKey
-from xrpl.transaction import autofill_and_sign, send_reliable_submission
+from xrpl.transaction import submit_and_wait
 from xrpl.wallet import generate_faucet_wallet
 
 # References
@@ -20,16 +20,15 @@ regular_key_wallet = generate_faucet_wallet(client, debug=True)
 
 # Both balances should be zero since nothing has been sent yet
 print("Balances before payment:")
-print(get_balance(wallet1.classic_address, client))
-print(get_balance(wallet2.classic_address, client))
+print(get_balance(wallet1.address, client))
+print(get_balance(wallet2.address, client))
 
 # Assign key pair (regular_key_wallet) to wallet1 using SetRegularKey transaction
 tx = SetRegularKey(
-    account=wallet1.classic_address, regular_key=regular_key_wallet.classic_address
+    account=wallet1.address, regular_key=regular_key_wallet.address
 )
 
-signed_tx = autofill_and_sign(tx, wallet1, client)
-set_regular_key_response = send_reliable_submission(signed_tx, client)
+set_regular_key_response = submit_and_wait(tx, client, wallet1)
 
 print("Response for successful SetRegularKey tx:")
 print(set_regular_key_response)
@@ -37,18 +36,17 @@ print(set_regular_key_response)
 # Since regular_key_wallet is linked to wallet1,
 # walet1 can send payment to wallet2 and have regular_key_wallet sign it
 payment = Payment(
-    account=wallet1.classic_address,
-    destination=wallet2.classic_address,
+    account=wallet1.address,
+    destination=wallet2.address,
     amount="1000",
 )
 
-signed_payment = autofill_and_sign(payment, regular_key_wallet, client)
-payment_response = send_reliable_submission(signed_payment, client)
+payment_response = submit_and_wait(payment, client, regular_key_wallet)
 
 print("Response for tx signed using Regular Key:")
 print(payment_response)
 
 # Balance after sending 1000 from wallet1 to wallet2
 print("Balances after payment:")
-print(get_balance(wallet1.classic_address, client))
-print(get_balance(wallet2.classic_address, client))
+print(get_balance(wallet1.address, client))
+print(get_balance(wallet2.address, client))

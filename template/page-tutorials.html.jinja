@@ -13,28 +13,24 @@
         "description": "Using xrpl.py, a pure Python library.",
         "href": "python.html",
         "img": "./assets/img/logos/python.svg",
-        "external": true,
       },
       {
         "title": "Java",
         "description": "Using xrpl4j, a pure Java library.",
         "href": "java.html",
         "img": "./assets/img/logos/java.svg",
-        "external": true,
       },
       {
         "title": "Javascript",
         "description": "Using the xrpl.js client library.",
         "href": "javascript.html",
         "img": "./assets/img/logos/javascript.svg",
-        "external": true,
       },
       {
         "title": "HTTP & Websocket APIs",
         "description": "Access the XRP Ledger directly through the APIs of its core server.",
         "href": "http-websocket-apis.html",
         "img": "./assets/img/logos/globe.svg",
-        "external": true,
       },
     ]
   },
@@ -150,7 +146,7 @@
       {% set show_blurbs = True %}
       {% set depth= 1 %}
       {% macro tutorialCard(title, description, href, img, external) %}
-        <a class="card" href="{{href}}" target="_blank">
+        <a class="card float-up-on-hover" href="{{href}}" target="_blank">
             <div class="card-body">
               {% if img %}
               <div class="card-icon-container">

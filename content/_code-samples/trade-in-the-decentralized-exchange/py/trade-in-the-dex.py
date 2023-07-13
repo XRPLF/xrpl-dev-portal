@@ -4,8 +4,8 @@ from decimal import Decimal
 
 from xrpl.asyncio.clients import AsyncWebsocketClient
 from xrpl.asyncio.transaction import (
-    safe_sign_and_autofill_transaction,
-    send_reliable_submission,
+    autofill_and_sign,
+    submit_and_wait,
 )
 from xrpl.asyncio.wallet import generate_faucet_wallet
 from xrpl.models.currencies import (
@@ -64,7 +64,7 @@ async def main() -> int:
         print("Requesting orderbook information...")
         orderbook_info = await client.request(
             BookOffers(
-                taker=wallet.classic_address,
+                taker=wallet.address,
                 ledger_index="current",
                 taker_gets=we_want["currency"],
                 taker_pays=we_spend["currency"],
@@ -120,7 +120,7 @@ async def main() -> int:
             print("Requesting second orderbook information...")
             orderbook2_info = await client.request(
                 BookOffers(
-                    taker=wallet.classic_address,
+                    taker=wallet.address,
                     ledger_index="current",
                     taker_gets=we_spend["currency"],
                     taker_pays=we_want["currency"],
@@ -164,18 +164,18 @@ async def main() -> int:
         # hard-coded TakerGets and TakerPays amounts.
 
         tx = OfferCreate(
-            account=wallet.classic_address,
+            account=wallet.address,
             taker_gets=we_spend["value"],
             taker_pays=we_want["currency"].to_amount(we_want["value"]),
         )
 
         # Sign and autofill the transaction (ready to submit)
-        signed_tx = await safe_sign_and_autofill_transaction(tx, wallet, client)
+        signed_tx = await autofill_and_sign(tx, client, wallet)
         print("Transaction:", signed_tx)
 
         # Submit the transaction and wait for response (validated or rejected)
         print("Sending OfferCreate transaction...")
-        result = await send_reliable_submission(signed_tx, client)
+        result = await submit_and_wait(signed_tx, client)
         if result.is_successful():
             print(f"Transaction succeeded: "
                   f"https://testnet.xrpl.org/transactions/{signed_tx.get_hash()}")
@@ -225,18 +225,18 @@ async def main() -> int:
         print("Getting address balances as of validated ledger...")
         balances = await client.request(
             AccountLines(
-                account=wallet.classic_address,
+                account=wallet.address,
                 ledger_index="validated",
             )
         )
         pprint.pp(balances.result)
 
         # Check Offers --------------------------------------------------------------
-        print(f"Getting outstanding Offers from {wallet.classic_address} "
+        print(f"Getting outstanding Offers from {wallet.address} "
               f"as of validated ledger...")
         acct_offers = await client.request(
             AccountOffers(
-                account=wallet.classic_address,
+                account=wallet.address,
                 ledger_index="validated",
             )
         )

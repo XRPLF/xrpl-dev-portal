@@ -216,6 +216,7 @@
   "fixCheckThreading",
   "fixMasterKeyAsRegularKey",
   "fixNFTokenDirV1",
+  "fixNFTokenRemint",
   "fixPayChanRecipientOwnerDir",
   "fixRemoveNFTokenAutoTrustLine",
   "fixQualityUpperBound",

@@ -1,32 +1,32 @@
 ---
-html: transfer-nftokens-using-javascript.html
-parent: nftokens-using-javascript.html
-blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTokens.
+html: transfer-nfts-using-javascript.html
+parent: nfts-using-javascript.html
+blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs.
 labels:
   - Quickstart
   - Tokens
   - Non-fungible Tokens, NFTs
 ---
-# Transfer NFTokens Using JavaScript
+# Transfer NFTs Using JavaScript
 
 This example shows how to:
 
-1. Create NFToken Sell Offers.
-2. Create NFToken Buy Offers.
-3. Accept NFToken Sell Offers.
-4. Accept NFToken Buy Offers.
-5. Get a list of offers for a particular NFToken.
+1. Create NFT Sell Offers.
+2. Create NFT Buy Offers.
+3. Accept NFT Sell Offers.
+4. Accept NFT Buy Offers.
+5. Get a list of offers for a particular NFT.
 6. Cancel an offer.
 
-[![Quickstart form with NFToken transfer fields](img/quickstart13.png)](img/quickstart13.png)
+[![Quickstart form with NFT transfer fields](img/quickstart13.png)](img/quickstart13.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download} archive to try each of the samples in your own browser.
 
 # Usage
 
 ## Get Accounts
 
-1. Open `4.transfer-nftokens.html` in a browser.
+1. Open `4.transfer-nfts.html` in a browser.
 2. Choose your ledger instance (**Testnet** or **Devnet**).
 3. Get test accounts.
     1. If you have existing test account seeds
@@ -40,56 +40,56 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Create a Sell Offer
 
-To create a NFToken sell offer:
+To create a NFT sell offer:
 
 1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
 2. Set the **Flags** field to _1_.
-3. Enter the **NFToken ID** of the NFToken you want to sell.
+3. Enter the **NFT ID** of the NFT you want to sell.
 4. Optionally, enter a number of days until **Expiration**.
 5. Click **Create Sell Offer**.
 
-The important piece of information in the response is the NFToken Offer Index, labeled as `nft_offer_index`, which you use to accept the sell offer.
+The important piece of information in the response is the NFT Offer Index, labeled as `nft_offer_index`, which you use to accept the sell offer.
 
-[![NFToken Sell Offer](img/quickstart15.png)](img/quickstart15.png)
+[![NFT Sell Offer](img/quickstart15.png)](img/quickstart15.png)
 
 ## Accept Sell Offer
 
-Once a sell offer is available, another account can opt to accept the offer and buy the NFToken.
+Once a sell offer is available, another account can opt to accept the offer and buy the NFT.
 
 To accept an available sell offer:
 
-1. Enter the **NFToken Offer Index** (labeled as `nft_offer_index` in the token offer results. This is different from the `NFTokenID`.)
+1. Enter the **NFT Offer Index** (labeled as `nft_offer_index` in the token offer results. This is different from the `NFTokenID`.)
 2. Click **Accept Sell Offer**.
 
 [![Accept Sell Offer](img/quickstart16.png)](img/quickstart16.png)
 
 ## Create a Buy Offer
 
-You can offer to buy a NFToken from another account.
+You can offer to buy a NFT from another account.
 
-To create an offer to buy a NFToken:
+To create an offer to buy a NFT:
 
 1. Enter the **Amount** of your offer.
-2. Enter the **NFToken ID**.
+2. Enter the **NFT ID**.
 3. Enter the owner’s account string in the **Owner** field.
 4. Optionally enter the number of days until **Expiration**.
 5. Click **Create Buy Offer**.
 
-[![NFToken Buy Offer](img/quickstart17.png)](img/quickstart17.png)
+[![NFT Buy Offer](img/quickstart17.png)](img/quickstart17.png)
 
 ## Accept a Buy Offer
 
-To accept an offer to buy a NFToken:
+To accept an offer to buy a NFT:
 
-1. Enter the **NFToken Offer Index** (the `nft_offer_index` of the NFToken buy offer).
+1. Enter the **NFT Offer Index** (the `nft_offer_index` of the NFT buy offer).
 3. Click **Accept Buy Offer**.
 
 [![Accept Buy Offer](img/quickstart18.png)](img/quickstart18.png)
 
 ## Get Offers
 
-To list the buy and sell offers associated with a NFToken:
-1. Enter the **NFToken ID**.
+To list the buy and sell offers associated with a NFT:
+1. Enter the **NFT ID**.
 2. Click **Get Offers**.
 
 [![Get offers](img/quickstart19.png)](img/quickstart19.png)
@@ -98,7 +98,7 @@ To list the buy and sell offers associated with a NFToken:
 
 To cancel a buy or sell offer that you have created:
 
-1. Enter the **NFToken Offer Index**.
+1. Enter the **NFT Offer Index**.
 2. Click **Cancel Offer**.
 
 [![Cancel offer](img/quickstart20.png)](img/quickstart20.png)
@@ -1139,7 +1139,7 @@ Update the form with fields and buttons to support the new functions.
                       </td>
                     </tr>
                     <tr>
-                      <td align="right">NFToken URL</td>
+                      <td align="right">NFT URL</td>
                       <td><input type="text" id="standbyTokenUrlField"
                         value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
                       </td>
@@ -1149,11 +1149,11 @@ Update the form with fields and buttons to support the new functions.
                       <td><input type="text" id="standbyFlagsField" value="1" size="10"/></td>
                     </tr>
                     <tr>
-                      <td align="right">NFToken ID</td>
+                      <td align="right">NFT ID</td>
                       <td><input type="text" id="standbyTokenIdField" value="" size="80"/></td>
                     </tr>
                     <tr>
-                      <td align="right">NFToken Offer Index</td>
+                      <td align="right">NFT Offer Index</td>
                       <td><input type="text" id="standbyTokenOfferIndexField" value="" size="80"/></td>
                     </tr>
                     <tr>
@@ -1190,11 +1190,11 @@ Update the form with fields and buttons to support the new functions.
                         <br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>
                         <br/><br/>
-                        <button type="button" onClick="mintToken()">Mint NFToken</button>
+                        <button type="button" onClick="mintToken()">Mint NFT</button>
                         <br/>
-                        <button type="button" onClick="getTokens()">Get NFTokens</button>
+                        <button type="button" onClick="getTokens()">Get NFTs</button>
                         <br/>
-                        <button type="button" onClick="burnToken()">Burn NFToken</button>
+                        <button type="button" onClick="burnToken()">Burn NFT</button>
                         <br/><br/>
                         <button type="button" onClick="createSellOffer()">Create Sell Offer</button>
                         <br/>
@@ -1232,11 +1232,11 @@ Update the form with fields and buttons to support the new functions.
                         <br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>
                         <br/><br/>
-                        <button type="button" onClick="oPmintToken()">Mint NFToken</button>
+                        <button type="button" onClick="oPmintToken()">Mint NFT</button>
                         <br/>
-                        <button type="button" onClick="oPgetTokens()">Get NFTokens</button>
+                        <button type="button" onClick="oPgetTokens()">Get NFTs</button>
                         <br/>
-                        <button type="button" onClick="oPburnToken()">Burn NFToken</button>
+                        <button type="button" onClick="oPburnToken()">Burn NFT</button>
                         <br/><br/>
                         <button type="button" onClick="oPcreateSellOffer()">Create Sell Offer</button>
                         <br/>
@@ -1324,7 +1324,7 @@ Update the form with fields and buttons to support the new functions.
                             </td>
                           </tr>
                           <tr>
-                            <td align="right">NFToken URL</td>
+                            <td align="right">NFT URL</td>
                             <td><input type="text" id="operationalTokenUrlField"
                               value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
                             </td>
@@ -1334,11 +1334,11 @@ Update the form with fields and buttons to support the new functions.
                             <td><input type="text" id="operationalFlagsField" value="1" size="10"/></td>
                           </tr>
                           <tr>
-                            <td align="right">NFToken ID</td>
+                            <td align="right">NFT ID</td>
                             <td><input type="text" id="operationalTokenIdField" value="" size="80"/></td>
                           </tr>
                           <tr>
-                            <td align="right">NFToken Offer Index</td>
+                            <td align="right">NFT Offer Index</td>
                             <td><input type="text" id="operationalTokenOfferIndexField" value="" size="80"/></td>
                           </tr>
                           <tr>

@@ -1,21 +1,21 @@
 ---
-html: mint-and-burn-nftokens-using-javascript.html
-parent: nftokens-using-javascript.html
-blurb: Mint and burn NFTokens.
+html: mint-and-burn-nfts-using-javascript.html
+parent: nfts-using-javascript.html
+blurb: Mint and burn NFTs.
 labels:
   - Quickstart
   - Tokens
   - Non-fungible tokens, NFTs
 ---
-# Mint and Burn NFTokens Using JavaScript
+# Mint and Burn NFTs Using JavaScript
 
 This example shows how to:
 
-1. Mint new Non-fungible Tokens (NFTokens).
-2. Get a list of existing NFTokens.
-3. Delete (Burn) a NFToken.
+1. Mint new Non-fungible Tokens (NFTs).
+2. Get a list of existing NFTs.
+3. Delete (Burn) a NFT.
 
-[![Test harness with mint NFToken fields](img/quickstart8.png)](img/quickstart8.png)
+[![Test harness with mint NFT fields](img/quickstart8.png)](img/quickstart8.png)
 
 # Usage
 
@@ -34,34 +34,34 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 [![Get accounts](img/quickstart9.png)](img/quickstart9.png)
 
-## Mint a NFToken
+## Mint a NFT
 
 To mint a non-fungible token object:
 
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFToken object can be transferred to another account. Otherwise, the NFToken object can only be transferred back to the issuing account. See [NFToken Mint](nftokenmint.html) for information about all of the available flags for minting NFTokens.
-2. Enter the **Token URL**. This is a URI that points to the data or metadata associated with the NFToken object. You can use the sample URI provided if you do not have one of your own.
-3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFToken that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFToken to be transferrable, set this field to 0.
-4. Click **Mint NFToken**.
+1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](nftokenmint.html) for information about all of the available flags for minting NFTs.
+2. Enter the **Token URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
+3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
+4. Click **Mint NFT**.
 
-[![Mint NFToken fields](img/quickstart10.png)](img/quickstart10.png)
+[![Mint NFT fields](img/quickstart10.png)](img/quickstart10.png)
 
 
 ## Get Tokens
 
-Click **Get NFTokens** to get a list of NFTokens owned by the account.
+Click **Get NFTs** to get a list of NFTs owned by the account.
 
-[![Get NFTokens](img/quickstart11.png)](img/quickstart11.png)
+[![Get NFTs](img/quickstart11.png)](img/quickstart11.png)
 
 ## Burn a Token
 
-The current owner of a NFToken can always destroy (or _burn_) a NFToken object.
+The current owner of a NFT can always destroy (or _burn_) a NFT object.
 
-To permanently destroy a NFToken:
+To permanently destroy a NFT:
 
 1. Enter the **Token ID**.
-2. Click **Burn NFToken**.
+2. Click **Burn NFT**.
 
-[![Burn NFTokens](img/quickstart12.png)](img/quickstart12.png)
+[![Burn NFTs](img/quickstart12.png)](img/quickstart12.png)
 
 # Code Walkthrough
 
@@ -89,7 +89,7 @@ Connect to the ledger and get the account wallets.
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   const client = new xrpl.Client(net)
   await client.connect()
-  results += '\nConnected. Minting NFToken.'
+  results += '\nConnected. Minting NFT.'
   standbyResultField.value = results
 ```
 
@@ -108,7 +108,7 @@ Note that the URI field expects a hexadecimal value rather than the literal URI 
     "URI": xrpl.convertStringToHex(standbyTokenUrlField.value),
 ```
 
-If you want the NFToken to be transferable to third parties, set the **Flags** field to _8_.
+If you want the NFT to be transferable to third parties, set the **Flags** field to _8_.
 
 
 ```javascript
@@ -181,7 +181,7 @@ Connect to the ledger and get the account.
   results = 'Connecting to ' + net + '...'
   standbyResultField.value = results
   await client.connect()
-  results += '\nConnected. Getting NFTokens...'
+  results += '\nConnected. Getting NFTs...'
   standbyResultField.value = results
 ```
 
@@ -227,7 +227,7 @@ Connect to the ledger and get the account wallets.
   results = 'Connecting to ' + net + '...'
   standbyResultField.value = results
   await client.connect()
-  results += '\nConnected. Burning NFToken...'
+  results += '\nConnected. Burning NFT...'
   standbyResultField.value = results
 ```
 
@@ -247,7 +247,7 @@ Submit the transaction and wait for the results.
   const tx = await client.submitAndWait(transactionBlob,{wallet: standby_wallet})
 ```
 
-Request a list of NFTokens owned by the client.
+Request a list of NFTs owned by the client.
 
 ```javascript
   const nfts = await client.request({
@@ -288,7 +288,7 @@ async function oPmintToken() {
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   const client = new xrpl.Client(net)
   await client.connect()
-  results += '\nConnected. Minting NFToken.'
+  results += '\nConnected. Minting NFT.'
   operationalResultField.value = results
 
   // Note that you must convert the token URL to a hexadecimal 
@@ -329,7 +329,7 @@ async function oPgetTokens() {
   results = 'Connecting to ' + getNet() + '...'
   operationalResultField.value = results
   await client.connect()
-  results += '\nConnected. Getting NFTokens...'
+  results += '\nConnected. Getting NFTs...'
   operationalResultField.value = results
   const nfts = await client.request({
     method: "account_nfts",
@@ -351,7 +351,7 @@ async function oPburnToken() {
   results = 'Connecting to ' + getNet() + '...'
   operationalResultField.value = results
   await client.connect()
-  results += '\nConnected. Burning NFToken...'
+  results += '\nConnected. Burning NFT...'
   operationalResultField.value = results
       
   // ------------------------------------------------------- Prepare transaction
@@ -514,7 +514,7 @@ async function oPburnToken() {
                       </td>
                     </tr>
                     <tr>
-                      <td align="right">NFToken URL</td>
+                      <td align="right">NFT URL</td>
                       <td><input type="text" id="standbyTokenUrlField"
                         value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
                       </td>
@@ -524,7 +524,7 @@ async function oPburnToken() {
                       <td><input type="text" id="standbyFlagsField" value="1" size="10"/></td>
                     </tr>
                     <tr>
-                      <td align="right">NFToken ID</td>
+                      <td align="right">NFT ID</td>
                       <td><input type="text" id="standbyTokenIdField" value="" size="80"/></td>
                     </tr>
 				            <tr>
@@ -549,11 +549,11 @@ async function oPburnToken() {
                         <br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>
                         <br/><br/>
-                        <button type="button" onClick="mintToken()">Mint NFToken</button>
+                        <button type="button" onClick="mintToken()">Mint NFT</button>
                         <br/>
-                        <button type="button" onClick="getTokens()">Get NFTokens</button>
+                        <button type="button" onClick="getTokens()">Get NFTs</button>
                         <br/>
-                        <button type="button" onClick="burnToken()">Burn NFToken</button>
+                        <button type="button" onClick="burnToken()">Burn NFT</button>
                       </td>
                     </tr>
                     </td>
@@ -579,11 +579,11 @@ async function oPburnToken() {
                         <br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>
                         <br/><br/>
-                        <button type="button" onClick="oPmintToken()">Mint NFToken</button>
+                        <button type="button" onClick="oPmintToken()">Mint NFT</button>
                         <br/>
-                        <button type="button" onClick="oPgetTokens()">Get NFTokens</button>
+                        <button type="button" onClick="oPgetTokens()">Get NFTs</button>
                         <br/>
-                        <button type="button" onClick="oPburnToken()">Burn NFToken</button>
+                        <button type="button" onClick="oPburnToken()">Burn NFT</button>
                       <td valign="top" align="right">
                         <button type="button" onClick="getAccount('operational')">Get New Operational Account</button>
                         <table>
@@ -667,7 +667,7 @@ async function oPburnToken() {
                             </td>
                           </tr>
                           <tr>
-                            <td align="right">NFToken URL</td>
+                            <td align="right">NFT URL</td>
                             <td><input type="text" id="operationalTokenUrlField"
                               value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
                             </td>
@@ -677,7 +677,7 @@ async function oPburnToken() {
                             <td><input type="text" id="operationalFlagsField" value="1" size="10"/></td>
                           </tr>
                           <tr>
-                            <td align="right">NFToken ID</td>
+                            <td align="right">NFT ID</td>
                             <td><input type="text" id="operationalTokenIdField" value="" size="80"/></td>
                           </tr>
                           <tr>

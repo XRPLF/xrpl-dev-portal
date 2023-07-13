@@ -1,7 +1,7 @@
 ---
-html: authorize-minter-using-javascript.html
-parent: nftokens-using-javascript.html
-blurb: Authorize another account to mint NFTokens for you.
+html: assign-an-authorized-minter-using-javascript.html
+parent: nfts-using-javascript.html
+blurb: Authorize another account to mint NFTs for you.
 labels:
   - Accounts
   - Quickstart
@@ -10,18 +10,18 @@ labels:
 ---
 # Assign an Authorized Minter Using JavaScript
 
-You can assign another account permission to mint NFTokens for you.
+You can assign another account permission to mint NFTs for you.
 
 This example shows how to:
 
-1. Authorize an account to create NFTokens for your account.
-2. Mint a NFToken for another account, when authorized.
+1. Authorize an account to create NFTs for your account.
+2. Mint an NFT for another account, when authorized.
 
 [![Token Test Harness](img/quickstart28.png)](img/quickstart28.png)
 
 # Usage
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try the sample in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download} archive to try the sample in your own browser.
 
 ## Get Accounts
 
@@ -34,9 +34,9 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
         
-## Authorize an Account to Create NFTokens
+## Authorize an Account to Create NFTs
 
-To authorize another account to create NFTokens for your account:
+To authorize another account to create NFTs for your account:
 
 1. Copy the **Operational Account** value.
 2. Paste the **Operational Account** value in the **Authorized Minter** field.
@@ -44,45 +44,45 @@ To authorize another account to create NFTokens for your account:
 
 [![Authorized Minter](img/quickstart29.png)](img/quickstart29.png)
 
-## Mint a NFToken for Another Account
+## Mint an NFT for Another Account
 
 This example uses the Operational account, which was authorized in the previous step, to mint a token on behalf of the Standby account.
 
 To mint a non-fungible token for another account:
 
 1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. 
-2. Enter the **NFToken URL**. This is a URI that points to the data or metadata associated with the NFToken object. You can use the sample URI provided if you do not have one of your own.
-3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFToken. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFToken to be transferrable, set this field to 0.
+2. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
+3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 4. Copy the **Standby Account** value.
 5. Paste the **Standby Account** value in the Operational account **Issuer** field.
 6. Click the Operational account **Mint Other** button.
 
-[![Minted NFToken for Another Account](img/quickstart30.png)](img/quickstart30.png)
+[![Minted NFT for Another Account](img/quickstart30.png)](img/quickstart30.png)
 
-Once the item is minted, the authorized minter can sell the NFToken normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.
+Once the item is minted, the authorized minter can sell the NFT normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.
 
 ## Create a Sell Offer
 
-To create a NFToken sell offer:
+To create an NFT sell offer:
 
 1. On the Operational account side, enter the **Amount** of the sell offer in drops (millionths of an XRP), for example 100000000 (100 XRP
 2. Set the **Flags** field to _1_.
-3. Enter the **NFToken ID** of the minted NFToken you want to sell.
+3. Enter the **NFT ID** of the minted NFT you want to sell.
 4. Optionally, enter a number of days until **Expiration**.
 5. Click **Create Sell Offer**.
 
-The important piece of information in the response is the NFToken Offer Index, labeled as `nft_offer_index`, which is used to accept the sell offer.
+The important piece of information in the response is the NFT Offer Index, labeled as `nft_offer_index`, which is used to accept the sell offer.
 
-[![NFToken Sell Offer](img/quickstart31.png)](img/quickstart31.png)
+[![NFT Sell Offer](img/quickstart31.png)](img/quickstart31.png)
 
 ## Accept Sell Offer
 
-Once a sell offer is available, you can create a new account to accept the offer and buy the NFToken.
+Once a sell offer is available, you can create a new account to accept the offer and buy the NFT.
 
 To accept an available sell offer:
 
 1. Click **Get New Standby Account**.
-1. Enter the **NFToken Offer Index** (labeled as `nft_offer_index` in the NFToken offer results. This is different from the `nft_id`).
+1. Enter the **NFT Offer Index** (labeled as `nft_offer_index` in the NFT offer results. This is different from the `nft_id`).
 2. Click **Accept Sell Offer**.
 
 The results show that the Issuer account has been credited 25 XRP. The Buyer account was debited the 100 XRP price plus 12 drops as the transaction cost. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
@@ -94,7 +94,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Set Minter
 
-This function sets the authorized minter for an account. Each account can have 0 or 1 authorized minter that can mint NFTokens in its stead.
+This function sets the authorized minter for an account. Each account can have 0 or 1 authorized minter that can mint NFTs in its stead.
 
 ```javascript
 // *******************************************************
@@ -200,11 +200,11 @@ Connect to the ledger and get the account.
 Report success
 
 ```javascript
-  results += '\nConnected. Minting NFToken.'
+  results += '\nConnected. Minting NFT.'
   standbyResultField.value = results    
 ```
       
-This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nftokens-using-javascript.html#mint-token), with the addition of the `Issuer` field.
+This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nfs-using-javascript.html#mint-token), with the addition of the `Issuer` field.
 
 ```javascript
   const tx_json = {
@@ -212,13 +212,13 @@ This transaction blob is the same as the one used for the previous [`mintToken()
     "Account": standby_wallet.classicAddress,
 ```
 
-The URI is a link to a data file represented by the NFToken.
+The URI is a link to a data file represented by the NFT.
 
 ```javascript
     "URI": xrpl.convertStringToHex(standbyTokenUrlField.value),
 ```
 
-At a minimum, we recommend that you set the `tfTransferable` flag (8) to enable accounts to sell and resell the NFToken for testing purposes.
+At a minimum, we recommend that you set the `tfTransferable` flag (8) to enable accounts to sell and resell the NFT for testing purposes.
 
 ```javascript
     "Flags": parseInt(standbyFlagsField.value),
@@ -230,7 +230,7 @@ Transfer fee is a value 0-50000 representing .001% of the price for a resale to 
     "TransferFee": parseInt(standbyTransferFeeField.value),
 ```
 
-The **Issuer** is the original creator of the object represented by the NFToken. 
+The **Issuer** is the original creator of the object represented by the NFT. 
 
 ```javascript
     "Issuer": standbyIssuerField.value,
@@ -327,7 +327,7 @@ async function oPmintOther() {
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   const client = new xrpl.Client(net)
   await client.connect()
-  results += '\nConnected. Minting NFToken.'
+  results += '\nConnected. Minting NFT.'
   operationalResultField.value = results
 
   // This version adds the "Issuer" field.
@@ -488,7 +488,7 @@ Update the form with fields and buttons to support the new functions.
                       </td>
                     </tr>
                     <tr>
-                      <td align="right">NFToken URL</td>
+                      <td align="right">NFT URL</td>
                       <td><input type="text" id="standbyTokenUrlField"
                         value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
                       </td>
@@ -498,11 +498,11 @@ Update the form with fields and buttons to support the new functions.
                       <td><input type="text" id="standbyFlagsField" value="1" size="10"/></td>
                     </tr>
                     <tr>
-                      <td align="right">NFToken ID</td>
+                      <td align="right">NFT ID</td>
                       <td><input type="text" id="standbyTokenIdField" value="" size="80"/></td>
                     </tr>
                     <tr>
-                      <td align="right">NFToken Offer Index</td>
+                      <td align="right">NFT Offer Index</td>
                       <td><input type="text" id="standbyTokenOfferIndexField" value="" size="80"/></td>
                     </tr>
                     <tr>
@@ -547,11 +547,11 @@ Update the form with fields and buttons to support the new functions.
                         <br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>
                         <br/><br/>
-                        <button type="button" onClick="mintToken()">Mint NFToken</button>
+                        <button type="button" onClick="mintToken()">Mint NFT</button>
                         <br/>
-                        <button type="button" onClick="getTokens()">Get NFTokens</button>
+                        <button type="button" onClick="getTokens()">Get NFTs</button>
                         <br/>
-                        <button type="button" onClick="burnToken()">Burn NFToken</button>
+                        <button type="button" onClick="burnToken()">Burn NFT</button>
                         <br/><br/>
                         <button type="button" onClick="setMinter('standby')">Set Minter</button>
                         <br/>
@@ -593,11 +593,11 @@ Update the form with fields and buttons to support the new functions.
                         <br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>
                         <br/><br/>
-                        <button type="button" onClick="oPmintToken()">Mint NFToken</button>
+                        <button type="button" onClick="oPmintToken()">Mint NFT</button>
                         <br/>
-                        <button type="button" onClick="oPgetTokens()">Get NFTokens</button>
+                        <button type="button" onClick="oPgetTokens()">Get NFTs</button>
                         <br/>
-                        <button type="button" onClick="oPburnToken()">Burn NFToken</button>
+                        <button type="button" onClick="oPburnToken()">Burn NFT</button>
                         <br/><br/>
                         <button type="button" onClick="oPsetMinter()">Set Minter</button>
                         <br/>
@@ -689,7 +689,7 @@ Update the form with fields and buttons to support the new functions.
                             </td>
                           </tr>
                           <tr>
-                            <td align="right">NFToken URL</td>
+                            <td align="right">NFT URL</td>
                             <td><input type="text" id="operationalTokenUrlField"
                               value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
                             </td>
@@ -699,11 +699,11 @@ Update the form with fields and buttons to support the new functions.
                             <td><input type="text" id="operationalFlagsField" value="1" size="10"/></td>
                           </tr>
                           <tr>
-                            <td align="right">NFToken ID</td>
+                            <td align="right">NFT ID</td>
                             <td><input type="text" id="operationalTokenIdField" value="" size="80"/></td>
                           </tr>
                           <tr>
-                            <td align="right">NFToken Offer Index</td>
+                            <td align="right">NFT Offer Index</td>
                             <td><input type="text" id="operationalTokenOfferIndexField" value="" size="80"/></td>
                           </tr>
                           <tr>

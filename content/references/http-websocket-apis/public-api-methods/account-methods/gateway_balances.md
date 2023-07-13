@@ -11,6 +11,8 @@ labels:
 
 The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](account-types.html). [New in: rippled 0.28.2][]
 
+**Caution:** Some public servers disable this API method because it can require a large amount of processing.
+
 ## Request Format
 An example of the request format:
 
