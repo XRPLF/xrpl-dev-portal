@@ -694,18 +694,23 @@ client.on("transaction", async (transaction) => {
 4. In `view/preload.js`, add the following code at the bottom of `exposeInMainWorld()`:
 
 ```javascript
-onEnterAccountAddress: (address) => {
-  ipcRenderer.send('address-entered', address)
-},
-onUpdateAccountData: (callback) => {
-  ipcRenderer.on('update-account-data', callback)
-},
+contextBridge.exposeInMainWorld('electronAPI', {
+  onUpdateLedgerData: (callback) => {
+    ipcRenderer.on('update-ledger-data', callback)
+  },
+  onEnterAccountAddress: (address) => {
+    ipcRenderer.send('address-entered', address)
+  },
+  onUpdateAccountData: (callback) => {
+    ipcRenderer.on('update-account-data', callback)
+  },
 
-// Step 4 code additions - start
-onUpdateTransactionData: (callback) => {
-  ipcRenderer.on('update-transaction-data', callback)
-}
-// Step 4 code additions - end
+  // Step 4 code additions - start
+  onUpdateTransactionData: (callback) => {
+    ipcRenderer.on('update-transaction-data', callback)
+  }
+  // Step 4 code additions - end
+})
 ```
 
 5. Modify `view/template.html` by adding a new fieldset below the ones that are already there:
