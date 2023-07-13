@@ -374,7 +374,7 @@ const main = async () => {
 app.whenReady().then(main)
 ```
 
-Here, we have reduced the `app.whenReady` logic to an oneliner and put the necessary functionality into a separate `main()` function. The most relevant piece of code here is the swapping of a single call to the ledger for a subscription: Our client is now connecting to the XRPL via [WebSockets](https://en.wikipedia.org/wiki/WebSocket). This establishes a permanent bidirectional connection to the XRPL, which allows us to subscribe to events that the server sends out. This saves resources on the server, which now only sends out data we explicitly asked for when a change happens, as well as the client which does not have to sort through incoming data for relevant changes. This also reduces the complexity of the application and saves us a couple of lines of code.
+Here, we have reduced the `app.whenReady` logic to an one-liner and put the necessary functionality into a separate `main()` function. The most relevant piece of code here is the swapping of a single call to the ledger for a subscription. Our client is now connecting to the XRPL via [WebSockets](https://en.wikipedia.org/wiki/WebSocket). This establishes a permanent bidirectional connection to the XRPL, which allows us to subscribe to events that the server sends out. This saves resources on the server, which now only sends out data we explicitly asked for when a change happens, as well as the client which does not have to sort through incoming data for relevant changes. It also reduces the complexity of the application and saves us a couple of lines of code.
 
 3. Then, update `preload.js` by renaming the `onUpdateLedgerIndex` to `onUpdateLedgerData` and the `update-ledger-index` event to `update-ledger-data`:
 
