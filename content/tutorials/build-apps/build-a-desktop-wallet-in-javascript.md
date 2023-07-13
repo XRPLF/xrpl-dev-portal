@@ -661,7 +661,7 @@ At this point, our wallet shows the account's balance getting updated, but doesn
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/4_helpers.js", language="js") }}
 
 2. Now, in `index.js`, require the new helper function at the bottom of the import section like so:
-3. 
+
 ```javascript
 const { prepareReserve, prepareAccountData, prepareLedgerData} = require('./library/3_helpers')
 const { prepareTxData } = require('./library/4_helpers')
@@ -683,7 +683,7 @@ client.on("transaction", async (transaction) => {
   const accountData = prepareAccountData(accountInfoResponse.result.account_data, reserve)
   appWindow.webContents.send('update-account-data', accountData)
 
-  // Step 3 code additions - start
+  // Step 4 code additions - start
   const transactions = prepareTxData([{tx: transaction.transaction}])
   appWindow.webContents.send('update-transaction-data', transactions)
   // Step 4 code additions - end
@@ -732,7 +732,7 @@ onUpdateTransactionData: (callback) => {
             <tbody></tbody>
         </table>
     </fieldset>
-    <!-- Step 5 code additions - end -->
+    <!-- Step 4 code additions - end -->
 
     <dialog id="account-address-dialog">
         <form method="dialog">
