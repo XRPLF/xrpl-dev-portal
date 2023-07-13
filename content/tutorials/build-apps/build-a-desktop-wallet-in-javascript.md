@@ -159,6 +159,8 @@ app.whenReady().then(() => {
 npm run start
 ```
 
+**Tip:** When you need to debug the application, you can open Developer Tools like in Chrome or Firefox by selecting "View / Toggle Developer Tools" from The application Menu or using a Shortcut ("Ctrl+Shift+I" on Windows or Linux, "Option+Command+I on Mac).
+
 You should see a window appear that displays the text "Build a XRPL Wallet" and "Hello world!"
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
