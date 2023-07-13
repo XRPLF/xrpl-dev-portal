@@ -660,7 +660,7 @@ At this point, our wallet shows the account's balance getting updated, but doesn
 
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/4_helpers.js", language="js") }}
 
-2. Now, in `index.html`, require the new helper function at the bottom of the import section like so:
+2. Now, in `index.js`, require the new helper function at the bottom of the import section like so:
 3. 
 ```javascript
 const { prepareReserve, prepareAccountData, prepareLedgerData} = require('./library/3_helpers')
