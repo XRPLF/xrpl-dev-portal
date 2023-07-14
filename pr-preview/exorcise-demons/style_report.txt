@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 81 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, giss, gits
-  kuressaare: 
+  gifs: giff, gis, rifs
   ringtee: 
+  kuressaare: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -27,7 +27,7 @@ Found 81 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slash, slam, ssas
+  slas: spas, slask, slan
 
 <Page 'Invariant Checking' (invariant-checking.html)> Unknown Words:
   validnftokenpage: 
@@ -40,90 +40,90 @@ Found 81 possible spelling errors:
   xlsd: xls, lsd
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  xrpfees: 
+  immediateofferkilled: 
   fixuniversalnumber: 
+  xrpfees: 
+  disallowincoming: 
+  fixnonfungibletokensv1_2: 
   fixnftokenremint: 
   depositpreauthamendment: 
-  fixnonfungibletokensv1_2: 
-  immediateofferkilled: 
-  disallowincoming: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingcheck: 
   asfdisallowincomingtrustline: 
-  asfdisallowincomingpaychan: 
   asfdisallowincomingnftoffer: 
-  30d: 3-d, 3rd, 3d
+  asfdisallowincomingcheck: 
+  asfdisallowincomingpaychan: 
+  30d: 3-d, 3d, 3rd
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  v3: v8, t3, vb
+  v3: vl, vi, vu
   0b0: 
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mod, mod., mody
+  mod1: mode, mody, modi
   get_account: 
   get_account_info: 
   send_xrp: 
-  lesson1: lessons, lesson
+  lesson1: lesson, lessons
   tkinter: twinter, tinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mod, mod., mody
+  mod2: mode, mody, modi
   send_currency: 
   get_balance: 
   configure_account: 
-  lesson2: lessons, lesson
+  lesson2: lesson, lessons
 
 <Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: mod, mod., mody
+  mod3: mode, mody, modi
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page '4. Transfer NFTs (Python)' (py-transfer-nfts.html)> Unknown Words:
-  mod4: mod, mod., mody
+  mod4: mode, mody, modi
   offer___index: 
   alloffers: 
-  lesson4: lessons, lesson
+  lesson4: lesson, lessons
 
 <Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)> Unknown Words:
   sell___offer___index: 
-  buy___offer___index: 
   broker___fee: 
-  lesson5: lessons, lesson
+  buy___offer___index: 
+  lesson5: lesson, lessons
 
 <Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)> Unknown Words:
-  mod6: mod, mod., mody
+  mod6: mode, mody, modi
   mint_other: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3rd, 3d
+  30d: 3-d, 3d, 3rd
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   fixnftokenremint: 
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: v8, t3, vb
+  v3: vl, vi, vu
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
