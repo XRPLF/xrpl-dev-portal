@@ -1713,6 +1713,11 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/use-specialized-payment-types/use-escrows/create-custom-transactors.md
+        targets:
+            - en
+            - ja
+
     -   name: Use Tokens
         html: use-tokens.html
         parent: tutorials.html
