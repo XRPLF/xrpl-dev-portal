@@ -154,7 +154,7 @@ Transaction replay attacks are theoretically possible, but require specific cond
 
 ## Signers Field
 
-The `Signers` field contains a [multi-signature](multi-signing.html), which has signatures from up to 8 key pairs, that together should authorize the transaction. The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
+The `Signers` field contains a [multi-signature](multi-signing.html), which has signatures from up to 32 key pairs, that together should authorize the transaction. The `Signers` list is an array of objects, each with one field, `Signer`. The `Signer` field has the following nested fields:
 
 | Field           | Type   | [Internal Type][] | Description                     |
 |:----------------|:-------|:------------------|:--------------------------------|
