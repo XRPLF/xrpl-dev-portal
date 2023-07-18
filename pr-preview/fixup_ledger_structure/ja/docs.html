@@ -53,7 +53,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v18.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v19.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -73,6 +73,18 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
+  <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
+  <div class="apex-reg"><span class="apex-highlight">APEX Dev Summit 2023</span>に登録</div>
+  <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
+  <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
+  <div class="apex-circled highlight-yellow">アムステルダム</div>
+  <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
+  <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
+  <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
+  <div class="apex-circled d-none d-lg-block highlight-purple">今すぐ登録</div>
+  <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
+</a>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -176,6 +188,7 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
             <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -230,7 +243,7 @@
     <div class="col-lg-9 mx-auto text-center">
       <div class="d-flex flex-column-reverse">
         <h1 class="">XRP Ledger Developer Resources</h1>
-        <h6 class="eyebrow mb-3">Documentation</h6>
+        <h6 class="eyebrow mb-3">XRP Ledger ドキュメント</h6>
       </div>
     </div>
   </section>
@@ -303,7 +316,7 @@
   </section>
 
   <section class="container-new">
-    <h4 class="pb-4">Use Cases</h4>
+    <h4 class="pb-4">XRPLの利用例</h4>
     <div class="card-grid card-grid-3xN use-cases">
             <div class="col">
       <img
@@ -329,7 +342,7 @@
       <ul class="nav flex-column">
         <li class="nav-item"><a href="./non-fungible-tokens.html" class="nav-link">Non-fungible Tokens</a>
         <li class="nav-item"><a href="./issue-a-fungible-token.html" class="nav-link">Issue a stablecoin</a>
-        <li class="nav-item"><a href="./authorize-minter.html" class="nav-link">Assign an authorized minter</a>
+        <li class="nav-item"><a href="./authorize-minter-using-javascript.html" class="nav-link">Assign an authorized minter</a>
       </ul>
     </div>
 
@@ -351,10 +364,10 @@
   </section>
 
   <section class="container-new ">
-    <h4 class="pb-4">Getting Started</h4>
+    <h4 class="pb-4">始めましょう</h4>
     <div class="card-grid card-grid-2xN quickstart-card">
       <div class="col">
-        <a href="./xrpl-quickstart.html" class="card float-up-on-hover">
+        <a href="./send-payments-using-javascript.html" class="card float-up-on-hover">
           <h5 class="mt-7">Quickstart to XRP Ledger</h5>
           <p class="mb-8 mt-4">
 An introduction to fundamental aspects of the XRP Ledger.
@@ -438,7 +451,7 @@ An introduction to fundamental aspects of the XRP Ledger.
   <section class="container-new ">
     <div class="d-flex flex-column-reverse col-sm-8 p-0">
       <h3 class="h4 h2-sm">Interact with the XRP Ledger in a language of your choice</h3>
-      <h6 class="eyebrow mb-3">Explore SDKs</h6>
+      <h6 class="eyebrow mb-3">エクスプローラ</h6>
     </div>
     <div class="card-grid card-grid-2xN">
       <div class="col">
@@ -594,7 +607,7 @@ Use these web-based tools to assist during all stages of development, from getti
     </div>
   </section><!-- Browse by recommended and Generate Testnet Credentials -->
   <section class="container-new">
-    <a href="./docs-index.html" class="btn-arrow arrow-purple documentation-index mr-auto">See full documentation index</a>
+    <a href="./docs-index.html" class="btn-arrow arrow-purple documentation-index mr-auto">全ドキュメントの目次</a>
   </section>
       </main>
     </div><!--/.row (main layout)-->
@@ -647,6 +660,7 @@ Use these web-based tools to assist during all stages of development, from getti
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
