@@ -44,8 +44,8 @@ The _ledger header_ is a block of data that summarizes a ledger version. Like th
 - {{include_svg("img/ledger-hash-icon.svg", "", classes="floating-diagram")}} The _ledger hash_, which uniquely identifies the ledger's contents. The hash is calculated so that if any detail of the ledger version changes, the hash is completely different, which makes it also like a checksum that shows that none of the data in the ledger has been lost, modified, or corrupted.
 - {{include_svg("img/ledger-parent-icon.svg", "", classes="floating-diagram")}} The _parent ledger hash_. A ledger version is largely defined by the difference from the _parent ledger_ that came before it, so the header also contains the unique hash of its parent ledger.
 - {{include_svg("img/ledger-timestamp-icon.svg", "", classes="floating-diagram")}} The _close time_, the official timestamp when this ledger's contents were finalized. This number is rounded off by a number of seconds, usually 10.
-- {{include_svg("img/ledger-state-data-hash-icon.svg", "", classes="floating-diagram")}} A _state data hash_ which act as a checksum on this ledger's state data.
-- {{include_svg("img/ledger-tx-set-hash-icon.svg", "", classes="floating-diagram")}} A _transaction set hash_ which act as a checksum on this ledger's transaction set data.
+- {{include_svg("img/ledger-state-data-hash-icon.svg", "", classes="floating-diagram")}} A _state data hash_ which acts as a checksum on this ledger's state data.
+- {{include_svg("img/ledger-tx-set-hash-icon.svg", "", classes="floating-diagram")}} A _transaction set hash_ which acts as a checksum on this ledger's transaction set data.
 - {{include_svg("img/ledger-notes-icon.svg", "", classes="floating-diagram")}} A few other notes like the total amount of XRP in existence and the amount the close time was rounded by.
 
 A ledger's transaction set and state data are unlimited in size, but the ledger header is always a fixed size. For the exact data and binary format of a ledger header, see [Ledger Header](ledger-header.html).
@@ -62,4 +62,8 @@ When a ledger version is first created, it is not yet validated. Due to differen
 
 ## Ledger Index or Ledger Hash?
 
-There are two different ways of identifying a ledger version, its ledger index and its ledger hash. These two fields can both identify a ledger, but they serve different purposes. The ledger index tells you _when_ to place a ledger in history, but not necessarily what its contents are. Two ledgers with the same ledger index might be the same, but they might be from different chains, or they could even be different candidates to be the next ledger on the same chain. Two ledgers with the same ledger hash are always completely identical, but the hash by itself doesn't tell you which one came first.
+There are two different ways of identifying a ledger version: its _ledger index_ and its _ledger hash_. These two fields both identify a ledger, but they serve different purposes. The ledger index tells you the ledger's position in the chain, and the ledger hash reflects the ledger's contents.
+
+Ledgers from different chains can have the same ledger index but different hashes. Also, when dealing with unvalidated ledger versions, there can be multiple candidate ledgers with the same index but different contents and therefore different hashes.
+
+Two ledgers with the same ledger hash are always completely identical.
