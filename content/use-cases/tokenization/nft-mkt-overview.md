@@ -51,7 +51,7 @@ See also:
 
 You can begin to build your marketplace by minting some NFTs to sell.
 
-To create your first NFTs, follow the instructions in the tutorial _Mint and Burn NFTokens_. See [Mint and Burn NFTokens](mint-and-burn-nftokens-using-javascript.html).
+To create your first NFTs, follow the instructions in the tutorial _Mint and Burn NFTokens_. See [Mint and Burn NFTokens](mint-and-burn-nfts-using-javascript.html).
 
 The NFToken URL is a link to the location where the content of the NFT is stored. One option is create an IPFS account and store the NFToken content at a persistent URL. See [Best Practices for Storing NFT Data](https://docs.ipfs.io/how-to/best-practices-for-nft-data).
 
@@ -80,11 +80,11 @@ When you set up your account, keep in mind that there is a base reserve requirem
 
 ### Transferring NFTs
 
-You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nftokens-using-javascript.html).
+You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nfts-using-javascript.html).
 
 You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html).
 
-You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](broker-sale-using-javascript.html).
+You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](broker-an-nft-sale-using-javascript.html).
 
 #### Reserve requirements
 
@@ -102,7 +102,7 @@ See:
 
 #### Checkout
 
-The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nftokens-using-javascript.html).
+The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nfts-using-javascript.html).
 
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange).
 

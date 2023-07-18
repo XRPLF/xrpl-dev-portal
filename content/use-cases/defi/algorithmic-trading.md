@@ -73,7 +73,7 @@ The legal requirements for trading on a blockchain vary by jurisdiction. In many
 
 Buying and selling _fungible_ tokens and XRP within the XRP Ledger's decentralized exchange typically involves sending [OfferCreate transactions](offercreate.html). For a detailed walkthrough of the code and technical steps to place a trade this way, see [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html). It is also possible to exchange currencies using the [Payment transaction type](payment.html). You could send a [cross-currency payment](cross-currency-payments.html) to another user or even send it back to yourself, using a long [path](paths.html) to link arbitrage opportunities together into a single operation.
 
-Non-fungible tokens work differently; for the code and technical steps to trade NFTs, see [Transfer NFTokens Using JavaScript](transfer-nftokens-using-javascript.html).
+Non-fungible tokens work differently; for the code and technical steps to trade NFTs, see [Transfer NFTokens Using JavaScript](transfer-nfts-using-javascript.html).
 
 ### Reading Trade Data
 

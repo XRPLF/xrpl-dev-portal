@@ -11,7 +11,7 @@ _As an authorized minter, I want to mint tokens for a token issuer at an agreed 
 
 You can act as an authorized minter for token issuers. When you do this, you own the NFToken, but royalties flow to the NFToken issuer. When you make a sale of that NFToken, the proceeds of the initial sale go to you. You can have an agreement with your issuer to pay them some or all of your portion of the initial sale amount.
 
-You can learn more in the tutorial [Assign an Authorized Minter](authorize-minter-using-javascript.html). 
+You can learn more in the tutorial [Assign an Authorized Minter](assign-an-authorized-minter-using-javascript.html). 
 
 [![Authorized Minter Flow](img/nft-mkt-auth-minter.png "Authorized Minter Flow")](img/nft-mkt-auth-minter.png)
 
@@ -25,7 +25,7 @@ Rather than designing NFTs yourself, you coordinate with an NFT creator to becom
 
 Once you finish creating NFTs, the creator can revoke your privileges and reassert control over the NFTs. You might also transfer the tokens to a marketplace that will handle sales of the NFTs. You can act as a broker to match sell offers to buy offers. See [Running an NFT auction](nftoken-auctions.html).
 
-To mint your first NFTs on behalf of another account, see [Authorizing Another Account to Mint Your NFTs](authorize-minter-using-javascript.html).
+To mint your first NFTs on behalf of another account, see [Authorizing Another Account to Mint Your NFTs](assign-an-authorized-minter-using-javascript.html).
 
 If you, as the owner or issuer, want to be able to burn the token in the future, set the `Flags` field to _1._ To make the NFT transferable, set the `Flags` field to _8_. Set the `Flags` field to _9_ to make the NFT both burnable and transferable. See[ Burnable flag](nftoken.html#nftoken-flags) and [Transferable flag](nftoken.html#nftoken-flags).
 
@@ -42,11 +42,11 @@ You can assure scarcity of NFTs you create by creating them with what might be c
 
 ## Transferring NFTs
 
-You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nftokens-using-javascript.html).
+You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nfts-using-javascript.html).
 
 You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html).
 
-You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](broker-sale-using-javascript.html).
+You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](broker-an-nft-sale-using-javascript.html).
 
 ### Reserve requirements
 
@@ -64,7 +64,7 @@ See:
 
 ### Checkout
 
-The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nftokens-using-javascript.html).
+The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nfts-using-javascript.html).
 
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange).
 
