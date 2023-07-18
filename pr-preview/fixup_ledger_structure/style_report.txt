@@ -3,13 +3,13 @@ Spell Checker
 -------------
 Found 107 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, gifu, gifts
+  gifs: rifs, gibs, gins
   kuressaare: 
   ringtee: 
   lõõtsa: 
 
 <Page 'What is the XRP Ledger?' (what-is-xrpl.html)> Unknown Words:
-  livenet: livened, livener
+  livenet: livener, livened
 
 <Page 'What is XRP?' (what-is-xrp.html)> Unknown Words:
   opencoin: 
@@ -20,14 +20,14 @@ Found 107 possible spelling errors:
 
 <Page 'Transactions and Requests' (txn-and-requests.html)> Unknown Words:
   transactiontype: 
-  ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
   rf1bigexwwqoi8z2uefytexswujyfv2jpn: 
+  ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
 
 <Page 'Peer-to-Peer Payments' (peer-to-peer-payments-uc.html)> Unknown Words:
   requiremen: requirement
 
 <Page 'Restricting Deposits' (restricting-deposits-uc.html)> Unknown Words:
-  deposite: deposito, deposited, deposit
+  deposite: deposita, deposito, deposited
   unathorized: unauthorized
 
 <Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Unknown Words:
@@ -35,50 +35,50 @@ Found 107 possible spelling errors:
 
 <Page 'NFT Marketplace Overview' (nft-mkt-overview.html)> Unknown Words:
   arweave: 
-  infura: infra, infula
+  infura: infula, infra
 
 <Page 'Authorized Minter' (authorized-minter.html)> Unknown Words:
   tokentaxon: 
 
 <Page 'Algorithmic Trading' (algorithmic-trading.html)> Unknown Words:
-  investopedia: 
   arbitraging: arbitrating
-  unprecented: unprevented, unpresented
-  clob: clog, cob, clod
-  30d: 3rd, 3-d, 3d
+  investopedia: 
+  unprecented: unpresented, unprevented
+  clob: clomb, clog, clos
+  30d: 3-d, 3d, 3rd
   frontrunning: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  v3: t3, vt, v
   0b0: 
+  v3: vs, v8, v2
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  fixnonfungibletokensv1_2: 
   disallowincoming: 
   xrpfees: 
   fixuniversalnumber: 
-  fixnftokenremint: 
   depositpreauthamendment: 
+  fixnftokenremint: 
   immediateofferkilled: 
+  fixnonfungibletokensv1_2: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingtrustline: 
   asfdisallowincomingpaychan: 
   asfdisallowincomingnftoffer: 
+  asfdisallowincomingtrustline: 
   asfdisallowincomingcheck: 
-  30d: 3rd, 3-d, 3d
+  30d: 3-d, 3d, 3rd
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: lsd, xls
+  xlsd: xls, lsd
 
 <Page 'Invariant Checking' (invariant-checking.html)> Unknown Words:
   validnftokenpage: 
   nftokencounttracking: 
 
 <Page 'Finality of Results' (finality-of-results.html)> Unknown Words:
-  ooffers: offers, doffers, goffers
+  ooffers: coffers, offers, goffers
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
   24n: 
@@ -99,53 +99,53 @@ Found 107 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: alas, slabs, sas
+  slas: slats, slams, slar
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3-d, 3d, 3rd
 
 <Page 'Create Accounts and Send XRP Using Python' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mods, mody, mod.
+  mod1: mody, modi, mod
   get_account: 
   get_account_info: 
   send_xrp: 
-  lesson1: lessons, lesson
-  tkinter: twinter, tinter
+  lesson1: lesson, lessons
+  tkinter: tinter, twinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page 'Create Trust Line and Send Currency Using Python' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mods, mody, mod.
+  mod2: mody, modi, mod
   send_currency: 
   get_balance: 
   configure_account: 
-  lesson2: lessons, lesson
+  lesson2: lesson, lessons
 
 <Page 'Mint and Burn NFTs Using Python' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: mods, mody, mod.
+  mod3: mody, modi, mod
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page 'Transfer NFTs Using Python' (py-transfer-nfts.html)> Unknown Words:
-  mod4: mods, mody, mod.
+  mod4: mody, modi, mod
   offer___index: 
   alloffers: 
-  lesson4: lessons, lesson
+  lesson4: lesson, lessons
 
 <Page 'Broker an NFT Sale Using Python' (py-broker-sale.html)> Unknown Words:
-  broker___fee: 
   sell___offer___index: 
   buy___offer___index: 
-  lesson5: lessons, lesson
+  broker___fee: 
+  lesson5: lesson, lessons
 
 <Page 'Assign an Authorized Minter Using Python' (py-authorize-minter.html)> Unknown Words:
-  mod6: mods, mody, mod.
+  mod6: mody, modi, mod
   mint_other: 
 
 <Page 'Create Time-based Escrows Using JavaScript' (create-time-based-escrows-using-javascript.html)> Unknown Words:
-  ripple8: ripple, ripples, rippled
+  ripple8: ripples, rippled, rippler
   numofseconds: 
   offersequence: 
 
@@ -155,27 +155,27 @@ Found 107 possible spelling errors:
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   fixnftokenremint: 
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: t3, vt, v
+  v3: vs, v8, v2
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -204,7 +204,7 @@ Found 107 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 135 discouraged words/phrases:
+Found 136 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -272,6 +272,7 @@ Page: <Page 'Ledgers' (ledgers.html)>
 Page: <Page 'Ledger Structure' (ledger-structure.html)>
    Discouraged phrase: a number of (1 instances); suggest 'some' instead.
    Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
    Discouraged word: identical (1 instances); suggest 'same' instead.
 Page: <Page 'Escrow' (escrow.html)>
    Discouraged word: facilitate (1 instances); suggest 'ease, help' instead.
@@ -338,7 +339,7 @@ Page: <Page 'Tutorial Structure' (tutorial-structure.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.4 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.3 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
