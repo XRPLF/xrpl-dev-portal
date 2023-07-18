@@ -1382,6 +1382,13 @@ pages:
             - en
             - ja
 
+        # TODO: translate
+    -   md: tutorials/quickstart/py-batch-minting.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/get-started/get-started.md
         targets:
             - en

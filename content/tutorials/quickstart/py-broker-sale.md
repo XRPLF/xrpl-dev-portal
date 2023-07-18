@@ -107,7 +107,6 @@ Import dependencies and create a global variable for `testnet_url`.
 
 ```python      
 import xrpl
-import json
 from xrpl.clients import JsonRpcClient
 from xrpl.wallet import Wallet
 testnet_url = "https://s.altnet.rippletest.net:51234"
@@ -125,7 +124,7 @@ def broker_sale(seed, sell_offer_index, buy_offer_index, broker_fee):
 Get the broker wallet and establish a client connection.
 
 ```python
-    broker_wallet=Wallet(seed, sequence=16237283)
+    broker_wallet=Wallet.from_seed(seed)
     client=JsonRpcClient(testnet_url)
 ```
 
@@ -140,22 +139,16 @@ Define the accept offer transaction, matching a sell offer with the selected buy
     )
 ```
 
-Sign and fill the transaction.
-
-```python
-    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
-        accept_offer_tx, broker_wallet, client)
-```
-
 Submit the transaction and report the results.
 
 ```python
     reply=""
     try:
-        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.submit_and_wait(accept_offer_tx,client,broker_wallet)
         reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
         reply=f"Submit failed: {e}"
+    return reply
 ```
 
 ## lesson5-broker-nfts.py

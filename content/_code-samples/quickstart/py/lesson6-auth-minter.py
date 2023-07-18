@@ -22,7 +22,6 @@ from mod4 import (
     accept_sell_offer,
     accept_buy_offer,
 )
-from mod5 import broker_sale
 from mod6 import set_minter, mint_other
 
 #############################################
