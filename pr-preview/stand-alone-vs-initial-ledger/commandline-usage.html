@@ -271,8 +271,8 @@
         <li class="nav-item level-2"><a class="nav-link" href="#generic-options">Generic Options</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#verbosity-options">Verbosity Options</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#daemon-mode-options">Daemon Mode Options</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#stand-alone-mode-options">Stand-Alone Mode Options</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#initial-ledger-options">Initial Ledger Options</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#stand-alone-mode-options">Stand-Alone Mode Options</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#initial-ledger-options">Initial Ledger Options</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#client-mode-options">Client Mode Options</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#unit-tests">Unit Tests</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#specific-unit-tests">Specific Unit Tests</a></li>
@@ -395,12 +395,12 @@
 </tbody>
 </table>
 <p>The following option has been removed: <code>--validateShards</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="Removed in: rippled 1.7.0"><img alt="Removed in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%201.7.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<h3 id="stand-alone-mode-options">Stand-Alone Mode Options<a aria-hidden="true" class="hover_anchor" href="#stand-alone-mode-options"><i class="fa fa-link"></i></a></h3>
+<h2 id="stand-alone-mode-options">Stand-Alone Mode Options<a aria-hidden="true" class="hover_anchor" href="#stand-alone-mode-options"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">rippled<span class="w"> </span>--standalone<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 rippled<span class="w"> </span>-a<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 </code></pre></div>
 <p>Run in <a href="rippled-server-modes.html">stand-alone mode</a>. In this mode, <code>rippled</code> does not connect to the network or perform consensus. (Otherwise, <code>rippled</code> runs in daemon mode.)</p>
-<h3 id="initial-ledger-options">Initial Ledger Options<a aria-hidden="true" class="hover_anchor" href="#initial-ledger-options"><i class="fa fa-link"></i></a></h3>
+<h2 id="initial-ledger-options">Initial Ledger Options<a aria-hidden="true" class="hover_anchor" href="#initial-ledger-options"><i class="fa fa-link"></i></a></h2>
 <p>The following options determine which ledger to load first when starting up. These options are intended for replaying historical ledgers or starting test networks. These options work with both stand-alone mode and network mode.</p>
 <table class="table-responsive">
 <thead>
