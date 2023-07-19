@@ -1713,7 +1713,7 @@ pages:
         targets:
             - ja
 
-    -   md: tutorials/use-specialized-payment-types/use-escrows/create-custom-transactors.md
+    -   md: tutorials/use-specialized-payment-types/create-custom-transactors.md
         targets:
             - en
             - ja

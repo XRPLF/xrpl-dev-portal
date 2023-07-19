@@ -7,59 +7,33 @@ labels:
 ---
 # Create Custom Transactors
 
-You can create custom transactors to modify the XRP Ledger.
+You can create custom transactors to modify the XRP Ledger. Transactors follow a basic order of operations:
 
-## Create .h file
+1. Access a _view_ into a serialized type ledger entry (SLE).
+2. Update, erase, or insert values in the _view_.
+3. Apply the finalized changes to the ledger.
 
-1. Initialize your transactor with the `ApplyContext` object. `ApplyContext` includes the transaction that triggered the transactor, the view of the SLE, as well as a journal to log errors.
+**Note:** _Views_ are sandboxes into ledgers. Transactors make all necessary error checks and changes in sandboxes, not directly on the ledger. After values are finalized, changes are applied atomically to the ledger.
 
-```c++
-public:
-  explicit MyTransactor(ApplyContext& ctx) : Transactor(ctx)
-  {
-  }
-```
+This tutorial uses the existing `CreateCheck` transactor as an example. You can view the source files here:
 
-2. Add a preflight function.
+- [Header File](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.h)
+- [CPP File](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp)
 
-```c++
-static NotTEC
-preflight(PreflightContext const& ctx);
-```
 
-- `PreflightContext` doesn't have a view (no access to the ledger). This function is for error checks on the transaction itself. Good for checking malformed transactors, such as sending an IOU to escrows which don't support IOUs.
+## Header File
 
-- This prevent needless transactions which incurs fees.
-
-3. Add a preclaim function.
+Create a header file in this format:
 
 ```c++
-static TER
-preclaim(PreclaimContext const& ctx);
-```
+namespace ripple {
 
-- `PreclaimContext` has a read-only view of the ledger.
-
-- This is still used for error checking, but will incur fees.
-
-- A good example is checking for errors that require looking at the ledger, such as sending an escrow to an account that doesn't exist.
-
-4. Add a `doApply()` function.
-
-```c++
-TER
-doApply() override;
-```
-
-- doApply() has access to the read/write view, enabling you to modify ledger objects.
-
-
-```c++
-class CashCheck : public Transactor
+class CreateCheck : public Transactor
 {
 public:
-    
-    explicit CashCheck(ApplyContext& ctx) : Transactor(ctx)
+    static constexpr ConsequencesFactoryType ConsequencesFactory{Normal};
+
+    explicit CreateCheck(ApplyContext& ctx) : Transactor(ctx)
     {
     }
 
@@ -72,109 +46,263 @@ public:
     TER
     doApply() override;
 };
+
+}  // namespace ripple
 ```
 
+Initializing the transactor with `ApplyContext` gives it access to:
 
-```c++
-class MyTransactor : public Transactor
-{
-  public:
-    explicit MyTransactor(ApplyContext& ctx) : Transactor(ctx)
+- The transaction that triggered the transactor.
+- A view of the SLE.
+- A journal to log errors.
+
+
+## CPP File
+
+1. Add a `preflight` function that checks for errors before accessing the ledger and incurring fees.
+
+    ```c++
+    CreateCheck::preflight(PreflightContext const& ctx)
     {
+        if (!ctx.rules.enabled(featureChecks))
+            return temDISABLED;
+
+        NotTEC const ret{preflight1(ctx)};
+        if (!isTesSuccess(ret))
+            return ret;
+
+        if (ctx.tx.getFlags() & tfUniversalMask)
+        {
+            // There are no flags (other than universal) for CreateCheck yet.
+            JLOG(ctx.j.warn()) << "Malformed transaction: Invalid flags set.";
+            return temINVALID_FLAG;
+        }
+        if (ctx.tx[sfAccount] == ctx.tx[sfDestination])
+        {
+            // They wrote a check to themselves.
+            JLOG(ctx.j.warn()) << "Malformed transaction: Check to self.";
+            return temREDUNDANT;
+        }
+
+        {
+            STAmount const sendMax{ctx.tx.getFieldAmount(sfSendMax)};
+            if (!isLegalNet(sendMax) || sendMax.signum() <= 0)
+            {
+                JLOG(ctx.j.warn()) << "Malformed transaction: bad sendMax amount: "
+                                << sendMax.getFullText();
+                return temBAD_AMOUNT;
+            }
+
+            if (badCurrency() == sendMax.getCurrency())
+            {
+                JLOG(ctx.j.warn()) << "Malformed transaction: Bad currency.";
+                return temBAD_CURRENCY;
+            }
+        }
+
+        // Add `~` for optional types.
+        if (auto const optExpiry = ctx.tx[~sfExpiration])
+        {
+            if (*optExpiry == 0)
+            {
+                JLOG(ctx.j.warn()) << "Malformed transaction: bad expiration";
+                return temBAD_EXPIRATION;
+            }
+        }
+
+        return preflight2(ctx);
     }
+    ```
 
-    static NotTEC
-    preflight(PreflightContext const& ctx);
-
-    static TER
-    preclaim(PreclaimContext const& ctx);
-
-    TER
-    doApply() override;
-};
-```
-
-## Create .cpp file
+    - `PreflightContext` doesn't have a view of the ledger.
+    - Use bracket notation to access fields. Ledger objects and transactions follow a known schema. You can look them up here:
+        - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
+        - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
 
 
+2. Add a `preclaim` function to make error checks that require viewing information on the ledger.
+
+    ```c++
+    CreateCheck::preclaim(PreclaimContext const& ctx)
+    {
+        AccountID const dstId{ctx.tx[sfDestination]};
+        // Use the `keylet` function to get the key of the SLE.
+        auto const sleDst = ctx.view.read(keylet::account(dstId));
+        if (!sleDst)
+        {
+            JLOG(ctx.j.warn()) << "Destination account does not exist.";
+            return tecNO_DST;
+        }
+
+        auto const flags = sleDst->getFlags();
+
+        // Check if the destination has disallowed incoming checks
+        if (ctx.view.rules().enabled(featureDisallowIncoming) &&
+            (flags & lsfDisallowIncomingCheck))
+            return tecNO_PERMISSION;
+
+        if ((flags & lsfRequireDestTag) && !ctx.tx.isFieldPresent(sfDestinationTag))
+        {
+            // The tag is basically account-specific information we don't
+            // understand, but we can require someone to fill it in.
+            JLOG(ctx.j.warn()) << "Malformed transaction: DestinationTag required.";
+            return tecDST_TAG_NEEDED;
+        }
+
+        {
+            STAmount const sendMax{ctx.tx[sfSendMax]};
+            if (!sendMax.native())
+            {
+                // The currency may not be globally frozen
+                AccountID const& issuerId{sendMax.getIssuer()};
+                if (isGlobalFrozen(ctx.view, issuerId))
+                {
+                    JLOG(ctx.j.warn()) << "Creating a check for frozen asset";
+                    return tecFROZEN;
+                }
+                // If this account has a trustline for the currency, that
+                // trustline may not be frozen.
+                //
+                // Note that we DO allow create check for a currency that the
+                // account does not yet have a trustline to.
+                AccountID const srcId{ctx.tx.getAccountID(sfAccount)};
+                if (issuerId != srcId)
+                {
+                    // Check if the issuer froze the line
+                    auto const sleTrust = ctx.view.read(
+                        keylet::line(srcId, issuerId, sendMax.getCurrency()));
+                    if (sleTrust &&
+                        sleTrust->isFlag(
+                            (issuerId > srcId) ? lsfHighFreeze : lsfLowFreeze))
+                    {
+                        JLOG(ctx.j.warn())
+                            << "Creating a check for frozen trustline.";
+                        return tecFROZEN;
+                    }
+                }
+                if (issuerId != dstId)
+                {
+                    // Check if dst froze the line.
+                    auto const sleTrust = ctx.view.read(
+                        keylet::line(issuerId, dstId, sendMax.getCurrency()));
+                    if (sleTrust &&
+                        sleTrust->isFlag(
+                            (dstId > issuerId) ? lsfHighFreeze : lsfLowFreeze))
+                    {
+                        JLOG(ctx.j.warn())
+                            << "Creating a check for destination frozen trustline.";
+                        return tecFROZEN;
+                    }
+                }
+            }
+        }
+        if (hasExpired(ctx.view, ctx.tx[~sfExpiration]))
+        {
+            JLOG(ctx.j.warn()) << "Creating a check that has already expired.";
+            return tecEXPIRED;
+        }
+        return tesSUCCESS;
+    }
+    ```
+
+    - `PreclaimContext` has a read-only view of the ledger.
+    - This function incurs fees.
+    - You can use either `read` or `peak` when retriving the SLE. After accessing the SLE, use bracket notation to retrieve fields:
+
+        ```c++
+        auto const curExpiration = (*sle*)[~sfExpiration];
+        (*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
+        ```
+
+        **Note:** The `~` symbol returns an optional type.
 
 
-## Ledger Object
+3. Add a `doApply()` function.
 
-- Is how the state of the ledger is stored. Examples are accountroot, which holds balance and publick key.
+    ```c++
+    CreateCheck::doApply()
+    {
+        auto const sle = view().peek(keylet::account(account_));
+        if (!sle)
+            return tefINTERNAL;
 
-- SLE is a type alias for STLedgerEntry, or serialized type ledger entry.
+        // A check counts against the reserve of the issuing account, but we
+        // check the starting balance because we want to allow dipping into the
+        // reserve to pay fees.
+        {
+            STAmount const reserve{
+                view().fees().accountReserve(sle->getFieldU32(sfOwnerCount) + 1)};
 
-- Ledger formats have a known schema, depending on what you get. Stored in `ledgerformats.cpp`.
+            if (mPriorBalance < reserve)
+                return tecINSUFFICIENT_RESERVE;
+        }
 
-- Ledger objects know their key in the ledger. it's a 256 bit value.
+        // Note that we use the value from the sequence or ticket as the
+        // Check sequence.  For more explanation see comments in SeqProxy.h.
+        std::uint32_t const seq = ctx_.tx.getSeqProxy().value();
+        Keylet const checkKeylet = keylet::check(account_, seq);
+        auto sleCheck = std::make_shared<SLE>(checkKeylet);
 
-- Schema for Ledger Objects:
+        sleCheck->setAccountID(sfAccount, account_);
+        AccountID const dstAccountId = ctx_.tx[sfDestination];
+        sleCheck->setAccountID(sfDestination, dstAccountId);
+        sleCheck->setFieldU32(sfSequence, seq);
+        sleCheck->setFieldAmount(sfSendMax, ctx_.tx[sfSendMax]);
+        if (auto const srcTag = ctx_.tx[~sfSourceTag])
+            sleCheck->setFieldU32(sfSourceTag, *srcTag);
+        if (auto const dstTag = ctx_.tx[~sfDestinationTag])
+            sleCheck->setFieldU32(sfDestinationTag, *dstTag);
+        if (auto const invoiceId = ctx_.tx[~sfInvoiceID])
+            sleCheck->setFieldH256(sfInvoiceID, *invoiceId);
+        if (auto const expiry = ctx_.tx[~sfExpiration])
+            sleCheck->setFieldU32(sfExpiration, *expiry);
 
-{sfAccount, soeREQUIRED} `sf` stands for static field and then append the field name to get the field you want. `soe` denotes if it's required or not.
-{sfBalance, soeREQURIED}
+        view().insert(sleCheck);
 
-- The way to get Ledger objects from ledger:
+        auto viewJ = ctx_.app.journal("View");
+        // If it's not a self-send (and it shouldn't be), add Check to the
+        // destination's owner directory.
+        if (dstAccountId != account_)
+        {
+            auto const page = view().dirInsert(
+                keylet::ownerDir(dstAccountId),
+                checkKeylet,
+                describeOwnerDir(dstAccountId));
 
-Use the `keylet` function to get the key of the ledger object (SLE) you want.
+            JLOG(j_.trace()) << "Adding Check to destination directory "
+                            << to_string(checkKeylet.key) << ": "
+                            << (page ? "success" : "failure");
 
-```c++
-`view.read(keylet::account(account));
-```
+            if (!page)
+                return tecDIR_FULL;
 
-You'll use either `read` or `peak` to retrieve the SLE.
+            sleCheck->setFieldU64(sfDestinationNode, *page);
+        }
 
-- SLE Interface:
+        {
+            auto const page = view().dirInsert(
+                keylet::ownerDir(account_),
+                checkKeylet,
+                describeOwnerDir(account_));
 
-The interface/schema of the SLE. Use bracket notation to retrieve fields.
+            JLOG(j_.trace()) << "Adding Check to owner directory "
+                            << to_string(checkKeylet.key) << ": "
+                            << (page ? "success" : "failure");
 
-```c++
-auto const curExpiration = (*sle*)[~sfExpiration];
-(*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
-```
+            if (!page)
+                return tecDIR_FULL;
 
-The `~` symbol returns an optional type.
+            sleCheck->setFieldU64(sfOwnerNode, *page);
+        }
+        // If we succeeded, the new entry counts against the creator's reserve.
+        adjustOwnerCount(view(), sle, 1, viewJ);
+        return tesSUCCESS;
+    }
+    ```
 
-
-## Transactions
-
-
-- Transactions are represented by STTx, or serialized type Tx.
-
-- These are similar to ledger objects.
-
-- Look up known formats in `TxFormats.cpp`
-
-
-## Views
-
-- Views are sandboxes into ledgers.
-
-- Values are changed in sandboxes, not the ledgers directly. This is done since you want changes to happen atomically, aka all the little steps happen in sandbox, finalized thing submitted on ledger.
-
-- Views can be stacked for more complex code/situations.
-
-- Order of operations in Views.
-
-  1. Peek/read SLE
-  2. Update/erase/insert
-  3. Apply to ledger.
-
-- Peek vs read. Peek gives you a read/write SLE. Read only gives a read-only (no changes allowed).
-
-```c++
-auto const sle = 
-  view.peek(keylet::account(txAccount));
-
-(*sle)[sfBalance] = (*sle)[sfBalance] - tx[sfAmount];
-view.update(sle);
-```
-
-## Invariants
-
-Invariant system run on every transaction to make sure certain things are always true no matter what, serving as a final check on transactions. The system isn't perfect and is designed for checking catastrophic errors, such as never creating new XRP.
+    - `doApply()` has read/write view access, enabling you to modify the ledger.
 
 
 ## Next Steps
 
-Submit your transactor to the XRPL `Devnet` for others to test.
+Submit your transactor to the XRPL `Devnet` for others to test. See: [Contribute Code to the XRP Ledger](contribute-code-flow.html).
