@@ -70,7 +70,7 @@ Daemon mode is the default mode of operation for `rippled`. In addition to the [
 
 The following option has been removed: `--validateShards`. [Removed in: rippled 1.7.0][]
 
-### Stand-Alone Mode Options
+## Stand-Alone Mode Options
 
 ```bash
 rippled --standalone [OPTIONS]
@@ -78,7 +78,7 @@ rippled -a [OPTIONS]
 ```
 Run in [stand-alone mode](rippled-server-modes.html). In this mode, `rippled` does not connect to the network or perform consensus. (Otherwise, `rippled` runs in daemon mode.)
 
-### Initial Ledger Options
+## Initial Ledger Options
 
 The following options determine which ledger to load first when starting up. These options are intended for replaying historical ledgers or starting test networks. These options work with both stand-alone mode and network mode.
 
