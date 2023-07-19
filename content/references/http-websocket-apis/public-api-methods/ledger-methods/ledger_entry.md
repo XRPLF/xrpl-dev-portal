@@ -206,9 +206,9 @@ Retrieve an [Offer object](offer.html), which defines an offer to exchange curre
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `offer`                 | Object or String           | The [Offer object](offer.html) to retrieve. If a string, interpret as the [unique object ID](ledger-structure.html#tree-format) to the Offer. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
+| `offer`                 | Object or String           | The [Offer object](offer.html) to retrieve. If a string, interpret as the Offer's [ledger entry ID](ledger-object-ids.html). If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
 | `offer.account`         | String - [Address][]       | _(Required if `offer` is specified as an object)_ The account that placed the offer. |
-| `offer.seq`             | Unsigned Integer           | _(Required if `offer` is specified as an object)_ The [Sequence Number][] of the transaction that created the Offer object. |
+| `offer.seq`             | Unsigned Integer           | _(Required if `offer` is specified as an object)_ The [Sequence Number][] of the transaction that created the Offer entry. |
 
 <!-- MULTICODE_BLOCK_START -->
 

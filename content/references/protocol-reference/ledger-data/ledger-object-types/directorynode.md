@@ -9,11 +9,11 @@ labels:
 # DirectoryNode
 [[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
 
-The `DirectoryNode` object type provides a list of links to other objects in the ledger's state tree. A single conceptual _Directory_　takes the form of a doubly linked list, with one or more DirectoryNode objects each containing up to 32 [IDs](ledger-structure.html#tree-format) of other objects. The first object is called the root of the directory, and all objects other than the root object can be added or deleted as necessary.
+The `DirectoryNode` ledger entry type provides a list of links to other entries in the ledger's state data. A single conceptual _Directory_　takes the form of a doubly linked list, with one or more DirectoryNode entries each containing up to 32 [IDs of other entries](ledger-object-ids.html). The first DirectoryNode entry is called the root of the directory, and all entries other than the root can be added or deleted as necessary.
 
 There are two kinds of Directories:
 
-* **Owner directories** list other objects owned by an account, such as [`RippleState` (trust line)](ripplestate.html) or [`Offer`](offer.html) objects.
+* **Owner directories** list other entries owned by an account, such as [`RippleState` (trust line)](ripplestate.html) or [`Offer`](offer.html) entries.
 * **Offer directories** list the offers available in the [decentralized exchange](decentralized-exchange.html). A single Offer directory contains all the offers that have the same exchange rate for the same token (currency code and issuer).
 
 ## Example {{currentpage.name}} JSON
@@ -61,7 +61,7 @@ There are two kinds of Directories:
 
 | Name                | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------------|:----------|:------------------|:----------|:------------|
-| `ExchangeRate`      | String    | UInt64            | No       | (Offer Directories only) **DEPRECATED**. Do not use. |
+| `ExchangeRate`      | String    | UInt64            | No        | (Offer Directories only) **DEPRECATED**. Do not use. |
 | `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `DirectoryNode` objects. The value is always `0`. |
 | `Indexes`           | Array     | Vector256         | Yes       | The contents of this Directory: an array of IDs of other objects. |
 | `IndexNext`         | Number    | UInt64            | No        | If this Directory consists of multiple pages, this ID links to the next object in the chain, wrapping around at the end. |
