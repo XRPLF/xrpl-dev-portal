@@ -38,7 +38,7 @@ The exact look and feel of the user interface depend on your computer's operatin
 
 The application in this tutorial _doesn't_ have the ability to send or trade [tokens](issued-currencies.html) or use other [payment types](payment-types.html) like Escrow or Payment Channels. However, it provides a foundation that you can implement those and other features on top of.
 
-In addition to the above features, you'll also learn a little bit about graphical user interface (GUI) programming, threading, and asynchronous (async) code in Python.
+Other topics mentioned in this tutorial include graphical user interface (GUI) programming, threading, and asynchronous (async) code in Python.
 
 ## Steps
 
@@ -66,8 +66,6 @@ The `requests` and `toml` libraries are only needed for the [domain verification
 On Windows, you can build apps using either Windows natively or by using the Windows Subsystem for Linux (WSL). <!-- SPELLING_IGNORE: wsl -->
 
 On native Windows, the GUI uses native Windows controls and should run without any dependencies beyond those mentioned above.
-
-**Caution:** As of 2022-02-01, the latest wxPython is not compatible with Python 3.10 on Windows. You should be able to follow this tutorial if you downgrade to the latest release of Python 3.9.
 
 On WSL, you may need to install `libnotify-dev` as follows:
 
@@ -143,7 +141,7 @@ Finally, change the code to start the app (at the end of the file) slightly:
 
 {{ include_code("_code-samples/build-a-wallet/py/2_threaded.py", language="py", start_with="if __name__") }}
 
-Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to be use WebSocket URL to connect.
+Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to use a WebSocket URL to connect.
 
 **Tip:** If you [run your own `rippled` server](networks-and-servers.html#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](public-servers.html) to connect to the Mainnet or other test networks.
 
