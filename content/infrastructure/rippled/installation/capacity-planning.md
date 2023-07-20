@@ -146,7 +146,7 @@ The following table approximates the requirements for different amounts of histo
 | 90 days          | 2,250,000                 | 1 TB |
 | 1 year           | 10,000,000                | 4.5 TB |
 | 2 years          | 20,000,000                | 9 TB |
-| Full history     | 81,000,000+               | ~23 TB |
+| Full history     | 81,000,000+               | ~26 TB |
 
 These numbers are estimates. They depend on several factors, most importantly the volume of transactions in the network. As transaction volume increases, each ledger version stores more unique data. You should provision extra storage capacity to prepare for future growth.
 
