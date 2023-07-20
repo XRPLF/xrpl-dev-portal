@@ -1,7 +1,7 @@
 ---
 html: ledgers.html
 parent: concepts.html
-blurb: The history of 
+blurb: Ledgers are the data structure that holds data in the shared XRP Ledger network. A chain of ledgers records the history of transactions and state changes.
 labels:
   - Blockchain
   - Data Retention
