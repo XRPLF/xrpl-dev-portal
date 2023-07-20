@@ -136,8 +136,11 @@ Use the following conventions when creating a page:
 - Don't hard-wrap text in Markdown files.
 - For code samples, try to keep lines no longer than 80 columns wide.
 - When in doubt, follow [Ciro Santilli's Markdown Style Guide (Writability Profile)](https://cirosantilli.com/markdown-style-guide/).
-- Landing pages should be in subfolders and should have the same filename as the folder. For example, the landing page of the "Accounts" page group should be `accounts/accounts.md` with the HTML filename `accounts.html`. **Don't** use `index.md`.
-- Don't use tab characters for indentation in Markdown or code samples. Use **4 spaces per indent**, except in **JavaScript** code samples, which should use 2 spaces per indent.
+- Landing pages should be in subfolders and should have the same filename as the folder. For example, the landing page of the "Accounts" page group should be `accounts/accounts.md` with the HTML filename `accounts.html`.
+    
+    **Warning:** Don't use `index.md`.
+
+- Don't use tab characters for indentation in Markdown or code samples. Use 4 spaces per indent, except in **JavaScript** code samples, which should use 2 spaces per indent.
 
 ### Terminology
 
@@ -151,7 +154,7 @@ Use the following words and phrases as described:
 | ledger entry      | ledger object, node | A single object inside the state data of the XRP Ledger. The term _ledger object_ could refer to one of these or to the whole ledger. The term _node_ was sometimes used for this case because the ledger's state data can be envisioned as a graph, but this is confusing because _node_ has other uses. |
 | liquidity provider | market maker | A business or individual who offers to exchange between two currencies or assets, often deriving income from the price differential between trades. The term _market maker_ has a specific legal definition in some jurisdictions and may not apply in all the same circumstances. |
 | malicious actor   | hacker | A person, organization, or even an automated tool which might attempt to acquire secrets, break encryption, deny service, or otherwise attack a secure resource. |
-| a NFToken         | NFT, an NFToken | A NFToken object in the XRP Ledger tracks or represents a non-fungible token. Pronounced "nif-token" and written _a NFToken_ rather than _an NFToken_ |
+| a NFT             | an NFT | A NFT object in the XRP Ledger tracks or represents a non-fungible token. Pronounced "nif-token" and written _a NFT_ rather than _an NFT_. |
 | PostgreSQL        | Postgres | A specific brand of relational database software. Always use the full name, not an informal short version. |
 | order book        | orderbook, offer book | A collection of trade orders waiting to be matched and executed, typically sorted by exchange rate. Use two words. |
 | server            | node | A server is software and/or hardware, especially the ones that connect to the XRP Ledger peer-to-peer network. The term _node_ is sometimes used for this purpose but is also overloaded with other meanings including entries in a graph and Node.js, a JavaScript interpreter. |
