@@ -2,7 +2,6 @@
 html: tutorial-structure.html
 parent: contribute.html
 ---
-
 # Tutorial Structure
 
 Each XRP Ledger tutorial follows the same format.

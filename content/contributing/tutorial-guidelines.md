@@ -2,7 +2,6 @@
 html: tutorial-guidelines.html
 parent: contribute.html
 ---
-
 # Tutorial Guidelines
 
 We are creating a modular tutorial framework that allows developers to learn how transactions and requests work on the XRP Ledger. Developers can review the modules to learn about business solutions, and potentially repurpose the scripts in their own applications.

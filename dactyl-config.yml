@@ -5028,6 +5028,44 @@ pages:
             - ja
 
 
+# Contributing to Documentation -----------------------------------------------
+
+    -   md: contributing/contributing-to-documentation.md
+        html: contributing-to-documentation.html
+        parent: docs.html
+        targets:
+            - en
+            - ja
+
+    -   md: contributing/documentation-languages.md
+        targets:
+            - en
+            - ja
+
+    -   md: contributing/creating-diagrams.md
+        targets:
+            - en
+            - ja
+
+    # TODO: translate
+    -   md: contributing/tutorial-guidelines.md
+        html: tutorial-guidelines.html
+        parent: contributing-to-documentation.html
+        top_nav_omit: true
+        targets:
+            - en
+            - ja
+
+    # TODO: translate
+    -   md: contributing/tutorial-structure.md
+        html: tutorial-structure.html
+        parent: tutorial-guidelines.html
+        top_nav_omit: true
+        targets:
+            - en
+            - ja
+
+
 # "Community" tab --------------------------------------------------------------
     -   name: Contribute to the XRPL Community
         html: contribute.html
@@ -5062,23 +5100,6 @@ pages:
             - en
             - ja
 
-    # TODO: translate
-    -   md: contributing/tutorial-guidelines.md
-        html: tutorial-guidelines.html
-        parent: contribute-code.html
-        top_nav_omit: true
-        targets:
-            - en
-            - ja
-
-    # TODO: translate
-    -   md: contributing/tutorial-structure.md
-        html: tutorial-structure.html
-        parent: tutorial-guidelines.html
-        top_nav_omit: true
-        targets:
-            - en
-            - ja
 
     -   name: Events
         html: events.html
