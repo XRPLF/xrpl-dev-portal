@@ -5030,6 +5030,8 @@ pages:
 
 # Contributing to Documentation -----------------------------------------------
 
+    # TODO: Translate section.
+
     -   md: contributing/contributing-to-documentation.md
         html: contributing-to-documentation.html
         parent: docs.html
@@ -5047,7 +5049,6 @@ pages:
             - en
             - ja
 
-    # TODO: translate
     -   md: contributing/tutorial-guidelines.md
         html: tutorial-guidelines.html
         parent: contributing-to-documentation.html
@@ -5056,7 +5057,6 @@ pages:
             - en
             - ja
 
-    # TODO: translate
     -   md: contributing/tutorial-structure.md
         html: tutorial-structure.html
         parent: tutorial-guidelines.html
