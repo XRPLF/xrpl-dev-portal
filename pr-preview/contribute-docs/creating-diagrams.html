@@ -295,12 +295,12 @@
 </blockquote>
 <h2 id="making-diagrams">Making Diagrams<a aria-hidden="true" class="hover_anchor" href="#making-diagrams"><i class="fa fa-link"></i></a></h2>
 <p>You have to take care when creating diagrams so that the recoloring applies correctly; otherwise, some elements might be invisible (white-on-white or black-on-black, for example) when recolored for the other theme. The theme-aware diagrams code supports diagrams created using either <a class="external-link" href="https://www.umlet.com/" target="_blank">Umlet <i aria-hidden="true" class="fa fa-external-link"></i></a> or <a class="external-link" href="https://docs.google.com/drawings/" target="_blank">Google Draw <i aria-hidden="true" class="fa fa-external-link"></i></a> and exported as SVG. Additionally, you should follow these guidelines when making diagrams:</p>
-<ol start="0">
+<ul>
 <li>Create diagrams for light mode by default. Use a transparent background color.</li>
 <li>Only use colors that the theme-aware diagrams code has mappings for. The code for this, including the full list of colors, is in <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/styles/_diagrams.scss" target="_blank"><code>styles/_diagrams.scss</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>. If needed, you can add new colors by extending the SCSS code. (Don't forget to re-export the CSS when you're done. See the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/styles/README.md" target="_blank">styles README <i aria-hidden="true" class="fa fa-external-link"></i></a>.)</li>
 <li>Use actual vector shapes instead of embedded icons/images whenever possible. If you need to put text on top of an image, add a solid background to the text element and use one of the colors the theme has mappings for.</li>
 <li>Don't layer transparent elements containing text on top of elements with different background colors. Apply a background color directly to the element that contains the text.</li>
-</ol>
+</ul>
     </div>
   </article>
 <!-- Feedback Widget -->
