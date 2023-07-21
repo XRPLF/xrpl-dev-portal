@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v20.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -164,6 +164,7 @@
             <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
             <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+            <a class="dropdown-item" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -316,9 +317,9 @@
 <p>Base reserve requirements See <a href="reserves.html#基本準備金と所有者準備金">Reserves</a>.</p>
 <p>Current wallet options on XRPL: This is a good opportunity for XRPL to highlight wallet providers in the ecosystem</p>
 <h3 id="transferring-nfts">Transferring NFTs<a aria-hidden="true" class="hover_anchor" href="#transferring-nfts"><i class="fa fa-link"></i></a></h3>
-<p>You transfer NFTs by creating a sell offer or accepting a buy offer. See <a href="transfer-nftokens-using-javascript.html">Transfer NFTokens</a>.</p>
+<p>You transfer NFTs by creating a sell offer or accepting a buy offer. See <a href="transfer-nfts-using-javascript.html">Transfer NFTokens</a>.</p>
 <p>You can sell your NFTs in an auction format. See <a href="nftoken-auctions.html">Running an NFT Auction</a>.</p>
-<p>You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See <a href="broker-sale-using-javascript.html">Broker a NFToken sale</a>.</p>
+<p>You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See <a href="broker-an-nft-sale-using-javascript.html">Broker a NFToken sale</a>.</p>
 <h3 id="reserve-requirements">Reserve requirements<a aria-hidden="true" class="hover_anchor" href="#reserve-requirements"><i class="fa fa-link"></i></a></h3>
 <p>There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.</p>
 <p>Each <code>NFTokenOffer</code> object requires a reserve of 2 XRP.</p>
@@ -331,9 +332,9 @@
 </ol>
 <p>You can learn more about brokered sales in the topic <a href="non-fungible-token-transfers.html">Trading Tokens on the XRP Ledger</a>.</p>
 <p>Learn more about token transfer fees in the topic <a href="transfer-fees.html">Transfer Fees</a>.</p>
-<p>You can get started building a brokered sales marketplace by following the steps in the <a href="broker-sale-using-javascript.html">Broker a NFToken Sale</a>. </p>
+<p>You can get started building a brokered sales marketplace by following the steps in the <a href="broker-an-nft-sale-using-javascript.html">Broker a NFToken Sale</a>. </p>
 <h3 id="checkout">Checkout<a aria-hidden="true" class="hover_anchor" href="#checkout"><i class="fa fa-link"></i></a></h3>
-<p>The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see <a href="transfer-nftokens-using-javascript.html">Transfer NFTokens</a>.</p>
+<p>The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see <a href="transfer-nfts-using-javascript.html">Transfer NFTokens</a>.</p>
 <p>For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See <a href="trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange">Trade in the Decentralized Exchange</a>.</p>
 <h2 id="indexing-nfts">Indexing NFTs<a aria-hidden="true" class="hover_anchor" href="#indexing-nfts"><i class="fa fa-link"></i></a></h2>
 <p>When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.</p>
@@ -2869,6 +2870,45 @@ Supplement Information [No link]
     <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL学習ポータル <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11" aria-expanded="false" aria-controls="tree_nav_group_11"></a>
+
+        <a class="nav-link" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_11">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/documentation-languages.html">Translations</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/creating-diagrams.html">Creating Diagrams</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11_3" aria-expanded="false" aria-controls="tree_nav_group_11_3"></a>
+
+        <a class="nav-link" href="/ja/tutorial-guidelines.html">Tutorial Guidelines</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_11_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tutorial-structure.html">Tutorial Structure</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -2905,6 +2945,7 @@ Supplement Information [No link]
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
+            <li class="nav-item"><a href="/ja/contributing-to-documentation.html" class="nav-link">Contributing to Documentation</a></li>
           </ul>
         </div><!--/.col -->
 

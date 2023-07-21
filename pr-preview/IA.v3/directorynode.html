@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v20.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -163,6 +163,7 @@
             <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
             <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+            <a class="dropdown-item" href="contributing-to-documentation.html">Contributing to Documentation</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -299,10 +300,10 @@
     <div class="content">
         <h1 id="directorynode">DirectoryNode<a aria-hidden="true" class="hover_anchor" href="#directorynode"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>DirectoryNode</code> object type provides a list of links to other objects in the ledger's state tree. A single conceptual <em>Directory</em>　takes the form of a doubly linked list, with one or more DirectoryNode objects each containing up to 32 <a href="ledger-structure.html#tree-format">IDs</a> of other objects. The first object is called the root of the directory, and all objects other than the root object can be added or deleted as necessary.</p>
+<p>The <code>DirectoryNode</code> ledger entry type provides a list of links to other entries in the ledger's state data. A single conceptual <em>Directory</em>　takes the form of a doubly linked list, with one or more DirectoryNode entries each containing up to 32 <a href="ledger-object-ids.html">IDs of other entries</a>. The first DirectoryNode entry is called the root of the directory, and all entries other than the root can be added or deleted as necessary.</p>
 <p>There are two kinds of Directories:</p>
 <ul>
-<li><strong>Owner directories</strong> list other objects owned by an account, such as <a href="ripplestate.html"><code>RippleState</code> (trust line)</a> or <a href="offer.html"><code>Offer</code></a> objects.</li>
+<li><strong>Owner directories</strong> list other entries owned by an account, such as <a href="ripplestate.html"><code>RippleState</code> (trust line)</a> or <a href="offer.html"><code>Offer</code></a> entries.</li>
 <li><strong>Offer directories</strong> list the offers available in the <a href="decentralized-exchange.html">decentralized exchange</a>. A single Offer directory contains all the offers that have the same exchange rate for the same token (currency code and issuer).</li>
 </ul>
 <h2 id="example-directorynode-json">Example DirectoryNode JSON<a aria-hidden="true" class="hover_anchor" href="#example-directorynode-json"><i class="fa fa-link"></i></a></h2>
@@ -2985,6 +2986,45 @@
     <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Learning Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11" aria-expanded="false" aria-controls="tree_nav_group_11"></a>
+
+        <a class="nav-link" href="contributing-to-documentation.html">Contributing to Documentation</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_11">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="documentation-languages.html">Translations</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="creating-diagrams.html">Creating Diagrams</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11_3" aria-expanded="false" aria-controls="tree_nav_group_11_3"></a>
+
+        <a class="nav-link" href="tutorial-guidelines.html">Tutorial Guidelines</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_11_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tutorial-structure.html">Tutorial Structure</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -3021,6 +3061,7 @@
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
+            <li class="nav-item"><a href="contributing-to-documentation.html" class="nav-link">Contributing to Documentation</a></li>
           </ul>
         </div><!--/.col -->
 

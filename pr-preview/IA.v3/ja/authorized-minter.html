@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v20.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -164,6 +164,7 @@
             <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
             <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+            <a class="dropdown-item" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -305,14 +306,14 @@
         <h1 id="authorized-minter">Authorized Minter<a aria-hidden="true" class="hover_anchor" href="#authorized-minter"><i class="fa fa-link"></i></a></h1>
 <p><em>As an authorized minter, I want to mint tokens for a token issuer at an agreed upon rate and sell the tokens at a profit, with royalties returning to the issuer.</em></p>
 <p>You can act as an authorized minter for token issuers. When you do this, you own the NFToken, but royalties flow to the NFToken issuer. When you make a sale of that NFToken, the proceeds of the initial sale go to you. You can have an agreement with your issuer to pay them some or all of your portion of the initial sale amount.</p>
-<p>You can learn more in the tutorial <a href="authorize-minter-using-javascript.html">Assign an Authorized Minter</a>. </p>
+<p>You can learn more in the tutorial <a href="assign-an-authorized-minter-using-javascript.html">Assign an Authorized Minter</a>. </p>
 <p><a href="img/nft-mkt-auth-minter.png"><img alt="Authorized Minter Flow" src="img/nft-mkt-auth-minter.png" title="Authorized Minter Flow"/></a></p>
 <h2 id="set-up-a-rippled-instance">Set up a rippled instance<a aria-hidden="true" class="hover_anchor" href="#set-up-a-rippled-instance"><i class="fa fa-link"></i></a></h2>
 <p>If you want to set up a larger site with high volume, it might be worth investing in your own XRP Ledger server instance. See <a href="install-rippled.html">Install rippled</a>.</p>
 <h2 id="set-up-your-marketplace">Set up your marketplace<a aria-hidden="true" class="hover_anchor" href="#set-up-your-marketplace"><i class="fa fa-link"></i></a></h2>
 <p>Rather than designing NFTs yourself, you coordinate with an NFT creator to become an authorized minter and generate NFTs on their behalf. This allows the creator to focus on making new NFTs while you handle production and sales of the NFTs. See <a href="nftoken-authorized-minting.html">Authorized Minter</a>.</p>
 <p>Once you finish creating NFTs, the creator can revoke your privileges and reassert control over the NFTs. You might also transfer the tokens to a marketplace that will handle sales of the NFTs. You can act as a broker to match sell offers to buy offers. See <a href="nftoken-auctions.html">Running an NFT auction</a>.</p>
-<p>To mint your first NFTs on behalf of another account, see <a href="authorize-minter-using-javascript.html">Authorizing Another Account to Mint Your NFTs</a>.</p>
+<p>To mint your first NFTs on behalf of another account, see <a href="assign-an-authorized-minter-using-javascript.html">Authorizing Another Account to Mint Your NFTs</a>.</p>
 <p>If you, as the owner or issuer, want to be able to burn the token in the future, set the <code>Flags</code> field to <em>1.</em> To make the NFT transferable, set the <code>Flags</code> field to <em>8</em>. Set the <code>Flags</code> field to <em>9</em> to make the NFT both burnable and transferable. See<a href="nftoken.html#nftoken-フラグ"> Burnable flag</a> and <a href="nftoken.html#nftoken-フラグ">Transferable flag</a>.</p>
 <p>You can arrange for the creator to receive royalties from future sales by setting a <code>transfer fee<em>. </em></code>This is a value from 0-50000 representing 0-50% of the sale price. See <a href="nftoken.html#送金手数料">Transfer Fee</a>.</p>
 <p>The NFToken URL is a link to the location where the content of the NFT is stored. One option is create an IPFS account and store the NFToken content at a persistent URL. See <a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data" target="_blank">Best Practices for Storing NFT Data <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
@@ -324,9 +325,9 @@ Use the TokenTaxon field to gather a set of NFTs centered around a specific them
 You can assure scarcity of NFTs you create by creating them with what might be characterized as a “burner” account that you use to mint a set number of NFTs for another account, then delete the account you used to mint the NFTs. See <a href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>.</li>
 </ul>
 <h2 id="transferring-nfts">Transferring NFTs<a aria-hidden="true" class="hover_anchor" href="#transferring-nfts"><i class="fa fa-link"></i></a></h2>
-<p>You transfer NFTs by creating a sell offer or accepting a buy offer. See <a href="transfer-nftokens-using-javascript.html">Transfer NFTokens</a>.</p>
+<p>You transfer NFTs by creating a sell offer or accepting a buy offer. See <a href="transfer-nfts-using-javascript.html">Transfer NFTokens</a>.</p>
 <p>You can sell your NFTs in an auction format. See <a href="nftoken-auctions.html">Running an NFT Auction</a>.</p>
-<p>You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See <a href="broker-sale-using-javascript.html">Broker a NFToken sale</a>.</p>
+<p>You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See <a href="broker-an-nft-sale-using-javascript.html">Broker a NFToken sale</a>.</p>
 <h3 id="reserve-requirements">Reserve requirements<a aria-hidden="true" class="hover_anchor" href="#reserve-requirements"><i class="fa fa-link"></i></a></h3>
 <p>There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.</p>
 <p>Each <code>NFTokenOffer</code> object requires a reserve of 2 XRP.</p>
@@ -338,7 +339,7 @@ You can assure scarcity of NFTs you create by creating them with what might be c
 <li>Trivial <a href="transfer-fees.html">transfer fees</a></li>
 </ol>
 <h3 id="checkout">Checkout<a aria-hidden="true" class="hover_anchor" href="#checkout"><i class="fa fa-link"></i></a></h3>
-<p>The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see <a href="transfer-nftokens-using-javascript.html">Transfer NFTokens</a>.</p>
+<p>The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see <a href="transfer-nfts-using-javascript.html">Transfer NFTokens</a>.</p>
 <p>For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See <a href="trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange">Trade in the Decentralized Exchange</a>.</p>
 <h2 id="indexing-nfts">Indexing NFTs<a aria-hidden="true" class="hover_anchor" href="#indexing-nfts"><i class="fa fa-link"></i></a></h2>
 <p>When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.</p>
@@ -2877,6 +2878,45 @@ Supplement Information [No link]
     <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL学習ポータル <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11" aria-expanded="false" aria-controls="tree_nav_group_11"></a>
+
+        <a class="nav-link" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_11">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/documentation-languages.html">Translations</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/creating-diagrams.html">Creating Diagrams</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11_3" aria-expanded="false" aria-controls="tree_nav_group_11_3"></a>
+
+        <a class="nav-link" href="/ja/tutorial-guidelines.html">Tutorial Guidelines</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_11_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tutorial-structure.html">Tutorial Structure</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -2913,6 +2953,7 @@ Supplement Information [No link]
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
+            <li class="nav-item"><a href="/ja/contributing-to-documentation.html" class="nav-link">Contributing to Documentation</a></li>
           </ul>
         </div><!--/.col -->
 
