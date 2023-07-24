@@ -36,7 +36,7 @@ Core servers expose [HTTP / WebSocket APIs](http-websocket-apis.html) for users 
 
 Libraries simplify some of the common work of accessing the XRP Ledger, usually through the HTTP / WebSocket APIs. They convert the data into forms that are more familiar and convenient for various programming languages, and include implementations of common operations. Some client libraries are officially maintained by the XRP Ledger Foundation and some are maintained by other entities in the community.
 
-![Client Libraries](img/ecosystem-programming-libraries.svg)
+![Client Libraries](img/ecosystem-client-libraries.svg)
 
 One core feature of most client libraries is signing transactions locally, so users never have to send their private key across any network.
 
