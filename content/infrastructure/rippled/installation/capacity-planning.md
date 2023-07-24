@@ -58,7 +58,7 @@ The example `rippled-example.cfg` file has the `type` field in the `[node_db]` s
 
 #### More About Using RocksDB
 
-[RocksDB](https://rocksdb.org/docs/getting-started.html) is an persistent key-value store built into `rippled`. **Support for RocksDB is considered legacy.** Servers using RocksDB usually struggle to maintain sync with the Mainnet due to the memory requirements of maintaining a large database. Generally, you should use NuDB instead.
+[RocksDB](https://rocksdb.org/docs/getting-started.html) is a persistent key-value store built into `rippled`. **Support for RocksDB is considered legacy.** Servers using RocksDB usually struggle to maintain sync with the Mainnet due to the memory requirements of maintaining a large database. Generally, you should use NuDB instead.
 
 Cases where you might use RocksDB include if you need to load historical data saved in RocksDB format, or if you are storing data on slow SSDs or rotational disks. While rotational disks won't be able to keep up with Mainnet, you can probably run offline tests or small private networks on them.
 
@@ -97,7 +97,7 @@ online_delete=2000
 advisory_delete=0
 ```
 
-Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration. For more details about these stetings, see [Configure Online Deletion](configure-online-deletion.html) and [Configure Advisory Deletion](configure-advisory-deletion.html).
+Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration. For more details about these settings, see [Configure Online Deletion](configure-online-deletion.html) and [Configure Advisory Deletion](configure-advisory-deletion.html).
 
 
 ### Log Level
