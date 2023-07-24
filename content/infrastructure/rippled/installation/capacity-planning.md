@@ -50,23 +50,19 @@ If you set the `[node_size]` parameter to an invalid value, the [server fails to
 
 The `type` field in the `[node_db]` stanza of the `rippled.cfg` file sets the type of key-value store that `rippled` uses to hold the ledger store.
 
-This setting does not directly configure RAM settings, but the choice of key-value store has important implications for RAM usage because of the different ways these technologies cache and index data for fast lookup.
+For almost all purposes, use `NuDB`. A fast SSD is required. [Learn more](#more-about-using-nudb)
 
-- For most cases, use `NuDB` because its performance is constant even with large amounts of data on disk. A fast SSD is required. [Learn more](#more-about-using-nudb)
-
-- If you are using rotational disks (not recommended) or an unusually slow SSD, use `RocksDB`. You should avoid this setting for production servers. [Learn more](#more-about-using-rocksdb)
+The `RocksDB` setting is available for legacy purposes, but is generally not recommended. [Learn more](#more-about-using-rocksdb)
 
 The example `rippled-example.cfg` file has the `type` field in the `[node_db]` stanza set to `NuDB`.
 
 #### More About Using RocksDB
 
-[RocksDB](https://rocksdb.org/docs/getting-started.html) is an persistent key-value store built into `rippled`.
+[RocksDB](https://rocksdb.org/docs/getting-started.html) is a persistent key-value store built into `rippled`. **Support for RocksDB is considered legacy.** Servers using RocksDB usually struggle to maintain sync with the Mainnet due to the memory requirements of maintaining a large database. Generally, you should use NuDB instead.
 
-**Caution:** As of late 2021, the total size of the ledger has grown large enough that servers using RocksDB often struggle to maintain sync with the Mainnet. Large amounts of RAM can help, but you should generally use NuDB instead.
+Cases where you might use RocksDB include if you need to load historical data saved in RocksDB format, or if you are storing data on slow SSDs or rotational disks. While rotational disks won't be able to keep up with Mainnet, you can probably run offline tests or small private networks on them.
 
-RocksDB is intended to work on either solid-state disks or rotational disks. It requires approximately one-third less [disk storage](#disk-space) than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes.
-
-RocksDB has performance-related configuration options that you can tweak for more transaction processing throughput. Here is a recommended `[node_db]` configuration for RocksDB:
+RocksDB has performance-related configuration options that you can tweak for more transaction processing throughput. Here is an example `[node_db]` configuration for RocksDB:
 
 ```
 [node_db]
@@ -83,13 +79,13 @@ advisory_delete=0
 
 (Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration.)
 
-#### More About Using NuDb
+#### More About Using NuDB
 
 [NuDB](https://github.com/vinniefalco/nudb#introduction) is an append-only key-value store that is optimized for SSD drives.
 
-NuDB has nearly constant performance and memory footprints regardless of the [amount of data being stored](#disk-space). NuDB _requires_ a solid-state drive, but uses much less RAM than RocksDB to access a large database.
+NuDB has nearly constant performance and memory footprints regardless of the [amount of data being stored](#disk-space). NuDB _requires_ a solid-state drive. Scalability testing has shown that NuDB has equivalent or better performance than RocksDB in production and comparable configurations.
 
-Production servers should be configured to use NuDB and to store the amount of historical data required for the use case.
+Production servers should be configured to use NuDB and to store the amount of historical data required for your use case.
 
 NuDB does not have performance-related configuration options available in `rippled.cfg`. Here is the recommended `[node_db]` configuration for a `rippled` server using NuDB:
 
@@ -101,7 +97,7 @@ online_delete=2000
 advisory_delete=0
 ```
 
-(Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration.)
+Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration. For more details about these settings, see [Configure Online Deletion](configure-online-deletion.html) and [Configure Advisory Deletion](configure-advisory-deletion.html).
 
 
 ### Log Level
@@ -139,18 +135,18 @@ The `[node_db]` stanza controls the server's _ledger store_, which holds [ledger
 
 You can control how much data you keep with [online deletion](online-deletion.html); the default config file has the server keep the latest 2000 ledger versions. Without online deletion, the server's disk requirements grow without bounds.
 
-The following table approximates the requirements for different amounts of history, at the time of writing (2018-12-13):
+The following table approximates the requirements for different amounts of history, at the time of writing (2023-07-19):
 
-| Real Time Amount | Number of Ledger Versions | Disk Space Required (RocksDB) | Disk Space Required (NuDB) |
-|:-----------------|:--------------------------|:------------------------------|:--|
-| 2 hours          | 2,000                     | 250 MB                        | 450 MB |
-| 1 day            | 25,000                    | 8 GB                          | 12 GB |
-| 14 days          | 350,000                   | 112 GB                        | 168 GB |
-| 30 days          | 750,000                   | 240 GB                        | 360 GB |
-| 90 days          | 2,250,000                 | 720 GB                        | 1 TB |
-| 1 year           | 10,000,000                | 3 TB                          | 4.5 TB |
-| 2 years          | 20,000,000                | 6 TB                          | 9 TB |
-| Full history (as of 2022-12-18) | 76,500,000+    | (Not recommended)             | ~22.3 TB |
+| Real Time Amount | Number of Ledger Versions | Disk Space Required (NuDB) |
+|:-----------------|:--------------------------|:---------------------------|
+| 2 hours          | 2,000                     | 450 MB |
+| 1 day            | 25,000                    | 12 GB |
+| 14 days          | 350,000                   | 168 GB |
+| 30 days          | 750,000                   | 360 GB |
+| 90 days          | 2,250,000                 | 1 TB |
+| 1 year           | 10,000,000                | 4.5 TB |
+| 2 years          | 20,000,000                | 9 TB |
+| Full history     | 81,000,000+               | ~26 TB |
 
 These numbers are estimates. They depend on several factors, most importantly the volume of transactions in the network. As transaction volume increases, each ledger version stores more unique data. You should provision extra storage capacity to prepare for future growth.
 
