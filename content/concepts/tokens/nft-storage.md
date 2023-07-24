@@ -19,7 +19,7 @@ You can use any of the existing decentralized storage solutions for your NFT met
 
 IPFS and Arweave offer solutions for decentralization. However, fetching the metadata efficiently can be a problem. Querying IPFS or Arweave directly to fetch metadata is not fast enough for modern websites that require immediate responses from users that are scrolling through multiple pages of NFTs that include high-quality media.
 
-See the blog post [NFT Payload Storage](https://xrpl.org/blog/2023/nft-payload-storage.html) for some examples of cloud storage solutions.
+See the blog post [NFT Payload Storage Options](https://dev.to/ripplexdev/nft-payload-storage-options-569i) for some examples of cloud storage solutions.
 
 ## Centralized, off the XRP Ledger
 
