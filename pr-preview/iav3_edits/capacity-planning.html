@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v20.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -163,6 +163,7 @@
             <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
             <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+            <a class="dropdown-item" href="contributing-to-documentation.html">Contributing to Documentation</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -355,7 +356,7 @@
 <p>The <code>RocksDB</code> setting is available for legacy purposes, but is generally not recommended. <a href="#more-about-using-rocksdb">Learn more</a></p>
 <p>The example <code>rippled-example.cfg</code> file has the <code>type</code> field in the <code>[node_db]</code> stanza set to <code>NuDB</code>.</p>
 <h4 id="more-about-using-rocksdb">More About Using RocksDB<a aria-hidden="true" class="hover_anchor" href="#more-about-using-rocksdb"><i class="fa fa-link"></i></a></h4>
-<p><a class="external-link" href="https://rocksdb.org/docs/getting-started.html" target="_blank">RocksDB <i aria-hidden="true" class="fa fa-external-link"></i></a> is an persistent key-value store built into <code>rippled</code>. <strong>Support for RocksDB is considered legacy.</strong> Servers using RocksDB usually struggle to maintain sync with the Mainnet. Generally, you should use NuDB instead.</p>
+<p><a class="external-link" href="https://rocksdb.org/docs/getting-started.html" target="_blank">RocksDB <i aria-hidden="true" class="fa fa-external-link"></i></a> is an persistent key-value store built into <code>rippled</code>. <strong>Support for RocksDB is considered legacy.</strong> Servers using RocksDB usually struggle to maintain sync with the Mainnet due to the memory requirements of maintaining a large database. Generally, you should use NuDB instead.</p>
 <p>Cases where you might use RocksDB include if you need to load historical data saved in RocksDB format, or if you are storing data on slow SSDs or rotational disks. While rotational disks won't be able to keep up with Mainnet, you can probably run offline tests or small private networks on them.</p>
 <p>RocksDB has performance-related configuration options that you can tweak for more transaction processing throughput. Here is an example <code>[node_db]</code> configuration for RocksDB:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="k">[node_db]</span>
@@ -372,8 +373,8 @@
 <p>(Adjust the <code>path</code> to the directory where you want to keep the ledger store on disk. Adjust the <code>online_delete</code> and <code>advisory_delete</code> settings as desired for your configuration.)</p>
 <h4 id="more-about-using-nudb">More About Using NuDB<a aria-hidden="true" class="hover_anchor" href="#more-about-using-nudb"><i class="fa fa-link"></i></a></h4>
 <p><a class="external-link" href="https://github.com/vinniefalco/nudb#introduction" target="_blank">NuDB <i aria-hidden="true" class="fa fa-external-link"></i></a> is an append-only key-value store that is optimized for SSD drives.</p>
-<p>NuDB has nearly constant performance and memory footprints regardless of the <a href="#disk-space">amount of data being stored</a>. NuDB <em>requires</em> a solid-state drive.</p>
-<p>Production servers should be configured to use NuDB and to store the amount of historical data required for the use case.</p>
+<p>NuDB has nearly constant performance and memory footprints regardless of the <a href="#disk-space">amount of data being stored</a>. NuDB <em>requires</em> a solid-state drive. Scalability testing has shown that NuDB has equivalent or better performance than RocksDB in production and comparable configurations.</p>
+<p>Production servers should be configured to use NuDB and to store the amount of historical data required for your use case.</p>
 <p>NuDB does not have performance-related configuration options available in <code>rippled.cfg</code>. Here is the recommended <code>[node_db]</code> configuration for a <code>rippled</code> server using NuDB:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">[node_db]</span>
 <span class="na">type</span><span class="o">=</span><span class="s">NuDB</span>
@@ -3046,6 +3047,45 @@
     <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Learning Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11" aria-expanded="false" aria-controls="tree_nav_group_11"></a>
+
+        <a class="nav-link" href="contributing-to-documentation.html">Contributing to Documentation</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_11">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="documentation-languages.html">Translations</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="creating-diagrams.html">Creating Diagrams</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11_3" aria-expanded="false" aria-controls="tree_nav_group_11_3"></a>
+
+        <a class="nav-link" href="tutorial-guidelines.html">Tutorial Guidelines</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_11_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tutorial-structure.html">Tutorial Structure</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -3082,6 +3122,7 @@
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
+            <li class="nav-item"><a href="contributing-to-documentation.html" class="nav-link">Contributing to Documentation</a></li>
           </ul>
         </div><!--/.col -->
 

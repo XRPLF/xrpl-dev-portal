@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 111 possible spelling errors:
+Found 138 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gift, gits, gigs
+  gifs: ifs, gies, gits
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -20,18 +20,18 @@ Found 111 possible spelling errors:
 
 <Page 'Transactions and Requests' (txn-and-requests.html)> Unknown Words:
   transactiontype: 
-  rf1bigexwwqoi8z2uefytexswujyfv2jpn: 
   ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
+  rf1bigexwwqoi8z2uefytexswujyfv2jpn: 
 
 <Page 'Peer-to-Peer Payments' (peer-to-peer-payments-uc.html)> Unknown Words:
   requiremen: requirement
 
 <Page 'Restricting Deposits' (restricting-deposits-uc.html)> Unknown Words:
-  deposite: deposita, depositee, deposited
+  deposite: deposits, deposit, depositee
   unathorized: unauthorized
 
 <Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Unknown Words:
-  xapps: lapps, apps, capps
+  xapps: apps, capps, lapps
 
 <Page 'NFT Marketplace Overview' (nft-mkt-overview.html)> Unknown Words:
   arweave: 
@@ -41,34 +41,34 @@ Found 111 possible spelling errors:
   tokentaxon: 
 
 <Page 'Algorithmic Trading' (algorithmic-trading.html)> Unknown Words:
-  investopedia: 
   arbitraging: arbitrating
-  unprecented: unprevented, unpresented
-  clob: cloe, blob, clod
-  30d: 3rd, 3-d, 3d
+  investopedia: 
+  unprecented: unpresented, unprevented
+  clob: clow, glob, clot
+  30d: 3-d, 3d, 3rd
   frontrunning: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  v3: vi, vp, vo
+  v3: vw, c3, v.
   0b0: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  depositpreauthamendment: 
+  fixnonfungibletokensv1_2: 
   immediateofferkilled: 
+  depositpreauthamendment: 
   fixuniversalnumber: 
   disallowincoming: 
-  fixnftokenremint: 
-  fixnonfungibletokensv1_2: 
   xrpfees: 
+  fixnftokenremint: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingpaychan: 
-  asfdisallowincomingcheck: 
   asfdisallowincomingnftoffer: 
+  asfdisallowincomingcheck: 
   asfdisallowincomingtrustline: 
-  30d: 3rd, 3-d, 3d
+  30d: 3-d, 3d, 3rd
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
   xlsd: xls, lsd
@@ -78,7 +78,7 @@ Found 111 possible spelling errors:
   nftokencounttracking: 
 
 <Page 'Finality of Results' (finality-of-results.html)> Unknown Words:
-  ooffers: coffers, goffers, doffers
+  ooffers: doffers, coffers, offers
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
   24n: 
@@ -95,57 +95,57 @@ Found 111 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: black-hole, blockhole
+  blackhole: blockhole, black-hole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: sls, skas, salas
+  slas: slabs, salas, slag
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3rd, 3-d, 3d
+  30d: 3-d, 3d, 3rd
 
 <Page 'Create Accounts and Send XRP Using Python' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: modo, mod, mode
+  mod1: modi, mod., mody
   get_account: 
   get_account_info: 
   send_xrp: 
   lesson1: lesson, lessons
-  tkinter: twinter, tinter
+  tkinter: tinter, twinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page 'Create Trust Line and Send Currency Using Python' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: modo, mod, mode
+  mod2: modi, mod., mody
   send_currency: 
   get_balance: 
   configure_account: 
   lesson2: lesson, lessons
 
 <Page 'Mint and Burn NFTs Using Python' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: modo, mod, mode
+  mod3: modi, mod., mody
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page 'Transfer NFTs Using Python' (py-transfer-nfts.html)> Unknown Words:
-  mod4: modo, mod, mode
+  mod4: modi, mod., mody
   offer___index: 
   alloffers: 
   lesson4: lesson, lessons
 
 <Page 'Broker an NFT Sale Using Python' (py-broker-sale.html)> Unknown Words:
+  buy___offer___index: 
   broker___fee: 
   sell___offer___index: 
-  buy___offer___index: 
   lesson5: lesson, lessons
 
 <Page 'Assign an Authorized Minter Using Python' (py-authorize-minter.html)> Unknown Words:
-  mod6: modo, mod, mode
+  mod6: modi, mod., mody
   mint_other: 
 
 <Page 'Create Time-based Escrows Using JavaScript' (create-time-based-escrows-using-javascript.html)> Unknown Words:
-  ripple8: ripplet, ripple, ripplex
+  ripple8: ripple, ripples, rippler
   numofseconds: 
   offersequence: 
 
@@ -155,27 +155,27 @@ Found 111 possible spelling errors:
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   fixnftokenremint: 
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: vi, vp, vo
+  v3: vw, c3, v.
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  disallowincoming: 
   nftokenoffers: nftokenoffer
+  disallowincoming: 
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -199,12 +199,45 @@ Found 111 possible spelling errors:
   nft_history: 
 
 <Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
+  scalability: salability
   stetings: settings
 
 <Page 'Configure Full History' (configure-full-history.html)> Unknown Words:
-  xfs: mfs, ffs, nfs
-  zfs: mfs, ffs, nfs
-  ext4: ext, exta, extg
+  xfs: ifs, xfe, rfs
+  ext4: exta, extg, ext
+  zfs: ifs, rfs, mfs
+
+<Page 'Contributing to Documentation' (contributing-to-documentation.html)> Unknown Words:
+  _img: 
+  umlet: mulet, unlet, amlet
+  _code: code
+  _snippets: snippets
+  img: cmg, irg, imp
+  scss: sass, scsi, sss
+  frontmatter: 
+  dropdowns: 
+  dropdown: 
+  santilli: 
+  h1: t1, hu, hl
+  camelcase: 
+  postgres: postures
+  trustline: 
+  nif: nih, sif, nib
+  xrps: xrp, xrpl, rps
+  websockets: websocket
+  orderbook: order-book
+
+<Page 'Translations' (documentation-languages.html)> Unknown Words:
+  hyperlinks: 
+  zh: dh, nh, zho
+  bcp47: 
+  utf: uts, utr, wtf
+
+<Page 'Creating Diagrams' (creating-diagrams.html)> Unknown Words:
+  subfolder: subfolders
+  inlined: unlined, inclined, inline
+  umlet: mulet, unlet, amlet
+  scss: sass, scsi, sss
 
 <Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
   screenshots: screenshot
@@ -212,7 +245,7 @@ Found 111 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 136 discouraged words/phrases:
+Found 147 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -332,6 +365,18 @@ Page: <Page 'ledger_data' (ledger_data.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-stand-alone-mode.html)>
    Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
+Page: <Page 'Contributing to Documentation' (contributing-to-documentation.html)>
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+   Discouraged word: ious (1 instances); suggest 'tokens' instead.
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
+   Discouraged phrase: and/or (1 instances); suggest '__ or __ or both' instead.
+   Discouraged phrase: in the near future (1 instances); suggest 'shortly, soon' instead.
+Page: <Page 'Translations' (documentation-languages.html)>
+   Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
+   Discouraged phrase: the use of (1 instances); suggest '(omit)' instead.
+Page: <Page 'Creating Diagrams' (creating-diagrams.html)>
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
 Page: <Page 'Tutorial Guidelines' (tutorial-guidelines.html)>
    Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
    Discouraged word: frequently (1 instances); suggest 'often' instead.
@@ -347,7 +392,7 @@ Page: <Page 'Tutorial Structure' (tutorial-structure.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.3 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.4 (Fairly Difficult)
   Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
@@ -388,9 +433,9 @@ Most difficult pages by Flesch Reading Ease:
 Page Length Metrics
 -------------------
 Average Page Length Metrics:
-  Sentences: 54
-  Words: 724
-  Characters: 4,499
+  Sentences: 55
+  Words: 726
+  Characters: 4,510
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
