@@ -899,6 +899,12 @@ pages:
         targets:
             - ja
 
+# TODO - Translate
+    -   md: concepts/tokens/clawback-of-issued-currency.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/issuing-and-operational-addresses.md
         targets:
             - en
@@ -2763,6 +2769,12 @@ pages:
 
     -   md: references/protocol-reference/transactions/transaction-types/checkcreate.ja.md
         targets:
+            - ja
+
+# TODO: Translate
+    -   md: references/protocol-reference/transactions/transaction-types/clawback.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/depositpreauth.md
