@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 81 possible spelling errors:
+Found 90 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: rifs, gifu, gibs
+  gifs: gils, gifts, rifs
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -27,7 +27,13 @@ Found 81 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slask, spas, alas
+  slas: smas, slabs, las
+
+<Page 'Clawback' (clawback-of-issued-currency.html)> Unknown Words:
+  trustlines: 
+  rp6abvbtbjoce8zdjkt6snvxtzsymbcc9s: 
+  trustline: 
+  rsa2lpzuawewsbqxkiju3yqtmzw13paadw: 
 
 <Page 'Invariant Checking' (invariant-checking.html)> Unknown Words:
   validnftokenpage: 
@@ -37,69 +43,69 @@ Found 81 possible spelling errors:
   11d: 
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: xls, lsd
+  xlsd: lsd, xls
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
   xrpfees: 
-  disallowincoming: 
   immediateofferkilled: 
-  fixnonfungibletokensv1_2: 
   fixuniversalnumber: 
+  disallowincoming: 
   depositpreauthamendment: 
+  fixnonfungibletokensv1_2: 
   fixnftokenremint: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingtrustline: 
   asfdisallowincomingpaychan: 
-  asfdisallowincomingnftoffer: 
+  asfdisallowincomingtrustline: 
   asfdisallowincomingcheck: 
-  30d: 3d, 3rd, 3-d
+  asfdisallowincomingnftoffer: 
+  30d: 3rd, 3-d, 3d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  v3: va, vv, t3
   0b0: 
+  v3: vw, vt, v1
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mody, mode, mods
+  mod1: modo, mod., mod
   get_account: 
   get_account_info: 
   send_xrp: 
-  lesson1: lesson, lessons
+  lesson1: lessons, lesson
   tkinter: tinter, twinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mody, mode, mods
+  mod2: modo, mod., mod
   send_currency: 
   get_balance: 
   configure_account: 
-  lesson2: lesson, lessons
+  lesson2: lessons, lesson
 
 <Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: mody, mode, mods
+  mod3: modo, mod., mod
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page '4. Transfer NFTs (Python)' (py-transfer-nfts.html)> Unknown Words:
-  mod4: mody, mode, mods
+  mod4: modo, mod., mod
   offer___index: 
   alloffers: 
-  lesson4: lesson, lessons
+  lesson4: lessons, lesson
 
 <Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)> Unknown Words:
-  sell___offer___index: 
-  buy___offer___index: 
   broker___fee: 
-  lesson5: lesson, lessons
+  buy___offer___index: 
+  sell___offer___index: 
+  lesson5: lessons, lesson
 
 <Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)> Unknown Words:
-  mod6: mody, mode, mods
+  mod6: modo, mod., mod
   mint_other: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+  30d: 3rd, 3-d, 3d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   fixnftokenremint: 
@@ -111,7 +117,7 @@ Found 81 possible spelling errors:
 
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: va, vv, t3
+  v3: vw, vt, v1
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenoffers: nftokenoffer
@@ -120,6 +126,13 @@ Found 81 possible spelling errors:
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
+
+<Page 'Clawback' (clawback.html)> Unknown Words:
+  ttclawback: 
+  trustlines: 
+  trustline: 
+  tembad_amount: 
+  lsfallowtrustlineclawback: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
   nftokenoffers: nftokenoffer
@@ -268,8 +281,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 739
-  Characters: 4,596
+  Words: 737
+  Characters: 4,580
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

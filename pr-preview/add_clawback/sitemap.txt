@@ -56,6 +56,7 @@ https://xrpl.org/freezes.html
 https://xrpl.org/common-misconceptions-about-freezes.html
 https://xrpl.org/rippling.html
 https://xrpl.org/transfer-fees.html
+https://xrpl.org/clawback-of-issued-currency.html
 https://xrpl.org/issuing-and-operational-addresses.html
 https://xrpl.org/paths.html
 https://xrpl.org/demurrage.html
@@ -266,6 +267,7 @@ https://xrpl.org/ammwithdraw.html
 https://xrpl.org/checkcancel.html
 https://xrpl.org/checkcash.html
 https://xrpl.org/checkcreate.html
+https://xrpl.org/clawback.html
 https://xrpl.org/depositpreauth.html
 https://xrpl.org/escrowcancel.html
 https://xrpl.org/escrowcreate.html
