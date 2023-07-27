@@ -13,6 +13,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
     onEnterPassword: (password) => {
         ipcRenderer.send('password-entered', password)
     },
+    requestSeedChange: () => {
+        ipcRenderer.send('request-seed-change')
+    },
     onUpdateLedgerData: (callback) => {
         ipcRenderer.on('update-ledger-data', callback)
     },

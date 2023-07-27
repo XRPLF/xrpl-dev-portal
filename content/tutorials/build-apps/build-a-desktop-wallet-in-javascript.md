@@ -862,6 +862,12 @@ const main = async () => {
     await initialize(client, wallet, appWindow)
   })
 
+  ipcMain.on('request-seed-change', (event) => {
+    fs.rmSync(path.join(__dirname, WALLET_DIR , 'seed.txt'))
+    fs.rmSync(path.join(__dirname, WALLET_DIR , 'salt.txt'))
+    appWindow.webContents.send('open-seed-dialog')
+  })
+
   // We have to wait for the application frontend to be ready, otherwise
   // we might run into a race condition and the open-dialog events
   // get triggered before the callbacks are attached
@@ -896,6 +902,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
   onEnterPassword: (password) => {
     ipcRenderer.send('password-entered', password)
   },
+  requestSeedChange: () => {
+    ipcRenderer.send('request-seed-change')
+  },
   // Step 5 code additions - end
 
   onUpdateLedgerData: (callback) => {
@@ -925,7 +934,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
                 <input type="text" id="password-input" name="password-input" />
             </div>
             <div>
-                <button type="submit">Confirm</button>
+                <button type="button">Change Seed</button>
+                <button type="submit">Submit</button>
             </div>
         </form>
     </dialog>
@@ -952,11 +962,17 @@ window.electronAPI.onOpenPasswordDialog((_event) => {
     const passwordDialog = document.getElementById('password-dialog');
     const passwordInput = passwordDialog.querySelector('input');
     const submitButton = passwordDialog.querySelector('button[type="submit"]');
+    const changeSeedButton = passwordDialog.querySelector('button[type="button"]')
 
     submitButton.addEventListener('click', () => {
         const password = passwordInput.value;
         window.electronAPI.onEnterPassword(password)
         passwordDialog.close()
+    });
+
+    changeSeedButton.addEventListener('click', () => {
+      passwordDialog.close()
+      window.electronAPI.requestSeedChange()
     });
 
     passwordDialog.showModal()

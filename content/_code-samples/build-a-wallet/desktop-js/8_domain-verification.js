@@ -71,7 +71,13 @@ const main = async () => {
 
     })
 
-    // We have to wait for the application frontend to be ready, otherise
+    ipcMain.on('request-seed-change', (event) => {
+        fs.rmSync(path.join(__dirname, WALLET_DIR , 'seed.txt'))
+        fs.rmSync(path.join(__dirname, WALLET_DIR , 'salt.txt'))
+        appWindow.webContents.send('open-seed-dialog')
+    })
+
+    // We have to wait for the application frontend to be ready, otherwise
     // we might run into a race condition and the ope-dialog events
     // get triggered before the callbacks are attached
     appWindow.once('ready-to-show', () => {

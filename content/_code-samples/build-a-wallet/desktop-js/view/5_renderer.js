@@ -1,11 +1,11 @@
 // Step 5 code additions - start
 window.electronAPI.onOpenSeedDialog((_event) => {
-    const seedDialog = document.getElementById('seed-dialog');
-    const seedInput = seedDialog.querySelector('input');
-    const submitButton = seedDialog.querySelector('button[type="submit"]');
+    const seedDialog = document.getElementById('seed-dialog')
+    const seedInput = seedDialog.querySelector('input')
+    const submitButton = seedDialog.querySelector('button[type="submit"]')
 
     submitButton.addEventListener('click', () => {
-        const seed = seedInput.value;
+        const seed = seedInput.value
         window.electronAPI.onEnterSeed(seed)
         seedDialog.close()
     });
@@ -14,14 +14,20 @@ window.electronAPI.onOpenSeedDialog((_event) => {
 })
 
 window.electronAPI.onOpenPasswordDialog((_event) => {
-    const passwordDialog = document.getElementById('password-dialog');
-    const passwordInput = passwordDialog.querySelector('input');
-    const submitButton = passwordDialog.querySelector('button[type="submit"]');
+    const passwordDialog = document.getElementById('password-dialog')
+    const passwordInput = passwordDialog.querySelector('input')
+    const submitButton = passwordDialog.querySelector('button[type="submit"]')
+    const changeSeedButton = passwordDialog.querySelector('button[type="button"]')
 
     submitButton.addEventListener('click', () => {
-        const password = passwordInput.value;
+        const password = passwordInput.value
         window.electronAPI.onEnterPassword(password)
         passwordDialog.close()
+    });
+
+    changeSeedButton.addEventListener('click', () => {
+        passwordDialog.close()
+        window.electronAPI.requestSeedChange()
     });
 
     passwordDialog.showModal()

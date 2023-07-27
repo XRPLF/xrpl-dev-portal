@@ -13,14 +13,20 @@ window.electronAPI.onOpenSeedDialog((_event) => {
 })
 
 window.electronAPI.onOpenPasswordDialog((_event) => {
-    const passwordDialog = document.getElementById('password-dialog');
-    const passwordInput = passwordDialog.querySelector('input');
-    const submitButton = passwordDialog.querySelector('button[type="submit"]');
+    const passwordDialog = document.getElementById('password-dialog')
+    const passwordInput = passwordDialog.querySelector('input')
+    const submitButton = passwordDialog.querySelector('button[type="submit"]')
+    const changeSeedButton = passwordDialog.querySelector('button[type="button"]')
 
     submitButton.addEventListener('click', () => {
-        const password = passwordInput.value;
+        const password = passwordInput.value
         window.electronAPI.onEnterPassword(password)
         passwordDialog.close()
+    });
+
+    changeSeedButton.addEventListener('click', () => {
+        passwordDialog.close()
+        window.electronAPI.requestSeedChange()
     });
 
     passwordDialog.showModal()
