@@ -272,7 +272,6 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#what-is-the-xrp-ledger">What is the XRP Ledger?</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#what-is-a-blockchain">What Is a Blockchain?</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#what-is-in-the-xrpl-ecosystem">What Is In the XRPL Ecosystem?</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#how-does-the-federated-consensus-process-work">How Does the Federated Consensus Process Work?</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#what-networks-are-available">What Networks Are Available?</a></li>
       </ul>
@@ -313,12 +312,6 @@
 <p><img alt="Two validators with identical copies of the blockchain" src="img/introduction9-2-sets-of-3.png"/></p>
 <p>This creates an open, distributed ledger that records transactions between parties efficiently and in a verifiable and permanent way.</p>
 <p>Once recorded, the data in any given block cannot be altered retroactively, unless a majority of the validators agree to the change. If so, all subsequent blocks are changed in the same way (a very rare and extreme occurrence).</p>
-<h3 id="what-is-in-the-xrpl-ecosystem">What Is In the XRPL Ecosystem?<a aria-hidden="true" class="hover_anchor" href="#what-is-in-the-xrpl-ecosystem"><i class="fa fa-link"></i></a></h3>
-<p>The basis of the XRP Ledger is a peer-to-peer network of always-on rippled (pronounced <em>ripple-dee</em>) servers sharing transactions, engaging in the consensus process, and processing transactions. Everything else in the XRP Ledger ecosystem is directly or indirectly built on top of this peer-to-peer network.</p>
-<p><img alt="The XRP Ecosystem" src="img/ecosystem.png"/></p>
-<p>Programming Libraries exist in higher level software, where they are imported directly into program code, and contain methods to access the XRP Ledger.</p>
-<p>Middleware provides indirect access to XRP Ledger data. Applications in this layer often have their own data storage and processing.</p>
-<p>Apps and Services provide user-level interaction with the XRP Ledger, or provide a basis for even higher-level apps and services.</p>
 <h3 id="how-does-the-federated-consensus-process-work">How Does the Federated Consensus Process Work?<a aria-hidden="true" class="hover_anchor" href="#how-does-the-federated-consensus-process-work"><i class="fa fa-link"></i></a></h3>
 <p>Most of the rippled servers in the XRPL monitor or propose transactions. An important subset of servers are run as validators. These trusted servers accumulate lists of new transactions into a new possible ledger instance (a new block in the block chain). They share their lists with all of the other validators. The validators incorporate proposed changes from one another and distribute a new version of the ledger proposal. When 80% of the validators agree on a set of transactions, they create a new ledger instance at the end of the chain and start the process again. This consensus process takes 4-6 seconds. You can monitor as ledger instances are created in real time by visiting <a class="external-link" href="https://livenet.xrpl.org/" target="_blank">https://livenet.xrpl.org/ <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h3 id="what-networks-are-available">What Networks Are Available?<a aria-hidden="true" class="hover_anchor" href="#what-networks-are-available"><i class="fa fa-link"></i></a></h3>
