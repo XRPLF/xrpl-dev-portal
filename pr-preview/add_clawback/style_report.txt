@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 90 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gils, kifs, gies
+  gifs: giss, gids, gits
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -23,17 +23,17 @@ Found 90 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: black-hole, blockhole
+  blackhole: blockhole, black-hole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: salas, slays, sla
+  slas: sals, alas, skas
 
 <Page 'Clawback' (clawback-of-issued-currency.html)> Unknown Words:
   trustlines: 
   trustline: 
-  rsa2lpzuawewsbqxkiju3yqtmzw13paadw: 
   rp6abvbtbjoce8zdjkt6snvxtzsymbcc9s: 
+  rsa2lpzuawewsbqxkiju3yqtmzw13paadw: 
 
 <Page 'Invariant Checking' (invariant-checking.html)> Unknown Words:
   validnftokenpage: 
@@ -43,29 +43,29 @@ Found 90 possible spelling errors:
   11d: 
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: lsd, xls
+  xlsd: xls, lsd
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  xrpfees: 
   depositpreauthamendment: 
   fixnftokenremint: 
+  disallowincoming: 
   fixnonfungibletokensv1_2: 
-  xrpfees: 
   immediateofferkilled: 
   fixuniversalnumber: 
-  disallowincoming: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
-  asfdisallowincomingcheck: 
-  asfdisallowincomingtrustline: 
   asfdisallowincomingnftoffer: 
-  30d: 3d, 3rd, 3-d
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingtrustline: 
+  asfdisallowincomingcheck: 
+  30d: 3rd, 3d, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  v3: v., vb, v6
+  v3: v6, vb, ve
   0b0: 
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: modo, modi, mody
+  mod1: mody, modo, modi
   get_account: 
   get_account_info: 
   send_xrp: 
@@ -76,20 +76,20 @@ Found 90 possible spelling errors:
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: modo, modi, mody
+  mod2: mody, modo, modi
   send_currency: 
   get_balance: 
   configure_account: 
   lesson2: lessons, lesson
 
 <Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: modo, modi, mody
+  mod3: mody, modo, modi
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page '4. Transfer NFTs (Python)' (py-transfer-nfts.html)> Unknown Words:
-  mod4: modo, modi, mody
+  mod4: mody, modo, modi
   offer___index: 
   alloffers: 
   lesson4: lessons, lesson
@@ -101,27 +101,27 @@ Found 90 possible spelling errors:
   lesson5: lessons, lesson
 
 <Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)> Unknown Words:
-  mod6: modo, modi, mody
+  mod6: mody, modo, modi
   mint_other: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3rd, 3-d
+  30d: 3rd, 3d, 3-d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   fixnftokenremint: 
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: v., vb, v6
+  v3: v6, vb, ve
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
@@ -129,14 +129,14 @@ Found 90 possible spelling errors:
 
 <Page 'Clawback' (clawback.html)> Unknown Words:
   trustline: 
-  ttclawback: 
   trustlines: 
+  ttclawback: 
   tembad_amount: 
   lsfallowtrustlineclawback: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
