@@ -798,7 +798,7 @@ After finishing this step the application should look like this:
 
 ![Screenshot: Step 5, use salted password](img/javascript-wallet-5.png)
 
-By now we always query the user for an account address at application startup. We more or less have a monitoring tool for accounts that queries publicly available data. Because we want to have real wallet functionality including sending XRP, we will have to deal with private keys and seeds, which will have to be handled properly.
+By now we always query the user for an account address at application startup. We more or less have a monitoring tool for accounts that queries publicly available data. Because we want to have real wallet functionality including sending XRP, we will have to deal with private keys and seeds.
 
 In this step we will query the user for an account seed and  a password save this seed with a salted password. 
 
