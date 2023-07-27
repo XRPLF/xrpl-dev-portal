@@ -8,9 +8,14 @@ $light-link-hover-color: $blue-purple-500;
 $light-standout-bg: $gray-050;
 
 // General color elements ------------------------------------------------------
-code {
+.content {
+  p code,
+  table code,
+  ul code,
+  ol code {
   background-color: $gray-200;
   color: $gray-900;
+  }
 }
 
 body {
