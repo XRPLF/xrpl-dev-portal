@@ -328,7 +328,7 @@
 </li>
 </ul>
 <p>The application in this tutorial <em>doesn't</em> have the ability to send or trade <a href="issued-currencies.html">tokens</a> or use other <a href="payment-types.html">payment types</a> like Escrow or Payment Channels. However, it provides a foundation that you can implement those and other features on top of.</p>
-<p>Other topics mentioned in this tutorial include graphical user interface (GUI) programming, threading, and asynchronous (async) code in Python.</p>
+<p>In addition to the above features, you'll also learn a little bit about graphical user interface (GUI) programming, threading, and asynchronous (async) code in Python.</p>
 <h2 id="steps">Steps<a aria-hidden="true" class="hover_anchor" href="#steps"><i class="fa fa-link"></i></a></h2>
 <h3 id="install-dependencies">Install Dependencies<a aria-hidden="true" class="hover_anchor" href="#install-dependencies"><i class="fa fa-link"></i></a></h3>
 <p>This tutorial depends on various programming libraries. Before you get started coding, you should install all of them as follows:</p>
@@ -346,6 +346,7 @@
 <h4 id="notes-for-windows-users">Notes for Windows Users<a aria-hidden="true" class="hover_anchor" href="#notes-for-windows-users"><i class="fa fa-link"></i></a></h4>
 <p>On Windows, you can build apps using either Windows natively or by using the Windows Subsystem for Linux (WSL). <!-- SPELLING_IGNORE: wsl --></p>
 <p>On native Windows, the GUI uses native Windows controls and should run without any dependencies beyond those mentioned above.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> As of 2022-02-01, the latest wxPython is not compatible with Python 3.10 on Windows. You should be able to follow this tutorial if you downgrade to the latest release of Python 3.9.</p>
 <p>On WSL, you may need to install <code>libnotify-dev</code> as follows:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">apt-get<span class="w"> </span>install<span class="w"> </span>libnotify-dev
 </code></pre></div>
@@ -530,7 +531,7 @@
     <span class="n">frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </code></pre></div>
-<p>Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to use a WebSocket URL to connect.</p>
+<p>Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to be use WebSocket URL to connect.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> If you <a href="networks-and-servers.html#独自サーバーを運用する理由">run your own <code>rippled</code> server</a> you can connect to it using <code>ws://localhost:6006</code> as the URL. You can also use the WebSocket URLs of <a href="public-servers.html">public servers</a> to connect to the Mainnet or other test networks.</p>
 <h4 id="troubleshooting-ssl-certificate-errors">Troubleshooting SSL Certificate Errors<a aria-hidden="true" class="hover_anchor" href="#troubleshooting-ssl-certificate-errors"><i class="fa fa-link"></i></a></h4>
 <p>If you get an error like this, you may need to make sure your operating system's certificate authority store is updated:</p>

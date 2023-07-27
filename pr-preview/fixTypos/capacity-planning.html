@@ -352,13 +352,21 @@
 <p>If you set the <code>[node_size]</code> parameter to an invalid value, the <a href="server-wont-start.html#bad-node_size-value">server fails to start</a>.</p>
 <h3 id="node-db-type">Node DB Type<a aria-hidden="true" class="hover_anchor" href="#node-db-type"><i class="fa fa-link"></i></a></h3>
 <p>The <code>type</code> field in the <code>[node_db]</code> stanza of the <code>rippled.cfg</code> file sets the type of key-value store that <code>rippled</code> uses to hold the ledger store.</p>
-<p>For almost all purposes, use <code>NuDB</code>. A fast SSD is required. <a href="#more-about-using-nudb">Learn more</a></p>
-<p>The <code>RocksDB</code> setting is available for legacy purposes, but is generally not recommended. <a href="#more-about-using-rocksdb">Learn more</a></p>
+<p>This setting does not directly configure RAM settings, but the choice of key-value store has important implications for RAM usage because of the different ways these technologies cache and index data for fast lookup.</p>
+<ul>
+<li>
+<p>For most cases, use <code>NuDB</code> because its performance is constant even with large amounts of data on disk. A fast SSD is required. <a href="#more-about-using-nudb">Learn more</a></p>
+</li>
+<li>
+<p>If you are using rotational disks (not recommended) or an unusually slow SSD, use <code>RocksDB</code>. You should avoid this setting for production servers. <a href="#more-about-using-rocksdb">Learn more</a></p>
+</li>
+</ul>
 <p>The example <code>rippled-example.cfg</code> file has the <code>type</code> field in the <code>[node_db]</code> stanza set to <code>NuDB</code>.</p>
 <h4 id="more-about-using-rocksdb">More About Using RocksDB<a aria-hidden="true" class="hover_anchor" href="#more-about-using-rocksdb"><i class="fa fa-link"></i></a></h4>
-<p><a class="external-link" href="https://rocksdb.org/docs/getting-started.html" target="_blank">RocksDB <i aria-hidden="true" class="fa fa-external-link"></i></a> is a persistent key-value store built into <code>rippled</code>. <strong>Support for RocksDB is considered legacy.</strong> Servers using RocksDB usually struggle to maintain sync with the Mainnet due to the memory requirements of maintaining a large database. Generally, you should use NuDB instead.</p>
-<p>Cases where you might use RocksDB include if you need to load historical data saved in RocksDB format, or if you are storing data on slow SSDs or rotational disks. While rotational disks won't be able to keep up with Mainnet, you can probably run offline tests or small private networks on them.</p>
-<p>RocksDB has performance-related configuration options that you can tweak for more transaction processing throughput. Here is an example <code>[node_db]</code> configuration for RocksDB:</p>
+<p><a class="external-link" href="https://rocksdb.org/docs/getting-started.html" target="_blank">RocksDB <i aria-hidden="true" class="fa fa-external-link"></i></a> is an persistent key-value store built into <code>rippled</code>.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> As of late 2021, the total size of the ledger has grown large enough that servers using RocksDB often struggle to maintain sync with the Mainnet. Large amounts of RAM can help, but you should generally use NuDB instead.</p>
+<p>RocksDB is intended to work on either solid-state disks or rotational disks. It requires approximately one-third less <a href="#disk-space">disk storage</a> than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes.</p>
+<p>RocksDB has performance-related configuration options that you can tweak for more transaction processing throughput. Here is a recommended <code>[node_db]</code> configuration for RocksDB:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="k">[node_db]</span>
 <span class="na">type</span><span class="o">=</span><span class="s">RocksDB</span>
 <span class="na">path</span><span class="o">=</span><span class="s">/var/lib/rippled/db/rocksdb</span>
@@ -371,10 +379,10 @@
 <span class="na">advisory_delete</span><span class="o">=</span><span class="s">0</span>
 </code></pre></div>
 <p>(Adjust the <code>path</code> to the directory where you want to keep the ledger store on disk. Adjust the <code>online_delete</code> and <code>advisory_delete</code> settings as desired for your configuration.)</p>
-<h4 id="more-about-using-nudb">More About Using NuDB<a aria-hidden="true" class="hover_anchor" href="#more-about-using-nudb"><i class="fa fa-link"></i></a></h4>
+<h4 id="more-about-using-nudb">More About Using NuDb<a aria-hidden="true" class="hover_anchor" href="#more-about-using-nudb"><i class="fa fa-link"></i></a></h4>
 <p><a class="external-link" href="https://github.com/vinniefalco/nudb#introduction" target="_blank">NuDB <i aria-hidden="true" class="fa fa-external-link"></i></a> is an append-only key-value store that is optimized for SSD drives.</p>
-<p>NuDB has nearly constant performance and memory footprints regardless of the <a href="#disk-space">amount of data being stored</a>. NuDB <em>requires</em> a solid-state drive. Scalability testing has shown that NuDB has equivalent or better performance than RocksDB in production and comparable configurations.</p>
-<p>Production servers should be configured to use NuDB and to store the amount of historical data required for your use case.</p>
+<p>NuDB has nearly constant performance and memory footprints regardless of the <a href="#disk-space">amount of data being stored</a>. NuDB <em>requires</em> a solid-state drive, but uses much less RAM than RocksDB to access a large database.</p>
+<p>Production servers should be configured to use NuDB and to store the amount of historical data required for the use case.</p>
 <p>NuDB does not have performance-related configuration options available in <code>rippled.cfg</code>. Here is the recommended <code>[node_db]</code> configuration for a <code>rippled</code> server using NuDB:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">[node_db]</span>
 <span class="na">type</span><span class="o">=</span><span class="s">NuDB</span>
@@ -382,7 +390,7 @@
 <span class="na">online_delete</span><span class="o">=</span><span class="s">2000</span>
 <span class="na">advisory_delete</span><span class="o">=</span><span class="s">0</span>
 </code></pre></div>
-<p>Adjust the <code>path</code> to the directory where you want to keep the ledger store on disk. Adjust the <code>online_delete</code> and <code>advisory_delete</code> settings as desired for your configuration. For more details about these settings, see <a href="configure-online-deletion.html">Configure Online Deletion</a> and <a href="configure-advisory-deletion.html">Configure Advisory Deletion</a>.</p>
+<p>(Adjust the <code>path</code> to the directory where you want to keep the ledger store on disk. Adjust the <code>online_delete</code> and <code>advisory_delete</code> settings as desired for your configuration.)</p>
 <h3 id="log-level">Log Level<a aria-hidden="true" class="hover_anchor" href="#log-level"><i class="fa fa-link"></i></a></h3>
 <p>The example <code>rippled-example.cfg</code> file sets the logging verbosity to <code>warning</code> in the <code>[rpc_startup]</code> stanza. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> If you omit the <code>log_level</code> command from the <code>[rpc_startup]</code> stanza, the server writes logs to disk at the <code>debug</code> level and outputs <code>warning</code> level logs to the console. Logging at the <code>debug</code> level requires several more GB of disk space per day than <code>warning</code> level, depending on transaction volumes and client activity.</p>
@@ -403,12 +411,13 @@
 <h4 id="disk-space">Disk Space<a aria-hidden="true" class="hover_anchor" href="#disk-space"><i class="fa fa-link"></i></a></h4>
 <p>The <code>[node_db]</code> stanza controls the server's <em>ledger store</em>, which holds <a href="ledger-history.html">ledger history</a>. The amount of disk space you need depends on how much history you plan to keep available locally. An XRP Ledger server does not need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally. Configure the <code>path</code> of the <code>[node_db]</code> to point to your chosen storage location for the ledger store.</p>
 <p>You can control how much data you keep with <a href="online-deletion.html">online deletion</a>; the default config file has the server keep the latest 2000 ledger versions. Without online deletion, the server's disk requirements grow without bounds.</p>
-<p>The following table approximates the requirements for different amounts of history, at the time of writing (2023-07-19):</p>
+<p>The following table approximates the requirements for different amounts of history, at the time of writing (2018-12-13):</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;">Real Time Amount</th>
 <th style="text-align: left;">Number of Ledger Versions</th>
+<th style="text-align: left;">Disk Space Required (RocksDB)</th>
 <th style="text-align: left;">Disk Space Required (NuDB)</th>
 </tr>
 </thead>
@@ -416,42 +425,50 @@
 <tr>
 <td style="text-align: left;">2 hours</td>
 <td style="text-align: left;">2,000</td>
+<td style="text-align: left;">250 MB</td>
 <td style="text-align: left;">450 MB</td>
 </tr>
 <tr>
 <td style="text-align: left;">1 day</td>
 <td style="text-align: left;">25,000</td>
+<td style="text-align: left;">8 GB</td>
 <td style="text-align: left;">12 GB</td>
 </tr>
 <tr>
 <td style="text-align: left;">14 days</td>
 <td style="text-align: left;">350,000</td>
+<td style="text-align: left;">112 GB</td>
 <td style="text-align: left;">168 GB</td>
 </tr>
 <tr>
 <td style="text-align: left;">30 days</td>
 <td style="text-align: left;">750,000</td>
+<td style="text-align: left;">240 GB</td>
 <td style="text-align: left;">360 GB</td>
 </tr>
 <tr>
 <td style="text-align: left;">90 days</td>
 <td style="text-align: left;">2,250,000</td>
+<td style="text-align: left;">720 GB</td>
 <td style="text-align: left;">1 TB</td>
 </tr>
 <tr>
 <td style="text-align: left;">1 year</td>
 <td style="text-align: left;">10,000,000</td>
+<td style="text-align: left;">3 TB</td>
 <td style="text-align: left;">4.5 TB</td>
 </tr>
 <tr>
 <td style="text-align: left;">2 years</td>
 <td style="text-align: left;">20,000,000</td>
+<td style="text-align: left;">6 TB</td>
 <td style="text-align: left;">9 TB</td>
 </tr>
 <tr>
-<td style="text-align: left;">Full history</td>
-<td style="text-align: left;">81,000,000+</td>
-<td style="text-align: left;">~26 TB</td>
+<td style="text-align: left;">Full history (as of 2022-12-18)</td>
+<td style="text-align: left;">76,500,000+</td>
+<td style="text-align: left;">(Not recommended)</td>
+<td style="text-align: left;">~22.3 TB</td>
 </tr>
 </tbody>
 </table>
