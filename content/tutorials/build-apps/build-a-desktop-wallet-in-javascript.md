@@ -1172,7 +1172,6 @@ const { sendXrp } = require('./library/7_helpers')
           })
         })
         // Step 7 code additions - start
-    })
 ```
 
 4. Modify `view/preload.js` by adding two new functions:
