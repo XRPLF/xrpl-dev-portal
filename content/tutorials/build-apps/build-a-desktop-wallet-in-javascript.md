@@ -809,6 +809,9 @@ In this step we will query the user for a seed and a password they can use to ac
 2. Modify the import section at the top of `index.js` to look like this:
 
 ```javascript
+const {app, BrowserWindow, ipcMain} = require('electron')
+const fs = require('fs')
+const path = require('path')
 const xrpl = require("xrpl")
 const { initialize, subscribe, saveSaltedSeed, loadSaltedSeed } = require('./library/5_helpers')
 
