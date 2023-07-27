@@ -7,11 +7,13 @@ labels:
 ---
 # Create Custom Transactors
 
-You can create custom transactors to modify the XRP Ledger. Transactors follow a basic order of operations:
+A _transactor_ is code that processes a transaction and modifies the XRP Ledger. Creating custom transactors enables you to add new functionality to `rippled`.
+
+Transactors follow a basic order of operations:
 
 1. Access a _view_ into a serialized type ledger entry (SLE).
 2. Update, erase, or insert values in the _view_.
-3. Apply the finalized changes to the ledger.
+3. Apply the finalized changes from the _view_ to the ledger.
 
 **Note:** _Views_ are sandboxes into ledgers. Transactors make all necessary error checks and changes in sandboxes, not directly on the ledger. After values are finalized, changes are applied atomically to the ledger.
 
@@ -63,6 +65,19 @@ Initializing the transactor with `ApplyContext` gives it access to:
 
 The `preflight` function checks for errors before accessing the ledger and incurring fees.
 
+- `PreflightContext` doesn't have a view of the ledger.
+- Use bracket notation to retrieve fields from ledgers and transactions:
+        
+        auto const curExpiration = (*sle*)[~sfExpiration];
+        (*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
+            
+    **Note:** The `~` symbol returns an optional type.
+
+- You can view ledger and transaction schemas here:
+    - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
+    - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
+
+
 ```c++
 CreateCheck::preflight(PreflightContext const& ctx)
 {
@@ -102,7 +117,6 @@ CreateCheck::preflight(PreflightContext const& ctx)
         }
     }
 
-    // Add `~` for optional types.
     if (auto const optExpiry = ctx.tx[~sfExpiration])
     {
         if (*optExpiry == 0)
@@ -116,24 +130,13 @@ CreateCheck::preflight(PreflightContext const& ctx)
 }
 ```
 
-- `PreflightContext` doesn't have a view of the ledger.
-- Use bracket notation to retrieve fields from ledgers and transactions:
-
-        ```
-        auto const curExpiration = (*sle*)[~sfExpiration];
-        (*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
-        ```
-    
-    **Note:** The `~` symbol returns an optional type.
-
-- You can view ledger and transaction schemas here:
-    - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
-    - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
-
 
 ### 2. Add a `preclaim` function.
 
 The `preclaim` functions checks for errors that require viewing information on the ledger.
+
+- `PreclaimContext` has a read-only view of the ledger.
+- This function incurs fees.
 
 ```c++
 CreateCheck::preclaim(PreclaimContext const& ctx)
@@ -219,9 +222,6 @@ CreateCheck::preclaim(PreclaimContext const& ctx)
 }
 ```
 
-- `PreclaimContext` has a read-only view of the ledger.
-- This function incurs fees.
-
 
 ### 3. Add a `doApply()` function.
 
@@ -305,6 +305,71 @@ CreateCheck::doApply()
     // If we succeeded, the new entry counts against the creator's reserve.
     adjustOwnerCount(view(), sle, 1, viewJ);
     return tesSUCCESS;
+}
+```
+
+
+## Additional Functions
+
+
+### `calculateBaseFee`
+
+The `calculateBaseFee` function calculates the XRP fee to run a transaction. The fee is usually inherited from the base transactor, but transactors such as `EscrowFinish` require additional fees.
+
+```c++
+XRPAmount
+EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
+{
+    XRPAmount extraFee{0};
+
+    if (auto const fb = tx[~sfFulfillment])
+    {
+        extraFee += view.fees().base * (32 + (fb->size() / 16));
+    }
+
+    return Transactor::calculateBaseFee(view, tx) + extraFee;
+}
+```
+
+
+### `makeTxConsequences`
+
+`rippled` uses a [`TxConsequences`](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/applySteps.h#L41-L44) class to describe the outcome to an account when applying a transaction. It tracks the fee, maximum possible XRP spent, and how many sequences are consumed by the transaction. There are three types of consequences:
+
+- **Normal:** The transactor doesn't affect transaction signing and only consumes an XRP fee.
+- **Blocker:** The transactor affects transaction signing, preventing valid transactions from queueing behind it.
+- **Custom:** The transactor needs to do additional work to determination consequences.
+
+The `makeTxConsequences` function enables you to create custom consequences for situations such as:
+
+- Payments sending XRP.
+- Tickets consuming more than one sequence.
+- Transactions that are normal or blockers, depending on flags or fields set.
+
+```c++
+SetAccount::makeTxConsequences(PreflightContext const& ctx)
+{
+    // The SetAccount may be a blocker, but only if it sets or clears
+    // specific account flags.
+    auto getTxConsequencesCategory = [](STTx const& tx) {
+        if (std::uint32_t const uTxFlags = tx.getFlags();
+            uTxFlags & (tfRequireAuth | tfOptionalAuth))
+            return TxConsequences::blocker;
+
+        if (auto const uSetFlag = tx[~sfSetFlag]; uSetFlag &&
+            (*uSetFlag == asfRequireAuth || *uSetFlag == asfDisableMaster ||
+             *uSetFlag == asfAccountTxnID))
+            return TxConsequences::blocker;
+
+        if (auto const uClearFlag = tx[~sfClearFlag]; uClearFlag &&
+            (*uClearFlag == asfRequireAuth || *uClearFlag == asfDisableMaster ||
+             *uClearFlag == asfAccountTxnID))
+            return TxConsequences::blocker;
+
+        return TxConsequences::normal;
+    };
+
+    return TxConsequences{ctx.tx, getTxConsequencesCategory(ctx.tx)};
 }
 ```
 
