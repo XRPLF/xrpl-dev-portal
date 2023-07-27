@@ -900,7 +900,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   },
 ```
 
-4. Then, in `view/templte.html`, replace the existing HTML dialog element for the account with the new ones for seed and password:
+4. Then, in `view/template.html`, replace the existing HTML dialog element for the account with the new ones for seed and password:
 
 ```html
     <dialog id="seed-dialog">
