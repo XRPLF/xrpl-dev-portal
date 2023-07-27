@@ -272,6 +272,9 @@
         <li class="nav-item level-3"><a class="nav-link" href="#1-add-a-preflight-function">1. Add a preflight function.</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#2-add-a-preclaim-function">2. Add a preclaim function.</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#3-add-a-doapply-function">3. Add a doApply() function.</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#additional-functions">Additional Functions</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#calculatebasefee">calculateBaseFee</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#maketxconsequences">makeTxConsequences</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#next-steps">Next Steps</a></li>
       </ul>
   </div>
@@ -292,11 +295,12 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="create-custom-transactors">Create Custom Transactors<a aria-hidden="true" class="hover_anchor" href="#create-custom-transactors"><i class="fa fa-link"></i></a></h1>
-<p>You can create custom transactors to modify the XRP Ledger. Transactors follow a basic order of operations:</p>
+<p>A <em>transactor</em> is code that processes a transaction and modifies the XRP Ledger. Creating custom transactors enables you to add new functionality to <code>rippled</code>.</p>
+<p>Transactors follow a basic order of operations:</p>
 <ol>
 <li>Access a <em>view</em> into a serialized type ledger entry (SLE).</li>
 <li>Update, erase, or insert values in the <em>view</em>.</li>
-<li>Apply the finalized changes to the ledger.</li>
+<li>Apply the finalized changes from the <em>view</em> to the ledger.</li>
 </ol>
 <p class="devportal-callout note"><strong>Note:</strong> <em>Views</em> are sandboxes into ledgers. Transactors make all necessary error checks and changes in sandboxes, not directly on the ledger. After values are finalized, changes are applied atomically to the ledger.</p>
 <p>This tutorial uses the existing <code>CreateCheck</code> transactor as an example. You can view the source files here:</p>
@@ -338,7 +342,24 @@
 <h2 id="cpp-file">CPP File<a aria-hidden="true" class="hover_anchor" href="#cpp-file"><i class="fa fa-link"></i></a></h2>
 <h3 id="1-add-a-preflight-function">1. Add a <code>preflight</code> function.<a aria-hidden="true" class="hover_anchor" href="#1-add-a-preflight-function"><i class="fa fa-link"></i></a></h3>
 <p>The <code>preflight</code> function checks for errors before accessing the ledger and incurring fees.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="n">CreateCheck</span><span class="o">::</span><span class="n">preflight</span><span class="p">(</span><span class="n">PreflightContext</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ctx</span><span class="p">)</span>
+<ul>
+<li><code>PreflightContext</code> doesn't have a view of the ledger.</li>
+<li>
+<p>Use bracket notation to retrieve fields from ledgers and transactions:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="n">auto</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="n">curExpiration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sle</span><span class="o">*</span><span class="p">)</span><span class="o">[</span><span class="n">~sfExpiration</span><span class="o">]</span><span class="p">;</span>
+<span class="p">(</span><span class="o">*</span><span class="n">sle</span><span class="p">)</span><span class="o">[</span><span class="n">sfBalance</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sle</span><span class="p">)</span><span class="o">[</span><span class="n">sfBalance</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">reqDelta</span><span class="p">;</span>
+</code></pre></div>
+<p class="devportal-callout note"><strong>Note:</strong> The <code>~</code> symbol returns an optional type.</p>
+</li>
+<li>
+<p>You can view ledger and transaction schemas here:</p>
+<ul>
+<li><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp" target="_blank"><code>LedgerFormats.cpp</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp" target="_blank"><code>TxFormats.cpp</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="n">CreateCheck</span><span class="o">::</span><span class="n">preflight</span><span class="p">(</span><span class="n">PreflightContext</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ctx</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ctx</span><span class="p">.</span><span class="n">rules</span><span class="p">.</span><span class="n">enabled</span><span class="p">(</span><span class="n">featureChecks</span><span class="p">))</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">temDISABLED</span><span class="p">;</span>
@@ -376,7 +397,6 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// Add `~` for optional types.</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">optExpiry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="n">tx</span><span class="p">[</span><span class="o">~</span><span class="n">sfExpiration</span><span class="p">])</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">optExpiry</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
@@ -389,27 +409,12 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">preflight2</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<ul>
-<li><code>PreflightContext</code> doesn't have a view of the ledger.</li>
-<li>
-<p>Use bracket notation to retrieve fields from ledgers and transactions:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="err">```</span>
-<span class="n">auto</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="n">curExpiration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sle</span><span class="o">*</span><span class="p">)</span><span class="o">[</span><span class="n">~sfExpiration</span><span class="o">]</span><span class="p">;</span>
-<span class="p">(</span><span class="o">*</span><span class="n">sle</span><span class="p">)</span><span class="o">[</span><span class="n">sfBalance</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">sle</span><span class="p">)</span><span class="o">[</span><span class="n">sfBalance</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">reqDelta</span><span class="p">;</span>
-<span class="err">```</span>
-</code></pre></div>
-<p class="devportal-callout note"><strong>Note:</strong> The <code>~</code> symbol returns an optional type.</p>
-</li>
-<li>
-<p>You can view ledger and transaction schemas here:</p>
-<ul>
-<li><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp" target="_blank"><code>LedgerFormats.cpp</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp" target="_blank"><code>TxFormats.cpp</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-</ul>
-</li>
-</ul>
 <h3 id="2-add-a-preclaim-function">2. Add a <code>preclaim</code> function.<a aria-hidden="true" class="hover_anchor" href="#2-add-a-preclaim-function"><i class="fa fa-link"></i></a></h3>
 <p>The <code>preclaim</code> functions checks for errors that require viewing information on the ledger.</p>
+<ul>
+<li><code>PreclaimContext</code> has a read-only view of the ledger.</li>
+<li>This function incurs fees.</li>
+</ul>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="n">CreateCheck</span><span class="o">::</span><span class="n">preclaim</span><span class="p">(</span><span class="n">PreclaimContext</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ctx</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">AccountID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">dstId</span><span class="p">{</span><span class="n">ctx</span><span class="p">.</span><span class="n">tx</span><span class="p">[</span><span class="n">sfDestination</span><span class="p">]};</span>
@@ -492,10 +497,6 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tesSUCCESS</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<ul>
-<li><code>PreclaimContext</code> has a read-only view of the ledger.</li>
-<li>This function incurs fees.</li>
-</ul>
 <h3 id="3-add-a-doapply-function">3. Add a <code>doApply()</code> function.<a aria-hidden="true" class="hover_anchor" href="#3-add-a-doapply-function"><i class="fa fa-link"></i></a></h3>
 <p>The <code>doApply()</code> function has read/write access, enabling you to modify the ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="n">CreateCheck</span><span class="o">::</span><span class="n">doApply</span><span class="p">()</span>
@@ -575,6 +576,60 @@
 <span class="w">    </span><span class="c1">// If we succeeded, the new entry counts against the creator's reserve.</span>
 <span class="w">    </span><span class="n">adjustOwnerCount</span><span class="p">(</span><span class="n">view</span><span class="p">(),</span><span class="w"> </span><span class="n">sle</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">viewJ</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tesSUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="additional-functions">Additional Functions<a aria-hidden="true" class="hover_anchor" href="#additional-functions"><i class="fa fa-link"></i></a></h2>
+<h3 id="calculatebasefee"><code>calculateBaseFee</code><a aria-hidden="true" class="hover_anchor" href="#calculatebasefee"><i class="fa fa-link"></i></a></h3>
+<p>The <code>calculateBaseFee</code> function calculates the XRP fee to run a transaction. The fee is usually inherited from the base transactor, but transactors such as <code>EscrowFinish</code> require additional fees.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="n">XRPAmount</span>
+<span class="nf">EscrowFinish::calculateBaseFee</span><span class="p">(</span><span class="n">ReadView</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">view</span><span class="p">,</span><span class="w"> </span><span class="n">STTx</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tx</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">XRPAmount</span><span class="w"> </span><span class="n">extraFee</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">fb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tx</span><span class="p">[</span><span class="o">~</span><span class="n">sfFulfillment</span><span class="p">])</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">extraFee</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">view</span><span class="p">.</span><span class="n">fees</span><span class="p">().</span><span class="n">base</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">32</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">fb</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">16</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Transactor</span><span class="o">::</span><span class="n">calculateBaseFee</span><span class="p">(</span><span class="n">view</span><span class="p">,</span><span class="w"> </span><span class="n">tx</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">extraFee</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="maketxconsequences"><code>makeTxConsequences</code><a aria-hidden="true" class="hover_anchor" href="#maketxconsequences"><i class="fa fa-link"></i></a></h3>
+<p><code>rippled</code> uses a <a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/applySteps.h#L41-L44" target="_blank"><code>TxConsequences</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> class to describe the outcome to an account when applying a transaction. It tracks the fee, maximum possible XRP spent, and how many sequences are consumed by the transaction. There are three types of consequences:</p>
+<ul>
+<li><strong>Normal:</strong> The transactor doesn't affect transaction signing and only consumes an XRP fee.</li>
+<li><strong>Blocker:</strong> The transactor affects transaction signing, preventing valid transactions from queueing behind it.</li>
+<li><strong>Custom:</strong> The transactor needs to do additional work to determination consequences.</li>
+</ul>
+<p>The <code>makeTxConsequences</code> function enables you to create custom consequences for situations such as:</p>
+<ul>
+<li>Payments sending XRP.</li>
+<li>Tickets consuming more than one sequence.</li>
+<li>Transactions that are normal or blockers, depending on flags or fields set.</li>
+</ul>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="n">SetAccount</span><span class="o">::</span><span class="n">makeTxConsequences</span><span class="p">(</span><span class="n">PreflightContext</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ctx</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// The SetAccount may be a blocker, but only if it sets or clears</span>
+<span class="w">    </span><span class="c1">// specific account flags.</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">getTxConsequencesCategory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="n">STTx</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">uTxFlags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tx</span><span class="p">.</span><span class="n">getFlags</span><span class="p">();</span>
+<span class="w">            </span><span class="n">uTxFlags</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">tfRequireAuth</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">tfOptionalAuth</span><span class="p">))</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TxConsequences</span><span class="o">::</span><span class="n">blocker</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">uSetFlag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tx</span><span class="p">[</span><span class="o">~</span><span class="n">sfSetFlag</span><span class="p">];</span><span class="w"> </span><span class="n">uSetFlag</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="n">uSetFlag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">asfRequireAuth</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">*</span><span class="n">uSetFlag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">asfDisableMaster</span><span class="w"> </span><span class="o">||</span>
+<span class="w">             </span><span class="o">*</span><span class="n">uSetFlag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">asfAccountTxnID</span><span class="p">))</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TxConsequences</span><span class="o">::</span><span class="n">blocker</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">uClearFlag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tx</span><span class="p">[</span><span class="o">~</span><span class="n">sfClearFlag</span><span class="p">];</span><span class="w"> </span><span class="n">uClearFlag</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="n">uClearFlag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">asfRequireAuth</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">*</span><span class="n">uClearFlag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">asfDisableMaster</span><span class="w"> </span><span class="o">||</span>
+<span class="w">             </span><span class="o">*</span><span class="n">uClearFlag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">asfAccountTxnID</span><span class="p">))</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TxConsequences</span><span class="o">::</span><span class="n">blocker</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TxConsequences</span><span class="o">::</span><span class="n">normal</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">TxConsequences</span><span class="p">{</span><span class="n">ctx</span><span class="p">.</span><span class="n">tx</span><span class="p">,</span><span class="w"> </span><span class="n">getTxConsequencesCategory</span><span class="p">(</span><span class="n">ctx</span><span class="p">.</span><span class="n">tx</span><span class="p">)};</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="next-steps">Next Steps<a aria-hidden="true" class="hover_anchor" href="#next-steps"><i class="fa fa-link"></i></a></h2>
