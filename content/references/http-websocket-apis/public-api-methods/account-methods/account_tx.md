@@ -460,6 +460,9 @@ Each transaction object includes the following fields, depending on whether it w
 * `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
 * `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](server-doesnt-sync.html).
 
+## Api Version Differences
+* 'apiVersion1' - specifying `ledger_index_min`, `ledger_index_max` and `ledger_index` will not throw an error
+* 'apiVersion2' - specifying `ledger_index_min`, `ledger_index_max` and `ledger_index` will result in an invalidParams error
 
 {% include '_snippets/rippled_versions.md' %}
 {% include '_snippets/rippled-api-links.md' %}
