@@ -25,7 +25,7 @@ Claw back an issued currency transfer between accounts in a trust set.
 }
 ```
 
-[Clawback example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Clawback%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%228566673ECD0A9731C516906E5D2F47129C5C13713602140733831A56CEAE1A05%22%2C%22binary%22%3Afalse%7D)
+[Clawback example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Clawback%22%2C%22command%22%3A%22Clawback%22%2C%22Account%22%3A%%22rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S%22%2C%22Amount%22%3A%22%7B%22currency%22%3A%22FOO%22%2C%22issuer%22%3A%22rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW%22%2C%22value%22%3A%22314.159%22%7D%7D)
 
 {% include '_snippets/tx-fields-intro.md' %}
 
