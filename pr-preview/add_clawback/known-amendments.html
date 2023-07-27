@@ -269,6 +269,7 @@
         <li class="nav-item level-1"><a class="nav-link" href="#known-amendments">Known Amendments</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#checks">Checks</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#clawback">Clawback</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditions">CryptoConditions</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditionssuite">CryptoConditionsSuite</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#deletableaccounts">DeletableAccounts</a></li>
@@ -363,6 +364,11 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
+<td style="text-align: left;">TBD</td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#clawback">Clawback</a></td>
 <td style="text-align: left;">TBD</td>
 <td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 </tr>
@@ -734,6 +740,35 @@
 <p>Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.</p>
 <p>The sender or the receiver can cancel a Check at any time before it is cashed. A Check can also have an expiration time, after which it cannot be cashed, and anyone can cancel it.</p>
 <p>Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash, and a new ledger object type, Check. Adds a new transaction result code, <code>tecEXPIRED</code>, which occurs when trying to create a Check whose expiration time is in the past.</p>
+<h2 id="clawback">Clawback<a aria-hidden="true" class="hover_anchor" href="#clawback"><i class="fa fa-link"></i></a></h2>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Clawback</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Dev</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em> the funds.</p>
+<p>Clawback is disabled by default. To use clawback, you must set the <code>lsfAllowTrustLineClawback</code> flag using an <code>AccountSet</code> transaction.</p>
 <h2 id="cryptoconditions">CryptoConditions<a aria-hidden="true" class="hover_anchor" href="#cryptoconditions"><i class="fa fa-link"></i></a></h2>
 <table class="table-responsive">
 <thead>
@@ -2870,7 +2905,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback-of-issued-currency.html">Clawback</a>
+    <a class="nav-link nav-leaf" href="clawback-of-issued-currency.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -4004,7 +4039,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback</a>
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
