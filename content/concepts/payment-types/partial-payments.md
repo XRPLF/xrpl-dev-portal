@@ -8,7 +8,7 @@ labels:
 ---
 # Partial Payments
 
-The sender of any Payment can enable the "Partial Payment" flag and send a payment which delivers less than the `Amount` field indicates. When processing any Payment, use [the `delivered_amount` metadata field](#the-delivered_amount-field), not the `Amount` field. The `delivered_amount` is the amount a payment actually delivered.
+The sender of any Payment can enable the "Partial Payment" flag and send a payment which delivers less than the `Amount` field indicates. When processing any Payment, use the `delivered_amount` metadata field, not the `Amount` field. The `delivered_amount` is the amount a payment actually delivered.
 
 If a Payment does not enable the Partial Payment flag, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the amount to deliver after charging for exchange rates and [transfer fees](transfer-fees.html). The Partial Payment flag ([`tfPartialPayment`](payment.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](become-an-xrp-ledger-gateway.html#bouncing-payments) without incurring additional costs to oneself.
 
