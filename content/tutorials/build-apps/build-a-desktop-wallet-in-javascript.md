@@ -800,7 +800,7 @@ After finishing this step the application should look like this:
 
 By now we always query the user for an account address at application startup. We more or less have a monitoring tool for accounts that queries publicly available data. Because we want to have real wallet functionality including sending XRP, we will have to deal with private keys and seeds.
 
-In this step we will query the user for an account seed and  a password save this seed with a salted password. 
+In this step we will query the user for a seed and a password they can use to access it later. In order to protect the password, we'll add a [salt](https://en.wikipedia.org/wiki/Salt_(cryptography)) to the password. 
 
 1. In the `library` folder, add a new file `5_helpers.js` with the following content:
 
