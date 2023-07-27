@@ -49,6 +49,18 @@ To enable StatsD on your `rippled` server, perform the following steps:
 
     You should periodically see messages indicating outbound traffic to the configured address and port of your `rippledmon` instance.
 
+    To view detailed information on metrics being imported use the below command from the rippled instance/container (Change the port number to the one that is being used by grafana if not 8125)
+   
+        $ tcpdump -An dst port 8125
+   
+     Sample Output:
+   
+        my_rippled.jobq.ledgerData:200|ms
+        my_rippled.jobq.ledgerData_q:142|ms
+        my_rippled.jobq.ledgerData:30|ms
+        my_rippled.jobq.ledgerData_q:160|ms
+        my_rippled.jobq.ledgerData:68|ms
+
 For descriptions of each StatsD metric, see the [`rippledmon` repository](https://github.com/ripple/rippledmon).
 
 
