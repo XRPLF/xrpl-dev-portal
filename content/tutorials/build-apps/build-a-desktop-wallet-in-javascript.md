@@ -874,7 +874,7 @@ const main = async () => {
 }
 ```
 
-The subscription to the `address-entered` frontend is gone, as we are now going to use a full-fledged wallet, for which we are going to prompt the user or a seed and a password to encrypt it with. If there already is a seed, the user will only be asked for his password which is in turn used to decrypt the seed.
+Since we are now making this a full-fledged wallet, instead of asking the user for an address we will now be prompting the user for a seed and password to encrypt the seed. If there is already a seed, the user will only be asked for their password.```
 
 3. Then modify the `view/preload.js` file (Note that the `onEnterAccountAddress` function is no longer needed):
 
