@@ -4,6 +4,7 @@ parent: tokens.html
 blurb: Issuers can claw back their issued tokens for compliance purposes.
 labels:
   - Tokens
+status: not_enabled
 ---
 # Clawback
 

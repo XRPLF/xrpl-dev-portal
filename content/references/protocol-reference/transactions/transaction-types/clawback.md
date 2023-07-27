@@ -4,6 +4,7 @@ parent: transaction-types.html
 blurb: Claw back an issued currency transfer between accounts in a trust set.
 labels:
   - Tokens
+status: not_enabled
 ---
 # Clawback
 

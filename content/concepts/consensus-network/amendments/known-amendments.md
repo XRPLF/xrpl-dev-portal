@@ -15,6 +15,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
 | [OwnerPaysFee][]                  | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [Clawback][] | TBD | [In Development: TBD]("BADGE_LIGHTGREY") |
 | [fixNFTokenRemint][]              | v1.11.0    | [In Development: TBD]("BADGE_LIGHTGREY") |
 | [DisallowIncoming][]              | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixNonFungibleTokensV1_2][]      | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
@@ -112,6 +113,19 @@ The sender or the receiver can cancel a Check at any time before it is cashed. A
 
 Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash, and a new ledger object type, Check. Adds a new transaction result code, `tecEXPIRED`, which occurs when trying to create a Check whose expiration time is in the past.
 
+## Clawback
+[Clawback]: #clawback
+
+| Amendment     | Clawback |
+|:--------------|:---------|
+| Amendment ID  | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
+| Status        | In Dev   |
+| Default Vote (Latest stable release) | Yes |
+| Pre-amendment functionality retired? | No  |
+
+For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_ the funds.
+
+Clawback is disabled by default. To use clawback, you must set the `lsfAllowTrustLineClawback` flag using an `AccountSet` transaction.
 
 ## CryptoConditions
 [CryptoConditions]: #cryptoconditions
