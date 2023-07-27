@@ -993,7 +993,7 @@ After finishing this step the application should look like this:
 
 2. Also, copy the file `view/custom.css` as well as `XRPLedger_DevPortal-white.svg` to the `view`directory.
 
-3. Change the content of `view/template.html` with the following code:
+3. Change the content of `view/template.html` to be the following code:
 
 ````html
 <!DOCTYPE html>
