@@ -1299,7 +1299,7 @@ One type of check we could make is to verify the domain name associated with an 
 
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/8_helpers.js", language="js") }}
 
-The code in the helper class basically issues an [`account_info`](account_info.html) request to look up the account in the ledger.
+The code in `8_helpers.js` looks up the account on the ledger by sending an [`account_info`](account_info.html) request.
 
 If the account does exist, the code checks for the [`lsfDisallowXRP` flag](accountroot.html#accountroot-flags). Note that this is an `lsf` (ledger state flag) value because this is an object from the ledger state data; these are different than the flag values the [AccountSet transaction][] uses to configure the same settings.
 
