@@ -1229,7 +1229,7 @@ const { sendXrp } = require('./library/7_helpers')
     </div>
 ```
 
-7. Update `view/renderer.js` by adding:
+7. Add the following code to the bottom of `view/renderer.js`:
 
 ```javascript
 const modalButton = document.getElementById('send-xrp-modal-button')
