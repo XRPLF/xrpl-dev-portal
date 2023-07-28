@@ -1448,16 +1448,6 @@ Test your wallet app the same way you did in the previous steps. It should displ
 | `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` | `xrpl.org`   | ❌ No     |
 | `rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe` | (Not set)    | ❌ No     |
 
-To test X-addresses, try the following addresses:
-
-| Address                                           | Destination Tag | Test Net? |
-|:--------------------------------------------------|:----------------|:----------|
-| `T7YChPFWifjCAXLEtg5N74c7fSAYsvPKxzQAET8tbZ8q3SC` | 0               | Yes       |
-| `T7YChPFWifjCAXLEtg5N74c7fSAYsvJVm6xKZ14AmjegwRM` | None            | Yes       |
-| `X7d3eHCXzwBeWrZec1yT24iZerQjYLjJrFT7A8ZMzzYWCCj` | 0               | No        |
-| `X7d3eHCXzwBeWrZec1yT24iZerQjYLeTFXz1GU9RBnWr7gZ` | None            | No        |
-| `X7d3eHCXzwBeWrZec1yT24iZerQjYLeTFXz1GU9RBnWr7gZ` | None            | No        |
-
 To run the reference application, run:
 
 ```console
