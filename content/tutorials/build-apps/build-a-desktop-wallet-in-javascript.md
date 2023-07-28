@@ -1388,13 +1388,13 @@ Finally, the code decodes the account's `Domain` field, if present, and performs
 
 ```html
 <div class="input-group mb-3">
+    <!-- Step 8 code additions - start -->
     <div class="accountVerificationIndicator">
         <span>Verification status:</span>
     </div>
-    <input type="text" class="form-control" placeholder="rn95xwUymaMyzAKnZUGuynjZ6qk9RzV4Q7" id="input-destination-address">
-    <!-- Step 8 code additions - start -->
+    <!-- Step 8 code additions - end -->
+    <input type="text" class="form-control" placeholder="rP4zcp52pa7ZjhjtU9LrnFcitBUadNW8Xz" id="input-destination-address">
     <span class="input-group-text">To (Address)</span>
-    <!-- Step 8 code additions - start -->
 </div>
 ```
 
