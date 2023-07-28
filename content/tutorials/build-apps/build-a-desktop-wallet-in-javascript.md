@@ -1030,7 +1030,7 @@ After finishing this step the application should look like this:
 
 <body>
 
-  <main>
+  <main class="bg-light">
     <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <img class="logo" height="40"/>
@@ -1054,7 +1054,7 @@ After finishing this step the application should look like this:
 
     <div class="divider"></div>
 
-    <div class="main-content tab-content d-flex flex-column flex-shrink-0 p-3 bg-light">
+    <div class="main-content tab-content d-flex flex-column flex-shrink-0 p-3">
 
       <div class="header border-bottom">
         <h3>
