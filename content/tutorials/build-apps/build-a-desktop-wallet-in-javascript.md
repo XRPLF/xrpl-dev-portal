@@ -1289,7 +1289,8 @@ sendXrpButtonEl.addEventListener('click', () => {
     window.electronAPI.onClickSendXrp({destinationAddress, destinationTag, amount})
 })
 
-window.electronAPI.onSendXrpTransactionFinish((_event) => {
+window.electronAPI.onSendXrpTransactionFinish((_event, result) => {
+    alert('Result: ' + result.result.meta.TransactionResult)
     destinationAddressEl.value = ''
     destinationTagEl.value = ''
     amountEl.value = ''
@@ -1303,6 +1304,8 @@ npm run start
 ```
 
 The application should now display a "Send XRP" button in the top right corner, which should open a Modal dialog on clicking. You can use this Dialog to send XRP tokens from this account to another, and the balance update as well as the transaction should be reflected in the app.
+
+If you need an account address to send the XRP to, [you can create an account on the testnet](https://learn.xrpl.org/course/code-with-the-xrpl/lesson/create-accounts-and-send-xrp/).
 
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 

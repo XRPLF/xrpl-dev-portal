@@ -105,7 +105,8 @@ sendXrpButtonEl.addEventListener('click', () => {
     window.electronAPI.onClickSendXrp({destinationAddress, destinationTag, amount})
 })
 
-window.electronAPI.onSendXrpTransactionFinish((_event) => {
+window.electronAPI.onSendXrpTransactionFinish((_event, result) => {
+    alert('Result: ' + result.result.meta.TransactionResult)
     destinationAddressEl.value = ''
     destinationTagEl.value = ''
     amountEl.value = ''
