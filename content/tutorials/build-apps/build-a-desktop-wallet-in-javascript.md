@@ -1434,12 +1434,6 @@ sendXrpButtonEl.addEventListener('click', () => {
 })
 ```
 
-
-The updated preloader `view/8_preloader.js` is also modified the same way by adding the following two event listeners:
-
-`view/8_preload.js`
-{{ include_code("_code-samples/build-a-wallet/desktop-js/view/8_preload.js", language="js", lines="33-38") }}
-
 Run the following command:
 
 ```console
