@@ -941,7 +941,28 @@ contextBridge.exposeInMainWorld('electronAPI', {
     </dialog>
 ```
 
-6. In `view/renderer.js` add at the top:
+6. In `view/renderer.js`, replace the `openAccountAddressDialog` part at the top:
+
+```javascript
+// Remove the following section in Step 5
+document.addEventListener('DOMContentLoaded', openAccountAddressDialog);
+
+function openAccountAddressDialog(){
+    const accountAddressDialog = document.getElementById('account-address-dialog');
+    const accountAddressInput = accountAddressDialog.querySelector('input');
+    const submitButton = accountAddressDialog.querySelector('button[type="submit"]');
+
+    submitButton.addEventListener('click', () => {
+        const address = accountAddressInput.value;
+        window.electronAPI.onEnterAccountAddress(address)
+        accountAddressDialog.close()
+    });
+
+    accountAddressDialog.showModal()
+}
+```
+
+With this code:
 
 ```javascript
 window.electronAPI.onOpenSeedDialog((_event) => {
