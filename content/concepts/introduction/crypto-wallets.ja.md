@@ -43,9 +43,8 @@ XRPレジャーはオープンソースプロジェクトであり、クライ�
 
 ## 関連項目
 
-- [アカウント](accounts.html#addresses)
+- [アカウント](accounts.html)
 - [暗号鍵](cryptographic-keys.html)
 - [クライアントライブラリ](client-libraries.html)
 - [レジャー](ledgers.html)
-- [XRPLのクイックスタート](xrpl-quickstart.html)
 - [Pythonでデスクトップウォレットを作成する](build-a-desktop-wallet-in-python.html)
