@@ -1213,7 +1213,7 @@ const { sendXrp } = require('./library/7_helpers')
     </div>
 ```
 
-6. In the same file, add said modal dialog:
+6. In the same file, at the end of the `<main>` section, add said modal dialog:
 ```html
     <div class="modal fade" id="send-xrp-modal" tabindex="-1">
         <div class="modal-dialog">
