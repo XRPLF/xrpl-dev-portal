@@ -1350,7 +1350,7 @@ const { verify } = require('./library/8_helpers')
 // Step 8 code additions - end
 ```
 
-3. At the end of the callback function `ipcMain.on('send-xrp-action', callback)` add the following event handler:
+3. After the callback function `ipcMain.on('send-xrp-action', callback)` add the following event handler:
 
 ```javascript
 ipcMain.on('send-xrp-action', (event, paymentData) => {
