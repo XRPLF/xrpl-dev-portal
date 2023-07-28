@@ -53,7 +53,7 @@ Liquidity providers can use the [HTTP / WebSocket APIs](http-websocket-apis.html
 
 XRPレジャーにおけるステーブルコイン発行者のトークンの価値は、顧客が必要なときにトークンを換金できるという信頼に直結します。事業停止のリスクを減らすには、以下のベストプラクティスに従う必要があります。
 
-* ネットワーク上のリスク要因を限定するため、[発行・運用アドレス](issuing-and-operational-addresses.html)を分けて使用する。
+* ネットワーク上のリスク要因を限定するため、[発行・運用アドレス](account-types.html)を分けて使用する。
 * [銀行秘密保護法](http://en.wikipedia.org/wiki/Bank_Secrecy_Act)など、管轄区域のマネーロンダリング防止規制に従ってください。これには通常、["Know-Your-Customer" (KYC) 情報](https://ja.wikipedia.org/wiki/KYC)を収集する要件が含まれます。
 * XRPレジャー財団の[トークン発行者自己評価](https://foundation.xrpl.org/token-assessment-framework/)を完了する。
 * すべての方針と手数料を公表する。
@@ -63,7 +63,7 @@ XRPレジャーにおけるステーブルコイン発行者のトークンの�
 
 {% include '_snippets/issuing-and-operational-addresses-intro.ja.md' %}
 
-主な記事: [発行アドレスと運用アドレス](issuing-and-operational-addresses.html)
+主な記事: [発行アドレスと運用アドレス](account-types.html)
 
 
 ## 手数料および収益源
@@ -240,7 +240,7 @@ XRPレジャーに _お金を送る_ には、ACMEがユーザーの代わりに
     - ACMEは、ACMEの記録システムにおいてXRPレジャー用担保口座を作成する。
     - ACMEは、XRPレジャーに割り当てられた資金を、別の銀行口座に保管することもできます。
     - ステーブルコインが暗号資産によって支えられている場合、ACMEはXRPレジャーに割り当てられた資金を保持するための別のウォレットを作成し、その準備金を公に検証可能な証明とすることができます。
-- ACME は、2つの別々のXRPレジャーアドレスを管理する必要があります。詳細は[発行・運用アドレス](issue-and-operational-addresses.html)をご覧ください。
+- ACME は、2つの別々のXRPレジャーアドレスを管理する必要があります。詳細は[発行・運用アドレス](account-types.html)をご覧ください。
     - ACMEは、顧客がそのトークンを送受信するために、その発行アドレスでDefault Rippleフラグを有効にする必要があります。
 - Aliceは自分のXRPレジャーアドレスからACMEの発行アドレスへのアカウント関係（トラストライン）を作成する必要があります。彼女はACMEの発行アドレスを知っている限り、どのXRPレジャーのクライアントアプリケーションからでもトラストラインの作成を行うことができます。
     - 発行アドレスは、ACMEのウェブサイト上で顧客が見つけることができるように公表する必要があります。また、[`xrp-ledger.toml`ファイル](xrp-ledger-toml.html)を使用して、自動化されたシステムに発行アドレスを公開することも出来ます。
@@ -358,7 +358,7 @@ XRPレジャーへの接続方法は、ニーズや 既存のソフトウェア�
 
 XRPレジャーのトランザクションを送信するときはいつでも、あなたの秘密鍵を使って署名する必要があります。秘密鍵は、あなたのXRPレジャーアドレスを完全にコントロールすることができます。**決して**他人が運営するサーバにあなたの秘密鍵を送ってはいけません。自分のサーバを使うか、クライアントライブラリを使用してローカルでトランザクションに署名してください。
 
-安全な設定の手順や例については、[安全な署名の設定](set-up-secure-signing.html)をご覧ください。
+安全な設定の手順や例については、[安全な署名の設定](secure-signing.html)をご覧ください。
 
 ## 発行者のセットアップ
 
@@ -420,7 +420,7 @@ Tick Sizeはアカウントレベルの設定であり、同じアドレスで�
 
 Tick Sizeは取引レートの精度を制御するだけで、トークン自体の精度を制御するものではありません。ユーザは、トークンの発行者が設定したTic Sizeに関係なく、非常に大きな金額や非常に小さな金額を送ったり保有したりすることができます。
 
-より詳細な情報は[Tick Size](tick-size.html)をご覧ください。
+より詳細な情報は[Tick Size](ticksize.html)をご覧ください。
 
 
 ### Transfer Fees
@@ -471,7 +471,7 @@ Tick Sizeは取引レートの精度を制御するだけで、トークン自�
 
 顧客のためにXRPレジャーに支払いを送る自動システムを構築する場合、そのシステムが支払いを厳密に構築していることを確認する必要があります。悪意ある人物は常に、システムを騙して必要以上に支払いをさせる方法を見つけようとしています。
 
-一般的に、ステーブルコインを送る場合は[Paymentトランザクション][]を使用します。初めてトークンを発行するのか、ホットウォレットから顧客へ送金するのかによって、細かい点が異なる部分もあります。注意すべき点は以下の通りです。
+一般的に、ステーブルコインを送る場合は[Payment トランザクション][]を使用します。初めてトークンを発行するのか、ホットウォレットから顧客へ送金するのかによって、細かい点が異なる部分もあります。注意すべき点は以下の通りです。
 
 - 発行アドレスから新しいトークンを発行する場合、`SendMax`フィールドを省略する必要があります。そうしないと、悪意のあるユーザは、意図した宛先の`Amount`だけでなく、`SendMax`の全量を発行するように設定を変更することができます。
 - ホットウォレットからトークンを送信する場合、転送手数料がゼロでない場合は`SendMax`を指定する必要があります。この場合、`SendMax`フィールドに`Amount`フィールドで指定した金額と送金手数料を設定します。(計算の精度がXRPレジャーと正確に一致しない場合に備えて、少し切り上げるとよいでしょう)。例えば、`Amount`フィールドに99.47 USDが指定され、送金手数料が0.25%のトランザクションを送信する場合、`SendMax`フィールドを124.3375、または切り上げる場合は124.34 USDに設定すべきです。
@@ -522,3 +522,22 @@ Tick Sizeは取引レートの精度を制御するだけで、トークン自�
     - [トークン](tokens.html)
     - [分散型取引所](decentralized-exchange.html)
     - [送信タグと宛先タグ](source-and-destination-tags.html)
+- **チュートリアル:**
+    - [`rippled`のインストール](install-rippled.html)
+    - [安全な署名の設定](secure-signing.html)
+    - [非代替性トークンの発行](issue-a-fungible-token.html)
+    - [No Freezeの有効化](enable-no-freeze.html)
+    - [トラストラインの凍結](freeze-a-trust-line.html)
+    - [Enact Global Freeze](enact-global-freeze.html)
+- **リファレンス:**
+    - [Payment トランザクション][]
+    - [AccountSet トランザクション][]
+    - [TrustSet トランザクション][]
+    - [RippleState オブジェクト](ripplestate.html)
+    - [account_lines メソッド][]
+    - [gateway_balances メソッド][]
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

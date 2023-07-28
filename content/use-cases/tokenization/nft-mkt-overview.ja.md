@@ -45,13 +45,13 @@ NFTビジネスを始めるにあたって、必要不可欠な4つの準備項�
 
 関連項目:
 
-* [独自サーバ運用のメリットとデメリット](xrpl-servers.html#reasons-to-run-your-own-server).
+* [独自サーバ運用のメリットとデメリット](networks-and-servers.html#reasons-to-run-your-own-server).
 
 ## ブロックチェーンの基本機能のセットアップ
 
 NFTをいくつかミントして販売することで、マーケットプレイスを構築し始めることができます。
 
-最初のNFTを作成するには、チュートリアル _NFTonenのミントとバーン_ の指示に従います。[NFTのミントとバーン](mint-and-burn-nftokens.html)をご覧ください。
+最初のNFTを作成するには、チュートリアル _NFTonenのミントとバーン_ の指示に従います。[NFTのミントとバーン](mint-and-burn-nfts-using-javascript.html)をご覧ください。
 
 NFTokenのURLは、NFTのコンテンツが保存されている場所へのリンクです。IPFSアカウントを作成し、永続的なURLにNFTokenのコンテンツを保存するのも1つの方法です。[NFTデータ保存のベストプラクティス](https://docs.ipfs.io/how-to/best-practices-for-nft-data)をご覧ください。
 
@@ -59,7 +59,7 @@ NFTokenのURLは、NFTのコンテンツが保存されている場所へのリ�
 
 <code>transfer fee</code>を設定することで、将来の取引からロイヤリティを徴収することができます。これは販売価格の0～50%を表す0～50000の値です。[NFTの取引手数料](nftoken.html#transferfee)をご覧ください。
 
-`TokenTaxon`フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。[NFTをコレクションとしてミントする](nft-collections.html#minting-nfts-into-collections)をご覧ください。
+`TokenTaxon`フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。[NFTをコレクションとしてミントする](nft-collections.html)をご覧ください。
 
 自分で作成したコンテンツで自分のNFTをミントすることもできますが、他のクリエイターの代わりにNFTを生成する認可Minterになることもできます。この場合、クリエイターは新しいNFTの作成に専念し、あなたはNFTのミントと販売を担当することができます。
 
@@ -80,11 +80,11 @@ NFTokenのURLは、NFTのコンテンツが保存されている場所へのリ�
 
 ### NFTの取引
 
-NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](transfer-nftokens.html)をご覧ください。
+NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](transfer-nfts-using-javascript.html)をご覧ください。
 
-NFTをオークション形式で販売することができます。[NFTオークションの実行](nftoken-auctions.html#running-an-nft-auction)をご覧ください。
+NFTをオークション形式で販売することができます。[NFTオークションの実行](nftoken-auctions.html)をご覧ください。
 
-あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](broker-sale.html)をご覧ください。
+あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](broker-an-nft-sale-using-javascript.html)をご覧ください。
 
 #### 準備金要件
 
@@ -102,7 +102,7 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 #### 支払い
 
-XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](transfer-nftokens.html)をご覧ください。
+XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](transfer-nfts-using-javascript.html)をご覧ください。
 
 他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange)をご覧ください。
 

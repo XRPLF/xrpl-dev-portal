@@ -34,11 +34,11 @@ Current wallet options on XRPL: This is a good opportunity for XRPL to highlight
 
 ### NFTの取引
 
-NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](transfer-nftokens.html)をご覧ください。
+NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](transfer-nfts-using-javascript.html)をご覧ください。
 
-NFTをオークション形式で販売することができます。[NFTオークションの実行](nftoken-auctions.html#running-an-nft-auction)をご覧ください。
+NFTをオークション形式で販売することができます。[NFTオークションの実行](nftoken-auctions.html)をご覧ください。
 
-あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](broker-sale.html)をご覧ください。
+あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](broker-an-nft-sale-using-javascript.html)をご覧ください。
 
 
 ### 準備金要件
@@ -60,11 +60,11 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 トークン取引手数料については、[取引手数料](transfer-fees.html)で詳しく解説しています。
 
-[NFToken Saleの仲介](broker-sale.html)の手順に従って、ブローカー販売市場の構築を開始することができます。
+[NFToken Saleの仲介](broker-an-nft-sale-using-javascript.html)の手順に従って、ブローカー販売市場の構築を開始することができます。
 
 #### 支払い
 
-XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](transfer-nftokens.html)をご覧ください。
+XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](transfer-nfts-using-javascript.html)をご覧ください。
 
 他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange)をご覧ください。
 

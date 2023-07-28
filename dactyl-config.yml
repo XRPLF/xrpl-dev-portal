@@ -1117,6 +1117,7 @@ pages:
         targets:
             - en
 
+    # TODO: update content
     -   md: concepts/payment-types/checks.ja.md
         targets:
             - ja

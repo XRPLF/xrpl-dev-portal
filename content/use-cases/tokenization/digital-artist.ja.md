@@ -17,7 +17,7 @@ NFTokenを作成すると、実際の物理的またはデジタル資産の実�
 
 [Xumm](https://xumm.app)などのアプリを使用してNFTokensを作成することができます。
 
-より実践的な体験をしたい方は、[クイックスタート・チュートリアル3 - NFTokenのミントとバーン](mint-and-burn-nftokens.html) の手順に従うとよいでしょう。
+より実践的な体験をしたい方は、[クイックスタート・チュートリアル3 - NFTokenのミントとバーン](mint-and-burn-nfts-using-javascript.html)をご覧ください。
 
 [![デジタルアーティストのフロー](img/nft-mkt-digital-artist.png "デジタルアーティストのフロー")](img/nft-mkt-digital-artist.png)
 
@@ -34,16 +34,16 @@ NFTをミントして販売することで、マーケットプレイスを構�
 * <code>transfer fee</code>を設定することで、将来の取引からロイヤリティを徴収することができます。これは販売価格の0～50%を表す0～50000の値です。[NFTの取引手数料](nftoken.html#transferfee)を参照してください。
 * NFTokenのURLは、NFTのコンテンツが保存されている場所へのリンクです。IPFSアカウントを作成し、永続的なURLにNFTokenのコンテンツを保存するのも1つの方法です。[NFTデータ保存のベストプラクティス](https://docs.ipfs.io/how-to/best-practices-for-nft-data)をご覧ください。
 <!--[Add link to blog post about alternative NFT cache options.] -->
-* `TokenTaxon`フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。[NFTをコレクションとしてミントする](nft-collections.html#minting-nfts-into-collections)をご覧ください。
+* `TokenTaxon`フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。[NFTをコレクションとしてミントする](nft-collections.html)をご覧ください。
 * 発行者として将来的にトークンをバーンできるようにしたい場合は、`Flags`フィールドを _1_ に設定します。NFTを譲渡可能にするには、`Flags`フィールドを _8_ に設定します。NFTをバーン可能かつ譲渡可能にするには、`Flags`フィールドを _9_ に設定します。[Burnableフラグ](nftoken.html#nftoken-flags)および[Transferableフラグ](nftoken.html#nftoken-flags)をご覧ください。
 
-[NFTokenのミントとバーン](mint-and-burn-nftokens.html)をご覧ください。
+[NFTokenのミントとバーン](mint-and-burn-nfts-using-javascript.html)をご覧ください。
 
 ## NFTの販売
 
-NFTを売却する場合は、売却オファーを作成する必要があります。[NFTokensの取引](transfer-nftokens.html)をご覧ください。
+NFTを売却する場合は、売却オファーを作成する必要があります。[NFTokensの取引](transfer-nfts-using-javascript.html)をご覧ください。
 
-NFTをオークション形式で販売することができます。[NFTオークションの実行](nftoken-auctions.html#running-an-nft-auction)をご覧ください。
+NFTをオークション形式で販売することができます。[NFTオークションの実行](transfer-nfts-using-javascript.html)をご覧ください。
 
 ### 準備金要件
 
@@ -61,17 +61,9 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 ### 支払い
 
-XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](transfer-nftokens.html)をご覧ください。
+XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](transfer-nfts-using-javascript.html))をご覧ください。
 
 他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange)をご覧ください。
-
-<!-- 
-
-* [Crypto payment](transfer-nftokens.html)(mention **<code>lsfOnlyXRP flag)</code></strong>
-* Leveraging the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange).
-* Fiat payment ([Cross-currency payments](cross-currency-payments.html))
-* On-chain validation of completing transactions
- -->
 
 ## NFTのインデックス化
 

@@ -11,7 +11,7 @@ _私は認可Minterとして、トークン発行者のために合意された�
 
 トークン発行者の認可Minterとして動作することができます。この場合、あなたはNFTokenを所有しますが、ロイヤリティはNFTokenの発行者が受け取ります。そのNFTokenを売却する場合、最初の売却益はあなたに入ります。発行者と合意の上、初回売却額の一部または全部を発行者に支払うことができます。
 
-チュートリアル[認可Minterの割り当て](authorize-minter.html)で詳しく説明されています。
+チュートリアル[認可Minterの割り当て](assign-an-authorized-minter-using-javascript.html)で詳しく説明されています。
 
 [![認可Minterのフロー](img/nft-mkt-auth-minter.png "認可Minterのフロー")](img/nft-mkt-auth-minter.png)
 
@@ -25,7 +25,7 @@ NFTを自分で設計するのではなく、NFTクリエイターと連携し�
 
 NFTの作成を終了すると、作成者は認可Minterの権限を取り消し、NFTに対する権限を取り戻すことができます。また、NFTの販売を行うマーケットプレイスにトークンを譲渡することもできます。あなたは、売りオファーと買いオファーのマッチングを行うブローカーとして機能することができます。[NFTオークションの実行](nftoken-auctions.html)を参照してください。
 
-他のアカウントに代わって最初のNFTをミントする場合は、[他アカウントからのNFTミントを許可する](authorize-minter.html)をご覧ください。
+他のアカウントに代わって最初のNFTをミントする場合は、[他アカウントからのNFTミントを許可する](assign-an-authorized-minter-using-javascript.html)をご覧ください。
 
 発行者として将来的にトークンをバーンできるようにしたい場合は、`Flags`フィールドを _1_ に設定します。NFTを譲渡可能にするには、`Flags`フィールドを _8_ に設定します。NFTをバーン可能かつ譲渡可能にするには、`Flags`フィールドを _9_ に設定します。[Burnableフラグ](nftoken.html#nftoken-flags)および[Transferableフラグ](nftoken.html#nftoken-flags)を参照してください。
 
@@ -42,11 +42,11 @@ TokenTaxonフィールドを使用して、特定のテーマや目的をもっ�
 
 ## NFTの取引
 
-NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](transfer-nftokens.html)をご覧ください。
+NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](transfer-nfts-using-javascript.html)をご覧ください。
 
-NFTをオークション形式で販売することができます。[NFTオークションの実行](nftoken-auctions.html#running-an-nft-auction)をご覧ください。
+NFTをオークション形式で販売することができます。[NFTオークションの実行](nftoken-auctions.html)をご覧ください。
 
-あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](broker-sale.html)をご覧ください。
+あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](broker-an-nft-sale-using-javascript.html)をご覧ください。
 
 ### 準備金要件
 
@@ -64,7 +64,7 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 ### 支払い
 
-XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](transfer-nftokens.html)をご覧ください。
+XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](transfer-nfts-using-javascript.html)をご覧ください。
 
 他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange)をご覧ください。
 
