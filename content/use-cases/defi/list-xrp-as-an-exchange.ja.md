@@ -41,17 +41,17 @@ XRPをサポートするために、Alpha Exchangeでは以下を行う必要が
 
 関連項目:
 
-* [ゲートウェイコンプライアンス](stablecoin-issuer.html#compliance-guidelines) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
+* [コンプライアンス指針](stablecoin-issuer.html#コンプライアンス指針) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
 
-* [Requirements for Sending to XRP Ledger](stablecoin-issuer.html#requirements-for-sending-to-xrp-ledger)
+* [XRPレジャーへ送金するための要件](stablecoin-issuer.html#XRPレジャーへ送金するための要件)
 
-* [Requirements for Receiving from XRP Ledger](stablecoin-issuer.html#requirements-for-receiving-from-xrp-ledger)
+* [XRPレジャーへの入金の要件](stablecoin-issuer.html#XRPレジャーへの入金の要件)
 
-* [ゲートウェイの注意事項](stablecoin-issuer.html#precautions)
+* [注意事項](stablecoin-issuer.html#注意事項)
 
 ### Partial Payments
 
-追加の前に、取引所は[Partial Payments](partial-payments.html)機能について知っておく必要があります。この機能を使用すると、XRP Ledgerのユーザーは、`SendMax`を増やさずに、受取金額を減額して、支払いを正常に送信できます。この機能は、送信者側に追加費用が発生せず、[支払いの返金](stablecoin-issuer.html#bouncing-payments)に便利です。
+追加の前に、取引所は[Partial Payments](partial-payments.html)機能について知っておく必要があります。この機能を使用すると、XRP Ledgerのユーザーは、`SendMax`を増やさずに、受取金額を減額して、支払いを正常に送信できます。この機能は、送信者側に追加費用が発生せず、[支払いの返金](stablecoin-issuer.html#不明な入金の返金)に便利です。
 
 #### Partial Paymentsに関する警告
 
@@ -65,7 +65,7 @@ XRPは、XRP Ledgerの _アカウント_ （ _ウォレット_ や _アドレス
 
 <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet -->
 
-Rippleが推奨するベストプラクティスに従い、Alpha Exchangeは、XRP Ledgerに最低2つのアカウントを作成する必要があります。シークレットキーが悪用された場合の危険を最小限にとどめるため、Rippleでは、[ _コールドアカウント_ 、 _ホットアカウント_ 、 _ウォームアカウント_ ](https://ripple.com/build/issuing-operational-addresses/)（それぞれコールドウォレット、ホットウォレット、ウォームウォレットとも呼ばれる）の作成をお勧めしています。コールド/ホット/ウォームのモデルは、セキュリティと利便性のバランスをとるためのものです。XRPを上場する取引所は、以下のアカウントを作成する必要があります。
+Rippleが推奨するベストプラクティスに従い、Alpha Exchangeは、XRP Ledgerに最低2つのアカウントを作成する必要があります。シークレットキーが悪用された場合の危険を最小限にとどめるため、Rippleでは、[ _コールドアカウント_ 、 _ホットアカウント_ 、 _ウォームアカウント_ ](account-types.html)（それぞれコールドウォレット、ホットウォレット、ウォームウォレットとも呼ばれる）の作成をお勧めしています。コールド/ホット/ウォームのモデルは、セキュリティと利便性のバランスをとるためのものです。XRPを上場する取引所は、以下のアカウントを作成する必要があります。
 
 * 大部分のXRPと顧客の資金を維持する[ _コールドウォレット_ ](account-types.html#発行アドレス)。取引所にとって、これはユーザーが[預入れ](#取引所へのxrpの入金)をするアドレスです。   セキュリティを最適化するため、このアカウントのシークレットキーはオフラインにする必要があります。
 
@@ -198,7 +198,7 @@ XRPの額は、XRP Ledgerで、符号なし整数の _drop_ として示され�
 
  _Alpha Exchange_ のような取引所では、XRPは「台帳上」または「台帳外」に存在します。
 
-* **台帳上のXRP**: XRP保有者のパブリック[アドレス](accounts.html#アドレス)を指定し、パブリックのXRP Ledgerを通じて照会できるXRP。これらの残高の取引相手はXRP Ledgerです。詳細については、[XRP](what-is-xrp.html)を参照してください。
+* **台帳上のXRP**: XRP保有者のパブリック[アドレス](addresses.html)を指定し、パブリックのXRP Ledgerを通じて照会できるXRP。これらの残高の取引相手はXRP Ledgerです。詳細については、[XRP](what-is-xrp.html)を参照してください。
 
 * **台帳外のXRP**: 取引所の会計システムに保持されている、取引所のインターフェイスで照会できるXRP。台帳外のXRP残高はクレジットペースです。取引相手は、XRPを保有している取引所です。
 

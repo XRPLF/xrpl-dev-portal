@@ -731,12 +731,13 @@ pages:
         parent: defi-uc.html
         targets:
             - en
-
-        # TODO: fix, rename this stub use case
-    -   md: use-cases/defi/moneychanger-uc.ja.md
-        parent: defi-uc.html
-        targets:
             - ja
+    
+    # TODO: Translate
+    # -   md: use-cases/defi/algorithmic-trading.ja.md
+    #     parent: defi-uc.html
+    #     targets:
+    #         - ja
 
     -   md: use-cases/defi/list-xrp-as-an-exchange.md
         parent: defi-uc.html
