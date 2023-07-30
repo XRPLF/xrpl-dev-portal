@@ -57,6 +57,14 @@ async function verifyAccountDomain(accountData) {
     const domain = convertHexToString(domainHex)
     const tomlUrl = `https://${domain}/.well-known/xrp-ledger.toml`
     const tomlResponse = await fetch(tomlUrl)
+
+    if (!tomlResponse.ok) {
+        return {
+            domain: domain,
+            verified: false
+        }
+    }
+
     const tomlData = await tomlResponse.text()
     const parsedToml = toml.parse(tomlData)
     const tomlAccounts = parsedToml["ACCOUNTS"]
