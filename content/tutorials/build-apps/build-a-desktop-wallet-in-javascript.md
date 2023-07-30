@@ -1454,8 +1454,7 @@ To run the reference application, run:
 npm run domain-verification
 ```
 
-## Next Steps & Topics for further research
+## Summary 
 
-- Error Handling 
-- Building the App
+Congratulations, you now have created your own wallet application! In completing this tutorial, you have learned how to interact with the XRP Ledger - from sending simple requests up to doing actual transactions, all in an electron application.
 
