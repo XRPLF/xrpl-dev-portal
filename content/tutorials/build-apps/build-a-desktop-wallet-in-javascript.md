@@ -1341,7 +1341,7 @@ One type of check we could make is to verify the domain name associated with an 
 
 The code in `8_helpers.js` looks up the account on the ledger by sending an [`account_info`](account_info.html) request.
 
-If the account does exist, the code checks for the [`lsfDisallowXRP` flag](accountroot.html#accountroot-flags). Note that this is an `lsf` (ledger state flag) value because this is an object from the ledger state data; these are different than the flag values the [AccountSet transaction][] uses to configure the same settings.
+If the account does exist, the code checks for the [`lsfDisallowXRP` flag](accountroot.html#accountroot-flags).
 
 2. Import the new helper function in`index.js`:
 
