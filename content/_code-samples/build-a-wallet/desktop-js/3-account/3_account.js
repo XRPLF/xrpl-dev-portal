@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const xrpl = require("xrpl")
-const { prepareReserve, prepareAccountData, prepareLedgerData} = require('./library/3_helpers')
+const { prepareReserve, prepareAccountData, prepareLedgerData} = require('../library/3_helpers')
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 

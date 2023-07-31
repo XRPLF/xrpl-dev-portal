@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "hello": "electron ./0_hello.js",
-    "ledger-index": "electron ./1_ledger-index.js",
-    "async-subscribe": "electron ./2_async-subscribe.js",
-    "account": "electron ./3_account.js",
-    "tx-history": "electron ./4_tx-history.js",
-    "password": "electron ./5_password.js",
-    "styling": "electron ./6_styling.js",
-    "send-xrp": "electron ./7_send-xrp.js",
-    "domain-verification": "electron ./8_domain-verification.js"
+    "hello": "electron 0-hello/0_hello.js",
+    "ledger-index": "electron 1-ledger-index/1_ledger-index.js",
+    "async": "electron 2-async/2_async.js",
+    "account": "electron 3-account/3_account.js",
+    "tx-history": "electron 4-tx-history/4_tx-history.js",
+    "password": "electron 5-password/5_password.js",
+    "styling": "electron 6-styling/6_styling.js",
+    "send-xrp": "electron 7-send-xrp/7_send-xrp.js",
+    "domain-verification": "electron 8-domain-verification/8_domain-verification.js"
   },
   "dependencies": {
     "async": "^3.2.4",

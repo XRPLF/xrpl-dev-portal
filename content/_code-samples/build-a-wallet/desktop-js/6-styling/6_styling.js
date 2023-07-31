@@ -2,7 +2,7 @@ const {app, BrowserWindow, ipcMain} = require('electron')
 const fs = require('fs')
 const path = require('path')
 const xrpl = require("xrpl")
-const { initialize, subscribe, saveSaltedSeed, loadSaltedSeed } = require('./library/5_helpers')
+const { initialize, subscribe, saveSaltedSeed, loadSaltedSeed } = require('../library/5_helpers')
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
@@ -14,7 +14,7 @@ const createWindow = () => {
         width: 1024,
         height: 768,
         webPreferences: {
-            preload: path.join(__dirname, 'view', '5_preload.js'),
+            preload: path.join(__dirname, 'view', '6_preload.js'),
         },
     })
 
