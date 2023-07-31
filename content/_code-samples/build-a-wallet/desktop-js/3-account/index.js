@@ -1,10 +1,11 @@
-const {app, BrowserWindow, ipcMain} = require('electron')
+const { app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const xrpl = require("xrpl")
 const { prepareReserve, prepareAccountData, prepareLedgerData} = require('../library/3_helpers')
-const { prepareTxData } = require('../library/4_helpers')
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
+
+let reserveBaseXrp = null, reserveIncrementXrp = null
 
 const createWindow = () => {
 
@@ -12,11 +13,11 @@ const createWindow = () => {
         width: 1024,
         height: 768,
         webPreferences: {
-            preload: path.join(__dirname, 'view', '4_preload.js'),
+            preload: path.join(__dirname, 'view', 'preload.js'),
         },
     })
 
-    appWindow.loadFile(path.join(__dirname, 'view', '4_tx-history.html'))
+    appWindow.loadFile(path.join(__dirname, 'view', 'template.html'))
 
     return appWindow
 }
@@ -24,7 +25,7 @@ const createWindow = () => {
 const main = async () => {
     const appWindow = createWindow()
 
-    ipcMain.on('address-entered', async (event, address) => {
+    ipcMain.on('address-entered', async (event, address) =>  {
 
         let reserve = null
 
@@ -46,7 +47,15 @@ const main = async () => {
             appWindow.webContents.send('update-ledger-data', ledger)
         })
 
-        // Wait for transaction on subscribed account and re-request account data
+        // Initial Ledger Request -> Get account details on startup
+        // Reference: https://xrpl.org/ledger.html
+        const ledgerResponse = await client.request({
+            "command": "ledger"
+        })
+        const initialLedgerData = prepareLedgerData(ledgerResponse.result.closed.ledger)
+        appWindow.webContents.send('update-ledger-data', initialLedgerData)
+
+        // Reference: https://xrpl.org/subscribe.html#transaction-streams
         client.on("transaction", async (transaction) => {
             // Reference: https://xrpl.org/account_info.html
             const accountInfoRequest = {
@@ -54,13 +63,9 @@ const main = async () => {
                 "account": address,
                 "ledger_index": transaction.ledger_index
             }
-
             const accountInfoResponse = await client.request(accountInfoRequest)
             const accountData = prepareAccountData(accountInfoResponse.result.account_data, reserve)
             appWindow.webContents.send('update-account-data', accountData)
-
-            const transactions = prepareTxData([{tx: transaction.transaction}])
-            appWindow.webContents.send('update-transaction-data', transactions)
         })
 
         // Initial Account Request -> Get account details on startup
@@ -70,18 +75,8 @@ const main = async () => {
             "account": address,
             "ledger_index": "current"
         })
-        const accountData = prepareAccountData(accountInfoResponse.result.account_data)
-        appWindow.webContents.send('update-account-data', accountData)
-
-        // Initial Transaction Request -> List account transactions on startup
-        // Reference: https://xrpl.org/account_tx.html
-        const txResponse = await client.request({
-            "command": "account_tx",
-            "account": address
-        })
-        const transactions = prepareTxData(txResponse.result.transactions)
-        appWindow.webContents.send('update-transaction-data', transactions)
-
+        const initialAccountData = prepareAccountData(accountInfoResponse.result.account_data)
+        appWindow.webContents.send('update-account-data', initialAccountData)
     })
 }
 

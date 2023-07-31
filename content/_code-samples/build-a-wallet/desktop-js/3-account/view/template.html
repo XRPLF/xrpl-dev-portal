@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <h3>Build a XRPL Wallet - Part 4/8</h3>
+
+    <h3>Build a XRPL Wallet - Part 3/8</h3>
 
     <fieldset>
         <legend>Account</legend>
@@ -26,23 +27,6 @@
         Close Time: <strong id="ledger-close-time"></strong><br/>
     </fieldset>
 
-    <fieldset>
-        <legend>Transactions:</legend>
-        <table id="tx-table">
-            <thead>
-            <tr>
-                <th>Confirmed</th>
-                <th>Type</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Value Delivered</th>
-                <th>Hash</th>
-            </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </fieldset>
-
     <dialog id="account-address-dialog">
         <form method="dialog">
             <div>
@@ -50,13 +34,13 @@
                 <input type="text" id="address-input" name="address-input" />
             </div>
             <div>
-                <button type="submit">Submit</button>
+                <button type="submit">Confirm</button>
             </div>
         </form>
     </dialog>
 
 </body>
 
-<script src="4_renderer.js"></script>
+<script src="renderer.js"></script>
 
 </html>

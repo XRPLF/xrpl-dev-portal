@@ -4,7 +4,6 @@ const path = require('path')
 const xrpl = require("xrpl")
 const { initialize, subscribe, saveSaltedSeed, loadSaltedSeed } = require('../library/5_helpers')
 const { sendXrp } = require('../library/7_helpers')
-const { verify } = require('../library/8_helpers')
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
@@ -16,11 +15,11 @@ const createWindow = () => {
         width: 1024,
         height: 768,
         webPreferences: {
-            preload: path.join(__dirname, 'view', '8_preload.js'),
+            preload: path.join(__dirname, 'view', 'preload.js'),
         },
     })
 
-    appWindow.loadFile(path.join(__dirname, 'view', '8_domain-verification.html'))
+    appWindow.loadFile(path.join(__dirname, 'view', 'template.html'))
 
     return appWindow
 }
@@ -60,12 +59,6 @@ const main = async () => {
         ipcMain.on('send-xrp-action', (event, paymentData) => {
             sendXrp(paymentData, client, wallet).then((result) => {
                 appWindow.webContents.send('send-xrp-transaction-finish', result)
-            })
-        })
-
-        ipcMain.on('destination-account-change', (event, destinationAccount) => {
-            verify(destinationAccount, client).then((result) => {
-                appWindow.webContents.send('update-domain-verification-data', result)
             })
         })
 

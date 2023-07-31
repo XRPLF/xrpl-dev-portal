@@ -14,11 +14,11 @@ const createWindow = () => {
         width: 1024,
         height: 768,
         webPreferences: {
-            preload: path.join(__dirname, 'view', '5_preload.js'),
+            preload: path.join(__dirname, 'view', 'preload.js'),
         },
     })
 
-    appWindow.loadFile(path.join(__dirname, 'view', '5_password.html'))
+    appWindow.loadFile(path.join(__dirname, 'view', 'template.html'))
 
     return appWindow
 }

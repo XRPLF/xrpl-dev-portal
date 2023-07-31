@@ -15,7 +15,7 @@ const createWindow = () => {
     })
 
     // Loads a layout
-    appWindow.loadFile(path.join(__dirname, 'view', '0_hello.html'))
+    appWindow.loadFile(path.join(__dirname, 'view', 'template.html'))
 
     return appWindow
 }
