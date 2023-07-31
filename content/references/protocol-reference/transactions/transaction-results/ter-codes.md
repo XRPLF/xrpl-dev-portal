@@ -13,7 +13,7 @@ These codes indicate that the transaction has not been [applied](consensus.html)
 
 | Code             | Explanation                                               |
 |:-----------------|:----------------------------------------------------------|
-| `terSUBMITTED`   | Transaction has been submitted, but not yet applied.      |
+| `terFUNDS_SPENT` | **DEPRECATED.**                                           |
 | `terINSUF_FEE_B` | The account sending the transaction does not have enough XRP to pay the `Fee` specified in the transaction. |
 | `terLAST`        | Used internally only. This code should never be returned. |
 | `terNO_ACCOUNT`  | The address sending the transaction is not funded in the ledger (yet). |
@@ -25,7 +25,7 @@ These codes indicate that the transaction has not been [applied](consensus.html)
 | `terPRE_TICKET`  | The transaction attempted to use a [Ticket](tickets.html), but the specified `TicketSequence` number does not exist in the ledger. However, the Ticket could still be created by another transaction. |
 | `terQUEUED`      | The transaction met the load-scaled [transaction cost](transaction-cost.html) but did not meet the open ledger requirement, so the transaction has been queued for a future ledger. |
 | `terRETRY`       | Unspecified retriable error.                              |
-| `terFUNDS_SPENT` | **DEPRECATED.**                                           |
+| `terSUBMITTED`   | Transaction has been submitted, but not yet applied.      |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
