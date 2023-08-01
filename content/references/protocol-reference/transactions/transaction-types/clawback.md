@@ -37,7 +37,7 @@ Claw back an issued currency transfer between accounts in a trust set.
 | `Flags`            | number    | `UINT32`          | (Optional) The universal transaction flags that are applicable to all transactions (for example, `tfFullyCanonicalSig`) are valid. This proposal introduces no new transaction-specific flags. |
 | `Amount`           | object     | `AMOUNT`          | Indicates the amount being clawed back, as well as the counterparty from which the amount is being clawed back from. |
 
-It is not an error if the amount exceeds the holder's balance; in that case, the maximum available balance is clawed back. It returns temBAD_AMOUNT if the amount is zero.
+It is not an error if the amount exceeds the holder's balance; in that case, the maximum available balance is clawed back. It returns `temBAD_AMOUNT` if the amount is zero.
 
 It is an error if the counterparty listed in `Amount` is the same as the `Account` issuing this transaction; the transaction fails execution with `temBAD_AMOUNT`.
 

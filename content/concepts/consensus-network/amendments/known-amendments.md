@@ -15,7 +15,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
 | [OwnerPaysFee][]                  | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [Clawback][] | TBD | [In Development: TBD]("BADGE_LIGHTGREY") |
+| [Clawback][] | v1.12.0 | [In Development: TBD]("BADGE_LIGHTGREY") |
 | [fixNFTokenRemint][]              | v1.11.0    | [In Development: TBD]("BADGE_LIGHTGREY") |
 | [DisallowIncoming][]              | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixNonFungibleTokensV1_2][]      | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |

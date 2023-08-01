@@ -8,7 +8,7 @@ status: not_enabled
 ---
 # Clawback
 
-For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_ the funds.
+For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_, the funds.
 
 Issuers can create tokens that they can claw back by adding the `lsfAllowTrustLineClawback` flag to the issuing account.
 
