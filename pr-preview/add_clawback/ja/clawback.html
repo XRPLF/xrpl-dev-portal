@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v20.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v21.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -351,7 +351,7 @@
 </tr>
 </tbody>
 </table>
-<p>It is not an error if the amount exceeds the holder's balance; in that case, the maximum available balance is clawed back. It returns temBAD_AMOUNT if the amount is zero.</p>
+<p>It is not an error if the amount exceeds the holder's balance; in that case, the maximum available balance is clawed back. It returns <code>temBAD_AMOUNT</code> if the amount is zero.</p>
 <p>It is an error if the counterparty listed in <code>Amount</code> is the same as the <code>Account</code> issuing this transaction; the transaction fails execution with <code>temBAD_AMOUNT</code>.</p>
 <p>If there doesn't exist a trustline with the counterparty or that trustline's balance is 0, the error <code>tecNO_LINE</code> is returned.</p>
 <p>The sub-field <code>issuer</code> within <code>Amount</code> represents the token holder's account ID rather than the issuer's.</p>

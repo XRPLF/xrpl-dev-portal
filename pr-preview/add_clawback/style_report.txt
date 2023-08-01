@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 90 possible spelling errors:
+Found 89 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gies, kifs, gifu
+  gifs: gis, gips, gins
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -27,13 +27,13 @@ Found 90 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slad, sias, ssas
+  slas: salas, sas, slap
 
 <Page 'Clawback' (clawback-of-issued-currency.html)> Unknown Words:
   trustlines: 
   rp6abvbtbjoce8zdjkt6snvxtzsymbcc9s: 
-  rsa2lpzuawewsbqxkiju3yqtmzw13paadw: 
   trustline: 
+  rsa2lpzuawewsbqxkiju3yqtmzw13paadw: 
 
 <Page 'Invariant Checking' (invariant-checking.html)> Unknown Words:
   validnftokenpage: 
@@ -46,66 +46,66 @@ Found 90 possible spelling errors:
   xlsd: xls, lsd
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  fixuniversalnumber: 
   depositpreauthamendment: 
   immediateofferkilled: 
-  fixnonfungibletokensv1_2: 
-  fixuniversalnumber: 
-  xrpfees: 
   fixnftokenremint: 
+  xrpfees: 
   disallowincoming: 
+  fixnonfungibletokensv1_2: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingnftoffer: 
-  asfdisallowincomingcheck: 
   asfdisallowincomingtrustline: 
+  asfdisallowincomingcheck: 
   asfdisallowincomingpaychan: 
-  30d: 3d, 3-d, 3rd
+  asfdisallowincomingnftoffer: 
+  30d: 3-d, 3d, 3rd
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
   0b0: 
-  v3: vr, vg, vm
+  v3: c3, vw, vy
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: modi, mods, mody
+  mod1: mod., modi, modo
   get_account: 
   get_account_info: 
   send_xrp: 
-  lesson1: lessons, lesson
-  tkinter: twinter, tinter
+  lesson1: lesson, lessons
+  tkinter: tinter, twinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: modi, mods, mody
+  mod2: mod., modi, modo
   send_currency: 
   get_balance: 
   configure_account: 
-  lesson2: lessons, lesson
+  lesson2: lesson, lessons
 
 <Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: modi, mods, mody
+  mod3: mod., modi, modo
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page '4. Transfer NFTs (Python)' (py-transfer-nfts.html)> Unknown Words:
-  mod4: modi, mods, mody
+  mod4: mod., modi, modo
   offer___index: 
   alloffers: 
-  lesson4: lessons, lesson
+  lesson4: lesson, lessons
 
 <Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)> Unknown Words:
-  broker___fee: 
-  buy___offer___index: 
   sell___offer___index: 
-  lesson5: lessons, lesson
+  buy___offer___index: 
+  broker___fee: 
+  lesson5: lesson, lessons
 
 <Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)> Unknown Words:
-  mod6: modi, mods, mody
+  mod6: mod., modi, modo
   mint_other: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3-d, 3rd
+  30d: 3-d, 3d, 3rd
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   fixnftokenremint: 
@@ -117,7 +117,7 @@ Found 90 possible spelling errors:
 
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: vr, vg, vm
+  v3: c3, vw, vy
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   nftokenoffers: nftokenoffer
@@ -128,10 +128,9 @@ Found 90 possible spelling errors:
   disallowincoming: 
 
 <Page 'Clawback' (clawback.html)> Unknown Words:
-  ttclawback: 
-  trustline: 
   trustlines: 
-  tembad_amount: 
+  trustline: 
+  ttclawback: 
   lsfallowtrustlineclawback: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
@@ -287,8 +286,8 @@ Average Page Length Metrics:
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
   Sentences: 558
-  Words: 7,705
-  Characters: 56,529
+  Words: 7,707
+  Characters: 56,533
 
 <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Length Metrics:
   Sentences: 380

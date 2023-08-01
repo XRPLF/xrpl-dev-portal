@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v20.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v21.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -295,7 +295,7 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="clawback">Clawback<a aria-hidden="true" class="hover_anchor" href="#clawback"><i class="fa fa-link"></i></a></h1>
-<p>For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em> the funds.</p>
+<p>For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em>, the funds.</p>
 <p>Issuers can create tokens that they can claw back by adding the <code>lsfAllowTrustLineClawback</code> flag to the issuing account.</p>
 <p class="devportal-callout note"><strong>Note:</strong> You can only claw back issued tokens created by your account. You cannot claw back XRP in this way.</p>
 <p>Clawback is disabled by default. To use clawback, you must set the <code>lsfAllowTrustLineClawback</code> flag through an <code>AccountSet</code> transaction. The <code>AccountSet</code> transaction only succeeds if the account has an empty owner directory, meaning that the account has no trustlines, offers, escrows, payment channels, or checks. After you set this flag, it cannot reverted. The account permanently gains the ability to claw back issued assets on trustlines.</p>
