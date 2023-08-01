@@ -734,6 +734,7 @@ An example of a successful response:
 ## Api Version 2
 * - When one or more fields specified incorrectly or missing, it will result in an invalidParams error
 
+Older Api versions can be used. Documented [here][api-version-history]
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

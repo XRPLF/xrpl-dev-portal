@@ -259,6 +259,8 @@ Each object in the `transactions` array of `queue_data`, if present, may contain
 ## Api Version 2
 * - Specifying invalid signer_lists value returns invalidParams error
 
+Older Api versions can be used. Documented [here][api-version-history]
+
 [fee levels]: transaction-cost.html#fee-levels
 {% include '_snippets/rippled_versions.md' %}
 {% include '_snippets/rippled-api-links.md' %}

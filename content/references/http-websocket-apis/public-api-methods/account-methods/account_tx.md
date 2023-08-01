@@ -464,5 +464,7 @@ Each transaction object includes the following fields, depending on whether it w
 * - Specifying `ledger_index_min`, `ledger_index_max` and `ledger_index` will result in an invalidParams error
 * - Specifying `ledger_index_min` or `ledger_index_max` out of a valid range will result in lgrIdxMalformed.
 
+Older Api versions can be used. Documented [here][api-version-history]
+
 {% include '_snippets/rippled_versions.md' %}
 {% include '_snippets/rippled-api-links.md' %}

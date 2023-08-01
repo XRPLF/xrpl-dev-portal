@@ -55,6 +55,7 @@
 [transaction cost]: transaction-cost.html
 [トランザクションコスト]: transaction-cost.html
 [universal error types]: error-formatting.html#universal-errors
+[api-version-history]: https://github.com/XRPLF/rippled/blob/develop/API-CHANGELOG.md
 [汎用エラータイプ]: error-formatting.html#汎用エラー
 [XRP, in drops]: basic-data-types.html#specifying-currency-amounts
 [XRP、drop単位]: basic-data-types.html#通貨額の指定
