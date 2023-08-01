@@ -23,7 +23,7 @@ The XRP Ledger is home to a deep, layered ecosystem of software projects powerin
 
 ### Core Servers
 
-The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliable, efficient server to enforce the rules of consensus and transaction processing. The XRP Ledger Foundation publishes a reference implementation of this server software, called [**`rippled`**](xrpl-servers.html) (pronounced "ripple-dee") in collaboration with Ripple. The server is available under [a permissive open-source license](https://github.com/XRPLF/rippled/blob/develop/LICENSE.md), so anyone can inspect and modify their own instance of the server, and re-publish with few restrictions.
+The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliable, efficient server to enforce the rules of consensus and transaction processing. The XRP Ledger Foundation publishes a reference implementation of this server software, called [**`rippled`**](xrpl-servers.html) (pronounced "ripple-dee"). The server is available under [a permissive open-source license](https://github.com/XRPLF/rippled/blob/develop/LICENSE.md), so anyone can inspect and modify their own instance of the server, and re-publish with few restrictions.
 
 ![Core Servers](img/ecosystem-peer-to-peer.svg)
 
@@ -34,9 +34,9 @@ Core servers expose [HTTP / WebSocket APIs](http-websocket-apis.html) for users 
 
 ### Client Libraries
 
-Libraries simplify some of the common work of accessing the XRP Ledger, usually through the HTTP / WebSocket APIs. They convert the data into forms that are more familiar and convenient for various programming languages, and include implementations of common operations. Some client libraries are officially maintained by the XRP Ledger Foundation and some are maintained by other entities in the community.
+Libraries simplify some of the common work of accessing the XRP Ledger, usually through the HTTP / WebSocket APIs. They convert the data into forms that are more familiar and convenient for various programming languages, and include implementations of common operations. 
 
-![Client Libraries](img/ecosystem-programming-libraries.svg)
+![Client Libraries](img/ecosystem-client-libraries.svg)
 
 One core feature of most client libraries is signing transactions locally, so users never have to send their private key across any network.
 
