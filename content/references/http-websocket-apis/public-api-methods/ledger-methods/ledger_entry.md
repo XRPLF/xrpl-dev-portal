@@ -731,6 +731,8 @@ An example of a successful response:
 * `malformedRequest` - The request provided an invalid combination of fields, or provided the wrong type for one or more fields.
 * `unknownOption` - The fields provided in the request did not match any of the expected request formats.
 
+## Api Version 2
+* - When one or more fields specified incorrectly or missing, it will result in an invalidParams error
 
 
 <!--{# common link defs #}-->

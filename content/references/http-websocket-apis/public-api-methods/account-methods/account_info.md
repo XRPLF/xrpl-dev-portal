@@ -256,6 +256,9 @@ Each object in the `transactions` array of `queue_data`, if present, may contain
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
+## Api Version 2
+* - Specifying invalid signer_lists value returns invalidParams error
+
 [fee levels]: transaction-cost.html#fee-levels
 {% include '_snippets/rippled_versions.md' %}
 {% include '_snippets/rippled-api-links.md' %}
