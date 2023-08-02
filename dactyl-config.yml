@@ -776,6 +776,12 @@ pages:
             - en
             - ja
 
+        # TODO: translate
+    -   md: tutorials/core-ledger/create-custom-transactors.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/servers/the-clio-server.md
         targets:
             - en

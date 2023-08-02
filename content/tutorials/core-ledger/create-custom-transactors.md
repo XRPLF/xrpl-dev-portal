@@ -1,9 +1,10 @@
 ---
 html: create-custom-transactors.html
-parent: use-specialized-payment-types.html
+parent: amendments.html
 blurb: Create custom transactors to interact with the XRP Ledger.
 labels:
   - Development
+  - Blockchain
 ---
 # Create Custom Transactors
 
@@ -135,10 +136,10 @@ CreateCheck::preflight(PreflightContext const& ctx)
 
 ### 2. Add a `preclaim` function.
 
-The `preclaim` functions checks for errors that require viewing information on the ledger.
+The `preclaim` function checks for errors that require viewing information on the current ledger.
 
 - `PreclaimContext` has a read-only view of the ledger.
-- This function incurs fees.
+- If this step returns a result code of `tesSUCCESS` or any `tec` result, the transaction can be queued and broadcast to peers.
 
 ```c++
 CreateCheck::preclaim(PreclaimContext const& ctx)
