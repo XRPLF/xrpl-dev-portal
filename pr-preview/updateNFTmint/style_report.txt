@@ -3,7 +3,7 @@ Spell Checker
 -------------
 Found 135 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, gift, gils
+  gifs: gins, gits, gifts
   ringtee: 
   kuressaare: 
   lõõtsa: 
@@ -26,47 +26,47 @@ Found 135 possible spelling errors:
   requiremen: requirement
 
 <Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Unknown Words:
-  xapps: lapps, capps, apps
+  xapps: capps, lapps, apps
 
 <Page 'NFT Marketplace Overview' (nft-mkt-overview.html)> Unknown Words:
   arweave: 
-  infura: infula, infra
+  infura: infra, infula
 
 <Page 'Authorized Minter' (authorized-minter.html)> Unknown Words:
   tokentaxon: 
 
 <Page 'Algorithmic Trading' (algorithmic-trading.html)> Unknown Words:
-  arbitraging: arbitrating
   investopedia: 
-  unprecented: unprevented, unpresented
-  clob: colob, clog, cloy
-  30d: 3d, 3-d, 3rd
+  arbitraging: arbitrating
+  unprecented: unpresented, unprevented
+  clob: clou, clomb, clot
+  30d: 3-d, 3d, 3rd
   frontrunning: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  v3: vt, p3, t3
+  v3: v2, vj, vd
   0b0: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  fixuniversalnumber: 
   depositpreauthamendment: 
+  fixnonfungibletokensv1_2: 
+  disallowincoming: 
+  immediateofferkilled: 
   fixnftokenremint: 
   xrpfees: 
-  immediateofferkilled: 
-  disallowincoming: 
-  fixnonfungibletokensv1_2: 
-  fixuniversalnumber: 
   nftokenoffers: nftokenoffer
   asfdisallowincomingnftoffer: 
-  asfdisallowincomingcheck: 
-  asfdisallowincomingtrustline: 
   asfdisallowincomingpaychan: 
-  30d: 3d, 3-d, 3rd
+  asfdisallowincomingtrustline: 
+  asfdisallowincomingcheck: 
+  30d: 3-d, 3d, 3rd
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: xls, lsd
+  xlsd: lsd, xls
 
 <Page 'Invariant Checking' (invariant-checking.html)> Unknown Words:
   validnftokenpage: 
@@ -90,57 +90,57 @@ Found 135 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: blockhole, black-hole
+  blackhole: black-hole, blockhole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: spas, slavs, slaw
+  slas: slabs, slab, slavs
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3d, 3-d, 3rd
+  30d: 3-d, 3d, 3rd
 
 <Page 'Create Accounts and Send XRP Using Python' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mody, mod, modi
+  mod1: mods, mod, mody
   get_account: 
   get_account_info: 
   send_xrp: 
   lesson1: lesson, lessons
-  tkinter: tinter, twinter
+  tkinter: twinter, tinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page 'Create Trust Line and Send Currency Using Python' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mody, mod, modi
+  mod2: mods, mod, mody
   send_currency: 
   get_balance: 
   configure_account: 
   lesson2: lesson, lessons
 
 <Page 'Mint and Burn NFTs Using Python' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: mody, mod, modi
+  mod3: mods, mod, mody
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page 'Transfer NFTs Using Python' (py-transfer-nfts.html)> Unknown Words:
-  mod4: mody, mod, modi
+  mod4: mods, mod, mody
   offer___index: 
   alloffers: 
   lesson4: lesson, lessons
 
 <Page 'Broker an NFT Sale Using Python' (py-broker-sale.html)> Unknown Words:
-  buy___offer___index: 
-  broker___fee: 
   sell___offer___index: 
+  broker___fee: 
+  buy___offer___index: 
   lesson5: lesson, lessons
 
 <Page 'Assign an Authorized Minter Using Python' (py-authorize-minter.html)> Unknown Words:
-  mod6: mody, mod, modi
+  mod6: mods, mod, mody
   mint_other: 
 
 <Page 'Create Time-based Escrows Using JavaScript' (create-time-based-escrows-using-javascript.html)> Unknown Words:
-  ripple8: ripplex, ripple, rippled
+  ripple8: ripples, ripplex, rippled
   numofseconds: 
   offersequence: 
 
@@ -158,7 +158,7 @@ Found 135 possible spelling errors:
 
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: vt, p3, t3
+  v3: v2, vj, vd
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   disallowincoming: 
@@ -197,42 +197,42 @@ Found 135 possible spelling errors:
   scalability: salability
 
 <Page 'Configure Full History' (configure-full-history.html)> Unknown Words:
-  xfs: lfs, xns, xfe
-  zfs: lfs, mfs, ufs
-  ext4: exta, extg, ext.
+  ext4: exta, ext, ext.
   filesystems: filesystem
+  zfs: ufs, fs, fzs
+  xfs: xis, ufs, fs
 
 <Page 'Contributing to Documentation' (contributing-to-documentation.html)> Unknown Words:
+  img: bmg, qmg, imo
+  umlet: umset, mulet, amlet
   _snippets: snippets
-  scss: css, sess, scs
   _img: 
-  umlet: mulet, unlet, umset
-  img: imp, imu, im
+  scss: sass, soss, sss
   _code: code
   frontmatter: 
-  dropdown: 
   dropdowns: 
-  h1: t1, hl, hq
+  dropdown: 
   santilli: 
-  xrps: xrpl, xrp, rps
-  camelcase: 
-  postgres: postures
+  h1: hb, h., hz
+  nif: ni, nir, nia
   trustline: 
-  websockets: websocket
-  nif: niu, nof, nie
   orderbook: order-book
+  postgres: postures
+  xrps: rps, xrp, xrpl
+  camelcase: 
+  websockets: websocket
 
 <Page 'Translations' (documentation-languages.html)> Unknown Words:
   bcp47: 
-  zh: nh, zhi, zd
+  zh: ch, oh, ze
   hyperlinks: 
-  utf: wtf, uf, utc
+  utf: otf, etf, uti
 
 <Page 'Creating Diagrams' (creating-diagrams.html)> Unknown Words:
   subfolder: subfolders
-  inlined: inclined, inline, unlined
-  umlet: mulet, unlet, umset
-  scss: css, sess, scs
+  inlined: inclined, unlined, inline
+  umlet: umset, mulet, amlet
+  scss: sass, soss, sss
 
 <Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
   screenshots: screenshot
@@ -392,7 +392,7 @@ Average Page Readability Scores:
   SMOG Index: Grade level 11.4
   Gunning FOG Index: Grade level 9.1
   Automated Readability Index: Grade level 10.8
-  Coleman-Liau Index: Grade level 11.5
+  Coleman-Liau Index: Grade level 11.4
   Linsear Write Formula: Grade level 8.6
 
 
