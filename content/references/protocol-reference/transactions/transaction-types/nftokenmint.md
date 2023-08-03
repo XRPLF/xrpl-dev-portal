@@ -59,7 +59,7 @@ Transactions of the NFTokenMint type support additional values in the [`Flags` f
 | `tfBurnable` | `0x00000001` | 1 | Allow the issuer (or an entity authorized by the issuer) to destroy the minted `NFToken`. (The `NFToken`'s owner can _always_ do so.) |
 | `tfOnlyXRP` | `0x00000002` | 2 | The minted `NFToken` can only be bought or sold for XRP. This can be desirable if the token has a transfer fee and the issuer does not want to receive fees in non-XRP currencies. |
 | `tfTrustLine` | `0x00000004` | 4 | **DEPRECATED** Automatically create [trust lines](trust-lines-and-issuing.html) from the issuer to hold transfer fees received from transferring the minted `NFToken`. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to set this flag. |
-| `tfTransferable` | `0x00000008` | 8 | The minted `NFToken` can be transferred to others. If this flag is _not_ enabled, the token can still be transferred _from_ or _to_ the issuer. |
+| `tfTransferable` | `0x00000008` | 8 | The minted `NFToken` can be transferred to others. If this flag is _not_ enabled, the token can still be transferred _from_ or _to_ the issuer. The transfer to the issuer must be via a buy offer created by the issuer and not a sell offer from the folder of the `NFToken`. |
 
 
 ## Embedding additional information
