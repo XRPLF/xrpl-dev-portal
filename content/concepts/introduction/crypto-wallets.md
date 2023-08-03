@@ -18,11 +18,11 @@ A custodial wallet means a third party holds your funds, typically on an account
 
 For day-to-day payments, this may be preferable, since these types of wallets are user-friendly: if you forget your password, you can typically have it reset. Also, if you don't have an individual XRP Ledger account, the ledger's reserve requirement doesn't apply to you. The custodian acts a buffer to any issues you run into on the XRP Ledger, and may offer support or assistance if you're not sure how to do something.
 
+![Custodial vs. Non-custodial Wallets](img/introduction15-custodial-non-custodial.png)
+
 A non-custodial wallet, such as [XUMM](https://xumm.app/), is one where you have the secret keys to your account. This means you're ultimately responsible for managing the security of your account.
 
 **Caution:** If you lose your keys, you are locked out of your XRP Ledger account and there are no recovery options.
-
-![Custodial vs. Non-custodial Wallets](img/introduction15-custodial-non-custodial.png)
 
 Non-custodial wallets allow more freedom. Since you're interacting directly with the XRP Ledger yourself, you can handle any type of transaction you want without anyone restricting your options. If the ledger allows it, you can do it. Non-custodial wallets also don't require you to trust an institution with your money, which can insulate you from market factors outside your control.
 
