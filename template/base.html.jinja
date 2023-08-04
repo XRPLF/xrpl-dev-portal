@@ -16,24 +16,28 @@
     {% if currentpage.canonical_url %}<link rel="canonical" href="{{currentpage.canonical_url}}" />{% endif %}
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="{{target.lang}}" />
-    {% for lang in currentpage.translations %}
+    {% for lang in config.languages %}
     <script type="text/javascript">
-        var currentUrl = window.location.href;
-        var linkTag = document.createElement('link');
-        linkTag.rel = 'alternate';
-        linkTag.hreflang = '{{lang.code}}';
-        linkTag.href = currentUrl + '{{lang.prefix}}{{currentpage.html}}';
-        document.head.appendChild(linkTag);
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var currentUrl = window.location.origin;
+            var linkTag = document.createElement('link');
+            linkTag.rel = 'alternate';
+            linkTag.hreflang = '{{lang.code}}';
+            linkTag.href = currentUrl + '{{lang.prefix}}{{currentpage.html}}';
+            document.head.appendChild(linkTag);
+        });
     </script>
     {% endfor %}
 
     <script type="text/javascript">
-        var currentUrl = window.location.href;
-        var linkTag = document.createElement('link');
-        linkTag.rel = 'alternate';
-        linkTag.hreflang = 'x-default';
-        linkTag.href = currentUrl + '/{{currentpage.html}}';
-        document.head.appendChild(linkTag);
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var currentUrl = window.location.origin;
+            var linkTag = document.createElement('link');
+            linkTag.rel = 'alternate';
+            linkTag.hreflang = 'x-default';
+            linkTag.href = currentUrl + '/{{currentpage.html}}';
+            document.head.appendChild(linkTag);
+        });
     </script>
 
     <!-- favicon -->
