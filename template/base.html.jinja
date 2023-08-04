@@ -16,11 +16,25 @@
     {% if currentpage.canonical_url %}<link rel="canonical" href="{{currentpage.canonical_url}}" />{% endif %}
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="{{target.lang}}" />
-    {% for lang in config.languages %}
-    <link rel="alternate" href="https://xrpl.org{{lang.prefix}}{{currentpage.html}}" hreflang="{{lang.code}}" />
+    {% for lang in currentpage.translations %}
+    <script type="text/javascript">
+        var currentUrl = window.location.href;
+        var linkTag = document.createElement('link');
+        linkTag.rel = 'alternate';
+        linkTag.hreflang = '{{lang.code}}';
+        linkTag.href = currentUrl + '{{lang.prefix}}{{currentpage.html}}';
+        document.head.appendChild(linkTag);
+    </script>
     {% endfor %}
-    <link rel="alternate" href="https://xrpl.org/{{currentpage.html}}" hreflang="x-default" /><!-- Default: US english -->
 
+    <script type="text/javascript">
+        var currentUrl = window.location.href;
+        var linkTag = document.createElement('link');
+        linkTag.rel = 'alternate';
+        linkTag.hreflang = 'x-default';
+        linkTag.href = currentUrl + '/{{currentpage.html}}';
+        document.head.appendChild(linkTag);
+    </script>
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{currentpage.prefix}}assets/favicons/apple-touch-icon.png">
