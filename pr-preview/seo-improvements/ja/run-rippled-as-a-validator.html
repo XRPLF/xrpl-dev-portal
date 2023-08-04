@@ -15,14 +15,36 @@
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="ja" />
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var currentUrl = window.location.origin;
+            var linkTag = document.createElement('link');
+            linkTag.rel = 'alternate';
+            linkTag.hreflang = 'en';
+            linkTag.href = currentUrl + '/run-rippled-as-a-validator.html';
+            document.head.appendChild(linkTag);
+        });
+    </script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var currentUrl = window.location.origin;
+            var linkTag = document.createElement('link');
+            linkTag.rel = 'alternate';
+            linkTag.hreflang = 'ja';
+            linkTag.href = currentUrl + '/ja/run-rippled-as-a-validator.html';
+            document.head.appendChild(linkTag);
+        });
+    </script>
 
     <script type="text/javascript">
-        var currentUrl = window.location.href;
-        var linkTag = document.createElement('link');
-        linkTag.rel = 'alternate';
-        linkTag.hreflang = 'x-default';
-        linkTag.href = currentUrl + '/run-rippled-as-a-validator.html';
-        document.head.appendChild(linkTag);
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var currentUrl = window.location.origin;
+            var linkTag = document.createElement('link');
+            linkTag.rel = 'alternate';
+            linkTag.hreflang = 'x-default';
+            linkTag.href = currentUrl + '/run-rippled-as-a-validator.html';
+            document.head.appendChild(linkTag);
+        });
     </script>
 
     <!-- favicon -->
