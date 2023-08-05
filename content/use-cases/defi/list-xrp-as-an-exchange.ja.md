@@ -43,9 +43,9 @@ XRPをサポートするために、Alpha Exchangeでは以下を行う必要が
 
 * [コンプライアンス指針](stablecoin-issuer.html#コンプライアンス指針) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
 
-* [XRPレジャーへ送金するための要件](stablecoin-issuer.html#xrpレジャーへ送金するための要件)
+* [XRP Ledgerへ送金するための要件](stablecoin-issuer.html#xrp-ledgerへ送金するための要件)
 
-* [XRPレジャーへの入金の要件](stablecoin-issuer.html#xrpレジャーへの入金の要件)
+* [XRP Ledgerへの入金の要件](stablecoin-issuer.html#xrp-ledgerへの入金の要件)
 
 * [注意事項](stablecoin-issuer.html#注意事項)
 

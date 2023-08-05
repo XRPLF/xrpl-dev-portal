@@ -1,14 +1,14 @@
 ---
 html: what-is-xrp.html
 parent: intro-to-xrpl.html
-blurb: XRPレジャーで取引される暗号通貨、XRPについてご紹介します。
+blurb: XRP Ledgerで取引される暗号通貨、XRPについてご紹介します。
 labels:
   - ブロックチェーン
 ---
 
 # XRPとは?
 
-XRPはXRPレジャーにて使用可能な暗号通貨です。
+XRPはXRP Ledgerにて使用可能な暗号通貨です。
 
 ## 暗号通貨とは?
 
@@ -46,7 +46,7 @@ XRPはXRPレジャーにて使用可能な暗号通貨です。
 
 ## 暗号通貨であるXRPL
 
-XRPレジャーは、2011年から2012年初頭にかけて、Jed McCaleb、Arthur Britto、David Schwartzによって開発されました。2012年9月、JedとArthurはChris LarsenとともにRippleと名の会社（当時はOpenCoin Inc.という会社）を設立し、Ripple社がXRPレジャー上で開発を行う代わりに、800億XRPをRippleに贈ることを決定しました。Rippleの名称は、複数のホップや通貨を通じて支払いを「波及」させる技術に基づくものです。 _X_ という接頭辞は、非国家通貨を表すISO 4217の規格です。ティッカーシンボルを選択する際、開発者はあらゆる文脈で資産を参照するために _XRP_ を選択しました。
+XRP Ledgerは、2011年から2012年初頭にかけて、Jed McCaleb、Arthur Britto、David Schwartzによって開発されました。2012年9月、JedとArthurはChris LarsenとともにRippleと名の会社（当時はOpenCoin Inc.という会社）を設立し、Ripple社がXRP Ledger上で開発を行う代わりに、800億XRPをRippleに贈ることを決定しました。Rippleの名称は、複数のホップや通貨を通じて支払いを「波及」させる技術に基づくものです。 _X_ という接頭辞は、非国家通貨を表すISO 4217の規格です。ティッカーシンボルを選択する際、開発者はあらゆる文脈で資産を参照するために _XRP_ を選択しました。
 
 ![男性と1XRP](img/introduction13-x-prefix.png)
 

@@ -20,7 +20,7 @@ NFTokenマーケットプレイスは、NFTokenクリエイターとコレクタ
 
 ## rippledインスタンスのセットアップ
 
-取引量の多い本格的なマーケットプレイスサイトを立ち上げる場合、独自のXRPレジャーサーバインスタンスを立ち上げるという判断が当然となります。[rippledのインストール](install-rippled.html)をご覧ください。
+取引量の多い本格的なマーケットプレイスサイトを立ち上げる場合、独自のXRP Ledgerサーバインスタンスを立ち上げるという判断が当然となります。[rippledのインストール](install-rippled.html)をご覧ください。
 
 
 ### ウォレットのセットアップ
@@ -56,7 +56,7 @@ NFTをオークション形式で販売することができます。[NFTオー�
 3. 少額の[取引手数料](transfer-fees.html)
 
 
-ブローカー販売については、トピック[XRPレジャーでのトークン取引](non-fungible-token-transfers.html)で詳しく説明しています。
+ブローカー販売については、トピック[XRP Ledgerでのトークン取引](non-fungible-token-transfers.html)で詳しく説明しています。
 
 トークン取引手数料については、[取引手数料](transfer-fees.html)で詳しく解説しています。
 
