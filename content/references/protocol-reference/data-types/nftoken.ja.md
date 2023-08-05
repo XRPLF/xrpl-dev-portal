@@ -21,7 +21,7 @@ labels:
 
 他のオブジェクトとは異なり、`NFToken` にはオブジェクトの種類や現在の所有者を特定するためのフィールドはありません。NFToken オブジェクトは、オブジェクトの種類と所有者を暗黙的に定義する `NFTokenPages` にグループ化されています。
 
-_([NonFungibleTokensV1_1 amendment][]が必要です)_
+_([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 
 ## トークンID
