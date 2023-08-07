@@ -461,7 +461,9 @@ Here we define three utility functions that will transform data we receive from 
 2. Modify `index.js` and add `ipcMain` to the imports from the `require('electron')`line. Then add the new helper file at the bottom of the include section:
 
 ```javascript
+// Step 3 code additions - start
 const { app, BrowserWindow, ipcMain} = require('electron')
+// Step 3 code additions - end
 const path = require('path')
 const xrpl = require("xrpl")
 // Step 3 code additions - start
