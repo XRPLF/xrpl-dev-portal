@@ -23,7 +23,9 @@ To complete this tutorial, you should meet the following requirements:
 
 ### Source Code
 
-You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/).
+You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/). After a `npm install` in this directory you can run the application for each step as described in the `scripts` section of  `package.json`, e.g, `npm run ledger-index`.  
+
+**Caution:** As the source code is grouped into one folder for each step, you have to be careful should you copy-and-paste directly from there. Some shared imports and file operations have different directories in these examples. This goes for everything to do with `library`, `bootstrap`, and `WALLET_DIR`.
 
 ## Rationale
 
@@ -54,8 +56,7 @@ The application in this tutorial _doesn't_ have the ability to send or trade [to
 use other [payment types](payment-types.html) like [Escrow](https://xrpl.org/escrow.html) or [Payment Channels](https://xrpl.org/payment-channels.html). However, it provides a foundation 
 that you can implement those and other features on top of.
 
-In addition to the above features, you'll also learn a bit about Events, IPC (inter-process-communication) 
-and asynchronous (async) code in JavaScript.
+In addition to the above features, you'll also learn a bit about Events, IPC (inter-process-communication) and asynchronous (async) code in JavaScript.
 
 ## Steps
 
@@ -830,7 +831,7 @@ const main = async () => {
   const appWindow = createWindow()
 
   // Create Wallet directory in case it does not exist yet
-  if (!fs.existsSync(WALLET_DIR)) {
+  if (!fs.existsSync(path.join(__dirname, WALLET_DIR))) {
     fs.mkdirSync(path.join(__dirname, WALLET_DIR));
   }
 

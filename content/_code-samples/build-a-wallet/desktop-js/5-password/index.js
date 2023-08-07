@@ -6,7 +6,7 @@ const { initialize, subscribe, saveSaltedSeed, loadSaltedSeed } = require('../li
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
-const WALLET_DIR = 'Wallet'
+const WALLET_DIR = '../Wallet'
 
 const createWindow = () => {
 
@@ -27,7 +27,7 @@ const main = async () => {
     const appWindow = createWindow()
 
     // Create Wallet directory in case it does not exist yet
-    if (!fs.existsSync(WALLET_DIR)) {
+    if (!fs.existsSync(path.join(__dirname, WALLET_DIR))) {
         fs.mkdirSync(path.join(__dirname, WALLET_DIR));
     }
 
@@ -40,9 +40,9 @@ const main = async () => {
 
     ipcMain.on('password-entered', async (event, password) => {
         if (!fs.existsSync(path.join(__dirname, WALLET_DIR , 'seed.txt'))) {
-            saveSaltedSeed('../' + WALLET_DIR, seed, password)
+            saveSaltedSeed(WALLET_DIR, seed, password)
         } else {
-            seed = loadSaltedSeed('../' + WALLET_DIR, password)
+            seed = loadSaltedSeed(WALLET_DIR, password)
         }
 
         const wallet = xrpl.Wallet.fromSeed(seed)
