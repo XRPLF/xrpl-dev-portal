@@ -1144,6 +1144,7 @@ After finishing this step the application should look like this:
         <input type="text" id="password-input" name="password-input" />
       </div>
       <div>
+        <button type="button">Change Seed</button>
         <button type="submit">Confirm</button>
       </div>
     </form>
