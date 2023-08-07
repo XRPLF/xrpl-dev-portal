@@ -1342,7 +1342,7 @@ One type of check we could make is to verify the domain name associated with an 
 
 ![Screenshot: Step 8, use domain verification](img/javascript-wallet-8.png)
 
-1. In the `library` folder, add a new file `4_helpers.js`. Then add the following contents to that file:
+1. In the `library` folder, add a new file `8_helpers.js`. Then add the following contents to that file:
 
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/8_helpers.js", language="js") }}
 
