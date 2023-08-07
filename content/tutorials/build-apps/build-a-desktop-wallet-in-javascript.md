@@ -1463,5 +1463,15 @@ npm run domain-verification
 
 ## Summary 
 
-Congratulations, you now have created your own wallet application! In completing this tutorial, you have learned how to interact with the XRP Ledger - from sending simple requests up to doing actual transactions, all in an electron application.
+Congratulations, you now have created your own wallet application! In completing this tutorial, you've not only learned how to interact with the XRP Ledger, but also which challenges this provokes when building a user facing application. So let's do a recap of what you have accomplished:
+
+0. First you set up the project and created a basic electron application.
+1. In Step 1 you did your first ledger query and had the application display the latest closed ledger index, using electrons inter-process-communication.
+2. You expanded on that in Step 2, where you established a permanent subscription to the XRPL and had the application display ledger updates in real time.
+3. In Step 3 you had the application monitor a specific account, prompting the user for an account address and having data flow bi-directionally from `ipcRender` to `ipcMain` and back.
+4. You then added a dynamic list of the accounts transaction to the application.
+5. In Step 5 you implemented a password-protected seed vault, so that secrets that should remain secrets are not stored in environment variables.
+6. Then you gave the application a facelift by adding bootstrap and restructuring the template.
+7. In Step 7 you added wallet functionalities to what was so far a monitoring application by adding a dialog and the corresponding backend functionality to transfer XRP.
+8. Finally you stepped into some finder details of XRPL development by implementing the domain verification check.
 
