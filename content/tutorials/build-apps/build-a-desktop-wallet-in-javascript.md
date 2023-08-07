@@ -885,7 +885,7 @@ const main = async () => {
 }
 ```
 
-Since we are now making this a full-fledged wallet, instead of asking the user for an address we will now be prompting the user for a seed and password to encrypt the seed. If there is already a seed, the user will only be asked for their password.```
+Since we are now making this a full-fledged wallet, instead of asking the user for an address we will now be prompting the user for a seed and password to encrypt the seed. If there is already a seed, the user will only be asked for their password.
 
 3. Then modify the `view/preload.js` file (Note that the `onEnterAccountAddress` function is no longer needed):
 
