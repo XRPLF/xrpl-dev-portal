@@ -1,35 +1,39 @@
 // Step 5 code additions - start
-window.electronAPI.onOpenSeedDialog((_event) => {
-    const seedDialog = document.getElementById('seed-dialog')
-    const seedInput = seedDialog.querySelector('input')
-    const submitButton = seedDialog.querySelector('button[type="submit"]')
+const seedDialog = document.getElementById('seed-dialog')
+const seedInput = seedDialog.querySelector('input')
+const seedSubmitButton = seedDialog.querySelector('button[type="submit"]')
 
-    submitButton.addEventListener('click', () => {
-        const seed = seedInput.value
-        window.electronAPI.onEnterSeed(seed)
-        seedDialog.close()
-    });
+const seedSubmitFn = () => {
+    const seed = seedInput.value
+    window.electronAPI.onEnterSeed(seed)
+    seedDialog.close()
+}
+
+window.electronAPI.onOpenSeedDialog((_event) => {
+    seedSubmitButton.addEventListener('click', seedSubmitFn, {once : true});
 
     seedDialog.showModal()
 })
 
+const passwordDialog = document.getElementById('password-dialog')
+const passwordInput = passwordDialog.querySelector('input')
+const passwordSubmitButton = passwordDialog.querySelector('button[type="submit"]')
+const changeSeedButton = passwordDialog.querySelector('button[type="button"]')
+
+const handlePasswordSubmitFn = () => {
+    const password = passwordInput.value
+    window.electronAPI.onEnterPassword(password)
+    passwordDialog.close()
+}
+
+const handleChangeSeedFn = () => {
+    passwordDialog.close()
+    window.electronAPI.requestSeedChange()
+}
+
 window.electronAPI.onOpenPasswordDialog((_event) => {
-    const passwordDialog = document.getElementById('password-dialog')
-    const passwordInput = passwordDialog.querySelector('input')
-    const submitButton = passwordDialog.querySelector('button[type="submit"]')
-    const changeSeedButton = passwordDialog.querySelector('button[type="button"]')
-
-    submitButton.addEventListener('click', () => {
-        const password = passwordInput.value
-        window.electronAPI.onEnterPassword(password)
-        passwordDialog.close()
-    });
-
-    changeSeedButton.addEventListener('click', () => {
-        passwordDialog.close()
-        window.electronAPI.requestSeedChange()
-    });
-
+    passwordSubmitButton.addEventListener('click', handlePasswordSubmitFn, {once : true});
+    changeSeedButton.addEventListener('click', handleChangeSeedFn, {once : true});
     passwordDialog.showModal()
 });
 // Step 5 code additions - end
