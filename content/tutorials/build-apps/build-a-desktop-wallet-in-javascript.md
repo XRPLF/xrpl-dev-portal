@@ -1008,7 +1008,11 @@ Start up the application:
 npm run start
 ```
 
-On first run, It should first prompt you for an account seed and then for a password. After you have created a wallet this way, you should close the application and start it up a second time: On second run it should prompt you for the password, and you should see the same result as in the last step.
+On first run, It should first prompt you for an account seed and then for a password. 
+
+You can generate a test account's seed via the [testnet faucet here](https://xrpl.org/xrp-testnet-faucet.html).
+
+After you have created a wallet this way, you should close the application and start it up a second time: On second run it should prompt you for the password, and you should see the same result as in the last step.
 
 To run the reference application found in `content/_code-samples/build-a-wallet/desktop-js` for this step, run:
 
