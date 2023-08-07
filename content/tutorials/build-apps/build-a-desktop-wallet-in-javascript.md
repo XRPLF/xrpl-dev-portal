@@ -275,7 +275,7 @@ In the browser, `window.electronAPI.onUpdateLedgerIndex(callback)` can now be us
 </html>
 ```
 
-6. Now create the `renderer.js` file in the `view`folder with the following code:
+6. Now create the `renderer.js` file in the `view` folder with the following code:
 
 ```javascript
 const ledgerIndexEl = document.getElementById('ledger-index')
