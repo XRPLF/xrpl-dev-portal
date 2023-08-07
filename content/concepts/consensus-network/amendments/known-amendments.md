@@ -15,13 +15,13 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
 | [OwnerPaysFee][]                  | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixNFTokenRemint][]              | v1.11.0    | [In Development: TBD]("BADGE_LIGHTGREY") |
-| [DisallowIncoming][]              | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixTrustLinesToSelf][]           | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [fixUniversalNumber][]            | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [ImmediateOfferKilled][]          | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
-| [XRPFees][]                       | v1.10.0    | [In Development: TBD]( "BADGE_LIGHTGREY") |
+| [fixNFTokenRemint][]              | v1.11.0    | [Open for Voting: 2023-06-21](https://xrpl.org/blog/2023/rippled-1.11.0.html "BADGE_80d0e0") |
+| [XRPFees][]                       | v1.10.0    | [Open for Voting: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
+| [DisallowIncoming][]              | v1.10.0    | [Expected: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
+| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [Expected: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
+| [fixTrustLinesToSelf][]           | v1.10.0    | [Expected: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
+| [fixUniversalNumber][]            | v1.10.0    | [Expected: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
+| [ImmediateOfferKilled][]          | v1.10.0    | [Expected: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
 | [CheckCashMakesTrustLine][]       | v1.8.0     | [Enabled: 2023-01-23](https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557 "BADGE_GREEN") |
 | [NonFungibleTokensV1_1][]         | v1.9.2     | [Enabled: 2022-10-31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
 | [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [Enabled: 2022-10-27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
@@ -202,7 +202,7 @@ Also changes the OfferCreate transaction to return `tecEXPIRED` when trying to c
 | Amendment    | DisallowIncoming |
 |:-------------|:-----------------|
 | Amendment ID | 47C3002ABA31628447E8E9A8B315FAA935CE30183F9A9B86845E469CA2CDC3DF |
-| Status       | In Development |
+| Status       | Expected |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -586,10 +586,10 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 ## fixNFTokenRemint
 [fixNFTokenRemint]: #fixnftokenremint
 
-| Amendment    | fixNFTokenRemint     |
-|:-------------|:-------------------|
+| Amendment    | fixNFTokenRemint |
+|:-------------|:-----------------|
 | Amendment ID | AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E |
-| Status | In Development |
+| Status       | In Development |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -608,7 +608,7 @@ The amendment also introduces a new account deletion restriction. An account can
 | Amendment    | fixNonFungibleTokensV1_2 |
 |:-------------|:-------------------------|
 | Amendment ID | 73761231F7F3D94EC3D8C63D91BDD0D89045C6F71B917D1925C01253515A6669 |
-| Status       | In Development |
+| Status       | Expected |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -745,7 +745,7 @@ With this amendment enabled, the XRP Ledger removes these dry offers when they'r
 | Amendment    | fixTrustLinesToSelf |
 |:-------------|:--------------------|
 | Amendment ID | F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013 |
-| Status       | In Development |
+| Status       | Expected |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -760,7 +760,7 @@ On test networks that do not have these trust lines, the amendment has no effect
 | Amendment    | fixUniversalNumber |
 |:-------------|:-------------------|
 | Amendment ID | 2E2FB9CF8A44EB80F4694D38AADAE9B8B7ADAFD2F092E10068E61C98C4F092B0 |
-| Status       | In Development |
+| Status       | Expected |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -847,7 +847,7 @@ Allows validators to include a new optional field in their validations to attest
 | Amendment    | ImmediateOfferKilled |
 |:-------------|:---------------------|
 | Amendment ID | 75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A |
-| Status       | In Development |
+| Status       | Expected |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -907,7 +907,7 @@ With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, re
 |:-------------|:------------|
 | Amendment ID | B4E4F5D2D6FB84DF7399960A732309C9FD530EAE5941838160042833625A6076 |
 | Status       | Enabled |
-| Default Vote (Latest stable release) | No |
+| Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
 Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.
