@@ -557,7 +557,7 @@ await client.request({
 })
 ```
 
-After this subscription our code attached listeners to the `ledgerClosed` and the `transactions` event. As soon as a `transaction` event is triggered, we do an `account_info` request to get the latest account status, as a transaction is an operation that changes the accounts state.
+After this subscription our code attached listeners to the `ledgerClosed` and the `transactions` event. As soon as a `transaction` event is triggered, we do an `account_info` request to get the latest account status, as the transaction could have changed our account's state.
 
 In addition to the subscriptions we added each an initial `ledger` and `accountInfo` request to have some data at application startup, otherwise we would see empty fields until something happened on the ledger which would trigger one of our subscriptions.
 
