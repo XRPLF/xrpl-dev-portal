@@ -29,11 +29,9 @@ window.electronAPI.onUpdateLedgerData((_event, ledger) => {
 const accountAddressClassicEl = document.getElementById('account-address-classic')
 const accountAddressXEl = document.getElementById('account-address-x')
 const accountBalanceEl = document.getElementById('account-balance')
-const accountReserveEl = document.getElementById('account-reserve')
 
 window.electronAPI.onUpdateAccountData((_event, value) => {
     accountAddressClassicEl.innerText = value.classicAddress
     accountAddressXEl.innerText = value.xAddress
     accountBalanceEl.innerText = value.xrpBalance
-    accountReserveEl.innerText = value.xrpReserve
 })

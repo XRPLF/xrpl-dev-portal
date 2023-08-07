@@ -1,4 +1,4 @@
-const {prepareReserve, prepareAccountData, prepareLedgerData} = require("./3_helpers");
+const {prepareAccountData, prepareLedgerData} = require("./3_helpers");
 const {prepareTxData} = require("./4_helpers");
 const crypto = require("crypto");
 const fs = require("fs");
@@ -42,8 +42,6 @@ const initialize = async (client, wallet, appWindow) => {
  */
 const subscribe = async (client, wallet, appWindow) => {
 
-    let reserve = null
-
     // Reference: https://xrpl.org/subscribe.html
     await client.request({
         "command": "subscribe",
@@ -53,7 +51,6 @@ const subscribe = async (client, wallet, appWindow) => {
 
     // Reference: https://xrpl.org/subscribe.html#ledger-stream
     client.on("ledgerClosed", async (rawLedgerData) => {
-        reserve = prepareReserve(rawLedgerData)
         const ledger = prepareLedgerData(rawLedgerData)
         appWindow.webContents.send('update-ledger-data', ledger)
     })

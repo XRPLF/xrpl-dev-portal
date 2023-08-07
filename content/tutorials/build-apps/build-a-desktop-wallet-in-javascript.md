@@ -45,7 +45,6 @@ The application we are going to build here will be capable of the following:
 
 - Showing updates to the XRP Ledger in real-time.
 - Viewing any XRP Ledger account's activity "read-only" including showing how much XRP was delivered by each transaction.
-- Showing how much XRP is set aside for the account's [reserve requirement](reserves.html).
 - Sending [direct XRP payments](direct-xrp-payments.html), and providing feedback about the intended destination address, including:
     - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
     - If the address doesn't want to receive XRP ([`DisallowXRP` flag](become-an-xrp-ledger-gateway.html#disallow-xrp) enabled).
@@ -467,7 +466,7 @@ const { app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const xrpl = require("xrpl")
 // Step 3 code additions - start
-const { prepareReserve, prepareAccountData, prepareLedgerData} = require('./library/3_helpers')
+const { prepareAccountData, prepareLedgerData } = require('./library/3_helpers')
 // Step 3 code additions - end
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
@@ -480,8 +479,6 @@ const main = async () => {
   const appWindow = createWindow()
 
   ipcMain.on('address-entered', async (event, address) =>  {
-
-    let reserve = null
 
     const client = new xrpl.Client(TESTNET_URL)
 
@@ -498,7 +495,6 @@ const main = async () => {
 
     // Reference: https://xrpl.org/subscribe.html#ledger-stream
     client.on("ledgerClosed", async (rawLedgerData) => {
-      reserve = prepareReserve(rawLedgerData)
       const ledger = prepareLedgerData(rawLedgerData)
       appWindow.webContents.send('update-ledger-data', ledger)
     })
@@ -520,7 +516,7 @@ const main = async () => {
         "ledger_index": transaction.ledger_index
       }
       const accountInfoResponse = await client.request(accountInfoRequest)
-      const accountData = prepareAccountData(accountInfoResponse.result.account_data, reserve)
+      const accountData = prepareAccountData(accountInfoResponse.result.account_data)
       appWindow.webContents.send('update-account-data', accountData)
     })
 
@@ -602,7 +598,6 @@ onEnterAccountAddress: (address) => {
         Classic Address: <strong id="account-address-classic"></strong><br/>
         X-Address: <strong id="account-address-x"></strong><br/>
         XRP Balance: <strong id="account-balance"></strong><br/>
-        XRP Reserved: <strong id="account-reserve"></strong><br/>
     </fieldset>
 
     <fieldset>
@@ -667,7 +662,7 @@ At this point, our wallet shows the account's balance getting updated, but doesn
 2. Now, in `index.js`, require the new helper function at the bottom of the import section like so:
 
 ```javascript
-const { prepareReserve, prepareAccountData, prepareLedgerData} = require('./library/3_helpers')
+const { prepareAccountData, prepareLedgerData} = require('./library/3_helpers')
 const { prepareTxData } = require('./library/4_helpers')
 ```
 
@@ -684,7 +679,7 @@ client.on("transaction", async (transaction) => {
   }
 
   const accountInfoResponse = await client.request(accountInfoRequest)
-  const accountData = prepareAccountData(accountInfoResponse.result.account_data, reserve)
+  const accountData = prepareAccountData(accountInfoResponse.result.account_data)
   appWindow.webContents.send('update-account-data', accountData)
 
   // Step 4 code additions - start
@@ -1096,7 +1091,6 @@ After finishing this step the application should look like this:
           <li class="list-group-item">Classic Address: <strong id="account-address-classic"></strong></li>
           <li class="list-group-item">X-Address: <strong id="account-address-x"></strong></li>
           <li class="list-group-item">XRP Balance: <strong id="account-balance"></strong></li>
-          <li class="list-group-item">XRP Reserved: <strong id="account-reserve"></strong></li>
         </ul>
         <div class="spacer"></div>
         <h3>

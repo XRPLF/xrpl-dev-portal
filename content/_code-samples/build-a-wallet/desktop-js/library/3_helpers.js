@@ -6,20 +6,11 @@ const xrpl = require("xrpl");
 // Reference: https://xrpl.org/basic-data-types.html
 const RIPPLE_EPOCH = 946684800;
 
-const prepareAccountData = (rawAccountData, reserve) => {
-    const numOwners = rawAccountData.OwnerCount || 0
-
-    let xrpReserve = null
-    if (reserve) {
-        //TODO: Decimal?
-        xrpReserve = reserve.reserveBaseXrp + (reserve.reserveIncrementXrp * numOwners)
-    }
-
+const prepareAccountData = (rawAccountData) => {
     return {
         classicAddress: rawAccountData.Account,
         xAddress: xrpl.classicAddressToXAddress(rawAccountData.Account, false, true),
-        xrpBalance: xrpl.dropsToXrp(rawAccountData.Balance),
-        xrpReserve: xrpReserve
+        xrpBalance: xrpl.dropsToXrp(rawAccountData.Balance)
     }
 }
 
@@ -35,11 +26,4 @@ const prepareLedgerData = (rawLedgerData) => {
     }
 }
 
-const prepareReserve = (ledger) => {
-    const reserveBaseXrp = xrpl.dropsToXrp(ledger.reserve_base)
-    const reserveIncrementXrp = xrpl.dropsToXrp(ledger.reserve_inc)
-
-    return { reserveBaseXrp, reserveIncrementXrp }
-}
-
-module.exports = { prepareAccountData, prepareLedgerData, prepareReserve }
+module.exports = { prepareAccountData, prepareLedgerData }

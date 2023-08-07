@@ -1,11 +1,9 @@
 const { app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const xrpl = require("xrpl")
-const { prepareReserve, prepareAccountData, prepareLedgerData} = require('../library/3_helpers')
+const { prepareAccountData, prepareLedgerData} = require('../library/3_helpers')
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
-
-let reserveBaseXrp = null, reserveIncrementXrp = null
 
 const createWindow = () => {
 
@@ -27,8 +25,6 @@ const main = async () => {
 
     ipcMain.on('address-entered', async (event, address) =>  {
 
-        let reserve = null
-
         const client = new xrpl.Client(TESTNET_URL)
 
         await client.connect()
@@ -42,7 +38,6 @@ const main = async () => {
 
         // Reference: https://xrpl.org/subscribe.html#ledger-stream
         client.on("ledgerClosed", async (rawLedgerData) => {
-            reserve = prepareReserve(rawLedgerData)
             const ledger = prepareLedgerData(rawLedgerData)
             appWindow.webContents.send('update-ledger-data', ledger)
         })
@@ -64,7 +59,7 @@ const main = async () => {
                 "ledger_index": transaction.ledger_index
             }
             const accountInfoResponse = await client.request(accountInfoRequest)
-            const accountData = prepareAccountData(accountInfoResponse.result.account_data, reserve)
+            const accountData = prepareAccountData(accountInfoResponse.result.account_data)
             appWindow.webContents.send('update-account-data', accountData)
         })
 

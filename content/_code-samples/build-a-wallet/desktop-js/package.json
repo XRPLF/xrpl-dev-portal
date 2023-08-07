@@ -6,7 +6,7 @@
     "hello": "electron 0-hello/index.js",
     "ledger-index": "electron 1-ledger-index/index.js",
     "async": "electron 2-async/index.js",
-    "account": "electron 3-account/index..js",
+    "account": "electron 3-account/index.js",
     "tx-history": "electron 4-tx-history/index.js",
     "password": "electron 5-password/index.js",
     "styling": "electron 6-styling/index.js",
