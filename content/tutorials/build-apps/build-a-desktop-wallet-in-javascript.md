@@ -1197,6 +1197,7 @@ Up until now we have enabled our app to query and display data from the XRPL. No
 1. Create the file `library/7_helpers.js` and add the following contents:
 
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/7_helpers.js", language="js") }}
+
 (There was no `6-helpers.js`, so don't worry!)
 2. Add the new function to the import section in `index.js`:
 
