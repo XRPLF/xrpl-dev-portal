@@ -824,7 +824,7 @@ const WALLET_DIR = 'Wallet'
 const createWindow = () => {
 ```
 
-Note that we have reduced the imports to one line. The helper functions that we have written before now get used in our new helper class, which not only adds new functionality but encapsulates our subscriptions and initial requests in two helper functions. Those will be used as one-liners replacing a lot of lines that started to bloat our main logic file. 
+Note that we have reduced the imports to one line since the new helper file imports and re-exports the other helper functions.
 
 We also added a new constant containing the directory name where we are going to store our encrypted seed.
 
