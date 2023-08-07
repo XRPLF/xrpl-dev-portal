@@ -252,7 +252,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
 This preloader script is used to expose functions to the browsers window object which can be used to subscribe frontend logic to events broadcast from the main logic in `index.js`.
 
-In the browser, `window.electronAPI.onUpdateLedgerIndex(callback)` can now be used tp pass a callback function via `ipcRenderer.on('eventName', callback)` that will be triggered by `appWindow.webContents.send('eventName', value)`.
+In the browser, `window.electronAPI.onUpdateLedgerIndex(callback)` can now be used to pass a callback function via `ipcRenderer.on('eventName', callback)` that will be triggered by `appWindow.webContents.send('eventName', value)`.
 
 4. Now, in `view/template.html`, replace the body in order to show a placeholder for the ledger index instead of "Hello world!"
 
