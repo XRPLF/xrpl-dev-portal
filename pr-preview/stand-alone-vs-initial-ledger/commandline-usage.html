@@ -397,7 +397,7 @@ rippled<span class="w"> </span>-a<span class="w"> </span><span class="o">[</span
 </code></pre></div>
 <p>Run in <a href="rippled-server-modes.html">stand-alone mode</a>. In this mode, <code>rippled</code> does not connect to the network or perform consensus. (Otherwise, <code>rippled</code> runs in daemon mode.)</p>
 <h2 id="initial-ledger-options">Initial Ledger Options<a aria-hidden="true" class="hover_anchor" href="#initial-ledger-options"><i class="fa fa-link"></i></a></h2>
-<p>The following options determine which ledger to load first when starting up. These options are intended for debugging and for starting test networks. These options work with both stand-alone mode and network mode. By default, the server loads its initial ledger using a combination of saved local data and data downloaded from the peer-to-peer network based on what ledger has been most recently validated by the network.</p>
+<p>The following options determine which ledger to load first when starting up. These options are intended for debugging and for starting networks. These options work with both stand-alone mode and network mode. By default, the server loads its initial ledger using a combination of saved local data and data downloaded from the peer-to-peer network based on what ledger has been most recently validated by the network.</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -432,7 +432,7 @@ rippled<span class="w"> </span>-a<span class="w"> </span><span class="o">[</span
 </tr>
 <tr>
 <td style="text-align: left;"><code>--valid</code></td>
-<td style="text-align: left;">Consider the initial ledger a valid network ledger even before fully syncing with the network. This can be used for starting test networks or rolling back an entire network to a known previous state, as long as 80% of that network's validators load the same ledger at around the same time.</td>
+<td style="text-align: left;">Consider the initial ledger a valid network ledger even before fully syncing with the network. This can be used for starting networks or rolling back an entire network to a known previous state, as long as 80% of that network's validators load the same ledger at around the same time.</td>
 </tr>
 </tbody>
 </table>
