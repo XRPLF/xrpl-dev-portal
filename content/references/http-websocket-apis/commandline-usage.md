@@ -79,7 +79,7 @@ Run in [stand-alone mode](rippled-server-modes.html). In this mode, `rippled` do
 
 ## Initial Ledger Options
 
-The following options determine which ledger to load first when starting up. These options are intended for debugging and for starting test networks. These options work with both stand-alone mode and network mode. By default, the server loads its initial ledger using a combination of saved local data and data downloaded from the peer-to-peer network based on what ledger has been most recently validated by the network.
+The following options determine which ledger to load first when starting up. These options are intended for debugging and for starting networks. These options work with both stand-alone mode and network mode. By default, the server loads its initial ledger using a combination of saved local data and data downloaded from the peer-to-peer network based on what ledger has been most recently validated by the network.
 
 | Option                | Description                                          |
 |:----------------------|:-----------------------------------------------------|
@@ -89,7 +89,7 @@ The following options determine which ledger to load first when starting up. The
 | `--net`               | Use only data from the network when loading the initial ledger. |
 | `--replay`            | Use with `--ledger` to replay a specific ledger. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic. |
 | `--start`             | Start with a new genesis ledger that has known amendments enabled, based on their default votes. This makes the functionality of those amendments available right away, instead of needing to wait two weeks for the [Amendment Process](amendments.html). See also: [Start a New Genesis Ledger in Stand-Alone Mode](start-a-new-genesis-ledger-in-stand-alone-mode.html). |
-| `--valid`             | Consider the initial ledger a valid network ledger even before fully syncing with the network. This can be used for starting test networks or rolling back an entire network to a known previous state, as long as 80% of that network's validators load the same ledger at around the same time. |
+| `--valid`             | Consider the initial ledger a valid network ledger even before fully syncing with the network. This can be used for starting networks or rolling back an entire network to a known previous state, as long as 80% of that network's validators load the same ledger at around the same time. |
 
 ## Client Mode Options
 
