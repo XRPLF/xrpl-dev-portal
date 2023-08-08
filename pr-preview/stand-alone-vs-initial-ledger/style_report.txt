@@ -1,9 +1,9 @@
 -------------
 Spell Checker
 -------------
-Found 81 possible spelling errors:
+Found 82 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gif, gis, gits
+  gifs: gins, gits, gift
   kuressaare: 
   ringtee: 
   lõõtsa: 
@@ -27,7 +27,7 @@ Found 81 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slad, slaps, slab
+  slas: slap, sias, slab
 
 <Page 'Invariant Checking' (invariant-checking.html)> Unknown Words:
   validnftokenpage: 
@@ -40,26 +40,26 @@ Found 81 possible spelling errors:
   xlsd: xls, lsd
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  depositpreauthamendment: 
-  xrpfees: 
   fixnonfungibletokensv1_2: 
+  depositpreauthamendment: 
+  fixnftokenremint: 
   disallowincoming: 
   immediateofferkilled: 
   fixuniversalnumber: 
-  fixnftokenremint: 
+  xrpfees: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingcheck: 
-  asfdisallowincomingpaychan: 
   asfdisallowincomingtrustline: 
+  asfdisallowincomingpaychan: 
   asfdisallowincomingnftoffer: 
-  30d: 3-d, 3d, 3rd
+  asfdisallowincomingcheck: 
+  30d: 3rd, 3d, 3-d
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  v3: v1, vg, vl
   0b0: 
+  v3: t3, vu, v1
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mody, modi, mod.
+  mod1: mod, mode, mody
   get_account: 
   get_account_info: 
   send_xrp: 
@@ -70,36 +70,36 @@ Found 81 possible spelling errors:
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mody, modi, mod.
+  mod2: mod, mode, mody
   send_currency: 
   get_balance: 
   configure_account: 
   lesson2: lesson, lessons
 
 <Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: mody, modi, mod.
+  mod3: mod, mode, mody
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page '4. Transfer NFTs (Python)' (py-transfer-nfts.html)> Unknown Words:
-  mod4: mody, modi, mod.
+  mod4: mod, mode, mody
   offer___index: 
   alloffers: 
   lesson4: lesson, lessons
 
 <Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)> Unknown Words:
+  sell___offer___index: 
   buy___offer___index: 
   broker___fee: 
-  sell___offer___index: 
   lesson5: lesson, lessons
 
 <Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)> Unknown Words:
-  mod6: mody, modi, mod.
+  mod6: mod, mode, mody
   mint_other: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3rd, 3d, 3-d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   fixnftokenremint: 
@@ -111,7 +111,7 @@ Found 81 possible spelling errors:
 
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: v1, vg, vl
+  v3: t3, vu, v1
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   disallowincoming: 
@@ -143,6 +143,9 @@ Found 81 possible spelling errors:
 <Page 'account_info' (account_info.html)> Unknown Words:
   disallowincoming: 
 
+<Page 'account_lines' (account_lines.html)> Unknown Words:
+  peterchen: 
+
 <Page 'nft_history' (nft_history.html)> Unknown Words:
   nft_history: 
 
@@ -152,7 +155,7 @@ Found 81 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 69 discouraged words/phrases:
+Found 70 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -209,6 +212,8 @@ Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-st
    Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
 Page: <Page 'Transaction Common Fields' (transaction-common-fields.html)>
    Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'ter Codes' (ter-codes.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'ledger_data' (ledger_data.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Tutorial Guidelines' (tutorial-guidelines.html)>
@@ -268,8 +273,8 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 55
-  Words: 739
-  Characters: 4,596
+  Words: 740
+  Characters: 4,600
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:

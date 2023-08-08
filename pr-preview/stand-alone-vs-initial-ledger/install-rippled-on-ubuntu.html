@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v20.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v21.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -313,21 +313,20 @@
 <p>Add Ripple's package-signing GPG key to your list of trusted keys:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">sudo mkdir /usr/local/share/keyrings/
 wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor &gt; ripple-key.gpg
-sudo mv ripple-key.gpg /usr/local/share/keyrings
+sudo mv ripple-key.gpg /usr/local/share/keyrings/
 </code></pre></div>
 </li>
 <li>
 <p>Check the fingerprint of the newly-added key:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">gpg /usr/local/share/keyrings/ripple-key.gpg
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="o">--</span><span class="n">import</span><span class="o">-</span><span class="n">options</span> <span class="n">show</span><span class="o">-</span><span class="n">only</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">keyrings</span><span class="o">/</span><span class="n">ripple</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">gpg</span>
 </code></pre></div>
 <p>The output should include an entry for Ripple such as the following:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="nl">gpg</span><span class="p">:</span><span class="w"> </span><span class="nl">WARNING</span><span class="p">:</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">supplied</span><span class="p">.</span><span class="w">  </span><span class="n">Trying</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">guess</span><span class="w"> </span><span class="n">what</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="p">...</span>
-<span class="n">pub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">SC</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="n">pub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">SC</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span>
 <span class="w">    </span><span class="n">C0010EC205B35A3310DC90DE395F97FFCCAFD9A2</span>
 <span class="n">uid</span><span class="w">           </span><span class="n">TechOps</span><span class="w"> </span><span class="n">Team</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">Ripple</span><span class="w"> </span><span class="o">&lt;</span><span class="n">techops</span><span class="o">+</span><span class="n">rippled</span><span class="nv">@ripple</span><span class="p">.</span><span class="n">com</span><span class="o">&gt;</span>
 <span class="n">sub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">E</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span>
 </code></pre></div>
-<p>In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the third line, starting with <code>C001</code>.)</p>
+<p>In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the second line, starting with <code>C001</code>.)</p>
 </li>
 <li>
 <p>Add the appropriate Ripple repository for your operating system version:</p>

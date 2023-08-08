@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="ter Codes | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/ter-codes.html" />
-    <meta property="og:description" content="ter codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first." />
-    <meta name="description" content="ter codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first." />
+    <meta property="og:description" content="ter codes indicate that the transaction has not been applied yet, but it could apply successfully in the future - for example, if some other transaction applies first." />
+    <meta name="description" content="ter codes indicate that the transaction has not been applied yet, but it could apply successfully in the future - for example, if some other transaction applies first." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v20.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v21.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -288,8 +288,8 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="ter-codes">ter Codes<a aria-hidden="true" class="hover_anchor" href="#ter-codes"><i class="fa fa-link"></i></a></h1>
-<p>These codes indicate that the transaction failed, but it could apply successfully in the future, usually if some other hypothetical transaction applies first. They have numerical values in the range -99 to -1. The exact code for any given error is subject to change, so don't rely on it.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> Transactions with <code>ter</code> codes are not applied the current ledger and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being automatically reapplied. For more information, see <a href="finality-of-results.html">Finality of Results</a> and <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
+<p>These codes indicate that the transaction has not been <a href="consensus.html">applied</a> yet, and generally will be automatically retried by the server that returned the result code. The transaction could apply successfully in the future; for example, if a certain other transaction applies first. These codes have numerical values in the range -99 to -1, but the exact code for any given error is subject to change, so don't rely on it.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Transactions with <code>ter</code> codes have not been applied to the current ledger and have not yet changed the XRP Ledger state. A transaction that provisionally got a <code>ter</code> result may still succeed or fail with a different code after being automatically applied later. For more information, see <a href="finality-of-results.html">Finality of Results</a> and <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -339,12 +339,16 @@
 <td style="text-align: left;">The transaction attempted to use a <a href="tickets.html">Ticket</a>, but the specified <code>TicketSequence</code> number does not exist in the ledger. However, the Ticket could still be created by another transaction.</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>terQUEUED</code></td>
+<td style="text-align: left;">The transaction met the load-scaled <a href="transaction-cost.html">transaction cost</a> but did not meet the open ledger requirement, so the transaction has been queued for a future ledger.</td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>terRETRY</code></td>
 <td style="text-align: left;">Unspecified retriable error.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>terQUEUED</code></td>
-<td style="text-align: left;">The transaction met the load-scaled <a href="transaction-cost.html">transaction cost</a> but did not meet the open ledger requirement, so the transaction has been queued for a future ledger.</td>
+<td style="text-align: left;"><code>terSUBMITTED</code></td>
+<td style="text-align: left;">Transaction has been submitted, but not yet applied.</td>
 </tr>
 </tbody>
 </table>

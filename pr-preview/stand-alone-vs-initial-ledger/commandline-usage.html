@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v20.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v21.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -373,10 +373,6 @@
 <td style="text-align: left;">Before fully starting, import ledger data from another <code>rippled</code> server's ledger store. Requires a valid <code>[import_db]</code> stanza in the config file.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>--net</code></td>
-<td style="text-align: left;"><strong>DEPRECATED</strong> Intended for debugging: do not build a local ledger until one can be obtained from the network.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>--newnodeid</code></td>
 <td style="text-align: left;">Generate a random node identity for the server.</td>
 </tr>
@@ -401,7 +397,7 @@ rippled<span class="w"> </span>-a<span class="w"> </span><span class="o">[</span
 </code></pre></div>
 <p>Run in <a href="rippled-server-modes.html">stand-alone mode</a>. In this mode, <code>rippled</code> does not connect to the network or perform consensus. (Otherwise, <code>rippled</code> runs in daemon mode.)</p>
 <h2 id="initial-ledger-options">Initial Ledger Options<a aria-hidden="true" class="hover_anchor" href="#initial-ledger-options"><i class="fa fa-link"></i></a></h2>
-<p>The following options determine which ledger to load first when starting up. These options are intended for replaying historical ledgers or starting test networks. These options work with both stand-alone mode and network mode.</p>
+<p>The following options determine which ledger to load first when starting up. These options are intended for debugging and for starting test networks. These options work with both stand-alone mode and network mode. By default, the server loads its initial ledger using a combination of saved local data and data downloaded from the peer-to-peer network based on what ledger has been most recently validated by the network.</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -420,19 +416,23 @@ rippled<span class="w"> </span>-a<span class="w"> </span><span class="o">[</span
 </tr>
 <tr>
 <td style="text-align: left;"><code>--load</code></td>
-<td style="text-align: left;"><strong>DEPRECATED</strong> Intended for debugging. Only load the initial ledger from the ledger store on disk.</td>
+<td style="text-align: left;">Use only the ledger store on disk when loading the initial ledger.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--net</code></td>
+<td style="text-align: left;">Use only data from the network when loading the initial ledger.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>--replay</code></td>
-<td style="text-align: left;">Intended for debugging. Use with <code>--ledger</code> to replay a ledger close. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic.</td>
+<td style="text-align: left;">Use with <code>--ledger</code> to replay a specific ledger. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>--start</code></td>
-<td style="text-align: left;">Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. This makes the functionality of those amendments available right away, instead of needing to wait two weeks for the <a href="amendments.html">Amendment Process</a>.</td>
+<td style="text-align: left;">Start with a new genesis ledger that has known amendments enabled, based on their default votes. This makes the functionality of those amendments available right away, instead of needing to wait two weeks for the <a href="amendments.html">Amendment Process</a>. See also: <a href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>--valid</code></td>
-<td style="text-align: left;"><strong>DEPRECATED</strong> Intended for debugging. Consider the initial ledger a valid network ledger even before fully syncing with the network.</td>
+<td style="text-align: left;">Consider the initial ledger a valid network ledger even before fully syncing with the network. This can be used for starting test networks or rolling back an entire network to a known previous state, as long as 80% of that network's validators load the same ledger at around the same time.</td>
 </tr>
 </tbody>
 </table>
