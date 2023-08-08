@@ -185,8 +185,6 @@ targets:
             "subscribe.html#order-book-streams": "subscribe.html#オーダーブックストリーム"
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
             "ledger-header.html#close-flags": "ledger-header.html#closeフラグ"
-            # Fix link from untranslated account_nfts.html
-            "nftoken.html#nftokentaxon": "nftoken.html#nftokentaxon分類群"
             # Fix links from untranslated NFT API methods:
             "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
             "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
@@ -202,6 +200,11 @@ targets:
             "reserves.html#base-reserve-and-owner-reserve": "reserves.html#基本準備金と所有者準備金"
             # Fix link from nft-reserve-requirements.html:
             "reserves.html#going-below-the-reserve-requirement": "reserves.html#必要準備金を下回る"
+        link_re_subs:
+            # Fix link from untranslated account_nfts.html. 
+            # Because the replacement contains the original as a substring,
+            # simple link replacement doesn't work nicely here
+            "nftoken[.]html#nftokentaxon$": "nftoken.html#nftokentaxon分類群"
 
 
 pages:
