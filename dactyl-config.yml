@@ -185,8 +185,6 @@ targets:
             "subscribe.html#order-book-streams": "subscribe.html#オーダーブックストリーム"
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
             "ledger-header.html#close-flags": "ledger-header.html#closeフラグ"
-            # Fix link from untranslated account_nfts.html
-            "nftoken.html#nftokentaxon": "nftoken.html#nftokentaxon分類群"
             # Fix links from untranslated NFT API methods:
             "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
             "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
@@ -3274,10 +3272,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
         targets:
             - en
+
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.ja.md
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.md

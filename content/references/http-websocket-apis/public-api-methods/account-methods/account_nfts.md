@@ -6,7 +6,7 @@ labels:
   - Non-fungible Tokens, NFTs
 ---
 # account_nfts
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
+[[Source]](https://github.com/xrplf/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
 
 The `account_nfts` method returns a list of `NFToken` objects for the specified account.
 
@@ -132,9 +132,9 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`        | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
-| `account` | String | The account that owns the list of NFTs |
+| `account` | String | The account that owns the list of NFTs. |
 | `account_nfts` | Array | A list of NFTs owned by the account, formatted as **NFT Objects** (see below). |
-| `ledger_hash`          | String                    | (May be omitted) The identifying hash of the ledger that was used to generate this response. |
+| `ledger_hash`          | String                    | _(May be omitted)_ The identifying hash of the ledger that was used to generate this response. |
 | `ledger_index`         | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the ledger that was used to generate this response. |
 | `ledger_current_index` | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the current in-progress ledger version, which was used to generate this response. |
 | `validated`            | Boolean                   | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
