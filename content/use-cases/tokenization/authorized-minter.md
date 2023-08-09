@@ -27,9 +27,9 @@ Once you finish creating NFTs, the creator can revoke your privileges and reasse
 
 To mint your first NFTs on behalf of another account, see [Authorizing Another Account to Mint Your NFTs](assign-an-authorized-minter-using-javascript.html).
 
-If you, as the owner or issuer, want to be able to burn the token in the future, set the `Flags` field to _1._ To make the NFT transferable, set the `Flags` field to _8_. Set the `Flags` field to _9_ to make the NFT both burnable and transferable. See[ Burnable flag](nftoken.html#nftoken-flags) and [Transferable flag](nftoken.html#nftoken-flags).
+If you, as the owner or issuer, want to be able to burn the token in the future, set the `Flags` field to _1._ To make the NFT transferable, set the `Flags` field to _8_. Set the `Flags` field to _9_ to make the NFT both burnable and transferable. See [Burnable flag](nftoken.html#nftoken-flags) and [Transferable flag](nftoken.html#nftoken-flags).
 
-You can arrange for the creator to receive royalties from future sales by setting a <code>transfer fee<em>. </em></code>This is a value from 0-50000 representing 0-50% of the sale price. See [Transfer Fee](nftoken.html#transferfee).
+You can arrange for the creator to receive royalties from future sales by setting a _transfer fee_. This is a value from 0-50000 representing 0-50% of the sale price. See [Transfer Fee](nftoken.html#transferfee).
 
 The NFToken URL is a link to the location where the content of the NFT is stored. One option is create an IPFS account and store the NFToken content at a persistent URL. See [Best Practices for Storing NFT Data](https://docs.ipfs.io/how-to/best-practices-for-nft-data).
 
@@ -44,6 +44,8 @@ You can assure scarcity of NFTs you create by creating them with what might be c
 
 You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nfts-using-javascript.html).
 
+![Transferring NFTs](img/uc-nft-transferring-nfts.png)
+
 You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html).
 
 You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](broker-an-nft-sale-using-javascript.html).
@@ -51,6 +53,8 @@ You can act as a broker, connecting sellers with bidders, completing the transfe
 ### Reserve requirements
 
 There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.
+
+![Reserve Requirements](img/uc-nft-reserves.png)
 
 Each `NFTokenOffer` object requires a reserve of 2 XRP.
 
@@ -66,11 +70,17 @@ See:
 
 The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nfts-using-javascript.html).
 
+![Checkout](img/uc-nft-checkout.png)
+
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange).
 
 ## Indexing NFTs
 
-When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.
+When listing NFTs for sale, it can be useful to use object metadata to organize them. 
+
+![Indexing NFTs](img/uc-nft-indexing.png)
+
+You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.
 
 See:
 
