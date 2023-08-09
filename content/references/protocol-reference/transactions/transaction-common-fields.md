@@ -51,7 +51,7 @@ Some fields can be automatically filled in before a transaction is signed, eithe
 
 * `Fee` - Automatically fill in the [Transaction Cost][] based on the network.
 
-    **Note:** When using `rippled`'s [sign command][], you can limit the maximum possible auto-filled value, using the `fee_mult_max` and `fee_mult_div` parameters.)
+    **Note:** When using `rippled`'s [sign command][], you can limit the maximum possible auto-filled value, using the `fee_mult_max` and `fee_div_max` parameters.)
 
 * `Sequence` - Automatically use the next sequence number for the account sending the transaction.
 
