@@ -732,9 +732,9 @@ An example of a successful response:
 * `unknownOption` - The fields provided in the request did not match any of the expected request formats.
 
 ## Api Version 2
-* - When one or more fields specified incorrectly or missing, it will result in an invalidParams error
+* When one or more fields specified incorrectly or missing, it will result in an invalidParams error
 
-Older Api versions can be used. Documented [here][api-version-history]
+Older [API versions][api-version-history] can be used.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

@@ -257,9 +257,9 @@ Each object in the `transactions` array of `queue_data`, if present, may contain
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 ## Api Version 2
-* - Specifying invalid signer_lists value returns invalidParams error
+* Specifying invalid signer_lists value returns invalidParams error
 
-Older Api versions can be used. Documented [here][api-version-history]
+Older [API versions][api-version-history] can be used.
 
 [fee levels]: transaction-cost.html#fee-levels
 {% include '_snippets/rippled_versions.md' %}

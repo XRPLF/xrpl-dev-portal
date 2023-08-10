@@ -461,10 +461,10 @@ Each transaction object includes the following fields, depending on whether it w
 * `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](server-doesnt-sync.html).
 
 ## Api Version 2
-* - Specifying `ledger_index_min`, `ledger_index_max` and `ledger_index` will result in an invalidParams error
-* - Specifying `ledger_index_min` or `ledger_index_max` out of a valid range will result in lgrIdxMalformed.
+* Specifying `ledger_index_min`, `ledger_index_max` and `ledger_index` will result in an invalidParams error
+* Specifying `ledger_index_min` or `ledger_index_max` out of a valid range will result in lgrIdxMalformed.
 
-Older Api versions can be used. Documented [here][api-version-history]
+Older [API versions][api-version-history] can be used.
 
 {% include '_snippets/rippled_versions.md' %}
 {% include '_snippets/rippled-api-links.md' %}
