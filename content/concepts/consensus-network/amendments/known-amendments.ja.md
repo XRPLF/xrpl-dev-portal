@@ -15,12 +15,13 @@ labels:
 | 名前                            | 導入済み | ステータス                              |
 |:----------------------------------|:-----------|:------------------------------------|
 | [OwnerPaysFee][]                  | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [DisallowIncoming][]              | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [fixTrustLinesToSelf][]           | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [fixUniversalNumber][]            | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [ImmediateOfferKilled][]          | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
-| [XRPFees][]                       | v1.10.0    | [開発中: 未定]( "BADGE_LIGHTGREY") |
+| [fixNFTokenRemint][]              | v1.11.0    | [投票中: 2023-06-21](https://xrpl.org/blog/2023/rippled-1.11.0.html "BADGE_80d0e0") |
+| [XRPFees][]                       | v1.10.0    | [投票中: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
+| [DisallowIncoming][]              | v1.10.0    | [有効予想: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
+| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [有効予想: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
+| [fixTrustLinesToSelf][]           | v1.10.0    | [有効予想: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
+| [fixUniversalNumber][]            | v1.10.0    | [有効予想: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
+| [ImmediateOfferKilled][]          | v1.10.0    | [有効予想: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
 | [CheckCashMakesTrustLine][]       | v1.8.0     | [有効: 2022/01/23](https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557 "BADGE_GREEN") |
 | [NonFungibleTokensV1_1][]         | v1.9.2     | [有効: 2022/10/31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
 | [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [有効: 2022/10/27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
@@ -196,7 +197,7 @@ labels:
 | Amendment    | DisallowIncoming |
 |:-------------|:-----------------|
 | Amendment ID | 47C3002ABA31628447E8E9A8B315FAA935CE30183F9A9B86845E469CA2CDC3DF |
-| ステータス     | 開発中 |
+| ステータス     | 有効予想 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -562,13 +563,32 @@ Checksトランザクションがアカウントのメタデータに影響を�
 この修正は、[NonFungibleTokensV1][] Amendmentが有効でない限り、何の影響もありません。この修正は、その効果が[NonFungibleTokensV1_1][]の一部として含まれているため、廃止されました。
 
 
+## fixNFTokenRemint
+[fixNFTokenRemint]: #fixnftokenremint
+
+| Amendment    | fixNFTokenRemint |
+|:-------------|:-----------------|
+| Amendment ID | AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E |
+| ステータス     | In Development |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+`fixNFTokenRemint` Amendmentは、同じNFTが同じシーケンス番号で複数回鋳造され、衝突の可能性を生じさせる事態を防ぐため、NFTシーケンス番号の構成方法を変更するものです。このAmendmentにより、NFTシーケンス番号の構成が次のように変更されます。
+
+- `AccountRoot`に、新しいフィールド`FirstNFTSequence`を作成します。このフィールドは口座が最初のNFTを発行したときに現在のアカウントシーケンスに設定されます。それ以外の場合は設定されません。
+
+- `FirstNFTSequence`+`MintedNFTokens`（その後、`MintedNFTokens`は1ずつ増加）として、新しく作成されたNFTのシーケンスを計算します。
+
+このamendmentにより、アカウント削除の制限も導入されます。アカウントは、`FirstNFTSequence` + `MintedNFTokens` + 256が現在のレジャーシーケンスより小さい場合にのみ削除できます（256はアカウント削除のヒューリスティックな制限として選択されたもので、アカウント削除制約にすでに存在します）。この制約がなければ、特定の条件下で同一のNFTが再ミントされる可能性があります。
+
+
 ## fixNonFungibleTokensV1_2
 [fixNonFungibleTokensV1_2]: #fixnonfungibletokensv1_2
 
 | Amendment    | fixNonFungibleTokensV1_2 |
 |:-------------|:-------------------------|
 | Amendment ID | 73761231F7F3D94EC3D8C63D91BDD0D89045C6F71B917D1925C01253515A6669 |
-| ステータス     | 開発中 |
+| ステータス     | 有効予想 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -707,7 +727,7 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 | Amendment    | fixTrustLinesToSelf |
 |:-------------|:--------------------|
 | Amendment ID | F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013 |
-| ステータス     | 開発中 |
+| ステータス     | 有効予想 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -722,7 +742,7 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 | Amendment    | fixUniversalNumber |
 |:-------------|:-------------------|
 | Amendment ID | 2E2FB9CF8A44EB80F4694D38AADAE9B8B7ADAFD2F092E10068E61C98C4F092B0 |
-| ステータス     | 開発中 |
+| ステータス     | 有効予想 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -807,7 +827,7 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 | Amendment    | ImmediateOfferKilled |
 |:-------------|:---------------------|
 | Amendment ID | 75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A |
-| ステータス     | 開発中 |
+| ステータス     | 有効予想 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -880,7 +900,7 @@ XRP Ledgerアカウントが[マルチシグ](multi-signing.html) SignerListを�
 |:-------------|:--------------------|
 | Amendment ID | 3C43D9A973AA4443EF3FC38E42DD306160FBFFDAB901CD8BAA15D09F2597EB87 |
 | ステータス     | 廃止 |
-| デフォルトの投票(最新の安定版) | いいえ |
+| デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
 非代替性トークンのネイティブサポートを追加します。標準規格案: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46)。
