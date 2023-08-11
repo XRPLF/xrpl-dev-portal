@@ -612,6 +612,24 @@ pages:
             - en
             - ja
 
+    -   md: use-cases/tokenization/stablecoin-precautions.md
+        parent: stablecoin-issuer.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/tokenization/stablecoin-issuer-compliance-guidelines.md
+        parent: stablecoin-issuer.html
+        targets:
+            - en
+            - ja
+
+    -   md: use-cases/tokenization/stablecoin-issuer-technical-details.md
+        parent: stablecoin-issuer.html
+        targets:
+            - en
+            - ja
+
     -   md: use-cases/tokenization/nft-mkt-overview.md
         parent: tokenization.html
         targets:
