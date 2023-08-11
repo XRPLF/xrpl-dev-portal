@@ -2980,6 +2980,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-results/tel-codes.ja.md
         targets:
             - ja
