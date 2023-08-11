@@ -62,7 +62,6 @@ Daemon mode is the default mode of operation for `rippled`. In addition to the [
 |:--------------------|:-------------------------------------------------------|
 | `--fg`              | Run the daemon as a single process in the foreground. Otherwise, `rippled` forks a second process for the daemon while the first process runs as a monitor. |
 | `--import`          | Before fully starting, import ledger data from another `rippled` server's ledger store. Requires a valid `[import_db]` stanza in the config file. |
-| `--net`             | **DEPRECATED** Intended for debugging: do not build a local ledger until one can be obtained from the network. |
 | `--newnodeid`       | Generate a random node identity for the server. |
 | `--nodeid {VALUE}`  | Specify a node identity. `{VALUE}` can also be a parameter associated with the container or hardware running the server, such as `$HOSTNAME`. |
 | `--nodetoshard`     | Before fully starting, copy any complete [history shards](history-sharding.html) from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!--{# Task for writing a tutorial to use this: DOC-1639 #}--> |
@@ -78,18 +77,19 @@ rippled -a [OPTIONS]
 ```
 Run in [stand-alone mode](rippled-server-modes.html). In this mode, `rippled` does not connect to the network or perform consensus. (Otherwise, `rippled` runs in daemon mode.)
 
-### Initial Ledger Options
+## Initial Ledger Options
 
-The following options determine which ledger to load first when starting up. These options are intended for replaying historical ledgers or starting test networks.
+The following options determine which ledger to load first when starting up. These options are intended for debugging and for starting networks. These options work with both stand-alone mode and network mode. By default, the server loads its initial ledger using a combination of saved local data and data downloaded from the peer-to-peer network based on what ledger has been most recently validated by the network.
 
 | Option                | Description                                          |
 |:----------------------|:-----------------------------------------------------|
 | `--ledger {LEDGER}`   | Load the ledger version identified by `{LEDGER}` (either a ledger hash or a ledger index) as the initial ledger. The specified ledger version must be in the server's ledger store. |
 | `--ledgerfile {FILE}` | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. For an example of such a file, see the provided [`ledger-file.json`]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_api-examples/rippled-cli/ledger-file.json). |
-| `--load`              | **DEPRECATED** Intended for debugging. Only load the initial ledger from the ledger store on disk. |
-| `--replay`            | Intended for debugging. Use with `--ledger` to replay a ledger close. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic. |
-| `--start`             | Intended for debugging. Start with a new genesis ledger that has all known amendments (except those the server is configured to vote against) enabled. This makes the functionality of those amendments available right away, instead of needing to wait two weeks for the [Amendment Process](amendments.html). |
-| `--valid`             | **DEPRECATED** Intended for debugging. Consider the initial ledger a valid network ledger even before fully syncing with the network. |
+| `--load`              | Use only the ledger store on disk when loading the initial ledger. |
+| `--net`               | Use only data from the network when loading the initial ledger. |
+| `--replay`            | Use with `--ledger` to replay a specific ledger. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic. |
+| `--start`             | Start with a new genesis ledger that has known amendments enabled, based on their default votes. This makes the functionality of those amendments available right away, instead of needing to wait two weeks for the [Amendment Process](amendments.html). See also: [Start a New Genesis Ledger in Stand-Alone Mode](start-a-new-genesis-ledger-in-stand-alone-mode.html). |
+| `--valid`             | Consider the initial ledger a valid network ledger even before fully syncing with the network. This can be used for starting networks or rolling back an entire network to a known previous state, as long as 80% of that network's validators load the same ledger at around the same time. |
 
 ## Client Mode Options
 
