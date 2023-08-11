@@ -5,7 +5,7 @@ blurb: Token issuers are responsible for complying with local regulations and re
 labels:
   - Tokens
 ---
-# Stablecoin Issuer Compliance Guidelines
+# Stablecoin Issuer - Compliance Guidelines
 
 Token issuers are responsible for complying with local regulations and reporting to the appropriate agencies. Regulations vary by country and state, but may include the reporting and compliance requirements described in the following sections. Before issuing a token, you should seek professional legal advice on the requirements for your jurisdiction and use case. The following resources may be useful background reading.
 

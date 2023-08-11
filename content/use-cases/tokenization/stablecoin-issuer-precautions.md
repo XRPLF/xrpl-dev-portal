@@ -1,11 +1,11 @@
 ---
-html: stablecoin-precautions.html
+html: stablecoin-issuer-precautions.html
 parent: stablecoin-issuer.html
 blurb: Stablecoin precautions to consider when transferring funds in and out of the XRPL.
 labels:
   - Tokens
 ---
-# Stablecoin Precautions
+# Stablecoin Issuer - Precautions
 
 Processing payments to and from the XRP Ledger naturally comes with some risks, so an issuer should be sure to take care in implementing these processes. As a stablecoin issuer, you should consider the following precautions:
 

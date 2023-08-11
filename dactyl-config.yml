@@ -612,7 +612,7 @@ pages:
             - en
             - ja
 
-    -   md: use-cases/tokenization/stablecoin-precautions.md
+    -   md: use-cases/tokenization/stablecoin-issuer-precautions.md
         parent: stablecoin-issuer.html
         targets:
             - en

@@ -11,7 +11,7 @@ labels:
 
 While anyone can issue a token with any currency code in the XRP Ledger, stablecoins' value comes from the promise that they can be redeemed for the corresponding assets. Issuing a stablecoin may also involve regulatory obligations, which vary by jurisdiction. For these reasons, issuing a stablecoin generally requires an established, reputable business.
 
-This article provides information you should know before issuing a stablecoin and summarizes the choices involved in setting up a stablecoin issuer..
+This article provides information you should know before issuing a stablecoin and summarizes the choices involved in setting up a stablecoin issuer.
 
 
 ## Background Information
@@ -96,7 +96,7 @@ For an exchange such as ACME to integrate with the XRP Ledger, make the followin
 - ACME always keeps enough funds on-hand to pay withdrawals on demand, subject to their terms and conditions.
 - ACME can set fees, minimum withdrawals, and delay times for deposits and withdrawals as their business model demands.
     
-There are additional considerations before issuing a stablecoin. See [Stablecoin Precautions](stablecoin-precautions.html)
+There are additional considerations before issuing a stablecoin. See [Stablecoin Precautions](stablecoin-issuer-precautions.html)
 
 ## Sending into the XRP Ledger
 
