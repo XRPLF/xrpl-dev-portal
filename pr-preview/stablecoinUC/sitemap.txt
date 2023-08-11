@@ -26,7 +26,7 @@ https://xrpl.org/restricting-deposits-uc.html
 https://xrpl.org/escrow-uc.html
 https://xrpl.org/tokenization.html
 https://xrpl.org/stablecoin-issuer.html
-https://xrpl.org/stablecoin-precautions.html
+https://xrpl.org/stablecoin-issuer-precautions.html
 https://xrpl.org/stablecoin-issuer-compliance-guidelines.html
 https://xrpl.org/stablecoin-issuer-technical-details.html
 https://xrpl.org/nft-mkt-overview.html

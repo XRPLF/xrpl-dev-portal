@@ -3,13 +3,13 @@ Spell Checker
 -------------
 Found 135 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gits, gift, gif
+  gifs: giff, gids, gifu
   kuressaare: 
   ringtee: 
   lõõtsa: 
 
 <Page 'What is the XRP Ledger?' (what-is-xrpl.html)> Unknown Words:
-  livenet: livener, livened
+  livenet: livened, livener
 
 <Page 'What is XRP?' (what-is-xrp.html)> Unknown Words:
   opencoin: 
@@ -26,11 +26,11 @@ Found 135 possible spelling errors:
   requiremen: requirement
 
 <Page 'Stablecoin Issuer - Technical Details' (stablecoin-issuer-technical-details.html)> Unknown Words:
-  xapps: capps, lapps, apps
+  xapps: capps, apps, lapps
 
 <Page 'NFT Marketplace Overview' (nft-mkt-overview.html)> Unknown Words:
   arweave: 
-  infura: infra, infula
+  infura: infula, infra
 
 <Page 'Authorized Minter' (authorized-minter.html)> Unknown Words:
   tokentaxon: 
@@ -38,42 +38,42 @@ Found 135 possible spelling errors:
 <Page 'Algorithmic Trading' (algorithmic-trading.html)> Unknown Words:
   arbitraging: arbitrating
   investopedia: 
-  unprecented: unpresented, unprevented
-  clob: clos, clon, cloy
-  30d: 3-d, 3d, 3rd
+  unprecented: unprevented, unpresented
+  clob: clot, clow, slob
+  30d: 3-d, 3rd, 3d
   frontrunning: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  v3: vt, vm, p3
+  v3: vm, v., vv
   0b0: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  fixnonfungibletokensv1_2: 
+  disallowincoming: 
+  xrpfees: 
   depositpreauthamendment: 
+  immediateofferkilled: 
   fixuniversalnumber: 
   fixnftokenremint: 
-  xrpfees: 
-  fixnonfungibletokensv1_2: 
-  immediateofferkilled: 
-  disallowincoming: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingpaychan: 
   asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
+  asfdisallowincomingpaychan: 
   asfdisallowincomingcheck: 
-  30d: 3-d, 3d, 3rd
+  30d: 3-d, 3rd, 3d
 
 <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: lsd, xls
+  xlsd: xls, lsd
 
 <Page 'Invariant Checking' (invariant-checking.html)> Unknown Words:
   validnftokenpage: 
   nftokencounttracking: 
 
 <Page 'Finality of Results' (finality-of-results.html)> Unknown Words:
-  ooffers: goffers, doffers, offers
+  ooffers: offers, goffers, coffers
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
   24n: 
@@ -90,57 +90,57 @@ Found 135 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: blockhole, black-hole
+  blackhole: black-hole, blockhole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: spas, skas, slags
+  slas: slap, slar, stas
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  30d: 3-d, 3rd, 3d
 
 <Page 'Create Accounts and Send XRP Using Python' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: modi, mode, modo
+  mod1: mods, mod., mod
   get_account: 
   get_account_info: 
   send_xrp: 
-  lesson1: lesson, lessons
+  lesson1: lessons, lesson
   tkinter: twinter, tinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page 'Create Trust Line and Send Currency Using Python' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: modi, mode, modo
+  mod2: mods, mod., mod
   send_currency: 
   get_balance: 
   configure_account: 
-  lesson2: lesson, lessons
+  lesson2: lessons, lesson
 
 <Page 'Mint and Burn NFTs Using Python' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: modi, mode, modo
+  mod3: mods, mod., mod
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page 'Transfer NFTs Using Python' (py-transfer-nfts.html)> Unknown Words:
-  mod4: modi, mode, modo
+  mod4: mods, mod., mod
   offer___index: 
   alloffers: 
-  lesson4: lesson, lessons
+  lesson4: lessons, lesson
 
 <Page 'Broker an NFT Sale Using Python' (py-broker-sale.html)> Unknown Words:
   buy___offer___index: 
   sell___offer___index: 
   broker___fee: 
-  lesson5: lesson, lessons
+  lesson5: lessons, lesson
 
 <Page 'Assign an Authorized Minter Using Python' (py-authorize-minter.html)> Unknown Words:
-  mod6: modi, mode, modo
+  mod6: mods, mod., mod
   mint_other: 
 
 <Page 'Create Time-based Escrows Using JavaScript' (create-time-based-escrows-using-javascript.html)> Unknown Words:
-  ripple8: ripplet, ripplex, ripples
+  ripple8: ripplex, rippled, ripples
   numofseconds: 
   offersequence: 
 
@@ -158,7 +158,7 @@ Found 135 possible spelling errors:
 
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: vt, vm, p3
+  v3: vm, v., vv
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   disallowincoming: 
@@ -197,42 +197,42 @@ Found 135 possible spelling errors:
   scalability: salability
 
 <Page 'Configure Full History' (configure-full-history.html)> Unknown Words:
+  zfs: cfs, tfs, vfs
+  ext4: ext., exta, ext
+  xfs: cfs, xls, tfs
   filesystems: filesystem
-  xfs: cfs, dfs, x's
-  zfs: cfs, dfs, nfs
-  ext4: ext, exta, ext.
 
 <Page 'Contributing to Documentation' (contributing-to-documentation.html)> Unknown Words:
-  _img: 
   _snippets: snippets
-  umlet: amlet, mulet, unlet
-  img: qmg, im, imo
+  _img: 
+  img: imf, imp, pmg
   _code: code
-  scss: scsi, sass, scms
+  umlet: umset, amlet, unlet
+  scss: sccs, css, sess
   frontmatter: 
   dropdowns: 
   dropdown: 
-  h1: hi, hf, hb
   santilli: 
-  postgres: postures
+  h1: l1, hs, ht
   camelcase: 
+  postgres: postures
+  nif: nin, nie, niv
   websockets: websocket
-  orderbook: order-book
   trustline: 
-  xrps: xrp, xrpl, rps
-  nif: ntf, nie, neif
+  orderbook: order-book
+  xrps: xrpl, xrp, rps
 
 <Page 'Translations' (documentation-languages.html)> Unknown Words:
-  zh: zi, zhu, oh
   bcp47: 
   hyperlinks: 
-  utf: uhf, uts, ntf
+  zh: ph, ch, oh
+  utf: etf, uta, utu
 
 <Page 'Creating Diagrams' (creating-diagrams.html)> Unknown Words:
   subfolder: subfolders
-  inlined: inclined, unlined, inline
-  umlet: amlet, mulet, unlet
-  scss: scsi, sass, scms
+  inlined: unlined, inline, inclined
+  umlet: umset, amlet, unlet
+  scss: sccs, css, sess
 
 <Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
   screenshots: screenshot
@@ -396,18 +396,18 @@ Average Page Readability Scores:
   Gunning FOG Index: Grade level 9.1
   Automated Readability Index: Grade level 10.8
   Coleman-Liau Index: Grade level 11.5
-  Linsear Write Formula: Grade level 8.7
+  Linsear Write Formula: Grade level 8.6
 
 
 Most difficult pages by Flesch Reading Ease:
-<Page 'Stablecoin Issuer Compliance Guidelines' (stablecoin-issuer-compliance-guidelines.html)> Readability Scores:
+<Page 'Stablecoin Issuer - Compliance Guidelines' (stablecoin-issuer-compliance-guidelines.html)> Readability Scores:
   Flesch Reading Ease Score: 27.2 (Very Confusing)
   Dale-Chall Readability Score: 9.2 (average college student)
   SMOG Index: Grade level 16.5
   Gunning FOG Index: Grade level 12.9
   Automated Readability Index: Grade level 16.2
   Coleman-Liau Index: Grade level 16.3
-  Linsear Write Formula: Grade level 10.9
+  Linsear Write Formula: Grade level 10.7
 
 <Page 'XRP-API' (xrp-api.html)> Readability Scores:
   Flesch Reading Ease Score: 29.2 (Very Confusing)
