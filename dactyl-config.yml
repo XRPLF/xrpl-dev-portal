@@ -4357,11 +4357,11 @@ pages:
             - en
             - ja
     
-    # TODO: translate
+        # TODO: translate
     -   md: infrastructure/rippled/run-private-network-with-docker.md
         targets:
         - en
-        # - ja
+        - ja
 
 
     # # Landing pages for labels -------------------------------------------------

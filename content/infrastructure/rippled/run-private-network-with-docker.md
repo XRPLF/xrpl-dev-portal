@@ -218,7 +218,7 @@ For each validator node, follow these steps:
         [validator_token]
         <Add your validator token here>
 
-3. Add the generated validator token that you created at the [beginning](#prerequisites) of the tutorial. For example:
+3. Add the generated validator token that you created at the [beginning](#generate-the-validator-keys) of the tutorial. For example:
 
         [validator_token]
         eyJtYW5pZmVzdCI6IkpBQUFBQUZ4SWUwcVd3ZnpLZ2tacWJTL01QVGxHVXlOeTVJZ2kzYzlG
@@ -437,5 +437,5 @@ If you wish to stop running the private network:
 ## See Also
 
 - **Networks and Servers:**
-    - [Peer Protocol](../../concepts/servers/peer-protocol.md)
+    - [Peer Protocol](peer-protocol.html)
     
