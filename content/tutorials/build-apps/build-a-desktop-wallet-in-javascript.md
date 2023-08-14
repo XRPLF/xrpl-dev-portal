@@ -1029,13 +1029,21 @@ npm run password
 [`6-styling/index.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/6_styling.js),
 [`6-styling/view/preload.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/6_tx-preload.js),
 [`6-styling/view/template.html`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/6_styling.html),
-[`6-styling/view/renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/6_tx-renderer.js).
+[`6-styling/view/renderer.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/view/6_tx-renderer.js),
+[`bootstrap/bootstrap.bundle.min.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/bootstrap/bootstrap.bundle.min.js),
+[`bootstrap/bootstrap.min.css`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/bootstrap/bootstrap.bundle.min.css),
+[`bootstrap/custom.css`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/bootstrap/custom.css),
+[`bootstrap/XRPLedger_DevPortal-white.svg`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/bootstrap/XRPLedger_DevPortal-white.svg).
 
 After finishing this step the application should look like this:
 
 ![Screenshot: Step 6, style application with css](img/javascript-wallet-6.png)
 
-1. Copy the folder [`bootstrap`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/bootstrap) and its contents to your project directory.
+1. In the project root, create a new folder `bootstrap` and add the following files into that directory:
+[`bootstrap.bundle.min.js`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/bootstrap/bootstrap.bundle.min.js),
+[`bootstrap.min.css`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/bootstrap/bootstrap.bundle.min.css),
+[`custom.css`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/bootstrap/custom.css),
+[`XRPLedger_DevPortal-white.svg`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/bootstrap/XRPLedger_DevPortal-white.svg)
 
 2. Change the content of `view/template.html` to be the following code:
 
