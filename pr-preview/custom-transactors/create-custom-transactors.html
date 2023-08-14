@@ -350,7 +350,7 @@
 </ul>
 <h2 id="cpp-file">CPP File<a aria-hidden="true" class="hover_anchor" href="#cpp-file"><i class="fa fa-link"></i></a></h2>
 <h3 id="1-add-a-preflight-function">1. Add a <code>preflight</code> function.<a aria-hidden="true" class="hover_anchor" href="#1-add-a-preflight-function"><i class="fa fa-link"></i></a></h3>
-<p>The <code>preflight</code> function checks for errors before accessing the ledger. It should reject invalid and incorrectly formed transactions.</p>
+<p>The <code>preflight</code> function checks for errors in the transaction itself before accessing the ledger. It should reject invalid and incorrectly formed transactions.</p>
 <ul>
 <li><code>PreflightContext</code> doesn't have a view of the ledger.</li>
 <li>
@@ -425,14 +425,14 @@
 <h3 id="2-add-a-preclaim-function">2. Add a <code>preclaim</code> function.<a aria-hidden="true" class="hover_anchor" href="#2-add-a-preclaim-function"><i class="fa fa-link"></i></a></h3>
 <p>The <code>preclaim</code> function checks for errors that require viewing information on the current ledger.</p>
 <ul>
-<li><code>PreclaimContext</code> has a read-only view of the ledger.</li>
-<li>If this step returns a result code of <code>tesSUCCESS</code> or any <code>tec</code> result, the transaction can be queued and broadcast to peers.</li>
+<li>If this step returns a result code of <code>tesSUCCESS</code> or any <code>tec</code> result, the transaction will be queued and broadcast to peers.</li>
 </ul>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="n">CreateCheck</span><span class="o">::</span><span class="n">preclaim</span><span class="p">(</span><span class="n">PreclaimContext</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ctx</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">AccountID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">dstId</span><span class="p">{</span><span class="n">ctx</span><span class="p">.</span><span class="n">tx</span><span class="p">[</span><span class="n">sfDestination</span><span class="p">]};</span>
 
 <span class="w">    </span><span class="c1">// Use the `keylet` function to get the key of the SLE. Views have either `read` or `peek` access.</span>
+<span class="w">    </span><span class="c1">// `peek` access allows the developer to modify the SLE returned.</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">sleDst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">keylet</span><span class="o">::</span><span class="n">account</span><span class="p">(</span><span class="n">dstId</span><span class="p">));</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">sleDst</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>

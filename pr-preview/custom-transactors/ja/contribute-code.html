@@ -36,16 +36,6 @@
     <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
 
     <!-- Google Tag Manager -->
-    <script type="application/javascript">
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      "event": "page_info",
-      "page_type": "Document",
-      "page_group": "Docs",
-      "page_funnel": "Other",
-      "page_labels": []
-    })
-    </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -66,21 +56,7 @@
     <script src="/ja/assets/js/theme-switch.js"></script>
 
 
-
-    <!-- expandable code samples -->
-    <script src="/ja/assets/js/expandcode.js"></script>
-    <!-- multi-code selection tabs -->
-    <script src="/ja/assets/js/multicodetab.js"></script>
-    <!-- copy code button -->
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".multicode").minitabs();
-            make_code_expandable();
-            new ClipboardJS('.clipboard-btn');
-        });
-    </script>
-
+<meta http-equiv="refresh" content="0;url=contribute-code-flow.html" />
 
 </head>
 
@@ -255,22 +231,6 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
-  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
-    Page Toolbar
-    <span class="chevron"><span></span><span></span></span>
-  </a>
-  <div id="page-toc-wrapper" class="collapse d-lg-block">
-<div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/custom-transactors/content/contributing/contribute-code.md?pr=/XRPLF/xrpl-dev-portal/pull/2034" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
-</div><!-- /.github-edit -->    <div class="toc-header">
-      <h4>目次</h4>
-    </div>
-    <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#standards-drafts">Standards Drafts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#related-repositories">Related Repositories</a></li>
-      </ul>
-  </div>
       </aside>
 
       <!-- main column -->
@@ -284,67 +244,11 @@
     <li class="active breadcrumb-item">Contribute Code to the XRP Ledger</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#contribute-code-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h1>
-<p>The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Community involvement makes it better. Look for "[Source]" links in the <a href="docs.html">documentation</a> to jump directly into the related source code, or browse the source code on GitHub:</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;">XRP Ledger Source Code</th>
-<th style="text-align: left;"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Repository</td>
-<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/rippled" target="_blank">https://github.com/XRPLF/rippled <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td style="text-align: left;">License</td>
-<td style="text-align: left;"><a class="external-link" href="https://github.com/ripple/rippled/blob/develop/LICENSE.md" target="_blank">Multiple; ISC (permissive) <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td style="text-align: left;">Programming Language</td>
-<td style="text-align: left;">C++</td>
-</tr>
-</tbody>
-</table>
-<p>If you're not sure where to start, Dev Null Productions provides a detailed and thorough <a class="external-link" href="https://xrpintel.com/source" target="_blank"><strong>Source Code Guide</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a> that describes the structure and functions of the core XRP Ledger server (<code>rippled</code>) implementation.</p>
-<h2 id="standards-drafts">Standards Drafts<a aria-hidden="true" class="hover_anchor" href="#standards-drafts"><i class="fa fa-link"></i></a></h2>
-<p>When developing amendments to the XRP Ledger protocol or interoperability between XRP Ledger applications, it's best to discuss the proposed changes with the community.</p>
-<p>The <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/" target="_blank"><strong>Community Standards Drafts</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a> project is a great place to share your plans and collect suggestions on a proposed standard. This feedback can help to balance trade-offs, design for greater efficiency, and address potential security implications before you share your actual source code with others.</p>
-<h2 id="related-repositories">Related Repositories<a aria-hidden="true" class="hover_anchor" href="#related-repositories"><i class="fa fa-link"></i></a></h2>
-<p>You can find various XRP Ledger-related projects under these and other GitHub organizations:</p>
-<ul>
-<li><a class="external-link" href="https://github.com/XRPLF/" target="_blank">XRP Ledger Foundation <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a class="external-link" href="https://github.com/ripple/" target="_blank">Ripple <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a class="external-link" href="https://github.com/XRPL-Labs/" target="_blank">XRPL Labs <i aria-hidden="true" class="fa fa-external-link"></i></a> <!-- SPELLING_IGNORE: xrpl --></li>
-</ul>
-<p>Be sure to look at each repository's license and contributing guidelines before contributing to that repository.</p>
+        <p>This page has been moved! You should be redirected automatically. If not, <a href="contribute-code-flow.html">click here to go to the new Contribute Code to the XRP Ledger page</a>.
     </div>
   </article>
-<!-- Feedback Widget -->
-<script src="/ja/assets/vendor/feedback-widget.js"></script>
-<div id="feedback-content"></div>
-<script>
-  // Options
-  const options = {
-    analyticsConfig: [
-      // { name: 'ga', id: 'UA-45576805-2' },
-      { name: 'gtm', id: 'GTM-KCQZ3L8' },
-    ],
-    analyticsName: 'Feedback Widget Tracker',
-    theme: 'xrpl',
-    currentPath: window.location.pathname,
-    parentElement: '#feedback-content',
-  };
-
-  // Init WidgetClass
-  const r = new WidgetClass(options);
-</script>      </main>
+      </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
 
