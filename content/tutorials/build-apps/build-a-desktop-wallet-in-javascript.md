@@ -1035,11 +1035,9 @@ After finishing this step the application should look like this:
 
 ![Screenshot: Step 6, style application with css](img/javascript-wallet-6.png)
 
-1. Copy the folder `bootstrap` and its contents to your project directory. 
+1. Copy the folder [`bootstrap`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/bootstrap) and its contents to your project directory.
 
-2. Also, copy the file `view/custom.css` as well as `XRPLedger_DevPortal-white.svg` to the `view`directory.
-
-3. Change the content of `view/template.html` to be the following code:
+2. Change the content of `view/template.html` to be the following code:
 
 ````html
 <!DOCTYPE html>
