@@ -189,6 +189,11 @@ Our first step was to have a running "Hello World" application. Now we want to e
 1. Update `index.js` by adding the following snippet in the import section at the top of the file below the `path` import:
 
 ```javascript
+const { app, BrowserWindow } = require('electron')
+
+const path = require('path')
+
+// Step 3 code additions - start
 const xrpl = require("xrpl")
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
@@ -215,9 +220,17 @@ const getValidatedLedgerIndex = async () => {
 
   return ledgerResponse.result.ledger_index
 }
+// Step 3 code additions - end
+
+
+/**
+ * This is our main function, it creates our application window, preloads the code we will need to communicate
+ * between the renderer Process and the main Process, loads a layout and performs the main logic
+ */
+const createWindow = () => {
 ```
 
-This helper function does the following: It establishes a WebSocket connection to the XRP Ledger, calls the XRP Ledger API's [ledger method](ledger.html) and returns the ledger index from the response.
+This helper function does the following: It establishes a WebSocket connection to the XRP Ledger, calls the XRP Ledger API's [ledger method](ledger.html) and returns the ledger index from the response. We will wire up this function at the end of this step.
 
 2. In order to attach a preloader script, modify the `createWindow` method in `index.js` by adding the following code:
 
