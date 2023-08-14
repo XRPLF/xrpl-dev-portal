@@ -5100,6 +5100,8 @@ pages:
     # TODO: translate
     -   md: contributing/contribute-code.md
         html: contribute-code.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: contribute-code-flow.html
         parent: contribute.html
         top_nav_omit: true
         targets:

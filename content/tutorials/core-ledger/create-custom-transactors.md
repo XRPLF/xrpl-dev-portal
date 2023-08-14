@@ -64,7 +64,7 @@ Initializing the transactor with `ApplyContext` gives it access to:
 
 ### 1. Add a `preflight` function.
 
-The `preflight` function checks for errors before accessing the ledger. It should reject invalid and incorrectly formed transactions.
+The `preflight` function checks for errors in the transaction itself before accessing the ledger. It should reject invalid and incorrectly formed transactions.
 
 - `PreflightContext` doesn't have a view of the ledger.
 - Use bracket notation to retrieve fields from ledgers and transactions:
@@ -138,8 +138,7 @@ CreateCheck::preflight(PreflightContext const& ctx)
 
 The `preclaim` function checks for errors that require viewing information on the current ledger.
 
-- `PreclaimContext` has a read-only view of the ledger.
-- If this step returns a result code of `tesSUCCESS` or any `tec` result, the transaction can be queued and broadcast to peers.
+- If this step returns a result code of `tesSUCCESS` or any `tec` result, the transaction will be queued and broadcast to peers.
 
 ```c++
 CreateCheck::preclaim(PreclaimContext const& ctx)
@@ -147,6 +146,7 @@ CreateCheck::preclaim(PreclaimContext const& ctx)
     AccountID const dstId{ctx.tx[sfDestination]};
 
     // Use the `keylet` function to get the key of the SLE. Views have either `read` or `peek` access.
+    // `peek` access allows the developer to modify the SLE returned.
     auto const sleDst = ctx.view.read(keylet::account(dstId));
     if (!sleDst)
     {
