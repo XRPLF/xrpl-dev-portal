@@ -64,6 +64,10 @@ main {
     height: 20px;
 }
 
+.invalid-password {
+    color: #dc3545;
+}
+
 .accountVerificationIndicator{
     width: 100%;
 }

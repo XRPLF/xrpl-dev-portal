@@ -16,6 +16,7 @@ window.electronAPI.onOpenSeedDialog((_event) => {
 
 const passwordDialog = document.getElementById('password-dialog')
 const passwordInput = passwordDialog.querySelector('input')
+const passwordError = passwordDialog.querySelector('span.invalid-password')
 const passwordSubmitButton = passwordDialog.querySelector('button[type="submit"]')
 const changeSeedButton = passwordDialog.querySelector('button[type="button"]')
 
@@ -30,7 +31,10 @@ const handleChangeSeedFn = () => {
     window.electronAPI.requestSeedChange()
 }
 
-window.electronAPI.onOpenPasswordDialog((_event) => {
+window.electronAPI.onOpenPasswordDialog((_event, showInvalidPassword = false) => {
+    if (showInvalidPassword) {
+        passwordError.innerHTML = 'INVALID PASSWORD'
+    }
     passwordSubmitButton.addEventListener('click', handlePasswordSubmitFn, {once : true});
     changeSeedButton.addEventListener('click', handleChangeSeedFn, {once : true});
     passwordDialog.showModal()

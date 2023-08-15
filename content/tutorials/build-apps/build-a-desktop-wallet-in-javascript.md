@@ -859,7 +859,12 @@ const main = async () => {
     if (!fs.existsSync(path.join(__dirname, WALLET_DIR , 'seed.txt'))) {
       saveSaltedSeed('../' + WALLET_DIR, seed, password)
     } else {
-      seed = loadSaltedSeed('../' + WALLET_DIR, password)
+      try {
+        seed = loadSaltedSeed(WALLET_DIR, password)
+      } catch (error) {
+        appWindow.webContents.send('open-password-dialog', true)
+        return
+      }
     }
 
     const wallet = xrpl.Wallet.fromSeed(seed)
@@ -942,7 +947,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
         <form method="dialog">
             <div>
                 <label for="password-input">Enter password (min-length 5):</label>
-                <input type="text" id="password-input" name="password-input" />
+                <input type="text" id="password-input" name="password-input" /><br />
+                <span class="invalid-password"></span>
             </div>
             <div>
                 <button type="button">Change Seed</button>
@@ -994,6 +1000,7 @@ window.electronAPI.onOpenSeedDialog((_event) => {
 
 const passwordDialog = document.getElementById('password-dialog')
 const passwordInput = passwordDialog.querySelector('input')
+const passwordError = passwordDialog.querySelector('span.invalid-password')
 const passwordSubmitButton = passwordDialog.querySelector('button[type="submit"]')
 const changeSeedButton = passwordDialog.querySelector('button[type="button"]')
 
@@ -1008,7 +1015,10 @@ const handleChangeSeedFn = () => {
   window.electronAPI.requestSeedChange()
 }
 
-window.electronAPI.onOpenPasswordDialog((_event) => {
+window.electronAPI.onOpenPasswordDialog((_event, showInvalidPassword = false) => {
+  if (showInvalidPassword) {
+    passwordError.innerHTML = 'INVALID PASSWORD'
+  }
   passwordSubmitButton.addEventListener('click', handlePasswordSubmitFn, {once : true});
   changeSeedButton.addEventListener('click', handleChangeSeedFn, {once : true});
   passwordDialog.showModal()

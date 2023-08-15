@@ -44,7 +44,12 @@ const main = async () => {
         if (!fs.existsSync(path.join(__dirname, WALLET_DIR , 'seed.txt'))) {
             saveSaltedSeed(WALLET_DIR, seed, password)
         } else {
-            seed = loadSaltedSeed(WALLET_DIR, password)
+            try {
+                seed = loadSaltedSeed(WALLET_DIR, password)
+            } catch (error) {
+                appWindow.webContents.send('open-password-dialog', true)
+                return
+            }
         }
 
         const wallet = xrpl.Wallet.fromSeed(seed)
