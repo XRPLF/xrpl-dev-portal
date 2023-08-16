@@ -77,12 +77,12 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 The following is a list of [amendments](amendments.html) that are being developed and a private network is available to test the changes. 
 
-| Name                              | Author     | Status                        | Additional Information         |
-|:----------------------------------|:-----------|:------------------------------|:-------------------------------|
-| [Hooks][]                         | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY")  | [XRPL Hooks](https://hooks.xrpl.org/) |
-| [Cross chain bridges][]           | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY")  | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [Documentation](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
-| [Clawback][]                      | v1.12.0    | [In Development: TBD]("BADGE_LIGHTGREY") | [XLS-39d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md) [Documentation](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/) |
-| [Automated Market Maker (AMM)][]  | v1.12.0    | [In Development: TBD]("BADGE_LIGHTGREY") | [XLS-30d](https://github.com/XRPLF/XRPL-Standards/pull/125) [Documentation](https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/) |
+| Name                              | Status                                    | Additional Information         |
+|:----------------------------------|:------------------------------------------|:-------------------------------|
+| [Hooks][]                         | [In Development: TBD]( "BADGE_LIGHTGREY") | [XRPL Hooks](https://hooks.xrpl.org/) |
+| [CrossChainBridges][]             | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [Documentation](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
+| [Clawback][]                      | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-39d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md) [Documentation](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/) |
+| [AutomatedMarketMaker][] (AMM)    | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-30d](https://github.com/XRPLF/XRPL-Standards/pull/125) [Documentation](https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/) |
 
 If you're working on an amendment and have a private network to test the changes, edit this page to add your amendment to this list. 
 
@@ -107,6 +107,16 @@ The following is a list of known [amendments](amendments.html) that have been ve
 
 ## Details about Known Amendments
 
+
+### Automated Market Maker (AMM)
+[AutomatedMarketMaker]: #automated-market-maker-amm
+
+| Amendment    | Automated Market Maker |
+|:-------------|:------------------------|
+| Amendment ID |  |
+| Status       | In Dev |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
 
 ### CheckCashMakesTrustLine
 [CheckCashMakesTrustLine]: #checkcashmakestrustline
@@ -158,6 +168,16 @@ Clawback is disabled by default. To use clawback, you must set the `lsfAllowTrus
 
 See [Clawback](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/) for details on this amendment.
 
+
+### Cross Chain Bridges
+[CrossChainBridges]: #cross-chain-bridges
+
+| Amendment    | Cross Chain Bridges |
+|:-------------|:-----------------|
+| Amendment ID | |
+| Status       | In Dev |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
 
 ### CryptoConditions
 [CryptoConditions]: #cryptoconditions
@@ -886,6 +906,16 @@ This is a previous version of the [Flow](#flow) amendment. It was [rejected due 
 
 Allows validators to include a new optional field in their validations to attest to the hash of the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.
 
+
+### Hooks
+[Hooks]: #hooks
+
+| Amendment    | Hooks |
+|:-------------|:--------------------|
+| Amendment ID | N/A |
+| Status       | In Dev |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
 
 ### ImmediateOfferKilled
 [ImmediateOfferKilled]: #immediateofferkilled
