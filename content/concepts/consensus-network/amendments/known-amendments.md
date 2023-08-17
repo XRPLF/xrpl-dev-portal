@@ -8,7 +8,6 @@ labels:
 # Known Amendments
 [[Source]](https://github.com/xrplf/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")
 
-
 ## Known Amendments on the Mainnet
 
 The following is a comprehensive list of all known [amendments](amendments.html) and their status on the production XRP Ledger:
@@ -73,7 +72,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.
 
-## Known Amendments in Development
+## Amendments in Development
 
 The following is a list of [amendments](amendments.html) that are being developed and a private network is available to test the changes. 
 
@@ -84,9 +83,8 @@ The following is a list of [amendments](amendments.html) that are being develope
 | [Clawback][]                      | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-39d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md) [Documentation](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/) |
 | [AutomatedMarketMaker][] (AMM)    | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-30d](https://github.com/XRPLF/XRPL-Standards/pull/125) [Documentation](https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/) |
 
-If you're working on an amendment and have a private network to test the changes, edit this page to add your amendment to this list. 
 
-For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code-flow.html).
+**Tip:** This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code-flow.html).
 
 ## Vetoed or Obsolete Amendments
 

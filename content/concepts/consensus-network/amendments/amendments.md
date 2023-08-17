@@ -7,6 +7,8 @@ labels:
 ---
 # Amendments
 
+Amendments represent new features or other changes to transaction processing. 
+
 The amendment system uses the consensus process to approve any changes that affect transaction processing on the XRP Ledger. Fully-functional, transaction process changes are introduced as amendments; validators then vote on these changes. If an amendment receives more than 80% support for two weeks, the amendment passes and the change applies permanently to all subsequent ledger versions. Disabling a passed amendment requires a new amendment to do so.
 
 **Note:** Bug fixes that change transaction processes also require amendments.
@@ -16,6 +18,10 @@ Every amendment has a unique identifying hex value and a short name. The short n
 -->
 
 ## Amendment Process
+
+The [Contributing Code to the XRP Ledger](contribute-code-flow..html) walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.
+
+The amendment process on the ledger is driven by the **flag** ledger. 
 
 Every 256th ledger is called a **flag** ledger. The flag ledger doesn't have special contents, but the amendment process happens around it.
 
@@ -71,7 +77,7 @@ The [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussion
 - **Tutorials:**
     - [Run rippled as a Validator](run-rippled-as-a-validator.html)
     - [Configure Amendment Voting](configure-amendment-voting.html)
-    - [Contribute Code to the XRP Ledger](contribute-code.html)
+    - [Contribute Code to the XRP Ledger](contribute-code-flow.html)
 - **References:**
     - [Known Amendments](known-amendments.html)
 
