@@ -13,7 +13,7 @@ This tutorial describes how to run a private XRP Ledger network on your computer
 
 While you can easily use the public XRP Testnet servers, running a private network can be useful when trying to understand how the XRP Ledger works, or when testing new features in isolation.
 
-**Caution:** This tutorial is mainly suited for development or testing purposes, and does not involve using real money. You should **not** use this configuration for a production network.
+**Caution:** This tutorial is suited for development or testing purposes only, and does not involve using real money. You should **not** use this configuration for a production network.
 
 ## Learning Goals
 
@@ -25,7 +25,7 @@ In this tutorial, you will learn:
 
 - How to verify the network is up and running.
 
-The diagram below shows a high-level overview of the containerized private network that you will set up.
+The following diagram shows a high-level overview of the containerized private network that you will set up.
 
 {{ include_svg("img/xrp-ledger-private-network-docker.svg", "Figure 1: Diagram of a three node containerized private ledger network") }}
 
@@ -58,7 +58,7 @@ Generate the keys for **each** of your validator nodes by using the `validator-k
 
         This file should be stored securely and not shared.
 
-    **Warning:** In a production or test environment you should follow best practices and store the generated keys in a secure, offline, and recoverable location, such as an encrypted USB flash drive. However, as this is an example for a local development set up, storing the keys on your computer is sufficient.
+    **Warning:** In a production or test environment you should follow best practices always and store the generated keys in a secure, offline, and recoverable location, such as an encrypted USB flash drive. However, as this tutorial is an example of a local development setup, storing the keys on your computer is sufficient.
 
 3. Copy the **public_key** value from the JSON output, and store it in a text file on your computer.
 
@@ -96,7 +96,7 @@ Generate the keys for **each** of your validator nodes by using the `validator-k
 
 This section describes how to configure the validator nodes in your network.
 
-**Note:** The provided configuration enables the network to retain _some_ ledger history, but the amount of transaction history stored will depend on how long the network has been online.
+**Note:** The configuration in this tutorial enables the network to retain _some_ ledger history, but the amount of transaction history stored will depend on how long the network has been online.
 
 ### Create the node directories
 
@@ -110,7 +110,7 @@ On your computer, create the directories for all nodes in the private network, a
         └── validator_3/
             └── config
 
-In your terminal, run the command below to create the directories:
+In your terminal, run the following command to create the directories:
 
      mkdir -p xrpl-private-network/{validator_1/config,validator_2/config,validator_3/config}
 
@@ -417,7 +417,7 @@ Perform a **test** transaction to ensure you can send money to an account.
         
     All validator nodes should respond with the same balance of 1000000000 XRP for the `r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs` account.
 
-## (Optional) Stop the Network
+## Stop the Network
 
 If you wish to stop running the private network:
 
