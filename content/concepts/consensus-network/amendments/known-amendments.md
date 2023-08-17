@@ -910,7 +910,7 @@ Allows validators to include a new optional field in their validations to attest
 
 | Amendment    | Hooks |
 |:-------------|:--------------------|
-| Amendment ID | N/A |
+| Amendment ID | ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078 |
 | Status       | In Dev |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
