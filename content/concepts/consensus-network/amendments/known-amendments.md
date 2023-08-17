@@ -111,7 +111,7 @@ The following is a list of known [amendments](amendments.html) that have been ve
 
 | Amendment    | Automated Market Maker |
 |:-------------|:------------------------|
-| Amendment ID |  |
+| Amendment ID | 8CC0774A3BF66D1D22E76BBDA8E8A232E6B6313834301B3B23E8601196AE6455 |
 | Status       | In Dev |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
@@ -172,7 +172,7 @@ See [Clawback](https://opensource.ripple.com/docs/clawback/clawback-of-issued-cu
 
 | Amendment    | Cross Chain Bridges |
 |:-------------|:-----------------|
-| Amendment ID | |
+| Amendment ID | N/A |
 | Status       | In Dev |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
