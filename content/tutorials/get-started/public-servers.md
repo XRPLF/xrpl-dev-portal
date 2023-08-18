@@ -28,7 +28,6 @@ If you don't [run your own `rippled` server](install-rippled.html), you can use 
 
 <a id="footnote-2"></a>² `xrpl.ws` is an alias for `xrplcluster.com`. However, the `.ws` top-level domain's reliability may be unsuitable for production uses.
 
-
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
 {% include '_snippets/tx-type-links.md' %}			
