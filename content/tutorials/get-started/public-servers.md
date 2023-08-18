@@ -18,6 +18,7 @@ If you don't [run your own `rippled` server](install-rippled.html), you can use 
 | XRPL Labs     | Testnet     | `https://testnet.xrpl-labs.com/` | `wss://testnet.xrpl-labs.com/` | Testnet public server with CORS support |
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net:51233/` | Devnet public server |
 | Ripple[¹][]   | AMM-Devnet  | `https://amm.devnet.rippletest.net:51234/` | `wss://amm.devnet.rippletest.net:51233/` | Special devnet for [XLS-30d Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) development. |
+| XRPL Labs     | Hooks-Testnet| `https://hooks-testnet-v3.xrpl-labs.com` | `wss://hooks-testnet-v3.xrpl-labs.com` | Hooks V3 Testnet |
 
 [Network]: parallel-networks.html
 [¹]: #footnote-1
@@ -26,6 +27,7 @@ If you don't [run your own `rippled` server](install-rippled.html), you can use 
 <a id="footnote-1"></a>¹ Ripple's public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own `rippled` server or contract someone you trust to do so. Ripple includes [Reporting Mode][] servers in its public clusters.
 
 <a id="footnote-2"></a>² `xrpl.ws` is an alias for `xrplcluster.com`. However, the `.ws` top-level domain's reliability may be unsuitable for production uses.
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
