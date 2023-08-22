@@ -133,6 +133,8 @@ Updates existing transactions with new functionality:
 Adds a new type of ledger entry, `AMM`, and adds an `AMMID` field to the `AccountRoot` ledger entry type.
 
 Adds several new transaction result codes.
+
+
 ### CheckCashMakesTrustLine
 [CheckCashMakesTrustLine]: #checkcashmakestrustline
 
@@ -175,7 +177,7 @@ Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash,
 | Amendment ID  | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
 | Status        | In Development |
 | Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No  |
+| Pre-amendment functionality retired? | No |
 
 For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_ the funds.
 
@@ -193,6 +195,9 @@ See [Clawback](https://opensource.ripple.com/docs/clawback/clawback-of-issued-cu
 | Status       | In Development |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
+
+Adds "cross-chain bridges" for synchronizing assets between different networks, such as Mainnet and a sidechain. Standards draft: [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md).
+
 
 ### CryptoConditions
 [CryptoConditions]: #cryptoconditions
@@ -932,6 +937,7 @@ Allows validators to include a new optional field in their validations to attest
 | Pre-amendment functionality retired? | No |
 
 Adds on-chain smart contracts in the form of small pieces of code that can run on an account before or after transactions. For more information, see the [Hooks Documentation](https://xrpl-hooks.readme.io/).
+
 
 ### ImmediateOfferKilled
 [ImmediateOfferKilled]: #immediateofferkilled
