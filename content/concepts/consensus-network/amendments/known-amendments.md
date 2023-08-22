@@ -16,13 +16,14 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [OwnerPaysFee][]                  | TBD        | [In Development: TBD]( "BADGE_LIGHTGREY") |
 | [fixNFTokenRemint][]              | v1.11.0    | [Open for Voting: 2023-06-21](https://xrpl.org/blog/2023/rippled-1.11.0.html "BADGE_80d0e0") |
 | [XRPFees][]                       | v1.10.0    | [Open for Voting: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
-| [DisallowIncoming][]              | v1.10.0    | [Expected: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
-| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [Expected: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
-| [fixTrustLinesToSelf][]           | v1.10.0    | [Expected: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
-| [fixUniversalNumber][]            | v1.10.0    | [Expected: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
-| [ImmediateOfferKilled][]          | v1.10.0    | [Expected: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
+| [DisallowIncoming][]              | v1.10.0    | [Enabled: 2023-08-21](https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E "BADGE_GREEN") |
+| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [Enabled: 2023-08-21](https://livenet.xrpl.org/transactions/3AB0892CAB29F049B9D9E5D522701FD01469D0B97080626F8DD4B489D0B8784E "BADGE_GREEN") |
+| [fixTrustLinesToSelf][]           | v1.10.0    | [Enabled: 2023-08-21](https://livenet.xrpl.org/transactions/4F4C05142CA1DE257CD86513086F0C99FAF06D80932377C6B6C02B3D09623A43 "BADGE_GREEN") |
+| [fixUniversalNumber][]            | v1.10.0    | [Enabled: 2023-08-21](https://livenet.xrpl.org/transactions/EFE82B7155CE5B766AF343D98DAE6662C2713C99E760D610370D02338881B2F3 "BADGE_GREEN") |
+| [ImmediateOfferKilled][]          | v1.10.0    | [Enabled: 2023-08-21](https://livenet.xrpl.org/transactions/65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B "BADGE_GREEN") |
 | [CheckCashMakesTrustLine][]       | v1.8.0     | [Enabled: 2023-01-23](https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557 "BADGE_GREEN") |
 | [NonFungibleTokensV1_1][]         | v1.9.2     | [Enabled: 2022-10-31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
 | [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [Enabled: 2022-10-27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
@@ -100,7 +101,6 @@ The following is a list of known [amendments](amendments.html) that have been ve
 | [FlowV2][]                        | v0.32.1    | [Vetoed: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
 | [SusPay][]                        | v0.31.0    | [Vetoed: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
 | [Tickets][]                       | v0.30.1    | [Vetoed: Removed in v0.90.0](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_RED") |
-
 
 ## Details about Known Amendments
 
@@ -258,14 +258,13 @@ Changes the behavior of cross-currency Payments from an account to itself when t
 
 Also changes the OfferCreate transaction to return `tecEXPIRED` when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns `tesSUCCESS` but does not create or execute an Offer.
 
-
 ### DisallowIncoming
 [DisallowIncoming]: #disallowincoming
 
 | Amendment    | DisallowIncoming |
 |:-------------|:-----------------|
 | Amendment ID | 47C3002ABA31628447E8E9A8B315FAA935CE30183F9A9B86845E469CA2CDC3DF |
-| Status       | Expected |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -652,7 +651,7 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 | Amendment    | fixNFTokenRemint |
 |:-------------|:-----------------|
 | Amendment ID | AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -671,11 +670,11 @@ The amendment also introduces a new account deletion restriction. An account can
 | Amendment    | fixNonFungibleTokensV1_2 |
 |:-------------|:-------------------------|
 | Amendment ID | 73761231F7F3D94EC3D8C63D91BDD0D89045C6F71B917D1925C01253515A6669 |
-| Status       | Expected |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Amendment `fixNonFungibleTokensV1_2` is a combination of bug fixes that have been individually merged into feature/nft-fixes through the pull request process:
+Amendment `fixNonFungibleTokensV1_2` is a combination of bug fixes that have been individually merged into feature/nft-fixes through the pull request process.
 
 **Fix Unburnable NFT**
 
@@ -808,7 +807,7 @@ With this amendment enabled, the XRP Ledger removes these dry offers when they'r
 | Amendment    | fixTrustLinesToSelf |
 |:-------------|:--------------------|
 | Amendment ID | F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013 |
-| Status       | Expected |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -823,7 +822,7 @@ On test networks that do not have these trust lines, the amendment has no effect
 | Amendment    | fixUniversalNumber |
 |:-------------|:-------------------|
 | Amendment ID | 2E2FB9CF8A44EB80F4694D38AADAE9B8B7ADAFD2F092E10068E61C98C4F092B0 |
-| Status       | Expected |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -914,13 +913,14 @@ Allows validators to include a new optional field in their validations to attest
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
+
 ### ImmediateOfferKilled
 [ImmediateOfferKilled]: #immediateofferkilled
 
 | Amendment    | ImmediateOfferKilled |
 |:-------------|:---------------------|
 | Amendment ID | 75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A |
-| Status       | Expected |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1198,7 +1198,7 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 | Amendment    | XRPFees |
 |:-------------|:--------|
 | Amendment ID | 93E516234E35E08CA689FA33A6D38E103881F8DCB53023F728C307AA89D515A7 |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
