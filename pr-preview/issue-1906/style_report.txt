@@ -3,9 +3,9 @@ Spell Checker
 -------------
 Found 87 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gift, gifu, gif
-  ringtee: 
+  gifs: gils, gibs, gigs
   kuressaare: 
+  ringtee: 
   lõõtsa: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
@@ -23,11 +23,11 @@ Found 87 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: black-hole, blockhole
+  blackhole: blockhole, black-hole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: las, slap, slay
+  slas: slavs, blas, slags
 
 <Page 'Invariant Checking' (invariant-checking.html)> Unknown Words:
   validnftokenpage: 
@@ -40,30 +40,30 @@ Found 87 possible spelling errors:
   xlsd: lsd, xls
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  depositpreauthamendment: 
   fixuniversalnumber: 
-  fixnonfungibletokensv1_2: 
-  xrpfees: 
-  fixnftokenremint: 
-  immediateofferkilled: 
   disallowincoming: 
-  38d: 3d, 3-d, 3rd
+  immediateofferkilled: 
+  fixnonfungibletokensv1_2: 
+  fixnftokenremint: 
+  xrpfees: 
+  depositpreauthamendment: 
+  38d: 3d, 3rd, 3-d
   xchainbridge: 
-  30d: 3d, 3-d, 3rd
-  39d: 3d, 3-d, 3rd
+  39d: 3d, 3rd, 3-d
+  30d: 3d, 3rd, 3-d
   ammdelete: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingcheck: 
-  asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
+  asfdisallowincomingcheck: 
   asfdisallowincomingpaychan: 
+  asfdisallowincomingnftoffer: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
+  v3: vc, vl, vd
   0b0: 
-  v3: vj, v0, va
 
 <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mody, modi, mod
+  mod1: mode, mod, mod.
   get_account: 
   get_account_info: 
   send_xrp: 
@@ -74,61 +74,61 @@ Found 87 possible spelling errors:
   standby_send_xrp: 
 
 <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mody, modi, mod
+  mod2: mode, mod, mod.
   send_currency: 
   get_balance: 
   configure_account: 
   lesson2: lessons, lesson
 
 <Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: mody, modi, mod
+  mod3: mode, mod, mod.
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page '4. Transfer NFTs (Python)' (py-transfer-nfts.html)> Unknown Words:
-  mod4: mody, modi, mod
+  mod4: mode, mod, mod.
   offer___index: 
   alloffers: 
   lesson4: lessons, lesson
 
 <Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)> Unknown Words:
   buy___offer___index: 
-  sell___offer___index: 
   broker___fee: 
+  sell___offer___index: 
   lesson5: lessons, lesson
 
 <Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)> Unknown Words:
-  mod6: mody, modi, mod
+  mod6: mode, mod, mod.
   mint_other: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  v3: vj, v0, va
-  30d: 3d, 3-d, 3rd
+  v3: vc, vl, vd
+  30d: 3d, 3rd, 3-d
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   fixnftokenremint: 
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: vj, v0, va
+  v3: vc, vl, vd
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
   nftokenminter: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -278,14 +278,14 @@ Page Length Metrics
 -------------------
 Average Page Length Metrics:
   Sentences: 56
-  Words: 742
+  Words: 743
   Characters: 4,617
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
-  Sentences: 599
-  Words: 8,187
-  Characters: 59,793
+  Sentences: 601
+  Words: 8,210
+  Characters: 59,953
 
 <Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Length Metrics:
   Sentences: 380
