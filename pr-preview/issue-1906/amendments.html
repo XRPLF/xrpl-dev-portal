@@ -299,7 +299,7 @@ Every amendment has a unique identifying hex value and a short name. The short n
 -->
 <h2 id="amendment-process">Amendment Process<a aria-hidden="true" class="hover_anchor" href="#amendment-process"><i class="fa fa-link"></i></a></h2>
 <p>The <a href="contribute-code-flow.html">Contributing Code to the XRP Ledger</a> topic walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.</p>
-<p>The amendment process on the ledger is driven by the <strong>flag</strong> ledger. </p>
+<p>After the code for an amendment is built into a software release, the process to enable it happens within the XRP Ledger network, which checks the status of amendments every <em>flag</em> ledger (typically about 15 minutes apart).</p>
 <p>Every 256th ledger is called a <strong>flag</strong> ledger. The flag ledger doesn't have special contents, but the amendment process happens around it.</p>
 <ol>
 <li><strong>Flag Ledger -1:</strong> When <code>rippled</code> validators send validation messages, they also submit their amendment votes.</li>

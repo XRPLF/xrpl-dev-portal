@@ -271,11 +271,11 @@
         <li class="nav-item level-2"><a class="nav-link" href="#amendments-in-development">Amendments in Development</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#vetoed-or-obsolete-amendments">Vetoed or Obsolete Amendments</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#details-about-known-amendments">Details about Known Amendments</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#automated-market-maker-amm">Automated Market Maker (AMM)</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#amm">AMM</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#checks">Checks</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#clawback">Clawback</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#cross-chain-bridges">Cross Chain Bridges</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#xchainbridge">XChainBridge</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#cryptoconditions">CryptoConditions</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#cryptoconditionssuite">CryptoConditionsSuite</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#deletableaccounts">DeletableAccounts</a></li>
@@ -655,7 +655,7 @@
 <td style="text-align: left;"><a class="external-link" href="https://hooks.xrpl.org/" target="_blank">XRPL Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="#cross-chain-bridges">CrossChainBridges</a></td>
+<td style="text-align: left;"><a href="#xchainbridge">XChainBridge</a></td>
 <td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 <td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md" target="_blank">XLS-38d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/" target="_blank">Documentation <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
@@ -665,7 +665,7 @@
 <td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md" target="_blank">XLS-39d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/" target="_blank">Documentation <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="#automated-market-maker-amm">AutomatedMarketMaker</a> (AMM)</td>
+<td style="text-align: left;"><a href="#amm">AMM</a></td>
 <td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 <td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/pull/125" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/" target="_blank">Documentation <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
@@ -731,7 +731,7 @@
 </tbody>
 </table>
 <h2 id="details-about-known-amendments">Details about Known Amendments<a aria-hidden="true" class="hover_anchor" href="#details-about-known-amendments"><i class="fa fa-link"></i></a></h2>
-<h3 id="automated-market-maker-amm">Automated Market Maker (AMM)<a aria-hidden="true" class="hover_anchor" href="#automated-market-maker-amm"><i class="fa fa-link"></i></a></h3>
+<h3 id="amm">AMM<a aria-hidden="true" class="hover_anchor" href="#amm"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -746,7 +746,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Dev</td>
+<td style="text-align: left;">In Development</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
@@ -758,6 +758,23 @@
 </tr>
 </tbody>
 </table>
+<p>Adds Automated Market Maker (AMM) functionality to the ledger in a way that is integrated with the existing decentralized exchange. Each pair of assets (tokens or XRP) can have up to one AMM in the ledger, which anyone can contribute liquidity to for a proportional share in the earnings and exchange risk. Each AMM instance has a special account to hold its assets and issue "LP Tokens" to liquidity providers in proportion to their deposits. Liquidity providers can vote on the AMM's trading fee based on their share of LP Tokens. Users can bid LP Tokens on the right to trade with a discounted trading fee for a limited period of time.</p>
+<p>Adds new transactions:</p>
+<ul>
+<li>AMMBid - Bid on the AMM's auction slot, which offers discounted fees.</li>
+<li>AMMCreate - Create a new AMM instance and provide initial funding.</li>
+<li>AMMDelete - Remove an empty AMM instance from the ledger.</li>
+<li>AMMDeposit - Add funds to an existing AMM and receive LP Tokens.</li>
+<li>AMMWithdraw - Return LP Tokens to an AMM to remove funds.</li>
+<li>AMMVote - Vote on the AMM's trading fee.</li>
+</ul>
+<p>Updates existing transactions with new functionality:</p>
+<ul>
+<li>Payment and OfferCreate transactions that trade currency automatically use any combination of Offers and AMMs to achieve the best exchange rate.</li>
+<li>Some transactions cannot be sent to an AMM's special account. (For example, the AMM cannot cash a check, so CheckCreate to an AMM is not allowed.)</li>
+</ul>
+<p>Adds a new type of ledger entry, <code>AMM</code>, and adds an <code>AMMID</code> field to the <code>AccountRoot</code> ledger entry type.</p>
+<p>Adds several new transaction result codes.</p>
 <h3 id="checkcashmakestrustline">CheckCashMakesTrustLine<a aria-hidden="true" class="hover_anchor" href="#checkcashmakestrustline"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
@@ -833,11 +850,11 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Dev</td>
+<td style="text-align: left;">In Development</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
-<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
 </tr>
 <tr>
 <td style="text-align: left;">Pre-amendment functionality retired?</td>
@@ -848,22 +865,22 @@
 <p>For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em> the funds.</p>
 <p>Clawback is disabled by default. To use clawback, you must set the <code>lsfAllowTrustLineClawback</code> flag using an <code>AccountSet</code> transaction.</p>
 <p>See <a class="external-link" href="https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/" target="_blank">Clawback <i aria-hidden="true" class="fa fa-external-link"></i></a> for details on this amendment.</p>
-<h3 id="cross-chain-bridges">Cross Chain Bridges<a aria-hidden="true" class="hover_anchor" href="#cross-chain-bridges"><i class="fa fa-link"></i></a></h3>
+<h3 id="xchainbridge">XChainBridge<a aria-hidden="true" class="hover_anchor" href="#xchainbridge"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;">Amendment</th>
-<th style="text-align: left;">Cross Chain Bridges</th>
+<th style="text-align: left;">XChainBridge</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;">Amendment ID</td>
-<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C</td>
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Dev</td>
+<td style="text-align: left;">In Development</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
@@ -2202,7 +2219,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Dev</td>
+<td style="text-align: left;">In Development</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
@@ -2214,6 +2231,7 @@
 </tr>
 </tbody>
 </table>
+<p>Adds on-chain smart contracts in the form of small pieces of code that can run on an account before or after transactions. For more information, see the <a class="external-link" href="https://xrpl-hooks.readme.io/" target="_blank">Hooks Documentation <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h3 id="immediateofferkilled">ImmediateOfferKilled<a aria-hidden="true" class="hover_anchor" href="#immediateofferkilled"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
