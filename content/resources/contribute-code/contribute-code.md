@@ -1,13 +1,25 @@
 ---
-html: contribute-code-flow.html
-parent: amendments.html
-blurb: 
+html: contribute-code.html
+parent: resources.html
+blurb: Learn how features can be coded into the XRP Ledger protocol.
 labels:
   - Blockchain
 ---
-# Contribute Code to the XRP Ledger
+# Contribute Code
 
-The software that powers the XRP Ledger is open source. Anyone can download, modify, extend, or explore it. If you want to contribute code, it's important to work with the community to define the specifications of your changes and test the code before adding it to `rippled`.
+The software that powers the XRP Ledger is open source. Anyone can download, modify, extend, or explore it. If you want to contribute code, it's important to work with the community to define the specifications of your changes and test the code before it becomes a part of the XRP Ledger protocol and blockchain.
+
+## Core Server Source
+
+The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Community involvement makes it better. Look for "[Source]" links in the [documentation](docs.html) to jump directly into the related source code, or browse the source code on GitHub:
+
+| XRP Ledger Source Code |                                                     |
+|:-----------------------|:----------------------------------------------------|
+| Repository             | <https://github.com/XRPLF/rippled>                |
+| License                | [Multiple; ISC (permissive)](https://github.com/ripple/rippled/blob/develop/LICENSE.md) |
+| Programming Language   | C++                                                 |
+
+If you're not sure where to start, Dev Null Productions provides a detailed and thorough [**Source Code Guide**](https://xrpintel.com/source) that describes the structure and functions of the core XRP Ledger server (`rippled`) implementation.
 
 
 ## XRP Ledger Standards
@@ -27,7 +39,7 @@ For details, see the [XLS contributing guide](https://github.com/XRPLF/XRPL-Stan
 
 ## Amendment Implementation
 
-After you've created an XLSd, you now need to determine if your change requires an amendment. Changes that affect **transaction processing** require amendments, specifically changes that:
+After you've created an XLS draft, you now need to determine if your change requires an amendment. Changes that affect **transaction processing** require amendments, specifically changes that:
 
 - Modify ledger rules, resulting in different outcomes.
 - Add or remove transactions.

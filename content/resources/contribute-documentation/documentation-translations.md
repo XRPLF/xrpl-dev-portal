@@ -1,7 +1,7 @@
 ---
-html: documentation-languages.html
-parent: contributing-to-documentation.html
-blurb: Doc translation guidelines.
+html: documentation-translations.html
+parent: contribute-documentation.html
+blurb: Learn how to contribute and maintain translations of the documentation on this website.
 ---
 # Translations
 
