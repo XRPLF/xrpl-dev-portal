@@ -19,7 +19,7 @@ Every amendment has a unique identifying hex value and a short name. The short n
 
 ## Amendment Process
 
-The [Contributing Code to the XRP Ledger](contribute-code-flow..html) walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.
+The [Contributing Code to the XRP Ledger](contribute-code-flow.html) walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.
 
 The amendment process on the ledger is driven by the **flag** ledger. 
 
