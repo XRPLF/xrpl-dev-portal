@@ -8,7 +8,7 @@ labels:
 # Known Amendments
 [[Source]](https://github.com/xrplf/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")
 
-## Known Amendments on the Mainnet
+## Known Amendments on Mainnet
 
 The following is a comprehensive list of all known [amendments](amendments.html) and their status on the production XRP Ledger:
 
