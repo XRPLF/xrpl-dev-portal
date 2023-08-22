@@ -288,7 +288,8 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="rippled-server-is-amendment-blocked">rippled Server is Amendment Blocked<a aria-hidden="true" class="hover_anchor" href="#rippled-server-is-amendment-blocked"><i class="fa fa-link"></i></a></h1>
-<p>One of the first signs that your <code>rippled</code> server is amendment blocked is an <code>amendmentBlocked</code> error that is returned when you submit a transaction. Here's an example <code>amendmentBlocked</code> error:</p>
+<p>Servers which are amendment blocked can't determine the validity of a ledger, submit or process transactions, or participate in the consensus process.</p>
+<p>One of the first signs that your <code>rippled</code> server is <a href="amendments.html#amendment-blocked-servers">amendment blocked</a> is an <code>amendmentBlocked</code> error that is returned when you submit a transaction. Here's an example <code>amendmentBlocked</code> error:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">   </span><span class="nt">"result"</span><span class="p">:{</span>
 <span class="w">      </span><span class="nt">"error"</span><span class="p">:</span><span class="s2">"amendmentBlocked"</span><span class="p">,</span>
