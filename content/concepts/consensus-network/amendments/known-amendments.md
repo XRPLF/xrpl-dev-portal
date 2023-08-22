@@ -79,9 +79,9 @@ The following is a list of [amendments](amendments.html) that are being develope
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | [In Development: TBD]( "BADGE_LIGHTGREY") | [XRPL Hooks](https://hooks.xrpl.org/) |
-| [CrossChainBridges][]             | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [Documentation](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
+| [XChainBridge][]             | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [Documentation](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
 | [Clawback][]                      | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-39d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md) [Documentation](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/) |
-| [AutomatedMarketMaker][] (AMM)    | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-30d](https://github.com/XRPLF/XRPL-Standards/pull/125) [Documentation](https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/) |
+| [AMM][]                           | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-30d](https://github.com/XRPLF/XRPL-Standards/pull/125) [Documentation](https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/) |
 | [OwnerPaysFee][]                  | [In Development: TBD]( "BADGE_LIGHTGREY") | |
 
 **Tip:** This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code-flow.html).
@@ -104,16 +104,35 @@ The following is a list of known [amendments](amendments.html) that have been ve
 ## Details about Known Amendments
 
 
-### Automated Market Maker (AMM)
-[AutomatedMarketMaker]: #automated-market-maker-amm
+### AMM
+[AMM]: #amm
 
 | Amendment    | Automated Market Maker |
 |:-------------|:------------------------|
 | Amendment ID | 8CC0774A3BF66D1D22E76BBDA8E8A232E6B6313834301B3B23E8601196AE6455 |
-| Status       | In Dev |
+| Status       | In Development |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
+Adds Automated Market Maker (AMM) functionality to the ledger in a way that is integrated with the existing decentralized exchange. Each pair of assets (tokens or XRP) can have up to one AMM in the ledger, which anyone can contribute liquidity to for a proportional share in the earnings and exchange risk. Each AMM instance has a special account to hold its assets and issue "LP Tokens" to liquidity providers in proportion to their deposits. Liquidity providers can vote on the AMM's trading fee based on their share of LP Tokens. Users can bid LP Tokens on the right to trade with a discounted trading fee for a limited period of time.
+
+Adds new transactions:
+
+- AMMBid - Bid on the AMM's auction slot, which offers discounted fees.
+- AMMCreate - Create a new AMM instance and provide initial funding.
+- AMMDelete - Remove an empty AMM instance from the ledger.
+- AMMDeposit - Add funds to an existing AMM and receive LP Tokens.
+- AMMWithdraw - Return LP Tokens to an AMM to remove funds.
+- AMMVote - Vote on the AMM's trading fee.
+
+Updates existing transactions with new functionality:
+
+- Payment and OfferCreate transactions that trade currency automatically use any combination of Offers and AMMs to achieve the best exchange rate.
+- Some transactions cannot be sent to an AMM's special account. (For example, the AMM cannot cash a check, so CheckCreate to an AMM is not allowed.)
+
+Adds a new type of ledger entry, `AMM`, and adds an `AMMID` field to the `AccountRoot` ledger entry type.
+
+Adds several new transaction result codes.
 ### CheckCashMakesTrustLine
 [CheckCashMakesTrustLine]: #checkcashmakestrustline
 
@@ -154,8 +173,8 @@ Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash,
 | Amendment     | Clawback |
 |:--------------|:---------|
 | Amendment ID  | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
-| Status        | In Dev   |
-| Default Vote (Latest stable release) | Yes |
+| Status        | In Development |
+| Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No  |
 
 For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_ the funds.
@@ -165,13 +184,13 @@ Clawback is disabled by default. To use clawback, you must set the `lsfAllowTrus
 See [Clawback](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/) for details on this amendment.
 
 
-### Cross Chain Bridges
-[CrossChainBridges]: #cross-chain-bridges
+### XChainBridge
+[XChainBridge]: #xchainbridge
 
-| Amendment    | Cross Chain Bridges |
+| Amendment    | XChainBridge |
 |:-------------|:-----------------|
-| Amendment ID | N/A |
-| Status       | In Dev |
+| Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
+| Status       | In Development |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -908,10 +927,11 @@ Allows validators to include a new optional field in their validations to attest
 | Amendment    | Hooks |
 |:-------------|:--------------------|
 | Amendment ID | ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078 |
-| Status       | In Dev |
+| Status       | In Development |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
+Adds on-chain smart contracts in the form of small pieces of code that can run on an account before or after transactions. For more information, see the [Hooks Documentation](https://xrpl-hooks.readme.io/).
 
 ### ImmediateOfferKilled
 [ImmediateOfferKilled]: #immediateofferkilled

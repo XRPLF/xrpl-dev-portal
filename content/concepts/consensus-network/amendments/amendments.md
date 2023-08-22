@@ -21,7 +21,7 @@ Every amendment has a unique identifying hex value and a short name. The short n
 
 The [Contributing Code to the XRP Ledger](contribute-code-flow.html) topic walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.
 
-The amendment process on the ledger is driven by the **flag** ledger. 
+After the code for an amendment is built into a software release, the process to enable it happens within the XRP Ledger network, which checks the status of amendments every _flag_ ledger (typically about 15 minutes apart).
 
 Every 256th ledger is called a **flag** ledger. The flag ledger doesn't have special contents, but the amendment process happens around it.
 
