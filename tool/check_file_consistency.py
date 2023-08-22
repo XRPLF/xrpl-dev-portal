@@ -23,6 +23,7 @@ def list_mds(content_dir):
     all_mds = []
     for dirpath, dirnames, filenames in os.walk(content_dir, topdown=True):
         dirnames[:] = [d for d in dirnames if should_include(d)]
+        filenames[:] = [f for f in filenames if should_include(f)]
         for filename in filenames:
             if filename[-3:] == ".md":
                 all_mds.append(os.path.relpath(os.path.join(dirpath,filename), content_dir))
