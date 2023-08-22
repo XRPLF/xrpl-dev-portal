@@ -43,7 +43,7 @@ Each version of `rippled` is compiled with a list of [known amendments](known-am
 
 **Note:** The default vote can change between software releases. [Updated in: rippled 1.8.1][]
 
-Amendments must maintain two weeks of support from more than 80% of trusted validators to be enabled. If support drops below 80%, the amendment is temporarily rejected, and the two week period restarts. Amendments can gain and lose a majority any number of times before it becomes permanently enabled.
+Amendments must maintain two weeks of support from more than 80% of trusted validators to be enabled. If support drops below 80%, the amendment is temporarily rejected, and the two week period restarts. Amendments can gain and lose a majority any number of times before they become permanently enabled.
 
 Amendments that have had their source code removed without being enabled are considered **Vetoed** by the network.
 
