@@ -1,6 +1,6 @@
 ---
 html: contributing-to-documentation.html
-parent: docs.html
+parent: resources.html
 blurb: XRP Ledgerドキュメントのコントリビューションガイドです。
 ---
 # ドキュメントへの貢献
