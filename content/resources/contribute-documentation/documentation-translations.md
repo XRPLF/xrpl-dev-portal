@@ -7,7 +7,7 @@ blurb: Learn how to contribute and maintain translations of the documentation on
 
 The XRP Ledger Dev Portal is mostly written in English, so the English version is generally the most up-to-date and accurate version. However, to broaden the reach of the XRP Ledger software and community, this repository also contains translated versions of the documentation. We strongly encourage members of the community who understand other languages to contribute translations of the dev portal contents in their native languages.
 
-The `dactyl-config.yml` contains a "target" entry for each available language. (As of 2019-11-18, the available languages are English and Japanese.) This entry includes a dictionary of strings used in the template files. For example:
+The `dactyl-config.yml` contains a "target" entry for each available language. (As of 2023-08-21, the available languages are English and Japanese.) This entry includes a dictionary of strings used in the template files. For example:
 
 ```yaml
 -   name: en
