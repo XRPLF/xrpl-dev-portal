@@ -15,6 +15,11 @@ name: よくある質問
 # よくある質問
 
 <!--#{ using h4s for questions to keep them out of the right side nav (too cluttered when they display) and to provide appropriate text size for questions. #}-->
+#### XRPはリップルと呼ぶのですか？
+
+いいえ。XRPは**エックスアールピー**と呼びます。日本国内の多くの取引所などはXRPをRippleやリップルなどと表記していることがありますが、それは間違いです。
+またXRP Ledgerは**エックスアールピーレジャー**と呼びます。
+
 #### XRP Ledger(XRPL)はRippleが所有するプライベートブロックチェーンですか？
 
 いいえ。XRPLは分散型のパブリックブロックチェーンです。トランザクション処理やコンセンサスに影響を与えるような変更は、ネットワークバリデーターの80％以上の承認が必要です。Rippleはネットワークへの貢献者の一員ですが、その権利は他の貢献者たちと同じです。ネットワークには150以上のバリデーターが参加しており、うちデフォルトのユニークノードリスト(UNL)に登録されているものは35以上です。Rippleはこれらのうち[1つのノード](https://foundation.xrpl.org/2023/03/23/unl-update-march-2023/)を運営しています。
