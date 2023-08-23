@@ -495,6 +495,7 @@ pages:
         parent: docs.html
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
+        top_nav_grouping: Article Types
         targets:
             - ja
 
