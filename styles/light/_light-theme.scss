@@ -643,7 +643,20 @@ pre code {
   #wallet-xumm {
     content: url("../img/wallets/lightmode/xumm.svg");
   }
+  #wallet-bitfrost {
+    content: url("../img/wallets/lightmode/bitfrost.png");
+  }
+  #wallet-towo {
+    content: url("../img/wallets/lightmode/towo.svg");
+  }
 }
+#wallet-keystone {
+  content: url("../img/wallets/lightmode/keystone.svg");
+}
+#wallet-dcent {
+  content: url("../img/wallets/lightmode/dcent.svg");
+}
+
 
 #top-exchanges {
   // Kraken, eToro are OK on both light and dark
