@@ -4826,6 +4826,7 @@ pages:
         redirect_url: contribute-code.html
         targets:
             - en
+            - ja
 
 # Resources tab ---------------------------------------------------------------
     -   name: Resources
