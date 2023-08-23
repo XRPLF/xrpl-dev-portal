@@ -1,7 +1,7 @@
 ---
 html: contribute-code.html
 parent: resources.html
-blurb: Learn how features can be coded into the XRP Ledger protocol.
+blurb: XRP Ledgerプロトコルにどのように機能を実装するかを学びます。
 labels:
   - ブロックチェーン
 ---
