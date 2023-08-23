@@ -3278,10 +3278,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
         targets:
             - en
+
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.ja.md
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.md
