@@ -288,10 +288,10 @@
 
     #topnav-pages {
       flex-grow: 0;
-      @media (min-width: 992px) and (max-width: 1030px) {
-        // Fix for top nav overflow in this range
+      @media (min-width: 992px) and (max-width: 1133px) {
+        // Part of the fix for top nav overflow in this range
         .nav-link {
-          padding: $nav-link-padding-y 1.6rem; //TODO:checkme
+          padding: $nav-link-padding-y 1rem;
         }
       }
     }
@@ -305,12 +305,16 @@
 
       #language_selector_header_btn {
         padding-right: 0;
+        @media (min-width: 992px) and (max-width: 1133px) {
+          // Part of the fix for top nav overflow in this range
+          padding-left: 1rem;
+        }
       }
     }
 
     @include media-breakpoint-up(xl) {
       #topnav-search {
-        margin-left: 4rem;
+        margin-left: 3.5rem;
         margin-right: 0.5rem;
       }
     }
