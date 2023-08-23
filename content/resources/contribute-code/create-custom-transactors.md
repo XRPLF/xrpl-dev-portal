@@ -8,7 +8,7 @@ labels:
 ---
 # Create Custom Transactors
 
-A _transactor_ is code that processes a transaction and modifies the XRP Ledger. Creating custom transactors enables you to add new functionality to `rippled`. This tutorial walks through coding transactors, but you'll have to go through the amendment process to add it to XRPL. See: [Contribute Code to the XRP Ledger](contribute-code-flow.html).
+A _transactor_ is code that processes a transaction and modifies the XRP Ledger. Creating custom transactors enables you to add new functionality to `rippled`. This tutorial walks through coding transactors, but you'll have to go through the amendment process to add it to XRPL. See: [Contribute Code to the XRP Ledger](contribute-code.html).
 
 Transactors follow a basic order of operations:
 

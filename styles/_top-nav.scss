@@ -211,6 +211,11 @@
           grid-template-columns: 200px;
         }
 
+        &#topnav_dd_resourceshtml {
+          grid-template-columns: 195px 180px 180px;
+          left: -200px;
+        }
+
         .dropdown-hero {
           grid-row: 1;
           grid-column: 1 / 4;
@@ -259,6 +264,19 @@
           grid-row: 1 / 4;
           margin: -40px -40px -40px 0;
           padding: 40px;
+        }
+
+        // "Resources" dropdown placement
+        .col-for-development,
+        .col-for-開発 {
+          grid-column: 1;
+        }
+        .col-for-current-status,
+        .col-for-現在のステータス {
+          grid-column: 2;
+        }
+        .col-for-join-in {
+          grid-column: 3;
         }
       }
 

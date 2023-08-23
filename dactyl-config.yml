@@ -4791,7 +4791,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - en
 
@@ -4799,7 +4799,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - ja
 
@@ -4807,7 +4807,7 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - en
 
@@ -4815,9 +4815,17 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - ja
+
+    -   name: Contribute Code
+        html: contribute-code-flow.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: contribute-code.html
+        targets:
+            - en
 
 # Resources tab ---------------------------------------------------------------
     -   name: Resources
@@ -4856,22 +4864,10 @@ pages:
         template: page-code-samples.html.jinja
         sidebar: left_only
         codesamples: true
+        top_nav_grouping: 開発
         filters:
             - code_samples
         blurb: XRP Ledgerで一般的なユースケースを構築するためのサンプルコードを確認することができます。
-        targets:
-            - ja
-
-    -   name: XRPL Learning Portal
-        html: https://learn.xrpl.org/
-        parent: resources.html
-        top_nav_grouping: Development
-        targets:
-            - en
-
-    -   name: XRPL学習ポータル
-        html: https://learn.xrpl.org/
-        parent: resources.html
         targets:
             - ja
 
@@ -4890,6 +4886,7 @@ pages:
         template: page-dev-tools.html.jinja
         parent: resources.html
         sidebar: left_only
+        top_nav_grouping: 開発
         targets:
             - ja
 
@@ -5014,6 +5011,20 @@ pages:
         targets:
             - ja
 
+    -   name: XRPL Learning Portal
+        html: https://learn.xrpl.org/
+        parent: resources.html
+        top_nav_grouping: Development
+        targets:
+            - en
+
+    -   name: XRPL学習ポータル
+        html: https://learn.xrpl.org/
+        parent: resources.html
+        top_nav_grouping: 開発
+        targets:
+            - ja
+
     -   name: Ledger Explorer
         html: https://livenet.xrpl.org/
         parent: resources.html
@@ -5024,6 +5035,7 @@ pages:
     -   name: XRP Ledger エクスプローラ
         html: https://livenet.xrpl.org/
         parent: resources.html
+        top_nav_grouping: 現在のステータス
         targets:
             - ja
 
@@ -5033,6 +5045,7 @@ pages:
             - en
 
     -   md: resources/known-amendments.ja.md
+        top_nav_grouping: 現在のステータス
         targets:
             - ja
 
