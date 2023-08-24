@@ -19,7 +19,7 @@ Amendmentは、トランザクション処理における新機能またはそ�
 
 ## Amendmentプロセス
 
-[XRPレジャーのコードに貢献する](contribute-code-flow.html)のトピックでは、XRPレジャーのアイデアから有効化までのワークフローを説明しています。
+[XRP Ledgerのコードに貢献する](contribute-code-flow.html)のトピックでは、XRP Ledgerのアイデアから有効化までのワークフローを説明しています。
 
 Amendmentのコードがソフトウェアリリースに組み込まれた後、それを有効にするプロセスはXRP Ledgerネットワーク内で行われ、レジャーは _フラグ_ レジャーごとに(通常約15分間隔で)Amendment状況をチェックします。
 
