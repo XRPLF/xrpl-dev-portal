@@ -440,4 +440,4 @@ If you wish to stop running the private network:
     - [Peer Protocol](peer-protocol.html)
     
 - **References:**
-    - [XRPL Testnet Setup Scripts for Docker](https://github.com/UNIC-IFF/ripple-docker-testnet)
+    - [XRPL Testnet Setup Scripts for Docker](https://github.com/UNIC-IFF/xrpl-docker-testnet)
