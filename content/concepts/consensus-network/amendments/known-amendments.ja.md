@@ -8,20 +8,21 @@ labels:
 # 既知のAmendment
 [[ソース]](https://github.com/xrplf/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")
 
+## メインネットの既知のAmendment
+
 以下に示すのは、本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 
 **ヒント:** このリストは手動で更新されています。最新のステータスは[XRPScan Amendment Dashboard](https://xrpscan.com/amendments)をご覧下さい。
 
-| 名前                            | 導入済み | ステータス                              |
+| 名前                               | 登場       | ステータス                              |
 |:----------------------------------|:-----------|:------------------------------------|
-| [OwnerPaysFee][]                  | 未定        | [開発中: 未定]( "BADGE_LIGHTGREY") |
 | [fixNFTokenRemint][]              | v1.11.0    | [投票中: 2023-06-21](https://xrpl.org/blog/2023/rippled-1.11.0.html "BADGE_80d0e0") |
 | [XRPFees][]                       | v1.10.0    | [投票中: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
-| [DisallowIncoming][]              | v1.10.0    | [有効予想: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
-| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [有効予想: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
-| [fixTrustLinesToSelf][]           | v1.10.0    | [有効予想: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
-| [fixUniversalNumber][]            | v1.10.0    | [有効予想: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
-| [ImmediateOfferKilled][]          | v1.10.0    | [有効予想: 2023-08-21](https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html "BADGE_BLUE") |
+| [DisallowIncoming][]              | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E "BADGE_GREEN") |
+| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/3AB0892CAB29F049B9D9E5D522701FD01469D0B97080626F8DD4B489D0B8784E "BADGE_GREEN") |
+| [fixTrustLinesToSelf][]           | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/4F4C05142CA1DE257CD86513086F0C99FAF06D80932377C6B6C02B3D09623A43 "BADGE_GREEN") |
+| [fixUniversalNumber][]            | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/EFE82B7155CE5B766AF343D98DAE6662C2713C99E760D610370D02338881B2F3 "BADGE_GREEN") |
+| [ImmediateOfferKilled][]          | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B "BADGE_BLUE") |
 | [CheckCashMakesTrustLine][]       | v1.8.0     | [有効: 2022/01/23](https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557 "BADGE_GREEN") |
 | [NonFungibleTokensV1_1][]         | v1.9.2     | [有効: 2022/10/31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
 | [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [有効: 2022/10/27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
@@ -68,18 +69,73 @@ labels:
 | [TrustSetAuth][]                  | v0.30.0    | [有効: 2016/07/19](https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
 | [MultiSign][]                     | v0.31.0    | [有効: 2016/06/27](https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation][]                 | v0.31.0    | [有効: 2016/05/19](https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
-| [fixNFTokenNegOffer][]            | v1.9.2     | [廃止: 削除未定]( "BADGE_RED") |
-| [fixNFTokenDirV1][]               | v1.9.1     | [廃止: 削除未定]( "BADGE_RED") |
-| [NonFungibleTokensV1][]           | v1.9.0     | [廃止: 削除未定]( "BADGE_RED") |
-| [CryptoConditionsSuite][]         | v0.60.0    | [廃止: 削除未定]( "BADGE_RED") |
-| [SHAMapV2][]                      | v0.32.1    | [禁止: v1.4.0で削除](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
-| [FlowV2][]                        | v0.32.1    | [禁止: v0.33.0で削除](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
-| [SusPay][]                        | v0.31.0    | [禁止: v0.60.0で削除](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
-| [Tickets][]                       | v0.30.1    | [禁止: v0.90.0で削除](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_RED") |
 
 **注記:** 多くの場合、旧バージョンのソフトウェアには不完全バージョンの修正用コードが存在します。上の表内の「導入済み」バージョンは最初の安定バージョンです。「未定」は、修正がまだ安定していないと見なされていることを示します。
 
-## CheckCashMakesTrustLine
+## 開発中のAmendment
+
+以下は、現在開発中の[Amendment](amendments.html)のリストで、変更をテストするためのテストネットが利用可能です。
+
+| 名前                               | ステータス                                 | 追加情報                         |
+|:----------------------------------|:------------------------------------------|:-------------------------------|
+| [Hooks][]                         | [開発中: 未定]( "BADGE_LIGHTGREY") | [XRPL Hooks](https://hooks.xrpl.org/) |
+| [XChainBridge][]             | [開発中: 未定]( "BADGE_LIGHTGREY") | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [ドキュメント](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
+| [Clawback][]                      | [開発中: 未定]( "BADGE_LIGHTGREY") | [XLS-39d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md) [ドキュメント](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/) |
+| [AMM][]                           | [開発中: 未定]( "BADGE_LIGHTGREY") | [XLS-30d](https://github.com/XRPLF/XRPL-Standards/pull/125) [ドキュメント](https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/) |
+| [OwnerPaysFee][]                  | [開発中: 未定]( "BADGE_LIGHTGREY") | |
+
+**注記:** このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRPレジャーへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code-flow.html)をご覧ください。
+
+## 撤回または廃止されたAmendment
+
+以下は、以前のバージョンで廃止され削除された、あるいは撤回され削除のマークが付けられた、既知の[Amendment](amendments.html)の一覧です。
+
+| 名前                               | 登場       | ステータス                      |
+|:----------------------------------|:-----------|:------------------------------|
+| [fixNFTokenNegOffer][]            | v1.9.2     | [撤回: 削除予定]( "BADGE_RED") |
+| [fixNFTokenDirV1][]               | v1.9.1     | [撤回: 削除予定]( "BADGE_RED") |
+| [NonFungibleTokensV1][]           | v1.9.0     | [撤回: 削除予定]( "BADGE_RED") |
+| [CryptoConditionsSuite][]         | v0.60.0    | [撤回: 削除予定]( "BADGE_RED") |
+| [SHAMapV2][]                      | v0.32.1    | [廃止: v1.4.0で削除済み](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
+| [FlowV2][]                        | v0.32.1    | [廃止: v0.33.0で削除済み](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
+| [SusPay][]                        | v0.31.0    | [廃止: v0.60.0で削除済み](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
+| [Tickets][]                       | v0.30.1    | [廃止: v0.90.0で削除済み](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_RED") |
+
+## 既知のAmendmentsの詳細
+
+
+### AMM
+[AMM]: #amm
+
+| Amendment    | Automated Market Maker |
+|:-------------|:------------------------|
+| Amendment ID | 8CC0774A3BF66D1D22E76BBDA8E8A232E6B6313834301B3B23E8601196AE6455 |
+| ステータス     | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+既存の分散型取引所と統合された形で、自動マーケットメーカー(AMM)機能に追加します。各アセット（トークンまたはXRP）のペアは、Ledger上に最大1つのAMMプールを持つことができ、誰でも流動性を提供することで、収益と為替リスクを比例配分することができます。各AMMプールのインスタンスはその資産を保持するための特別なアカウントを持ち、流動性プロバイダーに対してその預入額に応じて"LPトークン"を発行します。流動性プロバイダーは、LPトークンのシェアに基づいてAMMプールの取引手数料に投票することができます。ユーザは、一定期間取引手数料が割引される権利にLPトークンを使って入札することができます。
+
+追加される新規トランザクション
+
+- AMMBid - 取引手数料を割引するAMMプールのオークション枠に入札します。
+- AMMCreate - AMMプールの新しいインスタンスを作成し、初期資金を供給します。
+- AMMDelete - 空となったAMMプールのインスタンスを削除します。
+- AMMDeposit - 既存のAMMプールに資金を供給し、LPトークンを受け取ります。
+- AMMWithdraw - LPトークンをAMMプールに返却して資金を引き出します。
+- AMMVote - AMMプールの取引手数料について投票します。
+
+既存のトランザクションを新たな機能でアップデートします。
+
+- 資産の取引に利用可能なPaymentとOfferCreateトランザクションは、より最良の取引レートを利用可能とするためにOfferとAMMの任意の組み合わせを利用します。
+- AMMの特別なアカウントに送信できないトランザクションがあります（例えば、AMMはCheckを換金できないため、AMMへのCheckCreateは許可されません）。
+
+新しいタイプのレジャーエントリ`AMM`を追加し、`AccountRoot`レジャーエントリタイプに`AMMID`フィールドを追加します。
+
+いくつかの新しい結果コードを追加します。
+
+
+### CheckCashMakesTrustLine
 [CheckCashMakesTrustLine]: #checkcashmakestrustline
 
 | Amendment    | CheckCashMakesTrustLine |
@@ -96,7 +152,7 @@ labels:
 この修正は、XRP Ledgerにおいて不要なトークンを保持することを誰にも強制できないという原則を変えるものではありません。
 
 
-## Checks
+### Checks
 [Checks]: #checks
 
 | Amendment    | Checks |
@@ -112,9 +168,38 @@ labels:
 
 新たに導入するトランザクションタイプは次の3つです。CheckCreate、CheckCancel、CheckCash。また、新しいレジャーオブジェクトタイプはCheckです。新たに追加するトランザクション結果コード`tecEXPIRED`は、有効期限が過去の日時であるCheckを作成しようとすると発生します。
 
-この修正はまた、有効期限が過去の日時であるオファーを作成しようとすると、OfferCreateトランザクションが`tecEXPIRED`を返すように変更しています。この修正を行わない場合、OfferCreateの有効期限が過去の日時であっても`tesSUCCESS`が返されますが、オファーの作成や実行は行われません。
 
-## CryptoConditions
+### Clawback
+[Clawback]: #clawback
+
+| Amendment     | Clawback |
+|:--------------|:---------|
+| Amendment ID  | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
+| Status        | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+規制上の目的から、発行者の中には、発行されたトークンがアカウントに配布された後に回収する能力を持たなければならない場合があります。例えば、トークンが違法行為で制裁を受けたアカウントに送られたことが発覚した場合、発行者はその資金を _回収(claw back)_ することができます。
+
+Clawbackはデフォルトでは無効になっています。Clawbackを使用するには、`AccountSet`トランザクションを使用して`lsfAllowTrustLineClawback`フラグを設定する必要があります。
+
+この修正の詳細については、[Clawback](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/)をご覧ください。
+
+
+### XChainBridge
+[XChainBridge]: #xchainbridge
+
+| Amendment    | XChainBridge |
+|:-------------|:-----------------|
+| Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
+| Status       | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+メインネットとサイドチェーンなど異なるネットワーク間でアセットを同期させるための「クロスチェーンブリッジ」を追加します。標準規格: [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md)。
+
+
+### CryptoConditions
 [CryptoConditions]: #cryptoconditions
 
 | Amendment    | CryptoConditions |
@@ -125,6 +210,7 @@ labels:
 | Amendment前の機能は廃止? | はい |
 
 この修正は有効ですが、[SusPay](#suspay) Amendmentも有効でない限り、何の影響も及ぼしません。SusPayの修正は、[Escrow](#escrow)の修正に置き換えられたため、CryptoConditionsの修正は効力を持ちません。
+
 
 ## CryptoConditionsSuite
 [CryptoConditionsSuite]: #cryptoconditionssuite
@@ -141,7 +227,7 @@ labels:
 しかし、この修正は実装が完了する前に`rippled` v0.60.0に追加されました。その結果、このAmendment IDは、ほとんど何もしない不完全なコードを参照することになりました。他のcrypto-conditionsのサポートを追加するために既存のAmendmentを変更すると、すでにリリースされたソフトウェアにある古いバージョンの修正案との衝突が発生します。将来のリリースで追加の暗号条件のサポートが追加される場合、新しい別のAmendment IDを使用する必要があります。
 
 
-## DeletableAccounts
+### DeletableAccounts
 [DeletableAccounts]: #deletableaccounts
 
 | Amendment    | DeletableAccounts |
@@ -158,7 +244,7 @@ labels:
 この修正を適用した場合、新しいアカウントは、そのアカウントが作成された[レジャーのインデックス][レジャーインデックス]に一致する`Sequence`番号に等しい`Sequence`番号で始まります。この変更により、一度削除され、その後再作成されたアカウントが、古いトランザクションを再度実行しないように保護することができます。新しい`AccountDelete`トランザクションタイプを追加すると、アカウントと、そのアカウントがレジャーに所有する特定のオブジェクトが削除されます。ただし、特定の種類のオブジェクトはこの方法で削除できないため、そのようなオブジェクトに関連付けられているアカウントは削除できません。また、現行のレジャーインデックスから256を引いた値がアカウントの現行`Sequence`番号より低い場合も、アカウントは削除できません。この修正に関する詳しい解説については、[XRP Community Standards Draft 7](https://github.com/XRPLF/XRPL-Standards/issues/8)を参照してください。
 
 
-## DepositAuth
+### DepositAuth
 [DepositAuth]: #depositauth
 
 | Amendment    | DepositAuth |
@@ -177,7 +263,7 @@ labels:
 また、EscrowCreateトランザクションとPaymentChannelCreateトランザクションで誤ってDisallowXRPフラグを適用してしまうバグも修正します。これは強制力のない勧告フラグとするものです。（レジャー自体にDisallowXRPフラグを適用しないことで、[アカウント準備金](reserves.html)を満たし[トランザクションコスト](transaction-cost.html)を支払うのに必要なXRPを、アカウントが引き続き受け取ることができます。）
 
 
-## DepositPreauth
+### DepositPreauth
 [DepositPreauth]: #depositpreauth
 
 | Amendment    | DepositPreauth |
@@ -196,13 +282,13 @@ labels:
 また、アカウントにDeposit Authorizationが必要な場合、アカウントから自身への異なる通貨間での支払いの動作も変更します。この修正を行わない場合、これらの支払いはコードtecNO_PERMISSIONにて常に失敗します。この修正を行う場合、これらの支払いはDeposit Authorization無効時と同様に成功します。
 
 
-## DisallowIncoming
+### DisallowIncoming
 [DisallowIncoming]: #disallowincoming
 
 | Amendment    | DisallowIncoming |
 |:-------------|:-----------------|
 | Amendment ID | 47C3002ABA31628447E8E9A8B315FAA935CE30183F9A9B86845E469CA2CDC3DF |
-| ステータス     | 有効予想 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -220,7 +306,7 @@ Checks、Payment Channels、NFTokenOffer、およびトラストラインを自�
 この修正が適用されない場合、どのアカウントでも、任意のオブジェクトの宛先としてこれらのオブジェクトを作成することができます。これは通常問題はないものの、後でアカウントを削除する際に妨げになったり、詐欺の一部として使用される可能性があります。
 
 
-## EnforceInvariants
+### EnforceInvariants
 [EnforceInvariants]: #enforceinvariants
 
 | Amendment    | EnforceInvariants |
@@ -243,7 +329,7 @@ Checks、Payment Channels、NFTokenOffer、およびトラストラインを自�
 - XRPにトラストラインはありません。
 
 
-## Escrow
+### Escrow
 [Escrow]: #escrow
 
 | Amendment    | Escrow |
@@ -258,7 +344,7 @@ Checks、Payment Channels、NFTokenOffer、およびトラストラインを自�
 XRP Ledger内のEscrowにXRPの「仮払い」機能を提供します。これには[Interledger Protocol Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02)のサポートが含まれます。仮払い用のレジャーオブジェクトタイプと、仮払いを作成、実行、取り消すためのトランザクションタイプを新規作成します。
 
 
-## ExpandedSignerList
+### ExpandedSignerList
 [ExpandedSignerList]: #expandedsignerlist
 
 | Amendment    | ExpandedSignerList |
@@ -275,7 +361,7 @@ XRP Ledger内のEscrowにXRPの「仮払い」機能を提供します。これ�
 この修正により、[SignerListオブジェクト][]の最大サイズは32エントリになります。さらに、各`SignerEntry`オブジェクトは、任意のデータを含む256ビットの`WalletLocator`フィールドを含むことができます。この修正により、[SignerListSetトランザクション][]もそれに応じて変更されます。
 
 
-## FeeEscalation
+### FeeEscalation
 [FeeEscalation]: #feeescalation
 
 | Amendment    | FeeEscalation |
@@ -298,7 +384,7 @@ XRP Ledger内のEscrowにXRPの「仮払い」機能を提供します。これ�
 * キュー内にトランザクションコストの高いトランザクションがたくさんあるため除外される
 
 
-## fix1201
+### fix1201
 [fix1201]: #fix1201
 
 | Amendment    | fix1201 |
@@ -313,7 +399,7 @@ XRP Ledger内のEscrowにXRPの「仮払い」機能を提供します。これ�
 この修正を行う場合、[AccountSet][]トランザクションの`TransferRate`を`2000000000`より高く設定すると、トランザクションは結果コード`temBAD_TRANSFER_RATE`にて失敗します。以前のルールに従って高い値が設定されている既存のすべての`TransferRate`には、そのまま高い率が適用されます。
 
 
-## fix1368
+### fix1368
 [fix1368]: #fix1368
 
 | Amendment    | fix1368 |
@@ -326,7 +412,7 @@ XRP Ledger内のEscrowにXRPの「仮払い」機能を提供します。これ�
 有効であるべき一部の支払いが失敗となる、トランザクション処理の小さなバグを修正します。具体的には、支払い処理中に、特定金額の通貨を生成する支払いステップの一部で、浮動小数点の表示に関する精度の不良により、わずかに異なる金額が生成されてしまうことがあります。この状況が発生すると、正確な金額を送金できないため支払いが失敗します。fix1368 Amendmentにより、トランザクション処理が修正されれば、このような支払いの失敗はなくなります。
 
 
-## fix1373
+### fix1373
 [fix1373]: #fix1373
 
 | Amendment    | fix1373 |
@@ -341,7 +427,7 @@ XRP Ledger内のEscrowにXRPの「仮払い」機能を提供します。これ�
 fix1373 Amendmenによりこの問題は修正されるため、正しく作成されたパスを使用して支払いを行えます。また、現在は許可されているものの適切ではない一部のパスが無効になります。これには、同じオブジェクトを2回以上ループしてコンフリクトを起こすフィールドやパスを含む[ステップ](paths.html#パスの仕様)を持つパスが含まれます。
 
 
-## fix1512
+### fix1512
 [fix1512]: #fix1512
 
 | Amendment    | fix1512 |
@@ -356,7 +442,7 @@ fix1373 Amendmenによりこの問題は修正されるため、正しく作成�
 この修正により、トランザクションは適切な結果コード`temBAD_AMOUNT`にて失敗します。
 
 
-## fix1513
+### fix1513
 [fix1513]: #fix1513
 
 | Amendment    | fix1513 |
@@ -371,7 +457,7 @@ fix1373 Amendmenによりこの問題は修正されるため、正しく作成�
 この修正により、新しい`STAmountCalcSwitchovers`コードが適用されるため、計算の違いによってトランザクション処理に若干の変更を生じる場合があります。金額の四捨五入のやり方が異なり、その結果、オファーが異なる順序で実行される場合があります。
 
 
-## fix1515
+### fix1515
 [fix1515]: #fix1515
 
 | Amendment    | fix1515 |
@@ -390,7 +476,7 @@ Paymentトランザクションがオファーを処理していく方法を変�
 どちらの場合でも、トランザクション処理は他のパスまたは為替レートからの流動性を使用して完了できます。
 
 
-## fix1523
+### fix1523
 [fix1523]: #fix1523
 
 | Amendment    | fix1523 |
@@ -405,7 +491,7 @@ Paymentトランザクションがオファーを処理していく方法を変�
 この修正により、新しいEscrowが送信者と受信者両方の[所有者ディレクトリー](directorynode.html)に追加されます。また、[Escrowレジャーオブジェクト](escrow-object.html)に新しい`DestinationNode`フィールドも追加され、支払先の所有者ディレクトリのどのページにEscrowがあるかを表示します。
 
 
-## fix1528
+### fix1528
 [fix1528]: #fix1528
 
 | Amendment    | fix1528 |
@@ -420,7 +506,7 @@ Paymentトランザクションがオファーを処理していく方法を変�
 この修正は、バリデータがコンセンサスレジャーの終了時刻の交渉方法を変更して、レジャー内容について合意を得ることはできないが、異なるタイムスタンプでレジャーバージョンを構築できるようにします。
 
 
-## fix1543
+### fix1543
 [fix1543]: #fix1543
 
 | Amendment    | fix1543 |
@@ -440,7 +526,7 @@ Paymentトランザクションがオファーを処理していく方法を変�
 - Payment Channelトランザクション: [PaymentChannelClaim][]、[PaymentChannelCreate][]、[PaymentChannelFund][]
 
 
-## fix1571
+### fix1571
 [fix1571]: #fix1571
 
 | Amendment    | fix1571 |
@@ -456,7 +542,7 @@ Paymentトランザクションがオファーを処理していく方法を変�
 - 時間ベースのEscrowが特定の状況下で終了されるのを誤って妨げる欠陥を修正します。
 
 
-## fix1578
+### fix1578
 [fix1578]: #fix1578
 
 | Amendment    | fix1578 |
@@ -472,7 +558,7 @@ Paymentトランザクションがオファーを処理していく方法を変�
 - [TrustSetトランザクション][]を変更して、トラストラインがマイナス残高であるため、[NoRippleフラグ](rippling.html#norippleフラグ)を有効にしようとしてもできない場合に、`tecNO_PERMISSION`で失敗するようにします。この修正を行わない場合、トランザクションでNoRippleフラグを有効にできなくても、トランザクション結果は`tesSUCCESS`になります。
 
 
-## fix1623
+### fix1623
 [fix1623]: #fix1623
 
 | Amendment    | fix1623 |
@@ -489,7 +575,7 @@ Paymentトランザクションがオファーを処理していく方法を変�
 fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`Amount`フィールドを使用）またはその他のトランザクションタイプには影響しません。
 
 
-## fix1781
+### fix1781
 [fix1781]: #fix1781
 
 | Amendment    | fix1781 |
@@ -506,7 +592,7 @@ fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`A
 この修正が適用された場合、これらの支払いは、代わりに[結果コード`temBAD_PATH_LOOP`](tem-codes.html)で失敗します。
 
 
-## fixAmendmentMajorityCalc
+### fixAmendmentMajorityCalc
 [fixAmendmentMajorityCalc]: #fixamendmentmajoritycalc
 
 | Amendment    | fixAmendmentMajorityCalc |
@@ -521,7 +607,7 @@ fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`A
 この修正が適用されない場合、Amendmentが有効になるための最小閾値は、信頼できるバリデーターの204/256を丸めた値であり、これはその時の信頼できるバリデーターの数に依存します。例えば、36人中28人(約77.8%)のバリデータがあれば、補正は有効になりえます。この修正により、実際に必要な最小限のバリデーターの数は、信頼できるバリデーターの80％を下回ることはありません。
 
 
-## fixCheckThreading
+### fixCheckThreading
 [fixCheckThreading]: #fixcheckthreading
 
 | Amendment    | fixCheckThreading |
@@ -536,7 +622,7 @@ Checksトランザクションがアカウントのメタデータに影響を�
 この修正を適用しない場合、Checksトランザクション（[CheckCreate][]、[CheckCash][]、および[CheckCancel][]）は送信者のアカウント履歴のみを更新します。この修正を適用した場合、これらのトランザクションは、送信アカウントにも受信アカウントにも影響します。この修正は、[Checks Amendment](#checks)も有効でないかぎり効果がありません。
 
 
-## fixMasterKeyAsRegularKey
+### fixMasterKeyAsRegularKey
 [fixMasterKeyAsRegularKey]: #fixmasterkeyasregularkey
 
 | Amendment    | fixMasterKeyAsRegularKey |
@@ -553,7 +639,7 @@ Checksトランザクションがアカウントのメタデータに影響を�
 この修正を有効にした場合、SetRegularKeyトランザクションはレギュラーキーがマスターキーに一致するよう設定できないため、そのようなトランザクションでは、トランザクションコードが`temBAD_REGKEY`になります。また、この修正により、署名検証コードが変更されるため、レギュラーキーがマスターキーに一致するよう_すでに_設定しているアカウントは、そのキーペアを使用して正常にトランザクションを送信できます。
 
 
-## fixNFTokenDirV1
+### fixNFTokenDirV1
 [fixNFTokenDirV1]: #fixnftokendirv1
 
 | Amendment    | fixNFTokenDirV1 |
@@ -568,7 +654,7 @@ Checksトランザクションがアカウントのメタデータに影響を�
 この修正は、[NonFungibleTokensV1][] Amendmentが有効でない限り、何の効果もありません。この修正は、その効果が[NonFungibleTokensV1_1][]の一部として含まれているため、廃止されました。
 
 
-## fixNFTokenNegOffer
+### fixNFTokenNegOffer
 [fixNFTokenNegOffer]: #fixnftokennegoffer
 
 | Amendment    | fixNFTokenNegOffer |
@@ -583,13 +669,13 @@ Checksトランザクションがアカウントのメタデータに影響を�
 この修正は、[NonFungibleTokensV1][] Amendmentが有効でない限り、何の影響もありません。この修正は、その効果が[NonFungibleTokensV1_1][]の一部として含まれているため、廃止されました。
 
 
-## fixNFTokenRemint
+### fixNFTokenRemint
 [fixNFTokenRemint]: #fixnftokenremint
 
 | Amendment    | fixNFTokenRemint |
 |:-------------|:-----------------|
 | Amendment ID | AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E |
-| ステータス     | In Development |
+| ステータス     | 投票中 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -602,13 +688,13 @@ Checksトランザクションがアカウントのメタデータに影響を�
 このamendmentにより、アカウント削除の制限も導入されます。アカウントは、`FirstNFTSequence` + `MintedNFTokens` + 256が現在のレジャーシーケンスより小さい場合にのみ削除できます（256はアカウント削除のヒューリスティックな制限として選択されたもので、アカウント削除制約にすでに存在します）。この制約がなければ、特定の条件下で同一のNFTが再ミントされる可能性があります。
 
 
-## fixNonFungibleTokensV1_2
+### fixNonFungibleTokensV1_2
 [fixNonFungibleTokensV1_2]: #fixnonfungibletokensv1_2
 
 | Amendment    | fixNonFungibleTokensV1_2 |
 |:-------------|:-------------------------|
 | Amendment ID | 73761231F7F3D94EC3D8C63D91BDD0D89045C6F71B917D1925C01253515A6669 |
-| ステータス     | 有効予想 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -643,7 +729,7 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 参考: [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
 
 
-## fixPayChanRecipientOwnerDir
+### fixPayChanRecipientOwnerDir
 [fixPayChanRecipientOwnerDir]: #fixpaychanrecipientownerdir
 
 | Amendment    | fixPayChanRecipientOwnerDir |
@@ -658,7 +744,7 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 この修正により、受取人によるPayment Channelの検索が容易になります。また、アカウントがオープンPayment Channelの受取人だった場合に、そのアカウントが削除されないようにします（ただし、この修正の前に作成されたチャンネルを除きます）。
 
 
-## fixQualityUpperBound
+### fixQualityUpperBound
 [fixQualityUpperBound]: #fixqualityupperbound
 
 | Amendment    | fixQualityUpperBound |
@@ -673,7 +759,7 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 この修正は、取引処理に影響を及ぼさないことが確認されています。
 
 
-## fixRemoveNFTokenAutoTrustLine
+### fixRemoveNFTokenAutoTrustLine
 [fixRemoveNFTokenAutoTrustLine]: #fixremovenftokenautotrustline
 
 | Amendment    | fixRemoveNFTokenAutoTrustLine |
@@ -692,7 +778,7 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 この修正は、[NonFungibleTokensV1][]または [NonFungibleTokensV1_1][]が有効になっていない限り、影響を及ぼしません。発行者を保護するため、このamendmentは[NonFungibleTokensV1][]または[NonFungibleTokensV1_1][]の前に有効にする必要があります。
 
 
-## fixRmSmallIncreasedQOffers
+### fixRmSmallIncreasedQOffers
 [fixRmSmallIncreasedQOffers]: #fixrmsmallincreasedqoffers
 
 | Amendment    | fixRmSmallIncreasedQOffers |
@@ -709,7 +795,7 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 この修正により、決済および取引は、通常、トランザクションが約定済みまたは未約定のオファーを削除するのと同じ方法で、これらのタイプのオファーを削除できるようになります。
 
 
-## fixSTAmountCanonicalize
+### fixSTAmountCanonicalize
 [fixSTAmountCanonicalize]: #fixstamountcanonicalize
 
 | Amendment    | fixSTAmountCanonicalize |
@@ -722,7 +808,7 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 Amount型フィールドの[デシリアライズ](serialization.html)におけるエッジケースの問題を修正しました。この修正が適用されない場合、一部の稀なケースで、この操作により、デシリアライズ中に有効なシリアライズされた金額がオーバーフローしてしまう可能性がありました。この修正により、XRP Ledgerはより迅速にエラー状態を検出し、問題となるようなケースを排除します。
 
 
-## fixTakerDryOfferRemoval
+### fixTakerDryOfferRemoval
 [fixTakerDryOfferRemoval]: #fixtakerdryofferremoval
 
 | Amendment    | fixTakerDryOfferRemoval |
@@ -739,13 +825,13 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 この修正により、これらのドライオファーがオートブリッジで一致した場合に、XRP Ledgerによって除去されます。
 
 
-## fixTrustLinesToSelf
+### fixTrustLinesToSelf
 [fixTrustLinesToSelf]: #fixtrustlinestoself
 
 | Amendment    | fixTrustLinesToSelf |
 |:-------------|:--------------------|
 | Amendment ID | F1ED6B4A411D8B872E65B9DCB4C8B100375B0DD3D62D07192E011D6D7F339013 |
-| ステータス     | 有効予想 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -754,13 +840,13 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 これらのトラストラインを持たないテストネットワークでは、この修正はは何の影響も及ぼしません。
 
 
-## fixUniversalNumber
+### fixUniversalNumber
 [fixUniversalNumber]: #fixuniversalnumber
 
 | Amendment    | fixUniversalNumber |
 |:-------------|:-------------------|
 | Amendment ID | 2E2FB9CF8A44EB80F4694D38AADAE9B8B7ADAFD2F092E10068E61C98C4F092B0 |
-| ステータス     | 有効予想 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -769,7 +855,7 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 この修正が適用されない場合、コードは引き続き`STAmount`と`IOUAmount`オブジェクトに対して別々の計算を使用し、[自動マーケットメーカー(XLS-30d)](https://github.com/XRPLF/XRPL-Standards/discussions/78)は計算のために新しい3つめの計算方法を使用します。
 
 
-## Flow
+### Flow
 [Flow]: #flow
 
 | Amendment    | Flow |
@@ -784,7 +870,7 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 また、Flowエンジンは、さらなるAmendmentを通じて、支払いエンジンの改善や拡張を容易にします。
 
 
-## FlowCross
+### FlowCross
 [FlowCross]: #flowcross
 
 | Amendment    | FlowCross |
@@ -801,7 +887,7 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 - 新しいロジックによって、以前のロジックより多めまたは少なめにオファーが削除される場合があります。（これには、丸め方の違いによるケースや、以前のロジックによって資金供給なしとして不正に削除されたオファーが含まれます。）
 
 
-## FlowSortStrands
+### FlowSortStrands
 [FlowSortStrands]: #flowsortstrands
 
 | Amendment    | FlowSortStrands |
@@ -816,7 +902,7 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 この修正が適用されない場合、エンジンは可能な各パスを介して支払いをシミュレートし、各パスの品質（入力と出力の比率）を計算します。この修正により、エンジンは完全な支払いをシミュレートすることなく、各パスの理論的な品質を計算します。この変更により、決済エンジンは一部のクロスカレンシー決済をより速く実行し、より多くのケースで最も費用対効果の高いパスを見つけることができるようになり、従来の決済エンジンでは十分な流動性を見つけることができなかった特定の条件でも、一部の決済を成功させることができるようになります。
 
 
-## FlowV2
+### FlowV2
 [FlowV2]: #flowv2
 
 | Amendment    | FlowV2 |
@@ -828,7 +914,7 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 これは[Flow](#flow) Amendmentの旧バージョンです。[バグが原因で不採用となり](https://xrpl.org/blog/2016/flowv2-vetoed.html)、バージョン0.33.0で除外されました。
 
 
-## HardenedValidations
+### HardenedValidations
 [HardenedValidations]: #hardenedvalidations
 
 | Amendment    | HardenedValidations |
@@ -841,13 +927,26 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 バリデータは、バリデータが完全に検証されたとみなす最新の台帳のハッシュを証明する新しいオプションフィールドをバリデーションに含めることができるようにします。コンセンサスプロセスでは、この情報を使用してコンセンサスの堅牢性を高めることができます。
 
 
-## ImmediateOfferKilled
+### Hooks
+[Hooks]: #hooks
+
+| Amendment    | Hooks |
+|:-------------|:--------------------|
+| Amendment ID | ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078 |
+| Status       | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+トランザクションの前後にアカウント上で実行できる小さなコードという形式で、オンチェーンのスマートコントラクトを追加します。詳細は[Hooksドキュメント （英語のみ）](https://xrpl-hooks.readme.io/)をご覧ください。
+
+
+### ImmediateOfferKilled
 [ImmediateOfferKilled]: #immediateofferkilled
 
 | Amendment    | ImmediateOfferKilled |
 |:-------------|:---------------------|
 | Amendment ID | 75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A |
-| ステータス     | 有効予想 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -856,7 +955,7 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 この修正が適用されない場合、資金の移動に失敗した「Immediate or Cancel」注文は、結果コード「tesSUCCESS」を返し、そのトランザクションが事実上何もしなかったため、混乱する可能性を残します。
 
 
-## MultiSign
+### MultiSign
 [MultiSign]: #multisign
 
 | Amendment    | MultiSign |
@@ -883,7 +982,7 @@ SignerListを持つアドレスは、レギュラーキーが定義されてい�
 * `tefBAD_AUTH_MASTER`
 
 
-## MultiSignReserve
+### MultiSignReserve
 [MultiSignReserve]: #multisignreserve
 
 | Amendment    | MultiSignReserve |
@@ -893,14 +992,14 @@ SignerListを持つアドレスは、レギュラーキーが定義されてい�
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-XRP Ledgerアカウントが[マルチシグ](multi-signing.html) SignerListを所有する場合、アカウントに加算される[所有者準備金](reserves.html#所有者準備金)を削減します。
+XRP Ledgerアカウントが[マルチシグ](multi-signing.html)SignerListを所有する場合、アカウントに加算される[所有者準備金](reserves.html#所有者準備金)を削減します。
 
-この修正を行わない場合、SignerListの所有者準備金は、リスト内の署名者数に応じて15～50 XRPの範囲となります。
+この修正を行わない場合、SignerListの所有者準備金は、リスト内の署名者数に応じて15～50XRPの範囲となります。
 
-この修正により、新しいSignerListの所有者準備金は、署名者数に関係なく5 XRPとなります。以前に作成されたSignerListオブジェクトの準備金は、そのまま変更されません。この修正の後に作成されたSignerListオブジェクトの準備金を削減するには、この修正実施後に、[SignerListSetトランザクション](signerlistset.html)を使用してSignerListを置き換えます。（この置き換えは、前のバージョンの場合とまったく同じです。）
+この修正により、新しいSignerListの所有者準備金は、署名者数に関係なく5XRPとなります。以前に作成されたSignerListオブジェクトの準備金は、そのまま変更されません。この修正の後に作成されたSignerListオブジェクトの準備金を削減するには、この修正実施後に、[SignerListSetトランザクション](signerlistset.html)を使用してSignerListを置き換えます。（この置き換えは、前のバージョンの場合とまったく同じです。）
 
 
-## NegativeUNL
+### NegativeUNL
 [NegativeUNL]: #negativeunl
 
 | Amendment    | NegativeUNL |
@@ -913,7 +1012,7 @@ XRP Ledgerアカウントが[マルチシグ](multi-signing.html) SignerListを�
 ネットワークがどのバリデータが一時的にオフラインになったかを追跡し、定足数計算の際にそれらのバリデータを無視できる「ネガティブUNL」システムを実装します。これにより、ネットワークが不安定な状態でも、ネットワークを進展させる能力を高めることができます。
 
 
-## NonFungibleTokensV1
+### NonFungibleTokensV1
 [NonFungibleTokensV1]: #nonfungibletokensv1
 
 | Amendment    | NonFungibleTokensV1 |
@@ -945,7 +1044,7 @@ XRP Ledgerアカウントが[マルチシグ](multi-signing.html) SignerListを�
 また、[AccountSetトランザクション][]を変更し、`NFTokenMinter`フィールドを設定できるようにしました。
 
 
-## NonFungibleTokensV1_1
+### NonFungibleTokensV1_1
 [NonFungibleTokensV1_1]: #nonfungibletokensv1_1
 
 | Amendment    | NonFungibleTokensV1_1 |
@@ -968,7 +1067,7 @@ XRP Ledgerアカウントが[マルチシグ](multi-signing.html) SignerListを�
 **注意:** [fixRemoveNFTokenAutoTrustLine][]は、このAmendmentの既知の問題を修正します。新しいテストネットワークを作成する場合、これらの修正を一緒に有効にするか、またはAmendmentの修正を先に有効にする必要があります。
 
 
-## OwnerPaysFee
+### OwnerPaysFee
 [OwnerPaysFee]: #ownerpaysfee
 
 | Amendment ID                                                     | ステータス |
@@ -985,7 +1084,7 @@ XRP Ledgerアカウントが[マルチシグ](multi-signing.html) SignerListを�
 **注記:** 不完全なバージョンのこのAmendmentについては、v0.33.0で導入され、v0.80.0で削除されました（有効となったことはありません）。
 
 
-## PayChan
+### PayChan
 [PayChan]: #paychan
 
 | Amendment    | PayChan |
@@ -997,12 +1096,12 @@ XRP Ledgerアカウントが[マルチシグ](multi-signing.html) SignerListを�
 
 XRPの「Payment Channel」を作成します。Payment Channelは、2名の当事者間で一方向の繰り返しの支払い、またはそれに伴う一時的な貸付を容易に行えるようにするツールです。Rippleは、この機能が[Interledger Protocol](https://interledger.org/)に役立つと期待しています。ある当事者がPayment Channelを作成し、そのチャンネル内に有効期限を事前に設定してXRPをいくらか確保します。次に、レジャー外部の安全な通信を介して、送信者は「クレーム」メッセージを受信者に送信できます。受信者は有効期限の終了前にクレームメッセージを清算することも、支払いが必要ない場合は清算しないことも選択できます。受信者は、クレームを実際にネットワークに分散させてコンセンサスプロセスで清算されるのを待たなくとも、請求を個々に確認してから、有効期限内であれば多数の少額クレームをまとめて後で清算することができます。
 
-新たに作成するトランザクションタイプは次の3つです。[PaymentChannelCreate][]、[PaymentChannelClaim][]、[PaymentChannelFund][]。新たに作成するレジャーオブジェクトタイプは[PayChannel](paychannel.html)です。レジャー外のデータ構造`Claim`を定義し、ChannelClaimトランザクションに使用します。新たに作成する`rippled` APIメソッドは次のとおりです。[`channel_authorize`](channel_authorize.html) （署名されたクレームを作成します）、[`channel_verify`](channel_verify.html)（署名されたクレームを検証します）、[`account_channels`](account_channels.html)（アカウントに関連するチャンネルをリストを作成します）。
+新たに作成するトランザクションタイプは次の3つです。[PaymentChannelCreate][]、[PaymentChannelClaim][]、[PaymentChannelFund][]。新たに作成するレジャーオブジェクトタイプは[PayChannel](paychannel.html)です。レジャー外のデータ構造`Claim`を定義し、ChannelClaimトランザクションに使用します。新たに作成する`rippled`APIメソッドは次のとおりです。[`channel_authorize`](channel_authorize.html)（署名されたクレームを作成します）、[`channel_verify`](channel_verify.html)（署名されたクレームを検証します）、[`account_channels`](account_channels.html)（アカウントに関連するチャンネルをリストを作成します）。
 
 詳細は、[Payment Channelsのチュートリアル](use-payment-channels.html)を参照してください。
 
 
-## RequireFullyCanonicalSig
+### RequireFullyCanonicalSig
 [RequireFullyCanonicalSig]: #requirefullycanonicalsig
 
 | Amendment    | RequireFullyCanonicalSig |
@@ -1021,7 +1120,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 詳しくは、[`rippled` issue #3042](https://github.com/ripple/rippled/issues/3042)を参照してください。
 
 
-## SHAMapV2
+### SHAMapV2
 [SHAMapV2]: #shamapv2
 
 | Amendment    | SHAMapV2 |
@@ -1035,7 +1134,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 この修正が適用されると、ネットワークでハッシュツリー構造への変更を計算している間、XRP Ledgerはしばらく使用できなくなります。
 
 
-## SortedDirectories
+### SortedDirectories
 [SortedDirectories]: #sorteddirectories
 
 | Amendment    | SortedDirectories |
@@ -1050,7 +1149,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 **警告:** このが適用されていない旧バージョンの`rippled`は、新しいルールでソートされたDirectoryNodeによって機能が停止するおそれがあります。この問題を回避するには、`rippled`バージョン0.80.0以降に[アップグレード](install-rippled.html)してください。
 
 
-## SusPay
+### SusPay
 [SusPay]: #suspay
 
 | Amendment    | SusPay |
@@ -1062,7 +1161,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 この修正は、[Escrow](escrow-object.html) Amendmentに置き換えられました。
 
 
-## TicketBatch
+### TicketBatch
 [TicketBatch]: #ticketbatch
 
 | Amendment    | TicketBatch |
@@ -1077,7 +1176,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 標準規格案: [XLS-13d](https://github.com/XRPLF/XRPL-Standards/issues/16).
 
 
-## Tickets
+### Tickets
 [Tickets]: #tickets
 
 | Amendment    | Tickets |
@@ -1089,7 +1188,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 この修正は、[TicketBatch][] Amendmentに置き換えられました。
 
 
-## TickSize
+### TickSize
 [TickSize]: #ticksize
 
 | Amendment    | TickSize |
@@ -1104,7 +1203,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 アカウントに`TickSize`フィールドを追加します。このフィールドは[AccountSetトランザクションタイプ](accountset.html)を使用して設定できます。通貨発行者が`TickSize`フィールドを設定すれば、発行者の通貨を取引するオファーの為替レート（資金の入出金率）がXRP Ledgerによって丸められ、丸められた為替レートに合わせてオファーの金額が調整されます。トランザクションにて1つの通貨にのみ`TickSize`が設定されていれば、その有効桁数が適用されます。異なる`TickSize`値が設定された2つの通貨を取引する場合は、有効桁数が最も小さい`TickSize`が適用されます。XRPに`TickSize`は設定されません。
 
 
-## TrustSetAuth
+### TrustSetAuth
 [TrustSetAuth]: #trustsetauth
 
 | Amendment    | TrustSetAuth |
@@ -1119,7 +1218,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 この修正が適用されれば、[`tfSetfAuth`を有効にした](trustset.html#trustsetのフラグ)`TrustSet`トランザクションにおいて、`RippleState`ノードの他のすべての値をデフォルト状態にしたままでも、新しい[`RippleState`レジャーオブジェクト](ripplestate.html)を作成できます。新しい`RippleState`ノードでは、トランザクションの送信者が低いノードと見なされるか高いノードと見なされるかに応じて、[`lsfLowAuth`フラグまたは`lsfHighAuth`フラグ](ripplestate.html#ripplestateのフラグ)が有効になります。トランザクションの送信者は、[asfRequireAuthフラグを有効](accountset.html#accountsetのフラグ)にして[AccountSetトランザクション](accountset.html)を送信することで、事前に[`lsfRequireAuth`](accountroot.html#accountrootのフラグ)を有効にしておく必要があります。
 
 
-## XRPFees
+### XRPFees
 [XRPFees]: #xrpfees
 
 | Amendment    | XRPFees |
@@ -1135,7 +1234,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 - FeeSettingsの台帳の項目タイプを変更します。`BaseFee`、`ReferenceFeeUnits`、`ReserveBase`、`ReserveIncrement`フィールドを`BaseFeeDrops`、`ReserveBaseDrops`、`ReserveIncrementDrops`に置き換えます。
 - SetFee トランザクションタイプを変更します。`BaseFee`、`ReferenceFeeUnits`、`ReserveBase`、`ReserveIncrement`フィールドを`BaseFeeDrops`、`ReserveBaseDrops`、`ReserveIncrementDrops`に置き換えます。
 
-このAmendment がなければ、トランザクションの形式と台帳の項目は同一です。
+このAmendmentがなければ、トランザクションの形式と台帳の項目は同一です。
 
 
 <!--{# common link defs #}-->
