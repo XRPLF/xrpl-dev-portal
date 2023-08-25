@@ -7,7 +7,9 @@
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="{% if '//' not in parent_page.html %}{{currentpage.prefix}}{% endif %}{{parent_page.html}}" class="nav-link">{{parent_page.name}}</a></li>
           {% for page in parent_page.children %}
+          {% if not page.nav_omit %}
             <li class="nav-item"><a href="{% if '//' not in page.html %}{{currentpage.prefix}}{% endif %}{{page.html}}" class="nav-link{% if '//' in page.html %} external-link{% endif %}">{% if page.top_nav_name is defined %}{{page.top_nav_name}}{% else %}{{page.name}}{% endif %}</a></li>
+          {% endif %}
           {% endfor %}
           </ul>
         </div><!--/.col -->

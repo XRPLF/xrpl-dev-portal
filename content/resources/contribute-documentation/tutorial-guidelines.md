@@ -1,6 +1,7 @@
 ---
 html: tutorial-guidelines.html
-parent: contribute.html
+parent: contribute-documentation.html
+blurb: Learn how this site's tutorials are structured and guidelines for contributing quality tutorials.
 ---
 # Tutorial Guidelines
 
@@ -35,7 +36,7 @@ To date, there have been some blurred lines where different types of documentati
 
 ## Sample Code
 
-Sample code is well commented snippets or applications that illustrate best practices for implementing a feature of the API. Sample code is modular and reusable with little customization required. 
+Sample code is well commented snippets or applications that illustrate best practices for implementing a feature of the API. Sample code is modular and reusable with little customization required.
 
 Sample code is desirable, because advanced users can typically scan the example and use it immediately without a formal tutorial. It can also be used by others as a basis for tutorials. Sample code developers can focus on what they do well, while technical writers and support personnel can use the samples to create quality training materials.
 
@@ -47,7 +48,7 @@ Tasks are step-by-step instructions for how to accomplish a specific result. For
 
 ## Concepts
 
-Conceptual information describes elements of the API, how they work, and when to use them. If a tutorial requires lengthy explanations before or during the programming tasks, consider how you might separate the exposition into a new topic, or link to existing topics that set the proper context. 
+Conceptual information describes elements of the API, how they work, and when to use them. If a tutorial requires lengthy explanations before or during the programming tasks, consider how you might separate the exposition into a new topic, or link to existing topics that set the proper context.
 
 For example, three paragraphs of context and a single line of code would be a concept, not a tutorial.
 
@@ -61,7 +62,7 @@ Tutorials further combine a number of features to work together to solve a busin
 
 ## Use Cases
 
-Use cases describe how to pull together multiple features to create a practical application that solves a business problem. They provide context and assistance with the decision making process, then provide links to the appropriate topics for each step of implementation. 
+Use cases describe how to pull together multiple features to create a practical application that solves a business problem. They provide context and assistance with the decision making process, then provide links to the appropriate topics for each step of implementation.
 
 
 # Tutorial Components
