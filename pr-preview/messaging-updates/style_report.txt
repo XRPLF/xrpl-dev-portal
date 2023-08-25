@@ -1,0 +1,315 @@
+-------------
+Spell Checker
+-------------
+Found 87 possible spelling errors:
+<Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
+  gifs: rifs, gins, gifts
+  ringtee: 
+  kuressaare: 
+  lõõtsa: 
+
+<Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
+  24n: 
+
+<Page 'Authorizing Another Account to Mint Your NFTs' (nftoken-authorized-minting.html)> Unknown Words:
+  nftokenminter: 
+  unassigning: 
+  transferfee: transferee
+
+<Page 'Running an NFT Auction' (nftoken-auctions.html)> Unknown Words:
+  buyside: bayside
+
+<Page 'Minting NFTs into Collections' (nft-collections.html)> Unknown Words:
+  nftokentaxon: 
+
+<Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
+  blackhole: blockhole, black-hole
+
+<Page 'NFT APIs' (nft-apis.html)> Unknown Words:
+  nft_history: 
+  slas: slan, slays, sls
+
+<Page 'Invariant Checking' (invariant-checking.html)> Unknown Words:
+  validnftokenpage: 
+  nftokencounttracking: 
+
+<Page 'Amendments' (amendments.html)> Unknown Words:
+  11d: 
+
+<Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
+  xlsd: lsd, xls
+
+<Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  fixnftokenremint: 
+  fixuniversalnumber: 
+  immediateofferkilled: 
+  fixnonfungibletokensv1_2: 
+  disallowincoming: 
+  depositpreauthamendment: 
+  xrpfees: 
+  39d: 3d, 3-d, 3rd
+  30d: 3d, 3-d, 3rd
+  xchainbridge: 
+  38d: 3d, 3-d, 3rd
+  ammdelete: 
+  nftokenoffers: nftokenoffer
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingcheck: 
+  asfdisallowincomingtrustline: 
+  asfdisallowincomingnftoffer: 
+
+<Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
+  0b0: 
+  v3: vb, vc, vs
+
+<Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)> Unknown Words:
+  mod1: mod, modo, mode
+  get_account: 
+  get_account_info: 
+  send_xrp: 
+  lesson1: lesson, lessons
+  tkinter: tinter, twinter
+  getstandbyaccount: 
+  get_standby_account_info: 
+  standby_send_xrp: 
+
+<Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)> Unknown Words:
+  mod2: mod, modo, mode
+  send_currency: 
+  get_balance: 
+  configure_account: 
+  lesson2: lesson, lessons
+
+<Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nfts.html)> Unknown Words:
+  mod3: mod, modo, mode
+  minttoken: 
+  gettokens: 
+  burn_token: 
+
+<Page '4. Transfer NFTs (Python)' (py-transfer-nfts.html)> Unknown Words:
+  mod4: mod, modo, mode
+  offer___index: 
+  alloffers: 
+  lesson4: lesson, lessons
+
+<Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)> Unknown Words:
+  buy___offer___index: 
+  broker___fee: 
+  sell___offer___index: 
+  lesson5: lesson, lessons
+
+<Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)> Unknown Words:
+  mod6: mod, modo, mode
+  mint_other: 
+
+<Page 'Public Servers' (public-servers.html)> Unknown Words:
+  30d: 3d, 3-d, 3rd
+  v3: vb, vc, vs
+
+<Page 'AccountRoot' (accountroot.html)> Unknown Words:
+  fixnftokenremint: 
+  nftokenoffers: nftokenoffer
+  disallowincoming: 
+
+<Page 'FeeSettings' (feesettings.html)> Unknown Words:
+  xrpfees: 
+
+<Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
+  networkid: networked
+  v3: vb, vc, vs
+
+<Page 'AccountSet' (accountset.html)> Unknown Words:
+  nftokenoffers: nftokenoffer
+  disallowincoming: 
+  nftokenminter: 
+
+<Page 'CheckCreate' (checkcreate.html)> Unknown Words:
+  disallowincoming: 
+
+<Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
+  nftokenoffers: nftokenoffer
+  disallowincoming: 
+
+<Page 'OfferCreate' (offercreate.html)> Unknown Words:
+  immediateofferkilled: 
+
+<Page 'PaymentChannelCreate' (paymentchannelcreate.html)> Unknown Words:
+  disallowincoming: 
+
+<Page 'TrustSet' (trustset.html)> Unknown Words:
+  disallowincoming: 
+
+<Page 'SetFee' (setfee.html)> Unknown Words:
+  xrpfees: 
+
+<Page 'Transaction Metadata' (transaction-metadata.html)> Unknown Words:
+  nftokenid: 
+
+<Page 'account_info' (account_info.html)> Unknown Words:
+  disallowincoming: 
+
+<Page 'account_lines' (account_lines.html)> Unknown Words:
+  peterchen: 
+
+<Page 'nft_history' (nft_history.html)> Unknown Words:
+  nft_history: 
+
+<Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
+  screenshots: screenshot
+
+-----------------------------
+Discouraged Words and Phrases
+-----------------------------
+Found 70 discouraged words/phrases:
+Page: <Page 'FAQ' (faq.html)>
+   Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
+Page: <Page 'Privacy Policy' (privacy-policy.html)>
+   Discouraged word: facilitate (1 instances); suggest 'ease, help' instead.
+   Discouraged word: assist (1 instances); suggest 'aid, help' instead.
+   Discouraged phrase: the use of (2 instances); suggest '(omit)' instead.
+   Discouraged word: will (6 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: permit (1 instances); suggest 'let' instead.
+   Discouraged word: retain (3 instances); suggest 'keep' instead.
+   Discouraged word: advise (1 instances); suggest 'recommend, tell' instead.
+   Discouraged word: notify (1 instances); suggest 'let know, tell' instead.
+   Discouraged phrase: prior to (1 instances); suggest 'before' instead.
+Page: <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)>
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+Page: <Page 'Running an NFT Auction' (nftoken-auctions.html)>
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Amendments' (amendments.html)>
+   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+Page: <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)>
+   Discouraged phrase: defaults to (1 instances); suggest 'the default is' instead.
+Page: <Page 'Known Amendments' (known-amendments.html)>
+   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
+Page: <Page 'Quickstart Introduction (JavaScript)' (quickstart-intro.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page '2. Create Trust Line and Send Currency' (create-trustline-send-currency.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Quickstart Introduction (Python)' (py-quickstart-intro.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page '1. Create Accounts and Send XRP (Python)' (py-create-accounts-send-xrp.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+Page: <Page '2. Create Trust Line and Send Currency (Python)' (py-create-trustline-send-currency.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: wallet (5 instances); suggest 'address, client application, account' instead.
+Page: <Page '3. Mint and Burn NFTs (Python)' (py-mint-and-burn-nfts.html)>
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+Page: <Page '4. Transfer NFTs (Python)' (py-transfer-nfts.html)>
+   Discouraged word: wallet (6 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Broker an NFT Sale (Python)' (py-broker-sale.html)>
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'Assign an Authorized Minter (Python)' (py-authorize-minter.html)>
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Build A Browser Wallet Using JS' (build-a-browser-wallet-in-js.html)>
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+   Discouraged word: render (1 instances); suggest 'give, make' instead.
+   Discouraged word: just (2 instances); suggest '(omit)' instead.
+   Discouraged word: reflect (1 instances); suggest 'say, show' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-stand-alone-mode.html)>
+   Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
+Page: <Page 'Transaction Common Fields' (transaction-common-fields.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'ter Codes' (ter-codes.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'ledger_data' (ledger_data.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Tutorial Guidelines' (tutorial-guidelines.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+   Discouraged word: frequently (1 instances); suggest 'often' instead.
+   Discouraged word: performed (1 instances); suggest 'done' instead.
+   Discouraged phrase: a number of (1 instances); suggest 'some' instead.
+   Discouraged word: assistance (1 instances); suggest 'aid, help' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'Tutorial Structure' (tutorial-structure.html)>
+   Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+------------------
+Readability Scores
+------------------
+Average Page Readability Scores:
+  Flesch Reading Ease Score: 58.3 (Fairly Difficult)
+  Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
+  SMOG Index: Grade level 11.4
+  Gunning FOG Index: Grade level 9.0
+  Automated Readability Index: Grade level 10.8
+  Coleman-Liau Index: Grade level 11.5
+  Linsear Write Formula: Grade level 8.4
+
+
+Most difficult pages by Flesch Reading Ease:
+<Page 'XRP-API' (xrp-api.html)> Readability Scores:
+  Flesch Reading Ease Score: 29.2 (Very Confusing)
+  Dale-Chall Readability Score: 12.5 (higher than average college level)
+  SMOG Index: Grade level 0.0
+  Gunning FOG Index: Grade level 19.6
+  Automated Readability Index: Grade level 18.2
+  Coleman-Liau Index: Grade level 14.8
+  Linsear Write Formula: Grade level 20.5
+
+<Page 'Update Automatically on Linux' (update-rippled-automatically-on-linux.html)> Readability Scores:
+  Flesch Reading Ease Score: 31.4 (Difficult)
+  Dale-Chall Readability Score: 12.1 (higher than average college level)
+  SMOG Index: Grade level 13.2
+  Gunning FOG Index: Grade level 11.7
+  Automated Readability Index: Grade level 14.7
+  Coleman-Liau Index: Grade level 16.3
+  Linsear Write Formula: Grade level 7.5
+
+<Page 'Consensus Research' (consensus-research.html)> Readability Scores:
+  Flesch Reading Ease Score: 33.2 (Difficult)
+  Dale-Chall Readability Score: 11.4 (higher than average college level)
+  SMOG Index: Grade level 16.9
+  Gunning FOG Index: Grade level 14.5
+  Automated Readability Index: Grade level 17.8
+  Coleman-Liau Index: Grade level 17.1
+  Linsear Write Formula: Grade level 15.6
+
+-------------------
+Page Length Metrics
+-------------------
+Average Page Length Metrics:
+  Sentences: 56
+  Words: 743
+  Characters: 4,617
+
+Longest pages by character count:
+<Page 'Known Amendments' (known-amendments.html)> Length Metrics:
+  Sentences: 601
+  Words: 8,210
+  Characters: 59,953
+
+<Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Length Metrics:
+  Sentences: 380
+  Words: 5,852
+  Characters: 36,639
+
+<Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Length Metrics:
+  Sentences: 299
+  Words: 5,187
+  Characters: 29,550
+
+Shortest pages by character count:
+<Page 'API Conventions' (api-conventions.html)> Length Metrics:
+  Sentences: 4
+  Words: 38
+  Characters: 231
+
+<Page 'XRP-API' (xrp-api.html)> Length Metrics:
+  Sentences: 3
+  Words: 29
+  Characters: 169
+
+<Page 'Use Checks' (use-checks.html)> Length Metrics:
+  Sentences: 3
+  Words: 22
+  Characters: 129
+
