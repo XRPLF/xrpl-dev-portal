@@ -1,6 +1,6 @@
 ---
 html: creating-diagrams.html
-parent: contributing-to-documentation.html
+parent: contribute-documentation.html
 blurb: ライトモードとダークモードの設定で適切に動作する図を作成します。
 ---
 # 図の作成
