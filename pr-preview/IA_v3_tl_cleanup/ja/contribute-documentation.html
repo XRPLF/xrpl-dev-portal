@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>翻訳 - XRPL.org (日本語)</title>
+    <title>ドキュメントへの貢献 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="翻訳 | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/documentation-languages.html" />
-    <meta property="og:description" content="このウェブサイトにある文書の翻訳に貢献し、維持する方法を学びましょう。" />
-    <meta name="description" content="このウェブサイトにある文書の翻訳に貢献し、維持する方法を学びましょう。" />
+    <meta property="og:title" content="ドキュメントへの貢献 | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/contribute-documentation.html" />
+    <meta property="og:description" content="XRP Ledgerドキュメントのコントリビューションガイドです。" />
+    <meta name="description" content="XRP Ledgerドキュメントのコントリビューションガイドです。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="ja" />
-    <link rel="alternate" href="https://xrpl.org/documentation-languages.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/documentation-languages.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/documentation-languages.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/contribute-documentation.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/contribute-documentation.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/contribute-documentation.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -194,7 +194,7 @@
           <div class="navcol col-for-参加する">
             <h5 class="dropdown-item">参加する</h5>
             <a class="dropdown-item" href="/ja/contribute-code.html">コードへの貢献</a>
-            <a class="dropdown-item" href="/ja/contributing-to-documentation.html">ドキュメントへの貢献</a>
+            <a class="dropdown-item active" href="/ja/contribute-documentation.html">ドキュメントへの貢献</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -210,8 +210,6 @@
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="/ja/tutorial-guidelines.html">チュートリアルガイドライン</a>
-            <a class="dropdown-item" href="/ja/tutorial-structure.html">チュートリアルの構成</a>
             <a class="dropdown-item" href="/ja/events.html">イベント</a>
             <a class="dropdown-item" href="/ja/ambassadors.html">アンバサダー</a>
             <a class="dropdown-item" href="/ja/developer-funding.html">開発者ファンド</a>
@@ -246,7 +244,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/documentation-languages.html">
+          <a class="dropdown-item" href="/contribute-documentation.html">
             English
           </a>
           <hr />
@@ -274,13 +272,21 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/IA_v3_tl_cleanup/content/resources/contribute-documentation/documentation-translations.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2091" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/IA_v3_tl_cleanup/content/resources/contribute-documentation/contribute-documentation.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2091" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit -->    <div class="toc-header">
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#翻訳">翻訳</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#始めるにあたって">始めるにあたって</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#ドキュメントへの貢献">ドキュメントへの貢献</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#当サイトについて">当サイトについて</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#リポジトリの構成">リポジトリの構成</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#プルリクエストが承認されるための条件">プルリクエストが承認されるための条件</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#dactylのセットアップ">Dactylのセットアップ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#サイトの構築">サイトの構築</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#設定ファイルのフォーマット">設定ファイルのフォーマット</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#規約">規約</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#技術用語">技術用語</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#frontmatterのフィールド">Frontmatterのフィールド</a></li>
       </ul>
   </div>
       </aside>
@@ -293,62 +299,291 @@
 
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/resources.html">リソース</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/contributing-to-documentation.html">ドキュメントへの貢献</a></li>
-    <li class="active breadcrumb-item">翻訳</li>
+    <li class="active breadcrumb-item">ドキュメントへの貢献</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="翻訳">翻訳<a aria-hidden="true" class="hover_anchor" href="#翻訳"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledger Dev Portalは大部分が英語で書かれているため、一般的には英語版が最新かつ正確なバージョンです。しかしながら、XRP Ledgerのソフトウェアとコミュニティへのリーチを広げるために、このリポジトリには翻訳版のドキュメントも含まれています。私たちは、他の言語を理解するコミュニティのメンバーが、開発ポータルの内容を母国語で翻訳することを大いに歓迎します。</p>
-<p><code>dactyl-config.yml</code>には利用可能な言語ごとに"target"項目があります(現在、利用可能な言語は英語と日本語です)。このエントリには、次のようにテンプレートファイルで使用される文字列の定義が含まれます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en</span>
-<span class="w">    </span><span class="nt">lang</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en</span>
-<span class="w">    </span><span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XRP Ledger Dev Portal</span>
-<span class="w">    </span><span class="c1"># These github_ fields are used by the template's "Edit on GitHub" link.</span>
-<span class="w">    </span><span class="c1">#  Override them with --vars to change which fork/branch to edit.</span>
-<span class="w">    </span><span class="nt">github_forkurl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/XRPLF/xrpl-dev-portal</span>
-<span class="w">    </span><span class="nt">github_branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span>
-<span class="w">    </span><span class="nt">strings</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">blog</span><span class="p">:</span><span class="w"> </span><span class="s">"Blog"</span>
-<span class="w">        </span><span class="nt">search</span><span class="p">:</span><span class="w"> </span><span class="s">"Search</span><span class="nv"> </span><span class="s">site</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">Google..."</span>
-<span class="w">        </span><span class="nt">bc_home</span><span class="p">:</span><span class="w"> </span><span class="s">"Home"</span>
-<span class="w">        </span><span class="c1"># ...</span>
-</code></pre></div>
-<p>また、トップレベルの<code>languages</code>リストもあり、サポートされている各言語が定義されています。各言語のショートコードは<a class="external-link" href="https://tools.ietf.org/html/bcp47" target="_blank">IETF BCP47 <i aria-hidden="true" class="fa fa-external-link"></i></a>に従ったショートコードでなければなりません。例えば、"en"は英語、"es"はスペイン語、"ja"は日本語、"zh-CN"は簡体字中国語、"zh-TW" は繁体字中国語 (台湾で使用) などです。<code>display_name</code>フィールドはその言語でネイティブに書かれた言語名を定義します。<code>prefix</code>フィールドはその言語のサイトへのハイパーリンクで使用する接頭辞を定義します。次に<code>languages</code>の定義例を示します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="nt">languages</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en</span>
-<span class="w">        </span><span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">English</span>
-<span class="w">        </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"/"</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ja</span>
-<span class="w">        </span><span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">日本語</span>
-<span class="w">        </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"/ja/"</span>
-</code></pre></div>
-<p>同じ<code>dactyl-config.yml</code>ファイルには、XRP Ledger Dev Portalの各コンテンツページのエントリがあります。ページが翻訳されている場合、各翻訳ごとに個別の項目があり、その翻訳の“ターゲット"にリンクされています。ページがまだ翻訳されていない場合、すべてのターゲットで英語版が使用されます。</p>
-<p>慣習上、ページのHTMLファイル名（<code>html</code>フィールド）はすべての言語バージョンで同じであるべきです。翻訳されたMarkdownのソースファイルは英語版と同じファイル名を使用すべきです。ただし、拡張子は英語版の<code>.md</code>だけではなく、<code>.{言語コード}.md</code>を使用すべきです。例えば、日本語に翻訳されたファイルの拡張子は<code>.ja.md</code>です。
-- <strong><code>blurb</code></strong> - ページの短い要約です。このテキストは主にカテゴリーのランディングページで使用されます。</p>
-<p><code>server_info</code>メソッドページの英語と日本語の記入例：</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">md</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md</span>
-<span class="w">        </span><span class="nt">targets</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en</span>
-
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">md</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">references/http-websocket-apis/public-api-methods/server-info-methods/server_info.ja.md</span>
-<span class="w">        </span><span class="nt">targets</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ja</span>
-</code></pre></div>
-<p>翻訳されていないページの記入例：</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">md</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md</span>
-<span class="w">        </span><span class="nt">targets</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ja</span>
-</code></pre></div>
-<h2 id="始めるにあたって">始めるにあたって<a aria-hidden="true" class="hover_anchor" href="#始めるにあたって"><i class="fa fa-link"></i></a></h2>
-<p>XRP Ledger Dev Portalをあなたの母国語に翻訳したい場合は、まず<a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/IA_v3_tl_cleanup/content/concepts/introduction/what-is-the-xrp-ledger.md" target="_blank">"What is the XRP Ledger?" file <i aria-hidden="true" class="fa fa-external-link"></i></a>から始めてください。</p>
-<p>このファイルを<code>xrp-ledger-overview.{言語コード}.md</code>として保存します。ここで<code>{言語コード}</code>は<a class="external-link" href="https://tools.ietf.org/html/bcp47" target="_blank">IETF BCP47 <i aria-hidden="true" class="fa fa-external-link"></i></a>の言語コードです。(例えば、スペイン語は"es"、日本語は"ja"、簡体字中国語は"zh-CN"、台湾で使われている繁体字中国語は"zh-TW"などです)。そして、あなたのファイルをこのリポジトリに追加する<a class="external-link" href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests" target="_blank">プルリクエスト <i aria-hidden="true" class="fa fa-external-link"></i></a>を作成してください。リポジトリメンテナの誰かが、サイトに言語を追加するために必要なその他の設定を手伝ってくれるでしょう。</p>
-<p>Markdownコンテンツファイルでは、以下の規則に従ってください。</p>
+        <h1 id="ドキュメントへの貢献">ドキュメントへの貢献<a aria-hidden="true" class="hover_anchor" href="#ドキュメントへの貢献"><i class="fa fa-link"></i></a></h1>
+<p>XRP Ledger開発者ポータルへの貢献を検討いただきありがとうございます！</p>
+<p>私たちは、あなたが興味を持ってくださっていることにとても感動しています。XRP Ledger(XRPL)へ貢献することは、XRPLついて学ぶ素晴らしい機会です。</p>
+<p>私たちはあなたのプルリクエストを喜んでレビューします。プロセスをできるだけ円滑に進めるため、このドキュメントを読み、記載されているガイドラインに従ってください。</p>
+<h2 id="当サイトについて">当サイトについて<a aria-hidden="true" class="hover_anchor" href="#当サイトについて"><i class="fa fa-link"></i></a></h2>
+<p>XRPL Dev Portalでは、開発者が開発を開始するためのサンプルコードやその他の情報を含む、XRP Ledgerの包括的なドキュメントを提供しています。</p>
+<p>本プロジェクトの公式リポジトリは<a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal" target="_blank">https://github.com/XRPLF/xrpl-dev-portal <i aria-hidden="true" class="fa fa-external-link"></i></a>となっています。投稿の著作権はそれぞれの投稿者に帰属しますが、MIT<a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE" target="_blank">ライセンス <i aria-hidden="true" class="fa fa-external-link"></i></a>の下で提供されなければなりません。</p>
+<h2 id="リポジトリの構成">リポジトリの構成<a aria-hidden="true" class="hover_anchor" href="#リポジトリの構成"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li>改行文字(<code>\n</code>)のみ（Unixスタイル）。キャリッジリターン文字(<code>\r</code>)は使用しないでください（Windowsスタイル）。</li>
-<li>UTF-8エンコーディングを使用してください。バイトオーダーマークの使用は避けてください。</li>
+<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/assets" target="_blank">assets/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - サイトのテンプレートで使用される静的ファイル。</li>
+<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content" target="_blank">content/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - ドキュメントを構築するために使用されるソースファイル。ほとんどがMarkdownです。<ul>
+<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples" target="_blank">content/_code-samples/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - ドキュメントで使用または参照されているコードサンプル。可能な限り、これらは完全に機能する/実行可能なスクリプトです。</li>
+<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_img-sources" target="_blank">content/_img-sources/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - ドキュメントで使用されている画像の元ファイル。<code>.uxf</code>ファイルは<a class="external-link" href="https://www.umlet.com/" target="_blank">Umlet <i aria-hidden="true" class="fa fa-external-link"></i></a>で作成されたダイアグラムです。</li>
+<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_snippets" target="_blank">content/_snippets/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - Dactylプリプロセッサを使用して、他のコンテンツファイルに挿入される再利用可能なMarkdownテキストの断片。</li>
 </ul>
+</li>
+<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/img" target="_blank">img/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - ドキュメントコンテンツで使用される画像。</li>
+<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/template" target="_blank">template/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - HTMLを構築するためのテンプレートファイル。</li>
+<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/tool" target="_blank">tool/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - フィルター、スタイルチェッカー・ルール等のスクリプト。</li>
+<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/styles" target="_blank">styles/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - assetsフォルダにCSSファイルを生成するための元ファイル(SCSS)。</li>
+<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/dactyl-config.yml" target="_blank"><code>dactyl-config.yml</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> - サイトのメタデータを含むメイン設定ファイル。設定ファイルのフォーマットについては、<a href="#設定ファイルのフォーマット">設定フォーマット</a>を参照してください。</li>
+</ul>
+<h2 id="プルリクエストが承認されるための条件">プルリクエストが承認されるための条件<a aria-hidden="true" class="hover_anchor" href="#プルリクエストが承認されるための条件"><i class="fa fa-link"></i></a></h2>
+<p>レビューやマージが承認される前に、それぞれのプルリクエストは以下の条件を満たしていなければなりません。
+- インテグレーションテストに合格すること。
+- レビューの準備が整うまで、<a class="external-link" href="https://github.blog/2019-02-14-introducing-draft-pull-requests/" target="_blank">Draft <i aria-hidden="true" class="fa fa-external-link"></i></a>としてください。
+- このリポジトリの<a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.ja.md" target="_blank">コード規約 <i aria-hidden="true" class="fa fa-external-link"></i></a>を遵守してください。</p>
+<h2 id="dactylのセットアップ">Dactylのセットアップ<a aria-hidden="true" class="hover_anchor" href="#dactylのセットアップ"><i class="fa fa-link"></i></a></h2>
+<p>ポータルは<a class="external-link" href="https://github.com/ripple/dactyl" target="_blank">Dactyl <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用して構築されています。</p>
+<p>Dactylには<a class="external-link" href="https://python.org/" target="_blank">Python 3 <i aria-hidden="true" class="fa fa-external-link"></i></a>が必要です。<a class="external-link" href="https://pip.pypa.io/en/stable/" target="_blank">pip <i aria-hidden="true" class="fa fa-external-link"></i></a>を使ってインストールしてください：</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">pip3 install dactyl
+</code></pre></div>
+<h2 id="サイトの構築">サイトの構築<a aria-hidden="true" class="hover_anchor" href="#サイトの構築"><i class="fa fa-link"></i></a></h2>
+<p>このリポジトリでは、<a class="external-link" href="https://github.com/ripple/dactyl" target="_blank"><strong>Dactyl</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用して、すべてのドキュメントのHTMLをビルドしています。<a href="#dactylのセットアップ">Dactylのセットアップ</a>を行った後、プロジェクトのルートディレクトリからサイトをビルドすることができます。</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">dactyl_build
+</code></pre></div>
+<p>生成されたコンテンツは<code>out/</code>ディレクトリに出力されます。これらのコンテンツはウェブブラウザでファイルとして開いたり、ウェブサーバで静的コンテンツとして扱うことができます。</p>
+<p>ルートディレクトリからリンクチェックやスタイルチェックを実行することもできます。</p>
+<p>リンクチェックは出力フォルダを空にしてからビルドしてください。</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">dactyl_link_checker
+</code></pre></div>
+<p>スタイルチェックは実験的なものです。</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">dactyl_style_checker
+</code></pre></div>
+<h2 id="設定ファイルのフォーマット">設定ファイルのフォーマット<a aria-hidden="true" class="hover_anchor" href="#設定ファイルのフォーマット"><i class="fa fa-link"></i></a></h2>
+<p>このリポジトリでは、<code>dactyl-config.yml</code>ファイルのメタデータとページの<a class="external-link" href="https://dactyl.link/frontmatter.html" target="_blank">frontmatter <i aria-hidden="true" class="fa fa-external-link"></i></a>を使って、ヘッダー、フッター、サイドバー、パンくずリストなどのナビゲーション要素を生成します。</p>
+<p>新しいページを追加する場合、<code>dactyl-config.yml</code>ファイルのpages配列の適切な位置に追加する必要があります。追加例は次のようになります。</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">md</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">concepts/the-rippled-server/the-rippled-server.md</span>
+<span class="w">        </span><span class="nt">targets</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ja</span><span class="w"> </span><span class="c1"># 翻訳コンテンツがない場合、全てのターゲットを対象とします。</span>
+</code></pre></div>
+<p>Markdownファイル自体は、以下のようなfrontmatterで始まる必要があります。</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="nn">---</span>
+<span class="nt">html</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">the-rippled-server.html</span>
+<span class="nt">parent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">concepts.html</span>
+<span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pagetype-category.html.jinja</span>
+<span class="nt">blurb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.</span>
+<span class="nn">---</span>
+</code></pre></div>
+<p>少なくとも、ほとんどのページには <code>html</code>、<code>parent</code>、<code>blurb</code> フィールドが必要です(さらに、設定ファイルでは<code>md</code>フィールドと<code>targets</code>フィールドも必要です)。ここに、またはページの設定ファイルのエントリに任意のキーと値のペアを記述することができますが、以下のものが関係しています。</p>
+<h3 id="規約">規約<a aria-hidden="true" class="hover_anchor" href="#規約"><i class="fa fa-link"></i></a></h3>
+<p>ページを作成する際には、以下の規約に従ってください。</p>
+<ul>
+<li>HTMLのファイル名とMDのファイル名は、拡張子を除いて完全に一致していなければなりません。</li>
+<li>ファイル名は"and"や"the"のような単語を含め、ページのタイトルと密接に一致する必要がありますが、スペースや句読点の代わりにハイフンを使用し、すべて小文字にする必要があります。例えば、<code>cash-a-check-for-an-exact-amount.md</code>のようにします。ページのタイトルを変更した場合は、ファイル名も変更する必要があります。(すでに別のURLで公開されている場合は、古いURLからのリダイレクトを残してください)</li>
+<li>常にh1ヘッダーでページを始めます。</li>
+<li>ページの一番上のh1アンカーにはリンクせず、アンカーなしでページ自体にリンクしてください。これは翻訳時のリンク切れを防ぐのに役立ちます。以降のヘッダーへのリンクは問題ありません。</li>
+<li>ページのタイトルに書式( <em>italics</em> や<code>code font</code>など)を使わないでください。</li>
+<li>Markdownファイルのテキストを折り返さないでください。</li>
+<li>コードサンプルの場合、行は80文字以下になるようにしてください。</li>
+<li>迷ったら、<a class="external-link" href="https://cirosantilli.com/markdown-style-guide/" target="_blank">Ciro SantilliのMarkdownスタイルガイド (Writability Profile) <i aria-hidden="true" class="fa fa-external-link"></i></a>に従ってください。</li>
+<li>
+<p>ランディングページはサブフォルダに入れ、フォルダと同じファイル名とします。例えば、"Accounts"ページグループのランディングページは<code>accounts/accounts.md</code>で、HTMLファイル名は<code>accounts.html</code>です。</p>
+<p class="devportal-callout 注意"><strong>注意:</strong> <code>index.md</code>は利用しないでください。</p>
+</li>
+<li>
+<p>Markdownやコードサンプルでは、インデントにタブ文字を使用しないでください。<strong>JavaScript</strong>のコードサンプルでは、1字下げにつき2個のスペースを使用してください。</p>
+</li>
+</ul>
+<h3 id="技術用語">技術用語<a aria-hidden="true" class="hover_anchor" href="#技術用語"><i class="fa fa-link"></i></a></h3>
+<p>以下の単語やフレーズを説明通りに使用してください。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th>用語</th>
+<th>避けるべき用語</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API, APIs</td>
+<td>API's, RPC</td>
+<td>Application Programming Interface (アプリケーション・プログラミング・インターフェース)、ソフトウェアが他のソフトウェアと接続するための機能と定義のセット。</td>
+</tr>
+<tr>
+<td>コアサーバ, XRP Ledgerのコアサーバ</td>
+<td><code>rippled</code></td>
+<td><code>rippled</code>という名前は近い将来廃止される可能性が高いので、より一般的な名前で呼ぶことを推奨します。必要なときは、<code>rippled</code> をすべて小文字で、コードフォントで呼んでください。(発音は "リップルディー" で、"d" は UNIX の伝統に従って"daemon"を意味します)。</td>
+</tr>
+<tr>
+<td>金融機関</td>
+<td>銀行, FI, PSP (決済サービスプロバイダ)</td>
+<td>この用語は、<em>銀行</em> や他の用語よりも幅広いビジネスを包含し、業界の専門用語の理解に依存しません。</td>
+</tr>
+<tr>
+<td>レジャーエントリ</td>
+<td>レジャーオブジェクト, ノード</td>
+<td>XRP Ledgerの状態データ内の単一のオブジェクト。<em>レジャーオブジェクト</em> という用語は、これらの一つを指すこともあれば、レジャー全体を指すこともあります。レジャーの状態データはグラフとして想定できるため、<em>ノード</em> という用語が使われることもありましたが、<em>ノード</em> には他の用途もあるため、混乱を招きます。</td>
+</tr>
+<tr>
+<td>流動性提供者</td>
+<td>マーケットメイカー</td>
+<td>2つの通貨または資産間の売買を提供し、多くの場合、取引間の価格差から利益を得る企業または個人。マーケットメーカーという用語は、法域によっては特定の法律上の定義があり、すべての同じ状況で適用されるとは限りません。</td>
+</tr>
+<tr>
+<td>悪質業者</td>
+<td>ハッカー</td>
+<td>個人、組織、または自動化されたツールなどによる、機密情報の取得、暗号化の解除、サービスの拒否、その他の安全なリソースへの攻撃を試みる可能性のあるもの。</td>
+</tr>
+<tr>
+<td>PostgreSQL</td>
+<td>Postgres</td>
+<td>リレーショナルデータベース・ソフトウェアの特定のブランド。非公式な短いバージョンではなく、常に完全な名前を使用します。</td>
+</tr>
+<tr>
+<td>オーダーブック</td>
+<td>オファーブック</td>
+<td>マッチングされ約定されるのを待っているトレード注文のコレクション。通常は取引レートごとにソートされています。</td>
+</tr>
+<tr>
+<td>サーバ</td>
+<td>ノード</td>
+<td>サーバとは、ソフトウェアやハードウェアのことで、特にXRP Ledgerのピアツーピアネットワークに接続するものを指します。<em>ノード</em> という用語はこの目的のために使われることもありますが、グラフのエントリやJavaScriptインタプリタであるNode.jsなど、他の意味でも多用されます。</td>
+</tr>
+<tr>
+<td>ステーブルコイン発行者</td>
+<td>ゲートウェイ</td>
+<td>発行者とは、XRP Ledgerにおいてトークンを発行する組織です。ステーブルコインとは、発行者が外部の資産（例えば不換紙幣）に完全に裏付けられていることを約束しているトークンのことで、ステーブルコインの発行者は、その2つの資産を（場合によっては手数料を払って）交換する入出金操作を提供します。以前は、このユースケースを表現するために（特にリップル社によって）<em>ゲートウェイ</em> という用語が使用されていましたが、業界の他の部分は代わりに <em>ステーブルコイン発行者</em> を採用しました。</td>
+</tr>
+<tr>
+<td>トランザクションコスト</td>
+<td>トランザクション手数料</td>
+<td>XRP Ledgerでトランザクションを送信するために消費されるXRPの金額。これはトランザクションの<code>Fee</code>フィールドで指定されますが、<em>手数料</em> という用語は誰かにお金を支払うことを意味するため、<em>コスト</em> の方が望ましいです。</td>
+</tr>
+<tr>
+<td>トークン</td>
+<td>IOU, issuances, issues, 発行済み通貨</td>
+<td>XRP Ledgerのトークンは、<em>IOU</em> という名前から想像されるように、レジャーの外部にある価値を表すことはできません。必要であれば、<em>代替可能トークン</em> を使用して、非代替性トークン(NFT)と区別してください。</td>
+</tr>
+<tr>
+<td>ウォレット</td>
+<td>ウォレット</td>
+<td>文脈によっては、<em>ウォレット</em> はハードウェア、ソフトウェア、暗号鍵ペア、またはオンラインサービスを指します。意味が明確になるように十分な文脈を提供するか、<em>キーペア</em> や <em>クライアントアプリケーション</em> などの別の表現を使用してください。</td>
+</tr>
+<tr>
+<td>XRP</td>
+<td>Ripple, リップル</td>
+<td>XRPレジャーのネイティブデジタルアセットまたは暗号通貨。XRPはレジャーの外部の価値を表すトークンではありません。</td>
+</tr>
+<tr>
+<td>XRP Ledger</td>
+<td>Ripple, リップル, Ripple Network, リップルネットワーク, RCL</td>
+<td>XRP Ledgerは、過去に様々な場面で「リップルネットワーク」や「リップルコンセンサスレジャー」あるいは「RCL」と呼ばれていました。これらの名称は、コアサーバーのリファレンス実装を開発しているRipple(Ripple Labs)の社名と類似しているため、紛らわしく、廃止されました。</td>
+</tr>
+<tr>
+<td>XRPL</td>
+<td>XRPL</td>
+<td><em>XRP Ledger</em> の略です。<em>XRPL</em> は不明瞭で、<em>XRP</em> のタイプミスのように見えることがあります。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="frontmatterのフィールド">Frontmatterのフィールド<a aria-hidden="true" class="hover_anchor" href="#frontmatterのフィールド"><i class="fa fa-link"></i></a></h2>
+<p>このリポジトリのMarkdownファイルのfronmatterは任意のキーと値のペアを含むことができます。以下のフィールドは特定の用途や意味を持ちます。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>html</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">ページの出力ファイル名。<code>.html</code>で終わり、ターゲット内で一意でなければなりません。翻訳版のページでは、ファイル名は英語版のページと同じにしてください。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>parent</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">ページの「親」ページの<code>html</code>の値。このページがナビゲーションのどこに表示されるかを示します。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>blurb</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">ページの要約文(プレーンテキストのみ)。ランディングページやソーシャルメディア上でリンクを展開する際のメタデータなど、さまざまな場所に表示されます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">ページ名(プレーンテキストのみ)。 Markdownコンテンツのあるファイルでは、Dactylがコンテンツの最初の行のヘッダーから自動的に検出できるため、これを省略する必要があります。これは通常、Markdownファイルを持たないランディングページやその他の特別なページでのみ提供されます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>template</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">このページで使用するテンプレートファイルのファイル名(<code>template/</code>ディレクトリ内)。ほとんどのページはデフォルトのテンプレートを使用します。<code>pagetype-category.html.jinja</code>テンプレートは最後に子ページのリストを表示します。特別な、あるいは特にユニークなレイアウトを持つページには、個別のテンプレートが必要になることがあります(通常、<code>page-</code>で始まります)。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>status</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">XRP Ledgerメインネットでまだ有効になっていない修正に関連するページでは、<code>not_enabled</code>を使用します。これにより、ナビゲーションのページの横にツールチップ付きの"フラスコ"バッジが表示されます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nav_omit</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">ナビゲーション要素にこのページを表示しないようにするには<code>true</code>を使用します。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>top_nav_omit</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">ページトップのドロップダウンナビゲーションに表示しないようにするには、<code>true</code>を使用します。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>top_nav_level</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">トップナビのドロップダウンでページのインデントレベルを調整します。レベル<code>2</code>は、ドロップダウン内でその上のページの子のように表示されるようにインデントされます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sidebar</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">U左右のサイドバーを非表示にするには、<code>disabled</code>を使用します(ページがベーステンプレートから派生したテンプレートを使用している場合)。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fb_card</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Facebookでこのページへのリンクを展開する際に使用する画像のファイル名（<code>assets/img/</code>内）。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>twitter_card</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Twitterでこのページへのリンクを展開する際に使用する画像のファイル名（<code>assets/img/</code>内）。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>redirect_url</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><code>template: pagetype-redirect.html.jinja</code>でのみ使用します。ユーザがこのページに移動したときに、指定されたURLに自動的にリダイレクトします。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cta_text</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">このページにリンクする「call to action」ボタンに表示されるテキスト(特別なランディングページにて表示されます)。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>curated_anchors</code></td>
+<td style="text-align: left;">Array of Objects</td>
+<td style="text-align: left;">子ページと同様に、ランディングページに表示するためのアンカーです。配列の各オブジェクトは、人間が読める<code>name</code>フィールド(<code>"Available Modes"</code>など) と、リンク先のHTML IDを持つ<code>anchor</code>フィールド(<code>"#available-modes"</code>など)を持つ必要があります。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>skip_spell_checker</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><code>true</code>を使用すると、Dactylのスタイルチェッカーがこのページのスペルチェックをスキップします。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>filters</code></td>
+<td style="text-align: left;">Array of Strings</td>
+<td style="text-align: left;">このページで使用する追加フィルタのリストです。<a class="external-link" href="https://github.com/ripple/dactyl/blob/master/README.md#filters" target="_blank">フィルタ <i aria-hidden="true" class="fa fa-external-link"></i></a>はPythonスクリプトで、ページ内容の事前または事後の追加処理を行います。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>canonical_url</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">クエリパラメータを受け取るページの正規URLを提供します。検索エンジンやその他のツールは、ページにリンクする際にこれを使用する可能性があります。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>embed_xrpl_js</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">最新版の<a class="external-link" href="https://js.xrpl.org" target="_blank">xrpl.js <i aria-hidden="true" class="fa fa-external-link"></i></a>をこのページで読み込むには<code>true</code>を使用してください。</td>
+</tr>
+</tbody>
+</table>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -2933,21 +3168,36 @@
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item active">
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="true" aria-controls="tree_nav_group_3_7"></a>
 
-        <a class="nav-link" href="/ja/contributing-to-documentation.html">ドキュメントへの貢献</a>
+        <a class="nav-link" href="/ja/contribute-documentation.html">ドキュメントへの貢献</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_3_7">
       
-  <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/documentation-languages.html">翻訳</a>
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.ja.md">コントリビューター行動規範 <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/documentation-translations.html">翻訳</a>
   </div>
 
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/creating-diagrams.html">図の作成</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tutorial-guidelines.html">チュートリアルガイドライン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tutorial-structure.html">チュートリアルの構成</a>
   </div>
 
     </nav>
@@ -2966,16 +3216,6 @@
         <a class="nav-link" href="/ja/contribute.html">XRPLコミュニティへの貢献</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tutorial-guidelines.html">チュートリアルガイドライン</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tutorial-structure.html">チュートリアルの構成</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/events.html">イベント</a>
@@ -3069,7 +3309,7 @@
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
             <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">コードへの貢献</a></li>
-            <li class="nav-item"><a href="/ja/contributing-to-documentation.html" class="nav-link">ドキュメントへの貢献</a></li>
+            <li class="nav-item"><a href="/ja/contribute-documentation.html" class="nav-link">ドキュメントへの貢献</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -3077,8 +3317,6 @@
           <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">XRPLコミュニティへの貢献</a></li>
-            <li class="nav-item"><a href="/ja/tutorial-guidelines.html" class="nav-link">チュートリアルガイドライン</a></li>
-            <li class="nav-item"><a href="/ja/tutorial-structure.html" class="nav-link">チュートリアルの構成</a></li>
             <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
             <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
             <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
