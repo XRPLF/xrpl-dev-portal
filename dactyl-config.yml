@@ -5052,27 +5052,34 @@ pages:
 
     # Contribute Code ---------------------------------------------------------
 
-        # TODO: translate
     -   md: resources/contribute-code/contribute-code.md
         top_nav_grouping: Join In
         targets:
             - en
+
+    -   md: resources/contribute-code/contribute-code.ja.md
+        top_nav_grouping: 参加する
+        targets:
             - ja
 
-        # TODO: translate
     -   md: resources/contribute-code/create-custom-transactors.md
         targets:
             - en
+
+    -   md: resources/contribute-code/create-custom-transactors.ja.md
+        targets:
             - ja
 
     # Contribute Documentation ------------------------------------------------
-
-    # TODO: Translate section.
 
     -   md: resources/contribute-documentation/contribute-documentation.md
         top_nav_grouping: Join In
         targets:
             - en
+
+    -   md: resources/contribute-documentation/contribute-documentation.ja.md
+        top_nav_grouping: 参加する
+        targets:
             - ja
 
     -   name: Contributor Code of Conduct
@@ -5090,21 +5097,33 @@ pages:
     -   md: resources/contribute-documentation/documentation-translations.md
         targets:
             - en
+
+    -   md: resources/contribute-documentation/documentation-translations.ja.md
+        targets:
             - ja
 
     -   md: resources/contribute-documentation/creating-diagrams.md
         targets:
             - en
+
+    -   md: resources/contribute-documentation/creating-diagrams.ja.md
+        targets:
             - ja
 
     -   md: resources/contribute-documentation/tutorial-guidelines.md
         targets:
             - en
+
+    -   md: resources/contribute-documentation/tutorial-guidelines.ja.md
+        targets:
             - ja
 
     -   md: resources/contribute-documentation/tutorial-structure.md
         targets:
             - en
+
+    -   md: resources/contribute-documentation/tutorial-structure.ja.md
+        targets:
             - ja
 
 
@@ -5121,13 +5140,14 @@ pages:
         targets:
             - en
 
-        # TODO: translate blurb & contents
-    -   name: 貢献する
+        # TODO: translate contents
+    -   name: XRPLコミュニティへの貢献
         html: contribute.html
         parent: index.html
         template: page-community.html.jinja
         sidebar: disabled
-        blurb: 話題に加わろう
+        top_nav_blurb: Join the conversation
+        blurb: XRP Ledger (XRPL) はコミュニティ主導のパブリックブロックチェーンです。ここでは、その参加方法について説明します。
         top_nav_name: コミュニティ
         top_nav_hero_image: top-nav-hero-contribute
         targets:
@@ -5267,10 +5287,12 @@ pages:
         targets:
             - ja
 
-    # TODO: Translate
     -   md: contributing/report-a-scam.md
         targets:
             - en
+
+    -   md: contributing/report-a-scam.ja.md
+        targets:
             - ja
 
 # Redirects from deprecated "Explore" pages ------------------------------------

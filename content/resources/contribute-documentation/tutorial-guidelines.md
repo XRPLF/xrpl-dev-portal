@@ -31,7 +31,7 @@ Add into that Ralph Smedley’s quote, “We learn best in moments of enjoyment.
 
 # Sample Code vs. Tasks vs. Concepts vs. Tutorials
 
-To date, there have been some blurred lines where different types of documentation show up as _Tutorials._ Here are some comparisons that help define the distinction.
+To date, there have been some blurred lines where different types of documentation show up as _Tutorials_. Here are some comparisons that help define the distinction.
 
 
 ## Sample Code
@@ -81,5 +81,3 @@ For example, the first NFT tutorial shows how to mint, retrieve, and burn an NFT
 Don’t focus too much on the UX of the application, unless the look and feel is pertinent to the topic. Use the standard CSS file with the look and feel for all of the tutorials.
 
 Reuse the code from other modules when possible. There might be situations where you need to modify the behavior from an earlier module. You can either overload the function name or modify the module and save it with a different name.
-
-
