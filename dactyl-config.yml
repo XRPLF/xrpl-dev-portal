@@ -499,14 +499,12 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/introduction/what-is-xrpl.md
-        parent: introduction.html
+    -   md: concepts/introduction/what-is-the-xrp-ledger.md
         targets:
             - en
             - ja
 
     -   md: concepts/introduction/what-is-xrp.md
-        parent: introduction.html
         targets:
             - en
             - ja

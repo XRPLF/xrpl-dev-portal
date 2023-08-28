@@ -1,11 +1,10 @@
 ---
 html: what-is-xrp.html
-parent: intro-to-xrpl.html
+parent: introduction.html
 blurb: Learn about XRP, the cryptocurrency traded on the XRP Ledger.
 labels:
   - Blockchain
 ---
-
 # What is XRP?
 
 XRP is the cryptocurrency supported by the XRP Ledger.

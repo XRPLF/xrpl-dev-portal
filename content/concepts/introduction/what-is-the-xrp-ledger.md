@@ -1,11 +1,10 @@
 ---
-html: what-is-xrpl.html
-parent: intro-to-xrpl.html
-blurb: Learn about the XRP Ledger blockchain.
+html: what-is-the-xrp-ledger.html
+parent: introduction.html
+blurb: Learn about the XRP Ledger (XRPL) blockchain.
 labels:
   - Blockchain
 ---
-
 # What is the XRP Ledger?
 
 The XRP Ledger is a decentralized blockchain that uses its own digital currency to process and record financial transactions.
@@ -13,7 +12,7 @@ The XRP Ledger is a decentralized blockchain that uses its own digital currency 
 
 ## What Is a Blockchain?
 
-A blockchain is a continuously growing list of records. The blockchain starts with a block of data. 
+A blockchain is a continuously growing list of records. The blockchain starts with a block of data.
 
 ![A block of data](img/introduction2-data-block.png)
 
@@ -57,4 +56,4 @@ Most of the rippled servers in the XRPL monitor or propose transactions. An impo
 
 The XRPL is open to anyone who wants to set up their own instance of the rippled server and connect. The node can monitor the network, perform transactions, or become a validator.
 
-For developers or new users who want to try out the features of XRPL without investing their own funds, there are two developer environments, _Testnet_ and _Devnet_. Users can create an account funded with 1,000 (fake) XRP and connect to either environment to interact with the XRPL. 
+For developers or new users who want to try out the features of XRPL without investing their own funds, there are two developer environments, _Testnet_ and _Devnet_. Users can create an account funded with 1,000 (fake) XRP and connect to either environment to interact with the XRPL.
