@@ -324,10 +324,15 @@
 <p>This creates an open, distributed ledger that records transactions between parties efficiently and in a verifiable and permanent way.</p>
 <p>Once recorded, the data in any given block cannot be altered retroactively, unless a majority of the validators agree to the change. If so, all subsequent blocks are changed in the same way (a very rare and extreme occurrence).</p>
 <h3 id="how-does-the-federated-consensus-process-work">How Does the Federated Consensus Process Work?<a aria-hidden="true" class="hover_anchor" href="#how-does-the-federated-consensus-process-work"><i class="fa fa-link"></i></a></h3>
-<p>Most of the rippled servers in the XRPL monitor or propose transactions. An important subset of servers are run as validators. These trusted servers accumulate lists of new transactions into a new possible ledger instance (a new block in the block chain). They share their lists with all of the other validators. The validators incorporate proposed changes from one another and distribute a new version of the ledger proposal. When 80% of the validators agree on a set of transactions, they create a new ledger instance at the end of the chain and start the process again. This consensus process takes 4-6 seconds. You can monitor as ledger instances are created in real time by visiting <a class="external-link" href="https://livenet.xrpl.org/" target="_blank">https://livenet.xrpl.org/ <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>Most of the rippled servers in the XRPL monitor or propose transactions. An important subset of servers are run as validators. These trusted servers accumulate lists of new transactions into a new possible ledger instance (a new block in the block chain).</p>
+<p><img alt="Gathering Transactions" src="img/introduction17-gather-txns.png"/></p>
+<p>They share their lists with all of the other validators. The validators incorporate proposed changes from one another and distribute a new version of the ledger proposal.</p>
+<p><img alt="80% Consensus" src="img/introduction18-80-percent-consensus.png"/></p>
+<p>When 80% of the validators agree on a set of transactions, they create a new ledger instance at the end of the chain and start the process again. This consensus process takes 4-6 seconds. You can monitor as ledger instances are created in real time by visiting <a class="external-link" href="https://livenet.xrpl.org/" target="_blank">https://livenet.xrpl.org/ <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h3 id="what-networks-are-available">What Networks Are Available?<a aria-hidden="true" class="hover_anchor" href="#what-networks-are-available"><i class="fa fa-link"></i></a></h3>
-<p>The XRPL is open to anyone who wants to set up their own instance of the rippled server and connect. The node can monitor the network, perform transactions, or become a validator.</p>
+<p>The XRPL is open to anyone who wants to set up their own instance of the rippled server and connect. The node can monitor the network, perform transactions, or become a validator. The active XRPL network is typically referred to as <em>Mainnet</em>.</p>
 <p>For developers or new users who want to try out the features of XRPL without investing their own funds, there are two developer environments, <em>Testnet</em> and <em>Devnet</em>. Users can create an account funded with 1,000 (fake) XRP and connect to either environment to interact with the XRPL.</p>
+<p>Next: <a href="what-is-xrp.html">What is XRP?</a></p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -2768,6 +2773,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="private-network-with-docker.html">Run a Private Network with Docker</a>
   </div>
 
     </nav>

@@ -309,12 +309,20 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="transactions-and-requests">Transactions and Requests<a aria-hidden="true" class="hover_anchor" href="#transactions-and-requests"><i class="fa fa-link"></i></a></h1>
-<p>All interactions with the XRP Ledger involve either sending a transaction that makes changes to the ledger or sending a request for information from the ledger.</p>
+<p>Most interactions with the XRP Ledger involve either sending a transaction that makes changes to the ledger or sending a request for information from the ledger. You can also subscribe to monitor continual notifications of interest.</p>
 <h2 id="how-do-transactions-work">How Do Transactions Work?<a aria-hidden="true" class="hover_anchor" href="#how-do-transactions-work"><i class="fa fa-link"></i></a></h2>
-<p>You execute a transaction by sending a REST command to the XRP Ledger and waiting for the response. The command syntax is always the same for every transaction.</p>
+<p>Use transactions to make changes on the ledger such as transferring XRP and other tokens between accounts; minting and burning NFTs; and creating, accepting, and cancelling offers. You execute a transaction by sending a command to the XRP Ledger and watching for confirmation that the transaction is complete. The command syntax format is the same for every transaction.</p>
+<ul>
+<li>
 <p>You must always provide the <em>TransactionType</em> and the public address of the <em>Account</em> making the transaction.</p>
-<p>Two required fields are the <em>Fee</em> for the transaction and the next <em>Sequence</em> number for transactions from the account. These fields can be filled in automatically by the ledger server when you submit the transaction.</p>
-<p>Specific transactions also have required fields specific to the transaction type. For example, a <em>Payment</em> transaction requires an <em>Amount</em> value (in <em>drops</em>, or millionths of an XRP) and a <em>Destination</em> public address to which the funds are credited.</p>
+</li>
+<li>
+<p>Two required fields are the <em>Fee</em> for the transaction and the next <em>Sequence</em> number for transactions from the account. These fields can be filled in automatically.</p>
+</li>
+<li>
+<p>Transactions can also have required fields specific to the transaction type. For example, a <em>Payment</em> transaction requires an <em>Amount</em> value (in <em>drops</em>, or millionths of an XRP) and a <em>Destination</em> public address to which the funds are credited.</p>
+</li>
+</ul>
 <p>Here is a sample transaction in JSON format. This transaction transfers 1 XRP from account <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em> to destination account <em>ra5nK24KXen9AHvsdFTKHSANinZseWnPcX</em>.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
@@ -324,18 +332,23 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Optional fields are available for all transactions, with additional fields available for specific transactions. You can include as many optional fields as you need, but do not have to include every field in every transaction.</p>
-<p>You send the transaction to the ledger as a RESTful command from JavaScript, Python, the command line, or any compatible service. The rippled server proposes the transaction to the ledger. When 80% of the validators approve the transaction, it is recorded as part of the permanent ledger. The ledger returns the results of the transaction.</p>
+<p>You send the transaction to the ledger as a command from JavaScript, Python, the command line, or any compatible service. The rippled servers propose transactions to the XRPL. </p>
+<p><img alt="Proposed Transacations" src="img/introduction17-gather-txns.png"/></p>
+<p>When 80% of the validators approve a current set of proposed transactions, they are recorded as part of the permanent ledger. The rippled server returns the results of the transaction you sent.</p>
 <p>For more information on Transactions, see <a href="transactions.html">Transactions</a>.</p>
 <h2 id="how-do-requests-work">How Do Requests Work?<a aria-hidden="true" class="hover_anchor" href="#how-do-requests-work"><i class="fa fa-link"></i></a></h2>
-<p>Requests are similar to transactions, but they do not make changes to the ledger.</p>
+<p>Requests are used to get information from the ledger, but they do not make changes to the ledger. The information is freely available to anyone to view, so there is no need to sign in with your account information.</p>
 <p>The fields you send vary with the type of information you request. They typically have several optional fields, but only a few required fields.</p>
+<p>When you submit your request, it might be processed by a rippled server or by a Clio server, a server that is dedicated to responding to requests.</p>
+<p><img alt="Clio Server" src="img/introduction19-clio.png"/></p>
+<p>Clio servers take some of the load off the other rippled servers on the XRPL to improve processing speed and reliability.</p>
 <p>This is a sample request in JSON format. This request gets the current account information for the account number you provide.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_info"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>The request returns a wealth of information in a format appropriate for the language you used to make the request. Here is an example of the response for an account information request in JSON format.</p>
+<p>The request returns a wealth of information. Here is an example response for an account information request in JSON format.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">"account_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -381,6 +394,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>For information on the fields in an Account record, see <a href="accounts.html">Accounts</a>.</p>
+<p>Next: <a href="software-ecosystem.html">Software Ecosystem</a></p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -2811,6 +2825,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
   </div>
 
     </nav>

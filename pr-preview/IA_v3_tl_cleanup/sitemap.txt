@@ -439,6 +439,7 @@ https://xrpl.org/server-is-amendment-blocked.html
 https://xrpl.org/server-wont-start.html
 https://xrpl.org/fix-sqlite-tx-db-page-size-issue.html
 https://xrpl.org/install-clio-on-ubuntu.html
+https://xrpl.org/private-network-with-docker.html
 https://xrpl.org/run-a-rippled-validator.html
 https://xrpl.org/list-xrp-in-your-exchange.html
 https://xrpl.org/contribute-code-to-rippled.html
