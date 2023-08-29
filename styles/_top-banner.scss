@@ -1,7 +1,9 @@
 /* sticky APEX banner */
-@keyframes pulsate {}
+@keyframes pulsate {
+}
 
-.banner-container, html.light .banner-container {
+.banner-container,
+html.light .banner-container {
   display: flex;
   width: 100%;
   position: relative;
@@ -10,7 +12,7 @@
   overflow: hidden;
 
   height: 36px;
-  
+
   @include media-breakpoint-up(lg) {
     height: 48px;
   }
@@ -35,7 +37,8 @@
     }
   }
 
-  .d-xxl-block { // nonstandard-breakpoint for this banner only
+  .d-xxl-block {
+    // nonstandard-breakpoint for this banner only
     @media (min-width: 1400px) {
       display: block !important;
     }
@@ -81,7 +84,7 @@
   &:hover {
     text-decoration: none;
     color: $white;
-    
+
     .apex-highlight {
       color: $apex-2023-green;
     }
@@ -94,10 +97,116 @@
       border-color: $magenta;
     }
   }
-  &:active, &:focus {
-    // don't turn white on click
+  &:active,
+  &:focus {
     background-color: $accent-blue-90 !important;
     color: $white;
+  }
+}
+.token-banner-container,
+html.light .token-banner-container {
+  display: flex;
+  width: 100%;
+  position: relative;
+  background-color: $accent-blue-90;
+  color: $white;
+  border-top: 5px solid $apex-2023-green;
+
+  height: 48px;
+
+  @include media-breakpoint-up(lg) {
+    height: 60px;
+  }
+
+  & > img {
+    height: 36px;
+
+    @include media-breakpoint-up(lg) {
+    }
+  }
+
+  & > div {
+    font-family: Work Sans;
+    font-weight: 600;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 22px;
+    }
+  }
+
+  .d-xxl-block {
+    @media (min-width: 1400px) {
+      display: block !important;
+    }
+  }
+
+  .token-reg {
+    text-align: center;
+    line-height: 3rem;
+    @include media-breakpoint-up(md) {
+      padding: 0 1rem;
+    }
+  }
+
+  .token-highlight {
+    color: $token-2049-purple;
+    @include media-breakpoint-up(sm) {
+      line-height: 3rem;
+    }
+  }
+
+  .token-circled {
+    padding: 0 1rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: border-color 0.5s ease;
+
+    border: 2px solid $white;
+    height: 36px;
+    border-radius: 32px;
+    font-size: 2vw;
+    margin-top: 2px;
+    line-height: 3rem;
+
+    @include media-breakpoint-up(lg) {
+      border-width: 3px;
+      height: 48px;
+      border-radius: 40px;
+      font-size: 16px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      font-size: 19px;
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: $white;
+
+    .token-highlight {
+      color: $token-2049-purple; /* Adjust as needed */
+    }
+
+    .highlight-yellow {
+      border-color: $yellow;
+    }
+
+    .highlight-purple {
+      border-color: $magenta;
+    }
+  }
+
+  &:active,
+  &:focus {
+    background-color: $accent-blue-90 !important;
+    color: $white;
+  }
+
+  .js-clock .box {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
   }
 }
 
@@ -156,8 +265,8 @@
 }
 
 .top-nav {
-    position: sticky;
-    width: 100%;
+  position: sticky;
+  width: 100%;
 }
 
 .right-sidebar,
