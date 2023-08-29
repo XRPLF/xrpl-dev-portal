@@ -110,8 +110,6 @@ html.light .token-banner-container {
   position: relative;
   background-color: $accent-blue-90;
   color: $white;
-  border-top: 5px solid $apex-2023-green;
-
   height: 48px;
 
   @include media-breakpoint-up(lg) {
@@ -149,7 +147,7 @@ html.light .token-banner-container {
   }
 
   .token-highlight {
-    color: $token-2049-purple;
+    color: $apex-2023-green;
     @include media-breakpoint-up(sm) {
       line-height: 3rem;
     }
@@ -161,12 +159,13 @@ html.light .token-banner-container {
     white-space: nowrap;
     transition: border-color 0.5s ease;
 
+    // sm breakpoint
     border: 2px solid $white;
     height: 36px;
+    line-height: 32px;
     border-radius: 32px;
     font-size: 2vw;
     margin-top: 2px;
-    line-height: 3rem;
 
     @include media-breakpoint-up(lg) {
       border-width: 3px;
@@ -176,7 +175,7 @@ html.light .token-banner-container {
     }
 
     @include media-breakpoint-up(xl) {
-      font-size: 19px;
+      font-size: 22px;
     }
   }
 
@@ -185,7 +184,7 @@ html.light .token-banner-container {
     color: $white;
 
     .token-highlight {
-      color: $token-2049-purple; /* Adjust as needed */
+      color: $apex-2023-green; /* Adjust as needed */
     }
 
     .highlight-yellow {

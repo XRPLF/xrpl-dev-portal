@@ -1,15 +1,4 @@
-<a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-  <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-  <div class="apex-reg">{% trans %}Register for <span class="apex-highlight">APEX Dev Summit 2023</span>{% endtrans %}</div>
-  <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-  <div class="apex-circled highlight-yellow">{% trans %}Amsterdam{% endtrans %}</div>
-  <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-  <div class="apex-circled d-none d-lg-block highlight-purple">{% trans %}Register Now{% endtrans %}</div>
-  <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-</a>
+
 
 <!-- Inline script to conditionally display the banner -->
   <script>
@@ -24,7 +13,7 @@
 
     if (isTargetCountry) {
       // Define the banner HTML with the countdown timer
-      let bannerHTML = `
+      let token2049bannerHTML = `
         <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
             <div id="js-clock" class="js-clock d-flex align-items-center">
             <div class="box">
@@ -45,14 +34,33 @@
             </div>
           </div>
           <div class="token-reg">{% trans %}Countdown to XRPL Zone<span class="token-highlight"> @Token2049</span>{% endtrans %}</div>
-           <div class="token-circled d-lg-block highlight-purple">{% trans %} Singapore{% endtrans %}</div>
+           <div class="token-circled d-lg-block highlight-yellow">{% trans %} Singapore{% endtrans %}</div>
            <div class="token-reg"> {% trans %} 12 September 2023 {% endtrans %} </div>
+            <div class="token-circled d-none d-lg-block highlight-purple">{% trans %}Register Now{% endtrans %}</div>
         </a>
       `;
 
       // Write the banner directly to the document
-      document.write(bannerHTML);
-    }
+      document.write(token2049bannerHTML);
+    } else {
+      let apexBanner = `
+          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
+            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
+            <div class="apex-reg">{% trans %}Register for <span class="apex-highlight">APEX Dev Summit 2023</span>{% endtrans %}</div>
+            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
+            <div class="apex-circled highlight-yellow">{% trans %}Amsterdam{% endtrans %}</div>
+            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
+            <div class="apex-circled d-none d-lg-block highlight-purple">{% trans %}Register Now{% endtrans %}</div>
+            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
+          </a>`;
+
+      // Write the banner directly to the document
+      document.write(apexBanner);
+}
+
   </script>
 
   <!-- Countdown timer script -->
