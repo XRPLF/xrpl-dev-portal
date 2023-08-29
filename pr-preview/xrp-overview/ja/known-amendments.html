@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v21.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v22.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -271,68 +271,76 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#既知のamendment">既知のAmendment</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#checks">Checks</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditions">CryptoConditions</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#メインネットの既知のamendment">メインネットの既知のAmendment</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#開発中のamendment">開発中のAmendment</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#撤回または廃止されたamendment">撤回または廃止されたAmendment</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#既知のamendmentsの詳細">既知のAmendmentsの詳細</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#amm">AMM</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#checks">Checks</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#clawback">Clawback</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#xchainbridge">XChainBridge</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#cryptoconditions">CryptoConditions</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditionssuite">CryptoConditionsSuite</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#deletableaccounts">DeletableAccounts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#depositauth">DepositAuth</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#depositpreauth">DepositPreauth</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#disallowincoming">DisallowIncoming</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#enforceinvariants">EnforceInvariants</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#escrow">Escrow</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#expandedsignerlist">ExpandedSignerList</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#feeescalation">FeeEscalation</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1201">fix1201</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1368">fix1368</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1373">fix1373</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1512">fix1512</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1513">fix1513</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1515">fix1515</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1523">fix1523</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1528">fix1528</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1543">fix1543</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1571">fix1571</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1578">fix1578</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1623">fix1623</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1781">fix1781</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixamendmentmajoritycalc">fixAmendmentMajorityCalc</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixcheckthreading">fixCheckThreading</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokenremint">fixNFTokenRemint</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixtrustlinestoself">fixTrustLinesToSelf</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixuniversalnumber">fixUniversalNumber</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#flow">Flow</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#flowcross">FlowCross</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#flowsortstrands">FlowSortStrands</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#flowv2">FlowV2</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#hardenedvalidations">HardenedValidations</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#immediateofferkilled">ImmediateOfferKilled</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#multisign">MultiSign</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#multisignreserve">MultiSignReserve</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#negativeunl">NegativeUNL</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#ownerpaysfee">OwnerPaysFee</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#paychan">PayChan</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#shamapv2">SHAMapV2</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#sorteddirectories">SortedDirectories</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#suspay">SusPay</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#ticketbatch">TicketBatch</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#tickets">Tickets</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#ticksize">TickSize</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#trustsetauth">TrustSetAuth</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#xrpfees">XRPFees</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#deletableaccounts">DeletableAccounts</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#depositauth">DepositAuth</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#depositpreauth">DepositPreauth</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#disallowincoming">DisallowIncoming</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#enforceinvariants">EnforceInvariants</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#escrow">Escrow</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#expandedsignerlist">ExpandedSignerList</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#feeescalation">FeeEscalation</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1201">fix1201</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1368">fix1368</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1373">fix1373</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1512">fix1512</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1513">fix1513</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1515">fix1515</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1523">fix1523</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1528">fix1528</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1543">fix1543</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1571">fix1571</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1578">fix1578</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1623">fix1623</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1781">fix1781</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixamendmentmajoritycalc">fixAmendmentMajorityCalc</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixcheckthreading">fixCheckThreading</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixnftokenremint">fixNFTokenRemint</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixtrustlinestoself">fixTrustLinesToSelf</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixuniversalnumber">fixUniversalNumber</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#flow">Flow</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#flowcross">FlowCross</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#flowsortstrands">FlowSortStrands</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#flowv2">FlowV2</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#hardenedvalidations">HardenedValidations</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#hooks">Hooks</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#immediateofferkilled">ImmediateOfferKilled</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#multisign">MultiSign</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#multisignreserve">MultiSignReserve</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#negativeunl">NegativeUNL</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ownerpaysfee">OwnerPaysFee</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#paychan">PayChan</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#shamapv2">SHAMapV2</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#sorteddirectories">SortedDirectories</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#suspay">SusPay</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ticketbatch">TicketBatch</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#tickets">Tickets</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ticksize">TickSize</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#trustsetauth">TrustSetAuth</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#xrpfees">XRPFees</a></li>
       </ul>
   </div>
       </aside>
@@ -354,22 +362,18 @@
     <div class="content">
         <h1 id="既知のamendment">既知のAmendment<a aria-hidden="true" class="hover_anchor" href="#既知のamendment"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/xrplf/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<h2 id="メインネットの既知のamendment">メインネットの既知のAmendment<a aria-hidden="true" class="hover_anchor" href="#メインネットの既知のamendment"><i class="fa fa-link"></i></a></h2>
 <p>以下に示すのは、本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。</p>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> このリストは手動で更新されています。最新のステータスは<a class="external-link" href="https://xrpscan.com/amendments" target="_blank">XRPScan Amendment Dashboard <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧下さい。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;">名前</th>
-<th style="text-align: left;">導入済み</th>
+<th style="text-align: left;">登場</th>
 <th style="text-align: left;">ステータス</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
-<td style="text-align: left;">未定</td>
-<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
-</tr>
 <tr>
 <td style="text-align: left;"><a href="#fixnftokenremint">fixNFTokenRemint</a></td>
 <td style="text-align: left;">v1.11.0</td>
@@ -383,27 +387,27 @@
 <tr>
 <td style="text-align: left;"><a href="#disallowincoming">DisallowIncoming</a></td>
 <td style="text-align: left;">v1.10.0</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html" target="_blank" title="有効予想: 2023-08-21"><img alt="有効予想: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9%E4%BA%88%E6%83%B3-2023--08--21-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E" target="_blank" title="有効: 2023-08-21"><img alt="有効: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2023--08--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></td>
 <td style="text-align: left;">v1.10.0</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html" target="_blank" title="有効予想: 2023-08-21"><img alt="有効予想: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9%E4%BA%88%E6%83%B3-2023--08--21-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/3AB0892CAB29F049B9D9E5D522701FD01469D0B97080626F8DD4B489D0B8784E" target="_blank" title="有効: 2023-08-21"><img alt="有効: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2023--08--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#fixtrustlinestoself">fixTrustLinesToSelf</a></td>
 <td style="text-align: left;">v1.10.0</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html" target="_blank" title="有効予想: 2023-08-21"><img alt="有効予想: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9%E4%BA%88%E6%83%B3-2023--08--21-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/4F4C05142CA1DE257CD86513086F0C99FAF06D80932377C6B6C02B3D09623A43" target="_blank" title="有効: 2023-08-21"><img alt="有効: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2023--08--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#fixuniversalnumber">fixUniversalNumber</a></td>
 <td style="text-align: left;">v1.10.0</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html" target="_blank" title="有効予想: 2023-08-21"><img alt="有効予想: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9%E4%BA%88%E6%83%B3-2023--08--21-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/EFE82B7155CE5B766AF343D98DAE6662C2713C99E760D610370D02338881B2F3" target="_blank" title="有効: 2023-08-21"><img alt="有効: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2023--08--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#immediateofferkilled">ImmediateOfferKilled</a></td>
 <td style="text-align: left;">v1.10.0</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/disallowincoming-and-others-expected.html" target="_blank" title="有効予想: 2023-08-21"><img alt="有効予想: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9%E4%BA%88%E6%83%B3-2023--08--21-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B" target="_blank" title="有効: 2023-08-21"><img alt="有効: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2023--08--21-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></td>
@@ -635,50 +639,147 @@
 <td style="text-align: left;">v0.31.0</td>
 <td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3" target="_blank" title="有効: 2016/05/19"><img alt="有効: 2016/05/19" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9C%89%E5%8A%B9-2016/05/19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
+</tbody>
+</table>
+<p class="devportal-callout 注記"><strong>注記:</strong> 多くの場合、旧バージョンのソフトウェアには不完全バージョンの修正用コードが存在します。上の表内の「導入済み」バージョンは最初の安定バージョンです。「未定」は、修正がまだ安定していないと見なされていることを示します。</p>
+<h2 id="開発中のamendment">開発中のAmendment<a aria-hidden="true" class="hover_anchor" href="#開発中のamendment"><i class="fa fa-link"></i></a></h2>
+<p>以下は、現在開発中の<a href="amendments.html">Amendment</a>のリストで、変更をテストするためのテストネットが利用可能です。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">名前</th>
+<th style="text-align: left;">ステータス</th>
+<th style="text-align: left;">追加情報</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="#hooks">Hooks</a></td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://hooks.xrpl.org/" target="_blank">XRPL Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#xchainbridge">XChainBridge</a></td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md" target="_blank">XLS-38d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/" target="_blank">ドキュメント <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#clawback">Clawback</a></td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md" target="_blank">XLS-39d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/" target="_blank">ドキュメント <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#amm">AMM</a></td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/pull/125" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/" target="_blank">ドキュメント <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
+<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p class="devportal-callout 注記"><strong>注記:</strong> このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRPレジャーへの貢献についての詳細は、<a href="contribute-code-flow.html">XRP Ledgerのコードへの貢献</a>をご覧ください。</p>
+<h2 id="撤回または廃止されたamendment">撤回または廃止されたAmendment<a aria-hidden="true" class="hover_anchor" href="#撤回または廃止されたamendment"><i class="fa fa-link"></i></a></h2>
+<p>以下は、以前のバージョンで廃止され削除された、あるいは撤回され削除のマークが付けられた、既知の<a href="amendments.html">Amendment</a>の一覧です。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">名前</th>
+<th style="text-align: left;">登場</th>
+<th style="text-align: left;">ステータス</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td style="text-align: left;"><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></td>
 <td style="text-align: left;">v1.9.2</td>
-<td style="text-align: left;"><a title="廃止: 削除未定"><img alt="廃止: 削除未定" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-%E5%89%8A%E9%99%A4%E6%9C%AA%E5%AE%9A-red.svg"/></a></td>
+<td style="text-align: left;"><a title="撤回: 削除予定"><img alt="撤回: 削除予定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%92%A4%E5%9B%9E-%E5%89%8A%E9%99%A4%E4%BA%88%E5%AE%9A-red.svg"/></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#fixnftokendirv1">fixNFTokenDirV1</a></td>
 <td style="text-align: left;">v1.9.1</td>
-<td style="text-align: left;"><a title="廃止: 削除未定"><img alt="廃止: 削除未定" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-%E5%89%8A%E9%99%A4%E6%9C%AA%E5%AE%9A-red.svg"/></a></td>
+<td style="text-align: left;"><a title="撤回: 削除予定"><img alt="撤回: 削除予定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%92%A4%E5%9B%9E-%E5%89%8A%E9%99%A4%E4%BA%88%E5%AE%9A-red.svg"/></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#nonfungibletokensv1">NonFungibleTokensV1</a></td>
 <td style="text-align: left;">v1.9.0</td>
-<td style="text-align: left;"><a title="廃止: 削除未定"><img alt="廃止: 削除未定" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-%E5%89%8A%E9%99%A4%E6%9C%AA%E5%AE%9A-red.svg"/></a></td>
+<td style="text-align: left;"><a title="撤回: 削除予定"><img alt="撤回: 削除予定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%92%A4%E5%9B%9E-%E5%89%8A%E9%99%A4%E4%BA%88%E5%AE%9A-red.svg"/></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
 <td style="text-align: left;">v0.60.0</td>
-<td style="text-align: left;"><a title="廃止: 削除未定"><img alt="廃止: 削除未定" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-%E5%89%8A%E9%99%A4%E6%9C%AA%E5%AE%9A-red.svg"/></a></td>
+<td style="text-align: left;"><a title="撤回: 削除予定"><img alt="撤回: 削除予定" class="dactyl_badge" src="https://img.shields.io/badge/%E6%92%A4%E5%9B%9E-%E5%89%8A%E9%99%A4%E4%BA%88%E5%AE%9A-red.svg"/></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#shamapv2">SHAMapV2</a></td>
 <td style="text-align: left;">v0.32.1</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2019/rippled-1.4.0.html" target="_blank" title="禁止: v1.4.0で削除"><img alt="禁止: v1.4.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v1.4.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2019/rippled-1.4.0.html" target="_blank" title="廃止: v1.4.0で削除済み"><img alt="廃止: v1.4.0で削除済み" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-v1.4.0%E3%81%A7%E5%89%8A%E9%99%A4%E6%B8%88%E3%81%BF-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#flowv2">FlowV2</a></td>
 <td style="text-align: left;">v0.32.1</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2016/flowv2-vetoed.html" target="_blank" title="禁止: v0.33.0で削除"><img alt="禁止: v0.33.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.33.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2016/flowv2-vetoed.html" target="_blank" title="廃止: v0.33.0で削除済み"><img alt="廃止: v0.33.0で削除済み" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-v0.33.0%E3%81%A7%E5%89%8A%E9%99%A4%E6%B8%88%E3%81%BF-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#suspay">SusPay</a></td>
 <td style="text-align: left;">v0.31.0</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" target="_blank" title="禁止: v0.60.0で削除"><img alt="禁止: v0.60.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.60.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" target="_blank" title="廃止: v0.60.0で削除済み"><img alt="廃止: v0.60.0で削除済み" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-v0.60.0%E3%81%A7%E5%89%8A%E9%99%A4%E6%B8%88%E3%81%BF-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#tickets">Tickets</a></td>
 <td style="text-align: left;">v0.30.1</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2018/rippled-0.90.0.html" target="_blank" title="禁止: v0.90.0で削除"><img alt="禁止: v0.90.0で削除" class="dactyl_badge" src="https://img.shields.io/badge/%E7%A6%81%E6%AD%A2-v0.90.0%E3%81%A7%E5%89%8A%E9%99%A4-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2018/rippled-0.90.0.html" target="_blank" title="廃止: v0.90.0で削除済み"><img alt="廃止: v0.90.0で削除済み" class="dactyl_badge" src="https://img.shields.io/badge/%E5%BB%83%E6%AD%A2-v0.90.0%E3%81%A7%E5%89%8A%E9%99%A4%E6%B8%88%E3%81%BF-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout 注記"><strong>注記:</strong> 多くの場合、旧バージョンのソフトウェアには不完全バージョンの修正用コードが存在します。上の表内の「導入済み」バージョンは最初の安定バージョンです。「未定」は、修正がまだ安定していないと見なされていることを示します。</p>
-<h2 id="checkcashmakestrustline">CheckCashMakesTrustLine<a aria-hidden="true" class="hover_anchor" href="#checkcashmakestrustline"><i class="fa fa-link"></i></a></h2>
+<h2 id="既知のamendmentsの詳細">既知のAmendmentsの詳細<a aria-hidden="true" class="hover_anchor" href="#既知のamendmentsの詳細"><i class="fa fa-link"></i></a></h2>
+<h3 id="amm">AMM<a aria-hidden="true" class="hover_anchor" href="#amm"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Automated Market Maker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">8CC0774A3BF66D1D22E76BBDA8E8A232E6B6313834301B3B23E8601196AE6455</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+</tbody>
+</table>
+<p>既存の分散型取引所と統合された形で、自動マーケットメーカー(AMM)機能に追加します。各アセット（トークンまたはXRP）のペアは、Ledger上に最大1つのAMMプールを持つことができ、誰でも流動性を提供することで、収益と為替リスクを比例配分することができます。各AMMプールのインスタンスはその資産を保持するための特別なアカウントを持ち、流動性プロバイダーに対してその預入額に応じて"LPトークン"を発行します。流動性プロバイダーは、LPトークンのシェアに基づいてAMMプールの取引手数料に投票することができます。ユーザは、一定期間取引手数料が割引される権利にLPトークンを使って入札することができます。</p>
+<p>追加される新規トランザクション</p>
+<ul>
+<li>AMMBid - 取引手数料を割引するAMMプールのオークション枠に入札します。</li>
+<li>AMMCreate - AMMプールの新しいインスタンスを作成し、初期資金を供給します。</li>
+<li>AMMDelete - 空となったAMMプールのインスタンスを削除します。</li>
+<li>AMMDeposit - 既存のAMMプールに資金を供給し、LPトークンを受け取ります。</li>
+<li>AMMWithdraw - LPトークンをAMMプールに返却して資金を引き出します。</li>
+<li>AMMVote - AMMプールの取引手数料について投票します。</li>
+</ul>
+<p>既存のトランザクションを新たな機能でアップデートします。</p>
+<ul>
+<li>資産の取引に利用可能なPaymentとOfferCreateトランザクションは、より最良の取引レートを利用可能とするためにOfferとAMMの任意の組み合わせを利用します。</li>
+<li>AMMの特別なアカウントに送信できないトランザクションがあります（例えば、AMMはCheckを換金できないため、AMMへのCheckCreateは許可されません）。</li>
+</ul>
+<p>新しいタイプのレジャーエントリ<code>AMM</code>を追加し、<code>AccountRoot</code>レジャーエントリタイプに<code>AMMID</code>フィールドを追加します。</p>
+<p>いくつかの新しい結果コードを追加します。</p>
+<h3 id="checkcashmakestrustline">CheckCashMakesTrustLine<a aria-hidden="true" class="hover_anchor" href="#checkcashmakestrustline"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -708,7 +809,7 @@
 <p><a href="checkcash.html">CheckCashトランザクション</a>を修正し、<a href="checks.html">Check</a>を現金化して発行されたトークンを入手すると、トークンを保持する<a href="trust-lines-and-issuing.html">トラストライン</a>を自動的に作成するようにしました。この新しい動作は、ユーザーが分散型取引所でトークンを購入する際の<a href="offercreate.html">OfferCreateトランザクション</a>の動作に似ています。自動的に作成されたトラストラインには限度額0が設定されています。これにより、Checkでトークンを受け取る前にトラストラインを設定するという設定ステップがなくなります。(XRPを送信するCheckは影響を受けません)。</p>
 <p>この修正を適用しない場合、ユーザーは、Checkを発行トークンと交換する前に、別途<a href="trustset.html">TrustSetトランザクション</a>を送信する必要があります。</p>
 <p>この修正は、XRP Ledgerにおいて不要なトークンを保持することを誰にも強制できないという原則を変えるものではありません。</p>
-<h2 id="checks">Checks<a aria-hidden="true" class="hover_anchor" href="#checks"><i class="fa fa-link"></i></a></h2>
+<h3 id="checks">Checks<a aria-hidden="true" class="hover_anchor" href="#checks"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -738,8 +839,65 @@
 <p>「Checks」をXRP Ledgerに導入します。Checksは個人用の紙の小切手と同様の機能を持っています。送信者はトランザクションに署名して、具体的な最高額と受取人を入力したCheckを作成します。その後、受取人はCheckを換金して、指定された金額を上限として現金を受け取ることができます。金銭の移動が実際に発生するのはCheckが換金されるときなので、送信者の現在の残高と流動性の状況によっては、Checkを換金できない場合があります。Checkを換金できない場合、Checkオブジェクトはレジャーに残るため、後日換金できるようになる場合があります。</p>
 <p>送信者と受信者は、換金前であればいつでもCheckを取り消すことができます。Checkには有効期限を設定できます。有効期限が過ぎた後は換金できなくなり、誰でもそのCheckを取り消すことができます。</p>
 <p>新たに導入するトランザクションタイプは次の3つです。CheckCreate、CheckCancel、CheckCash。また、新しいレジャーオブジェクトタイプはCheckです。新たに追加するトランザクション結果コード<code>tecEXPIRED</code>は、有効期限が過去の日時であるCheckを作成しようとすると発生します。</p>
-<p>この修正はまた、有効期限が過去の日時であるオファーを作成しようとすると、OfferCreateトランザクションが<code>tecEXPIRED</code>を返すように変更しています。この修正を行わない場合、OfferCreateの有効期限が過去の日時であっても<code>tesSUCCESS</code>が返されますが、オファーの作成や実行は行われません。</p>
-<h2 id="cryptoconditions">CryptoConditions<a aria-hidden="true" class="hover_anchor" href="#cryptoconditions"><i class="fa fa-link"></i></a></h2>
+<h3 id="clawback">Clawback<a aria-hidden="true" class="hover_anchor" href="#clawback"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Clawback</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+</tbody>
+</table>
+<p>規制上の目的から、発行者の中には、発行されたトークンがアカウントに配布された後に回収する能力を持たなければならない場合があります。例えば、トークンが違法行為で制裁を受けたアカウントに送られたことが発覚した場合、発行者はその資金を <em>回収(claw back)</em> することができます。</p>
+<p>Clawbackはデフォルトでは無効になっています。Clawbackを使用するには、<code>AccountSet</code>トランザクションを使用して<code>lsfAllowTrustLineClawback</code>フラグを設定する必要があります。</p>
+<p>この修正の詳細については、<a class="external-link" href="https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/" target="_blank">Clawback <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください。</p>
+<h3 id="xchainbridge">XChainBridge<a aria-hidden="true" class="hover_anchor" href="#xchainbridge"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">XChainBridge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+</tbody>
+</table>
+<p>メインネットとサイドチェーンなど異なるネットワーク間でアセットを同期させるための「クロスチェーンブリッジ」を追加します。標準規格: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md" target="_blank">XLS-38d Cross-Chain Bridge <i aria-hidden="true" class="fa fa-external-link"></i></a>。</p>
+<h3 id="cryptoconditions">CryptoConditions<a aria-hidden="true" class="hover_anchor" href="#cryptoconditions"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -796,7 +954,7 @@
 </table>
 <p><a href="escrowcreate.html">EscrowCreate</a>トランザクションと<a href="escrowfinish.html">EscrowFinish</a>トランザクションで使用するために、公式の<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-03" target="_blank">Crypto-Conditions仕様 <i aria-hidden="true" class="fa fa-external-link"></i></a>から数種類のCrypto-Conditionsを導入するものでした。</p>
 <p>しかし、この修正は実装が完了する前に<code>rippled</code> v0.60.0に追加されました。その結果、このAmendment IDは、ほとんど何もしない不完全なコードを参照することになりました。他のcrypto-conditionsのサポートを追加するために既存のAmendmentを変更すると、すでにリリースされたソフトウェアにある古いバージョンの修正案との衝突が発生します。将来のリリースで追加の暗号条件のサポートが追加される場合、新しい別のAmendment IDを使用する必要があります。</p>
-<h2 id="deletableaccounts">DeletableAccounts<a aria-hidden="true" class="hover_anchor" href="#deletableaccounts"><i class="fa fa-link"></i></a></h2>
+<h3 id="deletableaccounts">DeletableAccounts<a aria-hidden="true" class="hover_anchor" href="#deletableaccounts"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -826,7 +984,7 @@
 <p><a href="accounts.html">アカウント</a>を削除できるようになります。</p>
 <p>この修正を適用しない場合、新しいアカウントは<code>Sequence</code>番号が必ず1で始まります。また、レジャーの状態データからアカウントを削除できません。</p>
 <p>この修正を適用した場合、新しいアカウントは、そのアカウントが作成された<a href="basic-data-types.html#レジャーインデックス">レジャーのインデックス</a>に一致する<code>Sequence</code>番号に等しい<code>Sequence</code>番号で始まります。この変更により、一度削除され、その後再作成されたアカウントが、古いトランザクションを再度実行しないように保護することができます。新しい<code>AccountDelete</code>トランザクションタイプを追加すると、アカウントと、そのアカウントがレジャーに所有する特定のオブジェクトが削除されます。ただし、特定の種類のオブジェクトはこの方法で削除できないため、そのようなオブジェクトに関連付けられているアカウントは削除できません。また、現行のレジャーインデックスから256を引いた値がアカウントの現行<code>Sequence</code>番号より低い場合も、アカウントは削除できません。この修正に関する詳しい解説については、<a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/issues/8" target="_blank">XRP Community Standards Draft 7 <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
-<h2 id="depositauth">DepositAuth<a aria-hidden="true" class="hover_anchor" href="#depositauth"><i class="fa fa-link"></i></a></h2>
+<h3 id="depositauth">DepositAuth<a aria-hidden="true" class="hover_anchor" href="#depositauth"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -857,7 +1015,7 @@
 <p>支払先のアカウントのこのフラグが有効になっている場合、支払いがXRPでなされるか、発行済み通貨でなされるかにかかわらず、Paymentトランザクションは失敗となります。アカウントが支払先である場合、支払先アカウント自体から上記のトランザクションが送信されなければ、EscrowFinishトランザクションとPaymentChannelClaimトランザクションは失敗します。<a href="#checks">Checks</a> amendmentが有効である場合、CheckCashトランザクションを送信することによってXRPまたは発行済み通貨をアカウントで受け取ることができます。</p>
 <p>例外として、<code>DepositAuth</code>が有効になっているアカウントでは、現在のXRP残高がアカウントの準備金を下回る場合、少額のXRP（<a href="reserves.html">アカウント準備金</a>の最低額以下）のPaymentトランザクションを受け取ることができます。</p>
 <p>また、EscrowCreateトランザクションとPaymentChannelCreateトランザクションで誤ってDisallowXRPフラグを適用してしまうバグも修正します。これは強制力のない勧告フラグとするものです。（レジャー自体にDisallowXRPフラグを適用しないことで、<a href="reserves.html">アカウント準備金</a>を満たし<a href="transaction-cost.html">トランザクションコスト</a>を支払うのに必要なXRPを、アカウントが引き続き受け取ることができます。）</p>
-<h2 id="depositpreauth">DepositPreauth<a aria-hidden="true" class="hover_anchor" href="#depositpreauth"><i class="fa fa-link"></i></a></h2>
+<h3 id="depositpreauth">DepositPreauth<a aria-hidden="true" class="hover_anchor" href="#depositpreauth"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -888,7 +1046,7 @@
 <p>事前承認の追加または削除のために新しいトランザクションタイプDepositPreauthを、あるアカウントから別のアカウントへの事前承認の追跡のためにDepositPreauthレジャーオブジェクトタイプを追加します。JSON-RPCコマンド<code>deposit_authorized</code>を追加します。これは、アカウントが別のアカウントへ支払いを直接送金することが承認されているかどうかを問い合わせるためのものです。</p>
 <p>あるアカウントからそれ自身へのクロスカレンシー決済において、そのアカウントがDeposit Authorizationを必要とする場合の動作を変更しました。このamendmentなしでは、これらの支払いは常に<code>tecNO_PERMISSION</code>というコードで失敗します。この修正により、Deposit Authorizationが無効な場合と同様に、これらの支払いは成功します。</p>
 <p>また、アカウントにDeposit Authorizationが必要な場合、アカウントから自身への異なる通貨間での支払いの動作も変更します。この修正を行わない場合、これらの支払いはコードtecNO_PERMISSIONにて常に失敗します。この修正を行う場合、これらの支払いはDeposit Authorization無効時と同様に成功します。</p>
-<h2 id="disallowincoming">DisallowIncoming<a aria-hidden="true" class="hover_anchor" href="#disallowincoming"><i class="fa fa-link"></i></a></h2>
+<h3 id="disallowincoming">DisallowIncoming<a aria-hidden="true" class="hover_anchor" href="#disallowincoming"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -903,7 +1061,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">ステータス</td>
-<td style="text-align: left;">有効予想</td>
+<td style="text-align: left;">有効</td>
 </tr>
 <tr>
 <td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
@@ -925,7 +1083,7 @@
 </ul>
 <p>対応するオブジェクトタイプを作成する前に、これらのフラグの状態をチェックするようにトランザクション処理を変更します。宛先アカウントがそのフラグを有効にしている場合、トランザクションはエラーコード<code>tecNO_PERMISSION</code>で失敗します。</p>
 <p>この修正が適用されない場合、どのアカウントでも、任意のオブジェクトの宛先としてこれらのオブジェクトを作成することができます。これは通常問題はないものの、後でアカウントを削除する際に妨げになったり、詐欺の一部として使用される可能性があります。</p>
-<h2 id="enforceinvariants">EnforceInvariants<a aria-hidden="true" class="hover_anchor" href="#enforceinvariants"><i class="fa fa-link"></i></a></h2>
+<h3 id="enforceinvariants">EnforceInvariants<a aria-hidden="true" class="hover_anchor" href="#enforceinvariants"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -962,7 +1120,7 @@
 <li><a href="ledger-object-types.html">レジャー内のオブジェクト</a>のタイプは変更できません。（<code>LedgerEntryType</code>フィールドは変更できません。）</li>
 <li>XRPにトラストラインはありません。</li>
 </ul>
-<h2 id="escrow">Escrow<a aria-hidden="true" class="hover_anchor" href="#escrow"><i class="fa fa-link"></i></a></h2>
+<h3 id="escrow">Escrow<a aria-hidden="true" class="hover_anchor" href="#escrow"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -991,7 +1149,7 @@
 </table>
 <p><a href="#suspay">SusPay</a>および<a href="#cryptoconditions">CryptoConditions</a> Amendmentを置き換えます。</p>
 <p>XRP Ledger内のEscrowにXRPの「仮払い」機能を提供します。これには<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02" target="_blank">Interledger Protocol Crypto-Conditions <i aria-hidden="true" class="fa fa-external-link"></i></a>のサポートが含まれます。仮払い用のレジャーオブジェクトタイプと、仮払いを作成、実行、取り消すためのトランザクションタイプを新規作成します。</p>
-<h2 id="expandedsignerlist">ExpandedSignerList<a aria-hidden="true" class="hover_anchor" href="#expandedsignerlist"><i class="fa fa-link"></i></a></h2>
+<h3 id="expandedsignerlist">ExpandedSignerList<a aria-hidden="true" class="hover_anchor" href="#expandedsignerlist"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1021,7 +1179,7 @@
 <p>この修正により、署名者リストの最大サイズが拡大され、各署名者にオプションのデータを関連付けることができるようになりました。追加データは署名者を特定するために使用でき、スマートコントラクトや、大規模な組織で誰が鍵を管理しているかを特定するのに便利です。例えば、IPv6アドレスやハードウェアセキュリティモジュール（HSM）の識別子を保存することができます。</p>
 <p>この修正が適用されない場合、署名者リストの最大サイズは8人で、各署名者には<code>Account</code>と<code>SignerWeight</code>の2つのフィールドが存在します。</p>
 <p>この修正により、<a href="signerlist.html">SignerListオブジェクト</a>の最大サイズは32エントリになります。さらに、各<code>SignerEntry</code>オブジェクトは、任意のデータを含む256ビットの<code>WalletLocator</code>フィールドを含むことができます。この修正により、<a href="signerlistset.html">SignerListSetトランザクション</a>もそれに応じて変更されます。</p>
-<h2 id="feeescalation">FeeEscalation<a aria-hidden="true" class="hover_anchor" href="#feeescalation"><i class="fa fa-link"></i></a></h2>
+<h3 id="feeescalation">FeeEscalation<a aria-hidden="true" class="hover_anchor" href="#feeescalation"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1057,7 +1215,7 @@
 <li>無効になる（例えば、<a href="transaction-common-fields.html"><code>LastLedgerSequence</code></a>によって有効期限切れとなる）</li>
 <li>キュー内にトランザクションコストの高いトランザクションがたくさんあるため除外される</li>
 </ul>
-<h2 id="fix1201">fix1201<a aria-hidden="true" class="hover_anchor" href="#fix1201"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1201">fix1201<a aria-hidden="true" class="hover_anchor" href="#fix1201"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1086,7 +1244,7 @@
 </table>
 <p><a href="transfer-fees.html">送金手数料</a>に限度を正しく導入し、100%の料金にします。これは、<code>TransferRate</code>値の最大値である<code>2000000000</code>を表します。（この場合の100%の料金とは、送信する1ユニットごとに2ユニットの発行済み通貨を送信する必要があることを意味します。）この修正を行わない場合、有効な限度は<code>TransferRate</code>値の2<sup>32</sup>-1、つまり約329%の料金となります。</p>
 <p>この修正を行う場合、<a href="accountset.html">AccountSet</a>トランザクションの<code>TransferRate</code>を<code>2000000000</code>より高く設定すると、トランザクションは結果コード<code>temBAD_TRANSFER_RATE</code>にて失敗します。以前のルールに従って高い値が設定されている既存のすべての<code>TransferRate</code>には、そのまま高い率が適用されます。</p>
-<h2 id="fix1368">fix1368<a aria-hidden="true" class="hover_anchor" href="#fix1368"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1368">fix1368<a aria-hidden="true" class="hover_anchor" href="#fix1368"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1114,7 +1272,7 @@
 </tbody>
 </table>
 <p>有効であるべき一部の支払いが失敗となる、トランザクション処理の小さなバグを修正します。具体的には、支払い処理中に、特定金額の通貨を生成する支払いステップの一部で、浮動小数点の表示に関する精度の不良により、わずかに異なる金額が生成されてしまうことがあります。この状況が発生すると、正確な金額を送金できないため支払いが失敗します。fix1368 Amendmentにより、トランザクション処理が修正されれば、このような支払いの失敗はなくなります。</p>
-<h2 id="fix1373">fix1373<a aria-hidden="true" class="hover_anchor" href="#fix1373"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1373">fix1373<a aria-hidden="true" class="hover_anchor" href="#fix1373"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1143,7 +1301,7 @@
 </table>
 <p>特定の<a href="paths.html">支払いパス</a>を作成する際にエラーを引き起こすトランザクション処理の小さなバグを修正します。この結果、有効であっても正しく作成されていないパスを、支払いで使用できなくなりました。この修正を行わない場合、支払い時に好ましくないパスの使用を強制されたり、失敗したりする恐れがあります。</p>
 <p>fix1373 Amendmenによりこの問題は修正されるため、正しく作成されたパスを使用して支払いを行えます。また、現在は許可されているものの適切ではない一部のパスが無効になります。これには、同じオブジェクトを2回以上ループしてコンフリクトを起こすフィールドやパスを含む<a href="paths.html#パスの仕様">ステップ</a>を持つパスが含まれます。</p>
-<h2 id="fix1512">fix1512<a aria-hidden="true" class="hover_anchor" href="#fix1512"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1512">fix1512<a aria-hidden="true" class="hover_anchor" href="#fix1512"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1172,7 +1330,7 @@
 </table>
 <p>一部の無効な<a href="paymentchannelclaim.html">PaymentChannelClaim</a>トランザクションが、不正確なエラーコードで失敗するトランザクション処理のバグを修正します。この修正を行わない場合、トランザクションの結果コードは<code>tec</code>クラスとなりますが、レジャーに入力されず、<a href="transaction-cost.html">トランザクションコスト</a>は支払われません。</p>
 <p>この修正により、トランザクションは適切な結果コード<code>temBAD_AMOUNT</code>にて失敗します。</p>
-<h2 id="fix1513">fix1513<a aria-hidden="true" class="hover_anchor" href="#fix1513"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1513">fix1513<a aria-hidden="true" class="hover_anchor" href="#fix1513"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1201,7 +1359,7 @@
 </table>
 <p><code>FeeEscalation</code> Amendmentが行われると、新しい<code>STAmountCalcSwitchovers</code>コードが使用されないトランザクション処理のバグを修正します。</p>
 <p>この修正により、新しい<code>STAmountCalcSwitchovers</code>コードが適用されるため、計算の違いによってトランザクション処理に若干の変更を生じる場合があります。金額の四捨五入のやり方が異なり、その結果、オファーが異なる順序で実行される場合があります。</p>
-<h2 id="fix1515">fix1515<a aria-hidden="true" class="hover_anchor" href="#fix1515"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1515">fix1515<a aria-hidden="true" class="hover_anchor" href="#fix1515"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1232,7 +1390,7 @@
 <p>この修正を行わない場合、トランザクションが同じ為替レートで2000を超えるオファーを消費すると、支払い処理は特定のオーダーブックを使用しなくなります。この場合、支払いはそれらのオファーの流動性を使用せず、支払いを完了するときにそのオーダーブックに残された流動性を考慮しません。</p>
 <p>この修正により、同じ為替レートで1000を超えるオファーを処理するトランザクションはすべて、そのトランザクションの最初の1000のオファーの流動性を消費し、支払いを完了時にはそのオーダーブックに残された流動性は考慮されません。</p>
 <p>どちらの場合でも、トランザクション処理は他のパスまたは為替レートからの流動性を使用して完了できます。</p>
-<h2 id="fix1523">fix1523<a aria-hidden="true" class="hover_anchor" href="#fix1523"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1523">fix1523<a aria-hidden="true" class="hover_anchor" href="#fix1523"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1261,7 +1419,7 @@
 </table>
 <p>支払先アカウント別の追跡機能を<a href="escrow.html">Escrow</a>に追加します。この修正を行わない場合、保留中のEscrowは送信者別にしか追跡できません。この修正により、<a href="account_objects.html">account_objectsメソッド</a>を使用して支払先アドレスごとに保留中のEscrowを調べることができます。ただし、この修正が有効になる前に作成された保留中のEscrowを除きます。また、この修正では、<a href="escrowcreate.html">EscrowCreateトランザクション</a>を支払先のトランザクション履歴に表示することができます。これは<a href="account_tx.html">account_txメソッド</a>による表示と同様です。</p>
 <p>この修正により、新しいEscrowが送信者と受信者両方の<a href="directorynode.html">所有者ディレクトリー</a>に追加されます。また、<a href="escrow-object.html">Escrowレジャーオブジェクト</a>に新しい<code>DestinationNode</code>フィールドも追加され、支払先の所有者ディレクトリのどのページにEscrowがあるかを表示します。</p>
-<h2 id="fix1528">fix1528<a aria-hidden="true" class="hover_anchor" href="#fix1528"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1528">fix1528<a aria-hidden="true" class="hover_anchor" href="#fix1528"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1290,7 +1448,7 @@
 </table>
 <p>バリデータがさまざまなタイムスタンプでコンセンサスレジャーを構築できることが原因で、検証済みレジャーの宣言プロセスに遅れをもたらす可能性があるバグを修正します。このような状況の発生は正確なタイミングを要するため、管理テスト環境の外部にいるバリデータがこのバグに遭遇することはあまりありません。</p>
 <p>この修正は、バリデータがコンセンサスレジャーの終了時刻の交渉方法を変更して、レジャー内容について合意を得ることはできないが、異なるタイムスタンプでレジャーバージョンを構築できるようにします。</p>
-<h2 id="fix1543">fix1543<a aria-hidden="true" class="hover_anchor" href="#fix1543"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1543">fix1543<a aria-hidden="true" class="hover_anchor" href="#fix1543"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1324,7 +1482,7 @@
 <li>Escrowトランザクション: <a href="escrowcancel.html">EscrowCancel</a>、<a href="escrowcreate.html">EscrowCreate</a>、<a href="escrowfinish.html">EscrowFinish</a></li>
 <li>Payment Channelトランザクション: <a href="paymentchannelclaim.html">PaymentChannelClaim</a>、<a href="paymentchannelcreate.html">PaymentChannelCreate</a>、<a href="paymentchannelfund.html">PaymentChannelFund</a></li>
 </ul>
-<h2 id="fix1571">fix1571<a aria-hidden="true" class="hover_anchor" href="#fix1571"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1571">fix1571<a aria-hidden="true" class="hover_anchor" href="#fix1571"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1356,7 +1514,7 @@
 <li><a href="escrowcreate.html">EscrowCreateトランザクション</a>に<code>Condition</code>フィールドまたは<code>FinishAfter</code>フィールド（またはその両方）が必要となるように変更します。この修正以前に作成された、<code>Condition</code>や<code>FinishAfter</code>のいずれも持たないEscrowは、<code>CancelAfter</code>時間より前ならいつでも誰でも終了できます。</li>
 <li>時間ベースのEscrowが特定の状況下で終了されるのを誤って妨げる欠陥を修正します。</li>
 </ul>
-<h2 id="fix1578">fix1578<a aria-hidden="true" class="hover_anchor" href="#fix1578"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1578">fix1578<a aria-hidden="true" class="hover_anchor" href="#fix1578"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1388,7 +1546,7 @@
 <li><a href="offercreate.html">OfferCreateトランザクション</a>を変更して、オファーが<code>tfFillOrKill</code>フラグを使用していて中止された場合に、新しい結果コード<code>tecKILLED</code>が返されるようにします。この修正を行わない場合、オファーは中止されますが、トランザクション結果は<code>tesSUCCESS</code>になります。</li>
 <li><a href="trustset.html">TrustSetトランザクション</a>を変更して、トラストラインがマイナス残高であるため、<a href="rippling.html#norippleフラグ">NoRippleフラグ</a>を有効にしようとしてもできない場合に、<code>tecNO_PERMISSION</code>で失敗するようにします。この修正を行わない場合、トランザクションでNoRippleフラグを有効にできなくても、トランザクション結果は<code>tesSUCCESS</code>になります。</li>
 </ul>
-<h2 id="fix1623">fix1623<a aria-hidden="true" class="hover_anchor" href="#fix1623"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1623">fix1623<a aria-hidden="true" class="hover_anchor" href="#fix1623"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1418,7 +1576,7 @@
 <p>変動金額で換金されたCheckCashトランザクションのメタデータに送金額を追加します。（<a href="#checks">Checks</a> Amendmentが有効でないかぎり効果がありません。）</p>
 <p>この修正を行うと、トランザクション処理にて変動金額の<a href="checkcash.html">CheckCashトランザクション</a>のメタデータに<code>DeliveredAmount</code>フィールドが追加されます（<code>DeliverMin</code>フィールドを使用します）。この変更はレジャーデータに書き込まれるため、この修正を行わずにトランザクションを処理した場合とは異なるレジャーハッシュとなります。これは実際に送信される金額には影響しません。また、この修正を有効にすると、<a href="tx.html">txメソッド</a>と<a href="account_tx.html">account_txメソッド</a>によってCheckCashトランザクションの<a href="transaction-metadata.html#delivered_amount"><code>delivered_amount</code>フィールド</a>が返されます。（<code>delivered_amount</code>フィールドはトランザクションの検索時に計算されるものであり、レジャーに書き込まれるデータの一部ではありません。）</p>
 <p>fix1623 Amendmentは、固定金額の<a href="checkcash.html">CheckCashトランザクション</a>（<code>Amount</code>フィールドを使用）またはその他のトランザクションタイプには影響しません。</p>
-<h2 id="fix1781">fix1781<a aria-hidden="true" class="hover_anchor" href="#fix1781"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1781">fix1781<a aria-hidden="true" class="hover_anchor" href="#fix1781"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1448,7 +1606,7 @@
 <p>循環パスの検出時に、特定のXRPエンドポイントがチェックされない不具合を修正します。</p>
 <p>この修正が適用されない場合、<a href="paths.html">支払いパス</a>の入力がXRPで、パスの中間ステップでもXRPが出力されるようなパスが存在し得ます。これは「ループ」決済であり、前方と後方で実行すると異なる結果になる可能性があるため、決済エンジンはこのようなパスを禁止しています。</p>
 <p>この修正が適用された場合、これらの支払いは、代わりに<a href="tem-codes.html">結果コード<code>temBAD_PATH_LOOP</code></a>で失敗します。</p>
-<h2 id="fixamendmentmajoritycalc">fixAmendmentMajorityCalc<a aria-hidden="true" class="hover_anchor" href="#fixamendmentmajoritycalc"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixamendmentmajoritycalc">fixAmendmentMajorityCalc<a aria-hidden="true" class="hover_anchor" href="#fixamendmentmajoritycalc"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1477,7 +1635,7 @@
 </table>
 <p>丸め処理の影響により、Amendmentが過半数を達成した後、信頼できるバリデーターの80%にわずかに満たない賛成で有効になることがあるバグを修正しました。</p>
 <p>この修正が適用されない場合、Amendmentが有効になるための最小閾値は、信頼できるバリデーターの204/256を丸めた値であり、これはその時の信頼できるバリデーターの数に依存します。例えば、36人中28人(約77.8%)のバリデータがあれば、補正は有効になりえます。この修正により、実際に必要な最小限のバリデーターの数は、信頼できるバリデーターの80％を下回ることはありません。</p>
-<h2 id="fixcheckthreading">fixCheckThreading<a aria-hidden="true" class="hover_anchor" href="#fixcheckthreading"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixcheckthreading">fixCheckThreading<a aria-hidden="true" class="hover_anchor" href="#fixcheckthreading"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1506,7 +1664,7 @@
 </table>
 <p>Checksトランザクションがアカウントのメタデータに影響を及ぼす方法を変更し、Checksが受信アカウントの<a href="accounts.html">アカウント</a>履歴に適切に追加されるようにします。（具体的には、受信アカウントの<a href="accountroot.html">AccountRootオブジェクト</a>の<code>PreviousTxnID</code>フィールドと<code>PreviousTxnLedgerSeq</code>フィールドを更新します。これは、アカウントと、アカウントが所有するオブジェクトに影響を及ぼしたトランザクションの「スレッド」を追跡するために使用できます。）</p>
 <p>この修正を適用しない場合、Checksトランザクション（<a href="checkcreate.html">CheckCreate</a>、<a href="checkcash.html">CheckCash</a>、および<a href="checkcancel.html">CheckCancel</a>）は送信者のアカウント履歴のみを更新します。この修正を適用した場合、これらのトランザクションは、送信アカウントにも受信アカウントにも影響します。この修正は、<a href="#checks">Checks Amendment</a>も有効でないかぎり効果がありません。</p>
-<h2 id="fixmasterkeyasregularkey">fixMasterKeyAsRegularKey<a aria-hidden="true" class="hover_anchor" href="#fixmasterkeyasregularkey"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixmasterkeyasregularkey">fixMasterKeyAsRegularKey<a aria-hidden="true" class="hover_anchor" href="#fixmasterkeyasregularkey"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1536,7 +1694,7 @@
 <p>アカウントのレギュラーキーペアがマスターキーペアと一致するように設定できるものの、マスターキーが無効になった場合に、そのキーによって署名されたトランザクションを送信できなくなるバグを修正します。</p>
 <p>この修正を適用しない場合、ユーザーは、レギュラーキーがマスターキーと一致するように設定し、その後マスターキーを無効にすることで、意図せずアカウントを「ブラックホール」にしてしまうおそれがあります。ネットワークは、マスターキーペアとレギュラーキーペアの両方で署名されたトランザクションを拒否します。コードは、トランザクションが現在有効なレギュラーキーで署名されていると認識する前に、無効なマスターキーで署名されていると解釈するためです。</p>
 <p>この修正を有効にした場合、SetRegularKeyトランザクションはレギュラーキーがマスターキーに一致するよう設定できないため、そのようなトランザクションでは、トランザクションコードが<code>temBAD_REGKEY</code>になります。また、この修正により、署名検証コードが変更されるため、レギュラーキーがマスターキーに一致するよう_すでに_設定しているアカウントは、そのキーペアを使用して正常にトランザクションを送信できます。</p>
-<h2 id="fixnftokendirv1">fixNFTokenDirV1<a aria-hidden="true" class="hover_anchor" href="#fixnftokendirv1"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixnftokendirv1">fixNFTokenDirV1<a aria-hidden="true" class="hover_anchor" href="#fixnftokendirv1"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1565,7 +1723,7 @@
 </table>
 <p>この修正では、<code>NFToken</code>オブジェクトがどの<code>NFTokenPage</code>に属するかを判断する際に、いくつかの特定のケースで発生した境界値判定エラーが修正されました。また、<code>NFTokenPage</code>の不変性チェックの制約を調整し、特定のエラーケースが<code>tecINVARIANT_FAILED</code>エラーコードで失敗する代わりに、<code>tecNO_SUITABLE_TOKEN_PAGE</code>などの適切なエラーコードで失敗するようにしました。</p>
 <p>この修正は、<a href="#nonfungibletokensv1">NonFungibleTokensV1</a> Amendmentが有効でない限り、何の効果もありません。この修正は、その効果が<a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>の一部として含まれているため、廃止されました。</p>
-<h2 id="fixnftokennegoffer">fixNFTokenNegOffer<a aria-hidden="true" class="hover_anchor" href="#fixnftokennegoffer"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixnftokennegoffer">fixNFTokenNegOffer<a aria-hidden="true" class="hover_anchor" href="#fixnftokennegoffer"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1594,7 +1752,7 @@
 </table>
 <p>この修正は、<a href="#nonfungibletokensv1">NonFungibleTokensV1</a> Amendmentのコードにおいて、NFTが負の金額で取引されてしまうバグを修正したものです。この修正が適用されない場合、ユーザーは負の金額でNFTの売買を申し込むことができ、その結果、NFTを「買う」人は「売る」人からお金も受け取ることになります。この修正により、マイナスの金額でのNFTのオファーは無効とみなされます。</p>
 <p>この修正は、<a href="#nonfungibletokensv1">NonFungibleTokensV1</a> Amendmentが有効でない限り、何の影響もありません。この修正は、その効果が<a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>の一部として含まれているため、廃止されました。</p>
-<h2 id="fixnftokenremint">fixNFTokenRemint<a aria-hidden="true" class="hover_anchor" href="#fixnftokenremint"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixnftokenremint">fixNFTokenRemint<a aria-hidden="true" class="hover_anchor" href="#fixnftokenremint"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1609,7 +1767,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">ステータス</td>
-<td style="text-align: left;">In Development</td>
+<td style="text-align: left;">投票中</td>
 </tr>
 <tr>
 <td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
@@ -1631,7 +1789,7 @@
 </li>
 </ul>
 <p>このamendmentにより、アカウント削除の制限も導入されます。アカウントは、<code>FirstNFTSequence</code> + <code>MintedNFTokens</code> + 256が現在のレジャーシーケンスより小さい場合にのみ削除できます（256はアカウント削除のヒューリスティックな制限として選択されたもので、アカウント削除制約にすでに存在します）。この制約がなければ、特定の条件下で同一のNFTが再ミントされる可能性があります。</p>
-<h2 id="fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2<a aria-hidden="true" class="hover_anchor" href="#fixnonfungibletokensv1_2"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2<a aria-hidden="true" class="hover_anchor" href="#fixnonfungibletokensv1_2"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1646,7 +1804,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">ステータス</td>
-<td style="text-align: left;">有効予想</td>
+<td style="text-align: left;">有効</td>
 </tr>
 <tr>
 <td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
@@ -1673,7 +1831,7 @@
 <p><strong>宛先のみがNFTオファーのブローカー決済可能とする (#4373を修正)</strong></p>
 <p>NFTオファーに宛先を設定した場合、その宛先のみが仲介で決済できるように修正します。</p>
 <p>参考: <a class="external-link" href="https://github.com/XRPLF/rippled/issues/4373" target="_blank">Issue 4373 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1702,7 +1860,7 @@
 </table>
 <p><a href="paymentchannelcreate.html">PaymentChannelCreateトランザクション</a>タイプを変更し、受取人の<a href="directorynode.html">所有者ディレクトリ</a>に新しい<a href="payment-channels.html">Payment Channel</a>が追加されるようにします。この修正を適用しない場合、新しいPayment Channelは送金者の所有者ディレクトリーにのみ追加されます。この修正を有効にする場合、新しく作成したPayment Channelは両者の所有者ディレクトリーに追加されます。既存のPayment Channelは変更されません。</p>
 <p>この修正により、受取人によるPayment Channelの検索が容易になります。また、アカウントがオープンPayment Channelの受取人だった場合に、そのアカウントが削除されないようにします（ただし、この修正の前に作成されたチャンネルを除きます）。</p>
-<h2 id="fixqualityupperbound">fixQualityUpperBound<a aria-hidden="true" class="hover_anchor" href="#fixqualityupperbound"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixqualityupperbound">fixQualityUpperBound<a aria-hidden="true" class="hover_anchor" href="#fixqualityupperbound"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1731,7 +1889,7 @@
 </table>
 <p>クロスカレンシー決済における個々のステップの入出力比を計算するための使用されていないコードのバグを修正する。</p>
 <p>この修正は、取引処理に影響を及ぼさないことが確認されています。</p>
-<h2 id="fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine<a aria-hidden="true" class="hover_anchor" href="#fixremovenftokenautotrustline"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine<a aria-hidden="true" class="hover_anchor" href="#fixremovenftokenautotrustline"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1762,7 +1920,7 @@
 <p>この修正が適用されない場合、攻撃者は意味のない新しい代替可能トークンを作り、そのトークンとNFTを売買することで、発行者に紐づく多数の無駄なトラストラインを作り、発行者の準備金を増加させることができます。</p>
 <p>この修正は、すでにミントされた<code>NFToken</code>オブジェクトのコードを変更するものではありません。NonFungibleTokensV1_1がすでに有効になっているテストネットワークでは、<code>tfTrustLine</code>フラグが有効なNFTokenをすでにミントしている発行者は、fixRemoveNFTokenAutoTrustLine Amendmentの有効後も脆弱性があることを意味しています。</p>
 <p>この修正は、<a href="#nonfungibletokensv1">NonFungibleTokensV1</a>または <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>が有効になっていない限り、影響を及ぼしません。発行者を保護するため、このamendmentは<a href="#nonfungibletokensv1">NonFungibleTokensV1</a>または<a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>の前に有効にする必要があります。</p>
-<h2 id="fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers<a aria-hidden="true" class="hover_anchor" href="#fixrmsmallincreasedqoffers"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers<a aria-hidden="true" class="hover_anchor" href="#fixrmsmallincreasedqoffers"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1792,7 +1950,7 @@
 <p>この修正は、特定のオファーがほとんど約定された状態で、そのオファーが最初に配置されたときよりも取引レートが大幅に悪化する問題を修正するものです。これは、片方または両方の資産の残額が非常に小さいため、オファーが置かれたときと同様の比率に丸めることができない場合に起こるものです。</p>
 <p>この修正が適用されない場合、この状態でのオファーは、よりレートの良いオファーがより深いオーダーブックでブロックされ、本来成功するはずの支払いやオファーが失敗することがあります。</p>
 <p>この修正により、決済および取引は、通常、トランザクションが約定済みまたは未約定のオファーを削除するのと同じ方法で、これらのタイプのオファーを削除できるようになります。</p>
-<h2 id="fixstamountcanonicalize">fixSTAmountCanonicalize<a aria-hidden="true" class="hover_anchor" href="#fixstamountcanonicalize"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixstamountcanonicalize">fixSTAmountCanonicalize<a aria-hidden="true" class="hover_anchor" href="#fixstamountcanonicalize"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1820,7 +1978,7 @@
 </tbody>
 </table>
 <p>Amount型フィールドの<a href="serialization.html">デシリアライズ</a>におけるエッジケースの問題を修正しました。この修正が適用されない場合、一部の稀なケースで、この操作により、デシリアライズ中に有効なシリアライズされた金額がオーバーフローしてしまう可能性がありました。この修正により、XRP Ledgerはより迅速にエラー状態を検出し、問題となるようなケースを排除します。</p>
-<h2 id="fixtakerdryofferremoval">fixTakerDryOfferRemoval<a aria-hidden="true" class="hover_anchor" href="#fixtakerdryofferremoval"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixtakerdryofferremoval">fixTakerDryOfferRemoval<a aria-hidden="true" class="hover_anchor" href="#fixtakerdryofferremoval"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1850,7 +2008,7 @@
 <p>XRP Ledger内にドライオファーを残す可能性がある<a href="autobridging.html">オートブリッジ</a>のバグを修正します。ドライオファーとは、オファーを掛け合わせても資金を調達できないオファーのことです。</p>
 <p>この修正を行わなければ、ドライオファーがレジャー上に残り、所有者の<a href="reserves.html#所有者準備金">必要準備金</a>に加算されることになり、所有者に何も利益をもたらしません。正しいタイプとクオリティで掛け合わせた別のオファーによって、ドライオファーを除去することができます。ただし、タイプとクオリティがうまく掛け合わされたオファーがめったにない場合、ドライオファーの除去には時間がかかることがあります。</p>
 <p>この修正により、これらのドライオファーがオートブリッジで一致した場合に、XRP Ledgerによって除去されます。</p>
-<h2 id="fixtrustlinestoself">fixTrustLinesToSelf<a aria-hidden="true" class="hover_anchor" href="#fixtrustlinestoself"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixtrustlinestoself">fixTrustLinesToSelf<a aria-hidden="true" class="hover_anchor" href="#fixtrustlinestoself"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1865,7 +2023,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">ステータス</td>
-<td style="text-align: left;">有効予想</td>
+<td style="text-align: left;">有効</td>
 </tr>
 <tr>
 <td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
@@ -1879,7 +2037,7 @@
 </table>
 <p>この修正により、古いバグにより作成されたアカウントから自身へのトラストラインが2つ削除されます（いずれも2013-05-07のもの）。この修正が有効になると、IDが<code>2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1</code>と<code>326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A</code>のトラストラインが存在していれば削除します。削除後、この修正は他に何もしません。</p>
 <p>これらのトラストラインを持たないテストネットワークでは、この修正はは何の影響も及ぼしません。</p>
-<h2 id="fixuniversalnumber">fixUniversalNumber<a aria-hidden="true" class="hover_anchor" href="#fixuniversalnumber"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixuniversalnumber">fixUniversalNumber<a aria-hidden="true" class="hover_anchor" href="#fixuniversalnumber"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1894,7 +2052,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">ステータス</td>
-<td style="text-align: left;">有効予想</td>
+<td style="text-align: left;">有効</td>
 </tr>
 <tr>
 <td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
@@ -1908,7 +2066,7 @@
 </table>
 <p>10進浮動小数点演算のコードを簡略化し、統合します。場合によっては、以前のコードよりも精度が若干向上し、最下位桁が以前のコードで計算したときと異なる計算結果になることがあります。この計算結果の違いにより、オファーのランキングや複数の異なるパスを使用する支払い処理など、精密な計算が使用される他のエッジケースにおいて違いが生じる場合があります。
 この修正が適用されない場合、コードは引き続き<code>STAmount</code>と<code>IOUAmount</code>オブジェクトに対して別々の計算を使用し、<a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">自動マーケットメーカー(XLS-30d) <i aria-hidden="true" class="fa fa-external-link"></i></a>は計算のために新しい3つめの計算方法を使用します。</p>
-<h2 id="flow">Flow<a aria-hidden="true" class="hover_anchor" href="#flow"><i class="fa fa-link"></i></a></h2>
+<h3 id="flow">Flow<a aria-hidden="true" class="hover_anchor" href="#flow"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1937,7 +2095,7 @@
 </table>
 <p>支払い処理エンジンを、より堅固で効率的に作られたFlowエンジンに置き換えます。この新バージョンの支払い処理エンジンは、旧バージョンと同じルールを踏襲しますが、浮動小数点の丸め処理により異なる結果をもたらすことがあります。この修正は<a class="external-link" href="https://xrpl.org/blog/2016/flowv2-vetoed.html" target="_blank">FlowV2 <i aria-hidden="true" class="fa fa-external-link"></i></a> Amendmentに代わるものです。</p>
 <p>また、Flowエンジンは、さらなるAmendmentを通じて、支払いエンジンの改善や拡張を容易にします。</p>
-<h2 id="flowcross">FlowCross<a aria-hidden="true" class="hover_anchor" href="#flowcross"><i class="fa fa-link"></i></a></h2>
+<h3 id="flowcross">FlowCross<a aria-hidden="true" class="hover_anchor" href="#flowcross"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1970,7 +2128,7 @@
 <li>丸め方の違いが原因で、一部のオファーの組み合わせのランク付けが以前のロジックより上下したり、優先されたりします。</li>
 <li>新しいロジックによって、以前のロジックより多めまたは少なめにオファーが削除される場合があります。（これには、丸め方の違いによるケースや、以前のロジックによって資金供給なしとして不正に削除されたオファーが含まれます。）</li>
 </ul>
-<h2 id="flowsortstrands">FlowSortStrands<a aria-hidden="true" class="hover_anchor" href="#flowsortstrands"><i class="fa fa-link"></i></a></h2>
+<h3 id="flowsortstrands">FlowSortStrands<a aria-hidden="true" class="hover_anchor" href="#flowsortstrands"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1999,7 +2157,7 @@
 </table>
 <p>決済エンジンの計算を改善し、最もコスト効率の良いクロスカレンシー取引の実行方法を見つけます。</p>
 <p>この修正が適用されない場合、エンジンは可能な各パスを介して支払いをシミュレートし、各パスの品質（入力と出力の比率）を計算します。この修正により、エンジンは完全な支払いをシミュレートすることなく、各パスの理論的な品質を計算します。この変更により、決済エンジンは一部のクロスカレンシー決済をより速く実行し、より多くのケースで最も費用対効果の高いパスを見つけることができるようになり、従来の決済エンジンでは十分な流動性を見つけることができなかった特定の条件でも、一部の決済を成功させることができるようになります。</p>
-<h2 id="flowv2">FlowV2<a aria-hidden="true" class="hover_anchor" href="#flowv2"><i class="fa fa-link"></i></a></h2>
+<h3 id="flowv2">FlowV2<a aria-hidden="true" class="hover_anchor" href="#flowv2"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2023,7 +2181,7 @@
 </tbody>
 </table>
 <p>これは<a href="#flow">Flow</a> Amendmentの旧バージョンです。<a class="external-link" href="https://xrpl.org/blog/2016/flowv2-vetoed.html" target="_blank">バグが原因で不採用となり <i aria-hidden="true" class="fa fa-external-link"></i></a>、バージョン0.33.0で除外されました。</p>
-<h2 id="hardenedvalidations">HardenedValidations<a aria-hidden="true" class="hover_anchor" href="#hardenedvalidations"><i class="fa fa-link"></i></a></h2>
+<h3 id="hardenedvalidations">HardenedValidations<a aria-hidden="true" class="hover_anchor" href="#hardenedvalidations"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2051,7 +2209,35 @@
 </tbody>
 </table>
 <p>バリデータは、バリデータが完全に検証されたとみなす最新の台帳のハッシュを証明する新しいオプションフィールドをバリデーションに含めることができるようにします。コンセンサスプロセスでは、この情報を使用してコンセンサスの堅牢性を高めることができます。</p>
-<h2 id="immediateofferkilled">ImmediateOfferKilled<a aria-hidden="true" class="hover_anchor" href="#immediateofferkilled"><i class="fa fa-link"></i></a></h2>
+<h3 id="hooks">Hooks<a aria-hidden="true" class="hover_anchor" href="#hooks"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Hooks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+</tbody>
+</table>
+<p>トランザクションの前後にアカウント上で実行できる小さなコードという形式で、オンチェーンのスマートコントラクトを追加します。詳細は<a class="external-link" href="https://xrpl-hooks.readme.io/" target="_blank">Hooksドキュメント （英語のみ） <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください。</p>
+<h3 id="immediateofferkilled">ImmediateOfferKilled<a aria-hidden="true" class="hover_anchor" href="#immediateofferkilled"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2066,7 +2252,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">ステータス</td>
-<td style="text-align: left;">有効予想</td>
+<td style="text-align: left;">有効</td>
 </tr>
 <tr>
 <td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
@@ -2080,7 +2266,7 @@
 </table>
 <p>オファーが<code>tfImmediateOrCancel</code>を使用し、トランザクション処理で資金を移動せずにオファーを終了した場合、トランザクションは<code>tesSUCCESS</code>ではなく結果コード<code>tecKILLED</code>を使用するようにOfferCreateトランザクションを変更します。Offerが少額でも資金を交換した場合、トランザクションは引き続き<code>tesSUCCESS</code>を使用します。トランザクションの処理自体には変更はありません（例えば、トランザクション処理中に台帳に表示された期限切れのオファーや未入金のオファーをクリーンアップするかどうかという点など）。</p>
 <p>この修正が適用されない場合、資金の移動に失敗した「Immediate or Cancel」注文は、結果コード「tesSUCCESS」を返し、そのトランザクションが事実上何もしなかったため、混乱する可能性を残します。</p>
-<h2 id="multisign">MultiSign<a aria-hidden="true" class="hover_anchor" href="#multisign"><i class="fa fa-link"></i></a></h2>
+<h3 id="multisign">MultiSign<a aria-hidden="true" class="hover_anchor" href="#multisign"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2120,7 +2306,7 @@
 <li><code>tefNOT_MULTI_SIGNING</code></li>
 <li><code>tefBAD_AUTH_MASTER</code></li>
 </ul>
-<h2 id="multisignreserve">MultiSignReserve<a aria-hidden="true" class="hover_anchor" href="#multisignreserve"><i class="fa fa-link"></i></a></h2>
+<h3 id="multisignreserve">MultiSignReserve<a aria-hidden="true" class="hover_anchor" href="#multisignreserve"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2147,10 +2333,10 @@
 </tr>
 </tbody>
 </table>
-<p>XRP Ledgerアカウントが<a href="multi-signing.html">マルチシグ</a> SignerListを所有する場合、アカウントに加算される<a href="reserves.html#所有者準備金">所有者準備金</a>を削減します。</p>
-<p>この修正を行わない場合、SignerListの所有者準備金は、リスト内の署名者数に応じて15～50 XRPの範囲となります。</p>
-<p>この修正により、新しいSignerListの所有者準備金は、署名者数に関係なく5 XRPとなります。以前に作成されたSignerListオブジェクトの準備金は、そのまま変更されません。この修正の後に作成されたSignerListオブジェクトの準備金を削減するには、この修正実施後に、<a href="signerlistset.html">SignerListSetトランザクション</a>を使用してSignerListを置き換えます。（この置き換えは、前のバージョンの場合とまったく同じです。）</p>
-<h2 id="negativeunl">NegativeUNL<a aria-hidden="true" class="hover_anchor" href="#negativeunl"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerアカウントが<a href="multi-signing.html">マルチシグ</a>SignerListを所有する場合、アカウントに加算される<a href="reserves.html#所有者準備金">所有者準備金</a>を削減します。</p>
+<p>この修正を行わない場合、SignerListの所有者準備金は、リスト内の署名者数に応じて15～50XRPの範囲となります。</p>
+<p>この修正により、新しいSignerListの所有者準備金は、署名者数に関係なく5XRPとなります。以前に作成されたSignerListオブジェクトの準備金は、そのまま変更されません。この修正の後に作成されたSignerListオブジェクトの準備金を削減するには、この修正実施後に、<a href="signerlistset.html">SignerListSetトランザクション</a>を使用してSignerListを置き換えます。（この置き換えは、前のバージョンの場合とまったく同じです。）</p>
+<h3 id="negativeunl">NegativeUNL<a aria-hidden="true" class="hover_anchor" href="#negativeunl"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2178,7 +2364,7 @@
 </tbody>
 </table>
 <p>ネットワークがどのバリデータが一時的にオフラインになったかを追跡し、定足数計算の際にそれらのバリデータを無視できる「ネガティブUNL」システムを実装します。これにより、ネットワークが不安定な状態でも、ネットワークを進展させる能力を高めることができます。</p>
-<h2 id="nonfungibletokensv1">NonFungibleTokensV1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1"><i class="fa fa-link"></i></a></h2>
+<h3 id="nonfungibletokensv1">NonFungibleTokensV1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2222,7 +2408,7 @@
 </ul>
 <p>さらに、<a href="accountroot.html">AccountRootオブジェクト</a>型を変更し、<code>MintedNFTokens</code>、<code>BurnedNFTokens</code>、<code>NFTokenMinter</code>の3つの新しい任意のフィールドを追加しています。</p>
 <p>また、<a href="accountset.html">AccountSetトランザクション</a>を変更し、<code>NFTokenMinter</code>フィールドを設定できるようにしました。</p>
-<h2 id="nonfungibletokensv1_1">NonFungibleTokensV1_1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1_1"><i class="fa fa-link"></i></a></h2>
+<h3 id="nonfungibletokensv1_1">NonFungibleTokensV1_1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1_1"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2258,7 +2444,7 @@
 </ul>
 <p>それ以外の影響はありません。</p>
 <p class="devportal-callout 注意"><strong>注意:</strong> <a href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a>は、このAmendmentの既知の問題を修正します。新しいテストネットワークを作成する場合、これらの修正を一緒に有効にするか、またはAmendmentの修正を先に有効にする必要があります。</p>
-<h2 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h2>
+<h3 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2288,7 +2474,7 @@
 <p><a href="offercreate.html">OfferCreate</a>トランザクションタイプと<a href="payment.html">Payment</a>トランザクションタイプで、<a href="transfer-fees.html">送金手数料</a>の計算方法に相違があるのを修正します。この修正を行わない場合、オファーがオファープレースメントで実行される際にイシュアンスの保有者が送金手数料を支払いますが、トランザクションの最初の送信者は支払い処理の過程で実行されるオファーの送金手数料を支払います。この修正により、オファーがPaymentトランザクションまたはOfferCreateトランザクションの一部として実行されるかどうかにかかわらず、イシュアンスの保有者が常に送金手数料を支払います。支払い以外のオファー処理は影響を受けません。</p>
 <p>この修正については、<a href="#flow">Flow Amendment</a>を有効にする必要があります。</p>
 <p class="devportal-callout 注記"><strong>注記:</strong> 不完全なバージョンのこのAmendmentについては、v0.33.0で導入され、v0.80.0で削除されました（有効となったことはありません）。</p>
-<h2 id="paychan">PayChan<a aria-hidden="true" class="hover_anchor" href="#paychan"><i class="fa fa-link"></i></a></h2>
+<h3 id="paychan">PayChan<a aria-hidden="true" class="hover_anchor" href="#paychan"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2316,9 +2502,9 @@
 </tbody>
 </table>
 <p>XRPの「Payment Channel」を作成します。Payment Channelは、2名の当事者間で一方向の繰り返しの支払い、またはそれに伴う一時的な貸付を容易に行えるようにするツールです。Rippleは、この機能が<a class="external-link" href="https://interledger.org/" target="_blank">Interledger Protocol <i aria-hidden="true" class="fa fa-external-link"></i></a>に役立つと期待しています。ある当事者がPayment Channelを作成し、そのチャンネル内に有効期限を事前に設定してXRPをいくらか確保します。次に、レジャー外部の安全な通信を介して、送信者は「クレーム」メッセージを受信者に送信できます。受信者は有効期限の終了前にクレームメッセージを清算することも、支払いが必要ない場合は清算しないことも選択できます。受信者は、クレームを実際にネットワークに分散させてコンセンサスプロセスで清算されるのを待たなくとも、請求を個々に確認してから、有効期限内であれば多数の少額クレームをまとめて後で清算することができます。</p>
-<p>新たに作成するトランザクションタイプは次の3つです。<a href="paymentchannelcreate.html">PaymentChannelCreate</a>、<a href="paymentchannelclaim.html">PaymentChannelClaim</a>、<a href="paymentchannelfund.html">PaymentChannelFund</a>。新たに作成するレジャーオブジェクトタイプは<a href="paychannel.html">PayChannel</a>です。レジャー外のデータ構造<code>Claim</code>を定義し、ChannelClaimトランザクションに使用します。新たに作成する<code>rippled</code> APIメソッドは次のとおりです。<a href="channel_authorize.html"><code>channel_authorize</code></a> （署名されたクレームを作成します）、<a href="channel_verify.html"><code>channel_verify</code></a>（署名されたクレームを検証します）、<a href="account_channels.html"><code>account_channels</code></a>（アカウントに関連するチャンネルをリストを作成します）。</p>
+<p>新たに作成するトランザクションタイプは次の3つです。<a href="paymentchannelcreate.html">PaymentChannelCreate</a>、<a href="paymentchannelclaim.html">PaymentChannelClaim</a>、<a href="paymentchannelfund.html">PaymentChannelFund</a>。新たに作成するレジャーオブジェクトタイプは<a href="paychannel.html">PayChannel</a>です。レジャー外のデータ構造<code>Claim</code>を定義し、ChannelClaimトランザクションに使用します。新たに作成する<code>rippled</code>APIメソッドは次のとおりです。<a href="channel_authorize.html"><code>channel_authorize</code></a>（署名されたクレームを作成します）、<a href="channel_verify.html"><code>channel_verify</code></a>（署名されたクレームを検証します）、<a href="account_channels.html"><code>account_channels</code></a>（アカウントに関連するチャンネルをリストを作成します）。</p>
 <p>詳細は、<a href="use-payment-channels.html">Payment Channelsのチュートリアル</a>を参照してください。</p>
-<h2 id="requirefullycanonicalsig">RequireFullyCanonicalSig<a aria-hidden="true" class="hover_anchor" href="#requirefullycanonicalsig"><i class="fa fa-link"></i></a></h2>
+<h3 id="requirefullycanonicalsig">RequireFullyCanonicalSig<a aria-hidden="true" class="hover_anchor" href="#requirefullycanonicalsig"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2349,7 +2535,7 @@
 <p>この修正が適用されない場合、トランザクションがsecp256k1署名を使用し、tfFullyCanonicalSigが有効でない場合は、変更可能となります。ほとんどの署名ユーティリティは、デフォルトでtfFullyCanonicalSigを有効にしていますが、例外もあります。</p>
 <p>この修正により、単独署名のトランザクションは展性になりません。(署名者が必要以上の署名を提供した場合、<a href="transaction-malleability.html#マルチシグの展性">マルチシグのトランザクションはまだ展性であるかもしれません</a>)。すべてのトランザクションは、tfFullyCanonicalSigフラグに関係なく、署名の完全な正規の形式を使用する必要があります。完全に正規化された署名を作成しない署名ユーティリティはサポートされていません。Ripple社が提供するすべての署名ユーティリティは、少なくとも2014年以降、完全に正規化された署名のみを提供するようになっています。</p>
 <p>詳しくは、<a class="external-link" href="https://github.com/ripple/rippled/issues/3042" target="_blank"><code>rippled</code> issue #3042 <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
-<h2 id="shamapv2">SHAMapV2<a aria-hidden="true" class="hover_anchor" href="#shamapv2"><i class="fa fa-link"></i></a></h2>
+<h3 id="shamapv2">SHAMapV2<a aria-hidden="true" class="hover_anchor" href="#shamapv2"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2374,7 +2560,7 @@
 </table>
 <p><code>rippled</code>がレジャーを表示する際に使用するハッシュツリー構造を変更します。新しい構造は以前のバージョンよりもコンパクトで効率的です。この修正はレジャーハッシュの計算方法が変わりますが、その他にユーザーに与える影響はありません。</p>
 <p>この修正が適用されると、ネットワークでハッシュツリー構造への変更を計算している間、XRP Ledgerはしばらく使用できなくなります。</p>
-<h2 id="sorteddirectories">SortedDirectories<a aria-hidden="true" class="hover_anchor" href="#sorteddirectories"><i class="fa fa-link"></i></a></h2>
+<h3 id="sorteddirectories">SortedDirectories<a aria-hidden="true" class="hover_anchor" href="#sorteddirectories"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2403,7 +2589,7 @@
 </table>
 <p><a href="directorynode.html">DirectoryNodeレジャーオブジェクト</a>内の項目をソートして、削除されるべき所有者ディレクトリのページが場合によっては削除されないというバグを修正します。</p>
 <p class="devportal-callout 警告"><strong>警告:</strong> このが適用されていない旧バージョンの<code>rippled</code>は、新しいルールでソートされたDirectoryNodeによって機能が停止するおそれがあります。この問題を回避するには、<code>rippled</code>バージョン0.80.0以降に<a href="install-rippled.html">アップグレード</a>してください。</p>
-<h2 id="suspay">SusPay<a aria-hidden="true" class="hover_anchor" href="#suspay"><i class="fa fa-link"></i></a></h2>
+<h3 id="suspay">SusPay<a aria-hidden="true" class="hover_anchor" href="#suspay"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2427,7 +2613,7 @@
 </tbody>
 </table>
 <p>この修正は、<a href="escrow-object.html">Escrow</a> Amendmentに置き換えられました。</p>
-<h2 id="ticketbatch">TicketBatch<a aria-hidden="true" class="hover_anchor" href="#ticketbatch"><i class="fa fa-link"></i></a></h2>
+<h3 id="ticketbatch">TicketBatch<a aria-hidden="true" class="hover_anchor" href="#ticketbatch"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2456,7 +2642,7 @@
 </table>
 <p>この修正により、通常のシーケンス番号順ではないトランザクションを送信する方法として、<a href="ticket.html">Tickets</a>が追加されます。</p>
 <p>標準規格案: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/issues/16" target="_blank">XLS-13d <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="tickets">Tickets<a aria-hidden="true" class="hover_anchor" href="#tickets"><i class="fa fa-link"></i></a></h2>
+<h3 id="tickets">Tickets<a aria-hidden="true" class="hover_anchor" href="#tickets"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2480,7 +2666,7 @@
 </tbody>
 </table>
 <p>この修正は、<a href="#ticketbatch">TicketBatch</a> Amendmentに置き換えられました。</p>
-<h2 id="ticksize">TickSize<a aria-hidden="true" class="hover_anchor" href="#ticksize"><i class="fa fa-link"></i></a></h2>
+<h3 id="ticksize">TickSize<a aria-hidden="true" class="hover_anchor" href="#ticksize"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2509,7 +2695,7 @@
 </table>
 <p>オーダーブック内で<a href="offers.html#オファーのライフサイクル">オファー</a>をランク付けする方法を変更して、通貨発行者がオファーを為替レートでランク付けする際に考慮する有効桁数を設定できるようにします。この修正により、オファーの交換レートが設定された有効桁数に丸められるため、同じ交換レートを持つオファーが増加します。この修正の目的は、以前のオファーよりもランク付けを高くするには、価格面で意味のある改善をしなければならないようにすることです。主要な発行者がこれを採用すれば、既存のオファーよりわずかなパーセンテージだけ上回るオファーでレジャーを攻撃しようとするスパムが低減します。また、よりバラツキの少ない為替レートでオファーをグループ化できるため、レジャー内のオーダーブックを効率的に保管できます。</p>
 <p>アカウントに<code>TickSize</code>フィールドを追加します。このフィールドは<a href="accountset.html">AccountSetトランザクションタイプ</a>を使用して設定できます。通貨発行者が<code>TickSize</code>フィールドを設定すれば、発行者の通貨を取引するオファーの為替レート（資金の入出金率）がXRP Ledgerによって丸められ、丸められた為替レートに合わせてオファーの金額が調整されます。トランザクションにて1つの通貨にのみ<code>TickSize</code>が設定されていれば、その有効桁数が適用されます。異なる<code>TickSize</code>値が設定された2つの通貨を取引する場合は、有効桁数が最も小さい<code>TickSize</code>が適用されます。XRPに<code>TickSize</code>は設定されません。</p>
-<h2 id="trustsetauth">TrustSetAuth<a aria-hidden="true" class="hover_anchor" href="#trustsetauth"><i class="fa fa-link"></i></a></h2>
+<h3 id="trustsetauth">TrustSetAuth<a aria-hidden="true" class="hover_anchor" href="#trustsetauth"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2538,7 +2724,7 @@
 </table>
 <p><a href="authorized-trust-lines.html">承認されたトラストライン</a>を使用する場合に、会計関係の事前承認（ゼロバランストラストライン）を許可します。</p>
 <p>この修正が適用されれば、<a href="trustset.html#trustsetのフラグ"><code>tfSetfAuth</code>を有効にした</a><code>TrustSet</code>トランザクションにおいて、<code>RippleState</code>ノードの他のすべての値をデフォルト状態にしたままでも、新しい<a href="ripplestate.html"><code>RippleState</code>レジャーオブジェクト</a>を作成できます。新しい<code>RippleState</code>ノードでは、トランザクションの送信者が低いノードと見なされるか高いノードと見なされるかに応じて、<a href="ripplestate.html#ripplestateのフラグ"><code>lsfLowAuth</code>フラグまたは<code>lsfHighAuth</code>フラグ</a>が有効になります。トランザクションの送信者は、<a href="accountset.html#accountsetのフラグ">asfRequireAuthフラグを有効</a>にして<a href="accountset.html">AccountSetトランザクション</a>を送信することで、事前に<a href="accountroot.html#accountrootのフラグ"><code>lsfRequireAuth</code></a>を有効にしておく必要があります。</p>
-<h2 id="xrpfees">XRPFees<a aria-hidden="true" class="hover_anchor" href="#xrpfees"><i class="fa fa-link"></i></a></h2>
+<h3 id="xrpfees">XRPFees<a aria-hidden="true" class="hover_anchor" href="#xrpfees"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2571,7 +2757,7 @@
 <li>FeeSettingsの台帳の項目タイプを変更します。<code>BaseFee</code>、<code>ReferenceFeeUnits</code>、<code>ReserveBase</code>、<code>ReserveIncrement</code>フィールドを<code>BaseFeeDrops</code>、<code>ReserveBaseDrops</code>、<code>ReserveIncrementDrops</code>に置き換えます。</li>
 <li>SetFee トランザクションタイプを変更します。<code>BaseFee</code>、<code>ReferenceFeeUnits</code>、<code>ReserveBase</code>、<code>ReserveIncrement</code>フィールドを<code>BaseFeeDrops</code>、<code>ReserveBaseDrops</code>、<code>ReserveIncrementDrops</code>に置き換えます。</li>
 </ul>
-<p>このAmendment がなければ、トランザクションの形式と台帳の項目は同一です。</p>
+<p>このAmendmentがなければ、トランザクションの形式と台帳の項目は同一です。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->

@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v21.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v22.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -300,7 +300,7 @@
         <h1 id="feature">feature<a aria-hidden="true" class="hover_anchor" href="#feature"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>feature</code>コマンドは、<a href="amendments.html">Amendment</a>に関してこのサーバーが認識している情報（Amendmentが有効であるかどうか、サーバーが<a href="amendments.html#amendmentプロセス">Amendmentプロセス</a>でこれらのAmendmentに賛成票を投じたかどうかなど）を返します。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><code>feature</code>コマンドを使用して、Amendmentへの賛成票または反対票を投じるようにサーバーを一時的に設定できます。この変更は、サーバーの再起動後までは持続しません。Amendment投票で持続する変更を行うには<code>rippled.cfg</code>ファイルを使用します。詳細は、<a href="amendments.html#amendment投票の設定">Amendment投票の設定</a>を参照してください。</p>
+<p><code>feature</code>コマンドを使用して、Amendmentへの賛成票または反対票を投じるようにサーバーを一時的に設定できます。この変更は、サーバーの再起動後も保持されます。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="更新: rippled 1.7.0"><img alt="更新: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em><code>feature</code>メソッドは、権限のないユーザーは実行できない<a href="admin-api-methods.html">管理メソッド</a>です。</em></p>
 <h3 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h3>
 <p>要求フォーマットの例:</p>
@@ -474,12 +474,12 @@ rippled<span class="w"> </span>feature<span class="w"> </span>4C97EBA926031A7CF7
 <tr>
 <td style="text-align: left;"><code>supported</code></td>
 <td style="text-align: left;">ブール値</td>
-<td style="text-align: left;">サーバーがこのAmendmentの適用方法を認識しているかどうか。このフィールドが<code>false</code>（サーバーがこのAmendmentの適用方法を認識していない）に設定されており、<code>enabled</code>が<code>true</code>（このAmendmentが最新レジャーで有効である）に設定されている場合、このAmendmentによりサーバーが<a href="amendments.html#amendment-blocked">Amendment blocked</a>になる可能性があります。</td>
+<td style="text-align: left;">サーバーがこのAmendmentの適用方法を認識しているかどうか。このフィールドが<code>false</code>（サーバーがこのAmendmentの適用方法を認識していない）に設定されており、<code>enabled</code>が<code>true</code>（このAmendmentが最新レジャーで有効である）に設定されている場合、このAmendmentによりサーバーが<a href="amendments.html#amendment-blocked">Amendmentブロック</a>される可能性があります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>vetoed</code></td>
-<td style="text-align: left;">ブール値</td>
-<td style="text-align: left;">サーバーがこのAmendmentに反対票を投じるように指示されているかどうか。</td>
+<td style="text-align: left;">ブール値 または 文字列</td>
+<td style="text-align: left;">ほとんどのAmendmentにおいて、これはサーバがこのAmendmentに反対票を投じるように指示されているかどうかを示すブール値です。コードの中で廃止とマークされているAmendmentについては、代わりに<code>Obsolete</code>という文字列を指定します。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="更新: rippled 1.11.0"><img alt="更新: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</td>
 </tr>
 </tbody>
 </table>
