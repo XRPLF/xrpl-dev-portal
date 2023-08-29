@@ -305,20 +305,6 @@ pages:
         targets:
             - ja
 
-    -   name: Ledger Explorer
-        html: https://livenet.xrpl.org/
-        parent: xrp-ledger-overview.html
-        top_nav_grouping: XRP Ledger
-        targets:
-            - en
-
-    -   name: XRP Ledger エクスプローラ
-        html: https://livenet.xrpl.org/
-        parent: xrp-ledger-overview.html
-        top_nav_grouping: XRP Ledger
-        targets:
-            - ja
-
     -   name: XRP
         template: page-xrp-overview.html.jinja
         html: xrp-overview.html
@@ -360,7 +346,7 @@ pages:
         sidebar: disabled
         targets:
             - ja
-    
+
 
         # Redirect old Carbon Calculator page to Impact
     -   name: Carbon Calculator
@@ -479,7 +465,7 @@ pages:
             - labels
         targets:
             - ja
-    
+
     -   name: Documentation Index
         longer_name: Full Documentation Index
         template: page-docs-index.html.jinja
@@ -487,6 +473,7 @@ pages:
         parent: docs.html
         sidebar: disabled
         nav_omit: true
+        top_nav_omit: true
         targets:
             - en
             - ja
@@ -499,6 +486,7 @@ pages:
         parent: docs.html
         template: pagetype-category.html.jinja
         blurb: This is a quick introduction to the principal features of the XRP Ledger (XRPL). Read this to get a high level understanding of the XRPL, then you can read more about areas of particular interest. The XRP Ledger is a blockchain that permanently records digital transactions of tokens between accounts. The sections below expand on the concepts introduced in that sentence.
+        top_nav_grouping: Article Types
         targets:
             - en
 
@@ -507,6 +495,7 @@ pages:
         parent: docs.html
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
+        top_nav_grouping: Article Types
         targets:
             - ja
 
@@ -521,7 +510,7 @@ pages:
         targets:
             - en
             - ja
-    
+
         # Redirect from old XRP page
     -   name: XRP
         html: xrp.html
@@ -636,7 +625,7 @@ pages:
         targets:
             - en
             - ja
-            
+
     -   name: Decentralized Finance
         html: defi-uc.html
         parent: use-cases.html
@@ -657,10 +646,10 @@ pages:
         parent: defi-uc.html
         targets:
             - en
-            
+
     -   md: use-cases/defi/list-xrp-as-an-exchange.ja.md
         parent: defi-uc.html
-        targets:            
+        targets:
             - ja
 
 
@@ -683,14 +672,14 @@ pages:
         blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
         targets:
             - ja
-    
+
     # Networks and Servers -----------------------------------------------------------------
 
-    -   md: concepts/servers/networks-and-servers.md
+    -   md: concepts/networks-and-servers/networks-and-servers.md
         targets:
             - en
 
-    -   md: concepts/servers/networks-and-servers.ja.md
+    -   md: concepts/networks-and-servers/networks-and-servers.ja.md
         targets:
             - ja
 
@@ -704,83 +693,67 @@ pages:
             - en
             - ja
 
-    -   md: concepts/servers/rippled-server-modes.md
+    -   md: concepts/networks-and-servers/rippled-server-modes.md
         targets:
             - en
 
-    -   md: concepts/servers/rippled-server-modes.ja.md
+    -   md: concepts/networks-and-servers/rippled-server-modes.ja.md
         targets:
             - ja
 
-    -   md: concepts/servers/clustering.md
+    -   md: concepts/networks-and-servers/clustering.md
         targets:
             - en
 
-    -   md: concepts/servers/clustering.ja.md
+    -   md: concepts/networks-and-servers/clustering.ja.md
         targets:
             - ja
 
-    -   md: concepts/servers/ledger-history/ledger-history.md
+    -   md: concepts/networks-and-servers/ledger-history/ledger-history.md
         targets:
             - en
 
-    -   md: concepts/servers/ledger-history/ledger-history.ja.md
+    -   md: concepts/networks-and-servers/ledger-history/ledger-history.ja.md
         targets:
             - ja
 
-    -   md: concepts/servers/peer-protocol.md
+    -   md: concepts/networks-and-servers/peer-protocol.md
         targets:
             - en
 
-    -   md: concepts/servers/peer-protocol.ja.md
+    -   md: concepts/networks-and-servers/peer-protocol.ja.md
         targets:
             - ja
 
-    -   md: concepts/servers/transaction-censorship-detection.md
+    -   md: concepts/networks-and-servers/transaction-censorship-detection.md
         targets:
             - en
 
-    -   md: concepts/servers/transaction-censorship-detection.ja.md
+    -   md: concepts/networks-and-servers/transaction-censorship-detection.ja.md
         targets:
             - ja
 
-    -   md: concepts/networks/parallel-networks.md
+    -   md: concepts/networks-and-servers/parallel-networks.md
         targets:
             - en
 
-    -   md: concepts/networks/parallel-networks.ja.md
+    -   md: concepts/networks-and-servers/parallel-networks.ja.md
         targets:
             - ja
 
-        # Amendments -------------------------------------------------------------------
-
-    -   md: amendments/amendments.md
+    -   md: concepts/networks-and-servers/amendments.md
         targets:
             - en
 
-    -   md: amendments/amendments.ja.md
+    -   md: concepts/networks-and-servers/amendments.ja.md
         targets:
             - ja
 
-    -   md: amendments/known-amendments.md
+    -   md: concepts/networks-and-servers/the-clio-server.md
         targets:
             - en
 
-    -   md: amendments/known-amendments.ja.md
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: amendments/contribute-code-flow.md
-        targets:
-            - en
-            - ja
-
-    -   md: concepts/servers/the-clio-server.md
-        targets:
-            - en
-
-    -   md: concepts/servers/the-clio-server.ja.md
+    -   md: concepts/networks-and-servers/the-clio-server.ja.md
         targets:
             - ja
 
@@ -794,7 +767,7 @@ pages:
     -   md: concepts/consensus-protocol/consensus.ja.md
         targets:
             - ja
-    
+
     -   md: concepts/consensus-protocol/consensus-structure.md
         targets:
             - en
@@ -803,7 +776,7 @@ pages:
     -   md: concepts/consensus-protocol/consensus-structure.ja.md
         targets:
             - ja
-    
+
     -   md: concepts/consensus-protocol/consensus-principles-and-rules.md
         targets:
             - en
@@ -811,7 +784,7 @@ pages:
     -   md: concepts/consensus-protocol/consensus-principles-and-rules.ja.md
         targets:
             - ja
-    
+
     -   md: concepts/consensus-protocol/consensus-protections.md
         targets:
             - en
@@ -869,7 +842,7 @@ pages:
         targets:
             - en
             - ja
-    
+
         # TODO: translate. Content mostly split off from "ledgers.md"
     -   md: concepts/ledgers/open-closed-validated-ledgers.md
         targets:
@@ -1011,7 +984,7 @@ pages:
         blurb: XRP LedgerはポイントツーポイントのXRPペイメントのほかに、より専門化した支払いタイプをサポートしています。
         targets:
             - ja
-    
+
     -   md: concepts/payment-types/direct-xrp-payments.md
         targets:
             - en
@@ -1212,7 +1185,7 @@ pages:
     -   md: concepts/tokens/decentralized-exchange.ja.md
         targets:
             - ja
-    
+
     -   md: concepts/tokens/offers.md
         targets:
             - en
@@ -1274,7 +1247,7 @@ pages:
         targets:
             - en
             - ja
-    
+
     -   md: concepts/accounts/cryptographic-keys.md
         targets:
             - en
@@ -1381,7 +1354,7 @@ pages:
         blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
         targets:
             - ja
-            
+
     -   name: Tokens
         html: issued-currencies-overview.html
         template: pagetype-redirect.html.jinja
@@ -1470,7 +1443,7 @@ pages:
             - ja
 
 
-        
+
 # Tutorials --------------------------------------------------------------------
 
     -   name: Tutorials
@@ -1498,7 +1471,7 @@ pages:
     -   md: tutorials/get-started/public-servers.ja.md
         targets:
             - ja
-    
+
     # Python -------------------------------------------------------------------
 
     -   name: Python
@@ -1526,7 +1499,7 @@ pages:
         targets:
             - en
             - ja
-            
+
         # TODO: translate
     -   md: tutorials/quickstart/send-payments-using-python.md
         targets:
@@ -1568,7 +1541,7 @@ pages:
         targets:
             - en
             - ja
-    
+
     -   md: tutorials/build-apps/build-a-desktop-wallet-in-python.md
         targets:
           - en
@@ -1866,7 +1839,7 @@ pages:
         targets:
             - ja
 
-        # Use Specialized Payment Types -------------------------------------------------------- 
+        # Use Specialized Payment Types --------------------------------------------------------
 
     -   name: Use Specialized Payment Types
         html: use-specialized-payment-types.html
@@ -2021,7 +1994,7 @@ pages:
         targets:
             - ja
 
-        # Use Tokens ------------------------------------------------------------------ 
+        # Use Tokens ------------------------------------------------------------------
 
     -   name: Use Tokens
         html: use-tokens.html
@@ -2089,7 +2062,7 @@ pages:
             - en
             - ja
 
-        # Redirect old Production Readiness category. 
+        # Redirect old Production Readiness category.
         # There's no equivalent category now, so go to Tutorials top
     -   name: Production Readiness
         html: production-readiness.html
@@ -2467,7 +2440,7 @@ pages:
         html: ammbid.html
         template: pagetype-redirect.html.jinja
         redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammbid/
-        nav_omit: true        
+        nav_omit: true
         targets:
             - en
             - ja
@@ -3389,7 +3362,7 @@ pages:
         targets:
             - ja
 
-    -   name: Clio Server 
+    -   name: Clio Server
         html: clio-methods.html
         parent: public-api-methods.html
         blurb: Use these methods to retrieve information using Clio server APIs.
@@ -3881,6 +3854,7 @@ pages:
         parent: docs.html
         blurb: Install, configure, and manage the software that powers the XRP Ledger.
         template: pagetype-category.html.jinja
+        top_nav_grouping: Article Types
         targets:
             - en
             - ja
@@ -4007,7 +3981,7 @@ pages:
         targets:
             - en
             - ja
-        
+
     -   md: infrastructure/rippled/installation/build-run-rippled-in-reporting-mode.md
         targets:
             - en
@@ -4086,11 +4060,11 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/servers/ledger-history/online-deletion.md
+    -   md: concepts/networks-and-servers/ledger-history/online-deletion.md
         targets:
             - en
 
-    -   md: concepts/servers/ledger-history/online-deletion.ja.md
+    -   md: concepts/networks-and-servers/ledger-history/online-deletion.ja.md
         targets:
             - ja
 
@@ -4110,11 +4084,11 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/servers/ledger-history/history-sharding.md
+    -   md: concepts/networks-and-servers/ledger-history/history-sharding.md
         targets:
             - en
 
-    -   md: concepts/servers/ledger-history/history-sharding.ja.md
+    -   md: concepts/networks-and-servers/ledger-history/history-sharding.ja.md
         targets:
             - ja
 
@@ -4818,7 +4792,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - en
 
@@ -4826,7 +4800,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - ja
 
@@ -4834,7 +4808,7 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - en
 
@@ -4842,53 +4816,79 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - ja
 
-# Code Samples page (final location TBD)
+    -   name: Contribute Code
+        html: contribute-code-flow.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: contribute-code.html
+        targets:
+            - en
+            - ja
+
+# Resources tab ---------------------------------------------------------------
+    -   name: Resources
+        html: resources.html
+        parent: index.html
+        # Temporary: redirect to Dev Tools Eventually this should become a real landing page.
+        template: pagetype-category.html.jinja
+        blurb: Other resources to help understand the XRP Ledger and develop on it.
+        targets:
+            - en
+
+    -   name: リソース
+        html: resources.html
+        parent: index.html
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledgerの理解や開発ためのリソース。Other resources to help understand the XRPL and develop on it.
+        targets:
+            - ja
+
     -   name: Code Samples
         html: code-samples.html
-        parent: docs.html
+        parent: resources.html
         template: page-code-samples.html.jinja
         sidebar: left_only
         codesamples: true
+        top_nav_grouping: Development
         filters:
             - code_samples
-        top_nav_grouping: Online Tools
         blurb: Browse sample code for building common use cases on the XRP Ledger.
         targets:
             - en
 
     -   name: サンプルコード
         html: code-samples.html
-        parent: docs.html
+        parent: resources.html
         template: page-code-samples.html.jinja
         sidebar: left_only
         codesamples: true
+        top_nav_grouping: 開発
         filters:
             - code_samples
-        top_nav_grouping: Online Tools
         blurb: XRP Ledgerで一般的なユースケースを構築するためのサンプルコードを確認することができます。
         targets:
             - ja
 
-# Dev Tools --------------------------------------------------------------------
+    # Dev Tools ---------------------------------------------------------------
     -   name: Dev Tools
         html: dev-tools.html
         template: page-dev-tools.html.jinja
-        parent: docs.html
-        top_nav_grouping: Online Tools
+        parent: resources.html
         sidebar: left_only
+        top_nav_grouping: Development
         targets:
             - en
 
     -   name: 開発者ツール
         html: dev-tools.html
         template: page-dev-tools.html.jinja
-        parent: docs.html
-        top_nav_grouping: Online Tools
+        parent: resources.html
         sidebar: left_only
+        top_nav_grouping: 開発
         targets:
             - ja
 
@@ -4899,20 +4899,6 @@ pages:
         redirect_url: dev-tools.html
         targets:
             - en
-            - ja
-    
-    -   name: XRPL Learning Portal
-        html: https://learn.xrpl.org/
-        parent: docs.html
-        top_nav_grouping: Online Tools
-        targets:
-            - en
-
-    -   name: XRPL学習ポータル
-        html: https://learn.xrpl.org/
-        parent: docs.html
-        top_nav_grouping: Online Tools
-        targets:
             - ja
 
     -   name: RPC Tool
@@ -5027,40 +5013,98 @@ pages:
         targets:
             - ja
 
+    -   name: XRPL Learning Portal
+        html: https://learn.xrpl.org/
+        parent: resources.html
+        top_nav_grouping: Development
+        targets:
+            - en
 
-# Contributing to Documentation -----------------------------------------------
+    -   name: XRPL学習ポータル
+        html: https://learn.xrpl.org/
+        parent: resources.html
+        top_nav_grouping: 開発
+        targets:
+            - ja
+
+    -   name: Ledger Explorer
+        html: https://livenet.xrpl.org/
+        parent: resources.html
+        top_nav_grouping: Current Status
+        targets:
+            - en
+
+    -   name: XRP Ledger エクスプローラ
+        html: https://livenet.xrpl.org/
+        parent: resources.html
+        top_nav_grouping: 現在のステータス
+        targets:
+            - ja
+
+    -   md: resources/known-amendments.md
+        top_nav_grouping: Current Status
+        targets:
+            - en
+
+    -   md: resources/known-amendments.ja.md
+        top_nav_grouping: 現在のステータス
+        targets:
+            - ja
+
+
+    # Contribute Code ---------------------------------------------------------
+
+        # TODO: translate
+    -   md: resources/contribute-code/contribute-code.md
+        top_nav_grouping: Join In
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: resources/contribute-code/create-custom-transactors.md
+        targets:
+            - en
+            - ja
+
+    # Contribute Documentation ------------------------------------------------
 
     # TODO: Translate section.
 
-    -   md: contributing/contributing-to-documentation.md
-        html: contributing-to-documentation.html
-        parent: docs.html
+    -   md: resources/contribute-documentation/contribute-documentation.md
+        top_nav_grouping: Join In
         targets:
             - en
             - ja
 
-    -   md: contributing/documentation-languages.md
+    -   name: Contributor Code of Conduct
+        html: https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.md
+        parent: contribute-documentation.html
+        targets:
+            - en
+
+    -   name: コントリビューター行動規範
+        html: https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.ja.md
+        parent: contribute-documentation.html
+        targets:
+            - ja
+
+    -   md: resources/contribute-documentation/documentation-translations.md
         targets:
             - en
             - ja
 
-    -   md: contributing/creating-diagrams.md
+    -   md: resources/contribute-documentation/creating-diagrams.md
         targets:
             - en
             - ja
 
-    -   md: contributing/tutorial-guidelines.md
-        html: tutorial-guidelines.html
-        parent: contributing-to-documentation.html
-        top_nav_omit: true
+    -   md: resources/contribute-documentation/tutorial-guidelines.md
         targets:
             - en
             - ja
 
-    -   md: contributing/tutorial-structure.md
-        html: tutorial-structure.html
-        parent: tutorial-guidelines.html
-        top_nav_omit: true
+    -   md: resources/contribute-documentation/tutorial-structure.md
         targets:
             - en
             - ja
@@ -5091,15 +5135,6 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
-    -   md: contributing/contribute-code.md
-        html: contribute-code.html
-        parent: contribute.html
-        top_nav_omit: true
-        targets:
-            - en
-            - ja
-
 
     -   name: Events
         html: events.html
@@ -5110,7 +5145,7 @@ pages:
         blurb: The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.
         top_nav_name: Events
         top_nav_hero_image: top-nav-hero-contribute
-        filters: 
+        filters:
             - categorize_dates
         targets:
             - en
@@ -5124,7 +5159,7 @@ pages:
         blurb: XRP Ledger (XRPL) はコミュニティ主導のパブリックブロックチェーンです。ここでは、その参加方法について説明します。
         top_nav_name: イベント
         top_nav_hero_image: top-nav-hero-contribute
-        filters: 
+        filters:
             - categorize_dates
         targets:
             - ja
@@ -5207,16 +5242,16 @@ pages:
             - ja
 
     -   name: GitHub
-        html: https://github.com/XRPLF/xrpl-dev-portal/
+        html: https://github.com/XRPLF
         parent: contribute.html
-        blurb: View and propose changes to this site's source code on GitHub.
+        blurb: View XRP Ledger projects and source code on GitHub.
         targets:
             - en
 
     -   name: GitHub
         html: https://github.com/XRPLF/xrpl-dev-portal/
         parent: contribute.html
-        blurb: このサイトのソースコードをGitHubで閲覧し、変更を提案することができます。
+        blurb: XRP LedgerのソースコードをGitHubで閲覧し、変更を提案することができます。
         targets:
             - ja
 
@@ -5256,7 +5291,7 @@ pages:
         nav_omit: true
         targets:
             - ja
-            
+
     -   name: Wallet
         html: wallet.html
         template: pagetype-redirect.html.jinja

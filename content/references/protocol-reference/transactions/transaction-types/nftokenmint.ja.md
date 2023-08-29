@@ -10,7 +10,7 @@ labels:
 
 `NFTokenMint`トランザクションは非代替性トークンを作成し、`NFTokenMinter`に紐付く[NFTokenPageオブジェクト][]に[NFToken][]オブジェクトとして追加します。このトランザクションの必須パラメータは`Token`フィールドで、実際のトークンを指定します。このトランザクションは`NFTokenMinter`にとって、不変と定義されているトークンフィールド(例えば`Flags`)を設定することができる唯一の方法です。
 
-_([NonFungibleTokensV1_1 amendment][]が必要です)_
+_([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 
 ## {{currentpage.name}} JSONの例

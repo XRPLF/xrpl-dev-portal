@@ -26,7 +26,7 @@ Here is a sample transaction in JSON format. This transaction transfers 1 XRP fr
 {
   "TransactionType": "Payment",
   "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-  "Amount": 1000000,
+  "Amount": "1000000",
   "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
 }
 ```
@@ -112,3 +112,4 @@ The request returns a wealth of information. Here is an example response for an 
 For information on the fields in an Account record, see [Accounts](accounts.html).
 
 Next: [Software Ecosystem](software-ecosystem.html)
+

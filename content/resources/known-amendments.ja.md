@@ -1,6 +1,6 @@
 ---
 html: known-amendments.html
-parent: amendments.html
+parent: resources.html
 blurb: 本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 labels:
   - ブロックチェーン
