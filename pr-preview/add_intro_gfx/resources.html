@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Contributing to Documentation - XRPL.org</title>
+    <title>Resources - XRPL.org</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Contributing to Documentation | XRPL.org">
-    <meta property="og:url" content="https://xrpl.org/contributing-to-documentation.html" />
-    <meta property="og:description" content="Contribution guides for XRP Ledger documentation." />
-    <meta name="description" content="Contribution guides for XRP Ledger documentation." />
+    <meta property="og:title" content="Resources | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/resources.html" />
+    <meta property="og:description" content="Other resources to help understand the XRP Ledger and develop on it." />
+    <meta name="description" content="Other resources to help understand the XRP Ledger and develop on it." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="en" />
-    <link rel="alternate" href="https://xrpl.org/contributing-to-documentation.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/contributing-to-documentation.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/contributing-to-documentation.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/resources.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/resources.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/resources.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -40,7 +40,7 @@
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       "event": "page_info",
-      "page_type": "Document",
+      "page_type": "Hub Page",
       "page_group": "Docs",
       "page_funnel": "Other",
       "page_labels": []
@@ -64,21 +64,6 @@
     <!-- Theme switch -->
     <script src="assets/js/theme-switch.js"></script>
 
-
-
-    <!-- expandable code samples -->
-    <script src="assets/js/expandcode.js"></script>
-    <!-- multi-code selection tabs -->
-    <script src="assets/js/multicodetab.js"></script>
-    <!-- copy code button -->
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".multicode").minitabs();
-            make_code_expandable();
-            new ClipboardJS('.clipboard-btn');
-        });
-    </script>
 
 
 </head>
@@ -117,7 +102,6 @@
             <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL Overview</a>
             <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
             <a class="dropdown-item" href="history.html">History</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
@@ -146,24 +130,14 @@
               <p>Dive into XRP Ledger technology and start integrating.</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="docs-index.html">Documentation Index</a>
-            <a class="dropdown-item" href="introduction.html">Introduction</a>
-          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="introduction.html">Introduction</a>
             <a class="dropdown-item" href="use-cases.html">Use Cases</a>
             <a class="dropdown-item" href="concepts.html">Concepts</a>
             <a class="dropdown-item" href="tutorials.html">Tutorials</a>
             <a class="dropdown-item" href="references.html">References</a>
             <a class="dropdown-item" href="infrastructure.html">Infrastructure</a>
-          </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
-            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
-            <a class="dropdown-item active" href="contributing-to-documentation.html">Contributing to Documentation</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -185,6 +159,28 @@
       </li>
 
             <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Resources</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-development">
+            <h5 class="dropdown-item">Development</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
+            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+          </div><!--./col-->
+          <div class="navcol col-for-current-status">
+            <h5 class="dropdown-item">Current Status</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
+            <a class="dropdown-item" href="known-amendments.html">Known Amendments</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item" href="contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="contribute-documentation.html">Contribute Documentation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
           <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
@@ -201,7 +197,7 @@
             <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
-            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
             <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
@@ -229,7 +225,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/ja/contributing-to-documentation.html">
+          <a class="dropdown-item" href="/ja/resources.html">
             日本語
           </a>
           <hr />
@@ -251,374 +247,109 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
-  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
-    Page Toolbar
-    <span class="chevron"><span></span><span></span></span>
-  </a>
-  <div id="page-toc-wrapper" class="collapse d-lg-block">
-<div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/add_intro_gfx/content/contributing/contributing-to-documentation.md?pr=/XRPLF/xrpl-dev-portal/pull/2036" target="_blank" class="btn btn-primary github-edit">Edit page</a>
-</div><!-- /.github-edit -->    <div class="toc-header">
-      <h4>In this document</h4>
-    </div>
-    <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#contributing-to-documentation">Contributing to Documentation</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#about-this-site">About This Site</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#repository-layout">Repository Layout</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#requirements-for-a-successful-pull-request">Requirements for a Successful Pull Request</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#dactyl-setup">Dactyl Setup</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#building-the-site">Building the Site</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#config-formatting">Config Formatting</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#conventions">Conventions</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#terminology">Terminology</a></li>
-      </ul>
-  </div>
       </aside>
 
       <!-- main column -->
-      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+      <main class="main col-md-7 col-lg-6 order-md-3  landing landing-children padded-main" role="main" id="main_content_body">
 <nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
   <ul class="breadcrumb">
     
 
     <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
-    <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
-    <li class="active breadcrumb-item">Contributing to Documentation</li>
+    <li class="active breadcrumb-item">Resources</li>
   </ul>
-</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="content">
-        <h1 id="contributing-to-documentation">Contributing to Documentation<a aria-hidden="true" class="hover_anchor" href="#contributing-to-documentation"><i class="fa fa-link"></i></a></h1>
-<p>Thanks for considering a contribution to the XRP Ledger Developer Portal!</p>
-<p>We're thrilled you're interested and your help is greatly appreciated. Contributing is a great way to learn about the XRP Ledger (XRPL).</p>
-<p>We are happy to review your pull requests. To make the process as smooth as possible, please read this document and follow the stated guidelines.</p>
-<p>Contributions become copyright the XRP Ledger Project and are provided under the MIT <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE" target="_blank">LICENSE <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="about-this-site">About This Site<a aria-hidden="true" class="hover_anchor" href="#about-this-site"><i class="fa fa-link"></i></a></h2>
-<p>The XRPL Dev Portal provides comprehensive documentation of the the XRP Ledger, including sample code and other information for developers to start building.</p>
-<h2 id="repository-layout">Repository Layout<a aria-hidden="true" class="hover_anchor" href="#repository-layout"><i class="fa fa-link"></i></a></h2>
-<ul>
-<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/assets" target="_blank">assets/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - Static files used by the site's templates.</li>
-<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content" target="_blank">content/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - Source files used to build the documentation. Mostly in Markdown.<ul>
-<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples" target="_blank">content/_code-samples/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - Code samples used or referenced by the documentation. Where possible, these are fully functional / executable scripts.</li>
-<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_img-sources" target="_blank">content/_img-sources/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - Source files for images used in the documentation. Any <code>.uxf</code> files are diagrams made with <a class="external-link" href="https://www.umlet.com/" target="_blank">Umlet <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
-<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_snippets" target="_blank">content/_snippets/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - Reusable chunks of Markdown text that are included in other content files, using the Dactyl preprocessor.</li>
-</ul>
-</li>
-<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/img" target="_blank">img/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - Images used by the documentation contents.</li>
-<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/template" target="_blank">template/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - Template files for building the HTML outputs.</li>
-<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/tool" target="_blank">tool/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - Filters, style-checker rules, and other scripts.</li>
-<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/styles" target="_blank">styles/ <i aria-hidden="true" class="fa fa-external-link"></i></a> - Source files (SCSS) to generate the CSS files in the assets folder.</li>
-<li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/dactyl-config.yml" target="_blank"><code>dactyl-config.yml</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> - Main config file, which contains the metadata for the site. For information on our conventions, see <a href="#config-formatting">Config Formatting</a>.</li>
-</ul>
-<h2 id="requirements-for-a-successful-pull-request">Requirements for a Successful Pull Request<a aria-hidden="true" class="hover_anchor" href="#requirements-for-a-successful-pull-request"><i class="fa fa-link"></i></a></h2>
-<p>Before being considered for review or merging, each pull request must:
-- Pass continuous integration tests.
-- Be <a class="external-link" href="https://github.blog/2019-02-14-introducing-draft-pull-requests/" target="_blank">marked as drafts <i aria-hidden="true" class="fa fa-external-link"></i></a> until they are ready for review.
-- Adhere to the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.md" target="_blank">code of conduct <i aria-hidden="true" class="fa fa-external-link"></i></a> for this repository.</p>
-<h2 id="dactyl-setup">Dactyl Setup<a aria-hidden="true" class="hover_anchor" href="#dactyl-setup"><i class="fa fa-link"></i></a></h2>
-<p>The portal is built using <a class="external-link" href="https://github.com/ripple/dactyl" target="_blank">Dactyl <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<p>Dactyl requires <a class="external-link" href="https://python.org/" target="_blank">Python 3 <i aria-hidden="true" class="fa fa-external-link"></i></a>. Install it with <a class="external-link" href="https://pip.pypa.io/en/stable/" target="_blank">pip <i aria-hidden="true" class="fa fa-external-link"></i></a>:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">pip3 install dactyl
-</code></pre></div>
-<h2 id="building-the-site">Building the Site<a aria-hidden="true" class="hover_anchor" href="#building-the-site"><i class="fa fa-link"></i></a></h2>
-<p>This repo uses <a class="external-link" href="https://github.com/ripple/dactyl" target="_blank"><strong>Dactyl</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a> to build HTML display versions of all the documentation. After you've done the <a href="#dactyl-setup">Dactyl Setup</a>, you can build the site from the project root directory:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">dactyl_build
-</code></pre></div>
-<p>This outputs the generated contents to the <code>out/</code> directory. These contents can be opened in a web browser as files or served as static content by a web server.</p>
-<p>You can also run link checking or style checking from the root directory.</p>
-<p>Link checking should be run after emptying the output folder and then building:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">dactyl_link_checker
-</code></pre></div>
-<p>Style checking is experimental:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">dactyl_style_checker
-</code></pre></div>
-<h2 id="config-formatting">Config Formatting<a aria-hidden="true" class="hover_anchor" href="#config-formatting"><i class="fa fa-link"></i></a></h2>
-<p>The templates in this repository use metadata from the <code>dactyl-config.yml</code> file as well as the pages' <a class="external-link" href="https://dactyl.link/frontmatter.html" target="_blank">frontmatter <i aria-hidden="true" class="fa fa-external-link"></i></a> to generate navigation elements in the site, including header, footer, sidebars, and breadcrumbs.</p>
-<p>If you add a new page, you must add it to the appropriate page in the pages array of the <code>dactyl-config.yml</code> file. An example entry looks like this:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">md</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">concepts/the-rippled-server/the-rippled-server.md</span>
-<span class="w">        </span><span class="nt">targets</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ja</span><span class="w"> </span><span class="c1"># Include in all targets unless you have a translation</span>
-</code></pre></div>
-<p>The Markdown file itself should start with a frontmatter stanza such as the following:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="nn">---</span>
-<span class="nt">html</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">the-rippled-server.html</span>
-<span class="nt">parent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">concepts.html</span>
-<span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pagetype-category.html.jinja</span>
-<span class="nt">blurb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.</span>
-<span class="nn">---</span>
-</code></pre></div>
-<p>At a minimum, most pages should have <code>html</code>, <code>parent</code> and <code>blurb</code> fields (plus the <code>md</code> and <code>targets</code> fields in the config file). You can put any key-value pairs here or in the config file entry for the page, but the following ones are relevant:</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Contents</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>html</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Output filename for the page. Should end in <code>.html</code> and MUST be unique within the target. For translated pages, leave the filename the same as the English version page.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>parent</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The exact, unique <code>html</code> value of this page's "parent" page. Indicates where this page should appear in the navigation.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>blurb</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Human-readable summary of the page. (Plain text only.) Should be about 1 sentence long. This appears in various places, including landing pages and metadata used in unfurling links on social media.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>name</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Human-readable page name. (Plain text only.) For files with Markdown content, you should omit this so that Dactyl can automatically detect it from a header on the first line of the contents instead. This is usually only provided on landing pages or other special pages with no Markdown source file.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>template</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The filename of a template file to use (in the <code>template/</code> directory) for this page. Most pages should use the default template. The <code>pagetype-category.html.jinja</code> template shows a list of child pages at the end. Pages with special or particularly unique layouts may need individual templates (conventionally, starting with <code>page-</code>).</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>status</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Use the value <code>not_enabled</code> on pages relating to an amendment that is not yet enabled on the XRP Ledger mainnet. This displays a "flask" badge with a tooltip next to the page in the navigation.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>nav_omit</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">Use <code>true</code> to cause this page not to appear in any navigation elements.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>top_nav_omit</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">Use <code>true</code> to cause this page not to appear in the page top dropdown navigation.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>top_nav_level</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">Adjust the indentation level for the page in the top nav dropdowns. Level <code>2</code> is indented to appear like a child of the page above it in the dropdown.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>sidebar</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Use <code>disabled</code> to hide the left and right sidebars (if the page uses a template derived from the base template)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>fb_card</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Filename of an image (in <code>assets/img/</code>) to use when unfurling links to this page on Facebook.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>twitter_card</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Filename of an image (in <code>assets/img/</code>) to use when unfurling links to this page on Twitter.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>redirect_url</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Use with <code>template: pagetype-redirect.html.jinja</code> only. Automatically redirect the user to the provided URL when they navigate to this page.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>cta_text</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Text to appear in "call to action" buttons that link to this page (on special landings).</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>curated_anchors</code></td>
-<td style="text-align: left;">Array of Objects</td>
-<td style="text-align: left;">A set of anchors in this page to show, similar to child pages, in landings. Each object in the array should have a human-readable <code>name</code> field (such as <code>"Available Modes"</code>) and an <code>anchor</code> field with the HTML ID to link to (such as <code>"#available-modes"</code>).</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>skip_spell_checker</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">Use <code>true</code> to make the Dactyl's style checker skip spell-checking this page.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>filters</code></td>
-<td style="text-align: left;">Array of Strings</td>
-<td style="text-align: left;">A list of additional filters to use on this page. <a class="external-link" href="https://github.com/ripple/dactyl/blob/master/README.md#filters" target="_blank">Filters <i aria-hidden="true" class="fa fa-external-link"></i></a> are Python scripts that provide additional pre- or post-processing of page contents.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>canonical_url</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Provides the canonical URL for a page that takes query parameters. Search engines and other tools may use this when linking to the page.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>embed_xrpl_js</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">Use <code>true</code> to have the latest version of <a class="external-link" href="https://js.xrpl.org" target="_blank">xrpl.js <i aria-hidden="true" class="fa fa-external-link"></i></a> loaded on the page.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="conventions">Conventions<a aria-hidden="true" class="hover_anchor" href="#conventions"><i class="fa fa-link"></i></a></h3>
-<p>Use the following conventions when creating a page:</p>
-<ul>
-<li>The HTML filename and MD filename should match exactly except for the file extension.</li>
-<li>The filenames should closely match the title of the page, including words like "and" and "the", but should be in all lowercase with hyphens instead of spaces and punctuation. For example, <code>cash-a-check-for-an-exact-amount.md</code>. If you change the title of a page, change the filename too. (If it has already been published at another URL, leave a redirect from the old URL.)</li>
-<li>Always start a page with a h1 header.</li>
-<li>Don't link to the top h1 anchor of a page, link to the page itself without an anchor. This helps prevent broken links in translation. It's OK to link to later headers.</li>
-<li>Don't use any formatting (like <em>italics</em> or <code>code font</code>) in the title of the page.</li>
-<li>Don't hard-wrap text in Markdown files.</li>
-<li>For code samples, try to keep lines no longer than 80 columns wide.</li>
-<li>When in doubt, follow <a class="external-link" href="https://cirosantilli.com/markdown-style-guide/" target="_blank">Ciro Santilli's Markdown Style Guide (Writability Profile) <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
-<li>
-<p>Landing pages should be in subfolders and should have the same filename as the folder. For example, the landing page of the "Accounts" page group should be <code>accounts/accounts.md</code> with the HTML filename <code>accounts.html</code>.</p>
-<p class="devportal-callout warning"><strong>Warning:</strong> Don't use <code>index.md</code>.</p>
-</li>
-<li>
-<p>Don't use tab characters for indentation in Markdown or code samples. Use 4 spaces per indent, except in <strong>JavaScript</strong> code samples, which should use 2 spaces per indent.</p>
-</li>
-</ul>
-<h3 id="terminology">Terminology<a aria-hidden="true" class="hover_anchor" href="#terminology"><i class="fa fa-link"></i></a></h3>
-<p>Use the following words and phrases as described:</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th>Term</th>
-<th>Terms to Avoid</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>API, APIs</td>
-<td>API's, RPC</td>
-<td>Application Programming Interface, a set of functions and definitions for software to connect to other software.</td>
-</tr>
-<tr>
-<td>core server, core XRP Ledger server</td>
-<td><code>rippled</code></td>
-<td>The <code>rippled</code> name is probably going to be retired in the near future, so it's better to refer to it by the more generic name. When necessary, refer to <code>rippled</code> in all lowercase and code font. (It's pronounced "ripple dee", and the "d" stands for "daemon" per UNIX tradition.)</td>
-</tr>
-<tr>
-<td>financial institution</td>
-<td>bank, FI, PSP (payment services provider)</td>
-<td>This term encompasses a wider range of businesses than just <em>bank</em> or other terms and does not rely on an understanding of industry jargon.</td>
-</tr>
-<tr>
-<td>ledger entry</td>
-<td>ledger object, node</td>
-<td>A single object inside the state data of the XRP Ledger. The term <em>ledger object</em> could refer to one of these or to the whole ledger. The term <em>node</em> was sometimes used for this case because the ledger's state data can be envisioned as a graph, but this is confusing because <em>node</em> has other uses.</td>
-</tr>
-<tr>
-<td>liquidity provider</td>
-<td>market maker</td>
-<td>A business or individual who offers to exchange between two currencies or assets, often deriving income from the price differential between trades. The term <em>market maker</em> has a specific legal definition in some jurisdictions and may not apply in all the same circumstances.</td>
-</tr>
-<tr>
-<td>malicious actor</td>
-<td>hacker</td>
-<td>A person, organization, or even an automated tool which might attempt to acquire secrets, break encryption, deny service, or otherwise attack a secure resource.</td>
-</tr>
-<tr>
-<td>a NFT</td>
-<td>an NFT</td>
-<td>A NFT object in the XRP Ledger tracks or represents a non-fungible token. Pronounced "nif-token" and written <em>a NFT</em> rather than <em>an NFT</em>.</td>
-</tr>
-<tr>
-<td>PostgreSQL</td>
-<td>Postgres</td>
-<td>A specific brand of relational database software. Always use the full name, not an informal short version.</td>
-</tr>
-<tr>
-<td>order book</td>
-<td>orderbook, offer book</td>
-<td>A collection of trade orders waiting to be matched and executed, typically sorted by exchange rate. Use two words.</td>
-</tr>
-<tr>
-<td>server</td>
-<td>node</td>
-<td>A server is software and/or hardware, especially the ones that connect to the XRP Ledger peer-to-peer network. The term <em>node</em> is sometimes used for this purpose but is also overloaded with other meanings including entries in a graph and Node.js, a JavaScript interpreter.</td>
-</tr>
-<tr>
-<td>stablecoin issuer</td>
-<td>gateway</td>
-<td>An issuer is the organization that issues a token in the XRP Ledger. A stablecoin is a token where the issuer promises that it is fully backed by some outside asset (such as fiat currency), with the stablecoin issuer providing deposit and withdraw operations to convert between the two (possibly for a fee). Previously the term <em>gateway</em> was used (especially by Ripple, the company) to describe this use case, but the rest of the industry adopted <em>stablecoin issuer</em> instead.</td>
-</tr>
-<tr>
-<td>transaction cost</td>
-<td>transaction fee</td>
-<td>The amount of XRP burnt to send a transaction in the XRP Ledger. Even though this is specified in the <code>Fee</code> field of transactions, the term <em>fee</em> implies that the money is paid to someone, so <em>cost</em> is preferable.</td>
-</tr>
-<tr>
-<td>trust line</td>
-<td>trustline</td>
-<td>Use two words. A trust line is a relationship between two accounts in the XRP Ledger that tracks a balance of tokens between those accounts.</td>
-</tr>
-<tr>
-<td>tokens</td>
-<td>IOUs, issuances, issues, issued currencies</td>
-<td>A token in the XRP ledger may not represent money owed outside of the ledger as the name <em>IOU</em> implies. Specify <em>fungible tokens</em> if necessary to distinguish from non-fungible tokens.</td>
-</tr>
-<tr>
-<td>wallet</td>
-<td>wallet</td>
-<td>Depending on the context, <em>wallet</em> could refer to hardware, software, a cryptographic key pair, or an online service. Be sure to provide enough context that the meaning is clear, or use an alternative such as <em>key pair</em> or <em>client application</em>.</td>
-</tr>
-<tr>
-<td>WebSocket</td>
-<td>web socket, Websockets</td>
-<td>A two way protocol for communication on the web. Always singular and in CamelCase.</td>
-</tr>
-<tr>
-<td>XRP</td>
-<td>XRPs, ripples</td>
-<td>The native digital asset, or cryptocurrency, of the XRP Ledger. XRP is not a token.</td>
-</tr>
-<tr>
-<td>the XRP Ledger</td>
-<td>XRP Ledger (no the), Ripple, Ripple Network, RCL</td>
-<td>The XRP Ledger was called <em>the Ripple network</em> and the <em>Ripple Consensus Ledger</em> or <em>RCL</em> at various times in the past. These names were confusing and have been retired because of their similarity to the name of the company, Ripple (formerly Ripple Labs) which develops the reference implementation of the core server.</td>
-</tr>
-<tr>
-<td>XRPL</td>
-<td>XRPL</td>
-<td>Short for <em>XRP Ledger</em>. As much as possible, spell out <em>XRP Ledger</em> instead; <em>XRPL</em> is cryptic and looks like it could be a typo for <em>XRP</em>.</td>
-</tr>
-</tbody>
-</table>
-    </div>
-  </article>
-<!-- Feedback Widget -->
-<script src="assets/vendor/feedback-widget.js"></script>
-<div id="feedback-content"></div>
-<script>
-  // Options
-  const options = {
-    analyticsConfig: [
-      // { name: 'ga', id: 'UA-45576805-2' },
-      { name: 'gtm', id: 'GTM-KCQZ3L8' },
-    ],
-    analyticsName: 'Feedback Widget Tracker',
-    theme: 'xrpl',
-    currentPath: window.location.pathname,
-    parentElement: '#feedback-content',
-  };
+</nav><!--/.breadcrumbs-wrap-->  <section class="pt-3 p-md-3">
+    <article class="content">
+      <h1 id="main-page-header">Resources</h1>
+<p class="blurb">Other resources to help understand the XRP Ledger and develop on it.</p>
 
-  // Init WidgetClass
-  const r = new WidgetClass(options);
-</script>      </main>
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="code-samples.html">Code Samples</a><p class="blurb child-blurb">Browse sample code for building common use cases on the XRP Ledger.</p></li>
+      <li class="level-1"><a href="dev-tools.html">Dev Tools</a><p class="blurb child-blurb">XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools.</p></li>
+      <li class="level-1"><a href="https://learn.xrpl.org/">XRPL Learning Portal</a><p class="blurb child-blurb">XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools.</p></li>
+      <li class="level-1"><a href="https://livenet.xrpl.org/">Ledger Explorer</a><p class="blurb child-blurb">XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools.</p></li>
+      <li class="level-1"><a href="known-amendments.html">Known Amendments</a><p class="blurb child-blurb">List of all known amendments to the XRP Ledger protocol and their status.</p></li>
+      <li class="level-1"><a href="contribute-code.html">Contribute Code</a><p class="blurb child-blurb">Learn how features can be coded into the XRP Ledger protocol.</p></li>
+      <li class="level-1"><a href="contribute-documentation.html">Contribute Documentation</a><p class="blurb child-blurb">Contribution guides for XRP Ledger documentation.</p></li>
+
+  </ul>
+</div>    </article>
+  </section>
+      </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
 
 
 <nav class="nav flex-column dactyl-tree-nav">
   <div class="nav-item nav-parent">
-    <a class="nav-link" href="docs.html">Documentation</a>
+    <a class="nav-link" href="index.html">Home</a>
   </div>
     
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="false" aria-controls="tree_nav_group_1"></a>
+
+        <a class="nav-link" href="xrp-ledger-overview.html">XRPL Overview</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="uses.html">Use Cases & Featured Projects</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="history.html">History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrp-overview.html">XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="impact.html">Impact</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://foundation.xrpl.org/">XRPL Foundation <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="faq.html">FAQ</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="privacy-policy.html">Privacy Policy</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     
   <div class="nav-item ">
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
 
-        <a class="nav-link" href="introduction.html">Introduction</a>
+        <a class="nav-link" href="docs.html">Documentation</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
+      
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="introduction.html">Introduction</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="what-is-xrpl.html">What is the XRP Ledger?</a>
@@ -648,22 +379,22 @@
 
   </div>
 
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
-
-        <a class="nav-link" href="use-cases.html">Use Cases</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+
+        <a class="nav-link" href="use-cases.html">Use Cases</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_1"></a>
 
         <a class="nav-link" href="payments-uc.html">Payments</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
@@ -686,11 +417,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_2"></a>
 
         <a class="nav-link" href="tokenization.html">Tokenization</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="stablecoin-issuer.html">Stablecoin Issuer</a>
@@ -699,11 +430,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_2_2"></a>
 
         <a class="nav-link" href="nft-mkt-overview.html">NFT Marketplace Overview</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nftoken-marketplace.html">NFT Marketplace</a>
@@ -730,11 +461,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3"></a>
 
         <a class="nav-link" href="defi-uc.html">Decentralized Finance</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="algorithmic-trading.html">Algorithmic Trading</a>
@@ -753,22 +484,22 @@
 
   </div>
 
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
-
-        <a class="nav-link" href="concepts.html">Concepts</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+
+        <a class="nav-link" href="concepts.html">Concepts</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_1" aria-expanded="false" aria-controls="tree_nav_group_2_4_1"></a>
 
         <a class="nav-link" href="networks-and-servers.html">Networks and Servers</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="rippled-server-modes.html">rippled Server Modes</a>
@@ -801,24 +532,7 @@
 
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_7" aria-expanded="false" aria-controls="tree_nav_group_4_1_7"></a>
-
-        <a class="nav-link" href="amendments.html">Amendments</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_7">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="known-amendments.html">Known Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="contribute-code-flow.html">Contribute Code to the XRP Ledger</a>
-  </div>
-
-    </nav>
-
+    <a class="nav-link nav-leaf" href="amendments.html">Amendments</a>
   </div>
 
       
@@ -833,11 +547,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_2" aria-expanded="false" aria-controls="tree_nav_group_2_4_2"></a>
 
         <a class="nav-link" href="consensus.html">Consensus Protocol</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus-structure.html">Consensus Structure</a>
@@ -880,11 +594,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
         <a class="nav-link" href="ledgers.html">Ledgers</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger-structure.html">Ledger Structure</a>
@@ -907,11 +621,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4" aria-expanded="false" aria-controls="tree_nav_group_4_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_4"></a>
 
         <a class="nav-link" href="transactions.html">Transactions</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="fees.html">Fees (Disambiguation)</a>
@@ -945,11 +659,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_4_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_2_4_4_7"></a>
 
         <a class="nav-link" href="finality-of-results.html">Finality of Results</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_4_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="look-up-transaction-results.html">Look Up Transaction Results</a>
@@ -976,11 +690,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5" aria-expanded="false" aria-controls="tree_nav_group_4_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_5" aria-expanded="false" aria-controls="tree_nav_group_2_4_5"></a>
 
         <a class="nav-link" href="payment-types.html">Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="direct-xrp-payments.html">Direct XRP Payments</a>
@@ -1018,19 +732,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6" aria-expanded="false" aria-controls="tree_nav_group_4_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6" aria-expanded="false" aria-controls="tree_nav_group_2_4_6"></a>
 
         <a class="nav-link" href="tokens.html">Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_1"></a>
 
         <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
@@ -1088,11 +802,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_4"></a>
 
         <a class="nav-link" href="freezes.html">Freezing Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
@@ -1125,11 +839,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_9" aria-expanded="false" aria-controls="tree_nav_group_4_6_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_9" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_9"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1156,11 +870,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_7" aria-expanded="false" aria-controls="tree_nav_group_2_4_7"></a>
 
         <a class="nav-link" href="accounts.html">Accounts</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
@@ -1209,14 +923,14 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="tutorials.html">Tutorials</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -1225,11 +939,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2" aria-expanded="false" aria-controls="tree_nav_group_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2"></a>
 
         <a class="nav-link" href="python.html">Python</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="get-started-using-python.html">Get Started Using Python</a>
@@ -1238,19 +952,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2_2"></a>
 
         <a class="nav-link" href="modular-tutorials-in-python.html">Modular Tutorials in Python</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_2_2_1"></a>
 
         <a class="nav-link" href="send-payments-using-python.html">Send Payments Using Python</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-create-accounts-send-xrp.html">Create Accounts and Send XRP Using Python</a>
@@ -1301,11 +1015,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_3"></a>
 
         <a class="nav-link" href="javascript.html">JavaScript</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
@@ -1314,19 +1028,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_3_2"></a>
 
         <a class="nav-link" href="modular-tutorials-in-javascript.html">Modular Tutorials in JavaScript</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_3_2_1"></a>
 
         <a class="nav-link" href="send-payments-using-javascript.html">Send Payments Using JavaScript</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="create-accounts-send-xrp-using-javascript.html">Create Accounts and Send XRP Using JavaScript</a>
@@ -1354,11 +1068,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_3_2_2"></a>
 
         <a class="nav-link" href="nfts-using-javascript.html">NFTs Using JavaScript</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="mint-and-burn-nfts-using-javascript.html">Mint and Burn NFTs Using JavaScript</a>
@@ -1404,11 +1118,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_4" aria-expanded="false" aria-controls="tree_nav_group_2_5_4"></a>
 
         <a class="nav-link" href="java.html">Java</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="get-started-using-java.html">Get Started Using Java</a>
@@ -1421,11 +1135,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_5" aria-expanded="false" aria-controls="tree_nav_group_2_5_5"></a>
 
         <a class="nav-link" href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="get-started-using-http-websocket-apis.html">Get Started Using HTTP / WebSocket APIs</a>
@@ -1443,19 +1157,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6" aria-expanded="false" aria-controls="tree_nav_group_2_5_6"></a>
 
         <a class="nav-link" href="tasks.html">Tasks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_1"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -1508,19 +1222,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_3"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_3_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -1553,11 +1267,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_3_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1570,11 +1284,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_3_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -1616,11 +1330,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_4"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1658,30 +1372,30 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="references.html">References</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1" aria-expanded="false" aria-controls="tree_nav_group_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="protocol-reference.html">XRP Ledger Protocol Reference</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_6_1_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_1"></a>
 
         <a class="nav-link" href="basic-data-types.html">Basic Data Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="base58-encodings.html">base58 Encodings</a>
@@ -1704,11 +1418,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_2"></a>
 
         <a class="nav-link" href="ledger-data-formats.html">Ledger Data Formats</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger-header.html">Ledger Header</a>
@@ -1722,11 +1436,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_2_3"></a>
 
         <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1818,11 +1532,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3"></a>
 
         <a class="nav-link" href="transaction-formats.html">Transaction Reference</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transaction-common-fields.html">Transaction Common Fields</a>
@@ -1831,11 +1545,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3_2"></a>
 
         <a class="nav-link" href="transaction-types.html">Transaction Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
@@ -1963,11 +1677,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3_3"></a>
 
         <a class="nav-link" href="pseudo-transaction-types.html">Pseudo-Transactions</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="enableamendment.html">EnableAmendment</a>
@@ -1990,11 +1704,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3_4"></a>
 
         <a class="nav-link" href="transaction-results.html">Transaction Results</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="tec-codes.html">tec Codes</a>
@@ -2050,19 +1764,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2" aria-expanded="false" aria-controls="tree_nav_group_6_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="client-libraries.html">Client Libraries</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_2_1"></a>
 
         <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
@@ -2094,19 +1808,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3" aria-expanded="false" aria-controls="tree_nav_group_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_1"></a>
 
         <a class="nav-link" href="api-conventions.html">API Conventions</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="request-formatting.html">Request Formatting</a>
@@ -2144,19 +1858,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2"></a>
 
         <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_1"></a>
 
         <a class="nav-link" href="account-methods.html">Account Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_channels.html">account_channels</a>
@@ -2214,11 +1928,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_2"></a>
 
         <a class="nav-link" href="ledger-methods.html">Ledger Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger.html">ledger</a>
@@ -2251,11 +1965,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_3"></a>
 
         <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="submit.html">submit</a>
@@ -2288,11 +2002,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_4"></a>
 
         <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
@@ -2330,11 +2044,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_5"></a>
 
         <a class="nav-link" href="payment-channel-methods.html">Payment Channel Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="channel_authorize.html">channel_authorize</a>
@@ -2352,11 +2066,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_6"></a>
 
         <a class="nav-link" href="subscription-methods.html">Subscription Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="subscribe.html">subscribe</a>
@@ -2374,11 +2088,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_7"></a>
 
         <a class="nav-link" href="server-info-methods.html">Server Info Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="fee.html">fee</a>
@@ -2406,11 +2120,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_8"></a>
 
         <a class="nav-link" href="clio-methods.html">Clio Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
@@ -2438,11 +2152,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_9"></a>
 
         <a class="nav-link" href="utility-methods.html">Utility Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="json.html">json</a>
@@ -2469,19 +2183,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3"></a>
 
         <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_1"></a>
 
         <a class="nav-link" href="key-generation-methods.html">Key Generation Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="validation_create.html">validation_create</a>
@@ -2499,11 +2213,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_2"></a>
 
         <a class="nav-link" href="logging-and-data-management-methods.html">Logging and Data Management Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="can_delete.html">can_delete</a>
@@ -2551,11 +2265,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_3"></a>
 
         <a class="nav-link" href="server-control-methods.html">Server Control Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger_accept.html">ledger_accept</a>
@@ -2578,11 +2292,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_4"></a>
 
         <a class="nav-link" href="signing-methods.html">Signing Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="sign.html">sign</a>
@@ -2600,11 +2314,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_5"></a>
 
         <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="connect.html">connect</a>
@@ -2637,11 +2351,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_6"></a>
 
         <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>
@@ -2693,11 +2407,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_4"></a>
 
         <a class="nav-link" href="peer-port-methods.html">Peer Port Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="health-check.html">Health Check</a>
@@ -2732,14 +2446,14 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="infrastructure.html">Infrastructure</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="commandline-usage.html">Commandline Usage</a>
@@ -2748,11 +2462,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_2" aria-expanded="false" aria-controls="tree_nav_group_7_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_2" aria-expanded="false" aria-controls="tree_nav_group_2_7_2"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -2806,19 +2520,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3" aria-expanded="false" aria-controls="tree_nav_group_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_7_3"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_7_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_7_3_1"></a>
 
         <a class="nav-link" href="server-modes.html">Server Modes</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -2836,11 +2550,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_7_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_7_3_2"></a>
 
         <a class="nav-link" href="data-retention.html">Data Retention</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="configure-full-history.html">Configure Full History</a>
@@ -2912,11 +2626,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_4" aria-expanded="false" aria-controls="tree_nav_group_2_7_4"></a>
 
         <a class="nav-link" href="configure-peering.html">Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -2964,11 +2678,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_5" aria-expanded="false" aria-controls="tree_nav_group_7_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_5" aria-expanded="false" aria-controls="tree_nav_group_2_7_5"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Testing and Auditing</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -2991,11 +2705,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_6" aria-expanded="false" aria-controls="tree_nav_group_7_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_6" aria-expanded="false" aria-controls="tree_nav_group_2_7_6"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -3044,19 +2758,31 @@
 
   </div>
 
+    </nav>
+
+  </div>
+
     
+  <div class="nav-item active">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="resources.html">Resources</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3">
+      
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_9" aria-expanded="false" aria-controls="tree_nav_group_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -3092,22 +2818,54 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
     <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Learning Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
-    
-  <div class="nav-item active">
-
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_11" aria-expanded="true" aria-controls="tree_nav_group_11"></a>
-
-        <a class="nav-link" href="contributing-to-documentation.html">Contributing to Documentation</a>
-
-    <nav class="nav flex-column show " id="tree_nav_group_11">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="documentation-languages.html">Translations</a>
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://livenet.xrpl.org/">Ledger Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="known-amendments.html">Known Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+
+        <a class="nav-link" href="contribute-code.html">Contribute Code</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-custom-transactors.html">Create Custom Transactors</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+
+        <a class="nav-link" href="contribute-documentation.html">Contribute Documentation</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.md">Contributor Code of Conduct <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="documentation-translations.html">Translations</a>
   </div>
 
       
@@ -3117,12 +2875,9 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tutorial-guidelines.html">Tutorial Guidelines</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11_3" aria-expanded="false" aria-controls="tree_nav_group_11_3"></a>
-
-        <a class="nav-link" href="tutorial-guidelines.html">Tutorial Guidelines</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_11_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="tutorial-structure.html">Tutorial Structure</a>
@@ -3130,6 +2885,63 @@
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="contribute.html">Contribute to the XRPL Community</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="events.html">Events</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ambassadors.html">Ambassadors</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="developer-funding.html">Developer Funding</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://jobs.xrpl.org/">XRPL Jobs <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl.org/blog/">Dev Blog <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrplgrants.org/">XRPL Grants <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF">GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip">XRPL Brand Kit <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="report-a-scam.html">Report a Scam</a>
   </div>
 
     </nav>
@@ -3149,7 +2961,6 @@
             <li class="nav-item"><a href="xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
             <li class="nav-item"><a href="uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
             <li class="nav-item"><a href="history.html" class="nav-link">History</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
@@ -3162,17 +2973,26 @@
           <h5>Docs</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="docs.html" class="nav-link">Documentation</a></li>
-            <li class="nav-item"><a href="docs-index.html" class="nav-link">Documentation Index</a></li>
             <li class="nav-item"><a href="introduction.html" class="nav-link">Introduction</a></li>
             <li class="nav-item"><a href="use-cases.html" class="nav-link">Use Cases</a></li>
             <li class="nav-item"><a href="concepts.html" class="nav-link">Concepts</a></li>
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Resources</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
-            <li class="nav-item"><a href="contributing-to-documentation.html" class="nav-link">Contributing to Documentation</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
+            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -3180,14 +3000,13 @@
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
-            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
             <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
             <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
             <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
-            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>

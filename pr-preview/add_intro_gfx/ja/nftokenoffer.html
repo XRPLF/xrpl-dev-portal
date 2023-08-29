@@ -118,7 +118,6 @@
             <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPLの概要</a>
             <a class="dropdown-item" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
             <a class="dropdown-item" href="/ja/history.html">歴史</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
@@ -147,24 +146,14 @@
               <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="/ja/docs-index.html">Documentation Index</a>
-            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
-          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
             <a class="dropdown-item" href="/ja/use-cases.html">Use Cases</a>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
             <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
             <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
             <a class="dropdown-item" href="/ja/infrastructure.html">Infrastructure</a>
-          </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
-            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
-            <a class="dropdown-item" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -184,6 +173,28 @@
             <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>リソース</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-開発">
+            <h5 class="dropdown-item">開発</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+          </div><!--./col-->
+          <div class="navcol col-for-現在のステータス">
+            <h5 class="dropdown-item">現在のステータス</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/known-amendments.html">既知のAmendment</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item" href="/ja/contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="/ja/contribute-documentation.html">Contribute Documentation</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -275,11 +286,12 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nftokenoffer">NFTokenOffer</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#nftokenofferidのフォーマット">NFTokenOfferIDのフォーマット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokenoffer-jsonの例">NFTokenOffer JSONの例</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#nftokenofferのフィールド">NFTokenOfferのフィールド</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nftokenoffer-トランザクション">NFTokenOffer トランザクション</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-オブジェクトの検索">NFTokenOffer オブジェクトの検索</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-の準備金">NFTokenOffer の準備金</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokenofferトランザクション">NFTokenOfferトランザクション</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenofferオブジェクトの検索">NFTokenOfferオブジェクトの検索</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenofferの準備金">NFTokenOfferの準備金</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokenofferidのフォーマット">NFTokenOfferIDのフォーマット</a></li>
       </ul>
   </div>
       </aside>
@@ -301,15 +313,22 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="nftokenoffer">NFTokenOffer<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer"><i class="fa fa-link"></i></a></h1>
-<p><code>lsfTransferable</code> フラグが設定されているトークンは、オファーを使って 参加者間で転送することができます。<code>NFTokenOffer</code> オブジェクトは <code>NFToken</code> オブジェクトの購入、売却、または譲渡のオファーを表します。<code>NFToken</code> の所有者は <code>NFTokenCreateOffer</code> を使用して売買を行うことができます。</p>
-<p><em>(<a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>が必要です)</em></p>
-<h3 id="nftokenofferidのフォーマット"><code>NFTokenOfferID</code>のフォーマット<a aria-hidden="true" class="hover_anchor" href="#nftokenofferidのフォーマット"><i class="fa fa-link"></i></a></h3>
-<p><code>NFTokenOffer</code> オブジェクトのユニーク ID (<code>NFTokenOfferID</code>) は、以下の値を順番に結合したものである。</p>
-<ul>
-<li><code>NFTokenOffer</code> のスペースキー、<code>0x0074</code> </li>
-<li>オファーを出すアカウントの <code>AccountID</code></li>
-<li><code>NFTokenCreateOffer</code> トランザクションが生成する <code>Sequence</code> (または <code>Ticket</code>)</li>
-</ul>
+<p><code>lsfTransferable</code>フラグが設定されているトークンは、オファーを使って参加者間で転送することができます。<code>NFTokenOffer</code>オブジェクトは<code>NFToken</code>オブジェクトの購入、売却、または譲渡のオファーを表します。<code>NFToken</code>の所有者は<code>NFTokenCreateOffer</code>を使用して売買を行うことができます。</p>
+<p><em>(<a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>により追加されました)</em></p>
+<h2 id="nftokenoffer-jsonの例">NFTokenOffer JSONの例<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-jsonの例"><i class="fa fa-link"></i></a></h2>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NFTokenOffer"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"NFTokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00081B5825A08C22787716FA031B432EBBC1B101BB54875F0002D2A400000000"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"NFTokenOfferNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhRxL3MNvuKEjWjL7TBbZSDacb8PmzAd7m"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BFA9BE27383FA315651E26FDE1FA30815C5A5D0544EE10EC33D3E92532993769"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">75443565</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AEBABA4FAC212BF28E0F9A9C3788A47B085557EC5D1429E7A8266FB859C863B3"</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="nftokenofferのフィールド"><code>NFTokenOffer</code>のフィールド<a aria-hidden="true" class="hover_anchor" href="#nftokenofferのフィールド"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
@@ -327,7 +346,7 @@
 <td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a></td>
 <td style="text-align: left;">AMOUNT</td>
 <td style="text-align: left;">はい</td>
-<td style="text-align: left;">NFTokenに対して見込まれる、または提示される金額です。トークンに <code>lsfOnlyXRP</code> フラグが設定されている場合、金額は XRP で指定する必要があります。XRP 以外の資産を指定する売却オファーは、0 以外の金額を指定する必要があります。XRP を指定する売却オファーは、<code>無料</code>にすることができます（つまり、このフィールドは <code>"0"</code> とすることができます）。</td>
+<td style="text-align: left;">NFTokenに対して見込まれる、または提示される金額です。トークンに<code>lsfOnlyXRP</code>フラグが設定されている場合、金額はXRPで指定する必要があります。XRP以外の資産を指定する売却オファーは、0以外の金額を指定する必要があります。XRPを指定する売却オファーは、<code>無料</code>にすることができます（つまり、このフィールドは<code>"0"</code>とすることができます）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Destination</code></td>
@@ -362,7 +381,7 @@
 <td style="text-align: left;">文字列</td>
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">はい</td>
-<td style="text-align: left;">このオファーが参照する NFToken オブジェクトの NFTokenID。</td>
+<td style="text-align: left;">このオファーが参照するNFTokenオブジェクトのNFTokenID。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NFTokenOfferNode</code></td>
@@ -376,7 +395,7 @@
 <td style="text-align: left;">文字列</td>
 <td style="text-align: left;">AccountID</td>
 <td style="text-align: left;">はい</td>
-<td style="text-align: left;">オファーの作成者であり、所有者であるアカウント。NFToken の現在の所有者のみが NFToken の売却オファーを作成できますが、NFToken の購入オファーはどのアカウントでも作成できます。</td>
+<td style="text-align: left;">オファーの作成者であり、所有者であるアカウント。NFTokenの現在の所有者のみがNFTokenの売却オファーを作成できますが、NFTokenの購入オファーはどのアカウントでも作成できます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerNode</code></td>
@@ -406,7 +425,8 @@
 <thead>
 <tr>
 <th>フラグ名</th>
-<th>フラグ値</th>
+<th>16進数値</th>
+<th>10進数値</th>
 <th>説明</th>
 </tr>
 </thead>
@@ -414,29 +434,30 @@
 <tr>
 <td><code>lsfSellNFToken</code></td>
 <td><code>0x00000001</code></td>
+<td>1</td>
 <td>有効な場合、オファーは売却オファーとなります。そうでない場合、オファーは購入オファーとなります。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="nftokenoffer-トランザクション"><code>NFTokenOffer</code> トランザクション<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-トランザクション"><i class="fa fa-link"></i></a></h2>
-<p>XRPL上のトークン・オファーは、オーダーブックに品質順に保存され、オンレジャーのメカニズムによって自動的にマッチングされます。<code>NFTokenOffer</code>はオーダーブックに保存されず、自動的にマッチングされたり実行されたりすることはありません。</p>
-<p>購入者は <code>NFToken</code> の購入を申し出る <code>NFTokenOffer</code> を受け入れるかどうかを明示的に選択しなければなりません。同様に、販売者は自分が所有する <code>NFToken</code> オブジェクトの購入を申し出る特定の <code>NFTokenOffer</code> を受け入れることを明示的に選択する必要があります。</p>
-<p>定義されたトランザクションは3つあります。</p>
-<ol>
-<li>
-<p><code>NFTokenCreateOffer</code></p>
-</li>
-<li>
-<p><code>NFTokenCancelOffer</code></p>
-</li>
-<li>
-<p><code>NFTokenAcceptOffer</code></p>
-</li>
-</ol>
-<h3 id="nftokenoffer-オブジェクトの検索"><code>NFTokenOffer</code> オブジェクトの検索<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-オブジェクトの検索"><i class="fa fa-link"></i></a></h3>
-<p>各トークンには、2つのディレクトリがあります。1 つはトークンを購入するためのオファー、もう 1 つはトークンを売却するためのオファーが含まれています。これにより、特定のトークンの <code>NFTokenOffer</code> を簡単に見つけることができます。オフレッジャー システムが、オファーの取得、提示、通知、作成、照会、承認、キャンセルに使用されることが予想されます。たとえば、マーケットプレイスは、ウェブやアプリベースの直感的なインターフェースをユーザに提供することができます。</p>
-<h3 id="nftokenoffer-の準備金"><code>NFTokenOffer</code> の準備金<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-の準備金"><i class="fa fa-link"></i></a></h3>
-<p>各NFTokenOfferオブジェクトは、オファーを出すアカウントに準備金の増額を1つ要求します。この記事の執筆時点では、準備金の増分は2 XRPです。この準備金は、オファーをキャンセルすることで 取り戻すことができます。</p>
+<h2 id="nftokenofferトランザクション"><code>NFTokenOffer</code>トランザクション<a aria-hidden="true" class="hover_anchor" href="#nftokenofferトランザクション"><i class="fa fa-link"></i></a></h2>
+<p><a href="offers.html">代替可能トークンに対するOffer</a>とは異なり、<code>NFTokenOffer</code>はオーダーブックに保存されず、自動的にマッチングされたり約定されたりすることはありません。買い手は売り手により提示されてた<code>NFTokenOffer</code>の受け入れを明示的に選択する必要があります。同様に、売り手は自分が所有する<code>NFToken</code>オブジェクトを買いたいと申し出た買い手の<code>NFTokenOffer</code>を受け入れることを明示的に選択しなければなりません。</p>
+<p><code>NFToken</code>の取引のためのトランザクションは3つあります。</p>
+<ul>
+<li><a href="nftokencreateoffer.html">NFTokenCreateOffer</a></li>
+<li><a href="nftokencanceloffer.html">NFTokenCancelOffer</a></li>
+<li><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a></li>
+</ul>
+<h3 id="nftokenofferオブジェクトの検索"><code>NFTokenOffer</code>オブジェクトの検索<a aria-hidden="true" class="hover_anchor" href="#nftokenofferオブジェクトの検索"><i class="fa fa-link"></i></a></h3>
+<p>各<code>NFToken</code>は、2つの<a href="directorynode.html">ディレクトリ</a>があります。1つはトークンを購入するためのオファー、もう1つはトークンを売却するためのオファーが含まれています。マーケットプレイスやその他のクライアントアプリケーションは、ユーザに対し<code>NFToken</code>オブジェクトの取引オファーを提示したり、自動的にマッチングすることができます。</p>
+<h3 id="nftokenofferの準備金"><code>NFTokenOffer</code>の準備金<a aria-hidden="true" class="hover_anchor" href="#nftokenofferの準備金"><i class="fa fa-link"></i></a></h3>
+<p>各<code>NFTokenOffer</code>オブジェクトは、オファーを出すアカウントに1つ分の準備金の増額を要求します。執筆時点では、準備金の増分は2XRPです。この準備金は、オファーをキャンセルすることで取り戻すことができます。</p>
+<h3 id="nftokenofferidのフォーマット"><code>NFTokenOfferID</code>のフォーマット<a aria-hidden="true" class="hover_anchor" href="#nftokenofferidのフォーマット"><i class="fa fa-link"></i></a></h3>
+<p><code>NFTokenOffer</code>オブジェクトのユニークID(<code>NFTokenOfferID</code>)は、以下の値を順番に結合したものです。</p>
+<ul>
+<li><code>NFTokenOffer</code>のスペースキー、<code>0x0074</code></li>
+<li>オファーを出すアカウントの<code>AccountID</code></li>
+<li><code>NFTokenCreateOffer</code>トランザクションが生成する<code>NFTokenCreateOffer</code>の<code>Sequence</code>(または<code>Ticket</code>)</li>
+</ul>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -664,24 +685,7 @@
 
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_7" aria-expanded="false" aria-controls="tree_nav_group_4_1_7"></a>
-
-        <a class="nav-link" href="/ja/amendments.html">Amendment</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_7">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/contribute-code-flow.html">Contribute Code to the XRP Ledger</a>
-  </div>
-
-    </nav>
-
+    <a class="nav-link nav-leaf" href="/ja/amendments.html">Amendment</a>
   </div>
 
       
@@ -2897,98 +2901,6 @@
 
   </div>
 
-    
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/code-samples.html">サンプルコード</a>
-  </div>
-
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_9" aria-expanded="false" aria-controls="tree_nav_group_9"></a>
-
-        <a class="nav-link" href="/ja/dev-tools.html">開発者ツール</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_9">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPCツール</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/websocket-api-tool.html">WebSocket APIツール</a>
-  </div>
-
-      
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-toml-checker.html">xrp-ledger.tomlチェッカー</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-domain-verifier.html">ドメイン検証チェッカー</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tx-sender.html">トランザクション送信ツール</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-    
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL学習ポータル <i aria-hidden="true" class="fa fa-external-link"></i></a>
-  </div>
-
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11" aria-expanded="false" aria-controls="tree_nav_group_11"></a>
-
-        <a class="nav-link" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_11">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/documentation-languages.html">Translations</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/creating-diagrams.html">Creating Diagrams</a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11_3" aria-expanded="false" aria-controls="tree_nav_group_11_3"></a>
-
-        <a class="nav-link" href="/ja/tutorial-guidelines.html">Tutorial Guidelines</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_11_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tutorial-structure.html">Tutorial Structure</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-    </nav>
-
-  </div>
-
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -3002,7 +2914,6 @@
             <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPLの概要</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
             <li class="nav-item"><a href="/ja/history.html" class="nav-link">歴史</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRPの概要</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
@@ -3015,17 +2926,26 @@
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
-            <li class="nav-item"><a href="/ja/docs-index.html" class="nav-link">Documentation Index</a></li>
             <li class="nav-item"><a href="/ja/introduction.html" class="nav-link">基本</a></li>
             <li class="nav-item"><a href="/ja/use-cases.html" class="nav-link">Use Cases</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>リソース</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/resources.html" class="nav-link">リソース</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
-            <li class="nav-item"><a href="/ja/contributing-to-documentation.html" class="nav-link">Contributing to Documentation</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="/ja/contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -3033,7 +2953,6 @@
           <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
-            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
             <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
             <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>

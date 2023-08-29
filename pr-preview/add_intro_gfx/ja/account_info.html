@@ -118,7 +118,6 @@
             <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPLの概要</a>
             <a class="dropdown-item" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
             <a class="dropdown-item" href="/ja/history.html">歴史</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
@@ -147,24 +146,14 @@
               <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="/ja/docs-index.html">Documentation Index</a>
-            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
-          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
             <a class="dropdown-item" href="/ja/use-cases.html">Use Cases</a>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
             <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
             <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
             <a class="dropdown-item" href="/ja/infrastructure.html">Infrastructure</a>
-          </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
-            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
-            <a class="dropdown-item" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -184,6 +173,28 @@
             <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>リソース</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-開発">
+            <h5 class="dropdown-item">開発</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+          </div><!--./col-->
+          <div class="navcol col-for-現在のステータス">
+            <h5 class="dropdown-item">現在のステータス</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/known-amendments.html">既知のAmendment</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item" href="/ja/contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="/ja/contribute-documentation.html">Contribute Documentation</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -432,47 +443,47 @@
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">{
-<span class="w">    </span><span class="s2">"result"</span>:<span class="w"> </span>{
-<span class="w">        </span><span class="s2">"account_data"</span>:<span class="w"> </span>{
-<span class="w">            </span><span class="s2">"Account"</span>:<span class="w"> </span><span class="s2">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span>,
-<span class="w">            </span><span class="s2">"Balance"</span>:<span class="w"> </span><span class="s2">"999999999960"</span>,
-<span class="w">            </span><span class="s2">"Flags"</span>:<span class="w"> </span><span class="mi">8388608</span>,
-<span class="w">            </span><span class="s2">"LedgerEntryType"</span>:<span class="w"> </span><span class="s2">"AccountRoot"</span>,
-<span class="w">            </span><span class="s2">"OwnerCount"</span>:<span class="w"> </span><span class="mi">0</span>,
-<span class="w">            </span><span class="s2">"PreviousTxnID"</span>:<span class="w"> </span><span class="s2">"4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42"</span>,
-<span class="w">            </span><span class="s2">"PreviousTxnLgrSeq"</span>:<span class="w"> </span><span class="mi">3</span>,
-<span class="w">            </span><span class="s2">"Sequence"</span>:<span class="w"> </span><span class="mi">6</span>,
-<span class="w">            </span><span class="s2">"index"</span>:<span class="w"> </span><span class="s2">"92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"</span>
-<span class="w">        </span>},
-<span class="w">        </span><span class="s2">"ledger_current_index"</span>:<span class="w"> </span><span class="mi">4</span>,
-<span class="w">        </span><span class="s2">"queue_data"</span>:<span class="w"> </span>{
-<span class="w">            </span><span class="s2">"auth_change_queued"</span>:<span class="w"> </span><span class="nv">true</span>,
-<span class="w">            </span><span class="s2">"highest_sequence"</span>:<span class="w"> </span><span class="mi">10</span>,
-<span class="w">            </span><span class="s2">"lowest_sequence"</span>:<span class="w"> </span><span class="mi">6</span>,
-<span class="w">            </span><span class="s2">"max_spend_drops_total"</span>:<span class="w"> </span><span class="s2">"500"</span>,
-<span class="w">            </span><span class="s2">"transactions"</span>:<span class="w"> </span>[
-<span class="w">                </span>{
-<span class="w">                    </span><span class="s2">"auth_change"</span>:<span class="w"> </span><span class="nv">false</span>,
-<span class="w">                    </span><span class="s2">"fee"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"fee_level"</span>:<span class="w"> </span><span class="s2">"2560"</span>,
-<span class="w">                    </span><span class="s2">"max_spend_drops"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"seq"</span>:<span class="w"> </span><span class="mi">6</span>
-<span class="w">                </span>},
-<span class="w">                </span>...<span class="ss">(</span><span class="nv">trimmed</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">length</span><span class="ss">)</span><span class="w"> </span>...
-<span class="w">                </span>{
-<span class="w">                    </span><span class="s2">"LastLedgerSequence"</span>:<span class="w"> </span><span class="mi">10</span>,
-<span class="w">                    </span><span class="s2">"auth_change"</span>:<span class="w"> </span><span class="nv">true</span>,
-<span class="w">                    </span><span class="s2">"fee"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"fee_level"</span>:<span class="w"> </span><span class="s2">"2560"</span>,
-<span class="w">                    </span><span class="s2">"max_spend_drops"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"seq"</span>:<span class="w"> </span><span class="mi">10</span>
-<span class="w">                </span>}
-<span class="w">            </span>],
-<span class="w">            </span><span class="s2">"txn_count"</span>:<span class="w"> </span><span class="mi">5</span>
-<span class="w">        </span>},
-<span class="w">        </span><span class="s2">"status"</span>:<span class="w"> </span><span class="s2">"success"</span>,
-<span class="w">        </span><span class="s2">"validated"</span>:<span class="w"> </span><span class="nv">false</span>
-<span class="w">    </span>}
+    "result": {
+        "account_data": {
+            "Account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
+            "Balance": "999999999960",
+            "Flags": 8388608,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 0,
+            "PreviousTxnID": "4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42",
+            "PreviousTxnLgrSeq": 3,
+            "Sequence": 6,
+            "index": "92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"
+        },
+        "ledger_current_index": 4,
+        "queue_data": {
+            "auth_change_queued": true,
+            "highest_sequence": 10,
+            "lowest_sequence": 6,
+            "max_spend_drops_total": "500",
+            "transactions": [
+                {
+                    "auth_change": false,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 6
+                },
+                ...(trimmed for length) ...
+                {
+                    "LastLedgerSequence": 10,
+                    "auth_change": true,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 10
+                }
+            ],
+            "txn_count": 5
+        },
+        "status": "success",
+        "validated": false
+    }
 }
 </code></pre></div></div>
 </div>
@@ -830,24 +841,7 @@
 
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_7" aria-expanded="false" aria-controls="tree_nav_group_4_1_7"></a>
-
-        <a class="nav-link" href="/ja/amendments.html">Amendment</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_7">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/contribute-code-flow.html">Contribute Code to the XRP Ledger</a>
-  </div>
-
-    </nav>
-
+    <a class="nav-link nav-leaf" href="/ja/amendments.html">Amendment</a>
   </div>
 
       
@@ -3063,98 +3057,6 @@
 
   </div>
 
-    
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/code-samples.html">サンプルコード</a>
-  </div>
-
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_9" aria-expanded="false" aria-controls="tree_nav_group_9"></a>
-
-        <a class="nav-link" href="/ja/dev-tools.html">開発者ツール</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_9">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPCツール</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/websocket-api-tool.html">WebSocket APIツール</a>
-  </div>
-
-      
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-toml-checker.html">xrp-ledger.tomlチェッカー</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-domain-verifier.html">ドメイン検証チェッカー</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tx-sender.html">トランザクション送信ツール</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-    
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL学習ポータル <i aria-hidden="true" class="fa fa-external-link"></i></a>
-  </div>
-
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11" aria-expanded="false" aria-controls="tree_nav_group_11"></a>
-
-        <a class="nav-link" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_11">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/documentation-languages.html">Translations</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/creating-diagrams.html">Creating Diagrams</a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11_3" aria-expanded="false" aria-controls="tree_nav_group_11_3"></a>
-
-        <a class="nav-link" href="/ja/tutorial-guidelines.html">Tutorial Guidelines</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_11_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tutorial-structure.html">Tutorial Structure</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-    </nav>
-
-  </div>
-
 </nav>      </aside>
     </div><!--/.row (main layout)-->
   </div>
@@ -3168,7 +3070,6 @@
             <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPLの概要</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
             <li class="nav-item"><a href="/ja/history.html" class="nav-link">歴史</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRPの概要</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
@@ -3181,17 +3082,26 @@
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
-            <li class="nav-item"><a href="/ja/docs-index.html" class="nav-link">Documentation Index</a></li>
             <li class="nav-item"><a href="/ja/introduction.html" class="nav-link">基本</a></li>
             <li class="nav-item"><a href="/ja/use-cases.html" class="nav-link">Use Cases</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>リソース</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/resources.html" class="nav-link">リソース</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
-            <li class="nav-item"><a href="/ja/contributing-to-documentation.html" class="nav-link">Contributing to Documentation</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="/ja/contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -3199,7 +3109,6 @@
           <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
-            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
             <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
             <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
