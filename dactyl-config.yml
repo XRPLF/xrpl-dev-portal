@@ -4328,6 +4328,12 @@ pages:
         targets:
             - en
             - ja
+    
+        # TODO: translate
+    -   md: infrastructure/rippled/run-private-network-with-docker.md
+        targets:
+        - en
+        - ja
 
 
     # # Landing pages for labels -------------------------------------------------

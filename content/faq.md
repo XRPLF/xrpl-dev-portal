@@ -58,7 +58,7 @@ UNLs are the lists of validators a given participant believes will not conspire 
 
 #### Which UNL should I select?
 
-Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, three publishers (Ripple, the XRP Ledger Foundation, and Coil) are known to publish recommended default lists of high quality validators, based on past performance, proven identities, and responsible IT policies.  However, every network participant can choose which validators it chooses as reliable and need not follow one of the three publishers noted above.
+Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, the XRP Ledger Foundation and Ripple are known to publish recommended default lists of high quality validators, based on past performance, proven identities, and responsible IT policies.  However, every network participant can choose which validators it chooses as reliable and need not follow one of the publishers noted above.
 
 
 #### If Ripple recommends adoption of its UNL, doesn't that create a centralized system?
