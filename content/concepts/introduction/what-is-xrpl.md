@@ -51,10 +51,20 @@ Once recorded, the data in any given block cannot be altered retroactively, unle
 
 ### How Does the Federated Consensus Process Work?
 
-Most of the rippled servers in the XRPL monitor or propose transactions. An important subset of servers are run as validators. These trusted servers accumulate lists of new transactions into a new possible ledger instance (a new block in the block chain). They share their lists with all of the other validators. The validators incorporate proposed changes from one another and distribute a new version of the ledger proposal. When 80% of the validators agree on a set of transactions, they create a new ledger instance at the end of the chain and start the process again. This consensus process takes 4-6 seconds. You can monitor as ledger instances are created in real time by visiting [https://livenet.xrpl.org/](https://livenet.xrpl.org/).
+Most of the rippled servers in the XRPL monitor or propose transactions. An important subset of servers are run as validators. These trusted servers accumulate lists of new transactions into a new possible ledger instance (a new block in the block chain).
+
+![Gathering Transactions](img/introduction17-gather-txns.png)
+
+They share their lists with all of the other validators. The validators incorporate proposed changes from one another and distribute a new version of the ledger proposal.
+
+![80% Consensus](img/introduction18-80-percent-consensus.png)
+
+When 80% of the validators agree on a set of transactions, they create a new ledger instance at the end of the chain and start the process again. This consensus process takes 4-6 seconds. You can monitor as ledger instances are created in real time by visiting [https://livenet.xrpl.org/](https://livenet.xrpl.org/).
 
 ### What Networks Are Available?
 
-The XRPL is open to anyone who wants to set up their own instance of the rippled server and connect. The node can monitor the network, perform transactions, or become a validator.
+The XRPL is open to anyone who wants to set up their own instance of the rippled server and connect. The node can monitor the network, perform transactions, or become a validator. The active XRPL network is typically referred to as _Mainnet_.
 
-For developers or new users who want to try out the features of XRPL without investing their own funds, there are two developer environments, _Testnet_ and _Devnet_. Users can create an account funded with 1,000 (fake) XRP and connect to either environment to interact with the XRPL. 
+For developers or new users who want to try out the features of XRPL without investing their own funds, there are two developer environments, _Testnet_ and _Devnet_. Users can create an account funded with 1,000 (fake) XRP and connect to either environment to interact with the XRPL.
+
+Next: [What is XRP?](what-is-xrp.html)
