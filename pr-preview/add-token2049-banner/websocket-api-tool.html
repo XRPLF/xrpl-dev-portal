@@ -53,7 +53,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v22.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v23.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -125,30 +125,7 @@
 
       // Write the banner directly to the document
       document.write(token2049bannerHTML);
-    } else {
-      let apexBanner = `
-          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-            <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
-            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-            <div class="apex-circled highlight-yellow">Amsterdam</div>
-            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-            <div class="apex-circled d-none d-lg-block highlight-purple">Register Now</div>
-            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-          </a>`;
 
-      // Write the banner directly to the document
-      document.write(apexBanner);
-}
-
-  </script>
-
-  <!-- Countdown timer script -->
-  <script>
-    (function () {
       var deadline = '2023/09/13 08:00';
 
       function pad(num, size) {
@@ -191,26 +168,26 @@
           }
         }, 1000);
       }
-
       clock('js-clock', deadline);
-    })();
+    } else {
+      let apexBanner = `
+          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
+            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
+            <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
+            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
+            <div class="apex-circled highlight-yellow">Amsterdam</div>
+            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
+            <div class="apex-circled d-none d-lg-block highlight-purple">Register Now</div>
+            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
+          </a>`;
+
+      // Write the banner directly to the document
+      document.write(apexBanner);
+}
   </script>
-
-  <!-- Clock CSS -->
-  <style>
-    .clock-number {
-      font-variant-numeric: tabular-nums;
-    }
-    .js-clock .box {
-      display: inline-block;
-      margin-right: 10px;
-    }
-    .js-clock .box:last-child {
-      margin-right: 0;
-    }
-  </style>
-
-
 
 
 
