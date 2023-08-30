@@ -2,7 +2,7 @@
 html: faq.html
 parent: xrp-ledger-overview.html
 blurb: Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community.
-subtitle: Your Questions About XRPL, Answered
+subtitle: Answers to Your XRPL Questions
 top_nav_grouping: About
 sidebar: disabled
 labels:
@@ -13,7 +13,7 @@ filters:
 name: FAQ
 ---
 ###### FAQ
-# Your Questions About XRPL, Answered
+# Answers to Your XRPL Questions
 
 <!--#{ Use H4s for questions and H2s for sections. This keeps the sidebar nav from getting too clustered and allows the faq filter to stylize things as an accordion. #}-->
 
