@@ -228,7 +228,7 @@ Return the _responses_ variable.
 
 ## lesson7-batch-minting.py
 
-This form is based on earlier examples, with unused fields, handlers, and buttons are removed. Additions are highlighted below.
+This form is based on earlier examples, with unused fields, handlers, and buttons removed. Additions are highlighted below.
 
 ```python
 import tkinter as tk
