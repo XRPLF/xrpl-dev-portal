@@ -321,9 +321,30 @@
 <span class="w">        </span><span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">日本語</span>
 <span class="w">        </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"/ja/"</span>
 </code></pre></div>
-<p>同じ<code>dactyl-config.yml</code>ファイルには、XRP Ledger Dev Portalの各コンテンツページのエントリがあります。ページが翻訳されている場合、各翻訳ごとに個別の項目があり、その翻訳の“ターゲット"にリンクされています。ページがまだ翻訳されていない場合、すべてのターゲットで英語版が使用されます。</p>
-<p>慣習上、ページのHTMLファイル名（<code>html</code>フィールド）はすべての言語バージョンで同じであるべきです。翻訳されたMarkdownのソースファイルは英語版と同じファイル名を使用すべきです。ただし、拡張子は英語版の<code>.md</code>だけではなく、<code>.{言語コード}.md</code>を使用すべきです。例えば、日本語に翻訳されたファイルの拡張子は<code>.ja.md</code>です。
-- <strong><code>blurb</code></strong> - ページの短い要約です。このテキストは主にカテゴリーのランディングページで使用されます。</p>
+<p>同じ<code>dactyl-config.yml</code>ファイルには、XRP Ledger Dev Portalの各コンテンツページのエントリがあります。ページが翻訳されている場合、各翻訳ごとに個別の項目があり、その翻訳の“ターゲット"にリンクされています。ページがまだ翻訳されていない場合、すべてのターゲットで英語版が使用されます。(新しいページが英語のみ追加され、他の言語が提供されない場合、リンクチェッカーはそれをリンク切れとして報告します。)</p>
+<p>ページを翻訳するということは、そのページのエントリを他の言語と分割するということです。ページのメタデータは<code>dactyl-config.yml</code>ファイルか、ページのMarkdownファイルの先頭にあるfrontmatterに設定します。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th>フィールド</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>html</code></td>
+<td>ページのHTMLファイル名。慣例により、これはすべての言語バージョンで同じであるべきです。</td>
+</tr>
+<tr>
+<td><code>md</code></td>
+<td>ページのMarkdownソースファイル。翻訳されたMarkdownソースファイルは英語版と同じファイル名を使用してください。ただし、拡張子は英語版の<code>.md</code>ではなく、<code>.{言語コード}.md</code>を使用してください。例えば、日本語の翻訳ファイルの拡張子は <code>.ja.md</code> です。</td>
+</tr>
+<tr>
+<td><code>blurb</code></td>
+<td>ページの簡単な要約。これは翻訳されるべきです。このテキストは、検索エンジン最適化のためのメタデータや、自動生成されるランディングページで使用されます。</td>
+</tr>
+</tbody>
+</table>
 <p><code>server_info</code>メソッドページの英語と日本語の記入例：</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">md</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md</span>
 <span class="w">        </span><span class="nt">targets</span><span class="p">:</span>
