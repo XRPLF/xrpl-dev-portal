@@ -1,11 +1,10 @@
 ---
-html: what-is-xrpl.html
-parent: intro-to-xrpl.html
-blurb: Learn about the XRP Ledger blockchain.
+html: what-is-the-xrp-ledger.html
+parent: introduction.html
+blurb: Learn about the XRP Ledger (XRPL) blockchain.
 labels:
   - Blockchain
 ---
-
 # What is the XRP Ledger?
 
 The XRP Ledger is a decentralized blockchain that uses its own digital currency to process and record financial transactions.
@@ -13,7 +12,7 @@ The XRP Ledger is a decentralized blockchain that uses its own digital currency 
 
 ## What Is a Blockchain?
 
-A blockchain is a continuously growing list of records. The blockchain starts with a block of data. 
+A blockchain is a continuously growing list of records. The blockchain starts with a block of data.
 
 ![A block of data](img/introduction2-data-block.png)
 
