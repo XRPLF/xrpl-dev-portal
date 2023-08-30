@@ -332,7 +332,7 @@ lbl_standby_nft_id = tk.Label(master=frm_form, text="NFT ID")
 ent_standby_nft_id = tk.Entry(master=frm_form, width="50")
 ```
 
-Add the NFT Count field for batch minting.
+Add the **NFT Count** field for batch minting.
 
 ```python
 lbl_standby_nft_count=tk.Label(master=frm_form, text="NFT Count")
