@@ -251,7 +251,7 @@ from mod7 import batch_mint, get_batch
 
 Add Module 7 handlers.
 
-```
+```python
 
 def batch_mint_nfts():
     results = batch_mint(
