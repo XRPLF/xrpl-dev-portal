@@ -47,7 +47,7 @@ To batch mint non-fungible token objects:
 
 Click **Get Batch NFTs** to get the current list of NFTs for your account.
 
-The difference between this function and the `getTokens()` function used earlier is that it allows for larger lists of tokens, and sends multiple requests if the tokens exceed the number of objects allowed in a single request.
+The difference between this function and the `getTokens()` function used earlier is that it allows for larger lists of tokens, sending multiple requests if the tokens exceed the number of objects allowed in a single request.
 
 # Code Walkthrough
 
