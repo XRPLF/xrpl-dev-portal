@@ -314,3 +314,15 @@ html.light {
     }
   }
 }
+
+.clock-number {
+  font-variant-numeric: tabular-nums;
+}
+.js-clock .box {
+  display: inline-block;
+  margin-right: 10px;
+}
+.js-clock .box:last-child {
+  margin-right: 0;
+}
+
