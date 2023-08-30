@@ -29,7 +29,7 @@ header.innerHTML = `
     <th>Account</th>
     <th>Destination</th>
     <th>Fee (XRP)</th>
-    <th>Amount delivered</th>
+    <th>Amount Delivered</th>
     <th>Transaction Type</th>
     <th>Result</th>
     <th>Link</th>
