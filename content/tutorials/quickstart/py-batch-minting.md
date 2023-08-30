@@ -391,7 +391,7 @@ btn_standby_configure_account.grid(row=7,column=0, sticky = "nsew")
 
 Add the **Batch Mint NFTs** and **Get Batch NFTs** buttons.
 
-```python.
+```python
 btn_standby_mint_token = tk.Button(master=frm_form, text="Batch Mint NFTs",
                                    command = batch_mint_nfts)
 btn_standby_mint_token.grid(row=8, column=2, sticky="nsew")
