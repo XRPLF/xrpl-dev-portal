@@ -35,7 +35,7 @@ You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl
 
 This example lets you mint multiple NFTs for a single unique item. The NFT might represent "prints" of an original artwork, tickets to an event, or another limited set of unique items. 
 
-To batch mint a non-fungible token objects:
+To batch mint non-fungible token objects:
 
 1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](nftokenmint.html) for information about all of the available flags for minting NFTs.
 2. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
