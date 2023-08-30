@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="account_nfts | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/account_nfts.html" />
-    <meta property="og:description" content="Get a list of all NFTs for an account." />
-    <meta name="description" content="Get a list of all NFTs for an account." />
+    <meta property="og:description" content="アカウントのすべてのNFTのリストを取得します。" />
+    <meta name="description" content="アカウントのすべてのNFTのリストを取得します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['Non-fungible Tokens, NFTs']
+      "page_labels": ['非代替性トークン, NFT']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v22.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -258,12 +258,11 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/py2updates/content/references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md?pr=/XRPLF/xrpl-dev-portal/pull/2007" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/py2updates/content/references/http-websocket-apis/public-api-methods/account-methods/account_nfts.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2007" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-non-fungible-tokens-nfts">Non-fungible Tokens, NFTs</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Non-fungible Tokens, NFTs" -->
+      <a href="/ja/label-nfts.html" class="label label-非代替性トークン-nft">非代替性トークン, NFT</a>
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -272,10 +271,10 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#account_nfts">account_nfts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#request-format">Request Format</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#nft-objects">NFT Objects</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#要求フォーマット">要求フォーマット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#応答フォーマット">応答フォーマット</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftオブジェクト">NFTオブジェクト</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#考えられるエラー">考えられるエラー</a></li>
       </ul>
   </div>
       </aside>
@@ -295,17 +294,14 @@
     <li class="active breadcrumb-item">account_nfts</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="account_nfts">account_nfts<a aria-hidden="true" class="hover_anchor" href="#account_nfts"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>account_nfts</code> method returns a list of <code>NFToken</code> objects for the specified account.</p>
-<p><em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></p>
-<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
-<p>An example of the request format:</p>
-<p class="devportal-callout note"><strong>Note:</strong> There is no commandline syntax for this method. You can use the <a href="json.html">json method</a> to access this method from the commandline instead.</p>
+<p><a class="external-link" href="https://github.com/xrplf/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><code>account_nfts</code>メソッドは、指定したアカウントの<code>NFToken</code>オブジェクトの一覧を返します。</p>
+<p><em>(<a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>により追加されました。)</em></p>
+<h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
+<p>要求フォーマットの例</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> このメソッドにはコマンドライン構文がありません。代わりに<a href="json.html">jsonメソッド</a>を使って、コマンドラインからこのメソッドにアクセスすることができます。</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -324,46 +320,46 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<p><a class="btn btn-primary" href="websocket-api-tool.html#account_nfts">Try it!</a></p>
-<p>The request includes the following parameters:</p>
+<p><a class="btn btn-primary" href="websocket-api-tool.html#account_nfts">試してみる</a></p>
+<p>要求には以下のパラメーターが含まれます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>account</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The unique identifier of an account, typically the account's <a href="basic-data-types.html#アドレス">Address</a>. The request returns a list of NFTs owned by this account.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">アカウントの一意の識別子で、通常はアカウントの<a href="basic-data-types.html#アドレス">アドレス</a>です。このリクエストは、このアカウントが所有するNFTのリストを返します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><em>(省略可)</em> 使用するレジャーのバージョンを示す20バイトの16進数の文字列。(<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>を参照)。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">String or Number</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#レジャーインデックス">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
+<td style="text-align: left;">文字列 または 数値</td>
+<td style="text-align: left;"><em>(省略可)</em> 使用するレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>、またはレジャーを自動的に選択するためのショートカット文字列。(<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>を参照)。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>limit</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> Limit the number of <a href="nftokenpage.html">token pages</a> to retrieve. Each page can contain up to 32 NFTs. The <code>limit</code> value cannot be lower than 20 or more than 400. The default is 100.</td>
+<td style="text-align: left;">整数</td>
+<td style="text-align: left;"><em>(省略可)</em> 取得する<a href="nftokenpage.html">トークンのページ</a>の数を制限します。各ページには最大32個のNFTを含めることができます。<code>limit</code>の値は20以上・400以下で指定します。この範囲外の正の値は、最も近い有効な値に置き換えられます。デフォルトは100です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
-<td style="text-align: left;"><a href="markers-and-pagination.html">Marker</a></td>
-<td style="text-align: left;"><em>(Optional)</em> Value from a previous paginated response. Resume retrieving data where that response left off.</td>
+<td style="text-align: left;"><a href="markers-and-pagination.html">マーカー</a></td>
+<td style="text-align: left;"><em>(省略可)</em> 以前のページ分割されたレスポンスの値。そのレスポンスが終了したところからデータの取得を再開します。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
-<p>An example of a successful response:</p>
+<h2 id="応答フォーマット">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット"><i class="fa fa-link"></i></a></h2>
+<p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
@@ -425,97 +421,97 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing the following fields:</p>
+<p>この応答は<a href="response-formatting.html">標準フォーマット</a>に従っており、正常に完了した場合は結果に次のフィールドが含まれます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>account</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The account that owns the list of NFTs</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">NFTの一覧を所有するアカウント</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>account_nfts</code></td>
-<td style="text-align: left;">Array</td>
-<td style="text-align: left;">A list of NFTs owned by the account, formatted as <strong>NFT Objects</strong> (see below).</td>
+<td style="text-align: left;">配列</td>
+<td style="text-align: left;">アカウントが所有するNFTのリストで、<strong>NFTオブジェクト</strong>（下記参照）としてフォーマットされます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">(May be omitted) The identifying hash of the ledger that was used to generate this response.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><em>(省略可能)</em> このレスポンスの生成に使用されたレジャーの識別ハッシュ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">Number - <a href="basic-data-types.html#レジャーインデックス">Ledger Index</a></td>
-<td style="text-align: left;"><em>(May be omitted)</em> The ledger index of the ledger that was used to generate this response.</td>
+<td style="text-align: left;">数値 - <a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
+<td style="text-align: left;"><em>(省略可能)</em> このレスポンスの生成に使用されたレジャーのインデックス。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
-<td style="text-align: left;">Number - <a href="basic-data-types.html#レジャーインデックス">Ledger Index</a></td>
-<td style="text-align: left;"><em>(May be omitted)</em> The ledger index of the current in-progress ledger version, which was used to generate this response.</td>
+<td style="text-align: left;">数値 - <a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
+<td style="text-align: left;"><em>(省略可能)</em> このレスポンスの生成に使用された、現在進行中のレジャーバージョンのレジャーインデックス。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">If included and set to <code>true</code>, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change.</td>
+<td style="text-align: left;">ブール値</td>
+<td style="text-align: left;">このレスポンスに含まれ、<code>true</code>に設定されている場合、このレスポンスの情報は検証済みのレジャーバージョンから取得したものです。そうでない場合、情報は変更される可能性があります。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="nft-objects">NFT Objects<a aria-hidden="true" class="hover_anchor" href="#nft-objects"><i class="fa fa-link"></i></a></h3>
-<p>Each object in the <code>account_nfts</code> array represents one <a href="nftoken.html">NFToken</a> and has the following fields:</p>
+<h3 id="nftオブジェクト">NFTオブジェクト<a aria-hidden="true" class="hover_anchor" href="#nftオブジェクト"><i class="fa fa-link"></i></a></h3>
+<p><code>account_nfts</code>配列の各オブジェクトは1つの<a href="nftoken.html">NFToken</a>を表し、以下のフィールドを保持しています</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">A bit-map of boolean flags enabled for this NFToken. See <a href="nftoken.html#nftoken-フラグ">NFToken Flags</a> for possible values.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">このNFTokenで有効なブール値フラグのビットマップ。指定できる値については、<a href="nftoken.html#nftoken-フラグ">NFTokenフラグ</a>を参照してください。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Issuer</code></td>
-<td style="text-align: left;">String - <a href="basic-data-types.html#アドレス">Address</a></td>
-<td style="text-align: left;">The account that issued this NFToken.</td>
+<td style="text-align: left;">文字列 - <a href="basic-data-types.html#アドレス">アドレス</a></td>
+<td style="text-align: left;">このNFTokenを発行したアカウント。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NFTokenID</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The unique identifier of this NFToken, in hexadecimal.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このNFTokenの一意の識別子（16進数）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NFTokenTaxon</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">The unscrambled version of this token's <a href="nftoken.html#分類群">taxon</a>. Several tokens with the same taxon might represent instances of a limited series.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">このトークンの<a href="nftoken.html#nftokentaxon分類群">taxon</a>の非乱数化した値。同じtaxonを持つ複数のトークンは、一つの限定されたシリーズのインスタンスを表すかもしれません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>URI</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The URI data associated with this NFToken, in hexadecimal.</td>
+<td style="text-align: left;">このNFTokenに関連付けられた16進数のURI データ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>nft_serial</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">The token sequence number of this NFToken, which is unique for its issuer.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このNFTokenのトークンシーケンス番号。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
+<h2 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li>Any of the <a href="error-formatting.html#汎用エラー">universal error types</a>.</li>
-<li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
-<li><code>actNotFound</code> - The <a href="basic-data-types.html#アドレス">Address</a> specified in the <code>account</code> field of the request does not correspond to an account in the ledger.</li>
-<li><code>lgrNotFound</code> - The ledger specified by the <code>ledger_hash</code> or <code>ledger_index</code> does not exist, or it does exist but the server does not have it.</li>
+<li>いずれかの<a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>。</li>
+<li><code>invalidParams</code> - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。</li>
+<li><code>actNotFound</code> - 要求の<code>account</code>フィールドに指定されている<a href="basic-data-types.html#アドレス">アドレス</a>が、レジャーのアカウントに対応していません。</li>
+<li><code>lgrNotFound</code> - <code>ledger_hash</code>または<code>ledger_index</code>で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。</li>
 </ul>
 <!-- rippled release notes links -->
 <!-- -->

@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v22.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -291,12 +291,15 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="amendments">Amendments<a aria-hidden="true" class="hover_anchor" href="#amendments"><i class="fa fa-link"></i></a></h1>
+<p>Amendments represent new features or other changes to transaction processing. </p>
 <p>The amendment system uses the consensus process to approve any changes that affect transaction processing on the XRP Ledger. Fully-functional, transaction process changes are introduced as amendments; validators then vote on these changes. If an amendment receives more than 80% support for two weeks, the amendment passes and the change applies permanently to all subsequent ledger versions. Disabling a passed amendment requires a new amendment to do so.</p>
 <p class="devportal-callout note"><strong>Note:</strong> Bug fixes that change transaction processes also require amendments.</p>
 <!-- TODO: Move this to an amendment tutorial.
 Every amendment has a unique identifying hex value and a short name. The short name is for readability only; servers can use different names to describe the same amendement ID, and the names aren't guaranteed to be unique. The amendment ID should be the SHA-512Half hash of the amendment's short name.
 -->
 <h2 id="amendment-process">Amendment Process<a aria-hidden="true" class="hover_anchor" href="#amendment-process"><i class="fa fa-link"></i></a></h2>
+<p>The <a href="contribute-code-flow.html">Contributing Code to the XRP Ledger</a> topic walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.</p>
+<p>After the code for an amendment is built into a software release, the process to enable it happens within the XRP Ledger network, which checks the status of amendments every <em>flag</em> ledger (typically about 15 minutes apart).</p>
 <p>Every 256th ledger is called a <strong>flag</strong> ledger. The flag ledger doesn't have special contents, but the amendment process happens around it.</p>
 <ol>
 <li><strong>Flag Ledger -1:</strong> When <code>rippled</code> validators send validation messages, they also submit their amendment votes.</li>
@@ -317,7 +320,7 @@ Every amendment has a unique identifying hex value and a short name. The short n
 <h2 id="amendment-voting">Amendment Voting<a aria-hidden="true" class="hover_anchor" href="#amendment-voting"><i class="fa fa-link"></i></a></h2>
 <p>Each version of <code>rippled</code> is compiled with a list of <a href="known-amendments.html">known amendments</a> and the code to implement those amendments. Operators of <code>rippled</code> validators configure their servers to vote on each amendment and can change it at any time. If the operator doesn't choose a vote, the server uses a default vote defined by the source code.</p>
 <p class="devportal-callout note"><strong>Note:</strong> The default vote can change between software releases. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="Updated in: rippled 1.8.1"><img alt="Updated in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>Amendments must maintain two weeks of support from more than 80% of trusted validators to be enabled. If support drops below 80%, the amendment is temporarily rejected, and the two week period restarts. Amendments can gain and lose a majority any number of times before it becomes permanently enabled.</p>
+<p>Amendments must maintain two weeks of support from more than 80% of trusted validators to be enabled. If support drops below 80%, the amendment is temporarily rejected, and the two week period restarts. Amendments can gain and lose a majority any number of times before they become permanently enabled.</p>
 <p>Amendments that have had their source code removed without being enabled are considered <strong>Vetoed</strong> by the network.</p>
 <h2 id="amendment-blocked-servers">Amendment Blocked Servers<a aria-hidden="true" class="hover_anchor" href="#amendment-blocked-servers"><i class="fa fa-link"></i></a></h2>
 <p><a id="amendment-blocked"></a></p>
@@ -342,7 +345,7 @@ Every amendment has a unique identifying hex value and a short name. The short n
 <li><strong>Tutorials:</strong><ul>
 <li><a href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
 <li><a href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
-<li><a href="contribute-code.html">Contribute Code to the XRP Ledger</a></li>
+<li><a href="contribute-code-flow.html">Contribute Code to the XRP Ledger</a></li>
 </ul>
 </li>
 <li><strong>References:</strong><ul>

@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v22.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -366,15 +366,15 @@
 <p>Create a variable for the server URI. This example uses the <em>Testnet</em> ledger. You can update the URI to choose a different XRP Ledger instance.</p>
 <p>```python
  testnet_url = "https://s.altnet.rippletest.net:51234/"</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">###<span class="w"> </span><span class="nv">get_account</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="gu">##</span># get_account
 
-<span class="nv">This</span><span class="w"> </span><span class="nv">method</span><span class="w"> </span><span class="nv">lets</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">get</span><span class="w"> </span><span class="nv">an</span><span class="w"> </span><span class="nv">existing</span><span class="w"> </span><span class="nv">account</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">providing</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">seed</span><span class="w"> </span><span class="nv">value</span>.<span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">provide</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">seed</span><span class="w"> </span><span class="nv">value</span>,<span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">method</span><span class="w"> </span><span class="nv">creates</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="nv">account</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">you</span>.
+This method lets you get an existing account by providing a seed value. If you provide no seed value, the method creates a new account for you.
 
-<span class="nv">Import</span><span class="w"> </span><span class="nv">required</span><span class="w"> </span><span class="nv">methods</span>.
+Import required methods.
 
-```<span class="nv">python</span>
-<span class="nv">def</span><span class="w"> </span><span class="nv">get_account</span><span class="ss">(</span><span class="nv">seed</span><span class="ss">)</span>:
-<span class="w">    </span><span class="s2">"""get_account"""</span>
+```python
+def get_account(seed):
+    """get_account"""
 </code></pre></div>
 <p>Request a new client from the XRP Ledger.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">    <span class="n">client</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">testnet_url</span><span class="p">)</span>

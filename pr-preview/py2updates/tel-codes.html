@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v22.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -316,23 +316,23 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>telCAN_NOT_QUEUE_BALANCE</code></td>
-<td style="text-align: left;">The transaction did not meet the <a href="transaction-cost.html">open ledger cost</a> and also was not added to the transaction queue because the sum of potential XRP costs of already-queued transactions is greater than the expected balance of the account. You can try again later, or try submitting to a different server. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.70.2" target="_blank" title="New in: rippled 0.70.2"><img alt="New in: rippled 0.70.2" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.70.2-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The transaction did not meet the <a href="transaction-cost.html">open ledger cost</a> and also was not added to the transaction queue because the sum of potential XRP costs of already-queued transactions is greater than the expected balance of the account. You can try again later, or try submitting to a different server.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telCAN_NOT_QUEUE_BLOCKS</code></td>
-<td style="text-align: left;">The transaction did not meet the <a href="transaction-cost.html">open ledger cost</a> and also was not added to the transaction queue. This transaction could not replace an existing transaction in the queue because it would block already-queued transactions from the same sender by changing authorization methods. (This includes all <a href="setregularkey.html">SetRegularKey</a> and <a href="signerlistset.html">SignerListSet</a> transactions, as well as <a href="accountset.html">AccountSet</a> transactions that change the <code>RequireAuth</code>/<code>OptionalAuth</code>, <code>DisableMaster</code>, or <code>AccountTxnID</code> flags.) You can try again later, or try submitting to a different server. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.70.2" target="_blank" title="New in: rippled 0.70.2"><img alt="New in: rippled 0.70.2" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.70.2-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The transaction did not meet the <a href="transaction-cost.html">open ledger cost</a> and also was not added to the transaction queue. This transaction could not replace an existing transaction in the queue because it would block already-queued transactions from the same sender. (For details, see <a href="transaction-queue.html#queuing-restrictions">Queuing Restrictions</a>.) You can try again later, or try submitting to a different server.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telCAN_NOT_QUEUE_BLOCKED</code></td>
-<td style="text-align: left;">The transaction did not meet the <a href="transaction-cost.html">open ledger cost</a> and also was not added to the transaction queue because a transaction queued ahead of it from the same sender blocks it. (This includes all <a href="setregularkey.html">SetRegularKey</a> and <a href="signerlistset.html">SignerListSet</a> transactions, as well as <a href="accountset.html">AccountSet</a> transactions that change the <code>RequireAuth</code>/<code>OptionalAuth</code>, <code>DisableMaster</code>, or <code>AccountTxnID</code> flags.) You can try again later, or try submitting to a different server. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.70.2" target="_blank" title="New in: rippled 0.70.2"><img alt="New in: rippled 0.70.2" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.70.2-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The transaction did not meet the <a href="transaction-cost.html">open ledger cost</a> and also was not added to the transaction queue because a transaction queued ahead of it from the same sender blocks it. (For details, see <a href="transaction-queue.html#queuing-restrictions">Queuing Restrictions</a>.) You can try again later, or try submitting to a different server.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telCAN_NOT_QUEUE_FEE</code></td>
-<td style="text-align: left;">The transaction did not meet the <a href="transaction-cost.html">open ledger cost</a> and also was not added to the transaction queue. This code occurs when a transaction with the same sender and sequence number already exists in the queue and the new one does not pay a large enough transaction cost to replace the existing transaction. To replace a transaction in the queue, the new transaction must have a <code>Fee</code> value that is at least 25% more, as measured in <a href="transaction-cost.html#fee-levels">fee levels</a>. You can increase the <code>Fee</code> and try again, send this with a higher <code>Sequence</code> number so it doesn't replace an existing transaction, or try sending to another server. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.70.2" target="_blank" title="New in: rippled 0.70.2"><img alt="New in: rippled 0.70.2" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.70.2-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The transaction did not meet the <a href="transaction-cost.html">open ledger cost</a> and also was not added to the transaction queue. This code occurs when a transaction with the same sender and sequence number already exists in the queue and the new one does not pay a large enough transaction cost to replace the existing transaction. To replace a transaction in the queue, the new transaction must have a <code>Fee</code> value that is at least 25% more, as measured in <a href="transaction-cost.html#fee-levels">fee levels</a>. You can increase the <code>Fee</code> and try again, send this with a higher <code>Sequence</code> number so it doesn't replace an existing transaction, or try sending to another server.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telCAN_NOT_QUEUE_FULL</code></td>
-<td style="text-align: left;">The transaction did not meet the <a href="transaction-cost.html">open ledger cost</a> and the server did not queue this transaction because this server's transaction queue is full. You could increase the <code>Fee</code> and try again, try again later, or try submitting to a different server. The new transaction must have a higher transaction cost, as measured in <a href="transaction-cost.html#fee-levels">fee levels</a>, than the transaction in the queue with the smallest transaction cost. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.70.2" target="_blank" title="New in: rippled 0.70.2"><img alt="New in: rippled 0.70.2" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.70.2-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The transaction did not meet the <a href="transaction-cost.html">open ledger cost</a> and the server did not queue this transaction because this server's transaction queue is full. You could increase the <code>Fee</code> and try again, try again later, or try submitting to a different server. The new transaction must have a higher transaction cost, as measured in <a href="transaction-cost.html#fee-levels">fee levels</a>, than the transaction in the queue with the smallest transaction cost.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telFAILED_PROCESSING</code></td>
@@ -344,11 +344,23 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>telLOCAL_ERROR</code></td>
-<td style="text-align: left;">Unspecified local error.</td>
+<td style="text-align: left;">Unspecified local error. The transaction may be able to succeed if you submit it to a different server.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>telNETWORK_ID_MAKES_TX_NON_CANONICAL</code></td>
+<td style="text-align: left;">The transaction specifies the <a href="transaction-common-fields.html#networkid-field"><code>NetworkID</code> field</a>, but the current network rules require that the <code>NetworkID</code> field be omitted. (Mainnet and other networks with a chain ID of 1024 or less do not use this field.) If the transaction was intended for a network that does not use <code>NetworkID</code>, remove the field and try again. If the transaction was intended for a different network, submit it to a server that is connected to the correct network. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="New in: rippled 1.11.0"><img alt="New in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telNO_DST</code>_<code>PARTIAL</code></td>
 <td style="text-align: left;">The transaction is an XRP payment that would fund a new account, but the <a href="partial-payments.html"><code>tfPartialPayment</code> flag</a> was enabled. This is disallowed.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>telREQUIRES_NETWORK_ID</code></td>
+<td style="text-align: left;">The transaction does not specify a <a href="transaction-common-fields.html#networkid-field"><code>NetworkID</code> field</a>, but the current network requires one. If the transaction was intended for a network that requires <code>NetworkID</code>, add the field and try again. If the transaction was intended for a different network, submit it to a server that is connected to the correct network. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="New in: rippled 1.11.0"><img alt="New in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>telWRONG_NETWORK</code></td>
+<td style="text-align: left;">The transaction specifies the wrong <a href="transaction-common-fields.html#networkid-field"><code>NetworkID</code> value</a> for the current network. Either specify the correct the <code>NetworkID</code> value for the intended network, or submit the transaction to a server that is connected to the correct network. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="New in: rippled 1.11.0"><img alt="New in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>

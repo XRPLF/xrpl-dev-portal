@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v22.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -427,47 +427,47 @@
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">{
-<span class="w">    </span><span class="s2">"result"</span>:<span class="w"> </span>{
-<span class="w">        </span><span class="s2">"account_data"</span>:<span class="w"> </span>{
-<span class="w">            </span><span class="s2">"Account"</span>:<span class="w"> </span><span class="s2">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span>,
-<span class="w">            </span><span class="s2">"Balance"</span>:<span class="w"> </span><span class="s2">"999999999960"</span>,
-<span class="w">            </span><span class="s2">"Flags"</span>:<span class="w"> </span><span class="mi">8388608</span>,
-<span class="w">            </span><span class="s2">"LedgerEntryType"</span>:<span class="w"> </span><span class="s2">"AccountRoot"</span>,
-<span class="w">            </span><span class="s2">"OwnerCount"</span>:<span class="w"> </span><span class="mi">0</span>,
-<span class="w">            </span><span class="s2">"PreviousTxnID"</span>:<span class="w"> </span><span class="s2">"4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42"</span>,
-<span class="w">            </span><span class="s2">"PreviousTxnLgrSeq"</span>:<span class="w"> </span><span class="mi">3</span>,
-<span class="w">            </span><span class="s2">"Sequence"</span>:<span class="w"> </span><span class="mi">6</span>,
-<span class="w">            </span><span class="s2">"index"</span>:<span class="w"> </span><span class="s2">"92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"</span>
-<span class="w">        </span>},
-<span class="w">        </span><span class="s2">"ledger_current_index"</span>:<span class="w"> </span><span class="mi">4</span>,
-<span class="w">        </span><span class="s2">"queue_data"</span>:<span class="w"> </span>{
-<span class="w">            </span><span class="s2">"auth_change_queued"</span>:<span class="w"> </span><span class="nv">true</span>,
-<span class="w">            </span><span class="s2">"highest_sequence"</span>:<span class="w"> </span><span class="mi">10</span>,
-<span class="w">            </span><span class="s2">"lowest_sequence"</span>:<span class="w"> </span><span class="mi">6</span>,
-<span class="w">            </span><span class="s2">"max_spend_drops_total"</span>:<span class="w"> </span><span class="s2">"500"</span>,
-<span class="w">            </span><span class="s2">"transactions"</span>:<span class="w"> </span>[
-<span class="w">                </span>{
-<span class="w">                    </span><span class="s2">"auth_change"</span>:<span class="w"> </span><span class="nv">false</span>,
-<span class="w">                    </span><span class="s2">"fee"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"fee_level"</span>:<span class="w"> </span><span class="s2">"2560"</span>,
-<span class="w">                    </span><span class="s2">"max_spend_drops"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"seq"</span>:<span class="w"> </span><span class="mi">6</span>
-<span class="w">                </span>},
-<span class="w">                </span>...<span class="ss">(</span><span class="nv">trimmed</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">length</span><span class="ss">)</span><span class="w"> </span>...
-<span class="w">                </span>{
-<span class="w">                    </span><span class="s2">"LastLedgerSequence"</span>:<span class="w"> </span><span class="mi">10</span>,
-<span class="w">                    </span><span class="s2">"auth_change"</span>:<span class="w"> </span><span class="nv">true</span>,
-<span class="w">                    </span><span class="s2">"fee"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"fee_level"</span>:<span class="w"> </span><span class="s2">"2560"</span>,
-<span class="w">                    </span><span class="s2">"max_spend_drops"</span>:<span class="w"> </span><span class="s2">"100"</span>,
-<span class="w">                    </span><span class="s2">"seq"</span>:<span class="w"> </span><span class="mi">10</span>
-<span class="w">                </span>}
-<span class="w">            </span>],
-<span class="w">            </span><span class="s2">"txn_count"</span>:<span class="w"> </span><span class="mi">5</span>
-<span class="w">        </span>},
-<span class="w">        </span><span class="s2">"status"</span>:<span class="w"> </span><span class="s2">"success"</span>,
-<span class="w">        </span><span class="s2">"validated"</span>:<span class="w"> </span><span class="nv">false</span>
-<span class="w">    </span>}
+    "result": {
+        "account_data": {
+            "Account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
+            "Balance": "999999999960",
+            "Flags": 8388608,
+            "LedgerEntryType": "AccountRoot",
+            "OwnerCount": 0,
+            "PreviousTxnID": "4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42",
+            "PreviousTxnLgrSeq": 3,
+            "Sequence": 6,
+            "index": "92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"
+        },
+        "ledger_current_index": 4,
+        "queue_data": {
+            "auth_change_queued": true,
+            "highest_sequence": 10,
+            "lowest_sequence": 6,
+            "max_spend_drops_total": "500",
+            "transactions": [
+                {
+                    "auth_change": false,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 6
+                },
+                ...(trimmed for length) ...
+                {
+                    "LastLedgerSequence": 10,
+                    "auth_change": true,
+                    "fee": "100",
+                    "fee_level": "2560",
+                    "max_spend_drops": "100",
+                    "seq": 10
+                }
+            ],
+            "txn_count": 5
+        },
+        "status": "success",
+        "validated": false
+    }
 }
 </code></pre></div></div>
 </div>

@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v22.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -378,7 +378,7 @@
 <h3 id="token-sequence">Token Sequence<a aria-hidden="true" class="hover_anchor" href="#token-sequence"><i class="fa fa-link"></i></a></h3>
 <p>The fifth section is a sequence number that increases with each <code>NFToken</code> the issuer creates.</p>
 <p><img alt="Sequence Number" src="img/nftokene.png" title="Sequence Number"/></p>
-<p>The <a href="nftokenmint.html">NFTokenMint transaction</a> sets this part of the <code>NFTokenID</code> automatically based on the <code>MintedTokens</code> field of the <code>Issuer</code> account. If the issuer's <a href="accountroot.html">AccountRoot object</a> does not have a <code>MintedTokens</code> field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.</p>
+<p>The <a href="nftokenmint.html">NFTokenMint transaction</a> sets this part of the <code>NFTokenID</code> automatically based on the <code>MintedNFTokens</code> field of the <code>Issuer</code> account. If the issuer's <a href="accountroot.html">AccountRoot object</a> does not have a <code>MintedNFTokens</code> field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.</p>
 <h2 id="uri">URI<a aria-hidden="true" class="hover_anchor" href="#uri"><i class="fa fa-link"></i></a></h2>
 <p>The URI field points to the data or metadata associated with the <code>NFToken</code>. This field does not need to be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, an <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC 2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>, or even a totally custom encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> The URI is immutable, so no one can update it if, for example, it links to a website that no longer exists.</p>

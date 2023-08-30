@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v22.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -292,7 +292,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="account_nfts">account_nfts<a aria-hidden="true" class="hover_anchor" href="#account_nfts"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/xrplf/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>account_nfts</code> method returns a list of <code>NFToken</code> objects for the specified account.</p>
 <p><em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
@@ -345,7 +345,7 @@
 <tr>
 <td style="text-align: left;"><code>limit</code></td>
 <td style="text-align: left;">Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> Limit the number of <a href="nftokenpage.html">token pages</a> to retrieve. Each page can contain up to 32 NFTs. The <code>limit</code> value cannot be lower than 20 or more than 400. The default is 100.</td>
+<td style="text-align: left;"><em>(Optional)</em> Limit the number of <a href="nftokenpage.html">token pages</a> to retrieve. Each page can contain up to 32 NFTs. The <code>limit</code> value cannot be lower than 20 or more than 400. Positive values outside this range are replaced with the closest valid option. The default is 100.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
@@ -430,7 +430,7 @@
 <tr>
 <td style="text-align: left;"><code>account</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The account that owns the list of NFTs</td>
+<td style="text-align: left;">The account that owns the list of NFTs.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>account_nfts</code></td>
@@ -440,7 +440,7 @@
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">(May be omitted) The identifying hash of the ledger that was used to generate this response.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The identifying hash of the ledger that was used to generate this response.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>

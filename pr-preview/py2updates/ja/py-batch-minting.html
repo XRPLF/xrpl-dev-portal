@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v19.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v22.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -334,9 +334,9 @@
 </ol>
 <h2 id="batch-mint-nfts-1">Batch Mint NFTs<a aria-hidden="true" class="hover_anchor" href="#batch-mint-nfts-1"><i class="fa fa-link"></i></a></h2>
 <p>This example lets you mint multiple NFTs for a single unique item. The NFT might represent "prints" of an original artwork, tickets to an event, or another limited set of unique items. </p>
-<p>To batch mint a non-fungible token objects:</p>
+<p>To batch mint non-fungible token objects:</p>
 <ol>
-<li>Set the <strong>Flags</strong> field. For testing purposes, we recommend setting the value to <em>8</em>. This sets the <em>tsTransferable</em> flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See <a href="nftokenmint.html">NFTokenMint</a> for information about all of the available flags for minting NFTs.</li>
+<li>Set the <strong>Flags</strong> field. For testing purposes, we recommend setting the value to <em>8</em>. This sets the <em>tsTransferable</em> flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See <a href="nftokenmint.html#nftokenmint-flags">NFTokenMint</a> for available minting NFT flags.</li>
 <li>Enter the <strong>NFT URI</strong>. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.</li>
 <li>Enter an <strong>NFT Count</strong> of up to 200 NFTs to create in one batch.</li>
 <li>Enter the <strong>Transfer Fee</strong>, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the <strong>Flags</strong> field to allow the NFT to be transferrable, set this field to 0.</li>
@@ -608,7 +608,7 @@ btn_standby_get_tokens = tk.Button(master=frm_form, text="Get Batch NFTs",
                                    command = get_batch_nfts)
 btn_standby_get_tokens.grid(row=9, column=2, sticky="nsew")
 
-# Start the application
+<span class="gh">#</span> Start the application
 window.mainloop()
 </code></pre></div>
     </div>
