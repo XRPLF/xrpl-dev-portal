@@ -118,9 +118,6 @@ html.light .token-banner-container {
 
   & > img {
     height: 36px;
-
-    @include media-breakpoint-up(lg) {
-    }
   }
 
   & > div {
@@ -140,30 +137,17 @@ html.light .token-banner-container {
 
   .token-reg {
     text-align: center;
-    line-height: 3rem;
-    @include media-breakpoint-up(md) {
-      padding: 0 1rem;
+    line-height: 48px;
+    font-size: 16px;
+    padding: 0 1rem;
+
+    @include media-breakpoint-up(lg) {
+      line-height: 60px;
     }
-  }
 
-  .hide-on-mobile {
-    @include media-breakpoint-down(sm) {
-      display: none !important;
-    }
-  }
-
-  .show-on-mobile {
-    display: none;
-
-    @include media-breakpoint-down(sm) {
-      display: inline !important;
-    }
-  }
-
-  @include media-breakpoint-up(md) {
-    .hide-on-mobile,
-    .show-on-mobile {
-      display: inline !important;
+    // Nonstandard "xxl" breakpoint again
+    @media (min-width: 1400px) {
+      font-size: 22px;
     }
   }
 
@@ -180,17 +164,22 @@ html.light .token-banner-container {
     white-space: nowrap;
     transition: border-color 0.5s ease;
 
-    // sm breakpoint
+    // xs breakpoint
     border: 2px solid $white;
     height: 36px;
     line-height: 32px;
     border-radius: 32px;
-    font-size: 2vw;
-    margin-top: 2px;
+    font-size: 8px; // min legible font size
+    margin-top: 6px;
+
+    @include media-breakpoint-up(sm) {
+      font-size: 2vw; // font scales up from here
+    }
 
     @include media-breakpoint-up(lg) {
       border-width: 3px;
       height: 48px;
+      line-height: 42px;
       border-radius: 40px;
       font-size: 16px;
     }
@@ -223,38 +212,28 @@ html.light .token-banner-container {
     color: $white;
   }
 
-  .js-clock .box {
-    display: inline-block;
-    margin-right: 10px;
-    font-size: 14px;
-  }
-
-  .clock-number {
-    font-variant-numeric: tabular-nums;
-  }
-  .js-clock .box {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  .js-clock .box:last-child {
-    margin-right: 0;
-  }
-
-  .token-circled,
-  #js-clock {
-    @include media-breakpoint-down(sm) {
-      display: none;
+  .js-clock {
+    padding-top: 3px;
+    @include media-breakpoint-up(lg) {
+      padding-top: 8px;
     }
-  }
 
-  @include media-breakpoint-up(md) {
-    .token-reg,
-    .token-circled,
-    #js-clock {
+    .box {
       display: inline-block;
-      margin-top: 10px;
+      margin-right: 10px;
+      font-size: 14px;
+      line-height: 22px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .clock-number {
+      font-variant-numeric: tabular-nums;
     }
   }
+
   .highlight-purple{
     @include media-breakpoint-down(lg) {
       display: none;
@@ -262,12 +241,6 @@ html.light .token-banner-container {
   }
 
   @include media-breakpoint-down(sm) {
-    .show-on-mobile {
-      display: inline-block;
-    }
-    .highlight-yellow{
-      margin-top:10px;
-    }
     .token-highlight{
       margin-right:10px;
     }
