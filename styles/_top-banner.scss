@@ -1,7 +1,9 @@
 /* sticky APEX banner */
-@keyframes pulsate {}
+@keyframes pulsate {
+}
 
-.banner-container, html.light .banner-container {
+.banner-container,
+html.light .banner-container {
   display: flex;
   width: 100%;
   position: relative;
@@ -10,7 +12,7 @@
   overflow: hidden;
 
   height: 36px;
-  
+
   @include media-breakpoint-up(lg) {
     height: 48px;
   }
@@ -35,7 +37,8 @@
     }
   }
 
-  .d-xxl-block { // nonstandard-breakpoint for this banner only
+  .d-xxl-block {
+    // nonstandard-breakpoint for this banner only
     @media (min-width: 1400px) {
       display: block !important;
     }
@@ -81,7 +84,7 @@
   &:hover {
     text-decoration: none;
     color: $white;
-    
+
     .apex-highlight {
       color: $apex-2023-green;
     }
@@ -94,11 +97,155 @@
       border-color: $magenta;
     }
   }
-  &:active, &:focus {
-    // don't turn white on click
+  &:active,
+  &:focus {
     background-color: $accent-blue-90 !important;
     color: $white;
   }
+}
+.token-banner-container,
+html.light .token-banner-container {
+  display: flex;
+  width: 100%;
+  position: relative;
+  background-color: $accent-blue-90;
+  color: $white;
+  height: 48px;
+
+  @include media-breakpoint-up(lg) {
+    height: 60px;
+  }
+
+  & > img {
+    height: 36px;
+  }
+
+  & > div {
+    font-family: Work Sans;
+    font-weight: 600;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 22px;
+    }
+  }
+
+  .d-xxl-block {
+    @media (min-width: 1400px) {
+      display: block !important;
+    }
+  }
+
+  .token-reg {
+    text-align: center;
+    line-height: 48px;
+    font-size: 16px;
+    padding: 0 1rem;
+
+    @include media-breakpoint-up(lg) {
+      line-height: 60px;
+    }
+
+    // Nonstandard "xxl" breakpoint again
+    @media (min-width: 1400px) {
+      font-size: 22px;
+    }
+  }
+
+  .token-highlight {
+    color: $apex-2023-green;
+    @include media-breakpoint-up(sm) {
+      line-height: 3rem;
+    }
+  }
+
+  .token-circled {
+    padding: 0 1rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: border-color 0.5s ease;
+
+    // xs breakpoint
+    border: 2px solid $white;
+    height: 36px;
+    line-height: 32px;
+    border-radius: 32px;
+    font-size: 8px; // min legible font size
+    margin-top: 6px;
+
+    @include media-breakpoint-up(sm) {
+      font-size: 2vw; // font scales up from here
+    }
+
+    @include media-breakpoint-up(lg) {
+      border-width: 3px;
+      height: 48px;
+      line-height: 42px;
+      border-radius: 40px;
+      font-size: 16px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      font-size: 22px;
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: $white;
+
+    .token-highlight {
+      color: $apex-2023-green; /* Adjust as needed */
+    }
+
+    .highlight-yellow {
+      border-color: $yellow;
+    }
+
+    .highlight-purple {
+      border-color: $magenta;
+    }
+  }
+
+  &:active,
+  &:focus {
+    background-color: $accent-blue-90 !important;
+    color: $white;
+  }
+
+  .js-clock {
+    padding-top: 3px;
+    @include media-breakpoint-up(lg) {
+      padding-top: 8px;
+    }
+
+    .box {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 14px;
+      line-height: 22px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .clock-number {
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  .highlight-purple{
+    @include media-breakpoint-down(lg) {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .token-highlight{
+      margin-right:10px;
+    }
+  }
+
 }
 
 /* old "pencil banner" style, currently unused */
@@ -156,8 +303,8 @@
 }
 
 .top-nav {
-    position: sticky;
-    width: 100%;
+  position: sticky;
+  width: 100%;
 }
 
 .right-sidebar,
