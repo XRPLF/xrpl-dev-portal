@@ -46,13 +46,14 @@ The value of cryptocurrency comes from the faith that holders place in the curre
 
 ## XRP is Cryptocurrency
 
-The XRP Ledger was built over 2011 – early 2012 by Jed McCaleb, Arthur Britto and David Schwartz. In September 2012, Jed and Arthur, along with Chris Larsen formed Ripple (the company, called OpenCoin Inc. at the time) and decided to gift 80 billion XRP to Ripple in exchange for Ripple developing on the XRP Ledger. The Ripple name is based on the way the technology they built allows payments to "ripple" through multiple hops and currencies. The _X_ prefix is the ISO 4217 standard for non-national currencies. In choosing the ticker symbol, the creators chose _XRP_ to refer to the asset in all contexts.
+The XRP Ledger was built over 2011 – early 2012 by Jed McCaleb, Arthur Britto and David Schwartz. At the time of its creation, there were 100 billion XRP. In September 2012, Jed and Arthur, along with Chris Larsen formed Ripple (the company, called OpenCoin Inc. at the time) and decided to gift 80 billion XRP to Ripple in exchange for Ripple developing on the XRP Ledger.
+
+![One Hundred Billion with a "B"](img/introduction14-hundred-billion.png)
+
+Since then, the company has regularly sold XRP, used it to strengthen XRP markets and improve network liquidity, and incentivized development of the greater ecosystem. In 2017, the company placed [55 billion XRP in escrow](https://ripple.com/insights/ripple-escrows-55-billion-xrp-for-supply-predictability/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993)  to ensure that the amount entering the general supply [grows predictably](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993)  for the foreseeable future. Ripple's [XRP Market Performance site](https://ripple.com/xrp/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993) reports how much XRP the company has available and locked in escrow at present.
 
 ![Man with one XRP](img/introduction13-x-prefix.png)
 
-At the time of its creation, there were 100 billion XRP. XRP are held in escrow and sold at intervals that help to maintain the stability of the currency and ensure that the general supply grows predictably.
-
-![One Hundred Billion with a "B"](img/introduction14-hundred-billion.png)
 
 ### Naming
 
@@ -62,4 +63,11 @@ Originally, the XRP Ledger was called "Ripple" for the way the technology allowe
 |:---------------------------------------|:------------------------------------|
 | !["X" logo](assets/img/xrp-x-logo.png) | ![Triskelion](img/ripple-triskelion.png) |
 
+
+### Trademark
+
+"XRP" is a registered trademark of the XRPL Foundation in the U.S.A. and other countries like China and Estonia.
+
+The trademark application was registered with the United States Patent and Trademark Office (USPTO) in 2013 with OpenCoin Inc and Ripple Labs Inc as assignees. In 2022, the trademark assignment was updated and is now assigned to the MITTETULUNDUSÜHING XRP LEDGER TRUST (“XRPLF”).
+ 
 Next: [Crypto Wallets](crypto-wallets.html)
