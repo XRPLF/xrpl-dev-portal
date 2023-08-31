@@ -15,7 +15,7 @@
       // Define the banner HTML with the countdown timer
       let token2049bannerHTML = `
         <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock d-flex align-items-center">
+            <div id="js-clock" class="js-clock align-items-center">
             <div class="box">
               <div id="js-clock-days" class="clock-number">00</div>
               <div class="clock-label">Days</div>
@@ -33,9 +33,11 @@
               <div class="clock-label">Sec</div>
             </div>
           </div>
-          <div class="token-reg">{% trans %}Countdown to XRPL Zone<span class="token-highlight"> @Token2049</span>{% endtrans %}</div>
-           <div class="token-circled d-lg-block highlight-yellow">{% trans %} Singapore{% endtrans %}</div>
-           <div class="token-reg"> {% trans %} 12 September 2023 {% endtrans %} </div>
+          <div class="token-reg">  <span class="hide-on-mobile">{% trans %}Countdown to{% endtrans %}</span>
+          <span class="show-on-mobile">{% trans %}XRPL Zone {% endtrans %}</span>
+          <span class="token-highlight show-on-mobile">{% trans %}@Token2049{% endtrans %}</span></div>
+           <div class="token-circled d-lg-block highlight-yellow show-on-mobile">{% trans %} Singapore{% endtrans %}</div>
+           <div class="token-reg hide-on-mobile"> {% trans %} 12 September 2023 {% endtrans %} </div>
             <div class="token-circled d-none d-lg-block highlight-purple">{% trans %}Register Now{% endtrans %}</div>
         </a>
       `;

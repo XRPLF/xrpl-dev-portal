@@ -146,6 +146,27 @@ html.light .token-banner-container {
     }
   }
 
+  .hide-on-mobile {
+    @include media-breakpoint-down(sm) {
+      display: none !important;
+    }
+  }
+
+  .show-on-mobile {
+    display: none;
+
+    @include media-breakpoint-down(sm) {
+      display: inline !important;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .hide-on-mobile,
+    .show-on-mobile {
+      display: inline !important;
+    }
+  }
+
   .token-highlight {
     color: $apex-2023-green;
     @include media-breakpoint-up(sm) {
@@ -206,6 +227,45 @@ html.light .token-banner-container {
     display: inline-block;
     margin-right: 10px;
     font-size: 14px;
+  }
+
+  .clock-number {
+    font-variant-numeric: tabular-nums;
+  }
+  .js-clock .box {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .js-clock .box:last-child {
+    margin-right: 0;
+  }
+
+  .token-circled,
+  #js-clock {
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .token-reg,
+    .token-circled,
+    #js-clock {
+      display: inline-block;
+      margin-top: 10px;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .show-on-mobile {
+      display: inline-block;
+    }
+    .highlight-yellow{
+      margin-top:10px;
+    }
+    .token-highlight{
+      margin-right:10px;
+    }
   }
 }
 
@@ -314,15 +374,3 @@ html.light {
     }
   }
 }
-
-.clock-number {
-  font-variant-numeric: tabular-nums;
-}
-.js-clock .box {
-  display: inline-block;
-  margin-right: 10px;
-}
-.js-clock .box:last-child {
-  margin-right: 0;
-}
-
