@@ -106,7 +106,7 @@
       // Define the banner HTML with the countdown timer
       let token2049bannerHTML = `
         <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock d-flex align-items-center">
+            <div id="js-clock" class="js-clock align-items-center">
             <div class="box">
               <div id="js-clock-days" class="clock-number">00</div>
               <div class="clock-label">Days</div>
@@ -124,9 +124,11 @@
               <div class="clock-label">Sec</div>
             </div>
           </div>
-          <div class="token-reg">Countdown to XRPL Zone<span class="token-highlight"> @Token2049</span></div>
-           <div class="token-circled d-lg-block highlight-yellow"> Singapore</div>
-           <div class="token-reg">  12 September 2023  </div>
+          <div class="token-reg">  <span class="hide-on-mobile">Countdown to</span>
+          <span class="show-on-mobile">XRPL Zone </span>
+          <span class="token-highlight show-on-mobile">@Token2049</span></div>
+           <div class="token-circled d-lg-block highlight-yellow show-on-mobile"> Singapore</div>
+           <div class="token-reg hide-on-mobile">  12 September 2023  </div>
             <div class="token-circled d-none d-lg-block highlight-purple">Register Now</div>
         </a>
       `;
@@ -405,7 +407,7 @@
 <ul>
 <li>Show updates to the XRP Ledger in real-time.</li>
 <li>View any XRP Ledger account's activity, including showing how much XRP was delivered by each transaction.</li>
-<li>Show how much XRP is set aside for the account's <a href="reserves.html">reserve requirement</a>. </li>
+<li>Show how much XRP is set aside for the account's <a href="reserves.html">reserve requirement</a>.</li>
 <li>Send <a href="direct-xrp-payments.html">direct XRP payments</a>, and provide feedback about the intended destination address, including:<ul>
 <li>Displaying your account's available balance</li>
 <li>Verifying that the destination address is valid</li>
@@ -677,7 +679,7 @@
 <p>In the <code>helpers</code> folder, add <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/add-token2049-banner/content/_code-samples/build-a-wallet/js/src/helpers/render-xrpl-logo.js" target="_blank">render-xrpl-logo.js <i aria-hidden="true" class="fa fa-external-link"></i></a> to handle displaying a logo.</p>
 </li>
 <li>
-<p>Finally create a new folder named <code>assets</code> in the <code>src/</code> directory and add the file <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/add-token2049-banner/content/_code-samples/build-a-wallet/js/src/assets/xrpl.svg" target="_blank"><code>xrpl.svg</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> there. </p>
+<p>Finally create a new folder named <code>assets</code> in the <code>src/</code> directory and add the file <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/add-token2049-banner/content/_code-samples/build-a-wallet/js/src/assets/xrpl.svg" target="_blank"><code>xrpl.svg</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> there.</p>
 </li>
 </ol>
 <p>These files are used to render the XRPL logo for aesthetic purposes.</p>
@@ -878,19 +880,20 @@
 <p>Destination Tag: (Not usually necessary unless you're paying an account tied to an exchange)</p>
 <p><img alt="Send XRP Transaction Screenshot" src="img/js-wallet-send-xrp-transaction-details.png"/></p>
 <h3 id="4-create-the-transactions-page">4. Create the Transactions Page<a aria-hidden="true" class="hover_anchor" href="#4-create-the-transactions-page"><i class="fa fa-link"></i></a></h3>
-<p>Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account. In order to see what's happening on the ledger, we're going to display the following fields: </p>
+<p>Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account. In order to see what's happening on the ledger, we're going to display the following fields:</p>
 <ul>
 <li>Account: The account that sent the transaction.</li>
 <li>Destination: The account that received the transaction.</li>
-<li>Amount: The amount of XRP sent in the transaction.</li>
 <li>Transaction Type: The type of transaction.</li>
 <li>Result: The result of the transaction.</li>
+<li>Delivered amount: The amount of XRP or tokens delivered by the transaction, if applicable.</li>
 <li>Link: A link to the transaction on the XRP Ledger Explorer.</li>
 </ul>
+<p class="devportal-callout caution"><strong>Caution:</strong> When displaying how much money a transaction delivered, always use the <code>delivered_amount</code> field from the metadata, not the <code>Amount</code> field from the transaction instructions. <a href="partial-payments.html">Partial Payments</a> can deliver much less than the stated <code>Amount</code> and still be successful.</p>
 <p><img alt="Transactions Page Screenshot" src="img/js-wallet-transaction.png"/></p>
 <ol>
 <li>Create a folder named <code>transaction-history</code> in the src directory.</li>
-<li>Create a file named <code>transaction-history.js</code> and copy the code written below. </li>
+<li>Create a file named <code>transaction-history.js</code> and copy the code written below.</li>
 </ol>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="nx">Wallet</span><span class="p">,</span><span class="w"> </span><span class="nx">convertHexToString</span><span class="p">,</span><span class="w"> </span><span class="nx">dropsToXrp</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'xrpl'</span><span class="p">;</span>
 
@@ -923,7 +926,7 @@
 <span class="sb">    &lt;th&gt;Account&lt;/th&gt;</span>
 <span class="sb">    &lt;th&gt;Destination&lt;/th&gt;</span>
 <span class="sb">    &lt;th&gt;Fee (XRP)&lt;/th&gt;</span>
-<span class="sb">    &lt;th&gt;Amount&lt;/th&gt;</span>
+<span class="sb">    &lt;th&gt;Amount Delivered&lt;/th&gt;</span>
 <span class="sb">    &lt;th&gt;Transaction Type&lt;/th&gt;</span>
 <span class="sb">    &lt;th&gt;Result&lt;/th&gt;</span>
 <span class="sb">    &lt;th&gt;Link&lt;/th&gt;</span>
@@ -931,14 +934,40 @@
 <span class="nx">txHistoryElement</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">header</span><span class="p">);</span>
 
 <span class="c1">// Converts the hex value to a string</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">getTokenName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">40</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">convertHexToString</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s1">'\u0000'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">);</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">getTokenName</span><span class="p">(</span><span class="nx">currencyCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">currencyCode</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currencyCode</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">currencyCode</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">()</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">'xrp'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// "Standard" currency code</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">currencyCode</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currencyCode</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^[a-fA-F0-9]{40}$/</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Hexadecimal currency code</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">text_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">convertHexToString</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s1">'\u0000'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">text_code</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/[a-zA-Z0-9]{3,}/</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">text_code</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">()</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">'xrp'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// ASCII or UTF-8 encoded alphanumeric code, 3+ characters long</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">text_code</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// Other hex format, return as-is.</span>
+<span class="w">        </span><span class="c1">// For parsing other rare formats, see https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/normalize-currency-codes/js/normalize-currency-code.js</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">currencyCode</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="kd">function</span><span class="w"> </span><span class="nx">renderTokenValueColumn</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">value</span><span class="p">.</span><span class="nx">Amount</span>
-<span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;</span><span class="si">${</span>
-<span class="w">              </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">value</span><span class="p">.</span><span class="nx">Amount</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'object'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Amount</span><span class="p">.</span><span class="nx">value</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">getTokenName</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">Amount</span><span class="p">.</span><span class="nx">currency</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">Amount</span><span class="p">)</span><span class="si">}</span><span class="sb"> XRP`</span>
-<span class="w">          </span><span class="si">}</span><span class="sb">&lt;/td&gt;`</span>
-<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="p">;</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">renderAmount</span><span class="p">(</span><span class="nx">delivered</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">delivered</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'unavailable'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// special case for pre-2014 partial payments</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s1">'unavailable'</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">delivered</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'string'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// It's an XRP amount in drops. Convert to decimal.</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">delivered</span><span class="p">)</span><span class="si">}</span><span class="sb"> XRP`</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">delivered</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'object'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// It's a token amount.</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">delivered</span><span class="p">.</span><span class="nx">value</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">getTokenName</span><span class="p">(</span><span class="nx">delivered</span><span class="p">.</span><span class="nx">currency</span><span class="p">)</span><span class="si">}</span><span class="sb">.</span><span class="si">${</span><span class="nx">delivered</span><span class="p">.</span><span class="nx">issuer</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Could be undefined -- not all transactions deliver value</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">"-"</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// Fetches the transaction history from the ledger</span>
@@ -975,10 +1004,10 @@
 <span class="w">                </span><span class="nx">Account</span><span class="o">:</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Account</span><span class="p">,</span>
 <span class="w">                </span><span class="nx">Destination</span><span class="o">:</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Destination</span><span class="p">,</span>
 <span class="w">                </span><span class="nx">Fee</span><span class="o">:</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Fee</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">Amount</span><span class="o">:</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Amount</span><span class="p">,</span>
 <span class="w">                </span><span class="nx">Hash</span><span class="o">:</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">hash</span><span class="p">,</span>
 <span class="w">                </span><span class="nx">TransactionType</span><span class="o">:</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">TransactionType</span><span class="p">,</span>
 <span class="w">                </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="nx">meta</span><span class="o">?</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">delivered</span><span class="o">:</span><span class="w"> </span><span class="nx">meta</span><span class="o">?</span><span class="p">.</span><span class="nx">delivered_amount</span>
 <span class="w">            </span><span class="p">};</span>
 <span class="w">        </span><span class="p">});</span>
 
@@ -1002,7 +1031,7 @@
 <span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Account</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;</span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Account</span><span class="si">}</span><span class="sb">&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span>
 <span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Destination</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;</span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Destination</span><span class="si">}</span><span class="sb">&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span>
 <span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Fee</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;</span><span class="si">${</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">Fee</span><span class="p">)</span><span class="si">}</span><span class="sb">&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span>
-<span class="sb">                </span><span class="si">${</span><span class="nx">renderTokenValueColumn</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="si">}</span>
+<span class="sb">                </span><span class="si">${</span><span class="nx">renderAmount</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">delivered</span><span class="p">)</span><span class="si">}</span>
 <span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">TransactionType</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;</span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">TransactionType</span><span class="si">}</span><span class="sb">&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span>
 <span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">result</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;</span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">result</span><span class="si">}</span><span class="sb">&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span>
 <span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Hash</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;&lt;a href="https://</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">EXPLORER_NETWORK</span><span class="si">}</span><span class="sb">.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Hash</span><span class="si">}</span><span class="sb">" target="_blank"&gt;View&lt;/a&gt;&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>

@@ -93,7 +93,7 @@
       // Define the banner HTML with the countdown timer
       let token2049bannerHTML = `
         <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock d-flex align-items-center">
+            <div id="js-clock" class="js-clock align-items-center">
             <div class="box">
               <div id="js-clock-days" class="clock-number">00</div>
               <div class="clock-label">Days</div>
@@ -111,9 +111,11 @@
               <div class="clock-label">Sec</div>
             </div>
           </div>
-          <div class="token-reg">Countdown to XRPL Zone<span class="token-highlight"> @Token2049</span></div>
-           <div class="token-circled d-lg-block highlight-yellow"> Singapore</div>
-           <div class="token-reg">  12 September 2023  </div>
+          <div class="token-reg">  <span class="hide-on-mobile">Countdown to</span>
+          <span class="show-on-mobile">XRPL Zone </span>
+          <span class="token-highlight show-on-mobile">@Token2049</span></div>
+           <div class="token-circled d-lg-block highlight-yellow show-on-mobile"> Singapore</div>
+           <div class="token-reg hide-on-mobile">  12 September 2023  </div>
             <div class="token-circled d-none d-lg-block highlight-purple">Register Now</div>
         </a>
       `;
