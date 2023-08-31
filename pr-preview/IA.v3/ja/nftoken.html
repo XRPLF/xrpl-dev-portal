@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v21.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v23.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -90,18 +90,119 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-  <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-  <div class="apex-reg"><span class="apex-highlight">APEX Dev Summit 2023</span>に登録</div>
-  <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-  <div class="apex-circled highlight-yellow">アムステルダム</div>
-  <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-  <div class="apex-circled d-none d-lg-block highlight-purple">今すぐ登録</div>
-  <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-</a>
+
+
+<!-- Inline script to conditionally display the banner -->
+  <script>
+    // Get the user's location using the provided JavaScript code
+    let userLocation = window.Osano.cm.countryCode;
+
+    // List of countries for which we want to serve the banner
+    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
+
+    // Check if the user's location is in the list of target countries
+    let isTargetCountry = targetCountries.includes(userLocation);
+
+    if (isTargetCountry) {
+      // Define the banner HTML with the countdown timer
+      let token2049bannerHTML = `
+        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
+            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
+            <div class="box">
+              <div id="js-clock-days" class="clock-number">00</div>
+              <div class="clock-label">Days</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-hours" class="clock-number">00</div>
+              <div class="clock-label">Hrs</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-minutes" class="clock-number">00</div>
+              <div class="clock-label">Min</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-seconds" class="clock-number">00</div>
+              <div class="clock-label">Sec</div>
+            </div>
+          </div>
+          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
+          <span class="d-inline-block">XRPL Zone </span>
+          <span class="token-highlight d-inline-block">@Token2049</span></div>
+           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
+           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
+            <div class="token-circled d-none d-lg-inline-block highlight-purple">今すぐ登録</div>
+        </a>
+      `;
+
+      // Write the banner directly to the document
+      document.write(token2049bannerHTML);
+
+      var deadline = '2023/09/13 08:00';
+
+      function pad(num, size) {
+        var s = "0" + num;
+        return s.substr(s.length - size);
+      }
+
+      function parseDate(date) {
+        const parsed = Date.parse(date);
+        if (!isNaN(parsed)) return parsed
+        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
+      }
+
+      function getTimeRemaining(endtime) {
+        let total = parseDate(endtime) - Date.parse(new Date())
+        let seconds = Math.floor((total / 1000) % 60)
+        let minutes = Math.floor((total / 1000 / 60) % 60)
+        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
+        let days = Math.floor(total / (1000 * 60 * 60 * 24))
+
+        return { total, days, hours, minutes, seconds };
+      }
+
+      function clock(id, endtime) {
+        let days = document.getElementById(id + '-days')
+        let hours = document.getElementById(id + '-hours')
+        let minutes = document.getElementById(id + '-minutes')
+        let seconds = document.getElementById(id + '-seconds')
+
+        var timeinterval = setInterval(function () {
+          var time = getTimeRemaining(endtime);
+
+          if (time.total <= 0) {
+            clearInterval(timeinterval);
+          } else {
+            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
+            hours.innerHTML = pad(time.hours, 2);
+            minutes.innerHTML = pad(time.minutes, 2);
+            seconds.innerHTML = pad(time.seconds, 2);
+          }
+        }, 1000);
+      }
+      clock('js-clock', deadline);
+    } else {
+      let apexBanner = `
+          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
+            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
+            <div class="apex-reg"><span class="apex-highlight">APEX Dev Summit 2023</span>に登録</div>
+            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
+            <div class="apex-circled highlight-yellow">アムステルダム</div>
+            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
+            <div class="apex-circled d-none d-lg-block highlight-purple">今すぐ登録</div>
+            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
+          </a>`;
+
+      // Write the banner directly to the document
+      document.write(apexBanner);
+}
+  </script>
+
+
+
+
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,7 +219,6 @@
             <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPLの概要</a>
             <a class="dropdown-item" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
             <a class="dropdown-item" href="/ja/history.html">歴史</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
@@ -147,24 +247,14 @@
               <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="/ja/docs-index.html">Documentation Index</a>
-            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
-          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
             <a class="dropdown-item" href="/ja/use-cases.html">Use Cases</a>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
             <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
             <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
             <a class="dropdown-item" href="/ja/infrastructure.html">Infrastructure</a>
-          </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
-            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
-            <a class="dropdown-item" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -189,13 +279,35 @@
       </li>
 
             <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>リソース</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-開発">
+            <h5 class="dropdown-item">開発</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+          </div><!--./col-->
+          <div class="navcol col-for-現在のステータス">
+            <h5 class="dropdown-item">現在のステータス</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/known-amendments.html">既知のAmendment</a>
+          </div><!--./col-->
+          <div class="navcol col-for-参加する">
+            <h5 class="dropdown-item">参加する</h5>
+            <a class="dropdown-item" href="/ja/contribute-code.html">コードへの貢献</a>
+            <a class="dropdown-item" href="/ja/contribute-documentation.html">ドキュメントへの貢献</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティ</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
-            <img id="top-nav-hero-contribute" alt="貢献する icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-xrplコミュニティへの貢献" href="/ja/contribute.html">
+            <img id="top-nav-hero-contribute" alt="XRPLコミュニティへの貢献 icon" />
             <div class="dropdown-hero-text">
-              <h4>貢献する</h4>
-              <p>話題に加わろう</p>
+              <h4>XRPLコミュニティへの貢献</h4>
+              <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
@@ -207,7 +319,7 @@
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
-            <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
+            <a class="dropdown-item" href="/ja/report-a-scam.html">詐欺の報告</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -275,16 +387,16 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nftoken">NFToken</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#トークンid">トークンID</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokenid">NFTokenID</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftoken-フラグ">NFToken フラグ</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#例">例</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#送金手数料">送金手数料</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#例-1">例</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#発行者識別">発行者識別</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#分類群">分類群</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#発行者の識別">発行者の識別</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftokentaxon分類群">NFTokenTaxon(分類群)</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#トークン連番">トークン連番</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#uri">URI</a></li>
-        <li class="nav-item level-1"><a class="nav-link" href="#nftoken-データとメタデータの取得">NFToken データとメタデータの取得</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#nftokenデータとメタデータの取得">NFTokenデータとメタデータの取得</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#txtレコードの形式">TXTレコードの形式</a></li>
       </ul>
   </div>
@@ -306,116 +418,99 @@
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="nftoken">NFToken<a aria-hidden="true" class="hover_anchor" href="#nftoken"><i class="fa fa-link"></i></a></h1>
-<p><code>NFToken</code> オブジェクトは、1つの非代替性トークン (NFT) を表します。単体では保存されず、他の NFT と共に <a href="nftokenpage.html">NFTokenPage オブジェクト</a> に格納されます。</p>
+<p><code>NFToken</code>オブジェクトは、1つの非代替性トークン(NFT)を表します。単体では保存されず、他のNFTと共に<a href="nftokenpage.html">NFTokenPage オブジェクト</a>に格納されます。</p>
+<p><em>(<a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>により追加されました。)</em></p>
 <p>NFToken JSONの例</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"TokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"URI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi"</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>他のオブジェクトとは異なり、<code>NFToken</code> にはオブジェクトの種類や現在の所有者を特定するためのフィールドはありません。NFToken オブジェクトは、オブジェクトの種類と所有者を暗黙的に定義する <code>NFTokenPages</code> にグループ化されています。</p>
-<p><em>(<a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>が必要です)</em></p>
-<h2 id="トークンid">トークンID<a aria-hidden="true" class="hover_anchor" href="#トークンid"><i class="fa fa-link"></i></a></h2>
-<p>トークンID, 任意, 文字列, Hash256</p>
+<p>通常の<a href="ledger-object-types.html">ledger entries</a>とは異なり、<code>NFToken</code>にはオブジェクトのタイプや現在の所有者を特定するフィールドはありません。<code>NFToken</code>オブジェクトは、そのオブジェクトのタイプを暗黙的に定義し、所有者を特定するページにグループ化されます。</p>
+<h2 id="nftokenid">NFTokenID<a aria-hidden="true" class="hover_anchor" href="#nftokenid"><i class="fa fa-link"></i></a></h2>
+<p>NFTokenID, 任意, 文字列, Hash256</p>
 <p>この複合フィールドは、トークンを一意に識別するものであり、以下のセクションから構成されます。</p>
-<ol>
-<li>NFT固有のフラグや設定を識別する16ビット</li>
-<li>このトークンに関連する送金手数料がある場合、それをコード化する16ビット</li>
-<li>発行者の160ビットのアカウント識別子</li>
-<li>32 ビットの発行者が指定する<a class="external-link" href="https://www.merriam-webster.com/dictionary/taxon" target="_blank">分類群 <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li>（自動生成される）単調増加する32ビットのシーケンス番号</li>
-</ol>
+<p>A) 16ビットのNFTokenのフラグや設定の識別子</p>
+<p>B) 16ビットのNFTokenに関連する送金手数料のエンコード化された値(送金手数料が設定されている場合)</p>
+<p>C) 160ビットの発行者のアカウント識別子</p>
+<p>D) 32ビットの発行者が指定する<a class="external-link" href="https://www.merriam-webster.com/dictionary/taxon" target="_blank"><code>NFTokenTaxon</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>E) 32ビットの（自動生成される）単調増加するのシーケンス番号</p>
 <p><img alt="トークンIDの内訳" src="img/nftoken1.png" title="トークンIDの内訳"/></p>
-<p>16 ビットのフラグ、転送料フィールド、32 ビットのタクソン、シーケンス番号フィールドはビッグエンディアン 形式で格納されます。</p>
+<p>16ビットのフラグ、送金手数料フィールド、32ビットの<code>NFTokenTaxon</code>、シーケンス番号フィールドはビッグエンディアン形式で格納されます。</p>
 <h2 id="nftoken-フラグ">NFToken フラグ<a aria-hidden="true" class="hover_anchor" href="#nftoken-フラグ"><i class="fa fa-link"></i></a></h2>
-<p>フラグは、<code>NFToken</code> オブジェクトに関連するプロパティやその他のオプションです。</p>
+<p>フラグは、<code>NFToken</code>オブジェクトに関連するプロパティやその他のオプションです。</p>
 <table class="table-responsive">
+<thead>
 <tr>
-<td><strong>フラグ名</strong>
-</td>
-<td><strong>フラグ値</strong>
-</td>
-<td><strong>説明</strong>
-</td>
+<th style="text-align: left;">フラグ名</th>
+<th style="text-align: left;">フラグ値</th>
+<th style="text-align: left;">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>lsfBurnable</code></td>
+<td style="text-align: left;"><code>0x0001</code></td>
+<td style="text-align: left;">設定されている場合、発行者（または発行者が許可したエンティティ）が<code>NFToken</code>を破棄できることを示します。オブジェクトの所有者は常に破棄することができます。</td>
 </tr>
 <tr>
-<td><code>lsfBurnable</code>
-</td>
-<td><code>0x0001</code>
-</td>
-<td>設定されている場合、発行者（または発行者が許可したエンティティ）がオブジェクトを破棄できることを示します。オブジェクトの所有者は<em>常に</em>破棄することができます。
-   </td>
+<td style="text-align: left;"><code>lsfOnlyXRP</code></td>
+<td style="text-align: left;"><code>0x0002</code></td>
+<td style="text-align: left;">設定されている場合、<code>NFToken</code>はXRPに対してのみオファーまたは売却できることを示します。</td>
 </tr>
 <tr>
-<td><code>lsfOnlyXRP</code>
-</td>
-<td><code>0x0002</code>
-</td>
-<td>設定されている場合、トークンはXRPに対してのみオファーまたは売却できることを示します。
-   </td>
+<td style="text-align: left;"><code>lsfTrustLine</code></td>
+<td style="text-align: left;"><code>0x0004</code></td>
+<td style="text-align: left;"><strong>廃止</strong> 設定されている場合、送金手数料を保持するための<a href="trust-lines-and-issuing.html">トラストライン</a>を自動的に作成します。設定されていない場合、発行者がそのトークンのトラストラインを持っていない場合、この<code>NFToken</code>をそのトークンで売買することは失敗します。<a href="known-amendments.html#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine amendment</a>により、このフラグは利用できなくなります。</td>
 </tr>
 <tr>
-<td><code>lsfTrustLine</code>
-</td>
-<td><code>0x0004</code>
-</td>
-<td>設定されている場合、発行者がトラストラインを自動的に作成することを望んでいることを示します。<code>lsfTrustLine</code> フィールドは、トークンが XRP 以外の資産で販売される可能性があり、発行者が <code>送金手数料</code>を請求する場合に有用です。フラグが設定されている場合、発行者が適切な送金手数料を受け取るために、必要に応じてトラストラインが自動的に作成されます。フラグが設定されていない場合、発行者がトラストラインを持たないアセットに対するNFTokeの譲渡は失敗します。
-   </td>
+<td style="text-align: left;"><code>lsfTransferable</code></td>
+<td style="text-align: left;"><code>0x0008</code></td>
+<td style="text-align: left;">設定されている場合、この<code>NFToken</code>は所有者から別の所有者に転送することができます。設定されていない場合、所有者は発行者との間でのみ譲渡が可能です。</td>
 </tr>
 <tr>
-<td><code>lsfTransferable</code>
-</td>
-<td><code>0x0008</code>
-</td>
-<td>設定されている場合、この NFT が転送可能であることを示します。このフラグは、トークンが<em>発行者から転送</em>される場合、または<em>発行者に転送</em>される場合には、何の効果もありません。
-   </td>
+<td style="text-align: left;"><code>lsfReservedFlag</code></td>
+<td style="text-align: left;"><code>0x8000</code></td>
+<td style="text-align: left;">本提案では、このフラグを将来の使用に備えて確保します。このフラグを設定しようとすると失敗します。</td>
 </tr>
-<tr>
-<td><code>lsfReservedFlag</code>
-</td>
-<td><code>0x8000</code>
-</td>
-<td>本提案では、このフラグを将来の使用に備えて確保します。このフラグを設定しようとすると失敗します。
-   </td>
-</tr>
+</tbody>
 </table>
-<p><code>NFToken</code> フラグ は不変です。 <code>NFTokenMint</code> トランザクション中にのみ設定可能で、後で変更することはできません。</p>
+<p><code>NFToken</code>のフラグは変更できません。<a href="nftokenmint.html">NFTokenMint トランザクション</a>でのみ設定可能で、後で変更することはできません。</p>
 <h3 id="例">例<a aria-hidden="true" class="hover_anchor" href="#例"><i class="fa fa-link"></i></a></h3>
-<p>この例では、lsfBurnable (0x0001), lsfOnlyXRP (0x0002), lsfTransferable (0x0008) の3つのフラグを設定しています。1+2+8 = 11、つまりビッグエンディアン形式で0x000Bです。</p>
+<p>この例では、<code>lsfBurnable</code>(0x0001), <code>lsfOnlyXRP</code>(0x0002), <code>lsfTransferable</code>(0x0008)の3つのフラグを設定しています。1+2+8 = 11、つまりビッグエンディアン形式で0x000Bです。</p>
 <p><img alt="フラグ" src="img/nftokena.png" title="フラグ"/></p>
 <h3 id="送金手数料">送金手数料<a aria-hidden="true" class="hover_anchor" href="#送金手数料"><i class="fa fa-link"></i></a></h3>
-<p>送金手数料には、トークンの二次販売時に発行者が請求する手数料を1/100,000単位で指定します。このフィールドの有効な値は0から50,000までです。1の値は1bpsまたは0.01%に相当し、0%から50%の間の転送レートを許容します。</p>
+<p><code>TransferFee</code>には、トークンの二次販売時に発行者が請求する手数料を1/100,000単位で指定します。このフィールドの有効な値は0から50,000までです。1の値は1bpsまたは0.01%に相当し、0%から50%の間の送金手数料が設定可能です。</p>
 <h3 id="例-1">例<a aria-hidden="true" class="hover_anchor" href="#例-1"><i class="fa fa-link"></i></a></h3>
 <p>この値では、転送手数料は31.4bps（0.314％）に設定されます。</p>
 <p><img alt="送金手数料" src="img/nftokenb.png" title="送金手数料"/></p>
-<h3 id="発行者識別">発行者識別<a aria-hidden="true" class="hover_anchor" href="#発行者識別"><i class="fa fa-link"></i></a></h3>
-<p>TokenIDの3番目のセクションは、発行者の公開アドレスをビッグ・エンディアンで表現したものである。</p>
+<h3 id="発行者の識別">発行者の識別<a aria-hidden="true" class="hover_anchor" href="#発行者の識別"><i class="fa fa-link"></i></a></h3>
+<p><code>NFTokenID</code>の3番目のセクションは、発行者のアドレスをビッグエンディアンで表現したものです。</p>
 <p><img alt="発行者アドレス" src="img/nftokenc.png" title="発行者アドレス"/></p>
-<h3 id="分類群">分類群<a aria-hidden="true" class="hover_anchor" href="#分類群"><i class="fa fa-link"></i></a></h3>
-<p>4番目のセクションは、発行者が作成する分類群です。</p>
-<p><img alt="分類群" src="img/nftokend.png" title="分類群"/></p>
-<p>発行者は同じ分類群を持つ複数のNFTを発行する可能性があります。NFTが複数のページにまたがるようにするため、分類群は第5セクションの連番を乱数発生器のシード値としてスクランブルされています。スクランブルされた値は <code>NFToken</code> と共に保存されるが、スクランブルされていない値が実際の分類群となります。</p>
-<p><img alt="連番" src="img/nftokene.png" title="連番"/></p>
-<p>スクランブルされた分類群は <code>0xBC8B858E</code> であることに注意してください。発行者が指定したスクランブルされた分類群のバージョンです。しかし、 <em>実際の</em> 分類群の値はスクランブルされていない値です。</p>
+<h3 id="nftokentaxon分類群">NFTokenTaxon(分類群)<a aria-hidden="true" class="hover_anchor" href="#nftokentaxon分類群"><i class="fa fa-link"></i></a></h3>
+<p>4番目のセクションは、発行者が作成する<code>NFTokenTaxon</code>です。</p>
+<p><img alt="NFTokenTaxon" src="img/nftokend.png"/></p>
+<p>発行者は同じ<code>NFTokenTaxon</code>を持つ複数の<code>NFToken</code>を発行する可能性があります。<code>NFToken</code>が複数のページにまたがるようにするため、<code>NFTokenTaxon</code>は第5セクションの連番を乱数発生器のシード値として乱数化されています。乱数化された値は<code>NFToken</code>と共に保存されますが、乱数化されていない値が実際の<code>NFTokenTaxon</code>となります。</p>
+<p><code>NFTokenTaxon</code>の値は<code>0xBC8B858E</code>ですが、これは発行者が指定した<code>NFTokenTaxon</code>の値が乱数化されたものであることに注意してください。<code>NFTokenTaxon</code>の実際の値は乱数化されていない値です。</p>
 <h3 id="トークン連番">トークン連番<a aria-hidden="true" class="hover_anchor" href="#トークン連番"><i class="fa fa-link"></i></a></h3>
-<p>5番目のセクションは、発行者が <code>NFToken</code> を作成するたびに増加するシーケンス番号です。<a href="nftokenmint.html">NFTokenMint トランザクション</a> では <code>NFTokenID</code> のこの部分を <code>Issuer</code> アカウントの <code>MintedTokens</code> フィールドを基に自動的に設定します。発行者の <a href="accountroot.html">AccountRoot オブジェクト</a> が <code>MintedTokens</code> フィールドを持っていない場合、そのフィールドは値 0 と見なされます。</p>
+<p>5番目のセクションは、発行者が<code>NFToken</code>を作成するたびに増加するシーケンス番号です。</p>
+<p><img alt="シーケンス番号" src="img/nftokene.png" title="シーケンス番号"/></p>
+<p><a href="nftokenmint.html">NFTokenMint トランザクション</a>では<code>NFTokenID</code>のこのフィールドを<code>Issuer</code>アカウントの<code>MintedNFTokens</code>フィールドを基に自動的に設定します。発行者の<a href="accountroot.html">AccountRoot オブジェクト</a>が<code>MintedNFTokens</code>フィールドを持っていない場合、そのフィールドは値 0 と見なされます。フィールドの値は1ずつ増加します。</p>
 <h2 id="uri">URI<a aria-hidden="true" class="hover_anchor" href="#uri"><i class="fa fa-link"></i></a></h2>
-<p>URIフィールドは、<code>NFToken</code>に関連するデータおよび/またはメタデータを指します。このフィールドはHTTPやHTTPSのURLである必要はありません。IPFS URIや紐づくリンク、RFC2379 <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">"data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a> としてエンコードされた即値、あるいは不透明な発行者固有のエンコーディングである可能性もあります。URIの有効性はチェックされませんが、フィールドの長さは最大256バイトに制限されます。</p>
-<p>この方式の欠点は、値が不変であるため、発行者がデータを永続的に保持する必要があることです。</p>
-<h1 id="nftoken-データとメタデータの取得"><code>NFToken</code> データとメタデータの取得<a aria-hidden="true" class="hover_anchor" href="#nftoken-データとメタデータの取得"><i class="fa fa-link"></i></a></h1>
-<p>機能を犠牲にしたり不必要な制限を課したりすることなく<code>NFTokens</code>の容量を最小にするために、XRPL NFTは任意のデータフィールドを持ちません。その代わり、データは別に管理され、<code>NFToken</code>によって参照されます。URI は <code>Hash</code> に対して不変のコンテンツへの参照を提供し、<code>NFToken</code> オブジェクトに対しては任意の変更可能なデータを提供します。</p>
-<p><code>URI</code> フィールドは、従来とは異なるピアツーピア (P2P) URL を参照する際に特に有用です。例えば、惑星間ファイルシステム (IPFS) を使用して <code>NFToken</code> データやメタデータを保存する <code>minter</code> は、 <code>URI</code> フィールドを使用して IPFS 上のデータを様々な方法で参照することができ、それぞれが異なるユースケースに適しています。NFTデータの保存に使用できるIPFSリンクの種類については、<a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them" target="_blank">Best Practices for Storing NFT Data using IPFS <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
-<p>URI の代わりに、<code>NFToken</code> オブジェクトの発行者が発行者アカウントの <code>Domain</code> フィールドに正しいドメインを設定し、特定の <code>NFToken</code> に関連するデータやメタデータを検索したいクライアントに対して API を提供する方法があります。このメカニズムを使用するには、 <code>minter</code> がドメイン名を取得し、その発行アカウントにドメイン名を設定する必要があります。しかし、 <code>minter</code> がこのデータを照会するためのサーバーやその他のサービスを運営する必要はありません。</p>
-<p>実装では、まず <code>URI</code> フィールドが存在するかどうかを調べて、関連するデータやメタデータを取得することを試みるべきです。<code>URI</code> フィールドが存在しない場合、実装は <code>Domain</code> フィールドの存在を確認する必要があります。どちらのフィールドも存在しない場合は、何も起こりません。実装では、URIからのHTTPリダイレクト（例えば、HTTPレスポンス301、302、307、308を使用）を処理できるように準備しておく必要があります。</p>
+<p>URIフィールドは、<code>NFToken</code>に関連するデータまたはメタデータを指します。このフィールドはHTTPやHTTPSのURLである必要はありません。IPFS URIや紐づくリンク、<a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>、あるいはカスタムされたのエンコード値である可能性もあります。URIの有効性はチェックされませんが、フィールドの長さは最大256バイトに制限されます。</p>
+<p class="devportal-callout 注意"><strong>注意:</strong> URIは変更不可能であるため、例えば、存在しないウェブサイトにリンクしていたとしても、誰もそれを更新することはできません。</p>
+<h1 id="nftokenデータとメタデータの取得">NFTokenデータとメタデータの取得<a aria-hidden="true" class="hover_anchor" href="#nftokenデータとメタデータの取得"><i class="fa fa-link"></i></a></h1>
+<p>機能を犠牲にしたり不必要な制限を課したりすることなく<code>NFTokens</code>の容量を最小にするために、XRPL NFTは任意のデータフィールドを持ちません。その代わり、データは別に管理され、<code>NFToken</code>によって参照されます。URIは<code>Hash</code>に対して不変のコンテンツへの参照を提供し、<code>NFToken</code>オブジェクトに対しては任意の変更可能なデータを提供します。</p>
+<p><code>URI</code>フィールドは、従来とは異なるピアツーピア(P2P)URLを参照する際に特に有用です。例えば、惑星間ファイルシステム(IPFS)を使用して<code>NFToken</code>データやメタデータを保存する発行者は、<code>URI</code>フィールドを使用してIPFS上のデータを様々な方法で参照することができ、それぞれが異なるユースケースに適しています。NFTデータの保存に使用できるIPFSリンクの種類については、<a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them" target="_blank">Best Practices for Storing NFT Data using IPFS <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
 <h2 id="txtレコードの形式">TXTレコードの形式<a aria-hidden="true" class="hover_anchor" href="#txtレコードの形式"><i class="fa fa-link"></i></a></h2>
 <p>TXTレコードのフォーマットは以下の通りです。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{tokenid}"
 </code></pre></div>
-<p>情報を問い合わせようとしたときに、文字列 <code>{tokenid}</code> を要求されたトークンの <code>NFTokenID</code> (64バイトの16進文字列) に置き換えてください。</p>
-<p>実装では、<code>TXT</code>レコードの存在を確認し、存在すればそれらのクエリ文字列を使用する必要があります。文字列が存在しない場合、実装はデフォルトの URL を使用するように試みるべきです。ドメインが <em>example.com</em> であると仮定すると、デフォルトのURLは次のようになります。</p>
+<p>情報を問い合わせようとしたときに、文字列<code>{tokenid}</code>を要求されたトークンの<code>NFTokenID</code>(64バイトの16進文字列)に置き換えてください。</p>
+<p>実装では、<code>TXT</code>レコードの存在を確認し、存在すればそれらのクエリ文字列を使用する必要があります。文字列が存在しない場合、実装はデフォルトのURLを使用するように試みるべきです。ドメインが <em>example.com</em> であると仮定すると、デフォルトのURLは次のようになります。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">https://example.com/.well-known/xrpl-nft/{tokenid}
 </code></pre></div>
-<p><code>NFTokenMint</code> トランザクションを使用して NFT を作成します。<code>NFTokenBurn</code> トランザクションを使用して NFToken を破棄することもできます。</p>
+<p><code>NFTokenMint</code>トランザクションを使用して<code>NFTtoken</code>を作成します。<code>NFTokenBurn</code>トランザクションを使用して<code>NFToken</code>を破棄することもできます。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -463,7 +558,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrpl.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
   </div>
 
       
@@ -643,24 +738,7 @@
 
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1_7" aria-expanded="false" aria-controls="tree_nav_group_4_1_7"></a>
-
-        <a class="nav-link" href="/ja/amendments.html">Amendment</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1_7">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/contribute-code-flow.html">Contribute Code to the XRP Ledger</a>
-  </div>
-
-    </nav>
-
+    <a class="nav-link nav-leaf" href="/ja/amendments.html">Amendment</a>
   </div>
 
       
@@ -2872,96 +2950,9 @@
     <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
-    </nav>
-
-  </div>
-
-    
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/code-samples.html">サンプルコード</a>
-  </div>
-
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_9" aria-expanded="false" aria-controls="tree_nav_group_9"></a>
-
-        <a class="nav-link" href="/ja/dev-tools.html">開発者ツール</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_9">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPCツール</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/websocket-api-tool.html">WebSocket APIツール</a>
-  </div>
-
-      
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-toml-checker.html">xrp-ledger.tomlチェッカー</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-domain-verifier.html">ドメイン検証チェッカー</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tx-sender.html">トランザクション送信ツール</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-    
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL学習ポータル <i aria-hidden="true" class="fa fa-external-link"></i></a>
-  </div>
-
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11" aria-expanded="false" aria-controls="tree_nav_group_11"></a>
-
-        <a class="nav-link" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_11">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/documentation-languages.html">Translations</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/creating-diagrams.html">Creating Diagrams</a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11_3" aria-expanded="false" aria-controls="tree_nav_group_11_3"></a>
-
-        <a class="nav-link" href="/ja/tutorial-guidelines.html">Tutorial Guidelines</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_11_3">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tutorial-structure.html">Tutorial Structure</a>
-  </div>
-
-    </nav>
-
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
   </div>
 
     </nav>
@@ -2981,7 +2972,6 @@
             <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPLの概要</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
             <li class="nav-item"><a href="/ja/history.html" class="nav-link">歴史</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRPの概要</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
@@ -2994,25 +2984,33 @@
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
-            <li class="nav-item"><a href="/ja/docs-index.html" class="nav-link">Documentation Index</a></li>
             <li class="nav-item"><a href="/ja/introduction.html" class="nav-link">基本</a></li>
             <li class="nav-item"><a href="/ja/use-cases.html" class="nav-link">Use Cases</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>リソース</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/resources.html" class="nav-link">リソース</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
-            <li class="nav-item"><a href="/ja/contributing-to-documentation.html" class="nav-link">Contributing to Documentation</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">コードへの貢献</a></li>
+            <li class="nav-item"><a href="/ja/contribute-documentation.html" class="nav-link">ドキュメントへの貢献</a></li>
           </ul>
         </div><!--/.col -->
 
         <div class="col-lg">
           <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
-            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">XRPLコミュニティへの貢献</a></li>
             <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
             <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
             <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
@@ -3021,7 +3019,7 @@
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
-            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">詐欺の報告</a></li>
           </ul>
         </div><!--/.col -->
 

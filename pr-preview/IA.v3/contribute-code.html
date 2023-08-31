@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Contribute Code to the XRP Ledger - XRPL.org</title>
+    <title>Contribute Code - XRPL.org</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Contribute Code to the XRP Ledger | XRPL.org">
+    <meta property="og:title" content="Contribute Code | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/contribute-code.html" />
-    <meta property="og:description" content="XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools." />
-    <meta name="description" content="XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools." />
+    <meta property="og:description" content="Learn how features can be coded into the XRP Ledger protocol." />
+    <meta name="description" content="Learn how features can be coded into the XRP Ledger protocol." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": []
+      "page_labels": ['Blockchain']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v21.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v23.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,18 +89,119 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-  <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-  <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
-  <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-  <div class="apex-circled highlight-yellow">Amsterdam</div>
-  <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-  <div class="apex-circled d-none d-lg-block highlight-purple">Register Now</div>
-  <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-</a>
+
+
+<!-- Inline script to conditionally display the banner -->
+  <script>
+    // Get the user's location using the provided JavaScript code
+    let userLocation = window.Osano.cm.countryCode;
+
+    // List of countries for which we want to serve the banner
+    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
+
+    // Check if the user's location is in the list of target countries
+    let isTargetCountry = targetCountries.includes(userLocation);
+
+    if (isTargetCountry) {
+      // Define the banner HTML with the countdown timer
+      let token2049bannerHTML = `
+        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
+            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
+            <div class="box">
+              <div id="js-clock-days" class="clock-number">00</div>
+              <div class="clock-label">Days</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-hours" class="clock-number">00</div>
+              <div class="clock-label">Hrs</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-minutes" class="clock-number">00</div>
+              <div class="clock-label">Min</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-seconds" class="clock-number">00</div>
+              <div class="clock-label">Sec</div>
+            </div>
+          </div>
+          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
+          <span class="d-inline-block">XRPL Zone </span>
+          <span class="token-highlight d-inline-block">@Token2049</span></div>
+           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
+           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
+            <div class="token-circled d-none d-lg-inline-block highlight-purple">Register Now</div>
+        </a>
+      `;
+
+      // Write the banner directly to the document
+      document.write(token2049bannerHTML);
+
+      var deadline = '2023/09/13 08:00';
+
+      function pad(num, size) {
+        var s = "0" + num;
+        return s.substr(s.length - size);
+      }
+
+      function parseDate(date) {
+        const parsed = Date.parse(date);
+        if (!isNaN(parsed)) return parsed
+        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
+      }
+
+      function getTimeRemaining(endtime) {
+        let total = parseDate(endtime) - Date.parse(new Date())
+        let seconds = Math.floor((total / 1000) % 60)
+        let minutes = Math.floor((total / 1000 / 60) % 60)
+        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
+        let days = Math.floor(total / (1000 * 60 * 60 * 24))
+
+        return { total, days, hours, minutes, seconds };
+      }
+
+      function clock(id, endtime) {
+        let days = document.getElementById(id + '-days')
+        let hours = document.getElementById(id + '-hours')
+        let minutes = document.getElementById(id + '-minutes')
+        let seconds = document.getElementById(id + '-seconds')
+
+        var timeinterval = setInterval(function () {
+          var time = getTimeRemaining(endtime);
+
+          if (time.total <= 0) {
+            clearInterval(timeinterval);
+          } else {
+            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
+            hours.innerHTML = pad(time.hours, 2);
+            minutes.innerHTML = pad(time.minutes, 2);
+            seconds.innerHTML = pad(time.seconds, 2);
+          }
+        }, 1000);
+      }
+      clock('js-clock', deadline);
+    } else {
+      let apexBanner = `
+          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
+            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
+            <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
+            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
+            <div class="apex-circled highlight-yellow">Amsterdam</div>
+            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
+            <div class="apex-circled d-none d-lg-block highlight-purple">Register Now</div>
+            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
+          </a>`;
+
+      // Write the banner directly to the document
+      document.write(apexBanner);
+}
+  </script>
+
+
+
+
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -117,7 +218,6 @@
             <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL Overview</a>
             <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
             <a class="dropdown-item" href="history.html">History</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
@@ -146,24 +246,14 @@
               <p>Dive into XRP Ledger technology and start integrating.</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="docs-index.html">Documentation Index</a>
-            <a class="dropdown-item" href="introduction.html">Introduction</a>
-          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="introduction.html">Introduction</a>
             <a class="dropdown-item" href="use-cases.html">Use Cases</a>
             <a class="dropdown-item" href="concepts.html">Concepts</a>
             <a class="dropdown-item" href="tutorials.html">Tutorials</a>
             <a class="dropdown-item" href="references.html">References</a>
             <a class="dropdown-item" href="infrastructure.html">Infrastructure</a>
-          </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
-            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
-            <a class="dropdown-item" href="contributing-to-documentation.html">Contributing to Documentation</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -185,6 +275,28 @@
       </li>
 
             <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Resources</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-development">
+            <h5 class="dropdown-item">Development</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
+            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+          </div><!--./col-->
+          <div class="navcol col-for-current-status">
+            <h5 class="dropdown-item">Current Status</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
+            <a class="dropdown-item" href="known-amendments.html">Known Amendments</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item active" href="contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="contribute-documentation.html">Contribute Documentation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
           <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
@@ -201,7 +313,7 @@
             <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
-            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
             <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
@@ -257,14 +369,26 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/IA.v3/content/contributing/contribute-code.md?pr=/XRPLF/xrpl-dev-portal/pull/1934" target="_blank" class="btn btn-primary github-edit">Edit page</a>
-</div><!-- /.github-edit -->    <div class="toc-header">
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/IA.v3/content/resources/contribute-code/contribute-code.md?pr=/XRPLF/xrpl-dev-portal/pull/1934" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-blockchain">Blockchain</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Blockchain" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#standards-drafts">Standards Drafts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#related-repositories">Related Repositories</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#contribute-code">Contribute Code</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#core-server-source">Core Server Source</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledger-standards">XRP Ledger Standards</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#amendment-implementation">Amendment Implementation</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#coding-and-deployment">Coding and Deployment</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#code-flowchart">Code Flowchart</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
       </ul>
   </div>
       </aside>
@@ -276,12 +400,14 @@
     
 
     <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
-    <li class="active breadcrumb-item"><a href="contribute.html">Contribute to the XRPL Community</a></li>
-    <li class="active breadcrumb-item">Contribute Code to the XRP Ledger</li>
+    <li class="active breadcrumb-item"><a href="resources.html">Resources</a></li>
+    <li class="active breadcrumb-item">Contribute Code</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#contribute-code-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h1>
+        <h1 id="contribute-code">Contribute Code<a aria-hidden="true" class="hover_anchor" href="#contribute-code"><i class="fa fa-link"></i></a></h1>
+<p>The software that powers the XRP Ledger is open source. Anyone can download, modify, extend, or explore it. If you want to contribute code, it's important to work with the community to define the specifications of your changes and test the code before it becomes a part of the XRP Ledger protocol and blockchain.</p>
+<h2 id="core-server-source">Core Server Source<a aria-hidden="true" class="hover_anchor" href="#core-server-source"><i class="fa fa-link"></i></a></h2>
 <p>The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Community involvement makes it better. Look for "[Source]" links in the <a href="docs.html">documentation</a> to jump directly into the related source code, or browse the source code on GitHub:</p>
 <table class="table-responsive">
 <thead>
@@ -306,17 +432,69 @@
 </tbody>
 </table>
 <p>If you're not sure where to start, Dev Null Productions provides a detailed and thorough <a class="external-link" href="https://xrpintel.com/source" target="_blank"><strong>Source Code Guide</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a> that describes the structure and functions of the core XRP Ledger server (<code>rippled</code>) implementation.</p>
-<h2 id="standards-drafts">Standards Drafts<a aria-hidden="true" class="hover_anchor" href="#standards-drafts"><i class="fa fa-link"></i></a></h2>
-<p>When developing amendments to the XRP Ledger protocol or interoperability between XRP Ledger applications, it's best to discuss the proposed changes with the community.</p>
-<p>The <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/" target="_blank"><strong>Community Standards Drafts</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a> project is a great place to share your plans and collect suggestions on a proposed standard. This feedback can help to balance trade-offs, design for greater efficiency, and address potential security implications before you share your actual source code with others.</p>
-<h2 id="related-repositories">Related Repositories<a aria-hidden="true" class="hover_anchor" href="#related-repositories"><i class="fa fa-link"></i></a></h2>
-<p>You can find various XRP Ledger-related projects under these and other GitHub organizations:</p>
+<h2 id="xrp-ledger-standards">XRP Ledger Standards<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger-standards"><i class="fa fa-link"></i></a></h2>
+<p>Changes to <code>rippled</code> are tracked by an XRP Ledger Standard (XLS), a document that identifies and details the specifications of a change. Before committing to development, you must start a discussion in the <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions" target="_blank">XRPL-Standards repo <i aria-hidden="true" class="fa fa-external-link"></i></a>. This provides the community a chance to discuss and provide feedback about your change.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Bug fixes don't require an XLS, but may require an amendment.</p>
+<p>Creating an XLS has its own process, but can be summarized as:</p>
+<ol>
+<li>Start a discussion and gather feedback.</li>
+<li>Create an XLS draft in the standards repo.</li>
+<li>Publishing the XLS draft as a Candidate Specification.</li>
+</ol>
+<p>For details, see the <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/CONTRIBUTING.md" target="_blank">XLS contributing guide <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<h2 id="amendment-implementation">Amendment Implementation<a aria-hidden="true" class="hover_anchor" href="#amendment-implementation"><i class="fa fa-link"></i></a></h2>
+<p>After you've created an XLS draft, you now need to determine if your change requires an amendment. Changes that affect <strong>transaction processing</strong> require amendments, specifically changes that:</p>
 <ul>
-<li><a class="external-link" href="https://github.com/XRPLF/" target="_blank">XRP Ledger Foundation <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a class="external-link" href="https://github.com/ripple/" target="_blank">Ripple <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a class="external-link" href="https://github.com/XRPL-Labs/" target="_blank">XRPL Labs <i aria-hidden="true" class="fa fa-external-link"></i></a> <!-- SPELLING_IGNORE: xrpl --></li>
+<li>Modify ledger rules, resulting in different outcomes.</li>
+<li>Add or remove transactions.</li>
+<li>Affect consensus.</li>
 </ul>
-<p>Be sure to look at each repository's license and contributing guidelines before contributing to that repository.</p>
+<p class="devportal-callout note"><strong>Note:</strong> If your change doesn't need an amendment, you can go straight to coding and deployment.</p>
+<p>Implementing code as an amendment requires you to add the amendment to these files:</p>
+<ul>
+<li><strong>Feature.cpp</strong>:</li>
+</ul>
+<p><code>Supported</code> parameter should be set to <code>no</code> until development is complete.</p>
+<p><code>DefaultVote</code> parameter should be set to <code>yes</code> for bug fixes; everything else defaults to <code>no</code>.</p>
+<ul>
+<li><strong>Feature.h</strong>: Increment the <code>numFeatures</code> counter and declare an <code>extern uint256 const</code> variable.</li>
+</ul>
+<h2 id="coding-and-deployment">Coding and Deployment<a aria-hidden="true" class="hover_anchor" href="#coding-and-deployment"><i class="fa fa-link"></i></a></h2>
+<p>The general development path breaks down as follows:</p>
+<ol>
+<li>
+<p>Create a fork or branch in the <a class="external-link" href="https://github.com/XRPLF/rippled" target="_blank"><code>rippled</code> repository <i aria-hidden="true" class="fa fa-external-link"></i></a> to develop your code.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> If you're not sure where to start, <em>Dev Null Productions</em> provides a detailed and thorough <a class="external-link" href="https://xrpintel.com/source" target="_blank"><code>rippled</code> Source Code Guide <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+</li>
+<li>
+<p>Run unit and integration tests. Running a server in <em>stand-alone mode</em> is useful for testing your changes in an isolated environment, but you may want to stand up a private network for extensive changes.</p>
+</li>
+<li>
+<p>Create a pull request on <code>XRPLF:develop</code>.</p>
+<p><strong>Note for Amendments:</strong> Update the <code>Supported</code> paramter to <code>yes</code> in <strong>Feature.cpp</strong>.</p>
+</li>
+<li>
+<p>After the pull request is approved by XRP Ledger maintainers, your code is merged into <code>develop</code> and additional testing can be done on Devnet.</p>
+<p><strong>Note for Amendments:</strong>
+- The <code>DefaultVote</code> parameter is now locked.
+- If problems are found with the amendment, you must restart the process of making fixes and submitting a new PR. You can change the default vote in the new PR.</p>
+</li>
+<li>
+<p>On a quarterly basis, a release candidate is built from approved PRs on <code>develop</code>. The package is deployed to Testnet and a few nodes on Mainnet. If no issues are found with the release candidate, the code is merged into <code>master</code> and nodes on Mainnet can upgrade to this build.</p>
+</li>
+<li>
+<p>New amendments go through the consensus process and validators vote on whether to enable them.</p>
+</li>
+</ol>
+<h2 id="code-flowchart">Code Flowchart<a aria-hidden="true" class="hover_anchor" href="#code-flowchart"><i class="fa fa-link"></i></a></h2>
+<p><img alt="Code Flowchart" src="img/Contribute Code Flowchart.png"/></p>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>Concepts:</strong><ul>
+<li><a href="amendments.html">Amendments</a></li>
+</ul>
+</li>
+</ul>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -362,11 +540,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="history.html">History</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://livenet.xrpl.org/">Ledger Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
       
@@ -417,7 +590,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="what-is-xrpl.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
   </div>
 
       
@@ -597,24 +770,7 @@
 
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_1_7" aria-expanded="false" aria-controls="tree_nav_group_2_4_1_7"></a>
-
-        <a class="nav-link" href="amendments.html">Amendments</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_1_7">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="known-amendments.html">Known Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="contribute-code-flow.html">Contribute Code to the XRP Ledger</a>
-  </div>
-
-    </nav>
-
+    <a class="nav-link nav-leaf" href="amendments.html">Amendments</a>
   </div>
 
       
@@ -2836,10 +2992,27 @@
     <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
     </nav>
 
   </div>
 
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="resources.html">Resources</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
@@ -2848,11 +3021,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -2895,15 +3068,47 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://livenet.xrpl.org/">Ledger Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="contributing-to-documentation.html">Contributing to Documentation</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="documentation-languages.html">Translations</a>
+    <a class="nav-link nav-leaf" href="known-amendments.html">Known Amendments</a>
+  </div>
+
+      
+  <div class="nav-item active">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="true" aria-controls="tree_nav_group_3_6"></a>
+
+        <a class="nav-link" href="contribute-code.html">Contribute Code</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-custom-transactors.html">Create Custom Transactors</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+
+        <a class="nav-link" href="contribute-documentation.html">Contribute Documentation</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.md">Contributor Code of Conduct <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="documentation-translations.html">Translations</a>
   </div>
 
       
@@ -2913,12 +3118,9 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tutorial-guidelines.html">Tutorial Guidelines</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_3" aria-expanded="false" aria-controls="tree_nav_group_2_11_3"></a>
-
-        <a class="nav-link" href="tutorial-guidelines.html">Tutorial Guidelines</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="tutorial-structure.html">Tutorial Structure</a>
@@ -2932,23 +3134,14 @@
 
   </div>
 
-    </nav>
-
-  </div>
-
     
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
 
         <a class="nav-link" href="contribute.html">Contribute to the XRPL Community</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3">
-      
-  <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="contribute-code.html">Contribute Code to the XRP Ledger</a>
-  </div>
-
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="events.html">Events</a>
@@ -2981,7 +3174,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/">GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF">GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
       
@@ -3011,7 +3204,6 @@
             <li class="nav-item"><a href="xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
             <li class="nav-item"><a href="uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
             <li class="nav-item"><a href="history.html" class="nav-link">History</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
@@ -3024,17 +3216,26 @@
           <h5>Docs</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="docs.html" class="nav-link">Documentation</a></li>
-            <li class="nav-item"><a href="docs-index.html" class="nav-link">Documentation Index</a></li>
             <li class="nav-item"><a href="introduction.html" class="nav-link">Introduction</a></li>
             <li class="nav-item"><a href="use-cases.html" class="nav-link">Use Cases</a></li>
             <li class="nav-item"><a href="concepts.html" class="nav-link">Concepts</a></li>
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Resources</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
-            <li class="nav-item"><a href="contributing-to-documentation.html" class="nav-link">Contributing to Documentation</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
+            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -3042,14 +3243,13 @@
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
-            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
             <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
             <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
             <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
-            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>

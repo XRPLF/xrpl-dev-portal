@@ -42,7 +42,7 @@
       "event": "page_info",
       "page_type": "Document",
       "page_group": "Docs",
-      "page_funnel": "Concepts",
+      "page_funnel": "Other",
       "page_labels": ['Blockchain']
     })
     </script>
@@ -54,7 +54,7 @@
     
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v21.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v23.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,18 +89,119 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-  <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-  <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
-  <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-  <div class="apex-circled highlight-yellow">Amsterdam</div>
-  <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-  <div class="apex-circled d-none d-lg-block highlight-purple">Register Now</div>
-  <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-</a>
+
+
+<!-- Inline script to conditionally display the banner -->
+  <script>
+    // Get the user's location using the provided JavaScript code
+    let userLocation = window.Osano.cm.countryCode;
+
+    // List of countries for which we want to serve the banner
+    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
+
+    // Check if the user's location is in the list of target countries
+    let isTargetCountry = targetCountries.includes(userLocation);
+
+    if (isTargetCountry) {
+      // Define the banner HTML with the countdown timer
+      let token2049bannerHTML = `
+        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
+            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
+            <div class="box">
+              <div id="js-clock-days" class="clock-number">00</div>
+              <div class="clock-label">Days</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-hours" class="clock-number">00</div>
+              <div class="clock-label">Hrs</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-minutes" class="clock-number">00</div>
+              <div class="clock-label">Min</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-seconds" class="clock-number">00</div>
+              <div class="clock-label">Sec</div>
+            </div>
+          </div>
+          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
+          <span class="d-inline-block">XRPL Zone </span>
+          <span class="token-highlight d-inline-block">@Token2049</span></div>
+           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
+           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
+            <div class="token-circled d-none d-lg-inline-block highlight-purple">Register Now</div>
+        </a>
+      `;
+
+      // Write the banner directly to the document
+      document.write(token2049bannerHTML);
+
+      var deadline = '2023/09/13 08:00';
+
+      function pad(num, size) {
+        var s = "0" + num;
+        return s.substr(s.length - size);
+      }
+
+      function parseDate(date) {
+        const parsed = Date.parse(date);
+        if (!isNaN(parsed)) return parsed
+        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
+      }
+
+      function getTimeRemaining(endtime) {
+        let total = parseDate(endtime) - Date.parse(new Date())
+        let seconds = Math.floor((total / 1000) % 60)
+        let minutes = Math.floor((total / 1000 / 60) % 60)
+        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
+        let days = Math.floor(total / (1000 * 60 * 60 * 24))
+
+        return { total, days, hours, minutes, seconds };
+      }
+
+      function clock(id, endtime) {
+        let days = document.getElementById(id + '-days')
+        let hours = document.getElementById(id + '-hours')
+        let minutes = document.getElementById(id + '-minutes')
+        let seconds = document.getElementById(id + '-seconds')
+
+        var timeinterval = setInterval(function () {
+          var time = getTimeRemaining(endtime);
+
+          if (time.total <= 0) {
+            clearInterval(timeinterval);
+          } else {
+            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
+            hours.innerHTML = pad(time.hours, 2);
+            minutes.innerHTML = pad(time.minutes, 2);
+            seconds.innerHTML = pad(time.seconds, 2);
+          }
+        }, 1000);
+      }
+      clock('js-clock', deadline);
+    } else {
+      let apexBanner = `
+          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
+            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
+            <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
+            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
+            <div class="apex-circled highlight-yellow">Amsterdam</div>
+            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
+            <div class="apex-circled d-none d-lg-block highlight-purple">Register Now</div>
+            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
+          </a>`;
+
+      // Write the banner directly to the document
+      document.write(apexBanner);
+}
+  </script>
+
+
+
+
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -117,7 +218,6 @@
             <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL Overview</a>
             <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
             <a class="dropdown-item" href="history.html">History</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
@@ -146,24 +246,14 @@
               <p>Dive into XRP Ledger technology and start integrating.</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="docs-index.html">Documentation Index</a>
-            <a class="dropdown-item" href="introduction.html">Introduction</a>
-          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="introduction.html">Introduction</a>
             <a class="dropdown-item" href="use-cases.html">Use Cases</a>
             <a class="dropdown-item" href="concepts.html">Concepts</a>
             <a class="dropdown-item" href="tutorials.html">Tutorials</a>
             <a class="dropdown-item" href="references.html">References</a>
             <a class="dropdown-item" href="infrastructure.html">Infrastructure</a>
-          </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
-            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
-            <a class="dropdown-item" href="contributing-to-documentation.html">Contributing to Documentation</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -185,6 +275,28 @@
       </li>
 
             <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Resources</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-development">
+            <h5 class="dropdown-item">Development</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
+            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+          </div><!--./col-->
+          <div class="navcol col-for-current-status">
+            <h5 class="dropdown-item">Current Status</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
+            <a class="dropdown-item active" href="known-amendments.html">Known Amendments</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item" href="contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="contribute-documentation.html">Contribute Documentation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
           <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
@@ -201,7 +313,7 @@
             <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
-            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
             <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
@@ -257,7 +369,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/IA.v3/content/amendments/known-amendments.md?pr=/XRPLF/xrpl-dev-portal/pull/1934" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/IA.v3/content/resources/known-amendments.md?pr=/XRPLF/xrpl-dev-portal/pull/1934" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -271,68 +383,76 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#known-amendments">Known Amendments</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#checks">Checks</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditions">CryptoConditions</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#cryptoconditionssuite">CryptoConditionsSuite</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#deletableaccounts">DeletableAccounts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#depositauth">DepositAuth</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#depositpreauth">DepositPreauth</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#disallowincoming">DisallowIncoming</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#enforceinvariants">EnforceInvariants</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#escrow">Escrow</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#expandedsignerlist">ExpandedSignerList</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#feeescalation">FeeEscalation</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1201">fix1201</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1368">fix1368</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1373">fix1373</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1512">fix1512</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1513">fix1513</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1515">fix1515</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1523">fix1523</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1528">fix1528</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1543">fix1543</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1571">fix1571</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1578">fix1578</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1623">fix1623</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fix1781">fix1781</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixamendmentmajoritycalc">fixAmendmentMajorityCalc</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixcheckthreading">fixCheckThreading</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixnftokenremint">fixNFTokenRemint</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixtrustlinestoself">fixTrustLinesToSelf</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fixuniversalnumber">fixUniversalNumber</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#flow">Flow</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#flowcross">FlowCross</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#flowsortstrands">FlowSortStrands</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#flowv2">FlowV2</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#hardenedvalidations">HardenedValidations</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#immediateofferkilled">ImmediateOfferKilled</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#multisign">MultiSign</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#multisignreserve">MultiSignReserve</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#negativeunl">NegativeUNL</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#ownerpaysfee">OwnerPaysFee</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#paychan">PayChan</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#shamapv2">SHAMapV2</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#sorteddirectories">SortedDirectories</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#suspay">SusPay</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#ticketbatch">TicketBatch</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#tickets">Tickets</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#ticksize">TickSize</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#trustsetauth">TrustSetAuth</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#xrpfees">XRPFees</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#known-amendments-on-mainnet">Known Amendments on Mainnet</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#amendments-in-development">Amendments in Development</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#vetoed-or-obsolete-amendments">Vetoed or Obsolete Amendments</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#details-about-known-amendments">Details about Known Amendments</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#amm">AMM</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#checks">Checks</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#clawback">Clawback</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#xchainbridge">XChainBridge</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#cryptoconditions">CryptoConditions</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#cryptoconditionssuite">CryptoConditionsSuite</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#deletableaccounts">DeletableAccounts</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#depositauth">DepositAuth</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#depositpreauth">DepositPreauth</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#disallowincoming">DisallowIncoming</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#enforceinvariants">EnforceInvariants</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#escrow">Escrow</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#expandedsignerlist">ExpandedSignerList</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#feeescalation">FeeEscalation</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1201">fix1201</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1368">fix1368</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1373">fix1373</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1512">fix1512</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1513">fix1513</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1515">fix1515</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1523">fix1523</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1528">fix1528</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1543">fix1543</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1571">fix1571</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1578">fix1578</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1623">fix1623</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fix1781">fix1781</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixamendmentmajoritycalc">fixAmendmentMajorityCalc</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixcheckthreading">fixCheckThreading</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixmasterkeyasregularkey">fixMasterKeyAsRegularKey</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixnftokendirv1">fixNFTokenDirV1</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixnftokennegoffer">fixNFTokenNegOffer</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixnftokenremint">fixNFTokenRemint</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixtrustlinestoself">fixTrustLinesToSelf</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixuniversalnumber">fixUniversalNumber</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#flow">Flow</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#flowcross">FlowCross</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#flowsortstrands">FlowSortStrands</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#flowv2">FlowV2</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#hardenedvalidations">HardenedValidations</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#hooks">Hooks</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#immediateofferkilled">ImmediateOfferKilled</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#multisign">MultiSign</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#multisignreserve">MultiSignReserve</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#negativeunl">NegativeUNL</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nonfungibletokensv1">NonFungibleTokensV1</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ownerpaysfee">OwnerPaysFee</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#paychan">PayChan</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#requirefullycanonicalsig">RequireFullyCanonicalSig</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#shamapv2">SHAMapV2</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#sorteddirectories">SortedDirectories</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#suspay">SusPay</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ticketbatch">TicketBatch</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#tickets">Tickets</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ticksize">TickSize</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#trustsetauth">TrustSetAuth</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#xrpfees">XRPFees</a></li>
       </ul>
   </div>
       </aside>
@@ -344,16 +464,14 @@
     
 
     <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
-    <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
-    <li class="active breadcrumb-item"><a href="concepts.html">Concepts</a></li>
-    <li class="active breadcrumb-item"><a href="networks-and-servers.html">Networks and Servers</a></li>
-    <li class="active breadcrumb-item"><a href="amendments.html">Amendments</a></li>
+    <li class="active breadcrumb-item"><a href="resources.html">Resources</a></li>
     <li class="active breadcrumb-item">Known Amendments</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
         <h1 id="known-amendments">Known Amendments<a aria-hidden="true" class="hover_anchor" href="#known-amendments"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/xrplf/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<h2 id="known-amendments-on-mainnet">Known Amendments on Mainnet<a aria-hidden="true" class="hover_anchor" href="#known-amendments-on-mainnet"><i class="fa fa-link"></i></a></h2>
 <p>The following is a comprehensive list of all known <a href="amendments.html">amendments</a> and their status on the production XRP Ledger:</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> This list is updated manually. For a live view of amendment voting, see the <a class="external-link" href="https://xrpscan.com/amendments" target="_blank">XRPScan Amendments Dashboard <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <table class="table-responsive">
@@ -366,44 +484,39 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
-<td style="text-align: left;">TBD</td>
-<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
-</tr>
-<tr>
 <td style="text-align: left;"><a href="#fixnftokenremint">fixNFTokenRemint</a></td>
 <td style="text-align: left;">v1.11.0</td>
-<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#disallowincoming">DisallowIncoming</a></td>
-<td style="text-align: left;">v1.10.0</td>
-<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></td>
-<td style="text-align: left;">v1.10.0</td>
-<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#fixtrustlinestoself">fixTrustLinesToSelf</a></td>
-<td style="text-align: left;">v1.10.0</td>
-<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#fixuniversalnumber">fixUniversalNumber</a></td>
-<td style="text-align: left;">v1.10.0</td>
-<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#immediateofferkilled">ImmediateOfferKilled</a></td>
-<td style="text-align: left;">v1.10.0</td>
-<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/rippled-1.11.0.html" target="_blank" title="Open for Voting: 2023-06-21"><img alt="Open for Voting: 2023-06-21" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2023--06--21-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#xrpfees">XRPFees</a></td>
 <td style="text-align: left;">v1.10.0</td>
-<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/rippled-1.10.0.html" target="_blank" title="Open for Voting: 2023-03-14"><img alt="Open for Voting: 2023-03-14" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2023--03--14-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#disallowincoming">DisallowIncoming</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E" target="_blank" title="Enabled: 2023-08-21"><img alt="Enabled: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2023--08--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/3AB0892CAB29F049B9D9E5D522701FD01469D0B97080626F8DD4B489D0B8784E" target="_blank" title="Enabled: 2023-08-21"><img alt="Enabled: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2023--08--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixtrustlinestoself">fixTrustLinesToSelf</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/4F4C05142CA1DE257CD86513086F0C99FAF06D80932377C6B6C02B3D09623A43" target="_blank" title="Enabled: 2023-08-21"><img alt="Enabled: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2023--08--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixuniversalnumber">fixUniversalNumber</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/EFE82B7155CE5B766AF343D98DAE6662C2713C99E760D610370D02338881B2F3" target="_blank" title="Enabled: 2023-08-21"><img alt="Enabled: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2023--08--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#immediateofferkilled">ImmediateOfferKilled</a></td>
+<td style="text-align: left;">v1.10.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B" target="_blank" title="Enabled: 2023-08-21"><img alt="Enabled: 2023-08-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2023--08--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></td>
@@ -635,6 +748,59 @@
 <td style="text-align: left;">v0.31.0</td>
 <td style="text-align: left;"><a class="external-link" href="https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3" target="_blank" title="Enabled: 2016-05-19"><img alt="Enabled: 2016-05-19" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--05--19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
+</tbody>
+</table>
+<p class="devportal-callout note"><strong>Note:</strong> In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.</p>
+<h2 id="amendments-in-development">Amendments in Development<a aria-hidden="true" class="hover_anchor" href="#amendments-in-development"><i class="fa fa-link"></i></a></h2>
+<p>The following is a list of <a href="amendments.html">amendments</a> that are being developed and a private network is available to test the changes. </p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Additional Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="#hooks">Hooks</a></td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://hooks.xrpl.org/" target="_blank">XRPL Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#xchainbridge">XChainBridge</a></td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md" target="_blank">XLS-38d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/" target="_blank">Documentation <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#clawback">Clawback</a></td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md" target="_blank">XLS-39d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/" target="_blank">Documentation <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#amm">AMM</a></td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/pull/125" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/" target="_blank">Documentation <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
+<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p class="devportal-callout tip"><strong>Tip:</strong> This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see <a href="contribute-code-flow.html">Contribute Code to the XRP Ledger</a>.</p>
+<h2 id="vetoed-or-obsolete-amendments">Vetoed or Obsolete Amendments<a aria-hidden="true" class="hover_anchor" href="#vetoed-or-obsolete-amendments"><i class="fa fa-link"></i></a></h2>
+<p>The following is a list of known <a href="amendments.html">amendments</a> that have been vetoed and removed in a previous version, or are obsolete and have been marked for removal.</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Introduced</th>
+<th style="text-align: left;">Status</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td style="text-align: left;"><a href="#fixnftokennegoffer">fixNFTokenNegOffer</a></td>
 <td style="text-align: left;">v1.9.2</td>
@@ -677,8 +843,52 @@
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout note"><strong>Note:</strong> In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.</p>
-<h2 id="checkcashmakestrustline">CheckCashMakesTrustLine<a aria-hidden="true" class="hover_anchor" href="#checkcashmakestrustline"><i class="fa fa-link"></i></a></h2>
+<h2 id="details-about-known-amendments">Details about Known Amendments<a aria-hidden="true" class="hover_anchor" href="#details-about-known-amendments"><i class="fa fa-link"></i></a></h2>
+<h3 id="amm">AMM<a aria-hidden="true" class="hover_anchor" href="#amm"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Automated Market Maker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">8CC0774A3BF66D1D22E76BBDA8E8A232E6B6313834301B3B23E8601196AE6455</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Adds Automated Market Maker (AMM) functionality to the ledger in a way that is integrated with the existing decentralized exchange. Each pair of assets (tokens or XRP) can have up to one AMM in the ledger, which anyone can contribute liquidity to for a proportional share in the earnings and exchange risk. Each AMM instance has a special account to hold its assets and issue "LP Tokens" to liquidity providers in proportion to their deposits. Liquidity providers can vote on the AMM's trading fee based on their share of LP Tokens. Users can bid LP Tokens on the right to trade with a discounted trading fee for a limited period of time.</p>
+<p>Adds new transactions:</p>
+<ul>
+<li>AMMBid - Bid on the AMM's auction slot, which offers discounted fees.</li>
+<li>AMMCreate - Create a new AMM instance and provide initial funding.</li>
+<li>AMMDelete - Remove an empty AMM instance from the ledger.</li>
+<li>AMMDeposit - Add funds to an existing AMM and receive LP Tokens.</li>
+<li>AMMWithdraw - Return LP Tokens to an AMM to remove funds.</li>
+<li>AMMVote - Vote on the AMM's trading fee.</li>
+</ul>
+<p>Updates existing transactions with new functionality:</p>
+<ul>
+<li>Payment and OfferCreate transactions that trade currency automatically use any combination of Offers and AMMs to achieve the best exchange rate.</li>
+<li>Some transactions cannot be sent to an AMM's special account. (For example, the AMM cannot cash a check, so CheckCreate to an AMM is not allowed.)</li>
+</ul>
+<p>Adds a new type of ledger entry, <code>AMM</code>, and adds an <code>AMMID</code> field to the <code>AccountRoot</code> ledger entry type.</p>
+<p>Adds several new transaction result codes.</p>
+<h3 id="checkcashmakestrustline">CheckCashMakesTrustLine<a aria-hidden="true" class="hover_anchor" href="#checkcashmakestrustline"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -708,7 +918,7 @@
 <p>Adjusts the <a href="checkcash.html">CheckCash transaction</a> so that cashing a <a href="checks.html">Check</a> for an issued token automatically creates a <a href="trust-lines-and-issuing.html">trust line</a> to hold the token. The new behavior is similar to how the <a href="offercreate.html">OfferCreate transaction</a> behaves when users buy tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)</p>
 <p>Without this amendment, users have to separately send a <a href="trustset.html">TrustSet transaction</a> before they can cash a Check for an issued token.</p>
 <p>This amendment does not change the fact that you cannot force anyone to hold tokens they don't want in the XRP Ledger.</p>
-<h2 id="checks">Checks<a aria-hidden="true" class="hover_anchor" href="#checks"><i class="fa fa-link"></i></a></h2>
+<h3 id="checks">Checks<a aria-hidden="true" class="hover_anchor" href="#checks"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -738,7 +948,65 @@
 <p>Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.</p>
 <p>The sender or the receiver can cancel a Check at any time before it is cashed. A Check can also have an expiration time, after which it cannot be cashed, and anyone can cancel it.</p>
 <p>Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash, and a new ledger object type, Check. Adds a new transaction result code, <code>tecEXPIRED</code>, which occurs when trying to create a Check whose expiration time is in the past.</p>
-<h2 id="cryptoconditions">CryptoConditions<a aria-hidden="true" class="hover_anchor" href="#cryptoconditions"><i class="fa fa-link"></i></a></h2>
+<h3 id="clawback">Clawback<a aria-hidden="true" class="hover_anchor" href="#clawback"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">Clawback</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em> the funds.</p>
+<p>Clawback is disabled by default. To use clawback, you must set the <code>lsfAllowTrustLineClawback</code> flag using an <code>AccountSet</code> transaction.</p>
+<p>See <a class="external-link" href="https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/" target="_blank">Clawback <i aria-hidden="true" class="fa fa-external-link"></i></a> for details on this amendment.</p>
+<h3 id="xchainbridge">XChainBridge<a aria-hidden="true" class="hover_anchor" href="#xchainbridge"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">XChainBridge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Adds "cross-chain bridges" for synchronizing assets between different networks, such as Mainnet and a sidechain. Standards draft: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md" target="_blank">XLS-38d Cross-Chain Bridge <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<h3 id="cryptoconditions">CryptoConditions<a aria-hidden="true" class="hover_anchor" href="#cryptoconditions"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -766,7 +1034,7 @@
 </tbody>
 </table>
 <p>Although this amendment is enabled, it has no effect unless the <a href="#suspay">SusPay</a> amendment is also enabled. The SusPay amendment was replaced by the <a href="#escrow">Escrow</a> amendment, so the CryptoConditions amendment has no effect.</p>
-<h2 id="cryptoconditionssuite">CryptoConditionsSuite<a aria-hidden="true" class="hover_anchor" href="#cryptoconditionssuite"><i class="fa fa-link"></i></a></h2>
+<h3 id="cryptoconditionssuite">CryptoConditionsSuite<a aria-hidden="true" class="hover_anchor" href="#cryptoconditionssuite"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -795,7 +1063,7 @@
 </table>
 <p>This amendment was intended to add support for several types of crypto-conditions from the official <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-03" target="_blank">crypto-conditions specification <i aria-hidden="true" class="fa fa-external-link"></i></a> for use in <a href="escrowcreate.html">EscrowCreate</a> and <a href="escrowfinish.html">EscrowFinish</a> transactions.</p>
 <p>However, the amendment was added to <code>rippled</code> v0.60.0 before implementation was complete. As a result, this amendment ID refers to incomplete code which does almost nothing. Modifying the existing amendment to add support for other crypto-conditions would cause a conflict with old versions of the amendment already in released software. If a future release adds support for additional crypto-conditions, it must use a new and different amendment ID.</p>
-<h2 id="deletableaccounts">DeletableAccounts<a aria-hidden="true" class="hover_anchor" href="#deletableaccounts"><i class="fa fa-link"></i></a></h2>
+<h3 id="deletableaccounts">DeletableAccounts<a aria-hidden="true" class="hover_anchor" href="#deletableaccounts"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -825,7 +1093,7 @@
 <p>Makes it possible to delete <a href="accounts.html">accounts</a>.</p>
 <p>Without this amendment, new accounts always start with their <code>Sequence</code> numbers at 1, and there is no way to remove accounts from the state data of the ledger.</p>
 <p>With this amendment, new accounts start with their <code>Sequence</code> numbers equal to the <code>Sequence</code> number matching the <a href="basic-data-types.html#ledger-index">index of the ledger</a> in which the account is created. This change protects accounts that are deleted and later re-created from having their old transactions executed again. Adds a new <code>AccountDelete</code> transaction type, which deletes an account and certain objects that the account owns in the ledger. Certain types of objects cannot be deleted this way, so an account that is linked to any such objects cannot be deleted. Additionally, an account cannot be deleted if the current ledger index minus 256 is less than the account's current <code>Sequence</code> number. See <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/issues/8" target="_blank">XRP Community Standards Draft 7 <i aria-hidden="true" class="fa fa-external-link"></i></a> for a detailed discussion of this amendment.</p>
-<h2 id="depositauth">DepositAuth<a aria-hidden="true" class="hover_anchor" href="#depositauth"><i class="fa fa-link"></i></a></h2>
+<h3 id="depositauth">DepositAuth<a aria-hidden="true" class="hover_anchor" href="#depositauth"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -856,7 +1124,7 @@
 <p>When an account enables this flag, Payment transactions fail if the account is the destination, regardless of whether the Payment would have delivered XRP or a token. EscrowFinish and PaymentChannelClaim transactions fail if the account is the destination unless the destination account itself sends those transactions. If the <a href="#checks">Checks</a> amendment is enabled, the account can receive XRP or tokens by sending CheckCash transactions.</p>
 <p>As an exception, accounts with <code>DepositAuth</code> enabled can receive Payment transactions for small amounts of XRP (equal or less than the minimum <a href="reserves.html">account reserve</a>) if their current XRP balance is below the account reserve.</p>
 <p>Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the Disallow XRP flag, which is meant to be a non-binding advisory flag. (By not enforcing Disallow XRP in the ledger itself an account can still receive the necessary XRP to meet its <a href="reserves.html">account reserve</a> and pay <a href="transaction-cost.html">transaction costs</a>.)</p>
-<h2 id="depositpreauth">DepositPreauth<a aria-hidden="true" class="hover_anchor" href="#depositpreauth"><i class="fa fa-link"></i></a></h2>
+<h3 id="depositpreauth">DepositPreauth<a aria-hidden="true" class="hover_anchor" href="#depositpreauth"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -887,7 +1155,7 @@
 <p>Adds a new transaction type, DepositPreauth for adding or removing preauthorization, and a DepositPreauth ledger object type for tracking preauthorizations from one account to another. Adds a JSON-RPC command, <code>deposit_authorized</code>, to query whether an account is authorized to send payments directly to another. <!-- STYLE_OVERRIDE: is authorized to --></p>
 <p>Changes the behavior of cross-currency Payments from an account to itself when that account requires deposit authorization. Without this amendment, those payments always fail with the code <code>tecNO_PERMISSION</code>. With this amendment, those payments succeed as they would with Deposit Authorization disabled.</p>
 <p>Also changes the OfferCreate transaction to return <code>tecEXPIRED</code> when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns <code>tesSUCCESS</code> but does not create or execute an Offer.</p>
-<h2 id="disallowincoming">DisallowIncoming<a aria-hidden="true" class="hover_anchor" href="#disallowincoming"><i class="fa fa-link"></i></a></h2>
+<h3 id="disallowincoming">DisallowIncoming<a aria-hidden="true" class="hover_anchor" href="#disallowincoming"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -902,7 +1170,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Development</td>
+<td style="text-align: left;">Enabled</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
@@ -924,7 +1192,7 @@
 </ul>
 <p>Changes transaction processing to check the status of those flags before creating the corresponding type of object. If the destination account has the flag enabled, the transaction fails with the error code <code>tecNO_PERMISSION</code>.</p>
 <p>Without this amendment, any account can create these objects with any object as the destination; while this is usually harmless, it can block an account from later being deleted, and may also be used as part of scams.</p>
-<h2 id="enforceinvariants">EnforceInvariants<a aria-hidden="true" class="hover_anchor" href="#enforceinvariants"><i class="fa fa-link"></i></a></h2>
+<h3 id="enforceinvariants">EnforceInvariants<a aria-hidden="true" class="hover_anchor" href="#enforceinvariants"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -961,7 +1229,7 @@
 <li><a href="ledger-object-types.html">An entry in the ledger</a> cannot change its type. (The <code>LedgerEntryType</code> field is immutable.)</li>
 <li>There cannot be a trust line for XRP.</li>
 </ul>
-<h2 id="escrow">Escrow<a aria-hidden="true" class="hover_anchor" href="#escrow"><i class="fa fa-link"></i></a></h2>
+<h3 id="escrow">Escrow<a aria-hidden="true" class="hover_anchor" href="#escrow"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -990,7 +1258,7 @@
 </table>
 <p>Replaces the <a href="#suspay">SusPay</a> and <a href="#cryptoconditions">CryptoConditions</a> amendments.</p>
 <p>Provides "suspended payments" for XRP for escrow within the XRP Ledger, including support for <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02" target="_blank">Interledger Protocol Crypto-Conditions <i aria-hidden="true" class="fa fa-external-link"></i></a>. Creates a new ledger object type for suspended payments and new transaction types to create, execute, and cancel suspended payments.</p>
-<h2 id="expandedsignerlist">ExpandedSignerList<a aria-hidden="true" class="hover_anchor" href="#expandedsignerlist"><i class="fa fa-link"></i></a></h2>
+<h3 id="expandedsignerlist">ExpandedSignerList<a aria-hidden="true" class="hover_anchor" href="#expandedsignerlist"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1020,7 +1288,7 @@
 <p>This amendment expands the maximum signer list size and allows each signer to have optional data associated with it. The additional data can be used to identify the signer, which may be useful for smart contracts, or for identifying who controls a key in a large organization: for example, you could store an IPv6 address or the identifier of a Hardware Security Module (HSM).</p>
 <p>Without this amendment, the maximum signer list size is 8 entries, and each entry has exactly two fields, <code>Account</code> and <code>SignerWeight</code>.</p>
 <p>With this amendment, the maximum <a href="signerlist.html">SignerList object</a> size is 32 entries. Additionally, each <code>SignerEntry</code> object can contain an optional 256-bit (32-byte) <code>WalletLocator</code> field containing arbitrary data. This amendment changes the <a href="signerlistset.html">SignerListSet transaction</a> accordingly.</p>
-<h2 id="feeescalation">FeeEscalation<a aria-hidden="true" class="hover_anchor" href="#feeescalation"><i class="fa fa-link"></i></a></h2>
+<h3 id="feeescalation">FeeEscalation<a aria-hidden="true" class="hover_anchor" href="#feeescalation"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1056,7 +1324,7 @@
 <li>It becomes invalid (for example, the <a href="transaction-common-fields.html"><code>LastLedgerSequence</code></a> causes it to expire)</li>
 <li>It gets dropped because there are too many transactions in the queue with a higher transaction cost.</li>
 </ul>
-<h2 id="fix1201">fix1201<a aria-hidden="true" class="hover_anchor" href="#fix1201"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1201">fix1201<a aria-hidden="true" class="hover_anchor" href="#fix1201"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1085,7 +1353,7 @@
 </table>
 <p>Correctly implements a limit on <a href="transfer-fees.html">transfer fees</a> to a 100% fee, represented by a maximum <code>TransferRate</code> value of <code>2000000000</code>. (A 100% fee in this case means you must send 2 units of the token for every 1 unit you want to deliver.) Without the amendment, the effective limit is a <code>TransferRate</code> value of 2<sup>32</sup>-1, for approximately a 329% fee.</p>
 <p>With this amendment enabled, an <a href="accountset.html">AccountSet</a> transaction that attempts to set <code>TransferRate</code> higher than <code>2000000000</code> fails with the result code <code>temBAD_TRANSFER_RATE</code>. Any existing <code>TransferRate</code> which was set to a higher value under the previous rules continues to apply at the higher rate.</p>
-<h2 id="fix1368">fix1368<a aria-hidden="true" class="hover_anchor" href="#fix1368"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1368">fix1368<a aria-hidden="true" class="hover_anchor" href="#fix1368"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1113,7 +1381,7 @@
 </tbody>
 </table>
 <p>Fixes a minor bug in transaction processing that causes some payments to fail when they should be valid. Specifically, during payment processing, some payment steps that are expected to produce a certain amount of currency may produce a microscopically different amount, due to a loss of precision related to floating-point number representation. When this occurs, those payments fail because they cannot deliver the exact amount intended. The fix1368 amendment corrects transaction processing so payments can no longer fail in this manner.</p>
-<h2 id="fix1373">fix1373<a aria-hidden="true" class="hover_anchor" href="#fix1373"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1373">fix1373<a aria-hidden="true" class="hover_anchor" href="#fix1373"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1142,7 +1410,7 @@
 </table>
 <p>Fixes a minor bug in transaction processing that causes failures when trying to prepare certain <a href="paths.html">payment paths</a> for processing. As a result, payments could not use certain paths that should have been valid but were invalidly prepared. Without this amendment, those payments are forced to use less-preferable paths or may even fail.</p>
 <p>The fix1373 amendment corrects the issue so that the paths are properly prepared and payments can use them. It also disables some inappropriate paths that are currently allowed, including paths whose <a href="paths.html#path-specifications">steps</a> include conflicting fields and paths that loop through the same object more than once.</p>
-<h2 id="fix1512">fix1512<a aria-hidden="true" class="hover_anchor" href="#fix1512"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1512">fix1512<a aria-hidden="true" class="hover_anchor" href="#fix1512"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1171,7 +1439,7 @@
 </table>
 <p>Fixes a bug in transaction processing that causes some invalid <a href="paymentchannelclaim.html">PaymentChannelClaim</a> transactions to fail with the wrong error code. Without this amendment, the transactions have a <code>tec</code>-class result code despite not being included in a ledger.</p>
 <p>With this amendment, the transactions fail with a more appropriate result code, <code>temBAD_AMOUNT</code>, instead.</p>
-<h2 id="fix1513">fix1513<a aria-hidden="true" class="hover_anchor" href="#fix1513"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1513">fix1513<a aria-hidden="true" class="hover_anchor" href="#fix1513"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1200,7 +1468,7 @@
 </table>
 <p>Fixes a bug that resulted in transaction processing not using new <code>STAmountCalcSwitchovers</code> code when the <code>FeeEscalation</code> amendment is enabled.</p>
 <p>With this amendment, the new <code>STAmountCalcSwitchovers</code> code applies, which may cause slight changes to transaction processing due to calculation differences. Amounts may be rounded differently and offers may be executed in a different order as a result.</p>
-<h2 id="fix1515">fix1515<a aria-hidden="true" class="hover_anchor" href="#fix1515"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1515">fix1515<a aria-hidden="true" class="hover_anchor" href="#fix1515"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1231,7 +1499,7 @@
 <p>Without the amendment, payment processing gives up on using particular order books if the transaction would consume over 2000 offers at the same exchange rate. In this case, the payment does not use the liquidity from those offers, and does not consider that order book's remaining liquidity when attempting to complete the payment.</p>
 <p>With this amendment, if any transaction processes over 1000 offers at the same exchange rate, the transaction consumes the liquidity from the first 1000 offers, then does not consider that order book's remaining liquidity when attempting to complete the payment.</p>
 <p>In both cases, transaction processing can still complete by using liquidity from other paths or exchange rates.</p>
-<h2 id="fix1523">fix1523<a aria-hidden="true" class="hover_anchor" href="#fix1523"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1523">fix1523<a aria-hidden="true" class="hover_anchor" href="#fix1523"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1260,7 +1528,7 @@
 </table>
 <p>Adds tracking by destination account to <a href="escrow.html">escrows</a>. Without this amendment, pending escrows are only tracked by sender. This amendment makes it possible to look up pending escrows by the destination address using the <a href="account_objects.html">account_objects method</a>, excluding any pending escrows that were created before this amendment became enabled. This amendment also makes <a href="escrowcreate.html">EscrowCreate transactions</a> appear in the destination's transaction history, as viewed with the <a href="account_tx.html">account_tx method</a>.</p>
 <p>With this amendment, new escrows are added to the <a href="directorynode.html">owner directories</a> of both the sender and receiver. This amendment also adds a new <code>DestinationNode</code> field to <a href="escrow-object.html">Escrow ledger objects</a>, indicating which page of the destination's owner directory contains the escrow.</p>
-<h2 id="fix1528">fix1528<a aria-hidden="true" class="hover_anchor" href="#fix1528"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1528">fix1528<a aria-hidden="true" class="hover_anchor" href="#fix1528"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1289,7 +1557,7 @@
 </table>
 <p>Fixes a bug where validators could build consensus ledgers with different timestamps, potentially delaying the process of declaring validated ledgers. The circumstances for this to occur require precise timing, so this bug is unlikely to happen outside of controlled test conditions.</p>
 <p>This amendment changes how validators negotiate the close time of the consensus ledger so that they cannot reach a consensus on ledger contents but build ledger versions with different timestamps.</p>
-<h2 id="fix1543">fix1543<a aria-hidden="true" class="hover_anchor" href="#fix1543"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1543">fix1543<a aria-hidden="true" class="hover_anchor" href="#fix1543"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1323,7 +1591,7 @@
 <li>Escrow transactions: <a href="escrowcancel.html">EscrowCancel</a>, <a href="escrowcreate.html">EscrowCreate</a>, and <a href="escrowfinish.html">EscrowFinish</a></li>
 <li>Payment Channel transactions: <a href="paymentchannelclaim.html">PaymentChannelClaim</a>, <a href="paymentchannelcreate.html">PaymentChannelCreate</a>, and <a href="paymentchannelfund.html">PaymentChannelFund</a></li>
 </ul>
-<h2 id="fix1571">fix1571<a aria-hidden="true" class="hover_anchor" href="#fix1571"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1571">fix1571<a aria-hidden="true" class="hover_anchor" href="#fix1571"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1355,7 +1623,7 @@
 <li>Changes the <a href="escrowcreate.html">EscrowCreate transaction</a> to require the <code>Condition</code> or <code>FinishAfter</code> field (or both). Escrows with neither <code>Condition</code> nor <code>FinishAfter</code> that were created before this amendment can be finished by anyone at any time before their <code>CancelAfter</code> time.</li>
 <li>Fixes a flaw that incorrectly prevents time-based Escrows from being finished in some circumstances.</li>
 </ul>
-<h2 id="fix1578">fix1578<a aria-hidden="true" class="hover_anchor" href="#fix1578"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1578">fix1578<a aria-hidden="true" class="hover_anchor" href="#fix1578"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1387,7 +1655,7 @@
 <li>Changes the <a href="offercreate.html">OfferCreate transaction</a> to return a new result code, <code>tecKILLED</code>, if the offer used the <code>tfFillOrKill</code> flag and was killed. Without this amendment, the offer is killed but the transaction result is <code>tesSUCCESS</code>.</li>
 <li>Changes the <a href="trustset.html">TrustSet transaction</a> to fail with <code>tecNO_PERMISSION</code> if it tries to enable the <a href="rippling.html#the-no-ripple-flag">No Ripple flag</a> but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the No Ripple flag, but the transaction result is <code>tesSUCCESS</code> nonetheless.</li>
 </ul>
-<h2 id="fix1623">fix1623<a aria-hidden="true" class="hover_anchor" href="#fix1623"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1623">fix1623<a aria-hidden="true" class="hover_anchor" href="#fix1623"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1417,7 +1685,7 @@
 <p>Adds delivered amount to metadata for CheckCash transactions cashed for a flexible amount. (Has no effect unless the <a href="#checks">Checks</a> amendment is enabled.)</p>
 <p>With this amendment enabled, transaction processing adds a <code>DeliveredAmount</code> field to the metadata of <a href="checkcash.html">CheckCash transactions</a> for a variable amount (using the <code>DeliverMin</code> field). This change is written to the ledger data, resulting in a different ledger hash than would result from processing the transaction without this amendment. It does not affect the actual amounts delivered. Additionally, with this amendment enabled, the <a href="tx.html">tx method</a> and <a href="account_tx.html">account_tx method</a> return a <a href="transaction-metadata.html#delivered_amount"><code>delivered_amount</code> field</a> for CheckCash transactions. (The <code>delivered_amount</code> field is calculated when you look up a transaction, and is not part of the data that is written to the ledger.)</p>
 <p>The fix1623 amendment has no effect on <a href="checkcash.html">CheckCash transactions</a> for a fixed amount (using the <code>Amount</code> field) or any other transaction types.</p>
-<h2 id="fix1781">fix1781<a aria-hidden="true" class="hover_anchor" href="#fix1781"><i class="fa fa-link"></i></a></h2>
+<h3 id="fix1781">fix1781<a aria-hidden="true" class="hover_anchor" href="#fix1781"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1447,7 +1715,7 @@
 <p>Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.</p>
 <p>Without this amendment, it is possible to have a <a href="paths.html">payment path</a> where the input to the path is XRP, and an intermediate path step also outputs XRP. This is a "loop" payment, and the payment engine disallows such paths because they can have different results when executed forward compared to backwards.</p>
 <p>With this amendment, those payments fail with the <a href="tem-codes.html"><code>temBAD_PATH_LOOP</code> result code</a> instead.</p>
-<h2 id="fixamendmentmajoritycalc">fixAmendmentMajorityCalc<a aria-hidden="true" class="hover_anchor" href="#fixamendmentmajoritycalc"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixamendmentmajoritycalc">fixAmendmentMajorityCalc<a aria-hidden="true" class="hover_anchor" href="#fixamendmentmajoritycalc"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1476,7 +1744,7 @@
 </table>
 <p>Fixes a bug that could cause an amendment to achieve a majority and later activate with support of slightly less than 80% of trusted validators due to rounding semantics.</p>
 <p>Without this amendment, the minimum threshold for amendment activation is any value that rounds to 204/256 of trusted validators, which depends on the number of trusted validators at the time. For example, an amendment could activate with exactly 28 out of 36 validators (approximately 77.8%). With this amendment, the actual minimum number of validators needed is never less than 80% of trusted validators.</p>
-<h2 id="fixcheckthreading">fixCheckThreading<a aria-hidden="true" class="hover_anchor" href="#fixcheckthreading"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixcheckthreading">fixCheckThreading<a aria-hidden="true" class="hover_anchor" href="#fixcheckthreading"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1505,7 +1773,7 @@
 </table>
 <p>Changes the way Checks transactions affect account metadata, so that Checks are properly added to the <a href="accounts.html">account</a> history of the receiving account. (Specifically, they update the <code>PreviousTxnID</code> and <code>PreviousTxnLedgerSeq</code> fields of the receiving account's <a href="accountroot.html">AccountRoot object</a>, which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)</p>
 <p>Without this amendment, Checks transactions (<a href="checkcreate.html">CheckCreate</a>, <a href="checkcash.html">CheckCash</a>, and <a href="checkcancel.html">CheckCancel</a>) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the <a href="#checks">Checks amendment</a> is also enabled.</p>
-<h2 id="fixmasterkeyasregularkey">fixMasterKeyAsRegularKey<a aria-hidden="true" class="hover_anchor" href="#fixmasterkeyasregularkey"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixmasterkeyasregularkey">fixMasterKeyAsRegularKey<a aria-hidden="true" class="hover_anchor" href="#fixmasterkeyasregularkey"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1535,7 +1803,7 @@
 <p>Fixes a bug where accounts can set their regular key pair to match their master key pair, but cannot send transactions signed by the key if the master key is disabled.</p>
 <p>Without this fix, a user can unintentionally "black hole" their account by setting the regular key to match the master key, then disabling the master key. The network rejects transactions signed with the both-master-and-regular key pair because the code interprets them as being signed with the disabled master key before it recognizes that they are signed by the currently-enabled regular key.</p>
 <p>With this amendment enabled, a SetRegularKey transaction cannot set the regular key to match the master key; such a transaction results in the transaction code <code>temBAD_REGKEY</code>. Additionally, this amendment changes the signature verification code so that accounts which <em>already</em> have their regular key set to match their master key can send transactions successfully using the key pair.</p>
-<h2 id="fixnftokendirv1">fixNFTokenDirV1<a aria-hidden="true" class="hover_anchor" href="#fixnftokendirv1"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixnftokendirv1">fixNFTokenDirV1<a aria-hidden="true" class="hover_anchor" href="#fixnftokendirv1"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1564,7 +1832,7 @@
 </table>
 <p>This amendment fixes an off-by-one error that occurred in some corner cases when determining which <code>NFTokenPage</code> a <code>NFToken</code> object belongs on. It also adjusts the constraints of <code>NFTokenPage</code> invariant checks, so that certain error cases fail with a suitable error code such as <code>tecNO_SUITABLE_TOKEN_PAGE</code> instead of failing with a <code>tecINVARIANT_FAILED</code> error code.</p>
 <p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. This amendment is obsolete because its effects are included as part of <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
-<h2 id="fixnftokennegoffer">fixNFTokenNegOffer<a aria-hidden="true" class="hover_anchor" href="#fixnftokennegoffer"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixnftokennegoffer">fixNFTokenNegOffer<a aria-hidden="true" class="hover_anchor" href="#fixnftokennegoffer"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1593,7 +1861,7 @@
 </table>
 <p>This amendment fixes a bug in the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell a <code>NFToken</code> for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.</p>
 <p>This amendment has no effect unless the <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> amendment is enabled. This amendment is obsolete because its effects are included as part of <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
-<h2 id="fixnftokenremint">fixNFTokenRemint<a aria-hidden="true" class="hover_anchor" href="#fixnftokenremint"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixnftokenremint">fixNFTokenRemint<a aria-hidden="true" class="hover_anchor" href="#fixnftokenremint"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1608,7 +1876,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Development</td>
+<td style="text-align: left;">Open for Voting</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
@@ -1630,7 +1898,7 @@
 </li>
 </ul>
 <p>The amendment also introduces a new account deletion restriction. An account can only be deleted if <code>FirstNFTSequence</code> + <code>MintedNFTokens</code> + 256 is less than the current ledger sequence (256 was chosen as a heuristic restriction for account deletion and already exists in the account deletion constraint). Without this restriction, an NFT could still be re-minted under certain conditions.</p>
-<h2 id="fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2<a aria-hidden="true" class="hover_anchor" href="#fixnonfungibletokensv1_2"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2<a aria-hidden="true" class="hover_anchor" href="#fixnonfungibletokensv1_2"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1645,7 +1913,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Development</td>
+<td style="text-align: left;">Enabled</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
@@ -1657,7 +1925,7 @@
 </tr>
 </tbody>
 </table>
-<p>Amendment <code>fixNonFungibleTokensV1_2</code> is a combination of bug fixes that have been individually merged into feature/nft-fixes through the pull request process:</p>
+<p>Amendment <code>fixNonFungibleTokensV1_2</code> is a combination of bug fixes that have been individually merged into feature/nft-fixes through the pull request process.</p>
 <p><strong>Fix Unburnable NFT</strong></p>
 <p>Currently, an NFT cannot be burned when it has over 500 offers. To remove this restriction, this change deletes exactly 500 offers upon burning the NFT, leaving any remaining offers untouched. This addresses a concern where the issuer account cannot burn an NFT that has enabled the <code>lsfBurnable</code> flag, due to the exceeding number of offers.</p>
 <p>See <a class="external-link" href="https://github.com/XRPLF/rippled/pull/4346" target="_blank">PR 4346 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
@@ -1672,7 +1940,7 @@
 <p><strong>Only allow the destination to settle an NFT offer through brokerage (fix #4373)</strong></p>
 <p>If you set a destination on an NFT offer, only that destination can settle through brokerage (fix #4373).</p>
 <p>See <a class="external-link" href="https://github.com/XRPLF/rippled/issues/4373" target="_blank">Issue 4373 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir<a aria-hidden="true" class="hover_anchor" href="#fixpaychanrecipientownerdir"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1701,7 +1969,7 @@
 </table>
 <p>Changes the <a href="paymentchannelcreate.html">PaymentChannelCreate transaction</a> type so that it adds new <a href="payment-channels.html">payment channels</a> to the recipient's <a href="directorynode.html">owner directory</a>. Without this amendment, new payment channels are added only to the sender's owner directory; with this amendment enabled, newly-created payment channels are added to both owner directories. Existing payment channels are unchanged.</p>
 <p>This change prevents accounts from being deleted if they are the recipient for open payment channels, except for channels created before this amendment.</p>
-<h2 id="fixqualityupperbound">fixQualityUpperBound<a aria-hidden="true" class="hover_anchor" href="#fixqualityupperbound"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixqualityupperbound">fixQualityUpperBound<a aria-hidden="true" class="hover_anchor" href="#fixqualityupperbound"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1730,7 +1998,7 @@
 </table>
 <p>Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.</p>
 <p>This amendment has no known impact on transaction processing.</p>
-<h2 id="fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine<a aria-hidden="true" class="hover_anchor" href="#fixremovenftokenautotrustline"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine<a aria-hidden="true" class="hover_anchor" href="#fixremovenftokenautotrustline"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1761,7 +2029,7 @@
 <p>Without this amendment, an attacker could create new, meaningless fungible tokens and sell a <code>NFToken</code> back and forth for those tokens, creating many useless trust lines tied to the issuer and increasing the issuer's reserve requirement.</p>
 <p>This amendment does not change the code for <code>NFToken</code> objects that have already been minted. On test networks that enabled NFT support before this amendment, issuers who have already minted NFTokens with the <code>tfTrustLine</code> flag enabled are still vulnerable to the exploit even after the fixRemoveNFTokenAutoTrustLine amendment.</p>
 <p>This amendment has no effect unless either <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> or <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a> is enabled. To protect issuers, this amendment should be enabled <em>before</em> <a href="#nonfungibletokensv1">NonFungibleTokensV1</a> or <a href="#nonfungibletokensv1_1">NonFungibleTokensV1_1</a>.</p>
-<h2 id="fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers<a aria-hidden="true" class="hover_anchor" href="#fixrmsmallincreasedqoffers"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers<a aria-hidden="true" class="hover_anchor" href="#fixrmsmallincreasedqoffers"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1791,7 +2059,7 @@
 <p>This amendment fixes an issue where certain Offers, when almost completely consumed, have a much lower exchange rate than when they were first placed. This occurs when the remaining amounts of one or both assets are so small that they cannot be rounded to a similar ratio as when the Offer was placed.</p>
 <p>Without this amendment, an Offer in this state blocks Offers with better rates deeper in the order book and causes some payments and Offers to fail when they could have succeeded.</p>
 <p>With this amendment, payments and trades can remove these types of Offers the same way that transactions normally remove fully consumed or unfunded Offers.</p>
-<h2 id="fixstamountcanonicalize">fixSTAmountCanonicalize<a aria-hidden="true" class="hover_anchor" href="#fixstamountcanonicalize"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixstamountcanonicalize">fixSTAmountCanonicalize<a aria-hidden="true" class="hover_anchor" href="#fixstamountcanonicalize"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1819,7 +2087,7 @@
 </tbody>
 </table>
 <p>Fixes an edge case in <a href="serialization.html">deserializing</a> Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.</p>
-<h2 id="fixtakerdryofferremoval">fixTakerDryOfferRemoval<a aria-hidden="true" class="hover_anchor" href="#fixtakerdryofferremoval"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixtakerdryofferremoval">fixTakerDryOfferRemoval<a aria-hidden="true" class="hover_anchor" href="#fixtakerdryofferremoval"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1849,7 +2117,7 @@
 <p>Fixes a bug in <a href="autobridging.html">auto-bridging</a> that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.</p>
 <p>Without this fix, the dry offer remains on the ledger and counts toward its owner's <a href="reserves.html#owner-reserves">reserve requirement</a> without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.</p>
 <p>With this amendment enabled, the XRP Ledger removes these dry offers when they're matched in auto-bridging.</p>
-<h2 id="fixtrustlinestoself">fixTrustLinesToSelf<a aria-hidden="true" class="hover_anchor" href="#fixtrustlinestoself"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixtrustlinestoself">fixTrustLinesToSelf<a aria-hidden="true" class="hover_anchor" href="#fixtrustlinestoself"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1864,7 +2132,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Development</td>
+<td style="text-align: left;">Enabled</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
@@ -1878,7 +2146,7 @@
 </table>
 <p>This amendment removes two trust lines from an account to itself that were created due to an old bug (both on 2013-05-07). When the amendment becomes enabled, it deletes trust lines with the IDs <code>2F8F21EFCAFD7ACFB07D5BB04F0D2E18587820C7611305BB674A64EAB0FA71E1</code> and <code>326035D5C0560A9DA8636545DD5A1B0DFCFF63E68D491B5522B767BB00564B1A</code> if they exist. After doing so, the amendment does nothing else.</p>
 <p>On test networks that do not have these trust lines, the amendment has no effect.</p>
-<h2 id="fixuniversalnumber">fixUniversalNumber<a aria-hidden="true" class="hover_anchor" href="#fixuniversalnumber"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixuniversalnumber">fixUniversalNumber<a aria-hidden="true" class="hover_anchor" href="#fixuniversalnumber"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1893,7 +2161,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Development</td>
+<td style="text-align: left;">Enabled</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
@@ -1907,7 +2175,7 @@
 </table>
 <p>Simplifies and unifies the code for decimal floating point math. In some cases, this provides slightly better accuracy than the previous code, resulting in calculations whose least significant digits are different than when calculated with the previous code. The different results may cause other edge case differences where precise calculations are used, such as ranking of Offers or processing of payments that use several different paths.</p>
 <p>Without this amendment, the code continues to use separate calculations for <code>STAmount</code> and <code>IOUAmount</code> objects, and <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">Automated Market Maker (XLS-30d) <i aria-hidden="true" class="fa fa-external-link"></i></a> uses a third class for calculations.</p>
-<h2 id="flow">Flow<a aria-hidden="true" class="hover_anchor" href="#flow"><i class="fa fa-link"></i></a></h2>
+<h3 id="flow">Flow<a aria-hidden="true" class="hover_anchor" href="#flow"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1936,7 +2204,7 @@
 </table>
 <p>Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the <a class="external-link" href="https://xrpl.org/blog/2016/flowv2-vetoed.html" target="_blank">FlowV2 <i aria-hidden="true" class="fa fa-external-link"></i></a> amendment.</p>
 <p>The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.</p>
-<h2 id="flowcross">FlowCross<a aria-hidden="true" class="hover_anchor" href="#flowcross"><i class="fa fa-link"></i></a></h2>
+<h3 id="flowcross">FlowCross<a aria-hidden="true" class="hover_anchor" href="#flowcross"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1969,7 +2237,7 @@
 <li>Due to differences in rounding, some combinations of offers may be ranked higher or lower than by the old logic, and taken preferentially.</li>
 <li>The new logic may delete more or fewer offers than the old logic. (This includes cases caused by differences in rounding and offers that were incorrectly removed as unfunded by the old logic.)</li>
 </ul>
-<h2 id="flowsortstrands">FlowSortStrands<a aria-hidden="true" class="hover_anchor" href="#flowsortstrands"><i class="fa fa-link"></i></a></h2>
+<h3 id="flowsortstrands">FlowSortStrands<a aria-hidden="true" class="hover_anchor" href="#flowsortstrands"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1998,7 +2266,7 @@
 </table>
 <p>Improves the payment engine's calculations for finding the most cost-efficient way to execute a cross-currency transaction.</p>
 <p>Without this change, the engine simulates a payment through each possible path to calculate the quality (ratio of input to output) of each path. With this change, the engine calculates the theoretical quality of each path without simulating a full payment. With this amendment, the payment engine executes some cross-currency payments much faster, is able to find the most cost-efficient path in more cases, and can enable some payments to succeed in certain conditions where the old payment engine would fail to find enough liquidity.</p>
-<h2 id="flowv2">FlowV2<a aria-hidden="true" class="hover_anchor" href="#flowv2"><i class="fa fa-link"></i></a></h2>
+<h3 id="flowv2">FlowV2<a aria-hidden="true" class="hover_anchor" href="#flowv2"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2022,7 +2290,7 @@
 </tbody>
 </table>
 <p>This is a previous version of the <a href="#flow">Flow</a> amendment. It was <a class="external-link" href="https://xrpl.org/blog/2016/flowv2-vetoed.html" target="_blank">rejected due to a bug <i aria-hidden="true" class="fa fa-external-link"></i></a> and removed in version 0.33.0.</p>
-<h2 id="hardenedvalidations">HardenedValidations<a aria-hidden="true" class="hover_anchor" href="#hardenedvalidations"><i class="fa fa-link"></i></a></h2>
+<h3 id="hardenedvalidations">HardenedValidations<a aria-hidden="true" class="hover_anchor" href="#hardenedvalidations"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2050,18 +2318,18 @@
 </tbody>
 </table>
 <p>Allows validators to include a new optional field in their validations to attest to the hash of the latest ledger that the validator considers to be fully validated. The consensus process can use this information to increase the robustness of consensus.</p>
-<h2 id="immediateofferkilled">ImmediateOfferKilled<a aria-hidden="true" class="hover_anchor" href="#immediateofferkilled"><i class="fa fa-link"></i></a></h2>
+<h3 id="hooks">Hooks<a aria-hidden="true" class="hover_anchor" href="#hooks"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;">Amendment</th>
-<th style="text-align: left;">ImmediateOfferKilled</th>
+<th style="text-align: left;">Hooks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;">Amendment ID</td>
-<td style="text-align: left;">75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A</td>
+<td style="text-align: left;">ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078</td>
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
@@ -2077,9 +2345,37 @@
 </tr>
 </tbody>
 </table>
+<p>Adds on-chain smart contracts in the form of small pieces of code that can run on an account before or after transactions. For more information, see the <a class="external-link" href="https://xrpl-hooks.readme.io/" target="_blank">Hooks Documentation <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<h3 id="immediateofferkilled">ImmediateOfferKilled<a aria-hidden="true" class="hover_anchor" href="#immediateofferkilled"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">ImmediateOfferKilled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">75A7E01C505DD5A179DFE3E000A9B6F1EDDEB55A12F95579A23E15B15DC8BE5A</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
 <p>Changes OfferCreate transactions so that if an Offer uses <code>tfImmediateOrCancel</code> and transaction processing kills the Offer without moving any funds, the transaction uses the result code <code>tecKILLED</code> instead of <code>tesSUCCESS</code>. If the Offer exchanges any amount of funds, even a small amount, the transaction still uses <code>tesSUCCESS</code>. There are no other changes to the processing of the transaction (for example, in terms of whether it cleans up expired and unfunded Offers that were encountered in the ledger during transaction processing).</p>
 <p>Without this amendment, "Immediate or Cancel" Offers that failed to move any funds returned a <code>tesSUCCESS</code> result code, which could be confusing because the transaction effectively did nothing.</p>
-<h2 id="multisign">MultiSign<a aria-hidden="true" class="hover_anchor" href="#multisign"><i class="fa fa-link"></i></a></h2>
+<h3 id="multisign">MultiSign<a aria-hidden="true" class="hover_anchor" href="#multisign"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2119,7 +2415,7 @@
 <li><code>tefNOT_MULTI_SIGNING</code></li>
 <li><code>tefBAD_AUTH_MASTER</code></li>
 </ul>
-<h2 id="multisignreserve">MultiSignReserve<a aria-hidden="true" class="hover_anchor" href="#multisignreserve"><i class="fa fa-link"></i></a></h2>
+<h3 id="multisignreserve">MultiSignReserve<a aria-hidden="true" class="hover_anchor" href="#multisignreserve"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2149,7 +2445,7 @@
 <p>Reduces the <a href="reserves.html#owner-reserves">owner reserve</a> counted against your XRP Ledger account when it owns a <a href="multi-signing.html">multi-signing</a> SignerList.</p>
 <p>Without this amendment, the owner reserve for a SignerList ranges from 15 to 50 XRP, depending on the number of signers in the list.</p>
 <p>With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, regardless of the number of signers. The reserve requirement for previously-created SignerList objects remains unchanged. To reduce the reserve requirement of SignerList objects created before this amendment was enabled, use a <a href="signerlistset.html">SignerListSet transaction</a> to replace the SignerList after this amendment has been enabled. (The replacement can be the same as the previous version.)</p>
-<h2 id="negativeunl">NegativeUNL<a aria-hidden="true" class="hover_anchor" href="#negativeunl"><i class="fa fa-link"></i></a></h2>
+<h3 id="negativeunl">NegativeUNL<a aria-hidden="true" class="hover_anchor" href="#negativeunl"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2168,7 +2464,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
-<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 <tr>
 <td style="text-align: left;">Pre-amendment functionality retired?</td>
@@ -2177,7 +2473,7 @@
 </tbody>
 </table>
 <p>Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.</p>
-<h2 id="nonfungibletokensv1">NonFungibleTokensV1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1"><i class="fa fa-link"></i></a></h2>
+<h3 id="nonfungibletokensv1">NonFungibleTokensV1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2221,7 +2517,7 @@
 </ul>
 <p>Additionally, it modifies the <a href="accountroot.html">AccountRoot object</a> type to add 3 new optional fields: <code>MintedNFTokens</code>, <code>BurnedNFTokens</code>, and <code>NFTokenMinter</code>.</p>
 <p>It also modifies the <a href="accountset.html">AccountSet transaction</a> type to allow you to set the <code>NFTokenMinter</code> field.</p>
-<h2 id="nonfungibletokensv1_1">NonFungibleTokensV1_1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1_1"><i class="fa fa-link"></i></a></h2>
+<h3 id="nonfungibletokensv1_1">NonFungibleTokensV1_1<a aria-hidden="true" class="hover_anchor" href="#nonfungibletokensv1_1"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2257,7 +2553,7 @@
 </ul>
 <p>It has no other effects.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> The <a href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a> fixes an known issue with this amendment. When creating a new test network, you should make sure that these amendments should be enabled together or the fix amendment is enabled first.</p>
-<h2 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h2>
+<h3 id="ownerpaysfee">OwnerPaysFee<a aria-hidden="true" class="hover_anchor" href="#ownerpaysfee"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2287,7 +2583,7 @@
 <p>Fixes an inconsistency in the way <a href="transfer-fees.html">transfer fees</a> are calculated between <a href="offercreate.html">OfferCreate</a> and <a href="payment.html">Payment</a> transaction types. Without this amendment, the holder of the token pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the token always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
 <p>This Amendment requires the <a href="#flow">Flow Amendment</a> to be enabled.</p>
 <p class="devportal-callout note"><strong>Note:</strong> An incomplete version of this amendment was introduced in v0.33.0 and removed in v0.80.0. (It was never enabled.)</p>
-<h2 id="paychan">PayChan<a aria-hidden="true" class="hover_anchor" href="#paychan"><i class="fa fa-link"></i></a></h2>
+<h3 id="paychan">PayChan<a aria-hidden="true" class="hover_anchor" href="#paychan"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2317,7 +2613,7 @@
 <p>Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated, unidirectional payments or temporary credit between two parties. This feature is expected to be useful for the <a class="external-link" href="https://interledger.org/" target="_blank">Interledger Protocol <i aria-hidden="true" class="fa fa-external-link"></i></a>. One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the combined content of many small Claims later, as long as it is within the expiration.</p>
 <p>Creates three new transaction types: <a href="paymentchannelcreate.html">PaymentChannelCreate</a>, <a href="paymentchannelclaim.html">PaymentChannelClaim</a>, and <a href="paymentchannelfund.html">PaymentChannelFund</a>. Creates a new ledger object type, <a href="paychannel.html">PayChannel</a>. Defines an off-ledger data structure called a <code>Claim</code>; the PaymentChannelClaim uses a signature for this data structure. Creates new <code>rippled</code> API methods: <a href="channel_authorize.html"><code>channel_authorize</code></a> (creates a signed Claim), <a href="channel_verify.html"><code>channel_verify</code></a> (verifies a signed Claim), and <a href="account_channels.html"><code>account_channels</code></a> (lists Channels associated with an account).</p>
 <p>For more information, see the <a href="use-payment-channels.html">Payment Channels Tutorial</a>.</p>
-<h2 id="requirefullycanonicalsig">RequireFullyCanonicalSig<a aria-hidden="true" class="hover_anchor" href="#requirefullycanonicalsig"><i class="fa fa-link"></i></a></h2>
+<h3 id="requirefullycanonicalsig">RequireFullyCanonicalSig<a aria-hidden="true" class="hover_anchor" href="#requirefullycanonicalsig"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2348,7 +2644,7 @@
 <p>Without this amendment, a transaction is malleable if it uses a secp256k1 signature and does not have <code>tfFullyCanonicalSig</code> enabled. Most signing utilities enable <code>tfFullyCanonicalSig</code> by default, but there are exceptions.</p>
 <p>With this amendment, no single-signed transactions are malleable. (<a href="transaction-malleability.html#malleability-with-multi-signatures">Multi-signed transactions may still be malleable</a> if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the <code>tfFullyCanonicalSig</code> flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.</p>
 <p>For more information, see <a class="external-link" href="https://github.com/ripple/rippled/issues/3042" target="_blank"><code>rippled</code> issue #3042 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="shamapv2">SHAMapV2<a aria-hidden="true" class="hover_anchor" href="#shamapv2"><i class="fa fa-link"></i></a></h2>
+<h3 id="shamapv2">SHAMapV2<a aria-hidden="true" class="hover_anchor" href="#shamapv2"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2373,7 +2669,7 @@
 </table>
 <p>Changes the hash tree structure that <code>rippled</code> uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.</p>
 <p>When this amendment is activated, the XRP Ledger will undergo a brief scheduled unavailability while the network calculates the changes to the hash tree structure. <!-- STYLE_OVERRIDE: will --></p>
-<h2 id="sorteddirectories">SortedDirectories<a aria-hidden="true" class="hover_anchor" href="#sorteddirectories"><i class="fa fa-link"></i></a></h2>
+<h3 id="sorteddirectories">SortedDirectories<a aria-hidden="true" class="hover_anchor" href="#sorteddirectories"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2402,7 +2698,7 @@
 </table>
 <p>Sorts the entries in <a href="directorynode.html">DirectoryNode ledger objects</a> and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> Older versions of <code>rippled</code> that do not know about this amendment may crash when they find a DirectoryNode sorted by the new rules. To avoid this problem, <a href="install-rippled.html">upgrade</a> to <code>rippled</code> version 0.80.0 or later.</p>
-<h2 id="suspay">SusPay<a aria-hidden="true" class="hover_anchor" href="#suspay"><i class="fa fa-link"></i></a></h2>
+<h3 id="suspay">SusPay<a aria-hidden="true" class="hover_anchor" href="#suspay"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2426,7 +2722,7 @@
 </tbody>
 </table>
 <p>This amendment was replaced by the <a href="escrow-object.html">Escrow</a> amendment.</p>
-<h2 id="ticketbatch">TicketBatch<a aria-hidden="true" class="hover_anchor" href="#ticketbatch"><i class="fa fa-link"></i></a></h2>
+<h3 id="ticketbatch">TicketBatch<a aria-hidden="true" class="hover_anchor" href="#ticketbatch"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2455,7 +2751,7 @@
 </table>
 <p>This amendment adds <a href="tickets.html">Tickets</a> as a way of sending transactions out of the typical sequence number order.</p>
 <p>Standards Draft: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/issues/16" target="_blank">XLS-13d <i aria-hidden="true" class="fa fa-external-link"></i></a>. <!-- SPELLING_IGNORE: xls, 13d --></p>
-<h2 id="tickets">Tickets<a aria-hidden="true" class="hover_anchor" href="#tickets"><i class="fa fa-link"></i></a></h2>
+<h3 id="tickets">Tickets<a aria-hidden="true" class="hover_anchor" href="#tickets"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2479,7 +2775,7 @@
 </tbody>
 </table>
 <p>This amendment was replaced by the <a href="#ticketbatch">TicketBatch</a> amendment.</p>
-<h2 id="ticksize">TickSize<a aria-hidden="true" class="hover_anchor" href="#ticksize"><i class="fa fa-link"></i></a></h2>
+<h3 id="ticksize">TickSize<a aria-hidden="true" class="hover_anchor" href="#ticksize"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2508,7 +2804,7 @@
 </table>
 <p>Changes the way <a href="offers.html#lifecycle-of-an-offer">Offers</a> are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.</p>
 <p>Introduces a <code>TickSize</code> field to accounts, which can be set with the <a href="accountset.html">AccountSet transaction type</a>. If a currency issuer sets the <code>TickSize</code> field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a <code>TickSize</code> set, that number of significant digits applies. When trading two currencies that have different <code>TickSize</code> values, whichever <code>TickSize</code> indicates the fewest significant digits applies. XRP does not have a <code>TickSize</code>.</p>
-<h2 id="trustsetauth">TrustSetAuth<a aria-hidden="true" class="hover_anchor" href="#trustsetauth"><i class="fa fa-link"></i></a></h2>
+<h3 id="trustsetauth">TrustSetAuth<a aria-hidden="true" class="hover_anchor" href="#trustsetauth"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2537,7 +2833,7 @@
 </table>
 <p>Allows pre-authorization of accounting relationships (zero-balance trust lines) when using <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
 <p>With this amendment enabled, a <code>TrustSet</code> transaction with <a href="trustset.html#trustset-flags"><code>tfSetfAuth</code> enabled</a> can create a new <a href="ripplestate.html"><code>RippleState</code> ledger object</a> even if it keeps all the other values of the <code>RippleState</code> node in their default state. The new <code>RippleState</code> node has the <a href="ripplestate.html#ripplestate-flags"><code>lsfLowAuth</code> or <code>lsfHighAuth</code> flag</a> enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled <a href="accountroot.html#accountroot-flags"><code>lsfRequireAuth</code></a> by sending an <a href="accountset.html">AccountSet transaction</a> with the <a href="accountset.html#accountset-flags"><code>asfRequireAuth</code> flag enabled</a>.</p>
-<h2 id="xrpfees">XRPFees<a aria-hidden="true" class="hover_anchor" href="#xrpfees"><i class="fa fa-link"></i></a></h2>
+<h3 id="xrpfees">XRPFees<a aria-hidden="true" class="hover_anchor" href="#xrpfees"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -2552,7 +2848,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Development</td>
+<td style="text-align: left;">Open for Voting</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
@@ -2605,20 +2901,75 @@
 
 <nav class="nav flex-column dactyl-tree-nav">
   <div class="nav-item nav-parent">
-    <a class="nav-link" href="docs.html">Documentation</a>
+    <a class="nav-link" href="index.html">Home</a>
   </div>
     
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="false" aria-controls="tree_nav_group_1"></a>
+
+        <a class="nav-link" href="xrp-ledger-overview.html">XRPL Overview</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="uses.html">Use Cases & Featured Projects</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="history.html">History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrp-overview.html">XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="impact.html">Impact</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://foundation.xrpl.org/">XRPL Foundation <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="faq.html">FAQ</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="privacy-policy.html">Privacy Policy</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     
   <div class="nav-item ">
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
 
-        <a class="nav-link" href="introduction.html">Introduction</a>
+        <a class="nav-link" href="docs.html">Documentation</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
+      
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="what-is-xrpl.html">What is the XRP Ledger?</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="introduction.html">Introduction</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
   </div>
 
       
@@ -2645,22 +2996,22 @@
 
   </div>
 
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
-
-        <a class="nav-link" href="use-cases.html">Use Cases</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+
+        <a class="nav-link" href="use-cases.html">Use Cases</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_1"></a>
 
         <a class="nav-link" href="payments-uc.html">Payments</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
@@ -2683,11 +3034,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_2"></a>
 
         <a class="nav-link" href="tokenization.html">Tokenization</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="stablecoin-issuer.html">Stablecoin Issuer</a>
@@ -2696,11 +3047,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_2_2"></a>
 
         <a class="nav-link" href="nft-mkt-overview.html">NFT Marketplace Overview</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nftoken-marketplace.html">NFT Marketplace</a>
@@ -2727,11 +3078,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3"></a>
 
         <a class="nav-link" href="defi-uc.html">Decentralized Finance</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="algorithmic-trading.html">Algorithmic Trading</a>
@@ -2750,22 +3101,22 @@
 
   </div>
 
-    
-  <div class="nav-item active-parent">
+      
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="true" aria-controls="tree_nav_group_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
 
         <a class="nav-link" href="concepts.html">Concepts</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="true" aria-controls="tree_nav_group_4_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_1" aria-expanded="false" aria-controls="tree_nav_group_2_4_1"></a>
 
         <a class="nav-link" href="networks-and-servers.html">Networks and Servers</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="rippled-server-modes.html">rippled Server Modes</a>
@@ -2797,25 +3148,8 @@
   </div>
 
       
-  <div class="nav-item active-parent">
-
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_1_7" aria-expanded="true" aria-controls="tree_nav_group_4_1_7"></a>
-
-        <a class="nav-link" href="amendments.html">Amendments</a>
-
-    <nav class="nav flex-column show " id="tree_nav_group_4_1_7">
-      
-  <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="known-amendments.html">Known Amendments</a>
-  </div>
-
-      
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="contribute-code-flow.html">Contribute Code to the XRP Ledger</a>
-  </div>
-
-    </nav>
-
+    <a class="nav-link nav-leaf" href="amendments.html">Amendments</a>
   </div>
 
       
@@ -2830,11 +3164,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_2" aria-expanded="false" aria-controls="tree_nav_group_2_4_2"></a>
 
         <a class="nav-link" href="consensus.html">Consensus Protocol</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus-structure.html">Consensus Structure</a>
@@ -2877,11 +3211,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
         <a class="nav-link" href="ledgers.html">Ledgers</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger-structure.html">Ledger Structure</a>
@@ -2904,11 +3238,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4" aria-expanded="false" aria-controls="tree_nav_group_4_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_4"></a>
 
         <a class="nav-link" href="transactions.html">Transactions</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="fees.html">Fees (Disambiguation)</a>
@@ -2942,11 +3276,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_4_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_2_4_4_7"></a>
 
         <a class="nav-link" href="finality-of-results.html">Finality of Results</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_4_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="look-up-transaction-results.html">Look Up Transaction Results</a>
@@ -2973,11 +3307,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5" aria-expanded="false" aria-controls="tree_nav_group_4_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_5" aria-expanded="false" aria-controls="tree_nav_group_2_4_5"></a>
 
         <a class="nav-link" href="payment-types.html">Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="direct-xrp-payments.html">Direct XRP Payments</a>
@@ -3015,19 +3349,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6" aria-expanded="false" aria-controls="tree_nav_group_4_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6" aria-expanded="false" aria-controls="tree_nav_group_2_4_6"></a>
 
         <a class="nav-link" href="tokens.html">Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_1"></a>
 
         <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
@@ -3085,11 +3419,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_4"></a>
 
         <a class="nav-link" href="freezes.html">Freezing Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
@@ -3122,11 +3456,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_9" aria-expanded="false" aria-controls="tree_nav_group_4_6_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_9" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_9"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -3153,11 +3487,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_7" aria-expanded="false" aria-controls="tree_nav_group_2_4_7"></a>
 
         <a class="nav-link" href="accounts.html">Accounts</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
@@ -3206,14 +3540,14 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
 
         <a class="nav-link" href="tutorials.html">Tutorials</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
@@ -3222,11 +3556,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2" aria-expanded="false" aria-controls="tree_nav_group_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2"></a>
 
         <a class="nav-link" href="python.html">Python</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="get-started-using-python.html">Get Started Using Python</a>
@@ -3235,19 +3569,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2_2"></a>
 
         <a class="nav-link" href="modular-tutorials-in-python.html">Modular Tutorials in Python</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_2_2_1"></a>
 
         <a class="nav-link" href="send-payments-using-python.html">Send Payments Using Python</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-create-accounts-send-xrp.html">Create Accounts and Send XRP Using Python</a>
@@ -3298,11 +3632,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_3"></a>
 
         <a class="nav-link" href="javascript.html">JavaScript</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
@@ -3311,19 +3645,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_3_2"></a>
 
         <a class="nav-link" href="modular-tutorials-in-javascript.html">Modular Tutorials in JavaScript</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_3_2_1"></a>
 
         <a class="nav-link" href="send-payments-using-javascript.html">Send Payments Using JavaScript</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="create-accounts-send-xrp-using-javascript.html">Create Accounts and Send XRP Using JavaScript</a>
@@ -3351,11 +3685,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_3_2_2"></a>
 
         <a class="nav-link" href="nfts-using-javascript.html">NFTs Using JavaScript</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="mint-and-burn-nfts-using-javascript.html">Mint and Burn NFTs Using JavaScript</a>
@@ -3401,11 +3735,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_4" aria-expanded="false" aria-controls="tree_nav_group_2_5_4"></a>
 
         <a class="nav-link" href="java.html">Java</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="get-started-using-java.html">Get Started Using Java</a>
@@ -3418,11 +3752,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_5" aria-expanded="false" aria-controls="tree_nav_group_2_5_5"></a>
 
         <a class="nav-link" href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="get-started-using-http-websocket-apis.html">Get Started Using HTTP / WebSocket APIs</a>
@@ -3440,19 +3774,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6" aria-expanded="false" aria-controls="tree_nav_group_2_5_6"></a>
 
         <a class="nav-link" href="tasks.html">Tasks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_1"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -3505,19 +3839,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_3"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_3_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -3550,11 +3884,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_3_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -3567,11 +3901,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_3_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -3613,11 +3947,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_4"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -3655,30 +3989,30 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="references.html">References</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1" aria-expanded="false" aria-controls="tree_nav_group_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="protocol-reference.html">XRP Ledger Protocol Reference</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_6_1_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_1"></a>
 
         <a class="nav-link" href="basic-data-types.html">Basic Data Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="base58-encodings.html">base58 Encodings</a>
@@ -3701,11 +4035,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_2"></a>
 
         <a class="nav-link" href="ledger-data-formats.html">Ledger Data Formats</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger-header.html">Ledger Header</a>
@@ -3719,11 +4053,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_2_3"></a>
 
         <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -3815,11 +4149,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3"></a>
 
         <a class="nav-link" href="transaction-formats.html">Transaction Reference</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transaction-common-fields.html">Transaction Common Fields</a>
@@ -3828,11 +4162,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3_2"></a>
 
         <a class="nav-link" href="transaction-types.html">Transaction Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
@@ -3960,11 +4294,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3_3"></a>
 
         <a class="nav-link" href="pseudo-transaction-types.html">Pseudo-Transactions</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="enableamendment.html">EnableAmendment</a>
@@ -3987,11 +4321,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3_4"></a>
 
         <a class="nav-link" href="transaction-results.html">Transaction Results</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="tec-codes.html">tec Codes</a>
@@ -4047,19 +4381,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2" aria-expanded="false" aria-controls="tree_nav_group_6_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="client-libraries.html">Client Libraries</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_2_1"></a>
 
         <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
@@ -4091,19 +4425,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3" aria-expanded="false" aria-controls="tree_nav_group_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_1"></a>
 
         <a class="nav-link" href="api-conventions.html">API Conventions</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="request-formatting.html">Request Formatting</a>
@@ -4141,19 +4475,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2"></a>
 
         <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_1"></a>
 
         <a class="nav-link" href="account-methods.html">Account Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account_channels.html">account_channels</a>
@@ -4211,11 +4545,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_2"></a>
 
         <a class="nav-link" href="ledger-methods.html">Ledger Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger.html">ledger</a>
@@ -4248,11 +4582,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_3"></a>
 
         <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="submit.html">submit</a>
@@ -4285,11 +4619,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_4"></a>
 
         <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
@@ -4327,11 +4661,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_5"></a>
 
         <a class="nav-link" href="payment-channel-methods.html">Payment Channel Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="channel_authorize.html">channel_authorize</a>
@@ -4349,11 +4683,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_6"></a>
 
         <a class="nav-link" href="subscription-methods.html">Subscription Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="subscribe.html">subscribe</a>
@@ -4371,11 +4705,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_7"></a>
 
         <a class="nav-link" href="server-info-methods.html">Server Info Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="fee.html">fee</a>
@@ -4403,11 +4737,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_8"></a>
 
         <a class="nav-link" href="clio-methods.html">Clio Server</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
@@ -4435,11 +4769,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_9"></a>
 
         <a class="nav-link" href="utility-methods.html">Utility Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="json.html">json</a>
@@ -4466,19 +4800,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3"></a>
 
         <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_1"></a>
 
         <a class="nav-link" href="key-generation-methods.html">Key Generation Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="validation_create.html">validation_create</a>
@@ -4496,11 +4830,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_2"></a>
 
         <a class="nav-link" href="logging-and-data-management-methods.html">Logging and Data Management Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="can_delete.html">can_delete</a>
@@ -4548,11 +4882,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_3"></a>
 
         <a class="nav-link" href="server-control-methods.html">Server Control Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ledger_accept.html">ledger_accept</a>
@@ -4575,11 +4909,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_4"></a>
 
         <a class="nav-link" href="signing-methods.html">Signing Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="sign.html">sign</a>
@@ -4597,11 +4931,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_5"></a>
 
         <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="connect.html">connect</a>
@@ -4634,11 +4968,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_6"></a>
 
         <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>
@@ -4690,11 +5024,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_4"></a>
 
         <a class="nav-link" href="peer-port-methods.html">Peer Port Methods</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="health-check.html">Health Check</a>
@@ -4729,14 +5063,14 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="infrastructure.html">Infrastructure</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="commandline-usage.html">Commandline Usage</a>
@@ -4745,11 +5079,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_2" aria-expanded="false" aria-controls="tree_nav_group_7_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_2" aria-expanded="false" aria-controls="tree_nav_group_2_7_2"></a>
 
         <a class="nav-link" href="install-rippled.html">Install rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
@@ -4803,19 +5137,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3" aria-expanded="false" aria-controls="tree_nav_group_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_7_3"></a>
 
         <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_7_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_7_3_1"></a>
 
         <a class="nav-link" href="server-modes.html">Server Modes</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
@@ -4833,11 +5167,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_7_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_7_3_2"></a>
 
         <a class="nav-link" href="data-retention.html">Data Retention</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="configure-full-history.html">Configure Full History</a>
@@ -4909,11 +5243,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_4" aria-expanded="false" aria-controls="tree_nav_group_2_7_4"></a>
 
         <a class="nav-link" href="configure-peering.html">Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -4961,11 +5295,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_5" aria-expanded="false" aria-controls="tree_nav_group_7_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_5" aria-expanded="false" aria-controls="tree_nav_group_2_7_5"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Testing and Auditing</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -4988,11 +5322,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_6" aria-expanded="false" aria-controls="tree_nav_group_7_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_6" aria-expanded="false" aria-controls="tree_nav_group_2_7_6"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -5037,23 +5371,40 @@
     <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
 
     
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="resources.html">Resources</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3">
+      
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="code-samples.html">Code Samples</a>
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_9" aria-expanded="false" aria-controls="tree_nav_group_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
 
         <a class="nav-link" href="dev-tools.html">Dev Tools</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="xrp-ledger-rpc-tool.html">RPC Tool</a>
@@ -5089,22 +5440,54 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
     <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL Learning Portal <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11" aria-expanded="false" aria-controls="tree_nav_group_11"></a>
-
-        <a class="nav-link" href="contributing-to-documentation.html">Contributing to Documentation</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_11">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="documentation-languages.html">Translations</a>
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://livenet.xrpl.org/">Ledger Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="known-amendments.html">Known Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+
+        <a class="nav-link" href="contribute-code.html">Contribute Code</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-custom-transactors.html">Create Custom Transactors</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+
+        <a class="nav-link" href="contribute-documentation.html">Contribute Documentation</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.md">Contributor Code of Conduct <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="documentation-translations.html">Translations</a>
   </div>
 
       
@@ -5114,12 +5497,9 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tutorial-guidelines.html">Tutorial Guidelines</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_11_3" aria-expanded="false" aria-controls="tree_nav_group_11_3"></a>
-
-        <a class="nav-link" href="tutorial-guidelines.html">Tutorial Guidelines</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_11_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="tutorial-structure.html">Tutorial Structure</a>
@@ -5127,6 +5507,63 @@
 
     </nav>
 
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="contribute.html">Contribute to the XRPL Community</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="events.html">Events</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ambassadors.html">Ambassadors</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="developer-funding.html">Developer Funding</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://jobs.xrpl.org/">XRPL Jobs <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl.org/blog/">Dev Blog <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrplgrants.org/">XRPL Grants <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF">GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip">XRPL Brand Kit <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="report-a-scam.html">Report a Scam</a>
   </div>
 
     </nav>
@@ -5146,7 +5583,6 @@
             <li class="nav-item"><a href="xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
             <li class="nav-item"><a href="uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
             <li class="nav-item"><a href="history.html" class="nav-link">History</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
@@ -5159,17 +5595,26 @@
           <h5>Docs</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="docs.html" class="nav-link">Documentation</a></li>
-            <li class="nav-item"><a href="docs-index.html" class="nav-link">Documentation Index</a></li>
             <li class="nav-item"><a href="introduction.html" class="nav-link">Introduction</a></li>
             <li class="nav-item"><a href="use-cases.html" class="nav-link">Use Cases</a></li>
             <li class="nav-item"><a href="concepts.html" class="nav-link">Concepts</a></li>
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
             <li class="nav-item"><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Resources</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
-            <li class="nav-item"><a href="contributing-to-documentation.html" class="nav-link">Contributing to Documentation</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
+            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -5177,14 +5622,13 @@
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
-            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
             <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
             <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
             <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
-            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>

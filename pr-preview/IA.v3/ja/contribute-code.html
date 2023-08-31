@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Contribute Code to the XRP Ledger - XRPL.org (日本語)</title>
+    <title>コードへの貢献 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Contribute Code to the XRP Ledger | XRPL.org (日本語)">
+    <meta property="og:title" content="コードへの貢献 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/contribute-code.html" />
-    <meta property="og:description" content="XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。" />
-    <meta name="description" content="XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。" />
+    <meta property="og:description" content="XRP Ledgerプロトコルにどのように機能を実装するかを学びます。" />
+    <meta name="description" content="XRP Ledgerプロトコルにどのように機能を実装するかを学びます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": []
+      "page_labels": ['ブロックチェーン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v21.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v23.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -90,18 +90,119 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-<a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-  <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-  <div class="apex-reg"><span class="apex-highlight">APEX Dev Summit 2023</span>に登録</div>
-  <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-  <div class="apex-circled highlight-yellow">アムステルダム</div>
-  <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-  <div class="apex-circled d-none d-lg-block highlight-purple">今すぐ登録</div>
-  <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-</a>
+
+
+<!-- Inline script to conditionally display the banner -->
+  <script>
+    // Get the user's location using the provided JavaScript code
+    let userLocation = window.Osano.cm.countryCode;
+
+    // List of countries for which we want to serve the banner
+    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
+
+    // Check if the user's location is in the list of target countries
+    let isTargetCountry = targetCountries.includes(userLocation);
+
+    if (isTargetCountry) {
+      // Define the banner HTML with the countdown timer
+      let token2049bannerHTML = `
+        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
+            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
+            <div class="box">
+              <div id="js-clock-days" class="clock-number">00</div>
+              <div class="clock-label">Days</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-hours" class="clock-number">00</div>
+              <div class="clock-label">Hrs</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-minutes" class="clock-number">00</div>
+              <div class="clock-label">Min</div>
+            </div>
+            <div class="box">
+              <div id="js-clock-seconds" class="clock-number">00</div>
+              <div class="clock-label">Sec</div>
+            </div>
+          </div>
+          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
+          <span class="d-inline-block">XRPL Zone </span>
+          <span class="token-highlight d-inline-block">@Token2049</span></div>
+           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
+           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
+            <div class="token-circled d-none d-lg-inline-block highlight-purple">今すぐ登録</div>
+        </a>
+      `;
+
+      // Write the banner directly to the document
+      document.write(token2049bannerHTML);
+
+      var deadline = '2023/09/13 08:00';
+
+      function pad(num, size) {
+        var s = "0" + num;
+        return s.substr(s.length - size);
+      }
+
+      function parseDate(date) {
+        const parsed = Date.parse(date);
+        if (!isNaN(parsed)) return parsed
+        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
+      }
+
+      function getTimeRemaining(endtime) {
+        let total = parseDate(endtime) - Date.parse(new Date())
+        let seconds = Math.floor((total / 1000) % 60)
+        let minutes = Math.floor((total / 1000 / 60) % 60)
+        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
+        let days = Math.floor(total / (1000 * 60 * 60 * 24))
+
+        return { total, days, hours, minutes, seconds };
+      }
+
+      function clock(id, endtime) {
+        let days = document.getElementById(id + '-days')
+        let hours = document.getElementById(id + '-hours')
+        let minutes = document.getElementById(id + '-minutes')
+        let seconds = document.getElementById(id + '-seconds')
+
+        var timeinterval = setInterval(function () {
+          var time = getTimeRemaining(endtime);
+
+          if (time.total <= 0) {
+            clearInterval(timeinterval);
+          } else {
+            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
+            hours.innerHTML = pad(time.hours, 2);
+            minutes.innerHTML = pad(time.minutes, 2);
+            seconds.innerHTML = pad(time.seconds, 2);
+          }
+        }, 1000);
+      }
+      clock('js-clock', deadline);
+    } else {
+      let apexBanner = `
+          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
+            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
+            <div class="apex-reg"><span class="apex-highlight">APEX Dev Summit 2023</span>に登録</div>
+            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
+            <div class="apex-circled highlight-yellow">アムステルダム</div>
+            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
+            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
+            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
+            <div class="apex-circled d-none d-lg-block highlight-purple">今すぐ登録</div>
+            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
+          </a>`;
+
+      // Write the banner directly to the document
+      document.write(apexBanner);
+}
+  </script>
+
+
+
+
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,7 +219,6 @@
             <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPLの概要</a>
             <a class="dropdown-item" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
             <a class="dropdown-item" href="/ja/history.html">歴史</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
@@ -147,24 +247,14 @@
               <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="/ja/docs-index.html">Documentation Index</a>
-            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
-          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
             <a class="dropdown-item" href="/ja/use-cases.html">Use Cases</a>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
             <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
             <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
             <a class="dropdown-item" href="/ja/infrastructure.html">Infrastructure</a>
-          </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
-            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
-            <a class="dropdown-item" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -189,13 +279,35 @@
       </li>
 
             <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>リソース</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-開発">
+            <h5 class="dropdown-item">開発</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+          </div><!--./col-->
+          <div class="navcol col-for-現在のステータス">
+            <h5 class="dropdown-item">現在のステータス</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/known-amendments.html">既知のAmendment</a>
+          </div><!--./col-->
+          <div class="navcol col-for-参加する">
+            <h5 class="dropdown-item">参加する</h5>
+            <a class="dropdown-item active" href="/ja/contribute-code.html">コードへの貢献</a>
+            <a class="dropdown-item" href="/ja/contribute-documentation.html">ドキュメントへの貢献</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティ</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
-            <img id="top-nav-hero-contribute" alt="貢献する icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-xrplコミュニティへの貢献" href="/ja/contribute.html">
+            <img id="top-nav-hero-contribute" alt="XRPLコミュニティへの貢献 icon" />
             <div class="dropdown-hero-text">
-              <h4>貢献する</h4>
-              <p>話題に加わろう</p>
+              <h4>XRPLコミュニティへの貢献</h4>
+              <p>Join the conversation</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
@@ -207,7 +319,7 @@
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
-            <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
+            <a class="dropdown-item" href="/ja/report-a-scam.html">詐欺の報告</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -261,14 +373,26 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/IA.v3/content/contributing/contribute-code.md?pr=/XRPLF/xrpl-dev-portal/pull/1934" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
-</div><!-- /.github-edit -->    <div class="toc-header">
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/IA.v3/content/resources/contribute-code/contribute-code.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1934" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-ブロックチェーン">ブロックチェーン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "ブロックチェーン" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#standards-drafts">Standards Drafts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#related-repositories">Related Repositories</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#コードへの貢献">コードへの貢献</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#コアサーバのソースコード">コアサーバのソースコード</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledgerの規格">XRP Ledgerの規格</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#amendmentの実装">Amendmentの実装</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#コーディングとデプロイ">コーディングとデプロイ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#コードのフローチャート">コードのフローチャート</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -280,50 +404,99 @@
     
 
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/contribute.html">貢献する</a></li>
-    <li class="active breadcrumb-item">Contribute Code to the XRP Ledger</li>
+    <li class="active breadcrumb-item"><a href="/ja/resources.html">リソース</a></li>
+    <li class="active breadcrumb-item">コードへの貢献</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#contribute-code-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h1>
-<p>The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Community involvement makes it better. Look for "[Source]" links in the <a href="docs.html">documentation</a> to jump directly into the related source code, or browse the source code on GitHub:</p>
+        <h1 id="コードへの貢献">コードへの貢献<a aria-hidden="true" class="hover_anchor" href="#コードへの貢献"><i class="fa fa-link"></i></a></h1>
+<p>XRP Ledgerを動かすソフトウェアはオープンソースです。誰でもダウンロードし、変更し、拡張し、調査することができます。もしあなたがコードに貢献したいのであれば、コミュニティと協力してあなたの変更の仕様を定義し、XRP Ledgerのプロトコルとブロックチェーンの一部になる前にコードをテストすることが重要です。</p>
+<h1 id="コアサーバのソースコード">コアサーバのソースコード<a aria-hidden="true" class="hover_anchor" href="#コアサーバのソースコード"><i class="fa fa-link"></i></a></h1>
+<p>XRP Ledgerを動かすソフトウェアはオープンソースです。コミュニティが参加することで、より良いものが生まれます。<a href="docs.html">ドキュメント</a>内の"[Source]"リンクから関連するソースコードに直接ジャンプしたり、GitHubでソースコードを閲覧することができます：</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">XRP Ledger Source Code</th>
+<th style="text-align: left;">XRP Ledger ソースコード</th>
 <th style="text-align: left;"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Repository</td>
+<td style="text-align: left;">リポジトリ</td>
 <td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/rippled" target="_blank">https://github.com/XRPLF/rippled <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td style="text-align: left;">License</td>
-<td style="text-align: left;"><a class="external-link" href="https://github.com/ripple/rippled/blob/develop/LICENSE.md" target="_blank">Multiple; ISC (permissive) <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">ライセンス</td>
+<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/LICENSE.md" target="_blank">Multiple; ISC (permissive) <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td style="text-align: left;">Programming Language</td>
+<td style="text-align: left;">プログラム言語</td>
 <td style="text-align: left;">C++</td>
 </tr>
 </tbody>
 </table>
-<p>If you're not sure where to start, Dev Null Productions provides a detailed and thorough <a class="external-link" href="https://xrpintel.com/source" target="_blank"><strong>Source Code Guide</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a> that describes the structure and functions of the core XRP Ledger server (<code>rippled</code>) implementation.</p>
-<h2 id="standards-drafts">Standards Drafts<a aria-hidden="true" class="hover_anchor" href="#standards-drafts"><i class="fa fa-link"></i></a></h2>
-<p>When developing amendments to the XRP Ledger protocol or interoperability between XRP Ledger applications, it's best to discuss the proposed changes with the community.</p>
-<p>The <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/" target="_blank"><strong>Community Standards Drafts</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a> project is a great place to share your plans and collect suggestions on a proposed standard. This feedback can help to balance trade-offs, design for greater efficiency, and address potential security implications before you share your actual source code with others.</p>
-<h2 id="related-repositories">Related Repositories<a aria-hidden="true" class="hover_anchor" href="#related-repositories"><i class="fa fa-link"></i></a></h2>
-<p>You can find various XRP Ledger-related projects under these and other GitHub organizations:</p>
+<p>何から始めたらいいか分からないという方のために、Dev Null Productionsは、XRP Ledgerサーバー(<code>rippled</code>)のコア実装の仕組みや機能を説明した、詳細かつ充実した<a class="external-link" href="https://xrpintel.com/source" target="_blank"><strong>ソースコード・ガイド</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a>を提供しています。</p>
+<h2 id="xrp-ledgerの規格">XRP Ledgerの規格<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgerの規格"><i class="fa fa-link"></i></a></h2>
+<p><code>rippled</code>に対する変更はXRP Ledger Standard (XLS)、つまり変更の仕様を特定し詳細に記述した文書によって管理されます。開発にコミットする前に、<a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions" target="_blank">XRPL-Standardsリポジトリ <i aria-hidden="true" class="fa fa-external-link"></i></a>で議論を始める必要があります。これにより、コミュニティはあなたの変更に関して議論し、フィードバックを提供する機会を得ることができます。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong>* バグ修正にはXLSは必要ありませんが、Amendmentが必要になる場合があります。</p>
+<p>XLSの作成には独自のプロセスがありますが、簡単にまとめると次のようになります：</p>
+<ol>
+<li>ディスカッションを開始し、フィードバックを集めます。</li>
+<li>StandardリポジトリにXLSドラフトを作成します。</li>
+<li>XLSドラフトを仕様候補として公開します。</li>
+</ol>
+<p>詳細については、<a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/CONTRIBUTING.md" target="_blank">XLS貢献ガイド <i aria-hidden="true" class="fa fa-external-link"></i></a> をご覧ください。</p>
+<h2 id="amendmentの実装">Amendmentの実装<a aria-hidden="true" class="hover_anchor" href="#amendmentの実装"><i class="fa fa-link"></i></a></h2>
+<p>XLSドラフトを作成した後、その変更にAmendmentが必要かどうかを判断する必要があります。特に次のような<strong>トランザクション処理</strong>に影響する変更にはAmendment が必要です。</p>
 <ul>
-<li><a class="external-link" href="https://github.com/XRPLF/" target="_blank">XRP Ledger Foundation <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a class="external-link" href="https://github.com/ripple/" target="_blank">Ripple <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a class="external-link" href="https://github.com/XRPL-Labs/" target="_blank">XRPL Labs <i aria-hidden="true" class="fa fa-external-link"></i></a> <!-- SPELLING_IGNORE: xrpl --></li>
+<li>レジャールールを変更し、異なる結果をもたらすもの。</li>
+<li>トランザクションの追加または削除。</li>
+<li>コンセンサスへの影響がある変更。</li>
 </ul>
-<p>Be sure to look at each repository's license and contributing guidelines before contributing to that repository.</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> 変更にAmendmentが必要ない場合、そのままコーディングとデプロイに進むことができます。</p>
+<p>コードをAmendmentとして実装するには、次のファイルにAmendment情報を追加する必要があります。</p>
+<ul>
+<li><strong>Feature.cpp</strong>:</li>
+</ul>
+<p>開発が完了するまで、<code>Supported</code>パラメータは<code>no</code>に設定してください。</p>
+<p>バグの修正の場合、<code>DefaultVote</code>パラメータを<code>yes</code>に設定する必要があります。</p>
+<ul>
+<li><strong>Feature.h</strong>: <code>numFeatures</code> カウンタを増やし、<code>extern uint256 const</code> 変数を宣言します。</li>
+</ul>
+<h2 id="コーディングとデプロイ">コーディングとデプロイ<a aria-hidden="true" class="hover_anchor" href="#コーディングとデプロイ"><i class="fa fa-link"></i></a></h2>
+<p>一般的な開発プロセスは以下の通りです。</p>
+<ol>
+<li>
+<p>コードを開発するためにはまず、<a class="external-link" href="https://github.com/XRPLF/rippled" target="_blank"><code>rippled</code> リポジトリ <i aria-hidden="true" class="fa fa-external-link"></i></a> をフォークまたはブランチを作成します。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> 何から始めたらいいかわからない場合は、<em>Dev Null Productions</em> が詳細かつ充実した <a class="external-link" href="https://xrpintel.com/source" target="_blank"><code>rippled</code> ソースコードガイド <i aria-hidden="true" class="fa fa-external-link"></i></a> を提供しています。</p>
+</li>
+<li>
+<p>単体テストと統合テストを実行します。独立した環境で作業をテストするにはスタンドアロンモードでサーバを実行するのが良いでしょう。</p>
+</li>
+<li>
+<p><code>XRPLF:develop</code>にプルリクエストを作成します。</p>
+<p><strong>Amendment向けの注記:</strong> <strong>Feature.cpp</strong>の<code>Supported</code>パラメータを<code>yes</code>に更新します。</p>
+</li>
+<li>
+<p>プルリクエストがXRP Ledgerのメンテナによって承認されると、あなたのコードは<code>develop</code>にマージされ、Devnet上で追加のテストを行うことができます。</p>
+<p><strong>Amendment向けの注記:</strong>
+- <code>DefaultVote</code>パラメータはロックされます。
+- もしAmendmentに問題が見つかれば、Amendmentの修正と新しいPRの提出を再度行う必要があります。新しいPRでは<code>DefaultVote</code>を変更することができます。</p>
+</li>
+</ol>
+<p>年に4回、<code>develop</code>で承認されたPRからリリース候補がビルドされます。このパッケージはTestnetとMainnet上のいくつかのノードにデプロイされます。リリース候補に問題がなければ、コードは<code>master</code>にマージされ、メインネット上のノードはこのビルドにアップグレードできます。</p>
+<ol start="6">
+<li>新しいAmendmentは合意形成プロセスを経て、バリデーターがそのAmendmentを有効にするかどうかを投票します。</li>
+</ol>
+<h2 id="コードのフローチャート">コードのフローチャート<a aria-hidden="true" class="hover_anchor" href="#コードのフローチャート"><i class="fa fa-link"></i></a></h2>
+<p><img alt="コードのフローチャート" src="img/Contribute Code Flowchart.png"/></p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>コンセプト:</strong><ul>
+<li><a href="amendments.html">Amendment</a></li>
+</ul>
+</li>
+</ul>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -369,11 +542,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/history.html">歴史</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf external-link" target="_blank" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
       
@@ -424,7 +592,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrpl.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
   </div>
 
       
@@ -604,24 +772,7 @@
 
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_1_7" aria-expanded="false" aria-controls="tree_nav_group_2_4_1_7"></a>
-
-        <a class="nav-link" href="/ja/amendments.html">Amendment</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_1_7">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/contribute-code-flow.html">Contribute Code to the XRP Ledger</a>
-  </div>
-
-    </nav>
-
+    <a class="nav-link nav-leaf" href="/ja/amendments.html">Amendment</a>
   </div>
 
       
@@ -2833,10 +2984,27 @@
     <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
     </nav>
 
   </div>
 
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="/ja/resources.html">リソース</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/code-samples.html">サンプルコード</a>
@@ -2845,11 +3013,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
 
         <a class="nav-link" href="/ja/dev-tools.html">開発者ツール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPCツール</a>
@@ -2892,37 +3060,62 @@
 
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11" aria-expanded="false" aria-controls="tree_nav_group_2_11"></a>
-
-        <a class="nav-link" href="/ja/contributing-to-documentation.html">Contributing to Documentation</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/documentation-languages.html">Translations</a>
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ <i aria-hidden="true" class="fa fa-external-link"></i></a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/creating-diagrams.html">Creating Diagrams</a>
+    <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
   </div>
 
       
-  <div class="nav-item ">
+  <div class="nav-item active">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_11_3" aria-expanded="false" aria-controls="tree_nav_group_2_11_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="true" aria-controls="tree_nav_group_3_6"></a>
 
-        <a class="nav-link" href="/ja/tutorial-guidelines.html">Tutorial Guidelines</a>
+        <a class="nav-link" href="/ja/contribute-code.html">コードへの貢献</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_11_3">
+    <nav class="nav flex-column show " id="tree_nav_group_3_6">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tutorial-structure.html">Tutorial Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/create-custom-transactors.html">カスタムトランザクタの作成</a>
   </div>
 
     </nav>
 
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+
+        <a class="nav-link" href="/ja/contribute-documentation.html">ドキュメントへの貢献</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.ja.md">コントリビューター行動規範 <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/documentation-translations.html">翻訳</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/creating-diagrams.html">図の作成</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tutorial-guidelines.html">チュートリアルガイドライン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tutorial-structure.html">チュートリアルの構成</a>
   </div>
 
     </nav>
@@ -2934,18 +3127,13 @@
   </div>
 
     
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
 
-        <a class="nav-link" href="/ja/contribute.html">貢献する</a>
+        <a class="nav-link" href="/ja/contribute.html">XRPLコミュニティへの貢献</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_3">
-      
-  <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/contribute-code.html">Contribute Code to the XRP Ledger</a>
-  </div>
-
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/events.html">イベント</a>
@@ -2988,7 +3176,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/report-a-scam.html">Report a Scam</a>
+    <a class="nav-link nav-leaf" href="/ja/report-a-scam.html">詐欺の報告</a>
   </div>
 
     </nav>
@@ -3008,7 +3196,6 @@
             <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPLの概要</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
             <li class="nav-item"><a href="/ja/history.html" class="nav-link">歴史</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
             <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRPの概要</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
@@ -3021,25 +3208,33 @@
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
-            <li class="nav-item"><a href="/ja/docs-index.html" class="nav-link">Documentation Index</a></li>
             <li class="nav-item"><a href="/ja/introduction.html" class="nav-link">基本</a></li>
             <li class="nav-item"><a href="/ja/use-cases.html" class="nav-link">Use Cases</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
             <li class="nav-item"><a href="/ja/infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>リソース</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/resources.html" class="nav-link">リソース</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
-            <li class="nav-item"><a href="/ja/contributing-to-documentation.html" class="nav-link">Contributing to Documentation</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">コードへの貢献</a></li>
+            <li class="nav-item"><a href="/ja/contribute-documentation.html" class="nav-link">ドキュメントへの貢献</a></li>
           </ul>
         </div><!--/.col -->
 
         <div class="col-lg">
           <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
-            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">XRPLコミュニティへの貢献</a></li>
             <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
             <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
             <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
@@ -3048,7 +3243,7 @@
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
-            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">詐欺の報告</a></li>
           </ul>
         </div><!--/.col -->
 
