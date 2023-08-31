@@ -1,7 +1,6 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import EscrowCancel
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
-                              send_reliable_submission)
+from xrpl.transaction import submit_and_wait
 from xrpl.wallet import generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to the testnetwork
@@ -15,11 +14,10 @@ escrow_sequence = 30215126
 sender_wallet = generate_faucet_wallet(client=client)
 
 # Build escrow cancel transaction
-cancel_txn = EscrowCancel(account=sender_wallet.classic_address, owner=sender_wallet.classic_address, offer_sequence=escrow_sequence)
+cancel_txn = EscrowCancel(account=sender_wallet.address, owner=sender_wallet.address, offer_sequence=escrow_sequence)
 
-# Sign and submit transaction
-stxn = safe_sign_and_autofill_transaction(cancel_txn, sender_wallet, client)
-stxn_response = send_reliable_submission(stxn, client)
+# Autofill, sign, then submit transaction and wait for result
+stxn_response = submit_and_wait(cancel_txn, client, sender_wallet)
 
 # Parse response and return result
 stxn_result = stxn_response.result

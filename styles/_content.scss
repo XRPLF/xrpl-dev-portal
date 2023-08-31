@@ -1,7 +1,16 @@
 /* Content text styling (applies mostly to Markdown-generated content)------- */
+// TODO: convert this to nested SCSS format
 
 .content {
   padding-bottom: 50px;
+
+  p code,
+  table code,
+  ul code,
+  ol code {
+    background-color: $green-1000;
+    color: $green-400;
+  }
 }
 
 .content a,

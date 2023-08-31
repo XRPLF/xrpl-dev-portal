@@ -1,4 +1,4 @@
-from xrpl.transaction import safe_sign_and_autofill_transaction, send_reliable_submission
+from xrpl.transaction import submit_and_wait
 from xrpl.models.transactions.nftoken_burn import NFTokenBurn
 from xrpl.models.requests import AccountNFTs
 from xrpl.clients import JsonRpcClient
@@ -22,8 +22,8 @@ else:
     client = JsonRpcClient(JSON_RPC_URL)
 
     # Initialize wallet from seed
-    issuer_wallet = Wallet(seed=seed, sequence=0)
-    issuerAddr = issuer_wallet.classic_address
+    issuer_wallet = Wallet.from_seed(seed=seed)
+    issuerAddr = issuer_wallet.address
 
     print(f"\nIssuer Account: {issuerAddr}")
     print(f"          Seed: {issuer_wallet.seed}")
@@ -52,10 +52,9 @@ else:
             nftoken_id=get_account_nfts.result['account_nfts'][0]['NFTokenID']
         )
 
-        # Sign burn_tx using the issuer account
-        burn_tx_signed = safe_sign_and_autofill_transaction(transaction=burn_tx, wallet=issuer_wallet, client=client)
-        burn_tx_signed = send_reliable_submission(transaction=burn_tx_signed, client=client)
-        burn_tx_result = burn_tx_signed.result
+        # Sign and submit burn_tx using the issuer account
+        burn_tx_response = submit_and_wait(transaction=burn_tx, client=client, wallet=issuer_wallet)
+        burn_tx_result = burn_tx_response.result
         print(f"\nBurn tx result: {burn_tx_result['meta']['TransactionResult']}")
         print(f"   Tx response:{burn_tx_result}")
 

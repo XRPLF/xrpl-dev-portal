@@ -1,9 +1,9 @@
 from xrpl.models.transactions.nftoken_create_offer import NFTokenCreateOffer, NFTokenCreateOfferFlag
-from xrpl.transaction import safe_sign_and_autofill_transaction, send_reliable_submission
+from xrpl.transaction import submit_and_wait
 from xrpl.models.transactions.nftoken_mint import NFTokenMint, NFTokenMintFlag
 from xrpl.models.transactions.nftoken_accept_offer import NFTokenAcceptOffer
 from xrpl.models.transactions.nftoken_cancel_offer import NFTokenCancelOffer
-from xrpl.models.transactions.account_set import AccountSet, AccountSetFlag
+from xrpl.models.transactions.account_set import AccountSet, AccountSetAsfFlag
 from xrpl.models.transactions.nftoken_burn import NFTokenBurn
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.models.requests import AccountNFTs
@@ -38,13 +38,13 @@ client = JsonRpcClient(JSON_RPC_URL)
 # Get issuer, minter, buyer account credentials from the Testnet Faucet
 print("Requesting address from the Testnet faucet...")
 issuer_wallet = generate_faucet_wallet(client=client)
-issuerAddr = issuer_wallet.classic_address
+issuerAddr = issuer_wallet.address
 
 nftoken_minter_wallet = generate_faucet_wallet(client=client)
-minterAddr = nftoken_minter_wallet.classic_address
+minterAddr = nftoken_minter_wallet.address
 
 buyer_wallet = generate_faucet_wallet(client=client)
-buyerAddr = buyer_wallet.classic_address
+buyerAddr = buyer_wallet.address
 
 print(f"              Minter Account: {issuerAddr}"
       f"\n   Authorized Minter Account: {minterAddr}"
@@ -57,10 +57,9 @@ mint_tx = NFTokenMint(
     nftoken_taxon=0
 )
 
-# Sign mint_tx using issuer account
-mint_tx_signed = safe_sign_and_autofill_transaction(transaction=mint_tx, wallet=issuer_wallet, client=client)
-mint_tx_signed = send_reliable_submission(transaction=mint_tx_signed, client=client)
-mint_tx_result = mint_tx_signed.result
+# Sign and submit mint_tx using issuer account
+mint_tx_response = submit_and_wait(transaction=mint_tx, client=client, wallet=issuer_wallet)
+mint_tx_result = mint_tx_response.result
 print(f"\n Mint tx result: {mint_tx_result['meta']['TransactionResult']}"
       f"\n    Tx response: {mint_tx_result}")
 
@@ -81,9 +80,8 @@ burn_tx = NFTokenBurn(
 )
 
 # Sign burn_tx using issuer account
-burn_tx_signed = safe_sign_and_autofill_transaction(transaction=burn_tx, wallet=issuer_wallet, client=client)
-burn_tx_signed = send_reliable_submission(transaction=burn_tx_signed, client=client)
-burn_tx_result = burn_tx_signed.result
+burn_tx_response = submit_and_wait(transaction=burn_tx, client=client, wallet=issuer_wallet)
+burn_tx_result = burn_tx_response.result
 print(f"\n Burn tx result: {burn_tx_result['meta']['TransactionResult']}"
       f"\n    Tx response: {burn_tx_result}")
 
@@ -96,14 +94,13 @@ else:
 print(f"\n - Authorizing account {minterAddr} as a NFT minter on account {issuerAddr}...")
 authorize_minter_tx = AccountSet(
     account=issuerAddr,
-    set_flag=AccountSetFlag.ASF_AUTHORIZED_NFTOKEN_MINTER,
+    set_flag=AccountSetAsfFlag.ASF_AUTHORIZED_NFTOKEN_MINTER,
     nftoken_minter=minterAddr
 )
 
 # Sign authorize_minter_tx using issuer account
-authorize_minter_tx_signed = safe_sign_and_autofill_transaction(transaction=authorize_minter_tx, wallet=issuer_wallet, client=client)
-authorize_minter_tx_signed = send_reliable_submission(transaction=authorize_minter_tx_signed, client=client)
-authorize_minter_tx_result = authorize_minter_tx_signed.result
+authorize_minter_tx_response = submit_and_wait(transaction=authorize_minter_tx, client=client, wallet=issuer_wallet)
+authorize_minter_tx_result = authorize_minter_tx_response.result
 print(f"\n Authorize minter tx result: {authorize_minter_tx_result['meta']['TransactionResult']}"
       f"\n                Tx response: {authorize_minter_tx_result}")
 
@@ -125,9 +122,8 @@ mint_tx_1 = NFTokenMint(
 
 # Sign using previously authorized minter's account, this will result in the NFT's issuer field to be the Issuer Account
 # while the NFT's owner would be the Minter Account
-mint_tx_1_signed = safe_sign_and_autofill_transaction(transaction=mint_tx_1, wallet=nftoken_minter_wallet, client=client)
-mint_tx_1_signed = send_reliable_submission(transaction=mint_tx_1_signed, client=client)
-mint_tx_1_result = mint_tx_1_signed.result
+mint_tx_1_response = submit_and_wait(transaction=mint_tx_1, client=client, wallet=nftoken_minter_wallet)
+mint_tx_1_result = mint_tx_1_response.result
 print(f"\n Mint tx result: {mint_tx_1_result['meta']['TransactionResult']}"
       f"\n    Tx response: {mint_tx_1_result}")
 
@@ -154,10 +150,9 @@ sell_tx = NFTokenCreateOffer(
     flags=NFTokenCreateOfferFlag.TF_SELL_NFTOKEN,
 )
 
-# Sign sell_tx using minter account
-sell_tx_signed = safe_sign_and_autofill_transaction(transaction=sell_tx, wallet=nftoken_minter_wallet, client=client)
-sell_tx_signed = send_reliable_submission(transaction=sell_tx_signed, client=client)
-sell_tx_result = sell_tx_signed.result
+# Sign and submit sell_tx using minter account
+sell_tx_response = submit_and_wait(transaction=sell_tx, client=client, wallet=nftoken_minter_wallet)
+sell_tx_result = sell_tx_response.result
 print(f"\n Sell Offer tx result: {sell_tx_result['meta']['TransactionResult']}"
       f"\n          Tx response: {sell_tx_result}")
 
@@ -178,9 +173,8 @@ cancel_sell_offer_tx = NFTokenCancelOffer(
 )
 
 # Sign cancel_sell_offer_tx using minter account
-cancel_sell_offer_tx_signed = safe_sign_and_autofill_transaction(transaction=cancel_sell_offer_tx, wallet=nftoken_minter_wallet, client=client)
-cancel_sell_offer_tx_signed = send_reliable_submission(transaction=cancel_sell_offer_tx_signed, client=client)
-cancel_sell_offer_tx_result = cancel_sell_offer_tx_signed.result
+cancel_sell_offer_tx_response = submit_and_wait(transaction=cancel_sell_offer_tx, client=client, wallet=nftoken_minter_wallet)
+cancel_sell_offer_tx_result = cancel_sell_offer_tx_response.result
 print(f"\n Cancel Sell Offer tx result: {cancel_sell_offer_tx_result['meta']['TransactionResult']}"
       f"\n                 Tx response: {cancel_sell_offer_tx_result}")
 
@@ -193,10 +187,9 @@ sell_1_tx = NFTokenCreateOffer(
     flags=NFTokenCreateOfferFlag.TF_SELL_NFTOKEN,
 )
 
-# Sign sell_1_tx using minter account
-sell_1_tx_signed = safe_sign_and_autofill_transaction(transaction=sell_1_tx, wallet=nftoken_minter_wallet, client=client)
-sell_1_tx_signed = send_reliable_submission(transaction=sell_1_tx_signed, client=client)
-sell_1_tx_result = sell_1_tx_signed.result
+# Sign and submit sell_1_tx using minter account
+sell_1_tx_response = submit_and_wait(transaction=sell_1_tx, client=client, wallet=nftoken_minter_wallet)
+sell_1_tx_result = sell_1_tx_response.result
 print(f"\n Sell Offer tx result: {sell_1_tx_result['meta']['TransactionResult']}"
       f"\n          Tx response: {sell_1_tx_result}")
 
@@ -217,8 +210,7 @@ buy_tx = NFTokenAcceptOffer(
 )
 
 # Sign buy_tx using buyer account
-buy_tx_signed = safe_sign_and_autofill_transaction(transaction=buy_tx, wallet=buyer_wallet, client=client)
-buy_tx_signed = send_reliable_submission(transaction=buy_tx_signed, client=client)
-buy_tx_result = buy_tx_signed.result
+buy_tx_response = submit_and_wait(transaction=buy_tx, client=client, wallet=buyer_wallet)
+buy_tx_result = buy_tx_response.result
 print(f"\n Buy Offer result: {buy_tx_result['meta']['TransactionResult']}"
       f"\n      Tx response: {buy_tx_result}")

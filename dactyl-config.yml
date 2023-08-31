@@ -185,8 +185,6 @@ targets:
             "subscribe.html#order-book-streams": "subscribe.html#オーダーブックストリーム"
             "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
             "ledger-header.html#close-flags": "ledger-header.html#closeフラグ"
-            # Fix link from untranslated account_nfts.html
-            "nftoken.html#nftokentaxon": "nftoken.html#分類群"
             # Fix links from untranslated NFT API methods:
             "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
             "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
@@ -202,6 +200,11 @@ targets:
             "reserves.html#base-reserve-and-owner-reserve": "reserves.html#基本準備金と所有者準備金"
             # Fix link from nft-reserve-requirements.html:
             "reserves.html#going-below-the-reserve-requirement": "reserves.html#必要準備金を下回る"
+        link_re_subs:
+            # Fix link from untranslated account_nfts.html. 
+            # Because the replacement contains the original as a substring,
+            # simple link replacement doesn't work nicely here
+            "nftoken[.]html#nftokentaxon$": "nftoken.html#nftokentaxon分類群"
 
 
 pages:
@@ -1248,49 +1251,136 @@ pages:
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/xrpl-quickstart.md
+    -   name: Quickstart
+        html: xrpl-quickstart.html
+        parent: tutorials.html
+        blurb: Quickly experiment with the basics of XRPL development.
+        cta_text: Quickstart tutorials
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   name: Quickstart (JavaScript)
+        html: quickstart-javascript.html
+        parent: xrpl-quickstart.html
+        template: pagetype-category.html.jinja
+        blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs.
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/quickstart-intro.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/create-accounts-send-xrp.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/create-trustline-send-currency.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/mint-and-burn-nftokens.md
+    -   md: tutorials/quickstart/mint-and-burn-nfts.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/transfer-nftokens.md
+    -   md: tutorials/quickstart/transfer-nfts.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
-        # TODO: translate
+        # TODO: translate        
     -   md: tutorials/quickstart/broker-sale.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/authorize-minter.md
+        parent: quickstart-javascript.html
         targets:
             - en
             - ja
 
         # TODO: translate
     -   md: tutorials/quickstart/batch-minting.md
+        parent: quickstart-javascript.html
+        targets:
+            - en
+            - ja
+
+    -   name: Quickstart (Python)
+        html: quickstart-python.html
+        parent: xrpl-quickstart.html
+        template: pagetype-category.html.jinja
+        blurb: Use a Python test harness to send XRP, trade currencies, and mint and trade NFTs.
+        targets:
+            - en
+            - ja
+            
+        # TODO: translate
+    -   md: tutorials/quickstart/py-quickstart-intro.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-create-accounts-send-xrp.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-create-trustline-send-currency.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-mint-and-burn-nfts.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-transfer-nfts.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-broker-sale.md
+        parent: quickstart-python.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-authorize-minter.md
+        parent: quickstart-python.html
         targets:
             - en
             - ja
@@ -2423,6 +2513,7 @@ pages:
         targets:
             - ja
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.md
         targets:
             - en
@@ -2574,6 +2665,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with rippled 1.11.0 changes
     -   md: references/protocol-reference/transactions/transaction-common-fields.ja.md
         targets:
             - ja
@@ -2888,6 +2980,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-results/tel-codes.ja.md
         targets:
             - ja
@@ -3162,6 +3255,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_currencies.ja.md
         targets:
             - ja
@@ -3170,6 +3264,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_info.ja.md
         targets:
             - ja
@@ -3178,20 +3273,24 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_lines.ja.md
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
         targets:
             - en
+
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.ja.md
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.md
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.ja.md
         targets:
             - ja
@@ -3200,6 +3299,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_offers.ja.md
         targets:
             - ja
@@ -3891,6 +3991,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.ja.md
         targets:
             - ja
@@ -4871,6 +4972,20 @@ pages:
         html: https://github.com/XRPLF/xrpl-dev-portal/
         parent: contribute.html
         blurb: このサイトのソースコードをGitHubで閲覧し、変更を提案することができます。
+        targets:
+            - ja
+
+    -   name: XRPL Brand Kit
+        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
+        parent: contribute.html
+        blurb: Review guidelines for using XRPL design assets.
+        targets:
+            - en
+
+    -   name: XRPL Brand Kit
+        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
+        parent: contribute.html
+        blurb: XRPL 設計資産の使用に関するガイドラインを確認してください。
         targets:
             - ja
 

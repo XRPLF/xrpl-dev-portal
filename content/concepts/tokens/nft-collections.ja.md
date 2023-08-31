@@ -13,4 +13,4 @@ labels:
 
 `NFTokenTaxon`フィールドは必須ですが、コレクションを作成するつもりがなければ`0`を設定するのもよいでしょう。
 
-[NFTokenの分類群](nftoken.html#分類群)を参照してください。
+[NFTokenの分類群](nftoken.html#nftokentaxon分類群)を参照してください。

@@ -6,3 +6,4 @@ out/
 package-lock.json
 yarn-error.log
 /.idea
+.venv/

@@ -125,7 +125,7 @@ XRP Ledgerのアドレスは、[base58][]_形式のディクショナリ_`rpshna
 
 1. 次の必須アルゴリズムをインポートします。SHA-256、RIPEMD160、base58。base58のディクショナリーを設定します。
 
-       'use strict';
+        'use strict';
         const assert = require('assert');
         const crypto = require('crypto');
         const R_B58_DICT = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz';
@@ -136,21 +136,21 @@ XRP Ledgerのアドレスは、[base58][]_形式のディクショナリ_`rpshna
 
 2. 33バイトのECDSA secp256k1公開鍵、または32バイトのEd25519公開鍵で始めます。Ed25519キーの場合は、キーの前にバイト`0xED`を付けます。
 
-       const pubkey_hex =
+        const pubkey_hex =
           'ED9434799226374926EDA3B54B1B461B4ABF7237962EAE18528FEA67595397FA32';
         const pubkey = Buffer.from(pubkey_hex, 'hex');
         assert(pubkey.length == 33);
 
 3. 公開鍵のSHA-256ハッシュの[RIPEMD160](https://en.wikipedia.org/wiki/RIPEMD)ハッシュを計算します。この値は「Account ID」です。
 
-         const pubkey_inner_hash = crypto.createHash('sha256').update(pubkey);
+        const pubkey_inner_hash = crypto.createHash('sha256').update(pubkey);
         const pubkey_outer_hash = crypto.createHash('ripemd160');
         pubkey_outer_hash.update(pubkey_inner_hash.digest());
         const account_id = pubkey_outer_hash.digest();
 
 4. アカウントIDのSHA-256ハッシュのSHA-256ハッシュを計算します。最初の4バイトを使用ます。この値が「チェックサム」です。
 
-         const address_type_prefix = Buffer.from([0x00]);
+        const address_type_prefix = Buffer.from([0x00]);
         const payload = Buffer.concat([address_type_prefix, account_id]);
         const chksum_hash1 = crypto.createHash('sha256').update(payload).digest();
         const chksum_hash2 = crypto.createHash('sha256').update(chksum_hash1).digest();
@@ -158,7 +158,7 @@ XRP Ledgerのアドレスは、[base58][]_形式のディクショナリ_`rpshna
 
 5. ペイロードとチェックサムを連結します。連結バッファーのbase58値を計算します。この結果が、該当のアドレスになります。
 
-         const dataToEncode = Buffer.concat([payload, checksum]);
+        const dataToEncode = Buffer.concat([payload, checksum]);
         const address = base58.encode(dataToEncode);
         console.log(address);
         // rDTXLQ7ZKZVKz33zJbHjgVShjsBnqMBhmN

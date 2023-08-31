@@ -6,25 +6,24 @@ async function getAccountFromSeed() {
 	let net = getNet()
 	const client = new xrpl.Client(net)
 	results = 'Connecting to ' + getNet() + '....'
-	document.getElementById('standbyResultField').value = results
+	standbyResultField.value = results
 	await client.connect()
 	results += '\nConnected, finding wallets.\n'
-	document.getElementById('standbyResultField').value = results
+	standbyResultField.value = results
 
 	// -------------------------------------------- Find the test account wallet.   
-	var theSeed = document.getElementById('seeds').value
+	var theSeed = seeds.value
 	const standby_wallet = xrpl.Wallet.fromSeed(theSeed)
 
 	// ------------------------------------------------- Get the current balance.
 	const standby_balance = (await client.getXrpBalance(standby_wallet.address))  
 	
 	// --------------------------------- Populate the fields for Standby account.
-	document.getElementById('standbyAccountField').value = standby_wallet.address
-	document.getElementById('standbyPubKeyField').value = standby_wallet.publicKey
-	document.getElementById('standbyPrivKeyField').value = standby_wallet.privateKey
-	document.getElementById('standbySeedField').value = standby_wallet.seed
-	document.getElementById('standbyBalanceField').value = 
-		(await client.getXrpBalance(standby_wallet.address))
+	standbyAccountField.value = standby_wallet.address
+	standbyPubKeyField.value = standby_wallet.publicKey
+	standbyPrivKeyField.value = standby_wallet.privateKey
+	standbySeedField.value = standby_wallet.seed
+	standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
 
  client.disconnect()
 			
@@ -34,15 +33,15 @@ async function getAccountFromSeed() {
 // **************** Get Batch Tokens *********************
 // *******************************************************
       
-async function getBatchNFTokens() {
+async function getBatchNFTs() {
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + net + '...'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
   await client.connect()
-  results += '\nConnected. Getting NFTokens...'
-  document.getElementById('standbyResultField').value = results
+  results += '\nConnected. Getting NFTs...'
+  standbyResultField.value = results
   
   results += "\n\nNFTs:\n"
   let nfts = await client.request({
@@ -62,7 +61,7 @@ async function getBatchNFTokens() {
   })
     results += '\n' + JSON.stringify(nfts,null,2)
   }
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
   client.disconnect()
 } //End of getBatchTokens()
 
@@ -77,12 +76,12 @@ async function batchMint() {
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + getNet() + '....'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
   await client.connect() 
   results += '\nConnected, finding wallet.'
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
   standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 
 //----------------- Get account information, particularly the Sequence number.
 
@@ -93,15 +92,15 @@ async function batchMint() {
   
   my_sequence = account_info.result.account_data.Sequence
   results += "\n\nSequence Number: " + my_sequence + "\n\n"
-  document.getElementById('standbyResultField').value = results
+  standbyResultField.value = results
 
-// ###################################
-// Create ticket numbers for the batch
+/* ###################################
+   Create ticket numbers for the batch
 
-// Without tickets, if one transaction fails, all others in the batch fail.
-// With tickets, there can be failures, but the rest will continue, and you 
-// can investigate any problems afterward.
-
+   Without tickets, if one transaction fails, all others in the batch fail.
+   With tickets, there can be failures, but the rest will continue, and you 
+   can investigate any problems afterward.
+*/
 
   //---------------------- Parse the requested number from NFTokenCountField.
   const nftokenCount = parseInt(standbyNFTokenCountField.value)
@@ -134,11 +133,11 @@ async function batchMint() {
   }
 
   //-------------------------------------------------------- Report progress.
-  results += "Tickets generated, minting NFTokens.\n\n"
-  document.getElementById('standbyResultField').value = results
+  results += "Tickets generated, minting NFTs.\n\n"
+  standbyResultField.value = results
 
 // ###################################
-// Mint NFTokens
+// Mint NFTs
   
   for (let i=0; i < nftokenCount; i++) {
 		const transactionBlob = {
@@ -176,11 +175,8 @@ async function batchMint() {
   }
 
 	results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
-	results += '\n\nnftokens: ' + JSON.stringify(nfts, null, 2)
-	document.getElementById('standbyBalanceField').value = 
-		(await client.getXrpBalance(standby_wallet.address))
-	document.getElementById('standbyResultField').value = results
+	results += '\n\nNFTs: ' + JSON.stringify(nfts, null, 2)
+	standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
+	standbyResultField.value = results
   client.disconnect()
 } // End of batchMint()
-
-
