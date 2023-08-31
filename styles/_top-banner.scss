@@ -255,6 +255,11 @@ html.light .token-banner-container {
       margin-top: 10px;
     }
   }
+  .highlight-purple{
+    @include media-breakpoint-down(lg) {
+      display: none;
+    }
+  }
 
   @include media-breakpoint-down(sm) {
     .show-on-mobile {
@@ -267,6 +272,7 @@ html.light .token-banner-container {
       margin-right:10px;
     }
   }
+
 }
 
 /* old "pencil banner" style, currently unused */
