@@ -185,8 +185,6 @@ targets:
             "offers.html#lifecycle-of-an-offer": "offers.html#オファーのライフサイクル"
             "subscribe.html#order-book-streams": "subscribe.html#オーダーブックストリーム"
             "ledger-header.html#close-flags": "ledger-header.html#closeフラグ"
-            # Fix link from untranslated account_nfts.html
-            "nftoken.html#nftokentaxon": "nftoken.html#分類群"
             # Fix links from untranslated NFT API methods:
             "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
             "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
@@ -217,7 +215,11 @@ targets:
             # Fix links from untranslated open-closed-validated-ledgers.html:
             "consensus-principles-and-rules.html#simplifying-the-problem": "consensus-principles-and-rules.html#問題の単純化"
             "consensus-structure.html#validation": "consensus-structure.html#検証"
-
+link_re_subs:
+            # Fix link from untranslated account_nfts.html.
+            # Because the replacement contains the original as a substring,
+            # simple link replacement doesn't work nicely here
+            "nftoken[.]html#nftokentaxon$": "nftoken.html#nftokentaxon分類群"
 
 
 pages:
@@ -2720,6 +2722,7 @@ pages:
         targets:
             - en
 
+        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-results/tel-codes.ja.md
         targets:
             - ja
@@ -3017,10 +3020,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
         targets:
             - en
+
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.ja.md
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.md
@@ -4329,7 +4334,7 @@ pages:
         targets:
             - en
             - ja
-    
+
         # TODO: translate
     -   md: infrastructure/rippled/run-private-network-with-docker.md
         targets:

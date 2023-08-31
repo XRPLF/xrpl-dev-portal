@@ -6,7 +6,7 @@ labels:
   - Non-fungible Tokens, NFTs
 ---
 # account_nfts
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
+[[Source]](https://github.com/xrplf/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
 
 The `account_nfts` method returns a list of `NFToken` objects for the specified account.
 
@@ -52,7 +52,7 @@ The request includes the following parameters:
 | `account`      | String           | The unique identifier of an account, typically the account's [Address][]. The request returns a list of NFTs owned by this account. |
 | `ledger_hash`  | String           | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | String or Number | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `limit`        | Integer          | _(Optional)_ Limit the number of [token pages][NFTokenPage object] to retrieve. Each page can contain up to 32 NFTs. The `limit` value cannot be lower than 20 or more than 400. The default is 100. |
+| `limit`        | Integer          | _(Optional)_ Limit the number of [token pages][NFTokenPage object] to retrieve. Each page can contain up to 32 NFTs. The `limit` value cannot be lower than 20 or more than 400. Positive values outside this range are replaced with the closest valid option. The default is 100. |
 | `marker`       | [Marker][]       | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 
@@ -132,9 +132,9 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`        | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
-| `account` | String | The account that owns the list of NFTs |
+| `account` | String | The account that owns the list of NFTs. |
 | `account_nfts` | Array | A list of NFTs owned by the account, formatted as **NFT Objects** (see below). |
-| `ledger_hash`          | String                    | (May be omitted) The identifying hash of the ledger that was used to generate this response. |
+| `ledger_hash`          | String                    | _(May be omitted)_ The identifying hash of the ledger that was used to generate this response. |
 | `ledger_index`         | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the ledger that was used to generate this response. |
 | `ledger_current_index` | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the current in-progress ledger version, which was used to generate this response. |
 | `validated`            | Boolean                   | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |

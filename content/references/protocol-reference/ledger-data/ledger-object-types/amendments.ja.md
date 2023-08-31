@@ -38,7 +38,7 @@ labels:
 
 | 名前              | JSONの型 | [内部の型][] | 説明 |
 |-------------------|-----------|-------------------|-------------|
-| `Amendments`      | 配列     | STI_VECTOR256     | _（省略可）_ 現在有効なすべてのAmendmentの256ビット[Amendment ID](amendments.html#amendmentについて)からなる配列。省略されている場合は、有効なAmendmentがありません。 |
+| `Amendments`      | 配列     | STI_VECTOR256     | _（省略可）_ 現在有効なすべてのAmendmentの256ビット[Amendment ID](amendments.html)からなる配列。省略されている場合は、有効なAmendmentがありません。 |
 | `Majorities`      | 配列     | STI_ARRAY | _（省略可）_ 過半数の支持を得ているがまだ有効になっていないAmendmentのステータスを記述するオブジェクトの配列。省略されている場合は、過半数の支持を得ている保留中のAmendmentがありません。 |
 | `Flags`           | 数値    | UInt32    | ブール値フラグのビットマップ。Amendmentオブジェクトタイプにはフラグが定義されていないため、この値は常に`0`です。 |
 | `LedgerEntryType` | 文字列    | UInt16    |  値が `0x0066`（文字列`Amendments`にマッピング）の場合は、このオブジェクトがXRP Ledgerに対するAmendmentのステータスを記述していることを示します。 |

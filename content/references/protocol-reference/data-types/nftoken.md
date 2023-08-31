@@ -99,7 +99,7 @@ The fifth section is a sequence number that increases with each `NFToken` the is
 
 ![Sequence Number](img/nftokene.png "Sequence Number")
 
-The [NFTokenMint transaction][] sets this part of the `NFTokenID` automatically based on the `MintedTokens` field of the `Issuer` account. If the issuer's [AccountRoot object][] does not have a `MintedTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
+The [NFTokenMint transaction][] sets this part of the `NFTokenID` automatically based on the `MintedNFTokens` field of the `Issuer` account. If the issuer's [AccountRoot object][] does not have a `MintedNFTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
 
 ## URI
 

@@ -7,7 +7,7 @@ labels:
   - Data Retention
 ---
 # ledger_entry
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
+[[Source]](https://github.com/xrplf/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
 
 The `ledger_entry` method returns a single ledger object from the XRP Ledger in its raw format. See [ledger format][] for information on the different types of objects you can retrieve.
 
@@ -564,7 +564,7 @@ rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJ
 
 Return an NFT Page in its raw ledger format.
 
-| `Field`                 | Type                       | Description           |
+| Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
 | `nft_page`              | String | The [object ID](ledger-object-ids.html) of an [NFT Page](nftokenpage.html) to retrieve. |
 

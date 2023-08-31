@@ -33,7 +33,7 @@ This application can:
 
 - Show updates to the XRP Ledger in real-time.
 - View any XRP Ledger account's activity, including showing how much XRP was delivered by each transaction.
-- Show how much XRP is set aside for the account's [reserve requirement](reserves.html). 
+- Show how much XRP is set aside for the account's [reserve requirement](reserves.html).
 - Send [direct XRP payments](direct-xrp-payments.html), and provide feedback about the intended destination address, including:
     - Displaying your account's available balance
     - Verifying that the destination address is valid
@@ -60,7 +60,7 @@ yarn create vite simple-xrpl-wallet --template vanilla
 {{ include_code("_code-samples/build-a-wallet/js/package.json", language="js") }}
 
    - Alternatively you can also do `yarn add <package-name>` for each individual package to add them to your `package.json` file.
-  
+
 4. Install dependencies:
 
 ```bash
@@ -125,7 +125,7 @@ To make that happen, we need to connect to the XRP Ledger and look up the accoun
 
 7. In the `helpers` folder, add [render-xrpl-logo.js]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/helpers/render-xrpl-logo.js) to handle displaying a logo.
 
-8. Finally create a new folder named `assets` in the `src/` directory and add the file [`xrpl.svg`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/assets/xrpl.svg) there. 
+8. Finally create a new folder named `assets` in the `src/` directory and add the file [`xrpl.svg`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/assets/xrpl.svg) there.
 
 These files are used to render the XRPL logo for aesthetic purposes.
 
@@ -171,19 +171,21 @@ Destination Tag: (Not usually necessary unless you're paying an account tied to 
 
 ### 4. Create the Transactions Page
 
-Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account. In order to see what's happening on the ledger, we're going to display the following fields: 
+Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account. In order to see what's happening on the ledger, we're going to display the following fields:
 
   - Account: The account that sent the transaction.
   - Destination: The account that received the transaction.
-  - Amount: The amount of XRP sent in the transaction.
   - Transaction Type: The type of transaction.
   - Result: The result of the transaction.
+  - Delivered amount: The amount of XRP or tokens delivered by the transaction, if applicable.
   - Link: A link to the transaction on the XRP Ledger Explorer.
+
+**Caution:** When displaying how much money a transaction delivered, always use the `delivered_amount` field from the metadata, not the `Amount` field from the transaction instructions. [Partial Payments](partial-payments.html) can deliver much less than the stated `Amount` and still be successful.
 
 ![Transactions Page Screenshot](img/js-wallet-transaction.png)
 
 1. Create a folder named `transaction-history` in the src directory.
-2. Create a file named `transaction-history.js` and copy the code written below. 
+2. Create a file named `transaction-history.js` and copy the code written below.
 
 {{ include_code("_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.js", language="js") }}
 

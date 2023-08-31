@@ -29,7 +29,7 @@ header.innerHTML = `
     <th>Account</th>
     <th>Destination</th>
     <th>Fee (XRP)</th>
-    <th>Amount</th>
+    <th>Amount Delivered</th>
     <th>Transaction Type</th>
     <th>Result</th>
     <th>Link</th>
@@ -37,14 +37,40 @@ header.innerHTML = `
 txHistoryElement.appendChild(header);
 
 // Converts the hex value to a string
-const getTokenName = (value) => (value.length === 40 ? convertHexToString(value).replaceAll('\u0000', '') : value);
+function getTokenName(currencyCode) {
+    if (!currencyCode) return "";
+    if (currencyCode.length === 3 && currencyCode.trim().toLowerCase() !== 'xrp') {
+        // "Standard" currency code
+        return currencyCode.trim();
+    }
+    if (currencyCode.match(/^[a-fA-F0-9]{40}$/)) {
+        // Hexadecimal currency code
+        const text_code = convertHexToString(value).replaceAll('\u0000', '')
+        if (text_code.match(/[a-zA-Z0-9]{3,}/) && text_code.trim().toLowerCase() !== 'xrp') {
+            // ASCII or UTF-8 encoded alphanumeric code, 3+ characters long
+            return text_code;
+        }
+        // Other hex format, return as-is.
+        // For parsing other rare formats, see https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/normalize-currency-codes/js/normalize-currency-code.js
+        return currencyCode;
+    }
+    return "";
+}
 
-function renderTokenValueColumn(value) {
-    return value.Amount
-        ? `<td>${
-              typeof value.Amount === 'object' ? `${value.Amount.value} ${getTokenName(value.Amount.currency)}` : `${dropsToXrp(value.Amount)} XRP`
-          }</td>`
-        : '-';
+function renderAmount(delivered) {
+    if (delivered === 'unavailable') {
+        // special case for pre-2014 partial payments
+        return 'unavailable';
+    } else if (typeof delivered === 'string') {
+        // It's an XRP amount in drops. Convert to decimal.
+        return `${dropsToXrp(delivered)} XRP`;
+    } else if (typeof delivered === 'object') {
+        // It's a token amount.
+        return `${delivered.value} ${getTokenName(delivered.currency)}.${delivered.issuer}`;
+    } else {
+        // Could be undefined -- not all transactions deliver value
+        return "-"
+    }
 }
 
 // Fetches the transaction history from the ledger
@@ -73,7 +99,7 @@ async function fetchTxHistory() {
         const { result } = await client.request(payload);
 
         const { transactions, marker: nextMarker } = result;
-        
+
         // Add the transactions to the table
         const values = transactions.map((transaction) => {
             const { meta, tx } = transaction;
@@ -81,10 +107,10 @@ async function fetchTxHistory() {
                 Account: tx.Account,
                 Destination: tx.Destination,
                 Fee: tx.Fee,
-                Amount: tx.Amount,
                 Hash: tx.hash,
                 TransactionType: tx.TransactionType,
                 result: meta?.TransactionResult,
+                delivered: meta?.delivered_amount
             };
         });
 
@@ -108,7 +134,7 @@ async function fetchTxHistory() {
                 ${value.Account ? `<td>${value.Account}</td>` : '-'}
                 ${value.Destination ? `<td>${value.Destination}</td>` : '-'}
                 ${value.Fee ? `<td>${dropsToXrp(value.Fee)}</td>` : '-'}
-                ${renderTokenValueColumn(value)}
+                ${renderAmount(value.delivered)}
                 ${value.TransactionType ? `<td>${value.TransactionType}</td>` : '-'}
                 ${value.result ? `<td>${value.result}</td>` : '-'}
                 ${value.Hash ? `<td><a href="https://${process.env.EXPLORER_NETWORK}.xrpl.org/transactions/${value.Hash}" target="_blank">View</a></td>` : '-'}`;

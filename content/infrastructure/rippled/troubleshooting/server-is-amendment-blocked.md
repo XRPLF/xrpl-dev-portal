@@ -7,7 +7,9 @@ labels:
 ---
 # rippled Server is Amendment Blocked
 
-One of the first signs that your `rippled` server is amendment blocked is an `amendmentBlocked` error that is returned when you submit a transaction. Here's an example `amendmentBlocked` error:
+Servers which are amendment blocked can't determine the validity of a ledger, submit or process transactions, or participate in the consensus process.
+
+One of the first signs that your `rippled` server is [amendment blocked](amendments.html#amendment-blocked-servers) is an `amendmentBlocked` error that is returned when you submit a transaction. Here's an example `amendmentBlocked` error:
 
 ```json
 {
