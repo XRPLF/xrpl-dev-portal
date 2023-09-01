@@ -21,7 +21,7 @@ labels:
 }
 ```
 
-_([NonFungibleTokensV1_1 amendment][]が必要です)_
+_([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 
 ## アクセス権

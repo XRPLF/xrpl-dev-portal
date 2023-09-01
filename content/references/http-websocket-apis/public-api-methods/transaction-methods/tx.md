@@ -442,7 +442,7 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`        | Type                             | Description              |
 |:---------------|:---------------------------------|:-------------------------|
-| `date`         | Number                           | A [number of seconds](basic-data-types.html#specifying-time) since January 1, 2000 (00:00 UTC) indicating the [close time](ledgers.html#ledger-close-times) of the ledger in which the transaction was applied. This value does not have a precise relationship with physical time, and is dependent on the close time resolution. |
+| `date`         | Number                           | A [number of seconds](basic-data-types.html#specifying-time) since January 1, 2000 (00:00 UTC) indicating the [close time](ledger-close-times.html) of the ledger in which the transaction was applied. This value does not have a precise relationship with physical time, and is dependent on the close time resolution. |
 | `hash`         | String                           | The SHA-512 hash of the transaction |
 | `inLedger`     | Number                           | _(Deprecated)_ Alias for `ledger_index`. |
 | `ledger_index` | Number                           | The [ledger index][] of the ledger that includes this transaction. |

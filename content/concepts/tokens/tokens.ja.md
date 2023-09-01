@@ -25,7 +25,7 @@ XRP Ledger におけるトークンの代表的なモデルとして、発行者
 
 実際には、XRP Ledger はただのシステムであり、その外側にいかなるルールも適用することはできません。そのため、XRP Ledger上のステーブルコインは、その発行者を信頼し、その発行者が要求に応じてトークンを現物資産へ交換することができなければ、そのステーブルコインの価値が維持されないと考えるべきでしょう。ユーザは、誰がトークンを発行しているのか、信頼できるのか、合法的なのか、支払能力があるのか、という点について十分に注意をしなければなりません。信頼できない場合は、そのトークンを保有するべきではないでしょう。
 
-ゲートウェイの運営方法については、[XRP Ledger Gatewayの開設](become-an-xrp-ledger-gateway.html)をご覧ください。
+[Stablecoin Issuer](stablecoin-issuer.html)をご覧ください。
 
 ## コミュニティクレジット
 
@@ -58,12 +58,12 @@ XRP Ledgerにおけるトークンは、[XRPと異なる性質](currency-formats
 ## 関連項目
 
 - **コンセプト:**
-  - [XRP](xrp.html)
+  - [XRP?](what-is-xrp.html)
   - [複数通貨間の支払い](cross-currency-payments.html)
   - [分散型取引所](decentralized-exchange.html)
 - **チュートリアル:**
   - [代替可能トークンの発行](issue-a-fungible-token.html)
-  - [XRP Ledgerゲートウェイの開設](become-an-xrp-ledger-gateway.html)
+  - [XRP Ledgerゲートウェイの開設](stablecoin-issuer.html)
   - [トランザクションの結果の確認](look-up-transaction-results.html)
   - [専門化した支払いタイプの使用](use-specialized-payment-types.html)
 - **リファレンス:**

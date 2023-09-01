@@ -40,7 +40,7 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-[本番環境のソフトウェアを作成する場合](production-readiness.html)には、既存のアカウントを使用し、[安全な署名](set-up-secure-signing.html)を使用して鍵を管理する必要があります。
+[本番環境のソフトウェアを作成する場合](production-readiness.html)には、既存のアカウントを使用し、[安全な署名](secure-signing.html)を使用して鍵を管理する必要があります。
 
 
 ### {{n.next()}}. ネットワークへの接続

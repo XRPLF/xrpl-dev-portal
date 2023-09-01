@@ -37,7 +37,7 @@ Complete sample code for all of the steps of this tutorial is available under th
 
 ### {{n.next()}}. Get Credentials
 
-To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](issuing-and-operational-addresses.html), you need the keys to the _cold address_, which is the **issuer** of the token. Only the issuer's Global Freeze setting has any effect on a token.
+To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](account-types.html), you need the keys to the _cold address_, which is the **issuer** of the token. Only the issuer's Global Freeze setting has any effect on a token.
 
 **Tip:** Unlike the No Freeze setting, you _can_ enable and disable a Global Freeze using a [regular key pair](cryptographic-keys.html) or [multi-signing](multi-signing.html).
 
@@ -45,7 +45,7 @@ For this tutorial, you can get credentials from the following interface:
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
 
 
 ### {{n.next()}}. Connect to the Network
@@ -184,7 +184,7 @@ At this point all token issued by your address are frozen. During this time, you
 
 Keep in mind that while a token is frozen, it is still possible for the frozen token to be sent _directly to_ or _directly from_ the issuer, so you may still want to disable any systems you have that are configured to send such transactions, and you may want to track incoming transactions without processing them so that you can eventually process the legitimate ones.
 
-If you use a [hot wallet or operational address](issuing-and-operational-addresses.html), it has no special status compared to other users, so it also cannot send and receive the frozen tokens except when dealing directly with the issuer. <!-- STYLE_OVERRIDE: wallet, hot wallet -->
+If you use a [hot wallet or operational address](account-types.html), it has no special status compared to other users, so it also cannot send and receive the frozen tokens except when dealing directly with the issuer. <!-- STYLE_OVERRIDE: wallet, hot wallet -->
 
 If you use the [No Freeze setting](freezes.html#no-freeze) then the Global Freeze continues forever. If you want to resume issuing tokens, you must create a new account and start over from there.
 

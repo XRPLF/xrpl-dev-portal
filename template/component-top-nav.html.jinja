@@ -132,7 +132,7 @@
               <p>{{top_page.top_nav_blurb|default(top_page.blurb)}}</p>
             </div>
           </a>
-          {% else %}
+          {% elif top_page.top_nav_grouping is defined %}
           <div class="navcol col-for-{{slug(top_page.top_nav_grouping)}}">
             <h5 class="dropdown-item">{{top_page.top_nav_grouping}}</h5>
             {% set _ = printed_groupings.append(top_page.top_nav_grouping) %}

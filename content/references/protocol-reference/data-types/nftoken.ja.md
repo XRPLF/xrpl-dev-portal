@@ -132,6 +132,6 @@ https://example.com/.well-known/xrpl-nft/{tokenid}
 `NFTokenMint`トランザクションを使用して`NFTtoken`を作成します。`NFTokenBurn`トランザクションを使用して`NFToken`を破棄することもできます。
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

@@ -7,8 +7,6 @@ labels:
 ---
 # Send a Check
 
-_Added by the [Checks amendment][]._
-
 Sending a Check is like writing permission for an intended recipient to pull a payment from you. The outcome of this process is a [Check object in the ledger](check.html) which the recipient can cash later.
 
 In many cases, you want to send a [Payment][] instead of a Check, since that delivers the money directly to the recipient in one step. However, if your intended recipient uses [DepositAuth](depositauth.html), you cannot send them Payments directly, so a Check is a good alternative.
@@ -26,7 +24,7 @@ To send a Check with this tutorial, you need the following:
 - The **address** and **secret key** of a funded account to send the Check from.
     - You can use the [XRP Ledger Test Net Faucet](xrp-test-net-faucet.html) to get a funded address and secret with 10,000 Test Net XRP.
 - The **address** of a funded account to receive the Check.
-- A [secure way to sign transactions](set-up-secure-signing.html).
+- A [secure way to sign transactions](secure-signing.html).
 - A [client library](client-libraries.html) or any HTTP or WebSocket library.
 
 ## {{send_n.next()}}. Prepare the CheckCreate transaction

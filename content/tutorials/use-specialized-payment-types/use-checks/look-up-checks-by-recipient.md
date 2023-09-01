@@ -7,14 +7,13 @@ labels:
 ---
 # Look Up Checks by Recipient
 
-_Added by the [Checks amendment][]._
-
 This tutorial shows how to look up [Checks](checks.html) by their recipient. You may also want to [look up Checks by sender](look-up-checks-by-sender.html).
 
 ## 1. Look up all Checks for the address
 
 To get a list of all incoming and outgoing Checks for an account, use the `account_objects` command with the recipient account's address and set the `type` field of the request to `checks`.
 
+<!-- Moved this note to the account_objects method page. -->
 **Note:** The commandline interface to the `account_objects` command does not accept the `type` field. You can use the [json method][] to send the JSON-RPC format request on the commandline instead.
 
 ### Example Request

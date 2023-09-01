@@ -1,6 +1,6 @@
 ---
 html: py-transfer-nfts.html
-parent: quickstart-python.html
+parent: send-payments-using-python.html
 blurb: Use a Python test harness to create and accept NFT buy and sell offers.
 labels:
   - Quickstart
@@ -8,7 +8,7 @@ labels:
   - Non-fungible Tokens, NFTs
 ---
 
-# 4. Transfer NFTs (Python)
+# Transfer NFTs Using Python
 
 This example shows how to:
 

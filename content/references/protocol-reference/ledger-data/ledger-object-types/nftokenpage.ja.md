@@ -9,7 +9,7 @@ labels:
 
 `NFTokenPage` オブジェクトは、同じアカウントが所有する `NFToken` オブジェクトのコレクションを表します。一つのアカウントは複数の `NFTokenPage` 型のレジャーオブジェクトを持つことができ、それらは双方向リストを形成します。
 
-_([NonFungibleTokensV1_1 amendment][]が必要です)_
+_([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 
 ## {{currentpage.name}} JSONの例

@@ -1,6 +1,6 @@
 ---
 html: monitor-incoming-payments-with-websocket.html
-parent: get-started.html
+parent: http-websocket-apis-tutorials.html
 blurb: WebSocket APIを使用して、新しいXRPペイメントなどを積極的に監視します。
 filters:
   - interactive_steps
@@ -497,7 +497,7 @@ _Go_
 ## 関連項目
 
 - **コンセプト:**
-  - [トランザクションの基本](transaction-basics.html)
+  - [トランザクション](transactions.html)
   - [結果のファイナリティー](finality-of-results.html) - トランザクションの成功また失敗が最終的なものとなるタイミングを判断する方法（簡単な説明: トランザクションが検証済みレジャーにある場合は、その結果とメタデータは最終的なものです）。
 - **チュートリアル:**
   - [信頼できるトランザクションの送信](reliable-transaction-submission.html)

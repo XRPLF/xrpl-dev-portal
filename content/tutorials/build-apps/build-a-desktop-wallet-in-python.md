@@ -1,6 +1,7 @@
 ---
-parent: build-apps.html
-blurb: Build a graphical desktop wallet for the XRPL using Python.
+html: build-a-desktop-wallet-in-python.html
+parent: python.html
+blurb: Build a graphical desktop wallet for the XRPL in Python.
 ---
 # Build a Desktop Wallet in Python
 <!-- STYLE_OVERRIDE: wallet -->
@@ -32,12 +33,12 @@ The exact look and feel of the user interface depend on your computer's operatin
 - Shows how much XRP is set aside for the account's [reserve requirement](reserves.html).
 - Can send [direct XRP payments](direct-xrp-payments.html), and provides feedback about the intended destination address, including:
     - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
-    - If the address doesn't want to receive XRP ([`DisallowXRP` flag](become-an-xrp-ledger-gateway.html#disallow-xrp) enabled).
-    - If the address has a [verified domain name](https://xrpl.org/xrp-ledger-toml.html#account-verification) associated with it.
+    - If the address doesn't want to receive XRP ([`DisallowXRP` flag](stablecoin-issuer.html#disallow-xrp) enabled).
+    - If the address has a [verified domain name](xrp-ledger-toml.html#account-verification) associated with it.
 
 The application in this tutorial _doesn't_ have the ability to send or trade [tokens](issued-currencies.html) or use other [payment types](payment-types.html) like Escrow or Payment Channels. However, it provides a foundation that you can implement those and other features on top of.
 
-In addition to the above features, you'll also learn a little bit about graphical user interface (GUI) programming, threading, and asynchronous (async) code in Python.
+Other topics mentioned in this tutorial include graphical user interface (GUI) programming, threading, and asynchronous (async) code in Python.
 
 ## Steps
 
@@ -65,8 +66,6 @@ The `requests` and `toml` libraries are only needed for the [domain verification
 On Windows, you can build apps using either Windows natively or by using the Windows Subsystem for Linux (WSL). <!-- SPELLING_IGNORE: wsl -->
 
 On native Windows, the GUI uses native Windows controls and should run without any dependencies beyond those mentioned above.
-
-**Caution:** As of 2022-02-01, the latest wxPython is not compatible with Python 3.10 on Windows. You should be able to follow this tutorial if you downgrade to the latest release of Python 3.9.
 
 On WSL, you may need to install `libnotify-dev` as follows:
 
@@ -142,9 +141,9 @@ Finally, change the code to start the app (at the end of the file) slightly:
 
 {{ include_code("_code-samples/build-a-wallet/py/2_threaded.py", language="py", start_with="if __name__") }}
 
-Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to be use WebSocket URL to connect.
+Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to use a WebSocket URL to connect.
 
-**Tip:** If you [run your own `rippled` server](xrpl-servers.html#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](public-servers.html) to connect to the Mainnet or other test networks.
+**Tip:** If you [run your own `rippled` server](networks-and-servers.html#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](public-servers.html) to connect to the Mainnet or other test networks.
 
 #### Troubleshooting SSL Certificate Errors
 
@@ -211,7 +210,7 @@ Add a new `prompt_for_account()` method to the `TWaXLFrame` class:
 
 {{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def prompt_for_account", end_before="def update_ledger") }}
 
-The constructor calls this method to prompt the user for their [address](accounts.html#addresses) or [master seed](cryptographic-keys.html#seed), then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:
+The constructor calls this method to prompt the user for their [address](addresses.html) or [master seed](cryptographic-keys.html#seed), then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:
 
 1. Create a new instance of a dialog class, such as a [`wx.TextEntryDialog`](https://docs.wxpython.org/wx.TextEntryDialog.html).
 2. Use `showModal()` to display it to the user and get a return code based on which button the user clicked.

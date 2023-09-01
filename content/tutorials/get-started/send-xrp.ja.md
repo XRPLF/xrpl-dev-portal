@@ -323,7 +323,6 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 - [アカウント設定](manage-account-settings.html)をカスタマイズする
 - [トランザクションのメタデータ](transaction-metadata.html)にトランザクションの結果の詳細がどのように記述されているかを知る
 - escrowやPayment Channelなどの[複雑な支払いタイプ](complex-payment-types.html)について調べる
-- [XRP Ledgerビジネス](xrp-ledger-businesses.html)のベストプラクティスを読む
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

@@ -7,7 +7,7 @@ labels:
 ---
 # マルチシグの設定
 
-[マルチシグ](multi-signing.html)は、XRP Ledgerの[トランザクション](transaction-basics.html)を承認する3種類の方法の1つです。マルチシグの他に[レギュラーキーとマスターキー](cryptographic-keys.html)で署名する方法があります。3種類のトランザクション承認方法を自由に組み合わせて使用できるように[アドレス](accounts.html)を設定できます。
+[マルチシグ](multi-signing.html)は、XRP Ledgerの[トランザクション](transactions.html)を承認する3種類の方法の1つです。マルチシグの他に[レギュラーキーとマスターキー](cryptographic-keys.html)で署名する方法があります。3種類のトランザクション承認方法を自由に組み合わせて使用できるように[アドレス](accounts.html)を設定できます。
 
 このチュートリアルでは、アドレスのマルチシグを有効にする方法を説明します。
 
@@ -58,7 +58,7 @@ labels:
 
 ## 3. SignerListSetトランザクションの送信
 
-通常の方法（シングルシグネチャー）で[SignerListSetトランザクション][]に[署名して送信](transaction-basics.html#トランザクションへの署名とトランザクションの送信)します。これによりSignerListがXRP Ledgerのアドレスに関連付けられるので、これ以降はSignerListの複数メンバーがあなたの代わりにトランザクションに署名するマルチシグが可能となります。
+通常の方法（シングルシグネチャー）で[SignerListSetトランザクション][]に[署名して送信](transactions.html#トランザクションへの署名とトランザクションの送信)します。これによりSignerListがXRP Ledgerのアドレスに関連付けられるので、これ以降はSignerListの複数メンバーがあなたの代わりにトランザクションに署名するマルチシグが可能となります。
 
 この例ではSignerListに3人のメンバーが含まれています。また、マルチシグトランザクションにはrsA2LpzuawewSBQXkiju3YQTMzW13pAAdWの署名と、リストの他の2人のメンバーからの少なくとも1つの署名を必要とするように、重みと定数が設定されています。
 

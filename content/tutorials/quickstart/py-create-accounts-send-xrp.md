@@ -1,14 +1,14 @@
 ---
 html: py-create-accounts-send-xrp.html
-parent: quickstart-python.html
-blurb: Quickstart 1, create two accounts and transfer XRP between them.
+parent: send-payments-using-python.html
+blurb: Create two accounts and transfer XRP between them using Python.
 labels:
   - Accounts
   - Quickstart
   - Transaction Sending
   - XRP
 ---
-# 1. Create Accounts and Send XRP (Python)
+# Create Accounts and Send XRP Using Python
 
 This example shows how to:
 
@@ -28,7 +28,7 @@ To get started, create a new folder on your local disk and install the Python li
     pip3 install xrpl-py
 ```
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/python/){.github-code-download} archive.
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive.
 
 **Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
 

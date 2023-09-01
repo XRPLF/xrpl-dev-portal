@@ -1,6 +1,6 @@
 ---
 html: py-authorize-minter.html
-parent: quickstart-python.html
+parent: send-payments-using-python.html
 blurb: Authorize another account to mint NFTs for you.
 labels:
   - Accounts
@@ -9,7 +9,7 @@ labels:
   - NFTs, NFTokens
 ---
 
-# Assign an Authorized Minter (Python)
+# Assign an Authorized Minter Using Python
 
 You can assign another account permission to mint NFTs for you.
 
@@ -22,7 +22,7 @@ This example shows how to:
 
 # Usage
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try the sample in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive to try the sample in your own browser.
 
 ## Get Accounts
 

@@ -14,10 +14,7 @@ For standard tokens, the tokens paid in the transfer fee are burned, and no long
 
 Non-fungible tokens can also have transfer fees, but they work differently. For details, see [Non-Fungible Tokens](non-fungible-tokens.html).
 
-The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address][] to another user.
-
-[operational address]: issuing-and-operational-addresses.html
-[issuing address]: issuing-and-operational-addresses.html
+The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address](account-types.html) to another user.
 
 XRP never has a transfer fee, because it never has an issuer.
 
@@ -53,15 +50,15 @@ In this scenario, Salazar (the sender) holds EUR issued by ACME, and wants to de
 
 # Technical Details
 
-The transfer fee is represented by a setting on the [issuing address][]. The transfer fee cannot be less than 0% or more than 100% and is rounded down to the nearest 0.0000001%. The transfer fee applies to all tokens issued by the same account. If you want to have different transfer fees for different tokens, use multiple [issuing addresses][issuing address].
+The transfer fee is controlled by a setting on the issuer's account. The transfer fee cannot be less than 0% or more than 100% and is rounded down to the nearest 0.0000001%. The transfer fee applies to all tokens issued by the same account. If you want to have different transfer fees for different tokens, use multiple issuing addresses.
 
-In the [XRP Ledger protocol](protocol-reference.html), the transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same token. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `TransferRate` is set to no fee. The value of `TransferRate` cannot be set to less than `1000000000` ("0%" fee) or more than `2000000000` (a "100%" fee). The value `0` is special case for no fee, equivalent to `1000000000`.
+The transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same token. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `TransferRate` is set to no fee. The value of `TransferRate` cannot be set to less than `1000000000` ("0%" fee) or more than `2000000000` (a "100%" fee). The value `0` is special case for no fee, equivalent to `1000000000`.
 
-A token issuer can submit an [AccountSet transaction][] from its [issuing address][] to change the `TransferRate` for all its tokens.
+A token issuer can submit an [AccountSet transaction][] to change the `TransferRate` for all its tokens.
 
 Anyone can check an account's `TransferRate` with the [account_info method][]. If the `TransferRate` is omitted, then that indicates no fee.
 
-**Note:** The [fix1201](known-amendments.html#fix1201) [amendment](amendments.html), introduced in `rippled` v0.80.0 and enabled on 2017-11-14, lowered the maximum transfer fee to 100% (a `TransferRate` of `2000000000`) from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). The ledger may still contain accounts with a transfer fee setting higher than 100% because transfer fees that were already set continue to apply at their stated rate.
+**Note:** The ledger may contain accounts with a transfer fee larger than the current maximum. The [fix1201 amendment](known-amendments.html#fix1201), enabled on 2017-11-14, lowered the maximum transfer fee to 100% (a `TransferRate` of `2000000000`) from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). Transfer fees that were already set continue to apply at their stated rate.
 
 ## Client Library Support
 
@@ -75,8 +72,6 @@ Some [client libraries](client-libraries.html) have convenience functions for ge
     - [Fees (Disambiguation)](fees.html)
     - [Transaction Cost](transaction-cost.html)
     - [Paths](paths.html)
-- **Tutorials:**
-    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
 - **References:**
     - [account_lines method][]
     - [account_info method][]

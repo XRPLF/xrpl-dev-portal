@@ -7,8 +7,6 @@ labels:
 ---
 # Cancel a Check
 
-_Added by the [Checks amendment][]._
-
 This tutorial shows how to cancel a [Check](checks.html), which removes the [Check object from the ledger](check.html) without sending money.
 
 You may want to cancel an incoming Check if you do not want it. You might cancel an outgoing Check if you made a mistake when sending it or if circumstances have changed. If a Check expires, it's also necessary to cancel it to remove it from the ledger so the sender gets their [owner reserve](reserves.html#owner-reserves) back.
@@ -22,7 +20,7 @@ To cancel a Check with this tutorial, you need the following:
 - You need the ID of a Check object currently in the ledger.
     - For example, this tutorial includes examples that cancel a Check with the ID `49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0`, although you must use a different ID to go through these steps yourself.
 - The **address** and **secret key** of a funded account to send the CheckCancel transaction. This address must be either the sender or the recipient of the Check, unless the Check is expired.
-- A [secure way to sign transactions](set-up-secure-signing.html).
+- A [secure way to sign transactions](secure-signing.html).
 - A [client library](client-libraries.html) or any HTTP or WebSocket library.
 
 

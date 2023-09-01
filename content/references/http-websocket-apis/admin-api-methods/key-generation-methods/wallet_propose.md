@@ -91,7 +91,7 @@ You must provide **at most one** of the following fields: `passphrase`, `seed`, 
 
 #### Specifying a Seed
 
-For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](transaction-basics.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
+For most cases, you should use a seed value generated from a strong source of randomness. Anyone who knows the seed value for an address has full power to [send transactions signed by that address](transactions.html#authorizing-transactions). Generally, running this command with no parameters is a good way to generate a random seed.
 
 Cases where you would specify a known seed include:
 

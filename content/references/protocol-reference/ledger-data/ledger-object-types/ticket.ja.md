@@ -37,7 +37,7 @@ _([TicketBatch amendment][]が必要です)_
 | `Account`           | 文字列     | AccountID     | このチケットを所有する[アカウント](accounts.html)です。 |
 | `Flags`             | Number    | UInt32        | ブール値フラグのビットマップ。Ticketにはフラグが定義されていないため、この値は常に0です。 |
 | `OwnerNode`         | 文字列     | UInt64        | 送金元の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。注記: このオブジェクトには、オブジェクトを含む所有者ディレクトリへの直接リンクは含まれていません。これは、その値を`Account`から取得できるためです。 |
-| `PreviousTxnID`     | 文字列     | Hash256       | 最後にこのオブジェクトを変更した[トランザクション](transaction-basics.html)の識別用ハッシュ。 |
+| `PreviousTxnID`     | 文字列     | Hash256       | 最後にこのオブジェクトを変更した[トランザクション](transactions.html)の識別用ハッシュ。 |
 | `PreviousTxnLgrSeq` | 数値       | UInt32        | 最後にこのオブジェクトを変更したトランザクションを含む[レジャーインデックス][Ledger Index]。 |
 | `TicketSequence`    | 数値       | UInt32        | 本チケットが設定する[シーケンス番号][]。 |
 

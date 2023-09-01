@@ -35,7 +35,7 @@ Reminder: Trust lines do not hold XRP. XRP cannot be frozen.
 
 A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution uses that are connected to the XRP Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)
 
-An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including [operational addresses](issuing-and-operational-addresses.html), from sending that financial institution's tokens to the individual address. This type of individual freeze has no effect on offers.
+An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including [operational addresses](account-types.html), from sending that financial institution's tokens to the individual address. This type of individual freeze has no effect on offers.
 
 The Individual Freeze applies to a single trust line. To freeze multiple tokens with a particular counterparty, the address must enable Individual Freeze on the trust lines for each separate currency code.
 
@@ -46,15 +46,15 @@ An address cannot enable the Individual Freeze setting if it has enabled the [No
 
 The **Global Freeze** feature is a setting on an account. An account can enable a global freeze only on itself. When an issuer enables the Global Freeze feature, the following rules apply to all tokens they issue:
 
-* All counterparties of the frozen issuer can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects the issuer's own [operational addresses](issuing-and-operational-addresses.html).)
+* All counterparties of the frozen issuer can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects the issuer's own [operational addresses](account-types.html).)
 * Counterparties of the frozen issuer can still send and receive payments directly to and from the issuing address.
 * All offers to sell tokens issued by the frozen address are [considered unfunded](offers.html#lifecycle-of-an-offer).
 
 Reminder: addresses cannot issue XRP. Global freezes do not apply to XRP.
 
-It can be useful to enable Global Freeze on a financial institution's [issuing account](issuing-and-operational-addresses.html) if the issuer's [secret key](cryptographic-keys.html) is compromised, even after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. Besides enacting a Global Freeze in the XRP Ledger, the issuer should also suspend activities in its outside systems.
+It can be useful to enable Global Freeze on a financial institution's [issuing account](account-types.html) if the issuer's [secret key](cryptographic-keys.html) is compromised, even after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. Besides enacting a Global Freeze in the XRP Ledger, the issuer should also suspend activities in its outside systems.
 
-It can also be useful to enable Global Freeze if a financial institution intends to migrate to a new [issuing address](issuing-and-operational-addresses.html), or if the financial institution intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.
+It can also be useful to enable Global Freeze if a financial institution intends to migrate to a new [issuing address](account-types.html), or if the financial institution intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.
 
 Global Freeze applies to _all_ tokens issued and held by the address. You cannot enable Global Freeze for only one currency code. If you want to have the ability to freeze some tokens and not others, you should use different addresses for each token.
 

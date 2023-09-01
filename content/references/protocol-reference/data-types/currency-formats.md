@@ -8,7 +8,7 @@ label:
 ---
 # Currency Formats
 
-The XRP Ledger has two kinds of digital asset: [XRP](xrp.html) and [tokens](tokens.html). Both types have high precision, although their formats are different.
+The XRP Ledger has two kinds of digital asset: XRP and [tokens](tokens.html). Both types have high precision, although their formats are different.
 
 ## Comparison
 
@@ -27,7 +27,7 @@ The following table summarizes some of the differences between XRP and tokens in
 | No transfer fees; XRP-to-XRP payments are always direct. | Can take indirect [paths](paths.html) with each issuer charging a percentage [transfer fee](transfer-fees.html). |
 | Can be used in [Payment Channels](payment-channels.html) and [Escrow](escrow.html). | Not compatible with Payment Channels or Escrow. |
 
-For more information, see [XRP](xrp.html) and [Tokens](tokens.html).
+For more information, see [What is XRP?](what-is-xrp.html) and [Tokens](tokens.html).
 
 ## Specifying Currency Amounts
 

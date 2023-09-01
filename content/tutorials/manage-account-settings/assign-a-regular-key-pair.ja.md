@@ -674,7 +674,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
 - [レギュラーキーペアの変更または削除](change-or-remove-a-regular-key-pair.html)
 - [マルチシグの設定](set-up-multi-signing.html)
-- [発行アドレスと運用アドレス](issuing-and-operational-addresses.html)
+- [発行アドレスと運用アドレス](account-types.html)
 - [取引所としてのXRPの上場](list-xrp-as-an-exchange.html)
 
 <!--{# common link defs #}-->
