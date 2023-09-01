@@ -1,11 +1,10 @@
 ---
 html: networks-and-servers.html
 parent: concepts.html
-name: Networks and Servers
 blurb: rippledは、XRP Ledgerを管理するコアとなるピアツーピアサーバーです。
 template: pagetype-category.html.jinja
 ---
-# XRP Ledger サーバー
+# ネットワークとサーバ
 
 XRP Ledgerを動かすサーバーソフトウェアは、主に2種類あります。
 
