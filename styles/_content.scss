@@ -1,83 +1,107 @@
 /* Content text styling (applies mostly to Markdown-generated content)------- */
-// TODO: convert this to nested SCSS format
 
 .content {
   padding-bottom: 50px;
 
   p code,
   table code,
-  ul code,
-  ol code {
+  li > code {
     background-color: $green-1000;
     color: $green-400;
   }
+
+  a {
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-top: 32px;
+    line-height: 1.2;
+    font-weight: 700;
+
+    &:first-child {
+      margin-top: 0;
+      line-height: 1.2;
+
+      &::before {
+        margin-top: -80px;
+      }
+    }
+  }
+
+  h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 2.125rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: 1.75rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+    margin-top: 1.25rem;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  h6 {
+    font-size: 1rem;
+    margin-top: 1rem;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  /* Some list items contain <p> tags, some don't. These styles make sure both
+   kinds are spaced consistently. */
+  li {
+    margin: 6px;
+    margin-top: 24px;
+  }
+  li p {
+    margin: 0;
+  }
+
+  // "Source" links float right
+  a[title="Source"] {
+    float: right;
+    padding-left: 20px;
+  }
+
+  // Make "invisible" headers take up no space either, so we can use them
+  // to add additional anchors (e.g. for translated pages)
+  h1.invisible,
+  h2.invisible,
+  h3.invisible,
+  h4.invisible,
+  h5.invisible,
+  h6.invisible {
+    font-size: 0;
+    line-height: 0;
+    margin: 0;
+
+    .hover_anchor {
+      display: none;
+    }
+  }
 }
 
-.content a,
 .blurb a {
   text-decoration: underline;
-}
-
-.content h1 {
-  font-size: 3rem;
-  margin-top: 32px;
-  line-height: 1.2;
-  font-weight: 700;
-}
-.content h1:first-child,
-.landing section:first-of-type h1:first-child {
-  margin-top: 0;
-  line-height: 1.2;
-}
-.content h1:first-child:before {
-  margin-top: -80px;
-}
-.content h2 {
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 2.5rem;
-  font-weight: 600;
-  line-height: 1.2;
-}
-.content h3 {
-  font-size: 2.125rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-.content h4 {
-  font-size: 1.75rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
-}
-.content h5 {
-  font-size: 1.25rem;
-  margin-top: 1.25rem;
-  line-height: 1.2;
-  font-weight: 700;
-}
-.content h6 {
-  font-size: 1rem;
-  margin-top: 1rem;
-  line-height: 1.2;
-  font-weight: 700;
-}
-
-/* Some list items contain <p> tags, some don't. These styles make sure both
-   kinds are spaced consistently. */
-.content li {
-  margin: 6px;
-  margin-top: 24px;
-}
-.content li p {
-  margin: 0;
-}
-
-/* "Source" links float right */
-.content a[title="Source"] {
-  float: right;
-  padding-left: 20px;
 }
 
 // Hover anchors ---------------
