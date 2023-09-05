@@ -205,7 +205,6 @@ targets:
             "nftoken.html#transferfee": "nftoken.html#送金手数料"
             "nftoken-batch-minting.html#mint-on-demand-lazy-minting": "nftoken-batch-minting.html#オンデマンドmint-遅延minting"
             "nftoken-batch-minting.html#scripted-minting": "nftoken-batch-minting.html#スクリプトminting"
-            "nftoken.html#retrieving-nftoken-data-and-metadata": "nftoken.html#nftoken-データとメタデータの取得"
             # Fix link from untranslated Clio ledger method page:
             "transactions.html#authorizing-transactions": "transactions.html#トランザクションの承認"
             # Fix link from untranslated addresses.html:
