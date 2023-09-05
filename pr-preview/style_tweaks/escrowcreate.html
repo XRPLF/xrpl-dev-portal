@@ -469,7 +469,7 @@
 <td style="text-align: left;"><code>Condition</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(Optional)</em> Hex value representing a <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1" target="_blank">PREIMAGE-SHA-256 crypto-condition <i aria-hidden="true" class="fa fa-external-link"></i></a>. The funds can only be delivered to the recipient if this condition is fulfilled.</td>
+<td style="text-align: left;"><em>(Optional)</em> Hex value representing a <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1" target="_blank">PREIMAGE-SHA-256 crypto-condition <i aria-hidden="true" class="fa fa-external-link"></i></a>. The funds can only be delivered to the recipient if this condition is fulfilled. If the condition is not fulfilled before the expiration time specified in the <code>CancelAfter</code> field, the XRP can only revert to the sender.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>DestinationTag</code></td>
