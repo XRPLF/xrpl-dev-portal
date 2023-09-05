@@ -1,7 +1,7 @@
 ---
 html: send-payments-using-python.html
 parent: modular-tutorials-in-python.html
-blurb: Use a Python test harness to send XRP, trade currencies, and mint and trade NFTs.
+blurb: Use a Python test harness to send XRP,trade currencies, and more.
 labels:
   - Accounts
   - Cross-Currency
