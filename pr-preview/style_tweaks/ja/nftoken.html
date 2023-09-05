@@ -397,6 +397,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#トークン連番">トークン連番</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#uri">URI</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#nftokenデータとメタデータの取得">NFTokenデータとメタデータの取得</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#retrieving-nftoken-data-and-metadata">Retrieving NFToken Data and Metadata</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#txtレコードの形式">TXTレコードの形式</a></li>
       </ul>
   </div>
@@ -504,6 +505,7 @@
 <p>URIフィールドは、<code>NFToken</code>に関連するデータまたはメタデータを指します。このフィールドはHTTPやHTTPSのURLである必要はありません。IPFS URIや紐づくリンク、<a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>、あるいはカスタムされたのエンコード値である可能性もあります。URIの有効性はチェックされませんが、フィールドの長さは最大256バイトに制限されます。</p>
 <p class="devportal-callout 注意"><strong>注意:</strong> URIは変更不可能であるため、例えば、存在しないウェブサイトにリンクしていたとしても、誰もそれを更新することはできません。</p>
 <h1 id="nftokenデータとメタデータの取得">NFTokenデータとメタデータの取得<a aria-hidden="true" class="hover_anchor" href="#nftokenデータとメタデータの取得"><i class="fa fa-link"></i></a></h1>
+<h1 class="invisible" id="retrieving-nftoken-data-and-metadata">Retrieving NFToken Data and Metadata<a aria-hidden="true" class="hover_anchor" href="#retrieving-nftoken-data-and-metadata"><i class="fa fa-link"></i></a></h1>
 <p>機能を犠牲にしたり不必要な制限を課したりすることなく<code>NFTokens</code>の容量を最小にするために、XRPL NFTは任意のデータフィールドを持ちません。その代わり、データは別に管理され、<code>NFToken</code>によって参照されます。URIは<code>Hash</code>に対して不変のコンテンツへの参照を提供し、<code>NFToken</code>オブジェクトに対しては任意の変更可能なデータを提供します。</p>
 <p><code>URI</code>フィールドは、従来とは異なるピアツーピア(P2P)URLを参照する際に特に有用です。例えば、惑星間ファイルシステム(IPFS)を使用して<code>NFToken</code>データやメタデータを保存する発行者は、<code>URI</code>フィールドを使用してIPFS上のデータを様々な方法で参照することができ、それぞれが異なるユースケースに適しています。NFTデータの保存に使用できるIPFSリンクの種類については、<a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them" target="_blank">Best Practices for Storing NFT Data using IPFS <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
 <h2 id="txtレコードの形式">TXTレコードの形式<a aria-hidden="true" class="hover_anchor" href="#txtレコードの形式"><i class="fa fa-link"></i></a></h2>
