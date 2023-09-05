@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Broker an NFT Sale (Python) - XRPL.org (日本語)</title>
+    <title>Broker an NFT Sale Using Python - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Broker an NFT Sale (Python) | XRPL.org (日本語)">
+    <meta property="og:title" content="Broker an NFT Sale Using Python | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/py-broker-sale.html" />
     <meta property="og:description" content="Broker a sale between a sell offer and a buy offer." />
     <meta name="description" content="Broker a sale between a sell offer and a buy offer." />
@@ -398,7 +398,7 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#broker-an-nft-sale-python">Broker an NFT Sale (Python)</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#broker-an-nft-sale-using-python">Broker an NFT Sale Using Python</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#usage">Usage</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#get-accounts">Get Accounts</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#prepare-a-brokered-transaction">Prepare a Brokered Transaction</a></li>
@@ -431,14 +431,14 @@
 
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href=""></a></li>
-    <li class="active breadcrumb-item">Broker an NFT Sale (Python)</li>
+    <li class="active breadcrumb-item">Broker an NFT Sale Using Python</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
       <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="broker-an-nft-sale-python">Broker an NFT Sale (Python)<a aria-hidden="true" class="hover_anchor" href="#broker-an-nft-sale-python"><i class="fa fa-link"></i></a></h1>
+        <h1 id="broker-an-nft-sale-using-python">Broker an NFT Sale Using Python<a aria-hidden="true" class="hover_anchor" href="#broker-an-nft-sale-using-python"><i class="fa fa-link"></i></a></h1>
 <p>Earlier examples showed how to make buy and sell offers directly between two accounts. Another option is to use a third account as a broker for the sale. The broker acts on behalf of the NFT owner. The seller creates an offer with the broker account as its destination. The broker gathers and evaluates buy offers and chooses which one to accept, adding an agreed-upon fee for arranging the sale. When the broker account accepts a sell offer with a buy offer, the funds and ownership of the NFT are transferred simultaneously, completing the deal. This allows an account to act as a marketplace or personal agent for NFT creators and traders.</p>
 <h1 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h1>
 <p>This example shows how to:</p>
@@ -1949,7 +1949,12 @@ btn_op_cancel_offer.grid(row=16, column=3, sticky="nsew")</p>
     <nav class="nav flex-column collapse" id="tree_nav_group_2_5_1_2_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+    <a class="nav-link nav-leaf" href="/ja/py-create-accounts-send-xrp.html">Create Accounts and Send XRP Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
   </div>
 
     </nav>
