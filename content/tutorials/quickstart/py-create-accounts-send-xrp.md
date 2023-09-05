@@ -1,14 +1,14 @@
 ---
 html: py-create-accounts-send-xrp.html
-parent: quickstart-python.html
-blurb: Quickstart 1, create two accounts and transfer XRP between them.
+parent: send-payments-using-python.html
+blurb: Create two accounts and transfer XRP between them using Python.
 labels:
   - Accounts
   - Quickstart
   - Transaction Sending
   - XRP
 ---
-# 1. Create Accounts and Send XRP (Python)
+# Create Accounts and Send XRP Using Python
 
 This example shows how to:
 

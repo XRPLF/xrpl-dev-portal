@@ -1,14 +1,14 @@
 ---
 html: py-create-trustline-send-currency.html
-parent: quickstart-python.html
-blurb: Quickstart step 2, create trust lines and send currency.
+parent: send-payments-using-python.html
+blurb: Create trust lines and send currency.
 labels:
   - Cross-Currency
   - Payments
   - Quickstart
   - Tokens
 ---
-# 2. Create Trust Line and Send Currency (Python)
+# Create Trust Line and Send Currency Using Python
 
 This example shows how to:
 

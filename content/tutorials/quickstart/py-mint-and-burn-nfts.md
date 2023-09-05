@@ -1,14 +1,14 @@
 ---
 html: py-mint-and-burn-nfts.html
-parent: quickstart-python.html
-blurb: Quickstart step 3, mint and burn NFTs.
+parent: nfts-using-python.html
+blurb: Mint and burn NFTs.
 labels:
   - Quickstart
   - Tokens
   - Non-fungible tokens, NFTs
 ---
 
-# 3. Mint and Burn NFTs (Python)
+# Mint and Burn NFTs Using Python
 
 This example shows how to:
 

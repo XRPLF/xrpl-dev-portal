@@ -1,6 +1,6 @@
 ---
 html: py-authorize-minter.html
-parent: send-payments-using-python.html
+parent: nfts-using-python.html
 blurb: Authorize another account to mint NFTs for you.
 labels:
   - Accounts

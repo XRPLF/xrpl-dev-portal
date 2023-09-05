@@ -1,6 +1,6 @@
 ---
 html: py-broker-sale.html
-parent: quickstart-python.html
+parent: nfts-using-python.html
 blurb: Broker a sale between a sell offer and a buy offer.
 labels:
   - Accounts
@@ -9,7 +9,7 @@ labels:
   - XRP
 ---
 
-# Broker an NFT Sale (Python)
+# Broker an NFT Sale Using Python
 
 Earlier examples showed how to make buy and sell offers directly between two accounts. Another option is to use a third account as a broker for the sale. The broker acts on behalf of the NFT owner. The seller creates an offer with the broker account as its destination. The broker gathers and evaluates buy offers and chooses which one to accept, adding an agreed-upon fee for arranging the sale. When the broker account accepts a sell offer with a buy offer, the funds and ownership of the NFT are transferred simultaneously, completing the deal. This allows an account to act as a marketplace or personal agent for NFT creators and traders.
 
