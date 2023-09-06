@@ -14,9 +14,9 @@ Issuers can create tokens that they can claw back by adding the `lsfAllowTrustLi
 
 **Note:** You can only claw back issued tokens created by your account. You cannot claw back XRP in this way.
 
-Clawback is disabled by default. To use clawback, you must set the `lsfAllowTrustLineClawback` flag through an `AccountSet` transaction. The `AccountSet` transaction only succeeds if the account has an empty owner directory, meaning that the account has no trustlines, offers, escrows, payment channels, or checks. After you set this flag, it cannot reverted. The account permanently gains the ability to claw back issued assets on trustlines.
+Clawback is disabled by default. To use clawback, you must set the `lsfAllowTrustLineClawback` flag through an `AccountSet` transaction. The `AccountSet` transaction only succeeds if the account has an empty owner directory, meaning that the account has no trust lines, offers, escrows, payment channels, or checks. After you set this flag, it cannot reverted. The account permanently gains the ability to claw back issued assets on trust lines.
 
-If you attempt to set `lsfAllowTrustLineClawback` while `lsfNoFreeze` is set, the transaction returns `tecNO_PERMISSION`, because clawback cannot be enabled on an account that has already disclaimed the ability to freeze trustlines. 
+If you attempt to set `lsfAllowTrustLineClawback` while `lsfNoFreeze` is set, the transaction returns `tecNO_PERMISSION`, because clawback cannot be enabled on an account that has already disclaimed the ability to freeze trust lines. 
 Conversely, if you try to set `lsfNoFreeze` while `lsfAllowTrustLineClawback` is set, the transaction also returns `tecNO_PERMISSION`.
 
 ## Example Clawback Transaction
@@ -33,4 +33,4 @@ Conversely, if you try to set `lsfNoFreeze` while `lsfAllowTrustLineClawback` is
 }
 ```
 
-In execution, this transaction would claw back at most 314.159 FOO issued by rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S and held by rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW. If rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW does not have a trustline set up or that trustline's balance is 0, then the error `tecNO_LINE` is returned and a fee is consumed.
+In execution, this transaction would claw back at most 314.159 FOO issued by rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S and held by rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW. If rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW does not have a trust line set up or that trust line's balance is 0, then the error `tecNO_LINE` is returned and a fee is consumed.
