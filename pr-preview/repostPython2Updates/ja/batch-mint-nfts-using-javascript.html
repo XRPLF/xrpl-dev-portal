@@ -436,7 +436,7 @@
 <p>A best practice is to use <code>Tickets</code> to reserve the transaction sequence numbers. If you create an application that creates NFTs without using tickets, if any transaction fails for any reason, the application stops with an error. If you use tickets, the application continues to send transactions, and you can look into the reason for any individual failures afterward.</p>
 <p><a href="img/quickstart33-batch-mint.png"><img alt="Batch Mint" src="img/quickstart33-batch-mint.png"/></a></p>
 <h2 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h2>
-<p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try the sample in your own browser.</p>
+<p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try the sample in your own browser.</p>
 <h2 id="get-an-account">Get an Account<a aria-hidden="true" class="hover_anchor" href="#get-an-account"><i class="fa fa-link"></i></a></h2>
 <ol>
 <li>Open <code>7.batch-minting.html</code> in a browser.</li>
@@ -465,7 +465,7 @@
 <p>Click <strong>Get Batch NFTs</strong> to get the current list of NFTs for your account.</p>
 <p>The difference between this function and the <code>getTokens()</code> function used earlier is that it allows for larger lists of tokens, and sends multiple requests if the tokens exceed the number of objects allowed in a single request.</p>
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
-<p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try each of the samples in your own browser.</p>
+<p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try each of the samples in your own browser.</p>
 <h2 id="get-account-from-seed">Get Account From Seed<a aria-hidden="true" class="hover_anchor" href="#get-account-from-seed"><i class="fa fa-link"></i></a></h2>
 <p>This is a stripped-down version of <code>getAccountsFromSeeds()</code> that only gets the Standby account information.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getAccountFromSeed</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
