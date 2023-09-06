@@ -33,7 +33,7 @@
     <meta name="color-scheme" content="dark light">
 
     <!-- jQuery -->
-    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/ja/assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     <script type="application/javascript">
@@ -51,11 +51,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v23.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v24.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -405,9 +405,12 @@
 
       <!-- main column -->
       <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
-<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+<nav class="breadcrumbs-wrap" aria-label="breadcrumb">
   <ul class="breadcrumb">
     
+
+
+
 
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
@@ -415,7 +418,7 @@
     <li class="active breadcrumb-item"><a href="/ja/payment-types.html">支払いのタイプ</a></li>
     <li class="active breadcrumb-item">Partial Payment</li>
   </ul>
-</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+</nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="partial-payment">Partial Payment<a aria-hidden="true" class="hover_anchor" href="#partial-payment"><i class="fa fa-link"></i></a></h1>
 <p>デフォルトのケースでは、XRP Ledgerの<a href="payment.html">Paymentトランザクション</a>の<code>Amount</code>フィールドに、為替レートと<a href="transfer-fees.html">送金手数料</a>を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（<a href="payment.html#paymentのフラグ"><strong>tfPartialPayment</strong></a>）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで<a href="stablecoin-issuer.html#bouncing-payments">支払を返金</a>したい場合に便利です。</p>
