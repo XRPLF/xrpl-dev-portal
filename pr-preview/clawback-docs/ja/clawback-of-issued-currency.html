@@ -417,8 +417,8 @@
 For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em>, the funds.</p>
 <p>Issuers can create tokens that they can claw back by adding the <code>lsfAllowTrustLineClawback</code> flag to the issuing account.</p>
 <p class="devportal-callout note"><strong>Note:</strong> You can only claw back issued tokens created by your account. You cannot claw back XRP in this way.</p>
-<p>Clawback is disabled by default. To use clawback, you must set the <code>lsfAllowTrustLineClawback</code> flag through an <code>AccountSet</code> transaction. The <code>AccountSet</code> transaction only succeeds if the account has an empty owner directory, meaning that the account has no trustlines, offers, escrows, payment channels, or checks. After you set this flag, it cannot reverted. The account permanently gains the ability to claw back issued assets on trustlines.</p>
-<p>If you attempt to set <code>lsfAllowTrustLineClawback</code> while <code>lsfNoFreeze</code> is set, the transaction returns <code>tecNO_PERMISSION</code>, because clawback cannot be enabled on an account that has already disclaimed the ability to freeze trustlines. 
+<p>Clawback is disabled by default. To use clawback, you must set the <code>lsfAllowTrustLineClawback</code> flag through an <code>AccountSet</code> transaction. The <code>AccountSet</code> transaction only succeeds if the account has an empty owner directory, meaning that the account has no trust lines, offers, escrows, payment channels, or checks. After you set this flag, it cannot reverted. The account permanently gains the ability to claw back issued assets on trust lines.</p>
+<p>If you attempt to set <code>lsfAllowTrustLineClawback</code> while <code>lsfNoFreeze</code> is set, the transaction returns <code>tecNO_PERMISSION</code>, because clawback cannot be enabled on an account that has already disclaimed the ability to freeze trust lines. 
 Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrustLineClawback</code> is set, the transaction also returns <code>tecNO_PERMISSION</code>.</p>
 <h2 id="example-clawback-transaction">Example Clawback Transaction<a aria-hidden="true" class="hover_anchor" href="#example-clawback-transaction"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -431,7 +431,7 @@ Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrust
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>In execution, this transaction would claw back at most 314.159 FOO issued by rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S and held by rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW. If rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW does not have a trustline set up or that trustline's balance is 0, then the error <code>tecNO_LINE</code> is returned and a fee is consumed.</p>
+<p>In execution, this transaction would claw back at most 314.159 FOO issued by rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S and held by rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW. If rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW does not have a trust line set up or that trust line's balance is 0, then the error <code>tecNO_LINE</code> is returned and a fee is consumed.</p>
     </div>
   </article>
 <!-- Feedback Widget -->

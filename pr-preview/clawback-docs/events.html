@@ -432,6 +432,10 @@
         <input value="zone" id="zone-upcoming" name="zone-upcoming" type="checkbox" class="events-filter" checked />
         <label for="zone-upcoming">XRPL Zone</label>
       </div>
+      <div class="form-check form-check-inline">
+        <input value="info-session" id="info-session-upcoming" name="info-session-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="info-session-upcoming">Info Session</label>
+      </div>
     </div>
   </div>
 
@@ -486,10 +490,50 @@
         <input value="zone" id="zone-past" name="zone-past" type="checkbox" class="events-filter" checked />
         <label for="zone-past">XRPL Zone</label>
       </div>
+      <div class="form-check form-check-inline">
+        <input value="info-session" id="info-session-past" name="info-session-past" type="checkbox" class="events-filter" checked />
+        <label for="info-session-past">Info Session</label>
+      </div>
     </div>
   </div>
 
   <div class="mt-2 mb-0 row row-cols-1 row-cols-lg-3 card-deck ">
+    <a class="event-card info-session-past" href="https://ripple.zoom.us/webinar/register/WN_ITv-kDuCS3i6UOgBxBe7-A" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/InfoSessions.png); ">
+        <div class="event-card-title">XRPL Grants Info Session: Decentralized Exchange (DEX) Focused</div>
+      </div>
+      <div class="event-card-body">
+        <p>Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Virtual - Zoom</span>
+        <span class="d-flex icon icon-date">September 06, 2023</span>
+      </div>
+    </a>
+    <a class="event-card meetup-past" href="https://lu.ma/xrplxccess" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/SouthKoreaMeetup.png); ">
+        <div class="event-card-title">XRPL South Korea Meetup - XCCESS</div>
+      </div>
+      <div class="event-card-body">
+        <p>We are excited to introduce the XRP Ledger XCCESS - an exclusive meetup bringing together the brightest minds, innovators, and enthusiasts from South Korea's blockchain industry. Join us for an engaging experience during the Korea Blockchain Week.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">South Korea - JBK Tower</span>
+        <span class="d-flex icon icon-date">September 06, 2023</span>
+      </div>
+    </a>
+    <a class="event-card info-session-past" href="https://ripple.zoom.us/webinar/register/WN_YdxeVY9_RJG5SVo-LSip6w#/registration" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/InfoSessions.png); ">
+        <div class="event-card-title">XRPL Grants Info Session: Financial Inclusion Focused</div>
+      </div>
+      <div class="event-card-body">
+        <p>Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Financial Inclusion projects.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Virtual - Zoom</span>
+        <span class="d-flex icon icon-date">September 05, 2023</span>
+      </div>
+    </a>
     <a class="event-card hackathon-past" href="https://lu.ma/4h3bqfw1" target="_blank">
       <div class="event-card-header" style="background: no-repeat url(assets/img/events/Hackathons.png); ">
         <div class="event-card-title">XRPL Hackathon - Apex 2023</div>
@@ -936,6 +980,14 @@
       $('.zone-upcoming').hide();
     }
   });
+  $('#info-session-upcoming').change(function () {
+    if ($('#info-session-upcoming').is(':checked')) {
+        $('.info-session-upcoming').show();
+    } else {
+      $('.info-session-upcoming').hide();
+    }
+  });
+  
 
   $('#conference-past').change(function () {
     if ($('#conference-past').is(':checked')) {
@@ -979,6 +1031,13 @@
       $('.zone-past').hide();
     }
   });
+   $('#info-session-past').change(function () {
+    if ($('#info-session-past').is(':checked')) {
+        $('.info-session-past').show();
+    } else {
+      $('.info-session-past').hide();
+    }
+  }); 
 
 </script>
 
