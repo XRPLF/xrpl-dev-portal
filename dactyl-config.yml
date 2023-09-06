@@ -1048,6 +1048,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/tokens/nft-storage.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/non-fungible-token-transfers.md
         targets:
             - en
