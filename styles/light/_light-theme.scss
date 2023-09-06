@@ -2,8 +2,7 @@
 .content {
   p code,
   table code,
-  ul code,
-  ol code {
+  li > code {
   background-color: $gray-200;
   color: $gray-900;
   }
@@ -134,10 +133,10 @@ h6,
     color: var(--docsearch-text-color) !important;
   }
   .DocSearch-Input{
-    color: $gray-900; 
+    color: $gray-900;
   }
   .DocSearch-Hit-Select-Icon{
-    color: $gray-900; 
+    color: $gray-900;
   }
   .DocSearch-Form {
     box-shadow: inset 0 0 0 2px $blue-purple-500;
@@ -166,7 +165,7 @@ h6,
   }
   .DocSearch-Logo svg{
     .cls-1, .cls-2{
-      fill:var(--docsearch-logo-color);; 
+      fill:var(--docsearch-logo-color);;
     }
   }
   .DocSearch-Hit-title,
@@ -733,7 +732,7 @@ pre code {
     'ripples-on-demand-liquidity': 'svg',
     'xumm-wallet': 'svg',
     'sologenic-dex': 'svg'
-  ) 
+  )
   {
     #use_case_companies_list {
       ##{$company} {
@@ -741,7 +740,7 @@ pre code {
           max-height: 40px;
           content: url("../img/uses/lightmode/#{$company}.#{$type}");
         }
-      } 
+      }
     }
   }
 
@@ -750,13 +749,13 @@ pre code {
   // #coil,
   #forte,
   #xrplorer,
-  #gatehub 
+  #gatehub
   {
     .biz-logo {
       filter: invert(100%);
     }
   }
-  
+
 }
 
 .landing-bg {

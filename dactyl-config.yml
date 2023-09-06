@@ -119,8 +119,6 @@ targets:
             "use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount": "use-payment-channels.html#8-準備が完了すれば受取人は承認された額のクレームを清算します"
             "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します"
             "reserves.html#owner-reserves": "reserves.html#所有者準備金"
-            # Fix links from untranslated issue-a-fungible-token.html:
-            "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
             # Fix links from untranslated validator-list.html
             "run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server": "run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"
             "basic-data-types.html#specifying-time": "basic-data-types.html#時間の指定"
@@ -207,7 +205,6 @@ targets:
             "nftoken.html#transferfee": "nftoken.html#送金手数料"
             "nftoken-batch-minting.html#mint-on-demand-lazy-minting": "nftoken-batch-minting.html#オンデマンドmint-遅延minting"
             "nftoken-batch-minting.html#scripted-minting": "nftoken-batch-minting.html#スクリプトminting"
-            "nftoken.html#retrieving-nftoken-data-and-metadata": "nftoken.html#nftoken-データとメタデータの取得"
             # Fix link from untranslated Clio ledger method page:
             "transactions.html#authorizing-transactions": "transactions.html#トランザクションの承認"
             # Fix link from untranslated addresses.html:
@@ -2154,7 +2151,7 @@ pages:
         html: references.html
         parent: docs.html
         top_nav_grouping: Article Types
-        sidebar: disabled
+        sidebar: left_only
         blurb: Complete references for different interfaces to the XRP Ledger.
         targets:
             - en
@@ -2165,7 +2162,7 @@ pages:
         html: references.html
         parent: docs.html
         top_nav_grouping: Article Types
-        sidebar: disabled
+        sidebar: left_only
         blurb: XRP Ledgerへのさまざまなインターフェイスの包括的なリファレンスです。
         targets:
             - ja

@@ -314,7 +314,7 @@ html.light .token-banner-container {
   }
 }
 
-$banner-top-offset: 146px;
+$banner-top-offset: 108px;
 
 .floating-nav {
   top: $banner-top-offset;
@@ -334,10 +334,6 @@ $banner-top-offset: 146px;
 
 .content h1:first-child:before {
   margin-top: -$banner-top-offset;
-}
-
-#main_content_wrapper {
-  margin-top: 53px;
 }
 
 html.light {

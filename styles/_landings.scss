@@ -23,6 +23,11 @@
     }
   }
 
+  section:first-of-type h1:first-child {
+    margin-top: 0;
+    line-height: 1.2;
+  }
+
   .level-1,
   .level-2{
     margin-top: 0;

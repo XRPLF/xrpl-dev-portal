@@ -37,7 +37,7 @@
     {% endif %}
 
     <!-- jQuery -->
-    <script src="{{currentpage.prefix}}assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="{{currentpage.prefix}}assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     {% block analytics %}{% endblock %}
@@ -46,13 +46,13 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
     {% if target.lang=="ja" %}
     <link href="{{currentpage.prefix}}assets/css/fonts-ja.css" rel="stylesheet" />
     {% endif %}
-    <link href="{{currentpage.prefix}}assets/css/devportal2022-v23.css" rel="stylesheet" />
+    <link href="{{currentpage.prefix}}assets/css/devportal2022-v24.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -96,7 +96,7 @@
       <!-- main column -->
       <main class="main {% if currentpage.sidebar is defined and currentpage.sidebar == "disabled" %}col-md-12{% elif currentpage.sidebar == "left_only" %}col-lg-9 col-md-7{% else %}col-md-7 col-lg-6{% endif %} order-md-3  {% block mainclasses %}{% endblock %}" role="main" id="main_content_body">
           {% block breadcrumbs %}
-            {% include 'breadcrumbs.html' %}
+            {% include 'component-breadcrumbs.html.jinja' %}
           {% endblock %}
           {% block main %}{% endblock %}
       </main>

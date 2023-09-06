@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block main %}
-  <article class="pt-3 p-md-3">
+  <article>
     {% if (target.lang != "en" and "en" in currentpage.targets) or currentpage.untranslated_warning %}
     {# Add a "sorry this page isn't translated" banner. #}
     <div class="mb-5 devportal-callout note"><strong>{% trans %}Sorry, this page is not available in your language.{% endtrans %}</strong>
