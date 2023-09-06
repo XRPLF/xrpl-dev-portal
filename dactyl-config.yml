@@ -1127,6 +1127,12 @@ pages:
         targets:
             - ja
 
+# TODO - Translate
+    -   md: concepts/tokens/clawback-of-issued-currency.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/freezes.md
         targets:
             - en
@@ -2286,6 +2292,12 @@ pages:
     -   md: references/protocol-reference/ledger-data/ledger-object-types/check.ja.md
         targets:
             - ja
+
+# TODO: Translate
+    -   md: references/protocol-reference/transactions/transaction-types/clawback.md
+        targets:
+            - en
+            - ja            
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/depositpreauth.md
         targets:
