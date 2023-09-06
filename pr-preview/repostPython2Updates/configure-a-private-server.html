@@ -33,7 +33,7 @@
     <meta name="color-scheme" content="dark light">
 
     <!-- jQuery -->
-    <script src="assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     <script type="application/javascript">
@@ -51,10 +51,10 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v23.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v24.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -397,9 +397,12 @@
 
       <!-- main column -->
       <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
-<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+<nav class="breadcrumbs-wrap" aria-label="breadcrumb">
   <ul class="breadcrumb">
     
+
+
+
 
     <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
@@ -407,7 +410,7 @@
     <li class="active breadcrumb-item"><a href="configure-peering.html">Peering</a></li>
     <li class="active breadcrumb-item">Configure a Private Server</li>
   </ul>
-</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+</nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="configure-a-private-server">Configure a Private Server<a aria-hidden="true" class="hover_anchor" href="#configure-a-private-server"><i class="fa fa-link"></i></a></h1>
 <p>A <a href="peer-protocol.html#private-peers">private server</a> is a <code>rippled</code> server that connects to the network only through specific, trusted peers instead of connecting directly to discovered peers in the open peer-to-peer network. This kind of configuration is an optional precaution most commonly recommended for <a href="run-rippled-as-a-validator.html">validators</a>, but it can be useful for other specific purposes.</p>
@@ -933,6 +936,11 @@
         <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>

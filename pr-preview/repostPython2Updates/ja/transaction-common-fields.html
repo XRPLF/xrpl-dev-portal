@@ -33,7 +33,7 @@
     <meta name="color-scheme" content="dark light">
 
     <!-- jQuery -->
-    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/ja/assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     <script type="application/javascript">
@@ -51,11 +51,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v23.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v24.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -389,6 +389,7 @@
         <li class="nav-item level-1"><a class="nav-link" href="#トランザクションの共通フィールド">トランザクションの共通フィールド</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accounttxnid">AccountTxnID</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#自動入力可能なフィールド">自動入力可能なフィールド</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#auto-fillable-fields">Auto-fillable Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#flagsフィールド">Flagsフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#グローバルフラグ">グローバルフラグ</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#フラグの範囲">フラグの範囲</a></li>
@@ -400,9 +401,13 @@
 
       <!-- main column -->
       <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
-<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+<nav class="breadcrumbs-wrap" aria-label="breadcrumb">
   <ul class="breadcrumb">
     
+
+
+
+
 
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
@@ -411,7 +416,7 @@
     <li class="active breadcrumb-item"><a href="/ja/transaction-formats.html">トランザクションのフォーマット</a></li>
     <li class="active breadcrumb-item">トランザクションの共通フィールド</li>
   </ul>
-</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+</nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="トランザクションの共通フィールド">トランザクションの共通フィールド<a aria-hidden="true" class="hover_anchor" href="#トランザクションの共通フィールド"><i class="fa fa-link"></i></a></h1>
 <p>どのトランザクションについても、共通する一連のフィールドに加え、<a href="transaction-types.html">トランザクションのタイプ</a>に応じた追加のフィールドがあります。フィールドの名前では、大文字と小文字が区別されます。すべてのトランザクションに共通するフィールドは、以下のとおりです。</p>
@@ -505,6 +510,7 @@
 <p>このフィールドが有用になるのは、例えば、トランザクション送信用のプライマリーシステムと受動的なバックアップシステムを運用している場合です。受動的なバックアップシステムがプライマーリから切断されたものの、プライマリが完全に稼働停止となったわけではなく、両システムが同時に稼働を開始した場合は、トランザクションが2回送信される、あるいはまったく送信されないなど、深刻な問題が発生するおそれがあります。<code>AccountTxnID</code>を使用してトランザクションどうしをチェーンにすると、両方のシステムがアクティブになったときも、有効なトランザクションを送信できるのはいずれか一方のみとなります。</p>
 <p>AccountTxnIDを使用するには、アカウントの1つ前のトランザクションのIDがレジャーで追跡されるよう、最初に<a href="accountset.html#accountsetのフラグ">asfAccountTxnID</a>フラグを設定する必要があります。</p>
 <h2 id="自動入力可能なフィールド">自動入力可能なフィールド<a aria-hidden="true" class="hover_anchor" href="#自動入力可能なフィールド"><i class="fa fa-link"></i></a></h2>
+<h2 class="invisible" id="auto-fillable-fields">Auto-fillable Fields<a aria-hidden="true" class="hover_anchor" href="#auto-fillable-fields"><i class="fa fa-link"></i></a></h2>
 <p>一部のフィールドについては、トランザクションの署名前に、<code>rippled</code>サーバーによって、または署名に使用される<a class="external-link" href="https://github.com/XRPLF/xrpl.js" target="_blank">ripple-lib <i aria-hidden="true" class="fa fa-external-link"></i></a>などのライブラリーによって値を自動入力できます。値を自動入力するには、最新の状態を取得するためのXRP Ledgerへのアクティブな接続が必要です。したがって、オフラインでは実行できません。<a class="external-link" href="https://github.com/XRPLF/xrpl.js" target="_blank">ripple-lib <i aria-hidden="true" class="fa fa-external-link"></i></a>と<code>rippled</code>のどちらも、以下の値を自動的に提供できます。</p>
 <ul>
 <li>
@@ -1097,6 +1103,11 @@
         <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
