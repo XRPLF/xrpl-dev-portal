@@ -66,7 +66,7 @@ testnet_url = "https://s.altnet.rippletest.net:51234"
 
 ## Batch Mint
 
-Pass the values _seed_, _uri_, _flags_, _transfer___fee_, _taxon_, and _count_.
+Pass the values `seed`, `uri`, `flags`, `transfer_fee`, `taxon`, and `count`.
 
 ```python
 def batch_mint(seed, uri, flags, transfer_fee, taxon, count):
@@ -123,7 +123,7 @@ Create a request to obtain the next ticket number.
     ticket_response=client.request(ticket_numbers_req)
 ```
 
-Create the _tickets_ variable to store an array of tickets.
+Create the `tickets` variable to store an array of tickets.
 
 ```python
     tickets=[int(0)] * int(count)
