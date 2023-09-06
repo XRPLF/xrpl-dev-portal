@@ -94,6 +94,10 @@
         <input value="zone" id="zone-upcoming" name="zone-upcoming" type="checkbox" class="events-filter" checked />
         <label for="zone-upcoming">XRPL Zone</label>
       </div>
+      <div class="form-check form-check-inline">
+        <input value="info-session" id="info-session-upcoming" name="info-session-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="info-session-upcoming">Info Session</label>
+      </div>
     </div>
   </div>
 {% set events = [
@@ -430,10 +434,37 @@
     "image": "Hackathons.png",
     "end_date": "August 31, 2023"
     },
+    { "name": "XRPL Grants Info Session: Financial Inclusion Focused",      
+    "description": "Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Financial Inclusion projects.",
+    "type": "info-session",
+    "link": "https://ripple.zoom.us/webinar/register/WN_YdxeVY9_RJG5SVo-LSip6w#/registration",
+    "location": "Virtual - Zoom",
+    "date": "September 05, 2023",
+    "image": "InfoSessions.png",
+    "end_date": "September 05, 2023"
+    },
+    { "name": "XRPL South Korea Meetup - XCCESS",      
+    "description": "We are excited to introduce the XRP Ledger XCCESS - an exclusive meetup bringing together the brightest minds, innovators, and enthusiasts from South Korea's blockchain industry. Join us for an engaging experience during the Korea Blockchain Week.",
+    "type": "meetup",
+    "link": "https://lu.ma/xrplxccess",
+    "location": "South Korea - JBK Tower",
+    "date": "September 06, 2023",
+    "image": "SouthKoreaMeetup.png",
+    "end_date": "September 06, 2023"
+    },
+    { "name": "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",      
+    "description": "Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.",
+    "type": "info-session",
+    "link": "https://ripple.zoom.us/webinar/register/WN_ITv-kDuCS3i6UOgBxBe7-A",
+    "location": "Virtual - Zoom",
+    "date": "September 06, 2023",
+    "image": "InfoSessions.png",
+    "end_date": "September 06, 2023"
+    },
 ]
 %}
 
-  {# Available Types - conference, hackathon, ama, cc, zone, meetup #}
+  {# Available Types - conference, hackathon, ama, cc, zone, meetup, info-session #}
 
   {% set results = categorize_dates(events) %}
   {% set upcoming = results.upcoming %}
@@ -490,6 +521,10 @@
       <div class="form-check form-check-inline">
         <input value="zone" id="zone-past" name="zone-past" type="checkbox" class="events-filter" checked />
         <label for="zone-past">XRPL Zone</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="info-session" id="info-session-past" name="info-session-past" type="checkbox" class="events-filter" checked />
+        <label for="info-session-past">Info Session</label>
       </div>
     </div>
   </div>
@@ -559,6 +594,14 @@
       $('.zone-upcoming').hide();
     }
   });
+  $('#info-session-upcoming').change(function () {
+    if ($('#info-session-upcoming').is(':checked')) {
+        $('.info-session-upcoming').show();
+    } else {
+      $('.info-session-upcoming').hide();
+    }
+  });
+  
 
   $('#conference-past').change(function () {
     if ($('#conference-past').is(':checked')) {
@@ -602,6 +645,13 @@
       $('.zone-past').hide();
     }
   });
+   $('#info-session-past').change(function () {
+    if ($('#info-session-past').is(':checked')) {
+        $('.info-session-past').show();
+    } else {
+      $('.info-session-past').hide();
+    }
+  }); 
 
 </script>
 
