@@ -11,7 +11,7 @@ async function main() {
   // ... custom code goes here
 
   // Disconnect when done (If you omit this, Node.js won't end the process)
-  client.disconnect()
+  await client.disconnect()
 }
 
 main()

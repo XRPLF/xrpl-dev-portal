@@ -32,7 +32,7 @@ async function main() {
   })
 
   // Disconnect when done so Node.js can end the process
-  client.disconnect()
+  await client.disconnect()
 }
 
 // call the async function
