@@ -2165,6 +2165,12 @@ pages:
             - en
             - ja
 
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/create-an-automated-market-maker.md
+        targets:
+            - en
+            - ja
+
         # Redirect to tutorial parent nav.
     -   name: Get Started
         html: get-started.html

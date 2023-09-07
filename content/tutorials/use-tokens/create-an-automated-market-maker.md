@@ -259,15 +259,7 @@ When you want to withdraw liquidity from the AMM, you can use [AMMDeposit][] to 
 
 However, you should keep an eye on market conditions, and use tools like [AMMBid][] and [AMMVote][] to insulate yourself from losses due to changes in the relative value of the two assets in the pool.
 
-
-<!-- MD: reusable link definitions: -->
-[account_info method]: account_info.html
-[amm_info method]: amm_info.html
-[account_lines method]: account_lines.html
-[server_state method]: server_state.html
-[Currency Amount]: basic-data-types.html#specifying-currency-amounts
-[transaction cost]: transaction-cost.html
-[AMMCreate transaction]: ammcreate.html
-[AMMBid]: ammbid.html
-[AMMDeposit]: ammdeposit.html
-[AMMVote]: ammvote.html
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
