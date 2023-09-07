@@ -74,6 +74,7 @@ The available AccountSet flags are:
 | Flag Name                         | Decimal Value | Corresponding Ledger Flag         | Description   |
 |:----------------------------------|:--------------|:----------------------------------|:--------------|
 | `asfAccountTxnID`                 | 5             | (None)                            | Track the ID of this account's most recent transaction. Required for [`AccountTxnID`](transaction-common-fields.html#accounttxnid) |
+| `asfAllowClawback`                | 16            | `lsfAllowTrustlineClawback`       | Allow account to claw back tokens it has issued. |
 | `asfAuthorizedNFTokenMinter`      | 10            | (None)                            | Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the `NFTokenMinter` field of the [AccountRoot](accountroot.html) object. To remove an authorized minter, enable this flag and omit the `NFTokenMinter` field. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
 | `asfDefaultRipple`                | 8             | `lsfDefaultRipple`                | Enable [rippling](rippling.html) on this account's trust lines by default. |
 | `asfDepositAuth`                  | 9             | `lsfDepositAuth`                  | Enable [Deposit Authorization](depositauth.html) on this account. _(Added by the [DepositAuth amendment][].)_ |

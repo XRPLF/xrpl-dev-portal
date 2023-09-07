@@ -1,7 +1,7 @@
 ---
 html: clawback.html
 parent: transaction-types.html
-blurb: Claw back an issued currency transfer between accounts in a trust set.
+blurb: Claw back tokens you've issued.
 labels:
   - Tokens
 status: not_enabled
@@ -12,7 +12,7 @@ status: not_enabled
 
 <embed src="/snippets/_clawback-disclaimer.md" />
 
-Claw back an issued currency transfer between accounts in a trust set.
+Claw back tokens issued by your account. This only works if you have enabled the **Allow Clawback** flag before issuing the tokens.
 
 ## Example Clawback JSON
 
