@@ -1,8 +1,8 @@
 // In browsers, use a <script> tag. In Node.js, uncomment the following line:
 // const xrpl = require('xrpl')
 
-const WS_URL = 'wss://amm.devnet.rippletest.net:51233/'
-const EXPLORER = 'amm-devnet.xrpl.org' // Optional, for linking
+const WS_URL = 'wss://s.devnet.rippletest.net:51233/'
+const EXPLORER = 'devnet.xrpl.org' // Optional, for linking
 
 async function main() {
   // Define the network client

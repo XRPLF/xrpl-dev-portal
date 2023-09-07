@@ -1,5 +1,5 @@
 'use strict'
-// Code to set up an AMM instance between 
+// Code to set up an AMM instance between
 // "TST.rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" and novel "FOO" tokens.
 
 // Dependencies for Node.js; this if statement lets the code run unmodified
@@ -14,8 +14,8 @@ if (typeof module !== "undefined") {
 }
 
 // Connect to the network -----------------------------------------------------
-const WS_URL = 'wss://amm.devnet.rippletest.net:51233'
-const EXPLORER = 'https://amm-devnet.xrpl.org'
+const WS_URL = 'wss://s.devnet.rippletest.net:51233'
+const EXPLORER = 'https://devnet.xrpl.org'
 
 async function main() {
   const client = new xrpl.Client(WS_URL);
@@ -24,7 +24,7 @@ async function main() {
   // Get credentials from the Faucet -------------------------------------------
   console.log("Requesting address from the faucet...")
   const wallet = (await client.fundWallet()).wallet
-  
+
   // To use an existing account, use code such as the following:
   // const wallet = xrpl.Wallet.fromSeed(process.env['USE_SEED'])
 
@@ -58,14 +58,14 @@ async function main() {
   }
   // Successfully placing the offer doesn't necessarily mean that you have TST,
   // but for now, let's assume it matched existing Offers on ledger so you do.
-  
+
   // Call helper function to set up a new "FOO" issuer, create a trust line
   // to them, and receive 1000 FOO from them.
   const foo_amount = await get_new_token(client, wallet, "FOO", "1000")
 
   // Check if AMM already exists ----------------------------------------------
   const amm_info_request = {
-    "command": "amm_info", 
+    "command": "amm_info",
     "asset": {
       "currency": "TST",
       "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd",
@@ -81,8 +81,8 @@ async function main() {
     console.log(amm_info_result)
   } catch(err) {
     if (err.data.error === 'actNotFound') {
-      console.log(`No AMM exists yet for the pair 
-                   ${foo_amount.currency}.${foo_amount.issuer} / 
+      console.log(`No AMM exists yet for the pair
+                   ${foo_amount.currency}.${foo_amount.issuer} /
                    TST.rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd.
                    (This is probably as expected.)`)
     } else {
@@ -153,9 +153,9 @@ main()
 
 
 /* Issue tokens ---------------------------------------------------------------
- * Fund a new issuer using the faucet, and issue some fungible tokens 
+ * Fund a new issuer using the faucet, and issue some fungible tokens
  * to the specified address. In production, you would not do this; instead,
- * you would acquire tokens from an existing issuer (for example, you might 
+ * you would acquire tokens from an existing issuer (for example, you might
  * buy them in the DEX, or make an off-ledger deposit at a stablecoin issuer).
  * For a more thorough explanation of this process, see
  * "Issue a Fungible Token": https://xrpl.org/issue-a-fungible-token.html
@@ -163,7 +163,7 @@ main()
  * client: an xrpl.Client instance that is already connected to the network
  * wallet: an xrpl.Wallet instance that should hold the new tokens
  * currency_code: string currency code (3-char ISO-like or hex code)
- * issue_quantity: string number of tokens to issue. Arbitrarily capped 
+ * issue_quantity: string number of tokens to issue. Arbitrarily capped
  *                 at "10000000000"
  * Resolves to: an "Amount"-type JSON object, such as:
  * {
