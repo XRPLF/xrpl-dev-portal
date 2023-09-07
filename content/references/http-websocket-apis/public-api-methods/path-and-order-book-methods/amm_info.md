@@ -62,11 +62,14 @@ An example of the request format:
 
 The request includes the following parameters:
 
-| `Field`  | Type             | Description                        |
-|:---------|:-----------------|:-----------------------------------|
-| `asset`  | Object or String | One of the assets of the AMM to look up, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. For XRP, you can specify as the string `XRP` instead of as an object. |
-| `asset2` | Object or String | The other of the assets of the AMM, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. |
+| `Field`       | Type             | Required? | Description |
+|:--------------|:-----------------|:----------|-------------|
+| `account`     | String - [Address][] | No    | Show only LP Tokens held by this liquidity provider. |
+| `amm_account` | String - [Address][] | No    | The address of the AMM's special special AccountRoot. (This is the `issuer` of the AMM's LP Tokens.) |
+| `asset`       | Object or String | No        | One of the assets of the AMM to look up, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. For XRP, you can specify as the string `XRP` instead of as an object. |
+| `asset2`      | Object or String | No        | The other of the assets of the AMM, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. |
 
+You must specify _either_ `amm_account` or both `asset` and `asset2`.
 
 ### Response Format
 
@@ -210,7 +213,7 @@ The `amm` field is an object describing the current status of an Automated Marke
 | `asset_frozen`  | Boolean             | _(Omitted for XRP)_ If `true`, the `amount` currency is currently [frozen](freezes.html). |
 | `asset2_frozen` | Boolean             | _(Omitted for XRP)_ If `true`, the `amount2` currency is currently [frozen](freezes.html). |
 | `auction_slot`  | Object              | _(May be omitted)_ An [Auction Slot Object](#auction-slot-object) describing the current auction slot holder, if there is one. |
-| `lp_token`      | [Currency Amount][] | The total amount of this AMM's LP Tokens outstanding. |
+| `lp_token`      | [Currency Amount][] | The total amount of this AMM's LP Tokens outstanding. If the request specified a liquidity provider in the `account` field, instead, this is the amount of this AMM's LP Tokens held by that liquidity provider. |
 | `trading_fee`   | Number              | The AMM's current trading fee, in units of 1/100,000; a value of 1 is equivalent to a 0.001% fee. |
 | `vote_slots`    | Array               | _(May be omitted)_ The current votes for the AMM's trading fee, as [Vote Slot Objects](#vote-slot-objects). |
 
@@ -243,7 +246,7 @@ Each entry in the `vote_slots` array represents one liquidity provider's vote to
 ### Possible Errors
 
 - Any of the [universal error types][].
-- `actNotFound` - The AMM for this asset pair does not exist, or an issuing account specified in the request does not exist.
+- `actNotFound` - The AMM for this asset pair does not exist, or an account specified in the request does not exist.
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 
 

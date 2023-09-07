@@ -93,6 +93,16 @@ The `AuctionSlot` field contains an object with the following nested fields:
 | `Price`         | [Currency Amount][] | Amount            | Yes       | The amount the auction owner paid to win this slot, in LP Tokens. |
 | `Expiration`    | String              | UInt32            | Yes       | The time when this slot expires, in [seconds since the Ripple Epoch][]. |
 
+## VoteEntry Object
+
+The `VoteSlots` field contains an array of `VoteEntry` objects with the following fields:
+
+| Field            | JSON Type           | [Internal Type][] | Required? | Description  |
+|:-----------------|:--------------------|:------------------|:----------|--------------|
+| `Account`        | String - Address    | AccountID         | Yes       | The account that cast the vote. |
+| `TradingFee`     | Number              | UInt16            | Yes       | The proposed trading fee, in units of 1/100,000; a value of 1 is equivalent to 0.001%. The maximum value is 1000, indicating a 1% fee. |
+| `VoteWeight`     | Number              | UInt32            | Yes       | The weight of the vote, in units of 1/100,000. For example, a value of 1234 means this vote counts as 1.234% of the weighted total vote. The weight is determined by the percentage of this AMM's LP Tokens the account owns. The maximum value is 100000. |
+
 ## AMM Flags
 
 There are currently no flags defined for `AMM` objects.
