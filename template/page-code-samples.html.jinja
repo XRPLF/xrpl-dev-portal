@@ -18,7 +18,7 @@
 </section>
 
 <div class="position-relative d-none-sm">
-    <img src="./img/backgrounds/xrpl-overview-orange.svg" id="xrpl-overview-orange">
+    <img alt="" src="./img/backgrounds/xrpl-overview-orange.svg" id="xrpl-overview-orange">
   </div>
 
 <section class="container-new py-26">
@@ -44,7 +44,7 @@
       <a class="card cardtest col-12 col-lg-5 {% for lang in card.langs %} lang_{{lang}} {% endfor %} " href="{{target.github_forkurl}}/tree/{{target.github_branch}}/{{card.href}}">
         <div class="card-header">
         {% for lang in card.langs %}
-          <span class="circled-logo"><img src="{{lang_icons[lang]}}" /></span>
+          <span class="circled-logo"><img alt="{{lang}}" src="{{lang_icons[lang]}}" /></span>
         {% endfor %}
         </div>
         <div class="card-body">
