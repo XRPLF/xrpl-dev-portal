@@ -22,7 +22,7 @@ An [Automated Market Maker (AMM)](automated-market-makers.html) can be an effici
 
 - You must have an XRP Ledger address and some XRP. For testing, you can get these from a [Faucet](xrp-testnet-faucet.html).
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/) **version 2.8.0-beta.0 or later**. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/) **version 2.11.0 or later**. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
     - You can also read along and use the interactive steps in your browser without any setup.
 - You should have a basic understanding of how [tokens](tokens.html) work in the XRP Ledger.
 - You may want to read about [Automated Market Makers in the XRP Ledger](automated-market-makers.html) first.
