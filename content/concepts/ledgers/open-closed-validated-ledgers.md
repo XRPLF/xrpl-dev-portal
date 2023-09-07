@@ -5,7 +5,7 @@ blurb: Ledger objects have one of three states — open, closed, or validated.
 labels:
   - Blockchain
 ---
-## Open, Closed, and Validated Ledgers
+# Open, Closed, and Validated Ledgers
 
 The `rippled` server makes a distinction between ledger versions that are _open_, _closed_, and _validated_. A server has one open ledger, any number of closed but unvalidated ledgers, and an immutable history of validated ledgers. The following table summarizes the difference:
 

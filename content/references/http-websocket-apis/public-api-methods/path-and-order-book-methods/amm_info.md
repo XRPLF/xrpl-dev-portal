@@ -13,7 +13,7 @@ labels:
 
 The `{{currentpage.name}}` method gets information about an Automated Market Maker (AMM) instance.
 
-{% include '_snippets/amm-disclaimer.md' %}
+_(Requires the [AMM amendment][] :not_enabled:)_
 
 
 ### Request Format

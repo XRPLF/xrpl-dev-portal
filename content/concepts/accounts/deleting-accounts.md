@@ -5,7 +5,7 @@ blurb: About deleting an XRP Ledger account.
 labels:
   - Accounts
 ---
-## Deleting Accounts
+# Deleting Accounts
 
 The owner of an account can send an [AccountDelete transaction][] to deletes the account and related entries from the ledger, sending most of the account's remaining XRP balance to another account. To discourage wasteful creation and deletion of accounts, deleting an account requires burning a higher than usual amount of XRP as the [transaction cost](transaction-cost.html).
 
@@ -35,6 +35,6 @@ Unlike Bitcoin and many other cryptocurrencies, each new version of the XRP Ledg
 Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](source-and-destination-tags.html) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
