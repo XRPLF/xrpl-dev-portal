@@ -78,6 +78,7 @@ https://xrpl.org/partial-payments.html
 https://xrpl.org/payment-channels.html
 https://xrpl.org/tokens.html
 https://xrpl.org/non-fungible-tokens.html
+https://xrpl.org/nft-storage.html
 https://xrpl.org/non-fungible-token-transfers.html
 https://xrpl.org/nft-reserve-requirements.html
 https://xrpl.org/nftoken-batch-minting.html

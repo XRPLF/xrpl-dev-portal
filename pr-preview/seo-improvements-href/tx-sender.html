@@ -33,7 +33,7 @@
     <meta name="color-scheme" content="dark light">
 
     <!-- jQuery -->
-    <script src="assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     <script type="application/javascript">
@@ -50,10 +50,10 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v23.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v24.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -371,9 +371,11 @@
 
       <!-- main column -->
       <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
-<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+<nav class="breadcrumbs-wrap" aria-label="breadcrumb">
   <ul class="breadcrumb">
     
+
+
 
     <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="resources.html">Resources</a></li>
@@ -425,7 +427,7 @@
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/xrp-loader-96.png" /></span>
+            <span  class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="assets/img/xrp-loader-96.png" /></span>
           </div>
           <button class="btn btn-primary form-control" type="button" id="send_partial_payment_btn" disabled="disabled" autocomplete="off" title="(Please wait for partial payments setup to finish)">Send Partial Payment</button>
         </div>
@@ -437,7 +439,7 @@
       <div class="form-group" id="create_escrow">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/xrp-loader-96.png" /></span>
+            <span class="input-group-text loader" style="display: none"><img class="throbber"  alt="(loading)" src="assets/img/xrp-loader-96.png" /></span>
           </div>
           <button class="btn btn-primary form-control disabled needs-connection" type="button" id="create_escrow_btn" disabled="disabled">Create Escrow</button>
           <input class="form-control" type="number" value="60" min="5" max="10000" id="create_escrow_duration_seconds" />
@@ -462,7 +464,7 @@
       <div class="form-group" id="create_payment_channel">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/xrp-loader-96.png" /></span>
+            <span class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="assets/img/xrp-loader-96.png" /></span>
           </div>
           <button class="btn btn-primary form-control disabled needs-connection" type="button" id="create_payment_channel_btn" disabled="disabled">Create Payment Channel</button>
           <input id="create_payment_channel_amount" class="form-control" type="number" aria-describedby="create_payment_channel_amount_help" value="100000" min="1" max="10000000000" />
@@ -478,7 +480,7 @@
       <div class="form-group" id="send_issued_currency">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/xrp-loader-96.png" /></span>
+            <span class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="assets/img/xrp-loader-96.png" /></span>
           </div>
           <button class="btn btn-primary form-control disabled needs-connection" type="button" id="send_issued_currency_btn" disabled="disabled">Send Issued Currency</button>
           <input id="send_issued_currency_amount" class="form-control" type="text" value="100" /><!-- Note: HTML limits "number" inputs to IEEE 764 double precision, which isn't enough for the full range of issued currency amounts -->
@@ -494,7 +496,7 @@
       <div class="form-group" id="trust_for">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/xrp-loader-96.png" /></span>
+            <span class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="assets/img/xrp-loader-96.png" /></span>
           </div>
           <button class="btn btn-primary form-control disabled needs-connection" type="button" id="trust_for_btn" disabled="disabled">Trust for</button>
           <input id="trust_for_amount" class="form-control disabled" type="number" value="100000" />
@@ -976,6 +978,11 @@
         <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
