@@ -477,7 +477,7 @@
 <li>Trust lines for the tokens that were in the AMM's pool.</li>
 </ul>
 <p>If there are more than 512 trust lines attached to the AMM account when it would be deleted, the withdraw succeeds and deletes as many trust lines as it can, but leaves the AMM in the ledger with no assets in its pool.</p>
-<p>While an AMM has no assets in its pool, anyone can delete it by sending an [AMMDelete transaction][]; if the remaining number of trust lines is still greater than the limit, multiple AMMDelete transactions may be necessary to fully delete the AMM. Alternatively, anyone can perform a <a href="ammdeposit.html#empty-amm-special-case">special deposit</a> to fund the AMM as if it were new. No other operations are valid on an AMM with an empty asset pool.</p>
+<p>While an AMM has no assets in its pool, anyone can delete it by sending an <a href="ammdelete.html">AMMDelete transaction</a>; if the remaining number of trust lines is still greater than the limit, multiple AMMDelete transactions may be necessary to fully delete the AMM. Alternatively, anyone can perform a <a href="ammdeposit.html#empty-amm-special-case">special deposit</a> to fund the AMM as if it were new. No other operations are valid on an AMM with an empty asset pool.</p>
 <p>There is no refund or incentive for deleting an empty AMM.</p>
 <!-- -->
 <!-- -->

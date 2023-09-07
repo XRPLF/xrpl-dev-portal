@@ -551,7 +551,7 @@
 </code></pre></div>
 </li>
 </ul>
-<p class="devportal-callout note"><strong>Note:</strong> To make sure all servers in the network reach the same results when building a ledger, time measurements are based on the <a href="ledgers.html#ledger-close-times">official close time</a> of the previous ledger, which is approximate.</p>
+<p class="devportal-callout note"><strong>Note:</strong> To make sure all servers in the network reach the same results when building a ledger, time measurements are based on the <a href="ledger-close-times.html">official close time</a> of the previous ledger, which is approximate.</p>
 <h2 id="bid-refunds">Bid Refunds<a aria-hidden="true" class="hover_anchor" href="#bid-refunds"><i class="fa fa-link"></i></a></h2>
 <p>When you outbid an active auction slot, the AMM refunds the previous holder part of the price, using this formula:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">R = B × (1 - t)
@@ -562,7 +562,7 @@
 <li><code>t</code> is the fraction of time elapsed in the current 24-hour slot, rounded down to a multiple of 0.05.</li>
 </ul>
 <p>As a special case, during the final (20th) interval of the auction slot, the refunded amount is zero.</p>
-<p class="devportal-callout note"><strong>Note:</strong> As with all XRP Ledger times, transaction processing uses the <a href="ledgers.html#ledger-close-times">official close time</a> of the <em>previous</em> ledger, which can result in a difference of up to about 10 seconds from real time.</p>
+<p class="devportal-callout note"><strong>Note:</strong> As with all XRP Ledger times, transaction processing uses the <a href="ledger-close-times.html">official close time</a> of the <em>previous</em> ledger, which can result in a difference of up to about 10 seconds from real time.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
 <p>Besides errors that can occur for all transactions, AMMBid transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">

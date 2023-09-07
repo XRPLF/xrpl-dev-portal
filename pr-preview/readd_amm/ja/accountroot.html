@@ -390,6 +390,7 @@
         <li class="nav-item level-1"><a class="nav-link" href="#accountroot">AccountRoot</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-jsonの例">AccountRoot JSONの例</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountrootフィールド">AccountRootフィールド</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ammの特殊なaccountrootオブジェクト">AMMの特殊なAccountRootオブジェクト</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountrootのフラグ">AccountRootのフラグ</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-idのフォーマット">AccountRoot IDのフォーマット</a></li>
       </ul>
@@ -464,6 +465,13 @@
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">いいえ</td>
 <td style="text-align: left;">このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、<a href="transaction-common-fields.html#accounttxnid"><code>AccountTxnID</code>トランザクションフィールド</a>を使うために有効になっていなければなりません。これを有効にするには、<a href="accountset.html#accountsetのフラグ"><code>asfAccountTxnID</code>フラグを有効にしたAccountSetトランザクション</a>を送信してください。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>AMMID</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">Hash256</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;"><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要。)</em> The ledger entry ID of the corresponding AMM ledger entry. Set during account creation; cannot be modified. If present, indicates that this is a special AMM AccountRoot; always omitted on non-AMM accounts. <!-- TODO: translate --></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Balance</code></td>
@@ -600,6 +608,17 @@
 </tr>
 </tbody>
 </table>
+<h2 id="ammの特殊なaccountrootオブジェクト">AMMの特殊なAccountRootオブジェクト<a aria-hidden="true" class="hover_anchor" href="#ammの特殊なaccountrootオブジェクト"><i class="fa fa-link"></i></a></h2>
+<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要。)</em></p>
+<!-- TODO: update translation -->
+<p><a href="automated-market-makers.html">自動マーケットメーカー</a> (AMM) は、AMMの詳細の一部を追跡するための<a href="amm.html">AMMオブジェクト</a>に加えて、LPトークンを発行しAMMプール内の資産を保持するためにAccountRootオブジェクトを使用します。AMMに関連するAccountRootのアドレスは、AMMが作成される前にユーザーがそのアドレスを特定し資金を提供できないように、ランダム化されています。AMMのAccountRootは、通常のアカウントとは異なり、以下のような設定で作成されます。</p>
+<ul>
+<li><code>lsfDisableMaster</code> <strong>有効</strong> : トランザクションへ署名する手段はありません。これにより、誰もそのアカウントを直接操作することができず、トランザクションを送信することができなくなります。</li>
+<li><code>lsfRequireAuth</code> <strong>有効</strong> : 事前承認されているアカウントは存在しません。これにより、AMMアカウントに資産を追加する唯一の方法は、<a href="ammdeposit.html">AMMDepositトランザクション</a>を使用することであることが保証されます。</li>
+<li><code>lsfDefaultRipple</code> <strong>有効</strong> : ユーザー間でAMMのLPトークンを送信したり、取引したりすることが可能になります。</li>
+</ul>
+<p>これらの特殊なアカウントは、<a href="reserves.html">準備金要件</a>の対象外ですが、AMMのプール内の2つの資産のうちの1つであれば、XRPを保有することができます。</p>
+<p>LPトークンは他の<a href="tokens.html">トークン</a>と同様に動作しますが、これらのトークンはAMM関連のトランザクションでも使用することができます。AMMの残高や、AMMに影響を与えたトランザクションの履歴は、通常のアカウントと同じように確認することができます。</p>
 <h2 id="accountrootのフラグ">AccountRootのフラグ<a aria-hidden="true" class="hover_anchor" href="#accountrootのフラグ"><i class="fa fa-link"></i></a></h2>
 <p>このアカウントに対して有効化または無効化できる各種オプションがあります。これらのオプションを変更するには、<a href="accountset.html">AccountSetトランザクション</a>を使用します。レジャーではフラグはバイナリ値として表され、これらのバイナリ値はビットOR演算と組み合わせることができます。レジャーでのフラグのビット値は、トランザクションでこれらのフラグを有効または無効にするために使用する値とは異なります。レジャーのフラグには、 <em>lsf</em> で始まる名前が付いています。</p>
 <p>AccountRootオブジェクトには以下のフラグ値を指定できます。</p>
