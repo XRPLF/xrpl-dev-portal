@@ -99,7 +99,7 @@ If successful, the transaction automatically outbids the previous slot owner and
 
         P = M
 
-**Note:** To make sure all servers in the network reach the same results when building a ledger, time measurements are based on the [official close time](ledgers.html#ledger-close-times) of the previous ledger, which is approximate.
+**Note:** To make sure all servers in the network reach the same results when building a ledger, time measurements are based on the [official close time](ledger-close-times.html) of the previous ledger, which is approximate.
 
 ## Bid Refunds
 
@@ -115,7 +115,7 @@ R = B × (1 - t)
 
 As a special case, during the final (20th) interval of the auction slot, the refunded amount is zero.
 
-**Note:** As with all XRP Ledger times, transaction processing uses the [official close time](ledgers.html#ledger-close-times) of the _previous_ ledger, which can result in a difference of up to about 10 seconds from real time.
+**Note:** As with all XRP Ledger times, transaction processing uses the [official close time](ledger-close-times.html) of the _previous_ ledger, which can result in a difference of up to about 10 seconds from real time.
 
 
 ## Error Cases

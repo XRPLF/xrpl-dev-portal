@@ -2,6 +2,7 @@
     "AccountDelete",
     "AccountSet",
     "AMMBid",
+    "AMMDelete",
     "AMMDeposit",
     "AMMCreate",
     "AMMVote",
