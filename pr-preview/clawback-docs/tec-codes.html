@@ -422,6 +422,41 @@
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;"><code>tecAMM_ACCOUNT</code></td>
+<td style="text-align: left;">168</td>
+<td style="text-align: left;">The transaction failed because the operation is not allowed on Automated Market Maker (AMM) accounts. <em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_UNFUNDED</code></td>
+<td style="text-align: left;">162</td>
+<td style="text-align: left;">The <a href="ammcreate.html">AMMCreate transaction</a> failed because the sender does not have enough of the specified assets to fund it. <em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_BALANCE</code></td>
+<td style="text-align: left;">163</td>
+<td style="text-align: left;">The <a href="ammdeposit.html">AMMDeposit</a> or <a href="ammwithdraw.html">AMMWithdraw</a> transaction failed because either the AMM or the user does not hold enough of one of the specified assets. (For example, you tried to withdraw more than the AMM holds.) <em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_EMPTY</code></td>
+<td style="text-align: left;">166</td>
+<td style="text-align: left;">The AMM-related transaction failed because the AMM has no assets in its pool. In this state, you can only delete the AMM or fund it with a new deposit. <em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_FAILED</code></td>
+<td style="text-align: left;">164</td>
+<td style="text-align: left;">The AMM-related transaction failed. For <a href="ammdeposit.html">AMMDeposit</a> or <a href="ammwithdraw.html">AMMWithdraw</a> this could be because the sender does not have enough of the specified assets, or the transaction requested an effective price that isn't possible with the available amounts. For <a href="ammbid.html">AMMBid</a> this could be because the account does not have enough to win the bid or needs more than their specified maximum bid. For <a href="ammvote.html">AMMVote</a>, this could be because there are already too many votes from other accounts that hold more of this AMM's LP Tokens. <em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_INVALID_TOKENS</code></td>
+<td style="text-align: left;">165</td>
+<td style="text-align: left;">The AMM-related transaction failed due to insufficient LP Tokens or problems with rounding; for example, depositing a very small amount of assets could fail if the amount of LP Tokens to be returned rounds down to zero. <em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_NOT_EMPTY</code></td>
+<td style="text-align: left;">167</td>
+<td style="text-align: left;">The transaction was meant to operate on an AMM with empty asset pools, but the specified AMM currently holds assets. <em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>tecCANT_ACCEPT_OWN_NFTOKEN_OFFER</code></td>
 <td style="text-align: left;">157</td>
 <td style="text-align: left;">The transaction tried to accept an offer that was placed by the same account to buy or sell a <a href="non-fungible-tokens.html">non-fungible token</a>. <em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></td>
@@ -1217,6 +1252,11 @@
     <a class="nav-link nav-leaf" href="ticksize.html">Tick Size</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
     </nav>
 
   </div>
@@ -1823,6 +1863,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -1933,6 +1978,36 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdelete.html">AMMDelete <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2382,6 +2457,11 @@
         <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>

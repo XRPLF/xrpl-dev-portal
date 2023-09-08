@@ -391,6 +391,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#general-fields">General Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#get-ledger-object-by-id">Get Ledger Object by ID</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#get-accountroot-object">Get AccountRoot Object</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#get-amm-object">Get AMM Object</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#get-directorynode-object">Get DirectoryNode Object</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#get-offer-object">Get Offer Object</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#get-ripplestate-object">Get RippleState Object</a></li>
@@ -428,8 +429,8 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="ledger_entry">ledger_entry<a aria-hidden="true" class="hover_anchor" href="#ledger_entry"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/xrplf/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>ledger_entry</code> method returns a single ledger object from the XRP Ledger in its raw format. See <a href="ledger-object-types.html">ledger format</a> for information on the different types of objects you can retrieve.</p>
+<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>ledger_entry</code> method returns a single ledger entry from the XRP Ledger in its raw format. See <a href="ledger-object-types.html">ledger format</a> for information on the different types of entries you can retrieve.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters, comprised of the general and type-specific fields listed below, and following the standard <a href="request-formatting.html">request formatting</a>. (For example, a WebSocket request always has the <code>command</code> field and optionally an <code>id</code> field, and a JSON-RPC request uses the <code>method</code> and <code>params</code> fields.)</p>
 <p class="devportal-callout note"><strong>Note:</strong> There is no commandline syntax for this method. You can use the <a href="json.html">json method</a> to access this method from the commandline instead.</p>
@@ -446,7 +447,7 @@
 <tr>
 <td style="text-align: left;"><code>binary</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, return the requested ledger object's contents as a hex string in the XRP Ledger's <a href="serialization.html">binary format</a>. Otherwise, return data in JSON format. The default is <code>false</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="Updated in: rippled 1.2.0"><img alt="Updated in: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, return the requested ledger entry's contents as a hex string in the XRP Ledger's <a href="serialization.html">binary format</a>. Otherwise, return data in JSON format. The default is <code>false</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="Updated in: rippled 1.2.0"><img alt="Updated in: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
@@ -461,10 +462,11 @@
 </tbody>
 </table>
 <p>The <code>generator</code> and <code>ledger</code> parameters are deprecated and may be removed without further notice.</p>
-<p>In addition to the general fields above, you must specify <em>exactly 1</em> of the following fields to indicate what type of object to retrieve, along with its sub-fields as appropriate. The valid fields are:</p>
+<p>In addition to the general fields above, you must specify <em>exactly 1</em> of the following fields to indicate what type of entry to retrieve, along with its sub-fields as appropriate. The valid fields are:</p>
 <ul>
 <li><a href="#get-ledger-object-by-id"><code>index</code></a></li>
 <li><a href="#get-accountroot-object"><code>account_root</code></a></li>
+<li><a href="#get-amm-object"><code>amm</code></a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></li>
 <li><a href="#get-directorynode-object"><code>directory</code></a></li>
 <li><a href="#get-offer-object"><code>offer</code></a></li>
 <li><a href="#get-ripplestate-object"><code>ripple_state</code></a></li>
@@ -490,7 +492,7 @@
 <tr>
 <td style="text-align: left;"><code>index</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The <a href="ledger-object-ids.html">object ID</a> of a single object to retrieve from the ledger, as a 64-character (256-bit) hexadecimal string.</td>
+<td style="text-align: left;">The <a href="ledger-object-ids.html">ledger entry ID</a> of a single entry to retrieve from the ledger, as a 64-character (256-bit) hexadecimal string.</td>
 </tr>
 </tbody>
 </table>
@@ -519,7 +521,7 @@
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-by-object-id">Try it!</a></p>
 <blockquote class="devportal-callout tip">
-<p><strong>Tip:</strong> You can use this type of request to get any singleton object, if it exists in the ledger data, because its ID is always the same. For example:</p>
+<p><strong>Tip:</strong> You can use this type of request to get any singleton ledger entry, if it exists in the ledger data, because its ID is always the same. For example:</p>
 <ul>
 <li><a href="amendments-object.html"><code>Amendments</code></a> - <code>7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4</code></li>
 <li><a href="feesettings.html"><code>FeeSettings</code></a> - <code>4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651</code></li>
@@ -528,7 +530,7 @@
 </ul>
 </blockquote>
 <h3 id="get-accountroot-object">Get AccountRoot Object<a aria-hidden="true" class="hover_anchor" href="#get-accountroot-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve an <a href="accountroot.html">AccountRoot object</a> by its address. This is roughly equivalent to the <a href="account_info.html">account_info method</a>.</p>
+<p>Retrieve an <a href="accountroot.html">AccountRoot entry</a> by its address. This is roughly equivalent to the <a href="account_info.html">account_info method</a>.</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -541,7 +543,7 @@
 <tr>
 <td style="text-align: left;"><code>account_root</code></td>
 <td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
-<td style="text-align: left;">The classic address of the <a href="accountroot.html">AccountRoot object</a> to retrieve.</td>
+<td style="text-align: left;">The classic address of the <a href="accountroot.html">AccountRoot entry</a> to retrieve.</td>
 </tr>
 </tbody>
 </table>
@@ -570,6 +572,76 @@
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-accountroot">Try it!</a></p>
+<h3 id="get-amm-object">Get AMM Object<a aria-hidden="true" class="hover_anchor" href="#get-amm-object"><i class="fa fa-link"></i></a></h3>
+<p><em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
+<p>Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to <a href="amm_info.html">amm_info method</a>, but the <code>ledger_entry</code> version returns only the ledger entry as stored.</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>amm</code></td>
+<td style="text-align: left;">Object or String</td>
+<td style="text-align: left;">The <a href="amm.html">AMM</a> to retrieve. If you specify a string, it must be the <a href="ledger-object-ids.html">object ID</a> of the AMM, as hexadecimal. If you specify an object, it must contain <code>asset</code> and <code>asset2</code> sub-fields.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>amm.asset</code></td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">One of the two assets in this AMM's pool, as a <a href="currency-formats.html#specifying-without-amounts">currency object without an amount</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>amm.asset2</code></td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">The other of the two assets in this AMM's pool, as a <a href="currency-formats.html#specifying-without-amounts">currency object without an amount</a>.</td>
+</tr>
+</tbody>
+</table>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="websocket" href="#code-2-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-2-1">JSON-RPC</a></li><li><a class="commandline" href="#code-2-2">Commandline</a></li></ul>
+
+<div class="code_sample websocket" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"amm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"asset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"asset2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpc" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"amm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"asset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"asset2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample commandline" id="code-2-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "amm": { "asset": { "currency": "XRP" }, "asset2": { "currency" : "TST", "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" } }, "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
+<p><a class="btn btn-primary" href="websocket-api-tool.html?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#ledger_entry-amm">Try it!</a></p>
 <h3 id="get-directorynode-object">Get DirectoryNode Object<a aria-hidden="true" class="hover_anchor" href="#get-directorynode-object"><i class="fa fa-link"></i></a></h3>
 <p>Retrieve a <a href="directorynode.html">DirectoryNode</a>, which contains a list of other ledger objects. Can be provided as string (object ID of the Directory) or as an object.</p>
 <table class="table-responsive">
@@ -603,9 +675,9 @@
 </tr>
 </tbody>
 </table>
-<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="websocket" href="#code-2-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-2-1">JSON-RPC</a></li><li><a class="commandline" href="#code-2-2">Commandline</a></li></ul>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="websocket" href="#code-3-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-3-1">JSON-RPC</a></li><li><a class="commandline" href="#code-3-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span>
+<div class="code_sample websocket" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"directory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -616,7 +688,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="p">{</span>
+<div class="code_sample jsonrpc" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
@@ -630,12 +702,12 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-2-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "sub_index": 0 }, "ledger_index": "validated" }'</span>
+<div class="code_sample commandline" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "sub_index": 0 }, "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-directorynode">Try it!</a></p>
 <h3 id="get-offer-object">Get Offer Object<a aria-hidden="true" class="hover_anchor" href="#get-offer-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve an <a href="offer.html">Offer object</a>, which defines an offer to exchange currency. Can be provided as string (unique index of the Offer) or as an object.</p>
+<p>Retrieve an <a href="offer.html">Offer entry</a>, which defines an offer to exchange currency. Can be provided as string (unique index of the Offer) or as an object.</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -648,7 +720,7 @@
 <tr>
 <td style="text-align: left;"><code>offer</code></td>
 <td style="text-align: left;">Object or String</td>
-<td style="text-align: left;">The <a href="offer.html">Offer object</a> to retrieve. If a string, interpret as the Offer's <a href="ledger-object-ids.html">ledger entry ID</a>. If an object, requires the sub-fields <code>account</code> and <code>seq</code> to uniquely identify the offer.</td>
+<td style="text-align: left;">If a string, interpret as <a href="ledger-object-ids.html">ledger entry ID</a> of the Offer to retrieve. If an object, requires the sub-fields <code>account</code> and <code>seq</code> to uniquely identify the offer.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>offer.account</code></td>
@@ -662,9 +734,9 @@
 </tr>
 </tbody>
 </table>
-<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="websocket" href="#code-3-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-3-1">JSON-RPC</a></li><li><a class="commandline" href="#code-3-2">Commandline</a></li></ul>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="websocket" href="#code-4-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-4-1">JSON-RPC</a></li><li><a class="commandline" href="#code-4-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="p">{</span>
+<div class="code_sample websocket" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_offer"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -675,7 +747,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="p">{</span>
+<div class="code_sample jsonrpc" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
@@ -689,12 +761,12 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "seq": 359}, "ledger_index": "validated" }'</span>
+<div class="code_sample commandline" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "seq": 359}, "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-offer">Try it!</a></p>
 <h3 id="get-ripplestate-object">Get RippleState Object<a aria-hidden="true" class="hover_anchor" href="#get-ripplestate-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve a <a href="ripplestate.html">RippleState object</a>, which tracks a (non-XRP) currency balance between two accounts.</p>
+<p>Retrieve a <a href="ripplestate.html">RippleState entry</a>, which tracks a (non-XRP) currency balance between two accounts.</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -712,18 +784,18 @@
 <tr>
 <td style="text-align: left;"><code>ripple_state.accounts</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;"><em>(Required if <code>ripple_state</code> is specified)</em> 2-length array of account <a href="basic-data-types.html#addresses">Address</a>es, defining the two accounts linked by this <a href="ripplestate.html">RippleState object</a>.</td>
+<td style="text-align: left;"><em>(Required if <code>ripple_state</code> is specified)</em> 2-length array of account <a href="basic-data-types.html#addresses">Address</a>es, defining the two accounts linked by this RippleState entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ripple_state.currency</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Required if <code>ripple_state</code> is specified)</em> <a href="currency-formats.html#currency-codes">Currency Code</a> of the <a href="ripplestate.html">RippleState object</a> to retrieve.</td>
+<td style="text-align: left;"><em>(Required if <code>ripple_state</code> is specified)</em> <a href="currency-formats.html#currency-codes">Currency Code</a> of the RippleState entry to retrieve.</td>
 </tr>
 </tbody>
 </table>
-<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="websocket" href="#code-4-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-4-1">JSON-RPC</a></li><li><a class="commandline" href="#code-4-2">Commandline</a></li></ul>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="websocket" href="#code-5-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-5-1">JSON-RPC</a></li><li><a class="commandline" href="#code-5-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="p">{</span>
+<div class="code_sample websocket" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_ripplestate"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"ripple_state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -737,7 +809,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="p">{</span>
+<div class="code_sample jsonrpc" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
 <span class="w">    </span><span class="nt">"ripple_state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -752,12 +824,12 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"], "currency": "USD"}, "ledger_index": "validated" }'</span>
+<div class="code_sample commandline" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"], "currency": "USD"}, "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-ripplestate">Try it!</a></p>
 <h3 id="get-check-object">Get Check Object<a aria-hidden="true" class="hover_anchor" href="#get-check-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve a <a href="check.html">Check object</a>, which is a potential payment that can be cashed by its recipient. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Retrieve a <a href="check.html">Check entry</a>, which is a potential payment that can be cashed by its recipient. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -770,13 +842,13 @@
 <tr>
 <td style="text-align: left;"><code>check</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The <a href="ledger-object-ids.html">object ID</a> of a <a href="check.html">Check object</a> to retrieve.</td>
+<td style="text-align: left;">The <a href="ledger-object-ids.html">object ID</a> of a <a href="check.html">Check entry</a> to retrieve.</td>
 </tr>
 </tbody>
 </table>
-<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="websocket" href="#code-5-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-5-1">JSON-RPC</a></li><li><a class="commandline" href="#code-5-2">Commandline</a></li></ul>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a class="websocket" href="#code-6-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-6-1">JSON-RPC</a></li><li><a class="commandline" href="#code-6-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="p">{</span>
+<div class="code_sample websocket" id="code-6-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_check"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"check"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB"</span><span class="p">,</span>
@@ -784,7 +856,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="p">{</span>
+<div class="code_sample jsonrpc" id="code-6-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
 <span class="w">    </span><span class="nt">"check"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB"</span><span class="p">,</span>
@@ -793,12 +865,12 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB", "ledger_index": "validated" }'</span>
+<div class="code_sample commandline" id="code-6-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB", "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-check">Try it!</a></p>
 <h3 id="get-escrow-object">Get Escrow Object<a aria-hidden="true" class="hover_anchor" href="#get-escrow-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve an <a href="escrow-object.html">Escrow object</a>, which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Retrieve an <a href="escrow-object.html">Escrow entry</a>, which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -811,7 +883,7 @@
 <tr>
 <td style="text-align: left;"><code>escrow</code></td>
 <td style="text-align: left;">Object or String</td>
-<td style="text-align: left;">The <a href="escrow-object.html">Escrow object</a> to retrieve. If a string, must be the <a href="ledger-object-ids.html">object ID</a> of the Escrow, as hexadecimal. If an object, requires <code>owner</code> and <code>seq</code> sub-fields.</td>
+<td style="text-align: left;">The Escrow to retrieve. If a string, must be the <a href="ledger-object-ids.html">object ID</a> of the Escrow, as hexadecimal. If an object, requires <code>owner</code> and <code>seq</code> sub-fields.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>escrow.owner</code></td>
@@ -825,9 +897,9 @@
 </tr>
 </tbody>
 </table>
-<div class="multicode" id="code-6"><ul class="codetabs"><li><a class="websocket" href="#code-6-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-6-1">JSON-RPC</a></li><li><a class="commandline" href="#code-6-2">Commandline</a></li></ul>
+<div class="multicode" id="code-7"><ul class="codetabs"><li><a class="websocket" href="#code-7-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-7-1">JSON-RPC</a></li><li><a class="commandline" href="#code-7-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-6-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="p">{</span>
+<div class="code_sample websocket" id="code-7-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_escrow"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"escrow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -838,7 +910,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-6-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="p">{</span>
+<div class="code_sample jsonrpc" id="code-7-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
 <span class="w">    </span><span class="nt">"escrow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -850,12 +922,12 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-6-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'</span>
+<div class="code_sample commandline" id="code-7-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-escrow">Try it!</a></p>
 <h3 id="get-paychannel-object">Get PayChannel Object<a aria-hidden="true" class="hover_anchor" href="#get-paychannel-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve a <a href="paychannel.html">PayChannel object</a>, which holds XRP for asynchronous payments. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Retrieve a <a href="paychannel.html">PayChannel entry</a>, which holds XRP for asynchronous payments. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -868,13 +940,13 @@
 <tr>
 <td style="text-align: left;"><code>payment_channel</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The <a href="ledger-object-ids.html">object ID</a> of a <a href="paychannel.html">PayChannel object</a> to retrieve.</td>
+<td style="text-align: left;">The <a href="ledger-object-ids.html">object ID</a> of the PayChannel to retrieve.</td>
 </tr>
 </tbody>
 </table>
-<div class="multicode" id="code-7"><ul class="codetabs"><li><a class="websocket" href="#code-7-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-7-1">JSON-RPC</a></li><li><a class="commandline" href="#code-7-2">Commandline</a></li></ul>
+<div class="multicode" id="code-8"><ul class="codetabs"><li><a class="websocket" href="#code-8-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-8-1">JSON-RPC</a></li><li><a class="commandline" href="#code-8-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-7-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="p">{</span>
+<div class="code_sample websocket" id="code-8-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_paychannel"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"payment_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7"</span><span class="p">,</span>
@@ -882,7 +954,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-7-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="p">{</span>
+<div class="code_sample jsonrpc" id="code-8-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
 <span class="w">    </span><span class="nt">"payment_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7"</span><span class="p">,</span>
@@ -891,12 +963,12 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-7-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7", "ledger_index": "validated" }'</span>
+<div class="code_sample commandline" id="code-8-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7", "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-paychannel">Try it!</a></p>
 <h3 id="get-depositpreauth-object">Get DepositPreauth Object<a aria-hidden="true" class="hover_anchor" href="#get-depositpreauth-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve a <a href="depositpreauth-object.html">DepositPreauth object</a>, which tracks preauthorization for payments to accounts requiring <a href="depositauth.html">Deposit Authorization</a>. Can be provided as string (object ID of the DepositPreauth) or as an object. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Retrieve a <a href="depositpreauth-object.html">DepositPreauth entry</a>, which tracks preauthorization for payments to accounts requiring <a href="depositauth.html">Deposit Authorization</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -909,7 +981,7 @@
 <tr>
 <td style="text-align: left;"><code>deposit_preauth</code></td>
 <td style="text-align: left;">Object or String</td>
-<td style="text-align: left;">Specify a <a href="depositpreauth-object.html">DepositPreauth object</a> to retrieve. If a string, must be the <a href="ledger-object-ids.html">object ID</a> of the DepositPreauth object, as hexadecimal. If an object, requires <code>owner</code> and <code>authorized</code> sub-fields.</td>
+<td style="text-align: left;">Specify the DepositPreauth to retrieve. If a string, must be the <a href="ledger-object-ids.html">ledger entry ID</a> of the DepositPreauth entry, as hexadecimal. If an object, requires <code>owner</code> and <code>authorized</code> sub-fields.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>deposit_preauth.owner</code></td>
@@ -923,9 +995,9 @@
 </tr>
 </tbody>
 </table>
-<div class="multicode" id="code-8"><ul class="codetabs"><li><a class="websocket" href="#code-8-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-8-1">JSON-RPC</a></li><li><a class="commandline" href="#code-8-2">Commandline</a></li></ul>
+<div class="multicode" id="code-9"><ul class="codetabs"><li><a class="websocket" href="#code-9-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-9-1">JSON-RPC</a></li><li><a class="commandline" href="#code-9-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-8-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="p">{</span>
+<div class="code_sample websocket" id="code-9-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_deposit_preauth"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"deposit_preauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -936,7 +1008,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-8-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="p">{</span>
+<div class="code_sample jsonrpc" id="code-9-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
 <span class="w">    </span><span class="nt">"deposit_preauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -948,12 +1020,12 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-8-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX" }, "ledger_index": "validated" }'</span>
+<div class="code_sample commandline" id="code-9-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX" }, "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-depositpreauth">Try it!</a></p>
 <h3 id="get-ticket-object">Get Ticket Object<a aria-hidden="true" class="hover_anchor" href="#get-ticket-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve a <a href="ticket.html">Ticket object</a>, which represents a <a href="basic-data-types.html#account-sequence">sequence number</a> set aside for future use. Can be provided as string (object ID of the Ticket) or as an object. <em>(Added by the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a>)</em></p>
+<p>Retrieve a <a href="ticket.html">Ticket entry</a>, which represents a <a href="basic-data-types.html#account-sequence">sequence number</a> set aside for future use. <em>(Added by the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a>)</em></p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -966,23 +1038,23 @@
 <tr>
 <td style="text-align: left;"><code>ticket</code></td>
 <td style="text-align: left;">Object or String</td>
-<td style="text-align: left;">The <a href="ticket.html">Ticket object</a> to retrieve. If a string, must be the <a href="ledger-object-ids.html">object ID</a> of the Ticket, as hexadecimal. If an object, the <code>account</code> and <code>ticket_seq</code> sub-fields are required to uniquely specify the Ticket entry.</td>
+<td style="text-align: left;">The Ticket to retrieve. If a string, must be the <a href="ledger-object-ids.html">ledger entry ID</a> of the Ticket, as hexadecimal. If an object, the <code>account</code> and <code>ticket_seq</code> sub-fields are required to uniquely specify the Ticket entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ticket.account</code></td>
 <td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
-<td style="text-align: left;"><em>(Required if <code>ticket</code> is specified as an object)</em> The owner of the Ticket object.</td>
+<td style="text-align: left;"><em>(Required if <code>ticket</code> is specified as an object)</em> The owner of the Ticket.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ticket.ticket_seq</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(Required if <code>ticket</code> is specified as an object)</em> The Ticket Sequence number of the Ticket entry to retrieve.</td>
+<td style="text-align: left;"><em>(Required if <code>ticket</code> is specified as an object)</em> The Ticket Sequence number of the Ticket to retrieve.</td>
 </tr>
 </tbody>
 </table>
-<div class="multicode" id="code-9"><ul class="codetabs"><li><a class="websocket" href="#code-9-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-9-1">JSON-RPC</a></li><li><a class="commandline" href="#code-9-2">Commandline</a></li></ul>
+<div class="multicode" id="code-10"><ul class="codetabs"><li><a class="websocket" href="#code-10-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-10-1">JSON-RPC</a></li><li><a class="commandline" href="#code-10-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-9-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="p">{</span>
+<div class="code_sample websocket" id="code-10-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-30" id="codeblock-30button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-30"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_ticket"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -993,7 +1065,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-9-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="p">{</span>
+<div class="code_sample jsonrpc" id="code-10-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-31" id="codeblock-31button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-31"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
 <span class="w">    </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1005,7 +1077,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-9-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_seq: 389 }, "ledger_index": "validated" }'</span>
+<div class="code_sample commandline" id="code-10-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-32" id="codeblock-32button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-32">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_seq: 389 }, "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-ticket">Try it!</a></p>
@@ -1023,13 +1095,13 @@
 <tr>
 <td style="text-align: left;"><code>nft_page</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The <a href="ledger-object-ids.html">object ID</a> of an <a href="nftokenpage.html">NFT Page</a> to retrieve.</td>
+<td style="text-align: left;">The <a href="ledger-object-ids.html">ledger entry ID</a> of an <a href="nftokenpage.html">NFT Page</a> to retrieve.</td>
 </tr>
 </tbody>
 </table>
-<div class="multicode" id="code-10"><ul class="codetabs"><li><a class="websocket" href="#code-10-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-10-1">JSON-RPC</a></li><li><a class="commandline" href="#code-10-2">Commandline</a></li></ul>
+<div class="multicode" id="code-11"><ul class="codetabs"><li><a class="websocket" href="#code-11-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-11-1">JSON-RPC</a></li><li><a class="commandline" href="#code-11-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-10-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-30" id="codeblock-30button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-30"><span class="p">{</span>
+<div class="code_sample websocket" id="code-11-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-33" id="codeblock-33button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-33"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_nft_page"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"nft_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF"</span><span class="p">,</span>
@@ -1037,7 +1109,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-10-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-31" id="codeblock-31button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-31"><span class="p">{</span>
+<div class="code_sample jsonrpc" id="code-11-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-34" id="codeblock-34button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-34"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger_entry"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
 <span class="w">    </span><span class="nt">"nft_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF"</span><span class="p">,</span>
@@ -1046,7 +1118,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-10-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-32" id="codeblock-32button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-32">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'</span>
+<div class="code_sample commandline" id="code-11-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-35" id="codeblock-35button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-35">rippled<span class="w"> </span>json<span class="w"> </span>ledger_entry<span class="w"> </span><span class="s1">'{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-nft-page">Try it!</a></p>
@@ -1064,7 +1136,7 @@
 <tr>
 <td style="text-align: left;"><code>index</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The unique ID of this <a href="ledger-object-types.html">ledger object</a>.</td>
+<td style="text-align: left;">The unique ID of this <a href="ledger-object-types.html">ledger entry</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
@@ -1074,7 +1146,7 @@
 <tr>
 <td style="text-align: left;"><code>node</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;"><em>(Omitted if <code>"binary": true</code> specified.)</em> Object containing the data of this ledger object, according to the <a href="ledger-object-types.html">ledger format</a>.</td>
+<td style="text-align: left;"><em>(Omitted if <code>"binary": true</code> specified.)</em> Object containing the data of this ledger entry, according to the <a href="ledger-object-types.html">ledger format</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>node_binary</code></td>
@@ -1084,9 +1156,9 @@
 </tbody>
 </table>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-11"><ul class="codetabs"><li><a class="websocket" href="#code-11-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-11-1">JSON-RPC</a></li><li><a class="commandline" href="#code-11-2">Commandline</a></li></ul>
+<div class="multicode" id="code-12"><ul class="codetabs"><li><a class="websocket" href="#code-12-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-12-1">JSON-RPC</a></li><li><a class="commandline" href="#code-12-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-11-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-33" id="codeblock-33button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-33"><span class="p">{</span>
+<div class="code_sample websocket" id="code-12-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-36" id="codeblock-36button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-36"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_get_accountroot"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span><span class="p">,</span>
@@ -1116,7 +1188,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-11-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-34" id="codeblock-34button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-34"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
+<div class="code_sample jsonrpc" id="code-12-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-37" id="codeblock-37button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-37"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
 
 <span class="p">{</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1146,7 +1218,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-11-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-35" id="codeblock-35button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-35"><span class="p">{</span>
+<div class="code_sample commandline" id="code-12-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-38" id="codeblock-38button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-38"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E"</span><span class="p">,</span>
@@ -1178,7 +1250,7 @@
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
 <li><code>deprecatedFeature</code> - The request specified a removed field, such as <code>generator</code>.</li>
-<li><code>entryNotFound</code> - The requested ledger object does not exist in the ledger.</li>
+<li><code>entryNotFound</code> - The requested ledger entry does not exist in the ledger.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
 <li><code>lgrNotFound</code> - The ledger specified by the <code>ledger_hash</code> or <code>ledger_index</code> does not exist, or it does exist but the server does not have it.</li>
 <li><code>malformedAddress</code> - The request improperly specified an <a href="basic-data-types.html#addresses">Address</a> field.</li>
@@ -1749,6 +1821,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="ticksize.html">Tick Size</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -2357,6 +2434,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="check.html">Check</a>
   </div>
 
@@ -2467,6 +2549,36 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdelete.html">AMMDelete <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2916,6 +3028,11 @@
         <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>

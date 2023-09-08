@@ -100,6 +100,7 @@ https://xrpl.org/decentralized-exchange.html
 https://xrpl.org/offers.html
 https://xrpl.org/autobridging.html
 https://xrpl.org/ticksize.html
+https://xrpl.org/automated-market-makers.html
 https://xrpl.org/accounts.html
 https://xrpl.org/account-types.html
 https://xrpl.org/deleting-accounts.html
@@ -117,7 +118,6 @@ https://xrpl.org/about-canceling-a-transaction.html
 https://xrpl.org/issuing-and-operational-addresses.html
 https://xrpl.org/issued-currencies.html
 https://xrpl.org/issued-currencies-overview.html
-https://xrpl.org/automated-market-makers.html
 https://xrpl.org/federated-sidechains.html
 https://xrpl.org/xrpl-interoperability.html
 https://xrpl.org/intro-to-evm-sidechain.html
@@ -240,6 +240,7 @@ https://xrpl.org/accountset.html
 https://xrpl.org/accountdelete.html
 https://xrpl.org/ammbid.html
 https://xrpl.org/ammcreate.html
+https://xrpl.org/ammdelete.html
 https://xrpl.org/ammdeposit.html
 https://xrpl.org/ammvote.html
 https://xrpl.org/ammwithdraw.html

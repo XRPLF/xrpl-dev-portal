@@ -270,7 +270,7 @@
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
-            <a class="dropdown-item" href="/ja/public-api-methods.html">パブリックAPIのメソッド</a>
+            <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -383,7 +383,7 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-2"><a class="nav-link" href="#deleting-accounts">Deleting Accounts</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#deleting-accounts">Deleting Accounts</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#requirements">Requirements</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#cost-of-deleting">Cost of Deleting</a></li>
       </ul>
@@ -410,7 +410,7 @@
       <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
-        <h2 id="deleting-accounts">Deleting Accounts<a aria-hidden="true" class="hover_anchor" href="#deleting-accounts"><i class="fa fa-link"></i></a></h2>
+        <h1 id="deleting-accounts">Deleting Accounts<a aria-hidden="true" class="hover_anchor" href="#deleting-accounts"><i class="fa fa-link"></i></a></h1>
 <p>The owner of an account can send an <a href="accountdelete.html">AccountDelete transaction</a> to deletes the account and related entries from the ledger, sending most of the account's remaining XRP balance to another account. To discourage wasteful creation and deletion of accounts, deleting an account requires burning a higher than usual amount of XRP as the <a href="transaction-cost.html">transaction cost</a>.</p>
 <p>Some types of associated ledger entries block an account from being deleted. For example, the issuer of a fungible token can't be deleted while anyone holds a nonzero balance of that token.</p>
 <p>After an account has been deleted, it can be re-created in the ledger through the normal method of <a href="accounts.html#アカウントの作成">creating accounts</a>. An account that has been deleted and re-created is no different than an account that has been created for the first time.</p>
@@ -994,6 +994,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ticksize.html">ティックサイズ</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/automated-market-makers.html">自動マーケットメーカー <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -1597,6 +1602,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/check.html">Check</a>
   </div>
 
@@ -1707,6 +1717,36 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammdelete.html">AMMDelete <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2009,7 +2049,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2"></a>
 
-        <a class="nav-link" href="/ja/public-api-methods.html">パブリックAPIのメソッド</a>
+        <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2">
       
@@ -2156,6 +2196,11 @@
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/book_offers.html">book_offers</a>
