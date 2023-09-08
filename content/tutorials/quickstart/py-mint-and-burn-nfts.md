@@ -1,6 +1,6 @@
 ---
 html: py-mint-and-burn-nfts.html
-parent: send-payments-using-python.html
+parent: nfts-using-python.html
 blurb: Mint and burn NFTs.
 labels:
   - Quickstart
@@ -20,7 +20,7 @@ This example shows how to:
 
 # Usage
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try the sample in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive to try the sample in your own browser.
 
 ## Get Accounts
 
@@ -71,7 +71,7 @@ To permanently destroy an NFT:
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to examine the code samples.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive to examine the code samples.
 
 ## mod3.py
 
@@ -81,11 +81,9 @@ Import dependencies and set global variable.
 
 ```python
 import xrpl
-import json
 from xrpl.clients import JsonRpcClient
 from xrpl.wallet import Wallet
 from xrpl.models.requests import AccountNFTs
-
 
 testnet_url = "https://s.altnet.rippletest.net:51234"
 ```
@@ -96,12 +94,13 @@ Pass the arguments account seed, NFT URI, transaction flags, the transfer fee, a
 
 ```python
 def mint_token(seed, uri, flags, transfer_fee, taxon):
+    """mint_token"""
 ```
 
 Get the account wallet and a client instance.
 
 ```python
-    mint_wallet=Wallet(seed, sequence=16237283)
+    minter_wallet=Wallet.from_seed(seed)
     client=JsonRpcClient(testnet_url)
 ```
 
@@ -109,7 +108,7 @@ Define the mint transaction. Note that the NFT URI must be converted to a hex st
 
 ```python
     mint_tx=xrpl.models.transactions.NFTokenMint(
-        account=mint_wallet.classic_address,
+        account=minter_wallet.address,
         uri=xrpl.utils.str_to_hex(uri),
         flags=int(flags),
         transfer_fee=int(transfer_fee),
@@ -117,19 +116,12 @@ Define the mint transaction. Note that the NFT URI must be converted to a hex st
     )
 ```
 
-Sign and fill the transaction.
-
-```python
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        mint_tx, mint_wallet, client)
-```
-
 Submit the transaction and return results.
 
 ```python
     reply=""
     try:
-        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.submit_and_wait(mint_tx,client,minter_wallet)
         reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
         reply=f"Submit failed: {e}"
@@ -176,7 +168,7 @@ def burn_token(seed, nftoken_id):
 Get the owner wallet and client instance.
 
 ```python
-    owner_wallet=Wallet(seed, sequence=16237283)
+    owner_wallet=Wallet.from_seed(seed)
     client=JsonRpcClient(testnet_url)
 ```
 
@@ -184,16 +176,9 @@ Define the NFTokenBurn transaction.
 
 ```python
     burn_tx=xrpl.models.transactions.NFTokenBurn(
-        account=owner_wallet.classic_address,
+        account=owner_wallet.address,
         nftoken_id=nftoken_id    
     )
-```
-
-Sign and fill the transaction.
-
-```python
-    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
-        burn_tx, owner_wallet, client)   
 ```
 
 Submit the transaction and return results.
@@ -201,13 +186,12 @@ Submit the transaction and return results.
 ```python
     reply=""
     try:
-        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.submit_and_wait(burn_tx,client,owner_wallet)
         reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
         reply=f"Submit failed: {e}"
     return reply
 ```
-
 
 ## lesson3-mint-token.py
 <!-- SPELLING_IGNORE: lesson3 -->
@@ -646,4 +630,3 @@ btn_op_burn_token.grid(row=10, column=3, sticky="nsew")
 # Start the application
 window.mainloop()
 ```
-

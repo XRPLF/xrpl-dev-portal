@@ -1580,6 +1580,16 @@ pages:
             - en
             - ja
 
+    -   name: NFTs Using Python
+        html: nfts-using-python.html
+        parent: modular-tutorials-in-python.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Mint and sell NFTs on the XRP Ledger using Python.
+        targets:
+            - en
+            - ja
+
         # TODO: translate
     -   md: tutorials/quickstart/py-mint-and-burn-nfts.md
         targets:
@@ -1715,7 +1725,7 @@ pages:
         parent: modular-tutorials-in-javascript.html
         top_nav_grouping: Article Types
         template: pagetype-category.html.jinja
-        blurb: Mint and sell NFTs on the XRP Ledger.
+        blurb: Mint and sell NFTs on the XRP Ledger using JavaScript.
         targets:
             - en
 

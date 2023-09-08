@@ -63,20 +63,24 @@ To transfer XRP from the Operational account to the Standby account:
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} in the source repository for this website.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} in the source repository for this website.
 
 ## mod1.py
 
 The mod1.py module contains the business logic for interacting with the XRP Ledger.
 
-Import the XRPL and JSON libraries, and the module 1 methods.
+Import the XRPL library.
 
 ```python
 import xrpl
-import json
-import xrpl.clients
-import xrpl.wallet
 
+```
+
+ Create a variable for the server URI. This example uses the _Testnet_ ledger. You can update the URI to choose a different XRP Ledger instance.
+
+ 
+ ```python
+ testnet_url = "https://s.altnet.rippletest.net:51234/"
 ```
 
 ### get_account
@@ -90,16 +94,10 @@ def get_account(seed):
     """get_account"""
 ```
 
-This example uses the _Testnet_ ledger. You can update the URI to choose a different XRP Ledger instance.
-
-```python
-    JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
-```
-
 Request a new client from the XRP Ledger.
 
 ```python
-    client = xrpl.clients.JsonRpcClient(JSON_RPC_URL)
+    client = xrpl.clients.JsonRpcClient(testnet_url)
 ```
 
 If you do not enter a seed, generate and return a new wallet. If you provide a seed value, return the wallet for that seed.
@@ -108,8 +106,8 @@ If you do not enter a seed, generate and return a new wallet. If you provide a s
     if (seed == ''):
         new_wallet = xrpl.wallet.generate_faucet_wallet(client)
     else:
-        new_wallet = xrpl.wallet.Wallet(seed, sequence = 79396029)
-    return(new_wallet)
+        new_wallet = xrpl.wallet.Wallet.from_seed(seed)
+    return new_wallet
 ```
 
 ### get_account_info
@@ -124,8 +122,7 @@ def get_account_info(accountId):
 Get a client instance from Testnet. 
 
 ```python
-    JSON_RPC_URL = 'wss://s.altnet.rippletest.net:51234'
-    client = xrpl.clients.JsonRpcClient(JSON_RPC_URL)
+    client = xrpl.clients.JsonRpcClient(testnet_url)
 ```
 
 Create the account info request, passing the account ID and the ledger index (in this case, the latest validated ledger). 
@@ -160,35 +157,26 @@ def send_xrp(seed, amount, destination):
 Get the sending wallet.
 
 ```python
-    sending_wallet = xrpl.wallet.Wallet(seed, sequence = 16237283)
-    testnet_url = "https://s.altnet.rippletest.net:51234"
+    sending_wallet = xrpl.wallet.Wallet.from_seed(seed)
     client = xrpl.clients.JsonRpcClient(testnet_url)
 ```
 
 Create a transaction request, passing the sending account, amount, and destination account.
 
 ```python
-    payment=xrpl.models.transactions.Payment(
-        account=sending_wallet.classic_address,
+    payment = xrpl.models.transactions.Payment(
+        account=sending_wallet.address,
         amount=xrpl.utils.xrp_to_drops(int(amount)),
         destination=destination,
     )
 ```
 
-Sign the transaction.
-
-```python
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        payment, sending_wallet, client)
-```
-
 Submit the transaction and return the response. If the transaction fails, return the error message.
 
 ```python
-    try:
-        tx_response = xrpl.transaction.send_reliable_submission(signed_tx,client)
-        response = tx_response
-    except xrpl.transaction.XRPLReliableSubmissionException as e:
+    try:	
+        response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet)	
+    except xrpl.transaction.XRPLReliableSubmissionException as e:	
         response = f"Submit failed: {e}"
     return response
 ```
@@ -429,4 +417,3 @@ Start the application.
 ```python
 window.mainloop()
 ```
-

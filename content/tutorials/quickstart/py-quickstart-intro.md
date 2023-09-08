@@ -1,7 +1,7 @@
----
-html: send-payments-using-python.html
-parent: modular-tutorials-in-python.html
-blurb: Use a Python test harness to send XRP,trade currencies, and more.
+quickstart---
+html: py-quickstart-intro.html
+parent: quickstart-python.html
+blurb: Use a Python test harness to send XRP, trade currencies, and mint and trade NFTs.
 labels:
   - Accounts
   - Cross-Currency
@@ -11,7 +11,7 @@ labels:
   - Tokens
   - XRP
 ---
-# Send Payments Using Python
+# Quickstart Introduction (Python)
 
 The XRP Ledger (XRPL) is a robust, secure, customizable service. You can create your own interface to try out the capabilities and support your specific business needs.
 
