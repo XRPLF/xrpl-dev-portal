@@ -1128,7 +1128,7 @@ pages:
             - ja
 
 # TODO - Translate
-    -   md: concepts/tokens/clawback-of-issued-currency.md
+    -   md: concepts/tokens/clawing-back-tokens.md
         targets:
             - en
             - ja
