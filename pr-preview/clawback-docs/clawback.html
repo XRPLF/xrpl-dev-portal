@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Clawback | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/clawback.html" />
-    <meta property="og:description" content="Claw back an issued currency transfer between accounts in a trust set." />
-    <meta name="description" content="Claw back an issued currency transfer between accounts in a trust set." />
+    <meta property="og:description" content="Claw back tokens you&#39;ve issued." />
+    <meta name="description" content="Claw back tokens you&#39;ve issued." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -385,7 +385,8 @@
         <li class="nav-item level-1"><a class="nav-link" href="#clawback">Clawback</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-clawback-json">Example Clawback JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#clawback-fields">Clawback Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#lsfallowtrustlineclawback">lsfAllowTrustLineClawback</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#clawback-fields-1">Clawback Fields</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
       </ul>
   </div>
       </aside>
@@ -413,8 +414,9 @@
     <div class="content">
         <h1 id="clawback">Clawback<a aria-hidden="true" class="hover_anchor" href="#clawback"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Clawback.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><embed src="/snippets/_clawback-disclaimer.md"/></p>
-<p>Claw back an issued currency transfer between accounts in a trust set.</p>
+<p><em>Requires the <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-39d-clawback" target="_blank">Clawback amendment <i aria-hidden="true" class="fa fa-external-link"></i></a>.</em></p>
+<p>Claw back tokens issued by your account.</p>
+<p>Clawback is disabled by default. To use clawback, you must send an <a href="accountset.html">AccountSet transaction</a> to enable the <strong>Allow Trust Line Clawback</strong> setting. An issuer with any existing tokens cannot enable Clawback. You can only enable <strong>Allow Trust Line Clawback</strong> if you have a completely empty owner directory, meaning you must do so before you set up any trust lines, offers, escrows, payment channels, checks, or signer lists.  After you enable Clawback, it cannot reverted: the account permanently gains the ability to claw back issued assets on trust lines.</p>
 <h2 id="example-clawback-json">Example Clawback JSON<a aria-hidden="true" class="hover_anchor" href="#example-clawback-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clawback"</span><span class="p">,</span>
@@ -426,9 +428,12 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><a class="btn btn-primary" href="websocket-api-tool.html?server=wss%3A%2F%2Fs.devnet.rippletest.net%2F&amp;tx=%7B%22id%22%3A%22example_Clawback%22%2C%22command%22%3A%22Clawback%22%2C%22Account%22%3A%22rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S%22%2C%22Amount%22%3A%7B%22currency%22%3A%22FOO%22%2C%22issuer%22%3A%22rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW%22%2C%22value%22%3A%22314.159%22%7D%7D">Clawback example transaction.</a></p>
+<!-- 
+[Clawback example transaction. >](websocket-api-tool.html?)
+-->
 <h2 id="clawback-fields">Clawback Fields<a aria-hidden="true" class="hover_anchor" href="#clawback-fields"><i class="fa fa-link"></i></a></h2>
-<p>In addition to the common fields, <code>Clawback</code> transactions use the following fields:</p>
+<h2 id="clawback-fields-1">Clawback Fields<a aria-hidden="true" class="hover_anchor" href="#clawback-fields-1"><i class="fa fa-link"></i></a></h2>
+<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, Clawback transactions use the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -440,39 +445,42 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>TransactionType</code></td>
-<td style="text-align: left;">string</td>
-<td style="text-align: left;"><code>UINT16</code></td>
-<td style="text-align: left;">Indicates the new transaction type <code>Clawback</code>. The integer value is <code>30</code>. The name is <code>ttCLAWBACK</code>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Account</code></td>
-<td style="text-align: left;">string</td>
-<td style="text-align: left;"><code>ACCOUNT ID</code></td>
-<td style="text-align: left;">The account executing this transaction. The account must be the issuer of the asset being clawed back. Note that in the XRP Ledger, trust lines are bidirectional and, under some configurations, both sides can be seen as the "issuer" of an asset. In this specification, the term <em>issuer</em> is used to mean the side of the trust line that has an outstanding balance (that is, 'owes' the issued asset) that it wants to claw back.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">number</td>
-<td style="text-align: left;"><code>UINT32</code></td>
-<td style="text-align: left;">(Optional) The universal transaction flags that are applicable to all transactions (for example, <code>tfFullyCanonicalSig</code>) are valid. This proposal introduces no new transaction-specific flags.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>Amount</code></td>
-<td style="text-align: left;">object</td>
-<td style="text-align: left;"><code>AMOUNT</code></td>
-<td style="text-align: left;">Indicates the amount being clawed back, as well as the counterparty from which the amount is being clawed back.</td>
+<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
+<td style="text-align: left;">Amount</td>
+<td style="text-align: left;">Indicates the amount being clawed back, as well as the counterparty from which the amount is being clawed back. The quantity to claw back, in the <code>value</code> sub-field, must not be zero. If this is more than the current balance, the transaction claws back the entire balance. The sub-field <code>issuer</code> within <code>Amount</code> represents the token holder's account ID, rather than the issuer's.</td>
 </tr>
 </tbody>
 </table>
-<p>It is not an error if the amount exceeds the holder's balance; in that case, the maximum available balance is clawed back. It returns <code>temBAD_AMOUNT</code> if the amount is zero.</p>
-<p>It is an error if the counterparty listed in <code>Amount</code> is the same as the <code>Account</code> issuing this transaction; the transaction fails execution with <code>temBAD_AMOUNT</code>.</p>
-<p>If there doesn't exist a trust line with the counterparty or that trust line's balance is 0, the error <code>tecNO_LINE</code> is returned.</p>
-<p>The sub-field <code>issuer</code> within <code>Amount</code> represents the token holder's account ID rather than the issuer's.</p>
-<h2 id="lsfallowtrustlineclawback">lsfAllowTrustLineClawback<a aria-hidden="true" class="hover_anchor" href="#lsfallowtrustlineclawback"><i class="fa fa-link"></i></a></h2>
-<p>Clawback is disabled by default. To use clawback, you must set the <code>lsfAllowTrustLineClawback</code> flag through an <code>AccountSet</code> transaction. The <code>AccountSet</code> transaction only succeeds if the account has an empty owner directory, meaning that the account has no trust lines, offers, escrows, payment channels, or checks. After you set this flag, it cannot reverted. The account permanently gains the ability to claw back issued assets on trust lines.</p>
-<p>If you attempt to set <code>lsfAllowTrustLineClawback</code> while <code>lsfNoFreeze</code> is set, the transaction returns <code>tecNO_PERMISSION</code>, because clawback cannot be enabled on an account that has already disclaimed the ability to freeze trustlines. 
-Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrustLineClawback</code> is set, the transaction also returns <code>tecNO_PERMISSION</code>.</p>
+<p>The account executing this transaction must be the issuer of the asset being clawed back. Note that in the XRP Ledger, trust lines are bidirectional and, under some configurations, both sides can be seen as the <em>issuer</em> of an asset. In this specification, the term <em>issuer</em> is used to mean the side of the trust line that has an outstanding balance (that is, 'owes' the issued asset) that it wants to claw back.</p>
+<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
+<p>Besides errors that can occur for all transactions, Clawback transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Error Code</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>temDISABLED</code></td>
+<td style="text-align: left;">Occurs if the <a href="known-amendments.html#clawback">Clawback amendment</a> is not enabled.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temBAD_AMOUNT</code></td>
+<td style="text-align: left;">Occurs if the holder's balance is 0. It is not an error if the amount exceeds the holder's balance; in that case, the maximum available balance is clawed back. Also occurs if the counterparty listed in <code>Amount</code> is the same as the <code>Account</code> issuing this transaction.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecNO-LINE</code></td>
+<td style="text-align: left;">Occurs there is no trust line with the counterparty or that trust line's balance is 0.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecNO-PERMISSION</code></td>
+<td style="text-align: left;">Occurs if you attempt to set <code>lsfAllowTrustlineClawback</code> while <code>lsfNoFreeze</code> is set. Also occurs, conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrustLineClawback</code> is set.</td>
+</tr>
+</tbody>
+</table>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -974,7 +982,7 @@ Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrust
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback-of-issued-currency.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1153,6 +1161,18 @@ Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrust
     <a class="nav-link nav-leaf" href="py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
   </div>
 
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-python.html">NFTs Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-mint-and-burn-nfts.html">Mint and Burn NFTs Using Python</a>

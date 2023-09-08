@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Clawback - XRPL.org</title>
+    <title>Clawing Back Tokens - XRPL.org</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Clawback | XRPL.org">
-    <meta property="og:url" content="https://xrpl.org/clawback-of-issued-currency.html" />
-    <meta property="og:description" content="Issuers can claw back their issued tokens for compliance purposes." />
-    <meta name="description" content="Issuers can claw back their issued tokens for compliance purposes." />
+    <meta property="og:title" content="Clawing Back Tokens | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/clawing-back-tokens.html" />
+    <meta property="og:description" content="Issuers can claw back their tokens for compliance purposes if they enable the Clawback feature before issuing tokens." />
+    <meta name="description" content="Issuers can claw back their tokens for compliance purposes if they enable the Clawback feature before issuing tokens." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="en" />
-    <link rel="alternate" href="https://xrpl.org/clawback-of-issued-currency.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/clawback-of-issued-currency.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/clawback-of-issued-currency.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/clawing-back-tokens.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/clawing-back-tokens.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/clawing-back-tokens.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -341,7 +341,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/ja/clawback-of-issued-currency.html">
+          <a class="dropdown-item" href="/ja/clawing-back-tokens.html">
             日本語
           </a>
           <hr />
@@ -369,7 +369,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/clawback-docs/content/concepts/tokens/clawback-of-issued-currency.md?pr=/XRPLF/xrpl-dev-portal/pull/2111" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/clawback-docs/content/concepts/tokens/clawing-back-tokens.md?pr=/XRPLF/xrpl-dev-portal/pull/2111" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -382,7 +382,7 @@
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#clawback">Clawback</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#clawing-back-tokens">Clawing Back Tokens</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-clawback-transaction">Example Clawback Transaction</a></li>
       </ul>
   </div>
@@ -401,16 +401,16 @@
     <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
     <li class="active breadcrumb-item"><a href="concepts.html">Concepts</a></li>
     <li class="active breadcrumb-item"><a href="tokens.html">Tokens</a></li>
-    <li class="active breadcrumb-item">Clawback</li>
+    <li class="active breadcrumb-item">Clawing Back Tokens</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
-        <h1 id="clawback">Clawback<a aria-hidden="true" class="hover_anchor" href="#clawback"><i class="fa fa-link"></i></a></h1>
-<p><embed src="/snippets/_clawback-disclaimer.md"/>
-For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em>, the funds.</p>
-<p>Issuers can create tokens that they can claw back by adding the <code>lsfAllowTrustLineClawback</code> flag to the issuing account.</p>
+        <h1 id="clawing-back-tokens">Clawing Back Tokens<a aria-hidden="true" class="hover_anchor" href="#clawing-back-tokens"><i class="fa fa-link"></i></a></h1>
+<p><em>Requires the <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-39d-clawback" target="_blank">Clawback amendment <i aria-hidden="true" class="fa fa-external-link"></i></a>.</em></p>
+<p>For regulatory purposes, some issuers need the ability to recover tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em>, the funds.</p>
+<p>Issuers can gain the ability to claw back their tokens by enabling the <strong>Allow Clawback</strong> flag on their issuing account. This flag cannot be enabled if the issuer has already issued tokens.</p>
 <p class="devportal-callout note"><strong>Note:</strong> You can only claw back issued tokens created by your account. You cannot claw back XRP in this way.</p>
-<p>Clawback is disabled by default. To use clawback, you must set the <code>lsfAllowTrustLineClawback</code> flag through an <code>AccountSet</code> transaction. The <code>AccountSet</code> transaction only succeeds if the account has an empty owner directory, meaning that the account has no trust lines, offers, escrows, payment channels, or checks. After you set this flag, it cannot reverted. The account permanently gains the ability to claw back issued assets on trust lines.</p>
+<p>Clawback is disabled by default. To use clawback, you must send an <a href="accountset.html">AccountSet transaction</a> to enable the <strong>Allow Trust Line Clawback</strong> setting. <strong>An issuer with any existing tokens cannot enable Clawback.</strong> You can only enable <strong>Allow Trust Line Clawback</strong> if you have a completely empty owner directory, meaning you must do so before you set up any trust lines, offers, escrows, payment channels, checks, or signer lists.</p>
 <p>If you attempt to set <code>lsfAllowTrustLineClawback</code> while <code>lsfNoFreeze</code> is set, the transaction returns <code>tecNO_PERMISSION</code>, because clawback cannot be enabled on an account that has already disclaimed the ability to freeze trust lines. 
 Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrustLineClawback</code> is set, the transaction also returns <code>tecNO_PERMISSION</code>.</p>
 <h2 id="example-clawback-transaction">Example Clawback Transaction<a aria-hidden="true" class="hover_anchor" href="#example-clawback-transaction"><i class="fa fa-link"></i></a></h2>
@@ -424,7 +424,14 @@ Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrust
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>In execution, this transaction would claw back at most 314.159 FOO issued by rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S and held by rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW. If rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW does not have a trust line set up or that trust line's balance is 0, then the error <code>tecNO_LINE</code> is returned and a fee is consumed.</p>
+<p>If successful, this transaction would claw back at most 314.159 FOO issued by rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S and held by rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW.</p>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -919,7 +926,7 @@ Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrust
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="clawback-of-issued-currency.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1098,6 +1105,18 @@ Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrust
     <a class="nav-link nav-leaf" href="py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
   </div>
 
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-python.html">NFTs Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-mint-and-burn-nfts.html">Mint and Burn NFTs Using Python</a>

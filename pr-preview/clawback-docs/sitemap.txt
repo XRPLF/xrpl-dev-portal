@@ -89,7 +89,7 @@ https://xrpl.org/nft-fixed-supply.html
 https://xrpl.org/nft-apis.html
 https://xrpl.org/trust-lines-and-issuing.html
 https://xrpl.org/authorized-trust-lines.html
-https://xrpl.org/clawback-of-issued-currency.html
+https://xrpl.org/clawing-back-tokens.html
 https://xrpl.org/freezes.html
 https://xrpl.org/common-misconceptions-about-freezes.html
 https://xrpl.org/rippling.html
@@ -132,6 +132,7 @@ https://xrpl.org/modular-tutorials-in-python.html
 https://xrpl.org/send-payments-using-python.html
 https://xrpl.org/py-create-accounts-send-xrp.html
 https://xrpl.org/py-create-trustline-send-currency.html
+https://xrpl.org/nfts-using-python.html
 https://xrpl.org/py-mint-and-burn-nfts.html
 https://xrpl.org/py-transfer-nfts.html
 https://xrpl.org/py-broker-sale.html

@@ -405,6 +405,16 @@
         <li class="nav-item level-2"><a class="nav-link" href="#ripplex5-broker-nftsjs">ripplex5-broker-nfts.js</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#broker-sale">Broker Sale</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#lesson5-broker-nftspy">lesson5-broker-nfts.py</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#form-frame">Form frame</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#create-the-label-and-entry-widgets-for-standby-account">Create the Label and Entry widgets for "Standby Account"</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#place-field-in-a-grid">Place field in a grid.</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#operational-account">Operational Account</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#create-the-label-and-entry-widgets-for-operational-account">Create the Label and Entry widgets for "Operational Account"</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#place-the-widgets-in-a-grid">Place the widgets in a grid</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#buttons">Buttons</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#create-the-standby-account-buttons">Create the Standby Account Buttons</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#create-the-operational-account-buttons">Create the Operational Account Buttons</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#start-the-application">Start the application</a></li>
       </ul>
   </div>
       </aside>
@@ -425,7 +435,7 @@
     <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
     <li class="active breadcrumb-item"><a href="python.html">Python</a></li>
     <li class="active breadcrumb-item"><a href="modular-tutorials-in-python.html">Modular Tutorials in Python</a></li>
-    <li class="active breadcrumb-item"><a href="send-payments-using-python.html">Send Payments Using Python</a></li>
+    <li class="active breadcrumb-item"><a href="nfts-using-python.html">NFTs Using Python</a></li>
     <li class="active breadcrumb-item">Broker an NFT Sale Using Python</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
@@ -440,7 +450,7 @@
 <li>Broker a sale between two different accounts.</li>
 </ol>
 <p><a href="img/quickstart-py23.png"><img alt="Quickstart form with Broker Account" src="img/quickstart-py23.png"/></a></p>
-<p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try each of the samples in your own browser.</p>
+<p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to try each of the samples in your own browser.</p>
 <h2 id="get-accounts">Get Accounts<a aria-hidden="true" class="hover_anchor" href="#get-accounts"><i class="fa fa-link"></i></a></h2>
 <ol>
 <li>Open and run <code>broker-nfts.py</code>.</li>
@@ -513,13 +523,12 @@
 </ol>
 <p><a href="img/quickstart-py29.png"><img alt="Cancel Offer" src="img/quickstart-py29.png"/></a></p>
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
-<p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to examine the code samples.</p>
+<p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive to examine the code samples.</p>
 <h2 id="ripplex5-broker-nftsjs">ripplex5-broker-nfts.js<a aria-hidden="true" class="hover_anchor" href="#ripplex5-broker-nftsjs"><i class="fa fa-link"></i></a></h2>
 <!-- SPELLING_IGNORE: ripplex5 -->
 <p>Four of the five buttons for the Broker are supported by existing methods. The only new method required is the Broker Sale method.</p>
 <p>Import dependencies and create a global variable for <code>testnet_url</code>.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="kn">import</span> <span class="nn">xrpl</span>
-<span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
 <span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
 <span class="n">testnet_url</span> <span class="o">=</span> <span class="s2">"https://s.altnet.rippletest.net:51234"</span>
@@ -530,7 +539,7 @@
 <span class="w">    </span><span class="sd">"""broker_sale"""</span>
 </code></pre></div>
 <p>Get the broker wallet and establish a client connection.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">    <span class="n">broker_wallet</span><span class="o">=</span><span class="n">Wallet</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="mi">16237283</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">    <span class="n">broker_wallet</span><span class="o">=</span><span class="n">Wallet</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
     <span class="n">client</span><span class="o">=</span><span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">testnet_url</span><span class="p">)</span>
 </code></pre></div>
 <p>Define the accept offer transaction, matching a sell offer with the selected buy offer.</p>
@@ -541,26 +550,23 @@
        <span class="n">nftoken_broker_fee</span><span class="o">=</span><span class="n">broker_fee</span>
     <span class="p">)</span>
 </code></pre></div>
-<p>Sign and fill the transaction.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">    <span class="n">signed_tx</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span>
-        <span class="n">accept_offer_tx</span><span class="p">,</span> <span class="n">broker_wallet</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
-</code></pre></div>
 <p>Submit the transaction and report the results.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">    <span class="n">reply</span><span class="o">=</span><span class="s2">""</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">    <span class="n">reply</span><span class="o">=</span><span class="s2">""</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">response</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">send_reliable_submission</span><span class="p">(</span><span class="n">signed_tx</span><span class="p">,</span><span class="n">client</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">submit_and_wait</span><span class="p">(</span><span class="n">accept_offer_tx</span><span class="p">,</span><span class="n">client</span><span class="p">,</span><span class="n">broker_wallet</span><span class="p">)</span>
         <span class="n">reply</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">result</span>
     <span class="k">except</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">XRPLReliableSubmissionException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">reply</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Submit failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="n">reply</span>
 </code></pre></div>
 <h2 id="lesson5-broker-nftspy">lesson5-broker-nfts.py<a aria-hidden="true" class="hover_anchor" href="#lesson5-broker-nftspy"><i class="fa fa-link"></i></a></h2>
 <p>Revise the form from lesson 4 to add a new Broker section at the top. Changes are highlighted below.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 <span class="kn">import</span> <span class="nn">xrpl</span>
 <span class="kn">import</span> <span class="nn">json</span>
 </code></pre></div>
 <p>Import the <code>broker_sale</code> method.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="kn">from</span> <span class="nn">mod1</span> <span class="kn">import</span> <span class="n">get_account</span><span class="p">,</span> <span class="n">get_account_info</span><span class="p">,</span> <span class="n">send_xrp</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="kn">from</span> <span class="nn">mod1</span> <span class="kn">import</span> <span class="n">get_account</span><span class="p">,</span> <span class="n">get_account_info</span><span class="p">,</span> <span class="n">send_xrp</span>
 <span class="kn">from</span> <span class="nn">mod2</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">create_trust_line</span><span class="p">,</span>
     <span class="n">send_currency</span><span class="p">,</span>
@@ -587,7 +593,7 @@
 <span class="c1">#############################################</span>
 </code></pre></div>
 <p>Add handlers for the broker account buttons.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1"># Module 5 Handlers</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1"># Module 5 Handlers</span>
 
 <span class="k">def</span> <span class="nf">get_broker_account</span><span class="p">():</span>
     <span class="n">new_wallet</span> <span class="o">=</span> <span class="n">get_account</span><span class="p">(</span><span class="n">ent_broker_seed</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
@@ -919,7 +925,7 @@
     <span class="n">get_operational_account_info</span><span class="p">()</span>
 </code></pre></div>
 <p>Create a new window with the title <em>Quickstart - Broker Sale</em>.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="n">window</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="n">window</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">window</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Quickstart - Broker Sale"</span><span class="p">)</span>
 
 <span class="n">myscrollbar</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">orient</span><span class="o">=</span><span class="s2">"vertical"</span><span class="p">)</span>
@@ -930,13 +936,13 @@
 <span class="n">operationalRippling</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">BooleanVar</span><span class="p">()</span>
 </code></pre></div>
 <p>Add a new frame to hold the broker fields and buttons.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1"># Broker frame</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="c1"># Broker frame</span>
 
 <span class="n">frm_broker</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">relief</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">SUNKEN</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">frm_broker</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
 </code></pre></div>
 <p>Define the broker entry fields.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="n">lbl_broker_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Broker Seed"</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="n">lbl_broker_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Broker Seed"</span><span class="p">)</span>
 <span class="n">ent_broker_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_broker_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Broker Account"</span><span class="p">)</span>
 <span class="n">ent_broker_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
@@ -958,7 +964,7 @@
 <span class="n">text_broker_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">65</span><span class="p">)</span>
 </code></pre></div>
 <p>Place the fields in a grid.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="n">lbl_broker_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="n">lbl_broker_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
 <span class="n">ent_broker_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">lbl_broker_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
 <span class="n">ent_broker_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -980,280 +986,266 @@
 <span class="n">text_broker_results</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <p>Define and place the broker buttons.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="n">btn_broker_get_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Broker Account"</span><span class="p">,</span>
-                                   <span class="n">command</span> <span class="o">=</span> <span class="n">get_broker_account</span><span class="p">)</span>
-<span class="n">btn_broker_get_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_broker_get_account_info</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Broker Account Info"</span><span class="p">,</span>
-                                   <span class="n">command</span> <span class="o">=</span> <span class="n">get_broker_account_info</span><span class="p">)</span>
-<span class="n">btn_broker_get_account_info</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_broker_sale</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Broker Sale"</span><span class="p">,</span>
-                            <span class="n">command</span> <span class="o">=</span> <span class="n">broker_broker_sale</span><span class="p">)</span>
-<span class="n">btn_broker_sale</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_broker_get_offers</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Offers"</span><span class="p">,</span>
-                                  <span class="n">command</span> <span class="o">=</span> <span class="n">broker_get_offers</span><span class="p">)</span>
-<span class="n">btn_broker_get_offers</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_broker_cancel_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_broker</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Cancel Offer"</span><span class="p">,</span>
-                                    <span class="n">command</span> <span class="o">=</span> <span class="n">broker_cancel_offer</span><span class="p">)</span>
-<span class="n">btn_broker_cancel_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-
-<span class="c1"># Form frame</span>
-<span class="n">frm_form</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">relief</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">SUNKEN</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">frm_form</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
-
-<span class="c1"># Create the Label and Entry widgets for "Standby Account"</span>
-<span class="n">lbl_standy_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Standby Seed"</span><span class="p">)</span>
-<span class="n">ent_standby_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_standby_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Standby Account"</span><span class="p">)</span>
-<span class="n">ent_standby_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_standy_amount</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Amount"</span><span class="p">)</span>
-<span class="n">ent_standby_amount</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_standby_destination</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Destination"</span><span class="p">)</span>
-<span class="n">ent_standby_destination</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_standby_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"XRP Balance"</span><span class="p">)</span>
-<span class="n">ent_standby_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_standby_currency</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Currency"</span><span class="p">)</span>
-<span class="n">ent_standby_currency</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">cb_standby_allow_rippling</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Allow Rippling"</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">standbyRippling</span><span class="p">,</span> <span class="n">onvalue</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">offvalue</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">lbl_standby_uri</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFT URI"</span><span class="p">)</span>
-<span class="n">ent_standby_uri</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_standby_flags</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Flags"</span><span class="p">)</span>
-<span class="n">ent_standby_flags</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_standby_transfer_fee</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Transfer Fee"</span><span class="p">)</span>
-<span class="n">ent_standby_transfer_fee</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_standby_taxon</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Taxon"</span><span class="p">)</span>
-<span class="n">ent_standby_taxon</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_standby_nft_id</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFT ID"</span><span class="p">)</span>
-<span class="n">ent_standby_nft_id</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_standby_nft_offer_index</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFT Offer Index"</span><span class="p">)</span>
-<span class="n">ent_standby_nft_offer_index</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_standby_owner</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Owner"</span><span class="p">)</span>
-<span class="n">ent_standby_owner</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_standby_expiration</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Expiration"</span><span class="p">)</span>
-<span class="n">ent_standby_expiration</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_standby_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s1">'Results'</span><span class="p">)</span>
-<span class="n">text_standby_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">65</span><span class="p">)</span>
-
-<span class="c1"># Place field in a grid.</span>
-<span class="n">lbl_standy_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">lbl_standby_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_standby_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">lbl_standy_amount</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_standby_amount</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">lbl_standby_destination</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_standby_destination</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">lbl_standby_balance</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_standby_balance</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">lbl_standby_currency</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_standby_currency</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">cb_standby_allow_rippling</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_standby_uri</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_standby_uri</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_standby_flags</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_standby_flags</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_standby_transfer_fee</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_standby_transfer_fee</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_standby_taxon</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_standby_taxon</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_standby_nft_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_standby_nft_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_standby_nft_offer_index</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ne"</span><span class="p">)</span>
-<span class="n">ent_standby_nft_offer_index</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_standby_owner</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ne"</span><span class="p">)</span>
-<span class="n">ent_standby_owner</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_standby_expiration</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ne"</span><span class="p">)</span>
-<span class="n">ent_standby_expiration</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_standby_results</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ne"</span><span class="p">)</span>
-<span class="n">text_standby_results</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nw"</span><span class="p">)</span>
-
-<span class="n">cb_standby_allow_rippling</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
-
-<span class="c1">###############################################</span>
-<span class="c1">## Operational Account ########################</span>
-<span class="c1">###############################################</span>
-
-<span class="c1"># Create the Label and Entry widgets for "Operational Account"</span>
-<span class="n">lbl_operational_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Operational Seed"</span><span class="p">)</span>
-<span class="n">ent_operational_seed</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_operational_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Operational Account"</span><span class="p">)</span>
-<span class="n">ent_operational_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_operational_amount</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Amount"</span><span class="p">)</span>
-<span class="n">ent_operational_amount</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_operational_destination</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Destination"</span><span class="p">)</span>
-<span class="n">ent_operational_destination</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_operational_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"XRP Balance"</span><span class="p">)</span>
-<span class="n">ent_operational_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_operational_currency</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Currency"</span><span class="p">)</span>
-<span class="n">ent_operational_currency</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">cb_operational_allow_rippling</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Allow Rippling"</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">operationalRippling</span><span class="p">,</span> <span class="n">onvalue</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">offvalue</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">lbl_operational_uri</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFT URI"</span><span class="p">)</span>
-<span class="n">ent_operational_uri</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_operational_flags</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Flags"</span><span class="p">)</span>
-<span class="n">ent_operational_flags</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">lbl_operational_transfer_fee</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Transfer Fee"</span><span class="p">)</span>
-<span class="n">ent_operational_transfer_fee</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_operational_taxon</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Taxon"</span><span class="p">)</span>
-<span class="n">ent_operational_taxon</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_operational_nft_id</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFT ID"</span><span class="p">)</span>
-<span class="n">ent_operational_nft_id</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_operational_nft_offer_index</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"NFT Offer Index"</span><span class="p">)</span>
-<span class="n">ent_operational_nft_offer_index</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_operational_owner</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Owner"</span><span class="p">)</span>
-<span class="n">ent_operational_owner</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_operational_expiration</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Expiration"</span><span class="p">)</span>
-<span class="n">ent_operational_expiration</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"50"</span><span class="p">)</span>
-<span class="n">lbl_operational_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">"Results"</span><span class="p">)</span>
-<span class="n">text_operational_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">65</span><span class="p">)</span>
-
-<span class="c1">#Place the widgets in a grid</span>
-<span class="n">lbl_operational_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_operational_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_amount</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_operational_amount</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_destination</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_operational_destination</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_balance</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_operational_balance</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_currency</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_operational_currency</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">cb_operational_allow_rippling</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_uri</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_operational_uri</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_flags</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_operational_flags</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_transfer_fee</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_operational_transfer_fee</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_taxon</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_operational_taxon</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_nft_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
-<span class="n">ent_operational_nft_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_nft_offer_index</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ne"</span><span class="p">)</span>
-<span class="n">ent_operational_nft_offer_index</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_owner</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ne"</span><span class="p">)</span>
-<span class="n">ent_operational_owner</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_expiration</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ne"</span><span class="p">)</span>
-<span class="n">ent_operational_expiration</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
-<span class="n">lbl_operational_results</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ne"</span><span class="p">)</span>
-<span class="n">text_operational_results</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nw"</span><span class="p">)</span>
-
-<span class="n">cb_operational_allow_rippling</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
-
-<span class="c1">#############################################</span>
-<span class="c1">## Buttons ##################################</span>
-<span class="c1">#############################################</span>
-
-<span class="c1"># Create the Standby Account Buttons</span>
-<span class="n">btn_get_standby_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Standby Account"</span><span class="p">,</span>
-                                    <span class="n">command</span> <span class="o">=</span> <span class="n">get_standby_account</span><span class="p">)</span>
-<span class="n">btn_get_standby_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_get_standby_account_info</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span>
-                                         <span class="n">text</span><span class="o">=</span><span class="s2">"Get Standby Account Info"</span><span class="p">,</span>
-                                         <span class="n">command</span> <span class="o">=</span> <span class="n">get_standby_account_info</span><span class="p">)</span>
-<span class="n">btn_get_standby_account_info</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_send_xrp</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Send XRP &gt;"</span><span class="p">,</span>
-                                 <span class="n">command</span> <span class="o">=</span> <span class="n">standby_send_xrp</span><span class="p">)</span>
-<span class="n">btn_standby_send_xrp</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_create_trust_line</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span>
-                                         <span class="n">text</span><span class="o">=</span><span class="s2">"Create Trust Line"</span><span class="p">,</span>
-                                         <span class="n">command</span> <span class="o">=</span> <span class="n">standby_create_trust_line</span><span class="p">)</span>
-<span class="n">btn_standby_create_trust_line</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_send_currency</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Send Currency &gt;"</span><span class="p">,</span>
-                                      <span class="n">command</span> <span class="o">=</span> <span class="n">standby_send_currency</span><span class="p">)</span>
-<span class="n">btn_standby_send_currency</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_send_currency</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Balances"</span><span class="p">,</span>
-                                      <span class="n">command</span> <span class="o">=</span> <span class="n">get_balances</span><span class="p">)</span>
-<span class="n">btn_standby_send_currency</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_configure_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span>
-                                          <span class="n">text</span><span class="o">=</span><span class="s2">"Configure Account"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">standby_configure_account</span><span class="p">)</span>
-<span class="n">btn_standby_configure_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_mint_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Mint NFT"</span><span class="p">,</span>
-                                   <span class="n">command</span> <span class="o">=</span> <span class="n">standby_mint_token</span><span class="p">)</span>
-<span class="n">btn_standby_mint_token</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_get_tokens</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get NFTs"</span><span class="p">,</span>
-                                   <span class="n">command</span> <span class="o">=</span> <span class="n">standby_get_tokens</span><span class="p">)</span>
-<span class="n">btn_standby_get_tokens</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_burn_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Burn NFT"</span><span class="p">,</span>
-                                   <span class="n">command</span> <span class="o">=</span> <span class="n">standby_burn_token</span><span class="p">)</span>
-<span class="n">btn_standby_burn_token</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_create_sell_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Create Sell Offer"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">standby_create_sell_offer</span><span class="p">)</span>
-<span class="n">btn_standby_create_sell_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_accept_sell_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Accept Sell Offer"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">standby_accept_sell_offer</span><span class="p">)</span>
-<span class="n">btn_standby_accept_sell_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_create_buy_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Create Buy Offer"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">standby_create_buy_offer</span><span class="p">)</span>
-<span class="n">btn_standby_create_buy_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_accept_buy_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Accept Buy Offer"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">standby_accept_buy_offer</span><span class="p">)</span>
-<span class="n">btn_standby_accept_buy_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_get_offers</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Offers"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">standby_get_offers</span><span class="p">)</span>
-<span class="n">btn_standby_get_offers</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_standby_cancel_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Cancel Offer"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">standby_cancel_offer</span><span class="p">)</span>
-<span class="n">btn_standby_cancel_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-
-
-
-<span class="c1"># Create the Operational Account Buttons</span>
-<span class="n">btn_get_operational_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span>
-                                        <span class="n">text</span><span class="o">=</span><span class="s2">"Get Operational Account"</span><span class="p">,</span>
-                                        <span class="n">command</span> <span class="o">=</span> <span class="n">get_operational_account</span><span class="p">)</span>
-<span class="n">btn_get_operational_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_get_op_account_info</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Op Account Info"</span><span class="p">,</span>
-                                    <span class="n">command</span> <span class="o">=</span> <span class="n">get_operational_account_info</span><span class="p">)</span>
-<span class="n">btn_get_op_account_info</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_send_xrp</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"&lt; Send XRP"</span><span class="p">,</span>
-                            <span class="n">command</span> <span class="o">=</span> <span class="n">operational_send_xrp</span><span class="p">)</span>
-<span class="n">btn_op_send_xrp</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_create_trust_line</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Create Trust Line"</span><span class="p">,</span>
-                                    <span class="n">command</span> <span class="o">=</span> <span class="n">operational_create_trust_line</span><span class="p">)</span>
-<span class="n">btn_op_create_trust_line</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_send_currency</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"&lt; Send Currency"</span><span class="p">,</span>
-                                 <span class="n">command</span> <span class="o">=</span> <span class="n">operational_send_currency</span><span class="p">)</span>
-<span class="n">btn_op_send_currency</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_get_balances</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Balances"</span><span class="p">,</span>
-                                <span class="n">command</span> <span class="o">=</span> <span class="n">get_balances</span><span class="p">)</span>
-<span class="n">btn_op_get_balances</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_configure_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Configure Account"</span><span class="p">,</span>
-                                     <span class="n">command</span> <span class="o">=</span> <span class="n">operational_configure_account</span><span class="p">)</span>
-<span class="n">btn_op_configure_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_mint_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Mint NFT"</span><span class="p">,</span>
-                              <span class="n">command</span> <span class="o">=</span> <span class="n">operational_mint_token</span><span class="p">)</span>
-<span class="n">btn_op_mint_token</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_get_tokens</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get NFTs"</span><span class="p">,</span>
-                              <span class="n">command</span> <span class="o">=</span> <span class="n">operational_get_tokens</span><span class="p">)</span>
-<span class="n">btn_op_get_tokens</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_burn_token</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Burn NFT"</span><span class="p">,</span>
-                              <span class="n">command</span> <span class="o">=</span> <span class="n">operational_burn_token</span><span class="p">)</span>
-<span class="n">btn_op_burn_token</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_create_sell_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Create Sell Offer"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">op_create_sell_offer</span><span class="p">)</span>
-<span class="n">btn_op_create_sell_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_accept_sell_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Accept Sell Offer"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">op_accept_sell_offer</span><span class="p">)</span>
-<span class="n">btn_op_accept_sell_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_create_buy_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Create Buy Offer"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">op_create_buy_offer</span><span class="p">)</span>
-<span class="n">btn_op_create_buy_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_accept_buy_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Accept Buy Offer"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">op_accept_buy_offer</span><span class="p">)</span>
-<span class="n">btn_op_accept_buy_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_get_offers</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Offers"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">op_get_offers</span><span class="p">)</span>
-<span class="n">btn_op_get_offers</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-<span class="n">btn_op_cancel_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Cancel Offer"</span><span class="p">,</span>
-                                          <span class="n">command</span> <span class="o">=</span> <span class="n">op_cancel_offer</span><span class="p">)</span>
-<span class="n">btn_op_cancel_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
-
-
-<span class="c1"># Start the application</span>
-<span class="n">window</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
-</code></pre></div>
+<p>```python
+btn_broker_get_account = tk.Button(master=frm_broker, text="Get Broker Account",
+                                   command = get_broker_account)
+btn_broker_get_account.grid(row=0, column=2, sticky = "nsew")
+btn_broker_get_account_info = tk.Button(master=frm_broker, text="Get Broker Account Info",
+                                   command = get_broker_account_info)
+btn_broker_get_account_info.grid(row=1, column=2, sticky = "nsew")
+btn_broker_sale = tk.Button(master=frm_broker, text="Broker Sale",
+                            command = broker_broker_sale)
+btn_broker_sale.grid(row=2, column=2, sticky = "nsew")
+btn_broker_get_offers = tk.Button(master=frm_broker, text="Get Offers",
+                                  command = broker_get_offers)
+btn_broker_get_offers.grid(row=3, column=2, sticky = "nsew")
+btn_broker_cancel_offer = tk.Button(master=frm_broker, text="Cancel Offer",
+                                    command = broker_cancel_offer)
+btn_broker_cancel_offer.grid(row=4, column=2, sticky="nsew")</p>
+<h1 id="form-frame">Form frame<a aria-hidden="true" class="hover_anchor" href="#form-frame"><i class="fa fa-link"></i></a></h1>
+<p>frm_form = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
+frm_form.pack()</p>
+<h1 id="create-the-label-and-entry-widgets-for-standby-account">Create the Label and Entry widgets for "Standby Account"<a aria-hidden="true" class="hover_anchor" href="#create-the-label-and-entry-widgets-for-standby-account"><i class="fa fa-link"></i></a></h1>
+<p>lbl_standy_seed = tk.Label(master=frm_form, text="Standby Seed")
+ent_standby_seed = tk.Entry(master=frm_form, width=50)
+lbl_standby_account = tk.Label(master=frm_form, text="Standby Account")
+ent_standby_account = tk.Entry(master=frm_form, width=50)
+lbl_standy_amount = tk.Label(master=frm_form, text="Amount")
+ent_standby_amount = tk.Entry(master=frm_form, width=50)
+lbl_standby_destination = tk.Label(master=frm_form, text="Destination")
+ent_standby_destination = tk.Entry(master=frm_form, width=50)
+lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_standby_balance = tk.Entry(master=frm_form, width=50)
+lbl_standby_currency = tk.Label(master=frm_form, text="Currency")
+ent_standby_currency = tk.Entry(master=frm_form, width=50)
+cb_standby_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=standbyRippling, onvalue=True, offvalue=False)
+lbl_standby_uri = tk.Label(master=frm_form, text="NFT URI")
+ent_standby_uri = tk.Entry(master=frm_form, width=50)
+lbl_standby_flags = tk.Label(master=frm_form, text="Flags")
+ent_standby_flags = tk.Entry(master=frm_form, width=50)
+lbl_standby_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
+ent_standby_transfer_fee = tk.Entry(master=frm_form, width="50")
+lbl_standby_taxon = tk.Label(master=frm_form, text="Taxon")
+ent_standby_taxon = tk.Entry(master=frm_form, width="50")
+lbl_standby_nft_id = tk.Label(master=frm_form, text="NFT ID")
+ent_standby_nft_id = tk.Entry(master=frm_form, width="50")
+lbl_standby_nft_offer_index = tk.Label(master=frm_form, text="NFT Offer Index")
+ent_standby_nft_offer_index = tk.Entry(master=frm_form, width="50")
+lbl_standby_owner = tk.Label(master=frm_form, text="Owner")
+ent_standby_owner = tk.Entry(master=frm_form, width="50")
+lbl_standby_expiration = tk.Label(master=frm_form, text="Expiration")
+ent_standby_expiration = tk.Entry(master=frm_form, width="50")
+lbl_standby_results = tk.Label(master=frm_form,text='Results')
+text_standby_results = tk.Text(master=frm_form, height = 10, width = 65)</p>
+<h1 id="place-field-in-a-grid">Place field in a grid.<a aria-hidden="true" class="hover_anchor" href="#place-field-in-a-grid"><i class="fa fa-link"></i></a></h1>
+<p>lbl_standy_seed.grid(row=0, column=0, sticky="w")
+ent_standby_seed.grid(row=0, column=1)
+lbl_standby_account.grid(row=2, column=0, sticky="e")
+ent_standby_account.grid(row=2, column=1)
+lbl_standy_amount.grid(row=3, column=0, sticky="e")
+ent_standby_amount.grid(row=3, column=1)
+lbl_standby_destination.grid(row=4, column=0, sticky="e")
+ent_standby_destination.grid(row=4, column=1)
+lbl_standby_balance.grid(row=5, column=0, sticky="e")
+ent_standby_balance.grid(row=5, column=1)
+lbl_standby_currency.grid(row=6, column=0, sticky="e")
+ent_standby_currency.grid(row=6, column=1)
+cb_standby_allow_rippling.grid(row=7,column=1, sticky="w")
+lbl_standby_uri.grid(row=8, column=0, sticky="e")
+ent_standby_uri.grid(row=8, column=1, sticky="w")
+lbl_standby_flags.grid(row=9, column=0, sticky="e")
+ent_standby_flags.grid(row=9, column=1, sticky="w")
+lbl_standby_transfer_fee.grid(row=10, column=0, sticky="e")
+ent_standby_transfer_fee.grid(row=10, column=1, sticky="w")
+lbl_standby_taxon.grid(row=11, column=0, sticky="e")
+ent_standby_taxon.grid(row=11, column=1, sticky="w")
+lbl_standby_nft_id.grid(row=12, column=0, sticky="e")
+ent_standby_nft_id.grid(row=12, column=1, sticky="w")
+lbl_standby_nft_offer_index.grid(row=13, column=0, sticky="ne")
+ent_standby_nft_offer_index.grid(row=13, column=1, sticky="w")
+lbl_standby_owner.grid(row=14, column=0, sticky="ne")
+ent_standby_owner.grid(row=14, column=1, sticky="w")
+lbl_standby_expiration.grid(row=15, column=0, sticky="ne")
+ent_standby_expiration.grid(row=15, column=1, sticky="w")
+lbl_standby_results.grid(row=17, column=0, sticky="ne")
+text_standby_results.grid(row=17, column=1, sticky="nw")</p>
+<p>cb_standby_allow_rippling.select()</p>
+<h6 id="_"><a aria-hidden="true" class="hover_anchor" href="#_"><i class="fa fa-link"></i></a></h6>
+<h2 id="operational-account">Operational Account<a aria-hidden="true" class="hover_anchor" href="#operational-account"><i class="fa fa-link"></i></a></h2>
+<h6 id="_-1"><a aria-hidden="true" class="hover_anchor" href="#_-1"><i class="fa fa-link"></i></a></h6>
+<h1 id="create-the-label-and-entry-widgets-for-operational-account">Create the Label and Entry widgets for "Operational Account"<a aria-hidden="true" class="hover_anchor" href="#create-the-label-and-entry-widgets-for-operational-account"><i class="fa fa-link"></i></a></h1>
+<p>lbl_operational_seed = tk.Label(master=frm_form, text="Operational Seed")
+ent_operational_seed = tk.Entry(master=frm_form, width=50)
+lbl_operational_account = tk.Label(master=frm_form, text="Operational Account")
+ent_operational_account = tk.Entry(master=frm_form, width=50)
+lbl_operational_amount = tk.Label(master=frm_form, text="Amount")
+ent_operational_amount = tk.Entry(master=frm_form, width=50)
+lbl_operational_destination = tk.Label(master=frm_form, text="Destination")
+ent_operational_destination = tk.Entry(master=frm_form, width=50)
+lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
+ent_operational_balance = tk.Entry(master=frm_form, width=50)
+lbl_operational_currency = tk.Label(master=frm_form, text="Currency")
+ent_operational_currency = tk.Entry(master=frm_form, width=50)
+cb_operational_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=operationalRippling, onvalue=True, offvalue=False)
+lbl_operational_uri = tk.Label(master=frm_form, text="NFT URI")
+ent_operational_uri = tk.Entry(master=frm_form, width=50)
+lbl_operational_flags = tk.Label(master=frm_form, text="Flags")
+ent_operational_flags = tk.Entry(master=frm_form, width=50)
+lbl_operational_transfer_fee = tk.Label(master=frm_form, text="Transfer Fee")
+ent_operational_transfer_fee = tk.Entry(master=frm_form, width="50")
+lbl_operational_taxon = tk.Label(master=frm_form, text="Taxon")
+ent_operational_taxon = tk.Entry(master=frm_form, width="50")
+lbl_operational_nft_id = tk.Label(master=frm_form, text="NFT ID")
+ent_operational_nft_id = tk.Entry(master=frm_form, width="50")
+lbl_operational_nft_offer_index = tk.Label(master=frm_form, text="NFT Offer Index")
+ent_operational_nft_offer_index = tk.Entry(master=frm_form, width="50")
+lbl_operational_owner = tk.Label(master=frm_form, text="Owner")
+ent_operational_owner = tk.Entry(master=frm_form, width="50")
+lbl_operational_expiration = tk.Label(master=frm_form, text="Expiration")
+ent_operational_expiration = tk.Entry(master=frm_form, width="50")
+lbl_operational_results = tk.Label(master=frm_form,text="Results")
+text_operational_results = tk.Text(master=frm_form, height = 10, width = 65)</p>
+<h1 id="place-the-widgets-in-a-grid">Place the widgets in a grid<a aria-hidden="true" class="hover_anchor" href="#place-the-widgets-in-a-grid"><i class="fa fa-link"></i></a></h1>
+<p>lbl_operational_seed.grid(row=0, column=4, sticky="e")
+ent_operational_seed.grid(row=0, column=5, sticky="w")
+lbl_operational_account.grid(row=2,column=4, sticky="e")
+ent_operational_account.grid(row=2,column=5, sticky="w")
+lbl_operational_amount.grid(row=3, column=4, sticky="e")
+ent_operational_amount.grid(row=3, column=5, sticky="w")
+lbl_operational_destination.grid(row=4, column=4, sticky="e")
+ent_operational_destination.grid(row=4, column=5, sticky="w")
+lbl_operational_balance.grid(row=5, column=4, sticky="e")
+ent_operational_balance.grid(row=5, column=5, sticky="w")
+lbl_operational_currency.grid(row=6, column=4, sticky="e")
+ent_operational_currency.grid(row=6, column=5)
+cb_operational_allow_rippling.grid(row=7,column=5, sticky="w")
+lbl_operational_uri.grid(row=8, column=4, sticky="e")
+ent_operational_uri.grid(row=8, column=5, sticky="w")
+lbl_operational_flags.grid(row=9, column=4, sticky="e")
+ent_operational_flags.grid(row=9, column=5, sticky="w")
+lbl_operational_transfer_fee.grid(row=10, column=4, sticky="e")
+ent_operational_transfer_fee.grid(row=10, column=5, sticky="w")
+lbl_operational_taxon.grid(row=11, column=4, sticky="e")
+ent_operational_taxon.grid(row=11, column=5, sticky="w")
+lbl_operational_nft_id.grid(row=12, column=4, sticky="e")
+ent_operational_nft_id.grid(row=12, column=5, sticky="w")
+lbl_operational_nft_offer_index.grid(row=13, column=4, sticky="ne")
+ent_operational_nft_offer_index.grid(row=13, column=5, sticky="w")
+lbl_operational_owner.grid(row=14, column=4, sticky="ne")
+ent_operational_owner.grid(row=14, column=5, sticky="w")
+lbl_operational_expiration.grid(row=15, column=4, sticky="ne")
+ent_operational_expiration.grid(row=15, column=5, sticky="w")
+lbl_operational_results.grid(row=17, column=4, sticky="ne")
+text_operational_results.grid(row=17, column=5, sticky="nw")</p>
+<p>cb_operational_allow_rippling.select()</p>
+<h6 id="_-2"><a aria-hidden="true" class="hover_anchor" href="#_-2"><i class="fa fa-link"></i></a></h6>
+<h2 id="buttons">Buttons<a aria-hidden="true" class="hover_anchor" href="#buttons"><i class="fa fa-link"></i></a></h2>
+<h6 id="_-3"><a aria-hidden="true" class="hover_anchor" href="#_-3"><i class="fa fa-link"></i></a></h6>
+<h1 id="create-the-standby-account-buttons">Create the Standby Account Buttons<a aria-hidden="true" class="hover_anchor" href="#create-the-standby-account-buttons"><i class="fa fa-link"></i></a></h1>
+<p>btn_get_standby_account = tk.Button(master=frm_form, text="Get Standby Account",
+                                    command = get_standby_account)
+btn_get_standby_account.grid(row=0, column=2, sticky = "nsew")
+btn_get_standby_account_info = tk.Button(master=frm_form,
+                                         text="Get Standby Account Info",
+                                         command = get_standby_account_info)
+btn_get_standby_account_info.grid(row=1, column=2, sticky = "nsew")
+btn_standby_send_xrp = tk.Button(master=frm_form, text="Send XRP &gt;",
+                                 command = standby_send_xrp)
+btn_standby_send_xrp.grid(row=2, column = 2, sticky = "nsew")
+btn_standby_create_trust_line = tk.Button(master=frm_form,
+                                         text="Create Trust Line",
+                                         command = standby_create_trust_line)
+btn_standby_create_trust_line.grid(row=4, column=2, sticky = "nsew")
+btn_standby_send_currency = tk.Button(master=frm_form, text="Send Currency &gt;",
+                                      command = standby_send_currency)
+btn_standby_send_currency.grid(row=5, column=2, sticky = "nsew")
+btn_standby_send_currency = tk.Button(master=frm_form, text="Get Balances",
+                                      command = get_balances)
+btn_standby_send_currency.grid(row=6, column=2, sticky = "nsew")
+btn_standby_configure_account = tk.Button(master=frm_form,
+                                          text="Configure Account",
+                                          command = standby_configure_account)
+btn_standby_configure_account.grid(row=7,column=0, sticky = "nsew")
+btn_standby_mint_token = tk.Button(master=frm_form, text="Mint NFT",
+                                   command = standby_mint_token)
+btn_standby_mint_token.grid(row=8, column=2, sticky="nsew")
+btn_standby_get_tokens = tk.Button(master=frm_form, text="Get NFTs",
+                                   command = standby_get_tokens)
+btn_standby_get_tokens.grid(row=9, column=2, sticky="nsew")
+btn_standby_burn_token = tk.Button(master=frm_form, text="Burn NFT",
+                                   command = standby_burn_token)
+btn_standby_burn_token.grid(row=10, column=2, sticky="nsew")
+btn_standby_create_sell_offer = tk.Button(master=frm_form, text="Create Sell Offer",
+                                          command = standby_create_sell_offer)
+btn_standby_create_sell_offer.grid(row=11, column=2, sticky="nsew")
+btn_standby_accept_sell_offer = tk.Button(master=frm_form, text="Accept Sell Offer",
+                                          command = standby_accept_sell_offer)
+btn_standby_accept_sell_offer.grid(row=12, column=2, sticky="nsew")
+btn_standby_create_buy_offer = tk.Button(master=frm_form, text="Create Buy Offer",
+                                          command = standby_create_buy_offer)
+btn_standby_create_buy_offer.grid(row=13, column=2, sticky="nsew")
+btn_standby_accept_buy_offer = tk.Button(master=frm_form, text="Accept Buy Offer",
+                                          command = standby_accept_buy_offer)
+btn_standby_accept_buy_offer.grid(row=14, column=2, sticky="nsew")
+btn_standby_get_offers = tk.Button(master=frm_form, text="Get Offers",
+                                          command = standby_get_offers)
+btn_standby_get_offers.grid(row=15, column=2, sticky="nsew")
+btn_standby_cancel_offer = tk.Button(master=frm_form, text="Cancel Offer",
+                                          command = standby_cancel_offer)
+btn_standby_cancel_offer.grid(row=16, column=2, sticky="nsew")</p>
+<h1 id="create-the-operational-account-buttons">Create the Operational Account Buttons<a aria-hidden="true" class="hover_anchor" href="#create-the-operational-account-buttons"><i class="fa fa-link"></i></a></h1>
+<p>btn_get_operational_account = tk.Button(master=frm_form,
+                                        text="Get Operational Account",
+                                        command = get_operational_account)
+btn_get_operational_account.grid(row=0, column=3, sticky = "nsew")
+btn_get_op_account_info = tk.Button(master=frm_form, text="Get Op Account Info",
+                                    command = get_operational_account_info)
+btn_get_op_account_info.grid(row=1, column=3, sticky = "nsew")
+btn_op_send_xrp = tk.Button(master=frm_form, text="&lt; Send XRP",
+                            command = operational_send_xrp)
+btn_op_send_xrp.grid(row=2, column = 3, sticky = "nsew")
+btn_op_create_trust_line = tk.Button(master=frm_form, text="Create Trust Line",
+                                    command = operational_create_trust_line)
+btn_op_create_trust_line.grid(row=4, column=3, sticky = "nsew")
+btn_op_send_currency = tk.Button(master=frm_form, text="&lt; Send Currency",
+                                 command = operational_send_currency)
+btn_op_send_currency.grid(row=5, column=3, sticky = "nsew")
+btn_op_get_balances = tk.Button(master=frm_form, text="Get Balances",
+                                command = get_balances)
+btn_op_get_balances.grid(row=6, column=3, sticky = "nsew")
+btn_op_configure_account = tk.Button(master=frm_form, text="Configure Account",
+                                     command = operational_configure_account)
+btn_op_configure_account.grid(row=7,column=4, sticky = "nsew")
+btn_op_mint_token = tk.Button(master=frm_form, text="Mint NFT",
+                              command = operational_mint_token)
+btn_op_mint_token.grid(row=8, column=3, sticky="nsew")
+btn_op_get_tokens = tk.Button(master=frm_form, text="Get NFTs",
+                              command = operational_get_tokens)
+btn_op_get_tokens.grid(row=9, column=3, sticky="nsew")
+btn_op_burn_token = tk.Button(master=frm_form, text="Burn NFT",
+                              command = operational_burn_token)
+btn_op_burn_token.grid(row=10, column=3, sticky="nsew")
+btn_op_create_sell_offer = tk.Button(master=frm_form, text="Create Sell Offer",
+                                          command = op_create_sell_offer)
+btn_op_create_sell_offer.grid(row=11, column=3, sticky="nsew")
+btn_op_accept_sell_offer = tk.Button(master=frm_form, text="Accept Sell Offer",
+                                          command = op_accept_sell_offer)
+btn_op_accept_sell_offer.grid(row=12, column=3, sticky="nsew")
+btn_op_create_buy_offer = tk.Button(master=frm_form, text="Create Buy Offer",
+                                          command = op_create_buy_offer)
+btn_op_create_buy_offer.grid(row=13, column=3, sticky="nsew")
+btn_op_accept_buy_offer = tk.Button(master=frm_form, text="Accept Buy Offer",
+                                          command = op_accept_buy_offer)
+btn_op_accept_buy_offer.grid(row=14, column=3, sticky="nsew")
+btn_op_get_offers = tk.Button(master=frm_form, text="Get Offers",
+                                          command = op_get_offers)
+btn_op_get_offers.grid(row=15, column=3, sticky="nsew")
+btn_op_cancel_offer = tk.Button(master=frm_form, text="Cancel Offer",
+                                          command = op_cancel_offer)
+btn_op_cancel_offer.grid(row=16, column=3, sticky="nsew")</p>
+<h1 id="start-the-application">Start the application<a aria-hidden="true" class="hover_anchor" href="#start-the-application"><i class="fa fa-link"></i></a></h1>
+<p>window.mainloop()
+```x</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -1748,7 +1740,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback-of-issued-currency.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1910,13 +1902,13 @@
 
     <nav class="nav flex-column show " id="tree_nav_group_5_2_2">
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_1" aria-expanded="true" aria-controls="tree_nav_group_5_2_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_1"></a>
 
         <a class="nav-link" href="send-payments-using-python.html">Send Payments Using Python</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_5_2_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-create-accounts-send-xrp.html">Create Accounts and Send XRP Using Python</a>
@@ -1927,6 +1919,18 @@
     <a class="nav-link nav-leaf" href="py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
   </div>
 
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_2" aria-expanded="true" aria-controls="tree_nav_group_5_2_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-python.html">NFTs Using Python</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_5_2_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-mint-and-burn-nfts.html">Mint and Burn NFTs Using Python</a>
