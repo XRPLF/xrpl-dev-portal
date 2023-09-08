@@ -1251,6 +1251,15 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/tokens/automated-market-makers.md
+        targets:
+            - en
+
+        # TODO: update translation
+    -   md: concepts/tokens/automated-market-makers.ja.md
+        targets:
+            - ja
+
     # Accounts ----------------------------------------------------------------
     -   md: concepts/accounts/accounts.md
         targets:
@@ -1410,15 +1419,6 @@ pages:
         redirect_url: tokens.html
         blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
         targets:
-            - ja
-
-        # Redirect AMM concept to separate site for unreleased features
-    -   name: Automated Market Makers (AMM)
-        html: automated-market-makers.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/automated-market-makers/
-        targets:
-            - en
             - ja
 
     # Redirect for now obsolete "Federated Sidechains" page
@@ -2378,11 +2378,11 @@ pages:
         targets:
             - ja
 
-        # TODO: update translation for rippled v1.11.0
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.md
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0 & AMM
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.ja.md
         targets:
             - ja
@@ -2395,14 +2395,13 @@ pages:
         targets:
             - ja
 
-    # Redirect for "AMM" ledger object type page
-    -   name: AMM
-        html: amm.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/ledger-object-types/amm/
-        nav_omit: true
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.md
         targets:
             - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
@@ -2559,54 +2558,55 @@ pages:
         targets:
             - ja
 
-    # Redirect for "AMMBid" transaction type page
-    -   name: AMMBid
-        html: ammbid.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammbid/
-        nav_omit: true
+    -   md: references/protocol-reference/transactions/transaction-types/ammbid.md
+        targets:
+            - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammbid.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.md
+        targets:
+            - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: references/protocol-reference/transactions/transaction-types/ammdelete.md
         targets:
             - en
             - ja
 
-    # Redirect for "AMMCreate" transaction type page
-    -   name: AMMCreate
-        html: ammcreate.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammcreate/
-        nav_omit: true
+    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.md
         targets:
             - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.ja.md
+        targets:
             - ja
 
-     # Redirect for "AMMDeposit" transaction type page
-    -   name: AMMDeposit
-        html: ammdeposit.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammdeposit/
-        nav_omit: true
+    -   md: references/protocol-reference/transactions/transaction-types/ammvote.md
         targets:
             - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammvote.ja.md
+        targets:
             - ja
 
-     # Redirect for "AMMVote" transaction type page
-    -   name: AMMVote
-        html: ammvote.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammvote/
-        nav_omit: true
+    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.md
         targets:
             - en
-            - ja
 
-     # Redirect for "AMMWithdraw" transaction type page
-    -   name: AMMWithdraw
-        html: ammwithdraw.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammwithdraw/
-        nav_omit: true
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.ja.md
         targets:
-            - en
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/checkcancel.md
@@ -3322,14 +3322,13 @@ pages:
         targets:
             - ja
 
-     # Redirect for "amm_info" public api reference page
-    -   name: amm_info
-        html: amm_info.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/public-api-methods/amm_info/
-        nav_omit: true
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
         targets:
             - en
+
+        # TODO: update translation
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.ja.md
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
