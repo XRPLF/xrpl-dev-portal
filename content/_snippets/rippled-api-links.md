@@ -91,6 +91,7 @@
   {% endif %}
 {% else %}
 [{{ledger_entry}} object]: {{ledger_entry|lower}}.html
+[{{ledger_entry}} entry]: {{ledger_entry|lower}}.html
   {% if target.lang == "ja" %}
 [{{ledger_entry}}オブジェクト]: {{ledger_entry|lower}}.html
 [{{ledger_entry}} オブジェクト]: {{ledger_entry|lower}}.html
@@ -189,8 +190,10 @@
 
 <!--{# Amendment links #}-->
 {% set amendment_names = [
+  "AMM",
   "Checks",
   "CheckCashMakesTrustLine",
+  "Clawback",
   "CryptoConditions",
   "CryptoConditionsSuite",
   "DeletableAccounts",

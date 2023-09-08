@@ -43,9 +43,9 @@ XRP Ledgerのアカウントとは、XRPの保有者と取引の送信者を意�
 トランザクションだけが、XRP Ledgerの共有されている状態を変更できます。XRP Ledgerに対するすべてのビジネスはトランザクションの形態をとります。以下のメソッドを使用して、トランザクションを処理します。
 
 * **[`sign`](sign.html)** - トランザクションに暗号で署名します。
-* **[`sign_for`](sign_for.html)** - マルチシグに署名を提供します。
+* **[`sign_for`](sign_for.html)** - マルチ署名に署名を提供します。
 * **[`submit`](submit.html)** - トランザクションをネットワークに送信します。
-* **[`submit_multisigned`](submit_multisigned.html)** - マルチシグトランザクションをネットワークに送信します。
+* **[`submit_multisigned`](submit_multisigned.html)** - マルチ署名済みトランザクションをネットワークに送信します。
 * **[`transaction_entry`](transaction_entry.html)** - レジャーの特定のバージョンからトランザクションについての情報を取得します。
 * **[`tx`](tx.html)** - 手元にあるすべてのレジャーからトランザクションについての情報を取得します。
 * **[`tx_history`](tx_history.html)** - 最新の全トランザクションについての情報を取得します。
@@ -55,6 +55,7 @@ XRP Ledgerのアカウントとは、XRPの保有者と取引の送信者を意�
 
 パスは、支払いが送信者から受信者に届くまでに中間ステップでたどる道筋を定義します。パスは、送信者と受信者をオーダーブックを介してつなぐことで、複数通貨間の支払いを可能にします。パスと他のオーダーブックに関しては、以下のメソッドを使用します。
 
+* **[`amm_info`](amm_info.html)** :not_enabled: - 自動マーケットメイカー(AMM)についての情報を取得します。
 * **[`book_offers`](book_offers.html)** - 2つの通貨を交換するオファーに関する情報を取得します。
 * **[`deposit_authorized`](deposit_authorized.html)** - あるアカウントが別のアカウントへの支払いの直接送信について承認されているかどうかを調べます。
 * **[`nft_buy_offers`](nft_buy_offers.html)** - Retrieve a list of buy offers for a specified NFToken object.

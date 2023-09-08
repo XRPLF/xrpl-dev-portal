@@ -341,7 +341,7 @@ pages:
         html: impact.html
         parent: xrp-ledger-overview.html
         template: page-impact.html.jinja
-        top_nav_grouping: Sustainability
+        top_nav_grouping: 持続可能性
         blurb: XRP Ledgerが、現在利用可能な他のどの通貨よりも速く、安く、持続的に世界中のお金を動かすのに役立つかをご紹介します。
         sidebar: disabled
         targets:
@@ -367,7 +367,7 @@ pages:
     -   name: XRPL財団
         html: https://foundation.xrpl.org/
         parent: xrp-ledger-overview.html
-        top_nav_grouping: About
+        top_nav_grouping: 概要
         targets:
             - ja
 
@@ -379,10 +379,16 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: privacy-policy.md
         targets:
             - en
+
+    # TODO: translate content, frontmatter, remove subtitle, top_nav_grouping in this file
+    -   md: privacy-policy.md
+        subtitle: プライバシーポリシー
+        top_nav_grouping: 概要
+        name: プライバシーポリシー
+        targets:
             - ja
 
     # Redirect old technical-faq.html to new faq.html URL
@@ -459,8 +465,8 @@ pages:
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
             - public-api-methods.html
-        blurb: XRP Ledgerのドキュメントと、元帳を構築して統合するために必要なすべての情報を紹介します。
-        top_nav_blurb: XRP Ledgerの技術に飛び込んで、統合を始めましょう。
+        blurb: XRP Ledgerのドキュメントと、XRP Ledgerの構築と利用を開始するために必要なすべての情報を紹介します。
+        top_nav_blurb: XRP Ledgerのテクノロジーに飛び込み、実装を始めましょう。
         filters:
             - labels
         targets:
@@ -495,7 +501,7 @@ pages:
         parent: docs.html
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
-        top_nav_grouping: Article Types
+        top_nav_grouping: カテゴリ
         targets:
             - ja
 
@@ -552,6 +558,14 @@ pages:
         blurb: Browse the documentation based on practical use cases.
         targets:
             - en
+
+    -   name: ユースケース
+        html: use-cases.html
+        parent: docs.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: 実践的なユースケースに基づいたドキュメントをご覧ください。
+        targets:
             - ja
 
 
@@ -563,6 +577,14 @@ pages:
         blurb: Practical examples for using different types of payment on the XRP Ledger.
         targets:
             - en
+
+    -   name: Payment
+        html: payments-uc.html
+        parent: use-cases.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledgerで様々なタイプの支払いを利用するための実例を紹介します。
+        targets:
             - ja
 
     -   md: use-cases/payments/peer-to-peer-payments-uc.md
@@ -591,6 +613,14 @@ pages:
         blurb: Work with a variety of tokens supported by the XRP Ledger.
         targets:
             - en
+
+    -   name: Tokenization
+        html: tokenization.html
+        parent: use-cases.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledgerが対応する様々なトークンを使用できます。
+        targets:
             - ja
 
     -   md: use-cases/tokenization/stablecoin-issuer.md
@@ -632,6 +662,14 @@ pages:
         blurb: Enabling fast, secure financial transactions without a central authority.
         targets:
             - en
+
+    -   name: DeFi
+        html: defi-uc.html
+        parent: use-cases.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: 中央機関を介さずに、高速で安全な金融トランザクションを可能にします。
+        targets:
             - ja
 
     -   md: use-cases/defi/algorithmic-trading.md
@@ -665,7 +703,7 @@ pages:
     -   name: コンセプト
         html: concepts.html
         parent: docs.html
-        top_nav_grouping: Article Types
+        top_nav_grouping: カテゴリ
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
         targets:
@@ -979,7 +1017,7 @@ pages:
         html: payment-types.html
         parent: concepts.html
         template: pagetype-category.html.jinja
-        blurb: XRP LedgerはポイントツーポイントのXRPペイメントのほかに、より専門化した支払いタイプをサポートしています。
+        blurb: XRP LedgerはポイントツーポイントのXRPペイメントのほかに、より専門的な支払いタイプをサポートしています。
         targets:
             - ja
 
@@ -1046,6 +1084,11 @@ pages:
 
     -   md: concepts/tokens/non-fungible-tokens.ja.md
         targets:
+            - ja
+
+    -   md: concepts/tokens/nft-storage.md
+        targets:
+            - en
             - ja
 
     -   md: concepts/tokens/non-fungible-token-transfers.md
@@ -1214,6 +1257,15 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/tokens/automated-market-makers.md
+        targets:
+            - en
+
+        # TODO: update translation
+    -   md: concepts/tokens/automated-market-makers.ja.md
+        targets:
+            - ja
+
     # Accounts ----------------------------------------------------------------
     -   md: concepts/accounts/accounts.md
         targets:
@@ -1375,15 +1427,6 @@ pages:
         targets:
             - ja
 
-        # Redirect AMM concept to separate site for unreleased features
-    -   name: Automated Market Makers (AMM)
-        html: automated-market-makers.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/automated-market-makers/
-        targets:
-            - en
-            - ja
-
     # Redirect for now obsolete "Federated Sidechains" page
     -   name: Federated Sidechains
         html: federated-sidechains.html
@@ -1462,7 +1505,7 @@ pages:
     -   name: チュートリアル
         html: tutorials.html
         parent: docs.html
-        top_nav_grouping: Article Types
+        top_nav_grouping: カテゴリ
         template: page-tutorials.html.jinja
         blurb: XRP Ledgerで一般的なタスクを実行するためのステップバイステップのガイダンスを紹介します。
         targets:
@@ -1486,12 +1529,25 @@ pages:
         blurb: XRPL tutorials in Python.
         targets:
             - en
+
+    -   name: Python
+        html: python.html
+        parent: tutorials.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: PythonでのXRPLチュートリアルです。
+        targets:
             - ja
 
-        # TODO: translate
     -   md: tutorials/get-started/get-started-using-python.md
         targets:
             - en
+
+
+        # TODO: translate
+    -   md: tutorials/get-started/get-started-using-python.md
+        top_nav_grouping: 始めましょう
+        targets:
             - ja
 
     -   name: Modular Tutorials in Python
@@ -1502,6 +1558,14 @@ pages:
         blurb: Modular XRPL tutorials in Python.
         targets:
             - en
+
+    -   name: Pythonのモジュール形式チュートリアル
+        html: modular-tutorials-in-python.html
+        parent: python.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: Pythonによるモジュール式XRPLチュートリアル。
+        targets:
             - ja
 
         # TODO: translate
@@ -1518,6 +1582,16 @@ pages:
 
         # TODO: translate
     -   md: tutorials/quickstart/py-create-trustline-send-currency.md
+        targets:
+            - en
+            - ja
+
+    -   name: NFTs Using Python
+        html: nfts-using-python.html
+        parent: modular-tutorials-in-python.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Mint and sell NFTs on the XRP Ledger using Python.
         targets:
             - en
             - ja
@@ -1561,6 +1635,14 @@ pages:
         blurb: XRPL tutorials in JavaScript.
         targets:
             - en
+
+    -   name: JavaScript
+        html: javascript.html
+        parent: tutorials.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: JavaScriptでのXRPLチュートリアルです。
+        targets:
             - ja
 
     -   md: tutorials/get-started/get-started-using-javascript.md
@@ -1604,6 +1686,14 @@ pages:
         blurb: Modular XRPL tutorials in JavaScript.
         targets:
             - en
+
+    -   name: JavaScriptのモジュール形式チュートリアル
+        html: modular-tutorials-in-javascript.html
+        parent: javascript.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: JavaScriptによるモジュール式XRPLチュートリアルです。
+        targets:
             - ja
 
         # TODO: translate
@@ -1641,9 +1731,17 @@ pages:
         parent: modular-tutorials-in-javascript.html
         top_nav_grouping: Article Types
         template: pagetype-category.html.jinja
-        blurb: Mint and sell NFTs on the XRP Ledger.
+        blurb: Mint and sell NFTs on the XRP Ledger using JavaScript.
         targets:
             - en
+
+    -   name: JavaScriptを使ったNFT
+        html: nfts-using-javascript.html
+        parent: modular-tutorials-in-javascript.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledger上でNFTのミントと販売を行います。
+        targets:
             - ja
 
         # TODO: translate
@@ -1692,12 +1790,24 @@ pages:
         blurb: XRPL tutorials in Java.
         targets:
             - en
+
+    -   name: Java
+        html: java.html
+        parent: tutorials.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: JavaでのXRPLチュートリアルです。
+        targets:
             - ja
 
-        # TODO: translate
     -   md: tutorials/get-started/get-started-using-java.md
         targets:
             - en
+
+        # TODO: translate
+    -   md: tutorials/get-started/get-started-using-java.md
+        top_nav_grouping: 始めましょう
+        targets:
             - ja
 
     # HTTP / Websocket Tutorials ---------------------------------------------------
@@ -1710,6 +1820,14 @@ pages:
         blurb: XRPL tutorials for HTTP / Websocket APIs.
         targets:
             - en
+
+    -   name: HTTP / Websocket API
+        html: http-websocket-apis-tutorials.html
+        parent: tutorials.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: HTTP / Websocket APIのXRPLチュートリアルです。
+        targets:
             - ja
 
         # Redirect for old HTTP/WebSocket APIs URL
@@ -1748,6 +1866,14 @@ pages:
         blurb: Common tasks on the XRP Ledger.
         targets:
             - en
+
+    -   name: タスク
+        html: tasks.html
+        parent: tutorials.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledgerの代表的なタスクです。
+        targets:
             - ja
 
         # Manage Account Settings ----------------------------------------------
@@ -1853,7 +1979,7 @@ pages:
         targets:
             - en
 
-    -   name: 専門化した支払いタイプの使用
+    -   name: 専門的な支払いタイプの使用
         html: use-specialized-payment-types.html
         parent: tasks.html
         template: pagetype-category.html.jinja
@@ -2167,7 +2293,7 @@ pages:
         template: page-references.html.jinja
         html: references.html
         parent: docs.html
-        top_nav_grouping: Article Types
+        top_nav_grouping: カテゴリ
         sidebar: left_only
         blurb: XRP Ledgerへのさまざまなインターフェイスの包括的なリファレンスです。
         targets:
@@ -2258,11 +2384,11 @@ pages:
         targets:
             - ja
 
-        # TODO: update translation for rippled v1.11.0
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.md
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0 & AMM
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.ja.md
         targets:
             - ja
@@ -2275,14 +2401,13 @@ pages:
         targets:
             - ja
 
-    # Redirect for "AMM" ledger object type page
-    -   name: AMM
-        html: amm.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/ledger-object-types/amm/
-        nav_omit: true
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.md
         targets:
             - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
@@ -2445,54 +2570,55 @@ pages:
         targets:
             - ja
 
-    # Redirect for "AMMBid" transaction type page
-    -   name: AMMBid
-        html: ammbid.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammbid/
-        nav_omit: true
+    -   md: references/protocol-reference/transactions/transaction-types/ammbid.md
+        targets:
+            - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammbid.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.md
+        targets:
+            - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: references/protocol-reference/transactions/transaction-types/ammdelete.md
         targets:
             - en
             - ja
 
-    # Redirect for "AMMCreate" transaction type page
-    -   name: AMMCreate
-        html: ammcreate.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammcreate/
-        nav_omit: true
+    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.md
         targets:
             - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.ja.md
+        targets:
             - ja
 
-     # Redirect for "AMMDeposit" transaction type page
-    -   name: AMMDeposit
-        html: ammdeposit.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammdeposit/
-        nav_omit: true
+    -   md: references/protocol-reference/transactions/transaction-types/ammvote.md
         targets:
             - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammvote.ja.md
+        targets:
             - ja
 
-     # Redirect for "AMMVote" transaction type page
-    -   name: AMMVote
-        html: ammvote.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammvote/
-        nav_omit: true
+    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.md
         targets:
             - en
-            - ja
 
-     # Redirect for "AMMWithdraw" transaction type page
-    -   name: AMMWithdraw
-        html: ammwithdraw.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammwithdraw/
-        nav_omit: true
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.ja.md
         targets:
-            - en
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/checkcancel.md
@@ -3208,14 +3334,13 @@ pages:
         targets:
             - ja
 
-     # Redirect for "amm_info" public api reference page
-    -   name: amm_info
-        html: amm_info.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/public-api-methods/amm_info/
-        nav_omit: true
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
         targets:
             - en
+
+        # TODO: update translation
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.ja.md
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
@@ -3861,7 +3986,6 @@ pages:
 
 # Infrastructure ---------------------------------------------------------------
 
-        # TODO: translate blurb
     -   name: Infrastructure
         html: infrastructure.html
         parent: docs.html
@@ -3870,6 +3994,14 @@ pages:
         top_nav_grouping: Article Types
         targets:
             - en
+
+    -   name: インフラストラクチャ
+        html: infrastructure.html
+        parent: docs.html
+        blurb: XRP Ledgerを動かすソフトウェアのインストール、設定、管理。
+        template: pagetype-category.html.jinja
+        top_nav_grouping: カテゴリ
+        targets:
             - ja
 
         # Redirect old landing
@@ -3998,6 +4130,11 @@ pages:
     -   md: infrastructure/rippled/installation/build-run-rippled-in-reporting-mode.md
         targets:
             - en
+
+        # TODO: translate
+    -   md: infrastructure/rippled/installation/build-run-rippled-in-reporting-mode.md
+        top_nav_grouping: 人気ページ
+        targets:
             - ja
 
     -   md: infrastructure/rippled/installation/capacity-planning.md
@@ -5167,7 +5304,7 @@ pages:
         parent: index.html
         template: page-community.html.jinja
         sidebar: disabled
-        top_nav_blurb: Join the conversation
+        top_nav_blurb: コミュニティに参加しましょう
         blurb: XRP Ledger (XRPL) はコミュニティ主導のパブリックブロックチェーンです。ここでは、その参加方法について説明します。
         top_nav_name: コミュニティ
         top_nav_hero_image: top-nav-hero-contribute
@@ -5301,10 +5438,10 @@ pages:
         targets:
             - en
 
-    -   name: XRPL Brand Kit
+    -   name: XRPLブランドキット
         html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
         parent: contribute.html
-        blurb: XRPL 設計資産の使用に関するガイドラインを確認してください。
+        blurb: XRPLのデザインアセットのガイドラインを確認しましょう。
         targets:
             - ja
 

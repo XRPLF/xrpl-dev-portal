@@ -40,6 +40,7 @@ labels:
 |:------------------------------|:---------|:------------------|:------|:------|
 | `Account`                     | 文字列    | AccountID         | はい   | この[アカウント](accounts.html)を識別するための（クラシック）アドレスです。 |
 | `AccountTxnID`                | 文字列    | Hash256           | いいえ | このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、[`AccountTxnID`トランザクションフィールド](transaction-common-fields.html#accounttxnid)を使うために有効になっていなければなりません。これを有効にするには、[`asfAccountTxnID`フラグを有効にしたAccountSetトランザクション](accountset.html#accountsetのフラグ)を送信してください。 |
+| `AMMID`                       | 文字列    | Hash256           | いいえ | _([AMM amendment][] :not_enabled:が必要。)_ The ledger entry ID of the corresponding AMM ledger entry. Set during account creation; cannot be modified. If present, indicates that this is a special AMM AccountRoot; always omitted on non-AMM accounts. <!-- TODO: translate --> |
 | `Balance`                     | 文字列    | Amount            | いいえ | アカウントの現在の[drop単位のXRP残高][XRP、drop単位]で、文字列で表現されます。 |
 | `BurnedNFTokens`              | 数値      | UInt32            | いいえ | このアカウントで発行された [非代替性トークン](non-fungible-tokens.html) のうち、バーンしたトークンの総数を表します。この数値は常に `MintedNFTokens` と同じかそれ以下となります。 |
 | `Domain`                      | 文字列    | VariableLength    | いいえ | このアカウントに関連付けられたドメイン。JSONでは、ドメインのASCII表現を16進数で表現します。[256バイトを超える長さは使用できません](https://github.com/xrplf/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
@@ -59,6 +60,22 @@ labels:
 | `TransferRate`                | 数値      | UInt32            | いいえ | このアカウントが発行した通貨を他のユーザーが相互に送金する際に、これらのユーザーに請求する[送金手数料](transfer-fees.html)。 |
 | `WalletLocator`               | 文字列    | Hash256           | いいえ | ユーザーが設定できる任意の256bit値。 |
 | `WalletSize`                  | 数値      | UInt32            | いいえ | 未使用。(コード上ではこのフィールドをサポートしていますが、設定する方法はありません)。 |
+
+## AMMの特殊なAccountRootオブジェクト
+
+_([AMM amendment][] :not_enabled:が必要。)_
+
+<!-- TODO: update translation -->
+
+[自動マーケットメーカー](automated-market-makers.html) (AMM) は、AMMの詳細の一部を追跡するための[AMMオブジェクト][]に加えて、LPトークンを発行しAMMプール内の資産を保持するためにAccountRootオブジェクトを使用します。AMMに関連するAccountRootのアドレスは、AMMが作成される前にユーザーがそのアドレスを特定し資金を提供できないように、ランダム化されています。AMMのAccountRootは、通常のアカウントとは異なり、以下のような設定で作成されます。
+
+- `lsfDisableMaster` **有効** : トランザクションへ署名する手段はありません。これにより、誰もそのアカウントを直接操作することができず、トランザクションを送信することができなくなります。
+- `lsfRequireAuth` **有効** : 事前承認されているアカウントは存在しません。これにより、AMMアカウントに資産を追加する唯一の方法は、[AMMDepositトランザクション][]を使用することであることが保証されます。
+- `lsfDefaultRipple` **有効** : ユーザー間でAMMのLPトークンを送信したり、取引したりすることが可能になります。
+
+これらの特殊なアカウントは、[準備金要件](reserves.html)の対象外ですが、AMMのプール内の2つの資産のうちの1つであれば、XRPを保有することができます。
+
+LPトークンは他の[トークン](tokens.html)と同様に動作しますが、これらのトークンはAMM関連のトランザクションでも使用することができます。AMMの残高や、AMMに影響を与えたトランザクションの履歴は、通常のアカウントと同じように確認することができます。
 
 ## AccountRootのフラグ
 
@@ -87,6 +104,6 @@ AccountRootオブジェクトのIDは、以下の値がこの順序で連結さ�
 * アカウントのAccountID
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
