@@ -12,13 +12,13 @@ $(document).ready(() => {
 
         const currency_code = "FOO"
         const issue_quantity = "1000"
-        
+
         block.find(".loader").show()
         show_log(block, "<p>Funding an issuer address with the faucet...</p>")
         const issuer = (await api.fundWallet()).wallet
         show_log(block, `<p>Got issuer <span id="issuer-address" data-seed="${issuer.seed}">${issuer.address}</span>.</p>`)
         $(".foo-issuer").text(issuer.address) // Update display in the "Create AMM" step
-    
+
         // Enable issuer DefaultRipple ----------------------------------------------
         const issuer_setup_tx = {
             "TransactionType": "AccountSet",
@@ -32,7 +32,7 @@ $(document).ready(() => {
         } else {
             show_error(block, `Error sending transaction: <pre><code>${pretty_print(issuer_setup_result)}</code></pre>`)
         }
-    
+
         // Create trust line to issuer ----------------------------------------------
         const trust_tx = {
             "TransactionType": "TrustSet",
@@ -50,7 +50,7 @@ $(document).ready(() => {
         } else {
             show_error(block, `Error sending transaction: <pre><code>${pretty_print(trust_result)}</code></pre>`)
         }
-    
+
         // Issue tokens -------------------------------------------------------------
         const issue_tx = {
             "TransactionType": "Payment",
@@ -115,7 +115,7 @@ $(document).ready(() => {
             show_error(block, `<p>Transaction failed:</p><pre><code>${pretty_print(offer_result)}</code></pre>`)
         }
         block.find(".loader").hide()
-        
+
         if ($("#get-foo").data("foo-acquired") && $("#buy-tst").data("tst-acquired")) {
             complete_step("Acquire tokens")
         }
@@ -124,7 +124,7 @@ $(document).ready(() => {
     $("#check-for-amm").click( async (event) => {
         const block = $(event.target).closest(".interactive-block")
         const foo_issuer_address = $("#issuer-address").text()
-            
+
         block.find(".output-area").html("")
         block.find(".loader").show()
         try {
@@ -143,8 +143,8 @@ $(document).ready(() => {
             show_log(block, `<pre><code>${pretty_print}amm_info</code></pre>`)
         } catch(err) {
             if (err.data.error === 'actNotFound') {
-                show_log(block, `<p>✅ No AMM exists yet for the pair 
-                             FOO.${foo_issuer_address} / 
+                show_log(block, `<p>✅ No AMM exists yet for the pair
+                             FOO.${foo_issuer_address} /
                              TST.rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd.`)
                 complete_step("Check for AMM")
               } else {
@@ -177,7 +177,10 @@ $(document).ready(() => {
         amm_fee_drops = $("#ammcreate-cost-drops").text()
         if (!amm_fee_drops) {return}
 
-        const asset_amount = $("#asset-amount").val() 
+        block.find(".output-area").html("")
+        block.find(".loader").show()
+
+        const asset_amount = $("#asset-amount").val()
         const asset2_amount = $("#asset2-amount").val()
         const asset2_issuer_address = $("#issuer-address").text()
         const trading_fee = Math.floor($("#trading-fee").val()*1000) // Convert from %
@@ -205,7 +208,8 @@ $(document).ready(() => {
                              <pre><code>${pretty_print(ammcreate_result)}</code></pre>`)
             complete_step("Create AMM")
         } else {
-            throw `Error sending transaction: ${ammcreate_result}`
+            console.error(ammcreate_result)
+            show_error(block, `Error sending transaction: ${ammcreate_result.result.meta.TransactionResult}`)
         }
         block.find(".loader").hide()
     })
@@ -213,7 +217,7 @@ $(document).ready(() => {
     $("#check-amm-info").click( async (event) => {
         const block = $(event.target).closest(".interactive-block")
         const foo_issuer_address = $("#issuer-address").text()
-            
+
         block.find(".output-area").html("")
         block.find(".loader").show()
         try {
@@ -248,7 +252,7 @@ $(document).ready(() => {
         const block = $(event.target).closest(".interactive-block")
         const address = get_address()
         if (!address) {return}
-            
+
         block.find(".output-area").html("")
         block.find(".loader").show()
         try {

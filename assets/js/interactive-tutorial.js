@@ -622,6 +622,11 @@ async function do_submit(block, submit_opts, wait_step_name) {
   }
 }
 
+async function show_log(block, msg) {
+  block.find(".output-area").append(msg)
+}
+
+
 $(document).ready(() => {
   disable_followup_steps()
   setup_generate_step()
