@@ -4,7 +4,7 @@
   "license": "MIT",
   "dependencies": {
     "minimist": "^1.2.7",
-    "xrpl": "^2.0.0"
+    "xrpl": "^2.11.0"
   },
   "main": "index.js",
   "scripts": {

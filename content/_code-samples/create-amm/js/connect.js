@@ -1,11 +1,12 @@
 // In browsers, use a <script> tag. In Node.js, uncomment the following line:
 // const xrpl = require('xrpl')
 
-// Wrap code in an async function so we can use await
-async function main() {
+const WS_URL = 'wss://s.devnet.rippletest.net:51233/'
+const EXPLORER = 'devnet.xrpl.org' // Optional, for linking
 
+async function main() {
   // Define the network client
-  const client = new xrpl.Client("wss://s.altnet.rippletest.net:51233")
+  const client = new xrpl.Client(WS_URL)
   await client.connect()
 
   // ... custom code goes here
