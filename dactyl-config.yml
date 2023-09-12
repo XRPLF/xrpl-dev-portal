@@ -1351,7 +1351,7 @@ pages:
             - ja
 
     -   name: Stablecoin Issuer
-        html: become-an-xrp-ledger-gateway.html.html
+        html: become-an-xrp-ledger-gateway.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: stablecoin-issuer.html
