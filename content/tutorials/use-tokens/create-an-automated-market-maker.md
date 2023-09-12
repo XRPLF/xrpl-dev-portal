@@ -13,14 +13,14 @@ labels:
 # Create an Automated Market Maker
 _(Requires the [AMM amendment][] :not_enabled:)_
 
-An [Automated Market Maker (AMM)](automated-market-makers.html) can be an efficient way to facilitate exchanges between two assets, while earning its liquidity providers passive income. This tutorial shows how to create the AMM for a given asset pair.
+An [Automated Market Maker (AMM)](automated-market-makers.html) can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="assets/js/tutorials/create-amm.js"></script>
 
 ## Prerequisites
 
-- You must have an XRP Ledger address and some XRP. For testing, you can get these from a [Faucet](xrp-testnet-faucet.html).
+- You must have an XRP Ledger address and some XRP. For development and testing purposes, you can get these from a [Faucet](xrp-testnet-faucet.html).
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
     - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/) **version 2.11.0 or later**. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
     - You can also read along and use the interactive steps in your browser without any setup.
@@ -57,7 +57,7 @@ For this tutorial, click the following button to connect:
 
 ### {{n.next()}}. Get credentials
 
-To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the [{{use_network}}](parallel-networks.html) using the following interface:
+To transact on the XRP Ledger, you need an address, a secret key, and some XRP. For development and testing purposes, you can get these on the [{{use_network}}](parallel-networks.html) using the following interface:
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
@@ -74,7 +74,7 @@ _JavaScript_
 
 ### {{n.next()}}. Select and acquire assets
 
-As the creator of an AMM, you are also the first liquidity provider and you have to supply it with a starting pool of assets. Other users of the XRP Ledger can also become liquidity providers by supplying assets after the AMM exists. It's important to choose assets especially carefully because, as a liquidity provider for an AMM, you are supplying some amounts of both for users to swap between. If one of the AMM's assets becomes worthless, other users can use the AMM to trade for the other asset, leaving the AMM (and thus, its liquidity providers including you) holding only the worthless one. Technically, the AMM always holds some positive amount of both assets, but the amounts can be very small.
+As the creator of an AMM, you are also the first liquidity provider and you have to supply it with a starting pool of assets. Other users of the XRP Ledger can also become liquidity providers by supplying assets after the AMM exists. It's crucial to choose assets carefully because, as a liquidity provider for an AMM, you are supplying some amounts of both for users to swap between. If one of the AMM's assets becomes worthless, other users can use the AMM to trade for the other asset, leaving the AMM (and thus, its liquidity providers including you) holding only the worthless one. Technically, the AMM always holds some positive amount of both assets, but the amounts can be very small.
 
 You can choose any pair of fungible assets in the XRP Ledger, including XRP or tokens, including LP Tokens from another AMM. If you use a token, you must hold some amount of that token. (If a token's issuer uses, [authorized trust lines](authorized-trust-lines.html), that means you have to be authorized first.)
 
@@ -119,7 +119,7 @@ _JavaScript_
 
 <!-- MULTICODE_BLOCK_END -->
 
-If the AMM does already exist, you should double-check that you specified the right pair of assets; if so, someone else has already created this AMM, but you can still deposit to it instead. <!-- TODO: link to a tutorial about depositing to and withdrawing from an AMM when one exists -->
+If the AMM does already exist, you should double-check that you specified the right pair of assets. If someone else has already created this AMM, you can deposit to it instead. <!-- TODO: link to a tutorial about depositing to and withdrawing from an AMM when one exists -->
 
 {{ start_step("Check for AMM") }}
 <button id="check-for-amm" class="btn btn-primary previous-steps-required">Check AMM</button>
