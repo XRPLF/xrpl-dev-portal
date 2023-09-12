@@ -16,6 +16,9 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [AMM][]                           | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
+| [Clawback][]                      | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
+| [fixReducedOffersV1][]            | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [fixNFTokenRemint][]              | v1.11.0    | [Open for Voting: 2023-06-21](https://xrpl.org/blog/2023/rippled-1.11.0.html "BADGE_80d0e0") |
 | [XRPFees][]                       | v1.10.0    | [Open for Voting: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
 | [DisallowIncoming][]              | v1.10.0    | [Enabled: 2023-08-21](https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E "BADGE_GREEN") |
@@ -74,14 +77,12 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 ## Amendments in Development
 
-The following is a list of [amendments](amendments.html) that are being developed and a private network is available to test the changes. 
+The following is a list of [amendments](amendments.html) that are being developed and a private network is available to test the changes.
 
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | [In Development: TBD]( "BADGE_LIGHTGREY") | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [XChainBridge][]             | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [Documentation](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
-| [Clawback][]                      | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-39d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md) [Documentation](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/) |
-| [AMM][]                           | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-30d](https://github.com/XRPLF/XRPL-Standards/pull/125) [Documentation](https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/) |
 | [OwnerPaysFee][]                  | [In Development: TBD]( "BADGE_LIGHTGREY") | |
 
 **Tip:** This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code-flow.html).
@@ -101,16 +102,16 @@ The following is a list of known [amendments](amendments.html) that have been ve
 | [SusPay][]                        | v0.31.0    | [Vetoed: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
 | [Tickets][]                       | v0.30.1    | [Vetoed: Removed in v0.90.0](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_RED") |
 
-## Details about Known Amendments
 
+## Details about Known Amendments
 
 ### AMM
 [AMM]: #amm
 
-| Amendment    | Automated Market Maker |
-|:-------------|:------------------------|
+| Amendment    | AMM |
+|:-------------|:----|
 | Amendment ID | 8CC0774A3BF66D1D22E76BBDA8E8A232E6B6313834301B3B23E8601196AE6455 |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -172,10 +173,10 @@ Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash,
 ### Clawback
 [Clawback]: #clawback
 
-| Amendment     | Clawback |
-|:--------------|:---------|
-| Amendment ID  | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
-| Status        | In Development |
+| Amendment    | Clawback |
+|:-------------|:---------|
+| Amendment ID | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -758,6 +759,28 @@ Fixes a bug in unused code for estimating the ratio of input to output of indivi
 This amendment has no known impact on transaction processing.
 
 
+### fixReducedOffersV1
+[fixReducedOffersV1]: #fixreducedoffersv1
+
+| Amendment    | fixReducedOffersV1 |
+|:-------------|:-------------------|
+| Amendment ID | 27CD95EE8E1E5A537FF2F89B6CEB7C622E78E9374EBD7DCBEDFAE21CD6F16E0A |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Adjusts rounding to prevent order books from being blocked by reduced offers whose exchange rate is affected by rounding of the remaining amounts.
+
+In general, offers can be _reduced_ in 3 ways:
+
+- The offer can be partially consumed when it is placed.
+- The offer can be partially consumed after being placed into an order book.
+- The offer can be under-funded, meaning its owner has less funds than it specifies.
+
+With this amendment, the exchange rate of a reduced offer is rounded such that it is as good or better than the original offer (from the taker's perspective). This allows the reduced offer to be consumed by offers that would have matched the original, full amounts. The rounded amount is no more than 1 drop of XRP or 1e-81 of a token.
+
+Without this amendment, an offer with very small amounts remaining can have a a much worse exchange rate after rounding than it had initially. This can cause an offer for very small amounts to "block" better offers in the same order book from being taken.
+
 ### fixRemoveNFTokenAutoTrustLine
 [fixRemoveNFTokenAutoTrustLine]: #fixremovenftokenautotrustline
 
@@ -930,7 +953,7 @@ Allows validators to include a new optional field in their validations to attest
 [Hooks]: #hooks
 
 | Amendment    | Hooks |
-|:-------------|:--------------------|
+|:-------------|:------|
 | Amendment ID | ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078 |
 | Status       | In Development |
 | Default Vote (Latest stable release) | No |
@@ -1215,6 +1238,19 @@ Introduces a `TickSize` field to accounts, which can be set with the [AccountSet
 Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Trust Lines](authorized-trust-lines.html).
 
 With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](trustset.html#trustset-flags) can create a new [`RippleState` ledger object](ripplestate.html) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](ripplestate.html#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](accountroot.html#accountroot-flags) by sending an [AccountSet transaction](accountset.html) with the [`asfRequireAuth` flag enabled](accountset.html#accountset-flags).
+
+
+### XChainBridge
+[XChainBridge]: #xchainbridge
+
+| Amendment    | XChainBridge |
+|:-------------|:-------------|
+| Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Adds "cross-chain bridges" for synchronizing assets between different networks, such as Mainnet and a sidechain. Standards draft: [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md).
 
 
 ### XRPFees
