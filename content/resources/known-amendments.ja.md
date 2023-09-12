@@ -16,6 +16,9 @@ labels:
 
 | 名前                               | 登場       | ステータス                              |
 |:----------------------------------|:-----------|:------------------------------------|
+| [AMM][]                           | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
+| [Clawback][]                      | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
+| [fixReducedOffersV1][]            | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [fixNFTokenRemint][]              | v1.11.0    | [投票中: 2023-06-21](https://xrpl.org/blog/2023/rippled-1.11.0.html "BADGE_80d0e0") |
 | [XRPFees][]                       | v1.10.0    | [投票中: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
 | [DisallowIncoming][]              | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E "BADGE_GREEN") |
@@ -80,8 +83,6 @@ labels:
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | [開発中: 未定]( "BADGE_LIGHTGREY") | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [XChainBridge][]             | [開発中: 未定]( "BADGE_LIGHTGREY") | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [ドキュメント](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
-| [Clawback][]                      | [開発中: 未定]( "BADGE_LIGHTGREY") | [XLS-39d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md) [ドキュメント](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/) |
-| [AMM][]                           | [開発中: 未定]( "BADGE_LIGHTGREY") | [XLS-30d](https://github.com/XRPLF/XRPL-Standards/pull/125) [ドキュメント](https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/) |
 | [OwnerPaysFee][]                  | [開発中: 未定]( "BADGE_LIGHTGREY") | |
 
 **注記:** このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRPレジャーへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code-flow.html)をご覧ください。
@@ -101,16 +102,16 @@ labels:
 | [SusPay][]                        | v0.31.0    | [廃止: v0.60.0で削除済み](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
 | [Tickets][]                       | v0.30.1    | [廃止: v0.90.0で削除済み](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_RED") |
 
-## 既知のAmendmentsの詳細
 
+## 既知のAmendmentsの詳細
 
 ### AMM
 [AMM]: #amm
 
-| Amendment    | Automated Market Maker |
-|:-------------|:------------------------|
+| Amendment    | AMM |
+|:-------------|:----|
 | Amendment ID | 8CC0774A3BF66D1D22E76BBDA8E8A232E6B6313834301B3B23E8601196AE6455 |
-| ステータス     | 開発中 |
+| ステータス     | 投票中 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -172,10 +173,10 @@ labels:
 ### Clawback
 [Clawback]: #clawback
 
-| Amendment     | Clawback |
-|:--------------|:---------|
-| Amendment ID  | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
-| Status        | 開発中 |
+| Amendment    | Clawback |
+|:-------------|:---------|
+| Amendment ID | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
+| Status       | 投票中 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -759,6 +760,28 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 この修正は、取引処理に影響を及ぼさないことが確認されています。
 
 
+### fixReducedOffersV1
+[fixReducedOffersV1]: #fixreducedoffersv1
+
+| Amendment    | fixReducedOffersV1 |
+|:-------------|:-------------------|
+| Amendment ID | 27CD95EE8E1E5A537FF2F89B6CEB7C622E78E9374EBD7DCBEDFAE21CD6F16E0A |
+| ステータス     | 投票中 |
+| デフォルトの投票(最新の安定版) | No |
+| Amendment前の機能は廃止? | No |
+
+四捨五入を調整し、残額の四捨五入によって為替レートが影響を受ける減額オファーによってオーダーブックがブロックされることを回避します。
+
+一般的に、オファーは3つの方法で減額することができます：
+
+- オファーは、注文時に部分的に約定することができます。
+- オファーはオーダーブックに登録された後、部分的に約定されることがあります。
+- オファーは資金不足(オファーの所有者が指定した資金よりも少ない資金しか持っていない状態)になる可能性があります。
+
+このamendmentにより、減額されたオファーの取引レートは、(テイカーの観点から)元のオファーと同等かそれ以上となるように丸められます。これにより、減額されたオファーは、元の全額と一致するオファーによって約定されます。丸められた金額は、XRPの1ドロップまたはトークンの1e-81を超えることはありません。
+
+このamendmentがない場合、残額が非常に少ないオファーは、四捨五入後の取引レートが当初よりも大幅に悪化する可能性があります。このため、非常に少額のオファーが、同じオーダーブック内のより良いオファーの取得を「ブロック」してしまう可能性があります。
+
 ### fixRemoveNFTokenAutoTrustLine
 [fixRemoveNFTokenAutoTrustLine]: #fixremovenftokenautotrustline
 
@@ -931,7 +954,7 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 [Hooks]: #hooks
 
 | Amendment    | Hooks |
-|:-------------|:--------------------|
+|:-------------|:------|
 | Amendment ID | ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078 |
 | Status       | 開発中 |
 | デフォルトの投票(最新の安定版) | いいえ |
@@ -1216,6 +1239,19 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 [承認されたトラストライン](authorized-trust-lines.html)を使用する場合に、会計関係の事前承認（ゼロバランストラストライン）を許可します。
 
 この修正が適用されれば、[`tfSetfAuth`を有効にした](trustset.html#trustsetのフラグ)`TrustSet`トランザクションにおいて、`RippleState`ノードの他のすべての値をデフォルト状態にしたままでも、新しい[`RippleState`レジャーオブジェクト](ripplestate.html)を作成できます。新しい`RippleState`ノードでは、トランザクションの送信者が低いノードと見なされるか高いノードと見なされるかに応じて、[`lsfLowAuth`フラグまたは`lsfHighAuth`フラグ](ripplestate.html#ripplestateのフラグ)が有効になります。トランザクションの送信者は、[asfRequireAuthフラグを有効](accountset.html#accountsetのフラグ)にして[AccountSetトランザクション](accountset.html)を送信することで、事前に[`lsfRequireAuth`](accountroot.html#accountrootのフラグ)を有効にしておく必要があります。
+
+
+### XChainBridge
+[XChainBridge]: #xchainbridge
+
+| Amendment    | XChainBridge |
+|:-------------|:-------------|
+| Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
+| ステータス       | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+メインネットとサイドチェーンなど異なるネットワーク間でアセットを同期させるための「クロスチェーンブリッジ」を追加します。標準規格草案： [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md)。
 
 
 ### XRPFees
