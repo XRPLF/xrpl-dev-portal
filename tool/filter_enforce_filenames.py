@@ -77,15 +77,15 @@ def compare_nav_and_fs_hierarchy(page, pages, logger):
         if len(path_parts) >=2 and path_parts[-2]+".md" == path_parts[-1]:
             expected_path2 = "/".join(crumbs+[crumbs[-1]]) + ".md"
             if actual_path == expected_path2:
-                logger.debug(f"Mismatched path {actual_path} is OK (follows 'topic/topic.md' convention)")
+                logger.debug("Mismatched path {actual_path} is OK (follows 'topic/topic.md' convention)".format(actual_path=actual_path))
                 return
 
         # Switch to the commented out print statement to get
         # tab-separated values you can paste into a spreadsheet:
         # print(expected_path, "\t", actual_path)
-        logger.warning(f"""File path doesn't match the recommendation based on navigation.
+        logger.warning("""File path doesn't match the recommendation based on navigation.
     Expected: {expected_path}
-      Actual: {actual_path}""")
+      Actual: {actual_path}""".format(expected_path=expected_path, actual_path=actual_path))
 
 
 def filter_soup(soup, currentpage={}, config={}, pages=[], logger=None, **kwargs):
@@ -113,4 +113,4 @@ def filter_soup(soup, currentpage={}, config={}, pages=[], logger=None, **kwargs
 
     # TODO: allow configuration of loose/strict matching
     if not normalized_match(page_filename, page_h1, loose=True):
-        logger.warning(f"Filename/Title Mismatch: '{page_filename}' vs '{page_h1}'")
+        logger.warning("Filename/Title Mismatch: '{page_filename}' vs '{page_h1}'".format(page_filename=page_filename, page_h1=page_h1))
