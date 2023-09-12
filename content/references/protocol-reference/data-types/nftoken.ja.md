@@ -108,7 +108,6 @@ URIフィールドは、`NFToken`に関連するデータまたはメタデー�
 **注意:** URIは変更不可能であるため、例えば、存在しないウェブサイトにリンクしていたとしても、誰もそれを更新することはできません。
 
 # NFTokenデータとメタデータの取得
-# Retrieving NFToken Data and Metadata {.invisible}
 
 機能を犠牲にしたり不必要な制限を課したりすることなく`NFTokens`の容量を最小にするために、XRPL NFTは任意のデータフィールドを持ちません。その代わり、データは別に管理され、`NFToken`によって参照されます。URIは`Hash`に対して不変のコンテンツへの参照を提供し、`NFToken`オブジェクトに対しては任意の変更可能なデータを提供します。
 
@@ -130,7 +129,7 @@ xrpl-nft-data-token-info-v1 IN TXT "https://host.example.com/api/token-info/{tok
 https://example.com/.well-known/xrpl-nft/{tokenid}
 ```
 
-`NFTokenMint`トランザクションを使用して`NFTtoken`を作成します。`NFTokenBurn`トランザクションを使用して`NFToken`を破棄することもできます。
+`NFTokenMint`トランザクションを使用して`NFToken`を作成します。`NFTokenBurn`トランザクションを使用して`NFToken`を破棄することもできます。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
