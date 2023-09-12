@@ -8,20 +8,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-06-22 16:46-0700\n"
+"POT-Creation-Date: 2023-09-12 10:51+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.11.0\n"
+"Generated-By: Babel 2.12.1\n"
 
-#: template/component-footer.html.jinja:23
+#: template/component-footer.html.jinja:25
 msgid "Open Source."
 msgstr ""
 
-#: template/component-footer.html.jinja:31
+#: template/component-footer.html.jinja:33
 msgid "Jump to top of page"
 msgstr ""
 
@@ -29,23 +29,44 @@ msgstr ""
 msgid "Edit page"
 msgstr ""
 
-#: template/component-top-nav.html.jinja:3
-msgid "Register for <span class=\"apex-highlight\">APEX Dev Summit 2023</span>"
+#: template/component-top-nav.html.jinja:36
+msgid "Countdown to"
 msgstr ""
 
-#: template/component-top-nav.html.jinja:6
-msgid "Amsterdam"
+#: template/component-top-nav.html.jinja:37
+msgid "XRPL Zone "
 msgstr ""
 
-#: template/component-top-nav.html.jinja:10
+#: template/component-top-nav.html.jinja:38
+msgid "@Token2049"
+msgstr ""
+
+#: template/component-top-nav.html.jinja:39
+msgid " Singapore"
+msgstr ""
+
+#: template/component-top-nav.html.jinja:40
+msgid " 12 September 2023 "
+msgstr ""
+
+#: template/component-top-nav.html.jinja:41
+#: template/component-top-nav.html.jinja:102
 msgid "Register Now"
 msgstr ""
 
-#: template/component-top-nav.html.jinja:81 template/page-404.html.jinja:11
+#: template/component-top-nav.html.jinja:95
+msgid "Register for <span class=\"apex-highlight\">APEX Dev Summit 2023</span>"
+msgstr ""
+
+#: template/component-top-nav.html.jinja:98
+msgid "Amsterdam"
+msgstr ""
+
+#: template/component-top-nav.html.jinja:182 template/page-404.html.jinja:11
 msgid "Search"
 msgstr ""
 
-#: template/component-top-nav.html.jinja:82
+#: template/component-top-nav.html.jinja:183
 msgid "Search site..."
 msgstr ""
 
@@ -88,7 +109,7 @@ msgstr ""
 msgid "Why become an XRPL Campus Ambassador?"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:79
+#: template/page-ambassadors.html.jinja:79 template/page-home.html.jinja:50
 #: template/page-xrp-overview.html.jinja:63
 msgid "Benefits"
 msgstr ""
@@ -285,8 +306,8 @@ msgstr ""
 msgid "Stay connected to the XRPL Campus Ambassadors"
 msgstr ""
 
-#: template/page-ambassadors.html.jinja:459 template/page-impact.html.jinja:148
-#: template/page-impact.html.jinja:169
+#: template/page-ambassadors.html.jinja:459 template/page-impact.html.jinja:146
+#: template/page-impact.html.jinja:167
 msgid "Connect"
 msgstr ""
 
@@ -329,7 +350,7 @@ msgid "Help the XRPL community by submitting your<br> own code samples"
 msgstr ""
 
 #: template/page-community.html.jinja:33
-msgid "A Global Community of Builders and Innovators"
+msgid "Open for Business, <br class=\"until-sm\"/> Driven to Innovate"
 msgstr ""
 
 #: template/page-community.html.jinja:34
@@ -353,7 +374,7 @@ msgid "Contribute to Consensus"
 msgstr ""
 
 #: template/page-community.html.jinja:121
-msgid "Apply for funding for your next XRPL project"
+msgid "Apply for funding to build your XRPL project"
 msgstr ""
 
 #: template/page-community.html.jinja:122 template/page-funding.html.jinja:134
@@ -363,14 +384,12 @@ msgstr ""
 
 #: template/page-community.html.jinja:124
 msgid ""
-"The XRPL Grants program funds select open-source projects that contribute"
-" to the growing XRP Ledger community."
+"The XRPL Grants program funds select open-source projects that solve "
+"problems and grow the XRP Ledger community."
 msgstr ""
 
 #: template/page-community.html.jinja:128
-#: template/page-community.html.jinja:148 template/page-events.html.jinja:56
-#: template/page-funding.html.jinja:383
-msgid "Learn More"
+msgid "Apply for a Grant"
 msgstr ""
 
 #: template/page-community.html.jinja:134
@@ -385,6 +404,11 @@ msgstr ""
 msgid "Open-source projects funded "
 msgstr ""
 
+#: template/page-community.html.jinja:148 template/page-events.html.jinja:56
+#: template/page-funding.html.jinja:383
+msgid "Learn More"
+msgstr ""
+
 #: template/page-community.html.jinja:164
 msgid "Showcase your XRPL project, application or product"
 msgstr ""
@@ -395,8 +419,9 @@ msgstr ""
 
 #: template/page-community.html.jinja:167
 msgid ""
-"Get featured on the Developer Reflections blog or Use Cases page, and "
-"explore XRPL community highlights."
+"Get featured on the Developer Reflections blog or <a "
+"href='uses.html'>Blockchain Use Cases</a> page, and explore XRPL "
+"community highlights."
 msgstr ""
 
 #: template/page-community.html.jinja:174
@@ -585,7 +610,7 @@ msgstr ""
 msgid "An introduction to fundamental aspects of the XRP Ledger"
 msgstr ""
 
-#: template/page-docs.html.jinja:288 template/page-home.html.jinja:122
+#: template/page-docs.html.jinja:288
 msgid "Get Started"
 msgstr ""
 
@@ -597,53 +622,53 @@ msgstr ""
 msgid "Explore SDKs"
 msgstr ""
 
-#: template/page-docs.html.jinja:326
+#: template/page-docs.html.jinja:327
 msgid "Javascript"
 msgstr ""
 
-#: template/page-docs.html.jinja:335
+#: template/page-docs.html.jinja:337
 msgid "Python"
 msgstr ""
 
-#: template/page-docs.html.jinja:344
+#: template/page-docs.html.jinja:347
 msgid "Java"
 msgstr ""
 
-#: template/page-docs.html.jinja:375
+#: template/page-docs.html.jinja:378
 msgid "Explore, Test, Verify"
 msgstr ""
 
-#: template/page-docs.html.jinja:376
+#: template/page-docs.html.jinja:379
 msgid "Explore Dev Tools"
 msgstr ""
 
-#: template/page-docs.html.jinja:379
+#: template/page-docs.html.jinja:382
 msgid ""
 "Use these web-based tools to assist during all stages of development, "
 "from getting your first payment to testing your implementation for best "
 "practices."
 msgstr ""
 
-#: template/page-docs.html.jinja:395
+#: template/page-docs.html.jinja:398
 msgid "Browse By Recommended Pages"
 msgstr ""
 
-#: template/page-docs.html.jinja:407
+#: template/page-docs.html.jinja:410
 msgid "Get Free Test XRP"
 msgstr ""
 
-#: template/page-docs.html.jinja:408
+#: template/page-docs.html.jinja:411
 msgid ""
 "Connect to the XRP Ledger Testnet network to develop and test your apps "
 "built on the XRP Ledger, without risking real money or impacting "
 "production XRP Ledger users."
 msgstr ""
 
-#: template/page-docs.html.jinja:409
+#: template/page-docs.html.jinja:412
 msgid "Generate Testnet Credentials"
 msgstr ""
 
-#: template/page-docs.html.jinja:416
+#: template/page-docs.html.jinja:419
 msgid "See full documentation index"
 msgstr ""
 
@@ -651,8 +676,8 @@ msgstr ""
 msgid "Find the XRPL Community Around the World"
 msgstr ""
 
-#: template/page-events.html.jinja:28 template/page-impact.html.jinja:133
-#: template/page-impact.html.jinja:161
+#: template/page-events.html.jinja:28 template/page-impact.html.jinja:131
+#: template/page-impact.html.jinja:159
 msgid "Events"
 msgstr ""
 
@@ -682,11 +707,11 @@ msgstr ""
 msgid "Upcoming Events"
 msgstr ""
 
-#: template/page-events.html.jinja:399
+#: template/page-events.html.jinja:494
 msgid "Explore past community-hosted events"
 msgstr ""
 
-#: template/page-events.html.jinja:400
+#: template/page-events.html.jinja:495
 msgid "Past Events"
 msgstr ""
 
@@ -951,12 +976,12 @@ msgid ""
 "accelerate the development and adoption of the decentralized XRP Ledger. "
 "The Foundation received an initial donation of over $6.5M from Coil, "
 "Ripple, and Gatehub to fund the Foundation’s work in service of the "
-"growing number of developers and other community members building on the "
-"XRP Ledger."
+"growing number of developers and other <a href='contribute.html'>global "
+"blockchain community</a> members building on the XRP Ledger."
 msgstr ""
 
 #: template/page-home.html.jinja:27
-msgid "Community<br class=\"until-sm\"/> Powered Utility"
+msgid "The Blockchain<br class=\"until-sm\"/> Built for Business"
 msgstr ""
 
 #: template/page-home.html.jinja:28
@@ -968,33 +993,30 @@ msgid "Start Building"
 msgstr ""
 
 #: template/page-home.html.jinja:41
-msgid "The XRP Ledger: A Scalable, Sustainable Blockchain"
+msgid "The XRP Ledger: The Blockchain Built for Business"
 msgstr ""
 
 #: template/page-home.html.jinja:42
 msgid ""
 "The XRP Ledger (XRPL) is a decentralized, public blockchain led by a "
-"global developer community."
+"global community of businesses and developers looking to solve problems "
+"and create value."
 msgstr ""
 
 #: template/page-home.html.jinja:43
 msgid ""
-"It’s fast, energy efficient, and reliable. With ease of development, low "
-"transaction costs, and a knowledgeable community, it provides developers "
-"with a strong open-source foundation for executing on the most demanding "
-"projects—without hurting the environment."
+"Proven reliable over more than a decade of error-free functioning, the "
+"XRPL offers streamlined development, low transaction costs, high "
+"performance, and sustainability. So you can build with confidence–and "
+"move your most critical projects forward."
 msgstr ""
 
 #: template/page-home.html.jinja:49
 msgid "Why developers choose the XRP Ledger"
 msgstr ""
 
-#: template/page-home.html.jinja:50
-msgid "Discover Benefits"
-msgstr ""
-
 #: template/page-home.html.jinja:55
-msgid "Public and Decentralized Structure"
+msgid "Public and Decentralized"
 msgstr ""
 
 #: template/page-home.html.jinja:56
@@ -1002,19 +1024,19 @@ msgid "Open source, open to anyone to build on, maintained by the community"
 msgstr ""
 
 #: template/page-home.html.jinja:58
-msgid "Streamlined <br class='until-sm'/>Development"
+msgid "Streamlined Development"
 msgstr ""
 
 #: template/page-home.html.jinja:59
-msgid "Tools and documentation that speed development and reduce time to market"
+msgid "Intentional innovations, tools and documentation reduce time to market"
 msgstr ""
 
 #: template/page-home.html.jinja:61
-msgid "High <br class='until-sm'/>Performance"
+msgid "High Performance"
 msgstr ""
 
 #: template/page-home.html.jinja:62
-msgid "Capable of settling thousands of transactions in seconds"
+msgid "Thousands of transactions settled in seconds"
 msgstr ""
 
 #: template/page-home.html.jinja:64
@@ -1024,17 +1046,17 @@ msgstr ""
 #: template/page-home.html.jinja:65
 msgid ""
 "At fractions of a penny per transaction, costs are inexpensive enough to "
-"enable a wide variety of use cases"
+"enable a wide variety of <a href='uses.html'>blockchain use cases</a>"
 msgstr ""
 
 #: template/page-home.html.jinja:67
-msgid "Vibrant Community"
+msgid "Motivated Community"
 msgstr ""
 
 #: template/page-home.html.jinja:68
 msgid ""
-"Developers, validators, users, and businesses make the XRP Ledger better "
-"every day"
+"Companies, developers, validators, and users work together to make the "
+"XRP Ledger better every day"
 msgstr ""
 
 #: template/page-home.html.jinja:70
@@ -1042,17 +1064,19 @@ msgid "Proven Reliability"
 msgstr ""
 
 #: template/page-home.html.jinja:71
-msgid "8+ years of consistent performance over more than 63 million ledgers"
+msgid ""
+"10+ years of error-free, uninterrupted performance over more than 63 "
+"million ledgers"
 msgstr ""
 
 #: template/page-home.html.jinja:85
 msgid ""
-"Activate the power of the XRP Ledger and find the building blocks for "
-"your next innovation"
+"Activate the proven potential of the XRP Ledger and find a trusted "
+"foundation for your next innovation"
 msgstr ""
 
 #: template/page-home.html.jinja:86
-msgid "Explore Advanced Features"
+msgid "Powerful Features"
 msgstr ""
 
 #: template/page-home.html.jinja:91
@@ -1102,7 +1126,11 @@ msgid ""
 msgstr ""
 
 #: template/page-home.html.jinja:121
-msgid "Choose a path to start building on the XRPL"
+msgid "Choose a path, and bring your project to life on the XRP Ledger"
+msgstr ""
+
+#: template/page-home.html.jinja:122
+msgid "Where to Start"
 msgstr ""
 
 #: template/page-home.html.jinja:127
@@ -1200,106 +1228,99 @@ msgid ""
 msgstr ""
 
 #: template/page-home.html.jinja:197
-msgid "XRPL.org: by the community, for the community"
+msgid "Join the Community <br class=\"until-sm\"/> at XRPL.org"
 msgstr ""
 
-#: template/page-home.html.jinja:198
-msgid "Get Involved"
+#: template/page-home.html.jinja:199
+msgid ""
+"Connect at XRPL.org, a community by and for the developers <br class"
+"=\"until-sm\"/> and entrepeneurs who rely on the XRPL."
 msgstr ""
 
 #: template/page-home.html.jinja:200
-msgid ""
-"XRPL.org is a community-driven resource by and for developers who build "
-"on the XRP Ledger (XRPL)."
-msgstr ""
-
-#: template/page-home.html.jinja:201 template/page-impact.html.jinja:114
-#: template/page-impact.html.jinja:179
-msgid "Join the Community"
+msgid "Get Involved"
 msgstr ""
 
 #: template/page-impact.html.jinja:31
-msgid "The first major, global, public carbon-neutral blockchain"
+msgid "Today’s Value, Tomorrow’s Vision"
 msgstr ""
 
-#: template/page-impact.html.jinja:32
-msgid "XRPL Sustainability & Impact"
+#: template/page-impact.html.jinja:32 template/page-xrpl-overview.html.jinja:40
+msgid "XRPL Today, XRPL Tomorrow"
 msgstr ""
 
-#: template/page-impact.html.jinja:47
+#: template/page-impact.html.jinja:46
 msgid "Consensus protocol is efficient and sustainable"
 msgstr ""
 
-#: template/page-impact.html.jinja:50
+#: template/page-impact.html.jinja:49
 msgid ""
 "Open and decentralized, blockchain and crypto are seeing an increase in "
 "adoption across the financial services industry, from retail and "
-"institutional investment to commercial use cases like CBDCs, NFTs and "
-"cross-border payments."
+"institutional investment to <a href='uses.html'>commercial use cases</a> "
+"like CBDCs, NFTs, and cross-border payments."
 msgstr ""
 
-#: template/page-impact.html.jinja:51
-msgid ""
-"With usage growing, it’s critical that measures are taken today to ensure"
-" that the technology is environmentally sustainable tomorrow."
-msgstr ""
-
-#: template/page-impact.html.jinja:77
+#: template/page-impact.html.jinja:75
 msgid "What makes the XRPL sustainable?"
 msgstr ""
 
-#: template/page-impact.html.jinja:78
+#: template/page-impact.html.jinja:76
 msgid ""
 "XRPL’s unique consensus mechanism is eco-friendly—it does not require "
 "mining to settle transactions. This results in efficiency without "
 "sacrificing security, decentralization, or scalability."
 msgstr ""
 
-#: template/page-impact.html.jinja:79
+#: template/page-impact.html.jinja:77
 msgid ""
 "The trivial amount of energy it does consume is then neutralized with "
 "carbon credits through EW Zero, an open-source blockchain decarbonization"
 " tool."
 msgstr ""
 
-#: template/page-impact.html.jinja:93
+#: template/page-impact.html.jinja:91
 msgid "Featured companies & projects running on the XRP Ledger."
 msgstr ""
 
-#: template/page-impact.html.jinja:94
+#: template/page-impact.html.jinja:92
 msgid "Sustainable Projects"
 msgstr ""
 
-#: template/page-impact.html.jinja:96
+#: template/page-impact.html.jinja:94
 msgid ""
 "Learn more about companies and developers who are using the XRP Ledger to"
 " solve interesting problems efficiently and sustainably."
 msgstr ""
 
-#: template/page-impact.html.jinja:97
+#: template/page-impact.html.jinja:95
 msgid "See More"
 msgstr ""
 
+#: template/page-impact.html.jinja:107
+msgid "How can businesses and developers connect and contribute?"
+msgstr ""
+
 #: template/page-impact.html.jinja:109
-msgid "How can developers connect and contribute?"
-msgstr ""
-
-#: template/page-impact.html.jinja:111
 msgid ""
-"If sustainability, security and decentralization are important to you, "
-"you’re invited to join the XRPL community in its quest to build a better "
-"world. Here are some ways to get involved:"
+"If you want to advance business with sustainable solutions to real-world "
+"problems, you’re invited to join the global, growing XRPL community. Here"
+" are some ways to get involved:"
 msgstr ""
 
-#: template/page-impact.html.jinja:125
+#: template/page-impact.html.jinja:112 template/page-impact.html.jinja:177
+msgid "Join the Community"
+msgstr ""
+
+#: template/page-impact.html.jinja:123
 msgid "Blog"
 msgstr ""
 
-#: template/page-impact.html.jinja:140
+#: template/page-impact.html.jinja:138
 msgid "Code"
 msgstr ""
 
-#: template/page-impact.html.jinja:149 template/page-impact.html.jinja:170
+#: template/page-impact.html.jinja:147 template/page-impact.html.jinja:168
 msgid "Join the conversation on social media using #XRPLCommunity."
 msgstr ""
 
@@ -1628,7 +1649,7 @@ msgid ""
 "world."
 msgstr ""
 
-#: template/page-uses.html.jinja:111 template/page-xrp-overview.html.jinja:168
+#: template/page-uses.html.jinja:111 template/page-xrp-overview.html.jinja:171
 msgid "Gatehub"
 msgstr ""
 
@@ -1844,7 +1865,7 @@ msgid "Other Categories"
 msgstr ""
 
 #: template/page-uses.html.jinja:348
-msgid "Powering Innovative Technology"
+msgid "Proven Powerful for Innovation"
 msgstr ""
 
 #: template/page-uses.html.jinja:349
@@ -1852,7 +1873,7 @@ msgid "XRPL Use Cases"
 msgstr ""
 
 #: template/page-uses.html.jinja:357
-msgid "Powering innovative use cases and projects"
+msgid "Building businesses and creating new value"
 msgstr ""
 
 #: template/page-uses.html.jinja:358
@@ -1876,7 +1897,8 @@ msgstr ""
 #: template/page-uses.html.jinja:371
 msgid ""
 "Developers can leverage open-source libraries, SDKs and more to help "
-"build their project and access essential XRP Ledger functionality."
+"build their <a href='developer-funding.html'>blockchain project</a> and "
+"across essential XRP Ledger functionality."
 msgstr ""
 
 #: template/page-uses.html.jinja:374
@@ -1992,18 +2014,18 @@ msgid ""
 msgstr ""
 
 #: template/page-uses.html.jinja:431
-msgid "Businesses and projects running<br class=\"until-sm\"> on the XRP Ledger"
+msgid "Businesses and developers <br class=\"until-sm\"/> rely on the XRP Ledger"
 msgstr ""
 
 #: template/page-uses.html.jinja:432
-msgid "Solving Real Problems Across Industries"
+msgid "Solving Real-World Problems"
 msgstr ""
 
 #: template/page-uses.html.jinja:434
 msgid ""
-"There are companies and developer projects around the world that leverage"
-" the XRP Ledger to solve interesting problems across a variety of "
-"industries and use cases."
+"With intentional innovations, tools and documentation that accelerate "
+"development and minimize time to market, XRP Ledger is used to create "
+"solutions across an expansive range of industries and use cases."
 msgstr ""
 
 #: template/page-uses.html.jinja:438
@@ -2275,35 +2297,47 @@ msgid "Software Wallets"
 msgstr ""
 
 #: template/page-xrp-overview.html.jinja:162
-msgid "Xumm"
-msgstr ""
-
-#: template/page-xrp-overview.html.jinja:163
-msgid "https://trustwallet.com/"
+msgid "Towo"
 msgstr ""
 
 #: template/page-xrp-overview.html.jinja:165
-msgid "Trust Wallet"
+msgid "Xumm"
 msgstr ""
 
 #: template/page-xrp-overview.html.jinja:166
+msgid "https://trustwallet.com/"
+msgstr ""
+
+#: template/page-xrp-overview.html.jinja:168
+msgid "Trust Wallet"
+msgstr ""
+
+#: template/page-xrp-overview.html.jinja:169
 msgid "https://gatehub.net/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:177
+#: template/page-xrp-overview.html.jinja:180
 msgid "Hardware Wallets"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:182
+#: template/page-xrp-overview.html.jinja:185
 msgid "Ledger"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:186
+#: template/page-xrp-overview.html.jinja:189
+msgid "Keystone"
+msgstr ""
+
+#: template/page-xrp-overview.html.jinja:193
+msgid "Dcent"
+msgstr ""
+
+#: template/page-xrp-overview.html.jinja:197
 msgid "Trezor"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:195
-#: template/page-xrp-overview.html.jinja:258
+#: template/page-xrp-overview.html.jinja:206
+#: template/page-xrp-overview.html.jinja:269
 msgid ""
 "Disclaimer: This information is drawn from other sources on the internet."
 "  XRPL.org does not endorse or recommend any exchanges or make any "
@@ -2314,133 +2348,133 @@ msgid ""
 "and privacy practices."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:199
+#: template/page-xrp-overview.html.jinja:210
 msgid "What Exchanges Support XRP?"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:200
+#: template/page-xrp-overview.html.jinja:211
 msgid ""
 "Exchanges are where people trade currencies. XRP is traded on more than "
 "100 markets and exchanges worldwide."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:201
+#: template/page-xrp-overview.html.jinja:212
 msgid ""
 "There are different types of exchanges that vary depending on the type of"
 " market (spot, futures, options, swaps), and the type of security model "
 "(custodial, non-custodial)."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:204
+#: template/page-xrp-overview.html.jinja:215
 msgid "Spot Exchanges"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:205
+#: template/page-xrp-overview.html.jinja:216
 msgid ""
 "Spot exchanges allow people to buy and sell cryptocurrencies at current "
 "(spot) market rates."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:208
+#: template/page-xrp-overview.html.jinja:219
 msgid "Futures, Options and Swap Exchanges"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:209
+#: template/page-xrp-overview.html.jinja:220
 msgid ""
 "Futures, options and swap exchanges allow people to buy and sell "
 "standardized contracts of cryptocurrency market rates in the future."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:212
+#: template/page-xrp-overview.html.jinja:223
 msgid "Custodial Exchanges"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:213
+#: template/page-xrp-overview.html.jinja:224
 msgid ""
 "Custodial exchanges manage a user’s private keys, and publish centralized"
 " order books of buyers and sellers."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:216
+#: template/page-xrp-overview.html.jinja:227
 msgid "Non-Custodial Exchanges"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:217
+#: template/page-xrp-overview.html.jinja:228
 msgid ""
 "Non-custodial exchanges, also known as decentralized exchanges, do not "
 "manage a user’s private keys, and publish decentralized order books of "
 "buyers and sellers on a blockchain."
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:220
+#: template/page-xrp-overview.html.jinja:231
 msgid "Top Exchanges, according to CryptoCompare"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:225
+#: template/page-xrp-overview.html.jinja:236
 msgid "Bitstamp"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:226
+#: template/page-xrp-overview.html.jinja:237
 msgid "https://www.kraken.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:228
+#: template/page-xrp-overview.html.jinja:239
 msgid "Kraken"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:229
+#: template/page-xrp-overview.html.jinja:240
 msgid "https://cex.io/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:231
+#: template/page-xrp-overview.html.jinja:242
 msgid "Cex.io"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:232
+#: template/page-xrp-overview.html.jinja:243
 msgid "https://www.liquid.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:234
+#: template/page-xrp-overview.html.jinja:245
 msgid "Liquid"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:235
+#: template/page-xrp-overview.html.jinja:246
 msgid "https://www.lmax.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:237
+#: template/page-xrp-overview.html.jinja:248
 msgid "LMAX"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:238
+#: template/page-xrp-overview.html.jinja:249
 msgid "https://www.bitfinex.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:240
+#: template/page-xrp-overview.html.jinja:251
 msgid "Bitfinex"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:241
+#: template/page-xrp-overview.html.jinja:252
 msgid "https://www.etoro.com/crypto/exchange/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:243
+#: template/page-xrp-overview.html.jinja:254
 msgid "eToro"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:244
+#: template/page-xrp-overview.html.jinja:255
 msgid "https://currency.com"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:246
+#: template/page-xrp-overview.html.jinja:257
 msgid "Currency.com"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:247
+#: template/page-xrp-overview.html.jinja:258
 msgid "https://bittrex.com/"
 msgstr ""
 
-#: template/page-xrp-overview.html.jinja:249
+#: template/page-xrp-overview.html.jinja:260
 msgid "Bittrex"
 msgstr ""
 
@@ -2560,11 +2594,7 @@ msgid "Contact Us"
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:39
-msgid "XRPL Today and the Vision for Tomorrow"
-msgstr ""
-
-#: template/page-xrpl-overview.html.jinja:40
-msgid "XRPL | XRP Ledger Overview"
+msgid "The Business <br class=\"until-sm\"/> of Impact"
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:53
@@ -2576,15 +2606,15 @@ msgid "XRP Ledger Basics"
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:56
-msgid "The XRP Ledger is a decentralized public blockchain. "
+msgid "The XRP Ledger is a decentralized public blockchain built for business. "
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:57
 msgid ""
-"Anyone can connect their computer to the peer-to-peer network that "
-"manages the ledger. The global XRP Ledger community—a diverse set of "
-"software engineers, server operators, users, and businesses—maintains the"
-" ledger."
+"The peer-to-peer network that manages the ledger is open to everyone. The"
+" XRP Ledger is maintained by software engineers, server operators, users,"
+" and businesses–a global community working to solve problems and create "
+"real-world value."
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:59
@@ -2607,41 +2637,42 @@ msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:83
 msgid ""
-"XRPL uses a consensus protocol, in which designated servers called <a "
-"href=\"run-a-rippled-validator.html\">validators</a> come to an agreement"
-" on the order and outcome of XRP transactions every 3-5 seconds."
+"To uphold performance, XRPL uses a consensus protocol. Designated servers"
+" called <a href=\"run-a-rippled-validator.html\">validators</a>, which "
+"anyone can operate, come to an agreement on the order and outcome of XRP "
+"transactions every three to five seconds."
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:84
 msgid ""
 "All servers in the network process each transaction according to the same"
 " rules, and any transaction that follows the protocol is confirmed right "
-"away. All transactions are public, with strong cryptography to guarantee "
-"the integrity of the system."
+"away. All transactions are public, and strong cryptography guarantees the"
+" integrity of the system."
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:85
 msgid ""
-"Anyone can operate a validator; currently, over 150 <a "
+"Currently, over 120 <a "
 "href=\"https://livenet.xrpl.org/network/validators\" "
 "target=\"_blank\">validators</a> are active on the ledger, operated by "
-"universities, exchanges, businesses, and individuals. Additionally, the "
-"consensus protocol ensures the blockchain becomes more decentralized over"
-" time as the validator pool grows."
+"universities, exchanges, businesses, and individuals. As the validator "
+"pool grows, the consensus protocol ensures decentralization of the "
+"blockchain over time."
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:97
-msgid "A Greener Blockchain"
+msgid "A Sustainable Blockchain"
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:98
 msgid ""
-"Unlike most other blockchains, the XRP Ledger does not need mining, so <a"
-" href=\"impact.html\">no energy is wasted</a> in the transaction process."
+"Unlike most other blockchains, the XRP Ledger requires no mining and uses"
+" negligible energy, key to long-term growth and stability."
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:108
-msgid "XRPL provides powerful utility across the blockchain space"
+msgid "Building with confidence on <br class=\"until-sm\"/> proven technology"
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:109
@@ -2650,16 +2681,16 @@ msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:111
 msgid ""
-"The ledger’s unique properties, such as its fast and efficient consensus "
-"algorithm and censorship-resistant transaction processing, are leveraged "
-"by thousands of developers."
+"With 10+ years of error-free functioning and enterprise companies as "
+"champions, XRPL has established reliability."
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:112
 msgid ""
-"With the XRPL, these developers are building innovative projects and "
-"applications across blockchain use cases including tokenization of "
-"assets, online gaming, asset custody, NFTs, and DeFi."
+"With the XRPL, these developers are building innovative <a href"
+"='developer-funding.html'>blockchain projects</a> and applications across"
+" use cases including tokenization of assets, online gaming, asset "
+"custody, NFTs, and DeFi."
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:113
@@ -2667,7 +2698,7 @@ msgid "Explore More"
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:117
-msgid "Fulfilling the vision of the XRPL community"
+msgid "Creating new value for long-term growth"
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:118
@@ -2676,18 +2707,16 @@ msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:120
 msgid ""
-"While XRPL is the choice of developers who don’t want to sacrifice "
-"security or performance and who want to build on the greenest blockchain,"
-" that’s only the beginning."
+"As a community-led blockchain built for business, XRPL attracts companies"
+" and developers driven to solve real problems and generate real value–now"
+" and into the future."
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:121
 msgid ""
-"As a community-led blockchain, XRPL’s vision is also a community effort. "
-"<a href=\"https://xrplf.org/\" target=\"_blank\">The XRPL Foundation</a> "
-"is currently collaborating with community members to define a shared "
-"vision statement. Stay tuned for more on this effort—we can’t wait to "
-"share it with you."
+"Significant investment in development, along with low transaction costs "
+"and energy usage, is fueling growth and opening up a wide variety of use "
+"cases at scale."
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:128
