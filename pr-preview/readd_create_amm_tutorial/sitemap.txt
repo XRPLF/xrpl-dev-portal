@@ -89,6 +89,7 @@ https://xrpl.org/nft-fixed-supply.html
 https://xrpl.org/nft-apis.html
 https://xrpl.org/trust-lines-and-issuing.html
 https://xrpl.org/authorized-trust-lines.html
+https://xrpl.org/clawing-back-tokens.html
 https://xrpl.org/freezes.html
 https://xrpl.org/common-misconceptions-about-freezes.html
 https://xrpl.org/rippling.html
@@ -219,6 +220,7 @@ https://xrpl.org/accountroot.html
 https://xrpl.org/amendments-object.html
 https://xrpl.org/amm.html
 https://xrpl.org/check.html
+https://xrpl.org/clawback.html
 https://xrpl.org/depositpreauth-object.html
 https://xrpl.org/directorynode.html
 https://xrpl.org/escrow-object.html

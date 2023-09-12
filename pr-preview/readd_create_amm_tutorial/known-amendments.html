@@ -424,6 +424,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixreducedoffersv1">fixReducedOffersV1</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></li>
@@ -452,6 +453,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#tickets">Tickets</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ticksize">TickSize</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#trustsetauth">TrustSetAuth</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#xchainbridge-1">XChainBridge</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#xrpfees">XRPFees</a></li>
       </ul>
   </div>
@@ -484,6 +486,21 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: left;"><a href="#amm">AMM</a></td>
+<td style="text-align: left;">v1.12.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/rippled-1.12.0.html" target="_blank" title="Open for Voting: 2023-09-06"><img alt="Open for Voting: 2023-09-06" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2023--09--06-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#clawback">Clawback</a></td>
+<td style="text-align: left;">v1.12.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/rippled-1.12.0.html" target="_blank" title="Open for Voting: 2023-09-06"><img alt="Open for Voting: 2023-09-06" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2023--09--06-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixreducedoffersv1">fixReducedOffersV1</a></td>
+<td style="text-align: left;">v1.12.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/rippled-1.12.0.html" target="_blank" title="Open for Voting: 2023-09-06"><img alt="Open for Voting: 2023-09-06" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2023--09--06-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
 <tr>
 <td style="text-align: left;"><a href="#fixnftokenremint">fixNFTokenRemint</a></td>
 <td style="text-align: left;">v1.11.0</td>
@@ -753,7 +770,7 @@
 </table>
 <p class="devportal-callout note"><strong>Note:</strong> In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.</p>
 <h2 id="amendments-in-development">Amendments in Development<a aria-hidden="true" class="hover_anchor" href="#amendments-in-development"><i class="fa fa-link"></i></a></h2>
-<p>The following is a list of <a href="amendments.html">amendments</a> that are being developed and a private network is available to test the changes. </p>
+<p>The following is a list of <a href="amendments.html">amendments</a> that are being developed and a private network is available to test the changes.</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -772,16 +789,6 @@
 <td style="text-align: left;"><a href="#xchainbridge">XChainBridge</a></td>
 <td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
 <td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md" target="_blank">XLS-38d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/" target="_blank">Documentation <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#clawback">Clawback</a></td>
-<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
-<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md" target="_blank">XLS-39d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/" target="_blank">Documentation <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#amm">AMM</a></td>
-<td style="text-align: left;"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
-<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/pull/125" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/" target="_blank">Documentation <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
@@ -850,7 +857,7 @@
 <thead>
 <tr>
 <th style="text-align: left;">Amendment</th>
-<th style="text-align: left;">Automated Market Maker</th>
+<th style="text-align: left;">AMM</th>
 </tr>
 </thead>
 <tbody>
@@ -860,7 +867,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Development</td>
+<td style="text-align: left;">Open for Voting</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
@@ -964,7 +971,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">In Development</td>
+<td style="text-align: left;">Open for Voting</td>
 </tr>
 <tr>
 <td style="text-align: left;">Default Vote (Latest stable release)</td>
@@ -1999,6 +2006,42 @@
 </table>
 <p>Fixes a bug in unused code for estimating the ratio of input to output of individual steps in cross-currency payments.</p>
 <p>This amendment has no known impact on transaction processing.</p>
+<h3 id="fixreducedoffersv1">fixReducedOffersV1<a aria-hidden="true" class="hover_anchor" href="#fixreducedoffersv1"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixReducedOffersV1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">27CD95EE8E1E5A537FF2F89B6CEB7C622E78E9374EBD7DCBEDFAE21CD6F16E0A</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Open for Voting</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Adjusts rounding to prevent order books from being blocked by reduced offers whose exchange rate is affected by rounding of the remaining amounts.</p>
+<p>In general, offers can be <em>reduced</em> in 3 ways:</p>
+<ul>
+<li>The offer can be partially consumed when it is placed.</li>
+<li>The offer can be partially consumed after being placed into an order book.</li>
+<li>The offer can be under-funded, meaning its owner has less funds than it specifies.</li>
+</ul>
+<p>With this amendment, the exchange rate of a reduced offer is rounded such that it is as good or better than the original offer (from the taker's perspective). This allows the reduced offer to be consumed by offers that would have matched the original, full amounts. The rounded amount is no more than 1 drop of XRP or 1e-81 of a token.</p>
+<p>Without this amendment, an offer with very small amounts remaining can have a a much worse exchange rate after rounding than it had initially. This can cause an offer for very small amounts to "block" better offers in the same order book from being taken.</p>
 <h3 id="fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine<a aria-hidden="true" class="hover_anchor" href="#fixremovenftokenautotrustline"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
@@ -2834,6 +2877,34 @@
 </table>
 <p>Allows pre-authorization of accounting relationships (zero-balance trust lines) when using <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
 <p>With this amendment enabled, a <code>TrustSet</code> transaction with <a href="trustset.html#trustset-flags"><code>tfSetfAuth</code> enabled</a> can create a new <a href="ripplestate.html"><code>RippleState</code> ledger object</a> even if it keeps all the other values of the <code>RippleState</code> node in their default state. The new <code>RippleState</code> node has the <a href="ripplestate.html#ripplestate-flags"><code>lsfLowAuth</code> or <code>lsfHighAuth</code> flag</a> enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled <a href="accountroot.html#accountroot-flags"><code>lsfRequireAuth</code></a> by sending an <a href="accountset.html">AccountSet transaction</a> with the <a href="accountset.html#accountset-flags"><code>asfRequireAuth</code> flag enabled</a>.</p>
+<h3 id="xchainbridge-1">XChainBridge<a aria-hidden="true" class="hover_anchor" href="#xchainbridge-1"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">XChainBridge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">In Development</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Adds "cross-chain bridges" for synchronizing assets between different networks, such as Mainnet and a sidechain. Standards draft: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md" target="_blank">XLS-38d Cross-Chain Bridge <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h3 id="xrpfees">XRPFees<a aria-hidden="true" class="hover_anchor" href="#xrpfees"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
@@ -3424,12 +3495,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_4"></a>
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_5"></a>
 
         <a class="nav-link" href="freezes.html">Freezing Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
@@ -3462,11 +3538,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_9" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_10"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -4200,6 +4276,11 @@
         <a class="nav-link" href="transaction-types.html">Transaction Types</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>

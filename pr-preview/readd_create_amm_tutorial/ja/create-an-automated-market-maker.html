@@ -432,12 +432,12 @@
     <div class="content">
         <h1 id="create-an-automated-market-maker">Create an Automated Market Maker<a aria-hidden="true" class="hover_anchor" href="#create-an-automated-market-maker"><i class="fa fa-link"></i></a></h1>
 <p><em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
-<p>An <a href="automated-market-makers.html">Automated Market Maker (AMM)</a> can be an efficient way to facilitate exchanges between two assets, while earning its liquidity providers passive income. This tutorial shows how to create the AMM for a given asset pair.</p>
+<p>An <a href="automated-market-makers.html">Automated Market Maker (AMM)</a> can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.</p>
 <!-- Source for this specific tutorial's interactive bits: -->
 <script src="assets/js/tutorials/create-amm.js" type="application/javascript"></script>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li>You must have an XRP Ledger address and some XRP. For testing, you can get these from a <a href="xrp-testnet-faucet.html">Faucet</a>.</li>
+<li>You must have an XRP Ledger address and some XRP. For development and testing purposes, you can get these from a <a href="xrp-testnet-faucet.html">Faucet</a>.</li>
 <li>You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:<ul>
 <li><strong>JavaScript</strong> with the <a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank">xrpl.js library <i aria-hidden="true" class="fa fa-external-link"></i></a> <strong>version 2.11.0 or later</strong>. See <a href="get-started-using-javascript.html">Get Started Using JavaScript</a> for setup steps.</li>
 <li>You can also read along and use the interactive steps in your browser without any setup.</li>
@@ -494,7 +494,7 @@
 </div><!--/.interactive-block-inner-->
 </div>
 <h3 id="2-get-credentials">2. Get credentials<a aria-hidden="true" class="hover_anchor" href="#2-get-credentials"><i class="fa fa-link"></i></a></h3>
-<p>To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the <a href="parallel-networks.html">Devnet</a> using the following interface:</p>
+<p>To transact on the XRP Ledger, you need an address, a secret key, and some XRP. For development and testing purposes, you can get these on the <a href="parallel-networks.html">Devnet</a> using the following interface:</p>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="2" data-totalsteps="8" id="interactive-generate">
 <div class="interactive-block-inner">
 <div class="breadcrumbs-wrap">
@@ -521,7 +521,7 @@
 </code></pre></div></div>
 </div>
 <h3 id="3-select-and-acquire-assets">3. Select and acquire assets<a aria-hidden="true" class="hover_anchor" href="#3-select-and-acquire-assets"><i class="fa fa-link"></i></a></h3>
-<p>As the creator of an AMM, you are also the first liquidity provider and you have to supply it with a starting pool of assets. Other users of the XRP Ledger can also become liquidity providers by supplying assets after the AMM exists. It's important to choose assets especially carefully because, as a liquidity provider for an AMM, you are supplying some amounts of both for users to swap between. If one of the AMM's assets becomes worthless, other users can use the AMM to trade for the other asset, leaving the AMM (and thus, its liquidity providers including you) holding only the worthless one. Technically, the AMM always holds some positive amount of both assets, but the amounts can be very small.</p>
+<p>As the creator of an AMM, you are also the first liquidity provider and you have to supply it with a starting pool of assets. Other users of the XRP Ledger can also become liquidity providers by supplying assets after the AMM exists. It's crucial to choose assets carefully because, as a liquidity provider for an AMM, you are supplying some amounts of both for users to swap between. If one of the AMM's assets becomes worthless, other users can use the AMM to trade for the other asset, leaving the AMM (and thus, its liquidity providers including you) holding only the worthless one. Technically, the AMM always holds some positive amount of both assets, but the amounts can be very small.</p>
 <p>You can choose any pair of fungible assets in the XRP Ledger, including XRP or tokens, including LP Tokens from another AMM. If you use a token, you must hold some amount of that token. (If a token's issuer uses, <a href="authorized-trust-lines.html">authorized trust lines</a>, that means you have to be authorized first.)</p>
 <p>For each of the two assets, you need to know its currency code and issuer; as an exception, XRP has no issuer. For each of the assets, you must hold a balance of the asset (or <em>be</em> the issuer). The following sample code acquires two assets, "TST" (which it buys using XRP) and "FOO" (which it receives from the issuer).</p>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li></ul>
@@ -691,7 +691,7 @@
 <span class="w">  </span><span class="p">}</span>
 </code></pre></div></div>
 </div>
-<p>If the AMM does already exist, you should double-check that you specified the right pair of assets; if so, someone else has already created this AMM, but you can still deposit to it instead. <!-- TODO: link to a tutorial about depositing to and withdrawing from an AMM when one exists --></p>
+<p>If the AMM does already exist, you should double-check that you specified the right pair of assets. If someone else has already created this AMM, you can deposit to it instead. <!-- TODO: link to a tutorial about depositing to and withdrawing from an AMM when one exists --></p>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="4" data-totalsteps="8" id="interactive-check_for_amm">
 <div class="interactive-block-inner">
 <div class="breadcrumbs-wrap">
@@ -1405,12 +1405,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -1443,11 +1448,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_9" aria-expanded="false" aria-controls="tree_nav_group_4_6_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -2176,6 +2181,11 @@
         <a class="nav-link" href="/ja/transaction-types.html">トランザクションのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
