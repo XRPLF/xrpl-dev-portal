@@ -936,15 +936,15 @@ msgstr ""
 "mining」</a>で概説されています）。"
 
 #: template/page-history.html.jinja:60
-#, fuzzy, python-format
+#, fuzzy
 msgid ""
 "Their initial observations about the high energy consumption and "
 "scalability issues that would plague Bitcoin proved prescient. In 2019, "
 "estimates suggest Bitcoin mining used more energy than the entire country"
 " of Portugal. Moreover, their initial read indicated that significant "
 "problems could arise if any miner obtained (or miners colluded to obtain)"
-" greater than 50% of the mining power. That risk persists with Bitcoin "
-"(and Ethereum) today as mining power has consolidated in China."
+" greater than 50&#37; of the mining power. That risk persists with "
+"Bitcoin (and Ethereum) today as mining power has consolidated in China."
 msgstr ""
 "莫大なエネルギー消費量とスケーラビリティの問題が将来的にBitcoinを悩ませるだろうという最初の気付きには先見の明があったことが実証されました。（2019年には、<a"
 " href=\"carbon-"
@@ -986,11 +986,11 @@ msgid ""
 msgstr "2012年6月には、Schwartz、McCaleb、Brittoがコードの開発を完了し、XRP Ledgerが完全に機能するようになっていました。"
 
 #: template/page-history.html.jinja:76
-#, fuzzy, python-format
+#, fuzzy
 msgid ""
-"Once the XRP Ledger was live, 80% of the XRP was gifted to a new company "
-"that set out to build use cases for the digital asset—initially called "
-"NewCoin and renamed quickly to OpenCoin."
+"Once the XRP Ledger was live, 80&#37; of the XRP was gifted to a new "
+"company that set out to build use cases for the digital asset—initially "
+"called NewCoin and renamed quickly to OpenCoin."
 msgstr ""
 "XRP "
 "Ledgerが完全に機能するようになると、XRPの80&#37;がこの会社に贈与されました。当初の名前はNewCoinでしたが、すぐにOpenCoinという名前に変更されました。"
@@ -2356,8 +2356,8 @@ msgid "Environmentally sustainable (negligible energy consumption)"
 msgstr "環境にやさしい（エネルギー消費量が少ない）"
 
 #: template/page-xrp-overview.html.jinja:87
-#, fuzzy, python-format
-msgid "0.3% of global energy consumption"
+#, fuzzy
+msgid "0.3&#37; of global energy consumption"
 msgstr "世界のエネルギー消費量の0.3&#37;を占める"
 
 #: template/page-xrp-overview.html.jinja:93
@@ -2449,15 +2449,15 @@ msgstr ""
 "target=\"_blank\">Ripple</a>は、高性能でグローバルな決済ビジネスを簡単に構築できるようにするテクノロジー企業です。XRPはこれとは独立したデジタル資産です。"
 
 #: template/page-xrp-overview.html.jinja:126
-#, fuzzy, python-format
+#, fuzzy
 msgid ""
 "There is a finite amount of XRP. All XRP is already in existence today—no"
 " more than the original 100 billion can be created. The XRPL founders "
 "gifted 80 billion XRP, the platform’s native currency, to Ripple. To "
 "provide predictability to the XRP supply, Ripple has locked 55 billion "
-"XRP (55% of the total possible supply) into a series of escrows using the"
-" XRP Ledger itself. The XRPL's transaction processing rules, enforced by "
-"the consensus protocol, control the release of the XRP."
+"XRP (55&#37; of the total possible supply) into a series of escrows using"
+" the XRP Ledger itself. The XRPL's transaction processing rules, enforced"
+" by the consensus protocol, control the release of the XRP."
 msgstr ""
 "XRPの総量は有限です。すべてのXRPは現在すでに存在しており、当初の1,000億を越えることはできません。XRPLの創設者は、このプラットフォームのネイティブ通貨である800億XRPをRipple社に贈与しました。XRPの供給に予測可能性を持たせるため、Ripple社は550億XRP（供給可能な総量の55％）をXRP"
 " "

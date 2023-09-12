@@ -925,15 +925,15 @@ msgid ""
 msgstr ""
 
 #: template/page-history.html.jinja:60
-#, fuzzy, python-format
+#, fuzzy
 msgid ""
 "Their initial observations about the high energy consumption and "
 "scalability issues that would plague Bitcoin proved prescient. In 2019, "
 "estimates suggest Bitcoin mining used more energy than the entire country"
 " of Portugal. Moreover, their initial read indicated that significant "
 "problems could arise if any miner obtained (or miners colluded to obtain)"
-" greater than 50% of the mining power. That risk persists with Bitcoin "
-"(and Ethereum) today as mining power has consolidated in China."
+" greater than 50&#37; of the mining power. That risk persists with "
+"Bitcoin (and Ethereum) today as mining power has consolidated in China."
 msgstr ""
 "उच्च ऊर्जा खपत और मापनीयता के मुद्दों के बारे में उनकी प्रारंभिक "
 "टिप्पणियां जो बिटकॉइन को प्रभावित करती हैं, प्रेजेंटेटिव साबित हुईं। "
@@ -982,11 +982,11 @@ msgstr ""
 "एक्सआरपी लेजर पूरी तरह से काम कर रहा था।"
 
 #: template/page-history.html.jinja:76
-#, fuzzy, python-format
+#, fuzzy
 msgid ""
-"Once the XRP Ledger was live, 80% of the XRP was gifted to a new company "
-"that set out to build use cases for the digital asset—initially called "
-"NewCoin and renamed quickly to OpenCoin."
+"Once the XRP Ledger was live, 80&#37; of the XRP was gifted to a new "
+"company that set out to build use cases for the digital asset—initially "
+"called NewCoin and renamed quickly to OpenCoin."
 msgstr ""
 "एक बार एक्सआरपी लेजर पूरी तरह से काम कर रहा था, 80&#37; XRP का उपहार "
 "कंपनी को उपहार में दिया गया था - शुरू में इसे NewCoin कहा जाता था और "
@@ -2348,8 +2348,8 @@ msgid "Environmentally sustainable (negligible energy consumption)"
 msgstr "पर्यावरण की दृष्टि से टिकाऊ और कार्बन न्यूट्रल"
 
 #: template/page-xrp-overview.html.jinja:87
-#, fuzzy, python-format
-msgid "0.3% of global energy consumption"
+#, fuzzy
+msgid "0.3&#37; of global energy consumption"
 msgstr "0.3&#37; वैश्विक ऊर्जा खपत का"
 
 #: template/page-xrp-overview.html.jinja:93
@@ -2450,15 +2450,14 @@ msgid ""
 msgstr ""
 
 #: template/page-xrp-overview.html.jinja:126
-#, python-format
 msgid ""
 "There is a finite amount of XRP. All XRP is already in existence today—no"
 " more than the original 100 billion can be created. The XRPL founders "
 "gifted 80 billion XRP, the platform’s native currency, to Ripple. To "
 "provide predictability to the XRP supply, Ripple has locked 55 billion "
-"XRP (55% of the total possible supply) into a series of escrows using the"
-" XRP Ledger itself. The XRPL's transaction processing rules, enforced by "
-"the consensus protocol, control the release of the XRP."
+"XRP (55&#37; of the total possible supply) into a series of escrows using"
+" the XRP Ledger itself. The XRPL's transaction processing rules, enforced"
+" by the consensus protocol, control the release of the XRP."
 msgstr ""
 
 #: template/page-xrp-overview.html.jinja:130
@@ -5082,5 +5081,22 @@ msgstr "इस दस्तावेज़ में"
 #~ "define a shared vision statement. Stay"
 #~ " tuned for more on this effort—we "
 #~ "can’t wait to share it with you."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "There is a finite amount of XRP."
+#~ " All XRP is already in existence "
+#~ "today—no more than the original 100 "
+#~ "billion can be created. The XRPL "
+#~ "founders gifted 80 billion XRP, the "
+#~ "platform’s native currency, to Ripple. "
+#~ "To provide predictability to the XRP "
+#~ "supply, Ripple has locked 55 billion "
+#~ "XRP (55% of the total possible "
+#~ "supply) into a series of escrows "
+#~ "using the XRP Ledger itself. The "
+#~ "XRPL's transaction processing rules, enforced"
+#~ " by the consensus protocol, control "
+#~ "the release of the XRP."
 #~ msgstr ""
 
