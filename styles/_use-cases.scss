@@ -174,9 +174,12 @@
   border-top: 1px solid #ccc;
 }
 
-.section-logos {
-  font-size: 16px;
+.logo-item {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
 }
+
 
 .close {
   color: #aaaaaa;
@@ -197,19 +200,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 185px;
-  height: 185px;
+  width: calc(20vw - 20px); /* Adjust as needed */
+  height: calc(47vw - 20px); /* Adjust as needed */
+  min-width: 100px; /* Minimum size */
+  min-height: 100px; /* Minimum size */
   border: 1px solid #343437;
   border-radius: 50%;
   margin-bottom: 30px;
   cursor: pointer;
   @include media-breakpoint-up(md) {
     width: 230px;
-    height: 230px;
+    height: 266px;
   }
   @include media-breakpoint-up(lg) {
     margin-bottom: 0;
+    height: 230px;
+
   }
+}
+.use-case-circle:hover{
+  border-color: #ee5555;
+
 }
 
 .circle-content {

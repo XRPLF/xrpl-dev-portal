@@ -1,4 +1,15 @@
 $(document).ready(() => {
+  const logos = {
+    infrastructure: [
+      "XRP-Ledger.png",
+      "towoLabs.png",
+      "xrpscan.png",
+      "xrp-toolkit.png",
+      "bithomp.png",
+      "onthedex.png",
+    ],
+    // "developer_tooling": ['logo3.png'],
+  };
   // Add two new constiables for arrow buttons
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
@@ -51,11 +62,27 @@ $(document).ready(() => {
   function updateModalContent({ id, title, number, src, description, index }) {
     const arrowContainer = document.getElementById("arrows-container");
     modalImage.src = src;
-    modalImage.id = id
+    modalImage.id = id;
     modalImage.alt = title + " logo";
     modalTextDescription.textContent = description;
     modalTextTitle.textContent = title;
-    modalLogos.textContent = "Group of logos for " + title + " here...";
+    modalLogos.innerHTML = "";
+    const logoArray = logos[id] || [];
+    // Set grid layout based on the number of logos
+    if (logoArray.length >= 3) {
+      modalLogos.style.display = "grid";
+      modalLogos.style.gridTemplateColumns = "repeat(2, 1fr)";
+    } else {
+      modalLogos.style.display = "flex";
+      modalLogos.style.justifyContent = "center";
+    }
+    logoArray.forEach((logoSrc) => {
+      const logoElem = document.createElement('img');
+      logoElem.src = `assets/img/uses/infrastructure/${logoSrc}`;
+      logoElem.alt = `${title} logo`;
+      logoElem.classList.add('logo-item');
+      modalLogos.appendChild(logoElem);
+    });
     if (id === "infrastructure") {
       arrowContainer.style.justifyContent = "end";
     } else {
@@ -76,7 +103,6 @@ $(document).ready(() => {
       modalImage.alt = title + " logo";
       modalTextDescription.textContent = description;
       modalTextTitle.textContent = title;
-      modalLogos.textContent = "Group of logos for " + title + " here...";
 
       // Set the data index on the modal
       modal.setAttribute("data-index", index);
@@ -91,7 +117,7 @@ $(document).ready(() => {
 
       modal.style.display = "block";
 
-      if (id === 'infrastructure') {
+      if (id === "infrastructure") {
         arrowContainer.style.justifyContent = "end";
       } else {
         arrowContainer.style.justifyContent = "space-between";
