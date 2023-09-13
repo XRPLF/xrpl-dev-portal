@@ -2437,7 +2437,7 @@ pages:
     -   md: references/protocol-reference/transactions/transaction-types/clawback.md
         targets:
             - en
-            - ja            
+            - ja
 
     -   md: references/protocol-reference/ledger-data/ledger-object-types/depositpreauth.md
         targets:
@@ -3517,7 +3517,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation with reporting fields, ETL source object, corrected state_account.*.transitions field
+        # TODO: update translation with reporting fields, ports field, ETL source object, corrected state_account.*.transitions field
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.ja.md
         outdated_translation: true
         targets:
@@ -3527,7 +3527,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation with reporting fields, ETL source object, corrected state_account.*.transitions field
+        # TODO: update translation with reporting fields, ports field, ETL source object, corrected state_account.*.transitions field
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.ja.md
         outdated_translation: true
         targets:
