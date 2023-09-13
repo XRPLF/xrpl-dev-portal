@@ -42,6 +42,8 @@ See [Mint and Burn NFTokens](mint-and-burn-nfts-using-javascript.html).
 
 You transfer NFTs by creating a sell offer. See [Transfer NFTokens](transfer-nfts-using-javascript.html).
 
+![Transferring NFTs](img/uc-nft-transferring-nfts.png)
+
 You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html).
 
 ### Reserve requirements
@@ -49,6 +51,8 @@ You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoke
 There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.
 
 Each `NFTokenOffer` object requires a reserve of 2 XRP.
+
+![Reserves](img/uc-nft-reserves.png)
 
 When you post the `NFTokenOffer` or sell the NFT, there are trivial transfer fees (roughly 6000 drops, or .006 XRP). When you are selling at a high volume, the trivial amounts can add up quickly, and need to be considered as part of your cost of doing business.
 
@@ -62,12 +66,16 @@ See:
 
 The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nfts-using-javascript.html).
 
+![Checkout](img/uc-nft-checkout.png)
+
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange).
 
 
 ## Indexing NFTs
 
 When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.
+
+![Indexing NFTs](img/uc-nft-indexing.png)
 
 See:
 
@@ -79,5 +87,7 @@ See:
 ## Burning NFTs
 
 There are some workflows where it makes sense for the issuer to retain the right to burn the token at some point in the future, regardless of the current owner. For example, NFTs used for carbon credits can be minted and traded, but once the carbon is captured, the NFT can be burned so that it is no longer transferable. For these scenarios, set the `lsfBurnable` flag when you mint the NFT.
+
+![Burning NFTs](img/uc-nft-burn.png)
 
 Another example might be burning an in-game asset that is lost by a player after losing a life in the game. You might also burn an NFT ticket after successful redemption to prevent it from being used again.

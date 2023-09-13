@@ -27,14 +27,17 @@ When you set up a serious marketplace site with high volume, it justifies the de
 
 Set up a new wallet. See [Xumm](https://xumm.app/).
 
+<div align="center">
+<img src="img/uc-software-wallet.png" width="50%" height="50%" align="center"></img>
+</div>
+
 Base reserve requirements See [Reserves](reserves.html#base-reserve-and-owner-reserve).
-
-Current wallet options on XRPL: This is a good opportunity for XRPL to highlight wallet providers in the ecosystem
-
 
 ### Transferring NFTs
 
 You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nfts-using-javascript.html).
+
+![Transferring NFTs](img/uc-nft-transferring-nfts.png)
 
 You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html).
 
@@ -44,6 +47,8 @@ You can act as a broker, connecting sellers with bidders, completing the transfe
 ### Reserve requirements
 
 There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.
+
+![Reserves](img/uc-nft-reserves.png)
 
 Each `NFTokenOffer` object requires a reserve of 2 XRP.
 
@@ -55,7 +60,6 @@ See:
 2. NFToken page ([Owner reserve](nft-reserve-requirements.html#owner-reserve))
 3. Trivial [transfer fees](transfer-fees.html)
 
-
 You can learn more about brokered sales in the topic [Trading Tokens on the XRP Ledger](non-fungible-token-transfers.html).
 
 Learn more about token transfer fees in the topic [Transfer Fees](transfer-fees.html).
@@ -66,11 +70,15 @@ You can get started building a brokered sales marketplace by following the steps
 
 The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nfts-using-javascript.html).
 
+![Checkout](img/uc-nft-checkout.png)
+
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange).
 
 ## Indexing NFTs
 
 When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.
+
+![Indexing NFTs](img/uc-nft-indexing.png)
 
 See:
 
