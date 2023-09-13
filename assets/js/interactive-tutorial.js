@@ -186,29 +186,36 @@ function setup_generate_step() {
     const faucet_url = $("#generate-creds-button").data("fauceturl")
 
     try {
-      // destination not defined - API will create account.
-      const data = await call_faucet(faucet_url, undefined, event)
+      const wallet = xrpl.Wallet.generate("ed25519")
+      const data = await call_faucet(faucet_url, wallet.address, event)
 
       block.find(".loader").hide()
       block.find(".output-area").html(`<div><strong>${tl("Address:")}</strong>
           <span id="use-address">${data.account.address}</span></div>
           <div><strong>${tl("Secret:")}</strong>
-          <span id="use-secret">${data.account.secret}</span></div>
-          <strong>${tl("Balance:")}</strong>
-          ${Number(data.balance).toLocaleString(current_locale)} XRP`)
+          <span id="use-secret">${wallet.seed}</span></div>`)
+      if (data.balance) {
+        block.find(".output-area").append(`<div><strong>${tl("Balance:")}</strong>
+        ${Number(data.balance).toLocaleString(current_locale)} XRP</div>`)
+      }
 
       // Automatically populate all examples in the page with the
       // generated credentials...
+      let creds_updated = false;
       $("code span:contains('"+EXAMPLE_ADDR+"')").each( function() {
+        creds_updated = true
         let eltext = $(this).text()
         $(this).text( eltext.replace(EXAMPLE_ADDR, data.account.address) )
       })
       $("code span:contains('"+EXAMPLE_SECRET+"')").each( function() {
+        creds_updated = true
         let eltext = $(this).text()
         $(this).text( eltext.replace(EXAMPLE_SECRET, data.account.secret) )
       })
 
-      block.find(".output-area").append(`<p>${tl("Populated this page's examples with these credentials.")}</p>`)
+      if (creds_updated) {
+        block.find(".output-area").append(`<p>${tl("Populated this page's examples with these credentials.")}</p>`)
+      }
 
       complete_step("Generate")
 
@@ -278,7 +285,7 @@ async function call_faucet(faucet_url, destination, event) {
     step: block.data("stepnumber"),
     totalsteps: block.data("totalsteps"),
   };
-  //pass in plain text instead of HEX- the API will encode. 
+  //pass in plain text instead of HEX- the API will encode.
   const memo = {
     data: JSON.stringify(tutorial_info, null, 0),
     format: "application/json", // application/json
@@ -288,9 +295,7 @@ async function call_faucet(faucet_url, destination, event) {
   };
 
   const body = {};
-  if (typeof destination != "undefined") {
-    body["destination"] = destination;
-  }
+  body["destination"] = destination;
   body["memos"] = [memo];
 
   const response = await fetch(faucet_url, {
@@ -616,6 +621,11 @@ async function do_submit(block, submit_opts, wait_step_name) {
     show_error(block, error)
   }
 }
+
+async function show_log(block, msg) {
+  block.find(".output-area").append(msg)
+}
+
 
 $(document).ready(() => {
   disable_followup_steps()

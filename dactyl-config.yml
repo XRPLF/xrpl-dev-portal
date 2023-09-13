@@ -67,7 +67,7 @@ default_keys: &defaults
     hover_anchors: <i class="fa fa-link"></i>
     light_theme_enabled: true
     # Script tags used in a variety of tools & examples.
-    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.2.0.min.js"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.11.0.min.js"></script>'
 
 targets:
     # First member is the default that gets built when target not specified
@@ -624,7 +624,6 @@ pages:
             - ja
 
     -   md: use-cases/tokenization/stablecoin-issuer.md
-        parent: tokenization.html
         targets:
             - en
             - ja
@@ -1351,7 +1350,7 @@ pages:
             - ja
 
     -   name: Stablecoin Issuer
-        html: become-an-xrp-ledger-gateway.html.html
+        html: become-an-xrp-ledger-gateway.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: stablecoin-issuer.html
@@ -2168,6 +2167,12 @@ pages:
 
     # TODO: translate this page & blurb
     -   md: tutorials/use-tokens/freeze-a-trust-line.md
+        targets:
+            - en
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/create-an-automated-market-maker.md
         targets:
             - en
             - ja

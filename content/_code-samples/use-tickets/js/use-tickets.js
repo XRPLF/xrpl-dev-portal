@@ -70,7 +70,7 @@ async function main() {
   // Wait for Validation (again) -----------------------------------------------
 
   // Disconnect when done (If you omit this, Node.js won't end the process)
-  client.disconnect()
+  await client.disconnect()
 }
 
 main()
