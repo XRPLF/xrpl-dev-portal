@@ -80,11 +80,12 @@ aside .active-parent > a {
     }
     &.nav-parent {
       padding-top: 0;
-      
+
       .nav-link {
         padding-left: 0;
         padding-top: 0;
         font-size: 1.125rem;
+        line-height: initial;
       }
     }
 
