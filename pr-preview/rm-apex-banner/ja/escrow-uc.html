@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Smart Contracts - XRPL.org (日本語)</title>
+    <title>スマートコントラクト - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Smart Contracts | XRPL.org (日本語)">
+    <meta property="og:title" content="スマートコントラクト | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/escrow-uc.html" />
-    <meta property="og:description" content="Transactions allow accounts to modify the XRP Ledger." />
-    <meta name="description" content="Transactions allow accounts to modify the XRP Ledger." />
+    <meta property="og:description" content="トランザクションにより、アカウントはXRP Ledgerを変更することができます。" />
+    <meta name="description" content="トランザクションにより、アカウントはXRP Ledgerを変更することができます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": ['Ledgers']
+      "page_labels": ['レジャー']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -89,102 +89,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-
-
-<!-- Inline script to conditionally display the banner -->
-  <script>
-    // Get the user's location using the provided JavaScript code
-    let userLocation = window.Osano.cm.countryCode;
-
-    // List of countries for which we want to serve the banner
-    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
-
-    // Check if the user's location is in the list of target countries
-    let isTargetCountry = targetCountries.includes(userLocation);
-
-    if (isTargetCountry) {
-      // Define the banner HTML with the countdown timer
-      let token2049bannerHTML = `
-        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
-            <div class="box">
-              <div id="js-clock-days" class="clock-number">00</div>
-              <div class="clock-label">Days</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-hours" class="clock-number">00</div>
-              <div class="clock-label">Hrs</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-minutes" class="clock-number">00</div>
-              <div class="clock-label">Min</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-seconds" class="clock-number">00</div>
-              <div class="clock-label">Sec</div>
-            </div>
-          </div>
-          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
-          <span class="d-inline-block">XRPL Zone </span>
-          <span class="token-highlight d-inline-block">@Token2049</span></div>
-           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
-           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
-            <div class="token-circled d-none d-lg-inline-block highlight-purple">今すぐ登録</div>
-        </a>
-      `;
-
-      // Write the banner directly to the document
-      document.write(token2049bannerHTML);
-
-      var deadline = '2023/09/13 08:00';
-
-      function pad(num, size) {
-        var s = "0" + num;
-        return s.substr(s.length - size);
-      }
-
-      function parseDate(date) {
-        const parsed = Date.parse(date);
-        if (!isNaN(parsed)) return parsed
-        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
-      }
-
-      function getTimeRemaining(endtime) {
-        let total = parseDate(endtime) - Date.parse(new Date())
-        let seconds = Math.floor((total / 1000) % 60)
-        let minutes = Math.floor((total / 1000 / 60) % 60)
-        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-        let days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-        return { total, days, hours, minutes, seconds };
-      }
-
-      function clock(id, endtime) {
-        let days = document.getElementById(id + '-days')
-        let hours = document.getElementById(id + '-hours')
-        let minutes = document.getElementById(id + '-minutes')
-        let seconds = document.getElementById(id + '-seconds')
-
-        var timeinterval = setInterval(function () {
-          var time = getTimeRemaining(endtime);
-
-          if (time.total <= 0) {
-            clearInterval(timeinterval);
-          } else {
-            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
-            hours.innerHTML = pad(time.hours, 2);
-            minutes.innerHTML = pad(time.minutes, 2);
-            seconds.innerHTML = pad(time.seconds, 2);
-          }
-        }, 1000);
-      }
-      clock('js-clock', deadline);
-    }
-  </script>
-
-
-
 
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
@@ -353,12 +257,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/rm-apex-banner/content/use-cases/payments/smart-contracts-uc.md?pr=/XRPLF/xrpl-dev-portal/pull/2128" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/rm-apex-banner/content/use-cases/payments/smart-contracts-uc.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2128" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-ledgers">Ledgers</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Ledgers" -->
+      <span class="label label-レジャー">レジャー</span>
+      <!-- TEMPLATE WARNING: no label landing found for "レジャー" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -366,11 +270,11 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#smart-contracts">Smart Contracts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#conditionally-held-escrow">Conditionally Held Escrow</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#create-the-escrow">Create the Escrow</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#establish-the-oracle">Establish the Oracle</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#examples">Examples</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#スマートコントラクト">スマートコントラクト</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#条件付きのエスクロー">条件付きのエスクロー</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#エスクローを作成する">エスクローを作成する</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#オラクルの確立">オラクルの確立</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#例">例</a></li>
       </ul>
   </div>
       </aside>
@@ -388,35 +292,32 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/use-cases.html">ユースケース</a></li>
     <li class="active breadcrumb-item"><a href="/ja/payments-uc.html">Payment</a></li>
-    <li class="active breadcrumb-item">Smart Contracts</li>
+    <li class="active breadcrumb-item">スマートコントラクト</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="smart-contracts">Smart Contracts<a aria-hidden="true" class="hover_anchor" href="#smart-contracts"><i class="fa fa-link"></i></a></h1>
-<p>A smart contract is a blockchain-based program that handles the conditions and executes the fulfillment of an agreement between two parties. Broken into its simplest components, a smart contract <em>does</em> something if <em>something else</em> happens.</p>
-<p>The benefit of encoding a smart contract into a blockchain is that it enables contracts to be securely carried out without traditional third-parties, like financial or legal institutions. Instead, the contract is supervised by the distributed, decentralized network of computers that run the blockchain.</p>
-<p>This enables you to transact with anybody without having to trust they'll uphold their end of a deal; the conditions of the smart contract will force them to.</p>
-<h2 id="conditionally-held-escrow">Conditionally Held Escrow<a aria-hidden="true" class="hover_anchor" href="#conditionally-held-escrow"><i class="fa fa-link"></i></a></h2>
-<p>Smart contracts on the XRP Ledger work through conditionally held escrows.</p>
-<h3 id="create-the-escrow">Create the Escrow<a aria-hidden="true" class="hover_anchor" href="#create-the-escrow"><i class="fa fa-link"></i></a></h3>
-<p>A conditionally held escrow is similar to a normal escrow: you set aside funds with an escrow to guarantee funds are available to a recipient. The difference is that a conditionally held escrow on the ledger has a <code>Condition</code> attached to it, which serves as a lock on the funds. The ledger won't release those funds until an <code>EscrowFinish</code> transaction is submitted with the corresponding <code>Fulfillment</code> field. The <code>Condition</code> and <code>Fulfillment</code> fields can be viewed as a lock and key on an escrow.</p>
-<p>See: <a href="escrowcreate.html"><code>EscrowCreate</code></a>.</p>
-<h3 id="establish-the-oracle">Establish the Oracle<a aria-hidden="true" class="hover_anchor" href="#establish-the-oracle"><i class="fa fa-link"></i></a></h3>
-<p>An oracle is a neutral third-party agent that can verify real-world events to either fulfill or invalidate a smart contract. Oracles are vital to making conditional escrows work by generating the condition and fulfillment, and keeping the fulfillment secret until the terms of the contract are met.</p>
-<p>In the context of smart contracts, an oracle will most likely be software that can read real-world data. The oracle would be programmed with the terms of the contract between parties and generate the condition and fulfillment hex values.</p>
-<p>The oracle gives the condition hex value to the escrow creator, enabling them to set up the escrow initially.</p>
-<p>After the oracle's programming detects the conditions are met, it gives the fulfillment hex value to the escrow recipient. It does nothing else after this point, such as finishing the escrow. The recipient of the escrow would most likely finish the escrow.</p>
-<p>See: <a href="send-a-conditionally-held-escrow.html#1条件とフルフィルメントの生成">Generate a condition and fulfillment</a>.</p>
-<h2 id="examples">Examples<a aria-hidden="true" class="hover_anchor" href="#examples"><i class="fa fa-link"></i></a></h2>
-<p>Smart contracts have a wide range of uses, but some uses include:</p>
+        <h1 id="スマートコントラクト">スマートコントラクト<a aria-hidden="true" class="hover_anchor" href="#スマートコントラクト"><i class="fa fa-link"></i></a></h1>
+<p>スマートコントラクトとは、2者間の合意の条件を処理し、その履行を実行するブロックチェーンベースのプログラムである。最も単純な構成要素に分解すると、スマートコントラクトは、「何か」が発生した場合に「何か」を行うというものです。</p>
+<p>スマートコントラクトをブロックチェーンに導入することのメリットは、金融機関や法律機関といった従来のサードパーティを介さずに、契約を安全に遂行することができることです。その代わり、契約はブロックチェーンを運営する分散型コンピュータのネットワークによって管理されます。</p>
+<p>これにより、スマートコントラクトの条件によって、相手が取引の約束を守るかどうかを信頼することなく、誰とでもトランザクションを行うことができます。</p>
+<h2 id="条件付きのエスクロー">条件付きのエスクロー<a aria-hidden="true" class="hover_anchor" href="#条件付きのエスクロー"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledger上のスマートコントラクトは、条件付きで保有するエスクローを通じて動作します。</p>
+<h3 id="エスクローを作成する">エスクローを作成する<a aria-hidden="true" class="hover_anchor" href="#エスクローを作成する"><i class="fa fa-link"></i></a></h3>
+<p>条件付きエスクローは、通常のエスクローと似ています。エスクローで資金を確保し、受取人が資金を利用できることを保証します。違いは、レジャー上の条件付きエスクローには<code>Condition</code>が付加されており、これが資金をロックする役割を担っていることです。レジャーは、対応する<code>Fulfillment</code>フィールドを持つ<code>EscrowFinish</code>トランザクションが送信されるまで、これらの資金を解放しません。<code>Condition</code>と<code>Fulfillment</code>フィールドは、エスクローの錠と鍵のようなものであると考えることができます。</p>
+<p><a href="escrowcreate.html"><code>EscrowCreate</code></a>をご覧ください。</p>
+<h3 id="オラクルの確立">オラクルの確立<a aria-hidden="true" class="hover_anchor" href="#オラクルの確立"><i class="fa fa-link"></i></a></h3>
+<p>オラクルとは、スマートコントラクトを履行または無効化するために、現実世界のイベントを検証することができる中立的な第三者エージェントのことです。オラクルは、conditionとfulfillmentを生成し、conditionの条件が満たされるまでfulfillmentを秘密にすることで、条件付きエスクローを機能させるために不可欠です。</p>
+<p>スマートコントラクトの文脈では、オラクルは現実世界のデータを読み取ることができるソフトウェアであることが大半でしょう。オラクルには、当事者間の契約条件がプログラムされ、conditionとfulfillmentの16進数値を生成することになります。</p>
+<p>オラクルは、エスクロー作成者に条件となる16進数の値を与え、エスクローの初期設定を可能にします。</p>
+<p>オラクルのプログラムが条件を満たしたことを検知した後、エスクローの受取人にfulfillmentの16進数値を渡します。この時点以降、オラクルはエスクローを終了させるなど、何も行いません。エスクローの受取人は、ほとんどの場合、エスクローを終了することになります。</p>
+<p><a href="send-a-conditionally-held-escrow.html#1条件とフルフィルメントの生成">conditionとfulfillmentの生成</a>をご覧ください。</p>
+<h2 id="例">例<a aria-hidden="true" class="hover_anchor" href="#例"><i class="fa fa-link"></i></a></h2>
+<p>スマートコントラクトの用途は多岐にわたりますが、いくつかの用途を紹介します。</p>
 <ol>
-<li>Handling payments on large-value items you would otherwise need lawyers for, such as mortgages.</li>
-<li>Supply-chain management to ensure funds are delivered upon receipt of goods.</li>
-<li>Automating certain kinds of insurance claims that can be verified by software.</li>
-<li>Ensuring payments are given for services rendered.</li>
+<li>住宅ローンなど、本来なら弁護士が必要な高額商品の支払いへの対応。</li>
+<li>商品の受け取りと同時に資金を届けるサプライチェーンマネジメント。</li>
+<li>ソフトウェアで確認できる特定の種類の保険金請求の自動化。</li>
+<li>提供されたサービスに対する支払いの保証。</li>
 </ol>
     </div>
   </article>
@@ -458,22 +359,22 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -503,17 +404,17 @@
     <nav class="nav flex-column show " id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -530,7 +431,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -538,22 +439,22 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -574,7 +475,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       

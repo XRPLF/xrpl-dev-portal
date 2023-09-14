@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Restricting Deposits - XRPL.org (日本語)</title>
+    <title>入金の制限 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Restricting Deposits | XRPL.org (日本語)">
+    <meta property="og:title" content="入金の制限 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/restricting-deposits-uc.html" />
-    <meta property="og:description" content="Checks enable users to create deferred payments similar to personal paper checks." />
-    <meta name="description" content="Checks enable users to create deferred payments similar to personal paper checks." />
+    <meta property="og:description" content="Checkは、紙の小切手と同じように後払い決済を行うことができます。" />
+    <meta name="description" content="Checkは、紙の小切手と同じように後払い決済を行うことができます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": ['Transactions']
+      "page_labels": ['トランザクション']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -89,102 +89,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-
-
-<!-- Inline script to conditionally display the banner -->
-  <script>
-    // Get the user's location using the provided JavaScript code
-    let userLocation = window.Osano.cm.countryCode;
-
-    // List of countries for which we want to serve the banner
-    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
-
-    // Check if the user's location is in the list of target countries
-    let isTargetCountry = targetCountries.includes(userLocation);
-
-    if (isTargetCountry) {
-      // Define the banner HTML with the countdown timer
-      let token2049bannerHTML = `
-        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
-            <div class="box">
-              <div id="js-clock-days" class="clock-number">00</div>
-              <div class="clock-label">Days</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-hours" class="clock-number">00</div>
-              <div class="clock-label">Hrs</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-minutes" class="clock-number">00</div>
-              <div class="clock-label">Min</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-seconds" class="clock-number">00</div>
-              <div class="clock-label">Sec</div>
-            </div>
-          </div>
-          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
-          <span class="d-inline-block">XRPL Zone </span>
-          <span class="token-highlight d-inline-block">@Token2049</span></div>
-           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
-           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
-            <div class="token-circled d-none d-lg-inline-block highlight-purple">今すぐ登録</div>
-        </a>
-      `;
-
-      // Write the banner directly to the document
-      document.write(token2049bannerHTML);
-
-      var deadline = '2023/09/13 08:00';
-
-      function pad(num, size) {
-        var s = "0" + num;
-        return s.substr(s.length - size);
-      }
-
-      function parseDate(date) {
-        const parsed = Date.parse(date);
-        if (!isNaN(parsed)) return parsed
-        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
-      }
-
-      function getTimeRemaining(endtime) {
-        let total = parseDate(endtime) - Date.parse(new Date())
-        let seconds = Math.floor((total / 1000) % 60)
-        let minutes = Math.floor((total / 1000 / 60) % 60)
-        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-        let days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-        return { total, days, hours, minutes, seconds };
-      }
-
-      function clock(id, endtime) {
-        let days = document.getElementById(id + '-days')
-        let hours = document.getElementById(id + '-hours')
-        let minutes = document.getElementById(id + '-minutes')
-        let seconds = document.getElementById(id + '-seconds')
-
-        var timeinterval = setInterval(function () {
-          var time = getTimeRemaining(endtime);
-
-          if (time.total <= 0) {
-            clearInterval(timeinterval);
-          } else {
-            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
-            hours.innerHTML = pad(time.hours, 2);
-            minutes.innerHTML = pad(time.minutes, 2);
-            seconds.innerHTML = pad(time.seconds, 2);
-          }
-        }, 1000);
-      }
-      clock('js-clock', deadline);
-    }
-  </script>
-
-
-
 
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
@@ -353,12 +257,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/rm-apex-banner/content/use-cases/payments/restricting-deposits-uc.md?pr=/XRPLF/xrpl-dev-portal/pull/2128" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/rm-apex-banner/content/use-cases/payments/restricting-deposits-uc.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2128" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-transactions">Transactions</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Transactions" -->
+      <span class="label label-トランザクション">トランザクション</span>
+      <!-- TEMPLATE WARNING: no label landing found for "トランザクション" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -366,11 +270,11 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#restricting-deposits">Restricting Deposits</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#set-up-deposit-authorization">Set Up Deposit Authorization</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#preauthorized-accounts">Preauthorized Accounts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#accepting-deposits-from-unauthorized-accounts">Accepting Deposits from Unauthorized Accounts</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#checks">Checks</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#入金の制限">入金の制限</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#デポジット認可のセットアップ">デポジット認可のセットアップ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#アカウントの事前認可">アカウントの事前認可</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#未認可のアカウントからの入金を許可する">未認可のアカウントからの入金を許可する</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#check">Check</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#escrow">Escrow</a></li>
       </ul>
   </div>
@@ -389,37 +293,34 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/use-cases.html">ユースケース</a></li>
     <li class="active breadcrumb-item"><a href="/ja/payments-uc.html">Payment</a></li>
-    <li class="active breadcrumb-item">Restricting Deposits</li>
+    <li class="active breadcrumb-item">入金の制限</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="restricting-deposits">Restricting Deposits<a aria-hidden="true" class="hover_anchor" href="#restricting-deposits"><i class="fa fa-link"></i></a></h1>
-<p>To comply with banking regulations, financial institutions must provide documentation about the sources of funds they receive. These regulations seek to prevent illicit activity by requiring institutions to track the source and destination of all payments they process. On the XRP Ledger, payments can be sent and received without any interaction from the receiver. This default behavior can be problematic, but you can enable deposit authorization so you only receive funds you explicitly approve.</p>
-<p>Accounts with deposit authorization enabled can only receive funds through:</p>
+        <h1 id="入金の制限">入金の制限<a aria-hidden="true" class="hover_anchor" href="#入金の制限"><i class="fa fa-link"></i></a></h1>
+<p>銀行に関する規制を遵守するため、金融機関は受け取った資金の出所に関する書類を提出する必要があります。これらの規制は、金融機関が処理するすべての支払いの出所と行き先を追跡することを義務付け、不正な活動を防止することを目的としています。XRP Ledgerでは、支払いは受取人からのインタラクションなしに送受信することができます。このデフォルトの動作には問題がありますが、デポジット認可を有効にすることで、明示的に認可した資金のみを受け取ることができます。</p>
+<p>デポジット認可が有効になっているアカウントでは、次のような場合のみ資金を受け取ることができます。</p>
 <ul>
-<li>Preauthorized Accounts</li>
-<li>Checks</li>
-<li>Escrow</li>
+<li>事前認可されたアカウント</li>
+<li>チェック</li>
+<li>エスクロー</li>
 </ul>
-<!-- - Payment Channels -->
-<h2 id="set-up-deposit-authorization">Set Up Deposit Authorization<a aria-hidden="true" class="hover_anchor" href="#set-up-deposit-authorization"><i class="fa fa-link"></i></a></h2>
-<p>To enable deposit authorization, use the <code>AccountSet</code> transaction to set the <code>asfDepositAuth</code> flag. See: <a href="depositauth.html">Deposit Authorization</a>.</p>
-<h2 id="preauthorized-accounts">Preauthorized Accounts<a aria-hidden="true" class="hover_anchor" href="#preauthorized-accounts"><i class="fa fa-link"></i></a></h2>
-<p>When you enable deposit authorization, your account blocks all incoming transactions unless you specifically <em>okay</em> them. This may be what you're looking for, but it can be cumbersome if you're working with high volumes of transactions. If you have trusted vendors or accounts, you can preauthorize them so that you don't have to approve transactions from them.</p>
-<p>Preauthorized accounts are currency-agnostic, meaning you can't specify which currencies to authorize. It's all or nothing.</p>
-<p>See: <a href="depositpreauth.html">DepositPreauth</a>.</p>
-<h2 id="accepting-deposits-from-unauthorized-accounts">Accepting Deposits from Unauthorized Accounts<a aria-hidden="true" class="hover_anchor" href="#accepting-deposits-from-unauthorized-accounts"><i class="fa fa-link"></i></a></h2>
-<p>You can still work with unauthorized accounts, even after enabling deposit authorization. There are several payment methods that enable you to do so.</p>
-<h3 id="checks">Checks<a aria-hidden="true" class="hover_anchor" href="#checks"><i class="fa fa-link"></i></a></h3>
-<p>Checks are a straightforward, familiar, and flexible way to transfer funds when deposit authorization is enabled. Checks are a two-part payment method. The sender creates the check, and then the receiver has to cash the check. Cashing the check is your explicit approval of the deposit.</p>
-<p>While this method is the simplest, it doesn't guarantee the funds. Checks are deferred payments, meaning funds aren't moved until the moment you try to cash the check. It's possible for the sending account to not have the necessary funds at the time the check is cashed, which can cause delays or other headaches, depending on your business.</p>
-<p>See: <a href="use-checks.html">Use Checks</a>.</p>
+<!-- - ペイメントチャネル -->
+<h2 id="デポジット認可のセットアップ">デポジット認可のセットアップ<a aria-hidden="true" class="hover_anchor" href="#デポジット認可のセットアップ"><i class="fa fa-link"></i></a></h2>
+<p>デポジット認可を有効にするには、<code>AccountSet</code>トランザクションを使用して<code>asfDepositAuth</code>フラグを設定します。<a href="depositauth.html">デポジット認可</a>をご覧ください。</p>
+<h2 id="アカウントの事前認可">アカウントの事前認可<a aria-hidden="true" class="hover_anchor" href="#アカウントの事前認可"><i class="fa fa-link"></i></a></h2>
+<p>デポジット認可を有効にすると、アカウントは、あなたが特に許可しない限り、すべての受信トランザクションをブロックします。これは、あなたの求めていることかもしれませんが、大量のトランザクションを扱う場合、面倒になることがあります。信頼できる業者やアカウントがある場合は、それらの業者からのトランザクションを認可する必要がないように、事前認可することができます。</p>
+<p>事前認可されたアカウントによる支払いは通貨を問わないので、認可する通貨を指定することはできません。すべてを認可するか認可しないかです。</p>
+<p><a href="depositpreauth.html">デポジットの事前認可</a>をご覧ください。</p>
+<h2 id="未認可のアカウントからの入金を許可する">未認可のアカウントからの入金を許可する<a aria-hidden="true" class="hover_anchor" href="#未認可のアカウントからの入金を許可する"><i class="fa fa-link"></i></a></h2>
+<p>デポジット認可を有効にした後でも、未認可のアカウントから支払いを行うこととは可能です。それを可能にするいくつかの方法があります。</p>
+<h3 id="check">Check<a aria-hidden="true" class="hover_anchor" href="#check"><i class="fa fa-link"></i></a></h3>
+<p>Checkは、デポジット認可が有効な場合、シンプルで親しみやすく、柔軟な資金移動方法です。Checkは、2つの要素から構成される支払い方法です。送信者がCheckを作成し、受信者がそのCheckを現金化する必要があります。Checkを現金化するとは、入金を明示的に承認することです。</p>
+<p>この方法は最もシンプルですが、資金が保証されるわけではありません。Checkは後払いであり、Checkを現金化しようとする瞬間まで資金は動きません。Checkを現金化するときに、送金側のアカウントに必要な資金がない可能性があり、ビジネスによっては遅延やその他の問題を引き起こす可能性があります。</p>
+<p><a href="use-checks.html">Checkの利用</a>をご覧ください。</p>
 <h3 id="escrow">Escrow<a aria-hidden="true" class="hover_anchor" href="#escrow"><i class="fa fa-link"></i></a></h3>
-<p>If you require a guarantee of funds at the time of deposit, another option is to have deposits made with an escrow. Like regular escrows, a sender sets aside funds on the ledger, effectively locking them up until certain conditions are met. This guarantees the funds will be available when you close the escrow to release the funds.</p>
-<p>See: <a href="use-escrows.html">Use Escrows</a>.</p>
+<p>入金時の資金保証が必要な場合は、エスクローで入金してもらう方法もあります。通常のエスクローと同様に、送金者はレジャーに資金を確保し、一定の条件が満たされるまで資金を効果的にロックします。これにより、エスクローを閉じて資金を放出するときに、資金が利用できることが保証されます。</p>
+<p><a href="use-escrows.html">エスクローの利用</a>をご覧ください。</p>
 <!-- Need a better understanding of Payment Channels use cases.
 
 ### Payment Channels
@@ -477,22 +378,22 @@ Repeating this process, you would eventually settle on the final amount due, whe
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -522,17 +423,17 @@ Repeating this process, you would eventually settle on the final amount due, whe
     <nav class="nav flex-column show " id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -549,7 +450,7 @@ Repeating this process, you would eventually settle on the final amount due, whe
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -557,22 +458,22 @@ Repeating this process, you would eventually settle on the final amount due, whe
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -593,7 +494,7 @@ Repeating this process, you would eventually settle on the final amount due, whe
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       

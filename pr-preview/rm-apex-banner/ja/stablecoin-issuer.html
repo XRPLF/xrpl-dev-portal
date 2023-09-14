@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Stablecoin Issuer - XRPL.org (日本語)</title>
+    <title>ステーブルコインの発行者 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Stablecoin Issuer | XRPL.org (日本語)">
+    <meta property="og:title" content="ステーブルコインの発行者 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/stablecoin-issuer.html" />
-    <meta property="og:description" content="Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger." />
-    <meta name="description" content="Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger." />
+    <meta property="og:description" content="XRP Ledgerの外部の同価値の資産に基づき、独自のステーブルコインを発行する。" />
+    <meta name="description" content="XRP Ledgerの外部の同価値の資産に基づき、独自のステーブルコインを発行する。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": ['Tokens']
+      "page_labels": ['トークン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -89,102 +89,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-
-
-<!-- Inline script to conditionally display the banner -->
-  <script>
-    // Get the user's location using the provided JavaScript code
-    let userLocation = window.Osano.cm.countryCode;
-
-    // List of countries for which we want to serve the banner
-    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
-
-    // Check if the user's location is in the list of target countries
-    let isTargetCountry = targetCountries.includes(userLocation);
-
-    if (isTargetCountry) {
-      // Define the banner HTML with the countdown timer
-      let token2049bannerHTML = `
-        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
-            <div class="box">
-              <div id="js-clock-days" class="clock-number">00</div>
-              <div class="clock-label">Days</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-hours" class="clock-number">00</div>
-              <div class="clock-label">Hrs</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-minutes" class="clock-number">00</div>
-              <div class="clock-label">Min</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-seconds" class="clock-number">00</div>
-              <div class="clock-label">Sec</div>
-            </div>
-          </div>
-          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
-          <span class="d-inline-block">XRPL Zone </span>
-          <span class="token-highlight d-inline-block">@Token2049</span></div>
-           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
-           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
-            <div class="token-circled d-none d-lg-inline-block highlight-purple">今すぐ登録</div>
-        </a>
-      `;
-
-      // Write the banner directly to the document
-      document.write(token2049bannerHTML);
-
-      var deadline = '2023/09/13 08:00';
-
-      function pad(num, size) {
-        var s = "0" + num;
-        return s.substr(s.length - size);
-      }
-
-      function parseDate(date) {
-        const parsed = Date.parse(date);
-        if (!isNaN(parsed)) return parsed
-        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
-      }
-
-      function getTimeRemaining(endtime) {
-        let total = parseDate(endtime) - Date.parse(new Date())
-        let seconds = Math.floor((total / 1000) % 60)
-        let minutes = Math.floor((total / 1000 / 60) % 60)
-        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-        let days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-        return { total, days, hours, minutes, seconds };
-      }
-
-      function clock(id, endtime) {
-        let days = document.getElementById(id + '-days')
-        let hours = document.getElementById(id + '-hours')
-        let minutes = document.getElementById(id + '-minutes')
-        let seconds = document.getElementById(id + '-seconds')
-
-        var timeinterval = setInterval(function () {
-          var time = getTimeRemaining(endtime);
-
-          if (time.total <= 0) {
-            clearInterval(timeinterval);
-          } else {
-            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
-            hours.innerHTML = pad(time.hours, 2);
-            minutes.innerHTML = pad(time.minutes, 2);
-            seconds.innerHTML = pad(time.seconds, 2);
-          }
-        }, 1000);
-      }
-      clock('js-clock', deadline);
-    }
-  </script>
-
-
-
 
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
@@ -353,12 +257,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/rm-apex-banner/content/use-cases/tokenization/stablecoin-issuer.md?pr=/XRPLF/xrpl-dev-portal/pull/2128" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/rm-apex-banner/content/use-cases/tokenization/stablecoin-issuer.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2128" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-tokens">Tokens</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Tokens" -->
+      <span class="label label-トークン">トークン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "トークン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -366,53 +270,53 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#stablecoin-issuer">Stablecoin Issuer</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#background-information">Background Information</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#trust-lines-and-tokens">Trust Lines and Tokens</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#ステーブルコインの発行者">ステーブルコインの発行者</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#背景情報">背景情報</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#トラストラインとトークン">トラストラインとトークン</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#xrp">XRP</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#liquidity-and-trading">Liquidity and Trading</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#suggested-business-practices">Suggested Business Practices</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#hot-and-cold-wallets">Hot and Cold Wallets</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#fees-and-revenue-sources">Fees and Revenue Sources</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#choosing-fee-rates">Choosing Fee Rates</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#compliance-guidelines">Compliance Guidelines</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#流動性と取引">流動性と取引</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#推奨されるビジネスプラクティス">推奨されるビジネスプラクティス</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ホットウォレットとコールドウォレット">ホットウォレットとコールドウォレット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#手数料および収益源">手数料および収益源</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#手数料の選択">手数料の選択</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#コンプライアンス指針">コンプライアンス指針</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#know-your-customer-kyc">Know Your Customer (KYC)</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#anti-money-laundering-aml-and-combating-the-financing-of-terrorism-cft">Anti-Money Laundering (AML) and Combating the Financing of Terrorism (CFT)</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#source-of-funds">Source of Funds</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#suspicious-activity-reporting">Suspicious Activity Reporting</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#travel-rule">Travel Rule</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#fee-disclosure-and-tracing-funds">Fee Disclosure and Tracing Funds</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#office-of-foreign-assets-control-ofac">Office of Foreign Assets Control (OFAC)</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#guidance-on-virtual-currency-and-money-service-business">Guidance on Virtual Currency and Money Service Business</a></li>
-        <li class="nav-item level-1"><a class="nav-link" href="#xrp-ledger-integration">XRP Ledger Integration</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#before-integration">Before Integration</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#sending-into-the-xrp-ledger">Sending into the XRP Ledger</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#requirements-for-sending-to-xrp-ledger">Requirements for Sending to XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#sending-from-xrp-ledger">Sending from XRP Ledger</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#requirements-for-receiving-from-xrp-ledger">Requirements for Receiving from XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#precautions">Precautions</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#trading-on-the-xrp-ledger">Trading on the XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#freeze">Freeze</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#authorized-trust-lines">Authorized Trust Lines</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#source-and-destination-tags">Source and Destination Tags</a></li>
-        <li class="nav-item level-1"><a class="nav-link" href="#technical-details">Technical Details</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#infrastructure">Infrastructure</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#apis-and-middleware">APIs and Middleware</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#tool-security">Tool Security</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#issuer-setup">Issuer Setup</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#マネーロンダリング防止amlおよびテロ資金調達対策cftについて">マネーロンダリング防止(AML)およびテロ資金調達対策(CFT)について</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#資金源">資金源</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#不審行為報告書">不審行為報告書</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#トラベルルール">トラベルルール</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#手数料の開示と資金の追跡">手数料の開示と資金の追跡</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#外国資産管理局ofac">外国資産管理局(OFAC)</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#仮想通貨マネーサービス事業に関する指針について">仮想通貨・マネーサービス事業に関する指針について</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#xrp-ledgerの統合">XRP Ledgerの統合</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#統合前">統合前</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledgerへの送金">XRP Ledgerへの送金</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#xrp-ledgerへ送金するための要件">XRP Ledgerへ送金するための要件</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledgerからの送金">XRP Ledgerからの送金</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#xrp-ledgerへの入金の要件">XRP Ledgerへの入金の要件</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#注意事項">注意事項</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledger上での取引">XRP Ledger上での取引</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#凍結">凍結</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#認可トラストライン">認可トラストライン</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#送信タグと宛先タグ">送信タグと宛先タグ</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#技術的な内容">技術的な内容</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#インフラストラクチャ">インフラストラクチャ</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#apiとミドルウェア">APIとミドルウェア</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ツールのセキュリティ">ツールのセキュリティ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#発行者のセットアップ">発行者のセットアップ</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#default-ripple">Default Ripple</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#deposit-authorization">Deposit Authorization</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#disallow-xrp">Disallow XRP</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#require-auth">Require Auth</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#tick-size">Tick Size</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#transfer-fees">Transfer Fees</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#transfer-fees-with-operational-and-standby-addresses">Transfer Fees with Operational and Standby Addresses</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#robustly-monitoring-for-payments">Robustly Monitoring for Payments</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#sending-payments-to-customers">Sending Payments to Customers</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#bouncing-payments">Bouncing Payments</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#reliable-transaction-submission">Reliable Transaction Submission</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledgertoml-file">xrp-ledger.toml File</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#運用アドレスと待機アドレスによる送金手数料">運用アドレスと待機アドレスによる送金手数料</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#支払いに関するモニタリングの徹底">支払いに関するモニタリングの徹底</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#顧客への支払いを送信">顧客への支払いを送信</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#不明な入金の返金">不明な入金の返金</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#信頼性の高いトランザクションの送信">信頼性の高いトランザクションの送信</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledgertoml-ファイル">xrp-ledger.toml ファイル</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -430,461 +334,454 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/use-cases.html">ユースケース</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokenization.html">Tokenization</a></li>
-    <li class="active breadcrumb-item">Stablecoin Issuer</li>
+    <li class="active breadcrumb-item">ステーブルコインの発行者</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="stablecoin-issuer">Stablecoin Issuer<a aria-hidden="true" class="hover_anchor" href="#stablecoin-issuer"><i class="fa fa-link"></i></a></h1>
-<p><strong>Stablecoin</strong> are <a href="tokens.html">tokens</a> that are backed by assets in the outside world. Stablecoins allow users to transact in familiar currencies, and provide a convenient way to get funds into and out of the blockchain. In exchange for providing these services, stablecoin issuers can earn revenue in various ways, such as fees on withdrawals or transfers of the stablecoin.</p>
-<p>While anyone can issue a token with any currency code in the XRP Ledger, stablecoins' value comes from the promise that they can be redeemed for the corresponding assets. Issuing a stablecoin may also involve regulatory obligations, which vary by jurisdiction. For these reasons, issuing a stablecoin generally requires a reputable business.</p>
-<p class="devportal-callout note"><strong>Note:</strong> Stablecoin issuers on the XRP Ledger were formerly called "gateways".</p>
-<p>This article provides information you should know before issuing a stablecoin, summarizes the choices involved in setting up a stablecoin issuer, and provides resources for implementing the technical integration with the XRP Ledger.</p>
-<h2 id="background-information">Background Information<a aria-hidden="true" class="hover_anchor" href="#background-information"><i class="fa fa-link"></i></a></h2>
-<h3 id="trust-lines-and-tokens">Trust Lines and Tokens<a aria-hidden="true" class="hover_anchor" href="#trust-lines-and-tokens"><i class="fa fa-link"></i></a></h3>
-<p>All assets in the XRP Ledger, except for the native cryptocurrency XRP, are represented as <em>tokens</em>, which are tied to a specific issuer who defines their meaning. The XRP Ledger has a system of directional accounting relationships, called <em>trust lines</em>, to make sure that users can only hold and receive the tokens they want.</p>
-<p>Tokens that are backed by funds in some outside system are sometimes called <em>stablecoins</em>. This includes tokens backed by fiat currency in a bank account, by cryptocurrencies on another blockchain, or other types of assets and forms of value. The term "stablecoin" comes from the idea that the exchange rate between the token and the asset it represents should be "stable" at 1:1 (minus fees).</p>
-<p>For more information, see <a href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>.</p>
+        <h1 id="ステーブルコインの発行者">ステーブルコインの発行者<a aria-hidden="true" class="hover_anchor" href="#ステーブルコインの発行者"><i class="fa fa-link"></i></a></h1>
+<p><strong>ステーブルコイン</strong>は、外部世界の資産に裏付けられた<a href="tokens.html">トークン</a>です。ステーブルコインにより、ユーザは身近な通貨で取引を行うことができ、ブロックチェーンへの資金の出し入れを便利にすることができます。ステーブルコインの発行者は、これらのサービスを提供する代わりに、ステーブルコインの出金や送金にかかる手数料など、さまざまな方法で収益を得ることができます。</p>
+<p>XRP Ledgerでは、誰でも任意の通貨コードを持つトークンを発行することができますが、ステーブルコインの価値は、対応する資産と交換できるという保証に基づきます。また、ステーブルコインの発行には、管轄区域によって異なる規制上の制約がある場合があります。これらの理由から、一般的に、ステーブルコインの発行には、信頼できる事業者が必要です。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> XRP Ledger上のステーブルコイン発行者は、以前は「ゲートウェイ」と呼ばれていました。</p>
+<p>この記事では、ステーブルコインを発行する前に知っておくべき情報、ステーブルコイン発行者の設定に関わる選択肢のまとめ、XRP Ledgerとの技術統合を実装するためのリソースを提供します。</p>
+<h2 id="背景情報">背景情報<a aria-hidden="true" class="hover_anchor" href="#背景情報"><i class="fa fa-link"></i></a></h2>
+<h3 id="トラストラインとトークン">トラストラインとトークン<a aria-hidden="true" class="hover_anchor" href="#トラストラインとトークン"><i class="fa fa-link"></i></a></h3>
+<p>ネイティブ暗号通貨であるXRPを除くXRP Ledgerのすべての資産は、 <em>トークン</em> として表され、その意味を定義する特定の発行者に結びつけられています。XRP Ledgerは、ユーザが望むトークンだけを保有し、受け取ることができるようにするために、 <em>トラストライン</em> と呼ばれる双方向のアカウントの関係を持つシステムを備えています。</p>
+<p>何らかの外部システムの資金に裏打ちされたトークンは、 <em>ステーブルコイン</em> と呼ばれることがあります。これには、銀行口座の不換紙幣、別のブロックチェーン上の暗号通貨、あるいは他の種類の資産や価値の形態に裏打ちされたトークンが含まれます。「ステーブルコイン」という言葉は、トークンとそれが表す資産との交換レートが1：1(手数料を差し引いた値)で「安定」しているという考えに由来しています。</p>
+<p>より詳細な情報は<a href="trust-lines-and-issuing.html">トラストラインとトークン発行</a>をご覧ください。</p>
 <h3 id="xrp">XRP<a aria-hidden="true" class="hover_anchor" href="#xrp"><i class="fa fa-link"></i></a></h3>
-<p><strong>XRP</strong> is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other. This helps make XRP a convenient bridge currency.</p>
-<p>Token issuers do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to meet the reserve requirement and pay the cost of sending transactions through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy issuer.</p>
-<p>For more information, see <a href="what-is-xrp.html">What is XRP?</a>, <a href="reserves.html">Reserves</a>, and <a href="transaction-cost.html">Transaction Cost</a></p>
-<h3 id="liquidity-and-trading">Liquidity and Trading<a aria-hidden="true" class="hover_anchor" href="#liquidity-and-trading"><i class="fa fa-link"></i></a></h3>
-<p>The XRP Ledger contains a decentralized exchange, where any user can place and fulfill bids to exchange XRP and tokens in any combination. The decentralized exchange also provides the liquidity that makes atomic <a href="cross-currency-payments.html">cross-currency payments</a> possible.</p>
-<p>Stablecoin issuers aren't required to use the decentralized exchange directly, but all tokens are automatically available for trading. If a token is widely used, users should naturally trade it among themselves, creating liquidity to other popular assets. An issuer <em>may</em> want to provide liquidity to XRP or other popular tokens at a baseline rate, especially when their token is new. If a stablecoin issuer does provide liquidity, a best practice is to <strong>use different addresses for trading and for issuing.</strong></p>
-<p>For more information on the decentralized exchange, see <a href="decentralized-exchange.html">Decentralized Exchange</a>.</p>
-<h2 id="suggested-business-practices">Suggested Business Practices<a aria-hidden="true" class="hover_anchor" href="#suggested-business-practices"><i class="fa fa-link"></i></a></h2>
-<p>The value of a stablecoin issuer's tokens in the XRP Ledger comes directly from the trust that customers can redeem the tokens when needed. To reduce the risk of business interruptions, you should follow these best practices:</p>
+<p><strong>XRP</strong>は、XRP Ledgerのネイティブ暗号通貨です。XRPは、どのXRP Ledgerのアドレスからでも、他のアドレスに直接送ることができます。これはXRPをブリッジ通貨として活用するのに便利です。</p>
+<p>トークン発行者は、XRPを蓄積したり交換したりする必要はありません。準備金要件を満たし、ネットワークを通じてトランザクションを送信するコストを支払うために、少量のXRP残高を保有する必要があるだけです。XRP換算で10USドルあれば、取引量の多い発行者にとっては、少なくとも1年間のトランザクションコストを賄えるはずです。</p>
+<p>より詳細な情報は<a href="what-is-xrp.html">XRPとは？</a>や<a href="reserves.html">準備金</a>、<a href="transaction-cost.html">トランザクションコスト</a>をご覧ください。</p>
+<h3 id="流動性と取引">流動性と取引<a aria-hidden="true" class="hover_anchor" href="#流動性と取引"><i class="fa fa-link"></i></a></h3>
+<p>XRP Ledgerには分散型取引所があり、どのユーザもXRPとトークンを任意の組み合わせで交換するための注文を出し、それを約定することができます。分散型取引所は、アトミックな<a href="cross-currency-payments.html">クロスカレンシー決済</a>を可能にする流動性も提供します。</p>
+<p>ステーブルコインの発行者は、分散型取引所を直接利用する必要はありませんが、すべてのトークンは自動的に取引可能になります。トークンが広く使われていれば、ユーザ同士で自然に取引され、他の人気アセットへの流動性が生まれるはずです。発行者は、特にそのトークンが新しい場合、XRPや他の人気のあるトークンに基準レートで流動性を提供したいと考えるかもしれません。ステーブルコインの発行者が流動性を提供する場合のベストプラクティスは、<strong>取引用と発行用で異なるアドレスを使用することです</strong>。</p>
+<p>分散型取引所の詳細については、<a href="decentralized-exchange.html">分散型取引所</a>をご覧ください。</p>
+<!-- TODO: figure out what to do with this 
+Liquidity providers can use the [HTTP / WebSocket APIs](http-websocket-apis.html), [client libraries](client-libraries.html), or another application to access the distributed exchange. It may also help client applications to display information about your business if you provide an [`xrp-ledger.toml` file](xrp-ledger-toml.html).
+-->
+<h2 id="推奨されるビジネスプラクティス">推奨されるビジネスプラクティス<a aria-hidden="true" class="hover_anchor" href="#推奨されるビジネスプラクティス"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerにおけるステーブルコイン発行者のトークンの価値は、顧客が必要なときにトークンを換金できるという信頼に直結します。事業停止のリスクを減らすには、以下のベストプラクティスに従う必要があります。</p>
 <ul>
-<li>Use separate <a href="account-types.html">Issuing and Operational Addresses</a> to limit your risk profile on the network.</li>
-<li>Follow anti-money-laundering regulations for your jurisdiction, such as the <a class="external-link" href="http://en.wikipedia.org/wiki/Bank_Secrecy_Act" target="_blank">Bank Secrecy Act <i aria-hidden="true" class="fa fa-external-link"></i></a>. This usually includes requirements to collect <a class="external-link" href="http://en.wikipedia.org/wiki/Know_your_customer" target="_blank">"Know-Your-Customer" (KYC) information <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
-<li>Complete the XRP Ledger Foundation's <a class="external-link" href="https://foundation.xrpl.org/token-assessment-framework/" target="_blank">token issuer self-assessment <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
-<li>Publicize all your policies and fees.</li>
-<li>Provide an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a> with domain verification so client applications can display relevant details about you.</li>
+<li>ネットワーク上のリスク要因を限定するため、<a href="account-types.html">発行・運用アドレス</a>を分けて使用する。</li>
+<li><a class="external-link" href="http://en.wikipedia.org/wiki/Bank_Secrecy_Act" target="_blank">銀行秘密保護法 <i aria-hidden="true" class="fa fa-external-link"></i></a>など、管轄区域のマネーロンダリング防止規制に従う。これには通常、<a class="external-link" href="https://ja.wikipedia.org/wiki/KYC" target="_blank">"Know-Your-Customer" (KYC) 情報 <i aria-hidden="true" class="fa fa-external-link"></i></a>を収集する要件が含まれます。</li>
+<li>XRP Ledger財団の<a class="external-link" href="https://foundation.xrpl.org/token-assessment-framework/" target="_blank">トークン発行者自己評価 <i aria-hidden="true" class="fa fa-external-link"></i></a>を完了する。</li>
+<li>すべての方針と手数料を公表する。</li>
 </ul>
-<h3 id="hot-and-cold-wallets">Hot and Cold Wallets<a aria-hidden="true" class="hover_anchor" href="#hot-and-cold-wallets"><i class="fa fa-link"></i></a></h3>
-<p>In the XRP Ledger, financial institutions typically use multiple XRP Ledger addresses to minimize the risk associated with a compromised secret key. The industry standard is to separate roles as follows:</p>
+<h3 id="ホットウォレットとコールドウォレット">ホットウォレットとコールドウォレット<a aria-hidden="true" class="hover_anchor" href="#ホットウォレットとコールドウォレット"><i class="fa fa-link"></i></a></h3>
+<p>XRP Ledgerでは、金融機関は秘密鍵の漏えいに関連するリスクを最小限に抑えるために、複数のXRP Ledgerアドレスを使用するのが一般的です。業界標準では、以下のような役割分担をしています。</p>
 <ul>
-<li>One <strong>issuing address</strong>, also known as a "cold wallet." This address is the hub of the financial institution's accounting relationships in the ledger, but sends as few transactions as possible. <!-- STYLE_OVERRIDE: cold wallet, wallet --></li>
-<li>One or more <strong>operational addresses</strong>, also known as "hot wallets." Automated, internet-connected systems use the secret keys to these addresses to conduct day-to-day business like transfers to customers and partners. <!-- STYLE_OVERRIDE: hot wallet, wallet --></li>
-<li>Optional <strong>standby addresses</strong>, also known as "warm wallets." Trusted human operators use these addresses to transfer money to the operational addresses. <!-- STYLE_OVERRIDE: warm wallet, wallet --></li>
+<li>1つの<strong>発行アドレス</strong>。「コールドウォレット」とも呼ばれます。このアドレスは、レジャーでの金融機関の会計上の関係の中心となるものですが、トランザクションの送信は可能な限り少なく抑えます。</li>
+<li>1つ以上の<strong>運用アドレス</strong>。「ホットウォレット」とも呼ばれます。インターネットに接続した自動システムが、これらのアドレスへの秘密鍵を使用して、顧客やパートナーへの送金といった日常業務を実施します。</li>
+<li>オプションの<strong>待機アドレス</strong>。「ウォームウォレット」とも呼ばれます。信頼できる人間のオペレーターが、これらのアドレスを使用して運用アドレスに送金します。</li>
 </ul>
-<p>Main article: <a href="account-types.html">Issuing and Operational Addresses</a></p>
-<h2 id="fees-and-revenue-sources">Fees and Revenue Sources<a aria-hidden="true" class="hover_anchor" href="#fees-and-revenue-sources"><i class="fa fa-link"></i></a></h2>
-<p>A stablecoin issuer can earn revenue in a variety of ways, including:</p>
+<p>主な記事: <a href="account-types.html">発行アドレスと運用アドレス</a></p>
+<h2 id="手数料および収益源">手数料および収益源<a aria-hidden="true" class="hover_anchor" href="#手数料および収益源"><i class="fa fa-link"></i></a></h2>
+<p>ステーブルコイン発行者は、以下のような様々な方法で収益を得ることができます。</p>
 <ul>
-<li>Withdrawal or Deposit fees. The issuer can charge a small fee (such as 1%) for the service of moving money into or out of the XRP Ledger. This fee isn't assessed on the XRP Ledger, but in the issuer's own systems when deciding how much to issue or credit users.</li>
-<li>Transfer fees. The issuer can set a percentage fee to charge when users transfer the stablecoin within the XRP Ledger. This amount is debited from the XRP Ledger whenever users transact, decreasing the total obligation the stablecoin issuer owes to its users in the ledger without decreasing the amount of assets the issuer holds outside of the ledger.</li>
-<li>Indirect revenue from value added. Stablecoins provide convenient functionality that can ease the adoption of other, adjacent services.</li>
-<li>Interest on collateral. The issuer can hold the assets backing the stablecoin in an interest-earning account. Of course, they must make sure that they can always access enough funds to serve customer withdrawals.</li>
-<li>Financial exchange. The business can buy and sell its own stablecoins in the decentralized exchange, providing liquidity to cross-currency payments and possibly making a profit. (As with all financial exchange, profits are not guaranteed.)</li>
+<li>出金または入金の手数料。発行者は、XRP Ledgerに資金を出し入れするサービスに対して、少額の手数料(1％など)を請求することができます。この手数料はXRP Ledger上では請求されませんが、発行者がユーザに発行または入金する金額を決定する際に、独自のシステムで請求されます。</li>
+<li>送金手数料。発行者は、ユーザがXRP Ledger内でステーブルコインを送金する際に請求する手数料をパーセンテージで設定することができます。この金額は、ユーザが取引を行うたびにXRP Ledgerから引き落とされ、発行者がレジャーの外で保有する資産の量を減らすことなく、ステーブルコインの発行者がレジャー内でユーザに対する債務の総額を減少させることができます。</li>
+<li>付加価値による間接的な収益。ステーブルコインは、他の関連するサービスの導入を容易にすることができる便利な機能を提供します。</li>
+<li>担保への利息。担保の利子について発行者は、ステーブルコインの担保となる資産を利子のつく口座で保有することができます。もちろん、顧客の引き出しに対応できる十分な資金に常にアクセスできるようにする必要があります。</li>
+<li>金融取引所。事業者は分散型取引所で自社のステーブルコインを売買し、クロスカレンシー決済に流動性を与え、場合によっては利益を得ることができます。(すべての金融取引と同様に、利益は保証されません)。</li>
 </ul>
-<h3 id="choosing-fee-rates">Choosing Fee Rates<a aria-hidden="true" class="hover_anchor" href="#choosing-fee-rates"><i class="fa fa-link"></i></a></h3>
-<p>Fees on tokens are optional. Higher fees earn more revenue when those tokens are used. On the other hand, high fees discourage customers from using your services. Consider the fees that are charged by other issuers, especially others with tokens backed by the same type of assets, as well as traditional payment systems outside of the XRP Ledger, such as wire fees. Choosing the right fee structure is a matter of balancing your pricing with what the market is willing to pay.</p>
-<h2 id="compliance-guidelines">Compliance Guidelines<a aria-hidden="true" class="hover_anchor" href="#compliance-guidelines"><i class="fa fa-link"></i></a></h2>
-<p>Token issuers are responsible for complying with local regulations and reporting to the appropriate agencies. Regulations vary by country and state, but may include the reporting and compliance requirements described in the following sections. Before issuing a token, you should seek professional legal advice on the requirements for your jurisdiction and use case. The following resources may be useful background reading.</p>
+<h3 id="手数料の選択">手数料の選択<a aria-hidden="true" class="hover_anchor" href="#手数料の選択"><i class="fa fa-link"></i></a></h3>
+<p>トークンの手数料はオプションです。高い手数料は、そのトークンが使用されたときに、より多くの収益を得ることができます。一方、手数料が高いと、顧客のサービス使用意欲を低下させます。他の発行者、特に同じ種類の資産を裏付けとするトークンを持つ他の発行者が請求する手数料や、送金手数料のようなXRP Ledger以外の伝統的な決済システムなどを考慮するとよいでしょう。正しい手数料体系を選択するためには、あなたの価格設定と市場が支払うことを望んでいる価格とのバランスをとることが重要です。</p>
+<h2 id="コンプライアンス指針">コンプライアンス指針<a aria-hidden="true" class="hover_anchor" href="#コンプライアンス指針"><i class="fa fa-link"></i></a></h2>
+<p>トークン発行者は、各国の規制を遵守し、適切な機関に報告する責任があります。規制は国や州によって異なりますが、以下のセクションで説明する報告やコンプライアンスの要件が含まれる場合があります。トークンを発行する前に、管轄区域やユースケースの要件について、専門家の法的助言を求める必要があります。以下のリソースは、背景情報として参考になる可能性があります。</p>
 <h3 id="know-your-customer-kyc">Know Your Customer (KYC)<a aria-hidden="true" class="hover_anchor" href="#know-your-customer-kyc"><i class="fa fa-link"></i></a></h3>
-<p>Know Your Customer (KYC) refers to due diligence activities conducted by a financial institution to determine and verify the identity of its customers to prevent use of the institution for criminal activity. Criminal activity in financial terms may include money laundering, terrorist financing, financial fraud, and identity theft. Customers may be individuals, intermediaries, or businesses.</p>
-<p>The KYC process generally aims to:</p>
+<p>KYC(Know Your Customer)とは、金融機関が犯罪行為に利用されるのを防ぐために、顧客の身元を特定し確認するために行うデューデリジェンス活動のことです。金融用語でいう犯罪行為には、マネーロンダリング、テロ資金調達、金融詐欺、個人情報盗難などが含まれます。顧客は、個人、仲介者、企業のいずれでもあり得ます。</p>
+<p>KYCプロセスは、一般的に次のことを目的としています。</p>
 <ul>
 <li>
-<p>Identify the customer (and, in the case of organizations and businesses, any beneficial owners)</p>
+<p>顧客(組織や企業の場合は、実質的な所有者)の特定</p>
 </li>
 <li>
-<p>Understand the purpose and intended nature of the business relationship</p>
+<p>取引関係の目的および意図された事項の理解</p>
 </li>
 <li>
-<p>Understand the expected transaction activity.</p>
+<p>想定される取引活動の把握</p>
 </li>
 </ul>
-<p>KYC is critical for financial institutions and related businesses to mitigate risk, especially legal and reputational risk. Having an inadequate or nonexistent KYC program may result in civil and criminal penalties for the institution or individual employees.</p>
-<p>See also:</p>
+<p>KYCは、金融機関や関連企業にとって、リスク、特に法的リスクや風評リスクを軽減するために重要です。KYCプログラムが不十分であったり、存在しなかったりすると、金融機関や従業員個人に対して民事上・刑事上の罰則が科される可能性があります。</p>
+<p>関連項目:</p>
 <ul>
 <li>
-<p><a class="external-link" href="https://bsaaml.ffiec.gov/manual/Introduction/01" target="_blank">(USA) Bank Secrecy Act / Anti-Money Laundering Examination Manual <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://bsaaml.ffiec.gov/manual/Introduction/01" target="_blank">(米国）銀行秘密保護法／マネーロンダリング防止審査マニュアル <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 </li>
 <li>
-<p><a class="external-link" href="http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html" target="_blank">The Non-US Standard on KYC set by the Financial Action Task Force (FATF) <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html" target="_blank">金融活動作業部会(FATF)が定めたKYCに関する米国以外の基準について <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 </li>
 </ul>
-<!-- SPELLING_IGNORE: ffiec -->
-<h3 id="anti-money-laundering-aml-and-combating-the-financing-of-terrorism-cft">Anti-Money Laundering (AML) and Combating the Financing of Terrorism (CFT)<a aria-hidden="true" class="hover_anchor" href="#anti-money-laundering-aml-and-combating-the-financing-of-terrorism-cft"><i class="fa fa-link"></i></a></h3>
-<p>Money laundering is the process of moving illegal funds by disguising the source, nature or ownership so that funds can be legally accessed or distributed via legitimate financial channels and credible institutions. In short, it is converting “dirty money” into “clean money.” Anti-Money Laundering (AML) refers to the laws and procedures designed to stop money laundering from occurring.</p>
-<p>Terrorist financing is the solicitation, collection, or provision of funds to organizations engaged in terrorist activity or organizations that support terrorism and its proliferation. Combating the Financing of Terrorism (CFT) refers to the process of identifying, reporting, and blocking flows of funds used to finance terrorism.</p>
-<p>See also:</p>
+<h3 id="マネーロンダリング防止amlおよびテロ資金調達対策cftについて">マネーロンダリング防止(AML)およびテロ資金調達対策(CFT)について<a aria-hidden="true" class="hover_anchor" href="#マネーロンダリング防止amlおよびテロ資金調達対策cftについて"><i class="fa fa-link"></i></a></h3>
+<p>マネーロンダリングとは、資金源、性質、所有者を偽装することによって違法な資金を移動させ、合法的な金融チャネルや信頼できる機関を通じて資金を合法的にアクセスまたは分配できるようにするプロセスである。つまり、「不正なお金」を「不正でないお金」に変換することです。アンチマネーロンダリング(AML)とは、マネーロンダリングの発生を阻止するために作られた法律と手続きのことです。</p>
+<p>テロ資金とは、テロ活動に従事する組織、またはテロやその拡散を支援する組織に対する資金の勧誘、収集、提供のことです。テロ資金調達対策(CFT)とは、テロ資金調達に使われる資金の流れを特定し、報告し、阻止するプロセスを指します。</p>
+<p>関連項目:</p>
 <ul>
 <li>
-<p><a class="external-link" href="http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html" target="_blank">“International Standards on Combating Money Laundering and the Financing of Terrorism &amp; Proliferation.” FATF, 2012 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html" target="_blank">"マネーロンダリングとテロリズム・拡散の資金調達との闘いに関する国際基準" FATF、2012年 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 </li>
 <li>
-<p><a class="external-link" href="http://www.fatf-gafi.org/publications/methodsandtrends/documents/virtual-currency-definitions-aml-cft-risk.html" target="_blank">“Virtual Currencies: Key Definitions and Potential AML/CFT Risks.” FATF, 2014 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="http://www.fatf-gafi.org/publications/methodsandtrends/documents/virtual-currency-definitions-aml-cft-risk.html" target="_blank">"仮想通貨： 主要な定義と潜在的なAML/CFTリスク". FATF、2014年 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 </li>
 </ul>
-<!-- SPELLING_IGNORE: fatf, cft -->
-<h3 id="source-of-funds">Source of Funds<a aria-hidden="true" class="hover_anchor" href="#source-of-funds"><i class="fa fa-link"></i></a></h3>
-<p>To prevent illicit funds from passing through their systems, financial institutions must be able to determine within reason if the source of a customer’s funds is linked to criminal activity.</p>
-<p>Determining the exact source of funds for every customer may not be administratively feasible. As a result, some regulatory authorities may not provide specific regulation or guidance for all accounts. In specific cases, however, authorities may require financial institutions to identify and report the source of funds. Guidance by the FATF recommends that where the risks of money laundering or terrorist financing are higher (commonly referred to as a “risk-based approach”), financial institutions conduct enhanced due diligence, including but not limited to determining the customer’s source of funds.</p>
-<!-- STYLE_OVERRIDE: feasible -->
-<h3 id="suspicious-activity-reporting">Suspicious Activity Reporting<a aria-hidden="true" class="hover_anchor" href="#suspicious-activity-reporting"><i class="fa fa-link"></i></a></h3>
-<p>If a financial institution suspects that funds may be related to criminal activity, the institution must file a Suspicious Activity Report (SAR) with the appropriate regulatory authority. Failure to report suspicious activity may result in in penalties for the institution.</p>
-<p>See also:</p>
+<h3 id="資金源">資金源<a aria-hidden="true" class="hover_anchor" href="#資金源"><i class="fa fa-link"></i></a></h3>
+<p>金融機関は、不正な資金がシステムを通過するのを防ぐために、顧客の資金源が犯罪行為と関連しているかどうかを合理的に判断する必要があります。</p>
+<p>すべての顧客の正確な資金源を特定することは、管理上実行不可能な場合があります。その結果、規制当局の中には、すべての口座について特定の規制やガイダンスを提供しない場合もある。しかし、特定の場合には、当局は金融機関に対して資金源を特定し報告することを求めることができる。FATFのガイダンスでは、マネーロンダリングやテロ資金供与のリスクが高い場合(一般に「リスクに応じたアプローチ」と呼ばれる)、金融機関は顧客の資金源を特定することを含むがこれに限定されないデューデリジェンスの強化を行うことを勧告しています。</p>
+<h3 id="不審行為報告書">不審行為報告書<a aria-hidden="true" class="hover_anchor" href="#不審行為報告書"><i class="fa fa-link"></i></a></h3>
+<p>金融機関は、資金が犯罪行為に関連している可能性があると疑われる場合、適切な規制当局に不審行為報告書/Suspicious Activity Report (SAR)を提出する必要があります。疑わしい活動を報告しなかった場合、金融機関は罰則を受ける可能性があります。</p>
+<p>関連項目:</p>
 <ul>
 <li>
-<p><a class="external-link" href="https://bsaaml.ffiec.gov/manual/RegulatoryRequirements/04_ep" target="_blank">Suspicious Activity Reporting Overview (USA FFIEC) <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://bsaaml.ffiec.gov/manual/RegulatoryRequirements/04_ep" target="_blank">不審行為報告書の概要(米国FFIEC) <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 </li>
 <li>
-<p><a class="external-link" href="http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html" target="_blank">FATF Recommendation 16: Reporting of suspicious transactions and compliance <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html" target="_blank">FATF勧告16：不審な取引の報告およびコンプライアンス <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 </li>
 </ul>
-<h3 id="travel-rule">Travel Rule<a aria-hidden="true" class="hover_anchor" href="#travel-rule"><i class="fa fa-link"></i></a></h3>
-<p>The Travel Rule is a Bank Secrecy Act (BSA) rule requiring funds-transmitting financial institutions to forward certain information to the next financial institution if the funds transmittal equals or exceeds the USD equivalent of $3,000. The following information must be included in the transmittal order:</p>
+<h3 id="トラベルルール">トラベルルール<a aria-hidden="true" class="hover_anchor" href="#トラベルルール"><i class="fa fa-link"></i></a></h3>
+<p>トラベルルールとは、銀行機密保護法(BSA)に基づき、資金送金が米ドル換算で3,000ドル以上の場合、資金送金を行う金融機関に特定の情報を次の金融機関に転送することを義務付けるルールです。送金指示書には、以下の情報を記載する必要があります。</p>
 <ul>
-<li>The name of the transmittor,</li>
-<li>The account number of the transmittor, if used,</li>
-<li>The address of the transmittor,</li>
-<li>The identity of the transmittor's financial institution,</li>
-<li>The amount of the transmittal order,</li>
-<li>The execution date of the transmittal order, and</li>
-<li>The identity of the recipient's financial institution.</li>
+<li>送信者の氏名</li>
+<li>送信者の口座番号(使用する場合)</li>
+<li>送信者の住所</li>
+<li>送金者の金融機関の名称</li>
+<li>送信指示の金額</li>
+<li>送金注文の金額、送金注文の実行日</li>
+<li>受取人の金融機関の名称</li>
 </ul>
-<!-- SPELLING_IGNORE: transmittor -->
-<p>See also:</p>
+<p>関連項目:</p>
 <ul>
-<li><a class="external-link" href="https://www.fincen.gov/resources/statutes-regulations/guidance/funds-travel-regulations-questions-answers" target="_blank">Funds “Travel” Regulations: Questions &amp; Answers  <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://www.fincen.gov/resources/statutes-regulations/guidance/funds-travel-regulations-questions-answers" target="_blank">ファンドの「トラベル」規制について： 質問と回答 <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
-<h3 id="fee-disclosure-and-tracing-funds">Fee Disclosure and Tracing Funds<a aria-hidden="true" class="hover_anchor" href="#fee-disclosure-and-tracing-funds"><i class="fa fa-link"></i></a></h3>
+<h3 id="手数料の開示と資金の追跡">手数料の開示と資金の追跡<a aria-hidden="true" class="hover_anchor" href="#手数料の開示と資金の追跡"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li>
-<p>In the United States, Dodd Frank 1073 Electronic Fund Transfer Act (Regulation E) requires banks to provide information on cost and delivery terms for international payments originating in the US including exchange rate, fees, and the amount to be received by the designated recipient in the foreign country. "Pre-payment disclosure" is provided to a consumer when requesting an international electronic payment and “receipt disclosure” is provided to a consumer at the time consumer authorizes the transfer.</p>
-<p>See also:</p>
+<p>米国では、Dodd Frank 1073 Electronic Fund Transfer Act (Regulation E)により、銀行は米国発の国際決済について、為替レート、手数料、外国の指定受取人が受け取る金額など、コストと配送条件に関する情報を提供することが義務付けられています。「Pre-payment disclosure」は国際電子決済を依頼する際に消費者に提供され、「Receiption disclosure」は消費者が送金を許可する際に消費者に提供されます。</p>
+<p>関連項目</p>
 <ul>
-<li><a class="external-link" href="https://www.consumerfinance.gov/rules-policy/final-rules/electronic-fund-transfers-regulation-e/#rule" target="_blank">The Consumer Financial Protection Bureau description of the regulation and extensions for banks <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://www.consumerfinance.gov/rules-policy/final-rules/electronic-fund-transfers-regulation-e/#rule" target="_blank">消費者金融保護局の説明による、銀行に対する規制とその適用範囲について <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
 </li>
 <li>
-<p>In the European Union, EU Funds Transfer Regulation requires that the originator’s bank, the beneficiary’s bank, and any intermediary banks include certain details of the payer and payee in transaction details to detect, investigate, and prevent money laundering and terrorist financing.</p>
-<p>See also:</p>
+<p>欧州連合(EU)では、EU資金移動規制により、マネーロンダリングやテロ資金供与を検知、調査、防止するために、送金元の銀行、受取人の銀行、仲介銀行がトランザクションの詳細に支払人と受取人の特定の情報を含めることが義務付けられています。</p>
+<p>関連項目:</p>
 <ul>
 <li>
-<p><a class="external-link" href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF" target="_blank">EU Regulation (EC) No 1781/2006 description <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF" target="_blank">EU規則(EC) No 1781/2006の説明 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 </li>
 <li>
-<p><a class="external-link" href="http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847" target="_blank">Effective June 26, 2017: Regulation 2015/847 on information accompanying transfers of funds <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847" target="_blank">2017年6月26日より施行 資金移動に付随する情報に関する規則2015/847号 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="office-of-foreign-assets-control-ofac">Office of Foreign Assets Control (OFAC)<a aria-hidden="true" class="hover_anchor" href="#office-of-foreign-assets-control-ofac"><i class="fa fa-link"></i></a></h3>
-<p>The Office of Foreign Assets Control (OFAC) is an agency of the US Department of Treasury that administers and enforces economic and trade sanctions in support of U.S. foreign policy and national security objectives. All U.S. persons and U.S. incorporated entities and their foreign branches must follow OFAC regulations. Under OFAC regulations, U.S. financial institutions are prohibited—unless authorized by OFAC or expressly exempted by statute—from conducting transactions and other dealings with individuals, entities, or countries under sanctions or embargo programs administered and enforced by OFAC.</p>
-<p>See also:</p>
+<h3 id="外国資産管理局ofac">外国資産管理局(OFAC)<a aria-hidden="true" class="hover_anchor" href="#外国資産管理局ofac"><i class="fa fa-link"></i></a></h3>
+<p>外国資産管理局(OFAC)は、米国財務省の機関であり、米国の外交政策および国家安全保障上の目的を支援するために、経済制裁および貿易制裁を管理・執行しています。すべての米国人、米国法人およびその海外支店は、OFACの規制に従う必要があります。OFACの規制では、米国の金融機関は、OFACの許可または法令による明示的な除外がない限り、OFACが管理・執行する制裁または禁輸プログラム下の個人、団体、または国との取引およびその他の取引を行うことが禁止されています。</p>
+<p>関連項目:</p>
 <ul>
-<li><a class="external-link" href="https://www.treasury.gov/resource-center/faqs/Sanctions/Pages/ques_index.aspx" target="_blank">A list of OFAC resources <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://www.treasury.gov/resource-center/faqs/Sanctions/Pages/ques_index.aspx" target="_blank">OFAC関連資料の一覧 <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
-<!-- SPELLING_IGNORE: ofac -->
-<h3 id="guidance-on-virtual-currency-and-money-service-business">Guidance on Virtual Currency and Money Service Business<a aria-hidden="true" class="hover_anchor" href="#guidance-on-virtual-currency-and-money-service-business"><i class="fa fa-link"></i></a></h3>
+<h3 id="仮想通貨マネーサービス事業に関する指針について">仮想通貨・マネーサービス事業に関する指針について<a aria-hidden="true" class="hover_anchor" href="#仮想通貨マネーサービス事業に関する指針について"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li>
-<p>United States:</p>
+<p>米国:</p>
 <ul>
 <li>
-<p><a class="external-link" href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering" target="_blank">FinCEN Guidance and Definitions around Virtual Currency, March 18, 2013 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering" target="_blank">仮想通貨に関するFinCENのガイダンスと定義(2013年3月18日付) <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 </li>
 <li>
-<p><a class="external-link" href="https://www.fincen.gov/news/news-releases/fincen-publishes-two-rulings-virtual-currency-miners-and-investors" target="_blank">FinCEN Publishes Two Rulings on Virtual Currency Miners and Investors, January 30, 2014 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://www.fincen.gov/news/news-releases/fincen-publishes-two-rulings-virtual-currency-miners-and-investors" target="_blank">FinCEN、仮想通貨のマイナーと投資家に関する2つの裁定を発表 2014年1月30日 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 </li>
 </ul>
 </li>
 <li>
-<p>Europe:</p>
+<p>ヨーロッパ:</p>
 <ul>
-<li><a class="external-link" href="http://www.eba.europa.eu/documents/10180/657547/EBA-Op-2014-08+Opinion+on+Virtual+Currencies.pdf" target="_blank">European Banking Authority Opinion on Virtual Currencies, July 4, 2014 <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="http://www.eba.europa.eu/documents/10180/657547/EBA-Op-2014-08+Opinion+on+Virtual+Currencies.pdf" target="_blank">仮想通貨に関する欧州銀行監督機構意見書(2014年7月4日付) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
 </li>
 <li>
-<p>FATF Guidance for Money Service Businesses:</p>
+<p>FATFの金融事業者向けガイダンス:</p>
 <ul>
-<li><a class="external-link" href="http://www.fatf-gafi.org/media/fatf/documents/reports/Guidance-RBA-money-value-transfer-services.pdf" target="_blank">Financial Action Task Force, July 2009 <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="http://www.fatf-gafi.org/media/fatf/documents/reports/Guidance-RBA-money-value-transfer-services.pdf" target="_blank">金融活動作業部会、2009年7月 <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
 </li>
 </ul>
-<h1 id="xrp-ledger-integration">XRP Ledger Integration<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger-integration"><i class="fa fa-link"></i></a></h1>
-<p>This document uses the example of a fictional cryptocurrency exchange called ACME Exchange which decides to issue an EUR stablecoin on the XRP Ledger, to illustrate the overall process and flow of funds for a stablecoin.</p>
-<h2 id="before-integration">Before Integration<a aria-hidden="true" class="hover_anchor" href="#before-integration"><i class="fa fa-link"></i></a></h2>
-<p>ACME, as a cryptocurrency exchange, already accepts withdrawals and deposits from customers using some system (such as an app or website). ACME has a <em>system of record</em> to track how much each user holds with the exchange in each of several types of assets. Such a system can be modeled with a simple balance sheet, although in practice it probably involves databases, application servers, and various other infrastructure to ensure its reliability, information security, and so on.</p>
-<p>In the following diagram, ACME Exchange starts with €5 on hand, including €1 that belongs to Bob, €2 that belongs to Charlie, and an additional €2 of equity that belongs to ACME itself. Alice deposits €5, so ACME adds her to its balance sheet and ends up with €10.</p>
-<p><img alt="Diagram: Alice sends €5 to ACME. ACME adds her balance to its balance sheet." src="img/e2g-01.png"/></p>
-<p><strong>Assumptions:</strong> To integrate with the XRP Ledger, we assume that an exchange such as ACME meets the following assumptions:</p>
+<h1 id="xrp-ledgerの統合">XRP Ledgerの統合<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgerの統合"><i class="fa fa-link"></i></a></h1>
+<p>本書では、ACME Exchangeという架空の暗号資産取引所が、XRP Ledger上でEURステーブルコインを発行することを決定した例を用いて、ステーブルコインの全体プロセスや資金フローを説明します。</p>
+<h2 id="統合前">統合前<a aria-hidden="true" class="hover_anchor" href="#統合前"><i class="fa fa-link"></i></a></h2>
+<p>暗号資産取引所としてのACMEは、すでに何らかのシステム(アプリやウェブサイトなど)を使って顧客からの出金や入金を受け付けています。ACMEは、各ユーザが数種類の資産のそれぞれをどれだけ取引所に保有しているかを追跡するための「記録システム」を持っています。このようなシステムは、単純な貸借対照表でモデル化することができますが、実際には、データベースやアプリケーションサーバ、その他信頼性や情報セキュリティなどを確保するためのさまざまなインフラが必要でしょう。</p>
+<p>以下の図では、ACME Exchangeは、Bobの所有する1ユーロ、Charlieの所有する2ユーロ、さらにACME自身の所有する2ユーロの資本を含み、手元に5ユーロでスタートする。Aliceが5ユーロを入金したので、ACMEは彼女をバランスシートに加え、最終的に10ユーロになります。</p>
+<p><img alt="図： アリスがACMEに5ユーロを送金する。ACMEは彼女の残高を貸借対照表に追加する。" src="img/e2g-01.png"/></p>
+<p><strong>前提条件:</strong> XRP Ledgerと連携するために、ACMEのような取引所が以下の前提を満たしていることを想定しています。</p>
 <ul>
-<li>ACME already has a system to accept deposits and withdrawals from some outside payment source.</li>
-<li>ACME waits for deposits to clear before crediting them in ACME's system of record.</li>
-<li>ACME always keeps enough funds on-hand to pay withdrawals on demand, subject to their terms and conditions.<ul>
-<li>ACME can set fees, minimum withdrawals, and delay times for deposits and withdrawals as their business model demands.</li>
+<li>ACMEはすでに、何らかの外部の決済手段から入出金を受け付けるシステムを持っています。</li>
+<li>ACMEは、ACMEの記録システムに入金される前に、入金の処理を待ちます。</li>
+<li>ACMEは、その条件に従って、要求に応じて引き出しを行うのに十分な資金を常に手元に置いています。<ul>
+<li>ACMEは、そのビジネスモデルの必要に応じて、手数料、最低出金額、入出金の遅延時間などを設定することができます。</li>
 </ul>
 </li>
 </ul>
-<h2 id="sending-into-the-xrp-ledger">Sending into the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#sending-into-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
-<p>Sending money <em>into</em> the XRP Ledger involves issuing new stablecoins for an amount that ACME holds on behalf of one of its users. An example flow might look like this:</p>
+<h2 id="xrp-ledgerへの送金">XRP Ledgerへの送金<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgerへの送金"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerに <em>お金を送る</em> には、ACMEがユーザの代わりに保有している金額に対して、新しいステーブルコインを発行する必要があります。フロー例としては、以下のようなものがあります。</p>
 <ol>
-<li>Alice asks to send €3 of her ACME balance into the XRP Ledger.</li>
-<li>In its system of record, ACME debits Alice's balance €3.</li>
-<li>ACME submits an XRP Ledger transaction, sending €3 to Alice's XRP Ledger address. The €3 is marked in the XRP Ledger as being "issued" by ACME (3 EUR.ACME).</li>
+<li>AliceはACMEの残高のうち3ユーロをXRP Ledgerに送るよう依頼します。</li>
+<li>ACMEの記録システムでは、アリスの残高€3が差し引かれます。</li>
+<li>ACMEはXRP Ledgerのトランザクションを提出し、アリスのXRP Ledgerのアドレスに3ユーロを送ります。3ユーロはXRP Ledgerで、ACMEによって「発行」されたものとしてマークされます(3 EUR.ACME)。</li>
 </ol>
-<p><strong>Assumptions:</strong></p>
+<p><strong>前提条件:</strong></p>
 <ul>
-<li>Alice already has an address in the XRP Ledger separate from her ACME account. Alice manages her XRP Ledger address using a third-party client application (wallet).</li>
+<li>AliceはすでにACMEアカウントとは別にXRP Ledgerにアドレスを持っています。Aliceは、サードパーティのクライアントアプリケーション(ウォレット)を使って、自分のXRP Ledgerのアドレスを管理しています。</li>
 </ul>
-<p><img alt="Diagram: ACME issues 3 EUR.ACME to Alice on the XRP Ledger" src="img/e2g-02.png"/></p>
+<p><img alt="図： ACMEはXRP Ledger上でAliceに3EUR.ACMEを発行する。" src="img/e2g-02.png"/></p>
 <!-- -->
-<p>After this, Alice can send or trade her EUR.ACME to other users in the XRP Ledger at her discretion. At any time, ACME can query the XRP Ledger to see who currently holds its tokens. </p>
-<h3 id="requirements-for-sending-to-xrp-ledger">Requirements for Sending to XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#requirements-for-sending-to-xrp-ledger"><i class="fa fa-link"></i></a></h3>
-<p>There are several prerequisites that ACME must meet for this to happen:</p>
+<p>この後、Aliceは自分のEUR.ACMEをXRP Ledgerの他のユーザに任意で送金したり取引したりすることができます。ACMEはいつでも、XRP Ledgerに照会して、誰が現在そのトークンを保持しているかを確認することができます。</p>
+<h3 id="xrp-ledgerへ送金するための要件">XRP Ledgerへ送金するための要件<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgerへ送金するための要件"><i class="fa fa-link"></i></a></h3>
+<p>そのためには、ACMEが満たさなければならない前提条件がいくつかあります。</p>
 <ul>
-<li>ACME sets aside the funds that back its stablecoin. There are several ways ACME may do this:<ul>
-<li>ACME may create a XRP Ledger collateral account in ACME's system of record.</li>
-<li>ACME can store the funds allocated to the XRP Ledger in a separate bank account.</li>
-<li>If the stablecoin is backed by cryptocurrency, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof of its reserves.</li>
+<li>ACMEは、自社のステーブルコインを支える資金を確保します。その方法にはいくつか考えられます。<ul>
+<li>ACMEは、ACMEの記録システムにおいてXRP Ledger用担保口座を作成する。</li>
+<li>ACMEは、XRP Ledgerに割り当てられた資金を、別の銀行口座に保管することもできます。</li>
+<li>ステーブルコインが暗号資産によって支えられている場合、ACMEはXRP Ledgerに割り当てられた資金を保持するための別のウォレットを作成し、その準備金を公に検証可能な証明とすることができます。</li>
 </ul>
 </li>
-<li>ACME should control two separate XRP Ledger addresses. See <a href="account-types.html">Issuing and Operational Addresses</a> for details.<ul>
-<li>ACME must enable the Default Ripple flag on its issuing address for customers to send and receive its tokens.</li>
+<li>ACME は、2つの別々のXRP Ledgerアドレスを管理する必要があります。詳細は<a href="account-types.html">発行・運用アドレス</a>をご覧ください。<ul>
+<li>ACMEは、顧客がそのトークンを送受信するために、その発行アドレスでDefault Rippleフラグを有効にする必要があります。</li>
 </ul>
 </li>
-<li>Alice must create an accounting relationship (trust line) from her XRP Ledger address to ACME's issuing address. She can do this from any XRP Ledger client application as long as she knows ACME's issuing address.<ul>
-<li>ACME should publicize its issuing address on its website where customers can find it. It can also use an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a> to publish the issuing address to automated systems.</li>
-<li>Alternatively, instead of sending a Payment, ACME can write Alice as a Check in the XRP Ledger. This does not move any money right away, but creates both the trust line and the tokens together when Alice cashes the Check.</li>
+<li>Aliceは自分のXRP LedgerアドレスからACMEの発行アドレスへのアカウント関係(トラストライン)を作成する必要があります。彼女はACMEの発行アドレスを知っている限り、どのXRP Ledgerのクライアントアプリケーションからでもトラストラインの作成を行うことができます。<ul>
+<li>発行アドレスは、ACMEのウェブサイト上で顧客が見つけることができるように公表する必要があります。また、<a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code>ファイル</a>を使用して、自動化されたシステムに発行アドレスを公開することも出来ます。</li>
+<li>また、ACMEはペイメントを送る代わりに、XRP LedgerにAliceに小切手を送付することもできます。この場合、資金はすぐに移動しませんが、アリスが小切手を現金化する際、トークンが送付されると同時にトラストラインが作成されます。</li>
 </ul>
 </li>
-<li>ACME must create a user interface for Alice to request for her funds from ACME to be sent into the XRP Ledger.<ul>
-<li>ACME needs to know Alice's XRP Ledger address. ACME can have Alice input her XRP Ledger address as part of the interface, or ACME can require Alice to input and verify her XRP Ledger address in advance.</li>
+<li>ACMEは、AliceがACME上の自身の資金をXRP Ledgerへ送ることを依頼するためのユーザインターフェイスを作成しなければなりません。<ul>
+<li>ACMEはAliceのXRP Ledger・アドレスを把握する必要があります。ACMEはAliceにインターフェイスの一部として彼女のXRP Ledgerアドレスを入力させる事も出来ますし、ACMEはAliceに彼女のXRP Ledgerアドレスを事前に入力し、確認するよう要求する事も出来ます。</li>
 </ul>
 </li>
 </ul>
-<h2 id="sending-from-xrp-ledger">Sending from XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#sending-from-xrp-ledger"><i class="fa fa-link"></i></a></h2>
-<p>A payment out of the XRP Ledger means the issuer receives a payment in the XRP Ledger, and credits a user in the issuer's system of record.</p>
-<p>An example flow of a payment out of the XRP Ledger:</p>
+<h2 id="xrp-ledgerからの送金">XRP Ledgerからの送金<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgerからの送金"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerからの支払いは、発行者がXRP Ledgerで支払いを受け取り、発行者の記録システムでユーザに入金することを意味します。</p>
+<p>XRP レジャーから入金されるフロー例</p>
 <ol>
-<li>Bob sends an XRP Ledger transaction of €1 to ACME's issuing address.</li>
-<li>In ACME's system of record, ACME credits Bob's balance €1.</li>
-<li>Later, Bob can use ACME's own interface to withdraw the money to a separate account, such as requesting a bank deposit over the SEPA system (Europe) or ACH (United States), receiving a payment on another blockchain, or something else.</li>
+<li>BobはACMEの発行アドレスに1ユーロのXRP Ledgerのトランザクションを送信します。</li>
+<li>ACMEの記録システムでは、ACMEはBobの残高に€1を入金します。</li>
+<li>その後、ボブはACME独自のインターフェースを使って、SEPAシステム(欧州)やACH(米国)を使った銀行預金の依頼、他のブロックチェーンでの支払いの受け取りなど、別の口座にお金を引き出すことができます。</li>
 </ol>
-<p>XRP Ledger Payments going to an issuer can be single-currency or cross-currency payments, but the amount the issuer receives is typically denominated in the stablecoin it issued.</p>
-<h3 id="requirements-for-receiving-from-xrp-ledger">Requirements for Receiving from XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#requirements-for-receiving-from-xrp-ledger"><i class="fa fa-link"></i></a></h3>
-<p>In addition to the requirements for sending into the XRP Ledger, there are several prerequisites that ACME must meet to process payments coming from the XRP Ledger:</p>
+<p>XRP Ledgerにおける発行者への支払いは、単一通貨建てでもクロスカレンシー建てでも可能ですが、発行者が受け取る金額は通常、発行したステーブルコイン建てとなります。</p>
+<h3 id="xrp-ledgerへの入金の要件">XRP Ledgerへの入金の要件<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgerへの入金の要件"><i class="fa fa-link"></i></a></h3>
+<p>XRP Ledgerに送信するための要件に加えて、ACMEがXRP Ledgerでの入金を処理するために満たすべき前提条件がいくつかあります。</p>
 <ul>
-<li>ACME must monitor its XRP Ledger addresses for incoming payments.</li>
-<li>ACME must know which user to credit in its system of record for the incoming payments.<ul>
-<li>ACME should bounce unrecognized incoming payments back to their sender.</li>
-<li>Typically, the preferred method of recognizing incoming payments is through <a href="source-and-destination-tags.html">destination tags</a>.</li>
+<li>ACMEは、XRP Ledgerのアドレスへの入金を監視する必要があります。</li>
+<li>ACMEは、入金された支払いについて、その記録システムでどのユーザに入金すべきかを特定する必要があります。<ul>
+<li>ACMEは、不明な入金を送信者に返金する必要があります。</li>
+<li>一般的に、入金を識別する方法としては、<a href="source-and-destination-tags.html">宛先タグ</a>を使用することが推奨されています。</li>
 </ul>
 </li>
 </ul>
-<h2 id="precautions">Precautions<a aria-hidden="true" class="hover_anchor" href="#precautions"><i class="fa fa-link"></i></a></h2>
-<p>Processing payments to and from the XRP Ledger naturally comes with some risks, so an issuer should be sure to take care in implementing these processes. As a stablecoin issuer, you should take the following precautions:</p>
+<h2 id="注意事項">注意事項<a aria-hidden="true" class="hover_anchor" href="#注意事項"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerとの間で支払いを処理することは、当然ながらいくつかのリスクを伴うものであり、発行者はこれらの処理を実施する際には細心の注意を払う必要があります。ステーブルコインの発行者としては、以下の点に注意する必要があります。</p>
 <ul>
-<li>Protect yourself against reversible deposits. XRP Ledger payments are irreversible, but many digital payments are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving tokens in the XRP Ledger.</li>
-<li>When sending into the XRP Ledger, always specify your issuing address as the issuer of the token. Otherwise, you might accidentally use paths that deliver the same currency issued by other addresses.</li>
-<li>Before sending a payment into the XRP Ledger, double check the cost of the payment. A payment from your operational address to a customer should not cost more than the destination amount plus any transfer fee you have set.</li>
-<li>Before processing a payment out of the XRP Ledger, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you. Most anti-money-laundering regulations require this anyway. This is especially important because the users sending money from the XRP Ledger could be different than the ones that initially received the money in the XRP Ledger.</li>
-<li>Follow the guidelines for <a href="#reliable-transaction-submission">reliable transaction submission</a> when sending XRP Ledger transactions.</li>
-<li><a href="#robustly-monitoring-for-payments">Robustly monitor for incoming payments</a>, and read the correct amount. Don't mistakenly credit someone the full amount if they only sent a <a href="partial-payments.html">partial payment</a>.</li>
-<li>Track your obligations and balances within the XRP Ledger, and compare with the assets in your collateral account. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.</li>
-<li>Avoid ambiguous situations. We recommend the following:<ul>
-<li>Enable the <code>Disallow XRP</code> flag for the issuing address and all operational addresses, so customers do not accidentally send you XRP. (Private exchanges should <em>not</em> set this flag, since they trade XRP normally.)</li>
-<li>Enable the <a href="require-destination-tags.html"><code>RequireDest</code> flag</a> for the issuing address and all operational addresses, so customers do not accidentally send a payment without the destination tag to indicate who should be credited.</li>
-<li>Enable the <code>RequireAuth</code> flag on all operational addresses so they cannot issue tokens by accident.</li>
+<li>可逆的な預金から身を守る。XRP レジャーの支払いは不可逆的ですが、多くのデジタル支払いはそうではありません。悪質な業者はこれを悪用して、XRP Ledgerでトークンを受け取った後に取引所からの出金をキャンセルして、現金(fiat money)を奪い取ろうとすることがあります。</li>
+<li>XRP Ledgerに送金する際は、トークンの発行元として必ず発行者自身のアドレスを指定してください。そうでない場合、他のアドレスが発行した同じ通貨を送金するパスを誤って使用する可能性があります。</li>
+<li>XRP Ledgerに支払いを送信する前に、支払いのコストを再確認してください。あなたの運用アドレスから顧客への支払いは、宛先金額とあなたが設定した送金手数料を超える費用は発生しないはずです。</li>
+<li>XRP レジャーから支払いを処理する前に、顧客の身元を確認するようにしてください。これにより、匿名の攻撃者による不正行為が難しくなります。いずれにせよ、ほとんどのマネーロンダリング防止規制はこれを求めています。XRP Ledgerから入金するユーザは、XRP レジャーで最初に出金ユーザと異なる可能性があるため、これは特に重要です。</li>
+<li>XRP Ledgerのトランザクションを送信する際には、信頼性の高いトランザクション送信のためのガイドラインに従ってください。</li>
+<li>入金をしっかりと監視し、正しい金額を把握する。相手が<a href="partial-payments.html">部分支払い</a>による送金にもかかわらず、間違っても全額を入金しないように注意する必要があります。</li>
+<li>XRP レジャー内の負債と残高を追跡し、担保口座の資産と比較してください。一致しない場合は、相違点を解決するまで、引き出しと入金の処理を停止してください。</li>
+<li>あいまいな状況を避けることを推奨しています。<ul>
+<li>顧客が誤ってXRPを送らないように、発行アドレスとすべての運用アドレスに対して「Disallow XRP」フラグを有効にしてください。(民間取引所は通常XRPを取引するため、このフラグを設定するべきではありません。)</li>
+<li>発行アドレスとすべての運用アドレスに対して、<a href="require-destination-tags.html"><code>RequireDest</code>フラグ</a>を有効にすることで、顧客が誤って入金先を示す宛先タグなしで支払いを送信することがないようにします。</li>
+<li>誤って通貨を発行できないように、すべての運用アドレスで<code>RequireAuth</code>フラグを有効にする。</li>
 </ul>
 </li>
-<li>Monitor for suspicious or abusive behavior. For example, a user could repeatedly send funds into and out of the XRP Ledger, as a denial of service attack that effectively empties an operational address's balance. Suspend customers whose addresses are involved in suspicious behavior by not processing their XRP Ledger payments.</li>
+<li>疑わしい行動や不正な行動を監視する。例えば、ユーザがXRP Ledgerに繰り返し資金を出し入れすることで、運用アドレスの残高を実質的に空にするサービス拒否攻撃などが考えられます。不審な行動に関与している顧客のアドレスのXRP Ledgerの支払いを処理しないことで、その顧客の利用を一時停止することも考えられます。</li>
 </ul>
-<h2 id="trading-on-the-xrp-ledger">Trading on the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#trading-on-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
-<p>After the tokens have been created in the XRP Ledger, they can be freely transferred and traded by XRP Ledger users. There are several consequences of this situation:</p>
+<h2 id="xrp-ledger上での取引">XRP Ledger上での取引<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger上での取引"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerでトークンが送付された後、XRP Ledgerのユーザはトークンを自由に譲渡したり取引したりすることができる。このような状況では、いくつかの影響が生じます。</p>
 <ul>
-<li>Anyone can buy/sell EUR.ACME on the XRP Ledger. If ACME issues multiple tokens, a separate trust line is necessary for each.<ul>
-<li>This includes XRP Ledger users who do not have an account in ACME Exchange's systems. To withdraw the funds successfully from ACME, users still have to register with ACME.</li>
-<li>Optionally, ACME uses the <a href="#authorized-trust-lines">Authorized Trust Lines</a> feature to limit who can hold EUR.ACME in the XRP Ledger.</li>
-<li>If ACME determines that a customer has acted in bad faith, ACME can <a href="#freeze">Freeze</a> that user's accounting relationships to ACME in the XRP Ledger, so that the user can no longer trade in the issuer's tokens.</li>
+<li>誰でもXRP Ledger上でEUR.ACMEを売買することができます。ACMEが複数のトークンを発行する場合、それぞれ別のトラストラインが必要です。<ul>
+<li>これには、ACME Exchangeのシステムにアカウントを持っていないXRP Ledgerのユーザも含まれます。ACMEから資金を適切に引き出すには、ユーザはACMEに登録する必要があります。</li>
+<li>オプションとして、ACMEは認可トラストライン機能を使用して、XRP LedgerでEUR.ACMEを保有できる人を制限することができます。</li>
+<li>ACMEは、顧客が不正な行為をしたと判断した場合、XRP LedgerにおいてそのユーザのACMEに対する会計関係を凍結し、そのユーザが発行者のトークンを取引できないようにすることができます。</li>
 </ul>
 </li>
-<li>XRP Ledger users trading and sending EUR.ACME to one another requires no intervention by ACME.</li>
-<li>All exchanges and balances in the XRP Ledger are publicly viewable.</li>
+<li>XRP Ledgerのユーザが互いにEUR.ACMEを取引・送信する場合、ACMEによる介入は一切不要です。</li>
+<li>XRP Ledger上のすべての取引所と残高はすべて公開されています。</li>
 </ul>
-<p>The following diagram depicts an XRP Ledger payment sending 2 EUR.ACME from Alice to Charlie. ACME can query the XRP Ledger to see updates to its balances any time after the transaction has occurred:</p>
-<p><img alt="Diagram: Alice's sends 2 EUR.ACME from her trust line to Charlie's" src="img/e2g-03.png"/></p>
-<h2 id="freeze">Freeze<a aria-hidden="true" class="hover_anchor" href="#freeze"><i class="fa fa-link"></i></a></h2>
-<p>An issuer can freeze accounting relationships in the XRP Ledger to meet regulatory requirements:</p>
+<p>次の図は、AliceからCharlieに2EUR.ACMEを送るXRP Ledgerの支払いを表しています。ACMEはトランザクションが発生した後、いつでもその残高の更新を確認するためにXRP Ledgerに問い合わせることができます。</p>
+<p><img alt="図: Aliceはトラストラインを経由し、Charlieに2 EUR.ACMEを送信する。" src="img/e2g-03.png"/></p>
+<h2 id="凍結">凍結<a aria-hidden="true" class="hover_anchor" href="#凍結"><i class="fa fa-link"></i></a></h2>
+<p>発行者は、規制要件を満たすために、XRP Ledgerの会計関係を凍結することができます。</p>
 <ul>
-<li>Issuers can freeze individual accounting relationships, in case a customer address shows suspicious activity or violates a issuer's terms of use.</li>
-<li>Issuers can freeze all tokens they issue, in case of a major security compromise or for migrating to a new issuing address.</li>
-<li>Furthermore, issuers can permanently opt out of their ability to freeze accounting relationships. This allows an issuer to assure its customers that it will continue to provide "physical-money-like" services. <!-- STYLE_OVERRIDE: will --></li>
+<li>発行者は、顧客アドレスに不審な動きが見られたり、発行者の利用規約に違反した場合に備えて、個別の会計関係を凍結することができます。</li>
+<li>発行者は、重大なセキュリティ侵害や新しい発行アドレスへの移行に備え、発行したトークンをすべて凍結することもできます。</li>
+<li>さらに、発行者は、会計関係を凍結する能力を永久的に放棄することができます。これにより、発行者は「物理的なお金に近い」サービスを提供し続けることを顧客に保証することができます。</li>
 </ul>
-<p>For more information, see the <a href="freezes.html">Freeze article</a>.</p>
-<h2 id="authorized-trust-lines">Authorized Trust Lines<a aria-hidden="true" class="hover_anchor" href="#authorized-trust-lines"><i class="fa fa-link"></i></a></h2>
-<p>The XRP Ledger's Authorized Trust Lines feature (formerly called "Authorized Accounts") enables an issuer to limit who can hold that issuer's tokens, so that unknown XRP Ledger addresses cannot hold the tokens.</p>
-<p>For more information, see <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
-<h2 id="source-and-destination-tags">Source and Destination Tags<a aria-hidden="true" class="hover_anchor" href="#source-and-destination-tags"><i class="fa fa-link"></i></a></h2>
-<p><em>Destination Tags</em> are a feature of XRP Ledger payments can be used to indicate the beneficiary or destination for a payment. For example, an XRP Ledger payment to an issuer may include a destination tag to indicate which customer should be credited for the payment. An issuer should keep a mapping of destination tags to accounts in the issuer's system of record.</p>
-<p>Similarly, <em>Source Tags</em> indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to bounce the payment. When you bounce an incoming payment, use the Source Tag from the incoming payment as the Destination Tag of the outgoing (bounce) payment.</p>
-<p>You can generate a destination tag on-demand when a customer intends to send money to you. For greater customer privacy, you should consider that destination tag valid only for that payment with the expected amount, and bounce or ignore any other transactions that reuse the same destination tag.</p>
-<p><a href="require-destination-tags.html">Enable the Require Destination Tag setting</a> on your issuing and operational addresses so that customers must use a destination tag to indicate where funds should be credited when they send payments to you.</p>
-<p>For more information, see <a href="source-and-destination-tags.html">Source and Destination Tags</a>.</p>
-<h1 id="technical-details">Technical Details<a aria-hidden="true" class="hover_anchor" href="#technical-details"><i class="fa fa-link"></i></a></h1>
-<h2 id="infrastructure">Infrastructure<a aria-hidden="true" class="hover_anchor" href="#infrastructure"><i class="fa fa-link"></i></a></h2>
-<p>For your own security as well as the stability of the network, each XRP Ledger business should <a href="install-rippled.html">run its own XRP Ledger servers</a> including one <a href="rippled-server-modes.html#バリデータ">validator</a>.</p>
-<h3 id="apis-and-middleware">APIs and Middleware<a aria-hidden="true" class="hover_anchor" href="#apis-and-middleware"><i class="fa fa-link"></i></a></h3>
-<p>There are several interfaces you can use to connect to the XRP Ledger, depending on your needs and your existing software:</p>
+<p>より詳細な情報は<a href="freezes.html">トークンの凍結</a>をご覧ください。</p>
+<h2 id="認可トラストライン">認可トラストライン<a aria-hidden="true" class="hover_anchor" href="#認可トラストライン"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerの認可トラストライン機能(旧称「認可アカウント」)は、発行者がその発行者のトークンを保有できる人を制限することを可能にし、未知のXRP Ledgerのアドレスがトークンを保有できないようにします。</p>
+<p>より詳細な情報は<a href="authorized-trust-lines.html">認可トラストライン</a>をご覧ください</p>
+<h2 id="送信タグと宛先タグ">送信タグと宛先タグ<a aria-hidden="true" class="hover_anchor" href="#送信タグと宛先タグ"><i class="fa fa-link"></i></a></h2>
+<p><em>宛先タグ</em>は、XRP Ledgerの支払いの機能の一つで、支払いの受取人または宛先を示すために使用されます。例えば、XRP Ledgerの発行者への支払いは、どの顧客にその支払いが入金されるかを示すために、宛先タグを含むことができます。発行者は、発行者の記録システムにおいて、宛先タグと口座のマッピングを保持する必要があります。</p>
+<p>同様に、<em>送金タグ</em>は、支払の発信者または送信元を示します。最も一般的なのは、支払いの受取人が支払いを返金する場所を知るために、送金タグを含めることです。受信した支払いを返金する場合、受信した支払いの送金タグを送信(返金)する支払いの宛先タグとして使用します。</p>
+<p>顧客が送金しようとするときに、オンデマンドで宛先タグを生成することができます。顧客のプライバシーを守るため、その宛先タグは予定金額の支払いに対してのみ有効であると考え、同じ宛先タグを再利用する他のトランザクションは返金するか無視する必要があります。</p>
+<p>発行アドレスと運用アドレスで<a href="require-destination-tags.html">宛先タグを要求する設定</a>を有効にすることで、顧客は支払いを送る際に宛先タグを使用して資金の入金先を示す必要が生まれます。</p>
+<p>より詳細な情報は<a href="source-and-destination-tags.html">送信タグと宛先タグ</a>をご覧ください</p>
+<h1 id="技術的な内容">技術的な内容<a aria-hidden="true" class="hover_anchor" href="#技術的な内容"><i class="fa fa-link"></i></a></h1>
+<h2 id="インフラストラクチャ">インフラストラクチャ<a aria-hidden="true" class="hover_anchor" href="#インフラストラクチャ"><i class="fa fa-link"></i></a></h2>
+<p>あなた自身のセキュリティとネットワークの安定性のために、XRP Ledgerを利用する事業者は、1つの<a href="rippled-server-modes.html#バリデータ">バリデータ</a>を含む<a href="install-rippled.html">独自のXRP Ledgerサーバ</a>を実行すべきです。</p>
+<h3 id="apiとミドルウェア">APIとミドルウェア<a aria-hidden="true" class="hover_anchor" href="#apiとミドルウェア"><i class="fa fa-link"></i></a></h3>
+<p>XRP Ledgerへの接続方法は、ニーズや 既存のソフトウェアに応じて、いくつかのインターフェイスを使用することができます。</p>
 <ul>
-<li><a href="http-websocket-apis.html">HTTP / WebSocket APIs</a> can be used as a low-level interface to all core XRP Ledger functionality.</li>
-<li><a href="client-libraries.html">Client Libraries</a> are available in several programming languages to provide convenient utilities for accessing the XRP Ledger.</li>
-<li>Other tools such as <a class="external-link" href="https://xumm.readme.io/docs/xapps" target="_blank">xApps <i aria-hidden="true" class="fa fa-external-link"></i></a> are also available.</li>
-<li>Third party wallet applications may also be useful, especially for humans in charge of standby addresses.</li>
+<li><a href="http-websocket-apis.html">HTTP / WebSocket API</a>は、XRP Ledgerのすべてのコア機能への低レベルのインターフェースとして使用することができます。</li>
+<li><a href="client-libraries.html">クライアントライブラリ</a>は、いくつかのプログラミング言語で利用でき、XRP Ledgerにアクセスするための便利なユーティリティを提供します。</li>
+<li>その他、<a class="external-link" href="https://xumm.readme.io/docs/xapps" target="_blank">xApps <i aria-hidden="true" class="fa fa-external-link"></i></a>などのツールも利用可能です。</li>
+<li>サードパーティのウォレットアプリケーションも、特に待機アドレスを担当する人間には便利かもしれません。</li>
 </ul>
-<h2 id="tool-security">Tool Security<a aria-hidden="true" class="hover_anchor" href="#tool-security"><i class="fa fa-link"></i></a></h2>
-<p>Any time you submit an XRP Ledger transaction, it must be signed using your secret key. The secret key gives full control over your XRP Ledger address. <strong>Never</strong> send your secret key to a server run by someone else. Either use your own server, or sign the transactions locally using a client library.</p>
-<p>For instructions and examples of secure configurations, see <a href="secure-signing.html">Set Up Secure Signing</a>.</p>
-<h2 id="issuer-setup">Issuer Setup<a aria-hidden="true" class="hover_anchor" href="#issuer-setup"><i class="fa fa-link"></i></a></h2>
-<p>There are some settings you must configure on your XRP Ledger account before you start issuing tokens. For examples of how to configure these settings, see the <a href="issue-a-fungible-token.html">Issue a Fungible Token tutorial</a>.</p>
-<p>Settings you may want to configure include:</p>
+<h2 id="ツールのセキュリティ">ツールのセキュリティ<a aria-hidden="true" class="hover_anchor" href="#ツールのセキュリティ"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerのトランザクションを送信するときはいつでも、あなたの秘密鍵を使って署名する必要があります。秘密鍵は、あなたのXRP Ledgerアドレスを完全にコントロールすることができます。<strong>決して</strong>他人が運営するサーバにあなたの秘密鍵を送ってはいけません。自分のサーバを使うか、クライアントライブラリを使用してローカルでトランザクションに署名してください。</p>
+<p>安全な設定の手順や例については、<a href="secure-signing.html">安全な署名の設定</a>をご覧ください。</p>
+<h2 id="発行者のセットアップ">発行者のセットアップ<a aria-hidden="true" class="hover_anchor" href="#発行者のセットアップ"><i class="fa fa-link"></i></a></h2>
+<p>トークンの発行を開始する前に、XRP Ledgerアカウントで設定する必要がある設定がいくつかあります。これらの設定の例については、<a href="issue-a-fungible-token.html">代替可能トークンを発行するチュートリアル</a>をご覧ください。</p>
+<p>設定すべき項目は以下の通りです。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th>Setting</th>
-<th>Notes</th>
+<th>設定</th>
+<th>備考</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Default Ripple</td>
-<td>Issuers <strong>must</strong> enable this field.</td>
+<td>発行者は、このフィールドを<strong>必ず</strong>有効にする必要があります。</td>
 </tr>
 <tr>
 <td>Deposit Authorization</td>
-<td>Block all incoming payments from users you haven't explicitly approved.</td>
+<td>明示的に承認していないユーザからの入金をすべてブロックします。</td>
 </tr>
 <tr>
 <td>Require Auth</td>
-<td>Restrict your tokens to being held by users you've explicitly approved.</td>
+<td>トークンの保持を、明示的に承認したユーザに限定します。</td>
 </tr>
 <tr>
 <td>Tick Size</td>
-<td>Round off exchange rates in the decentralized exchange to facilitate faster price discovery.</td>
+<td>分散型取引所の取引所為替レートを四捨五入して、より迅速な価格決定を可能にします。</td>
 </tr>
 <tr>
 <td>Transfer Fee</td>
-<td>Charge a percentage fee when users send your token to each other.</td>
+<td>ユーザ同士がトークンを送信する際に、一定割合の手数料を徴収します。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="default-ripple">Default Ripple<a aria-hidden="true" class="hover_anchor" href="#default-ripple"><i class="fa fa-link"></i></a></h3>
-<p>The Default Ripple flag controls whether the balances on a trust line are <a href="rippling.html">allowed to ripple</a> by default. Rippling is what allows customers to send and trade tokens among themselves, so an issuer MUST allow rippling on all the trust lines to its issuing address.</p>
-<p>Before asking customers to create trust lines to its issuing address, an issuer should enable the Default Ripple flag on that address. Otherwise, the issuer must individually disable the No Ripple flag for each trust line that other addresses have created.</p>
+<p>Default Rippleフラグは、トラストラインの残高をデフォルトで<a href="rippling.html">Ripplingを許可</a>するかどうかを制御します。Ripplingは顧客同士のトークンの送信や取引を可能にするものなので、発行者はその発行アドレスへのすべてのトラストラインでのRipplingを許可しなければなりません(MUST)。</p>
+<p>顧客に発行アドレスへのトラストラインの作成を依頼する前に、発行者はそのアドレスのDefault Rippleフラグを有効にする必要があります。そうでない場合、発行者は、他のアドレスが作成した各トラストラインのNo Rippleフラグを個別に無効化する必要があります。</p>
 <h3 id="deposit-authorization">Deposit Authorization<a aria-hidden="true" class="hover_anchor" href="#deposit-authorization"><i class="fa fa-link"></i></a></h3>
-<p>The Deposit Authorization setting blocks all incoming payments to your account, unless either:</p>
+<p>Deposit Authorizationの設定は、以下のいずれかを行わない限り、アカウントへのすべての入金をブロックします。</p>
 <ul>
-<li>You have previously preauthorized the sender.</li>
-<li>You send a transaction to receive the funds. For example, you could finish an Escrow that was initiated by a stranger.</li>
+<li>事前に送信者を事前認可している。</li>
+<li>資金を受け取るためにトランザクションを送信します。例えば、他人が開始したエスクローを終了させることができます。</li>
 </ul>
-<p>Deposit Authorization is most useful for blocking unwanted XRP payments, because you already can't receive tokens unless you've created a trust line to their issuer. However, as a stablecoin issuer, you need to be able to receive payments from users in order for them to redeem the stablecoin for its off-ledger value; you can preauthorize your customers but doing so requires storing an object in the ledger for each custom address, increasing your reserve requirement substantially.</p>
-<p>Therefore, Deposit Authorization is not recommended for stablecoin issuers unless you need it to meet regulatory requirements about receiving money from unknown or sanctioned entities.</p>
-<p>For more information, see <a href="depositauth.html">Deposit Authorization</a>.</p>
+<p>Deposit Authorizationは、不要なXRPの支払いをブロックするのに最も有効です。なぜなら、発行元へのトラストラインを作成しない限り、既にトークンを受け取ることはできないからです。しかし、ステーブルコインの発行者としては、ステーブルコインをレジャー外の価値と交換するために、ユーザからの支払いを受け取ることができる必要があります。顧客を事前認可することはできますが、そうすると、顧客それぞれのアドレスについてレジャーにオブジェクトを格納する必要があり、準備金が大幅に増加します。</p>
+<p>したがって、未知または制裁を受けたエンティティからお金を受け取ることに関する規制要件を満たすために必要でない限り、Deposit Authorizationはステーブルコインの発行者に推奨されません。</p>
+<p>より詳細な情報は<a href="depositauth.html">Deposit Authorization</a>をご覧ください。</p>
 <h3 id="disallow-xrp">Disallow XRP<a aria-hidden="true" class="hover_anchor" href="#disallow-xrp"><i class="fa fa-link"></i></a></h3>
-<p>The Disallow XRP setting is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments from addresses that aren't intended to receive and hold XRP. The Disallow XRP flag is not enforced at the protocol level, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default, but may allow users to ignore it.</p>
-<p>The Disallow XRP flag is optional, but if you don't intend to receive XRP from customers you may want to enable it on your issuing address and all your operational addresses.</p>
+<p>Disallow XRPの設定は、XRP Ledgerのユーザが誤ってXRPをアドレスに送信することを阻止するために設計されています。これは、XRPの受信と保持を意図していないアドレスからの不必要な返金コストと労力を削減するものです。なぜなら、そうすることでアドレスがXRPを誤って送金した場合に返金されずにXRPを失う可能性があるからです。クライアントアプリケーションは、デフォルトでDisallow XRPフラグを尊重すべきですが、ユーザがそれを無視することを許可する場合もあります。</p>
+<p>Disallow XRPフラグはオプションですが、顧客からXRPを受け取るつもりがない場合は、発行アドレスとすべての運用アドレスで有効にしておくとよいでしょう。</p>
 <h3 id="require-auth">Require Auth<a aria-hidden="true" class="hover_anchor" href="#require-auth"><i class="fa fa-link"></i></a></h3>
-<p>The Require Auth setting blocks users from holding the tokens you issue unless you explicitly approve their trust lines first. You can use this setting to meet regulatory requirements if it matters who holds your tokens within the XRP Ledger. However, this can reduce the utility of your tokens since your approval becomes a bottleneck for users to use them.</p>
-<p>Also, you must use your issuing address each time you authorize a trust line; if you must authorize a lot of trust lines, this can undermine the security of your issuing address because you have to use it so often. (If you only need to use the issuing address sparingly, you can put greater protections on its secret keys. The more often you use it, the more of a burden those protections become.)</p>
-<p>For more information, see <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
+<p>Require Authの設定は、最初にトラストラインを明示的に承認しない限り、発行したトークンをユーザが保持することをブロックします。XRP Ledger内で誰があなたのトークンを保持するかが重要である場合、規制要件を満たすためにこの設定を使用することができます。しかし、この設定は、ユーザへの承認がトークンを使用するためのボトルネックとなるため、トークンの有用性を低下させる可能性があります。</p>
+<p>また、トラストラインを認可するたびに発行アドレスを使用する必要があります。多くのトラストラインを認可する必要がある場合、発行アドレスを頻繁に使用することになるため、発行アドレスのセキュリティが損なわれる可能性があります。(発行アドレスの使用頻度が少ない場合は、秘密鍵の保護を強化することができます。使用頻度が高ければ高いほど、その保護は大きな負担となります)。</p>
+<p>より詳細な情報は<a href="authorized-trust-lines.html">Authorized Trust Lines</a>をご覧ください。</p>
 <h3 id="tick-size">Tick Size<a aria-hidden="true" class="hover_anchor" href="#tick-size"><i class="fa fa-link"></i></a></h3>
-<p>The Tick Size setting controls how many decimal places are used when calculating exchange rates in the <a href="decentralized-exchange.html">Decentralized Exchange</a>. A higher Tick Size means more precision and less rounding in the amounts of various trades. Too much precision can be inconvenient because trades are ranked primarily based on exchange rate, so a trader can offer a minuscule amount more to the top of the list. A smaller Tick Size works similar to the minimum bid increment at an auction, saving everyone the time and effort of gradually bidding up a price by irrelevantly small amounts. However, a smaller Tick Size results in more rounding, which can increase the costs of trading, and sometimes has surprising results because two Offers that seemed like an exact match before rounding no longer match after rounding.</p>
-<p>The Tick Size is an account-level setting and applies to all tokens issued by the same address.</p>
-<p>Tick Size only controls the precision of <em>exchange rates</em>, not the precision of the token itself. Users can send and hold very large or very small amounts regardless of the Tick Size set by the token's issuer.</p>
-<p>For more information, see <a href="ticksize.html">Tick Size</a>.</p>
+<p>Tick Sizeは、<a href="decentralized-exchange.html">分散型取引所</a>で為替レートを計算する際に使用する小数点以下の桁数を制御する設定です。Tick Sizeを大きくすると、より精度が高くなり、さまざまな取引の金額で丸め込みが少なくなります。取引は主に取引レートに基づいてランク付けされるため、トレーダーがリストの上位にわずかな金額を提供することができるため、精度が高すぎると不都合になることがあります。Tick Sizeを小さくすると、オークションの最低入札額と同じような効果があり、無関係な小額を徐々に入札する時間と労力が省けます。しかし、Tick Sizeを小さくすると四捨五入が多くなり、取引コストが高くなります。また、四捨五入前は完全に一致するように見えた2つのオファーが、四捨五入後は一致しなくなるという意外な結果になることもあります。</p>
+<p>Tick Sizeはアカウントレベルの設定であり、同じアドレスで発行されたすべてのトークンに適用されます。</p>
+<p>Tick Sizeは取引レートの精度を制御するだけで、トークン自体の精度を制御するものではありません。ユーザは、トークンの発行者が設定したTic Sizeに関係なく、非常に大きな金額や非常に小さな金額を送ったり保有したりすることができます。</p>
+<p>より詳細な情報は<a href="ticksize.html">Tick Size</a>をご覧ください。</p>
 <h3 id="transfer-fees">Transfer Fees<a aria-hidden="true" class="hover_anchor" href="#transfer-fees"><i class="fa fa-link"></i></a></h3>
-<p>A transfer fee setting charges users a percentage fee when sending your tokens to each other. The transfer fee does not apply when issuing tokens or redeeming them directly with the issuing address. (It <em>does</em> apply when users send payments to your hot wallet.) If you issue multiple tokens from the same address, the same transfer fee applies to all of them.</p>
-<p>When users send a token with a transfer fee, the amount of the transfer fee is debited from the sending side in addition to the destination amount, but only the destination amount is credited to the recipient. The amount of the fee "vanishes" from the XRP Ledger. As a stablecoin issuer, this means that you gain that much equity in your reserves outside of the XRP Ledger—or, in other words, the amount you need to keep as collateral decreases each time users pay a transfer fee.</p>
-<p>At a protocol level, the transfer fee is defined by the <code>TransferRate</code> account setting, which is an integer from 1 billion to 2 billion.</p>
-<p>For more information, see <a href="transfer-fees.html">Transfer Fees</a>.</p>
-<h3 id="transfer-fees-with-operational-and-standby-addresses">Transfer Fees with Operational and Standby Addresses<a aria-hidden="true" class="hover_anchor" href="#transfer-fees-with-operational-and-standby-addresses"><i class="fa fa-link"></i></a></h3>
-<p>All XRP Ledger addresses, including operational and standby addresses, are subject to the issuer's transfer fees when sending tokens. If you set a nonzero transfer fee, then you must send extra (to pay the transfer fee) when making payments from your operational address or standby address. In other words, your addresses must pay back a little of the balance your issuing address created, each time you make a payment.</p>
-<p>Set the <a href="payment.html"><code>SendMax</code> transaction parameter</a> higher than the destination <code>Amount</code> parameter by a percentage based on the <code>TransferRate</code> setting.</p>
-<p class="devportal-callout note"><strong>Note:</strong> Transfer fees do not apply when sending tokens directly from or to the issuing address. The issuing address must always accept its tokens at face value in the XRP Ledger. This means that customers don't have to pay the transfer fee if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the transfer fee the customer pays.</p>
-<p>For example: If ACME sets a transfer fee of 1%, an XRP Ledger payment to deliver 5 EUR.ACME from a customer address to ACME's issuing address would cost exactly 5 EUR.ACME. However, the customer would need to send 5.05 EUR.ACME to deliver 5 EUR.ACME to ACME's operational address. When ACME credits customers for payments to ACME's operational address, ACME credits the customer for the amount delivered to the operational address <em>and</em> the transfer fee, giving the customer €5,05 in ACME's systems.</p>
-<h2 id="robustly-monitoring-for-payments">Robustly Monitoring for Payments<a aria-hidden="true" class="hover_anchor" href="#robustly-monitoring-for-payments"><i class="fa fa-link"></i></a></h2>
-<p>To robustly check for incoming payments, issuers should do the following:</p>
+<p>送金手数料の設定は、ユーザ同士がトークンを送金する際に、一定割合の手数料を請求するものです。送金手数料は、トークンを発行したり、発行アドレスで直接トークンを交換したりする場合には適用されません。(ユーザが発行アドレスに送金ときには適用されます。)同じアドレスから複数のトークンを発行する場合、すべてのトークンに対して同じ送金手数料が適用されます。</p>
+<p>ユーザが送金手数料が設定されたトークンを送信すると、送信側から送金先金額に加えて送金手数料の金額が引き落とされますが、受信側には送金先金額のみが入金されます。手数料の金額はXRP Ledgerから「消える」のです。ステーブルコインの発行者としては、XRP Ledgerの外にある準備金にそれだけ自己資本が増える、言い換えれば、ユーザが送金手数料を支払うたびに担保として持っておく必要がある金額が減少することを意味します。</p>
+<p>プロトコルレベルでは、送金手数料はアカウント設定の<code>TransferRate</code>で定義され、これは10億から20億までの整数で指定されます。</p>
+<p>より詳細な情報は<a href="transfer-fees.html">Transfer Fees</a>をご覧ください。</p>
+<h3 id="運用アドレスと待機アドレスによる送金手数料">運用アドレスと待機アドレスによる送金手数料<a aria-hidden="true" class="hover_anchor" href="#運用アドレスと待機アドレスによる送金手数料"><i class="fa fa-link"></i></a></h3>
+<p>運用アドレスや待機アドレスを含むすべてのXRP Ledgerアドレスは、トークンを送信する際に発行者の送金手数料がかかります。送金手数料をゼロ以外に設定した場合、運用アドレスや待機アドレスから支払いを行う際に、(送金手数料を支払うために)余分に送金しなければなりません。つまり、あなたのアドレスは、支払いを行うたびに、あなたの発行アドレスが作った残高を少し返金する必要があります。</p>
+<p><a href="payment.html">トランザクションパラメータ<code>SendMax</code></a>を送信先の<code>Amount</code>パラメータよりも<code>TransferRate</code>設定に基づく割合で高く設定します。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> 発行アドレスから、または発行アドレスへ直接トークンを送信する場合、送金手数料は適用されません。発行アドレスは、常にそのトークンをXRP Ledgerの額面価格で受け入れなければなりません。つまり、顧客が発行アドレスに直接支払いを送る場合は送金手数料を支払う必要はありませんが、運用アドレスに送る場合は支払う必要があります。両方のアドレスで支払いを受け付ける場合、顧客が運用アドレスに支払いを送る際に、顧客が支払う送金手数料を補うために、記録システムで顧客に入金する金額を調整する必要がある場合があります。</p>
+<p>例えば、次のようなものです。ACMEが送金手数料を1％に設定した場合、顧客のアドレスからACMEの発行アドレスに5 EUR.ACMEを届けるためのXRP Ledger支払いは、ちょうど5 EUR.ACMEの費用がかかります。しかし、顧客は5 EUR.ACMEをACMEの運用アドレスに届けるために、5.05 EUR.ACMEを送る必要があります。ACMEの運用アドレスへの支払いを顧客に入金する際、ACMEは運用アドレスに届けられた金額と送金手数料を顧客に入金し、顧客はACMEのシステムで5.05ユーロを受け取ることができます。</p>
+<h2 id="支払いに関するモニタリングの徹底">支払いに関するモニタリングの徹底<a aria-hidden="true" class="hover_anchor" href="#支払いに関するモニタリングの徹底"><i class="fa fa-link"></i></a></h2>
+<p>入金チェックを確実に行うために、発行者は以下のことを行う必要があります。</p>
 <ul>
-<li>Keep a record of the most-recently-processed transaction and ledger. That way, if you temporarily lose connectivity, you know how far to go back.</li>
-<li>Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code <code>tesSUCCESS</code> can change non-XRP balances. Only transactions from a validated ledger are final.</li>
-<li>Look out for <a href="partial-payments.html">Partial Payments</a>. Payments with the partial payment flag enabled can be considered "successful" if any non-zero amount is delivered, even minuscule amounts.<ul>
-<li>Check the transaction for a <a href="partial-payments.html#delivered_amountフィールド"><code>delivered_amount</code> field</a>. If present, that field indicates how much money <em>actually</em> got delivered to the <code>Destination</code> address.</li>
-<li>In xrpl.js, you can use the <a class="external-link" href="https://js.xrpl.org/modules.html#getBalanceChanges" target="_blank"><code>xrpl.getBalanceChanges()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.</li>
+<li>直近に処理したトランザクションとレジャーを記録しておく。そうすれば、一時的に接続ができなくなったとしても、どこまで遡ればいいのか分かります。</li>
+<li>受信したすべての支払いの結果コードを確認する。一部の支払いは、失敗したにもかかわらず、スパム対策料金を請求するためにレジャーに登録されます。結果コード<code>tesSUCCESS</code>を持つトランザクションだけが、XRP以外の残高を変更できます。また、検証されたレジャーからのトランザクションのみが確定的なものとなります。</li>
+<li><a href="partial-payments.html">部分支払い</a>に注意してください。partial paymentフラグを有効にした場合、0以上の金額であれば、少額でも「成功」と判断されることがあります。<ul>
+<li>トランザクションに<a href="partial-payments.html#delivered_amountフィールド"><code>delivered_amount</code>フィールド</a>があるかどうか確認してください。もし存在すれば、そのフィールドは<code>Destination</code>アドレスに実際にどれだけの金額が支払われたかを示しています。</li>
+<li>xrpl.jsでは、<a class="external-link" href="https://js.xrpl.org/modules.html#getBalanceChanges" target="_blank"><code>xrpl.getBalanceChanges()</code>メソッド <i aria-hidden="true" class="fa fa-external-link"></i></a>を使って、各アドレスがいくら受け取ったかを見ることができます。場合によっては、これを異なるトラストラインで複数回に分けて表示することも可能です。</li>
 </ul>
 </li>
-<li>Some transactions change your balances without being payments directly to or from one of your addresses. For example, if ACME sets a nonzero transfer fee, then ACME's issuing address's outstanding obligations decrease each time Bob and Charlie exchange ACME's tokens.</li>
+<li>トランザクションの中には、アドレスの1つへの直接の支払いやアドレスからの支払いでなくても、残高を変更するものがあります。たとえば、ACMEがゼロ以外の送金手数料を設定した場合、BobとCharlieがACMEのトークンを交換するたびに、ACMEの発行アドレスの未払い負債が減少します。</li>
 </ul>
-<p>To make things simpler for your customers, we recommend accepting payments to both your operational address and your issuing addresses.</p>
-<p>As an added precaution, we recommend comparing the balances of your issuing address with the collateral funds in your internal accounting system as of each new XRP Ledger ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the XRP Ledger until you have resolved the discrepancy.</p>
+<p>顧客の利便性を高めるため、運用アドレスと発行アドレスの両方への支払いを受け付けることをお勧めします。</p>
+<p>追加の防止策として、新しいXRP Ledgerの各レジャーバージョンにおいて、発行アドレスの残高と内部会計システムにおける担保資金を比較することをお勧めします。発行アドレスのマイナス残高は、ネットワーク外のXRP Ledgerに割り当てた資産と一致するはずです。もし両者が一致しないのであれば、その不一致を解決するまでXRP Ledgerへの出入りの支払い処理を中断する必要があります。</p>
 <ul>
-<li>Use the <code>gateway_balances</code> method to check your balances.</li>
-<li>If you have a Transfer Fee set, then your obligations within the XRP Ledger decrease slightly whenever other XRP Ledger addresses transfer your tokens among themselves.</li>
+<li>残高を確認するには、<code>gateway_balances</code>メソッドを使用します。</li>
+<li>Transfer Feeが設定されている場合、他のXRP Ledgerアドレスがあなたのトークンを転送するたびに、XRP Ledger内でのあなたの負債はわずかに減少します。</li>
 </ul>
-<p>For more details on how to read the details of incoming transactions, see <a href="look-up-transaction-results.html">Look Up Transaction Results</a>.</p>
-<h2 id="sending-payments-to-customers">Sending Payments to Customers<a aria-hidden="true" class="hover_anchor" href="#sending-payments-to-customers"><i class="fa fa-link"></i></a></h2>
-<p>When you build an automated system to send payments into the XRP Ledger for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find ways to trick a system into paying them more money than it should.</p>
-<p>Generally, when sending stablecoins, you use a <a href="payment.html">Payment transaction</a>. Some of the details are different depending on whether you are issuing tokens for the first time or transferring them from a hot wallet to a customer. Things to note include:</p>
+<p>受信したトランザクションの詳細を確認する方法については、<a href="look-up-transaction-results.html">トランザクションの結果を確認する</a>をご覧ください。</p>
+<h2 id="顧客への支払いを送信">顧客への支払いを送信<a aria-hidden="true" class="hover_anchor" href="#顧客への支払いを送信"><i class="fa fa-link"></i></a></h2>
+<p>顧客のためにXRP Ledgerに支払いを送る自動システムを構築する場合、そのシステムが支払いを厳密に構築していることを確認する必要があります。悪意ある人物は常に、システムを騙して必要以上に支払いをさせる方法を見つけようとしています。</p>
+<p>一般的に、ステーブルコインを送る場合は<a href="payment.html">Payment トランザクション</a>を使用します。初めてトークンを発行するのか、ホットウォレットから顧客へ送金するのかによって、細かい点が異なる部分もあります。注意すべき点は以下の通りです。</p>
 <ul>
-<li>When issuing new tokens from your issuing address, you should omit the <code>SendMax</code> field. Otherwise, malicious users can arrange their settings so that you issue the full <code>SendMax</code> amount instead of just the intended destination <code>Amount</code>.</li>
-<li>When sending tokens <em>from a hot wallet</em>, you must specify <code>SendMax</code> if you have a nonzero transfer fee. In this case, set the <code>SendMax</code> field to the amount specified in the <code>Amount</code> field plus the transfer fee. (You may want to round up slightly, in case the precision of your calculations doesn't exactly match the XRP Ledger's.) For example, if you send a transaction whose <code>Amount</code> field specifies 99.47 USD, and your transfer fee is 0.25%, you should set the <code>SendMax</code> field to 124.3375, or 124.34 USD if you round up.</li>
-<li>Omit the <code>Paths</code> field. This field is unnecessary when sending directly from the issuer, or from a hot wallet as long as the tokens being sent and the tokens being received have the same currency code and issuer—that is, they're the same stablecoin. The <code>Paths</code> field is intended for <a href="cross-currency-payments.html">Cross-Currency Payments</a> and longer multi-hop (rippling) payments. If you naively perform pathfinding and attach the paths to your transaction, your payment may take a more expensive indirect route rather than failing if the direct path is not available; malicious users can even set this up to </li>
-<li>If you get a <code>tecPATH_DRY</code> result code, this usually indicates that either the customer doesn't have the necessary trust line set up already, or your issuer's rippling settings aren't configured correctly.</li>
+<li>発行アドレスから新しいトークンを発行する場合、<code>SendMax</code>フィールドを省略する必要があります。そうしないと、悪意のあるユーザは、意図した宛先の<code>Amount</code>だけでなく、<code>SendMax</code>の全量を発行するように設定を変更することができます。</li>
+<li>ホットウォレットからトークンを送信する場合、転送手数料がゼロでない場合は<code>SendMax</code>を指定する必要があります。この場合、<code>SendMax</code>フィールドに<code>Amount</code>フィールドで指定した金額と送金手数料を設定します。(計算の精度がXRP Ledgerと正確に一致しない場合に備えて、少し切り上げるとよいでしょう)。例えば、<code>Amount</code>フィールドに99.47 USDが指定され、送金手数料が0.25%のトランザクションを送信する場合、<code>SendMax</code>フィールドを124.3375、または切り上げる場合は124.34 USDに設定すべきです。</li>
+<li><code>Paths</code>フィールドを省略します。このフィールドは、発行元から直接送信する場合や、送信するトークンと受信するトークンの通貨コードと発行元が同じである限り、つまり同じステーブルコインである限り、ホットウォレットから設定する必要はありません。<code>Paths</code>フィールドは<a href="cross-currency-payments.html">クロスカレンシー支払い</a>やより長いマルチホップ(rippling)支払いを対象としています。単純に経路探索を行い、トランザクションにパスを設定すると、直接の経路が利用できない場合、支払いは失敗するのではなく、より高価な遠回りのパスを取るかもしれません。悪意のあるユーザはこれを利用して利益を上げる可能性があります。</li>
+<li><code>tecPATH_DRY</code>の結果コードが表示された場合、通常、必要なトラストラインを顧客がまだ設定していないか、発行者のripplingの設定が正しく設定されていないことを意味します。</li>
 </ul>
-<p>For a detailed tutorial on issuing a token on the XRP Ledger, whether a stablecoin or otherwise, see <a href="issue-a-fungible-token.html">Issue a Fungible Token</a>.</p>
-<h2 id="bouncing-payments">Bouncing Payments<a aria-hidden="true" class="hover_anchor" href="#bouncing-payments"><i class="fa fa-link"></i></a></h2>
-<p>When one of your addresses receives a payment whose purpose is unclear, we recommend that you try to return the money to its sender. While this is more work than pocketing the money, it demonstrates good faith towards customers. You can have an operator bounce payments manually, or create a system to do so automatically.</p>
-<p>The first requirement to bouncing payments is <a href="#robustly-monitoring-for-payments">robustly monitoring for incoming payments</a>. You do not want to accidentally refund a customer for more than they sent you! (This is particularly important if your bounce process is automated.) Malicious users can take advantage of a naive integration by sending <a href="partial-payments.html#partial-paymentの悪用">partial payments</a>.</p>
-<p>Second, you should send bounced payments as Partial Payments. Since third parties can manipulate the cost of pathways between addresses, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the XRP Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from either an operational address or a standby address.</p>
-<p>To send a Partial Payment, enable the <a href="payment.html#paymentのフラグ"><code>tfPartialPayment</code> flag</a> on the transaction. Set the <code>Amount</code> field to the amount you received and omit the <code>SendMax</code> field. You should use the <code>SourceTag</code> value from the incoming payment as the <code>DestinationTag</code> value for the return payment.</p>
-<p>To prevent two systems from bouncing payments back and forth indefinitely, you can set a new Source Tag for the outgoing return payment. If you receive an unexpected payment whose Destination Tag matches the Source Tag of a return you sent, then do not bounce it back again.</p>
-<h2 id="reliable-transaction-submission">Reliable Transaction Submission<a aria-hidden="true" class="hover_anchor" href="#reliable-transaction-submission"><i class="fa fa-link"></i></a></h2>
-<p>The goal of reliably submitting transactions is to achieve the following two properties in a finite amount of time:</p>
+<p>ステーブルコインであろうとなかろうと、XRP Ledger上でトークンを発行するための詳しいチュートリアルは、<a href="issue-a-fungible-token.html">代替可能トークンの発行</a>をご覧ください。</p>
+<h2 id="不明な入金の返金">不明な入金の返金<a aria-hidden="true" class="hover_anchor" href="#不明な入金の返金"><i class="fa fa-link"></i></a></h2>
+<p>アドレスが不明な支払いを受け取った場合、送金者に返金することが推奨されます。これは、資金を保管するよりも手間がかかりますが、顧客に対する誠意を示すことになります。オペレーターが手動で支払いを返金することもできますし、自動的に返金するシステムを構築することもできます。</p>
+<p>返金の失敗を防ぐための第一の条件は、入金を適切に監視することです。顧客から送られてきた金額以上の金額を誤って返金してしまうことは避けなければなりません！(悪意のあるユーザは、<a href="partial-payments.html#partial-paymentの悪用">部分支払い</a>を送信して、脆弱なシステムを利用します。)</p>
+<p>第二に、返金を部分支払い(Partial Payment)として送信することです。第三者はアドレス間のパスのコストを操作することができるので、部分支払いを使えば、XRP Ledger内の取引レートを気にすることなく、支払い金額の全額を手放すことができます。利用規約の一部に、支払い失敗時のポリシーを公表する必要があります。失敗された支払いを、運用中のアドレスまたは待機中のアドレスのいずれかから送信します。</p>
+<p>部分支払いを送信するには、トランザクションの<a href="payment.html#paymentのフラグ"><code>tfPartialPayment</code>フラグ</a>を有効にします。<code>Amount</code>フィールドに受け取った金額を設定し、<code>SendMax</code>フィールドは省略します。受信した支払いの<code>SourceTag</code>値を、返金する支払いの<code>DestinationTag</code>値として使用する必要があります。</p>
+<p>2つのシステムで返金が繰り返されるのを防ぐため、送信する返金に新しい送信タグを設定することができます。もしシステムが予期しない支払いを受け取った場合で、その支払いの宛先タグが送信した返金の送信元タグと一致する場合は、その支払いを再び返金させないようにします。</p>
+<h2 id="信頼性の高いトランザクションの送信">信頼性の高いトランザクションの送信<a aria-hidden="true" class="hover_anchor" href="#信頼性の高いトランザクションの送信"><i class="fa fa-link"></i></a></h2>
+<p>トランザクションを確実に送信するためには、次の2つを有限の時間で実現することが必要です。</p>
 <ul>
-<li>Idempotency - Transactions should be processed once and only once, or not at all.</li>
-<li>Verifiability - Applications can determine the final result of a transaction.</li>
+<li>冪等性 - トランザクションは一度のみ処理されるか、全く処理されないべきである。</li>
+<li>検証可能性 - アプリケーションはトランザクションの最終結果を確認することができる。</li>
 </ul>
-<p>To submit transactions reliably, follow these guidelines:</p>
+<p>トランザクションを確実に送信するために、以下のガイドラインに従ってください。</p>
 <ul>
-<li>Persist details of the transaction before submitting it.</li>
-<li>Use the <code>LastLedgerSequence</code> parameter. (Many <a href="client-libraries.html">client libraries</a> do this by default.)</li>
-<li>Resubmit a transaction if it has not appeared in a validated ledger whose <a href="basic-data-types.html#レジャーインデックス">ledger index</a> is less than or equal to the transaction's <code>LastLedgerSequence</code> parameter.</li>
+<li>トランザクションの詳細を保存してから送信する。</li>
+<li><code>LastLedgerSequence</code>パラメータを使用します。(多くの<a href="client-libraries.html">クライアントライブラリ</a>では、デフォルトでこのパラメータが使用されます)。</li>
+<li>レジャーインデックスがトランザクションの<code>LastLedgerSequence</code>パラメータ以下である検証済みレジャーにトランザクションが含まれていない場合、トランザクションを再送信します。</li>
 </ul>
-<p>For more information, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
-<h2 id="xrp-ledgertoml-file">xrp-ledger.toml File<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgertoml-file"><i class="fa fa-link"></i></a></h2>
-<p>You can publish information about what currencies you issue, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>. This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.</p>
-<!-- STYLE_OVERRIDE: gateway, gateways -->
-<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<p>より詳細な情報は<a href="reliable-transaction-submission.html">信頼性の高いトランザクションの送信</a>をご覧ください。</p>
+<h2 id="xrp-ledgertoml-ファイル">xrp-ledger.toml ファイル<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgertoml-ファイル"><i class="fa fa-link"></i></a></h2>
+<p>不正や混乱から守るために、どの通貨を発行し、どのXRP Ledgerのアドレスを管理しているかという情報を、<a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code>ファイル</a>を使って公表することができます。この機械判読可能なフォーマットは、クライアントアプリケーションが処理するのに便利です。XRP Ledgerのバリデータを実行する場合、同じファイルでキーを公開することもできます。</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><strong>Concepts:</strong><ul>
-<li><a href="tokens.html">Tokens</a></li>
-<li><a href="decentralized-exchange.html">Decentralized Exchange</a></li>
-<li><a href="source-and-destination-tags.html">Source and Destination Tags</a></li>
+<li><strong>コンセプト:</strong><ul>
+<li><a href="tokens.html">トークン</a></li>
+<li><a href="decentralized-exchange.html">分散型取引所</a></li>
+<li><a href="source-and-destination-tags.html">送信タグと宛先タグ</a></li>
 </ul>
 </li>
-<li><strong>Tutorials:</strong><ul>
-<li><a href="install-rippled.html">Install <code>rippled</code></a></li>
-<li><a href="secure-signing.html">Set Up Secure Signing</a></li>
-<li><a href="issue-a-fungible-token.html">Issue a Fungible Token</a></li>
-<li><a href="enable-no-freeze.html">Enable No Freeze</a></li>
-<li><a href="freeze-a-trust-line.html">Freeze a Trust Line</a></li>
+<li><strong>チュートリアル:</strong><ul>
+<li><a href="install-rippled.html"><code>rippled</code>のインストール</a></li>
+<li><a href="secure-signing.html">安全な署名の設定</a></li>
+<li><a href="issue-a-fungible-token.html">非代替性トークンの発行</a></li>
+<li><a href="enable-no-freeze.html">No Freezeの有効化</a></li>
+<li><a href="freeze-a-trust-line.html">トラストラインの凍結</a></li>
 <li><a href="enact-global-freeze.html">Enact Global Freeze</a></li>
 </ul>
 </li>
-<li><strong>References:</strong><ul>
-<li><a href="payment.html">Payment transaction</a></li>
-<li><a href="accountset.html">AccountSet transaction</a></li>
-<li><a href="trustset.html">TrustSet transaction</a></li>
-<li><a href="ripplestate.html">RippleState object</a></li>
-<li><a href="account_lines.html">account_lines method</a></li>
-<li><a href="gateway_balances.html">gateway_balances method</a></li>
+<li><strong>リファレンス:</strong><ul>
+<li><a href="payment.html">Payment トランザクション</a></li>
+<li><a href="accountset.html">AccountSet トランザクション</a></li>
+<li><a href="trustset.html">TrustSet トランザクション</a></li>
+<li><a href="ripplestate.html">RippleState オブジェクト</a></li>
+<li><a href="account_lines.html">account_lines メソッド</a></li>
+<li><a href="gateway_balances.html">gateway_balances メソッド</a></li>
 </ul>
 </li>
 </ul>
@@ -935,22 +832,22 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -980,17 +877,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -1007,7 +904,7 @@
     <nav class="nav flex-column show " id="tree_nav_group_3_2">
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -1015,22 +912,22 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -1051,7 +948,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       

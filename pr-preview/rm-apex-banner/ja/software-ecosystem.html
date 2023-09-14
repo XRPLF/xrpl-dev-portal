@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="ソフトウェアエコシステム | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/software-ecosystem.html" />
-    <meta property="og:description" content="XRP Ledgerソフトウェアで注目されている特性と、それらがどう組み合わさっているのか大まかに紹介します。" />
-    <meta name="description" content="XRP Ledgerソフトウェアで注目されている特性と、それらがどう組み合わさっているのか大まかに紹介します。" />
+    <meta property="og:description" content="どのようなXRP Ledgerソフトウェアがあり、どのように組み合わされているのか、その概要を知ることができます。" />
+    <meta name="description" content="どのようなXRP Ledgerソフトウェアがあり、どのように組み合わされているのか、その概要を知ることができます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": []
+      "page_labels": ['コアサーバ']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -89,102 +89,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-
-
-<!-- Inline script to conditionally display the banner -->
-  <script>
-    // Get the user's location using the provided JavaScript code
-    let userLocation = window.Osano.cm.countryCode;
-
-    // List of countries for which we want to serve the banner
-    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
-
-    // Check if the user's location is in the list of target countries
-    let isTargetCountry = targetCountries.includes(userLocation);
-
-    if (isTargetCountry) {
-      // Define the banner HTML with the countdown timer
-      let token2049bannerHTML = `
-        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
-            <div class="box">
-              <div id="js-clock-days" class="clock-number">00</div>
-              <div class="clock-label">Days</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-hours" class="clock-number">00</div>
-              <div class="clock-label">Hrs</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-minutes" class="clock-number">00</div>
-              <div class="clock-label">Min</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-seconds" class="clock-number">00</div>
-              <div class="clock-label">Sec</div>
-            </div>
-          </div>
-          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
-          <span class="d-inline-block">XRPL Zone </span>
-          <span class="token-highlight d-inline-block">@Token2049</span></div>
-           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
-           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
-            <div class="token-circled d-none d-lg-inline-block highlight-purple">今すぐ登録</div>
-        </a>
-      `;
-
-      // Write the banner directly to the document
-      document.write(token2049bannerHTML);
-
-      var deadline = '2023/09/13 08:00';
-
-      function pad(num, size) {
-        var s = "0" + num;
-        return s.substr(s.length - size);
-      }
-
-      function parseDate(date) {
-        const parsed = Date.parse(date);
-        if (!isNaN(parsed)) return parsed
-        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
-      }
-
-      function getTimeRemaining(endtime) {
-        let total = parseDate(endtime) - Date.parse(new Date())
-        let seconds = Math.floor((total / 1000) % 60)
-        let minutes = Math.floor((total / 1000 / 60) % 60)
-        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-        let days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-        return { total, days, hours, minutes, seconds };
-      }
-
-      function clock(id, endtime) {
-        let days = document.getElementById(id + '-days')
-        let hours = document.getElementById(id + '-hours')
-        let minutes = document.getElementById(id + '-minutes')
-        let seconds = document.getElementById(id + '-seconds')
-
-        var timeinterval = setInterval(function () {
-          var time = getTimeRemaining(endtime);
-
-          if (time.total <= 0) {
-            clearInterval(timeinterval);
-          } else {
-            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
-            hours.innerHTML = pad(time.hours, 2);
-            minutes.innerHTML = pad(time.minutes, 2);
-            seconds.innerHTML = pad(time.seconds, 2);
-          }
-        }, 1000);
-      }
-      clock('js-clock', deadline);
-    }
-  </script>
-
-
-
 
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
@@ -354,17 +258,24 @@
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
     <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/rm-apex-banner/content/concepts/introduction/software-ecosystem.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2128" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
-</div><!-- /.github-edit -->    <div class="toc-header">
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-コアサーバ">コアサーバ</span>
+      <!-- TEMPLATE WARNING: no label landing found for "コアサーバ" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#ソフトウェアエコシステム">ソフトウェアエコシステム</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#スタックレベル">スタックレベル</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#rippled-コアサーバー">rippled: コアサーバー</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#プログラミングライブラリー">プログラミングライブラリー</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#コアサーバ">コアサーバ</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#クライアントライブラリ">クライアントライブラリ</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ミドルウェア">ミドルウェア</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#アプリとサービス">アプリとサービス</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -385,45 +296,42 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="ソフトウェアエコシステム">ソフトウェアエコシステム<a aria-hidden="true" class="hover_anchor" href="#ソフトウェアエコシステム"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledgerは、「価値のインターネット」を推進および実現可能にするソフトウェアプロジェクトの、深く階層化されたエコシステムの土台となるものです。XRP Ledgerとやり取りするプロジェクト、ツール、ビジネスをすべて挙げることはできないため、このページでは、一部のカテゴリーのみを取り上げ、<a class="external-link" href="https://xrpl.org" target="_blank">xrpl.org <i aria-hidden="true" class="fa fa-external-link"></i></a>で説明されている主要プロジェクトを重点的にご紹介します。</p>
+<p>XRP Ledgerは、価値のインターネットを実現するソフトウェアプロジェクトの、深く階層的なエコシステムの本拠地となっています。 XRP Ledgerと相互作用する全てのプロジェクト、ツール、ビジネスをリストアップすることは不可能なので、このページではいくつかのカテゴリーを挙げ、このウェブサイトで文書化されているいくつかの中心的なプロジェクトに焦点を当てます。
+<img alt="XRPLエコシステム" src="img/ecosystem-apps-and-services.svg"/></p>
 <h2 id="スタックレベル">スタックレベル<a aria-hidden="true" class="hover_anchor" href="#スタックレベル"><i class="fa fa-link"></i></a></h2>
-<p><a href="img/ecosystem.ja.png"><img alt="4層からなるエコシステムの図: 最下層にはXRP Ledgerのピアツーピアネットワーク、その上にプログラミングライブラリー、次にミドルウェア、そして最上層にアプリとサービスがあります。" src="img/ecosystem.ja.png"/></a></p>
 <ul>
 <li>
-<p><a href="#rippled-コアサーバー">XRP Ledgerの基盤</a>は、トランザクションを共有し、<a href="consensus.html">コンセンサスプロセス</a>に関与し、<a href="transactions.html">トランザクション</a>を処理する常時接続のサーバーのピアツーピアネットワークです。XRP Ledgerエコシステム内の他のすべてのものが、最終的にこのピアツーピアネットワーク上に直接、または間接的に構築されます。</p>
+<p><a href="#コアサーバ"><em>コアサーバ</em></a>は、常にトランザクションを中継し処理するピアツーピアのネットワークであるXRP Ledgerの基盤となるものです。</p>
 </li>
 <li>
-<p><a href="#プログラミングライブラリー"><em>プログラミングライブラリー</em></a>は、さらに上位のソフトウェアに存在し、プログラムコードに直接インポートされます。また、XRP Ledgerにアクセスするためのルーチンの実装があらかじめ作成され、組み込まれています。</p>
+<p><a href="#クライアントライブラリ"><em>クライアントライブラリ</em></a>は、プログラムコードに直接インポートされるハイレベルなソフトウェアで使用され、XRP Ledgerにアクセスするためのメソッドを含んでいます。</p>
 </li>
 <li>
-<p><a href="#ミドルウェア"><em>ミドルウェア</em></a>は、XRP Ledgerデータへの間接アクセスを可能にします。多くの場合、この層のアプリケーションには、独自のデータストレージと処理が存在します。</p>
+<p><a href="#ミドルウェア"><em>ミドルウェア</em></a>は、XRP Ledgerのデータへの間接アクセスを可能にします。多くの場合、この層のアプリケーションには、独自のデータストレージと処理が存在します。</p>
 </li>
 <li>
-<p><a href="#アプリとサービス"><em>アプリとサービス</em></a>は、XRP Ledgerでのユーザーレベルのやり取りや、さらに上位のアプリやサービスに対する基盤を提供します。</p>
+<p><a href="#アプリとサービス"><em>アプリとサービス</em></a>は、XRP Ledgerでのユーザレベルのやり取りや、さらに上位のアプリやサービスに対する基盤を提供します。</p>
 </li>
 </ul>
-<h3 id="rippled-コアサーバー">rippled: コアサーバー<a aria-hidden="true" class="hover_anchor" href="#rippled-コアサーバー"><i class="fa fa-link"></i></a></h3>
-<p>XRP Ledgerの中心であるピアツーピアネットワークは、コンセンサスとトランザクションプロセスのルールを実行するために、信頼性が高く、効率のよいサーバーを必要とします。Rippleでは、このサーバーソフトウェアのリファレンス実装である<a href="xrpl-servers.html"><strong><code>rippled</code></strong></a>（発音は「リップルディー」）を管理および公開しています。このサーバーは、<a class="external-link" href="https://github.com/ripple/rippled/blob/develop/LICENSE.md" target="_blank">一般利用が可能なオープンソースライセンス <i aria-hidden="true" class="fa fa-external-link"></i></a>の下で使用できるため、誰でもこのサーバーの自身のインスタンスを検証し、変更することができます。また、いくつかの制限の下でそれを再公開することができます。</p>
-<p><code>rippled</code>の各インスタンスは、（<a href="parallel-networks.html">Testnetなどの並列ネットワーク</a>に従うように構成されていない限り）同じネットワークに同期され、ネットワーク全体のあらゆる通信にアクセスできます。ネットワーク上の各<code>rippled</code>サーバーは、最近のトランザクションの一部と、それらのトランザクションで行われた変更の記録とともに、XRP Ledger全体の最新の状態データの完全なコピーを保持します。また、各サーバーは各トランザクションを単独で処理すると同時に、そのトランザクションの結果が残りのネットワークに一致するか検証します。サーバーは、より多くの<a href="ledger-history.html">レジャー履歴</a>を保持したり、<a href="rippled-server-modes.html#バリデータ">バリデータ</a>としてコンセンサスプロセスに参加するように構成することができます。</p>
-<p>このサーバーは、データの検索、サーバーの管理、トランザクションの送信を行うための<a href="http-websocket-apis.html"><code>rippled</code> API</a>をユーザーに公開します。</p>
-<h3 id="プログラミングライブラリー">プログラミングライブラリー<a aria-hidden="true" class="hover_anchor" href="#プログラミングライブラリー"><i class="fa fa-link"></i></a></h3>
-<p>プログラミングライブラリーは、XRP Ledgerデータにアクセスするために必ずしも必要なわけではありません。HTTPまたはWebSocketを使用すれば、<a href="http-websocket-apis.html"><code>rippled</code> API</a>に直接接続できるためです。ライブラリーは、<code>rippled</code> APIにアクセスする際の一般的な作業の一部を簡素化し、データをライブラリー内のプログラミング言語で理解しやすく、かつプログラミングしやすい形式に変換します。</p>
-<p><a href="get-started-using-javascript.html">JavaScript用のxrpl.js</a>は、長年にわたって使用され、かつ十分なサポートがある、XRP Ledgerにアクセスするためのライブラリーです。多くの<a href="#ミドルウェア">ミドルウェアサービス</a>が、このような<a href="client-libraries.html">プログラミングライブラリー</a>を内部で使用しています。</p>
+<h3 id="コアサーバ">コアサーバ<a aria-hidden="true" class="hover_anchor" href="#コアサーバ"><i class="fa fa-link"></i></a></h3>
+<p>XRP Ledgerの中心であるピアツーピアネットワークは、コンセンサスとトランザクションプロセスのルールを実行するために、信頼性が高く、効率のよいサーバを必要とします。XRP Ledger財団では、このサーバソフトウェアのリファレンス実装である<a href="xrpl-servers.html"><strong><code>rippled</code></strong></a>(発音は「リップルディー」)を公開しています。このサーバは、<a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/LICENSE.md" target="_blank">一般利用が可能なオープンソースライセンス <i aria-hidden="true" class="fa fa-external-link"></i></a>の下で使用できるため、誰でもこのサーバの自身のインスタンスを検証し、変更することができます。また、いくつかの制限の下でそれを再公開することができます。</p>
+<p><img alt="コアサーバ" src="img/ecosystem-peer-to-peer.svg"/></p>
+<p>各コアサーバは、（<a href="parallel-networks.html">テストネットワーク</a>に従うように構成されていない限り）同じネットワークに同期され、ネットワーク全体のあらゆる通信にアクセスできます。ネットワーク上の各サーバは、最近のトランザクションと、それらのトランザクションで行われた変更の記録とともに、XRP Ledger全体の最新の状態データの完全なコピーを保持します。また、各サーバは各トランザクションを単独で処理すると同時に、そのトランザクションの結果が残りのネットワークに一致するか検証します。サーバは、より多くの<a href="ledger-history.html">レジャー履歴</a>を保持したり、<a href="rippled-server-modes.html#バリデータ">バリデータ</a>としてコンセンサスプロセスに参加するように構成することができます。</p>
+<p>コアサーバは、ユーザがデータを調べたり、サーバを管理したり、トランザクションを送信したりするために、<a href="http-websocket-apis.html">HTTP / WebSocket API</a>を公開します。また、HTTP / WebSocket APIを提供するものの、ピアツーピアネットワークに直接接続せず、トランザクションを処理したりコンセンサスに参加したりしないサーバも存在します。Reportingモードで動作する<code>rippled</code>サーバやClioサーバなどのこれらのサーバは、トランザクションを処理するためにP2Pモードのコアサーバに依存しています。</p>
+<h3 id="クライアントライブラリ">クライアントライブラリ<a aria-hidden="true" class="hover_anchor" href="#クライアントライブラリ"><i class="fa fa-link"></i></a></h3>
+<p>ライブラリは、通常HTTP / WebSocket APIを通じてXRP Ledgerにアクセスする際の共通作業の一部をシンプルにするものです。これらは、データを様々なプログラミング言語にとってより身近で便利な形に変換し、一般的な操作の実装を備えています。クライアントライブラリの中には、XRP Ledger財団によって公式にメンテナンスされているものもあれば、コミュニティの他のエンティティによってメンテナンスされているものもあります。</p>
+<p><img alt="クライアントライブラリ" src="img/ecosystem-client-libraries.svg"/></p>
+<p>ほとんどのクライアント・ライブラリのコアな機能の一つは、トランザクションをローカルで署名することであり、ユーザは秘密鍵をネットワーク上で送信する必要をなくします。</p>
+<p>多くのミドルウェアサービスは、内部でクライアントライブラリを使用しています。</p>
+<p>現在利用可能なクライアントライブラリについては、<a href="client-libraries.html">クライアントライブラリ</a>を参照してください。</p>
 <h3 id="ミドルウェア">ミドルウェア<a aria-hidden="true" class="hover_anchor" href="#ミドルウェア"><i class="fa fa-link"></i></a></h3>
 <p>ミドルウェアサービスは、一方ではXRP Ledger APIを利用し、もう一方では独自のAPIを提供するプログラムです。抽象化層を提供して、いくつかの一般的な機能をサービスとして提供することで上位のアプリケーションを容易に構築できるようにします。</p>
-<p><a href="#プログラミングライブラリー">プログラムライブラリー</a>は、インポートしたプログラムによって新規にインスタンス化されたりシャットダウンされたりしますが、ミドルウェアはそれと異なり、多くの場合は無期限に実行され続け、独自のデータベース（リレーショナルSQLデータベースなど）や構成ファイルを持つことがあります。</p>
-<p>XRP Ledger上のミドルウェアサービスの例として、<a href="data-api.html">Data API</a>が挙げられます。Data APIは、XRP Ledgerデータを収集して変換することで、時間での照会、データタイプでの絞り込み、およびデータ分析を可能にします。</p>
-<p>ミドルウェアサービスのもう1つの例は<a href="xrp-api.html">XRP-API</a>です。XRP-APIは秘密鍵を管理し、あらゆるプログラミング言語のアプリに対してより使いやすいXRP LedgerへのRESTfulインターフェイスを提供します。</p>
+<p><img alt="ミドルウェア" src="img/ecosystem-middleware.svg"/></p>
+<p>クライアントライブラリは、インポートしたプログラムとともに新たにインスタンス化され、シャットダウンされますが、ミドルウェアサービスは通常、無期限に稼働し続け、独自のデータベース（リレーショナルSQLデータベースなど）や設定ファイルを持つことがあります。クラウドサービスとして提供されているものもあり、価格や利用方法にさまざまな制限があります。</p>
 <h3 id="アプリとサービス">アプリとサービス<a aria-hidden="true" class="hover_anchor" href="#アプリとサービス"><i class="fa fa-link"></i></a></h3>
-<p>最上層は、最もエキサイティングなことが起こる場所です。アプリとサービスは、XRP Ledgerに接続するための手段をユーザーとデバイスに提供します。この層では、<a href="list-xrp-as-an-exchange.html">取引所がXRPを上場</a>したり、分散型取引所で使用するために<a href="stablecoin-issuer.html">ゲートウェイが他の通貨を発行</a>したり、あるいはXRPを購入、売却、または単に<s>HODLing</s>保持するためにウォレットがユーザーインターフェイスを提供したりします。さらに高階層にサービスを追加するなど、他にも多くの可能性があります。</p>
-<p>XRPだけでなく、通貨価値を表す他のさまざまな方法と互換性のあるアプリケーションを構築するには、XRPでの決済に<a class="external-link" href="https://interledger.org/" target="_blank">Interledger Protocol <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用するのが最適です。</p>
-<p>XRPと周辺テクノロジーを使用してユーザーとやり取りするプロジェクトには、他にも多くの例があります。 例については<a href="businesses.html">XRP Ledger ビジネス</a>か、<a href="exchanges.html">エキスチェンジ</a>か、<a href="wallets.html">ウォレット</a>を参照してください。</p>
-<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
-<ul>
-<li><a class="external-link" href="https://ripplex.io/" target="_blank">RippleX <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a href="technical-faq.html">技術に関するよくある質問</a></li>
-<li><a class="external-link" href="https://www.xrpchat.com/links/" target="_blank">XRPChat Links &amp; Resources <i aria-hidden="true" class="fa fa-external-link"></i></a> - ゲートウェイと取引所、ウォレットとストレージ、アプリなどの最新のリストが記載されています。</li>
-</ul>
+<p>最上層は、最もエキサイティングなことが起こる場所です。アプリとサービスは、XRP Ledgerに接続するための手段をユーザとデバイスに提供します。私設取引所、トークン発行者、マーケットプレイス、分散型取引所へのインターフェース、ウォレットなどのサービスは、XRPやあらゆる種類のトークンを含む様々な資産を売買・取引するためのユーザインターフェースを提供します。その他にも、さらに上位に重ねた追加サービスなど、多くの可能性が存在します。</p>
+<p><img alt="アプリとサービス" src="img/ecosystem-apps-and-services.svg"/></p>
+<p>このレイヤーで構築できるいくつかの例については、<a href="use-cases.html">ユースケース</a>をご覧ください。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -471,22 +379,22 @@
     <nav class="nav flex-column show " id="tree_nav_group_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -516,17 +424,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -543,7 +451,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -551,22 +459,22 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -587,7 +495,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       

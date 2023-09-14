@@ -90,102 +90,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-
-
-<!-- Inline script to conditionally display the banner -->
-  <script>
-    // Get the user's location using the provided JavaScript code
-    let userLocation = window.Osano.cm.countryCode;
-
-    // List of countries for which we want to serve the banner
-    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
-
-    // Check if the user's location is in the list of target countries
-    let isTargetCountry = targetCountries.includes(userLocation);
-
-    if (isTargetCountry) {
-      // Define the banner HTML with the countdown timer
-      let token2049bannerHTML = `
-        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
-            <div class="box">
-              <div id="js-clock-days" class="clock-number">00</div>
-              <div class="clock-label">Days</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-hours" class="clock-number">00</div>
-              <div class="clock-label">Hrs</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-minutes" class="clock-number">00</div>
-              <div class="clock-label">Min</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-seconds" class="clock-number">00</div>
-              <div class="clock-label">Sec</div>
-            </div>
-          </div>
-          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
-          <span class="d-inline-block">XRPL Zone </span>
-          <span class="token-highlight d-inline-block">@Token2049</span></div>
-           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
-           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
-            <div class="token-circled d-none d-lg-inline-block highlight-purple">今すぐ登録</div>
-        </a>
-      `;
-
-      // Write the banner directly to the document
-      document.write(token2049bannerHTML);
-
-      var deadline = '2023/09/13 08:00';
-
-      function pad(num, size) {
-        var s = "0" + num;
-        return s.substr(s.length - size);
-      }
-
-      function parseDate(date) {
-        const parsed = Date.parse(date);
-        if (!isNaN(parsed)) return parsed
-        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
-      }
-
-      function getTimeRemaining(endtime) {
-        let total = parseDate(endtime) - Date.parse(new Date())
-        let seconds = Math.floor((total / 1000) % 60)
-        let minutes = Math.floor((total / 1000 / 60) % 60)
-        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-        let days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-        return { total, days, hours, minutes, seconds };
-      }
-
-      function clock(id, endtime) {
-        let days = document.getElementById(id + '-days')
-        let hours = document.getElementById(id + '-hours')
-        let minutes = document.getElementById(id + '-minutes')
-        let seconds = document.getElementById(id + '-seconds')
-
-        var timeinterval = setInterval(function () {
-          var time = getTimeRemaining(endtime);
-
-          if (time.total <= 0) {
-            clearInterval(timeinterval);
-          } else {
-            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
-            hours.innerHTML = pad(time.hours, 2);
-            minutes.innerHTML = pad(time.minutes, 2);
-            seconds.innerHTML = pad(time.seconds, 2);
-          }
-        }, 1000);
-      }
-      clock('js-clock', deadline);
-    }
-  </script>
-
-
-
-
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -443,20 +347,20 @@
 <p>関連項目:</p>
 <ul>
 <li>
-<p><a href="stablecoin-issuer.html#compliance-guidelines">ゲートウェイコンプライアンス</a> — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。</p>
+<p><a href="stablecoin-issuer.html#コンプライアンス指針">コンプライアンス指針</a> — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。</p>
 </li>
 <li>
-<p><a href="stablecoin-issuer.html#requirements-for-sending-to-xrp-ledger">Requirements for Sending to XRP Ledger</a></p>
+<p><a href="stablecoin-issuer.html#xrp-ledgerへ送金するための要件">XRP Ledgerへ送金するための要件</a></p>
 </li>
 <li>
-<p><a href="stablecoin-issuer.html#requirements-for-receiving-from-xrp-ledger">Requirements for Receiving from XRP Ledger</a></p>
+<p><a href="stablecoin-issuer.html#xrp-ledgerへの入金の要件">XRP Ledgerへの入金の要件</a></p>
 </li>
 <li>
-<p><a href="stablecoin-issuer.html#precautions">ゲートウェイの注意事項</a></p>
+<p><a href="stablecoin-issuer.html#注意事項">注意事項</a></p>
 </li>
 </ul>
 <h3 id="partial-payments">Partial Payments<a aria-hidden="true" class="hover_anchor" href="#partial-payments"><i class="fa fa-link"></i></a></h3>
-<p>追加の前に、取引所は<a href="partial-payments.html">Partial Payments</a>機能について知っておく必要があります。この機能を使用すると、XRP Ledgerのユーザーは、<code>SendMax</code>を増やさずに、受取金額を減額して、支払いを正常に送信できます。この機能は、送信者側に追加費用が発生せず、<a href="stablecoin-issuer.html#bouncing-payments">支払いの返金</a>に便利です。</p>
+<p>追加の前に、取引所は<a href="partial-payments.html">Partial Payments</a>機能について知っておく必要があります。この機能を使用すると、XRP Ledgerのユーザーは、<code>SendMax</code>を増やさずに、受取金額を減額して、支払いを正常に送信できます。この機能は、送信者側に追加費用が発生せず、<a href="stablecoin-issuer.html#不明な入金の返金">支払いの返金</a>に便利です。</p>
 <h4 id="partial-paymentsに関する警告">Partial Paymentsに関する警告<a aria-hidden="true" class="hover_anchor" href="#partial-paymentsに関する警告"><i class="fa fa-link"></i></a></h4>
 <p><a href="payment.html#paymentのフラグ">tfPartialPaymentフラグ</a>が有効にされると、<code>Amount</code>フィールド <strong><em>は受取り金額とは同じでなくなることがあります</em></strong> 。支払いのメタデータにある<code>delivered_amount</code>フィールドは、宛先アカウントが実際に受け取る通貨の金額を示しています。支払いを受信するときに、Amountフィールドの代わりに、<code>delivered_amount</code>を使用してアカウントで受信した金額を判断します。</p>
 <p class="devportal-callout 警告"><strong>警告:</strong> この機能が悪用されることがあります。詳細については、<a href="partial-payments.html">Partial Payments</a>を参照してください。</p>
@@ -1034,22 +938,22 @@ XRP残高</i></b></td>
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -1079,17 +983,17 @@ XRP残高</i></b></td>
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -1106,7 +1010,7 @@ XRP残高</i></b></td>
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -1114,22 +1018,22 @@ XRP残高</i></b></td>
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -1150,7 +1054,7 @@ XRP残高</i></b></td>
     <nav class="nav flex-column show " id="tree_nav_group_3_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       

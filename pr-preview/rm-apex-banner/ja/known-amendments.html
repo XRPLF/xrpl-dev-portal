@@ -90,102 +90,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-
-
-<!-- Inline script to conditionally display the banner -->
-  <script>
-    // Get the user's location using the provided JavaScript code
-    let userLocation = window.Osano.cm.countryCode;
-
-    // List of countries for which we want to serve the banner
-    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
-
-    // Check if the user's location is in the list of target countries
-    let isTargetCountry = targetCountries.includes(userLocation);
-
-    if (isTargetCountry) {
-      // Define the banner HTML with the countdown timer
-      let token2049bannerHTML = `
-        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
-            <div class="box">
-              <div id="js-clock-days" class="clock-number">00</div>
-              <div class="clock-label">Days</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-hours" class="clock-number">00</div>
-              <div class="clock-label">Hrs</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-minutes" class="clock-number">00</div>
-              <div class="clock-label">Min</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-seconds" class="clock-number">00</div>
-              <div class="clock-label">Sec</div>
-            </div>
-          </div>
-          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
-          <span class="d-inline-block">XRPL Zone </span>
-          <span class="token-highlight d-inline-block">@Token2049</span></div>
-           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
-           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
-            <div class="token-circled d-none d-lg-inline-block highlight-purple">今すぐ登録</div>
-        </a>
-      `;
-
-      // Write the banner directly to the document
-      document.write(token2049bannerHTML);
-
-      var deadline = '2023/09/13 08:00';
-
-      function pad(num, size) {
-        var s = "0" + num;
-        return s.substr(s.length - size);
-      }
-
-      function parseDate(date) {
-        const parsed = Date.parse(date);
-        if (!isNaN(parsed)) return parsed
-        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
-      }
-
-      function getTimeRemaining(endtime) {
-        let total = parseDate(endtime) - Date.parse(new Date())
-        let seconds = Math.floor((total / 1000) % 60)
-        let minutes = Math.floor((total / 1000 / 60) % 60)
-        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-        let days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-        return { total, days, hours, minutes, seconds };
-      }
-
-      function clock(id, endtime) {
-        let days = document.getElementById(id + '-days')
-        let hours = document.getElementById(id + '-hours')
-        let minutes = document.getElementById(id + '-minutes')
-        let seconds = document.getElementById(id + '-seconds')
-
-        var timeinterval = setInterval(function () {
-          var time = getTimeRemaining(endtime);
-
-          if (time.total <= 0) {
-            clearInterval(timeinterval);
-          } else {
-            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
-            hours.innerHTML = pad(time.hours, 2);
-            minutes.innerHTML = pad(time.minutes, 2);
-            seconds.innerHTML = pad(time.seconds, 2);
-          }
-        }, 1000);
-      }
-      clock('js-clock', deadline);
-    }
-  </script>
-
-
-
-
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -408,6 +312,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#fixnonfungibletokensv1_2">fixNonFungibleTokensV1_2</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixqualityupperbound">fixQualityUpperBound</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixreducedoffersv1">fixReducedOffersV1</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixrmsmallincreasedqoffers">fixRmSmallIncreasedQOffers</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixstamountcanonicalize">fixSTAmountCanonicalize</a></li>
@@ -436,6 +341,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#tickets">Tickets</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ticksize">TickSize</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#trustsetauth">TrustSetAuth</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#xchainbridge-1">XChainBridge</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#xrpfees">XRPFees</a></li>
       </ul>
   </div>
@@ -468,6 +374,21 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: left;"><a href="#amm">AMM</a></td>
+<td style="text-align: left;">v1.12.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/rippled-1.12.0.html" target="_blank" title="投票中: 2023-09-06"><img alt="投票中: 2023-09-06" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-2023--09--06-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#clawback">Clawback</a></td>
+<td style="text-align: left;">v1.12.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/rippled-1.12.0.html" target="_blank" title="投票中: 2023-09-06"><img alt="投票中: 2023-09-06" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-2023--09--06-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixreducedoffersv1">fixReducedOffersV1</a></td>
+<td style="text-align: left;">v1.12.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/rippled-1.12.0.html" target="_blank" title="投票中: 2023-09-06"><img alt="投票中: 2023-09-06" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-2023--09--06-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
 <tr>
 <td style="text-align: left;"><a href="#fixnftokenremint">fixNFTokenRemint</a></td>
 <td style="text-align: left;">v1.11.0</td>
@@ -758,16 +679,6 @@
 <td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md" target="_blank">XLS-38d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/" target="_blank">ドキュメント <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="#clawback">Clawback</a></td>
-<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
-<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-39d-clawback/README.md" target="_blank">XLS-39d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/" target="_blank">ドキュメント <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#amm">AMM</a></td>
-<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
-<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/pull/125" target="_blank">XLS-30d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/" target="_blank">ドキュメント <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
 <td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
 <td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
 <td style="text-align: left;"></td>
@@ -834,7 +745,7 @@
 <thead>
 <tr>
 <th style="text-align: left;">Amendment</th>
-<th style="text-align: left;">Automated Market Maker</th>
+<th style="text-align: left;">AMM</th>
 </tr>
 </thead>
 <tbody>
@@ -844,7 +755,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">ステータス</td>
-<td style="text-align: left;">開発中</td>
+<td style="text-align: left;">投票中</td>
 </tr>
 <tr>
 <td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
@@ -948,7 +859,7 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">開発中</td>
+<td style="text-align: left;">投票中</td>
 </tr>
 <tr>
 <td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
@@ -1983,6 +1894,42 @@
 </table>
 <p>クロスカレンシー決済における個々のステップの入出力比を計算するための使用されていないコードのバグを修正する。</p>
 <p>この修正は、取引処理に影響を及ぼさないことが確認されています。</p>
+<h3 id="fixreducedoffersv1">fixReducedOffersV1<a aria-hidden="true" class="hover_anchor" href="#fixreducedoffersv1"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixReducedOffersV1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">27CD95EE8E1E5A537FF2F89B6CEB7C622E78E9374EBD7DCBEDFAE21CD6F16E0A</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">投票中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>四捨五入を調整し、残額の四捨五入によって為替レートが影響を受ける減額オファーによってオーダーブックがブロックされることを回避します。</p>
+<p>一般的に、オファーは3つの方法で減額することができます：</p>
+<ul>
+<li>オファーは、注文時に部分的に約定することができます。</li>
+<li>オファーはオーダーブックに登録された後、部分的に約定されることがあります。</li>
+<li>オファーは資金不足(オファーの所有者が指定した資金よりも少ない資金しか持っていない状態)になる可能性があります。</li>
+</ul>
+<p>このamendmentにより、減額されたオファーの取引レートは、(テイカーの観点から)元のオファーと同等かそれ以上となるように丸められます。これにより、減額されたオファーは、元の全額と一致するオファーによって約定されます。丸められた金額は、XRPの1ドロップまたはトークンの1e-81を超えることはありません。</p>
+<p>このamendmentがない場合、残額が非常に少ないオファーは、四捨五入後の取引レートが当初よりも大幅に悪化する可能性があります。このため、非常に少額のオファーが、同じオーダーブック内のより良いオファーの取得を「ブロック」してしまう可能性があります。</p>
 <h3 id="fixremovenftokenautotrustline">fixRemoveNFTokenAutoTrustLine<a aria-hidden="true" class="hover_anchor" href="#fixremovenftokenautotrustline"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
@@ -2818,6 +2765,34 @@
 </table>
 <p><a href="authorized-trust-lines.html">承認されたトラストライン</a>を使用する場合に、会計関係の事前承認（ゼロバランストラストライン）を許可します。</p>
 <p>この修正が適用されれば、<a href="trustset.html#trustsetのフラグ"><code>tfSetfAuth</code>を有効にした</a><code>TrustSet</code>トランザクションにおいて、<code>RippleState</code>ノードの他のすべての値をデフォルト状態にしたままでも、新しい<a href="ripplestate.html"><code>RippleState</code>レジャーオブジェクト</a>を作成できます。新しい<code>RippleState</code>ノードでは、トランザクションの送信者が低いノードと見なされるか高いノードと見なされるかに応じて、<a href="ripplestate.html#ripplestateのフラグ"><code>lsfLowAuth</code>フラグまたは<code>lsfHighAuth</code>フラグ</a>が有効になります。トランザクションの送信者は、<a href="accountset.html#accountsetのフラグ">asfRequireAuthフラグを有効</a>にして<a href="accountset.html">AccountSetトランザクション</a>を送信することで、事前に<a href="accountroot.html#accountrootのフラグ"><code>lsfRequireAuth</code></a>を有効にしておく必要があります。</p>
+<h3 id="xchainbridge-1">XChainBridge<a aria-hidden="true" class="hover_anchor" href="#xchainbridge-1"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">XChainBridge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C</td>
+</tr>
+<tr>
+<td style="text-align: left;">ステータス</td>
+<td style="text-align: left;">開発中</td>
+</tr>
+<tr>
+<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+<tr>
+<td style="text-align: left;">Amendment前の機能は廃止?</td>
+<td style="text-align: left;">いいえ</td>
+</tr>
+</tbody>
+</table>
+<p>メインネットとサイドチェーンなど異なるネットワーク間でアセットを同期させるための「クロスチェーンブリッジ」を追加します。標準規格草案： <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md" target="_blank">XLS-38d Cross-Chain Bridge <i aria-hidden="true" class="fa fa-external-link"></i></a>。</p>
 <h3 id="xrpfees">XRPFees<a aria-hidden="true" class="hover_anchor" href="#xrpfees"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
@@ -2954,22 +2929,22 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -2999,17 +2974,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -3026,7 +3001,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -3034,22 +3009,22 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -3070,7 +3045,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       
