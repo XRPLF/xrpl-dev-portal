@@ -1169,6 +1169,26 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/tokens/stablecoin-issuer-configuration.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/tokens/stablecoin-issuer-precautions.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/tokens/stablecoin-issuer-compliance-guidelines.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/tokens/stablecoin-issuer-technical-details.md
+        targets:
+            - en
+            - ja
+
 # TODO - Translate
     -   md: concepts/tokens/clawing-back-tokens.md
         targets:

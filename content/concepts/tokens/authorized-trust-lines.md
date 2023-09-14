@@ -1,6 +1,6 @@
 ---
 html: authorized-trust-lines.html
-parent: tokens.html
+parent: trust-lines-and-issuing.html
 blurb: Authorized trust lines is a setting to limit who can hold a token.
 labels:
   - Tokens

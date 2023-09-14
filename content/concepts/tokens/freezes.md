@@ -1,6 +1,6 @@
 ---
 html: freezes.html
-parent: tokens.html
+parent: trust-lines-and-issuing.html
 blurb: Issuers can freeze their issued tokens for compliance purposes.
 labels:
   - Tokens

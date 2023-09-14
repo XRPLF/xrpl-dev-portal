@@ -1,6 +1,6 @@
 ---
 html: clawing-back-tokens.html
-parent: tokens.html
+parent: trust-lines-and-issuing.html
 blurb: Issuers can claw back their tokens for compliance purposes if they enable the Clawback feature before issuing tokens.
 labels:
   - Tokens

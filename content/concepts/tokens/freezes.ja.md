@@ -1,6 +1,6 @@
 ---
 html: freezes.html
-parent: tokens.html
+parent: trust-lines-and-issuing.html
 blurb: 凍結では、コンプライアンス目的で発行済み通貨の取引を停止できます。
 labels:
   - トークン
