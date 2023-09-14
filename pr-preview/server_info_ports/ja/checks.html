@@ -439,7 +439,7 @@
 <p>従来の紙の小切手では、実際の通貨を即座にやり取りすることなく残高を送金できます。XRP Ledger Checksを使用すると、銀行業界でよく利用され受け入れられている方法で資金を非同期にやり取りすることができます。</p>
 <p>XRP Ledger Checksは、XRP Ledgerに固有の問題も解決できます。たとえば、ユーザーが不審な支払いを拒否したり、支払いの一部のみを受領することを可能にします。これは、コンプライアンス上の理由から支払いの受け入れに慎重に対応する必要がある機関にとっては有用です。</p>
 <h3 id="ユースケース-支払いの承認">ユースケース: 支払いの承認<a aria-hidden="true" class="hover_anchor" href="#ユースケース-支払いの承認"><i class="fa fa-link"></i></a></h3>
-<p><strong>課題:</strong> <a href="stablecoin-issuer.html#compliance-guidelines">BSA、KYC、AML、CFT</a>などの規制に準拠するにあたり、金融機関は受領する資金の送金元に関する文書を提出する必要があります。違法な資金移動を防止するため、これらの規制は金融機関に対して、処理済のすべての支払いについて、その送金元と送金先を開示するよう義務付けています。XRP Ledgerの性質上、誰でもXRPを（および該当する場合には発行済み通貨を）XRP Ledger上の金融機関のアカウントに送金することができます。金融機関のコンプライアンス部門では、このような不審な支払いへの対応にかかるコスト（罰金の可能性を含む）の増大と処理の遅れが生じます。</p>
+<p><strong>課題:</strong> <a href="stablecoin-issuer.html#コンプライアンス指針">BSA、KYC、AML、CFT</a>などの規制に準拠するにあたり、金融機関は受領する資金の送金元に関する文書を提出する必要があります。違法な資金移動を防止するため、これらの規制は金融機関に対して、処理済のすべての支払いについて、その送金元と送金先を開示するよう義務付けています。XRP Ledgerの性質上、誰でもXRPを（および該当する場合には発行済み通貨を）XRP Ledger上の金融機関のアカウントに送金することができます。金融機関のコンプライアンス部門では、このような不審な支払いへの対応にかかるコスト（罰金の可能性を含む）の増大と処理の遅れが生じます。</p>
 <p><strong>解決策:</strong> 金融機関は各自のXRP Ledgerのアカウントで、<a href="accountset.html"><code>AccountSet</code>トランザクションの<code>asfDepositAuth</code>フラグを設定</a>することにより、<a href="depositauth.html">Deposit Authorization</a>を有効にできます。これにより、アカウントはPaymentトランザクションを受領できなくなります。Deposit Authorizationが有効なアカウントは、Escrow、Payment Channel、またはChecksでのみ資金を受領できます。Deposit Authorizationが有効な場合、Checksが最もシンプルで使いやすく、柔軟な資金移動手段となります。</p>
 <h2 id="使用法">使用法<a aria-hidden="true" class="hover_anchor" href="#使用法"><i class="fa fa-link"></i></a></h2>
 <p>Checksの一般的なライフサイクルを以下で説明します。</p>
@@ -540,22 +540,22 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -585,17 +585,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -612,7 +612,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -620,22 +620,22 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -656,7 +656,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       

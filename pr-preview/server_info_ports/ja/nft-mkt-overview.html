@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>NFT Marketplace Overview - XRPL.org (日本語)</title>
+    <title>NFTマーケットプレイスの概要 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="NFT Marketplace Overview | XRPL.org (日本語)">
+    <meta property="og:title" content="NFTマーケットプレイスの概要 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nft-mkt-overview.html" />
-    <meta property="og:description" content="Overview of NFT Marketplace use cases." />
-    <meta name="description" content="Overview of NFT Marketplace use cases." />
+    <meta property="og:description" content="NFTマーケットプレイスのユースケースの概要。" />
+    <meta name="description" content="NFTマーケットプレイスのユースケースの概要。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -370,7 +370,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/server_info_ports/content/use-cases/tokenization/nft-mkt-overview.md?pr=/XRPLF/xrpl-dev-portal/pull/2130" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/server_info_ports/content/use-cases/tokenization/nft-mkt-overview.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2130" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -383,15 +383,15 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#nft-marketplace-overview">NFT Marketplace Overview</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#key-features">Key Features</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#understand-your-goals">Understand Your Goals</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#connect-to-xrpl">Connect to XRPL</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#set-up-basic-blockchain-functions">Set Up Basic Blockchain Functions</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#setting-up-a-wallet">Setting up a wallet</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#transferring-nfts">Transferring NFTs</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#indexing-nfts">Indexing NFTs</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nft-caching">NFT Caching</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#nftマーケットプレイスの概要">NFTマーケットプレイスの概要</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#主な特徴">主な特徴</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ゴールの設定">ゴールの設定</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrplへの接続">XRPLへの接続</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ブロックチェーンの基本機能のセットアップ">ブロックチェーンの基本機能のセットアップ</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ウォレットのセットアップ">ウォレットのセットアップ</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#nftの取引">NFTの取引</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftのインデックス化">NFTのインデックス化</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftのキャッシュ">NFTのキャッシュ</a></li>
       </ul>
   </div>
       </aside>
@@ -409,88 +409,85 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/use-cases.html">ユースケース</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokenization.html">Tokenization</a></li>
-    <li class="active breadcrumb-item">NFT Marketplace Overview</li>
+    <li class="active breadcrumb-item">NFTマーケットプレイスの概要</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="nft-marketplace-overview">NFT Marketplace Overview<a aria-hidden="true" class="hover_anchor" href="#nft-marketplace-overview"><i class="fa fa-link"></i></a></h1>
-<h2 id="key-features">Key Features<a aria-hidden="true" class="hover_anchor" href="#key-features"><i class="fa fa-link"></i></a></h2>
-<p>XRPL native support for NFTs provides tools that let you do the following.</p>
+        <h1 id="nftマーケットプレイスの概要">NFTマーケットプレイスの概要<a aria-hidden="true" class="hover_anchor" href="#nftマーケットプレイスの概要"><i class="fa fa-link"></i></a></h1>
+<h2 id="主な特徴">主な特徴<a aria-hidden="true" class="hover_anchor" href="#主な特徴"><i class="fa fa-link"></i></a></h2>
+<p>NFTのXRPLネイティブサポートでは、以下のようなことが可能なツールを提供しています。</p>
 <ul>
-<li>Mint, sell, and burn NFTs</li>
-<li>Kick start an NFT project in little time at low expense</li>
-<li>Assign a broker to arrange transfers between sellers and bidders</li>
-<li>Authorize another account to mint NFTs for you</li>
-<li>Receive creator-friendly, on-ledger royalties that are honored by marketplaces</li>
+<li>NFTのミント、販売、バーン</li>
+<li>NFTのプロジェクトを短期間・低コストでスタート</li>
+<li>売り手と買い手の間の取引を仲介するブローカーの設定</li>
+<li>他のアカウントへのNFTのミントを代行する権限の付与</li>
+<li>クリエイターフレンドリーで、マーケットプレイス取引でも保証されるオンレジャーのロイヤリティの受け取り。</li>
 </ul>
-<p>All this on top of the XRP Ledger’s greater than 10 years of performance and reliability.</p>
-<h2 id="understand-your-goals">Understand Your Goals<a aria-hidden="true" class="hover_anchor" href="#understand-your-goals"><i class="fa fa-link"></i></a></h2>
-<p>Start by deciding what sort of marketplace you want to create.</p>
+<p>これらはすべて、XRP Ledgerの10年以上にわたる性能と信頼性の上に成り立っています。</p>
+<h2 id="ゴールの設定">ゴールの設定<a aria-hidden="true" class="hover_anchor" href="#ゴールの設定"><i class="fa fa-link"></i></a></h2>
+<p>まず、どのようなマーケットプレイスを作りたいかを決めることから始めましょう。</p>
 <ul>
-<li>Marketplace, selling NFTs minted by others</li>
-<li>Authorized minter, minting NFTs for artists</li>
-<li>Digital artist, creating and selling your own NFTs</li>
+<li>マーケットプレイスでは、他の人がミントしたNFTを販売します。</li>
+<li>認可Minter：アーティストのためにNFTをミントする。</li>
+<li>デジタルアーティスト：自分でNFTを作成して販売する。</li>
 </ul>
-<p>There are 4 essential areas of preparation for starting your NFT business.</p>
+<p>NFTビジネスを始めるにあたって、必要不可欠な4つの準備項目があります。</p>
 <ol>
-<li>Deciding how you will connect to the network</li>
-<li>Setting up your blockchain behavior</li>
-<li>Indexing required NFT information</li>
-<li>Determining your permanent storage strategy to cache your NFTs</li>
+<li>ネットワークへの接続方法の決定</li>
+<li>ブロックチェーンでの処理の設定</li>
+<li>必要なNFT情報のインデックス作成</li>
+<li>NFTをキャッシュするための永続的なストレージ戦略の決定</li>
 </ol>
-<p><a href="img/nft-mkt-overview.png"><img alt="NFT Marketplace Flow" src="img/nft-mkt-overview.png" title="NFT Marketplace Flow"/></a></p>
-<h2 id="connect-to-xrpl">Connect to XRPL<a aria-hidden="true" class="hover_anchor" href="#connect-to-xrpl"><i class="fa fa-link"></i></a></h2>
-<p>If you want to set up a smaller site with fewer transactions, you can work with one of the free XRP Ledger public servers. See <a href="public-servers.html">Public servers</a>.</p>
-<p>If you want to set up a larger site with high volume, it might be worth investing in your own XRP Ledger server instance. See <a href="install-rippled.html">Install rippled</a>.</p>
-<p>See also:</p>
+<p><a href="img/nft-mkt-overview.png"><img alt="NFTマーケットのフロー" src="img/nft-mkt-overview.png" title="NFTマーケットのフロー"/></a></p>
+<h2 id="xrplへの接続">XRPLへの接続<a aria-hidden="true" class="hover_anchor" href="#xrplへの接続"><i class="fa fa-link"></i></a></h2>
+<p>トランザクションの少ない小規模なサイトを立ち上げたい場合は、XRP Ledgerの無料の公開サーバのいずれかと連携することができます。<a href="public-servers.html">パブリックサーバ</a>をご覧ください。</p>
+<p>大規模なサイトを大量に立ち上げたい場合は、独自のXRP Ledgerのサーバインスタンスを導入する価値があるかもしれません。<a href="install-rippled.html">rippledのインストール</a>をご覧ください。</p>
+<p>関連項目:</p>
 <ul>
-<li><a href="networks-and-servers.html#独自サーバーを運用する理由">Pros and cons of running your own server</a>.</li>
+<li><a href="networks-and-servers.html#独自サーバーを運用する理由">独自サーバ運用のメリットとデメリット</a>.</li>
 </ul>
-<h2 id="set-up-basic-blockchain-functions">Set Up Basic Blockchain Functions<a aria-hidden="true" class="hover_anchor" href="#set-up-basic-blockchain-functions"><i class="fa fa-link"></i></a></h2>
-<p>You can begin to build your marketplace by minting some NFTs to sell.</p>
-<p>To create your first NFTs, follow the instructions in the tutorial <em>Mint and Burn NFTokens</em>. See <a href="mint-and-burn-nfts-using-javascript.html">Mint and Burn NFTokens</a>.</p>
-<p>The NFToken URL is a link to the location where the content of the NFT is stored. One option is create an IPFS account and store the NFToken content at a persistent URL. See <a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data" target="_blank">Best Practices for Storing NFT Data <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<p>If you, as the issuer, want to be able to burn the token in the future, set the <code>Flags</code> field to <em>1.</em> To make the NFT transferable, set the <code>Flags</code> field to <em>8</em>. Set the <code>Flags</code> field to <em>9</em> to make the NFT both burnable and transferable. See <a href="nftoken.html">Burnable flag</a> and <a href="nftoken.html">Transferable flag</a>.</p>
-<p>You can collect royalties from future sales by setting a <code>transfer fee<em>. </em></code>This is a value from 0-50000 representing 0-50% of the sale price. See <a href="nftoken.html#送金手数料">Transfer Fee</a>.</p>
-<p>You can mint NFTs in logical collections using the <code>TokenTaxon</code> field. See <a href="nft-collections.html">Minting NFTs into Collections</a>.</p>
-<p>You can mint your own NFTs with content you create yourself, but you can also become an authorized minter to generate NFTs on behalf of another creator. This allows the creator to focus on making new NFTs while you handle production and sales of the NFTs.</p>
-<p>Once the authorized minter has finished creating NFTs for you, you can revoke their privileges so that they no longer have any control over your NFTs.</p>
-<p>See <a href="nftoken-authorized-minting.html">Authorized Minter</a>.</p>
-<p>Minted NFTs are listed on a <code>NFTokenPage</code>. There is a reserve requirement of 2 XRP for every <code>NFTokenPage</code> on your account. See <a href="nft-reserve-requirements.html">NFT Reserve Requirements</a>.</p>
-<p>Each <code>NFTokenPage</code> holds 16-32 NFTs. Minting a large number of NFTs can tie up a great deal of your XRP. You can keep your XRP liquid by minting on demand (or <em>lazy minting</em>). See <a href="nftoken-batch-minting.html#オンデマンドmint-遅延minting">Lazy minting</a> vs <a href="nftoken-batch-minting.html#スクリプトminting">Scripted minting</a>.</p>
-<h3 id="setting-up-a-wallet">Setting up a wallet<a aria-hidden="true" class="hover_anchor" href="#setting-up-a-wallet"><i class="fa fa-link"></i></a></h3>
-<p>Set up a new wallet. See <a class="external-link" href="https://xumm.app/" target="_blank">Xumm <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<p>When you set up your account, keep in mind that there is a base reserve requirement of 10 XRP. See <a href="reserves.html#基本準備金と所有者準備金">Reserves</a>.</p>
-<h3 id="transferring-nfts">Transferring NFTs<a aria-hidden="true" class="hover_anchor" href="#transferring-nfts"><i class="fa fa-link"></i></a></h3>
-<p>You transfer NFTs by creating a sell offer or accepting a buy offer. See <a href="transfer-nfts-using-javascript.html">Transfer NFTokens</a>.</p>
-<p>You can sell your NFTs in an auction format. See <a href="nftoken-auctions.html">Running an NFT Auction</a>.</p>
-<p>You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See <a href="broker-an-nft-sale-using-javascript.html">Broker a NFToken sale</a>.</p>
-<h4 id="reserve-requirements">Reserve requirements<a aria-hidden="true" class="hover_anchor" href="#reserve-requirements"><i class="fa fa-link"></i></a></h4>
-<p>There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.</p>
-<p>Each <code>NFTokenOffer</code> object requires a reserve of 2 XRP.</p>
-<p>When you post the <code>NFTokenOffer</code> or sell the NFT, there are trivial transfer fees (roughly 6000 drops, or .006 XRP). When you are selling at a high volume, the trivial amounts can add up quickly, and need to be considered as part of your cost of doing business.</p>
-<p>See:</p>
+<h2 id="ブロックチェーンの基本機能のセットアップ">ブロックチェーンの基本機能のセットアップ<a aria-hidden="true" class="hover_anchor" href="#ブロックチェーンの基本機能のセットアップ"><i class="fa fa-link"></i></a></h2>
+<p>NFTをいくつかミントして販売することで、マーケットプレイスを構築し始めることができます。</p>
+<p>最初のNFTを作成するには、チュートリアル <em>NFTonenのミントとバーン</em> の指示に従います。<a href="mint-and-burn-nfts-using-javascript.html">NFTのミントとバーン</a>をご覧ください。</p>
+<p>NFTokenのURLは、NFTのコンテンツが保存されている場所へのリンクです。IPFSアカウントを作成し、永続的なURLにNFTokenのコンテンツを保存するのも1つの方法です。<a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data" target="_blank">NFTデータ保存のベストプラクティス <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください。</p>
+<p>発行者として将来的にトークンをバーンできるようにしたい場合は、<code>Flags</code>フィールドを <em>1</em> に設定します。NFTを譲渡可能にするには、<code>Flags</code>フィールドを <em>8</em> に設定します。NFTをバーン可能かつ譲渡可能にするには、<code>Flags</code>フィールドを <em>9</em> に設定します。<a href="nftoken.html#nftoken-フラグ">Burnableフラグ</a>および<a href="nftoken.html#nftoken-フラグ">Transferableフラグ</a>をご覧ください。</p>
+<p><code>transfer fee</code>を設定することで、将来の取引からロイヤリティを徴収することができます。これは販売価格の0～50%を表す0～50000の値です。<a href="nftoken.html#送金手数料">NFTの取引手数料</a>をご覧ください。</p>
+<p><code>TokenTaxon</code>フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。<a href="nft-collections.html">NFTをコレクションとしてミントする</a>をご覧ください。</p>
+<p>自分で作成したコンテンツで自分のNFTをミントすることもできますが、他のクリエイターの代わりにNFTを生成する認可Minterになることもできます。この場合、クリエイターは新しいNFTの作成に専念し、あなたはNFTのミントと販売を担当することができます。</p>
+<p>認可MinterがクリエイターのためにNFTをミントし終えたら、その権限を取り消し、クリエイターのNFTを制御できないようにすることができます。</p>
+<p><a href="nftoken-authorized-minting.html">認可Minter</a>をご覧ください。</p>
+<p>ミント済みのNFTは、<code>NFTokenPage</code>に記録されます。アカウント上の<code>NFTokenPage</code>1つにつき2XRPの準備金が必要です。<a href="nft-reserve-requirements.html">NFT準備金</a>をご覧ください。</p>
+<p>各「NFTokenPage」は16～32個のNFTを保持します。大量のNFTをミントすると、あなたのXRPを大量に準備金としてロックすることになります。オンデマンドミント（または <em>遅延ミント</em> ）を行うことで、XRPを柔軟に維持することができます。<a href="nftoken-batch-minting.html#オンデマンドmint-遅延minting">遅延ミント</a>と<a href="nftoken-batch-minting.html#スクリプトminting">スクリプトミント</a>をご覧下さい。</p>
+<h3 id="ウォレットのセットアップ">ウォレットのセットアップ<a aria-hidden="true" class="hover_anchor" href="#ウォレットのセットアップ"><i class="fa fa-link"></i></a></h3>
+<p>新しいウォレットをセットアップします。<a class="external-link" href="https://xumm.app/" target="_blank">Xumm <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください。</p>
+<p>アカウントを作成する際には、10 XRPの基本準備金が必要であることに注意してください。<a href="reserves.html#基本準備金と所有者準備金">準備金</a>をご覧ください。</p>
+<h3 id="nftの取引">NFTの取引<a aria-hidden="true" class="hover_anchor" href="#nftの取引"><i class="fa fa-link"></i></a></h3>
+<p>NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。<a href="transfer-nfts-using-javascript.html">NFTokensの取引</a>をご覧ください。</p>
+<p>NFTをオークション形式で販売することができます。<a href="nftoken-auctions.html">NFTオークションの実行</a>をご覧ください。</p>
+<p>あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。<a href="broker-an-nft-sale-using-javascript.html">NFTokenの取引を仲介する</a>をご覧ください。</p>
+<h4 id="準備金要件">準備金要件<a aria-hidden="true" class="hover_anchor" href="#準備金要件"><i class="fa fa-link"></i></a></h4>
+<p>販売用のNFTをミントする際には、XRPの準備金が必要となります。各NFTokenページには、2XRPの準備金が必要です。NFTokenページは16～32個のNFTを保管することができます。</p>
+<p>各<code>NFTokenOffer</code>オブジェクトは、2XRPの準備金が必要です。</p>
+<p><code>NFTokenOffer</code>を作成したり、NFTを売却したりする際には、些細な送金手数料（およそ6000ドロップ、または0.006 XRP）が発生します。大量に販売する場合、こうした少額の手数料はすぐにかさみますので、ビジネスのコストとして考慮する必要があります。</p>
+<p>次のコンテンツをご覧ください。</p>
 <ol>
 <li><a href="nft-reserve-requirements.html#nftokenofferの準備金">NFTokenOffer</a></li>
-<li>NFToken page (<a href="nft-reserve-requirements.html#所有者準備金">Owner reserve</a>)</li>
-<li>Trivial <a href="transfer-fees.html">transfer fees</a></li>
+<li>NFToken page (<a href="nft-reserve-requirements.html#所有者準備金">所有者準備金</a>)</li>
+<li>少額の<a href="transfer-fees.html">取引手数料</a></li>
 </ol>
-<h4 id="checkout">Checkout<a aria-hidden="true" class="hover_anchor" href="#checkout"><i class="fa fa-link"></i></a></h4>
-<p>The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see <a href="transfer-nfts-using-javascript.html">Transfer NFTokens</a>.</p>
-<p>For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See <a href="trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange">Trade in the Decentralized Exchange</a>.</p>
+<h4 id="支払い">支払い<a aria-hidden="true" class="hover_anchor" href="#支払い"><i class="fa fa-link"></i></a></h4>
+<p>XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、<a href="transfer-nfts-using-javascript.html">NFTokenの取引</a>をご覧ください。</p>
+<p>他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。<a href="trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange">分散型取引所での取引</a>をご覧ください。</p>
 <!-- 
 
 - Fiat payment ([Cross-currency payments](cross-currency-payments.html))
 - On-chain validation of completing transactions [No link- isn’t this just a cross-currency payment?] (Query after the transaction is completed.]
  -->
-<h2 id="indexing-nfts">Indexing NFTs<a aria-hidden="true" class="hover_anchor" href="#indexing-nfts"><i class="fa fa-link"></i></a></h2>
-<p>When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.</p>
-<p>See:</p>
+<h2 id="nftのインデックス化">NFTのインデックス化<a aria-hidden="true" class="hover_anchor" href="#nftのインデックス化"><i class="fa fa-link"></i></a></h2>
+<p>NFTを出品する際、オブジェクトのメタデータを使って分類するのが便利な場合があります。XRPLライブラリ、Clioサーバ、XRPL APIとBithompライブラリの拡張機能などのクエリを使用して、NFTをクリエイター、価格、コレクション、レアリティなどでソートしたりフィルタリングしたりすることができます。</p>
+<p>関連項目:</p>
 <ul>
-<li><a href="install-clio-on-ubuntu.html">Clio setup</a> </li>
+<li><a href="install-clio-on-ubuntu.html">Clioのセットアップ</a> </li>
 <li><a class="external-link" href="https://api.xrpldata.com/docs/static/index.html#/" target="_blank">XRPL Data API <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><a class="external-link" href="https://docs.bithomp.com/#nft-xls-20" target="_blank">Bithomp <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
@@ -511,18 +508,18 @@ Supplement Information [No link]
         Number of owners
         Price History
  -->
-<h2 id="nft-caching">NFT Caching<a aria-hidden="true" class="hover_anchor" href="#nft-caching"><i class="fa fa-link"></i></a></h2>
+<h2 id="nftのキャッシュ">NFTのキャッシュ<a aria-hidden="true" class="hover_anchor" href="#nftのキャッシュ"><i class="fa fa-link"></i></a></h2>
 <!-- 
 
 Image optimization for web experience [No link]
 
  -->
-<p>NFTs that are created in the crypto space are expected to store metadata, including media, attributes, and so on. Currently most are stored on IPFS or Arweave to avoid centralization.</p>
+<p>クリプト分野で作成されるNFTは、メディアや属性などのメタデータを保存することが想定されています。現在は中央集権化を避けるため、ほとんどがIPFSやArweaveに保存されています。</p>
 <!--  We can't use this example.
 See  [HERE](https://xrp.cafe/nft/00081770CCE71D9E7BD07E3A771C7619DA982D62CD37325A99B664A500000209)) -->
-<p>Although IPFS / Arweave are great solutions to promote decentralization, fetching the metadata efficiently is a problem. Reaching IPFS / Arweave directly to fetch metadata is not fast enough for modern websites that require immediate responses from users that are scrolling through multiple pages of NFTs with high-quality media. Many NFT marketplaces on XRPL today are storing cached versions of the IPFS originals to have fast and reliable responsive websites, but this process is expensive and inefficient.</p>
-<p>Cloudflare, Infura, and many other providers are increasingly focusing on storing these decentralized files and retrieving them fast for users.</p>
-<p>See <a href="nftoken.html#retrieving-nftoken-data-and-metadata">NFT Caching</a>.</p>
+<p>IPFS/Arweaveは分散化を促進する素晴らしいソリューションですが、メタデータを効率的にフェッチすることが問題になっています。IPFS/Arweaveに直接アクセスしてメタデータをフェッチするのは、高品質のメディアを持つNFTの複数ページをスクロールしているユーザからの即時応答を必要とする現代のウェブサイトにとって十分な速度とは言えません。現在、XRPL上の多くのNFTマーケットプレイスは、高速で信頼性の高いレスポンシブなウェブサイトを持つために、IPFSオリジナルのキャッシュバージョンを保存していますが、このプロセスは高価で非効率です。</p>
+<p>CloudflareやInfuraをはじめとする多くのプロバイダが、こうした分散型ファイルの保存と、ユーザのための高速な検索に力を入れるようになっています。</p>
+<p><a href="nftoken.html#nftokenデータとメタデータの取得">NFTのキャッシュ</a>をご覧ください。</p>
 <!-- 
 You can also consider a solution such as Pinata. [https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing](https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing) 
 
@@ -569,22 +566,22 @@ We can derive inspiration for the need of caching and point to some of their doc
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -614,17 +611,17 @@ We can derive inspiration for the need of caching and point to some of their doc
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -641,7 +638,7 @@ We can derive inspiration for the need of caching and point to some of their doc
     <nav class="nav flex-column show " id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -649,22 +646,22 @@ We can derive inspiration for the need of caching and point to some of their doc
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="true" aria-controls="tree_nav_group_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -685,7 +682,7 @@ We can derive inspiration for the need of caching and point to some of their doc
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       

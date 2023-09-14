@@ -394,7 +394,6 @@
         <li class="nav-item level-3"><a class="nav-link" href="#トークン連番">トークン連番</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#uri">URI</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#nftokenデータとメタデータの取得">NFTokenデータとメタデータの取得</a></li>
-        <li class="nav-item level-1"><a class="nav-link" href="#retrieving-nftoken-data-and-metadata">Retrieving NFToken Data and Metadata</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#txtレコードの形式">TXTレコードの形式</a></li>
       </ul>
   </div>
@@ -505,7 +504,6 @@
 <p>URIフィールドは、<code>NFToken</code>に関連するデータまたはメタデータを指します。このフィールドはHTTPやHTTPSのURLである必要はありません。IPFS URIや紐づくリンク、<a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc2397" target="_blank">RFC2379 "data" URL <i aria-hidden="true" class="fa fa-external-link"></i></a>、あるいはカスタムされたのエンコード値である可能性もあります。URIの有効性はチェックされませんが、フィールドの長さは最大256バイトに制限されます。</p>
 <p class="devportal-callout 注意"><strong>注意:</strong> URIは変更不可能であるため、例えば、存在しないウェブサイトにリンクしていたとしても、誰もそれを更新することはできません。</p>
 <h1 id="nftokenデータとメタデータの取得">NFTokenデータとメタデータの取得<a aria-hidden="true" class="hover_anchor" href="#nftokenデータとメタデータの取得"><i class="fa fa-link"></i></a></h1>
-<h1 class="invisible" id="retrieving-nftoken-data-and-metadata">Retrieving NFToken Data and Metadata<a aria-hidden="true" class="hover_anchor" href="#retrieving-nftoken-data-and-metadata"><i class="fa fa-link"></i></a></h1>
 <p>機能を犠牲にしたり不必要な制限を課したりすることなく<code>NFTokens</code>の容量を最小にするために、XRPL NFTは任意のデータフィールドを持ちません。その代わり、データは別に管理され、<code>NFToken</code>によって参照されます。URIは<code>Hash</code>に対して不変のコンテンツへの参照を提供し、<code>NFToken</code>オブジェクトに対しては任意の変更可能なデータを提供します。</p>
 <p><code>URI</code>フィールドは、従来とは異なるピアツーピア(P2P)URLを参照する際に特に有用です。例えば、惑星間ファイルシステム(IPFS)を使用して<code>NFToken</code>データやメタデータを保存する発行者は、<code>URI</code>フィールドを使用してIPFS上のデータを様々な方法で参照することができ、それぞれが異なるユースケースに適しています。NFTデータの保存に使用できるIPFSリンクの種類については、<a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them" target="_blank">Best Practices for Storing NFT Data using IPFS <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
 <h2 id="txtレコードの形式">TXTレコードの形式<a aria-hidden="true" class="hover_anchor" href="#txtレコードの形式"><i class="fa fa-link"></i></a></h2>
@@ -516,7 +514,7 @@
 <p>実装では、<code>TXT</code>レコードの存在を確認し、存在すればそれらのクエリ文字列を使用する必要があります。文字列が存在しない場合、実装はデフォルトのURLを使用するように試みるべきです。ドメインが <em>example.com</em> であると仮定すると、デフォルトのURLは次のようになります。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">https://example.com/.well-known/xrpl-nft/{tokenid}
 </code></pre></div>
-<p><code>NFTokenMint</code>トランザクションを使用して<code>NFTtoken</code>を作成します。<code>NFTokenBurn</code>トランザクションを使用して<code>NFToken</code>を破棄することもできます。</p>
+<p><code>NFTokenMint</code>トランザクションを使用して<code>NFToken</code>を作成します。<code>NFTokenBurn</code>トランザクションを使用して<code>NFToken</code>を破棄することもできます。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -564,22 +562,22 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -609,17 +607,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -636,7 +634,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -644,22 +642,22 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -680,7 +678,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       

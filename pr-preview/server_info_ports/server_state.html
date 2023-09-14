@@ -714,33 +714,33 @@ rippled<span class="w"> </span>server_state
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_base</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">This is the baseline amount of server load used in <a href="transaction-cost.html">transaction cost</a> calculations. If the <code>load_factor</code> is equal to the <code>load_base</code> then only the base transaction cost is enforced. If the <code>load_factor</code> is higher than the <code>load_base</code>, then transaction costs are multiplied by the ratio between them. For example, if the <code>load_factor</code> is double the <code>load_base</code>, then transaction costs are doubled.</td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">The baseline amount of server load used in <a href="transaction-cost.html">transaction cost</a> calculations. If the <code>load_factor</code> is equal to the <code>load_base</code>, then only the base transaction cost is enforced. If the <code>load_factor</code> is higher than the <code>load_base</code>, then transaction costs are multiplied by the ratio between them. For example, if the <code>load_factor</code> is double the <code>load_base</code>, then transaction costs are doubled.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">The load factor the server is currently enforcing. The ratio between this value and the <code>load_base</code> determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, the <a href="transaction-cost.html#open-ledger-cost">open ledger cost</a>, and the overall network's load factor.</td>
+<td style="text-align: left;">The load factor the server is currently enforcing. The ratio between this value and the <code>load_base</code> determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, the cluster's load factor, the open ledger cost, and the overall network's load factor.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_fee_escalation</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The current multiplier to the <a href="transaction-cost.html">transaction cost</a> to get into the open ledger, in <a href="transaction-cost.html#fee-levels">fee levels</a>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The current multiplier to the transaction cost to get into the open ledger, in <a href="transaction-cost.html#fee-levels">fee levels</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_fee_queue</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The current multiplier to the <a href="transaction-cost.html">transaction cost</a> to get into the queue, if the queue is full, in <a href="transaction-cost.html#fee-levels">fee levels</a>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The current multiplier to the transaction cost to get into the queue, if the queue is full, in fee levels.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_fee_reference</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The <a href="transaction-cost.html">transaction cost</a> with no load scaling, in <a href="transaction-cost.html#fee-levels">fee levels</a>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The transaction cost with no load scaling, in fee levels.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_server</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The load factor the server is enforcing, not including the <a href="transaction-cost.html#open-ledger-cost">open ledger cost</a>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The load factor the server is enforcing, based on load to the server, cluster, and network, but not factoring in the open ledger cost.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>peers</code></td>
