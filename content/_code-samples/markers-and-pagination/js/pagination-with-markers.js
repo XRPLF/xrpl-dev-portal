@@ -17,11 +17,11 @@ async function main() {
   function printLedgerResult(){
     console.log(ledger["result"])
   }
- 
+
   // Execute function at least once before checking for markers.
   do {
     printLedgerResult()
-    
+
     if (ledger["result"]["marker"] === undefined) {
         break
     }
@@ -37,7 +37,7 @@ async function main() {
   } while (true)
 
   // Disconnect when done. If you omit this, Node.js won't end the process.
-  client.disconnect()
+  await client.disconnect()
 }
 
 main()

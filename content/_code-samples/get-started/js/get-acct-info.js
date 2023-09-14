@@ -5,7 +5,7 @@ const xrpl = require("xrpl")
 async function main() {
 
   // Define the network client
-  const SERVER_URL = "https://s.altnet.rippletest.net:51234/"
+  const SERVER_URL = "wss://s.altnet.rippletest.net:51233/"
   const client = new xrpl.Client(SERVER_URL)
   await client.connect()
 
@@ -32,7 +32,7 @@ async function main() {
   })
 
   // Disconnect when done so Node.js can end the process
-  client.disconnect()
+  await client.disconnect()
 }
 
 // call the async function

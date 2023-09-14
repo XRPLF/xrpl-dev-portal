@@ -67,7 +67,7 @@ default_keys: &defaults
     hover_anchors: <i class="fa fa-link"></i>
     light_theme_enabled: true
     # Script tags used in a variety of tools & examples.
-    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.2.0.min.js"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.11.0.min.js"></script>'
 
 targets:
     # First member is the default that gets built when target not specified
@@ -624,7 +624,6 @@ pages:
             - ja
 
     -   md: use-cases/tokenization/stablecoin-issuer.md
-        parent: tokenization.html
         targets:
             - en
             - ja
@@ -870,6 +869,7 @@ pages:
 
         # TODO: update translation. Some parts split into "ledger structure"
     -   md: concepts/ledgers/ledgers.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -1263,6 +1263,7 @@ pages:
 
         # TODO: update translation
     -   md: concepts/tokens/automated-market-makers.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -1281,6 +1282,7 @@ pages:
 
         #TODO: update translation. Mostly just the title has changed
     -   md: concepts/accounts/account-types.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -1310,6 +1312,7 @@ pages:
 
         # TODO: update translation based on latest English version
     -   md: concepts/accounts/cryptographic-keys.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -1351,7 +1354,7 @@ pages:
             - ja
 
     -   name: Stablecoin Issuer
-        html: become-an-xrp-ledger-gateway.html.html
+        html: become-an-xrp-ledger-gateway.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
         redirect_url: stablecoin-issuer.html
@@ -1807,6 +1810,7 @@ pages:
         # TODO: translate
     -   md: tutorials/get-started/get-started-using-java.md
         top_nav_grouping: 始めましょう
+        untranslated_warning: true
         targets:
             - ja
 
@@ -2073,6 +2077,7 @@ pages:
 
         # TODO: update translation to match English updates
     -   md: tutorials/use-specialized-payment-types/use-checks/use-checks.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2168,6 +2173,12 @@ pages:
 
     # TODO: translate this page & blurb
     -   md: tutorials/use-tokens/freeze-a-trust-line.md
+        targets:
+            - en
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/create-an-automated-market-maker.md
         targets:
             - en
             - ja
@@ -2339,6 +2350,7 @@ pages:
 
         # TODO: update translation to add a table like in the English version
     -   md: references/protocol-reference/data-types/currency-formats.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2349,6 +2361,7 @@ pages:
         # TODO: update translation to use the term "sequence number" rather than
         # "dumb sequential"
     -   md: references/protocol-reference/data-types/nftoken.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2390,6 +2403,7 @@ pages:
 
         # TODO: update translation for rippled v1.11.0 & AMM
     -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2407,6 +2421,7 @@ pages:
 
         # TODO: update translation
     -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2534,6 +2549,7 @@ pages:
 
         # TODO: update blurb translation based on English version
     -   md: references/protocol-reference/transactions/transaction-formats.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2543,6 +2559,7 @@ pages:
 
         # TODO: update translation with rippled 1.11.0 changes
     -   md: references/protocol-reference/transactions/transaction-common-fields.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2576,6 +2593,7 @@ pages:
 
         # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/ammbid.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2585,6 +2603,7 @@ pages:
 
         # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/ammcreate.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2600,6 +2619,7 @@ pages:
 
         # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2609,6 +2629,7 @@ pages:
 
         # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/ammvote.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2618,6 +2639,7 @@ pages:
 
         # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2859,6 +2881,7 @@ pages:
 
         # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-results/tel-codes.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2892,6 +2915,7 @@ pages:
 
         # TODO: update translation to latest English version
     -   md: references/protocol-reference/transactions/transaction-metadata.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2910,6 +2934,7 @@ pages:
 
         # TODO: update translation with new/updated sections from the English version
     -   md: references/protocol-reference/serialization.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3134,6 +3159,7 @@ pages:
 
         # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_currencies.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3143,6 +3169,7 @@ pages:
 
         # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_info.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3152,6 +3179,7 @@ pages:
 
         # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_lines.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3169,6 +3197,7 @@ pages:
 
         # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3178,6 +3207,7 @@ pages:
 
         # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_offers.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3340,6 +3370,7 @@ pages:
 
         # TODO: update translation
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3488,6 +3519,7 @@ pages:
 
         # TODO: update translation with reporting fields, ETL source object, corrected state_account.*.transitions field
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3497,6 +3529,7 @@ pages:
 
         # TODO: update translation with reporting fields, ETL source object, corrected state_account.*.transitions field
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3869,6 +3902,7 @@ pages:
 
         # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -4020,6 +4054,7 @@ pages:
 
         # TODO: update translation
     -   md: infrastructure/rippled/commandline-usage.ja.md
+        outdated_translation: true
         targets:
             - ja
 
