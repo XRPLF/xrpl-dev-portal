@@ -500,7 +500,7 @@ pages:
         html: introduction.html
         parent: docs.html
         template: pagetype-category.html.jinja
-        blurb: XRP Ledgerとは「何なのか」、「なぜなのか」を学びましょう。
+        blurb: XRP Ledger(XRPL)の主要な機能を簡単に紹介します。これを読んでXRPLのハイレベルな理解を深め、その後、特に興味のある分野についての詳細を読むことができます。XRP Ledgerは、アカウント間のトークンのデジタルトランザクションを永続的に記録するブロックチェーンです。以下のセクションは、その文章で紹介された概念を拡張するものです。
         top_nav_grouping: カテゴリ
         targets:
             - ja
@@ -508,11 +508,17 @@ pages:
     -   md: concepts/introduction/what-is-the-xrp-ledger.md
         targets:
             - en
+
+    -   md: concepts/introduction/what-is-the-xrp-ledger.ja.md
+        targets:
             - ja
 
     -   md: concepts/introduction/what-is-xrp.md
         targets:
             - en
+
+    -   md: concepts/introduction/what-is-xrp.ja.md
+        targets:
             - ja
 
         # Redirect from old XRP page
@@ -529,12 +535,20 @@ pages:
         parent: introduction.html
         targets:
             - en
+
+    -   md: concepts/introduction/crypto-wallets.ja.md
+        parent: introduction.html
+        targets:
             - ja
 
     -   md: concepts/introduction/txn-and-requests.md
         parent: introduction.html
         targets:
             - en
+
+    -   md: concepts/introduction/txn-and-requests.ja.md
+        parent: introduction.html
+        targets:
             - ja
 
     -   md: concepts/introduction/software-ecosystem.md
@@ -542,7 +556,6 @@ pages:
         targets:
             - en
 
-        # TODO: update based on EN changes
     -   md: concepts/introduction/software-ecosystem.ja.md
         parent: introduction.html
         targets:
@@ -591,18 +604,30 @@ pages:
         parent: payments-uc.html
         targets:
             - en
+
+    -   md: use-cases/payments/peer-to-peer-payments-uc.ja.md
+        parent: payments-uc.html
+        targets:
             - ja
 
     -   md: use-cases/payments/restricting-deposits-uc.md
         parent: payments-uc.html
         targets:
             - en
+
+    -   md: use-cases/payments/restricting-deposits-uc.ja.md
+        parent: payments-uc.html
+        targets:
             - ja
 
     -   md: use-cases/payments/smart-contracts-uc.md
         parent: payments-uc.html
         targets:
             - en
+
+    -   md: use-cases/payments/smart-contracts-uc.ja.md
+        parent: payments-uc.html
+        targets:
             - ja
 
     -   name: Tokenization
@@ -626,12 +651,20 @@ pages:
     -   md: use-cases/tokenization/stablecoin-issuer.md
         targets:
             - en
+
+    -   md: use-cases/tokenization/stablecoin-issuer.ja.md
+        parent: tokenization.html
+        targets:
             - ja
 
     -   md: use-cases/tokenization/nft-mkt-overview.md
         parent: tokenization.html
         targets:
             - en
+
+    -   md: use-cases/tokenization/nft-mkt-overview.ja.md
+        parent: tokenization.html
+        targets:
             - ja
 
         # TODO: these files aren't nested under "NFT mkt overview" but they are in the nav
@@ -639,18 +672,31 @@ pages:
         parent: nft-mkt-overview.html
         targets:
             - en
+
+        # TODO: these files aren't nested under "NFT mkt overview" but they are in the nav
+    -   md: use-cases/tokenization/nftoken-marketplace.ja.md
+        parent: nft-mkt-overview.html
+        targets:
             - ja
 
     -   md: use-cases/tokenization/authorized-minter.md
         parent: nft-mkt-overview.html
         targets:
             - en
+
+    -   md: use-cases/tokenization/authorized-minter.ja.md
+        parent: nft-mkt-overview.html
+        targets:
             - ja
 
     -   md: use-cases/tokenization/digital-artist.md
         parent: nft-mkt-overview.html
         targets:
             - en
+
+    -   md: use-cases/tokenization/digital-artist.ja.md
+        parent: nft-mkt-overview.html
+        targets:
             - ja
 
     -   name: Decentralized Finance
@@ -675,6 +721,10 @@ pages:
         parent: defi-uc.html
         targets:
             - en
+
+    -   md: use-cases/defi/algorithmic-trading.ja.md
+        parent: defi-uc.html
+        targets:
             - ja
 
     -   md: use-cases/defi/list-xrp-as-an-exchange.md

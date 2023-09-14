@@ -57,7 +57,7 @@ The semantics of brokered mode are slightly different than direct mode: the acco
 
 If the transaction succeeds:
 
-- The `NFTtoken` changes ownership, meaning that the token is removed from the `NFTokenPage` of the existing owner and added to the `NFTokenPage` of the new owner.
+- The `NFToken` changes ownership, meaning that the token is removed from the `NFTokenPage` of the existing owner and added to the `NFTokenPage` of the new owner.
 - Funds are transferred from the buyer to the seller, as specified in the `NFTokenOffer`. If the `NFToken` has a transfer fee, then its issuer receives the specified percentage, and the rest goes to the seller.
 
 The transaction fails with a [`tec`-class code](tec-codes.html) if:
