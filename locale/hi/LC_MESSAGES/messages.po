@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-11 18:51-0700\n"
+"POT-Creation-Date: 2023-09-12 04:22+0000\n"
 "PO-Revision-Date: 2021-11-05 20:34+0530\n"
 "Last-Translator: FULL NAME tpardhe@gmail.com\n"
 "Language: hi\n"
@@ -141,8 +141,17 @@ msgstr ""
 msgid "Tutorials and workshops from leading XRPL and blockchain developers"
 msgstr ""
 
+#: template/page-ambassadors.html.jinja:110
+msgid "Swag"
+msgstr ""
+
 #: template/page-ambassadors.html.jinja:111
 msgid "New XRPL swag for Ambassadors and swag to share with other students"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:119
+#: template/page-ambassadors.html.jinja:158
+msgid "Mentorship"
 msgstr ""
 
 #: template/page-ambassadors.html.jinja:120
@@ -150,6 +159,10 @@ msgstr ""
 msgid ""
 "Serve as an advocate and receive support from notable members of the "
 "community"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:127
+msgid "Career Acceleration"
 msgstr ""
 
 #: template/page-ambassadors.html.jinja:128
@@ -168,10 +181,6 @@ msgstr ""
 msgid ""
 "Receive a stipend to fund your ideas and initiatives that fuel XRPL "
 "growth on your campus"
-msgstr ""
-
-#: template/page-ambassadors.html.jinja:158
-msgid "Mentorship"
 msgstr ""
 
 #: template/page-ambassadors.html.jinja:187
@@ -326,12 +335,24 @@ msgid ""
 "XRPL Campus Ambassadors be sure to follow these channels:"
 msgstr ""
 
+#: template/page-ambassadors.html.jinja:477
+msgid "MeetUp"
+msgstr ""
+
 #: template/page-ambassadors.html.jinja:478
 msgid "Attend an XRPL Meetup in your local area"
 msgstr ""
 
+#: template/page-ambassadors.html.jinja:484
+msgid "Dev.to Blog"
+msgstr ""
+
 #: template/page-ambassadors.html.jinja:485
 msgid "Read more about the activity of the XRPL Ambassadors"
+msgstr ""
+
+#: template/page-ambassadors.html.jinja:496
+msgid "Discord"
 msgstr ""
 
 #: template/page-ambassadors.html.jinja:497

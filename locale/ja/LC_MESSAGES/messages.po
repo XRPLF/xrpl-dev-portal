@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2023-09-11 18:51-0700\n"
+"POT-Creation-Date: 2023-09-12 04:22+0000\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -85,7 +85,7 @@ msgstr "XRP Ledgerキャンパスアンバサダーになる"
 
 #: template/page-ambassadors.html.jinja:28
 msgid "Join the Student Cohort"
-msgstr "Student Cohortに参加"
+msgstr "学生コミュニティに参加"
 
 #: template/page-ambassadors.html.jinja:30
 msgid ""
@@ -108,7 +108,7 @@ msgid ""
 "students who are passionate about blockchain technology. In their role, "
 "Campus Ambassadors help educate other students about crypto and how to "
 "start building on the XRPL."
-msgstr "XRPLキャンパスアンバサダープログラムは、ブロックチェーン技術に情熱を傾ける大学生の影響力を高めることを目的としています。その役割として、キャンパスアンバサダーは、暗号とXRPLでの構築を開始する方法について他の学生を教育することを支援します。"
+msgstr "XRPLキャンパスアンバサダープログラムは、ブロックチェーン技術に情熱を傾ける大学生の影響力を高めることを目的としています。その役割として、キャンパスアンバサダーは、クリプトとXRPLでの構築を開始する方法について他の学生を教育することを支援します。"
 
 #: template/page-ambassadors.html.jinja:78
 msgid "Why become an XRPL Campus Ambassador?"
@@ -125,60 +125,70 @@ msgstr "XRPLをベースに他の人に力を与える、世界的な学生グ�
 
 #: template/page-ambassadors.html.jinja:94
 msgid "Exclusive Opportunities"
-msgstr ""
+msgstr "特別な機会"
 
 #: template/page-ambassadors.html.jinja:95
 msgid ""
 " Get access and invitations to Ambassador-only events, conferences, and "
 "opportunities"
-msgstr ""
+msgstr "アンバサダー限定のイベント、カンファレンス、チャンスの情報を入手できます。"
 
 #: template/page-ambassadors.html.jinja:102
 #: template/page-ambassadors.html.jinja:150
 msgid "Education"
-msgstr ""
+msgstr "学習"
 
 #: template/page-ambassadors.html.jinja:103
 #: template/page-ambassadors.html.jinja:151
 msgid "Tutorials and workshops from leading XRPL and blockchain developers"
-msgstr ""
+msgstr "トップクラスのXRPLおよびブロックチェーン開発者によるチュートリアルとワークショップ"
+
+#: template/page-ambassadors.html.jinja:110
+msgid "Swag"
+msgstr "グッズ"
 
 #: template/page-ambassadors.html.jinja:111
 msgid "New XRPL swag for Ambassadors and swag to share with other students"
-msgstr ""
+msgstr "アンバサダー用の特別なXRPLグッズと他の学生と共有できるグッズ"
+
+#: template/page-ambassadors.html.jinja:119
+#: template/page-ambassadors.html.jinja:158
+msgid "Mentorship"
+msgstr "メンター"
 
 #: template/page-ambassadors.html.jinja:120
 #: template/page-ambassadors.html.jinja:159
 msgid ""
 "Serve as an advocate and receive support from notable members of the "
 "community"
-msgstr ""
+msgstr "アドボケートとなり、コミュニティの主要メンバーからサポートを受ける"
+
+#: template/page-ambassadors.html.jinja:127
+#, fuzzy
+msgid "Career Acceleration"
+msgstr "キャリア促進"
 
 #: template/page-ambassadors.html.jinja:128
 msgid ""
 "Gain hands-on experience building communities and grow your professional "
 "network in the blockchain industry"
-msgstr ""
+msgstr "ブロックチェーン業界におけるコミュニティ構築の経験を積み、プロフェッショナルなネットワークを拡大する"
 
 #: template/page-ambassadors.html.jinja:136
 #: template/page-ambassadors.html.jinja:166
 msgid "Stipend"
-msgstr ""
+msgstr "奨学金"
 
 #: template/page-ambassadors.html.jinja:137
 #: template/page-ambassadors.html.jinja:167
 msgid ""
 "Receive a stipend to fund your ideas and initiatives that fuel XRPL "
 "growth on your campus"
-msgstr ""
-
-#: template/page-ambassadors.html.jinja:158
-msgid "Mentorship"
-msgstr ""
+msgstr "キャンパスでのXRPLの成長を促進するアイデアや イニシアチブの資金となる奨学金を受け取ります"
 
 #: template/page-ambassadors.html.jinja:187
 msgid "Should You Apply?"
-msgstr "応募できる？"
+msgstr "応募すべき？"
 
 #: template/page-ambassadors.html.jinja:188
 msgid "Eligibility for XRPL Campus Ambassadors"
@@ -192,53 +202,53 @@ msgstr "現在、認定された大学の学部または大学院に在籍して
 
 #: template/page-ambassadors.html.jinja:202
 msgid "A Leader"
-msgstr ""
+msgstr "リーダー"
 
 #: template/page-ambassadors.html.jinja:203
 msgid ""
 "Interested in leading meetups and workshops for your local campus "
 "community"
-msgstr ""
+msgstr "地元の学生コミュニティでミートアップやワークショップを開催することに関心を持っている"
 
 #: template/page-ambassadors.html.jinja:211
 #: template/page-ambassadors.html.jinja:250
 msgid "Active"
-msgstr ""
+msgstr "アクティブ"
 
 #: template/page-ambassadors.html.jinja:212
 #: template/page-ambassadors.html.jinja:251
 msgid ""
 "An active participant in the XRPL community or interested in blockchain "
 "and crypto technologies"
-msgstr ""
+msgstr "XRPLコミュニティに積極的に参加している、またはブロックチェーンや暗号技術に興味を持っている"
 
 #: template/page-ambassadors.html.jinja:219
 msgid "Curious"
-msgstr ""
+msgstr "好奇心旺盛"
 
 #: template/page-ambassadors.html.jinja:220
 msgid "Eager to learn more about technical blockchain topics and the XRPL"
-msgstr ""
+msgstr "技術的なブロックチェーンのトピックやXRPLについてより深く学びたい"
 
 #: template/page-ambassadors.html.jinja:228
 #: template/page-ambassadors.html.jinja:257
 msgid "Passionate"
-msgstr ""
+msgstr "情熱的"
 
 #: template/page-ambassadors.html.jinja:229
 #: template/page-ambassadors.html.jinja:258
 msgid ""
 "Passionate about increasing XRPL education and awareness through events, "
 "content, and classroom engagement"
-msgstr ""
+msgstr "イベント、コンテンツ、授業への参加を通じて、XRPLの教育と認知度を高めることに情熱を持っている"
 
 #: template/page-ambassadors.html.jinja:236
 msgid "Creative"
-msgstr ""
+msgstr "クリエイティブ"
 
 #: template/page-ambassadors.html.jinja:237
 msgid "Ability to think outside the box to grow the XRPL student community"
-msgstr ""
+msgstr "既成概念にとらわれず、XRPLの学生コミュニティを成長させる思考力"
 
 #: template/page-ambassadors.html.jinja:331
 msgid "Process to become a Campus Ambassador"
@@ -255,50 +265,50 @@ msgstr "XRPLキャンパスアンバサダーになりたい方は今すぐ応�
 #: template/page-ambassadors.html.jinja:354 template/page-uses.html.jinja:309
 #: template/page-uses.html.jinja:334
 msgid "Apply"
-msgstr ""
+msgstr "応募"
 
 #: template/page-ambassadors.html.jinja:355
 msgid "Submit an application to be considered for the Campus Ambassador program."
-msgstr ""
+msgstr "キャンパスアンバサダープログラムの選考を受けるには、応募書類を提出してください。"
 
 #: template/page-ambassadors.html.jinja:363
 #: template/page-ambassadors.html.jinja:393
 #, fuzzy
 msgid "Interview"
-msgstr "資金調達の概要"
+msgstr "面接"
 
 #: template/page-ambassadors.html.jinja:364
 #: template/page-ambassadors.html.jinja:394
 msgid ""
 "Tell the XRPL community-led panel more about yourself and your interest "
 "in the program during an interview."
-msgstr ""
+msgstr "XRPLコミュニティが中心となって運営する委員との面接で、あなた自身について、またプログラムへの関心について詳しく話してください。"
 
 #: template/page-ambassadors.html.jinja:371
 msgid "Join"
-msgstr ""
+msgstr "参加"
 
 #: template/page-ambassadors.html.jinja:372
 msgid ""
 "Congrats on your new role! Join the global cohort of Ambassadors and meet"
 " with community participants during onboarding."
-msgstr ""
+msgstr "就任おめでとうございます！グローバルなアンバサダーグループに参加し、新しいコミュニティ参加者とお会いしましょう。"
 
 #: template/page-ambassadors.html.jinja:380
 #: template/page-ambassadors.html.jinja:400
 msgid "Learn"
-msgstr ""
+msgstr "学習"
 
 #: template/page-ambassadors.html.jinja:381
 #: template/page-ambassadors.html.jinja:401
 msgid ""
 "Participate in personalized learning and training sessions for "
 "Ambassadors on the XRPL and blockchain technology."
-msgstr ""
+msgstr "XRPLおよびブロックチェーン技術に関するアンバサダー向けの個別学習およびトレーニングセッションへ参加しましょう。"
 
 #: template/page-ambassadors.html.jinja:414
 msgid "Apply for Fall 2023"
-msgstr ""
+msgstr "2023年秋の申し込み"
 
 #: template/page-ambassadors.html.jinja:431
 msgid "Join a global cohort of Student Ambassadors"
@@ -323,19 +333,32 @@ msgstr "繋がる"
 msgid ""
 "To stay up-to-date on the latest activity, meetups, and events of the "
 "XRPL Campus Ambassadors be sure to follow these channels:"
-msgstr "XRPL キャンパスアンバサダーの最新の活動、ミートアップ、イベントに関する最新情報を得るには、以下のチャンネルをフォローしてください。"
+msgstr "XRPL キャンパスアンバサダーの最新の活動、ミートアップ、イベントに関する最新情報を得るには、次のチャンネルをフォローしましょう。"
+
+#: template/page-ambassadors.html.jinja:477
+msgid "MeetUp"
+msgstr "ミートアップ"
 
 #: template/page-ambassadors.html.jinja:478
 msgid "Attend an XRPL Meetup in your local area"
-msgstr ""
+msgstr "地域のXRPLミートアップに参加しましょう。"
+
+#: template/page-ambassadors.html.jinja:484
+#, fuzzy
+msgid "Dev.to Blog"
+msgstr "Dev.to ブログ"
 
 #: template/page-ambassadors.html.jinja:485
 msgid "Read more about the activity of the XRPL Ambassadors"
+msgstr "XRPLアンバサダーの活動についてもっと知る。"
+
+#: template/page-ambassadors.html.jinja:496
+msgid "Discord"
 msgstr ""
 
 #: template/page-ambassadors.html.jinja:497
 msgid "Join the conversation on the XRPL Developer Discord"
-msgstr ""
+msgstr "XRPL開発者Discordで意見交換しましょう。"
 
 #: template/page-code-samples.html.jinja:13
 msgid "Start Building with Example Code"
