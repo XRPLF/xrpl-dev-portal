@@ -282,6 +282,7 @@ Changes the behavior of cross-currency Payments from an account to itself when t
 
 Also changes the OfferCreate transaction to return `tecEXPIRED` when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns `tesSUCCESS` but does not create or execute an Offer.
 
+
 ### DisallowIncoming
 [DisallowIncoming]: #disallowincoming
 
