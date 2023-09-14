@@ -8,7 +8,7 @@ labels:
 ---
 # Partial Payment
 
-デフォルトのケースでは、XRP Ledgerの[Paymentトランザクション][]の`Amount`フィールドに、為替レートと[送金手数料](transfer-fees.html)を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（[**tfPartialPayment**](payment.html#paymentのフラグ)）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで[支払を返金](stablecoin-issuer.html#不明な入金の返金)したい場合に便利です。
+デフォルトのケースでは、XRP Ledgerの[Paymentトランザクション][]の`Amount`フィールドに、為替レートと[送金手数料](transfer-fees.html)を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（[**tfPartialPayment**](payment.html#paymentのフラグ)）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで[支払を返金](bouncing-payments.html)したい場合に便利です。
 
 [トランザクションコスト](transaction-cost.html)に使用されるXRPの額は、トランザクションタイプに関わらず常に送金元のアカウントから差し引かれます。
 
@@ -113,6 +113,6 @@ Partial Payment以外の場合、トランザクションのメタデータの`d
 - 「顧客確認」のガイドラインに従い、顧客の身元情報を厳密に検証します。不正使用者を事前に認識して阻止したり、システムを悪用した不正使用者に対して法的措置を講じたりすることができます。
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

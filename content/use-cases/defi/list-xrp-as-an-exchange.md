@@ -7,7 +7,7 @@ labels:
 ---
 # List XRP as an Exchange
 
-This document describes the steps that an exchange needs to take to list XRP. These steps are targeted at _custodial exchanges_ that holds fund on behalf of users, and allows users to deposit, withdraw, and trade other digital assets, fiat currencies, or other types of assets.
+This document describes the steps that an exchange needs to take to list XRP. These steps are targeted at _custodial exchanges_ that hold funds on behalf of users, and allows users to deposit, withdraw, and trade other digital assets, fiat currencies, or other types of asset.
 
 ## Alpha Exchange
 
@@ -41,17 +41,19 @@ To support XRP, Alpha Exchange must:
 
 See also:
 
-* [Compliance Guidelines](stablecoin-issuer.html#compliance-guidelines) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
+* [Compliance Guidelines](stablecoin-compliance-guidelines.html) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
 
+<!-- These sections need to be topics of their own, without the story.
 * [Requirements for Sending to XRP Ledger](stablecoin-issuer.html#requirements-for-sending-to-xrp-ledger)
 
 * [Requirements for Receiving from XRP Ledger](stablecoin-issuer.html#requirements-for-receiving-from-xrp-ledger)
+-->
 
-* [Precautions](stablecoin-issuer.html#precautions)
+* [Precautions](stablecoin-precautions.html)
 
 ### Partial Payments
 
-Before integrating, exchanges should be aware of the [partial payments](partial-payments.html) feature. This feature allows XRP Ledger users to send successful payments that reduce the amount received instead of increasing the `SendMax`. This feature can be useful for [returning payments](stablecoin-issuer.html#bouncing-payments) without incurring additional cost as the sender.
+Before integrating, exchanges should be aware of the [partial payments](partial-payments.html) feature. This feature allows XRP Ledger users to send successful payments that reduce the amount received instead of increasing the `SendMax`. This feature can be useful for [returning payments](bouncing-payments.html) without incurring additional cost as the sender.
 
 #### Partial Payments Warning
 

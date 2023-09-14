@@ -11,7 +11,7 @@ _As an authorized minter, I want to mint tokens for a token issuer at an agreed 
 
 You can act as an authorized minter for token issuers. When you do this, you own the NFToken, but royalties flow to the NFToken issuer. When you make a sale of that NFToken, the proceeds of the initial sale go to you. You can have an agreement with your issuer to pay them some or all of your portion of the initial sale amount.
 
-You can learn more in the tutorial [Assign an Authorized Minter](assign-an-authorized-minter-using-javascript.html). 
+You can learn more in the tutorial [Assign an Authorized Minter](assign-an-authorized-minter-using-javascript.html).
 
 [![Authorized Minter Flow](img/nft-mkt-auth-minter.png "Authorized Minter Flow")](img/nft-mkt-auth-minter.png)
 
@@ -40,7 +40,7 @@ The NFToken URL is a link to the location where the content of the NFT is stored
 Considerations that might be most interesting to you:
 
 * [Minting NFTs into Collections](nft-collections.html)
-Use the TokenTaxon field to gather a set of NFTs centered around a specific theme or purpose. 
+Use the TokenTaxon field to gather a set of NFTs centered around a specific theme or purpose.
 * [Guaranteeing a Fixed Supply of NFTs](nft-fixed-supply.html)
 You can assure scarcity of NFTs you create by creating them with what might be characterized as a “burner” account that you use to mint a set number of NFTs for another account, then delete the account you used to mint the NFTs. See [Guaranteeing a Fixed Supply of NFTs](nft-fixed-supply.html).
 
@@ -84,12 +84,12 @@ When listing NFTs for sale, it can be useful to use object metadata to organize 
 
 See:
 
-- [Clio setup](install-clio-on-ubuntu.html) 
+- [Clio setup](install-clio-on-ubuntu.html)
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 
-<!-- 
-[Clio setup](install-clio-on-ubuntu.html) 
+<!--
+[Clio setup](install-clio-on-ubuntu.html)
 
 [https://api.xrpldata.com/docs/static/index.html#/](https://api.xrpldata.com/docs/static/index.html#/)
 

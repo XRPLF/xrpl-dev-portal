@@ -617,49 +617,40 @@ pages:
             - en
 
     -   md: "@i18n/ja/use-cases/tokenization/stablecoin-issuer.md"
-        parent: tokenization.html
         targets:
             - ja
 
     -   md: use-cases/tokenization/nft-mkt-overview.md
-        parent: tokenization.html
         targets:
             - en
 
     -   md: "@i18n/ja/use-cases/tokenization/nft-mkt-overview.md"
-        parent: tokenization.html
         targets:
             - ja
 
         # TODO: these files aren't nested under "NFT mkt overview" but they are in the nav
     -   md: use-cases/tokenization/nftoken-marketplace.md
-        parent: nft-mkt-overview.html
         targets:
             - en
 
         # TODO: these files aren't nested under "NFT mkt overview" but they are in the nav
     -   md: "@i18n/ja/use-cases/tokenization/nftoken-marketplace.md"
-        parent: nft-mkt-overview.html
         targets:
             - ja
 
     -   md: use-cases/tokenization/authorized-minter.md
-        parent: nft-mkt-overview.html
         targets:
             - en
 
     -   md: "@i18n/ja/use-cases/tokenization/authorized-minter.md"
-        parent: nft-mkt-overview.html
         targets:
             - ja
 
     -   md: use-cases/tokenization/digital-artist.md
-        parent: nft-mkt-overview.html
         targets:
             - en
 
     -   md: "@i18n/ja/use-cases/tokenization/digital-artist.md"
-        parent: nft-mkt-overview.html
         targets:
             - ja
 
@@ -672,22 +663,18 @@ pages:
             - ja
 
     -   md: use-cases/defi/algorithmic-trading.md
-        parent: defi-uc.html
         targets:
             - en
 
     -   md: "@i18n/ja/use-cases/defi/algorithmic-trading.md"
-        parent: defi-uc.html
         targets:
             - ja
 
     -   md: use-cases/defi/list-xrp-as-an-exchange.md
-        parent: defi-uc.html
         targets:
             - en
 
     -   md: "@i18n/ja/use-cases/defi/list-xrp-as-an-exchange.md"
-        parent: defi-uc.html
         targets:
             - ja
 
@@ -1038,145 +1025,201 @@ pages:
         targets:
             - ja
 
+        # TODO: translate
+    -   md: concepts/payment-types/robustly-monitoring-for-payments.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: concepts/payment-types/sending-payments-to-customers.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: concepts/payment-types/bouncing-payments.md
+        targets:
+            - en
+            - ja
+
     # Tokens ------------------------------------------------------------------
-    -   md: concepts/tokens/tokens.md
+    -   md: concepts/tokens/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/tokens.md"
+    -   md: "@i18n/ja/concepts/tokens/index.md"
         targets:
             - ja
 
-    -   md: concepts/tokens/non-fungible-tokens.md
+    -   md: concepts/tokens/fungible-tokens/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/non-fungible-tokens.md"
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/index.md"
+        outdated_translation: true
         targets:
             - ja
 
-    -   md: concepts/tokens/nft-storage.md
+    -   md: concepts/tokens/fungible-tokens/authorized-trust-lines.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/nft-storage.md"
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/authorized-trust-lines.md"
         targets:
             - ja
 
-    -   md: concepts/tokens/non-fungible-token-transfers.md
+# TODO - Translate all files under /stablecoins/ directory
+    -   md: concepts/tokens/fungible-tokens/stablecoins/index.md
         targets:
             - en
-
-    -   md: "@i18n/ja/concepts/tokens/non-fungible-token-transfers.md"
-        targets:
             - ja
 
-    -   md: concepts/tokens/nft-reserve-requirements.md
+    -   md: concepts/tokens/fungible-tokens/stablecoins/settings.md
         targets:
             - en
-
-    -   md: "@i18n/ja/concepts/tokens/nft-reserve-requirements.md"
-        targets:
             - ja
 
-    -   md: concepts/tokens/nftoken-batch-minting.md
+    -   md: concepts/tokens/fungible-tokens/stablecoins/configuration.md
         targets:
             - en
-
-    -   md: "@i18n/ja/concepts/tokens/nftoken-batch-minting.md"
-        targets:
             - ja
 
-    -   md: concepts/tokens/nftoken-authorized-minting.md
+    -   md: concepts/tokens/fungible-tokens/stablecoins/precautions.md
         targets:
             - en
-
-    -   md: "@i18n/ja/concepts/tokens/nftoken-authorized-minting.md"
-        targets:
             - ja
 
-    -   md: concepts/tokens/nftoken-auctions.md
+    -   md: concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md
         targets:
             - en
-
-    -   md: "@i18n/ja/concepts/tokens/nftoken-auctions.md"
-        targets:
             - ja
 
-    -   md: concepts/tokens/nft-collections.md
+    -   md: concepts/tokens/fungible-tokens/stablecoins/technical-details.md
         targets:
             - en
-
-    -   md: "@i18n/ja/concepts/tokens/nft-collections.md"
-        targets:
             - ja
 
-    -   md: concepts/tokens/nft-fixed-supply.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/concepts/tokens/nft-fixed-supply.md"
-        targets:
-            - ja
-
-    -   md: concepts/tokens/nft-apis.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/concepts/tokens/nft-apis.md"
-        targets:
-            - ja
-
-        # TODO: maybe fungible tokens should be in their own folder?
-    -   md: concepts/tokens/trust-lines-and-issuing.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/concepts/tokens/trust-lines-and-issuing.md"
-        targets:
-            - ja
-
-    -   md: concepts/tokens/authorized-trust-lines.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/concepts/tokens/authorized-trust-lines.md"
-        targets:
-            - ja
-
-    -   md: concepts/tokens/clawing-back-tokens.md
+    -   md: concepts/tokens/fungible-tokens/clawing-back-tokens.md
         status: not_enabled
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/clawing-back-tokens.md"
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/clawing-back-tokens.md"
         status: not_enabled
         targets:
             - ja
 
-    -   md: concepts/tokens/freezes.md
+    -   md: concepts/tokens/fungible-tokens/freezes.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/freezes.md"
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/freezes.md"
         targets:
             - ja
 
-        # TODO: nest this file appropriately
-    -   md: concepts/tokens/common-misconceptions-about-freezes.md
+    -   md: concepts/tokens/fungible-tokens/common-misconceptions-about-freezes.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/common-misconceptions-about-freezes.md"
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/common-misconceptions-about-freezes.md"
         targets:
             - ja
 
-    -   md: concepts/tokens/rippling.md
+    -   md: concepts/tokens/fungible-tokens/paths.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/rippling.md"
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/paths.md"
         targets:
+            - ja
+
+    -   md: concepts/tokens/fungible-tokens/rippling.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/rippling.md"
+        targets:
+            - ja
+
+    -   md: concepts/tokens/nfts/index.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/tokens/nfts/index.md"
+        targets:
+            - ja
+
+    -   md: concepts/tokens/nfts/payload-storage.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/tokens/nfts/payload-storage.md"
+        targets:
+            - ja
+
+    -   md: concepts/tokens/nfts/trading.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/tokens/nfts/trading.md"
+        targets:
+            - ja
+
+    -   md: concepts/tokens/nfts/reserve-requirements.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/tokens/nfts/reserve-requirements.md"
+        targets:
+            - ja
+
+    -   md: concepts/tokens/nfts/batch-minting.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/tokens/nfts/batch-minting.md"
+        targets:
+            - ja
+
+    -   md: concepts/tokens/nfts/authorizing-another-minter.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/tokens/nfts/authorizing-another-minter.md"
+        outdated_translation: true
+        targets:
+            - ja
+
+    -   md: concepts/tokens/nfts/running-an-nft-auction.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/tokens/nfts/running-an-nft-auction.md"
+        outdated_translation: true
+        targets:
+            - ja
+
+    -   md: concepts/tokens/nfts/collections.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/tokens/nfts/collections.md"
+        targets:
+            - ja
+
+    -   md: concepts/tokens/nfts/guaranteeing-a-fixed-supply.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/tokens/nfts/guaranteeing-a-fixed-supply.md"
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: concepts/tokens/nfts/nft-apis.md
+        targets:
+            - en
             - ja
 
     -   md: concepts/tokens/transfer-fees.md
@@ -1187,59 +1230,52 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/tokens/paths.md
+    -   md: concepts/tokens/fungible-tokens/demurrage.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/paths.md"
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/demurrage.md"
         targets:
             - ja
 
-    -   md: concepts/tokens/demurrage.md
+    -   md: concepts/tokens/decentralized-exchange/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/demurrage.md"
+    -   md: "@i18n/ja/concepts/tokens/decentralized-exchange/index.md"
         targets:
             - ja
 
-    -   md: concepts/tokens/decentralized-exchange.md
+    -   md: concepts/tokens/decentralized-exchange/offers.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/decentralized-exchange.md"
+    -   md: "@i18n/ja/concepts/tokens/decentralized-exchange/offers.md"
         targets:
             - ja
 
-    -   md: concepts/tokens/offers.md
+    -   md: concepts/tokens/decentralized-exchange/autobridging.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/offers.md"
+    -   md: "@i18n/ja/concepts/tokens/decentralized-exchange/autobridging.md"
         targets:
             - ja
 
-    -   md: concepts/tokens/autobridging.md
+    -   md: concepts/tokens/decentralized-exchange/ticksize.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/autobridging.md"
+    -   md: "@i18n/ja/concepts/tokens/decentralized-exchange/ticksize.md"
         targets:
             - ja
 
-    -   md: concepts/tokens/ticksize.md
+    -   md: concepts/tokens/decentralized-exchange/automated-market-makers.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/tokens/ticksize.md"
-        targets:
-            - ja
-
-    -   md: concepts/tokens/automated-market-makers.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/concepts/tokens/automated-market-makers.md"
+    -   md: "@i18n/ja/concepts/tokens/decentralized-exchange/automated-market-makers.md"
+        outdated_translation: true
         targets:
             - ja
 
@@ -3435,7 +3471,6 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
         targets:
             - en

@@ -9,7 +9,7 @@ labels:
 
 _NFTokenマーケットプレイスでは、XRPLを利用して、厳選されたNFTokenを消費者に譲渡するためのWeb上のサービスを提供し、ブランド構築と売上に応じた仲介手数料を得ることができるというメリットを得ることができるようになります。_
 
---- 
+---
 
 NFTokenマーケットプレイスは、NFTokenクリエイターとコレクターの仲介役となります。マーケットプレイスの運営は、NFTokenのクリエイターを探し出し、販売するアイテムを集めます。購入者は、あなたのサイトを訪れ、選択されたアイテムを確認し、オファーを提示します。あなたは、クリエイターが設定した最低価格と購入者から提示された最適な価格を照合し、トランザクションを完了させ、仲介手数料を受け取ります。
 
@@ -74,11 +74,11 @@ NFTを出品する際、オブジェクトのメタデータを使って分類�
 
 関連項目:
 
-- [Clioのセットアップ](install-clio-on-ubuntu.html) 
+- [Clioのセットアップ](install-clio-on-ubuntu.html)
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 
-<!-- 
+<!--
 
 Sorting and filtering [No link]
     Creator - nft_info (issuer field)
