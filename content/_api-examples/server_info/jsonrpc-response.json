@@ -1,0 +1,84 @@
+{
+    "result": {
+      "info": {
+        "build_version": "1.12.0",
+        "complete_ledgers": "32570-82521761",
+        "hostid": "LEST",
+        "initial_sync_duration_us": "190181187",
+        "io_latency_ms": 1,
+        "jq_trans_overflow": "0",
+        "last_close": {
+          "converge_time_s": 3,
+          "proposers": 35
+        },
+        "load_factor": 1,
+        "network_id": 0,
+        "peer_disconnects": "5",
+        "peer_disconnects_resources": "0",
+        "peers": 22,
+        "ports": [
+          {
+            "port": "7777",
+            "protocol": [
+              "ws"
+            ]
+          },
+          {
+            "port": "8080",
+            "protocol": [
+              "ws"
+            ]
+          },
+          {
+            "port": "80",
+            "protocol": [
+              "http"
+            ]
+          },
+          {
+            "port": "51235",
+            "protocol": [
+              "peer"
+            ]
+          }
+        ],
+        "pubkey_node": "n9KQK8yvTDcZdGyhu2EGdDnFPEBSsY5wEgpU5GgpygTgLFsjQyPt",
+        "server_state": "full",
+        "server_state_duration_us": "91758491912",
+        "state_accounting": {
+          "connected": {
+            "duration_us": "83091928",
+            "transitions": "2"
+          },
+          "disconnected": {
+            "duration_us": "104836801",
+            "transitions": "2"
+          },
+          "full": {
+            "duration_us": "91758491912",
+            "transitions": "1"
+          },
+          "syncing": {
+            "duration_us": "2252409",
+            "transitions": "1"
+          },
+          "tracking": {
+            "duration_us": "48",
+            "transitions": "1"
+          }
+        },
+        "time": "2023-Sep-13 22:12:31.377492 UTC",
+        "uptime": 91948,
+        "validated_ledger": {
+          "age": 1,
+          "base_fee_xrp": 0.00001,
+          "hash": "6872A6612DCEBCFC717FEBC66EB8CC2A4D5EEB2B0F15FC3DCD060049FCA47F31",
+          "reserve_base_xrp": 10,
+          "reserve_inc_xrp": 2,
+          "seq": 82521761
+        },
+        "validation_quorum": 28
+      },
+      "status": "success"
+    }
+}
