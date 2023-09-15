@@ -52,7 +52,7 @@
 
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v24.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -78,119 +78,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-
-
-<!-- Inline script to conditionally display the banner -->
-  <script>
-    // Get the user's location using the provided JavaScript code
-    let userLocation = window.Osano.cm.countryCode;
-
-    // List of countries for which we want to serve the banner
-    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
-
-    // Check if the user's location is in the list of target countries
-    let isTargetCountry = targetCountries.includes(userLocation);
-
-    if (isTargetCountry) {
-      // Define the banner HTML with the countdown timer
-      let token2049bannerHTML = `
-        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
-            <div class="box">
-              <div id="js-clock-days" class="clock-number">00</div>
-              <div class="clock-label">Days</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-hours" class="clock-number">00</div>
-              <div class="clock-label">Hrs</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-minutes" class="clock-number">00</div>
-              <div class="clock-label">Min</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-seconds" class="clock-number">00</div>
-              <div class="clock-label">Sec</div>
-            </div>
-          </div>
-          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
-          <span class="d-inline-block">XRPL Zone </span>
-          <span class="token-highlight d-inline-block">@Token2049</span></div>
-           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
-           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
-            <div class="token-circled d-none d-lg-inline-block highlight-purple">Register Now</div>
-        </a>
-      `;
-
-      // Write the banner directly to the document
-      document.write(token2049bannerHTML);
-
-      var deadline = '2023/09/13 08:00';
-
-      function pad(num, size) {
-        var s = "0" + num;
-        return s.substr(s.length - size);
-      }
-
-      function parseDate(date) {
-        const parsed = Date.parse(date);
-        if (!isNaN(parsed)) return parsed
-        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
-      }
-
-      function getTimeRemaining(endtime) {
-        let total = parseDate(endtime) - Date.parse(new Date())
-        let seconds = Math.floor((total / 1000) % 60)
-        let minutes = Math.floor((total / 1000 / 60) % 60)
-        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-        let days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-        return { total, days, hours, minutes, seconds };
-      }
-
-      function clock(id, endtime) {
-        let days = document.getElementById(id + '-days')
-        let hours = document.getElementById(id + '-hours')
-        let minutes = document.getElementById(id + '-minutes')
-        let seconds = document.getElementById(id + '-seconds')
-
-        var timeinterval = setInterval(function () {
-          var time = getTimeRemaining(endtime);
-
-          if (time.total <= 0) {
-            clearInterval(timeinterval);
-          } else {
-            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
-            hours.innerHTML = pad(time.hours, 2);
-            minutes.innerHTML = pad(time.minutes, 2);
-            seconds.innerHTML = pad(time.seconds, 2);
-          }
-        }, 1000);
-      }
-      clock('js-clock', deadline);
-    } else {
-      let apexBanner = `
-          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-            <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
-            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-            <div class="apex-circled highlight-yellow">Amsterdam</div>
-            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-            <div class="apex-circled d-none d-lg-block highlight-purple">Register Now</div>
-            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-          </a>`;
-
-      // Write the banner directly to the document
-      document.write(apexBanner);
-}
-  </script>
-
-
-
 
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
@@ -396,7 +283,7 @@
             <p>In early 2011, three developers—David Schwartz, Jed McCaleb, and Arthur Britto—were fascinated with Bitcoin but observed the waste inherent in mining. They sought to create a more sustainable system for sending value (an idea outlined in a <a href="https://bitcointalk.org/index.php?topic=10193.0" target="_blank">May 2011 forum post: “Bitcoin without mining”</a>).</p>
             <a class="btn btn-primary read-more mt-10" href="#" data-target="section-1">Read More</a>
             <div class="hidden-section" id="section-1">
-              <p>Their initial observations about the high energy consumption and scalability issues that would plague Bitcoin proved prescient. In 2019, estimates suggest Bitcoin mining used more energy than the entire country of Portugal. Moreover, their initial read indicated that significant problems could arise if any miner obtained (or miners colluded to obtain) greater than 50% of the mining power. That risk persists with Bitcoin (and Ethereum) today as mining power has consolidated in China.</p>
+              <p>Their initial observations about the high energy consumption and scalability issues that would plague Bitcoin proved prescient. In 2019, estimates suggest Bitcoin mining used more energy than the entire country of Portugal. Moreover, their initial read indicated that significant problems could arise if any miner obtained (or miners colluded to obtain) greater than 50&#37; of the mining power. That risk persists with Bitcoin (and Ethereum) today as mining power has consolidated in China.</p>
             </div>
           </div>
         </div>
@@ -412,7 +299,7 @@
             <div class="hidden-section" id="section-2">
               <p>In practice, this approach led to many broad uses of “Ripple.” For clarity, the community simply started calling the digital asset by its currency code, “XRP.”</p>
               <p>By June 2012, Schwartz, McCaleb, and Britto finished code development, and the Ledger was complete.</p>
-              <p>Once the XRP Ledger was live, 80% of the XRP was gifted to a new company that set out to build use cases for the digital asset—initially called NewCoin and renamed quickly to OpenCoin.</p>
+              <p>Once the XRP Ledger was live, 80&#37; of the XRP was gifted to a new company that set out to build use cases for the digital asset—initially called NewCoin and renamed quickly to OpenCoin.</p>
               <p>Chris Larsen was the CEO of OpenCoin, and at the company's founding, Jed was co-founder and CTO, David Schwartz was the Chief Cryptography Officer, and Arthur Britto an advisor.</p>
             </div>
           </div>

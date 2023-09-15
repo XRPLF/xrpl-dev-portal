@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>What is the XRP Ledger? - XRPL.org (日本語)</title>
+    <title>XRP Ledgerとは? - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="What is the XRP Ledger? | XRPL.org (日本語)">
+    <meta property="og:title" content="XRP Ledgerとは? | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/what-is-the-xrp-ledger.html" />
-    <meta property="og:description" content="Learn about the XRP Ledger (XRPL) blockchain." />
-    <meta name="description" content="Learn about the XRP Ledger (XRPL) blockchain." />
+    <meta property="og:description" content="ブロックチェーン「XRP Ledger」についてご紹介します。" />
+    <meta name="description" content="ブロックチェーン「XRP Ledger」についてご紹介します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": ['Blockchain']
+      "page_labels": ['ブロックチェーン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v24.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,119 +89,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-
-
-<!-- Inline script to conditionally display the banner -->
-  <script>
-    // Get the user's location using the provided JavaScript code
-    let userLocation = window.Osano.cm.countryCode;
-
-    // List of countries for which we want to serve the banner
-    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
-
-    // Check if the user's location is in the list of target countries
-    let isTargetCountry = targetCountries.includes(userLocation);
-
-    if (isTargetCountry) {
-      // Define the banner HTML with the countdown timer
-      let token2049bannerHTML = `
-        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
-            <div class="box">
-              <div id="js-clock-days" class="clock-number">00</div>
-              <div class="clock-label">Days</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-hours" class="clock-number">00</div>
-              <div class="clock-label">Hrs</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-minutes" class="clock-number">00</div>
-              <div class="clock-label">Min</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-seconds" class="clock-number">00</div>
-              <div class="clock-label">Sec</div>
-            </div>
-          </div>
-          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
-          <span class="d-inline-block">XRPL Zone </span>
-          <span class="token-highlight d-inline-block">@Token2049</span></div>
-           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
-           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
-            <div class="token-circled d-none d-lg-inline-block highlight-purple">今すぐ登録</div>
-        </a>
-      `;
-
-      // Write the banner directly to the document
-      document.write(token2049bannerHTML);
-
-      var deadline = '2023/09/13 08:00';
-
-      function pad(num, size) {
-        var s = "0" + num;
-        return s.substr(s.length - size);
-      }
-
-      function parseDate(date) {
-        const parsed = Date.parse(date);
-        if (!isNaN(parsed)) return parsed
-        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
-      }
-
-      function getTimeRemaining(endtime) {
-        let total = parseDate(endtime) - Date.parse(new Date())
-        let seconds = Math.floor((total / 1000) % 60)
-        let minutes = Math.floor((total / 1000 / 60) % 60)
-        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-        let days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-        return { total, days, hours, minutes, seconds };
-      }
-
-      function clock(id, endtime) {
-        let days = document.getElementById(id + '-days')
-        let hours = document.getElementById(id + '-hours')
-        let minutes = document.getElementById(id + '-minutes')
-        let seconds = document.getElementById(id + '-seconds')
-
-        var timeinterval = setInterval(function () {
-          var time = getTimeRemaining(endtime);
-
-          if (time.total <= 0) {
-            clearInterval(timeinterval);
-          } else {
-            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
-            hours.innerHTML = pad(time.hours, 2);
-            minutes.innerHTML = pad(time.minutes, 2);
-            seconds.innerHTML = pad(time.seconds, 2);
-          }
-        }, 1000);
-      }
-      clock('js-clock', deadline);
-    } else {
-      let apexBanner = `
-          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-            <div class="apex-reg"><span class="apex-highlight">APEX Dev Summit 2023</span>に登録</div>
-            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-            <div class="apex-circled highlight-yellow">アムステルダム</div>
-            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-            <div class="apex-circled d-none d-lg-block highlight-purple">今すぐ登録</div>
-            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-          </a>`;
-
-      // Write the banner directly to the document
-      document.write(apexBanner);
-}
-  </script>
-
-
-
 
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
@@ -370,12 +257,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/uc-images/content/concepts/introduction/what-is-the-xrp-ledger.md?pr=/XRPLF/xrpl-dev-portal/pull/2129" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/uc-images/content/concepts/introduction/what-is-the-xrp-ledger.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2129" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-blockchain">Blockchain</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Blockchain" -->
+      <span class="label label-ブロックチェーン">ブロックチェーン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "ブロックチェーン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -383,10 +270,10 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#what-is-the-xrp-ledger">What is the XRP Ledger?</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#what-is-a-blockchain">What Is a Blockchain?</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#how-does-the-federated-consensus-process-work">How Does the Federated Consensus Process Work?</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#what-networks-are-available">What Networks Are Available?</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#xrp-ledgerとは">XRP Ledgerとは?</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ブロックチェーンとは">ブロックチェーンとは?</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#連合コンセンサスプロセスのしくみ">連合コンセンサスプロセスのしくみ</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#どのようなネットワークがありますか">どのようなネットワークがありますか？</a></li>
       </ul>
   </div>
       </aside>
@@ -402,44 +289,41 @@
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/introduction.html">基本</a></li>
-    <li class="active breadcrumb-item">What is the XRP Ledger?</li>
+    <li class="active breadcrumb-item">XRP Ledgerとは?</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="what-is-the-xrp-ledger">What is the XRP Ledger?<a aria-hidden="true" class="hover_anchor" href="#what-is-the-xrp-ledger"><i class="fa fa-link"></i></a></h1>
-<p>The XRP Ledger is a decentralized blockchain that uses its own digital currency to process and record financial transactions.</p>
-<h2 id="what-is-a-blockchain">What Is a Blockchain?<a aria-hidden="true" class="hover_anchor" href="#what-is-a-blockchain"><i class="fa fa-link"></i></a></h2>
-<p>A blockchain is a continuously growing list of records. The blockchain starts with a block of data.</p>
-<p><img alt="A block of data" src="img/introduction2-data-block.png"/></p>
-<p>A group of trusted validator nodes reach consensus that the data is valid.</p>
-<p><img alt="Validator nodes" src="img/introduction3-validators.png"/></p>
-<p>The block is uniquely identified with a very elaborate, complicated, computer-generated, cryptographic Hash number that is 64 hexadecimal characters long.</p>
-<p><img alt="Crypto hash" src="img/introduction4-hash.png"/></p>
-<p>The block is also identified by a timestamp with its creation time.</p>
-<p><img alt="Timestamp" src="img/introduction5-time-stamp.png"/></p>
-<p>Each validator node gets its own copy of the data block. There is no single central authority. All copies are equally valid.</p>
-<p><img alt="Validators with valid copies" src="img/introduction6-valid-copies.png"/></p>
-<p>Each block contains a hash pointer as a link to the previous block. It also has a timestamp, new data, and its own unique hash number.</p>
-<p><img alt="Hash pointer" src="img/introduction7-two-blocks.png"/></p>
-<p>Using this structure, each block has a clear position in the chain, linking back to the previous data block. This creates an immutable chain of blocks. You can always verify all current information on the chain by tracing back through the previous blocks.</p>
-<p><img alt="Three data blocks" src="img/introduction8-3-blocks.png"/></p>
-<p>By design, blockchains are resistant to modification of the data. Every ledger node gets an exact copy of the blockchain.</p>
-<p><img alt="Two validators with identical copies of the blockchain" src="img/introduction9-2-sets-of-3.png"/></p>
-<p>This creates an open, distributed ledger that records transactions between parties efficiently and in a verifiable and permanent way.</p>
-<p>Once recorded, the data in any given block cannot be altered retroactively, unless a majority of the validators agree to the change. If so, all subsequent blocks are changed in the same way (a very rare and extreme occurrence).</p>
-<h3 id="how-does-the-federated-consensus-process-work">How Does the Federated Consensus Process Work?<a aria-hidden="true" class="hover_anchor" href="#how-does-the-federated-consensus-process-work"><i class="fa fa-link"></i></a></h3>
-<p>Most of the rippled servers in the XRPL monitor or propose transactions. An important subset of servers are run as validators. These trusted servers accumulate lists of new transactions into a new possible ledger instance (a new block in the block chain).</p>
-<p><img alt="Gathering Transactions" src="img/introduction17-gather-txns.png"/></p>
-<p>They share their lists with all of the other validators. The validators incorporate proposed changes from one another and distribute a new version of the ledger proposal.</p>
-<p><img alt="80% Consensus" src="img/introduction18-80-percent-consensus.png"/></p>
-<p>When 80% of the validators agree on a set of transactions, they create a new ledger instance at the end of the chain and start the process again. This consensus process takes 4-6 seconds. You can monitor as ledger instances are created in real time by visiting <a class="external-link" href="https://livenet.xrpl.org/" target="_blank">https://livenet.xrpl.org/ <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h3 id="what-networks-are-available">What Networks Are Available?<a aria-hidden="true" class="hover_anchor" href="#what-networks-are-available"><i class="fa fa-link"></i></a></h3>
-<p>The XRPL is open to anyone who wants to set up their own instance of the rippled server and connect. The node can monitor the network, perform transactions, or become a validator. The active XRPL network is typically referred to as <em>Mainnet</em>.</p>
-<p>For developers or new users who want to try out the features of XRPL without investing their own funds, there are two developer environments, <em>Testnet</em> and <em>Devnet</em>. Users can create an account funded with 1,000 (fake) XRP and connect to either environment to interact with the XRPL.</p>
-<p>Next: <a href="what-is-xrp.html">What is XRP?</a></p>
+        <h1 id="xrp-ledgerとは">XRP Ledgerとは?<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgerとは"><i class="fa fa-link"></i></a></h1>
+<p>XRPは、中央集権的な機関が管理せずブロックチェーン暗号を用いた分散型システムであるXRP Ledgerによってトランザクションが検証され記録が管理されるデジタル通貨です。</p>
+<h2 id="ブロックチェーンとは">ブロックチェーンとは?<a aria-hidden="true" class="hover_anchor" href="#ブロックチェーンとは"><i class="fa fa-link"></i></a></h2>
+<p>ブロックチェーンは、連続的に変化するデータのリストです。ブロックチェーンは、データのブロックからなります。</p>
+<p><img alt="データのブロック" src="img/introduction2-data-block.png"/></p>
+<p>信頼できるバリデータノードのグループが、データが有効であるとのコンセンサスを得ます。</p>
+<p><img alt="バリデータノード" src="img/introduction3-validators.png"/></p>
+<p>ブロックは、非常に精巧で複雑な、コンピュータで生成された、16進数64文字の暗号化されたハッシュ値で一意に識別されます。</p>
+<p><img alt="暗号化されたハッシュ値" src="img/introduction4-hash.png"/></p>
+<p>また、ブロックは、作成時刻を示すタイムスタンプで識別されます。</p>
+<p><img alt="タイムスタンプ" src="img/introduction5-time-stamp.png"/></p>
+<p>各バリデータノードはデータブロックの各自のコピーを保持します。単一の中央機関は存在しません。すべてのコピーが同一に有効です。</p>
+<p><img alt="有効なコピーを持つバリデータ" src="img/introduction6-valid-copies.png"/></p>
+<p>各ブロックは、前のブロックへのリンクとしてハッシュポインタを含んでいます。また、タイムスタンプ、新しいデータ、独自のハッシュ値も持っています。</p>
+<p><img alt="ハッシュポインタ" src="img/introduction7-two-blocks.png"/></p>
+<p>この構造により、各ブロックはチェーンの中で明確な位置を持ち、前のデータブロックにリンクしています。これにより、ブロックの不変的なチェーンが形成されます。前のブロックをたどることで、チェーン上の現在のすべての情報を常に確認することができます。</p>
+<p><img alt="3つのデータブロック" src="img/introduction8-3-blocks.png"/></p>
+<p>設計上、ブロックチェーンはデータの改変に耐性があります。すべての台帳ノードは、ブロックチェーンの正確なコピーを取得します。</p>
+<p><img alt="ブロックチェーンの同一コピーを持つ2人のバリデータ" src="img/introduction9-2-sets-of-3.png"/></p>
+<p>これにより、当事者間のトランザクションを効率よく、検証可能かつ永続的に記録するオープンな分散型台帳ができあがります。</p>
+<p>一度記録されたブロックのデータは、バリデータの大多数が変更に同意しない限り、過去にさかのぼって変更することはできません。もし同意した場合、それ以降のブロックはすべて同じように変更されます（非常に稀で極端なケースです）。</p>
+<h3 id="連合コンセンサスプロセスのしくみ">連合コンセンサスプロセスのしくみ<a aria-hidden="true" class="hover_anchor" href="#連合コンセンサスプロセスのしくみ"><i class="fa fa-link"></i></a></h3>
+<p>XRPLのrippledサーバのほとんどは、トランザクションを監視または提案します。サーバの重要なサブセットはバリデータとして実行されます。これらの信頼できるサーバは、新しいトランザクションのリストを新しく作成可能なレジャーインスタンス（ブロックチェーンにおける新しいブロック）に蓄積します。</p>
+<p><img alt="トランザクションの収集" src="img/introduction17-gather-txns.png"/></p>
+<p>バリデータはそのリストを他のすべてのバリデータと共有します。バリデータは互いの変更案を取り入れ、新しいバージョンのレジャー案を配布します。</p>
+<p><img alt="80%のコンセンサス" src="img/introduction18-80-percent-consensus.png"/></p>
+<p>80%超のバリデータが一連のトランザクションに合意すると、チェーンの末尾に新しいレジャーインスタンスを作成し、再びプロセスを開始します。このコンセンサスプロセスには4～6秒かかります。レジャーインスタンスが作成される様子は、<a class="external-link" href="https://livenet.xrpl.org/" target="_blank">https://livenet.xrpl.org/ <i aria-hidden="true" class="fa fa-external-link"></i></a>にて、リアルタイムで確認することができます。</p>
+<h3 id="どのようなネットワークがありますか">どのようなネットワークがありますか？<a aria-hidden="true" class="hover_anchor" href="#どのようなネットワークがありますか"><i class="fa fa-link"></i></a></h3>
+<p>XRPLは、rippledサーバの自分のインスタンスをセットアップして接続したい人なら誰でも参加できます。ノードは、ネットワークを監視したり、トランザクションを実行したり、バリデータになったりすることができます。</p>
+<p>自己資金を投入せずにXRPLの機能を試したい開発者や新規ユーザのために、 <em>Testnet</em> と <em>Devnet</em> という2つの開発者向けの環境が用意されています。ユーザは(偽の)1,000XRPの資金を得てアカウントを作成し、どちらの環境にも接続してXRPLとやり取りすることができます。</p>
+<p>次のページ: <a href="what-is-xrp.html">XRPとは?</a></p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -480,22 +364,22 @@
     <nav class="nav flex-column show " id="tree_nav_group_2">
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -525,17 +409,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -552,7 +436,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -560,22 +444,22 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -596,7 +480,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       

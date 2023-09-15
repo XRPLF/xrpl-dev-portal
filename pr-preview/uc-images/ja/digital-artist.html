@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Digital Artist - XRPL.org (日本語)</title>
+    <title>デジタルアーティスト - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Digital Artist | XRPL.org (日本語)">
+    <meta property="og:title" content="デジタルアーティスト | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/digital-artist.html" />
     <meta property="og:description" content="Creating an NFT Marketplace for buying and selling NFTs." />
     <meta name="description" content="Creating an NFT Marketplace for buying and selling NFTs." />
@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v24.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,119 +89,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-
-
-<!-- Inline script to conditionally display the banner -->
-  <script>
-    // Get the user's location using the provided JavaScript code
-    let userLocation = window.Osano.cm.countryCode;
-
-    // List of countries for which we want to serve the banner
-    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
-
-    // Check if the user's location is in the list of target countries
-    let isTargetCountry = targetCountries.includes(userLocation);
-
-    if (isTargetCountry) {
-      // Define the banner HTML with the countdown timer
-      let token2049bannerHTML = `
-        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
-            <div class="box">
-              <div id="js-clock-days" class="clock-number">00</div>
-              <div class="clock-label">Days</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-hours" class="clock-number">00</div>
-              <div class="clock-label">Hrs</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-minutes" class="clock-number">00</div>
-              <div class="clock-label">Min</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-seconds" class="clock-number">00</div>
-              <div class="clock-label">Sec</div>
-            </div>
-          </div>
-          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
-          <span class="d-inline-block">XRPL Zone </span>
-          <span class="token-highlight d-inline-block">@Token2049</span></div>
-           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
-           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
-            <div class="token-circled d-none d-lg-inline-block highlight-purple">今すぐ登録</div>
-        </a>
-      `;
-
-      // Write the banner directly to the document
-      document.write(token2049bannerHTML);
-
-      var deadline = '2023/09/13 08:00';
-
-      function pad(num, size) {
-        var s = "0" + num;
-        return s.substr(s.length - size);
-      }
-
-      function parseDate(date) {
-        const parsed = Date.parse(date);
-        if (!isNaN(parsed)) return parsed
-        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
-      }
-
-      function getTimeRemaining(endtime) {
-        let total = parseDate(endtime) - Date.parse(new Date())
-        let seconds = Math.floor((total / 1000) % 60)
-        let minutes = Math.floor((total / 1000 / 60) % 60)
-        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-        let days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-        return { total, days, hours, minutes, seconds };
-      }
-
-      function clock(id, endtime) {
-        let days = document.getElementById(id + '-days')
-        let hours = document.getElementById(id + '-hours')
-        let minutes = document.getElementById(id + '-minutes')
-        let seconds = document.getElementById(id + '-seconds')
-
-        var timeinterval = setInterval(function () {
-          var time = getTimeRemaining(endtime);
-
-          if (time.total <= 0) {
-            clearInterval(timeinterval);
-          } else {
-            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
-            hours.innerHTML = pad(time.hours, 2);
-            minutes.innerHTML = pad(time.minutes, 2);
-            seconds.innerHTML = pad(time.seconds, 2);
-          }
-        }, 1000);
-      }
-      clock('js-clock', deadline);
-    } else {
-      let apexBanner = `
-          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-            <div class="apex-reg"><span class="apex-highlight">APEX Dev Summit 2023</span>に登録</div>
-            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-            <div class="apex-circled highlight-yellow">アムステルダム</div>
-            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-            <div class="apex-circled d-none d-lg-block highlight-purple">今すぐ登録</div>
-            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-          </a>`;
-
-      // Write the banner directly to the document
-      document.write(apexBanner);
-}
-  </script>
-
-
-
 
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
@@ -370,7 +257,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/uc-images/content/use-cases/tokenization/digital-artist.md?pr=/XRPLF/xrpl-dev-portal/pull/2129" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/uc-images/content/use-cases/tokenization/digital-artist.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2129" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -383,14 +270,14 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#digital-artist">Digital Artist</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#use-a-public-server">Use a public server</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#create-nfts">Create NFTs</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#sell-nfts">Sell NFTs</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#reserve-requirements">Reserve requirements</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#checkout">Checkout</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#indexing-nfts">Indexing NFTs</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#burning-nfts">Burning NFTs</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#デジタルアーティスト">デジタルアーティスト</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#公開サーバを利用する">公開サーバを利用する</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftの作成">NFTの作成</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftの販売">NFTの販売</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#準備金要件">準備金要件</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#支払い">支払い</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftのインデックス化">NFTのインデックス化</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftのバーン">NFTのバーン</a></li>
       </ul>
   </div>
       </aside>
@@ -409,66 +296,61 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/use-cases.html">ユースケース</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokenization.html">Tokenization</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a></li>
-    <li class="active breadcrumb-item">Digital Artist</li>
+    <li class="active breadcrumb-item"><a href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a></li>
+    <li class="active breadcrumb-item">デジタルアーティスト</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="digital-artist">Digital Artist<a aria-hidden="true" class="hover_anchor" href="#digital-artist"><i class="fa fa-link"></i></a></h1>
-<p><em>As a Digital Artist, I want to use the XRPL to create a NFToken of my work and sell it on the XRPL, because the XRPL is both cost efficient and carbon neutral.</em></p>
+        <h1 id="デジタルアーティスト">デジタルアーティスト<a aria-hidden="true" class="hover_anchor" href="#デジタルアーティスト"><i class="fa fa-link"></i></a></h1>
+<p><em>デジタルアーティストとして、私はXRPLを使って自分の作品のNFTokenを作成し、XRPLで販売したいと思います。XRPLはコスト効率がよく、カーボンニュートラルだからです。</em></p>
 <hr/>
-<p>When you create a NFToken, you create a unique token on the XRPL that is effectively a placeholder for an actual physical or digital asset. When you create the NFToken, you provide a URL to a digital file that is the item itself, such as a digital artwork, or a URL to a placeholder that represents an item in the physical world.</p>
-<p>As a digital artist, you’re focused on creating NFTs, presumably to sell on the XRP Ledger (it’s  also possible you might create NFTs as a way of establishing provenance for your creations).</p>
-<p>You can create NFTokens using an app such as the <a class="external-link" href="https://xumm.app" target="_blank">Xumm app <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<p>For a more hands-on experience, you can follow the steps in the <a href="mint-and-burn-nfts-using-javascript.html">Quickstart Tutorial 3 - Mint and Burn NFTokens</a>. </p>
-<p><a href="img/nft-mkt-digital-artist.png"><img alt="Digital Artist Flow" src="img/nft-mkt-digital-artist.png" title="Digital Artist Flow"/></a></p>
-<h2 id="use-a-public-server">Use a public server<a aria-hidden="true" class="hover_anchor" href="#use-a-public-server"><i class="fa fa-link"></i></a></h2>
-<p>As you get started, you will likely have comparatively few transactions. You can work with one of the free XRP Ledger public servers. As your business grows, you might consider your own NFT Ledger instance to handle increased sales traffic. See <a href="public-servers.html">Public servers</a>.</p>
-<h2 id="create-nfts">Create NFTs<a aria-hidden="true" class="hover_anchor" href="#create-nfts"><i class="fa fa-link"></i></a></h2>
-<p>Build your marketplace by minting NFTs to sell.</p>
-<p>To create your first NFTs, follow the instructions in the tutorial <em>Mint and Burn NFTokens</em>. Keep the following in mind as you create your NFTs:</p>
+<p>NFTokenを作成すると、実際の物理的またはデジタル資産の実質的なプレースホルダーとなる一意のトークンがXRPL上に作成されます。NFTokenを作成する際には、デジタルアートワークのようなアイテムそのものであるデジタルファイルへのURL、または物理的な世界でのアイテムを表すプレースホルダへのURLを提供します。</p>
+<p>デジタルアーティストとして、あなたはNFTの作成に専念しており、おそらくXRP Ledgerで販売するためでしょう（自分の作品の実績を証明する方法としてNFTを作成する可能性もありますね）。</p>
+<p><a class="external-link" href="https://xumm.app" target="_blank">Xumm <i aria-hidden="true" class="fa fa-external-link"></i></a>などのアプリを使用してNFTokenを作成することができます。</p>
+<p>より実践的な体験をしたい方は、<a href="mint-and-burn-nfts-using-javascript.html">クイックスタート・チュートリアル3 - NFTokenのミントとバーン</a>をご覧ください。</p>
+<p><a href="img/nft-mkt-digital-artist.png"><img alt="デジタルアーティストのフロー" src="img/nft-mkt-digital-artist.png" title="デジタルアーティストのフロー"/></a></p>
+<h2 id="公開サーバを利用する">公開サーバを利用する<a aria-hidden="true" class="hover_anchor" href="#公開サーバを利用する"><i class="fa fa-link"></i></a></h2>
+<p>開始当初は、トランザクションは比較的少ないでしょう。無料のXRP Ledger公開サーバの1つで作業することができます。ビジネスが成長するにつれて、増加する販売トラフィックを処理するために、独自のXRP Ledgerインスタンスを検討することができます。<a href="public-servers.html">パブリックサーバ</a>をご覧ください。</p>
+<h2 id="nftの作成">NFTの作成<a aria-hidden="true" class="hover_anchor" href="#nftの作成"><i class="fa fa-link"></i></a></h2>
+<p>NFTをミントして販売することで、マーケットプレイスを構築します。</p>
+<p>初めてNFTを作成する場合は、チュートリアル <em>NFTokenのミントとバーン</em> の手順に従ってください。NFTを作成する際には、以下の点にも留意してください。</p>
 <ul>
-<li>You can collect royalties from future sales by setting a <code>transfer fee<em>. </em></code>This is a value from 0-50000 representing 0-50% of the sale price. See <a href="nftoken.html#送金手数料">Transfer Fee</a>.</li>
-<li>The NFToken URL is a link to the location where the content of the NFT is stored. One option is create an IPFS account and store the NFToken content at a persistent URL. See <a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data" target="_blank">Best Practices for Storing NFT Data <i aria-hidden="true" class="fa fa-external-link"></i></a>. [Add link to blog post about alternative NFT cache options.]</li>
-<li>You can mint NFTs in logical collections using the <code>TokenTaxon</code> field. See <a href="nft-collections.html">Minting NFTs into Collections</a>.</li>
-<li>If you, as the issuer, want to be able to burn the token in the future, set the <code>Flags</code> field to <em>1.</em> To make the NFT transferable, set the <code>Flags</code> field to <em>8</em>. Set the <code>Flags</code> field to <em>9</em> to make the NFT both burnable and transferable. See<a href="nftoken.html#nftoken-フラグ"> Burnable flag</a> and <a href="nftoken.html#nftoken-フラグ">Transferable flag</a>.</li>
+<li><code>transfer fee</code>を設定することで、将来の取引からロイヤリティを徴収することができます。これは販売価格の0～50%を表す0～50000の値です。<a href="nftoken.html#送金手数料">NFTの取引手数料</a>を参照してください。</li>
+<li>NFTokenのURLは、NFTのコンテンツが保存されている場所へのリンクです。IPFSアカウントを作成し、永続的なURLにNFTokenのコンテンツを保存するのも1つの方法です。<a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data" target="_blank">NFTデータ保存のベストプラクティス <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください。</li>
 </ul>
-<p>See <a href="mint-and-burn-nfts-using-javascript.html">Mint and Burn NFTokens</a>.</p>
-<h2 id="sell-nfts">Sell NFTs<a aria-hidden="true" class="hover_anchor" href="#sell-nfts"><i class="fa fa-link"></i></a></h2>
-<p>You transfer NFTs by creating a sell offer. See <a href="transfer-nfts-using-javascript.html">Transfer NFTokens</a>.</p>
-<p><img alt="Transferring NFTs" src="img/uc-nft-transferring-nfts.png"/></p>
-<p>You can sell your NFTs in an auction format. See <a href="nftoken-auctions.html">Running an NFT Auction</a>.</p>
-<h3 id="reserve-requirements">Reserve requirements<a aria-hidden="true" class="hover_anchor" href="#reserve-requirements"><i class="fa fa-link"></i></a></h3>
-<p>There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.</p>
-<p>Each <code>NFTokenOffer</code> object requires a reserve of 2 XRP.</p>
-<p><img alt="Reserves" src="img/uc-nft-reserves.png"/></p>
-<p>When you post the <code>NFTokenOffer</code> or sell the NFT, there are trivial transfer fees (roughly 6000 drops, or .006 XRP). When you are selling at a high volume, the trivial amounts can add up quickly, and need to be considered as part of your cost of doing business.</p>
-<p>See:</p>
+<!--[Add link to blog post about alternative NFT cache options.] -->
+<ul>
+<li><code>TokenTaxon</code>フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。<a href="nft-collections.html">NFTをコレクションとしてミントする</a>をご覧ください。</li>
+<li>発行者として将来的にトークンをバーンできるようにしたい場合は、<code>Flags</code>フィールドを <em>1</em> に設定します。NFTを譲渡可能にするには、<code>Flags</code>フィールドを <em>8</em> に設定します。NFTをバーン可能かつ譲渡可能にするには、<code>Flags</code>フィールドを <em>9</em> に設定します。<a href="nftoken.html#nftoken-フラグ">Burnableフラグ</a>および<a href="nftoken.html#nftoken-フラグ">Transferableフラグ</a>をご覧ください。</li>
+</ul>
+<p><a href="mint-and-burn-nfts-using-javascript.html">NFTokenのミントとバーン</a>をご覧ください。</p>
+<h2 id="nftの販売">NFTの販売<a aria-hidden="true" class="hover_anchor" href="#nftの販売"><i class="fa fa-link"></i></a></h2>
+<p>NFTを売却する場合は、売却オファーを作成する必要があります。<a href="transfer-nfts-using-javascript.html">NFTokensの取引</a>をご覧ください。</p>
+<p>NFTをオークション形式で販売することができます。<a href="transfer-nfts-using-javascript.html">NFTオークションの実行</a>をご覧ください。</p>
+<h3 id="準備金要件">準備金要件<a aria-hidden="true" class="hover_anchor" href="#準備金要件"><i class="fa fa-link"></i></a></h3>
+<p>販売用のNFTをミントする際には、XRPの準備金が必要となります。各NFTokenページには、2XRPの準備金が必要です。NFTokenページは16～32個のNFTを保管することができます。</p>
+<p>各<code>NFTokenOffer</code>オブジェクトは、2XRPの準備金が必要です。</p>
+<p><code>NFTokenOffer</code>を作成したり、NFTを売却したりする際には、些細な送金手数料（およそ6000ドロップ、または0.006 XRP）が発生します。大量に販売する場合、こうした少額の手数料はすぐにかさみますので、ビジネスのコストとして考慮する必要があります。</p>
+<p>次のコンテンツをご覧ください。</p>
 <ol>
 <li><a href="nft-reserve-requirements.html#nftokenofferの準備金">NFTokenOffer</a></li>
-<li>NFToken page (<a href="nft-reserve-requirements.html#所有者準備金">Owner reserve</a>)</li>
-<li>Trivial <a href="transfer-fees.html">transfer fees</a></li>
+<li>NFToken page (<a href="nft-reserve-requirements.html#所有者準備金">所有者準備金</a>)</li>
+<li>少額の<a href="transfer-fees.html">取引手数料</a></li>
 </ol>
-<h3 id="checkout">Checkout<a aria-hidden="true" class="hover_anchor" href="#checkout"><i class="fa fa-link"></i></a></h3>
-<p>The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see <a href="transfer-nfts-using-javascript.html">Transfer NFTokens</a>.</p>
-<p><img alt="Checkout" src="img/uc-nft-checkout.png"/></p>
-<p>For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See <a href="trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange">Trade in the Decentralized Exchange</a>.</p>
-<h2 id="indexing-nfts">Indexing NFTs<a aria-hidden="true" class="hover_anchor" href="#indexing-nfts"><i class="fa fa-link"></i></a></h2>
-<p>When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.</p>
-<p><img alt="Indexing NFTs" src="img/uc-nft-indexing.png"/></p>
-<p>See:</p>
+<h3 id="支払い">支払い<a aria-hidden="true" class="hover_anchor" href="#支払い"><i class="fa fa-link"></i></a></h3>
+<p>XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、<a href="transfer-nfts-using-javascript.html">NFTokenの取引</a>)をご覧ください。</p>
+<p>他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。<a href="trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange">分散型取引所での取引</a>をご覧ください。</p>
+<h2 id="nftのインデックス化">NFTのインデックス化<a aria-hidden="true" class="hover_anchor" href="#nftのインデックス化"><i class="fa fa-link"></i></a></h2>
+<p>NFTを出品する際、オブジェクトのメタデータを使って分類するのが便利な場合があります。XRPLライブラリ、Clioサーバ、XRPL APIとBithompライブラリの拡張機能などのクエリを使用して、NFTをクリエイター、価格、コレクション、レアリティなどでソートしたりフィルタリングしたりすることができます。</p>
+<p>関連項目:</p>
 <ul>
-<li><a href="install-clio-on-ubuntu.html">Clio setup</a> </li>
+<li><a href="install-clio-on-ubuntu.html">Clioのセットアップ</a></li>
 <li><a class="external-link" href="https://api.xrpldata.com/docs/static/index.html#/" target="_blank">XRPL Data API <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><a class="external-link" href="https://docs.bithomp.com/#nft-xls-20" target="_blank">Bithomp <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
-<h2 id="burning-nfts">Burning NFTs<a aria-hidden="true" class="hover_anchor" href="#burning-nfts"><i class="fa fa-link"></i></a></h2>
-<p>There are some workflows where it makes sense for the issuer to retain the right to burn the token at some point in the future, regardless of the current owner. For example, NFTs used for carbon credits can be minted and traded, but once the carbon is captured, the NFT can be burned so that it is no longer transferable. For these scenarios, set the <code>lsfBurnable</code> flag when you mint the NFT.</p>
-<p><img alt="Burning NFTs" src="img/uc-nft-burn.png"/></p>
-<p>Another example might be burning an in-game asset that is lost by a player after losing a life in the game. You might also burn an NFT ticket after successful redemption to prevent it from being used again.</p>
+<h2 id="nftのバーン">NFTのバーン<a aria-hidden="true" class="hover_anchor" href="#nftのバーン"><i class="fa fa-link"></i></a></h2>
+<p>ワークフローの中には、現在の所有者に関係なく、将来のある時点で発行者がトークンをバーンする権利を保持することが適切な場合があります。例えば、カーボンクレジットに使用されるNFTはミントして取引することができますが、二酸化炭素が排出されると、NFTをバーンして取引不能にすることが可能です。このようなシナリオでは、NFTをミントする際に<code>lsfBurnable</code>フラグを設定します。</p>
+<p>また、ゲーム内でライフを失った後にゲーム内資産をバーンすることもあります。また、NFTのチケットは、換金に成功した後、再び使用されないようにバーンすることができます。</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -509,22 +391,22 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -554,17 +436,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -581,7 +463,7 @@
     <nav class="nav flex-column show " id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -589,22 +471,22 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="true" aria-controls="tree_nav_group_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -625,7 +507,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       

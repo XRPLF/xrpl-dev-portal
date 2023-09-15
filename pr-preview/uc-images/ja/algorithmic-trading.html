@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Algorithmic Trading - XRPL.org (日本語)</title>
+    <title>アルゴリズムトレード - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Algorithmic Trading | XRPL.org (日本語)">
+    <meta property="og:title" content="アルゴリズムトレード | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/algorithmic-trading.html" />
-    <meta property="og:description" content="The XRP Ledger&#39;s decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades." />
-    <meta name="description" content="The XRP Ledger&#39;s decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades." />
+    <meta property="og:description" content="XRP Ledgerの分散型取引所は、ユーザがトレードを行う際にオンデマンドで追跡される無制限の通貨ペアで構成されています。" />
+    <meta name="description" content="XRP Ledgerの分散型取引所は、ユーザがトレードを行う際にオンデマンドで追跡される無制限の通貨ペアで構成されています。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": ['Transactions']
+      "page_labels": ['トランザクション']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -55,7 +55,7 @@
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v24.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -89,119 +89,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-
-
-<!-- Inline script to conditionally display the banner -->
-  <script>
-    // Get the user's location using the provided JavaScript code
-    let userLocation = window.Osano.cm.countryCode;
-
-    // List of countries for which we want to serve the banner
-    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
-
-    // Check if the user's location is in the list of target countries
-    let isTargetCountry = targetCountries.includes(userLocation);
-
-    if (isTargetCountry) {
-      // Define the banner HTML with the countdown timer
-      let token2049bannerHTML = `
-        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
-            <div class="box">
-              <div id="js-clock-days" class="clock-number">00</div>
-              <div class="clock-label">Days</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-hours" class="clock-number">00</div>
-              <div class="clock-label">Hrs</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-minutes" class="clock-number">00</div>
-              <div class="clock-label">Min</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-seconds" class="clock-number">00</div>
-              <div class="clock-label">Sec</div>
-            </div>
-          </div>
-          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
-          <span class="d-inline-block">XRPL Zone </span>
-          <span class="token-highlight d-inline-block">@Token2049</span></div>
-           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
-           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
-            <div class="token-circled d-none d-lg-inline-block highlight-purple">今すぐ登録</div>
-        </a>
-      `;
-
-      // Write the banner directly to the document
-      document.write(token2049bannerHTML);
-
-      var deadline = '2023/09/13 08:00';
-
-      function pad(num, size) {
-        var s = "0" + num;
-        return s.substr(s.length - size);
-      }
-
-      function parseDate(date) {
-        const parsed = Date.parse(date);
-        if (!isNaN(parsed)) return parsed
-        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
-      }
-
-      function getTimeRemaining(endtime) {
-        let total = parseDate(endtime) - Date.parse(new Date())
-        let seconds = Math.floor((total / 1000) % 60)
-        let minutes = Math.floor((total / 1000 / 60) % 60)
-        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-        let days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-        return { total, days, hours, minutes, seconds };
-      }
-
-      function clock(id, endtime) {
-        let days = document.getElementById(id + '-days')
-        let hours = document.getElementById(id + '-hours')
-        let minutes = document.getElementById(id + '-minutes')
-        let seconds = document.getElementById(id + '-seconds')
-
-        var timeinterval = setInterval(function () {
-          var time = getTimeRemaining(endtime);
-
-          if (time.total <= 0) {
-            clearInterval(timeinterval);
-          } else {
-            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
-            hours.innerHTML = pad(time.hours, 2);
-            minutes.innerHTML = pad(time.minutes, 2);
-            seconds.innerHTML = pad(time.seconds, 2);
-          }
-        }, 1000);
-      }
-      clock('js-clock', deadline);
-    } else {
-      let apexBanner = `
-          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-            <div class="apex-reg"><span class="apex-highlight">APEX Dev Summit 2023</span>に登録</div>
-            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-            <div class="apex-circled highlight-yellow">アムステルダム</div>
-            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-            <div class="apex-circled d-none d-lg-block highlight-purple">今すぐ登録</div>
-            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-          </a>`;
-
-      // Write the banner directly to the document
-      document.write(apexBanner);
-}
-  </script>
-
-
-
 
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/ja/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org (日本語)" /></a>
@@ -370,12 +257,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/uc-images/content/use-cases/defi/algorithmic-trading.md?pr=/XRPLF/xrpl-dev-portal/pull/2129" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/uc-images/content/use-cases/defi/algorithmic-trading.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2129" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-transactions">Transactions</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Transactions" -->
+      <span class="label label-トランザクション">トランザクション</span>
+      <!-- TEMPLATE WARNING: no label landing found for "トランザクション" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -383,17 +270,17 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#algorithmic-trading">Algorithmic Trading</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#trading-strategies">Trading Strategies</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#arbitrage-examples">Arbitrage Examples</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#background-reading">Background Reading</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#testing-and-common-mistakes">Testing and Common Mistakes</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#taxes-and-licensing">Taxes and Licensing</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#technical-details">Technical Details</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#placing-trades">Placing Trades</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#reading-trade-data">Reading Trade Data</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#future-developments">Future Developments</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#further-reading">Further Reading</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#アルゴリズムトレード">アルゴリズムトレード</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#トレード戦略">トレード戦略</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#裁定取引アービトラージの例">裁定取引(アービトラージ)の例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#背景">背景</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#テストとよくある間違い">テストとよくある間違い</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#税金とライセンス">税金とライセンス</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#技術的な詳細">技術的な詳細</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#トレードの発注">トレードの発注</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#トレードデータの確認">トレードデータの確認</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#今後の展開">今後の展開</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#さらに詳しく">さらに詳しく</a></li>
       </ul>
   </div>
       </aside>
@@ -411,80 +298,77 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/use-cases.html">ユースケース</a></li>
     <li class="active breadcrumb-item"><a href="/ja/defi-uc.html">DeFi</a></li>
-    <li class="active breadcrumb-item">Algorithmic Trading</li>
+    <li class="active breadcrumb-item">アルゴリズムトレード</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="algorithmic-trading">Algorithmic Trading<a aria-hidden="true" class="hover_anchor" href="#algorithmic-trading"><i class="fa fa-link"></i></a></h1>
-<p>The XRP Ledger's decentralized exchange presents an opportunity to earn money through <em>algorithmic trading</em>, which means running a computer program to find and take profitable trading opportunities automatically. In algorithmic trading, you typically make many trades based on quantitative factors to earn steady, small profits; this is unlike traditional manual trading where you make a few long-term investments based on market fundamentals and wait to earn a large return over time. Blockchains are often more suitable for algorithmic trading than manual trading, because the high volatility of cryptocurrencies in general makes them less suitable for traditional "buy and hold" investing; the XRP Ledger is particularly suited for algorithmic trading, for several reasons:</p>
+        <h1 id="アルゴリズムトレード">アルゴリズムトレード<a aria-hidden="true" class="hover_anchor" href="#アルゴリズムトレード"><i class="fa fa-link"></i></a></h1>
+<p>XRP Ledgerの分散型取引所(DEX)には、「アルゴリズムトレード」によって収益を得る機会があります。アルゴリズムトレードでは通常、定量的な要因に基づいて多くのトレードを行い、安定した小さな利益を得ます。これは、市場のファンダメンタルズに基づいて少数の長期投資を行い、時間をかけて大きなリターンを得るのを待つ伝統的な手動トレードとは異なります。暗号通貨は一般的にボラティリティが高いため、伝統的な「バイ・アンド・ホールド」投資には適していませんので、ブロックチェーンは多くの場合、手動トレードよりもアルゴリズムトレードに適しています。</p>
 <ul>
-<li>Decentralized exchange data is public and freely available.</li>
-<li>Trades settle in seconds, enabling frequent trading without specialized equipment.</li>
-<li>Transaction fees on the XRP Ledger are low.</li>
+<li>分散型取引所のデータはパブリックで自由に利用できます。</li>
+<li>取引は数秒で決済されるため、専門的な機材なしで高頻度トレードが可能です。</li>
+<li>XRP Ledgerのトランザクションコストは低額です。</li>
 </ul>
-<h2 id="trading-strategies">Trading Strategies<a aria-hidden="true" class="hover_anchor" href="#trading-strategies"><i class="fa fa-link"></i></a></h2>
-<p>Algorithmic trading can make profits through many different strategies; part of the challenge (or the fun) of algorithmic trading is designing and implementing your own unique approach. From a high level, algorithmic trading approaches often fall into the following categories:</p>
+<h2 id="トレード戦略">トレード戦略<a aria-hidden="true" class="hover_anchor" href="#トレード戦略"><i class="fa fa-link"></i></a></h2>
+<p>アルゴリズムトレードは、さまざまな戦略によって利益を上げることができます。アルゴリズムトレードの難しさ（あるいは楽しさ）の一つは、独自のアプローチを設計し、実行することです。アルゴリズムトレードのアプローチを大まかに分類すると、次のようになります。</p>
 <ul>
-<li><strong>Arbitrage:</strong> Buying and immediately selling an asset to take advantages of price differences. This could involve finding sets of 3 or more assets where the prices aren't aligned, or using the XRP Ledger to move assets between private exchanges where the prices are different.</li>
-<li><strong>Quantitative Trading:</strong> Predicting and taking advantage of future price movements based on past price movements, outside data, or both. Examples include <a class="external-link" href="https://blog.quantinsti.com/candlestick-patterns-meaning/" target="_blank">candlestick patterns <i aria-hidden="true" class="fa fa-external-link"></i></a>, correlating an asset's price movements with other assets, and using sentiment analysis of social media.</li>
-<li><strong>Front-running:</strong> Taking advantage of pending trades, especially large ones, by buying and immediately reselling the assets those trades are buying. Front-running is often frowned-upon because it takes profits from other traders without adding liquidity or enabling exchanges that otherwise wouldn't occur. The XRP Ledger's canonical ordering of transactions makes front-running difficult, but not impossible.</li>
+<li><strong>裁定取引(アービトラージ):</strong> 価格差を利用した資産の購入と即時売却。これは、価格が一致していない3つ以上の資産のセットを見つけたり、XRP Ledgerを使って価格が異なる取引所(CEX)間で資産を移動させたりすることを含みます。</li>
+<li><strong>定量取引:</strong> 過去の値動き、外部データ、またはその両方に基づいて将来の値動きを予測し、それを利用すること。例えば、<a class="external-link" href="https://blog.quantinsti.com/candlestick-patterns-meaning/" target="_blank">ローソク足パターン <i aria-hidden="true" class="fa fa-external-link"></i></a>、資産の値動きと他の資産との相関関係、ソーシャルメディアのセンチメント分析などがあります。</li>
+<li><strong>フロントランニング:</strong> 保留中のトレード、特に大きなトレードを利用し、そのトレードが買っている資産を買ってすぐに転売すること。フロントランニングは、流動性を追加することなく他のトレーダーから利益を奪ったり、他の方法では発生しないトレードを可能にするため、しばしば嫌われます。XRP Ledgerの取引の正規順序は、フロントランニングを困難にしていますが、不可能ではありません。</li>
 </ul>
-<h3 id="arbitrage-examples">Arbitrage Examples<a aria-hidden="true" class="hover_anchor" href="#arbitrage-examples"><i class="fa fa-link"></i></a></h3>
-<p>There are many ways to perform arbitrage, both within and adjacent to the XRP Ledger. The following examples are meant to illustrate potential strategies, but others are possible as well.</p>
-<p>You can use <strong>circular payments</strong> to complete multi-asset trades for a profit. The XRP Ledger automatically connects overlapping trades between pairs of assets, as well as sets of 3 assets where XRP is the asset in the middle. However, the XRP Ledger protocol does not automatically find and compete trades across other, longer or more complex paths. (Finding the <em>best possible</em> path is a category of problem that is known to be computationally intensive.) Therefore, if you do your own pathfinding, it is possible to find profitable arbitrage opportunities like this; if you do, you can specify those <a href="paths.html">paths</a> explicitly in a <a href="payment.html">Payment transaction</a>. For example, imagine there are three tokens, FOO, BAR, and TST, each with different issuers. If you can buy 2 BAR by spending 1 FOO, then buy 3 TST by spending those 2 BAR, and finally buy 1.1 FOO by spending 3 TST, you can earn a profit of 0.1 FOO minus any costs of the transaction such as <a href="transfer-fees.html">transfer fees</a> of the tokens involved.</p>
-<p>You can perform <strong>cross-exchange arbitrage</strong> if you have accounts at multiple private exchanges where the prices for an asset are different. For example, if you can buy XRP at ACME Exchange for $0.45 per 1 XRP, then move the XRP over to WayGate Exchange where you sell it for $0.50 per 1 XRP, you can make a profit of $0.05 per XRP minus the costs of trading and sending the relevant transactions, including exchanges' fees to withdraw and deposit your profits. As a more complex example, if the BTC:ETH price shifts at ACME Exchange to make ETH cheaper relative to BTC, you could potentially take advantage of this price shift by selling ETH→XRP at one exchange, then moving the XRP to ACME Exchange and trading XRP→BTC→ETH for a profit there. Since XRP Ledger transactions settle in seconds but Ethereum transactions can take minutes and Bitcoin transactions can take hours, using XRP as a bridge currency can potentially allow you to take advantage of this opportunity sooner than simply trading ETH→BTC and then BTC→ETH at ACME Exchange. (This only works, of course, if there is enough liquidity and tight enough spreads that exchanging to XRP and back doesn't cost more than your profits.)</p>
-<h2 id="background-reading">Background Reading<a aria-hidden="true" class="hover_anchor" href="#background-reading"><i class="fa fa-link"></i></a></h2>
-<p>You can familiarize yourself with algorithmic trading, in general, by reading the following resources:</p>
+<h3 id="裁定取引アービトラージの例">裁定取引(アービトラージ)の例<a aria-hidden="true" class="hover_anchor" href="#裁定取引アービトラージの例"><i class="fa fa-link"></i></a></h3>
+<p>裁定取引を行うには、XRP Ledgerの内部と関連する部分の両方で、多くの方法があります。以下の例は潜在的な戦略を説明するためのものですが、他の方法も可能です。</p>
+<p><strong>循環支払い</strong>を利用して、マルチアセットトレードを完了し利益を得ることができます。XRP Ledgerは、XRPが真ん中のアセットである3つのアセットセットセットと同様に、アセットペア間の重複した取引を自動的に接続します。しかし、XRP Ledgerのプロトコルは、他のより長い、あるいはより複雑な経路のトレードを自動的に見つけて競うことはしません。(可能な限り最善の経路を見つけることは、計算集約型な問題のカテゴリとして知られています。)したがって、XRP Ledgerが独自の経路を見つける場合、XRP Ledgerのプロトコルは自動的に他の、より長い、あるいはより複雑な経路の取引を見つけ、競争させることはありません。したがって、自分で経路探索(PathFinding)を行えば、このような有益な裁定取引の機会を見つけることが可能です。その場合は、<a href="payment.html">Paymentトランザクション</a>でそれらの<a href="paths.html">経路(Paths)</a>を明示的に指定できます。1つのFOOを使って2つのBARを買い、その2つのBARを使って3つのTSTを買い、最後に3つのTSTを使って1.1 FOOを買えば、0.1 FOOから取引に関わるトークンの<a href="transfer-fees.html">送金手数料</a>などのコストを差し引いた利益を得ることができます。</p>
+<p>資産の価格が異なる複数の取引所(CEX)に口座を持っている場合、<strong>取引所間の裁定取引</strong>を行うことができます。例えば、ACME取引所でXRPを1XRPあたり0.45ドルで購入し、そのXRPをWayGate取引所に移動して1XRPあたり0.50ドルで売却した場合、XRPあたり0.05ドルの利益を得ることができます。より複雑な例として、ACME取引所でBTC:ETHの価格が変動し、BTCに対してETHが安くなった場合、ある取引所でETH→XRPを売却し、そのXRPをACME取引所に移動し、XRP→BTC→ETHを取引して利益を得ることで、この価格変動を利用できる可能性があります。XRP Ledgerの取引は数秒で決済されますが、イーサリアムの取引は数分、ビットコインの取引は数時間かかることがあるため、XRPをブリッジ通貨として使用することで、ACME取引所でETH→BTC→BTC→ETHと取引するよりも早くこの機会を利用できる可能性があります。(これはもちろん、XRPへの交換が利益以上のコストにならないだけの十分な流動性と狭いスプレッドがある場合にのみ機能します)</p>
+<h2 id="背景">背景<a aria-hidden="true" class="hover_anchor" href="#背景"><i class="fa fa-link"></i></a></h2>
+<p>アルゴリズムトレードの一般的な知識については、以下のリソースをご覧ください。</p>
 <ul>
 <li><a class="external-link" href="https://www.investopedia.com/articles/active-trading/101014/basics-algorithmic-trading-concepts-and-examples.asp" target="_blank">Investopedia: Basics of Algorithmic Trading: Concepts and Examples <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><a class="external-link" href="https://wwnorton.com/books/Flash-Boys/" target="_blank"><em>Flash Boys: A Wall Street Revolt</em> by Michael Lewis <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><a class="external-link" href="https://www.investopedia.com/terms/a/arbitrage.asp" target="_blank">Investopedia: How Arbitraging Works in Investing, With Examples <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
-<p>The following pages describe key elements of how the XRP Ledger's decentralized exchange works:</p>
+<p>以下のページでは、XRP Ledgerの分散型取引所の仕組みについて説明しています。</p>
 <ul>
-<li><a href="tokens.html">Tokens</a></li>
-<li><a href="decentralized-exchange.html">Decentralized Exchange</a></li>
-<li><a href="offers.html">Offers</a></li>
+<li><a href="tokens.html">トークン</a></li>
+<li><a href="decentralized-exchange.html">分散型取引所</a></li>
+<li><a href="offers.html">オファー</a></li>
 </ul>
-<h2 id="testing-and-common-mistakes">Testing and Common Mistakes<a aria-hidden="true" class="hover_anchor" href="#testing-and-common-mistakes"><i class="fa fa-link"></i></a></h2>
-<p>Like any type of trading, algorithmic trading is not a surefire way to make money; there are many ways you might take a loss. Compared with manual trading, algorithmic trading has much less room for error. If you make a small mistake, but multiply it by a large number of trades, your losses can add up quickly before you have a chance to fix the problem. Therefore, it's wise to do various tests to make sure that your trading strategy will actually make a profit. You might do any or all of the following to test your strategy or the actual implementation of it (often called a <em>bot</em>):</p>
+<h2 id="テストとよくある間違い">テストとよくある間違い<a aria-hidden="true" class="hover_anchor" href="#テストとよくある間違い"><i class="fa fa-link"></i></a></h2>
+<p>どのような取引でもそうですが、アルゴリズムトレー ドは確実に儲かる方法ではありません。手作業によるトレードと比べると、アルゴリズムトレードはエラーの余地が非常に少なくなります。小さなミスを犯しても、そのミスを大量のトレードで倍増させようとすれば、問題を修正する前に損失があっという間に膨らんでしまいます。したがって、自分のトレード戦略が実際に利益を上げるかどうかを確認するために、さまざまなテストを行うのが賢明です。戦略やその実際の実装（よく <em>ボット</em> と呼ばれます）をテストするために、次のようなことを行うことができます。</p>
 <ul>
-<li>Manually calculate the potential returns based on the current ledger state or past trades.</li>
-<li>Record historical data and feed it to your bot, then record what actions the bot would have taken and compare the results against the actual historical price movements.</li>
-<li>Model or predict the results of your approach in various plausible future scenarios.</li>
+<li>現在のレジャーの状態または過去のトレードに基づいて、潜在的な利益を手動で計算します。</li>
+<li>過去のデータを記録してボットに送り、ボットがどのようなアクションを取ったかを記録し、実際の過去の値動きと結果を比較します。</li>
+<li>将来の様々なシナリオをモデル化し、その結果を予測します。</li>
 </ul>
-<p>Common mistakes you might make in these calculations or in building your bot include:</p>
+<p>このような計算やボットの作成においては、よく次のような間違いが存在します。</p>
 <ul>
-<li>Rounding errors. If your math is not sound, or does not match the precision that the blockchain uses, you could inaccurately predict the results of a trade and take a loss, or have your trade not execute at all. The XRP Ledger uses different precision for token and XRP amounts, which can lead to rounding in unexpected places when trading one for the other. For more details on the precision used in the protocol, see <a href="currency-formats.html">Currency Formats</a>.<ul>
-<li>Be aware that token issuers can further limit the precision of exchange rates involving their tokens. See <a href="ticksize.html">Tick Size</a> for details.</li>
-<li>Typically, you need to adjust your amounts by some small percentage to account for potential differences in rounding or price movements between when you looked things up and when your trade executes. This amount is called <em>slippage</em>, and it's important to get the right amount. If it's too low, your transaction may not execute at all; but if it's too high, you're vulnerable to front-running, and the higher it is the more that price movements can cut into your profits in general.</li>
+<li><strong>丸め誤差</strong>: 計算が適切でなかったり、ブロックチェーンが使用する精度と一致しなかったりすると、トレード結果を不正確に予測して損失を出したり、トレードが全く実行されなかったりする可能性があります。XRP Ledgerは、トークンとXRPの量に異なる精度を使用しているため、一方を他方に交換する際、予期せぬ場所で四捨五入される可能性があります。プロトコルで使用される精度の詳細については、<a href="currency-formats.html">通貨フォーマット</a>をご覧ください。<ul>
+<li>トークンの発行者は、トークンに関わる取引レートの精度をより詳細に制限できることに注意してください。詳しくは<a href="ticksize.html">Tick Size</a>をご覧ください。</li>
+<li>通常、四捨五入の違いや、計算時と約定時の値動きの違いを考慮し、金額を調整する必要があります。この金額は「スリッページ」と呼ばれ、適切な金額を設定することが重要です。スリッページが低すぎると、トレードがまったく約定しない可能性があります。一方、スリッページが高すぎると、フロントランニングの影響を受けやすくなり、スリッページが高ければ高いほど、値動きによって利益が削られる可能性が高くなります。</li>
 </ul>
 </li>
-<li>Forgetting extra costs and delays. For example, if two stablecoins are both fully backed by US dollars, but one issuer charges a 0.5% transfer fee and a different issuer charges a 0.25% <a href="transfer-fees.html">transfer fee</a>, you should expect about a 0.25% difference in the effective price those stablecoins trade at. Don't forget the costs of sending a transaction, even though they're usually small, nor the consequences of other potential delays. For example, even if an off-ledger private exchange shows a favorable price now, if that exchange takes hours or even days to process a deposit, the price is likely to shift so you can't take advantage of it unless you already have liquidity at that exchange.</li>
-<li>Not accounting for rare events. Even setting aside unprecented ("black swan") events, your calculations can be skewed by individual outliers. As one example (which is a true story), a trader reported that, when calculating the potential profits of a given strategy in a specific time range, over 80% of the profits came from a single "fat-fingered" transaction where another user had accidentally added an extra zero to their price. The same strategy was far less profitable when calculated against time ranges that didn't include the outlier transaction.</li>
-<li>Not reading transaction flags. The flags of an XRP Ledger transaction can have significant impacts on the way that transaction is processed and when the protocol marks it as "successful". For example, the flags of "Offer" transactions can make it a "fill or kill" order that only trades if the full amount can be obtained immediately; the flags of "Payment" transactions can make them <a href="partial-payments.html">partial payments</a> that succeed even if they can't deliver the full amount to the intended destination. You need to do bitwise math to parse the <code>Flags</code> field of a transaction, but your expectations can be totally wrong if you skip doing so.</li>
+<li><strong>余分なコストと遅延を考慮しないこと</strong>: 例えば、2つのステーブルコインの裏付けが米ドルであるにもかかわらず、ある発行者が0.5%の送金手数料を請求し、別の発行者が0.25%の<a href="transfer-fees.html">送金手数料</a>を請求した場合、そのステーブルコインの取引価格には約0.25%の差が生じます。トランザクションを送信するためのコストは、通常は少額ですが、その他の潜在的な遅延の影響も忘れないでください。例えば、オフレジャーの取引所が現時点で有利な価格を示していたとしても、その取引所の入金処理に数時間から数日かかる場合、その取引所で事前に流動性を持っていない限り、その価格を利用することはできません。</li>
+<li><strong>稀な事象を考慮していないこと</strong>: 前例のない出来事（「ブラック・スワン」）はさておき、個々の異常値によって計算結果がゆがむことがあります。一例として(これは実話ですが)、あるトレーダーが、ある戦略の潜在的な利益を特定の時間帯で計算したところ、利益の80％以上が、他のユーザが誤って価格にゼロを追加してしまった1つの「入力ミス」の取引によるものであったと報じました。同じ戦略を、これらの異常値の取引を含まない時間範囲に対して計算すると、利益ははるかに少なくなりました。</li>
+<li><strong>トランザクションのフラグを確認しないこ</strong>と: XRP Ledgerのトランザクションのフラグは、そのトランザクションの処理方法や、プロトコルがそれを「成功」とマークするタイミングに大きな影響を与える可能性があります。例えば、"Offer"トランザクションのフラグは、全額がすぐに得られる場合にのみトレードされる"Fill or Kill"注文にすることができます。"Payment"トランザクションのフラグは、意図した宛先に全額を届けることができなくても成功する<a href="partial-payments.html">partial payments</a>にすることができます。トランザクションの<code>Flags</code>フィールドを解析するためにビット演算をする必要がありますが、それをスキップしてしまうと、予想と結果が全く異なったものとなってしまう可能性があります。</li>
 </ul>
-<h2 id="taxes-and-licensing">Taxes and Licensing<a aria-hidden="true" class="hover_anchor" href="#taxes-and-licensing"><i class="fa fa-link"></i></a></h2>
-<p>The legal requirements for trading on a blockchain vary by jurisdiction. In many cases, there are no licensing or other legal barriers to getting started, but you may be required to report your profits for tax purposes, especially if your gains or losses are over some thresholds. In the United States, you typically report profits (or losses) from trading as capital gains, which means you need to calculate the cost basis for the assets you buy at the time you acquire them. There are various tools out there that may be able to help track your trading activity or even generate the appropriate tax forms, depending on your individual situation. Depending on which assets you are trading and your trading strategies, the details may vary. Be sure to do your research or consult with a tax professional before you get started with algorithmic trading.</p>
-<h2 id="technical-details">Technical Details<a aria-hidden="true" class="hover_anchor" href="#technical-details"><i class="fa fa-link"></i></a></h2>
-<h3 id="placing-trades">Placing Trades<a aria-hidden="true" class="hover_anchor" href="#placing-trades"><i class="fa fa-link"></i></a></h3>
-<p>Buying and selling <em>fungible</em> tokens and XRP within the XRP Ledger's decentralized exchange typically involves sending <a href="offercreate.html">OfferCreate transactions</a>. For a detailed walkthrough of the code and technical steps to place a trade this way, see <a href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>. It is also possible to exchange currencies using the <a href="payment.html">Payment transaction type</a>. You could send a <a href="cross-currency-payments.html">cross-currency payment</a> to another user or even send it back to yourself, using a long <a href="paths.html">path</a> to link arbitrage opportunities together into a single operation.</p>
-<p>Non-fungible tokens work differently; for the code and technical steps to trade NFTs, see <a href="transfer-nfts-using-javascript.html">Transfer NFTokens Using JavaScript</a>.</p>
-<h3 id="reading-trade-data">Reading Trade Data<a aria-hidden="true" class="hover_anchor" href="#reading-trade-data"><i class="fa fa-link"></i></a></h3>
-<p>There are many sources of information about the trading activity in the XRP Ledger. Depending on your trading strategy and use case, you may be able to connect to the XRP Ledger through <a href="public-servers.html">Public Servers</a>, but you can often benefit from running your own server, and some use cases may not be practical without doing so. See <a href="install-rippled.html">Install <code>rippled</code></a> for instructions on how to set up a core server in P2P mode.</p>
-<p>If your approach involves following other transaction activity, you may need to read the transactions' detailed metadata to know exactly how much they traded. Offers can partially execute and may consume multiple matching offers. For a detailed explanation of how to interpret transaction metadata, see <a href="look-up-transaction-results.html">Look Up Transaction Results</a>.</p>
-<p>To give yourself as much time as possible to react to profit-taking opportunities, you may also want to look at pending data from the <a href="open-closed-validated-ledgers.html">Open Ledger</a>, or even monitor for proposed transactions. If you're connected to WebSocket, you can use the <a href="subscribe.html">subscribe method</a> with the <code>transactions_proposed</code> stream to see transactions before they're validated by consensus; you can also limit this to a subset of transactions that affect a particular account (for example, the issuer of a token you're interested in trading) by subscribing using the <code>accounts_proposed</code> parameter.</p>
-<h3 id="future-developments">Future Developments<a aria-hidden="true" class="hover_anchor" href="#future-developments"><i class="fa fa-link"></i></a></h3>
-<p>Ripple has proposed extending the XRP Ledger protocol with a native Automated Market Maker (AMM) design that would work alongside the existing central limit order based (CLOB) decentralized exchange. If this proposal is accepted and becomes enabled as an <a href="amendments.html">amendment</a>, AMMs will become an important factor in trading on the XRP Ledger. You can read more at the following links:</p>
+<h2 id="税金とライセンス">税金とライセンス<a aria-hidden="true" class="hover_anchor" href="#税金とライセンス"><i class="fa fa-link"></i></a></h2>
+<p>ブロックチェーン上でトレードを行うための法的要件は、法域によって異なります。多くの場合、ライセンスやその他の法的な障壁はありませんが、特に利益または損失がいくつかの基準値を超える場合、税務上の利益を報告する必要がある場合があります。米国では通常、トレードで得た利益(または損失)をキャピタルゲインとして報告します。つまり、購入した資産の取得時の原価を計算する必要があります。個々の状況に応じて、トレード活動を追跡したり、適切な納税申告書を作成するのに役立つ様々なツールがあります。トレードする資産やトレード戦略によって、詳細は異なります。アルゴリズムトレードを始める前に、必ず税務の専門家に相談するか、よく調べてください。</p>
+<h2 id="技術的な詳細">技術的な詳細<a aria-hidden="true" class="hover_anchor" href="#技術的な詳細"><i class="fa fa-link"></i></a></h2>
+<h3 id="トレードの発注">トレードの発注<a aria-hidden="true" class="hover_anchor" href="#トレードの発注"><i class="fa fa-link"></i></a></h3>
+<p>XRP Ledgerの分散型取引所で_代替可能_トークンとXRPを売買するには、通常<a href="offercreate.html">OfferCreateトランザクション</a>を送信します。この方法でトレードを行うためのコードと技術的ステップの詳細なウォークスルーについては、<a href="trade-in-the-decentralized-exchange.html">分散型取引所でのトレード</a>をご覧ください。<a href="payment.html">Paymentトランザクション</a>を使用して通貨を両替することも可能です。<a href="cross-currency-payments.html">クロスカレンしー支払い</a>を他のユーザに送ったり、長い<a href="paths.html">パス</a>を使って裁定取引の機会を1つの操作にまとめることで、自分自身に送り返すこともできます。</p>
+<p>NFTをトレードするためのコードと技術的な手順については、<a href="transfer-nfts-using-javascript.html">JavaScriptを使用したNFTokenの送信</a>を参照してください。</p>
+<h3 id="トレードデータの確認">トレードデータの確認<a aria-hidden="true" class="hover_anchor" href="#トレードデータの確認"><i class="fa fa-link"></i></a></h3>
+<p>XRP Ledgerのトレード活動に関する情報源は数多くあります。トレード戦略やユースケースによっては、<a href="public-servers.html">公開サーバ</a>を通してXRP Ledgerに接続することができるかもしれませんが、多くの場合、自分自身のサーバを稼働させることで利益を得ることができます。P2Pモードでコアサーバをセットアップする方法については、<a href="install-rippled.html"><code>rippled</code>のインストール</a>をご覧ください。</p>
+<p>他のトレード活動を追跡するアプローチの場合、トレード額を正確に知るためにトランザクションの詳細なメタデータを確認する必要があるかもしれません。オファーは部分的に約定することがあり、複数の一致するオファーを約定することがあります。トランザクションメタデータの解釈方法の詳細については、<a href="look-up-transaction-results.html">トランザクションの結果の確認</a>をご覧ください。</p>
+<p>利益確定のチャンスに反応する時間をできるだけ多く確保するために、<a href="open-closed-validated-ledgers.html">オープンレジャー</a>から保留中のデータを見たり、提案されているトランザクションをモニタリングしたりすることもできます。WebSocketに接続している場合、<code>transactions_proposed</code>ストリームで<a href="subscribe.html">subscribeメソッド</a>を使用すると、コンセンサスによって検証される前のトランザクションを見ることができます。また、<code>accounts_proposed</code>パラメータを使用してsubscribeすることで、特定のアカウント（例えば、トレードに興味のあるトークンの発行者）に影響するトランザクションのサブセットに限定することもできます。</p>
+<h3 id="今後の展開">今後の展開<a aria-hidden="true" class="hover_anchor" href="#今後の展開"><i class="fa fa-link"></i></a></h3>
+<p>Ripple社はXRP Ledger プロトコルを拡張し、既存の中央指値注文ベース(CLOB)の分散型取引所と連携するネイティブな自動マーケットメーカー(AMM)の機能を追加することを提案しました。この提案が受け入れられ、<a href="amendments.html">amendments</a>として有効になれば、AMMはXRP Ledger上のトレードにおいて重要な要素となるでしょう。詳しくは以下のリンクをご覧ください。</p>
 <ul>
-<li><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d: Automated Market Maker standards proposal <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><a class="external-link" href="https://opensource.ripple.com/docs/xls-30d-amm/automated-market-makers/" target="_blank">AMM documentation (Ripple Open Source site) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/78" target="_blank">XLS-30d: Automated Market Maker 規格草案 <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://opensource.ripple.com/docs/xls-30d-amm/automated-market-makers/" target="_blank">AMMドキュメント (Ripple社のオープンソースのサイト) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
-<h2 id="further-reading">Further Reading<a aria-hidden="true" class="hover_anchor" href="#further-reading"><i class="fa fa-link"></i></a></h2>
-<p>The following articles provide some more specific examples and interesting information about how these strategies work on other blockchains. This information isn't necessary to get started, but may help to provide perspective.</p>
+<h2 id="さらに詳しく">さらに詳しく<a aria-hidden="true" class="hover_anchor" href="#さらに詳しく"><i class="fa fa-link"></i></a></h2>
+<p>次の記事では、これらの戦略が他のブロックチェーンでどのように機能するかについて、より具体的な例や興味深い情報を提供しています。これらの情報は、始めるために必要なものではありませんが、新たな視点を得るのに役立つかもしれません。</p>
 <ul>
 <li><a class="external-link" href="https://www.paradigm.xyz/2020/08/ethereum-is-a-dark-forest" target="_blank">Ethereum is a Dark Forest <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><a class="external-link" href="https://arxiv.org/pdf/1904.05234.pdf" target="_blank">Flash Boys 2.0: Frontrunning, Transaction Reordering, and Consensus Instability in Decentralized Exchanges (PDF) <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
@@ -532,22 +416,22 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">What is XRP?</a>
+    <a class="nav-link nav-leaf" href="/ja/what-is-xrp.html">XRPとは?</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">Crypto Wallets</a>
+    <a class="nav-link nav-leaf" href="/ja/crypto-wallets.html">暗号通貨のウォレット</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">Transactions and Requests</a>
+    <a class="nav-link nav-leaf" href="/ja/txn-and-requests.html">トランザクションとリクエスト</a>
   </div>
 
       
@@ -577,17 +461,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">Restricting Deposits</a>
+    <a class="nav-link nav-leaf" href="/ja/restricting-deposits-uc.html">入金の制限</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">Smart Contracts</a>
+    <a class="nav-link nav-leaf" href="/ja/escrow-uc.html">スマートコントラクト</a>
   </div>
 
     </nav>
@@ -604,7 +488,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">Stablecoin Issuer</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
   </div>
 
       
@@ -612,22 +496,22 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
 
-        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFT Marketplace Overview</a>
+        <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFT Marketplace</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">Authorized Minter</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minter.html">認可Minter</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">Digital Artist</a>
+    <a class="nav-link nav-leaf" href="/ja/digital-artist.html">デジタルアーティスト</a>
   </div>
 
     </nav>
@@ -648,7 +532,7 @@
     <nav class="nav flex-column show " id="tree_nav_group_3_3">
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">Algorithmic Trading</a>
+    <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
   </div>
 
       
