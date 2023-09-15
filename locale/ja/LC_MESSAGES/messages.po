@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2023-09-15 06:28+0000\n"
+"POT-Creation-Date: 2023-09-15 06:36+0000\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -1661,16 +1661,26 @@ msgstr "参加する"
 
 #: template/page-impact.html.jinja:31
 msgid "Today’s Value, Tomorrow’s Vision"
-msgstr ""
+msgstr "現在の価値、将来のビジョン"
 
 #: template/page-impact.html.jinja:32 template/page-xrpl-overview.html.jinja:40
 #, fuzzy
 msgid "XRPL Today, XRPL Tomorrow"
-msgstr "XRPLの未来"
+msgstr "現在のXRPL、未来のXRPL"
+
+#: template/page-impact.html.jinja:44
+msgid "Building for the Future"
+msgstr "未来を見据えた開発"
 
 #: template/page-impact.html.jinja:46
 msgid "Consensus protocol is efficient and sustainable"
-msgstr "コンセンサスプロトコルは効率的で持続可能"
+msgstr "効率的で持続可能なコンセンサスプロトコル"
+
+#: template/page-impact.html.jinja:48
+msgid ""
+"For more than 272 million migrants worldwide, sending and receiving money"
+" across borders is expensive, unreliable and complex."
+msgstr "世界で2億7,200万人を超える移民にとって、国境を越えた送金は高額で不確実かつ複雑です。"
 
 #: template/page-impact.html.jinja:49
 #, fuzzy
@@ -1681,10 +1691,15 @@ msgid ""
 "like CBDCs, NFTs, and cross-border payments."
 msgstr "オープンで分散型のブロックチェーンと暗号資産は、リテールや機関投資家からCBDC、NFT、クロスボーダー決済などの商業ユースケースまで、金融サービス業界全体で導入が進んでいます。"
 
+#: template/page-impact.html.jinja:74
+#, fuzzy
+msgid "A Sustainable Future"
+msgstr "持続可能な未来"
+
 #: template/page-impact.html.jinja:75
 #, fuzzy
 msgid "What makes the XRPL sustainable?"
-msgstr "XRPLの持続可能な理由は？"
+msgstr "XRPLが持続可能な理由は？"
 
 #: template/page-impact.html.jinja:76
 msgid ""
@@ -1704,7 +1719,7 @@ msgstr ""
 
 #: template/page-impact.html.jinja:91
 msgid "Featured companies & projects running on the XRP Ledger."
-msgstr "XRP Ledgerで活動する注目の企業＆プロジェクト。"
+msgstr "XRP Ledgerで活動する注目の企業とプロジェクト"
 
 #: template/page-impact.html.jinja:92
 #, fuzzy
@@ -1732,7 +1747,7 @@ msgid ""
 "If you want to advance business with sustainable solutions to real-world "
 "problems, you’re invited to join the global, growing XRPL community. Here"
 " are some ways to get involved:"
-msgstr ""
+msgstr "現実世界の問題に対する持続可能なソリューションでビジネスを発展させたいと考える方は、グローバルに成長するXRPLコミュニティに参加しましょう。"
 
 #: template/page-impact.html.jinja:112 template/page-impact.html.jinja:177
 msgid "Join the Community"
@@ -1742,9 +1757,29 @@ msgstr "コミュニティに参加"
 msgid "Blog"
 msgstr "ブログ"
 
+#: template/page-impact.html.jinja:124
+msgid ""
+"Check out the <a href=\"https://xrpl.org/blog/\">XRPL dev blog</a> to "
+"stay up-to-date on the latest innovations and developments in the XRPL "
+"community."
+msgstr "<a href=\"https://xrpl.org/blog/\">XRPL開発者ブログ</a>をチェックして、XRPLコミュニティのイノベーションと開発について最新情報を入手しましょう。"
+
+#: template/page-impact.html.jinja:132 template/page-impact.html.jinja:160
+msgid ""
+"Attend <a href=\"/events.html\">meetups, hackathons, and conferences</a> "
+"to meet other members of the community."
+msgstr "<a href=\"/events.html\">ミートアップ、ハッカソン、カンファレンス</a>に参加して、コミュニティの他のメンバーと交流しましょう。"
+
 #: template/page-impact.html.jinja:138
 msgid "Code"
 msgstr "コード"
+
+#: template/page-impact.html.jinja:139
+msgid ""
+"View the <a href=\"https://github.com/XRPLF/xrpl-dev-portal/\" "
+"target=\"_blank\">Github repositories</a> to find <a href='developer-"
+"funding.html'>blockchain projects</a> to see how you can contribute."
+msgstr "<a href=\"https://github.com/XRPLF/xrpl-dev-portal/\" target=\"_blank\">Githubリポジトリ</a>から<a href='developer-funding.html'>ブロックチェーンプロジェクト</a>を見つけ、どのように貢献できるかご覧ください。"
 
 #: template/page-impact.html.jinja:147 template/page-impact.html.jinja:168
 msgid "Join the conversation on social media using #XRPLCommunity."

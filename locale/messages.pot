@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-15 06:28+0000\n"
+"POT-Creation-Date: 2023-09-15 06:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1515,8 +1515,18 @@ msgstr ""
 msgid "XRPL Today, XRPL Tomorrow"
 msgstr ""
 
+#: template/page-impact.html.jinja:44
+msgid "Building for the Future"
+msgstr ""
+
 #: template/page-impact.html.jinja:46
 msgid "Consensus protocol is efficient and sustainable"
+msgstr ""
+
+#: template/page-impact.html.jinja:48
+msgid ""
+"For more than 272 million migrants worldwide, sending and receiving money"
+" across borders is expensive, unreliable and complex."
 msgstr ""
 
 #: template/page-impact.html.jinja:49
@@ -1525,6 +1535,10 @@ msgid ""
 "adoption across the financial services industry, from retail and "
 "institutional investment to <a href='uses.html'>commercial use cases</a> "
 "like CBDCs, NFTs, and cross-border payments."
+msgstr ""
+
+#: template/page-impact.html.jinja:74
+msgid "A Sustainable Future"
 msgstr ""
 
 #: template/page-impact.html.jinja:75
@@ -1582,8 +1596,28 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
+#: template/page-impact.html.jinja:124
+msgid ""
+"Check out the <a href=\"https://xrpl.org/blog/\">XRPL dev blog</a> to "
+"stay up-to-date on the latest innovations and developments in the XRPL "
+"community."
+msgstr ""
+
+#: template/page-impact.html.jinja:132 template/page-impact.html.jinja:160
+msgid ""
+"Attend <a href=\"/events.html\">meetups, hackathons, and conferences</a> "
+"to meet other members of the community."
+msgstr ""
+
 #: template/page-impact.html.jinja:138
 msgid "Code"
+msgstr ""
+
+#: template/page-impact.html.jinja:139
+msgid ""
+"View the <a href=\"https://github.com/XRPLF/xrpl-dev-portal/\" "
+"target=\"_blank\">Github repositories</a> to find <a href='developer-"
+"funding.html'>blockchain projects</a> to see how you can contribute."
 msgstr ""
 
 #: template/page-impact.html.jinja:147 template/page-impact.html.jinja:168
