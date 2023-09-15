@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-15 07:16+0000\n"
+"POT-Creation-Date: 2023-09-15 07:18+0000\n"
 "PO-Revision-Date: 2021-11-05 20:34+0530\n"
 "Last-Translator: FULL NAME tpardhe@gmail.com\n"
 "Language: hi\n"
@@ -2397,7 +2397,6 @@ msgid "Web Monetization"
 msgstr "वेब मुद्रीकरण"
 
 #: template/page-uses.html.jinja:295 template/page-uses.html.jinja:402
-#: template/page-xrpl-foundation.html.jinja:55
 msgid "Sustainability"
 msgstr "स्थिरता"
 
@@ -3060,123 +3059,6 @@ msgstr ""
 #: template/page-xrp-overview.html.jinja:260
 msgid "Bittrex"
 msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:28
-msgid "Fostering the Development of the XRP Ledger"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:29
-msgid "XRPL Foundation"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:40
-msgid "The Vision"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:41
-msgid ""
-"The Foundation’s vision is to support the development of a diverse XRP "
-"Ledger community by focusing on governance, amendments to the core code, "
-"and an evolving list of robust validators — all key to creating a dynamic"
-" ecosystem that supports a growing and innovative Ledger. "
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:46
-msgid "Key Areas of Focus"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:49
-msgid "Core Technology"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:50
-msgid ""
-"Enhance and develop infrastructure including high capacity hubs, full "
-"history servers, and monitoring systems."
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:51
-msgid "Unique Node List"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:52
-msgid ""
-"Establish a list of public and objective criteria for evaluating the "
-"performance of validators."
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:53
-#, fuzzy
-msgid "Developer Ecosystem"
-msgstr "डेवलपर्स"
-
-#: template/page-xrpl-foundation.html.jinja:54
-msgid ""
-"Support a growing ecosystem of global developers to help with the Ledger "
-"adoption and use."
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:56
-msgid "Encourage scalable and sustainable practices."
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:57
-msgid "Social and Community Initiatives"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:58
-msgid ""
-"Support development of tools and platforms for financial inclusion "
-"globally."
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:71
-msgid "XRP Ledger Foundation Values and Beliefs"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:72
-msgid "We Value:"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:76
-msgid ""
-"Our role as an independent organization acting in the best interests of "
-"the XRP Ledger community"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:77
-msgid ""
-"Having the resources and support to compete on an equal playing field "
-"with other blockhain foundations to achieve our goals"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:78
-msgid ""
-"Cultivating a diverse developer ecosystem, where many entities contribute"
-" to and benefit from the XRP Ledger"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:86
-msgid "We Believe:"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:90
-msgid ""
-"Trust is foundational to our mission and understand building trust is a "
-"slow, steady process"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:91
-msgid ""
-"Close working relationships between developers and organizations that "
-"build on and contribute to the XRP Ledger are critical to its innovation "
-"and success"
-msgstr ""
-
-#: template/page-xrpl-foundation.html.jinja:104
-#, fuzzy
-msgid "Contact Us"
-msgstr "स्थिति"
 
 #: template/page-xrpl-overview.html.jinja:39
 msgid "The Business <br class=\"until-sm\"/> of Impact"
@@ -5758,4 +5640,109 @@ msgstr "इस दस्तावेज़ में"
 #~ " do not have technical experience, "
 #~ "check out Ripple’s Creator Fund."
 #~ msgstr ""
+
+#~ msgid "Fostering the Development of the XRP Ledger"
+#~ msgstr ""
+
+#~ msgid "XRPL Foundation"
+#~ msgstr ""
+
+#~ msgid "The Vision"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The Foundation’s vision is to support"
+#~ " the development of a diverse XRP "
+#~ "Ledger community by focusing on "
+#~ "governance, amendments to the core code,"
+#~ " and an evolving list of robust "
+#~ "validators — all key to creating a"
+#~ " dynamic ecosystem that supports a "
+#~ "growing and innovative Ledger. "
+#~ msgstr ""
+
+#~ msgid "Key Areas of Focus"
+#~ msgstr ""
+
+#~ msgid "Core Technology"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Enhance and develop infrastructure including"
+#~ " high capacity hubs, full history "
+#~ "servers, and monitoring systems."
+#~ msgstr ""
+
+#~ msgid "Unique Node List"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Establish a list of public and "
+#~ "objective criteria for evaluating the "
+#~ "performance of validators."
+#~ msgstr ""
+
+#~ msgid "Developer Ecosystem"
+#~ msgstr "डेवलपर्स"
+
+#~ msgid ""
+#~ "Support a growing ecosystem of global"
+#~ " developers to help with the Ledger"
+#~ " adoption and use."
+#~ msgstr ""
+
+#~ msgid "Encourage scalable and sustainable practices."
+#~ msgstr ""
+
+#~ msgid "Social and Community Initiatives"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Support development of tools and "
+#~ "platforms for financial inclusion globally."
+#~ msgstr ""
+
+#~ msgid "XRP Ledger Foundation Values and Beliefs"
+#~ msgstr ""
+
+#~ msgid "We Value:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Our role as an independent organization"
+#~ " acting in the best interests of "
+#~ "the XRP Ledger community"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Having the resources and support to "
+#~ "compete on an equal playing field "
+#~ "with other blockhain foundations to "
+#~ "achieve our goals"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Cultivating a diverse developer ecosystem, "
+#~ "where many entities contribute to and"
+#~ " benefit from the XRP Ledger"
+#~ msgstr ""
+
+#~ msgid "We Believe:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Trust is foundational to our mission "
+#~ "and understand building trust is a "
+#~ "slow, steady process"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Close working relationships between developers"
+#~ " and organizations that build on and"
+#~ " contribute to the XRP Ledger are "
+#~ "critical to its innovation and success"
+#~ msgstr ""
+
+#~ msgid "Contact Us"
+#~ msgstr "स्थिति"
 
