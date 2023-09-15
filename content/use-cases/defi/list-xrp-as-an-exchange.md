@@ -41,7 +41,7 @@ To support XRP, Alpha Exchange must:
 
 See also:
 
-* [Compliance Guidelines](stablecoin-issuer.html#compliance-guidelines) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
+* [Compliance Guidelines](stablecoin-issuer-compliance-guidelines.html) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
 
 * [Requirements for Sending to XRP Ledger](stablecoin-issuer.html#requirements-for-sending-to-xrp-ledger)
 
@@ -51,7 +51,7 @@ See also:
 
 ### Partial Payments
 
-Before integrating, exchanges should be aware of the [partial payments](partial-payments.html) feature. This feature allows XRP Ledger users to send successful payments that reduce the amount received instead of increasing the `SendMax`. This feature can be useful for [returning payments](stablecoin-issuer.html#bouncing-payments) without incurring additional cost as the sender.
+Before integrating, exchanges should be aware of the [partial payments](partial-payments.html) feature. This feature allows XRP Ledger users to send successful payments that reduce the amount received instead of increasing the `SendMax`. This feature can be useful for [returning payments](bouncing-payments.html) without incurring additional cost as the sender.
 
 #### Partial Payments Warning
 

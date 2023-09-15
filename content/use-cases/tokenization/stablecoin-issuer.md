@@ -143,7 +143,7 @@ You have the ability to freeze your stablecoins in your holder accounts. You mig
 
 Conversely, you can set the No Freeze feature, which permanently gives up the ability to freeze tokens. This makes your stablecoin more like fiat currency, in the sense that you cannot interfere with counterparties trading the tokens among themselves.
 
-See [Freezing Tokens](freezing.html).
+See [Freezing Tokens](freezes.html).
 
 
 ### Clawback Flags
@@ -167,6 +167,7 @@ Choose a 3-character string for your currency code. Per ISO 4217, supranational 
 ### xrp-ledger.toml 
 
 You can use the _Currencies_ table in an XRPL TOML file to provide additional information about your stablecoin. This makes the information about your cryptocurrency accessible in an expected place and format, and enhances transparency. See [xrp-ledger.toml File](xrp-ledger-toml.html#currencies).
+
 
 ## Account and Key Management
 
@@ -214,7 +215,6 @@ See:
 - [Stablecoin Issuer - Compliance Guidelines](stablecoin-issuer-compliance-guidelines.html)
 - [Issue a Fungible Token](issue-a-fungible-token.html)
 
-
 ### Freeze a Trust Line
 
 If an account shows suspicious activity or violates your institution's terms of use, you have the option of freezing the trust line while you resolve the issue (provided you have not set the `enableNoFreeze` tag on your issuing account).
@@ -242,6 +242,21 @@ One way to manage the value of a stablecoin is to destroy, or _burn_ stablecoins
 To destroy stablecoins, you can transfer them to a "black hole" account (an account address where no one knows the secret key).
 
 See [Disable Master Key Pair](disable-master-key-pair.html).
+
+### Reliable Transaction Submission
+
+The goal of reliably submitting transactions is to achieve the following two properties in a finite amount of time:
+
+* Idempotency - Transactions should be processed once and only once, or not at all.
+* Verifiability - Applications can determine the final result of a transaction.
+
+To submit transactions reliably, follow these guidelines:
+
+* Persist details of the transaction before submitting it.
+* Use the `LastLedgerSequence` parameter. (Many [client libraries](client-libraries.html) do this by default.)
+* Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index][] is less than or equal to the transaction's `LastLedgerSequence` parameter.
+
+For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
 <!--
 ### List on XRPL Native DEX
