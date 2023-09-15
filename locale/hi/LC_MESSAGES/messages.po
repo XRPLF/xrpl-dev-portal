@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-15 06:36+0000\n"
+"POT-Creation-Date: 2023-09-15 06:52+0000\n"
 "PO-Revision-Date: 2021-11-05 20:34+0530\n"
 "Last-Translator: FULL NAME tpardhe@gmail.com\n"
 "Language: hi\n"
@@ -1748,6 +1748,17 @@ msgstr ""
 msgid "Everything You Need to Know"
 msgstr ""
 
+#: template/page-rpc-tool.html.jinja:10
+msgid ""
+"This is a debug tool for printing raw information about an account (by "
+"classic address), a transaction (by hash) or a ledger (by sequence "
+"number)."
+msgstr ""
+
+#: template/page-rpc-tool.html.jinja:13
+msgid "XRP Ledger address, transaction ID, or ledger index"
+msgstr ""
+
 #: template/page-rpc-tool.html.jinja:14
 msgid "Try an account like <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>."
 msgstr "<em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em> जैसा खाता आज़माएं."
@@ -1784,6 +1795,10 @@ msgstr "सभी का विस्तार करें"
 #: template/page-rpc-tool.html.jinja:86 template/page-rpc-tool.html.jinja:92
 msgid "collapse all"
 msgstr "सभी को संकुचित करें"
+
+#: template/page-rpc-tool.html.jinja:53
+msgid "(last 20)"
+msgstr ""
 
 #: template/page-rpc-tool.html.jinja:55 template/page-rpc-tool.html.jinja:63
 #: template/page-rpc-tool.html.jinja:84 template/page-rpc-tool.html.jinja:90

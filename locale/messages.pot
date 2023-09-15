@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-15 06:36+0000\n"
+"POT-Creation-Date: 2023-09-15 06:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1632,6 +1632,17 @@ msgstr ""
 msgid "Everything You Need to Know"
 msgstr ""
 
+#: template/page-rpc-tool.html.jinja:10
+msgid ""
+"This is a debug tool for printing raw information about an account (by "
+"classic address), a transaction (by hash) or a ledger (by sequence "
+"number)."
+msgstr ""
+
+#: template/page-rpc-tool.html.jinja:13
+msgid "XRP Ledger address, transaction ID, or ledger index"
+msgstr ""
+
 #: template/page-rpc-tool.html.jinja:14
 msgid "Try an account like <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>."
 msgstr ""
@@ -1667,6 +1678,10 @@ msgstr ""
 #: template/page-rpc-tool.html.jinja:72 template/page-rpc-tool.html.jinja:77
 #: template/page-rpc-tool.html.jinja:86 template/page-rpc-tool.html.jinja:92
 msgid "collapse all"
+msgstr ""
+
+#: template/page-rpc-tool.html.jinja:53
+msgid "(last 20)"
 msgstr ""
 
 #: template/page-rpc-tool.html.jinja:55 template/page-rpc-tool.html.jinja:63

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2023-09-15 06:36+0000\n"
+"POT-Creation-Date: 2023-09-15 06:52+0000\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -1762,13 +1762,17 @@ msgid ""
 "Check out the <a href=\"https://xrpl.org/blog/\">XRPL dev blog</a> to "
 "stay up-to-date on the latest innovations and developments in the XRPL "
 "community."
-msgstr "<a href=\"https://xrpl.org/blog/\">XRPL開発者ブログ</a>をチェックして、XRPLコミュニティのイノベーションと開発について最新情報を入手しましょう。"
+msgstr ""
+"<a "
+"href=\"https://xrpl.org/blog/\">XRPL開発者ブログ</a>をチェックして、XRPLコミュニティのイノベーションと開発について最新情報を入手しましょう。"
 
 #: template/page-impact.html.jinja:132 template/page-impact.html.jinja:160
 msgid ""
 "Attend <a href=\"/events.html\">meetups, hackathons, and conferences</a> "
 "to meet other members of the community."
-msgstr "<a href=\"/events.html\">ミートアップ、ハッカソン、カンファレンス</a>に参加して、コミュニティの他のメンバーと交流しましょう。"
+msgstr ""
+"<a "
+"href=\"/events.html\">ミートアップ、ハッカソン、カンファレンス</a>に参加して、コミュニティの他のメンバーと交流しましょう。"
 
 #: template/page-impact.html.jinja:138
 msgid "Code"
@@ -1779,7 +1783,10 @@ msgid ""
 "View the <a href=\"https://github.com/XRPLF/xrpl-dev-portal/\" "
 "target=\"_blank\">Github repositories</a> to find <a href='developer-"
 "funding.html'>blockchain projects</a> to see how you can contribute."
-msgstr "<a href=\"https://github.com/XRPLF/xrpl-dev-portal/\" target=\"_blank\">Githubリポジトリ</a>から<a href='developer-funding.html'>ブロックチェーンプロジェクト</a>を見つけ、どのように貢献できるかご覧ください。"
+msgstr ""
+"<a href=\"https://github.com/XRPLF/xrpl-dev-portal/\" "
+"target=\"_blank\">Githubリポジトリ</a>から<a href='developer-"
+"funding.html'>ブロックチェーンプロジェクト</a>を見つけ、どのように貢献できるかご覧ください。"
 
 #: template/page-impact.html.jinja:147 template/page-impact.html.jinja:168
 msgid "Join the conversation on social media using #XRPLCommunity."
@@ -1792,6 +1799,17 @@ msgstr "リファレンスとAPI"
 #: template/page-references.html.jinja:10
 msgid "Everything You Need to Know"
 msgstr "全てはここに"
+
+#: template/page-rpc-tool.html.jinja:10
+msgid ""
+"This is a debug tool for printing raw information about an account (by "
+"classic address), a transaction (by hash) or a ledger (by sequence "
+"number)."
+msgstr "これは、アカウント(クラシックアドレス)、トランザクション(ハッシュ)、またはレジャー(シーケンス番号)に関する実際の情報を表示するためのデバッグツールです。"
+
+#: template/page-rpc-tool.html.jinja:13
+msgid "XRP Ledger address, transaction ID, or ledger index"
+msgstr "XRP Ledgerアドレス、トランザクションID、またはレジャーインデックス"
 
 #: template/page-rpc-tool.html.jinja:14
 msgid "Try an account like <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>."
@@ -1831,10 +1849,14 @@ msgstr "すべて展開"
 msgid "collapse all"
 msgstr "すべて閉じる"
 
+#: template/page-rpc-tool.html.jinja:53
+msgid "(last 20)"
+msgstr "(直近20件)"
+
 #: template/page-rpc-tool.html.jinja:55 template/page-rpc-tool.html.jinja:63
 #: template/page-rpc-tool.html.jinja:84 template/page-rpc-tool.html.jinja:90
 msgid "expand tx"
-msgstr "tx展開"
+msgstr "txを展開"
 
 #: template/page-rpc-tool.html.jinja:58 template/page-rpc-tool.html.jinja:66
 msgid "next 20"
@@ -1842,7 +1864,7 @@ msgstr "次の20件"
 
 #: template/page-rpc-tool.html.jinja:59 template/page-rpc-tool.html.jinja:67
 msgid "prev 20"
-msgstr ""
+msgstr "前の20件"
 
 #: template/page-tx-sender.html.jinja:8
 msgid "Status"
