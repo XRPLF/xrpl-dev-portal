@@ -54,7 +54,7 @@
 
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v24.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -88,119 +88,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-
-
-<!-- Inline script to conditionally display the banner -->
-  <script>
-    // Get the user's location using the provided JavaScript code
-    let userLocation = window.Osano.cm.countryCode;
-
-    // List of countries for which we want to serve the banner
-    let targetCountries = ['sg', 'my', 'id', 'th', 'vn', 'hk', 'au'];
-
-    // Check if the user's location is in the list of target countries
-    let isTargetCountry = targetCountries.includes(userLocation);
-
-    if (isTargetCountry) {
-      // Define the banner HTML with the countdown timer
-      let token2049bannerHTML = `
-        <a href="https://www.token2049.com/" target="_blank" class="w-inline-block token-banner-container d-flex justify-content-center">
-            <div id="js-clock" class="js-clock align-items-center d-none d-sm-inline-block">
-            <div class="box">
-              <div id="js-clock-days" class="clock-number">00</div>
-              <div class="clock-label">Days</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-hours" class="clock-number">00</div>
-              <div class="clock-label">Hrs</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-minutes" class="clock-number">00</div>
-              <div class="clock-label">Min</div>
-            </div>
-            <div class="box">
-              <div id="js-clock-seconds" class="clock-number">00</div>
-              <div class="clock-label">Sec</div>
-            </div>
-          </div>
-          <div class="token-reg">  <span class="d-none d-lg-inline-block">Countdown to</span>
-          <span class="d-inline-block">XRPL Zone </span>
-          <span class="token-highlight d-inline-block">@Token2049</span></div>
-           <div class="token-circled d-md-block highlight-yellow d-inline-block"> Singapore</div>
-           <div class="token-reg d-none d-md-inline-block">  12 September 2023  </div>
-            <div class="token-circled d-none d-lg-inline-block highlight-purple">Register Now</div>
-        </a>
-      `;
-
-      // Write the banner directly to the document
-      document.write(token2049bannerHTML);
-
-      var deadline = '2023/09/13 08:00';
-
-      function pad(num, size) {
-        var s = "0" + num;
-        return s.substr(s.length - size);
-      }
-
-      function parseDate(date) {
-        const parsed = Date.parse(date);
-        if (!isNaN(parsed)) return parsed
-        return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
-      }
-
-      function getTimeRemaining(endtime) {
-        let total = parseDate(endtime) - Date.parse(new Date())
-        let seconds = Math.floor((total / 1000) % 60)
-        let minutes = Math.floor((total / 1000 / 60) % 60)
-        let hours = Math.floor((total / (1000 * 60 * 60)) % 24)
-        let days = Math.floor(total / (1000 * 60 * 60 * 24))
-
-        return { total, days, hours, minutes, seconds };
-      }
-
-      function clock(id, endtime) {
-        let days = document.getElementById(id + '-days')
-        let hours = document.getElementById(id + '-hours')
-        let minutes = document.getElementById(id + '-minutes')
-        let seconds = document.getElementById(id + '-seconds')
-
-        var timeinterval = setInterval(function () {
-          var time = getTimeRemaining(endtime);
-
-          if (time.total <= 0) {
-            clearInterval(timeinterval);
-          } else {
-            days.innerHTML = '<span class=countdown-highlight>' + pad(time.days, 2) + '</span>';
-            hours.innerHTML = pad(time.hours, 2);
-            minutes.innerHTML = pad(time.minutes, 2);
-            seconds.innerHTML = pad(time.seconds, 2);
-          }
-        }, 1000);
-      }
-      clock('js-clock', deadline);
-    } else {
-      let apexBanner = `
-          <a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-            <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-            <div class="apex-reg">Register for <span class="apex-highlight">APEX Dev Summit 2023</span></div>
-            <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-            <div class="apex-circled highlight-yellow">Amsterdam</div>
-            <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-            <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-            <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-            <div class="apex-circled d-none d-lg-block highlight-purple">Register Now</div>
-            <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-          </a>`;
-
-      // Write the banner directly to the document
-      document.write(apexBanner);
-}
-  </script>
-
-
-
 
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
@@ -386,6 +273,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#request-format">Request Format</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#etl-source-object">ETL Source Object</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#port-descriptor-object">Port Descriptor Object</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
       </ul>
   </div>
@@ -654,7 +542,7 @@ rippled<span class="w"> </span>server_state
 <tr>
 <td style="text-align: left;"><code>amendment_blocked</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(May be omitted)</em> If <code>true</code>, this server is <a href="amendments.html#amendment-blocked-servers">amendment blocked</a>. If the server is not amendment blocked, the response omits this field. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.80.0" target="_blank" title="New in: rippled 0.80.0"><img alt="New in: rippled 0.80.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.80.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> If <code>true</code>, this server is <a href="amendments.html#amendment-blocked-servers">amendment blocked</a>. If the server is not amendment blocked, the response omits this field.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>build_version</code></td>
@@ -679,7 +567,7 @@ rippled<span class="w"> </span>server_state
 <tr>
 <td style="text-align: left;"><code>jq_trans_overflow</code></td>
 <td style="text-align: left;">String - Number</td>
-<td style="text-align: left;">The number of times this server has had over 250 transactions waiting to be processed at once. A large number here may mean that your server is unable to handle the transaction load of the XRP Ledger network. For detailed recommendations of future-proof server specifications, see <a href="capacity-planning.html">Capacity Planning</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.90.0" target="_blank" title="New in: rippled 0.90.0"><img alt="New in: rippled 0.90.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.90.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The number of times this server has had over 250 transactions waiting to be processed at once. A large number here may mean that your server is unable to handle the transaction load of the XRP Ledger network. For detailed recommendations of future-proof server specifications, see <a href="capacity-planning.html">Capacity Planning</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>last_close</code></td>
@@ -713,38 +601,43 @@ rippled<span class="w"> </span>server_state
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_base</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">This is the baseline amount of server load used in <a href="transaction-cost.html">transaction cost</a> calculations. If the <code>load_factor</code> is equal to the <code>load_base</code> then only the base transaction cost is enforced. If the <code>load_factor</code> is higher than the <code>load_base</code>, then transaction costs are multiplied by the ratio between them. For example, if the <code>load_factor</code> is double the <code>load_base</code>, then transaction costs are doubled.</td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">The baseline amount of server load used in <a href="transaction-cost.html">transaction cost</a> calculations. If the <code>load_factor</code> is equal to the <code>load_base</code>, then only the base transaction cost is enforced. If the <code>load_factor</code> is higher than the <code>load_base</code>, then transaction costs are multiplied by the ratio between them. For example, if the <code>load_factor</code> is double the <code>load_base</code>, then transaction costs are doubled.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">The load factor the server is currently enforcing. The ratio between this value and the <code>load_base</code> determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, cluster's load factor, the <a href="transaction-cost.html#open-ledger-cost">open ledger cost</a>, and the overall network's load factor. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="Updated in: rippled 0.33.0"><img alt="Updated in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The load factor the server is currently enforcing. The ratio between this value and the <code>load_base</code> determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, the cluster's load factor, the open ledger cost, and the overall network's load factor.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_fee_escalation</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The current multiplier to the <a href="transaction-cost.html">transaction cost</a> to get into the open ledger, in <a href="transaction-cost.html#fee-levels">fee levels</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The current multiplier to the transaction cost to get into the open ledger, in <a href="transaction-cost.html#fee-levels">fee levels</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_fee_queue</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The current multiplier to the <a href="transaction-cost.html">transaction cost</a> to get into the queue, if the queue is full, in <a href="transaction-cost.html#fee-levels">fee levels</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The current multiplier to the transaction cost to get into the queue, if the queue is full, in fee levels.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_fee_reference</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The <a href="transaction-cost.html">transaction cost</a> with no load scaling, in <a href="transaction-cost.html#fee-levels">fee levels</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The transaction cost with no load scaling, in fee levels.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_server</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The load factor the server is enforcing, not including the <a href="transaction-cost.html#open-ledger-cost">open ledger cost</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="New in: rippled 0.33.0"><img alt="New in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The load factor the server is enforcing, based on load to the server, cluster, and network, but not factoring in the open ledger cost.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>peers</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;"><em>(Omitted by <a href="rippled-server-modes.html#reporting-mode">reporting mode</a> servers)</em> How many other <code>rippled</code> servers this one is currently connected to.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ports</code></td>
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;">A list of ports where the server is listening for API commands. Each entry in the array is a <a href="#port-descriptor-object">Port Descriptor object</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.12.0" target="_blank" title="New in: rippled 1.12.0"><img alt="New in: rippled 1.12.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.12.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>pubkey_node</code></td>
@@ -784,32 +677,32 @@ rippled<span class="w"> </span>server_state
 <tr>
 <td style="text-align: left;"><code>server_state_duration_us</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">The number of consecutive microseconds the server has been in the current state. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="New in: rippled 1.2.0"><img alt="New in: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The number of consecutive microseconds the server has been in the current state.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>state_accounting</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">A map of various <a href="rippled-server-states.html">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">A map of various <a href="rippled-server-states.html">server states</a> with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>state_accounting.*.duration_us</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>state_accounting.*.transitions</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The number of times the server has changed into this state. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The number of times the server has changed into this state.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>time</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The current time in UTC, according to the server's clock. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="Updated in: rippled 1.5.0"><img alt="Updated in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The current time in UTC, according to the server's clock.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>uptime</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">Number of consecutive seconds that the server has been operational. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">Number of consecutive seconds that the server has been operational.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated_ledger</code></td>
@@ -854,7 +747,7 @@ rippled<span class="w"> </span>server_state
 <tr>
 <td style="text-align: left;"><code>validator_list_expires</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(Admin only)</em> When the current validator list expires, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>, or 0 if the server has yet to load a published validator list. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.80.1" target="_blank" title="New in: rippled 0.80.1"><img alt="New in: rippled 0.80.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.80.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Admin only)</em> When the current validator list expires, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>, or 0 if the server has yet to load a published validator list.</td>
 </tr>
 </tbody>
 </table>
@@ -902,6 +795,31 @@ rippled<span class="w"> </span>server_state
 </tr>
 </tbody>
 </table>
+<h3 id="port-descriptor-object">Port Descriptor Object<a aria-hidden="true" class="hover_anchor" href="#port-descriptor-object"><i class="fa fa-link"></i></a></h3>
+<!-- This nested object definition is identical across server_state and server_info -->
+<p>Each member of the <code>ports</code> array is an object with the following fields:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>port</code></td>
+<td>String - Number</td>
+<td>A port number where the server is listening.</td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>Array of String</td>
+<td>A list of protocols being served on this port. Valid protocols include <code>http</code> or <code>https</code> for JSON-RPC, <code>ws</code>, <code>ws2</code>, <code>wss</code>, <code>wss2</code> for WebSocket, <code>grpc</code> for <a href="configure-grpc.html">gRPC</a>, and <code>peer</code> for the <a href="peer-protocol.html">XRP Ledger Peer Protocol</a>.</td>
+</tr>
+</tbody>
+</table>
+<p class="devportal-callout note"><strong>Note:</strong> Depending on network infrastructure, the ports and protocols reported here may not match how the server can be reached from the outside network. For example, if TLS terminates at a load balancer or proxy, the server may report <code>http</code> on one port, but might only be reachable through <code>https</code> on port 443 from outside.</p>
 <h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
