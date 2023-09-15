@@ -304,7 +304,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="list-xrp-as-an-exchange">List XRP as an Exchange<a aria-hidden="true" class="hover_anchor" href="#list-xrp-as-an-exchange"><i class="fa fa-link"></i></a></h1>
-<p>This document describes the steps that an exchange needs to take to list XRP. These steps are targeted at <em>custodial exchanges</em> that holds fund on behalf of users, and allows users to deposit, withdraw, and trade other digital assets, fiat currencies, or other types of assets.</p>
+<p>This document describes the steps that an exchange needs to take to list XRP. These steps are targeted at <em>custodial exchanges</em> that hold funds on behalf of users, and allows users to deposit, withdraw, and trade other digital assets, fiat currencies, or other types of asset.</p>
 <h2 id="alpha-exchange">Alpha Exchange<a aria-hidden="true" class="hover_anchor" href="#alpha-exchange"><i class="fa fa-link"></i></a></h2>
 <p>For illustrative purposes, this document uses a fictitious business called <em>Alpha Exchange</em> to explain the high-level steps required to list XRP. For the purposes of this document, Alpha Exchange:</p>
 <ul>
@@ -346,18 +346,15 @@
 </ul>
 <p>See also:</p>
 <ul>
-<li>
-<p><a href="stablecoin-issuer-compliance-guidelines.html">Compliance Guidelines</a> — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.</p>
-</li>
-<li>
-<p><a href="stablecoin-issuer.html#requirements-for-sending-to-xrp-ledger">Requirements for Sending to XRP Ledger</a></p>
-</li>
-<li>
-<p><a href="stablecoin-issuer.html#requirements-for-receiving-from-xrp-ledger">Requirements for Receiving from XRP Ledger</a></p>
-</li>
-<li>
-<p><a href="stablecoin-issuer.html#precautions">Precautions</a></p>
-</li>
+<li><a href="stablecoin-issuer-compliance-guidelines.html">Compliance Guidelines</a> — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.</li>
+</ul>
+<!-- These sections need to be topics of their own, without the story.
+* [Requirements for Sending to XRP Ledger](stablecoin-issuer.html#requirements-for-sending-to-xrp-ledger)
+
+* [Requirements for Receiving from XRP Ledger](stablecoin-issuer.html#requirements-for-receiving-from-xrp-ledger)
+-->
+<ul>
+<li><a href="stablecoin-issuer-precautions.html">Precautions</a></li>
 </ul>
 <h3 id="partial-payments">Partial Payments<a aria-hidden="true" class="hover_anchor" href="#partial-payments"><i class="fa fa-link"></i></a></h3>
 <p>Before integrating, exchanges should be aware of the <a href="partial-payments.html">partial payments</a> feature. This feature allows XRP Ledger users to send successful payments that reduce the amount received instead of increasing the <code>SendMax</code>. This feature can be useful for <a href="bouncing-payments.html">returning payments</a> without incurring additional cost as the sender.</p>
@@ -1437,17 +1434,27 @@ Off-Ledger Balances</i></b></td>
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_9" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_9"></a>
 
         <a class="nav-link" href="freezes.html">Freezing Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>

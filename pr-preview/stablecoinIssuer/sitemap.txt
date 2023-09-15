@@ -93,6 +93,8 @@ https://xrpl.org/stablecoin-issuer-configuration.html
 https://xrpl.org/stablecoin-issuer-precautions.html
 https://xrpl.org/stablecoin-issuer-compliance-guidelines.html
 https://xrpl.org/stablecoin-issuer-technical-details.html
+https://xrpl.org/robustly-monitoring-for-payments.html
+https://xrpl.org/bouncing-payments.html
 https://xrpl.org/clawing-back-tokens.html
 https://xrpl.org/freezes.html
 https://xrpl.org/common-misconceptions-about-freezes.html

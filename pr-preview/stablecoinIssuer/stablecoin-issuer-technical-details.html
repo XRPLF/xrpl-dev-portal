@@ -360,11 +360,18 @@
 <ul>
 <li>Persist details of the transaction before submitting it.</li>
 <li>Use the <code>LastLedgerSequence</code> parameter. (Many <a href="client-libraries.html">client libraries</a> do this by default.)</li>
-<li>Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index][] is less than or equal to the transaction's <code>LastLedgerSequence</code> parameter.</li>
+<li>Resubmit a transaction if it has not appeared in a validated ledger whose <a href="basic-data-types.html#ledger-index">ledger index</a> is less than or equal to the transaction's <code>LastLedgerSequence</code> parameter.</li>
 </ul>
 <p>For more information, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
 <h2 id="xrp-ledgertoml-file">xrp-ledger.toml File<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgertoml-file"><i class="fa fa-link"></i></a></h2>
 <p>You can publish information about what currencies you issue, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>. This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.</p>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -882,17 +889,27 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_9" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_9"></a>
 
         <a class="nav-link" href="freezes.html">Freezing Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
