@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2023-09-15 06:52+0000\n"
+"POT-Creation-Date: 2023-09-15 07:05+0000\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -553,6 +553,7 @@ msgid "API Access"
 msgstr "APIアクセス"
 
 #: template/page-dev-tools.html.jinja:34 template/page-dev-tools.html.jinja:146
+#: template/page-uses.html.jinja:82 template/page-uses.html.jinja:299
 #, fuzzy
 msgid "Other"
 msgstr "その他"
@@ -657,7 +658,9 @@ msgstr "ステーブルコインを発行"
 msgid "Assign an authorized minter"
 msgstr "認可Minterの割り当て"
 
-#: template/page-docs.html.jinja:167 template/page-uses.html.jinja:394
+#: template/page-docs.html.jinja:167 template/page-uses.html.jinja:66
+#: template/page-uses.html.jinja:186 template/page-uses.html.jinja:293
+#: template/page-uses.html.jinja:394
 #, fuzzy
 msgid "Payments"
 msgstr "ペイメント"
@@ -2035,6 +2038,15 @@ msgid ""
 "ownership of international physical art."
 msgstr "Aesthetesは、美術品とブロックチェーンの架け橋となり、世界中の誰もが、国際的な物理的アートの小口所有権を、クリックだけで売買できるようにします。"
 
+#: template/page-uses.html.jinja:26 template/page-uses.html.jinja:42
+#: template/page-uses.html.jinja:146 template/page-uses.html.jinja:162
+#: template/page-uses.html.jinja:170 template/page-uses.html.jinja:202
+#: template/page-uses.html.jinja:234 template/page-uses.html.jinja:289
+#: template/page-uses.html.jinja:378
+#, fuzzy
+msgid "NFTs"
+msgstr "NFT"
+
 #: template/page-uses.html.jinja:31
 msgid "Anchain.AI"
 msgstr ""
@@ -2044,6 +2056,11 @@ msgid ""
 "AnChain.AI offers AI-powered intelligence enhancing blockchain security, "
 "risk, and compliance strategies."
 msgstr "AnChain.AIは、ブロックチェーンのセキュリティ、リスク、コンプライアンス戦略を強化するAIの力を借りた情報を提供します。"
+
+#: template/page-uses.html.jinja:34 template/page-uses.html.jinja:292
+#: template/page-uses.html.jinja:390
+msgid "Security"
+msgstr "セキュリティ"
 
 #: template/page-uses.html.jinja:39
 msgid "Audiotarky"
@@ -2068,6 +2085,12 @@ msgid ""
 " financial systems."
 msgstr "BitGoは、XRPなどのデジタルアセット向けのカストディ型および非カストディ型アセット保有サービスを提供しています。BitGoのエンタープライズレベルのセキュリティを活用して、さまざまな企業がXRPなどのデジタル通貨を新規や既存の金融システムに統合しています。"
 
+#: template/page-uses.html.jinja:50 template/page-uses.html.jinja:297
+#: template/page-uses.html.jinja:410
+#, fuzzy
+msgid "Custody"
+msgstr "カストディ"
+
 #: template/page-uses.html.jinja:55
 msgid "Bithomp"
 msgstr ""
@@ -2078,6 +2101,14 @@ msgid ""
 "exchanges. Bithomp was launched in 2015 with a mission to build the most "
 "user-friendly XRPL explorer."
 msgstr "Bithompは、多くの暗号通貨取引所で使用されているXRPLエクスプローラーおよびツールキットです。Bithompは、最もユーザーフレンドリーなXRPLエクスプローラーを構築することをミッションに、2015年に立ち上げられました。"
+
+#: template/page-uses.html.jinja:58 template/page-uses.html.jinja:114
+#: template/page-uses.html.jinja:154 template/page-uses.html.jinja:210
+#: template/page-uses.html.jinja:242 template/page-uses.html.jinja:250
+#: template/page-uses.html.jinja:258 template/page-uses.html.jinja:266
+#: template/page-uses.html.jinja:282 template/page-uses.html.jinja:366
+msgid "Infrastructure"
+msgstr "インフラストラクチャ"
 
 #: template/page-uses.html.jinja:63
 msgid "bitpay"
@@ -2102,6 +2133,11 @@ msgstr ""
 "Carbonland "
 "Trustは、透明性の高い自然由来の炭素クレジットを提供し、土地所有者や企業を問わず、自主的な炭素市場への包括的なアクセスを可能にします。"
 
+#: template/page-uses.html.jinja:74
+#, fuzzy
+msgid "Carbon Markets/Sustainability"
+msgstr "持続可能性"
+
 #: template/page-uses.html.jinja:79
 msgid "Casino Coin"
 msgstr ""
@@ -2122,6 +2158,13 @@ msgid ""
 "Cryptum is an API/SDK platform for integrating the XRP Ledger with any "
 "application."
 msgstr "Cryptumは、XRP Ledgerをあらゆるアプリケーションと統合するためのAPI/SDKプラットフォームです。"
+
+#: template/page-uses.html.jinja:90 template/page-uses.html.jinja:98
+#: template/page-uses.html.jinja:218 template/page-uses.html.jinja:283
+#: template/page-uses.html.jinja:370
+#, fuzzy
+msgid "Developer Tooling"
+msgstr "開発者ツール"
 
 #: template/page-uses.html.jinja:95
 msgid "Evernode"
@@ -2148,6 +2191,12 @@ msgid ""
 "world."
 msgstr "Forteはゲーム開発者向けに、ゲームにブロックチェーン技術を組み込むことができる、今までになかったような使いやすいツールとサービスを提供しています。これらを活用することで、世界中のゲーマーに新たな収益化と創造の機会をもたらすことができます。"
 
+#: template/page-uses.html.jinja:106 template/page-uses.html.jinja:130
+#: template/page-uses.html.jinja:291 template/page-uses.html.jinja:386
+#, fuzzy
+msgid "Gaming"
+msgstr "ゲーム"
+
 #: template/page-uses.html.jinja:111 template/page-xrp-overview.html.jinja:171
 msgid "Gatehub"
 msgstr ""
@@ -2172,6 +2221,12 @@ msgstr ""
 "GemWalletは、XRP "
 "Ledger上でブラウザから高速決済を可能にするウェブ拡張機能です。ウェブアプリケーションで使用するための秘密鍵のコピー＆ペーストに代わる、より安全な方法です。"
 
+#: template/page-uses.html.jinja:122 template/page-uses.html.jinja:274
+#: template/page-uses.html.jinja:288 template/page-uses.html.jinja:374
+#, fuzzy
+msgid "Wallet"
+msgstr "ウォレット"
+
 #: template/page-uses.html.jinja:127
 #, fuzzy
 msgid "Ledger City"
@@ -2191,6 +2246,11 @@ msgid ""
 "Multichain is the ultimate Router for web3. It is an infrastructure "
 "developed for arbitrary cross-chain interactions."
 msgstr "Multichainはweb3の究極のRouterであり、任意のクロスチェーンインタラクションのために開発されたインフラです。"
+
+#: template/page-uses.html.jinja:138 template/page-uses.html.jinja:287
+#, fuzzy
+msgid "Interoperability"
+msgstr "相互運用性"
 
 #: template/page-uses.html.jinja:143
 #, fuzzy
@@ -2248,6 +2308,10 @@ msgstr ""
 "Rippleの中央銀行デジタル通貨（CBDC）ソリューションは、銀行が通貨の造幣、管理、トランザクション、償還を行い、CBDCの全ライフサイクルを容易に管理することができます。各ソリューションは、XRP"
 " Ledger技術に基づくプライベートな台帳の上に構築されています。"
 
+#: template/page-uses.html.jinja:178 template/page-uses.html.jinja:406
+msgid "CBDC"
+msgstr ""
+
 #: template/page-uses.html.jinja:183
 #, fuzzy
 msgid "Ripple's On-Demand Liquidity"
@@ -2268,6 +2332,11 @@ msgid ""
 "Sologenic DEX is a popular decentralized exchange on the XRP Ledger made "
 "by Sologenic."
 msgstr "Sologenic DEXは、Sologenic社製のXRP Ledger上の人気の分散型取引所です。"
+
+#: template/page-uses.html.jinja:194 template/page-uses.html.jinja:226
+#: template/page-uses.html.jinja:290 template/page-uses.html.jinja:382
+msgid "Exchanges"
+msgstr "取引所"
 
 #: template/page-uses.html.jinja:199
 msgid "Sologenic NFT"
@@ -2373,9 +2442,26 @@ msgstr ""
 msgid "Xumm Wallet is a non custodial wallet with superpower for the XRP Ledger."
 msgstr "Xumm Walletは、XRP Ledgerのための最高能力を備えた非カストディアルウォレットです。"
 
+#: template/page-uses.html.jinja:294 template/page-uses.html.jinja:398
+msgid "Web Monetization"
+msgstr "ウェブ収益化"
+
+#: template/page-uses.html.jinja:295 template/page-uses.html.jinja:402
+#: template/page-xrpl-foundation.html.jinja:55
+msgid "Sustainability"
+msgstr "持続可能性"
+
+#: template/page-uses.html.jinja:296
+msgid "CBDCs"
+msgstr "CBDC"
+
+#: template/page-uses.html.jinja:298 template/page-uses.html.jinja:414
+msgid "DeFi"
+msgstr ""
+
 #: template/page-uses.html.jinja:308 template/page-uses.html.jinja:335
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: template/page-uses.html.jinja:315 template/page-uses.html.jinja:448
 msgid "Featured Categories"
@@ -2387,36 +2473,27 @@ msgstr "他のカテゴリ"
 
 #: template/page-uses.html.jinja:348
 msgid "Proven Powerful for Innovation"
-msgstr ""
+msgstr "イノベーションのための確かな実績"
 
 #: template/page-uses.html.jinja:349
 #, fuzzy
 msgid "XRPL Use Cases"
-msgstr "XRPLの利用例"
+msgstr "XRPLのユースケース"
 
 #: template/page-uses.html.jinja:357
 msgid "Building businesses and creating new value"
-msgstr ""
+msgstr "ビジネスの構築と新たな価値の創造"
 
 #: template/page-uses.html.jinja:358
 #, fuzzy
 msgid "XRPL Ecosystem"
 msgstr "XRPLエコシステム"
 
-#: template/page-uses.html.jinja:366
-msgid "Infrastructure"
-msgstr "インフラストラクチャ"
-
 #: template/page-uses.html.jinja:367
 msgid ""
 "Build and operate components or systems that help the functionality of "
 "the XRP Ledger, such as Nodes, dev tools, storage, security and more."
 msgstr "ノード、開発ツール、ストレージ、セキュリティなど、XRP Ledgerの機能を助けるコンポーネントやシステムを構築・運用します。"
-
-#: template/page-uses.html.jinja:370
-#, fuzzy
-msgid "Developer Tooling"
-msgstr "開発者ツール"
 
 #: template/page-uses.html.jinja:371
 #, fuzzy
@@ -2425,13 +2502,8 @@ msgid ""
 "build their <a href='developer-funding.html'>blockchain project</a> and "
 "across essential XRP Ledger functionality."
 msgstr ""
-"開発者は、オープンソースのライブラリやSDKなどを活用することで、プロジェクトの構築やXRP "
-"Ledgerの必須機能へのアクセスを支援することができます。"
-
-#: template/page-uses.html.jinja:374
-#, fuzzy
-msgid "Wallet"
-msgstr "ウォレット"
+"開発者は、オープンソースのライブラリやSDKなどを活用して、<a href='developer-"
+"funding.html'>ブロックチェーンプロジェクト</a>の構築や、XRP Ledgerの必須機能全般をサポートすることができます。"
 
 #: template/page-uses.html.jinja:375
 #, fuzzy
@@ -2440,41 +2512,23 @@ msgid ""
 "blockchains to send and receive digital assets, including XRP."
 msgstr "パスワードを保存するデジタルウォレットを構築し、様々なブロックチェーンとやり取りして、XRPを含むデジタル資産を送受信します。"
 
-#: template/page-uses.html.jinja:378
-#, fuzzy
-msgid "NFTs"
-msgstr "NFT"
-
 #: template/page-uses.html.jinja:379
 msgid ""
 "XRPL supports the issuance of IOUs that represent a currency of any "
 "value, as well as non-fungible tokens (NFTs)."
 msgstr "XRPLは、あらゆる価値の通貨を表すIOUのほか、非代替性トークン（NFT）の発行にも対応しています"
 
-#: template/page-uses.html.jinja:382
-msgid "Exchanges"
-msgstr "取引所"
-
 #: template/page-uses.html.jinja:383
 msgid ""
 "Build sophisticated exchanges where users can invest and trade crypto and"
 " assets such as stocks, ETFs, and commodities."
-msgstr "ユーザーが暗号と株式、ETF、コモディティなどの資産を投資・取引できる高度な取引所を構築します。"
-
-#: template/page-uses.html.jinja:386
-#, fuzzy
-msgid "Gaming"
-msgstr "ゲーム"
+msgstr "ユーザが暗号と株式、ETF、コモディティなどの資産を投資・取引できる高度な取引所を構築します。"
 
 #: template/page-uses.html.jinja:387
 msgid ""
 "The XRPL supports gaming at high speed given its reliable throughput, low"
 " fees, and sidechain interoperability."
 msgstr "XRPLは、信頼性の高いスループット、低い手数料、サイドチェーンの相互運用性から、高速なゲームに対応しています。"
-
-#: template/page-uses.html.jinja:390
-msgid "Security"
-msgstr "セキュリティ"
 
 #: template/page-uses.html.jinja:391
 msgid ""
@@ -2488,30 +2542,17 @@ msgid ""
 "over the globe."
 msgstr "XRP Ledgerの効率とスピードを活用して、世界中で価値を移動させます。"
 
-#: template/page-uses.html.jinja:398
-msgid "Web Monetization"
-msgstr "ウェブ収益化"
-
 #: template/page-uses.html.jinja:399
 msgid ""
 "Support creators and their content directly leveraging the power of the "
 "XRP Ledger."
 msgstr "XRP Ledgerのパワーを活用し、クリエイターとそのコンテンツを直接サポートします。"
 
-#: template/page-uses.html.jinja:402
-#: template/page-xrpl-foundation.html.jinja:55
-msgid "Sustainability"
-msgstr "持続可能性"
-
 #: template/page-uses.html.jinja:403
 msgid ""
 "Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens "
 "(NFTs)."
 msgstr "XRP Ledgerを使用して、カーボンオフセットをNFT（Non-Fungible Token）としてトークン化します。"
-
-#: template/page-uses.html.jinja:406
-msgid "CBDC"
-msgstr ""
 
 #: template/page-uses.html.jinja:407
 msgid ""
@@ -2522,20 +2563,11 @@ msgstr ""
 "XRP "
 "Ledgerのプライベートバージョンは、中央銀行が中央銀行発行デジタル通貨（CBDC）を発行・管理するための、安全で統制のとれた柔軟なソリューションを提供します。"
 
-#: template/page-uses.html.jinja:410
-#, fuzzy
-msgid "Custody"
-msgstr "カストディ"
-
 #: template/page-uses.html.jinja:411
 msgid ""
 "Use the XRP Ledger to build crypto custody and securely hold, store and "
 "use your assets."
 msgstr "XRP Ledgerを使用して暗号カストディを構築し、資産を安全に保持、保管、使用することができます。"
-
-#: template/page-uses.html.jinja:414
-msgid "DeFi"
-msgstr ""
 
 #: template/page-uses.html.jinja:415
 msgid ""
@@ -2559,10 +2591,12 @@ msgid ""
 "development and minimize time to market, XRP Ledger is used to create "
 "solutions across an expansive range of industries and use cases."
 msgstr ""
+"XRP "
+"Ledgerは、開発を加速させ、市場投入までの時間を最短にする意図的なイノベーション、ツール、ドキュメントによって、幅広い業界やユースケースにおけるソリューションの構築に利用されています。"
 
 #: template/page-uses.html.jinja:438
 msgid "Filter by Categories"
-msgstr "カテゴリでフィルター"
+msgstr "カテゴリでフィルタ"
 
 #: template/page-validator-domain-verifier.html.jinja:5
 msgid "Domain Verification Checker"

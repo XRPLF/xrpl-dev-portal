@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-15 06:52+0000\n"
+"POT-Creation-Date: 2023-09-15 07:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -529,6 +529,7 @@ msgid "API Access"
 msgstr ""
 
 #: template/page-dev-tools.html.jinja:34 template/page-dev-tools.html.jinja:146
+#: template/page-uses.html.jinja:82 template/page-uses.html.jinja:299
 msgid "Other"
 msgstr ""
 
@@ -626,7 +627,9 @@ msgstr ""
 msgid "Assign an authorized minter"
 msgstr ""
 
-#: template/page-docs.html.jinja:167 template/page-uses.html.jinja:394
+#: template/page-docs.html.jinja:167 template/page-uses.html.jinja:66
+#: template/page-uses.html.jinja:186 template/page-uses.html.jinja:293
+#: template/page-uses.html.jinja:394
 msgid "Payments"
 msgstr ""
 
@@ -1854,6 +1857,14 @@ msgid ""
 "ownership of international physical art."
 msgstr ""
 
+#: template/page-uses.html.jinja:26 template/page-uses.html.jinja:42
+#: template/page-uses.html.jinja:146 template/page-uses.html.jinja:162
+#: template/page-uses.html.jinja:170 template/page-uses.html.jinja:202
+#: template/page-uses.html.jinja:234 template/page-uses.html.jinja:289
+#: template/page-uses.html.jinja:378
+msgid "NFTs"
+msgstr ""
+
 #: template/page-uses.html.jinja:31
 msgid "Anchain.AI"
 msgstr ""
@@ -1862,6 +1873,11 @@ msgstr ""
 msgid ""
 "AnChain.AI offers AI-powered intelligence enhancing blockchain security, "
 "risk, and compliance strategies."
+msgstr ""
+
+#: template/page-uses.html.jinja:34 template/page-uses.html.jinja:292
+#: template/page-uses.html.jinja:390
+msgid "Security"
 msgstr ""
 
 #: template/page-uses.html.jinja:39
@@ -1886,6 +1902,11 @@ msgid ""
 " financial systems."
 msgstr ""
 
+#: template/page-uses.html.jinja:50 template/page-uses.html.jinja:297
+#: template/page-uses.html.jinja:410
+msgid "Custody"
+msgstr ""
+
 #: template/page-uses.html.jinja:55
 msgid "Bithomp"
 msgstr ""
@@ -1895,6 +1916,14 @@ msgid ""
 "Bithomp is an XRPL explorer and toolkit, used by many cryptocurrency "
 "exchanges. Bithomp was launched in 2015 with a mission to build the most "
 "user-friendly XRPL explorer."
+msgstr ""
+
+#: template/page-uses.html.jinja:58 template/page-uses.html.jinja:114
+#: template/page-uses.html.jinja:154 template/page-uses.html.jinja:210
+#: template/page-uses.html.jinja:242 template/page-uses.html.jinja:250
+#: template/page-uses.html.jinja:258 template/page-uses.html.jinja:266
+#: template/page-uses.html.jinja:282 template/page-uses.html.jinja:366
+msgid "Infrastructure"
 msgstr ""
 
 #: template/page-uses.html.jinja:63
@@ -1918,6 +1947,10 @@ msgid ""
 "corporations alike. "
 msgstr ""
 
+#: template/page-uses.html.jinja:74
+msgid "Carbon Markets/Sustainability"
+msgstr ""
+
 #: template/page-uses.html.jinja:79
 msgid "Casino Coin"
 msgstr ""
@@ -1936,6 +1969,12 @@ msgstr ""
 msgid ""
 "Cryptum is an API/SDK platform for integrating the XRP Ledger with any "
 "application."
+msgstr ""
+
+#: template/page-uses.html.jinja:90 template/page-uses.html.jinja:98
+#: template/page-uses.html.jinja:218 template/page-uses.html.jinja:283
+#: template/page-uses.html.jinja:370
+msgid "Developer Tooling"
 msgstr ""
 
 #: template/page-uses.html.jinja:95
@@ -1960,6 +1999,11 @@ msgid ""
 "world."
 msgstr ""
 
+#: template/page-uses.html.jinja:106 template/page-uses.html.jinja:130
+#: template/page-uses.html.jinja:291 template/page-uses.html.jinja:386
+msgid "Gaming"
+msgstr ""
+
 #: template/page-uses.html.jinja:111 template/page-xrp-overview.html.jinja:171
 msgid "Gatehub"
 msgstr ""
@@ -1981,6 +2025,11 @@ msgid ""
 "pasting private keys for use with web applications."
 msgstr ""
 
+#: template/page-uses.html.jinja:122 template/page-uses.html.jinja:274
+#: template/page-uses.html.jinja:288 template/page-uses.html.jinja:374
+msgid "Wallet"
+msgstr ""
+
 #: template/page-uses.html.jinja:127
 msgid "Ledger City"
 msgstr ""
@@ -1997,6 +2046,10 @@ msgstr ""
 msgid ""
 "Multichain is the ultimate Router for web3. It is an infrastructure "
 "developed for arbitrary cross-chain interactions."
+msgstr ""
+
+#: template/page-uses.html.jinja:138 template/page-uses.html.jinja:287
+msgid "Interoperability"
 msgstr ""
 
 #: template/page-uses.html.jinja:143
@@ -2049,6 +2102,10 @@ msgid ""
 " XRP Ledger technology."
 msgstr ""
 
+#: template/page-uses.html.jinja:178 template/page-uses.html.jinja:406
+msgid "CBDC"
+msgstr ""
+
 #: template/page-uses.html.jinja:183
 msgid "Ripple's On-Demand Liquidity"
 msgstr ""
@@ -2067,6 +2124,11 @@ msgstr ""
 msgid ""
 "Sologenic DEX is a popular decentralized exchange on the XRP Ledger made "
 "by Sologenic."
+msgstr ""
+
+#: template/page-uses.html.jinja:194 template/page-uses.html.jinja:226
+#: template/page-uses.html.jinja:290 template/page-uses.html.jinja:382
+msgid "Exchanges"
 msgstr ""
 
 #: template/page-uses.html.jinja:199
@@ -2163,6 +2225,23 @@ msgstr ""
 msgid "Xumm Wallet is a non custodial wallet with superpower for the XRP Ledger."
 msgstr ""
 
+#: template/page-uses.html.jinja:294 template/page-uses.html.jinja:398
+msgid "Web Monetization"
+msgstr ""
+
+#: template/page-uses.html.jinja:295 template/page-uses.html.jinja:402
+#: template/page-xrpl-foundation.html.jinja:55
+msgid "Sustainability"
+msgstr ""
+
+#: template/page-uses.html.jinja:296
+msgid "CBDCs"
+msgstr ""
+
+#: template/page-uses.html.jinja:298 template/page-uses.html.jinja:414
+msgid "DeFi"
+msgstr ""
+
 #: template/page-uses.html.jinja:308 template/page-uses.html.jinja:335
 msgid "Cancel"
 msgstr ""
@@ -2191,18 +2270,10 @@ msgstr ""
 msgid "XRPL Ecosystem"
 msgstr ""
 
-#: template/page-uses.html.jinja:366
-msgid "Infrastructure"
-msgstr ""
-
 #: template/page-uses.html.jinja:367
 msgid ""
 "Build and operate components or systems that help the functionality of "
 "the XRP Ledger, such as Nodes, dev tools, storage, security and more."
-msgstr ""
-
-#: template/page-uses.html.jinja:370
-msgid "Developer Tooling"
 msgstr ""
 
 #: template/page-uses.html.jinja:371
@@ -2212,18 +2283,10 @@ msgid ""
 "across essential XRP Ledger functionality."
 msgstr ""
 
-#: template/page-uses.html.jinja:374
-msgid "Wallet"
-msgstr ""
-
 #: template/page-uses.html.jinja:375
 msgid ""
 "Build digital wallets to store passwords and interact with various "
 "blockchains to send and receive digital assets, including XRP."
-msgstr ""
-
-#: template/page-uses.html.jinja:378
-msgid "NFTs"
 msgstr ""
 
 #: template/page-uses.html.jinja:379
@@ -2232,28 +2295,16 @@ msgid ""
 "value, as well as non-fungible tokens (NFTs)."
 msgstr ""
 
-#: template/page-uses.html.jinja:382
-msgid "Exchanges"
-msgstr ""
-
 #: template/page-uses.html.jinja:383
 msgid ""
 "Build sophisticated exchanges where users can invest and trade crypto and"
 " assets such as stocks, ETFs, and commodities."
 msgstr ""
 
-#: template/page-uses.html.jinja:386
-msgid "Gaming"
-msgstr ""
-
 #: template/page-uses.html.jinja:387
 msgid ""
 "The XRPL supports gaming at high speed given its reliable throughput, low"
 " fees, and sidechain interoperability."
-msgstr ""
-
-#: template/page-uses.html.jinja:390
-msgid "Security"
 msgstr ""
 
 #: template/page-uses.html.jinja:391
@@ -2268,29 +2319,16 @@ msgid ""
 "over the globe."
 msgstr ""
 
-#: template/page-uses.html.jinja:398
-msgid "Web Monetization"
-msgstr ""
-
 #: template/page-uses.html.jinja:399
 msgid ""
 "Support creators and their content directly leveraging the power of the "
 "XRP Ledger."
 msgstr ""
 
-#: template/page-uses.html.jinja:402
-#: template/page-xrpl-foundation.html.jinja:55
-msgid "Sustainability"
-msgstr ""
-
 #: template/page-uses.html.jinja:403
 msgid ""
 "Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens "
 "(NFTs)."
-msgstr ""
-
-#: template/page-uses.html.jinja:406
-msgid "CBDC"
 msgstr ""
 
 #: template/page-uses.html.jinja:407
@@ -2300,18 +2338,10 @@ msgid ""
 " Digital Currencies (CBDCs)."
 msgstr ""
 
-#: template/page-uses.html.jinja:410
-msgid "Custody"
-msgstr ""
-
 #: template/page-uses.html.jinja:411
 msgid ""
 "Use the XRP Ledger to build crypto custody and securely hold, store and "
 "use your assets."
-msgstr ""
-
-#: template/page-uses.html.jinja:414
-msgid "DeFi"
 msgstr ""
 
 #: template/page-uses.html.jinja:415
