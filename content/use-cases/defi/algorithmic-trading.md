@@ -11,7 +11,7 @@ The XRP Ledger's decentralized exchange presents an opportunity to earn money th
 
 - Decentralized exchange data is public and freely available.
 - Trades settle in seconds, enabling frequent trading without specialized equipment.
-- Transaction fees on the XRP Ledger are low.
+- Transaction costs on the XRP Ledger are low.
 
 ## Trading Strategies
 
