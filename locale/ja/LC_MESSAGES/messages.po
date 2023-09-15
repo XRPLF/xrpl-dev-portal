@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2023-09-15 05:57+0000\n"
+"POT-Creation-Date: 2023-09-15 06:28+0000\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -995,6 +995,48 @@ msgstr ""
 msgid "See Upcoming Events"
 msgstr "今後のイベントを見る"
 
+#: template/page-funding.html.jinja:67 template/page-funding.html.jinja:156
+#: template/page-funding.html.jinja:239 template/page-funding.html.jinja:316
+#, fuzzy
+msgid "Best for"
+msgstr "こんな方に最適"
+
+#: template/page-funding.html.jinja:68
+msgid "Software developers and teams building directly on the XRP Ledger"
+msgstr "XRP Ledger上のソフトウェア開発者やXRP Ledger上で直接開発を行うチーム"
+
+#: template/page-funding.html.jinja:75 template/page-funding.html.jinja:104
+#: template/page-funding.html.jinja:164 template/page-funding.html.jinja:192
+#: template/page-funding.html.jinja:247 template/page-funding.html.jinja:276
+#: template/page-funding.html.jinja:324 template/page-funding.html.jinja:352
+msgid "Required"
+msgstr "必須要件"
+
+#: template/page-funding.html.jinja:76 template/page-funding.html.jinja:105
+msgid "Some coding experience"
+msgstr "コーディング経験"
+
+#: template/page-funding.html.jinja:82 template/page-funding.html.jinja:171
+#: template/page-funding.html.jinja:254 template/page-funding.html.jinja:331
+msgid "Level"
+msgstr "レベル"
+
+#: template/page-funding.html.jinja:83
+msgid "XRPL beginner to advanced developers"
+msgstr "XRPLの初級開発者から上級開発者まで"
+
+#: template/page-funding.html.jinja:91 template/page-funding.html.jinja:112
+#: template/page-funding.html.jinja:179 template/page-funding.html.jinja:200
+#: template/page-funding.html.jinja:263 template/page-funding.html.jinja:284
+#: template/page-funding.html.jinja:340 template/page-funding.html.jinja:360
+#, fuzzy
+msgid "Funding Levels"
+msgstr "資金調達の規模"
+
+#: template/page-funding.html.jinja:92 template/page-funding.html.jinja:113
+msgid "Prize money and awards"
+msgstr "賞金および賞品"
+
 #: template/page-funding.html.jinja:135
 msgid "Fund Your Project"
 msgstr "プロジェクトの資金調達"
@@ -1006,9 +1048,54 @@ msgid ""
 "community."
 msgstr "成長するXRP Ledgerコミュニティに貢献するプロジェクトに開発者助成金を提供します。"
 
+#: template/page-funding.html.jinja:140
+msgid "Past awardees include:"
+msgstr "過去の受賞者は次の通り:"
+
 #: template/page-funding.html.jinja:145 template/page-funding.html.jinja:210
 msgid "Visit XRPL Grants"
 msgstr "XRPL Grantsを見る"
+
+#: template/page-funding.html.jinja:157
+msgid ""
+"Software developers, teams, and start-ups building directly on the XRP "
+"Ledger"
+msgstr "XRP Ledger上で直接開発を行うソフトウェア開発者やチーム、スタートアップ企業"
+
+#: template/page-funding.html.jinja:165
+#, fuzzy
+msgid ""
+"Coding experience <span style=\"color: #7919FF;\">&bull;</span> Github "
+"repository <span style=\"color: #7919FF;\">&bull;</span> Project "
+"narrative/description <span style=\"color: #7919FF;\">&bull;</span> At "
+"least one developer on the core team  <span style=\"color: "
+"#7919FF;\">&bull;</span> Budget and milestones"
+msgstr ""
+"コーディング経験 <span style=\"color： #7919FF;\">&bull;</span> Githubリポジトリ <span "
+"style=\"color： #7919FF;\">&bull;</span> プロジェクトの説明 <span style=\"color： "
+"#7919FF;\">&bull;</span> コアチームに最低1人の開発者 <span style=\"color： "
+"#7919FF;\">&bull;</span> 予算とマイルストーン"
+
+#: template/page-funding.html.jinja:172
+msgid "XRPL intermediate to advanced developers"
+msgstr "XRPLの中級開発者から上級開発者"
+
+#: template/page-funding.html.jinja:180 template/page-funding.html.jinja:201
+msgid "$10,000 - $200,000"
+msgstr "$10,000 ~ $200,000"
+
+#: template/page-funding.html.jinja:193
+msgid ""
+"Coding experience <span style=\"color: #7919FF;\">&bull;</span> Github "
+"repository <span style=\"color: #7919FF;\">&bull;</span> Project "
+"narrative/description <span style=\"color: #7919FF;\">&bull;</span> At "
+"least one developer on the core team  <span style=\"color: "
+"#7919FF;\">&bull;</span> Budget and milestone"
+msgstr ""
+"コーディング経験 <span style=\"color： #7919FF;\">&bull;</span> Githubリポジトリ <span "
+"style=\"color： #7919FF;\">&bull;</span> プロジェクトの説明 <span style=\"color： "
+"#7919FF;\">&bull;</span> コアチームに最低1人の開発者 <span style=\"color： "
+"#7919FF;\">&bull;</span> 予算とマイルストーン"
 
 #: template/page-funding.html.jinja:222
 #, fuzzy
@@ -1029,6 +1116,35 @@ msgstr "XRP Ledgerをベースにした起業家向けの12週間のプログラ
 msgid "View XRPL Accelerator"
 msgstr "XRPLアクセラレータを見る"
 
+#: template/page-funding.html.jinja:240
+msgid ""
+"Start-ups building scalable products on XRPL that can capture a large "
+"market opportunity"
+msgstr "XRPL上でスケーラブルなプロダクトを構築し、大きな市場機会を獲得できるスタートアップ企業"
+
+#: template/page-funding.html.jinja:248 template/page-funding.html.jinja:277
+msgid ""
+"<span style=\"color: #7919FF;\">&bull;</span> Strong founding team <br/> "
+"<span style=\"color: #7919FF;\">&bull;</span> Bold, ambitious vision "
+"<br/> <span style=\"color: #7919FF;\">&bull;</span> Ideally an MVP and "
+"monetization strategy"
+msgstr ""
+"<span style=\"color: #7919FF;\">&bull;</span> 強力な創業チーム<br/> <span "
+"style=\"color: #7919FF;\">&bull;</span> 大胆で野心的なビジョン<br/> <span "
+"style=\"color: #7919FF;\">&bull;</span> 理想のMVPと収益化戦略"
+
+#: template/page-funding.html.jinja:255
+msgid ""
+"<span style=\"color: #7919FF;\">&bull;</span> XRPL advanced developers "
+"<br/> <span style=\"color: #7919FF;\">&bull;</span> Business acumen"
+msgstr ""
+"<span style=\"color: #7919FF;\">&bull;</span> XRPLの上級開発者 <br/> <span "
+"style=\"color: #7919FF;\">&bull;</span> ビジネス能力"
+
+#: template/page-funding.html.jinja:264 template/page-funding.html.jinja:285
+msgid "$50,000 (grant) + pitch for venture funding"
+msgstr "$50,000(助成金)＋ベンチャー資金へのピッチ"
+
 #: template/page-funding.html.jinja:305
 msgid "XRPL Bounties"
 msgstr ""
@@ -1042,6 +1158,25 @@ msgid ""
 "Bounties are awards for developing software and integrations that enable "
 "and improve specific use cases for the XRP Ledger."
 msgstr "Bounties は、XRP Ledger の特定のユースケースを可能にし、改善するソフトウェアや統合を開発するための報奨金です。"
+
+#: template/page-funding.html.jinja:317
+#, fuzzy
+msgid "Software developers and teams"
+msgstr "ソフトウェア開発者や開発チーム"
+
+#: template/page-funding.html.jinja:325
+msgid ""
+"Coding experience <span style=\"color: #7919FF;\">&bull;</span> "
+"Specialized skills (depending on the bounty)"
+msgstr "コーディング経験 <span style=\"color:#7919FF;\">&bull;</span>専門スキル(報奨金による)"
+
+#: template/page-funding.html.jinja:332 template/page-funding.html.jinja:353
+msgid "Intermediate to advanced (prior XRPL experience not required)"
+msgstr "中級開発者から上級開発者(XRPLの経験は必要ありません)"
+
+#: template/page-funding.html.jinja:341 template/page-funding.html.jinja:361
+msgid "$500 - $100,000 per milestone"
+msgstr "マイルストーンごとに$500～$100,000"
 
 #: template/page-funding.html.jinja:368
 msgid "Visit XRPL Bounties"
@@ -4847,4 +4982,20 @@ msgstr "目次"
 
 #~ msgid "Amsterdam"
 #~ msgstr "アムステルダム"
+
+#~ msgid ""
+#~ "Coding experience <span style=\"color: "
+#~ "#7919FF;\">&bull;</span> Github repository <br/> "
+#~ "<span style=\"color: #7919FF;\">&bull;</span> "
+#~ "Project narrative/description <br/> <span "
+#~ "style=\"color: #7919FF;\">&bull;</span> At least "
+#~ "one developer on the core team "
+#~ "<br/> <span style=\"color: #7919FF;\">&bull;</span>"
+#~ " Budget and milestones"
+#~ msgstr ""
+#~ "コーディング経験<span style=\"color： #7919FF;\">&bull;</span> "
+#~ "Githubリポジトリ<span style=\"color： #7919FF;\">&bull;</span>"
+#~ " プロジェクトの説明<span style=\"color： #7919FF;\">&bull;</span>"
+#~ " コアチームに最低1人の開発者 <span style=\"color： "
+#~ "#7919FF;\">&bull;</span> 予算とマイルストーン"
 
