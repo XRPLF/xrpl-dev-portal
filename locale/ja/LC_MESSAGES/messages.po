@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2023-09-12 04:22+0000\n"
+"POT-Creation-Date: 2023-09-15 02:47+0000\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -30,48 +30,13 @@ msgstr "ページの先頭へ"
 msgid "Edit page"
 msgstr "ページを編集"
 
-#: template/component-top-nav.html.jinja:36
-msgid "Countdown to"
-msgstr ""
-
-#: template/component-top-nav.html.jinja:37
-#, fuzzy
-msgid "XRPL Zone "
-msgstr "XRPLの原点"
-
-#: template/component-top-nav.html.jinja:38
-#, fuzzy
-msgid "@Token2049"
-msgstr "トークン"
-
-#: template/component-top-nav.html.jinja:39
-msgid " Singapore"
-msgstr ""
-
-#: template/component-top-nav.html.jinja:40
-msgid " 12 September 2023 "
-msgstr ""
-
-#: template/component-top-nav.html.jinja:41
-#: template/component-top-nav.html.jinja:102
-msgid "Register Now"
-msgstr "今すぐ登録"
-
-#: template/component-top-nav.html.jinja:95
-msgid "Register for <span class=\"apex-highlight\">APEX Dev Summit 2023</span>"
-msgstr "<span class=\"apex-highlight\">APEX Dev Summit 2023</span>に登録"
-
-#: template/component-top-nav.html.jinja:98
-msgid "Amsterdam"
-msgstr "アムステルダム"
-
 # Tooltip on the button to close the search box
-#: template/component-top-nav.html.jinja:182 template/page-404.html.jinja:11
+#: template/component-top-nav.html.jinja:69 template/page-404.html.jinja:11
 #, fuzzy
 msgid "Search"
 msgstr "検索"
 
-#: template/component-top-nav.html.jinja:183
+#: template/component-top-nav.html.jinja:70
 msgid "Search site..."
 msgstr "サイトを検索"
 
@@ -786,7 +751,26 @@ msgid ""
 "portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
 msgstr ""
 "XRP Ledger Dev "
-"Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a"
+"Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a"
+" href=\"https://github.com/XRPLF/xrpl-dev-"
+"portal/blob/master/CONTRIBUTING.md\">ぜひ貢献をお願いいたします</a>"
+
+#: template/page-faq2.html.jinja:23 template/pagetype-doc.html.jinja:31
+msgid ""
+"This translated page is not updated to match the latest changes in the "
+"English version."
+msgstr "このページは、最新の英語版のコンテンツと一致していない場合があります。"
+
+#: template/page-faq2.html.jinja:24 template/pagetype-doc.html.jinja:32
+#, fuzzy
+msgid ""
+"We are making an effort to offer the XRP Ledger Dev Portal in a variety "
+"of languages, but not all translated contents are up-to-date. If you'd "
+"like to help, <a href=\"https://github.com/XRPLF/xrpl-dev-"
+"portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
+msgstr ""
+"XRP Ledger Dev "
+"Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a"
 " href=\"https://github.com/XRPLF/xrpl-dev-"
 "portal/blob/master/CONTRIBUTING.md\">ぜひ貢献をお願いいたします</a>"
 
@@ -3071,7 +3055,7 @@ msgid "View Full FAQ"
 msgstr "すべてのFAQを見る"
 
 # Table of contents
-#: template/pagetype-doc.html.jinja:45
+#: template/pagetype-doc.html.jinja:51
 msgid "In this document"
 msgstr "目次"
 
@@ -4674,4 +4658,28 @@ msgstr "目次"
 #~ "コミュニティ主導のブロックチェーンとして、XRPLのビジョンはコミュニティの努力によって生み出されるものでもあります。<a "
 #~ "href=\"https://xrplf.org/\" "
 #~ "target=\"_blank\">XRPL財団</a>は現在、コミュニティメンバーと協力して、共有ビジョンステートメントを定義しています。この取り組みについての詳細をご期待ください。皆さんと共有するのを心待ちにしています。"
+
+#~ msgid "Countdown to"
+#~ msgstr ""
+
+#~ msgid "XRPL Zone "
+#~ msgstr "XRPLの原点"
+
+#~ msgid "@Token2049"
+#~ msgstr "トークン"
+
+#~ msgid " Singapore"
+#~ msgstr ""
+
+#~ msgid " 12 September 2023 "
+#~ msgstr ""
+
+#~ msgid "Register Now"
+#~ msgstr "今すぐ登録"
+
+#~ msgid "Register for <span class=\"apex-highlight\">APEX Dev Summit 2023</span>"
+#~ msgstr "<span class=\"apex-highlight\">APEX Dev Summit 2023</span>に登録"
+
+#~ msgid "Amsterdam"
+#~ msgstr "アムステルダム"
 

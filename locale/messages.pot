@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-12 04:22+0000\n"
+"POT-Creation-Date: 2023-09-15 02:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,44 +29,11 @@ msgstr ""
 msgid "Edit page"
 msgstr ""
 
-#: template/component-top-nav.html.jinja:36
-msgid "Countdown to"
-msgstr ""
-
-#: template/component-top-nav.html.jinja:37
-msgid "XRPL Zone "
-msgstr ""
-
-#: template/component-top-nav.html.jinja:38
-msgid "@Token2049"
-msgstr ""
-
-#: template/component-top-nav.html.jinja:39
-msgid " Singapore"
-msgstr ""
-
-#: template/component-top-nav.html.jinja:40
-msgid " 12 September 2023 "
-msgstr ""
-
-#: template/component-top-nav.html.jinja:41
-#: template/component-top-nav.html.jinja:102
-msgid "Register Now"
-msgstr ""
-
-#: template/component-top-nav.html.jinja:95
-msgid "Register for <span class=\"apex-highlight\">APEX Dev Summit 2023</span>"
-msgstr ""
-
-#: template/component-top-nav.html.jinja:98
-msgid "Amsterdam"
-msgstr ""
-
-#: template/component-top-nav.html.jinja:182 template/page-404.html.jinja:11
+#: template/component-top-nav.html.jinja:69 template/page-404.html.jinja:11
 msgid "Search"
 msgstr ""
 
-#: template/component-top-nav.html.jinja:183
+#: template/component-top-nav.html.jinja:70
 msgid "Search site..."
 msgstr ""
 
@@ -744,6 +711,20 @@ msgstr ""
 msgid ""
 "We are making an effort to offer the XRP Ledger Dev Portal in a variety "
 "of languages, but not all pages are available in all languages. If you'd "
+"like to help, <a href=\"https://github.com/XRPLF/xrpl-dev-"
+"portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
+msgstr ""
+
+#: template/page-faq2.html.jinja:23 template/pagetype-doc.html.jinja:31
+msgid ""
+"This translated page is not updated to match the latest changes in the "
+"English version."
+msgstr ""
+
+#: template/page-faq2.html.jinja:24 template/pagetype-doc.html.jinja:32
+msgid ""
+"We are making an effort to offer the XRP Ledger Dev Portal in a variety "
+"of languages, but not all translated contents are up-to-date. If you'd "
 "like to help, <a href=\"https://github.com/XRPLF/xrpl-dev-"
 "portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
 msgstr ""
@@ -2819,7 +2800,7 @@ msgstr ""
 msgid "View Full FAQ"
 msgstr ""
 
-#: template/pagetype-doc.html.jinja:45
+#: template/pagetype-doc.html.jinja:51
 msgid "In this document"
 msgstr ""
 
