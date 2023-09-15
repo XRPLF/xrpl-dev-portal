@@ -1189,6 +1189,16 @@ pages:
             - en
             - ja
 
+    -   md: concepts/tokens/robustly-monitoring-for-payments.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/tokens/bouncing-payments.md
+        targets:
+            - en
+            - ja
+
 # TODO - Translate
     -   md: concepts/tokens/clawing-back-tokens.md
         targets:

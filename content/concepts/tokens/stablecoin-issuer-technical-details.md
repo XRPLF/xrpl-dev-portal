@@ -97,3 +97,8 @@ For more information, see [Reliable Transaction Submission](reliable-transaction
 ## xrp-ledger.toml File
 
 You can publish information about what currencies you issue, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an [`xrp-ledger.toml` file](xrp-ledger-toml.html). This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

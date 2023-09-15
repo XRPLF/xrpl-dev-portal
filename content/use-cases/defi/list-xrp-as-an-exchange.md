@@ -7,7 +7,7 @@ labels:
 ---
 # List XRP as an Exchange
 
-This document describes the steps that an exchange needs to take to list XRP. These steps are targeted at _custodial exchanges_ that holds fund on behalf of users, and allows users to deposit, withdraw, and trade other digital assets, fiat currencies, or other types of assets.
+This document describes the steps that an exchange needs to take to list XRP. These steps are targeted at _custodial exchanges_ that hold funds on behalf of users, and allows users to deposit, withdraw, and trade other digital assets, fiat currencies, or other types of asset.
 
 ## Alpha Exchange
 
@@ -43,11 +43,13 @@ See also:
 
 * [Compliance Guidelines](stablecoin-issuer-compliance-guidelines.html) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
 
+<!-- These sections need to be topics of their own, without the story.
 * [Requirements for Sending to XRP Ledger](stablecoin-issuer.html#requirements-for-sending-to-xrp-ledger)
 
 * [Requirements for Receiving from XRP Ledger](stablecoin-issuer.html#requirements-for-receiving-from-xrp-ledger)
+-->
 
-* [Precautions](stablecoin-issuer.html#precautions)
+* [Precautions](stablecoin-issuer-precautions.html)
 
 ### Partial Payments
 
