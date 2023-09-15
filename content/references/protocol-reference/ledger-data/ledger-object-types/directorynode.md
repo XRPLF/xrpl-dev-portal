@@ -7,7 +7,7 @@ labels:
   - Decentralized Exchange
 ---
 # DirectoryNode
-[[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
 
 The `DirectoryNode` ledger entry type provides a list of links to other entries in the ledger's state data. A single conceptual _Directory_　takes the form of a doubly linked list, with one or more DirectoryNode entries each containing up to 32 [IDs of other entries](ledger-object-ids.html). The first DirectoryNode entry is called the root of the directory, and all entries other than the root can be added or deleted as necessary.
 
@@ -105,6 +105,6 @@ The lower 64 bits of an Offer Directory's ID represent the `TakerPays` amount di
 * The page number of this object. (Since 0 is the root DirectoryNode, this value is an integer 1 or higher.)
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

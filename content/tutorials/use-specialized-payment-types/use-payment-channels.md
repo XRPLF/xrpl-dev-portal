@@ -368,7 +368,7 @@ The payee should check the following:
     - The `account_channels` request did not specify the correct ledger version. (Use `"ledger_index": "validated"` to get the latest validated ledger version)
     - The payee previously redeemed XRP but forgot to record it.
     - The payee attempted to redeem XRP and recorded the tentative result, but the transaction's final validated result was not the same and the payee neglected to record the final validated result.
-    - The `rippled` server the payee queried has lost sync with the rest of the network or is experiencing an unknown bug. Use the [server_info method][] to check the state of the server. (If you can reproduce this situation, please [report an issue](https://github.com/ripple/rippled/issues/).)
+    - The `rippled` server the payee queried has lost sync with the rest of the network or is experiencing an unknown bug. Use the [server_info method][] to check the state of the server. (If you can reproduce this situation, please [report an issue](https://github.com/XRPLF/rippled/issues/).)
 
 After confirming both the signature and the current state of the payment channel, the payee has not yet received the XRP, but is certain that he or she _can_ redeem the XRP as long as the transaction to do so is processed before the channel expires.
 
@@ -665,6 +665,6 @@ This concludes the tutorial of Payment Channel usage. Ripple encourages users to
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

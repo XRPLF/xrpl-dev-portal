@@ -9,7 +9,7 @@ labels:
   - スマートコントラクト
 ---
 # subscribe
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp "Source")
 
 `subscribe`メソッドは、特定のイベントが発生した場合に、定期的に通知するようサーバーに要求します。
 

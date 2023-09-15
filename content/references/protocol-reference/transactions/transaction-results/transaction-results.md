@@ -7,7 +7,7 @@ labels:
 ---
 # Transaction Results
 
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/TER.h "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/TER.h "Source")
 
 The `rippled` server summarizes transaction results with result codes, which appear in fields such as `engine_result` and `meta.TransactionResult`. These codes are grouped into several categories of with different prefixes:
 

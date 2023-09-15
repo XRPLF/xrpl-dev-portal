@@ -27,7 +27,7 @@ blurb: さまざまなタイプのオブジェクトがそれぞれ異なる方�
 <!--{#_ #}-->
 
 ### ハッシュプレフィクス
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
 
 多くの場合、XRP Ledgerではオブジェクトのバイナリデータに4バイトのプレフィクスを付けてからハッシュを計算するため、異なるタイプのオブジェクトが同じバイナリフォーマットである場合でも、異なるハッシュが設定されます。既存の4バイトコードは、ASCIIでエンコードされた英字3文字の後に0バイトが続く構成となっています。
 
@@ -165,6 +165,6 @@ XRPを金額なしで指定する場合は（主に、オーダーブックを�
 Rippleエポック時間を32ビット変数でUNIXエポック時間に変換しないでください。整数のオーバーフローが発生する恐れがあります。
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

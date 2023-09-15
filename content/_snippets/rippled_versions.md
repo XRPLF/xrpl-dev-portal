@@ -47,12 +47,12 @@
 ] %}
 
 {% for v in rippled_versions %}
-[New in: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_BLUE"
-[Introduced in: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_BLUE"
-[Updated in: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_BLUE"
-[Removed in: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_RED"
-[導入: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_BLUE"
-[新規: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_BLUE"
-[更新: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_BLUE"
-[削除: rippled {{v}}]: https://github.com/ripple/rippled/releases/tag/{{v}} "BADGE_RED"
+[New in: rippled {{v}}]: https://github.com/XRPLF/rippled/releases/tag/{{v}} "BADGE_BLUE"
+[Introduced in: rippled {{v}}]: https://github.com/XRPLF/rippled/releases/tag/{{v}} "BADGE_BLUE"
+[Updated in: rippled {{v}}]: https://github.com/XRPLF/rippled/releases/tag/{{v}} "BADGE_BLUE"
+[Removed in: rippled {{v}}]: https://github.com/XRPLF/rippled/releases/tag/{{v}} "BADGE_RED"
+[導入: rippled {{v}}]: https://github.com/XRPLF/rippled/releases/tag/{{v}} "BADGE_BLUE"
+[新規: rippled {{v}}]: https://github.com/XRPLF/rippled/releases/tag/{{v}} "BADGE_BLUE"
+[更新: rippled {{v}}]: https://github.com/XRPLF/rippled/releases/tag/{{v}} "BADGE_BLUE"
+[削除: rippled {{v}}]: https://github.com/XRPLF/rippled/releases/tag/{{v}} "BADGE_RED"
 {% endfor %}

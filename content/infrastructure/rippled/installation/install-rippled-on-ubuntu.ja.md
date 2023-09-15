@@ -61,8 +61,8 @@ labels:
 
    `rippled`の開発バージョンまたはプレリリースバージョンにアクセスするには、`stable`ではなく次のいずれかを使用します。
 
-   - `unstable` - プレインストールビルド（[`release`ブランチ](https://github.com/ripple/rippled/tree/release)）
-   - `nightly` - 実験/開発ビルド（[`develop`ブランチ](https://github.com/ripple/rippled/tree/develop)）
+   - `unstable` - プレインストールビルド（[`release`ブランチ](https://github.com/XRPLF/rippled/tree/release)）
+   - `nightly` - 実験/開発ビルド（[`develop`ブランチ](https://github.com/XRPLF/rippled/tree/develop)）
 
    **警告:** 安定版ではないナイトリービルドはいつの時点でも壊れる可能性があります。これらのビルドを本番環境のサーバーに使用しないでください。
 

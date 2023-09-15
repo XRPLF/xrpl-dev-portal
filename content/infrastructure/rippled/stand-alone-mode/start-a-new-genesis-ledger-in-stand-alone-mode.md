@@ -17,7 +17,7 @@ rippled -a --start --conf=/path/to/rippled.cfg
 
 For more information on the options you can use when starting `rippled` in stand-alone mode, see [Commandline Usage: Stand-Alone Mode Options](commandline-usage.html#stand-alone-mode-options).
 
-In a genesis ledger, the [genesis address](addresses.html#special-addresses) holds all 100 billion XRP. The keys of the genesis address are [hardcoded](https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184) as follows:
+In a genesis ledger, the [genesis address](addresses.html#special-addresses) holds all 100 billion XRP. The keys of the genesis address are [hardcoded](https://github.com/XRPLF/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184) as follows:
 
 **Address:** `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh`
 
@@ -45,6 +45,6 @@ By default, a new genesis ledger has no [amendments](amendments.html) enabled. I
     - [Contribute Code to the XRP Ledger](contribute-code-to-rippled.html)
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

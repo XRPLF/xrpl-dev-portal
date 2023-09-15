@@ -12,7 +12,7 @@ blurb: rippled 1.2.4以前のバージョンからrippled v1.3以降に移行す
 - [CentOSまたはRed Hat Enterprise Linux（RHEL）](#centosまたはred-hat-enterprise-linuxrhelでの移行)
 - [Ubuntu Linux](#ubuntu-linuxでの移行)
 
-その他のプラットフォームについては、ソースからコンパイルするためのアップデート手順を参照してください。（[Ubuntu](build-run-rippled-ubuntu.html)、[macOS](build-run-rippled-macos.html)、または[Windows](https://github.com/ripple/rippled/tree/develop/Builds/VisualStudio2017)）
+その他のプラットフォームについては、ソースからコンパイルするためのアップデート手順を参照してください。（[Ubuntu](build-run-rippled-ubuntu.html)、[macOS](build-run-rippled-macos.html)、または[Windows](https://github.com/XRPLF/rippled/tree/develop/Builds/VisualStudio2017)）
 
 
 ## CentOSまたはRed Hat Enterprise Linux（RHEL）での移行
@@ -91,7 +91,7 @@ Rippleの公式RPMリポジトリとそれを使用するための手順が変�
 
 ## 関連項目
 
-- **[`rippled` v1.3.1リリースノート](https://github.com/ripple/rippled/releases/1.3.1)**
+- **[`rippled` v1.3.1リリースノート](https://github.com/XRPLF/rippled/releases/1.3.1)**
 - **コンセプト:**
   - [`rippled`サーバー](xrpl-servers.html)
   - [コンセンサスについて](consensus.html)

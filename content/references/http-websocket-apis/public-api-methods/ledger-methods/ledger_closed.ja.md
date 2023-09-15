@@ -6,7 +6,7 @@ label:
   - ブロックチェーン
 ---
 # ledger_closed
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerClosed.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerClosed.cpp "Source")
 
 `ledger_closed`メソッドは、最新の決済済みレジャーの一意のIDを返します。（このレジャーは必ずしも検証済みで変更不可能ではありません。）
 

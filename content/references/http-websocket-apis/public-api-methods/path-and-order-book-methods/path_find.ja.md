@@ -7,7 +7,7 @@ labels:
   - トークン
 ---
 # path_find
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")
 
 *WebSocket APIのみ。*`path_find`メソッドは、トランザクションが実行される可能性のある[パス](paths.html)を探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。JSON-RPCでサポートされているシンプルなバージョンについては、[ripple_path_findメソッド][]を参照してください。完全にXRPで行われる支払いの場合、XRPはどのアカウントにも直接送金できるためパスを探索する必要はありません。
 
@@ -20,7 +20,7 @@ path_findコマンドには3種類のモード（サブコマンド）があり�
 `rippled`サーバーは支払いを行うにあたり最も安価なパスまたはパスの組み合わせを探索しますが、このメソッドで返されるパスが最良のパスであることは保証されません。サーバーの負荷が原因で、Pathfindingで最良のパスを検出できないことがあります。また、信頼できないサーバーからのPathfindingの結果には注意する必要があります。オペレーターの収益となるように、最良ではないパスを返すようにサーバーが改ざんされる可能性があります。Pathfindingについて信頼できる独自サーバーがない場合は、1つのサーバーから不適切な結果が返されるリスクを最小限に抑えるため、異なる当事者が実行する複数のサーバーからのPathfindingの結果を比較してください。（**注記:** サーバーから最良ではない結果が返されても、必ずしも悪意のある振る舞いの証拠とはなりません。サーバーの負荷が高い場合の症状である可能性もあります。）
 
 ## path_find create
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L50-L56 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L50-L56 "Source")
 
 `path_find`の`create`サブコマンドは、指定された特定アカウントから支払トランザクションを実行できるパスを探索する継続的な要求を作成し、別のアカウントが何らかの通貨で希望する額を受領できるようにします。初期応答には2つのアドレス間で提案されるパスが含まれています。このパスにより、希望する額を受領できます。その後サーバーは、`"type": "path_find"`で有効なパスの更新を含む追加メッセージを送信します。更新の頻度はサーバーにより決定されますが、新しいレジャーバージョンがある場合には通常、数秒間に1回です。
 
@@ -497,7 +497,7 @@ path_find create要求からの非同期フォローアップの例を次に示�
 <!-- MULTICODE_BLOCK_END -->
 
 ## path_find close
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67 "Source")
 
 `path_find`の`close`サブコマンドは、サーバーに対して現在実行中のPathfinding要求に関する情報の送信を停止するように指示します。
 
@@ -542,7 +542,7 @@ Pathfinding要求が正常にクローズされた場合、応答は[`path_find 
 * `noPathRequest` - Pathfinding要求をクローズしようとしましたが、実行中の要求がありませんでした。
 
 ## path_find status
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L69-L77 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L69-L77 "Source")
 
 `path_find`の`status`サブコマンドは、現在実行中のクライアントのPathfinding要求の即時更新を要求します。
 

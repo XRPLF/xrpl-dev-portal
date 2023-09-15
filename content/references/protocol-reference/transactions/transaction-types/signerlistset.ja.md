@@ -6,7 +6,7 @@ labels:
   - セキュリティ
 ---
 # SignerListSet
-[[ソース]](https://github.com/ripple/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
 
 SignerListSetトランザクションは、トランザクションの[マルチシグ](multi-signing.html)に使用できる署名者のリストを作成、置換、削除します。このトランザクションタイプは[MultiSign Amendment][]により導入されました。[新規: rippled 0.31.0][]
 

@@ -7,7 +7,7 @@ labels:
 ---
 # crawl_shards
 
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp "Source")
 
 使用可能な[履歴レジャーデータのシャード](history-sharding.html)に関するピアサーバーからの情報を要求します。[新規: rippled 1.2.0][]
 

@@ -106,7 +106,7 @@ When the consensus process completes, each server independently computes a new l
 
 2. Place the agreed-upon transaction set in _canonical order_ so that every server processes them the same way.
 
-    [Canonical order](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/src/ripple/app/misc/CanonicalTXSet.cpp#L25-L36) is not the order the transactions were received, because servers may receive the same transactions in different order. To prevent participants from competing over transaction ordering, canonical order is hard to manipulate.
+    [Canonical order](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/src/ripple/app/misc/CanonicalTXSet.cpp#L25-L36) is not the order the transactions were received, because servers may receive the same transactions in different order. To prevent participants from competing over transaction ordering, canonical order is hard to manipulate.
 
 3. Process each transaction according to its instructions, in order. Update the ledger's state data accordingly.
 
@@ -213,6 +213,6 @@ Best practices for applications submitting transactions include:
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

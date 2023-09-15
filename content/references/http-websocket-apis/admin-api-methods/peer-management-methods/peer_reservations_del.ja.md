@@ -7,7 +7,7 @@ labels:
 ---
 # peer_reservations_del
 
-[[ソース]](https://github.com/ripple/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L89 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L89 "Source")
 
 `{{currentpage.name}}`メソッドは、特定の[ピアリザベーション][]を削除します（存在する場合）。[新規: rippled 1.4.0][]
 

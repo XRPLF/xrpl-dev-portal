@@ -6,7 +6,7 @@ labels:
   - Decentralized Exchange
 ---
 # account_offers
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
 
 The `account_offers` method retrieves a list of [offers](offers.html) made by a given [account](accounts.html) that are outstanding as of a particular [ledger version](ledgers.html).
 

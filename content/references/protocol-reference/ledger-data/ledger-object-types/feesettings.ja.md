@@ -6,7 +6,7 @@ labels:
   - 手数料
 ---
 # FeeSettings
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120 "Source")
 
 `FeeSettings`オブジェク
 トタイプには、現在の基本[トランザクションコスト](transaction-cost.html)と、[手数料投票](fee-voting.html)により決定する[準備金の額](reserves.html)が含まれています。各レジャーバージョンには**最大で1つの** `FeeSettings`オブジェクトが含まれています。
@@ -51,6 +51,6 @@ labels:
 ```
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

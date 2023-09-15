@@ -29,7 +29,7 @@ labels:
 
 [server_infoメソッド][]で[`server_state`](rippled-server-states.html)が`proposing`または`full`以外の状態であると示され、`server_state_duration_us`が`900000000`（15分のマイクロ秒表記）より大きい場合は、`rippled`サービスをシャットダウンしてから数秒間待ち、再起動してください。場合によっては、マシン全体を再起動します。
 
-問題が解決しない場合は、このページに記載されている他の原因を確認してください。いずれも当てはまらないと思われる場合は、[`rippled`リポジトリに問題を登録](https://github.com/ripple/rippled/issues)し、「Syncing issue」ラベルを追加します。
+問題が解決しない場合は、このページに記載されている他の原因を確認してください。いずれも当てはまらないと思われる場合は、[`rippled`リポジトリに問題を登録](https://github.com/XRPLF/rippled/issues)し、「Syncing issue」ラベルを追加します。
 
 ## 同期の問題のよくある原因
 

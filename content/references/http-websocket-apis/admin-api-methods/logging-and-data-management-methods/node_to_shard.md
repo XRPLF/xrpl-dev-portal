@@ -6,7 +6,7 @@ labels:
   - Data Retention
 ---
 # node_to_shard
-[[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/NodeToShard.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/rpc/handlers/NodeToShard.cpp "Source")
 
 The `{{currentpage.name}}` method manages copying data from the ledger store to the [shard store](history-sharding.html). It can start, stop, or check the status of copying the data.
 

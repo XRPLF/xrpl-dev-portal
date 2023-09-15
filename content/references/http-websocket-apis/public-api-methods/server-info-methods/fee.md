@@ -6,7 +6,7 @@ labels:
   - Fees
 ---
 # fee
-[[Source]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp "Source")
 
 The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](transaction-cost.html). This requires the [FeeEscalation amendment][] to be enabled. [New in: rippled 0.31.0][]
 

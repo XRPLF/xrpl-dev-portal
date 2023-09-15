@@ -45,7 +45,7 @@ Server is overloaded
 ```
 
 ## Rate Per Request
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/resource/Fees.h "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/resource/Fees.h "Source")
 
 The server calculates a client's usage rate based on the number of requests made over time, and weighs different types of requests based on approximately how much work the server must do to serve them. Follow-up messages from the server for the [subscribe method][] and [path_find method][] also count towards a client's usage rate.
 
