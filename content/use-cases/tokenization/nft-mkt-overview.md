@@ -78,10 +78,6 @@ Each `NFTokenPage` holds 16-32 NFTs. Minting a large number of NFTs can tie up a
 
 Set up a new wallet. See [Xumm](https://xumm.app/).
 
-<div align="center">
-<img src="img/uc-software-wallet.png" width="50%" height="50%" align="center"></img>
-</div>
-
 When you set up your account, keep in mind that there is a base reserve requirement of 10 XRP. See [Reserves](reserves.html#base-reserve-and-owner-reserve).
 
 ### Transferring NFTs

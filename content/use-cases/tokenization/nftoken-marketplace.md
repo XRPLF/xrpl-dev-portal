@@ -27,10 +27,6 @@ When you set up a serious marketplace site with high volume, it justifies the de
 
 Set up a new wallet. See [Xumm](https://xumm.app/).
 
-<div align="center">
-<img src="img/uc-software-wallet.png" width="50%" height="50%" align="center"></img>
-</div>
-
 Base reserve requirements See [Reserves](reserves.html#base-reserve-and-owner-reserve).
 
 ### Transferring NFTs
