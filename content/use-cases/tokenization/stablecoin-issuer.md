@@ -269,3 +269,8 @@ For more information, see [Reliable Transaction Submission](reliable-transaction
 Sologenic, onXRP, XPMarket
 
 -->
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}			
+{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled_versions.md' %}

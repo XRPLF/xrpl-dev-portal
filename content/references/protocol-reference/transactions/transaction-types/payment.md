@@ -110,7 +110,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 
 ## Partial Payments
 
-A partial payment allows a payment to succeed by reducing the amount received. Partial payments are useful for [returning payments](stablecoin-issuer.html#bouncing-payments) without incurring additional costs to oneself. However, partial payments can also be used to exploit integrations that naively assume the `Amount` field of a successful transaction always describes the exact amount delivered.
+A partial payment allows a payment to succeed by reducing the amount received. Partial payments are useful for [returning payments](bouncing-payments.html) without incurring additional costs to oneself. However, partial payments can also be used to exploit integrations that naively assume the `Amount` field of a successful transaction always describes the exact amount delivered.
 
 A partial payment is any [Payment transaction][] with the `tfPartialPayment` flag enabled. A partial payment can be successful if it delivers any positive amount greater than or equal to its `DeliverMin` field (or any positive amount at all if `DeliverMin` is not specified) without sending more than the `SendMax` value.
 
