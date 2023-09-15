@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-15 07:05+0000\n"
+"POT-Creation-Date: 2023-09-15 07:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -394,6 +394,7 @@ msgstr ""
 
 #: template/page-community.html.jinja:148 template/page-events.html.jinja:56
 #: template/page-funding.html.jinja:383 template/page-home.html.jinja:161
+#: template/page-xrpl-overview.html.jinja:99
 msgid "Learn More"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2023-09-15 07:05+0000\n"
+"POT-Creation-Date: 2023-09-15 07:16+0000\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -406,6 +406,7 @@ msgstr "オープンソースプロジェクトへの資金提供"
 
 #: template/page-community.html.jinja:148 template/page-events.html.jinja:56
 #: template/page-funding.html.jinja:383 template/page-home.html.jinja:161
+#: template/page-xrpl-overview.html.jinja:99
 msgid "Learn More"
 msgstr "もっと知る"
 
@@ -3231,7 +3232,7 @@ msgid ""
 " and businesses–a global community working to solve problems and create "
 "real-world value."
 msgstr ""
-"誰でも自分のコンピュータを、台帳を管理するピアツーピアのネットワークに接続することができます。ソフトウェア・エンジニア、サーバー・オペレーター、ユーザー、企業など、さまざまな人々が集まるグローバルなXRP"
+"誰でも自分のコンピュータを、台帳を管理するピアツーピアのネットワークに接続することができます。ソフトウェア・エンジニア、サーバ・オペレーター、ユーザ、企業など、さまざまな人々が集まるグローバルなXRP"
 " Ledgerコミュニティが、台帳を管理しています。"
 
 #: template/page-xrpl-overview.html.jinja:59
@@ -3262,7 +3263,7 @@ msgid ""
 "transactions every three to five seconds."
 msgstr ""
 "XRPLはコンセンサスプロトコルを採用しており、<a href=\"run-a-rippled-"
-"validator.html\">バリデータ</a>と呼ばれる指定されたサーバーが、3～5秒ごとにXRPトランザクションの順序と結果について合意に至ります。"
+"validator.html\">バリデータ</a>と呼ばれる指定されたサーバが、3～5秒ごとにXRPトランザクションの順序と結果について合意に至ります。"
 
 #: template/page-xrpl-overview.html.jinja:84
 #, fuzzy
@@ -3271,7 +3272,7 @@ msgid ""
 " rules, and any transaction that follows the protocol is confirmed right "
 "away. All transactions are public, and strong cryptography guarantees the"
 " integrity of the system."
-msgstr "ネットワーク内のすべてのサーバーが、同じルールに従って各取引を処理します。このプロトコルに従っている取引はすべて、バリデータが定数に達した時点ですぐに確認されます。"
+msgstr "ネットワーク内のすべてのサーバが、同じルールに従って各取引を処理します。このプロトコルに従っている取引はすべて、バリデータが定数に達した時点ですぐに確認されます。"
 
 #: template/page-xrpl-overview.html.jinja:85
 #, fuzzy
@@ -3285,7 +3286,7 @@ msgid ""
 msgstr ""
 "バリデータは誰でも運営できます。現在、レジャーでは、大学、取引所、企業、個人が運営している150以上の<a href=\"run-a"
 "-rippled-validator.html\" "
-"class=\"underline\">バリデータ</a>がアクティブです。さらに、コンセンサス・プロトコルは、バリデータ・プールが成長するにつれて、ブロックチェーンがより分散化されることを保証します。"
+"class=\"underline\">バリデータ</a>がアクティブです。さらに、コンセンサスプロトコルは、バリデータ・プールが成長するにつれて、ブロックチェーンがより分散化されることを保証します。"
 
 #: template/page-xrpl-overview.html.jinja:97
 #, fuzzy
@@ -3297,10 +3298,12 @@ msgid ""
 "Unlike most other blockchains, the XRP Ledger requires no mining and uses"
 " negligible energy, key to long-term growth and stability."
 msgstr ""
+"他のほとんどのブロックチェーンとは異なり、XRP "
+"Ledgerはマイニングを必要とせず、長期的な成長と安定性の鍵となるエネルギー消費もごくわずかです。"
 
 #: template/page-xrpl-overview.html.jinja:108
 msgid "Building with confidence on <br class=\"until-sm\"/> proven technology"
-msgstr ""
+msgstr "実績ある技術で<br class=\"until-smart\"/>信頼性のある開発"
 
 #: template/page-xrpl-overview.html.jinja:109
 msgid "XRPL Today"
@@ -3310,7 +3313,7 @@ msgstr "XRPLの現在"
 msgid ""
 "With 10+ years of error-free functioning and enterprise companies as "
 "champions, XRPL has established reliability."
-msgstr ""
+msgstr "XRPLは、10年以上にわたって機能を提供し、エンタープライズ企業を顧客として、信頼性を確立してきました。"
 
 #: template/page-xrpl-overview.html.jinja:112
 #, fuzzy
@@ -3328,7 +3331,7 @@ msgstr "利用例を見る"
 
 #: template/page-xrpl-overview.html.jinja:117
 msgid "Creating new value for long-term growth"
-msgstr ""
+msgstr "長期的な成長を見据えた<br class=\"until-smart\"/>新たな価値の創造"
 
 #: template/page-xrpl-overview.html.jinja:118
 msgid "XRPL Tomorrow"
@@ -3339,14 +3342,14 @@ msgid ""
 "As a community-led blockchain built for business, XRPL attracts companies"
 " and developers driven to solve real problems and generate real value–now"
 " and into the future."
-msgstr ""
+msgstr "ビジネスの発展のために構築されたコミュニティ主導のブロックチェーンであるXRPLは、現在そして将来にわたって真の問題を解決し、真の価値を生み出そうとする企業や開発者を惹きつけています。"
 
 #: template/page-xrpl-overview.html.jinja:121
 msgid ""
 "Significant investment in development, along with low transaction costs "
 "and energy usage, is fueling growth and opening up a wide variety of use "
 "cases at scale."
-msgstr ""
+msgstr "低い取引コストとエネルギー使用量に加え、開発への多額の投資が成長を促し、大規模で多様なユースケースを開拓しています。"
 
 #: template/page-xrpl-overview.html.jinja:128
 msgid "Watch the explainer video series to learn more about the XRP Ledger"
