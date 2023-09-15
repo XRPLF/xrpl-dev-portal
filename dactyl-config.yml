@@ -5411,6 +5411,7 @@ pages:
         targets:
             - en
 
+    # add trans script to page-events.html.jinja and translate (messages.po)
     -   name: イベント
         html: events.html
         parent: contribute.html

@@ -109,75 +109,75 @@
     set intermediateVideos = [
       {
         "src": "./assets/img/backgrounds/docs-advanced-payment-features@2x.png",
-        "title": "Advanced Payment Features",
+        "title": _("Advanced Payment Features"),
         "url": "https://www.youtube.com/embed/e2Iwsk37LMk?rel=0&amp;showinfo=0&amp;autoplay=1",
       },
       {
         "src": "./assets/img/backgrounds/docs-governance@2x.png",
-        "title": "Governance and the Amendment Process",
+        "title": _("Governance and the Amendment Process"),
         "url": "https://www.youtube.com/embed/4GbRdanHoR4?rel=0&amp;showinfo=0&amp;autoplay=1",
       },
       {
         "src": "./assets/img/backgrounds/docs-sidechains@2x.png",
-        "title": "Federated Sidechains",
+        "title": _("Federated Sidechains"),
         "url": "https://www.youtube.com/embed/NhH4LM8NxgY?rel=0&amp;showinfo=0&amp;autoplay=1",
       },
     ]
   %}
   {% set useCases = [
     {
-      "title": "On-Chain Finance",
+      "title": _("On-Chain Finance"),
       "id": "on-chain-finance-use-cases",
       "imgClass": "wallet-illustration",
       "subItems": [
         {
-          "description": "Trade on the decentralized exchange",
+          "description": _("Trade on the decentralized exchange"),
           "link": "./trade-in-the-decentralized-exchange.html",
         },
         {
-          "description": "Make payments",
+          "description": _("Make payments"),
           "link": "./send-xrp.html",
         },
         {
-          "description": "Use specialized payment types",
+          "description": _("Use specialized payment types"),
           "link": "./use-specialized-payment-types.html"
         }
       ],
     },
     {
-      "title": "Tokens",
+      "title": _("Tokens"),
       "id": "token-use-cases",
       "imgClass": "token-illustration",
       "subItems": [
         {
-          "description": "Non-fungible Tokens",
+          "description": _("Non-fungible Tokens"),
           "link": "./non-fungible-tokens.html",
         },
         {
-          "description": "Issue a stablecoin",
+          "description": _("Issue a stablecoin"),
           "link": "./issue-a-fungible-token.html",
         },
         {
-          "description": "Assign an authorized minter",
+          "description": _("Assign an authorized minter"),
           "link": "./assign-an-authorized-minter-using-javascript.html",
         },
       ],
     },
     {
-      "title": "Payments",
+      "title": _("Payments"),
       "id": "payments-use-cases",
       "imgClass": "connections-illustration",
       "subItems": [
         {
-          "description": "Peer to peer payments",
+          "description": _("Peer to peer payments"),
           "link": "./direct-xrp-payments.html",
         },
         {
-          "description": "Cross-currency payments",
+          "description": _("Cross-currency payments"),
           "link": "./cross-currency-payments.html",
         },
         {
-          "description": "Escrows",
+          "description": _("Escrows"),
           "link": "./escrow.html",
         },
       ],
@@ -188,22 +188,22 @@
     set getStartedVideos = [
     {
       "src": "./assets/img/backgrounds/docs-intro-to-XRP-ledger@2x.png",
-      "title": "Intro to XRP Ledger",
+      "title": _("Intro to XRP Ledger"),
       "url": "https://www.youtube.com/embed/sVTybJ3cNyo?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
     {
       "src": "./assets/img/backgrounds/docs-accounts@2x.png",
-      "title": "Accounts",
+      "title": _("Accounts"),
       "url": "https://www.youtube.com/embed/eO8jE6PftX8?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
     {
       "src": "./assets/img/backgrounds/docs-decentralized-exchange@2x.png",
-      "title": "Decentralized Exchange",
+      "title": _("Decentralized Exchange"),
       "url": "https://www.youtube.com/embed/VWNrHBDfXvA?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
     {
       "src": "./assets/img/backgrounds/docs-tokenization@2x.png",
-      "title": "Tokenization",
+      "title": _("Tokenization"),
       "url": "https://www.youtube.com/embed/Oj4cWOiWf4A?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
     ]
@@ -211,28 +211,28 @@
   {%
     set devTools = [
     {
-      "title": "Faucets",
+      "title": _("Faucets"),
       "link": "./xrp-testnet-faucet.html",
       "description":
-        "Get credentials and test-XRP for XRP Ledger Testnet or Devnet.",
+        _("Get credentials and test-XRP for XRP Ledger Testnet or Devnet."),
     },
     {
-      "title": "WebSocket Tool",
+      "title": _("WebSocket Tool"),
       "link": "./websocket-api-tool.html",
       "description":
-        "Send sample requests and get responses from the rippled API.",
+        _("Send sample requests and get responses from the rippled API."),
     },
     {
-      "title": "XRP Ledger Explorer",
+      "title": _("XRP Ledger Explorer"),
       "link": "https://livenet.xrpl.org",
       "description":
-        "View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.",
+        _("View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger."),
     },
     {
-      "title": "Transaction Sender",
+      "title": _("Transaction Sender"),
       "link": "./tx-sender.html",
       "description":
-        "Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.",
+        _("Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address."),
     },
   ]
   %}
@@ -241,23 +241,23 @@
     <div class="nav card-grid flat-card-grid card-grid-3xN">
       <div class="col">
         {{ flatCard("./concepts.html", 
-                    "Concepts", 
-                    "Learn the \"what\" and the \"why\" behind fundamental aspects of the XRP Ledger.", 
-                    "Read the Docs",
+                    _("Concepts"), 
+                    _("Learn the \"what\" and the \"why\" behind fundamental aspects of the XRP Ledger."), 
+                    _("Read the Docs"),
                     "concepts-doc-illustration") }}
       </div>
       <div class="col">
         {{ flatCard("./tutorials.html", 
-                    "Tutorials", 
-                    "Get step-by-step guidance to perform common tasks with the XRP Ledger.", 
-                    "View Tutorials",
+                    _("Tutorials"), 
+                    _("Get step-by-step guidance to perform common tasks with the XRP Ledger."), 
+                    _("View Tutorials"),
                     "tutorial-illustration") }}
       </div>
       <div class="col">
         {{ flatCard("./references.html", 
-                    "References", 
-                    "Look up reference documentation for the XRP Ledger protocol, API methods, and more.", 
-                    "View References",
+                    _("References"), 
+                    _("Look up reference documentation for the XRP Ledger protocol, API methods, and more."), 
+                    _("View References"),
                     "ref-book-illustration") }}
       </div>
     </div>
@@ -279,7 +279,7 @@
         <a href="./send-payments-using-javascript.html" class="card float-up-on-hover">
           <h5 class="mt-7">{% trans %}Quickstart to XRP Ledger{% endtrans %}</h5>
           <p class="mb-8 mt-4">
-            {% trans %}An introduction to fundamental aspects of the XRP Ledger{% endtrans %}.
+            {% trans %}An introduction to fundamental aspects of the XRP Ledger.{% endtrans %}
           </p>
           <div class="dg-lg-block mb-3">
             <div
@@ -303,7 +303,7 @@
           {% endfor %}
         </div>
         <div class="align-button-on-bottom">
-          {{ primaryButton("https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi", "Watch Full Series", true) }}
+          {{ primaryButton("https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi", _("Watch Full Series"), true) }}
         </div>
       </div>
     </div>
@@ -358,7 +358,7 @@
   </section>
 
   <section class="container-new ">
-    <h4 class="pb-4">Intermediate Learning Sources</h4>
+    <h4 class="pb-4">{% trans %}Intermediate Learning Sources{% endtrans %}</h4>
     <div class="card-grid card-grid-3xN">
       {% for video in intermediateVideos %}
         {{ videoCard(video.url, video.title, video.src) }}

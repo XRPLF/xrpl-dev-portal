@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-15 02:39+0000\n"
+"POT-Creation-Date: 2023-09-15 05:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -393,7 +393,7 @@ msgid "Open-source projects funded "
 msgstr ""
 
 #: template/page-community.html.jinja:148 template/page-events.html.jinja:56
-#: template/page-funding.html.jinja:383
+#: template/page-funding.html.jinja:383 template/page-home.html.jinja:161
 msgid "Learn More"
 msgstr ""
 
@@ -578,8 +578,156 @@ msgstr ""
 msgid "Websocket API Tool"
 msgstr ""
 
-#: template/page-docs.html.jinja:105
+#: template/page-docs.html.jinja:105 template/page-docs.html.jinja:226
 msgid "XRP Ledger Explorer"
+msgstr ""
+
+#: template/page-docs.html.jinja:112
+msgid "Advanced Payment Features"
+msgstr ""
+
+#: template/page-docs.html.jinja:117
+msgid "Governance and the Amendment Process"
+msgstr ""
+
+#: template/page-docs.html.jinja:122
+msgid "Federated Sidechains"
+msgstr ""
+
+#: template/page-docs.html.jinja:129
+msgid "On-Chain Finance"
+msgstr ""
+
+#: template/page-docs.html.jinja:134
+msgid "Trade on the decentralized exchange"
+msgstr ""
+
+#: template/page-docs.html.jinja:138
+msgid "Make payments"
+msgstr ""
+
+#: template/page-docs.html.jinja:142
+msgid "Use specialized payment types"
+msgstr ""
+
+#: template/page-docs.html.jinja:148 template/page-home.html.jinja:103
+msgid "Tokens"
+msgstr ""
+
+#: template/page-docs.html.jinja:153
+msgid "Non-fungible Tokens"
+msgstr ""
+
+#: template/page-docs.html.jinja:157
+msgid "Issue a stablecoin"
+msgstr ""
+
+#: template/page-docs.html.jinja:161
+msgid "Assign an authorized minter"
+msgstr ""
+
+#: template/page-docs.html.jinja:167 template/page-uses.html.jinja:394
+msgid "Payments"
+msgstr ""
+
+#: template/page-docs.html.jinja:172
+msgid "Peer to peer payments"
+msgstr ""
+
+#: template/page-docs.html.jinja:176
+msgid "Cross-currency payments"
+msgstr ""
+
+#: template/page-docs.html.jinja:180
+msgid "Escrows"
+msgstr ""
+
+#: template/page-docs.html.jinja:191
+msgid "Intro to XRP Ledger"
+msgstr ""
+
+#: template/page-docs.html.jinja:196
+msgid "Accounts"
+msgstr ""
+
+#: template/page-docs.html.jinja:201 template/page-home.html.jinja:91
+msgid "Decentralized Exchange"
+msgstr ""
+
+#: template/page-docs.html.jinja:206
+msgid "Tokenization"
+msgstr ""
+
+#: template/page-docs.html.jinja:214
+msgid "Faucets"
+msgstr ""
+
+#: template/page-docs.html.jinja:217
+msgid "Get credentials and test-XRP for XRP Ledger Testnet or Devnet."
+msgstr ""
+
+#: template/page-docs.html.jinja:220
+msgid "WebSocket Tool"
+msgstr ""
+
+#: template/page-docs.html.jinja:223
+msgid "Send sample requests and get responses from the rippled API."
+msgstr ""
+
+#: template/page-docs.html.jinja:229
+msgid ""
+"View validations of new ledger versions in real-time, chart the location "
+"of servers in the XRP Ledger."
+msgstr ""
+
+#: template/page-docs.html.jinja:232 template/page-tx-sender.html.jinja:30
+msgid "Transaction Sender"
+msgstr ""
+
+#: template/page-docs.html.jinja:235
+msgid ""
+"Test how your code handles various XRP Ledger transactions by sending "
+"them over the Testnet to the address."
+msgstr ""
+
+#: template/page-docs.html.jinja:244
+msgid "Concepts"
+msgstr ""
+
+#: template/page-docs.html.jinja:245
+msgid ""
+"Learn the \"what\" and the \"why\" behind fundamental aspects of the XRP "
+"Ledger."
+msgstr ""
+
+#: template/page-docs.html.jinja:246
+msgid "Read the Docs"
+msgstr ""
+
+#: template/page-docs.html.jinja:251
+msgid "Tutorials"
+msgstr ""
+
+#: template/page-docs.html.jinja:252
+msgid "Get step-by-step guidance to perform common tasks with the XRP Ledger."
+msgstr ""
+
+#: template/page-docs.html.jinja:253
+msgid "View Tutorials"
+msgstr ""
+
+#: template/page-docs.html.jinja:258
+msgid "References"
+msgstr ""
+
+#: template/page-docs.html.jinja:259
+msgid ""
+"Look up reference documentation for the XRP Ledger protocol, API methods,"
+" and more."
+msgstr ""
+
+#: template/page-docs.html.jinja:260
+msgid "View References"
 msgstr ""
 
 #: template/page-docs.html.jinja:267
@@ -595,11 +743,15 @@ msgid "Quickstart to XRP Ledger"
 msgstr ""
 
 #: template/page-docs.html.jinja:282
-msgid "An introduction to fundamental aspects of the XRP Ledger"
+msgid "An introduction to fundamental aspects of the XRP Ledger."
 msgstr ""
 
 #: template/page-docs.html.jinja:288
 msgid "Get Started"
+msgstr ""
+
+#: template/page-docs.html.jinja:306
+msgid "Watch Full Series"
 msgstr ""
 
 #: template/page-docs.html.jinja:314
@@ -620,6 +772,10 @@ msgstr ""
 
 #: template/page-docs.html.jinja:347
 msgid "Java"
+msgstr ""
+
+#: template/page-docs.html.jinja:361
+msgid "Intermediate Learning Sources"
 msgstr ""
 
 #: template/page-docs.html.jinja:378
@@ -1079,10 +1235,6 @@ msgstr ""
 msgid "Powerful Features"
 msgstr ""
 
-#: template/page-home.html.jinja:91
-msgid "Decentralized Exchange"
-msgstr ""
-
 #: template/page-home.html.jinja:92
 msgid ""
 "A high-performance decentralized peer-to-peer multi-currency exchange "
@@ -1113,10 +1265,6 @@ msgstr ""
 
 #: template/page-home.html.jinja:101
 msgid "Flexible options for custody and security of on-ledger accounts"
-msgstr ""
-
-#: template/page-home.html.jinja:103
-msgid "Tokens"
 msgstr ""
 
 #: template/page-home.html.jinja:104
@@ -1408,10 +1556,6 @@ msgstr ""
 
 #: template/page-tx-sender.html.jinja:20
 msgid "Transaction History"
-msgstr ""
-
-#: template/page-tx-sender.html.jinja:30
-msgid "Transaction Sender"
 msgstr ""
 
 #: template/page-tx-sender.html.jinja:33
@@ -1949,10 +2093,6 @@ msgstr ""
 msgid ""
 "Build services and tools that help prevent and combat fraudulent activity"
 " with the XRPL."
-msgstr ""
-
-#: template/page-uses.html.jinja:394
-msgid "Payments"
 msgstr ""
 
 #: template/page-uses.html.jinja:395
