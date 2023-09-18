@@ -89,6 +89,8 @@ https://xrpl.org/nft-fixed-supply.html
 https://xrpl.org/nft-apis.html
 https://xrpl.org/trust-lines-and-issuing.html
 https://xrpl.org/authorized-trust-lines.html
+https://xrpl.org/stablecoin-types.html
+https://xrpl.org/stablecoin-settings.html
 https://xrpl.org/stablecoin-issuer-configuration.html
 https://xrpl.org/stablecoin-issuer-precautions.html
 https://xrpl.org/stablecoin-issuer-compliance-guidelines.html
