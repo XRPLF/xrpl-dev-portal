@@ -22,7 +22,7 @@ To complete this tutorial, you should meet the following requirements:
 
 You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/desktop-js/). After a `npm install` in this directory you can run the application for each step as described in the `scripts` section of  `package.json`, e.g, `npm run ledger-index`.  
 
-**Caution:** As the source code is grouped into one folder for each step, you have to be careful should you copy-and-paste directly from there. Some shared imports and file operations have different directories in these examples. This goes for everything to do with `library`, `bootstrap`, and `WALLET_DIR`.
+**Caution:** Be careful if you copy-and-paste the source code from these directly from these files. The sample code is split up into different files per step, so some shared imports and files are in different directories in the examples. This especially applies to the `library`, `bootstrap`, and `WALLET_DIR` contents.
 
 ## Rationale
 
