@@ -1,6 +1,6 @@
 ---
 html: ticket.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: チケットは、将来使用するために確保されたアカウントのシーケンス番号を追跡します。
 labels:
   - トランザクション送信

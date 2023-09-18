@@ -1,6 +1,6 @@
 ---
 html: directorynode.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: 他のオブジェクトへのリンクを含みます。
 labels:
   - 分散型取引所

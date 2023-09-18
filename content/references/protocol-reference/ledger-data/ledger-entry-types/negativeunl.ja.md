@@ -1,6 +1,6 @@
 ---
 html: negativeunl.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: 現在オフラインと思われるバリデーターの一覧を表します。
 labels:
   - ブロックチェーン
@@ -62,6 +62,6 @@ _([NegativeUNL amendment][]によって追加されました。)_
 ```
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

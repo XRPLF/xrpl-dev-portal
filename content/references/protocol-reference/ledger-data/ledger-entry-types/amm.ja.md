@@ -1,6 +1,6 @@
 ---
 html: amm.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: 自動マーケットメーカー（AMM）インスタンスの定義と詳細。
 labels:
   - AMM

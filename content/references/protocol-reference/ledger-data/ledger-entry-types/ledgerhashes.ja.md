@@ -1,6 +1,6 @@
 ---
 html: ledgerhashes.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: 履歴検索用に以前のレジャーバージョンのハッシュをリスト表示します。
 labels:
   - ブロックチェーン

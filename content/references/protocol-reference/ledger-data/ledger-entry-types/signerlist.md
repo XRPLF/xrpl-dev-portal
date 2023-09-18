@@ -1,6 +1,6 @@
 ---
 html: signerlist.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: A list of addresses for multi-signing transactions.
 labels:
   - Security
@@ -10,7 +10,7 @@ labels:
 
 _(Added by the [MultiSign amendment][].)_
 
-The `SignerList` object type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a signer list using a [SignerListSet transaction][].
+A `SignerList` entry represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a signer list using a [SignerListSet transaction][].
 
 
 ## Example {{currentpage.name}} JSON
@@ -50,12 +50,11 @@ The `SignerList` object type represents a list of parties that, as a group, are 
 
 ## {{currentpage.name}} Fields
 
-A `SignerList` object has the following fields:
+In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
 
 | Name                | JSON Type | Internal Type | Required? | Description                |
 |:--------------------|:----------|:--------------|:----------|:---------------------------|
-| `Flags`             | Number    | UInt32        | Yes       | A bit-map of Boolean flags enabled for this signer list. For more information, see [SignerList Flags](#signerlist-flags). |
-| `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0053`, mapped to the string `SignerList`, indicates that this object is a SignerList object. |
+| `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0053`, mapped to the string `SignerList`, indicates that this is a SignerList ledger entry. |
 | `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
@@ -75,29 +74,31 @@ Each member of the `SignerEntries` field is an object that describes that signer
 | `SignerWeight`  | Number    | UInt16        | The weight of a signature from this signer. A multi-signature is only valid if the sum weight of the signatures provided meets or exceeds the signer list's `SignerQuorum` value. |
 | `WalletLocator` | String    | Hash256       | _(Optional)_ Arbitrary hexadecimal data. This can be used to identify the signer or for other, related purposes. _(Added by the [ExpandedSignerList amendment][].)_ |
 
-When processing a multi-signed transaction, the server looks up the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot object](accountroot.html), then only the [master private key](cryptographic-keys.html) associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.
+When processing a multi-signed transaction, the server looks up the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot ledger entry](accountroot.html), then only the [master private key](cryptographic-keys.html) associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.
 
 ## {{currentpage.name}} Flags
 
 _(Added by the [MultiSignReserve amendment][].)_
 
-SignerList objects can have the following flag value:
+SignerList entries can have the following value in the `Flags` field:
 
 | Flag Name          | Hex Value    | Decimal Value | Description              |
 |:-------------------|:-------------|:--------------|:-------------------------|
 | `lsfOneOwnerCount` | `0x00010000` | 65536         | If this flag is enabled, this SignerList counts as one item for purposes of the [owner reserve](reserves.html#owner-reserves). Otherwise, this list counts as N+2 items, where N is the number of signers it contains. This flag is automatically enabled if you add or update a signer list after the [MultiSignReserve amendment][] is enabled. |
 
+
 ## Signer Lists and Reserves
 
-A signer list contributes to its owner's [reserve requirement](reserves.html).
+A signer list contributes to its owner's [reserve requirement](reserves.html). Removing the signer list frees up the reserve.
 
-The [MultiSignReserve amendment][] (enabled 2019-04-17) made it so each signer list counts as one object, regardless of how many members it has. As a result, the owner reserve associated with a new signer list is 2 XRP.
+The [MultiSignReserve amendment][] (enabled 2019-04-17) made it so each signer list counts as one item, regardless of how many members it has. As a result, the owner reserve for any signer list added or updated after this time is {{target.owner_reserve}}.
 
-A signer list created before the [MultiSignReserve amendment][] itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with the signer list is anywhere from 3 times to 10 times the reserve required by a single trust line ([RippleState](ripplestate.html)) or [Offer](offer.html) object in the ledger. To update a signer list to use the new, reduced reserve, update the signer list by sending a [SignerListSet transaction][].
+A signer list created before the [MultiSignReserve amendment][] itself counts as two items towards the owner reserve, and each member of the list counts as one. As a result, the total owner reserve associated with an old signer list is anywhere from 3 times to 10 times as much as a new signer list. To update a signer list to use the new, reduced reserve, update the signer list by sending a [SignerListSet transaction][].
+
 
 ## SignerList ID Format
 
-The ID of a signer list object is the SHA-512Half of the following values, concatenated in order:
+The ID of a `SignerList` entry is the SHA-512Half of the following values, concatenated in order:
 
 * The RippleState space key (`0x0053`)
 * The AccountID of the owner of the signer list

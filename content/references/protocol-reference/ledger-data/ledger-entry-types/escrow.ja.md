@@ -1,6 +1,6 @@
 ---
 html: escrow-object.html #escrow.html is taken by the concept page
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: 条件付き決済のために保有されているXRPを含みます。
 labels:
   - Escrow

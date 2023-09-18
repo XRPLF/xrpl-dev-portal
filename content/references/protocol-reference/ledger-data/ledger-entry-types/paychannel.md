@@ -1,6 +1,6 @@
 ---
 html: paychannel.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: A channel for asynchronous XRP payments.
 labels:
   - Payment Channels
@@ -10,13 +10,8 @@ labels:
 
 _(Added by the [PayChan amendment][].)_
 
-The `PayChannel` object type represents a payment channel. Payment channels enable small, rapid off-ledger payments of XRP that can be later reconciled with the consensus ledger. A payment channel holds a balance of XRP that can only be paid out to a specific destination address until the channel is closed. Any unspent XRP is returned to the channel's owner (the source address that created and funded it) when the channel closes.
+A `PayChannel` entry represents a [payment channel](payment-channels.html).
 
-The [PaymentChannelCreate transaction][] type creates a `PayChannel` object. The [PaymentChannelFund][] and [PaymentChannelClaim transaction][] types modify existing `PayChannel` objects.
-
-When a payment channel expires, at first it remains on the ledger, because only new transactions can modify ledger contents. Transaction processing automatically closes a payment channel when any transaction accesses it after the expiration. To close an expired channel and return the unspent XRP to the owner, some address must send a new PaymentChannelClaim or PaymentChannelFund transaction accessing the channel.
-
-For an example of using payment channels, see the [Payment Channels Tutorial](use-payment-channels.html).
 
 ## Example {{currentpage.name}} JSON
 
@@ -44,7 +39,7 @@ For an example of using payment channels, see the [Payment Channels Tutorial](us
 
 ## {{currentpage.name}} Fields
 
-A `PayChannel` object has the following fields:
+In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
 
 | Name                | JSON Type | [Internal Type][] | Required? | Description            |
 |:--------------------|:----------|:------------------|:----------|:-----------------------|
@@ -54,20 +49,22 @@ A `PayChannel` object has the following fields:
 | `CancelAfter`       | Number    | UInt32            | No        | The immutable expiration time for this payment channel, in [seconds since the Ripple Epoch][]. This channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](ledger-header.html). This is optionally set by the transaction that created the channel, and cannot be changed. |
 | `Destination`       | String    | AccountID         | Yes       | The destination address for this payment channel. While the payment channel is open, this address is the only one that can receive XRP from the channel. This comes from the `Destination` field of the transaction that created the channel. |
 | `DestinationTag`    | Number    | UInt32            | No        | An arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
-| `DestinationNode`   | String    | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on payment channels created before enabling the [fixPayChanRecipientOwnerDir amendment][]. |
-| `Expiration`        | Number    | UInt32            | No        | The mutable expiration time for this payment channel, in [seconds since the Ripple Epoch][]. The channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](ledger-header.html). See [Setting Channel Expiration](#setting-channel-expiration) for more details. |
-| `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `PayChannel` objects. The value is always `0`. |
-| `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0078`, mapped to the string `PayChannel`, indicates that this object is a payment channel object. |
-| `OwnerNode`         | String    | UInt64            | Yes       | A hint indicating which page of the source address's owner directory links to this object, in case the directory consists of multiple pages. |
-| `PreviousTxnID`     | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number    | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
+| `DestinationNode`   | String    | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this entry, in case the directory consists of multiple pages. Omitted on payment channels created before enabling the [fixPayChanRecipientOwnerDir amendment][]. |
+| `Expiration`        | Number    | UInt32            | No        | The mutable expiration time for this payment channel, in [seconds since the Ripple Epoch][]. The channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](ledger-header.html). See [Channel Expiration](#channel-expiration) for more details. |
+| `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0078`, mapped to the string `PayChannel`, indicates that this is a payment channel entry. |
+| `OwnerNode`         | String    | UInt64            | Yes       | A hint indicating which page of the source address's owner directory links to this entry, in case the directory consists of multiple pages. |
+| `PreviousTxnID`     | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
+| `PreviousTxnLgrSeq` | Number    | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |
 | `PublicKey`         | String    | Blob              | Yes       | Public key, in hexadecimal, of the key pair that can be used to sign claims against this channel. This can be any valid secp256k1 or Ed25519 public key. This is set by the transaction that created the channel and must match the public key used in claims against the channel. The channel source address can also send XRP from this channel to the destination without signed claims. |
 | `SettleDelay`       | Number    | UInt32            | Yes       | Number of seconds the source address must wait to close the channel if it still has any XRP in it. Smaller values mean that the destination address has less time to redeem any outstanding claims after the source address requests to close the channel. Can be any value that fits in a 32-bit unsigned integer (0 to 2^32-1). This is set by the transaction that creates the channel. |
 | `SourceTag`         | Number    | UInt32            | No        | An arbitrary tag to further specify the source for this payment channel, such as a hosted recipient at the owner's address. |
 
-## Setting Channel Expiration
+## Channel Expiration
 
-The `Expiration` field of a payment channel is the mutable expiration time, in contrast to the immutable expiration time represented by the `CancelAfter` field. The expiration of a channel is always considered relative to the [`close_time` field](ledger-header.html) of the previous ledger. The `Expiration` field is omitted when a `PayChannel` object is created. There are several ways the `Expiration` field of a `PayChannel` object can be updated, which can be summarized as follows: a channel's source address can set the `Expiration` of the channel freely as long as the channel always remains open at least `SettleDelay` seconds after the first attempt to close it.
+The `Expiration` field of a payment channel is the mutable expiration time, in contrast to the immutable expiration time represented by the `CancelAfter` field. The expiration of a channel is always considered relative to the [`close_time` field](ledger-header.html) of the previous ledger. The `Expiration` field is omitted when a `PayChannel` entry is created. There are several ways the `Expiration` field of a `PayChannel` entry can be updated, which can be summarized as follows: a channel's source address can set the `Expiration` of the channel freely as long as the channel always remains open at least `SettleDelay` seconds after the first attempt to close it.
+
+When a payment channel expires, at first it remains on the ledger, because only new transactions can modify ledger contents. Transaction processing automatically closes a payment channel when any transaction accesses it after the expiration. To close an expired channel and return the unspent XRP to the owner, some address must send a new PaymentChannelClaim or PaymentChannelFund transaction accessing the channel.
+
 
 ### Source Address
 
@@ -94,9 +91,15 @@ The destination address cannot set the `Expiration` field. However, the destinat
 If any other address attempts to set an `Expiration` field, the transaction fails with the `tecNO_PERMISSION` error code. However, if the channel is already expired, the transaction causes the channel to close and results in `tesSUCCESS` instead.
 
 
+
+## {{currentpage.name}} Reserve
+
+`{{currentpage.name}}` entries count as one item towards the owner reserve of the account that created the payment channel, as long as the entry is in the ledger. Removing the channel frees up the reserve; this can only be done after the channel expires (including as a result of being explicitly closed).
+
+
 ## PayChannel ID Format
 
-The ID of a `PayChannel` object is the [SHA-512Half][] of the following values, concatenated in order:
+The ID of a `PayChannel` entry is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The PayChannel space key (`0x0078`)
 * The AccountID of the source account

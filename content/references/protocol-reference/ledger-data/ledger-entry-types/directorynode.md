@@ -1,6 +1,6 @@
 ---
 html: directorynode.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: Contains links to other objects.
 labels:
   - Data Retention
@@ -73,6 +73,16 @@ There are two kinds of Directories:
 | `TakerGetsIssuer`   | String    | Hash160           | No        | (Offer Directories only) The issuer of the `TakerGets` amount from the offers in this directory. |
 | `TakerPaysCurrency` | String    | Hash160           | No        |(Offer Directories only) The currency code of the `TakerPays` amount from the offers in this directory. |
 | `TakerPaysIssuer`   | String    | Hash160           | No        | (Offer Directories only) The issuer of the `TakerPays` amount from the offers in this directory. |
+
+
+## {{currentpage.name}} Flags
+
+There are no flags defined for `{{currentpage.name}}` entries.
+
+
+## {{currentpage.name}} Reserve
+
+`{{currentpage.name}}` entries do not require a reserve.
 
 
 ## Directory ID Formats

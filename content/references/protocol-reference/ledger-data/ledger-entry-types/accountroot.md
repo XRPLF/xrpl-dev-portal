@@ -1,6 +1,6 @@
 ---
 html: accountroot.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: The settings, XRP balance, and other metadata for one account.
 labels:
   - Accounts
@@ -34,7 +34,7 @@ An `AccountRoot` ledger entry type describes a single [account](accounts.html), 
 
 ## {{currentpage.name}} Fields
 
-An `AccountRoot` object has the following fields:
+In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
 
 | Field                         | JSON Type | [Internal Type][] | Required? | Description  |
 |:------------------------------|:----------|:------------------|:----------|:-------------|
@@ -46,7 +46,6 @@ An `AccountRoot` object has the following fields:
 | `Domain`                      | String    | Blob              | No        | A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. [Cannot be more than 256 bytes in length.](https://github.com/xrplf/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
 | `EmailHash`                   | String    | Hash128           | No        | The md5 hash of an email address. Clients can use this to look up an avatar through services such as [Gravatar](https://en.gravatar.com/). |
 | `FirstNFTokenSequence`        | Number    | UInt32            | No        | The account's [Sequence Number][] at the time it minted its first [non-fungible-token](non-fungible-tokens.html). _(Added by the [fixNFTokenRemint amendment][] :not_enabled:)_ |
-| [`Flags`](#accountroot-flags) | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this account. |
 | `LedgerEntryType`             | String    | UInt16            | Yes       | The value `0x0061`, mapped to the string `AccountRoot`, indicates that this is an AccountRoot object. |
 | `MessageKey`                  | String    | Blob              | No        | A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. |
 | `MintedNFTokens`              | Number    | UInt32            | No        | How many total [non-fungible tokens](non-fungible-tokens.html) have been minted by and on behalf of this account. _(Added by the [NonFungibleTokensV1_1 amendment][])_ |
@@ -83,20 +82,20 @@ Other than those exceptions, these accounts are like ordinary accounts; the LP T
 
 ## AccountRoot Flags
 
-There are several options which can be either enabled or disabled for an account. These options can be changed with an [AccountSet transaction][]. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with **`lsf`**.
+Many AccountRoot flags correspond to options you can change with an [AccountSet transaction][]. However, the bit values used in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with **`lsf`**.
 
-AccountRoot objects can have the following flag values:
+AccountRoot objects can have the following flags combined in the `Flags` field:
 
 | Flag Name                         | Hex Value    | Decimal Value | Corresponding [AccountSet Flag](accountset.html#accountset-flags) | Description |
 |-----------------------------------|--------------|-------------------|-----------------------------------|----|
-`lsfAllowTrustLineClawback`        | `0x80000000` | 2147483648        | `asfAllowTrustLineClawback`         | Enable [Clawback](clawing-back-tokens.html) for this account. | 
-|`lsfDefaultRipple`                | `0x00800000` | 8388608           | `asfDefaultRipple`                | Enable [rippling](rippling.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. |
+| `lsfAllowTrustLineClawback`       | `0x80000000` | 2147483648        | `asfAllowTrustLineClawback`       | Enable [Clawback](clawing-back-tokens.html) for this account. _(Requires the [Clawback amendment][].)_ |
+| `lsfDefaultRipple`                | `0x00800000` | 8388608           | `asfDefaultRipple`                | Enable [rippling](rippling.html) on this addresses's trust lines by default. Required for issuing addresses; discouraged for others. |
 | `lsfDepositAuth`                  | `0x01000000` | 16777216          | `asfDepositAuth`                  | This account has [DepositAuth](depositauth.html) enabled, meaning it can only receive funds from transactions it sends, and from [preauthorized](depositauth.html#preauthorization) accounts. _(Added by the [DepositAuth amendment][])_ |
 | `lsfDisableMaster`                | `0x00100000` | 1048576           | `asfDisableMaster`                | Disallows use of the master key to sign transactions for this account. |
-| `lsfDisallowIncomingCheck`        | `0x08000000` | 134217728         | `asfDisallowIncomingCheck`        | This account blocks incoming Checks. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
-| `lsfDisallowIncomingNFTokenOffer` | `0x04000000` | 67108864          | `asfDisallowIncomingNFTokenOffer` | This account blocks incoming NFTokenOffers. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
-| `lsfDisallowIncomingPayChan`      | `0x10000000` | 268435456         | `asfDisallowIncomingPayChan`      | This account blocks incoming Payment Channels. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
-| `lsfDisallowIncomingTrustline`    | `0x20000000` | 536870912         | `asfDisallowIncomingTrustline`    | This account blocks incoming trust lines. _(Requires the [DisallowIncoming amendment][] :not_enabled:.)_ |
+| `lsfDisallowIncomingCheck`        | `0x08000000` | 134217728         | `asfDisallowIncomingCheck`        | This account blocks incoming Checks. _(Added by the [DisallowIncoming amendment][].)_ |
+| `lsfDisallowIncomingNFTokenOffer` | `0x04000000` | 67108864          | `asfDisallowIncomingNFTokenOffer` | This account blocks incoming NFTokenOffers. _(Added by the [DisallowIncoming amendment][].)_ |
+| `lsfDisallowIncomingPayChan`      | `0x10000000` | 268435456         | `asfDisallowIncomingPayChan`      | This account blocks incoming Payment Channels. _(Added by the [DisallowIncoming amendment][].)_ |
+| `lsfDisallowIncomingTrustline`    | `0x20000000` | 536870912         | `asfDisallowIncomingTrustline`    | This account blocks incoming trust lines. _(Added by the [DisallowIncoming amendment][].)_ |
 | `lsfDisallowXRP`                  | `0x00080000` | 524288            | `asfDisallowXRP`                  | Client applications should not send XRP to this account. (Advisory; not enforced by the protocol.) |
 | `lsfGlobalFreeze`                 | `0x00400000` | 4194304           | `asfGlobalFreeze`                 | All assets issued by this account are frozen. |
 | `lsfNoFreeze`                     | `0x00200000` | 2097152           | `asfNoFreeze`                     | This account cannot freeze trust lines connected to it. Once enabled, cannot be disabled. |
@@ -104,10 +103,15 @@ AccountRoot objects can have the following flag values:
 | `lsfRequireAuth`                  | `0x00040000` | 262144            | `asfRequireAuth`                  | This account must individually approve other users for those users to hold this account's tokens. |
 | `lsfRequireDestTag`               | `0x00020000` | 131072            | `asfRequireDest`                  | Requires incoming payments to specify a Destination Tag. |
 
+## {{currentpage.name}} Reserve
 
-## AccountRoot ID Format
+The [reserve](reserves.html) for an AccountRoot entry is the base reserve, currently {{target.base_reserve}}, except in the case of a special AMM AccountRoot.
 
-The ID of an AccountRoot object is the [SHA-512Half][] of the following values, concatenated in order:
+This XRP cannot be sent to others but it can be burned as part of the [transaction cost][].
+
+## {{currentpage.name}} ID Format
+
+The ID of an AccountRoot entry is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The Account space key (`0x0061`)
 * The AccountID of the account

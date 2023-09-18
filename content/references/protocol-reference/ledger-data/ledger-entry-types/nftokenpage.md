@@ -1,13 +1,13 @@
 ---
 html: nftokenpage.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: Ledger structure for recording NFTokens.
 labels:
  - Non-fungible Tokens, NFTs
 ---
 # NFTokenPage
 
-The `NFTokenPage` object represents a collection of `NFToken` objects owned by the same account. An account can have multiple `NFTokenPage` ledger objects, which form a doubly linked list.
+The `NFTokenPage` object represents a collection of [NFTs](non-fungible-tokens.html) owned by the same account. An account can have multiple `NFTokenPage` entries, which form a doubly linked list.
 
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
@@ -39,14 +39,9 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 ```
 
 
-
-In the interest of minimizing the size of a page and optimizing storage, the `Owner` field is not present, since it is encoded as part of the object's ledger identifier.
-
-
 ## {{currentpage.name}} Fields
 
-An `NFTokenPage` object can have the following required and optional fields:
-
+In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
 
 | Field Name          | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------------|:----------|:------------------|:----------|:------------|
@@ -86,26 +81,28 @@ To add an `NFToken`, find the `NFTokenPage` it should be in (using the same tech
 Removing `NFToken` objects works like adding them. If the number of `NFToken` objects in the page goes below a certain threshold, the ledger combines the page with a previous or next page if possible.
 
 
-## Reserve for NFTokenPage objects
+## {{currentpage.name}} Reserve
 
-Each `NFTokenPage` counts as one item towards an account's [owner reserve](reserves.html#owner-reserves). Since each page can hold up to 32 `NFToken` entries, the _effective_ reserve cost per `NFToken` can be as low as _R_/32 where _R_ is the incremental reserve.
+Each `NFTokenPage` counts as one item towards its owner's [owner reserve](reserves.html#owner-reserves). Burning or trading away enough NFTs to remove the page frees up the reserve.
+
+Since each page can hold up to 32 entries, the _effective_ reserve cost per NFT can be as low as _R_/32 where _R_ is the incremental owner reserve for one item.
 
 ### The reserve in practice
 
-Because of the way splitting and combining pages works, the actual number of `NFToken` objects per page is somewhat unpredictable and depends on the actual `NFTokenID` values involved. In practice, after minting or receiving a large number of `NFToken` objects, each page can have as few as 16 `NFToken` objects, or as many as 32, with the typical case being around 24 `NFToken` objects per page.
+Because of the way splitting and combining pages works, the actual number of `NFToken` objects per page is somewhat unpredictable and depends on the actual `NFTokenID` values involved. In practice, after minting or receiving a large number of NFTs, each page can have as few as 16 items, or as many as 32, with the typical case being around 24 `NFToken` objects per page.
 
-Currently, the reserve per item is 2 XRP. The table below shows how much the **total owner reserve** is for various numbers of `NFToken` objects owned under various scenarios:
+Currently, the reserve per item is 2 XRP. The table below shows how much the **total owner reserve** is for various numbers of NFTs owned under various scenarios:
 
-| `NFTokens` Owned | Best Case | Typical | Worst Case |
-|:-----------------|:----------|:--------|:-----------|
-| 32 or fewer      | 2 XRP     | 2 XRP   | 2 XRP      |
-| 50               | 4 XRP     | 6 XRP   | 8 XRP      |
-| 200              | 14 XRP    | 18 XRP  | 26 XRP     |
-| 1000             | 64 XRP    | 84 XRP  | 126 XRP    |
+| NFTs Owned  | Best Case | Typical | Worst Case |
+|:------------|:----------|:--------|:-----------|
+| 32 or fewer | 2 XRP     | 2 XRP   | 2 XRP      |
+| 50          | 4 XRP     | 6 XRP   | 8 XRP      |
+| 200         | 14 XRP    | 18 XRP  | 26 XRP     |
+| 1000        | 64 XRP    | 84 XRP  | 126 XRP    |
 
 These numbers are estimates; the actual numbers may vary.
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

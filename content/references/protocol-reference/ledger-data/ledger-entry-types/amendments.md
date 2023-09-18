@@ -1,14 +1,14 @@
 ---
 html: amendments-object.html #amendments.html is taken by the concept page
-parent: ledger-object-types.html
-blurb: Singleton object with status of enabled and pending amendments.
+parent: ledger-entry-types.html
+blurb: Singleton ledger entry with status of enabled and pending amendments.
 labels:
   - Blockchain
 ---
 # Amendments
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L138-L144 "Source")
 
-The `Amendments` object type contains a list of [Amendments](amendments.html) that are currently active. Each ledger version contains **at most one** `Amendments` object.
+The `Amendments` ledger entry type contains a list of [Amendments](amendments.html) that are currently active. Each ledger version contains **at most one** `Amendments` entry.
 
 ## Example {{currentpage.name}} JSON
 
@@ -36,6 +36,8 @@ The `Amendments` object type contains a list of [Amendments](amendments.html) th
 
 ## {{currentpage.name}} Fields
 
+In addition to the [common fields](ledger-entry-common-fields.html), the `{{currentpage.name}}` ledger entry has the following fields:
+
 | Name              | JSON Type | [Internal Type][] | Required? | Description |
 |-------------------|-----------|-------------------|-----------|-------------|
 | `Amendments`      | Array     | Vector256         | No        | Array of 256-bit [amendment IDs](amendments.html) for all currently enabled amendments. If omitted, there are no enabled amendments. |
@@ -54,15 +56,25 @@ In the [amendment process](amendments.html#amendment-process), a consensus of va
 
 **Note:** Technically, all transactions in a ledger are processed based on which amendments are enabled in the ledger version immediately before it. While applying transactions to a ledger version where an amendment becomes enabled, the rules don't change mid-ledger. After the ledger is closed, the next ledger uses the new rules as defined by any new amendments that applied.
 
-## Amendments ID Format
+## {{currentpage.name}} Flags
 
-The `Amendments` object ID is the hash of the `Amendments` space key (`0x0066`) only. This means that the ID of the `Amendments` object in a ledger is always:
+There are no flags defined for the `{{currentpage.name}}` entry.
+
+
+## {{currentpage.name}} Reserve
+
+The `{{currentpage.name}}` entry does not require a reserve.
+
+
+## {{currentpage.name}} ID Format
+
+The ID of the `Amendments` entry is the hash of the `Amendments` space key (`0x0066`) only. This means that the ID is always:
 
 ```
 7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4
 ```
 
-(Don't mix up the ID of the `Amendments` ledger object type with the Amendment ID of an individual amendment.)
+(Don't mix up the ID of the `Amendments` ledger entry type with the Amendment ID of an individual amendment.)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

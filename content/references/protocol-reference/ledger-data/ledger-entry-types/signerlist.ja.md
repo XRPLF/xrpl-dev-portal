@@ -1,6 +1,6 @@
 ---
 html: signerlist.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: マルチシグトランザクションのアドレスのリストです。
 labels:
   - セキュリティ

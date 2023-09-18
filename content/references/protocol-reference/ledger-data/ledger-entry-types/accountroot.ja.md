@@ -1,6 +1,6 @@
 ---
 html: accountroot.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: あるアカウントの設定、XRP残高、その他のメタデータです。
 labels:
   - アカウント

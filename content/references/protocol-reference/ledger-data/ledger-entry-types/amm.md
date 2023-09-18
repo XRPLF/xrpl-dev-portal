@@ -1,6 +1,6 @@
 ---
 html: amm.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: The definition and details of an Automated Market Maker (AMM) instance.
 labels:
   - AMM
@@ -11,7 +11,7 @@ status: not_enabled
 
 _(Requires the [AMM amendment][] :not_enabled:)_
 
-The `AMM` object type describes a single [Automated Market Maker](automated-market-makers.html) (AMM) instance.
+An `AMM` ledger entry describes a single [Automated Market Maker](automated-market-makers.html) (AMM) instance. This is always paired with a [special AccountRoot entry](#special-amm-accountroot-objects).
 
 
 ## Example AMM JSON
@@ -69,7 +69,7 @@ The `AMM` object type describes a single [Automated Market Maker](automated-mark
 
 ## AMM Fields
 
-The `AMM` object has the following fields:
+In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
 
 | Field            | JSON Type           | [Internal Type][] | Required? | Description  |
 |:-----------------|:--------------------|:------------------|:----------|--------------|
@@ -103,13 +103,20 @@ The `VoteSlots` field contains an array of `VoteEntry` objects with the followin
 | `TradingFee`     | Number              | UInt16            | Yes       | The proposed trading fee, in units of 1/100,000; a value of 1 is equivalent to 0.001%. The maximum value is 1000, indicating a 1% fee. |
 | `VoteWeight`     | Number              | UInt32            | Yes       | The weight of the vote, in units of 1/100,000. For example, a value of 1234 means this vote counts as 1.234% of the weighted total vote. The weight is determined by the percentage of this AMM's LP Tokens the account owns. The maximum value is 100000. |
 
-## AMM Flags
 
-There are currently no flags defined for `AMM` objects.
+## {{currentpage.name}} Reserve
+
+`{{currentpage.name}}` entries do not require a reserve.
+
+
+## {{currentpage.name}} Flags
+
+There are no flags defined for `{{currentpage.name}}` entries.
+
 
 ## AMM ID Format
 
-The ID of an `AMM` object is the [SHA-512Half][] of the following values, concatenated in order:
+The ID of an `AMM` entry is the [SHA-512Half][] of the following values, concatenated in order:
 
 1. The `AMM` space key (`0x0041`)
 0. The AccountID of the first asset's issuer.

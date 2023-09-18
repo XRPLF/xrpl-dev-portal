@@ -1,9 +1,7 @@
 ---
-html: ledger-object-types.html
+html: ledger-entry-types.html
 parent: ledger-data-formats.html
 template: pagetype-category.html.jinja
-labels:
-  - Data Retention
 ---
 # Ledger Object Types
 

@@ -1,6 +1,6 @@
 ---
 html: ledgerhashes.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: Lists of prior ledger versions' hashes for history lookup.
 labels:
   - Blockchain
@@ -39,21 +39,24 @@ Example `LedgerHashes` object (trimmed for length):
 }
 ```
 
-A `LedgerHashes` object has the following fields:
+## {{currentpage.name}} Fields
+
+In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
 
 | Name                  | JSON Type        | [Internal Type][] | Required? | Description |
 |:----------------------|:-----------------|:------------------|:----------|:------------|
-| `FirstLedgerSequence` | Number           | UInt32            | Yes       | **DEPRECATED** Do not use. (The "recent hashes" object of the production XRP Ledger has the value `2` in this field as a result of a previous `rippled` software. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](parallel-networks.html) started with more recent versions of `rippled`.) |
-| `Flags`               | Number           | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `LedgerHashes` objects. The value is always `0`. |
+| `FirstLedgerSequence` | Number           | UInt32            | No        | **DEPRECATED** Do not use. (The "recent hashes" object on Mainnet has the value `2` in this field as a result of an old software bug. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](parallel-networks.html) started with more recent versions of `rippled`.) |
 | `Hashes`              | Array of Strings | Vector256         | Yes       | An array of up to 256 ledger hashes. The contents depend on which sub-type of `LedgerHashes` object this is. |
-| `LastLedgerSequence`  | Number           | UInt32            | Yes       | The [Ledger Index][] of the last entry in this object's `Hashes` array. |
+| `LastLedgerSequence`  | Number           | UInt32            | No        | The [Ledger Index][] of the last entry in this object's `Hashes` array. |
 | `LedgerEntryType`     | String           | UInt16            | Yes       | The value `0x0068`, mapped to the string `LedgerHashes`, indicates that this object is a list of ledger hashes. |
+
 
 ## Recent History LedgerHashes
 
 There is exactly one `LedgerHashes` object of the "recent history" sub-type in every ledger after the genesis ledger. This object contains the identifying hashes of the most recent 256 ledger versions (or fewer, if the ledger history has less than 256 ledgers total) in the `Hashes` array. Whenever a new ledger is closed, part of the process of closing it involves updating the "recent history" object with the hash of the previous ledger version this ledger version is derived from (also known as this ledger version's _parent ledger_). When there are more than 256 hashes, the oldest one is removed.
 
 Using the "recent history" `LedgerHashes` object of a given ledger, you can get the hash of any ledger index within the 256 ledger versions before the given ledger version.
+
 
 ## Previous History LedgerHashes
 
@@ -62,6 +65,12 @@ The "previous history" `LedgerHashes` entries collectively contain the hash of e
 **Note:** The oldest "previous history" `LedgerHashes` object contains only 255 entries because the genesis ledger has ledger index 1, not 0.
 
 The "previous history" `LedgerHashes` objects act as a [skip list](https://en.wikipedia.org/wiki/Skip_list) so you can get the hash of any historical flag ledger from its index. From there, you can use that flag ledger's "recent history" object to get the hash of any other ledger.
+
+
+## {{currentpage.name}} Flags
+
+There are no flags defined for `{{currentpage.name}}` entries.
+
 
 ## LedgerHashes ID Formats
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42)

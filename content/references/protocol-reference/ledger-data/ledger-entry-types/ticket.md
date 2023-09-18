@@ -1,6 +1,6 @@
 ---
 html: ticket.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: A Ticket tracks an account sequence number that has been set aside for future use.
 labels:
   - Transaction Sending
@@ -11,7 +11,7 @@ labels:
 
 _(Added by the [TicketBatch amendment][].)_
 
-The `Ticket` object type represents a [Ticket](tickets.html), which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][]. [New in: rippled 1.7.0][]
+A `Ticket` entry type represents a [Ticket](tickets.html), which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][].
 
 ## Example {{currentpage.name}} JSON
 
@@ -29,17 +29,27 @@ The `Ticket` object type represents a [Ticket](tickets.html), which tracks an ac
 
 ## {{currentpage.name}} Fields
 
-A `Ticket` object has the following fields:
+In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
 
 | Name                | JSON Type | Internal Type | Required? | Description                |
 |:--------------------|:----------|:--------------|:----------|:---------------------------|
 | `Account`           | String    | AccountID     | Yes       | The [account](accounts.html) that owns this Ticket. |
-| `Flags`             | Number    | UInt32        | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Ticket` objects. The value is always `0`. |
-| `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0054`, mapped to the string `Ticket`, indicates that this object is a {{currentpage.name}} object. |
-| `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
-| `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the [transaction](transactions.html) that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
+| `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0054`, mapped to the string `Ticket`, indicates that this is a {{currentpage.name}} entry. |
+| `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
+| `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the [transaction](transactions.html) that most recently modified this entry. |
+| `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |
 | `TicketSequence`    | Number    | UInt32        | Yes       | The [Sequence Number][] this Ticket sets aside. |
+
+
+## {{currentpage.name}} Reserve
+
+`{{currentpage.name}}` entries count as one item towards the owner reserve of the account that placed the created it, as long as the entry is in the ledger. Using the ticket frees up the reserve.
+
+
+## {{currentpage.name}} Flags
+
+There are no flags defined for `{{currentpage.name}}` entries.
+
 
 ## {{currentpage.name}} ID Format
 

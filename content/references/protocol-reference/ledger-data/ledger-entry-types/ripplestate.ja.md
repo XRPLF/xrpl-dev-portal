@@ -1,6 +1,6 @@
 ---
 html: ripplestate.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: 2つのアカウントをリンクし、それらのアカウント間の特定の通貨の残高を追跡します。トラストラインのコンセプトは、このオブジェクトタイプを抽象化することです。
 labels:
   - トークン

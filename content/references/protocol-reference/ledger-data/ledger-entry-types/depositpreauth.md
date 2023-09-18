@@ -1,6 +1,6 @@
 ---
 html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: A record of preauthorization for sending payments to an account that requires authorization.
 labels:
   - Security
@@ -8,7 +8,7 @@ labels:
 # DepositPreauth
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
 
-A `DepositPreauth` object tracks a preauthorization from one account to another. [DepositPreauth transactions][] create these objects.
+A `DepositPreauth` entry tracks a preauthorization from one account to another. [DepositPreauth transactions][] create these entries.
 
 This has no effect on processing of transactions unless the account that provided the preauthorization requires [Deposit Authorization](depositauth.html). In that case, the account that was preauthorized can send payments and other transactions directly to the account that provided the preauthorization. Preauthorizations are one-directional, and have no effect on payments going the opposite direction.
 
@@ -29,18 +29,25 @@ This has no effect on processing of transactions unless the account that provide
 
 ## {{currentpage.name}} Fields
 
-A `DepositPreauth` object has the following fields:
+In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
 
 | Field               | JSON Type        | [Internal Type][] | Required? | Description     |
 |:--------------------|:-----------------|:------------------|:----------|:----------------|
 | `Account`           | String           | Account           | Yes       | The account that granted the preauthorization. (The destination of the preauthorized payments.) |
 | `Authorize`         | String           | Account           | Yes       | The account that received the preauthorization. (The sender of the preauthorized payments.) |
-| `Flags`             | Number           | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `DepositPreauth` objects. The value is always `0`. |
 | `LedgerEntryType`   | String           | UInt16            | Yes       | The value `0x0070`, mapped to the string `DepositPreauth`, indicates that this is a DepositPreauth object. |
 | `OwnerNode`         | String           | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
 | `PreviousTxnID`     | String           | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number           | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 
+
+## {{currentpage.name}} Flags
+
+There are no flags defined for `{{currentpage.name}}` entries.
+
+## {{currentpage.name}} Reserve
+
+`{{currentpage.name}}` entries count as one item towards the owner reserve of the account that granted preauthorization, as long as the entry is in the ledger. Unauthorizing the counterparty frees up the reserve.
 
 ## DepositPreauth ID Format
 

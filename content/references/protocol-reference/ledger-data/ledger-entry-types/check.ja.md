@@ -1,6 +1,6 @@
 ---
 html: check.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: 送信先が清算して資金にできるCheckです。
 labels:
   - Checks

@@ -1,6 +1,6 @@
 ---
 html: nftokenpage.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: NFTokenを記録するためのレジャー構造。
 labels:
  - Non-fungible Tokens, NFTs
@@ -101,6 +101,6 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 | 1 XRP               | 1 XRP     | 0.125 XRP  | 0.0625 XRP  | 0.03125 XRP | 0.01562 XRP |
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

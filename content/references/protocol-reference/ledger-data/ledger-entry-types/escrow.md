@@ -1,6 +1,6 @@
 ---
 html: escrow-object.html #escrow.html is taken by the concept page
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: Contains XRP held for a conditional payment.
 labels:
   - Escrow
@@ -10,12 +10,7 @@ labels:
 
 _(Added by the [Escrow amendment][].)_
 
-The `Escrow` object type represents a held payment of XRP waiting to be executed or canceled. An [EscrowCreate transaction][] creates an `Escrow` object in the ledger. A successful [EscrowFinish][] or [EscrowCancel][] transaction deletes the object. If the ``Escrow`` object has a [_crypto-condition_](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02), the payment can only succeed if an EscrowFinish transaction provides the corresponding _fulfillment_ that satisfies the condition. (The only supported crypto-condition type is [PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1).) If the `Escrow` object has a `FinishAfter` time, the held payment can only execute after that time.
-
-An `Escrow` object is associated with two addresses:
-
-- The owner, who provides the XRP when creating the `Escrow` object. If the held payment is canceled, the XRP returns to the owner.
-- The destination, where the XRP is paid when the held payment succeeds. The destination can be the same as the owner.
+An `Escrow` ledger entry represents an [escrow](escrow.html), which holds XRP until specific conditions are met.
 
 ## Example {{currentpage.name}} JSON
 
@@ -41,33 +36,42 @@ An `Escrow` object is associated with two addresses:
 
 ## {{currentpage.name}} Fields
 
-An `Escrow` object has the following fields:
+In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
 
 | Name                | JSON Type | [Internal Type][] | Required? | Description            |
 |:--------------------|:----------|:------------------|:----------|:-----------------------|
-| `Account`           | String    | AccountID         | Yes       | The address of the owner (sender) of this held payment. This is the account that provided the XRP, and gets it back if the held payment is canceled. |
-| `Amount`            | String    | Amount            | Yes       | The amount of XRP, in drops, to be delivered by the held payment. |
-| `CancelAfter`       | Number    | UInt32            | No        | The held payment can be canceled if and only if this field is present _and_ the time it specifies has passed. Specifically, this is specified as [seconds since the Ripple Epoch][] and it "has passed" if it's earlier than the close time of the previous validated ledger. |
+| `Account`           | String    | AccountID         | Yes       | The address of the owner (sender) of this escrow. This is the account that provided the XRP, and gets it back if the escrow is canceled. |
+| `Amount`            | String    | Amount            | Yes       | The amount of XRP, in drops, currently held in the escrow. |
+| `CancelAfter`       | Number    | UInt32            | No        | The escrow can be canceled if and only if this field is present _and_ the time it specifies has passed. Specifically, this is specified as [seconds since the Ripple Epoch][] and it "has passed" if it's earlier than the close time of the previous validated ledger. |
 | `Condition`         | String    | Blob              | No        | A [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1), as hexadecimal. If present, the [EscrowFinish transaction][] must contain a fulfillment that satisfies this condition. |
-| `Destination`       | String    | AccountID         | Yes       | The destination address where the XRP is paid if the held payment is successful. |
+| `Destination`       | String    | AccountID         | Yes       | The destination address where the XRP is paid if the escrow is successful. |
 | `DestinationNode`   | String    | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on escrows created before enabling the [fix1523 amendment][]. |
-| `DestinationTag`    | Number    | UInt32            | No        | An arbitrary tag to further specify the destination for this held payment, such as a hosted recipient at the destination address. |
-| `FinishAfter`       | Number    | UInt32            | No        | The time, in [seconds since the Ripple Epoch][], after which this held payment can be finished. Any [EscrowFinish transaction][] before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.) |
-| `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Escrow` objects. The value is always `0`. |
-| `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0075`, mapped to the string `Escrow`, indicates that this object is an `Escrow` object. |
-| `OwnerNode`         | String    | UInt64            | Yes       | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
-| `PreviousTxnID`     | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number    | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
-| `SourceTag`         | Number    | UInt32            | No        | An arbitrary tag to further specify the source for this held payment, such as a hosted recipient at the owner's address. |
+| `DestinationTag`    | Number    | UInt32            | No        | An arbitrary tag to further specify the destination for this escrow, such as a hosted recipient at the destination address. |
+| `FinishAfter`       | Number    | UInt32            | No        | The time, in [seconds since the Ripple Epoch][], after which this escrow can be finished. Any [EscrowFinish transaction][] before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.) |
+| `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0075`, mapped to the string `Escrow`, indicates that this is an `Escrow` entry. |
+| `OwnerNode`         | String    | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this entry, in case the directory consists of multiple pages. |
+| `PreviousTxnID`     | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
+| `PreviousTxnLgrSeq` | Number    | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |
+| `SourceTag`         | Number    | UInt32            | No        | An arbitrary tag to further specify the source for this escrow, such as a hosted recipient at the owner's address. |
+
+
+## {{currentpage.name}} Flags
+
+There are no flags defined for `{{currentpage.name}}` entries.
+
+
+## {{currentpage.name}} Reserve
+
+`{{currentpage.name}}` entries count as one item towards the sender's owner reserve as long as the entry is in the ledger. Finishing or canceling the escrow frees up this reserve.
 
 
 ## Escrow ID Format
 
-The ID of an `Escrow` object is the [SHA-512Half][] of the following values, concatenated in order:
+The ID of an `Escrow` entry is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The Escrow space key (`0x0075`)
-* The AccountID of the sender of the [EscrowCreate transaction][] that created the `Escrow` object
-* The Sequence number of the [EscrowCreate transaction][] that created the `Escrow` object
+* The AccountID of the sender of the [EscrowCreate transaction][] that created the `Escrow` entry
+* The Sequence number of the [EscrowCreate transaction][] that created the `Escrow` entry
     If the EscrowCreate transaction used a [Ticket](tickets.html), use the `TicketSequence` value instead.
 
 <!--{# common link defs #}-->

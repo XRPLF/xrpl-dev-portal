@@ -1,6 +1,6 @@
 ---
 html: offer.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: 通貨取引を行う注文
 labels:
   - 分散型取引所

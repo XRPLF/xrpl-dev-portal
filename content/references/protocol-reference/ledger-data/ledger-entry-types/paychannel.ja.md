@@ -1,6 +1,6 @@
 ---
 html: paychannel.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: 非同期XRP支払い用のチャネルです。
 labels:
   - Payment Channel

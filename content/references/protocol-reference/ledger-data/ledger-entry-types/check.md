@@ -1,6 +1,6 @@
 ---
 html: check.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: A check that can be redeemed for money by its destination.
 labels:
   - Checks
@@ -10,7 +10,7 @@ labels:
 
 _(Added by the [Checks amendment][].)_
 
-A `Check` object describes a check, similar to a paper personal check, which can be cashed by its destination to get money from its sender. (The potential payment has already been approved by its sender, but no money moves until it is cashed. Unlike an [Escrow](escrow.html), the money for a Check is not set aside, so cashing the Check could fail due to lack of funds.)
+A `Check` entry describes a [check](checks.html), similar to a paper personal check, which can be cashed by its destination to get money from its sender.
 
 ## Example {{currentpage.name}} JSON
 
@@ -35,7 +35,7 @@ A `Check` object describes a check, similar to a paper personal check, which can
 
 ## {{currentpage.name}} Fields
 
-A `Check` object has the following fields:
+In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
 
 | Field               | JSON Type        | [Internal Type][] | Required? | Description     |
 |:--------------------|:-----------------|:------------------|:----------|:----------------|
@@ -44,10 +44,9 @@ A `Check` object has the following fields:
 | `DestinationNode`   | String           | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. |
 | `DestinationTag`    | Number           | UInt32            | No        | An arbitrary tag to further specify the destination for this Check, such as a hosted recipient at the destination address. |
 | `Expiration`        | Number           | UInt32            | No        | Indicates the time after which this Check is considered expired. See [Specifying Time][] for details. |
-| `Flags`             | Number           | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Check` objects. The value is always `0`. |
 | `InvoiceID`         | String           | Hash256           | No        | Arbitrary 256-bit hash provided by the sender as a specific reason or identifier for this Check. |
 | `LedgerEntryType`   | String           | UInt16            | Yes       | The value `0x0043`, mapped to the string `Check`, indicates that this object is a Check object. |
-| `OwnerNode`         | String           | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
+| `OwnerNode`         | String           | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String           | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number           | UInt32            | Yes       |The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `SendMax`           | String or Object | Amount            | Yes       | The maximum amount of currency this Check can debit the sender. If the Check is successfully cashed, the destination is credited in the same currency for up to this amount. |
@@ -55,14 +54,24 @@ A `Check` object has the following fields:
 | `SourceTag`         | Number           | UInt32            | No        | An arbitrary tag to further specify the source for this Check, such as a hosted recipient at the sender's address. |
 
 
+## {{currentpage.name}} Flags
+
+There are no flags defined for `{{currentpage.name}}` entries.
+
+
+## {{currentpage.name}} Reserve
+
+`{{currentpage.name}}` entries count as one item towards the owner reserve of the sender of the Check as long as the entry is in the ledger. This reserve is freed up when the check is cashed or canceled.
+
+
 ## Check ID Format
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
 
-The ID of a `Check` object is the [SHA-512Half][] of the following values, concatenated in order:
+The ID of a `Check` entry is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The Check space key (`0x0043`)
-* The AccountID of the sender of the [CheckCreate transaction][] that created the `Check` object
-* The `Sequence` number of the [CheckCreate transaction][] that created the `Check` object.
+* The AccountID of the sender of the [CheckCreate transaction][] that created the `Check`
+* The `Sequence` number of the [CheckCreate transaction][] that created the `Check`.
     If the CheckCreate transaction used a [Ticket](tickets.html), use the `TicketSequence` value instead.
 
 See the tutorial showing how to [Send a Check](send-a-check.html).

@@ -1,6 +1,6 @@
 ---
 html: nftokenoffer.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: NFTを売買するオファーを作成する。
 labels:
  - Non-fungible Tokens, NFTs
@@ -84,6 +84,6 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
