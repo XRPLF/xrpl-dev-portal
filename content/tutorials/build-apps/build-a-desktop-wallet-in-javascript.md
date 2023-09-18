@@ -588,7 +588,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 })
 ```
 
-Here we can observe a notable difference to the previous step. Until now we just used `ipcRenderer` to pick up on events from the main logic, now we are using it bidirectional to send events from the frontend to the main logic:
+Here is a notable difference from the previous step: previously we only used `ipcRenderer` to send events from the main logic to the frontend, but now we use it bidirectionally, also sending events from the frontend to the main logic:
 
 ```javascript
 onEnterAccountAddress: (address) => {
