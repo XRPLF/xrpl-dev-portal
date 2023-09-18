@@ -37,8 +37,7 @@ At the end of this tutorial, you will have built a JavaScript Wallet application
 
 ![Desktop wallet screenshot](img/javascript-wallet-preview.png)
 
-The look and feel of the user interface should be roughly the same regardless of operating system, as the Electron Framework allows us to write 
-cross-platform applications that are styled with HTML and CSS just like a web-based application.
+The look and feel of the user interface should be roughly the same regardless of operating system, as the Electron Framework allows us to write cross-platform applications that are styled with HTML and CSS just like a web-based application.
 
 The application we are going to build here will be capable of the following:
 
