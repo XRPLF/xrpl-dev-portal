@@ -8,10 +8,7 @@ blurb: Build a graphical desktop wallet for the XRPL using JavaScript.
 # Build a Desktop Wallet in JavaScript
 <!-- STYLE_OVERRIDE: wallet -->
 
-This tutorial demonstrates how to build a desktop wallet for the XRP Ledger using the JavaScript programming language, 
-the Electron Framework and various libraries. This application can be used as a starting point for building a more 
-complex and powerful application, as a reference point for building comparable apps, or as a learning experience to 
-better understand how to integrate XRP Ledger functionality into a larger project.
+This tutorial demonstrates how to build a desktop wallet for the XRP Ledger using the JavaScript programming language, the Electron Framework and various libraries. This application can be used as a starting point for building a more complex and powerful application, as a reference point for building comparable apps, or as a learning experience to better understand how to integrate XRP Ledger functionality into a larger project.
 
 ## Prerequisites
 
