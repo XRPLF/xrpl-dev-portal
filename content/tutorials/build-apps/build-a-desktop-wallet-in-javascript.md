@@ -16,7 +16,7 @@ To complete this tutorial, you should meet the following requirements:
 
 - You have [Node.js](https://nodejs.org/) 14+ installed.
 - You are somewhat familiar with modern JavaScript programming and have completed the [Get Started Using JavaScript tutorial](get-started-using-javascript.html).
-- You have at least some rough understanding of what the XRP Ledger, it's capabilities and of cryptocurrency in general. Ideally you have completed the [Basic XRPL guide](https://learn.xrpl.org/).
+- You have some understanding of the XRP Ledger, its capabilities, and of cryptocurrency in general. Ideally you have completed the [Basic XRPL guide](https://learn.xrpl.org/).
 
 ### Source Code
 
