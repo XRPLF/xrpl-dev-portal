@@ -1220,6 +1220,16 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/tokens/stablecoin-types.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/tokens/stablecoin-settings.md
+        targets:
+            - en
+            - ja
+
     -   md: concepts/tokens/stablecoin-issuer-configuration.md
         targets:
             - en
