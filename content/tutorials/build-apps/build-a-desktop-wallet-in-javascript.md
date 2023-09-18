@@ -46,7 +46,7 @@ The application we are going to build here will be capable of the following:
 - Sending [direct XRP payments](direct-xrp-payments.html), and providing feedback about the intended destination address, including:
     - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
     - If the address doesn't want to receive XRP ([`DisallowXRP` flag](become-an-xrp-ledger-gateway.html#disallow-xrp) enabled).
-    - If the address has a [verified domain name](https://xrpl.org/xrp-ledger-toml.html#account-verification) associated with it.
+    - If the address has a [verified domain name](xrp-ledger-toml.html#account-verification) associated with it.
 
 The application in this tutorial _doesn't_ have the ability to send or trade [tokens](issued-currencies.html) or 
 use other [payment types](payment-types.html) like [Escrow](https://xrpl.org/escrow.html) or [Payment Channels](https://xrpl.org/payment-channels.html). However, it provides a foundation 
