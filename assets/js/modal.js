@@ -2,14 +2,61 @@ $(document).ready(() => {
   const logos = {
     infrastructure: [
       "XRP-Ledger.png",
+      "Gatehub.png",
       "towoLabs.png",
       "xrpscan.png",
       "xrp-toolkit.png",
       "bithomp.png",
       "onthedex.png",
     ],
-    // "developer_tooling": ['logo3.png'],
+    developer_tooling: [
+      "blockforce.png",
+      "Evernode.png",
+      "threezy.png",
+      "tokenize.png",
+    ],
+    interoperability: ["Allbridge.png", "futureverse.png", "multichain.png"],
+    wallet: [
+      "Bitfrost.png",
+      "Crossmark.png",
+      "Edge.png",
+      "gem-wallet.png",
+      "Xumm.png",
+    ],
+    nfts: [
+      "aesthetes.png",
+      "audiotarky.png",
+      "nftmaster.png",
+      "peerkat.png",
+      "sologenic_dex.png",
+      "xrp-cafe.png",
+      "xrp-oval.png",
+    ],
+    exchanges: ["sologenic_dex.png", "XPMarket.png"],
+    gaming: [
+      "Forte.png",
+      "Futureverse.png",
+      "ledger-city.png",
+      "onXRP.png",
+      "styngr.png",
+    ],
+    security: ["Anchain.png"],
+    payments: ["ripple.png", "SuperMojo.png"],
+    cbdc: ["ripple.png"],
+    carbon_markets: ["carbonland-trust.png", "Rootmaker.png"],
+    other: ["casino-coin.png", "Momento.png"],
   };
+  // Helper function to create a logo element
+  function createLogoElement(logoSrc, title, id) {
+    const logoElem = document.createElement("img");
+    const src = `assets/img/uses/${id}/${logoSrc}`;
+    console.log({ src });
+    logoElem.src = src;
+    logoElem.alt = `${title} logo`;
+    logoElem.classList.add(`logo-item`);
+    logoElem.classList.add(`${logoSrc.replace(".png", "")}-logo`);
+    return logoElem;
+  }
   // Add two new constiables for arrow buttons
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
@@ -68,21 +115,73 @@ $(document).ready(() => {
     modalTextTitle.textContent = title;
     modalLogos.innerHTML = "";
     const logoArray = logos[id] || [];
-    // Set grid layout based on the number of logos
-    if (logoArray.length >= 3) {
-      modalLogos.style.display = "grid";
-      modalLogos.style.gridTemplateColumns = "repeat(2, 1fr)";
+    // Reset styles and classes for modalLogos
+    modalLogos.removeAttribute("style");
+    modalLogos.className = "";
+
+    if (logoArray.length > 0) {
+      const topRowDiv = document.createElement("div");
+      topRowDiv.className = "top-row";
+      const bottomRowDiv = document.createElement("div");
+      bottomRowDiv.className = "bottom-row";
+
+      if (logoArray.length === 7) {
+        // 4 on top, 3 on bottom
+        for (let i = 0; i < 4; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          topRowDiv.appendChild(logoElem);
+        }
+        for (let i = 4; i < 7; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          bottomRowDiv.appendChild(logoElem);
+        }
+      } else if (logoArray.length === 6) {
+        // Special case: 3 on top, 3 on bottom
+        for (let i = 0; i < 3; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          topRowDiv.appendChild(logoElem);
+        }
+        for (let i = 3; i < 6; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          bottomRowDiv.appendChild(logoElem);
+        }
+      } else if (logoArray.length === 5) {
+        // Special case: 3 on top, 2 on bottom
+        for (let i = 0; i < 3; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          topRowDiv.appendChild(logoElem);
+        }
+        for (let i = 3; i < 5; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          bottomRowDiv.appendChild(logoElem);
+        }
+        bottomRowDiv.style.justifyContent = "center"; // Center the logos
+      } else if (logoArray.length === 4) {
+        // Special case: 2 on top, 2 on bottom
+        for (let i = 0; i < 2; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          topRowDiv.appendChild(logoElem);
+        }
+        for (let i = 2; i < 4; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          bottomRowDiv.appendChild(logoElem);
+        }
+        bottomRowDiv.style.justifyContent = "center"; // Center the logos
+      } else {
+        // Default case
+        logoArray.forEach((logoSrc) => {
+          const logoElem = createLogoElement(logoSrc, title, id);
+          topRowDiv.appendChild(logoElem);
+        });
+      }
+
+      modalLogos.appendChild(topRowDiv);
+      if (bottomRowDiv.hasChildNodes()) {
+        modalLogos.appendChild(bottomRowDiv);
+      }
     } else {
-      modalLogos.style.display = "flex";
-      modalLogos.style.justifyContent = "center";
+      modalLogos.className = "flex-center";
     }
-    logoArray.forEach((logoSrc) => {
-      const logoElem = document.createElement('img');
-      logoElem.src = `assets/img/uses/infrastructure/${logoSrc}`;
-      logoElem.alt = `${title} logo`;
-      logoElem.classList.add('logo-item');
-      modalLogos.appendChild(logoElem);
-    });
     if (id === "infrastructure") {
       arrowContainer.style.justifyContent = "end";
     } else {
