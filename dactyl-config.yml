@@ -2434,18 +2434,18 @@ pages:
         targets:
             - ja
 
+        # TODO: translate
+    -   md: references/protocol-reference/ledger-data/ledger-entry-common-fields.md
+        targets:
+            - en
+            - ja
+
     -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.md
         targets:
             - en
 
     -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.ja.md
         targets:
-            - ja
-
-        # TODO: translate
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.md
-        targets:
-            - en
             - ja
 
         # redirect from old "ledger object types" URL

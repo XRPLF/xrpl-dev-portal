@@ -13,7 +13,7 @@ _(Requires the [AMM amendment][] :not_enabled:)_
 
 Create a new [Automated Market Maker](automated-market-makers.html) (AMM) instance for trading a pair of assets ([fungible tokens](tokens.html) or [XRP](xrp.html)).
 
-Creates both an [AMM object][] and a [special AccountRoot object](accountroot.html#special-amm-accountroot-objects) to represent the AMM. Also transfers ownership of the starting balance of both assets from the sender to the created `AccountRoot` and issues an initial balance of liquidity provider tokens (LP Tokens) from the AMM account to the sender.
+Creates both an [AMM entry][] and a [special AccountRoot entry](accountroot.html#special-amm-accountroot-entries) to represent the AMM. Also transfers ownership of the starting balance of both assets from the sender to the created `AccountRoot` and issues an initial balance of liquidity provider tokens (LP Tokens) from the AMM account to the sender.
 
 **Caution:** When you create the AMM, you should fund it with (approximately) equal-value amounts of each asset. Otherwise, other users can profit at your expense by trading with this AMM ([performing arbitrage](https://www.machow.ski/posts/an_introduction_to_automated_market_makers/#price-arbitrage)). The currency risk that liquidity providers take on increases with the volatility (potential for imbalance) of the asset pair. The higher the trading fee, the more it offsets this risk, so it's best to set the trading fee based on the volatility of the asset pair.
 

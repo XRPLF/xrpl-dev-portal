@@ -85,6 +85,7 @@
 {% if ledger_entry in ["amendments", "depositpreauth", "escrow"] %}
   {# objects where the naive URL is already taken #}
 [{{ledger_entry}} object]: {{ledger_entry|lower}}-object.html
+[{{ledger_entry}} entry]: {{ledger_entry|lower}}-object.html
   {% if target.lang == "ja" %}
 [{{ledger_entry}}オブジェクト]: {{ledger_entry|lower}}-object.html
 [{{ledger_entry}} オブジェクト]: {{ledger_entry|lower}}-object.html

@@ -61,7 +61,7 @@ In addition to the [common fields](ledger-entry-common-fields.html), `{{currentp
 | `WalletLocator`               | String    | Hash256           | No        | An arbitrary 256-bit value that users can set. |
 | `WalletSize`                  | Number    | UInt32            | No        | Unused. (The code supports this field but there is no way to set it.) |
 
-## Special AMM AccountRoot Objects
+## Special AMM AccountRoot Entries
 
 _(Requires the [AMM amendment][] :not_enabled:)_
 

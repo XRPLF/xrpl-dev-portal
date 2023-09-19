@@ -9,7 +9,7 @@ Each [ledger version](ledgers.html) in the XRP Ledger is made up of three parts:
 
 - **[Ledger Header](ledger-header.html)**: Data about this ledger version itself.
 - **[Transaction Set](transaction-formats.html)**: The transactions that were executed to create this ledger version.
-- **[State Data](ledger-entries.html)**: A list of ledger entries, representing all accounts, settings, and balances as of this ledger version. (This is also called the "account state".)
+- **[State Data](ledger-entry-types.html)**: A list of ledger entries, representing all accounts, settings, and balances as of this ledger version. (This is also called the "account state".)
 
 ## State Data
 
