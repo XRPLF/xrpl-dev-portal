@@ -79,7 +79,7 @@ Each unique NFT has up to two [directories](directorynode.html): one contains of
 
 The unique ID (`NFTokenOfferID`) of a `NFTokenOffer` object is the result of the following values concatenated in order:
 
-* The `NFTokenOffer` space key, `0x0074`;
+* The `NFTokenOffer` space key, `0x0037`;
 * The `AccountID` of the account placing the offer; and
 * The `Sequence` (or `Ticket`) of the `NFTokenCreateOffer` transaction that created the `NFTokenOffer`.
 
