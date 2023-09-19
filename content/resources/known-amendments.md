@@ -1140,7 +1140,7 @@ Without this amendment, a transaction is malleable if it uses a secp256k1 signat
 
 With this amendment, no single-signed transactions are malleable. ([Multi-signed transactions may still be malleable](transaction-malleability.html#malleability-with-multi-signatures) if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the `tfFullyCanonicalSig` flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.
 
-For more information, see [`rippled` issue #3042](https://github.com/ripple/rippled/issues/3042).
+For more information, see [`rippled` issue #3042](https://github.com/XRPLF/rippled/issues/3042).
 
 
 ### SHAMapV2

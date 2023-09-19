@@ -6,7 +6,7 @@ labels:
   - データ保持
 ---
 # node_to_shard
-[[ソース]](https://github.com/ripple/rippled/blob/develop/src/ripple/rpc/handlers/NodeToShard.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/rpc/handlers/NodeToShard.cpp "Source")
 
 `{{currentpage.name}}`メソッドは、レジャーストアから[シャードストア](history-sharding.html)へのデータコピーを管理します。データコピーの開始、停止、状態チェックが可能です。
 

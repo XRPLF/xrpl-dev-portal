@@ -103,7 +103,7 @@ _図5: バリデータによるトランザクションセットの提案と修�
 
 2. すべてのサーバーが同じ方法で処理できるように、合意済みのトランザクションセットを _正規順序_ で並べ変えます。
 
-   [正規順序](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/src/ripple/app/misc/CanonicalTXSet.cpp#L25-L36)は、トランザクションを受け取った順序ではありません（サーバーが同じトランザクションを異なる順序で受け取る可能性があるため）。参加者がトランザクションの順序付けで競合しないように、故意に操作するのが困難な正規順序を使います。
+   [正規順序](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/src/ripple/app/misc/CanonicalTXSet.cpp#L25-L36)は、トランザクションを受け取った順序ではありません（サーバーが同じトランザクションを異なる順序で受け取る可能性があるため）。参加者がトランザクションの順序付けで競合しないように、故意に操作するのが困難な正規順序を使います。
 
 3. 指示に従って、各トランザクションを順番に処理します。それに応じてレジャーの状態データを更新します。
 
@@ -211,6 +211,6 @@ XRP Ledgerに送信されたトランザクションはすぐには処理され�
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

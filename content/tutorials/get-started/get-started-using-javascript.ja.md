@@ -101,7 +101,7 @@ const xrpl = require("xrpl")
         const client = new xrpl.Client(MY_SERVER)
         await client.connect()
 
-    デフォルト値の詳細については、[コアサーバー設定ファイル](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562)の例を参照してください。
+    デフォルト値の詳細については、[コアサーバー設定ファイル](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562)の例を参照してください。
 
 * 利用可能な[公開サーバー][]を利用する:
 

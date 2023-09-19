@@ -7,7 +7,7 @@ labels:
 ---
 # OfferCancel
 
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelOffer.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CancelOffer.cpp "Source")
 
 An OfferCancel transaction removes an Offer object from the XRP Ledger.
 

@@ -7,7 +7,7 @@ labels:
   - Cross-Currency
 ---
 # book_offers
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")
 
 The `book_offers` method retrieves a list of [Offers](offers.html) between two currencies, also known as an _order book_. The response omits [unfunded Offers](offers.html#lifecycle-of-an-offer) and reports how much of each remaining Offer's total is currently funded.
 

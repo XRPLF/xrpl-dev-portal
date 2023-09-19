@@ -7,7 +7,7 @@ labels:
   - Core Server
 ---
 # consensus_info
-[[Source]](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
 
 The `consensus_info` command provides information about the [consensus process](consensus.html) for debugging purposes.
 

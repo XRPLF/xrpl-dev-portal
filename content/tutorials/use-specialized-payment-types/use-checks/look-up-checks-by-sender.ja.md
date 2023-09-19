@@ -13,7 +13,7 @@ _[Checks Amendment][]が必要です。_
 
 ## 1. 特定のアドレスのすべてのCheckの検索
 
-<!--{# TODO: Update if https://github.com/ripple/rippled/issues/2443 gets done #}-->
+<!--{# TODO: Update if https://github.com/XRPLF/rippled/issues/2443 gets done #}-->
 
 特定のアドレスで受信および送信されるすべてのCheckのリストを取得するには、送金元アカウントのアドレスを指定した`account_objects`コマンドを実行し、要求の`type` フィールドを`checks`に設定します。
 

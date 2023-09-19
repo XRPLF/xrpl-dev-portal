@@ -102,7 +102,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
         final HttpUrl rippledUrl = HttpUrl.get("http://localhost:5005/");
         XrplClient xrplClient = new XrplClient(rippledUrl);
 
-    See the example [core server config file](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
+    See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
 
 * By using one of the available [public servers][]:
 
@@ -174,10 +174,10 @@ You should see output similar to this example:
 Running the GetAccountInfo sample...
 Constructing an XrplClient connected to https://s.altnet.rippletest.net:51234/
 Generated KeyPair: KeyPair{
-  privateKey=PrivateKey{value=[redacted], destroyed=false}, 
-  publicKey=PublicKey{value=UnsignedByteArray{unsignedBytes=List(size=33)}, 
-  base58Value=aKGgrZL2WTc85HJSkQGuKfinem5oMH1uCJankSWFATGUhqvygxir, 
-  base16Value=EDFB1073327CCBDA342AD685AF1C04530294866B9CB10C21126DC004BFDBA287D1, 
+  privateKey=PrivateKey{value=[redacted], destroyed=false},
+  publicKey=PublicKey{value=UnsignedByteArray{unsignedBytes=List(size=33)},
+  base58Value=aKGgrZL2WTc85HJSkQGuKfinem5oMH1uCJankSWFATGUhqvygxir,
+  base16Value=EDFB1073327CCBDA342AD685AF1C04530294866B9CB10C21126DC004BFDBA287D1,
   keyType=ED25519
   }
 }
@@ -185,20 +185,20 @@ Classic Address: rBXHGshqXu3Smy9FUsQTmo49bGpQUQEm3X
 X-Address: T7yMiiJJCmgY2yg5WB2davUedDeBFAG5B8r9KHjKCxDdvv3
 Funded the account using the Testnet faucet.
 AccountInfoResult{
-  status=success, 
+  status=success,
   accountData=AccountRootObject{
-    ledgerEntryType=ACCOUNT_ROOT, 
-    account=rDNwS2t4afhBogKqSFFmsDi1k7gmeGhz4p, 
-    balance=10000000000, 
-    flags=0, 
+    ledgerEntryType=ACCOUNT_ROOT,
+    account=rDNwS2t4afhBogKqSFFmsDi1k7gmeGhz4p,
+    balance=10000000000,
+    flags=0,
     ownerCount=0,
-    previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000, 
-    previousTransactionLedgerSequence=0, 
-    sequence=37649083, 
+    previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000,
+    previousTransactionLedgerSequence=0,
+    sequence=37649083,
     signerLists=[],
     index=F607809578C2A413774B9A240480B8B7B10C3E296CA609337D2F41813F566B92
-  }, 
-  ledgerCurrentIndex=37649083, 
+  },
+  ledgerCurrentIndex=37649083,
   validated=false
 }
 ```

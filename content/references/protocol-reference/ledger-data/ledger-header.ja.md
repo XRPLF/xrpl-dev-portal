@@ -7,7 +7,7 @@ labels:
   - ブロックチェーン
 ---
 # レジャーヘッダー
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
 
 すべてのレジャーバージョンには、その内容を記述する一意のヘッダーが含まれています。[ledgerメソッド][]を使用してレジャーのヘッダー情報を検索できます。レジャーヘッダーの内容を以下に示します。
 
@@ -43,6 +43,6 @@ labels:
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

@@ -7,7 +7,7 @@ labels:
 ---
 # AccountDelete
 
-[[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/DeleteAccount.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/DeleteAccount.cpp "Source")
 
 _Added by the [DeletableAccounts amendment](known-amendments.html#deletableaccounts)_
 

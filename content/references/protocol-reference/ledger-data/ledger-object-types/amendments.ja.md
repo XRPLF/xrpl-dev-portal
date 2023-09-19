@@ -6,7 +6,7 @@ labels:
   - ブロックチェーン
 ---
 # Amendments
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")
 
 `Amendments`オブジェクトタイプには、現在アクティブな[Amendment](amendments.html)のリストが含まれています。各レジャーバージョンには**最大で1つの** `Amendments`オブジェクトが含まれています。
 
@@ -65,6 +65,6 @@ labels:
 （`Amendments`レジャーオブジェクトタイプのIDと、個々のAmendmentのAmendment IDを混同しないでください。）
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

@@ -6,7 +6,7 @@ labels:
   - コアサーバー
 ---
 # peer_reservations_list
-[[ソース]](https://github.com/ripple/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116 "Source")
 
 `{{currentpage.name}}`メソッドは、[ピアリザベーション][]を一覧表示します。[新規: rippled 1.4.0][]
 

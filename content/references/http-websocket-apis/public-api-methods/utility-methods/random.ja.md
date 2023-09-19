@@ -6,7 +6,7 @@ labels:
   - コアサーバー
 ---
 # random
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp "Source")
 
 `random`コマンドは、クライアントが乱数生成のエントロピー生成源として使用する乱数を提供します。
 
@@ -92,6 +92,6 @@ rippled random
 * `internal` - 乱数生成機能に関連している可能性がある内部エラーが発生しました。
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

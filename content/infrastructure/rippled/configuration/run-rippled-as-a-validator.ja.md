@@ -36,7 +36,7 @@ top_nav_name: UNLに参加しよう
 
 - **合意**
 
-  優れたバリデータの投票は、可能な限り高い頻度で、コンセンサスプロセスの結果と合致します。これに該当しない場合は、バリデータのソフトウェアが最新のものではないか、不具合があるか、意図的な偏りがあることを示唆している可能性があります。常に[最新の`rippled`リリース](https://github.com/ripple/rippled/tree/master)を、修正を加えることなく実行します。新規リリースについて知るために、[`rippled`のリリースを確認](https://github.com/ripple/rippled/releases)してください。
+  優れたバリデータの投票は、可能な限り高い頻度で、コンセンサスプロセスの結果と合致します。これに該当しない場合は、バリデータのソフトウェアが最新のものではないか、不具合があるか、意図的な偏りがあることを示唆している可能性があります。常に[最新の`rippled`リリース](https://github.com/XRPLF/rippled/tree/master)を、修正を加えることなく実行します。新規リリースについて知るために、[`rippled`のリリースを確認](https://github.com/XRPLF/rippled/releases)してください。
 
 - **適時の投票**
 
@@ -46,7 +46,7 @@ top_nav_name: UNLに参加しよう
 
   優れたバリデータには、身元が明確な所有者が存在します。[ドメイン検証](#6-ドメイン検証の提供)を提供することは、その第一歩になります。XRP LedgerネットワークのUNLに、多くの法的な管轄域および地域のさまざまな所有者によって運営されているバリデータが含まれていると理想的です。結果として、信頼できるバリデータの公正な運用が地域特有の事象によって損なわれるおそれが低減されます。
 
-Ripple社は、推奨される一連のバリデータを記載した[バリデータリスト](https://github.com/ripple/rippled/blob/develop/cfg/validators-example.txt)を公開しています。本番環境のサーバーでは、このリストを使用することを強くお勧めします。
+Ripple社は、推奨される一連のバリデータを記載した[バリデータリスト](https://github.com/XRPLF/rippled/blob/develop/cfg/validators-example.txt)を公開しています。本番環境のサーバーでは、このリストを使用することを強くお勧めします。
 
 
 
@@ -143,7 +143,7 @@ Ripple社は、推奨される一連のバリデータを記載した[バリデ�
 
 この構成では、[検出されたピア](peer-protocol.html#ピアの検出)を使用してバリデータをXRP Ledgerネットワークに接続します。これは`rippled`サーバーのデフォルトの動作です。
 
-_**検出されたピアを使用してバリデータをXRP Ledgerネットワークに接続するには、**_ バリデータの`rippled.cfg`ファイルで`[peer_private]`スタンザを省略するか、それを`0`に設定します。この構成の[サンプルのrippled.cfgファイル](https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg)が提供されています。
+_**検出されたピアを使用してバリデータをXRP Ledgerネットワークに接続するには、**_ バリデータの`rippled.cfg`ファイルで`[peer_private]`スタンザを省略するか、それを`0`に設定します。この構成の[サンプルのrippled.cfgファイル](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg)が提供されています。
 
 
 ### プロキシを使用した接続
@@ -306,6 +306,6 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

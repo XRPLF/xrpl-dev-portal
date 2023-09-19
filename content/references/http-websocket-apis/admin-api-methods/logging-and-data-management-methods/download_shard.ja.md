@@ -6,7 +6,7 @@ labels:
   - データ保持
 ---
 # download_shard
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp "Source")
 
 サーバーに対し、外部ソースから特定の[履歴レジャーデータのシャード](history-sharding.html)をダウンロードするように指示します。`rippled`サーバーで[履歴シャードが保管されるように設定する](configure-history-sharding.html)必要があります。[新規: rippled 1.1.0][]
 

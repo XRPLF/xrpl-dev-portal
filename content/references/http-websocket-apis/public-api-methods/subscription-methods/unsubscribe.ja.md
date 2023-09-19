@@ -9,7 +9,7 @@ labels:
   - スマートコントラクト
 ---
 # unsubscribe
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")
 
 `unsubscribe`コマンドはサーバーに対して、特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。
 

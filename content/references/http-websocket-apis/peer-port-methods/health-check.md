@@ -6,7 +6,7 @@ labels:
   - Core Server
 ---
 # Health Check
-[[Source]](https://github.com/ripple/rippled/blob/de0c52738785de8bf837f9124da65c7905e7bb5a/src/ripple/overlay/impl/OverlayImpl.cpp#L1084-L1168 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/de0c52738785de8bf837f9124da65c7905e7bb5a/src/ripple/overlay/impl/OverlayImpl.cpp#L1084-L1168 "Source")
 
 The Health Check is a special [peer port method](peer-port-methods.html) for reporting on the health of an individual `rippled` server. This method is intended for use in automated monitoring to recognize outages and prompt automated or manual interventions such as restarting the server. [New in: rippled 1.6.0][]
 

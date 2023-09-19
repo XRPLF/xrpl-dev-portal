@@ -35,7 +35,7 @@ XRP Ledgerの発行済み通貨は、以下の精度のカスタムフォーマ�
 * 10進15桁の精度
 
 ## 発行済み通貨の計算
-[[ソース]](https://github.com/ripple/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "Source")
 
 ![発行済み通貨額フォーマットの図](img/currency-number-format.ja.png)
 

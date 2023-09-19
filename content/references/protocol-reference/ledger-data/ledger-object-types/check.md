@@ -6,7 +6,7 @@ labels:
   - Checks
 ---
 # Check
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
 
 _(Added by the [Checks amendment][].)_
 
@@ -56,7 +56,7 @@ A `Check` object has the following fields:
 
 
 ## Check ID Format
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
 
 The ID of a `Check` object is the [SHA-512Half][] of the following values, concatenated in order:
 
@@ -68,6 +68,6 @@ The ID of a `Check` object is the [SHA-512Half][] of the following values, conca
 See the tutorial showing how to [Send a Check](send-a-check.html).
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

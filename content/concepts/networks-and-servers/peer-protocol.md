@@ -17,11 +17,11 @@ The peer protocol is the main mode of communication between servers in the XRP L
 - Requesting ledger data from historical ledgers, or providing that data.
 - Proposing a set of transactions for consensus, or sharing the calculated outcome of applying a consensus transaction set.
 
-To set up a peer-to-peer connection, one server connects to another using HTTPS and requests an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to switch to the `XRPL/2.0` protocol (formerly `RTXP/1.2`). (For more information, see the [Overlay Network](https://github.com/ripple/rippled/blob/96bbabbd2ece106779bb544aa0e4ce174e99fdf6/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
+To set up a peer-to-peer connection, one server connects to another using HTTPS and requests an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to switch to the `XRPL/2.0` protocol (formerly `RTXP/1.2`). (For more information, see the [Overlay Network](https://github.com/XRPLF/rippled/blob/96bbabbd2ece106779bb544aa0e4ce174e99fdf6/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
 
 ## Peer Discovery
 
-The XRP Ledger uses a "gossip" protocol to help find servers find others to connect to in the XRP Ledger network. Whenever a server starts up, it reconnects to any other peers it previously connected to. As a fallback, it uses the [hardcoded public hubs](https://github.com/ripple/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525). After a server successfully connects to a peer, it asks that peer for the contact information (generally, IP address and port) of other XRP Ledger servers that may also be seeking peers. The server can then connect to those servers, and ask them for the contact information of yet more XRP Ledger servers to peer with. Through this process, the server makes enough peer connections that it can remain reliably connected to the rest of the network even if it loses a connection to any single peer.
+The XRP Ledger uses a "gossip" protocol to help find servers find others to connect to in the XRP Ledger network. Whenever a server starts up, it reconnects to any other peers it previously connected to. As a fallback, it uses the [hardcoded public hubs](https://github.com/XRPLF/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525). After a server successfully connects to a peer, it asks that peer for the contact information (generally, IP address and port) of other XRP Ledger servers that may also be seeking peers. The server can then connect to those servers, and ask them for the contact information of yet more XRP Ledger servers to peer with. Through this process, the server makes enough peer connections that it can remain reliably connected to the rest of the network even if it loses a connection to any single peer.
 
 Typically, a server needs to connect to a public hub only once, for a short amount of time, to find other peers. After doing so, the server may or may not remain connected to the hub, depending on how stable its network connection is, how busy the hub is, and how many other high-quality peers the server finds. The server saves the addresses of these other peers so it can try reconnecting directly to those peers later, after a network outage or a restart.
 
@@ -36,7 +36,7 @@ To participate in the XRP Ledger, `rippled` servers connect to arbitrary peers u
 
 Ideally, the server should be able to send _and_ receive connections on the peer port. You should [forward the port used for the peer protocol through your firewall](forward-ports-for-peering.html) to the `rippled` server.
 
-IANA [has assigned port **2459**](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=2459) for the XRP Ledger peer protocol, but for compatibility with legacy systems, the [default `rippled` config file](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg) listens for incoming peer protocol connections on **port 51235** on all network interfaces. If you run a server, you can configure which port(s) your server listens on using the `rippled.cfg` file.
+IANA [has assigned port **2459**](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=2459) for the XRP Ledger peer protocol, but for compatibility with legacy systems, the [default `rippled` config file](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg) listens for incoming peer protocol connections on **port 51235** on all network interfaces. If you run a server, you can configure which port(s) your server listens on using the `rippled.cfg` file.
 
 Example:
 
@@ -172,6 +172,6 @@ To configure your server as a private server, set the `[peer_private]` setting t
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

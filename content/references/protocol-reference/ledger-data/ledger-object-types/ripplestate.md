@@ -6,7 +6,7 @@ labels:
   - Tokens
 ---
 # RippleState
-[[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
 
 The `RippleState` object type connects two accounts in a single currency. Conceptually, a `RippleState` object represents two [trust lines](trust-lines-and-issuing.html) between the accounts, one from each side. Each account can change the settings for its side of the `RippleState` object, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist, so `rippled` deletes `RippleState` objects when their properties are entirely default.
 
@@ -116,6 +116,6 @@ The ID of a RippleState object is the [SHA-512Half][] of the following values, c
 * The 160-bit currency code of the trust line(s)
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

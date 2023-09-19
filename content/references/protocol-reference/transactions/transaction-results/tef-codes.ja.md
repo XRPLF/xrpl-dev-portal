@@ -17,14 +17,14 @@ labels:
 | `tefBAD_ADD_AUTH` | **廃止予定。** |
 | `tefBAD_AUTH` | このアカウントの署名に使用したキーには、このアカウントを変更する権限がありません。（このアカウントが[レギュラーキー](cryptographic-keys.html)として同じキーセットを持っている場合は変更が承認される可能性があります。） |
 | `tefBAD_AUTH_MASTER` | このトランザクションを承認するために指定された1つの署名がマスターキーと一致していませんが、このアドレスに関連付けられているレギュラーキーもありません。 |
-| `tefBAD_LEDGER` | トランザクションの処理中に、レジャーが予期しない状態にあることが検出されました。このエラーを再現できる場合は、修正のため[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
+| `tefBAD_LEDGER` | トランザクションの処理中に、レジャーが予期しない状態にあることが検出されました。このエラーを再現できる場合は、修正のため[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
 | `tefBAD_QUORUM` | トランザクションは[マルチシグ](multi-signing.html)トランザクションでしたが、そこに含まれるすべての署名の重みの合計が定数を満たしていません。 |
 | `tefBAD_SIGNATURE` | トランザクションは[マルチシグ](multi-signing.html)トランザクションでしたが、送信側アカウントに関連付けられているSignerListにないアドレスの署名が含まれていました。 |
 | `tefCREATED` | **廃止予定。** |
-| `tefEXCEPTION` | トランザクションの処理中に、サーバーが予期しない状態になりました。この状態は、予期しない入力（トランザクションのバイナリーデータの形式が大幅に誤っている場合など）が原因となった可能性があります。このエラーを再現できる場合は、修正のため[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
+| `tefEXCEPTION` | トランザクションの処理中に、サーバーが予期しない状態になりました。この状態は、予期しない入力（トランザクションのバイナリーデータの形式が大幅に誤っている場合など）が原因となった可能性があります。このエラーを再現できる場合は、修正のため[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
 | `tefFAILURE` | トランザクション適用中の不明な障害。 |
-| `tefINTERNAL` | トランザクションの適用を試みた際に、サーバーが予期しない状態になりました。このエラーを再現できる場合は、修正のため[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
-| `tefINVARIANT_FAILED` | [トランザクションコスト](transaction-cost.html)を請求しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]が必要です。このエラーを再現できる場合は、[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
+| `tefINTERNAL` | トランザクションの適用を試みた際に、サーバーが予期しない状態になりました。このエラーを再現できる場合は、修正のため[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
+| `tefINVARIANT_FAILED` | [トランザクションコスト](transaction-cost.html)を請求しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]が必要です。このエラーを再現できる場合は、[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
 | `tefMASTER_DISABLED` | トランザクションはアカウントのマスターキーで署名されていましたが、アカウントに`lsfDisableMaster`フィールドが設定されていました。 |
 | `tefMAX_LEDGER` | トランザクションには[`LastLedgerSequence`](reliable-transaction-submission.html#lastledgersequence)パラメーターが指定されていましたが、現在のレジャーのシーケンス番号はすでに指定値を上回っています。 |
 | `tefNO_AUTH_REQUIRED` | [TrustSetトランザクション][]がトラストラインを承認済みとしてマークしようとしましたが、対応するアカウントに対して`lsfRequireAuth`フラグが有効になっていないため、承認は不要です。 |

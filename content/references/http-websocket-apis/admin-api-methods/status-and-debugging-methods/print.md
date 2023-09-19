@@ -6,7 +6,7 @@ labels:
   - Core Server
 ---
 # print
-[[Source]](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")
 
 The `print` command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.
 
