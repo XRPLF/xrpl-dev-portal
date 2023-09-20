@@ -6,7 +6,7 @@ labels:
   - 分散型取引所
 ---
 # Offer
-[[ソース]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
 
 台帳の`Offer`項目は、XRP Ledgerの[分散型取引所](decentralized-exchange.html)で通貨を交換する[オファー](offers.html)を表しています。（金融ではより伝統的に _オーダー_ として知られています）。[OfferCreateトランザクション][]は台帳にある他のOfferを全額約定できない場合、台帳に`Offer`項目を作成します。
 
@@ -78,6 +78,6 @@ labels:
     OfferCreateトランザクションが[Ticket](tickets.html)を使用した場合、代わりに`TicketSequence`値を使用します。
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

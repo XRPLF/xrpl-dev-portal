@@ -6,7 +6,7 @@ labels:
   - セキュリティ
 ---
 # DepositPreauth
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/DepositPreauth.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DepositPreauth.cpp "Source")
 
 _[DepositPreauth Amendment][]が必要です。_
 

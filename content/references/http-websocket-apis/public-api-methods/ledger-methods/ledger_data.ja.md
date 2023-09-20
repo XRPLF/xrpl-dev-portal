@@ -7,7 +7,7 @@ label:
   - データ保持
 ---
 # ledger_data
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerData.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerData.cpp "Source")
 
 `ledger_data`メソッドは指定されたレジャーの内容を取得します。1つのレジャーバージョンの内容全体を取得するため、複数のコールを繰り返し実行できます。
 

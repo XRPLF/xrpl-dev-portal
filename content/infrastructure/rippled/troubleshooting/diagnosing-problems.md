@@ -89,7 +89,7 @@ For troubleshooting purposes, the most important fields are (from most commonly 
 
     - If you have 0 peers, your server may be unable to contact the network, or your system clock may be wrong. (Ripple recommends running an [NTP](http://www.ntp.org/) daemon on all servers to keep their clocks synced.)
 
-    - If you have exactly 10 peers, that may indicate that your `rippled` is unable to receive incoming connections through a router using [NAT](https://en.wikipedia.org/wiki/Network_address_translation). You can improve connectivity by configuring your router's firewall to forward the port used for peer-to-peer connections (port 51235 [by default](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1065)).
+    - If you have exactly 10 peers, that may indicate that your `rippled` is unable to receive incoming connections through a router using [NAT](https://en.wikipedia.org/wiki/Network_address_translation). You can improve connectivity by configuring your router's firewall to forward the port used for peer-to-peer connections (port 51235 [by default](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1065)).
 
 ### No Response from Server
 
@@ -113,7 +113,7 @@ This generally indicates one of several problems:
 
 ## Check the server log
 
-[By default,](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142) `rippled` writes the server's debug log to the file `/var/log/rippled/debug.log`. The location of the debug log can differ based on your server's config file. If you start the `rippled` service directly (instead of using `systemctl` or `service` to start it), it also prints log messages to the console by default.
+[By default,](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142) `rippled` writes the server's debug log to the file `/var/log/rippled/debug.log`. The location of the debug log can differ based on your server's config file. If you start the `rippled` service directly (instead of using `systemctl` or `service` to start it), it also prints log messages to the console by default.
 
 The default config file sets the log level to severity "warning" for all categories of log messages by internally using the [log_level method][] during startup. You can control the verbosity of the debug log [using the `--silent` commandline option during startup](commandline-usage.html#verbosity-options) and with the [log_level method][] while the server is running. (See the `[rpc_startup]` stanza of the config file for settings.)
 
@@ -124,9 +124,9 @@ For a more thorough explanation of various types of log messages, see [Understan
 
 ## Info Collection Script
 
-If you have problems diagnosing the problem, or you are unable to resolve the problem with any of the common fixes, you may want to ask for help in a support forum or the [GitHub issues](https://github.com/ripple/rippled/issues). When asking for help, you can use an info collection script to gather information about your system to help others diagnose the issue.
+If you have problems diagnosing the problem, or you are unable to resolve the problem with any of the common fixes, you may want to ask for help in a support forum or the [GitHub issues](https://github.com/XRPLF/rippled/issues). When asking for help, you can use an info collection script to gather information about your system to help others diagnose the issue.
 
-The official package installation (for [Ubuntu/Debian](install-rippled-on-ubuntu.html) or [CentOS/RedHat](install-rippled-on-centos-rhel-with-yum.html)) installs such a script by default, to `/opt/ripple/bin/getRippledInfo`. [New in: rippled 1.5.0][] If you compiled `rippled` yourself, you can find the same script [in the `rippled` source code repository](https://github.com/ripple/rippled/blob/develop/bin/getRippledInfo).
+The official package installation (for [Ubuntu/Debian](install-rippled-on-ubuntu.html) or [CentOS/RedHat](install-rippled-on-centos-rhel-with-yum.html)) installs such a script by default, to `/opt/ripple/bin/getRippledInfo`. [New in: rippled 1.5.0][] If you compiled `rippled` yourself, you can find the same script [in the `rippled` source code repository](https://github.com/XRPLF/rippled/blob/develop/bin/getRippledInfo).
 
 To use the script:
 

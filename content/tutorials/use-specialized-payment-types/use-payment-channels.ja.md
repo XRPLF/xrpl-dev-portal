@@ -344,7 +344,7 @@ JSON-RPC APIで`channel_verify`を使用する例:
     - `account_channels`要求に正しいレジャーバージョンが指定されていなかった。（最新の検証済みバージョンを確認するには、`"ledger_index":"validated”`を使用します）
     - 受取人は以前にXRPを清算したものの、記録し忘れていた。
     - 受取人がXRPの清算を試行し、暫定的な結果を記録したが、トランザクションの最終的な検証済みの結果がこれとは異なり、受取人はこの最終検証済み結果を記録し忘れていた。
-    - 受取人が照会した`rippled`サーバーが、ネットワークの他の部分と同期していない状態であったか、または不明なバグが発生した。サーバーの状態を確認するには、[server_infoメソッド][]を使用します。（この状況を再現できる場合は、[問題を報告してください](https://github.com/ripple/rippled/issues/)。）
+    - 受取人が照会した`rippled`サーバーが、ネットワークの他の部分と同期していない状態であったか、または不明なバグが発生した。サーバーの状態を確認するには、[server_infoメソッド][]を使用します。（この状況を再現できる場合は、[問題を報告してください](https://github.com/XRPLF/rippled/issues/)。）
 
 受取人がPayment Channelの署名と現行状態の両方を確認した後で、XRPをまだ受領していない場合、XRPを清算するトランザクションがChannelの有効期限より前に処理される限り、XRPを確実に清算 _できます_ 。
 
@@ -610,6 +610,6 @@ Channelは期限切れ状態で永久にレジャーに残ることがありま�
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

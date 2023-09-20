@@ -7,7 +7,7 @@ labels:
   - 支払い
 ---
 # tx
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
 
 `tx`メソッドは1つのトランザクションに関する情報を取得します。
 

@@ -61,7 +61,7 @@ XRP Ledgerでは、過去の使用という点で、一部のアドレスに特�
 |-----------------------------|------|---------|-------------|
 | rrrrrrrrrrrrrrrrrrrrrhoLvTp | ACCOUNT_ZERO | 値`0`を[base58][]形式にエンコードしたXRP Ledgerのアドレス。ピアツーピア通信では、このアドレスは、XRPの発行者として`rippled`で使用されます。 | はい |
 | rrrrrrrrrrrrrrrrrrrrBZbvji | ACCOUNT_ONE | 値`1`を[base58][]形式にエンコードしたXRP Ledgerのアドレス。レジャーの[RippleState項目](ripplestate.html)では、このアドレスは、トラストライン残高の発行者のプレースホルダーとして使用されます。 | はい |
-| rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh | ジェネシスアカウント | `rippled`で新しいジェネシスレジャーが一から開始される場合（例えば、スタンドアロンモード）、このアカウントはすべてのXRPを保持します。このアドレスは、シード値「masterpassphrase」から生成されており、この値は[ハードコーディング](https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184)されています。 | いいえ |
+| rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh | ジェネシスアカウント | `rippled`で新しいジェネシスレジャーが一から開始される場合（例えば、スタンドアロンモード）、このアカウントはすべてのXRPを保持します。このアドレスは、シード値「masterpassphrase」から生成されており、この値は[ハードコーディング](https://github.com/XRPLF/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184)されています。 | いいえ |
 | rrrrrrrrrrrrrrrrrNAMEtxvNvQ | Ripple名予約のブラックホール | 以前は、Rippleでは、このアカウントにXRPを送信してRipple名を予約するようユーザーに求めていました。 | はい |
 | rrrrrrrrrrrrrrrrrrrn5RM1rHd | NaNアドレス | 以前のバージョンの[ripple-lib](https://github.com/XRPLF/xrpl.js)では、XRP Ledgerの[base58][]文字列エンコード形式を使用して、値[NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)をエンコードするときにこのアドレスを生成しました。 | はい |
 
@@ -113,7 +113,7 @@ XRP Ledgerでは、トランザクション（取引）履歴をトランザク�
 
 **ヒント:** これらの技術的な詳細は、XRP Ledgerとの互換性を保つために低レベルのライブラリソフトウェアを構築しているユーザーのみを対象としています。
 
-[[ソース]](https://github.com/ripple/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140 "Source")
 
 XRP Ledgerのアドレスは、[base58][]_形式のディクショナリ_`rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`を使用してエンコードされています。XRP Ledgerはbase58でいくつかのタイプのキーをエンコードするため、それらを区別するためにエンコードされたデータの前に1バイトの「タイププレフィクス」（「バージョンプレフィクス」とも呼ばれます）を付けます。タイププレフィクスによりアドレスは通常、base58形式の異なる文字で始まります。
 
@@ -181,6 +181,6 @@ XRP Ledgerのアドレスは、[base58][]_形式のディクショナリ_`rpshna
   - [WebSocketを使用した着信ペイメントの監視](monitor-incoming-payments-with-websocket.html)
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

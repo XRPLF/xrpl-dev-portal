@@ -6,7 +6,7 @@ labels:
   - Escrow
 ---
 # Escrow
-[[ソース]](https://github.com/ripple/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
 
 _（[Escrow Amendment][]が必要です。）_
 
@@ -70,6 +70,6 @@ _（[Escrow Amendment][]が必要です。）_
 * `Escrow`オブジェクトを作成した[EscrowCreateトランザクション][]のシーケンス番号。
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

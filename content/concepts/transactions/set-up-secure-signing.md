@@ -44,7 +44,7 @@ In this configuration, you run `rippled` on the machine that generates the trans
 
 2. When you need to sign transactions, connect to your server on `localhost` or `127.0.0.1`. Use the [sign method][] (for single signatures) or [sign_for method][] (for multi-signatures).
 
-    The [example config file](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
+    The [example config file](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
     **Caution:** Using the [commandline API](request-formatting.html#commandline-format) for signatures is less secure than [using the Websocket or JSON-RPC APIs](get-started-using-http-websocket-apis.html) through non-commandline clients. When using the commandline syntax, your secret key may be visible to other users in the system's process listing, and your shell history may save the key in plain text.
 
@@ -91,7 +91,7 @@ To optimize the security of your signing library:
 
 Here are examples of how to sign transaction instructions locally using the following languages and libraries:
 
-* **JavaScript** / **TypeScript** - [`xrpl.js`](https://github.com/XRPLF/xrpl.js)  
+* **JavaScript** / **TypeScript** - [`xrpl.js`](https://github.com/XRPLF/xrpl.js)
 
 * **Python** - [`xrpl-py`](https://github.com/XRPLF/xrpl-py)
 
@@ -158,6 +158,6 @@ To use this configuration, follow the steps for [running `rippled` on a private 
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

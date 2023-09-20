@@ -25,9 +25,13 @@ Rather than designing NFTs yourself, you coordinate with an NFT creator to becom
 
 Once you finish creating NFTs, the creator can revoke your privileges and reassert control over the NFTs. You might also transfer the tokens to a marketplace that will handle sales of the NFTs. You can act as a broker to match sell offers to buy offers. See [Running an NFT auction](nftoken-auctions.html).
 
+![Auctioning NFTs](img/uc-nft-transferring-nfts.png)
+
 To mint your first NFTs on behalf of another account, see [Authorizing Another Account to Mint Your NFTs](assign-an-authorized-minter-using-javascript.html).
 
 If you, as the owner or issuer, want to be able to burn the token in the future, set the `Flags` field to _1._ To make the NFT transferable, set the `Flags` field to _8_. Set the `Flags` field to _9_ to make the NFT both burnable and transferable. See[ Burnable flag](nftoken.html#nftoken-flags) and [Transferable flag](nftoken.html#nftoken-flags).
+
+![Burning NFTs](img/uc-nft-burn.png)
 
 You can arrange for the creator to receive royalties from future sales by setting a <code>transfer fee<em>. </em></code>This is a value from 0-50000 representing 0-50% of the sale price. See [Transfer Fee](nftoken.html#transferfee).
 
@@ -52,6 +56,8 @@ You can act as a broker, connecting sellers with bidders, completing the transfe
 
 There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.
 
+![Reserves](img/uc-nft-reserves.png)
+
 Each `NFTokenOffer` object requires a reserve of 2 XRP.
 
 When you post the `NFTokenOffer` or sell the NFT, there are trivial transfer fees (roughly 6000 drops, or .006 XRP). When you are selling at a high volume, the trivial amounts can add up quickly, and need to be considered as part of your cost of doing business.
@@ -66,11 +72,15 @@ See:
 
 The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nfts-using-javascript.html).
 
+![Checkout](img/uc-nft-checkout.png)
+
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange).
 
 ## Indexing NFTs
 
 When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.
+
+![Indexing NFTs](img/uc-nft-indexing.png)
 
 See:
 

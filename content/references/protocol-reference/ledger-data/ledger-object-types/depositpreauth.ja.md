@@ -6,7 +6,7 @@ labels:
   - セキュリティ
 ---
 # DepositPreauth
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
 
 `DepositPreauth`オブジェクトはアカウント間の事前承認を追跡します。[DepositPreauthトランザクション][]によりこれらのオブジェクトが作成されます。
 
@@ -51,6 +51,6 @@ labels:
 * 事前承認されたアカウント（このオブジェクトを作成した[DepositPreauthトランザクション][]の`Authorized`フィールド、つまり事前承認を受けたユーザー）のAccountID。
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

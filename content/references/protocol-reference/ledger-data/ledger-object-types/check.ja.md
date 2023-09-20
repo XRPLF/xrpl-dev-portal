@@ -6,7 +6,7 @@ labels:
   - Checks
 ---
 # Check
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
 
 _（[Checks Amendment][]が必要です）_
 
@@ -56,7 +56,7 @@ _（[Checks Amendment][]が必要です）_
 
 
 ## Check IDのフォーマット
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
 
 `Check`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
 
@@ -65,6 +65,6 @@ _（[Checks Amendment][]が必要です）_
 * `Check`オブジェクトを作成した[CheckCreateトランザクション][]のシーケンス番号。
     CheckCreateトランザクションが[Ticket](tickets.html)を使用する場合は、代わりに`TicketSequence`値を使用します。
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

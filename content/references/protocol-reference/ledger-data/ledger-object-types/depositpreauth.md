@@ -6,7 +6,7 @@ labels:
   - Security
 ---
 # DepositPreauth
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
 
 A `DepositPreauth` object tracks a preauthorization from one account to another. [DepositPreauth transactions][] create these objects.
 
@@ -51,6 +51,6 @@ The ID of a `DepositPreauth` object is the [SHA-512Half][] of the following valu
 * The AccountID of the preauthorized account (the `Authorized` field of the [DepositPreauth transaction][] that created this object; in other words, the one that received the preauthorization)
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

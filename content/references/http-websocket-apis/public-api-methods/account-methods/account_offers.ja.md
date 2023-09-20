@@ -6,7 +6,7 @@ labels:
   - 分散型取引所
 ---
 # account_offers
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
 
 `account_offers`メソッドは、特定の[アカウント](accounts.html)から出された[オファー](offers.html)のうち、特定の[レジャーバージョン](ledgers.html)で未処理であったオファーのリストを取得します。
 

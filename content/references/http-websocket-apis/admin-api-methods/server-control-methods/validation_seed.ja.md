@@ -7,9 +7,9 @@ labels:
   - コアサーバー
 ---
 # validation_seed
-[[ソース]](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
 
-`validation_seed`コマンドは、rippledが検証の署名に使用するシークレット値を一時的に設定します。サーバーを再起動すると、この値は構成ファイルに基づいてリセットされます。[rippled 0.29.1 以降では無効](https://github.com/ripple/rippled/releases/tag/0.29.1-rc1 "BADGE_RED")
+`validation_seed`コマンドは、rippledが検証の署名に使用するシークレット値を一時的に設定します。サーバーを再起動すると、この値は構成ファイルに基づいてリセットされます。[rippled 0.29.1 以降では無効](https://github.com/XRPLF/rippled/releases/tag/0.29.1-rc1 "BADGE_RED")
 
 *`validation_seed`要求は、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。*
 

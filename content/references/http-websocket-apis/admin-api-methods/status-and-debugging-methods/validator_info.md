@@ -7,7 +7,7 @@ labels:
   - ブロックチェーン
 ---
 # validator_info
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ValidatorInfo.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ValidatorInfo.cpp "Source")
 
 The `{{currentpage.name}}` method returns the current validator settings of the server, if it is configured as a validator.
 

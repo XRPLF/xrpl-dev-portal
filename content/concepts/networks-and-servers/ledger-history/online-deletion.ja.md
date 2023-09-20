@@ -7,7 +7,7 @@ labels:
   - コアサーバー
 ---
 # オンライン削除
-[[ソース]<br/>](https://github.com/ripple/rippled/blob/master/src/ripple/app/misc/SHAMapStoreImp.cpp "Source")
+[[ソース]<br/>](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/misc/SHAMapStoreImp.cpp "Source")
 
 オンライン削除機能により、`rippled`サーバーはレジャーの古いバージョンのローカルコピーを削除できます。これにより、時間とともにディスク使用量が急増しないようにできます。デフォルトの構成ファイルにはオンライン削除の自動実行が設定されていますが、指示があった場合にのみオンライン削除を実行するようにも設定できます。[新規: rippled 0.27.0][]
 

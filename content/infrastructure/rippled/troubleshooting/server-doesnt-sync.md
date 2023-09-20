@@ -31,7 +31,7 @@ Many syncing issues can be resolved by restarting the server. No matter why it d
 
 If the [server_info method][] shows a [`server_state`](rippled-server-states.html) other than `proposing` or `full` and a `server_state_duration_us` of more than `900000000` (15 minutes in microseconds), then you should shut down the `rippled` service, wait a few seconds, and start it again. Optionally, restart the entire machine.
 
-If the problem persists, check the other possibilities listed on this page. If none of them seem to apply, [open an issue in the `rippled` repository](https://github.com/ripple/rippled/issues) and add the "Syncing issue" label.
+If the problem persists, check the other possibilities listed on this page. If none of them seem to apply, [open an issue in the `rippled` repository](https://github.com/XRPLF/rippled/issues) and add the "Syncing issue" label.
 
 
 ## Usual Causes of Syncing Issues

@@ -23,7 +23,7 @@ rippled APIを使用した`rippled`サーバーとの通信について詳しく
 
 {% include '_snippets/conf-file-location.md' %}<!--_ -->
 
-すべての構成オプションの説明については、[`rippled` GitHubリポジトリー](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg)を参照してください。
+すべての構成オプションの説明については、[`rippled` GitHubリポジトリー](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)を参照してください。
 
 構成の変更を有効にするには、`rippled`を再起動する必要があります。
 

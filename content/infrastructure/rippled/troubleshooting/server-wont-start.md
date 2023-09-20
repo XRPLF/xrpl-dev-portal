@@ -60,7 +60,7 @@ Possible solutions:
 
 - Create a config file that can be read by the `rippled` user at `$HOME/.config/ripple/rippled.cfg` (where `$HOME` points to the `rippled` user's home directory).
 
-    **Tip:** The `rippled` repository contains [an example `rippled.cfg` file](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg) which is provided as the default config when you do an RPM installation. If you do not have the file, you can copy it from there.
+    **Tip:** The `rippled` repository contains [an example `rippled.cfg` file](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg) which is provided as the default config when you do an RPM installation. If you do not have the file, you can copy it from there.
 
 - Specify the path to your preferred config file using the `--conf` [commandline option](commandline-usage.html).
 
@@ -78,7 +78,7 @@ Possible solutions:
 
 - Check that the `[validators.txt]` file exists and the `rippled` user has permissions to read it.
 
-    **Tip:** The `rippled` repository contains [an example `validators.txt` file](https://github.com/ripple/rippled/blob/master/cfg/validators-example.txt) which is provided as the default config when you do an RPM installation. If you do not have the file, you can copy it from there.
+    **Tip:** The `rippled` repository contains [an example `validators.txt` file](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt) which is provided as the default config when you do an RPM installation. If you do not have the file, you can copy it from there.
 
 - Edit your `rippled.cfg` file and modify the `[validators_file]` setting to have the correct path to your `validators.txt` (or equivalent) file. Check for extra whitespace before or after the filename.
 

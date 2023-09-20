@@ -6,7 +6,7 @@ labels:
   - Blockchain
 ---
 # Amendments
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L138-L144 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L138-L144 "Source")
 
 The `Amendments` object type contains a list of [Amendments](amendments.html) that are currently active. Each ledger version contains **at most one** `Amendments` object.
 
@@ -65,6 +65,6 @@ The `Amendments` object ID is the hash of the `Amendments` space key (`0x0066`) 
 (Don't mix up the ID of the `Amendments` ledger object type with the Amendment ID of an individual amendment.)
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

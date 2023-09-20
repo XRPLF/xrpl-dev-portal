@@ -6,7 +6,7 @@ labels:
   - Payment Channel
 ---
 # PaymentChannelFund
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
 _[PayChan Amendment][]が必要です。_
 

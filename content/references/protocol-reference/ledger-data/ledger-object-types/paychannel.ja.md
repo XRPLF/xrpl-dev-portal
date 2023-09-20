@@ -6,7 +6,7 @@ labels:
   - Payment Channel
 ---
 # PayChannel
-[[ソース]](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198 "Source")
 
 _（[PayChan Amendment][]が必要です。）_
 
@@ -104,6 +104,6 @@ Payment Channelの`Expiration`フィールドは、`CancelAfter`フィールド�
 * Channelを作成したトランザクションのシーケンス番号
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

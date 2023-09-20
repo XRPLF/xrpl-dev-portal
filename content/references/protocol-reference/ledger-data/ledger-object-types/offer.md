@@ -6,7 +6,7 @@ labels:
   - Decentralized Exchange
 ---
 # Offer
-[[Source]](https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
 
 The `Offer` ledger entry describes an [Offer](offers.html) to exchange currencies in the XRP Ledger's [decentralized exchange](decentralized-exchange.html). (In finance, this is more traditionally known as an _order_.) An [OfferCreate transaction][] only creates an `Offer` entry in the ledger when the Offer cannot be fully executed immediately by consuming other Offers already in the ledger.
 
@@ -77,6 +77,6 @@ The ID of an `Offer` object is the [SHA-512Half][] of the following values, conc
     If the OfferCreate transaction used a [Ticket](tickets.html), use the `TicketSequence` value instead.
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

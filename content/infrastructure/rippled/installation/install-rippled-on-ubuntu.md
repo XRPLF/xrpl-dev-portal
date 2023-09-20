@@ -62,8 +62,8 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     If you want access to development or pre-release versions of `rippled`, use one of the following instead of `stable`:
 
-    - `unstable` - Pre-release builds ([`release` branch](https://github.com/ripple/rippled/tree/release))
-    - `nightly` - Experimental/development builds ([`develop` branch](https://github.com/ripple/rippled/tree/develop))
+    - `unstable` - Pre-release builds ([`release` branch](https://github.com/XRPLF/rippled/tree/release))
+    - `nightly` - Experimental/development builds ([`develop` branch](https://github.com/XRPLF/rippled/tree/develop))
 
     **Warning:** Unstable and nightly builds may be broken at any time. Do not use these builds for production servers.
 

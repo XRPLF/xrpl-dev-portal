@@ -59,7 +59,7 @@ labels:
 **Authorized** の設定は、一度オンにするとオフにできないため、トラストラインの初期状態にはカウントされません。
 
 ## Free Trust Lines
-[[Source]](https://github.com/ripple/rippled/blob/72377e7bf25c4eaee5174186d2db3c6b4210946f/src/ripple/app/tx/impl/SetTrust.cpp#L148-L168)
+[[Source]](https://github.com/XRPLF/rippled/blob/72377e7bf25c4eaee5174186d2db3c6b4210946f/src/ripple/app/tx/impl/SetTrust.cpp#L148-L168)
 
 トラストラインはXRP Ledgerの強力な機能であるため、アカウントの最初の2つのトラストラインを「無料」にする特別な機能が用意されています。
 
@@ -78,7 +78,7 @@ labels:
     - [gateway_balancesメソッド][] - 発行者の発行残高を確認
     - [RippleStateオブジェクト](ripplestate.html) - 台帳の状態データのうち、トラストラインのデータ形式
     - [TrustSetトランザクション][] - トラストラインを作成・変更するトランザクション
-    - 
+    -
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
