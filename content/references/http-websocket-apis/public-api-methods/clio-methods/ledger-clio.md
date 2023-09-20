@@ -66,11 +66,11 @@ The request can contain the following parameters:
 
 The `ledger` field is deprecated and may be removed without further notice.
 
-Please note that the `ledger` command in Clio does not support the following fields that are supported by [ledger command in rippled](ledger.html):
-
-* `accounts`
-* `full`
-* `queue`
+> **Note:** The `ledger` command in Clio does not support the following fields that are supported by [ledger command in rippled](ledger.html):
+> 
+> * `accounts`
+> * `full`
+> * `queue`
 
 ## Response Format
 
