@@ -1230,22 +1230,22 @@ pages:
             - en
             - ja
 
-    -   md: concepts/tokens/stablecoin-issuer-configuration.md
+    -   md: concepts/tokens/stablecoin-configuration.md
         targets:
             - en
             - ja
 
-    -   md: concepts/tokens/stablecoin-issuer-precautions.md
+    -   md: concepts/tokens/stablecoin-precautions.md
         targets:
             - en
             - ja
 
-    -   md: concepts/tokens/stablecoin-issuer-compliance-guidelines.md
+    -   md: concepts/tokens/stablecoin-compliance-guidelines.md
         targets:
             - en
             - ja
 
-    -   md: concepts/tokens/stablecoin-issuer-technical-details.md
+    -   md: concepts/tokens/stablecoin-technical-details.md
         targets:
             - en
             - ja

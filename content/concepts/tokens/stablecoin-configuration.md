@@ -1,11 +1,11 @@
 ---
-html: stablecoin-issuer-configuration.html
+html: stablecoin-configuration.html
 parent: trust-lines-and-issuing.html
 blurb: Configure your stablecoin to fine tune its capabilities.
 labels:
   - Tokens
 ---
-# Stablecoin Issuer  - Configuration
+# Stablecoin Configuration
 
 There are some settings you must configure on your XRP Ledger account before you start issuing tokens. For examples of how to configure these settings, see [Issue a Fungible Token](issue-a-fungible-token.html).
 

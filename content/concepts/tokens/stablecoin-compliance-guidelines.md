@@ -1,11 +1,11 @@
 ---
-html: stablecoin-issuer-compliance-guidelines.html
+html: stablecoin-compliance-guidelines.html
 parent: trust-lines-and-issuing.html
 blurb: Stablecoin issuers are responsible for complying with local regulations and reporting to appropriate agencies.
 labels:
   - Tokens
 ---
-# Stablecoin Issuer - Compliance Guidelines
+# Stablecoin Compliance Guidelines
 
 Stablecoin issuers are responsible for complying with local regulations and reporting to the appropriate agencies. Regulations vary by country and state, but may include the reporting and compliance requirements described in the following sections. Before issuing a token, you should seek professional legal advice on the requirements for your jurisdiction and use case. The following resources may be useful background reading.
 

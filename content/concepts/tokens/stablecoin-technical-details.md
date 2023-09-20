@@ -1,12 +1,12 @@
 ---
-html: stablecoin-issuer-technical-details.html
+html: stablecoin-technical-details.html
 parent: trust-lines-and-issuing.html
 blurb: Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger.
 labels:
   - Tokens
 ---
 
-# Stablecoin Issuer - Technical Details
+# Stablecoin Technical Details
 
 ## Infrastructure
 
@@ -97,6 +97,19 @@ For more information, see [Reliable Transaction Submission](reliable-transaction
 ## xrp-ledger.toml File
 
 You can publish information about what currencies you issue, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an [`xrp-ledger.toml` file](xrp-ledger-toml.html). This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.
+
+# Launch Checklist
+
+These are strategic steps to launch a new stablecoin.
+
+1. Disable rippling by enabling the tfSetNoRipple flag in the TrustSet transaction. 
+
+2. Establish Trustlines: Ensuring sufficient liquidity is available for users to buy and sell [Token] after establishing trustlines is essential.
+
+3. List on DEXs: Decentralized exchanges are integral to the decentralized finance ecosystem. Listing your token on well known DEXs operating on XRPL enhances its visibility and accessibility, thereby attracting more liquidity.
+
+4. Leverage a platform such as Sologenic to enhance liquidity. For example, connect a XUMM wallet to Sologenic to enable the sale of your token. This allows anyone with a XUMM wallet and access to Sologenic to purchase your token.
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
