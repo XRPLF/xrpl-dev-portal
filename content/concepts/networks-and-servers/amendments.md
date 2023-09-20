@@ -65,9 +65,7 @@ You can unblock amendment blocked servers by upgrading to the newest version of 
 ### Amendment Blocked in Clio Servers
 <a id="amendment-blocked-clio"></a>
 
-In Clio, being amendment blocked means that Clio encountered an unknown field type during its ETL process.
-This can happen because Clio was built with a version of `libxrpl` that does not know the field in question.
-In order to unblock Clio one have to upgrade to a version that was built with a compatible `libxrpl`.
+The Clio server can become amendment blocked if it encounters an unknown field type while loading ledger data. This occurs if the field is newer than the `libxrpl` dependency that was used when building Clio. To unblock your Clio server, upgrade to a newer Clio release that was built with a compatible `libxrpl`.
 
 ## Retiring Amendments
 
