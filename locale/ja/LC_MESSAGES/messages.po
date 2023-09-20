@@ -613,15 +613,15 @@ msgstr "XRP Ledgerエクスプローラ"
 
 #: template/page-docs.html.jinja:112
 msgid "Advanced Payment Features"
-msgstr ""
+msgstr "高度な支払い機能"
 
 #: template/page-docs.html.jinja:117
 msgid "Governance and the Amendment Process"
-msgstr ""
+msgstr "ガバナンスとAmendmentプロセス"
 
 #: template/page-docs.html.jinja:122
 msgid "Federated Sidechains"
-msgstr ""
+msgstr "連合サイドチェーン"
 
 #: template/page-docs.html.jinja:129
 msgid "On-Chain Finance"
