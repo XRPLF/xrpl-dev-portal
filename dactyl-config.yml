@@ -4303,6 +4303,7 @@ pages:
     -   md: concepts/networks-and-servers/ledger-history/online-deletion.ja.md
         targets:
             - ja
+
     -   md: infrastructure/rippled/configuration/configure-online-deletion.md
         targets:
             - en
