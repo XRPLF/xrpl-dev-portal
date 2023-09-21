@@ -33,7 +33,7 @@ The exact look and feel of the user interface depend on your computer's operatin
 - Shows how much XRP is set aside for the account's [reserve requirement](reserves.html).
 - Can send [direct XRP payments](direct-xrp-payments.html), and provides feedback about the intended destination address, including:
     - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
-    - If the address doesn't want to receive XRP ([`DisallowXRP` flag](stablecoin-issuer-configuration.html#disallow-xrp) enabled).
+    - If the address doesn't want to receive XRP (DisallowXRP flag enabled).
     - If the address has a [verified domain name](xrp-ledger-toml.html#account-verification) associated with it.
 
 The application in this tutorial _doesn't_ have the ability to send or trade [tokens](issued-currencies.html) or use other [payment types](payment-types.html) like Escrow or Payment Channels. However, it provides a foundation that you can implement those and other features on top of.

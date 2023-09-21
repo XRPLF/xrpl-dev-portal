@@ -29,5 +29,3 @@ A stablecoin can be backed by financial instruments such as bonds or equity shar
 ## Non-collateralized
 
 A non-collateralized stablecoin relies on algorithm-generated smart contracts to supply or sell tokens, similar to a central bank's approach to printing and destroying currency. No collateral is required to mint currency. Value is controlled by supply and demand through algorithms that stabilize the price. Non-collateralized stablecoins are a less popular option due to their volatility.
-
-Return to [Stablecoin Issuer Use Case](stablecoin-issuer.html#choose-the-type-of-stablecoin).

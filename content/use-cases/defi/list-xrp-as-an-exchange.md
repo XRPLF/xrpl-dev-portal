@@ -41,7 +41,7 @@ To support XRP, Alpha Exchange must:
 
 See also:
 
-* [Compliance Guidelines](stablecoin-issuer-compliance-guidelines.html) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
+* [Compliance Guidelines](stablecoin-compliance-guidelines.html) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
 
 <!-- These sections need to be topics of their own, without the story.
 * [Requirements for Sending to XRP Ledger](stablecoin-issuer.html#requirements-for-sending-to-xrp-ledger)
@@ -49,7 +49,7 @@ See also:
 * [Requirements for Receiving from XRP Ledger](stablecoin-issuer.html#requirements-for-receiving-from-xrp-ledger)
 -->
 
-* [Precautions](stablecoin-issuer-precautions.html)
+* [Precautions](stablecoin-precautions.html)
 
 ### Partial Payments
 

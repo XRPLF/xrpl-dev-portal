@@ -49,7 +49,7 @@ Before you mint your new stablecoin, you need to configure settings, some of whi
 
 See [Stablecoin Settings](stablecoin-settings.html).
 
-For more detail on configuration capbilities, see [Stablecoin Issuer Configuration](stablecoin-issuer-configuration.html).
+For more detail on configuration capbilities, see [Stablecoin Issuer Configuration](stablecoin-configuration.html).
 
 ## Asset Information
 
@@ -104,8 +104,8 @@ Before you issue your stablecoin, download and read the questions in the [Self-a
 
 For additional considerations, see:
 
-- [Stablecoin Issuer - Precautions](stablecoin-issuer-precautions.html)
-- [Stablecoin Issuer - Compliance Guidelines](stablecoin-issuer-compliance-guidelines.html)
+- [Stablecoin Issuer - Precautions](stablecoin-precautions.html)
+- [Stablecoin Issuer - Compliance Guidelines](stablecoin-compliance-guidelines.html)
 - [Issue a Fungible Token](issue-a-fungible-token.html)
 
 ### Freeze a Trust Line
