@@ -399,7 +399,7 @@
 </tr>
 </tbody>
 </table>
-<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.28.0" target="_blank" title="Removed in: rippled 0.28.0"><img alt="Removed in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%200.28.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>: The <code>PreviousTxnID</code> field of transactions was replaced by the <a href="#accounttxnid"><code>AccountTxnID</code></a> field. This String / Hash256 field is present in some historical transactions. This is unrelated to the field also named <code>PreviousTxnID</code> in some <a href="ledger-data-formats.html">ledger objects</a>.</p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.28.0" target="_blank" title="Removed in: rippled 0.28.0"><img alt="Removed in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%200.28.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>: The <code>PreviousTxnID</code> field of transactions was replaced by the <a href="#accounttxnid"><code>AccountTxnID</code></a> field. This String / Hash256 field is present in some historical transactions. This is unrelated to the field also named <code>PreviousTxnID</code> in some <a href="ledger-data-formats.html">ledger objects</a>.</p>
 <h2 id="accounttxnid">AccountTxnID<a aria-hidden="true" class="hover_anchor" href="#accounttxnid"><i class="fa fa-link"></i></a></h2>
 <!-- SPELLING_IGNORE: AccountTxnID -->
 <p>The <code>AccountTxnID</code> field lets you chain your transactions together, so that a current transaction is not valid unless the previous transaction sent from the same account has a specific <a href="transactions.html#identifying-transactions">transaction hash</a>.</p>
@@ -526,7 +526,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="networkid-field">NetworkID Field<a aria-hidden="true" class="hover_anchor" href="#networkid-field"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="New in: rippled 1.11.0"><img alt="New in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" target="_blank" title="New in: rippled 1.11.0"><img alt="New in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>NetworkID</code> field is a protection against "cross-chain" transaction replay attacks, preventing the same transaction from being copied over and executing on a <a href="parallel-networks.html">parallel network</a> that it wasn't intended for. For compatibility with existing chains, the <code>NetworkID</code> field must be omitted on any network with a Network ID of 1024 or less, but must be included on any network with a Network ID of 1025 or greater. The following table shows the status and values for various known networks:</p>
 <table class="table-responsive">
 <thead>
@@ -1132,22 +1132,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

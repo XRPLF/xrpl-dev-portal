@@ -355,7 +355,7 @@
 <p>これらの公開サーバーは継続的な使用やビジネスでの使用を想定したものではなく、いつでも使用不可となる可能性があります。日常的な使用については、独自の<code>rippled</code>サーバーを自社で運用するか、信頼できる事業者と運用委託契約を締結します。</p>
 <h2 id="管理者アクセス権限">管理者アクセス権限<a aria-hidden="true" class="hover_anchor" href="#管理者アクセス権限"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>サーバーの<a href="admin-api-methods.html">管理メソッド</a>を使用するには、次のように行います。この場合、サーバーのバインド用として設定したIPアドレスとポートを使用する必要があります（例えば<code>127.0.0.1:54321</code>）。また、管理機能にアクセスするには、構成ファイルで管理用としてマークされているポートおよびIPアドレスから接続しなければなりません。</p>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073" target="_blank">構成ファイルの例 <i aria-hidden="true" class="fa fa-external-link"></i></a>では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。</p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073" target="_blank">構成ファイルの例 <i aria-hidden="true" class="fa fa-external-link"></i></a>では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。</p>
 <h2 id="websocket-api">WebSocket API<a aria-hidden="true" class="hover_anchor" href="#websocket-api"><i class="fa fa-link"></i></a></h2>
 <p>いくつかのメソッドをXRP Ledgerで試すことを予定している場合は、独自のWebSocketコードを記述することなく、<a href="websocket-api-tool.html">Ripple WebSocket APIツール</a>でAPIをすぐに使用できます。後ほど、独自の<code>rippled</code>サーバーへの接続が必要となった時点で、<a href="monitor-incoming-payments-with-websocket.html">ブラウザー</a>または<a class="external-link" href="https://www.npmjs.com/package/ws" target="_blank">Node.jsで独自のクライアントをビルド <i aria-hidden="true" class="fa fa-external-link"></i></a>することが可能です。</p>
 <h3 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h3>
@@ -1037,22 +1037,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

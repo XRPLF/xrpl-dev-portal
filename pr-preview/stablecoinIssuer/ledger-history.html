@@ -321,7 +321,7 @@
 <p>The XRP Ledger identifies data (on several different levels) by a unique hash of its contents. The XRP Ledger's state data contains a short summary of the ledger's history, in the form of the <a href="ledgerhashes.html">LedgerHashes object type</a>. Servers use the LedgerHashes objects to know which ledger versions to fetch, and to confirm that the ledger data they receive is correct and complete.</p>
 <p><a id="with-advisory-deletion"></a><!-- old anchor to this area --></p>
 <h3 id="backfilling">Backfilling<a aria-hidden="true" class="hover_anchor" href="#backfilling"><i class="fa fa-link"></i></a></h3>
-<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.6.0" target="_blank" title="Updated in: rippled 1.6.0"><img alt="Updated in: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" target="_blank" title="Updated in: rippled 1.6.0"><img alt="Updated in: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The amount of history a server attempts to download depends on its configuration. The server automatically tries to fill gaps by downloading history up to <strong>the oldest ledger it already has available</strong>. You can use the <code>[ledger_history]</code> setting to make the server backfill history beyond that point. However, the server never downloads ledgers that would be scheduled for <a href="online-deletion.html">deletion</a>.</p>
 <p>The <code>[ledger_history]</code> setting defines a minimum number of ledgers to accumulate from before the current validated ledger. Use the special value <code>full</code> to download the <a href="#full-history">full history</a> of the network. If you specify a number of ledgers, it must be equal to or more than the <code>online_deletion</code> setting; you cannot use <code>[ledger_history]</code> to make the server download <em>less</em> history. To reduce the amount of history a server stores, change the <a href="online-deletion.html">online deletion</a> settings instead. <!-- STYLE_OVERRIDE: a number of --></p>
 <h2 id="full-history">Full History<a aria-hidden="true" class="hover_anchor" href="#full-history"><i class="fa fa-link"></i></a></h2>
@@ -875,22 +875,22 @@ Ripple also provides a set of public full-history servers as a public service at
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

@@ -302,12 +302,12 @@
     <li class="active breadcrumb-item">account_info</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>This translated page is not updated to match the latest changes in the English version.</strong>
-      <p class="mb-0">We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all translated contents are up-to-date. If you'd like to help, <a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">please contribute!</a></p>
+    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="account_info">account_info<a aria-hidden="true" class="hover_anchor" href="#account_info"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>account_info</code>コマンドは、アカウントとそのアクティビティおよびXRP残高についての情報を取得します。取得されたすべての情報は、特定バージョンのレジャーに関連付けられています。</p>
 <h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>account_info要求の例:</p>
@@ -374,12 +374,12 @@
 <tr>
 <td style="text-align: left;"><code>queue</code></td>
 <td style="text-align: left;">ブール値</td>
-<td style="text-align: left;"><em>（省略可能）</em> <code>true</code>にして<a href="known-amendments.html#feeescalation">FeeEscalation Amendment</a>を有効にすると、このアカウントに関連するキューに入れられたトランザクションについてのステータスも返されます。これを使用できるのは、現在開いているレジャーのデータを問い合わせる場合のみです。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（省略可能）</em> <code>true</code>にして<a href="known-amendments.html#feeescalation">FeeEscalation Amendment</a>を有効にすると、このアカウントに関連するキューに入れられたトランザクションについてのステータスも返されます。これを使用できるのは、現在開いているレジャーのデータを問い合わせる場合のみです。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>signer_lists</code></td>
 <td style="text-align: left;">ブール値</td>
-<td style="text-align: left;"><em>（省略可能）</em><code>true</code>にして<a href="known-amendments.html#multisign">MultiSign Amendment</a>を有効にすると、このアカウントに関連するすべての<a href="signerlist.html">SignerListオブジェクト</a>も返されます。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（省略可能）</em><code>true</code>にして<a href="known-amendments.html#multisign">MultiSign Amendment</a>を有効にすると、このアカウントに関連するすべての<a href="signerlist.html">SignerListオブジェクト</a>も返されます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -498,7 +498,7 @@
 <tr>
 <td style="text-align: left;"><code>signer_lists</code></td>
 <td style="text-align: left;">配列</td>
-<td style="text-align: left;">（要求に<code>signer_lists</code>が指定されていて、少なくとも1つのSignerListがアカウントに関連する場合を除いて省略されます。）<a href="multi-signing.html">マルチシグ</a>用にアカウントに関連付けられた<a href="signerlist.html">SignerListレジャーオブジェクト</a>の配列。アカウントが所有できるSignerListは最大1つであるため、この配列のメンバーは存在するとすれば、1メンバーのみです。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（要求に<code>signer_lists</code>が指定されていて、少なくとも1つのSignerListがアカウントに関連する場合を除いて省略されます。）<a href="multi-signing.html">マルチシグ</a>用にアカウントに関連付けられた<a href="signerlist.html">SignerListレジャーオブジェクト</a>の配列。アカウントが所有できるSignerListは最大1つであるため、この配列のメンバーは存在するとすれば、1メンバーのみです。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
@@ -518,7 +518,7 @@
 <tr>
 <td style="text-align: left;"><code>validated</code></td>
 <td style="text-align: left;">ブール値</td>
-<td style="text-align: left;">このデータが検証済みのレジャーバージョンのものである場合はTrueです。省略されているかFalseが設定されている場合、このデータは最終のものではありません。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.0" target="_blank" title="新規: rippled 0.26.0"><img alt="新規: rippled 0.26.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">このデータが検証済みのレジャーバージョンのものである場合はTrueです。省略されているかFalseが設定されている場合、このデータは最終のものではありません。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.0" target="_blank" title="新規: rippled 0.26.0"><img alt="新規: rippled 0.26.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -1121,22 +1121,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

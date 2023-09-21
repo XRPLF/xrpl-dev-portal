@@ -313,12 +313,12 @@
     <li class="active breadcrumb-item">シリアル化フォーマット</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>This translated page is not updated to match the latest changes in the English version.</strong>
-      <p class="mb-0">We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all translated contents are up-to-date. If you'd like to help, <a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">please contribute!</a></p>
+    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="シリアル化フォーマット">シリアル化フォーマット<a aria-hidden="true" class="hover_anchor" href="#シリアル化フォーマット"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>このページでは、XRP Ledgerのトランザクションとその他のデータの正規バイナリフォーマットについて説明します。このバイナリフォーマットは、トランザクションの内容のデジタル署名を作成および検証するために必要であり、<a href="peer-protocol.html">サーバー間のピアツーピア通信</a>を含む他の用途にも使用されます。通常、<a href="http-websocket-apis.html"><code>rippled</code> API</a>は、JSONを使用してクライアントアプリケーションと通信します。ただしJSONは、同じデータをさまざまな同等の方法で表現できるため、デジタル署名を付与するトランザクションをシリアル化するのに適したフォーマットではありません。</p>
 <p>トランザクションをJSONまたはその他の表現から正規バイナリフォーマットへシリアル化するプロセスのステップを、以下にまとめます。</p>
 <ol>
@@ -370,13 +370,13 @@
 <h2 id="サンプルコード">サンプルコード<a aria-hidden="true" class="hover_anchor" href="#サンプルコード"><i class="fa fa-link"></i></a></h2>
 <p>ここで説明するシリアル化プロセスは複数の場所にさまざまなプログラミング言語で実装されています。</p>
 <ul>
-<li>C++: <a class="external-link" href="https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp" target="_blank"><code>rippled</code>コードベース <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li>C++: <a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp" target="_blank"><code>rippled</code>コードベース <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li>JavaScript: <a class="external-link" href="https://github.com/ripple/ripple-binary-codec/" target="_blank"><code>ripple-binary-codec</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>パッケージ</li>
 <li>Python 3: <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/stablecoinIssuer/content/_code-samples/tx-serialization/" target="_blank">このリポジトリのコードサンプルセクション <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
 <p>これらのすべての実装には、一般利用が可能なオープンソースライセンスが提供されているので、学習のためにドキュメントと合わせて使用するだけでなく、必要に応じてコードをインポート、使用、または変更することができます。</p>
 <h2 id="内部フォーマット">内部フォーマット<a aria-hidden="true" class="hover_anchor" href="#内部フォーマット"><i class="fa fa-link"></i></a></h2>
-<p>各フィールドには「内部」バイナリフォーマットがあります。このフォーマットは、<code>rippled</code>ソースコードで署名時に（およびその他のほとんどの場合に）そのフィールドを表示するのに使用されます。すべてのフィールドの内部フォーマットは、<a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp" target="_blank"><code>SField.cpp</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>のソースコードに定義されています。（このフィールドには、トランザクションフィールド以外のフィールドも含まれています。）<a href="transaction-formats.html">トランザクションフォーマットリファレンス</a>にも、すべてのトランザクションフィールドの内部フォーマットが記載されています。</p>
+<p>各フィールドには「内部」バイナリフォーマットがあります。このフォーマットは、<code>rippled</code>ソースコードで署名時に（およびその他のほとんどの場合に）そのフィールドを表示するのに使用されます。すべてのフィールドの内部フォーマットは、<a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/SField.cpp" target="_blank"><code>SField.cpp</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>のソースコードに定義されています。（このフィールドには、トランザクションフィールド以外のフィールドも含まれています。）<a href="transaction-formats.html">トランザクションフォーマットリファレンス</a>にも、すべてのトランザクションフィールドの内部フォーマットが記載されています。</p>
 <p>たとえば<code>Flags</code><a href="transaction-common-fields.html">共通トランザクションフィールド</a>はUInt32（32ビット符号なし整数）になります。</p>
 <h3 id="定義ファイル">定義ファイル<a aria-hidden="true" class="hover_anchor" href="#定義ファイル"><i class="fa fa-link"></i></a></h3>
 <p>以下のJSONファイルには、XRP Ledgerデータをそのバイナリフォーマットにシリアル化し、バイナリからシリアル化解除するのに必要な重要な定数が定義されています。</p>
@@ -529,12 +529,12 @@
 <h2 id="フィールドの正規順序">フィールドの正規順序<a aria-hidden="true" class="hover_anchor" href="#フィールドの正規順序"><i class="fa fa-link"></i></a></h2>
 <p>トランザクションのすべてのフィールドは、まずフィールドのタイプ（特に各タイプに割り当てられている数値の「タイプコード」）に基づいて特定の順序でソートされ、次にフィールド自体（「フィールドコード」）に基づいてソートされます。（たとえば、姓がフィールドのタイプ、名前がフィールド自体とすると、姓で最初にソートし、次に名でソートすることになります。）</p>
 <h3 id="タイプコード">タイプコード<a aria-hidden="true" class="hover_anchor" href="#タイプコード"><i class="fa fa-link"></i></a></h3>
-<p>各フィールドタイプには任意のタイプコードが含まれており、番号が小さいコードから最初にソートされます。これらのコードは<a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/SField.h#L57-L74" target="_blank"><code>SField.h</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>で定義されています。</p>
-<p>たとえば <a class="external-link" href="https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L59" target="_blank">UInt32のタイプコードが2である <i aria-hidden="true" class="fa fa-external-link"></i></a>ので、すべてのUInt32フィールドは、すべての<a class="external-link" href="https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L63" target="_blank">Amountフィールド（タイプコード6） <i aria-hidden="true" class="fa fa-external-link"></i></a>よりも前に位置します。</p>
+<p>各フィールドタイプには任意のタイプコードが含まれており、番号が小さいコードから最初にソートされます。これらのコードは<a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/SField.h#L57-L74" target="_blank"><code>SField.h</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>で定義されています。</p>
+<p>たとえば <a class="external-link" href="https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L59" target="_blank">UInt32のタイプコードが2である <i aria-hidden="true" class="fa fa-external-link"></i></a>ので、すべてのUInt32フィールドは、すべての<a class="external-link" href="https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L63" target="_blank">Amountフィールド（タイプコード6） <i aria-hidden="true" class="fa fa-external-link"></i></a>よりも前に位置します。</p>
 <p><a href="#定義ファイル">定義ファイル</a>には、<code>TYPES</code>マップの各タイプのタイプコードがリストされています。</p>
 <h3 id="フィールドコード">フィールドコード<a aria-hidden="true" class="hover_anchor" href="#フィールドコード"><i class="fa fa-link"></i></a></h3>
-<p>各フィールドにはフィールドコードが含まれています。フィールドコードは、同じタイプのフィールドをソートするときに使用され、番号が小さいコードが最初になるようにソートされます。これらのフィールドは<a class="external-link" href="https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L72-L266" target="_blank"><code>SField.cpp</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>で定義されています。</p>
-<p>たとえば<a href="payment.html">Paymentトランザクション</a>の<code>Account</code>フィールドの<a class="external-link" href="https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L219" target="_blank">ソートコードが1である <i aria-hidden="true" class="fa fa-external-link"></i></a>場合、このフィールドは<code>Destination</code>フィールド（<a class="external-link" href="https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L221" target="_blank">ソートコードが3である <i aria-hidden="true" class="fa fa-external-link"></i></a>フィールド）よりも前に位置します。</p>
+<p>各フィールドにはフィールドコードが含まれています。フィールドコードは、同じタイプのフィールドをソートするときに使用され、番号が小さいコードが最初になるようにソートされます。これらのフィールドは<a class="external-link" href="https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L72-L266" target="_blank"><code>SField.cpp</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>で定義されています。</p>
+<p>たとえば<a href="payment.html">Paymentトランザクション</a>の<code>Account</code>フィールドの<a class="external-link" href="https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L219" target="_blank">ソートコードが1である <i aria-hidden="true" class="fa fa-external-link"></i></a>場合、このフィールドは<code>Destination</code>フィールド（<a class="external-link" href="https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L221" target="_blank">ソートコードが3である <i aria-hidden="true" class="fa fa-external-link"></i></a>フィールド）よりも前に位置します。</p>
 <p>フィールドコードは異なるフィールドタイプのフィールドで再利用されますが、同じタイプのフィールドに同じフィールドコードが含まれることはありません。タイプコードとフィールドコードを組み合わせると、フィールドの一意の<a href="#フィールドid">フィールドID</a>になります。</p>
 <h2 id="タイプリスト">タイプリスト<a aria-hidden="true" class="hover_anchor" href="#タイプリスト"><i class="fa fa-link"></i></a></h2>
 <p>トランザクションの指示には、以下のタイプのフィールドを指定できます。</p>
@@ -723,7 +723,7 @@
 ### Issueフィールド
 [STIssue]: #issueフィールド -->
 <!-- TODO: translate this section -->
-<!-- 
+<!--
 _(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> and [Federated Sidechains](federated-sidechains.html) <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)_
 -->
 <!--
@@ -738,12 +738,12 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 <p><img alt="オブジェクトフィールドID、各オブジェクトメンバーのオブジェクトIDと内容（正規順序）、および「オブジェクトの終わり」を示すフィールドID" src="img/serialization-object.ja.png"/></p>
 <h3 id="pathsetフィールド">PathSetフィールド<a aria-hidden="true" class="hover_anchor" href="#pathsetフィールド"><i class="fa fa-link"></i></a></h3>
 <p>複数通貨間<a href="payment.html">Paymentトランザクション</a>の<code>Paths</code>フィールドは、JSONで配列からなる配列として表される「PathSet」です。使用されるパスについての詳細は、<a href="paths.html">パス</a>を参照してください。</p>
-<p>PathSetは、<strong>1～6</strong>の個別パスとして順序どおりにシリアル化されます<a class="external-link" href="https://github.com/ripple/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L35-L36" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a>。それぞれの完全なパスの後には、パスの後に続く内容を示すバイトが配置されます。</p>
+<p>PathSetは、<strong>1～6</strong>の個別パスとして順序どおりにシリアル化されます<a class="external-link" href="https://github.com/XRPLF/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L35-L36" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a>。それぞれの完全なパスの後には、パスの後に続く内容を示すバイトが配置されます。</p>
 <ul>
 <li><code>0xff</code>は別のパスが続くことを示します。</li>
 <li><code>0x00</code>はPathSetの終わりを示します。</li>
 </ul>
-<p>各パスには<strong>1～8</strong>のパスステップがこの順序で含まれています<a class="external-link" href="https://github.com/ripple/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L38-L39" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a>。各ステップは<strong>タイプ</strong>を示すバイトで始まり、その後にパスステップを記述する1つ以上のフィールドが続きます。タイプは、ビット単位のフラグを使用してそのパスステップに含まれるフィールドを示します。（たとえば値が<code>0x30</code>の場合、通貨とイシュアーの両方が変更されます。）複数のフィールドが含まれている場合、フィールドは常に特定の順序で配置されます。</p>
+<p>各パスには<strong>1～8</strong>のパスステップがこの順序で含まれています<a class="external-link" href="https://github.com/XRPLF/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L38-L39" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a>。各ステップは<strong>タイプ</strong>を示すバイトで始まり、その後にパスステップを記述する1つ以上のフィールドが続きます。タイプは、ビット単位のフラグを使用してそのパスステップに含まれるフィールドを示します。（たとえば値が<code>0x30</code>の場合、通貨とイシュアーの両方が変更されます。）複数のフィールドが含まれている場合、フィールドは常に特定の順序で配置されます。</p>
 <p>以下の表に、有効なフィールドと、タイプバイトでフィールドを示すために設定されるビット単位のフラグを示します。</p>
 <table class="table-responsive">
 <thead>
@@ -1302,22 +1302,22 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

@@ -301,12 +301,12 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">rippled -a --start --conf=/path/to/rippled.cfg
 </code></pre></div>
 <p>For more information on the options you can use when starting <code>rippled</code> in stand-alone mode, see <a href="commandline-usage.html#stand-alone-mode-options">Commandline Usage: Stand-Alone Mode Options</a>.</p>
-<p>In a genesis ledger, the <a href="addresses.html#special-addresses">genesis address</a> holds all 100 billion XRP. The keys of the genesis address are <a class="external-link" href="https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184" target="_blank">hardcoded <i aria-hidden="true" class="fa fa-external-link"></i></a> as follows:</p>
+<p>In a genesis ledger, the <a href="addresses.html#special-addresses">genesis address</a> holds all 100 billion XRP. The keys of the genesis address are <a class="external-link" href="https://github.com/XRPLF/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184" target="_blank">hardcoded <i aria-hidden="true" class="fa fa-external-link"></i></a> as follows:</p>
 <p><strong>Address:</strong> <code>rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh</code></p>
 <p><strong>Secret:</strong> <code>snoPBrXtMeMyMHUVTgbuqAfg1SUTb</code> ("<code>masterpassphrase</code>")</p>
 <h2 id="settings-in-new-genesis-ledgers">Settings in New Genesis Ledgers<a aria-hidden="true" class="hover_anchor" href="#settings-in-new-genesis-ledgers"><i class="fa fa-link"></i></a></h2>
 <p>In a new genesis ledger, the hard-coded default <a href="reserves.html">Reserve</a> is <strong>200 XRP</strong> minimum for funding a new address, with an increment of <strong>50 XRP</strong> per object in the ledger. These values are higher than the current reserve requirements of the production network. (See also: <a href="fee-voting.html">Fee Voting</a>)</p>
-<p>By default, a new genesis ledger has no <a href="amendments.html">amendments</a> enabled. If you start a new genesis ledger with <code>--start</code>, the genesis ledger contains an <a href="enableamendment.html">EnableAmendment pseudo-transaction</a> to turn on all amendments natively supported by the <code>rippled</code> server, except for amendments that you explicitly disable in the config file. The effects of those amendments are available starting from the very next ledger version. (Reminder: in stand-alone mode, you must <a href="advance-the-ledger-in-stand-alone-mode.html">advance the ledger manually</a>.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.50.0" target="_blank" title="New in: rippled 0.50.0"><img alt="New in: rippled 0.50.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.50.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>By default, a new genesis ledger has no <a href="amendments.html">amendments</a> enabled. If you start a new genesis ledger with <code>--start</code>, the genesis ledger contains an <a href="enableamendment.html">EnableAmendment pseudo-transaction</a> to turn on all amendments natively supported by the <code>rippled</code> server, except for amendments that you explicitly disable in the config file. The effects of those amendments are available starting from the very next ledger version. (Reminder: in stand-alone mode, you must <a href="advance-the-ledger-in-stand-alone-mode.html">advance the ledger manually</a>.) <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.50.0" target="_blank" title="New in: rippled 0.50.0"><img alt="New in: rippled 0.50.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.50.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
@@ -844,22 +844,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

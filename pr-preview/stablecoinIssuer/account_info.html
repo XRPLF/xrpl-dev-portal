@@ -303,7 +303,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="account_info">account_info<a aria-hidden="true" class="hover_anchor" href="#account_info"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>account_info</code> command retrieves information about an account, its activity, and its XRP balance. All information retrieved is relative to a particular version of the ledger.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of an account_info request:</p>
@@ -350,7 +350,7 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
 <td style="text-align: left;"><code>account</code></td>
 <td style="text-align: left;">String - <a href="basic-data-types.html#addresses">Address</a></td>
 <td style="text-align: left;">Yes</td>
-<td>The account to look up. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="Updated in: rippled 1.11.0"><img alt="Updated in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td>The account to look up. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" target="_blank" title="Updated in: rippled 1.11.0"><img alt="Updated in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
@@ -515,12 +515,12 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
 <tr>
 <td style="text-align: left;"><code>account_flags</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">The account's flag statuses (see below), based on the <code>Flags</code> field of the account. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.11.0" target="_blank" title="New in: rippled 1.11.0"><img alt="New in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The account's flag statuses (see below), based on the <code>Flags</code> field of the account. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" target="_blank" title="New in: rippled 1.11.0"><img alt="New in: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>signer_lists</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;"><em>(Omitted unless the request specified <code>signer_lists</code> and at least one SignerList is associated with the account.)</em> Array of <a href="signerlist.html">SignerList ledger objects</a> associated with this account for <a href="multi-signing.html">Multi-Signing</a>. Since an account can own at most one SignerList, this array must have exactly one member if it is present. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted unless the request specified <code>signer_lists</code> and at least one SignerList is associated with the account.)</em> Array of <a href="signerlist.html">SignerList ledger objects</a> associated with this account for <a href="multi-signing.html">Multi-Signing</a>. Since an account can own at most one SignerList, this array must have exactly one member if it is present. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" target="_blank" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
@@ -540,7 +540,7 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
 <tr>
 <td style="text-align: left;"><code>validated</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">True if this data is from a validated ledger version; if omitted or set to false, this data is not final. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.0" target="_blank" title="New in: rippled 0.26.0"><img alt="New in: rippled 0.26.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">True if this data is from a validated ledger version; if omitted or set to false, this data is not final. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.0" target="_blank" title="New in: rippled 0.26.0"><img alt="New in: rippled 0.26.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -1220,22 +1220,22 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

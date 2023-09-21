@@ -373,7 +373,7 @@
 <p><code>rippled</code>サーバーにはトランザクションコストを強制する2つ目のメカニズムがあり、 <em>オープンレジャーコスト</em> と呼ばれます。トランザクションがXRPによるオープンレジャーコスト要件を満たす場合のみ、そのトランザクションをオープンレジャーに含めることができます。オープンレジャーコスト要件を満たさないトランザクションは、<a href="#キューに入れられたトランザクション">次のレジャーのキューに入れられます</a>。</p>
 <p>新しいレジャーバージョンごとに、サーバーは前のレジャーのトランザクション数に基づいてオープンレジャーに含めるトランザクション数のソフトリミットを選択します。オープンレジャーコストは、オープンレジャー内のトランザクション数がソフトリミットと等しくなるまでは、スケーリングされていない最低トランザクションコストと同じです。それを超えると、オープンレジャーコストはオープンレジャーに含まれるトランザクションごとに急激に増加します。次のレジャーでは、現行のレジャーにソフトリミットを超えるトランザクションが含まれていれば、サーバーはソフトリミットを高くし、コンセンサスプロセスに5秒より時間が掛かる場合はソフトリミットを低くします。</p>
 <p>オープンレジャーコストの水準は、絶対的なトランザクションコストではなく<a href="#手数料レベル">標準的なトランザクションコストに比例</a>しています。標準よりも高い要件を持つトランザクションタイプ（<a href="multi-signing.html">マルチシグトランザクション</a>など）は、オープンレジャーコストを満たすために最低限のトランザクションコスト要件を持つトランザクションよりも多く支払う必要があります。</p>
-<p>関連項目: <a class="external-link" href="https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md" target="_blank"><code>rippled</code>リポジトリー内のFee Escalationの説明 <i aria-hidden="true" class="fa fa-external-link"></i></a>。</p>
+<p>関連項目: <a class="external-link" href="https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md" target="_blank"><code>rippled</code>リポジトリー内のFee Escalationの説明 <i aria-hidden="true" class="fa fa-external-link"></i></a>。</p>
 <h3 id="キューに入れられたトランザクション">キューに入れられたトランザクション<a aria-hidden="true" class="hover_anchor" href="#キューに入れられたトランザクション"><i class="fa fa-link"></i></a></h3>
 <p><code>rippled</code>が、サーバーのローカル負荷コストは満たすが<a href="#オープンレジャーコスト">オープンレジャーコスト</a>は満たさないトランザクションを受け取った場合、サーバーはそのトランザクションが後のレジャーに「含まれる可能性」を判断します。その可能性が高いと判断すれば、サーバーはそのトランザクションをトランザクションキューに追加し、他のネットワークメンバーにトランザクションを中継します。そうでない場合、サーバーはトランザクションを破棄します。<a href="#トランザクションコストと失敗したトランザクション">トランザクションコストは検証済みレジャーに含まれるトランザクションにのみ適用される</a>ため、サーバーは、トランザクションコストを支払わないトランザクションにより生じるネットワーク負荷量を最低限に抑えようとします。</p>
 <p>キューに入れられたトランザクションの詳細は、<a href="transaction-queue.html">トランザクションキュー</a>を参照してください。</p>
@@ -987,22 +987,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

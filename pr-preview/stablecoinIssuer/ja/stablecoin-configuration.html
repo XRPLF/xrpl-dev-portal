@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Stablecoin Issuer - Precautions - XRPL.org (日本語)</title>
+    <title>Stablecoin Configuration - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Stablecoin Issuer - Precautions | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/stablecoin-issuer-precautions.html" />
-    <meta property="og:description" content="Precautions to consider when transferring stablecoin funds in and out of the XRPL." />
-    <meta name="description" content="Precautions to consider when transferring stablecoin funds in and out of the XRPL." />
+    <meta property="og:title" content="Stablecoin Configuration | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/stablecoin-configuration.html" />
+    <meta property="og:description" content="Configure your stablecoin to fine tune its capabilities." />
+    <meta name="description" content="Configure your stablecoin to fine tune its capabilities." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="ja" />
-    <link rel="alternate" href="https://xrpl.org/stablecoin-issuer-precautions.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/stablecoin-issuer-precautions.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/stablecoin-issuer-precautions.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/stablecoin-configuration.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/stablecoin-configuration.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/stablecoin-configuration.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -229,7 +229,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/stablecoin-issuer-precautions.html">
+          <a class="dropdown-item" href="/stablecoin-configuration.html">
             English
           </a>
           <hr />
@@ -257,7 +257,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/concepts/tokens/stablecoin-issuer-precautions.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/concepts/tokens/stablecoin-configuration.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -270,7 +270,14 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#stablecoin-issuer-precautions">Stablecoin Issuer - Precautions</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#stablecoin-configuration">Stablecoin Configuration</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#default-ripple">Default Ripple</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#deposit-authorization">Deposit Authorization</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#disallow-xrp">Disallow XRP</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#require-auth">Require Auth</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#tick-size">Tick Size</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#transfer-fees">Transfer Fees</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#transfer-fees-with-operational-and-standby-addresses">Transfer Fees with Operational and Standby Addresses</a></li>
       </ul>
   </div>
       </aside>
@@ -290,31 +297,80 @@
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
     <li class="active breadcrumb-item"><a href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a></li>
-    <li class="active breadcrumb-item">Stablecoin Issuer - Precautions</li>
+    <li class="active breadcrumb-item">Stablecoin Configuration</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="stablecoin-issuer-precautions">Stablecoin Issuer - Precautions<a aria-hidden="true" class="hover_anchor" href="#stablecoin-issuer-precautions"><i class="fa fa-link"></i></a></h1>
-<p>Processing payments to and from the XRP Ledger naturally comes with some risks, so an issuer should be sure to take care in implementing these processes. As a stablecoin issuer, you should consider the following precautions:</p>
+        <h1 id="stablecoin-configuration">Stablecoin Configuration<a aria-hidden="true" class="hover_anchor" href="#stablecoin-configuration"><i class="fa fa-link"></i></a></h1>
+<p>There are some settings you must configure on your XRP Ledger account before you start issuing tokens. For examples of how to configure these settings, see <a href="issue-a-fungible-token.html">Issue a Fungible Token</a>.</p>
+<p>Settings you might want to configure include:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th>Setting</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default Ripple</td>
+<td>Issuers must enable this field.</td>
+</tr>
+<tr>
+<td>Deposit Authorization</td>
+<td>Block all incoming payments from users you haven't explicitly approved.</td>
+</tr>
+<tr>
+<td>Require Auth</td>
+<td>Restrict your tokens to being held by users you've explicitly approved.</td>
+</tr>
+<tr>
+<td>Tick Size</td>
+<td>Round off exchange rates in the decentralized exchange to facilitate faster price discovery.</td>
+</tr>
+<tr>
+<td>Transfer Fee</td>
+<td>Charge a percentage fee when users send your token to each other.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="default-ripple">Default Ripple<a aria-hidden="true" class="hover_anchor" href="#default-ripple"><i class="fa fa-link"></i></a></h2>
+<p>The Default Ripple flag controls whether the balances on a trust line are allowed to <em>ripple</em> by default. Rippling is what allows customers to send and trade tokens among themselves, so an issuer MUST allow rippling on all the trust lines to its issuing address. See <a href="rippling.html">Rippling</a>.</p>
+<p>Before asking customers to create trust lines to its issuing address, an issuer should enable the Default Ripple flag on that address. Otherwise, the issuer must individually disable the No Ripple flag for each trust line that other addresses have created.</p>
+<h2 id="deposit-authorization">Deposit Authorization<a aria-hidden="true" class="hover_anchor" href="#deposit-authorization"><i class="fa fa-link"></i></a></h2>
+<p>The Deposit Authorization setting blocks all incoming payments to your account, unless either:</p>
 <ul>
-<li>Protect yourself against reversible deposits. XRP Ledger payments are irreversible, but many digital payments are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving tokens in the XRP Ledger.</li>
-<li>When sending into the XRP Ledger, always specify your issuing address as the issuer of the token. Otherwise, you might accidentally use paths that deliver the same currency issued by other addresses.</li>
-<li>Before sending a payment into the XRP Ledger, double check the cost of the payment. A payment from your operational address to a customer should not cost more than the destination amount plus any transfer fee you have set.</li>
-<li>Before processing a payment out of the XRP Ledger, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you. Most anti-money-laundering regulations require this anyway. This is especially important because the users sending money from the XRP Ledger could be different than the ones that initially received the money in the XRP Ledger.</li>
-<li>Follow the guidelines for reliable transaction submission when sending XRP Ledger transactions.</li>
-<li>Robustly monitor for incoming payments, and read the correct amount. Don't mistakenly credit someone the full amount if they only sent a <a href="partial-payments.html">partial payment</a>. See <a href="robustly-monitoring-for-payments.html">Robustly monitoring for payments</a>.</li>
-<li>Track your obligations and balances within the XRP Ledger, and compare with the assets in your collateral account. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.</li>
-<li>Avoid ambiguous situations. We recommend the following:<ul>
-<li>Enable the <code>Disallow XRP</code> flag for the issuing address and all operational addresses, so customers do not accidentally send you XRP. (Private exchanges should <em>not</em> set this flag, since they trade XRP normally.)</li>
-<li>Enable the <a href="require-destination-tags.html"><code>RequireDest</code> flag</a> for the issuing address and all operational addresses, so customers do not accidentally send a payment without the destination tag to indicate who should be credited.</li>
-<li>Enable the <code>RequireAuth</code> flag on all operational addresses so they cannot issue tokens by accident.</li>
+<li>You have previously preauthorized the sender.</li>
+<li>You send a transaction to receive the funds. For example, you could finish an Escrow that was initiated by a stranger.</li>
 </ul>
-</li>
-<li>Monitor for suspicious or abusive behavior. For example, a user could repeatedly send funds into and out of the XRP Ledger, as a denial of service attack that effectively empties an operational address's balance. Suspend customers whose addresses are involved in suspicious behavior by not processing their XRP Ledger payments.</li>
-</ul>
+<p>Deposit Authorization is most useful for blocking unwanted XRP payments, because you already can't receive tokens unless you've created a trust line to their issuer. However, as a stablecoin issuer, you need to be able to receive payments from users in order for them to redeem the stablecoin for its off-ledger value; you can preauthorize your customers but doing so requires storing an object in the ledger for each custom address, increasing your reserve requirement substantially.</p>
+<p>Therefore, Deposit Authorization is not recommended for stablecoin issuers unless you need it to meet regulatory requirements about receiving money from unknown or sanctioned entities.</p>
+<p>For more information, see <a href="depositauth.html">Deposit Authorization</a>.</p>
+<h2 id="disallow-xrp">Disallow XRP<a aria-hidden="true" class="hover_anchor" href="#disallow-xrp"><i class="fa fa-link"></i></a></h2>
+<p>The Disallow XRP setting is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments from addresses that aren't intended to receive and hold XRP. The Disallow XRP flag is not enforced at the protocol level, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default, but may allow users to ignore it.</p>
+<p>The Disallow XRP flag is optional, but if you don't intend to receive XRP from customers you may want to enable it on your issuing address and all your operational addresses.</p>
+<h2 id="require-auth">Require Auth<a aria-hidden="true" class="hover_anchor" href="#require-auth"><i class="fa fa-link"></i></a></h2>
+<p>The Require Auth setting blocks users from holding the tokens you issue unless you explicitly approve their trust lines first. You can use this setting to meet regulatory requirements if it matters who holds your tokens within the XRP Ledger. However, this can reduce the utility of your tokens since your approval becomes a bottleneck for users to use them.</p>
+<p>Also, you must use your issuing address each time you authorize a trust line; if you must authorize a lot of trust lines, this can undermine the security of your issuing address because you have to use it so often. (If you only need to use the issuing address sparingly, you can put greater protections on its secret keys. The more often you use it, the more of a burden those protections become.)</p>
+<p>For more information, see <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
+<h2 id="tick-size">Tick Size<a aria-hidden="true" class="hover_anchor" href="#tick-size"><i class="fa fa-link"></i></a></h2>
+<p>The Tick Size setting controls how many decimal places are used when calculating exchange rates in the <a href="decentralized-exchange.html">Decentralized Exchange</a>. A higher Tick Size means more precision and less rounding in the amounts of various trades. Too much precision can be inconvenient because trades are ranked primarily based on exchange rate, so a trader can offer a minuscule amount more to the top of the list. A smaller Tick Size works similar to the minimum bid increment at an auction, saving everyone the time and effort of gradually bidding up a price by irrelevantly small amounts. However, a smaller Tick Size results in more rounding, which can increase the costs of trading, and sometimes has surprising results because two Offers that seemed like an exact match before rounding no longer match after rounding.</p>
+<p>The Tick Size is an account-level setting and applies to all tokens issued by the same address.</p>
+<p>Tick Size only controls the precision of <em>exchange rates</em>, not the precision of the token itself. Users can send and hold very large or very small amounts regardless of the Tick Size set by the token's issuer.</p>
+<p>For more information, see <a href="ticksize.html">Tick Size</a>.</p>
+<h2 id="transfer-fees">Transfer Fees<a aria-hidden="true" class="hover_anchor" href="#transfer-fees"><i class="fa fa-link"></i></a></h2>
+<p>A transfer fee setting charges users a percentage fee when sending your tokens to each other. The transfer fee does not apply when issuing tokens or redeeming them directly with the issuing address. (It <em>does</em> apply when users send payments to your hot wallet.) If you issue multiple tokens from the same address, the same transfer fee applies to all of them.</p>
+<p>When users send a token with a transfer fee, the amount of the transfer fee is debited from the sending side in addition to the destination amount, but only the destination amount is credited to the recipient. The amount of the fee "vanishes" from the XRP Ledger. As a stablecoin issuer, this means that you gain that much equity in your reserves outside of the XRP Ledger—or, in other words, the amount you need to keep as collateral decreases each time users pay a transfer fee.</p>
+<p>At a protocol level, the transfer fee is defined by the <code>TransferRate</code> account setting, which is an integer from 1 billion to 2 billion.</p>
+<p>For more information, see <a href="transfer-fees.html">Transfer Fees</a>.</p>
+<h3 id="transfer-fees-with-operational-and-standby-addresses">Transfer Fees with Operational and Standby Addresses<a aria-hidden="true" class="hover_anchor" href="#transfer-fees-with-operational-and-standby-addresses"><i class="fa fa-link"></i></a></h3>
+<p>All XRP Ledger addresses, including operational and standby addresses, are subject to the issuer's transfer fees when sending tokens. If you set a nonzero transfer fee, then you must send extra (to pay the transfer fee) when making payments from your operational address or standby address. In other words, your addresses must pay back a little of the balance your issuing address created, each time you make a payment.</p>
+<p>Set the <code>SendMax</code> transaction parameter higher than the destination <code>Amount</code> parameter by a percentage based on the <code>TransferRate</code> setting.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Transfer fees do not apply when sending tokens directly from or to the issuing address. The issuing address must always accept its tokens at face value in the XRP Ledger. This means that customers don't have to pay the transfer fee if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the transfer fee the customer pays.</p>
+<p>For example: If ACME sets a transfer fee of 1%, an XRP Ledger payment to deliver 5 EUR.ACME from a customer address to ACME's issuing address would cost exactly 5 EUR.ACME. However, the customer would need to send 5.05 EUR.ACME to deliver 5 EUR.ACME to ACME's operational address. When ACME credits customers for payments to ACME's operational address, ACME credits the customer for the amount delivered to the operational address <em>and</em> the transfer fee, giving the customer €5,05 in ACME's systems.</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -821,23 +877,23 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
-  </div>
-
-      
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

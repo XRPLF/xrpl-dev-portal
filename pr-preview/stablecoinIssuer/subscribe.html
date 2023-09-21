@@ -318,7 +318,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="subscribe">subscribe<a aria-hidden="true" class="hover_anchor" href="#subscribe"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>subscribe</code> method requests periodic notifications from the server when certain events happen.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
@@ -417,7 +417,7 @@
 <li><code>server</code> - Sends a message whenever the status of the <code>rippled</code> server (for example, network connectivity) changes.</li>
 <li><code>validations</code> - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual <code>rippled</code> declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)</li>
 </ul>
-<p class="devportal-callout note"><strong>Note:</strong> The following streams are not available from servers in <a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a>: <code>server</code>, <code>peer_status</code>, <code>consensus</code>. Reporting Mode servers return the error <code>reportingUnsupported</code> if you request one of these streams. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="Updated in: rippled 1.8.1"><img alt="Updated in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p class="devportal-callout note"><strong>Note:</strong> The following streams are not available from servers in <a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a>: <code>server</code>, <code>peer_status</code>, <code>consensus</code>. Reporting Mode servers return the error <code>reportingUnsupported</code> if you request one of these streams. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" target="_blank" title="Updated in: rippled 1.8.1"><img alt="Updated in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>Each member of the <code>books</code> array, if provided, is an object with the following fields:</p>
 <table class="table-responsive">
 <thead>
@@ -568,7 +568,7 @@
 </tbody>
 </table>
 <h2 id="validations-stream">Validations Stream<a aria-hidden="true" class="hover_anchor" href="#validations-stream"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.29.0" target="_blank" title="New in: rippled 0.29.0"><img alt="New in: rippled 0.29.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.29.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.29.0" target="_blank" title="New in: rippled 0.29.0"><img alt="New in: rippled 0.29.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.29.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The validations stream sends messages whenever it receives validation messages, also called validation votes, regardless of whether or not the validation message is from a trusted validator. The message looks like the following:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validationReceived"</span><span class="p">,</span>
@@ -611,27 +611,27 @@
 <tr>
 <td style="text-align: left;"><code>amendments</code></td>
 <td style="text-align: left;">Array of Strings</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The <a href="amendments.html">amendments</a> this server wants to be added to the protocol. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The <a href="amendments.html">amendments</a> this server wants to be added to the protocol. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>base_fee</code></td>
 <td style="text-align: left;">Integer</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The unscaled transaction cost (<code>reference_fee</code> value) this server wants to set by <a href="fee-voting.html">Fee Voting</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The unscaled transaction cost (<code>reference_fee</code> value) this server wants to set by <a href="fee-voting.html">Fee Voting</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>cookie</code></td>
 <td style="text-align: left;">String - Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> An arbitrary value chosen by the server at startup. If the same validation key pair signs validations with different cookies concurrently, that usually indicates that multiple servers are incorrectly configured to use the same validation key pair. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="New in: rippled 1.8.1"><img alt="New in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> An arbitrary value chosen by the server at startup. If the same validation key pair signs validations with different cookies concurrently, that usually indicates that multiple servers are incorrectly configured to use the same validation key pair. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" target="_blank" title="New in: rippled 1.8.1"><img alt="New in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>flags</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">Bit-mask of flags added to this validation message. The flag <code>0x80000000</code> indicates that the validation signature is fully-canonical. The flag <code>0x00000001</code> indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">Bit-mask of flags added to this validation message. The flag <code>0x80000000</code> indicates that the validation signature is fully-canonical. The flag <code>0x00000001</code> indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>full</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">If <code>true</code>, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">If <code>true</code>, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
@@ -641,32 +641,32 @@
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
 <td style="text-align: left;">String - Number</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">Ledger Index</a> of the proposed ledger. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">Ledger Index</a> of the proposed ledger. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" target="_blank" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_fee</code></td>
 <td style="text-align: left;">Integer</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The local load-scaled transaction cost this validator is currently enforcing, in fee units. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The local load-scaled transaction cost this validator is currently enforcing, in fee units. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>master_key</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The validator's master public key, if the validator is using a validator token, in the XRP Ledger's <a href="base58-encodings.html">base58</a> format. (See also: <a href="run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server">Enable Validation on your <code>rippled</code> Server</a>.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The validator's master public key, if the validator is using a validator token, in the XRP Ledger's <a href="base58-encodings.html">base58</a> format. (See also: <a href="run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server">Enable Validation on your <code>rippled</code> Server</a>.) <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>reserve_base</code></td>
 <td style="text-align: left;">Integer</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The minimum reserve requirement (<code>account_reserve</code> value) this validator wants to set by <a href="fee-voting.html">Fee Voting</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The minimum reserve requirement (<code>account_reserve</code> value) this validator wants to set by <a href="fee-voting.html">Fee Voting</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>reserve_inc</code></td>
 <td style="text-align: left;">Integer</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The increment in the reserve requirement (<code>owner_reserve</code> value) this validator wants to set by <a href="fee-voting.html">Fee Voting</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The increment in the reserve requirement (<code>owner_reserve</code> value) this validator wants to set by <a href="fee-voting.html">Fee Voting</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>server_version</code></td>
 <td style="text-align: left;">String - Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> An 64-bit integer that encodes the version number of the validating server. For example, <code>"1745990410175512576"</code>. Only provided once every 256 ledgers. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="New in: rippled 1.8.1"><img alt="New in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> An 64-bit integer that encodes the version number of the validating server. For example, <code>"1745990410175512576"</code>. Only provided once every 256 ledgers. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" target="_blank" title="New in: rippled 1.8.1"><img alt="New in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>signature</code></td>
@@ -676,12 +676,12 @@
 <tr>
 <td style="text-align: left;"><code>signing_time</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">When this validation vote was signed, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">When this validation vote was signed, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="New in: rippled 0.32.0"><img alt="New in: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The unique hash of the proposed ledger this validation applies to. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="New in: rippled 1.8.1"><img alt="New in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The unique hash of the proposed ledger this validation applies to. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" target="_blank" title="New in: rippled 1.8.1"><img alt="New in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validation_public_key</code></td>
@@ -1100,7 +1100,7 @@
 </tbody>
 </table>
 <h2 id="consensus-stream">Consensus Stream<a aria-hidden="true" class="hover_anchor" href="#consensus-stream"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>consensus</code> stream sends <code>consensusPhase</code> messages when <a href="consensus.html">the consensus process</a> changes phase. The message contains the new phase of consensus the server is in.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consensusPhase"</span><span class="p">,</span>
@@ -1642,22 +1642,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

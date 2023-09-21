@@ -304,7 +304,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="account_tx">account_tx<a aria-hidden="true" class="hover_anchor" href="#account_tx"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>account_tx</code> method retrieves a list of transactions that involved the specified account.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
@@ -401,7 +401,7 @@ rippled<span class="w"> </span>--<span class="w"> </span>account_tx<span class="
 </tbody>
 </table>
 <p><strong>You must use at least one of the following fields</strong> in your request: <code>ledger_index</code>, <code>ledger_hash</code>, <code>ledger_index_min</code>, or <code>ledger_index_max</code>.</p>
-<p>The following legacy fields are no longer supported: <code>offset</code>, <code>count</code>, <code>ledger_min</code>, <code>ledger_max</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="Removed in: rippled 1.7.0"><img alt="Removed in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%201.7.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The following legacy fields are no longer supported: <code>offset</code>, <code>count</code>, <code>ledger_min</code>, <code>ledger_max</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="Removed in: rippled 1.7.0"><img alt="Removed in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%201.7.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <h3 id="iterating-over-queried-data">Iterating over queried data<a aria-hidden="true" class="hover_anchor" href="#iterating-over-queried-data"><i class="fa fa-link"></i></a></h3>
 <p>As with other paginated methods, you can use the <code>marker</code> field to return multiple pages of data.</p>
 <p>In the time between requests, <code>"ledger_index_min": -1</code> and <code>"ledger_index_max": -1</code> may change to refer to different ledger versions than they did before. The <code>marker</code> field can safely paginate even if there are changes in the ledger range from the request, so long as the marker does not indicate a point outside the range of ledgers specified in the request.</p>
@@ -1339,22 +1339,22 @@ rippled<span class="w"> </span>--<span class="w"> </span>account_tx<span class="
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

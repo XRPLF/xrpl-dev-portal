@@ -299,7 +299,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="ledgerhashes">LedgerHashes<a aria-hidden="true" class="hover_anchor" href="#ledgerhashes"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>(Not to be confused with the <a href="basic-data-types.html#hashes">"ledger hash" string data type</a>, which uniquely identifies a ledger version. This section describes the <code>LedgerHashes</code> ledger object type.)</p>
 <p>The <code>LedgerHashes</code> object type contains a history of prior ledgers that led up to this ledger version, in the form of their hashes. Objects of this ledger type are modified automatically when closing a ledger. (This is one of the only times a ledger's state data is modified without a <a href="transactions.html">transaction</a> or <a href="pseudo-transaction-types.html">pseudo-transaction</a>.) The <code>LedgerHashes</code> objects exist to make it possible to look up a previous ledger's hash with only the current ledger version and at most one lookup of a previous ledger version.</p>
 <p>There are two kinds of <code>LedgerHashes</code> object. Both types have the same fields. Each ledger version contains:</p>
@@ -382,7 +382,7 @@
 <p class="devportal-callout note"><strong>Note:</strong> The oldest "previous history" <code>LedgerHashes</code> object contains only 255 entries because the genesis ledger has ledger index 1, not 0.</p>
 <p>The "previous history" <code>LedgerHashes</code> objects act as a <a class="external-link" href="https://en.wikipedia.org/wiki/Skip_list" target="_blank">skip list <i aria-hidden="true" class="fa fa-external-link"></i></a> so you can get the hash of any historical flag ledger from its index. From there, you can use that flag ledger's "recent history" object to get the hash of any other ledger.</p>
 <h2 id="ledgerhashes-id-formats">LedgerHashes ID Formats<a aria-hidden="true" class="hover_anchor" href="#ledgerhashes-id-formats"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>There are two formats for <code>LedgerHashes</code> object IDs, depending on whether the object is a "recent history" sub-type or a "previous history" sub-type.</p>
 <p>The <strong>"recent history"</strong> <code>LedgerHashes</code> object has an ID that is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the <code>LedgerHashes</code> space key (<code>0x0073</code>). In other words, the "recent history" always has the ID <code>B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B</code>.</p>
 <p>The <strong>"previous history"</strong> <code>LedgerHashes</code> objects have an ID that is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
@@ -907,22 +907,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

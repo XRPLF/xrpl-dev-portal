@@ -299,7 +299,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="account_lines">account_lines<a aria-hidden="true" class="hover_anchor" href="#account_lines"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>account_lines</code> method returns information about an account's trust lines, which contain balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
@@ -725,22 +725,22 @@ rippled<span class="w"> </span>account_lines<span class="w"> </span>r9cZA1mLK5R5
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
 <td style="text-align: left;">Integer - <a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
-<td style="text-align: left;"><em>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided)</em> The ledger index of the current open ledger, which was used when retrieving this information. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided)</em> The ledger index of the current open ledger, which was used when retrieving this information. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
 <td style="text-align: left;">Integer - <a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
-<td style="text-align: left;"><em>(Omitted if <code>ledger_current_index</code> provided instead)</em> The ledger index of the ledger version that was used when retrieving this data. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted if <code>ledger_current_index</code> provided instead)</em> The ledger index of the ledger version that was used when retrieving this data. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">String - <a href="basic-data-types.html#hashes">Hash</a></td>
-<td style="text-align: left;"><em>(May be omitted)</em> The identifying hash the ledger version that was used when retrieving this data. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The identifying hash the ledger version that was used when retrieving this data. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
 <td style="text-align: left;"><a href="markers-and-pagination.html">Marker</a></td>
-<td style="text-align: left;">Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4" target="_blank" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4" target="_blank" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -792,12 +792,12 @@ rippled<span class="w"> </span>account_lines<span class="w"> </span>r9cZA1mLK5R5
 <tr>
 <td style="text-align: left;"><code>no_ripple</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(May be omitted)</em> If <code>true</code>, this account has enabled the <a href="rippling.html">No Ripple flag</a> for this trust line. If present and <code>false</code>, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered <a href="ripplestate.html#contributing-to-the-owner-reserve">the default state</a>. If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> If <code>true</code>, this account has enabled the <a href="rippling.html">No Ripple flag</a> for this trust line. If present and <code>false</code>, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered <a href="ripplestate.html#contributing-to-the-owner-reserve">the default state</a>. If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>no_ripple_peer</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(May be omitted)</em> If <code>true</code>, the peer account has enabled the <a href="rippling.html">No Ripple flag</a> for this trust line. If present and <code>false</code>, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered <a href="ripplestate.html#contributing-to-the-owner-reserve">the default state</a>. If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> If <code>true</code>, the peer account has enabled the <a href="rippling.html">No Ripple flag</a> for this trust line. If present and <code>false</code>, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered <a href="ripplestate.html#contributing-to-the-owner-reserve">the default state</a>. If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>authorized</code></td>
@@ -1342,22 +1342,22 @@ rippled<span class="w"> </span>account_lines<span class="w"> </span>r9cZA1mLK5R5
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

@@ -277,6 +277,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#準備金と削除">準備金と削除</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#free-trust-lines">Free Trust Lines</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#trustsetトランザクション-トラストラインを作成変更するトランザクション">TrustSetトランザクション - トラストラインを作成・変更するトランザクション</a></li>
       </ul>
   </div>
       </aside>
@@ -343,7 +344,7 @@
 <p>残高がマイナス（あなたが発行者）の場合や、相手側の設定が初期状態でない場合、トラストラインを完全に削除させることはできませんが、同様の手順で所有者準備金にカウントされないようにすることが可能です。</p>
 <p><strong>Authorized</strong> の設定は、一度オンにするとオフにできないため、トラストラインの初期状態にはカウントされません。</p>
 <h2 id="free-trust-lines">Free Trust Lines<a aria-hidden="true" class="hover_anchor" href="#free-trust-lines"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/72377e7bf25c4eaee5174186d2db3c6b4210946f/src/ripple/app/tx/impl/SetTrust.cpp#L148-L168" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/72377e7bf25c4eaee5174186d2db3c6b4210946f/src/ripple/app/tx/impl/SetTrust.cpp#L148-L168" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>トラストラインはXRP Ledgerの強力な機能であるため、アカウントの最初の2つのトラストラインを「無料」にする特別な機能が用意されています。</p>
 <p>アカウントが新しいトラストラインを作成する際、台帳の中で新しいトラストラインを含む最大2つのオブジェクトを所有している場合、アカウントの所有者準備金は通常の量ではなく、0として扱われます。これにより、アカウントが台帳内のオブジェクトを所有するために必要な準備金の増加分を満たすだけのXRPを保有していない場合でも、取引を成功させることができます。</p>
 <p>アカウントが台帳に3つ以上のオブジェクトを所有している場合、所有者準備金が全額適用されます。</p>
@@ -358,8 +359,9 @@
 <li><a href="account_lines.html">account_linesメソッド</a> - 指定されたアカウントに関連付けられたトラストラインを確認</li>
 <li><a href="gateway_balances.html">gateway_balancesメソッド</a> - 発行者の発行残高を確認</li>
 <li><a href="ripplestate.html">RippleStateオブジェクト</a> - 台帳の状態データのうち、トラストラインのデータ形式</li>
-<li><a href="trustset.html">TrustSetトランザクション</a> - トラストラインを作成・変更するトランザクション</li>
-<li></li>
+<li>
+<h2 id="trustsetトランザクション-トラストラインを作成変更するトランザクション"><a href="trustset.html">TrustSetトランザクション</a> - トラストラインを作成・変更するトランザクション<a aria-hidden="true" class="hover_anchor" href="#trustsetトランザクション-トラストラインを作成変更するトランザクション"><i class="fa fa-link"></i></a></h2>
+</li>
 </ul>
 </li>
 </ul>
@@ -877,22 +879,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

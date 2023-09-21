@@ -299,8 +299,8 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="download_shard">download_shard<a aria-hidden="true" class="hover_anchor" href="#download_shard"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>Instructs the server to download a specific <a href="history-sharding.html">shard of historical ledger data</a> from an external source. Your <code>rippled</code> server must be <a href="configure-history-sharding.html">configured to store history shards</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.6.0" target="_blank" title="Updated in: rippled 1.6.0"><img alt="Updated in: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Instructs the server to download a specific <a href="history-sharding.html">shard of historical ledger data</a> from an external source. Your <code>rippled</code> server must be <a href="configure-history-sharding.html">configured to store history shards</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" target="_blank" title="Updated in: rippled 1.6.0"><img alt="Updated in: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>The <code>download_shard</code> method is an <a href="admin-api-methods.html">admin method</a> that cannot be run by unprivileged users.</em></p>
 <p>The external source must provide the shard as an <a class="external-link" href="https://lz4.github.io/lz4/" target="_blank">lz4-compressed <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://en.wikipedia.org/wiki/Tar_(computing)" target="_blank">tar archive <i aria-hidden="true" class="fa fa-external-link"></i></a> served via HTTPS. The archive must contain the shard directory and data files in NuDB format.</p>
 <p>Downloading and importing shards using this method is usually faster than acquiring the shards individually from the peer-to-peer network. You can also use this method to choose a specific range or set of shards to provide from your server.</p>
@@ -353,7 +353,7 @@ rippled<span class="w"> </span>download_shard<span class="w"> </span><span class
 </tr>
 </tbody>
 </table>
-<p>The <code>validate</code> field is deprecated and may be removed in a future version. (The server always checks the integrity of shards when it imports them.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.6.0" target="_blank" title="Updated in: rippled 1.6.0"><img alt="Updated in: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>validate</code> field is deprecated and may be removed in a future version. (The server always checks the integrity of shards when it imports them.) <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" target="_blank" title="Updated in: rippled 1.6.0"><img alt="Updated in: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>Each <strong>Shard Descriptor object</strong> in the <code>shards</code> array has the following fields:</p>
 <table class="table-responsive">
 <thead>
@@ -372,7 +372,7 @@ rippled<span class="w"> </span>download_shard<span class="w"> </span><span class
 <tr>
 <td style="text-align: left;"><code>url</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The URL where this shard can be downloaded. The URL must start with <code>http://</code> or <code>https://</code> and must end with <code>.tar.lz4</code> (not case-sensitive). The web server providing this download must use a valid TLS certificate signed by a trusted Certificate Authority (CA). (<code>rippled</code> uses the operating system's CA store.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The URL where this shard can be downloaded. The URL must start with <code>http://</code> or <code>https://</code> and must end with <code>.tar.lz4</code> (not case-sensitive). The web server providing this download must use a valid TLS certificate signed by a trusted Certificate Authority (CA). (<code>rippled</code> uses the operating system's CA store.) <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -950,22 +950,22 @@ rippled<span class="w"> </span>download_shard<span class="w"> </span><span class
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

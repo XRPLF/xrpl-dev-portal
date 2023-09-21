@@ -342,7 +342,7 @@
 <span class="n">JSON_RPC_URL</span> <span class="o">=</span> <span class="s2">"http://localhost:5005/"</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">JSON_RPC_URL</span><span class="p">)</span>
 </code></pre></div>
-<p>See the example <a class="external-link" href="https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562" target="_blank">core server config file <i aria-hidden="true" class="fa fa-external-link"></i></a> for more information about default values.</p>
+<p>See the example <a class="external-link" href="https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562" target="_blank">core server config file <i aria-hidden="true" class="fa fa-external-link"></i></a> for more information about default values.</p>
 </li>
 <li>
 <p>By using one of the available <a href="public-servers.html">public servers</a>:</p>
@@ -370,7 +370,7 @@
 <span class="n">classic_address</span><span class="p">:</span> <span class="n">raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q</span>
 </code></pre></div>
 <h4 id="using-the-account">Using the account<a aria-hidden="true" class="hover_anchor" href="#using-the-account"><i class="fa fa-link"></i></a></h4>
-<p>In this tutorial we only query details about the generated account from the XRP Ledger, but you can use the values in the <code>Wallet</code> instance to prepare, sign, and submit transactions with <code>xrpl-py</code>.   </p>
+<p>In this tutorial we only query details about the generated account from the XRP Ledger, but you can use the values in the <code>Wallet</code> instance to prepare, sign, and submit transactions with <code>xrpl-py</code>.</p>
 <h5 id="prepare">Prepare<a aria-hidden="true" class="hover_anchor" href="#prepare"><i class="fa fa-link"></i></a></h5>
 <p>To prepare the transaction:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1"># Prepare payment</span>
@@ -400,7 +400,7 @@
 </code></pre></div>
 <p>The X-address format <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/issues/6" target="_blank">packs the address and destination tag <i aria-hidden="true" class="fa fa-external-link"></i></a> into a more user-friendly value.</p>
 <h3 id="3-query-the-xrp-ledger">3. Query the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#3-query-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
-<p>You can query the XRP Ledger to get information about <a href="account-methods.html">a specific account</a>, <a href="tx.html">a specific transaction</a>, the state of a <a href="ledger-methods.html">current or a historical ledger</a>, and <a href="path-and-order-book-methods.html">the XRP Ledger's decentralized exchange</a>. You need to make these queries, among other reasons, to look up account info to follow best practices for <a href="reliable-transaction-submission.html">reliable transaction submission</a>.  </p>
+<p>You can query the XRP Ledger to get information about <a href="account-methods.html">a specific account</a>, <a href="tx.html">a specific transaction</a>, the state of a <a href="ledger-methods.html">current or a historical ledger</a>, and <a href="path-and-order-book-methods.html">the XRP Ledger's decentralized exchange</a>. You need to make these queries, among other reasons, to look up account info to follow best practices for <a href="reliable-transaction-submission.html">reliable transaction submission</a>.</p>
 <p>Here, we use <code>xrpl-py</code>'s <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html" target="_blank"><code>xrpl.account</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> module to look up information about the <a href="#2-get-account">account we got</a> in the previous step.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="c1"># Look up info about your account</span>
 <span class="kn">from</span> <span class="nn">xrpl.models.requests.account_info</span> <span class="kn">import</span> <span class="n">AccountInfo</span>
@@ -1023,22 +1023,22 @@ response.status:<span class="w">  </span>ResponseStatus.SUCCESS
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

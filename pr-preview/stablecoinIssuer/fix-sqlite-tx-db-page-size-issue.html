@@ -301,13 +301,13 @@
 <h2 id="detection">Detection<a aria-hidden="true" class="hover_anchor" href="#detection"><i class="fa fa-link"></i></a></h2>
 <p>If your server is vulnerable to this problem, you can detect it two ways:</p>
 <ul>
-<li>You can detect the problem <a href="#proactive-detection">proactively</a> (before it causes problems) if your <code>rippled</code> server is <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">version 1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a> or later.</li>
+<li>You can detect the problem <a href="#proactive-detection">proactively</a> (before it causes problems) if your <code>rippled</code> server is <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">version 1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a> or later.</li>
 <li>You can identify the problem <a href="#reactive-detection">reactively</a> (when your server is crashing) on any <code>rippled</code> version.</li>
 </ul>
 <p>In both cases, detection of the problem requires access to <code>rippled</code>'s server logs.</p>
-<p class="devportal-callout tip"><strong>Tip:</strong> The location of the debug log depends on your <code>rippled</code> server's config file. The <a class="external-link" href="https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142" target="_blank">default configuration <i aria-hidden="true" class="fa fa-external-link"></i></a> writes the server's debug log to the file <code>/var/log/rippled/debug.log</code>.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> The location of the debug log depends on your <code>rippled</code> server's config file. The <a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142" target="_blank">default configuration <i aria-hidden="true" class="fa fa-external-link"></i></a> writes the server's debug log to the file <code>/var/log/rippled/debug.log</code>.</p>
 <h3 id="proactive-detection">Proactive Detection<a aria-hidden="true" class="hover_anchor" href="#proactive-detection"><i class="fa fa-link"></i></a></h3>
-<p>To detect the SQLite page size problem proactively, you must be running <strong><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">rippled 1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a> or later</strong>. The <code>rippled</code> server writes a message such as the following in its debug log periodically, at least once every 2 minutes. (The exact numeric values from the log entry and the path to your transaction database depend on your environment.)</p>
+<p>To detect the SQLite page size problem proactively, you must be running <strong><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">rippled 1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a> or later</strong>. The <code>rippled</code> server writes a message such as the following in its debug log periodically, at least once every 2 minutes. (The exact numeric values from the log entry and the path to your transaction database depend on your environment.)</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">Transaction DB pathname: /opt/rippled/transaction.db; SQLite page size: 1024
   bytes; Free pages: 247483646; Free space: 253423253504 bytes; Note that this
   does not take into account available disk space.
@@ -333,7 +333,7 @@
 <h3 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li>
-<p>You must be running <strong><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">rippled version 1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a> or later</strong>.</p>
+<p>You must be running <strong><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">rippled version 1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a> or later</strong>.</p>
 <ul>
 <li>
 <p><a href="install-rippled.html">Upgrade rippled</a> to the latest stable version before starting this process.</p>
@@ -973,22 +973,22 @@ Filesystem      Size  Used Avail Use% Mounted on
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

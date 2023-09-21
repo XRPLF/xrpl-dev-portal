@@ -379,7 +379,7 @@
 <tr>
 <td>rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh</td>
 <td>ジェネシスアカウント</td>
-<td><code>rippled</code>で新しいジェネシスレジャーが一から開始される場合（例えば、スタンドアロンモード）、このアカウントはすべてのXRPを保持します。このアドレスは、シード値「masterpassphrase」から生成されており、この値は<a class="external-link" href="https://github.com/ripple/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184" target="_blank">ハードコーディング <i aria-hidden="true" class="fa fa-external-link"></i></a>されています。</td>
+<td><code>rippled</code>で新しいジェネシスレジャーが一から開始される場合（例えば、スタンドアロンモード）、このアカウントはすべてのXRPを保持します。このアドレスは、シード値「masterpassphrase」から生成されており、この値は<a class="external-link" href="https://github.com/XRPLF/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184" target="_blank">ハードコーディング <i aria-hidden="true" class="fa fa-external-link"></i></a>されています。</td>
 <td>いいえ</td>
 </tr>
 <tr>
@@ -430,7 +430,7 @@
 <p>これらの各オブジェクトの詳細は、<a href="ledger-data-formats.html">レジャーフォーマットのリファレンス</a>を参照してください。</p>
 <h2 id="アドレスのエンコード">アドレスのエンコード<a aria-hidden="true" class="hover_anchor" href="#アドレスのエンコード"><i class="fa fa-link"></i></a></h2>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> これらの技術的な詳細は、XRP Ledgerとの互換性を保つために低レベルのライブラリソフトウェアを構築しているユーザーのみを対象としています。</p>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>XRP Ledgerのアドレスは、<a href="base58-encodings.html">base58</a><em>形式のディクショナリ</em><code>rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz</code>を使用してエンコードされています。XRP Ledgerはbase58でいくつかのタイプのキーをエンコードするため、それらを区別するためにエンコードされたデータの前に1バイトの「タイププレフィクス」（「バージョンプレフィクス」とも呼ばれます）を付けます。タイププレフィクスによりアドレスは通常、base58形式の異なる文字で始まります。</p>
 <p>次の図は、キーとアドレスの関係を示しています。</p>
 <p><a href="img/address-encoding.ja.png"><img alt="マスター公開鍵 + プレフィクスの種類 → アカウントID + チェックサム → アドレス" src="img/address-encoding.ja.png"/></a></p>
@@ -1012,22 +1012,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

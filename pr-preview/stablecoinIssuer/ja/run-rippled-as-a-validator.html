@@ -334,7 +334,7 @@
 <ul>
 <li><strong>合意</strong></li>
 </ul>
-<p>優れたバリデータの投票は、可能な限り高い頻度で、コンセンサスプロセスの結果と合致します。これに該当しない場合は、バリデータのソフトウェアが最新のものではないか、不具合があるか、意図的な偏りがあることを示唆している可能性があります。常に<a class="external-link" href="https://github.com/ripple/rippled/tree/master" target="_blank">最新の<code>rippled</code>リリース <i aria-hidden="true" class="fa fa-external-link"></i></a>を、修正を加えることなく実行します。新規リリースについて知るために、<a class="external-link" href="https://github.com/ripple/rippled/releases" target="_blank"><code>rippled</code>のリリースを確認 <i aria-hidden="true" class="fa fa-external-link"></i></a>してください。</p>
+<p>優れたバリデータの投票は、可能な限り高い頻度で、コンセンサスプロセスの結果と合致します。これに該当しない場合は、バリデータのソフトウェアが最新のものではないか、不具合があるか、意図的な偏りがあることを示唆している可能性があります。常に<a class="external-link" href="https://github.com/XRPLF/rippled/tree/master" target="_blank">最新の<code>rippled</code>リリース <i aria-hidden="true" class="fa fa-external-link"></i></a>を、修正を加えることなく実行します。新規リリースについて知るために、<a class="external-link" href="https://github.com/XRPLF/rippled/releases" target="_blank"><code>rippled</code>のリリースを確認 <i aria-hidden="true" class="fa fa-external-link"></i></a>してください。</p>
 <ul>
 <li><strong>適時の投票</strong></li>
 </ul>
@@ -343,7 +343,7 @@
 <li><strong>身元の確さ</strong></li>
 </ul>
 <p>優れたバリデータには、身元が明確な所有者が存在します。<a href="#6-ドメイン検証の提供">ドメイン検証</a>を提供することは、その第一歩になります。XRP LedgerネットワークのUNLに、多くの法的な管轄域および地域のさまざまな所有者によって運営されているバリデータが含まれていると理想的です。結果として、信頼できるバリデータの公正な運用が地域特有の事象によって損なわれるおそれが低減されます。</p>
-<p>Ripple社は、推奨される一連のバリデータを記載した<a class="external-link" href="https://github.com/ripple/rippled/blob/develop/cfg/validators-example.txt" target="_blank">バリデータリスト <i aria-hidden="true" class="fa fa-external-link"></i></a>を公開しています。本番環境のサーバーでは、このリストを使用することを強くお勧めします。</p>
+<p>Ripple社は、推奨される一連のバリデータを記載した<a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/cfg/validators-example.txt" target="_blank">バリデータリスト <i aria-hidden="true" class="fa fa-external-link"></i></a>を公開しています。本番環境のサーバーでは、このリストを使用することを強くお勧めします。</p>
 <h2 id="2-rippledサーバーのインストール">2. <code>rippled</code>サーバーのインストール<a aria-hidden="true" class="hover_anchor" href="#2-rippledサーバーのインストール"><i class="fa fa-link"></i></a></h2>
 <p>詳細は、<a href="install-rippled.html"><code>rippled</code>のインストール</a>を参照してください。</p>
 <h2 id="3-rippledサーバーで検証を有効化">3. <code>rippled</code>サーバーで検証を有効化<a aria-hidden="true" class="hover_anchor" href="#3-rippledサーバーで検証を有効化"><i class="fa fa-link"></i></a></h2>
@@ -432,7 +432,7 @@
 <p>これらのアプローチの違いについては、<a href="peer-protocol.html#ピア接続設定のメリットとデメリット">ピア接続設定のメリットとデメリット</a>を参照してください。</p>
 <h3 id="検出されたピアを使用した接続">検出されたピアを使用した接続<a aria-hidden="true" class="hover_anchor" href="#検出されたピアを使用した接続"><i class="fa fa-link"></i></a></h3>
 <p>この構成では、<a href="peer-protocol.html#ピアの検出">検出されたピア</a>を使用してバリデータをXRP Ledgerネットワークに接続します。これは<code>rippled</code>サーバーのデフォルトの動作です。</p>
-<p><em><strong>検出されたピアを使用してバリデータをXRP Ledgerネットワークに接続するには、</strong></em> バリデータの<code>rippled.cfg</code>ファイルで<code>[peer_private]</code>スタンザを省略するか、それを<code>0</code>に設定します。この構成の<a class="external-link" href="https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg" target="_blank">サンプルのrippled.cfgファイル <i aria-hidden="true" class="fa fa-external-link"></i></a>が提供されています。</p>
+<p><em><strong>検出されたピアを使用してバリデータをXRP Ledgerネットワークに接続するには、</strong></em> バリデータの<code>rippled.cfg</code>ファイルで<code>[peer_private]</code>スタンザを省略するか、それを<code>0</code>に設定します。この構成の<a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg" target="_blank">サンプルのrippled.cfgファイル <i aria-hidden="true" class="fa fa-external-link"></i></a>が提供されています。</p>
 <h3 id="プロキシを使用した接続">プロキシを使用した接続<a aria-hidden="true" class="hover_anchor" href="#プロキシを使用した接続"><i class="fa fa-link"></i></a></h3>
 <p>この構成は、自社で運用するストック<code>rippled</code>サーバーを通じてバリデータをネットワークに接続します。これらのプロキシサーバーは、バリデータと発着信ネットワークトラフィックの間に設置します。</p>
 <p><em><strong>プロキシを使用してバリデータをXRP Ledgerネットワークに接続するには、次の手順を実行します。</strong></em></p>
@@ -1103,22 +1103,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

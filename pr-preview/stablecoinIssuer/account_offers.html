@@ -299,7 +299,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="account_offers">account_offers<a aria-hidden="true" class="hover_anchor" href="#account_offers"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>account_offers</code> method retrieves a list of <a href="offers.html">offers</a> made by a given <a href="accounts.html">account</a> that are outstanding as of a particular <a href="ledgers.html">ledger version</a>.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
@@ -505,22 +505,22 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>rpP2JgiMyTF
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
 <td style="text-align: left;">Number - <a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
-<td style="text-align: left;"><em>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided)</em> The ledger index of the current in-progress ledger version, which was used when retrieving this data. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted if <code>ledger_hash</code> or <code>ledger_index</code> provided)</em> The ledger index of the current in-progress ledger version, which was used when retrieving this data. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
 <td style="text-align: left;">Number - <a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
-<td style="text-align: left;"><em>(Omitted if <code>ledger_current_index</code> provided instead)</em> The ledger index of the ledger version that was used when retrieving this data, as requested. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted if <code>ledger_current_index</code> provided instead)</em> The ledger index of the ledger version that was used when retrieving this data, as requested. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">String - <a href="basic-data-types.html#hashes">Hash</a></td>
-<td style="text-align: left;"><em>(May be omitted)</em> The identifying hash of the ledger version that was used when retrieving this data. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> The identifying hash of the ledger version that was used when retrieving this data. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="New in: rippled 0.26.4-sp1"><img alt="New in: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
 <td style="text-align: left;"><a href="markers-and-pagination.html">Marker</a></td>
-<td style="text-align: left;"><em>(May be omitted)</em> Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.26.4" target="_blank" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4" target="_blank" title="New in: rippled 0.26.4"><img alt="New in: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -557,12 +557,12 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>rpP2JgiMyTF
 <tr>
 <td style="text-align: left;"><code>quality</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The exchange rate of the offer, as the ratio of the original <code>taker_pays</code> divided by the original <code>taker_gets</code>. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.29.0" target="_blank" title="New in: rippled 0.29.0"><img alt="New in: rippled 0.29.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.29.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The exchange rate of the offer, as the ratio of the original <code>taker_pays</code> divided by the original <code>taker_gets</code>. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.29.0" target="_blank" title="New in: rippled 0.29.0"><img alt="New in: rippled 0.29.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.29.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>expiration</code></td>
 <td style="text-align: left;">Unsigned integer</td>
-<td style="text-align: left;">(May be omitted) A time after which this offer is considered unfunded, as the number of <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>. See also: <a href="offers.html#offer-expiration">Offer Expiration</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">(May be omitted) A time after which this offer is considered unfunded, as the number of <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>. See also: <a href="offers.html#offer-expiration">Offer Expiration</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -1087,22 +1087,22 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>rpP2JgiMyTF
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

@@ -304,7 +304,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="tx">tx<a aria-hidden="true" class="hover_anchor" href="#tx"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>tx</code> method retrieves information on a single <a href="transaction-formats.html">transaction</a>, by its <a href="transactions.html#identifying-transactions">identifying hash</a>.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
@@ -357,12 +357,12 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
 <tr>
 <td style="text-align: left;"><code>min_ledger</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(Optional)</em> Use this with <code>max_ledger</code> to specify a range of up to 1000 <a href="basic-data-types.html#ledger-index">ledger indexes</a>, starting with this ledger (inclusive). If the server <a href="#not-found-response">cannot find the transaction</a>, it confirms whether it was able to search all the ledgers in this range. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> Use this with <code>max_ledger</code> to specify a range of up to 1000 <a href="basic-data-types.html#ledger-index">ledger indexes</a>, starting with this ledger (inclusive). If the server <a href="#not-found-response">cannot find the transaction</a>, it confirms whether it was able to search all the ledgers in this range. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>max_ledger</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(Optional)</em> Use this with <code>min_ledger</code> to specify a range of up to 1000 <a href="basic-data-types.html#ledger-index">ledger indexes</a>, ending with this ledger (inclusive). If the server <a href="#not-found-response">cannot find the transaction</a>, it confirms whether it was able to search all the ledgers in the requested range. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> Use this with <code>min_ledger</code> to specify a range of up to 1000 <a href="basic-data-types.html#ledger-index">ledger indexes</a>, ending with this ledger (inclusive). If the server <a href="#not-found-response">cannot find the transaction</a>, it confirms whether it was able to search all the ledgers in the requested range. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -777,7 +777,7 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout note"><strong>Note:</strong> <code>rippled</code> 1.7.0 has a known issue where the <code>meta</code> field contains JSON even if the request asked for binary. (<a class="external-link" href="https://github.com/ripple/rippled/pull/3791" target="_blank">#3791 <i aria-hidden="true" class="fa fa-external-link"></i></a>)</p>
+<p class="devportal-callout note"><strong>Note:</strong> <code>rippled</code> 1.7.0 has a known issue where the <code>meta</code> field contains JSON even if the request asked for binary. (<a class="external-link" href="https://github.com/XRPLF/rippled/pull/3791" target="_blank">#3791 <i aria-hidden="true" class="fa fa-external-link"></i></a>)</p>
 <h3 id="not-found-response">Not Found Response<a aria-hidden="true" class="hover_anchor" href="#not-found-response"><i class="fa fa-link"></i></a></h3>
 <p>If the server does not find the transaction, it returns a <code>txnNotFound</code> error, which could mean two things:</p>
 <ul>
@@ -798,7 +798,7 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
 <tr>
 <td style="text-align: left;"><code>searched_all</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Omitted unless the request provided <code>min_ledger</code> and <code>max_ledger</code>)</em> If <code>true</code>, the server was able to search all of the specified ledger versions, and the transaction was in none of them. If <code>false</code>, the server did not have all of the specified ledger versions available, so it is not sure if one of them might contain the transaction. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted unless the request provided <code>min_ledger</code> and <code>max_ledger</code>)</em> If <code>true</code>, the server was able to search all of the specified ledger versions, and the transaction was in none of them. If <code>false</code>, the server did not have all of the specified ledger versions available, so it is not sure if one of them might contain the transaction. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -1365,22 +1365,22 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

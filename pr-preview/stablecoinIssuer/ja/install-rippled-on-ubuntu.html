@@ -350,8 +350,8 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 </code></pre></div>
 <p><code>rippled</code>の開発バージョンまたはプレリリースバージョンにアクセスするには、<code>stable</code>ではなく次のいずれかを使用します。</p>
 <ul>
-<li><code>unstable</code> - プレインストールビルド（<a class="external-link" href="https://github.com/ripple/rippled/tree/release" target="_blank"><code>release</code>ブランチ <i aria-hidden="true" class="fa fa-external-link"></i></a>）</li>
-<li><code>nightly</code> - 実験/開発ビルド（<a class="external-link" href="https://github.com/ripple/rippled/tree/develop" target="_blank"><code>develop</code>ブランチ <i aria-hidden="true" class="fa fa-external-link"></i></a>）</li>
+<li><code>unstable</code> - プレインストールビルド（<a class="external-link" href="https://github.com/XRPLF/rippled/tree/release" target="_blank"><code>release</code>ブランチ <i aria-hidden="true" class="fa fa-external-link"></i></a>）</li>
+<li><code>nightly</code> - 実験/開発ビルド（<a class="external-link" href="https://github.com/XRPLF/rippled/tree/develop" target="_blank"><code>develop</code>ブランチ <i aria-hidden="true" class="fa fa-external-link"></i></a>）</li>
 </ul>
 <p class="devportal-callout 警告"><strong>警告:</strong> 安定版ではないナイトリービルドはいつの時点でも壊れる可能性があります。これらのビルドを本番環境のサーバーに使用しないでください。</p>
 <ol start="6">
@@ -386,7 +386,7 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 <h3 id="その他の構成">その他の構成<a aria-hidden="true" class="hover_anchor" href="#その他の構成"><i class="fa fa-link"></i></a></h3>
 <p><code>rippled</code>は、デフォルト構成でXRP Ledgerに接続する必要があります。ただし、<code>rippled.cfg</code>ファイルを編集すれば、設定を変更できます。推奨される構成設定については、<a href="capacity-planning.html">容量の計画</a>を参照してください。</p>
 <p>The <a href="install-rippled.html">recommended installation</a> uses the config file <code>/etc/opt/ripple/rippled.cfg</code> by default. Other places you can put a config file include <code>$HOME/.config/ripple/rippled.cfg</code> (where <code>$HOME</code> is the home directory of the user running <code>rippled</code>), <code>$HOME/.local/ripple/rippled.cfg</code>, or the current working directory from where you start <code>rippled</code>.<!--_ --></p>
-<p>すべての構成オプションの説明については、<a class="external-link" href="https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg" target="_blank"><code>rippled</code> GitHubリポジトリー <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
+<p>すべての構成オプションの説明については、<a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg" target="_blank"><code>rippled</code> GitHubリポジトリー <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
 <p>構成の変更を有効にするには、<code>rippled</code>を再起動する必要があります。</p>
 <p><code>[debug_logfile]</code>セクションまたは<code>[database_path]</code>セクションを変更すると、<code>rippled</code>を実行するユーザーに、新しく構成したパスの所有権を付与する必要が生じる場合があります。</p>
 <h3 id="更新">更新<a aria-hidden="true" class="hover_anchor" href="#更新"><i class="fa fa-link"></i></a></h3>
@@ -927,22 +927,22 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

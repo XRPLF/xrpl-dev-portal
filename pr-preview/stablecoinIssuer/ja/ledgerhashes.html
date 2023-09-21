@@ -300,7 +300,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="ledgerhashes">LedgerHashes<a aria-hidden="true" class="hover_anchor" href="#ledgerhashes"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>（レジャーバージョンを一意に示す<a href="basic-data-types.html#ハッシュ">「ledger hash」文字列データ型</a>と混同しないでください。このセクションでは、<code>LedgerHashes</code>レジャーオブジェクトタイプについて説明します。）</p>
 <p><code>LedgerHashes</code>オブジェクトタイプには、このレジャーバージョン以前のレジャーの履歴がハッシュの形式で含まれています。このレジャータイプのオブジェクトは、レジャーの閉鎖処理の過程で自動的に変更されます。（このときに限り、レジャーの「状態」ツリーはトランザクションまたは疑似トランザクションなしで変更されます。）<code>LedgerHashes</code>オブジェクトの目的は、現行レジャーバージョンのみを指定して過去のレジャーのハッシュを検索できるようにすることです。過去のレジャーバージョンを最大で1回検索できます。</p>
 <p>2種類の<code>LedgerHashes</code>オブジェクトがあります。2種類のオブジェクトのフィールドは同一です。各レジャーバージョンの内容は以下のとおりです。</p>
@@ -377,7 +377,7 @@
 <p class="devportal-callout 注記"><strong>注記:</strong> 最も古い「過去の履歴」<code>LedgerHashes</code>オブジェクトのエントリー数は255です。これは、ジェネシスレジャーのレジャーインデックスが0ではなく1であるためです。</p>
 <p>「過去の履歴」<code>LedgerHashes</code>オブジェクトは<a class="external-link" href="https://en.wikipedia.org/wiki/Skip_list" target="_blank">スキップリスト <i aria-hidden="true" class="fa fa-external-link"></i></a>として機能するので、任意の履歴フラッグレジャーのハッシュをそのインデックスから取得できます。さらに、フラッグレジャーの「最近の履歴」オブジェクトを使用してその他のレジャーのハッシュを取得できます。</p>
 <h2 id="ledgerhashes-idのフォーマット">LedgerHashes IDのフォーマット<a aria-hidden="true" class="hover_anchor" href="#ledgerhashes-idのフォーマット"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42" target="_blank">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42" target="_blank">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>LedgerHashes</code>オブジェクトIDには2種類のフォーマットがあります。これは、オブジェクトのサブタイプが「最近の履歴」と「過去の履歴」のいずれであるかに応じて決まります。</p>
 <p><strong>「最近の履歴」</strong> <code>LedgerHashes</code>オブジェクトのIDは、<code>LedgerHashes</code>スペースキー（<code>0x0073</code>）の<a href="basic-data-types.html#ハッシュ">SHA-512ハーフ</a>です。つまり「最近の履歴」のIDは常に<code>B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B</code>です。</p>
 <p><strong>「過去の履歴」</strong><code>LedgerHashes</code>オブジェクトのIDは、以下の値がこの順序で連結されている<a href="basic-data-types.html#ハッシュ">SHA-512ハーフ</a>です。</p>
@@ -902,22 +902,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

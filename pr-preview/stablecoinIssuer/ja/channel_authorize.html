@@ -300,8 +300,8 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="channel_authorize">channel_authorize<a aria-hidden="true" class="hover_anchor" href="#channel_authorize"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><em>（<a href="known-amendments.html#paychan">PayChan Amendment</a>が有効になっている必要があります。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>）</em></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><em>（<a href="known-amendments.html#paychan">PayChan Amendment</a>が有効になっている必要があります。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>）</em></p>
 <p><code>channel_authorize</code>メソッドは、特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。</p>
 <h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>要求フォーマットの例:</p>
@@ -353,27 +353,27 @@ rippled<span class="w"> </span>channel_authorize<span class="w"> </span>s██�
 <tr>
 <td><code>secret</code></td>
 <td>文字列</td>
-<td><em>（省略可）</em> クレームへの署名に使用する秘密鍵。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。<code>seed</code>、<code>seed_hex</code>、<code>passphrase</code>と同時に使用することはできません。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="更新: rippled 1.4.0"><img alt="更新: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td><em>（省略可）</em> クレームへの署名に使用する秘密鍵。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。<code>seed</code>、<code>seed_hex</code>、<code>passphrase</code>と同時に使用することはできません。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="更新: rippled 1.4.0"><img alt="更新: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td><code>seed</code></td>
 <td>文字列</td>
-<td><em>（省略可）</em> クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。XRP Ledgerの<a href="base58-encodings.html">base58</a>フォーマットにする必要があります。指定する場合は、<code>key_type</code>も指定する必要があります。<code>secret</code>、<code>seed_hex</code>、<code>passphrase</code>と同時に使用することはできません。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td><em>（省略可）</em> クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。XRP Ledgerの<a href="base58-encodings.html">base58</a>フォーマットにする必要があります。指定する場合は、<code>key_type</code>も指定する必要があります。<code>secret</code>、<code>seed_hex</code>、<code>passphrase</code>と同時に使用することはできません。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td><code>seed_hex</code></td>
 <td>文字列</td>
-<td><em>（省略可）</em> クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。16進フォーマットにする必要があります。指定する場合は、<code>key_type</code>も指定する必要があります。<code>secret</code>、<code>seed</code>、<code>passphrase</code>と同時に使用することはできません。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td><em>（省略可）</em> クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。16進フォーマットにする必要があります。指定する場合は、<code>key_type</code>も指定する必要があります。<code>secret</code>、<code>seed</code>、<code>passphrase</code>と同時に使用することはできません。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td><code>passphrase</code></td>
 <td>文字列</td>
-<td><em>（省略可）</em> クレームへの署名に使用する文字列パスフレーズ。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。<a href="cryptographic-keys.html#鍵導出">このパスフレーズから導出した鍵</a>は、チャネルで指定された公開鍵と一致する必要があります。指定する場合は、<code>key_type</code>も指定する必要があります。<code>secret</code>、<code>seed</code>、<code>seed_hex</code>と同時に使用することはできません。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td><em>（省略可）</em> クレームへの署名に使用する文字列パスフレーズ。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。<a href="cryptographic-keys.html#鍵導出">このパスフレーズから導出した鍵</a>は、チャネルで指定された公開鍵と一致する必要があります。指定する場合は、<code>key_type</code>も指定する必要があります。<code>secret</code>、<code>seed</code>、<code>seed_hex</code>と同時に使用することはできません。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td><code>key_type</code></td>
 <td>文字列</td>
-<td><em>（省略可）</em> 指定された暗号化キーペアの<a href="cryptographic-keys.html#署名アルゴリズム">署名アルゴリズム</a>。有効な種類は、<code>secp256k1</code>または<code>ed25519</code>です。デフォルトは<code>secp256k1</code>です。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td><em>（省略可）</em> 指定された暗号化キーペアの<a href="cryptographic-keys.html#署名アルゴリズム">署名アルゴリズム</a>。有効な種類は、<code>secp256k1</code>または<code>ed25519</code>です。デフォルトは<code>secp256k1</code>です。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td><code>amount</code></td>
@@ -435,7 +435,7 @@ rippled<span class="w"> </span>channel_authorize<span class="w"> </span>s██�
 <h2 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>いずれかの<a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>。</li>
-<li><code>badKeyType</code> - 要求の<code>key_type</code>パラメーターは、有効なキータイプではありません。(有効なタイプは、<code>secp256k1</code>または<code>ed25519</code>です。)<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><code>badKeyType</code> - 要求の<code>key_type</code>パラメーターは、有効なキータイプではありません。(有効なタイプは、<code>secp256k1</code>または<code>ed25519</code>です。)<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><code>badSeed</code> - 要求の<code>secret</code>が有効なシークレットキーではありません。</li>
 <li><code>channelAmtMalformed</code> - 要求の<code>amount</code>が有効な<a href="basic-data-types.html#通貨額の指定">XRPの額</a>ではありません。</li>
 <li><code>channelMalformed</code> - 要求の<code>channel_id</code>が有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列です。</li>
@@ -953,22 +953,22 @@ rippled<span class="w"> </span>channel_authorize<span class="w"> </span>s██�
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

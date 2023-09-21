@@ -299,8 +299,8 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="channel_authorize">channel_authorize<a aria-hidden="true" class="hover_anchor" href="#channel_authorize"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><em>(Added by the <a href="known-amendments.html#paychan">PayChan amendment</a> to be enabled. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="New in: rippled 0.33.0"><img alt="New in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>)</em></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><em>(Added by the <a href="known-amendments.html#paychan">PayChan amendment</a> to be enabled. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" target="_blank" title="New in: rippled 0.33.0"><img alt="New in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>)</em></p>
 <p>The <code>channel_authorize</code> method creates a signature that can be used to redeem a specific amount of XRP from a payment channel.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
@@ -352,27 +352,27 @@ rippled<span class="w"> </span>channel_authorize<span class="w"> </span>s██�
 <tr>
 <td><code>secret</code></td>
 <td>String</td>
-<td><em>(Optional)</em> The secret key to use to sign the claim. This must be the same key pair as the public key specified in the channel. Cannot be used with <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="Updated in: rippled 1.4.0"><img alt="Updated in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td><em>(Optional)</em> The secret key to use to sign the claim. This must be the same key pair as the public key specified in the channel. Cannot be used with <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="Updated in: rippled 1.4.0"><img alt="Updated in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td><code>seed</code></td>
 <td>String</td>
-<td><em>(Optional)</em> The secret seed to use to sign the claim. This must be the same key pair as the public key specified in the channel. Must be in the XRP Ledger's <a href="base58-encodings.html">base58</a> format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td><em>(Optional)</em> The secret seed to use to sign the claim. This must be the same key pair as the public key specified in the channel. Must be in the XRP Ledger's <a href="base58-encodings.html">base58</a> format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td><code>seed_hex</code></td>
 <td>String</td>
-<td><em>(Optional)</em> The secret seed to use to sign the claim. This must be the same key pair as the public key specified in the channel. Must be in hexadecimal format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>passphrase</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td><em>(Optional)</em> The secret seed to use to sign the claim. This must be the same key pair as the public key specified in the channel. Must be in hexadecimal format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>passphrase</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td><code>passphrase</code></td>
 <td>String</td>
-<td><em>(Optional)</em> A string passphrase to use to sign the claim. This must be the same key pair as the public key specified in the channel. The <a href="cryptographic-keys.html#key-derivation">key derived from this passphrase</a> must match the public key specified in the channel. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>seed_hex</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td><em>(Optional)</em> A string passphrase to use to sign the claim. This must be the same key pair as the public key specified in the channel. The <a href="cryptographic-keys.html#key-derivation">key derived from this passphrase</a> must match the public key specified in the channel. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>seed_hex</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td><code>key_type</code></td>
 <td>String</td>
-<td><em>(Optional)</em> The <a href="cryptographic-keys.html#signing-algorithms">signing algorithm</a> of the cryptographic key pair provided. Valid types are <code>secp256k1</code> or <code>ed25519</code>. The default is <code>secp256k1</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td><em>(Optional)</em> The <a href="cryptographic-keys.html#signing-algorithms">signing algorithm</a> of the cryptographic key pair provided. Valid types are <code>secp256k1</code> or <code>ed25519</code>. The default is <code>secp256k1</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td><code>amount</code></td>
@@ -434,7 +434,7 @@ rippled<span class="w"> </span>channel_authorize<span class="w"> </span>s██�
 <h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
-<li><code>badKeyType</code> - The <code>key_type</code> parameter in the request is not a valid key type. (Valid types are <code>secp256k1</code> or <code>ed25519</code>.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><code>badKeyType</code> - The <code>key_type</code> parameter in the request is not a valid key type. (Valid types are <code>secp256k1</code> or <code>ed25519</code>.) <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><code>badSeed</code> - The <code>secret</code> in the request is not a valid secret key.</li>
 <li><code>channelAmtMalformed</code> - The <code>amount</code> in the request is not a valid <a href="basic-data-types.html#specifying-currency-amounts">XRP amount</a>.</li>
 <li><code>channelMalformed</code> - The <code>channel_id</code> in the request is not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.</li>
@@ -952,22 +952,22 @@ rippled<span class="w"> </span>channel_authorize<span class="w"> </span>s██�
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

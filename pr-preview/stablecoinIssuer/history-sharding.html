@@ -301,7 +301,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="history-sharding">History Sharding<a aria-hidden="true" class="hover_anchor" href="#history-sharding"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.90.0" target="_blank" title="Introduced in: rippled 0.90.0"><img alt="Introduced in: rippled 0.90.0" class="dactyl_badge" src="https://img.shields.io/badge/Introduced%20in-rippled%200.90.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.90.0" target="_blank" title="Introduced in: rippled 0.90.0"><img alt="Introduced in: rippled 0.90.0" class="dactyl_badge" src="https://img.shields.io/badge/Introduced%20in-rippled%200.90.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>As XRP Ledger servers run, they naturally produce a database containing data about the ledgers they built or acquired during network runtime. Each server stores that ledger data in its <em>ledger store</em>, but <a href="online-deletion.html">online deletion</a> removes old ledgers' data automatically over time. History sharding provides a separate storage system for older ledger history so that the network can divide up the work of recording the entire (multiple terabyte) history of the XRP Ledger.</p>
 <p>Historical sharding distributes the transaction history of the XRP Ledger into segments, called shards, across servers in the XRP Ledger network. A shard is a range of ledgers. A server uses mostly the same format for ledgers in both the ledger store and the shard store, but the two stores are separate.</p>
 <p><a href="img/xrp-ledger-network-ledger-store-and-shard-store.png"><img alt="XRP Ledger Network: Ledger Store and Shard Store Diagram" src="img/xrp-ledger-network-ledger-store-and-shard-store.png"/></a></p>
@@ -312,7 +312,7 @@
 <p>The server selects and downloads additional shards until it reaches the maximum number of shards it is configured to store. If a server runs out of space before completely acquiring a shard, it stops its retrieval process until it has space available to continue.</p>
 <h2 id="xrp-ledger-network-data-integrity">XRP Ledger Network Data Integrity<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger-network-data-integrity"><i class="fa fa-link"></i></a></h2>
 <p>The history of all ledgers is shared by servers agreeing to keep particular ranges of historical ledgers. This makes it possible for servers to confirm that they have all the data they agreed to maintain, and produce "proof trees" or "ledger deltas" which shows how each ledger in the blockchain's history was the result of applying transactions to the previous state. Since servers that are configured with history sharding randomly select the shards that they store, the entire history of all closed ledgers is stored in a normal distribution curve, increasing the probability that the XRP Ledger Network evenly maintains the history.</p>
-<p>History shards are recorded in a deterministic format, so that any two servers assembling the same shard produce the exact same binary data no matter what order they acquired the data and where they got it from. This makes it possible to compare checksums or cryptographic hashes of the shard data to verify the integrity of the data, and it is possible to share and import history shards through other formats. (For example, you could download shard data using Bittorrent or acquire physical media with the shard data pre-loaded on it, and verify that it matches the data that can be downloaded from the network.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="New in: rippled 1.8.1"><img alt="New in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>History shards are recorded in a deterministic format, so that any two servers assembling the same shard produce the exact same binary data no matter what order they acquired the data and where they got it from. This makes it possible to compare checksums or cryptographic hashes of the shard data to verify the integrity of the data, and it is possible to share and import history shards through other formats. (For example, you could download shard data using Bittorrent or acquire physical media with the shard data pre-loaded on it, and verify that it matches the data that can be downloaded from the network.) <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" target="_blank" title="New in: rippled 1.8.1"><img alt="New in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
@@ -849,22 +849,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

@@ -299,8 +299,8 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="crawl_shards">crawl_shards<a aria-hidden="true" class="hover_anchor" href="#crawl_shards"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>Requests information from peer servers about which <a href="history-sharding.html">shards of historical ledger data</a> they have available. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="New in: rippled 1.2.0"><img alt="New in: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Requests information from peer servers about which <a href="history-sharding.html">shards of historical ledger data</a> they have available. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" target="_blank" title="New in: rippled 1.2.0"><img alt="New in: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>The <code>crawl_shards</code> method is an <a href="admin-api-methods.html">admin method</a> that cannot be run by unprivileged users.</em></p>
 <h3 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h3>
 <p>An example of the request format:</p>
@@ -434,7 +434,7 @@
 <tr>
 <td style="text-align: left;"><code>incomplete_shards</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(May be omitted)</em> A comma-separated list of history shards this peer has partially downloaded, and percent completion for each. For example, <code>1:50,2:25</code> indicates that shard 1 is 50% downloaded and shard 2 is 25% downloaded. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="New in: rippled 1.8.1"><img alt="New in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(May be omitted)</em> A comma-separated list of history shards this peer has partially downloaded, and percent completion for each. For example, <code>1:50,2:25</code> indicates that shard 1 is 50% downloaded and shard 2 is 25% downloaded. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" target="_blank" title="New in: rippled 1.8.1"><img alt="New in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>public_key</code></td>
@@ -443,7 +443,7 @@
 </tr>
 </tbody>
 </table>
-<p>The <code>ip</code> field is no longer provided. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="Removed in: rippled 1.8.1"><img alt="Removed in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%201.8.1-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>ip</code> field is no longer provided. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" target="_blank" title="Removed in: rippled 1.8.1"><img alt="Removed in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%201.8.1-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <h3 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
@@ -964,22 +964,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

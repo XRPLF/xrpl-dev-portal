@@ -308,7 +308,7 @@
 <li><a href="#公開ハブ"><strong>ハブサーバー</strong></a> - ピアツーピアネットワークの他の多くのメンバー間のメッセージを中継します。</li>
 </ul>
 </li>
-<li><a href="#レポートモード"><strong>レポートモード</strong></a> - リレーショナルデータベースからのAPIリクエストに対応するための専用モードです。ピアツーピアネットワークには参加しないため、P2Pモードサーバーを実行し、信頼できるgRPC接続を使用してレポートモードサーバーに接続する必要があります。 <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="新規: rippled 1.7.0"><img alt="新規: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a href="#レポートモード"><strong>レポートモード</strong></a> - リレーショナルデータベースからのAPIリクエストに対応するための専用モードです。ピアツーピアネットワークには参加しないため、P2Pモードサーバーを実行し、信頼できるgRPC接続を使用してレポートモードサーバーに接続する必要があります。 <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="新規: rippled 1.7.0"><img alt="新規: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><a href="#スタンドアロンモード"><strong>スタンドアロンモード</strong></a> - テスト用のオフラインモードです。ピアツーピアネットワークに接続せず、コンセンサスも使用しません。</li>
 </ul>
 <p>また、<a href="http-websocket-apis.html"><code>rippled</code> API</a>にローカルでアクセスするためのクライアントアプリケーションとして、<code>rippled</code>実行可能ファイルを実行できます。（この場合同じバイナリの2つのインスタンスを並列して実行できます。1つのインスタンスをサーバーとして実行し、もう1つのインスタンスをクライアントとして一時的に実行して終了します。）</p>
@@ -346,7 +346,7 @@
 <p>他の目的にも使用されているサーバーで、安全にバリデーションを有効にすることができます。このような構成は <em>汎用サーバー</em> と呼ばれます。あるいは、他のタスクを実行しない <em>専用バリデータ</em> を、P2Pモードの他の<code>rippled</code>サーバーと一緒に<a href="clustering.html">クラスタ</a>で実行することもできます。</p>
 <p>バリデータの実行についての詳細は、<a href="run-rippled-as-a-validator.html">バリデータとしての<code>rippled</code>の実行</a>を参照してください。</p>
 <h2 id="レポートモード">レポートモード<a aria-hidden="true" class="hover_anchor" href="#レポートモード"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="新規: rippled 1.7.0"><img alt="新規: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="新規: rippled 1.7.0"><img alt="新規: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>レポートモードは、APIリクエストをより効率的に処理するために特化したモードです。このモードでは、サーバーは<a href="configure-grpc.html">gRPC</a>を介して、P2Pモードで動作する別の<code>rippled</code>サーバーから最新の検証済みレジャーデータを取得し、そのデータをリレーショナルデータベース(<a class="external-link" href="https://www.postgresql.org/" target="_blank">PostgreSQL <i aria-hidden="true" class="fa fa-external-link"></i></a>)にロードします。レポートモードサーバはピアツーピアネットワークに直接参加しませんが、トランザクションの送信などの要求を、使用しているP2Pモードサーバに転送することはできます。</p>
 <p>複数のレポートモードサーバーは、PostgreSQLデータベースと<a class="external-link" href="https://cassandra.apache.org/" target="_blank">Apache Cassandra <i aria-hidden="true" class="fa fa-external-link"></i></a>クラスタへのアクセスを共有し、各サーバーがすべてのデータの冗長コピーを必要とせずに大量の履歴を提供できます。レポートモードサーバは、基礎となるデータの保存方法の違いに対応するため、若干の変更を加えた同じ<a href="http-websocket-apis.html"><code>rippled</code> API</a>を使ってこのデータを提供します。</p>
 <p>最も注目すべきは、レポートモードのサーバーは、保留中や未検証のレジャーデータまたはトランザクションをレポートしないことです。この制限は、<a href="decentralized-exchange.html">分散型取引所</a>での裁定取引の実行など、流動的なデータへの迅速なアクセスに依存する特定の使用事例に関連しています。</p>
@@ -878,22 +878,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

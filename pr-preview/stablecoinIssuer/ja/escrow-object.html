@@ -300,7 +300,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="escrow">Escrow<a aria-hidden="true" class="hover_anchor" href="#escrow"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>（<a href="known-amendments.html#escrow">Escrow Amendment</a>が必要です。）</em></p>
 <p><code>Escrow</code>オブジェクトタイプは、実行または取り消しを待機している保留中のXRP支払を表します。<a href="escrowcreate.html">EscrowCreateトランザクション</a>はレジャーに<code>Escrow</code>オブジェクトを作成します。<a href="escrowfinish.html">EscrowFinish</a>トランザクションまたは<a href="escrowcancel.html">EscrowCancel</a>トランザクションが正常に完了すると、オブジェクトが削除されます。<code>Escrow</code>オブジェクトに <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02" target="_blank"><em>Crypto-condition</em> <i aria-hidden="true" class="fa fa-external-link"></i></a>が指定されている場合、支払が成功するのは、EscrowFinishトランザクションに指定された対応する <em>フルフィルメント</em> がその条件を満たす場合だけです。（サポートされている唯一のCrypto-conditionタイプは<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1" target="_blank">PREIMAGE-SHA-256 <i aria-hidden="true" class="fa fa-external-link"></i></a>です。）<code>Escrow</code>オブジェクトに<code>FinishAfter</code>時刻が指定されている場合、保留中の支払はその時刻の経過後にのみ実行されます。</p>
 <p><code>Escrow</code>オブジェクトには次の2つのアドレスが関連付けられています。</p>
@@ -946,22 +946,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

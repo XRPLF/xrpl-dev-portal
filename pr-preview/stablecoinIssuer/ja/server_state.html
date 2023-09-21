@@ -298,12 +298,12 @@
     <li class="active breadcrumb-item">server_state</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>This translated page is not updated to match the latest changes in the English version.</strong>
-      <p class="mb-0">We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all translated contents are up-to-date. If you'd like to help, <a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">please contribute!</a></p>
+    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="server_state">server_state<a aria-hidden="true" class="hover_anchor" href="#server_state"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerState.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerState.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>server_state</code>コマンドは、サーバーに対し<code>rippled</code>サーバーの現在の状態に関するさまざまな機械可読の情報を問い合わせます。応答は<a href="server_info.html">server_infoメソッド</a>の場合とほぼ同じですが、読み取りやすい単位ではなく処理しやすい単位を使用します。（たとえば、XRP値は科学的記数法や10進数値の代わりに整数のdrop数で示され、時刻は秒単位ではなくミリ秒単位で示されます。）</p>
 <h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>要求フォーマットの例:</p>
@@ -538,7 +538,7 @@ rippled<span class="w"> </span>server_state
 <tr>
 <td style="text-align: left;"><code>amendment_blocked</code></td>
 <td style="text-align: left;">ブール値</td>
-<td style="text-align: left;"><em>（省略される場合があります）</em><code>true</code>の場合、このサーバーは<a href="amendments.html#amendment-blocked">Amendment blocked</a>の状態です。サーバーがAmendment blockedではない場合、応答ではこのフィールドが省略されます。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.80.0" target="_blank" title="新規: rippled 0.80.0"><img alt="新規: rippled 0.80.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.80.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（省略される場合があります）</em><code>true</code>の場合、このサーバーは<a href="amendments.html#amendment-blocked">Amendment blocked</a>の状態です。サーバーがAmendment blockedではない場合、応答ではこのフィールドが省略されます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.80.0" target="_blank" title="新規: rippled 0.80.0"><img alt="新規: rippled 0.80.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.80.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>build_version</code></td>
@@ -583,27 +583,27 @@ rippled<span class="w"> </span>server_state
 <tr>
 <td style="text-align: left;"><code>load_factor</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">サーバーが現在適用している負荷係数。トランザクションコストの乗数は、この値と<code>load_base</code>の比率によって決まります。負荷係数は、個別サーバーの最も高い負荷係数、クラスターの負荷係数、<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>、およびネットワーク全体の負荷係数によって決定します。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="更新: rippled 0.33.0"><img alt="更新: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">サーバーが現在適用している負荷係数。トランザクションコストの乗数は、この値と<code>load_base</code>の比率によって決まります。負荷係数は、個別サーバーの最も高い負荷係数、クラスターの負荷係数、<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>、およびネットワーク全体の負荷係数によって決定します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" target="_blank" title="更新: rippled 0.33.0"><img alt="更新: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_fee_escalation</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;">（省略される場合があります）オープンレジャーに入るときに<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数（<a href="transaction-cost.html#手数料レベル">手数料レベル</a>）。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）オープンレジャーに入るときに<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数（<a href="transaction-cost.html#手数料レベル">手数料レベル</a>）。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_fee_queue</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;">（省略される場合があります）キューが一杯になっている場合に、キューへ入るときに<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数（<a href="transaction-cost.html#手数料レベル">手数料レベル</a>）。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）キューが一杯になっている場合に、キューへ入るときに<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数（<a href="transaction-cost.html#手数料レベル">手数料レベル</a>）。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_fee_reference</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;">（省略される場合があります）負荷スケーリングのない<a href="transaction-cost.html">トランザクションコスト</a>（<a href="transaction-cost.html#手数料レベル">手数料レベル</a>）。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）負荷スケーリングのない<a href="transaction-cost.html">トランザクションコスト</a>（<a href="transaction-cost.html#手数料レベル">手数料レベル</a>）。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_server</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">（省略される場合があります）サーバーが適用している負荷係数。<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>は含まれません。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）サーバーが適用している負荷係数。<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>は含まれません。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>peers</code></td>
@@ -628,27 +628,27 @@ rippled<span class="w"> </span>server_state
 <tr>
 <td style="text-align: left;"><code>server_state_duration_us</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">サーバーが現在の状態になってから経過した連続マイクロ秒数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="新規: rippled 1.2.0"><img alt="新規: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">サーバーが現在の状態になってから経過した連続マイクロ秒数。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" target="_blank" title="新規: rippled 1.2.0"><img alt="新規: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>state_accounting</code></td>
 <td style="text-align: left;">オブジェクト</td>
-<td style="text-align: left;">各種<a href="rippled-server-states.html">サーバー状態</a>のマップと、サーバーが各状態に費やした時間についての情報。これは、サーバーのネットワーク接続性の健全性を長期的に追跡するのに便利です。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">各種<a href="rippled-server-states.html">サーバー状態</a>のマップと、サーバーが各状態に費やした時間についての情報。これは、サーバーのネットワーク接続性の健全性を長期的に追跡するのに便利です。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>state_accounting.*.duration_us</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;">サーバーがこの状態になってから経過したマイクロ秒数。（サーバーが別の状態に移行するたびに更新されます。）<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">サーバーがこの状態になってから経過したマイクロ秒数。（サーバーが別の状態に移行するたびに更新されます。）<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>state_accounting.*.transitions</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">サーバーがこの状態に移行した回数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">サーバーがこの状態に移行した回数。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>uptime</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">サーバーが連続稼働している秒数。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">サーバーが連続稼働している秒数。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated_ledger</code></td>
@@ -693,7 +693,7 @@ rippled<span class="w"> </span>server_state
 <tr>
 <td style="text-align: left;"><code>validator_list_expires</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;"><em>（管理者専用）</em> 現在のバリデータリストが期限切れになる時点（<a href="basic-data-types.html#時間の指定">Rippleエポック以降の経過秒数</a>）。サーバーが発行済みのバリデータリストをロードしていない場合は0。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.80.1" target="_blank" title="新規: rippled 0.80.1"><img alt="新規: rippled 0.80.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.80.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（管理者専用）</em> 現在のバリデータリストが期限切れになる時点（<a href="basic-data-types.html#時間の指定">Rippleエポック以降の経過秒数</a>）。サーバーが発行済みのバリデータリストをロードしていない場合は0。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.80.1" target="_blank" title="新規: rippled 0.80.1"><img alt="新規: rippled 0.80.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.80.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -1215,22 +1215,22 @@ rippled<span class="w"> </span>server_state
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

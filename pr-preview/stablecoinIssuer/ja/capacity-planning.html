@@ -309,9 +309,9 @@
 <p>これらの要素を考慮して、構成するサーバーが現在および将来のXRP Ledgerネットワークの活動を処理する能力を持っていることを確認する必要があります。</p>
 <h2 id="構成設定">構成設定<a aria-hidden="true" class="hover_anchor" href="#構成設定"><i class="fa fa-link"></i></a></h2>
 <p>デフォルトの設定ファイルには、一般的なユースケースを幅広くカバーする設定が含まれています。お使いのハードウェアや使用目的に合わせて設定をカスタマイズすることで、より良いパフォーマンスを得ることができます。</p>
-<p>本セクションでの設定は、<code>rippled.cfg</code>ファイルのパラメータです。設定ファイルの例である <code>rippled-example.cfg</code> は、<code>rippled</code> GitHubリポジトリ の <a class="external-link" href="https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg" target="_blank"><code>cfg</code> ディレクトリ <i aria-hidden="true" class="fa fa-external-link"></i></a>からアクセスできます。サンプル設定ファイルの設定は、サーバーと一緒にインストールされたデフォルトの設定と一致しています。</p>
+<p>本セクションでの設定は、<code>rippled.cfg</code>ファイルのパラメータです。設定ファイルの例である <code>rippled-example.cfg</code> は、<code>rippled</code> GitHubリポジトリ の <a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg" target="_blank"><code>cfg</code> ディレクトリ <i aria-hidden="true" class="fa fa-external-link"></i></a>からアクセスできます。サンプル設定ファイルの設定は、サーバーと一緒にインストールされたデフォルトの設定と一致しています。</p>
 <h3 id="ノードサイズ">ノードサイズ<a aria-hidden="true" class="hover_anchor" href="#ノードサイズ"><i class="fa fa-link"></i></a></h3>
-<p><code>[node_size]</code>パラメータは、サーバのハードウェア全体の容量を反映する必要があります。このパラメータを省略すると、システムの総RAMとCPUスレッド数に基づいて、サーバが自動的に適切な設定を選択します。システムのRAMやスレッドの一部を他のソフトウェア用に確保する必要がある場合や、オペレーティングシステムから報告される量が不正確な場合など、自動設定がシステムに合わない場合は、この値を明示的に設定できます。(これは一部のコンテナで発生する可能性があります。) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="更新: rippled 1.8.1"><img alt="更新: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><code>[node_size]</code>パラメータは、サーバのハードウェア全体の容量を反映する必要があります。このパラメータを省略すると、システムの総RAMとCPUスレッド数に基づいて、サーバが自動的に適切な設定を選択します。システムのRAMやスレッドの一部を他のソフトウェア用に確保する必要がある場合や、オペレーティングシステムから報告される量が不正確な場合など、自動設定がシステムに合わない場合は、この値を明示的に設定できます。(これは一部のコンテナで発生する可能性があります。) <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" target="_blank" title="更新: rippled 1.8.1"><img alt="更新: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>一般的には、使用可能なRAMがサポートする最大のノードサイズを常に使用する必要があります。推奨される設定については、以下の表を参照してください。</p>
 <h4 id="推奨事項">推奨事項<a aria-hidden="true" class="hover_anchor" href="#推奨事項"><i class="fa fa-link"></i></a></h4>
 <p>それぞれの<code>[node_size]</code>には、それに対応する利用可能なRAMの要件があります。例えば、<code>[node_size]</code>を<code>huge</code>に設定した場合、<code>rippled</code>がスムーズに動作するためには、最低でも32GBの利用可能なRAMが必要です。</p>
@@ -1058,22 +1058,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

@@ -319,7 +319,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="subscribe">subscribe<a aria-hidden="true" class="hover_anchor" href="#subscribe"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>subscribe</code>メソッドは、特定のイベントが発生した場合に、定期的に通知するようサーバーに要求します。</p>
 <h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>要求フォーマットの例:</p>
@@ -566,7 +566,7 @@
 </tbody>
 </table>
 <h2 id="検証ストリーム">検証ストリーム<a aria-hidden="true" class="hover_anchor" href="#検証ストリーム"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.29.0" target="_blank" title="新規: rippled 0.29.0"><img alt="新規: rippled 0.29.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.29.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.29.0" target="_blank" title="新規: rippled 0.29.0"><img alt="新規: rippled 0.29.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.29.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>検証ストリームは、検証メッセージ（検証投票とも呼ばれる）を受信するたびにメッセージを送信します。検証メッセージが信頼できるバリデータからのものであるかどうかは関係ありません。次のようなメッセージを送信します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validationReceived"</span><span class="p">,</span>
@@ -609,22 +609,22 @@
 <tr>
 <td style="text-align: left;"><code>amendments</code></td>
 <td style="text-align: left;">文字列の配列</td>
-<td style="text-align: left;">（省略される場合があります）このサーバーがプロトコルへの追加を求める<a href="amendments.html">Amendment</a>。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）このサーバーがプロトコルへの追加を求める<a href="amendments.html">Amendment</a>。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>base_fee</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;">（省略される場合があります）サーバーが<a href="fee-voting.html">手数料投票</a>による設定を希望するスケーリングされていないトランザクションコスト（<code>reference_fee</code>値）。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）サーバーが<a href="fee-voting.html">手数料投票</a>による設定を希望するスケーリングされていないトランザクションコスト（<code>reference_fee</code>値）。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>flags</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">この検証メッセージに追加されるフラグのビットマスク。フラグ0x80000000は、検証の署名が完全に正規であることを示します。フラグ0x00000001は、完全な検証であることを示します。それ以外の場合は部分検証です。部分検証とは、特定のレジャーに対する投票ではありません。部分検証は、バリデータがオンラインであるがコンセンサスにまだ同意していないことを示します。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">この検証メッセージに追加されるフラグのビットマスク。フラグ0x80000000は、検証の署名が完全に正規であることを示します。フラグ0x00000001は、完全な検証であることを示します。それ以外の場合は部分検証です。部分検証とは、特定のレジャーに対する投票ではありません。部分検証は、バリデータがオンラインであるがコンセンサスにまだ同意していないことを示します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>full</code></td>
 <td style="text-align: left;">ブール値</td>
-<td style="text-align: left;"><code>true</code>の場合は、完全な検証です。それ以外の場合は部分検証です。部分検証とは、特定のレジャーに対する投票ではありません。部分検証は、バリデータがオンラインであるがコンセンサスにまだ同意していないことを示します。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>true</code>の場合は、完全な検証です。それ以外の場合は部分検証です。部分検証とは、特定のレジャーに対する投票ではありません。部分検証は、バリデータがオンラインであるがコンセンサスにまだ同意していないことを示します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
@@ -634,27 +634,27 @@
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
 <td style="text-align: left;">文字列 - 整数</td>
-<td style="text-align: left;">提案されたレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">提案されたレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_fee</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;">（省略される場合があります）このバリデータにより現在施行されているローカルの負荷スケーリングされたトランザクションコスト（手数料単位）。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）このバリデータにより現在施行されているローカルの負荷スケーリングされたトランザクションコスト（手数料単位）。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>master_key</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;"><em>（省略される場合があります）</em> バリデータのマスター公開鍵（バリデータがXRP Ledgerの<a href="base58-encodings.html">base58</a>フォーマットのバリデータトークンを使用している場合）。（関連項目: <a href="run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"><code>rippled</code>サーバーで検証を有効化</a>。）<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（省略される場合があります）</em> バリデータのマスター公開鍵（バリデータがXRP Ledgerの<a href="base58-encodings.html">base58</a>フォーマットのバリデータトークンを使用している場合）。（関連項目: <a href="run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"><code>rippled</code>サーバーで検証を有効化</a>。）<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>reserve_base</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;">（省略される場合があります）このバリデータが<a href="fee-voting.html">手数料投票</a>による設定を希望する最低必要準備金（<code>account_reserve</code>値）。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）このバリデータが<a href="fee-voting.html">手数料投票</a>による設定を希望する最低必要準備金（<code>account_reserve</code>値）。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>reserve_inc</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;">（省略される場合があります）このバリデータが<a href="fee-voting.html">手数料投票</a>による設定を希望する必要準備金（<code>owner_reserve</code>値）の増分。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）このバリデータが<a href="fee-voting.html">手数料投票</a>による設定を希望する必要準備金（<code>owner_reserve</code>値）の増分。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>signature</code></td>
@@ -664,7 +664,7 @@
 <tr>
 <td style="text-align: left;"><code>signing_time</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">この検証投票が署名された時刻（<a href="basic-data-types.html#時間の指定">Rippleエポック以降の経過秒数</a>）。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">この検証投票が署名された時刻（<a href="basic-data-types.html#時間の指定">Rippleエポック以降の経過秒数</a>）。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validation_public_key</code></td>
@@ -1083,7 +1083,7 @@
 </tbody>
 </table>
 <h2 id="コンセンサスストリーム">コンセンサスストリーム<a aria-hidden="true" class="hover_anchor" href="#コンセンサスストリーム"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>consensus</code>ストリームは、<a href="consensus.html">コンセンサスプロセス</a>でフェーズが変更されると、<code>consensusPhase</code>メッセージを送信します。このメッセージには、サーバーで実行されているコンセンサスの新しいフェーズが含まれます。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consensusPhase"</span><span class="p">,</span>
@@ -1625,22 +1625,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

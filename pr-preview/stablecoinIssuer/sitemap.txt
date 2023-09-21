@@ -91,10 +91,10 @@ https://xrpl.org/trust-lines-and-issuing.html
 https://xrpl.org/authorized-trust-lines.html
 https://xrpl.org/stablecoin-types.html
 https://xrpl.org/stablecoin-settings.html
-https://xrpl.org/stablecoin-issuer-configuration.html
-https://xrpl.org/stablecoin-issuer-precautions.html
-https://xrpl.org/stablecoin-issuer-compliance-guidelines.html
-https://xrpl.org/stablecoin-issuer-technical-details.html
+https://xrpl.org/stablecoin-configuration.html
+https://xrpl.org/stablecoin-precautions.html
+https://xrpl.org/stablecoin-compliance-guidelines.html
+https://xrpl.org/stablecoin-technical-details.html
 https://xrpl.org/robustly-monitoring-for-payments.html
 https://xrpl.org/bouncing-payments.html
 https://xrpl.org/clawing-back-tokens.html

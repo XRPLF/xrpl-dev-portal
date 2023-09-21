@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Stablecoin Issuer - Technical Details - XRPL.org (日本語)</title>
+    <title>Stablecoin Technical Details - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Stablecoin Issuer - Technical Details | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/stablecoin-issuer-technical-details.html" />
+    <meta property="og:title" content="Stablecoin Technical Details | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/stablecoin-technical-details.html" />
     <meta property="og:description" content="Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger." />
     <meta name="description" content="Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
@@ -15,9 +15,9 @@
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="ja" />
-    <link rel="alternate" href="https://xrpl.org/stablecoin-issuer-technical-details.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/stablecoin-issuer-technical-details.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/stablecoin-issuer-technical-details.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/stablecoin-technical-details.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/stablecoin-technical-details.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/stablecoin-technical-details.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -229,7 +229,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/stablecoin-issuer-technical-details.html">
+          <a class="dropdown-item" href="/stablecoin-technical-details.html">
             English
           </a>
           <hr />
@@ -257,7 +257,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/concepts/tokens/stablecoin-issuer-technical-details.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/concepts/tokens/stablecoin-technical-details.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -270,7 +270,7 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#stablecoin-issuer-technical-details">Stablecoin Issuer - Technical Details</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#stablecoin-technical-details">Stablecoin Technical Details</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#infrastructure">Infrastructure</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#apis-and-middleware">APIs and Middleware</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#tool-security">Tool Security</a></li>
@@ -279,6 +279,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#bouncing-payments">Bouncing Payments</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#reliable-transaction-submission">Reliable Transaction Submission</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledgertoml-file">xrp-ledger.toml File</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#launch-checklist">Launch Checklist</a></li>
       </ul>
   </div>
       </aside>
@@ -298,14 +299,14 @@
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
     <li class="active breadcrumb-item"><a href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a></li>
-    <li class="active breadcrumb-item">Stablecoin Issuer - Technical Details</li>
+    <li class="active breadcrumb-item">Stablecoin Technical Details</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="stablecoin-issuer-technical-details">Stablecoin Issuer - Technical Details<a aria-hidden="true" class="hover_anchor" href="#stablecoin-issuer-technical-details"><i class="fa fa-link"></i></a></h1>
+        <h1 id="stablecoin-technical-details">Stablecoin Technical Details<a aria-hidden="true" class="hover_anchor" href="#stablecoin-technical-details"><i class="fa fa-link"></i></a></h1>
 <h2 id="infrastructure">Infrastructure<a aria-hidden="true" class="hover_anchor" href="#infrastructure"><i class="fa fa-link"></i></a></h2>
 <p>For your own security as well as the stability of the network, each XRP Ledger business should <a href="install-rippled.html">run its own XRP Ledger servers</a>, including one <a href="rippled-server-modes.html#バリデータ">validator</a>.</p>
 <h3 id="apis-and-middleware">APIs and Middleware<a aria-hidden="true" class="hover_anchor" href="#apis-and-middleware"><i class="fa fa-link"></i></a></h3>
@@ -369,6 +370,22 @@
 <p>For more information, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
 <h2 id="xrp-ledgertoml-file">xrp-ledger.toml File<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgertoml-file"><i class="fa fa-link"></i></a></h2>
 <p>You can publish information about what currencies you issue, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>. This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.</p>
+<h1 id="launch-checklist">Launch Checklist<a aria-hidden="true" class="hover_anchor" href="#launch-checklist"><i class="fa fa-link"></i></a></h1>
+<p>These are strategic steps to launch a new stablecoin.</p>
+<ol>
+<li>
+<p>Disable rippling by enabling the tfSetNoRipple flag in the TrustSet transaction. </p>
+</li>
+<li>
+<p>Establish Trustlines: Ensuring sufficient liquidity is available for users to buy and sell [Token] after establishing trustlines is essential.</p>
+</li>
+<li>
+<p>List on DEXs: Decentralized exchanges are integral to the decentralized finance ecosystem. Listing your token on well known DEXs operating on XRPL enhances its visibility and accessibility, thereby attracting more liquidity.</p>
+</li>
+<li>
+<p>Leverage a platform such as Sologenic to enhance liquidity. For example, connect a XUMM wallet to Sologenic to enable the sale of your token. This allows anyone with a XUMM wallet and access to Sologenic to purchase your token.</p>
+</li>
+</ol>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -883,22 +900,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

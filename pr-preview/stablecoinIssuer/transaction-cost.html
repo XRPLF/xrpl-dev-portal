@@ -372,7 +372,7 @@
 <p>The <code>rippled</code> server has a second mechanism for enforcing the transaction cost, called the <em>open ledger cost</em>. A transaction can only be included in the open ledger if it meets the open ledger cost requirement in XRP. Transactions that do not meet the open ledger cost may be <a href="#queued-transactions">queued for a following ledger</a> instead.</p>
 <p>For each new ledger version, the server picks a soft limit on the number of transactions to be included in the open ledger, based on the number of transactions in the previous ledger. The open ledger cost is equal to the minimum un-scaled transaction cost until the number of transactions in the open ledger is equal to the soft limit. After that, the open ledger cost increases exponentially for each transaction included in the open ledger. For the next ledger, the server increases the soft limit if the current ledger contained more transactions than the soft limit, and decreases the soft limit if the consensus process takes more than 5 seconds.</p>
 <p>The open ledger cost requirement is <a href="#fee-levels">proportional to the normal cost of the transaction</a>, not the absolute transaction cost. Transaction types that have a higher-than-normal requirement, such as <a href="multi-signing.html">multi-signed transactions</a> must pay more to meet the open ledger cost than transactions which have minimum transaction cost requirements.</p>
-<p>See also: <a class="external-link" href="https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md" target="_blank">Fee Escalation explanation in <code>rippled</code> repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>See also: <a class="external-link" href="https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md" target="_blank">Fee Escalation explanation in <code>rippled</code> repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h3 id="queued-transactions">Queued Transactions<a aria-hidden="true" class="hover_anchor" href="#queued-transactions"><i class="fa fa-link"></i></a></h3>
 <p>When <code>rippled</code> receives a transaction that meets the server's local load cost but not the <a href="#open-ledger-cost">open ledger cost</a>, the server estimates whether the transaction is "likely to be included" in a later ledger. If so, the server adds the transaction to the transaction queue and relays the transaction to other members of the network. Otherwise, the server discards the transaction. The server tries to minimize the amount of network load caused by transactions that would not pay a transaction cost, since <a href="#transaction-costs-and-failed-transactions">the transaction cost only applies when a transaction is included in a validated ledger</a>.</p>
 <p>For more information on queued transactions, see <a href="transaction-queue.html">Transaction Queue</a>.</p>
@@ -996,22 +996,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

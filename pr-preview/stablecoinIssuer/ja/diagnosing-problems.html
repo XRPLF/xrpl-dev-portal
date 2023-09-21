@@ -378,7 +378,7 @@
 <p>ピアの数が0の場合、サーバーがネットワークに接続できないか、またはシステムクロックが正しくない可能性があります。（サーバーのクロックを同期するため、すべてのサーバーで<a class="external-link" href="http://www.ntp.org/" target="_blank">NTP <i aria-hidden="true" class="fa fa-external-link"></i></a>デーモンを実行することが推奨されます。）</p>
 </li>
 <li>
-<p>ピアの数が10の場合、<code>rippled</code>が<a class="external-link" href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank">NAT <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用したルーター経由での着信接続を受信できていない可能性があります。接続を改善するには、ルーターのファイアウォールがピアツーピア接続に使用するポート（<a class="external-link" href="https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1065" target="_blank">デフォルトでは <i aria-hidden="true" class="fa fa-external-link"></i></a>ポート51235）を転送するように設定します。</p>
+<p>ピアの数が10の場合、<code>rippled</code>が<a class="external-link" href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank">NAT <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用したルーター経由での着信接続を受信できていない可能性があります。接続を改善するには、ルーターのファイアウォールがピアツーピア接続に使用するポート（<a class="external-link" href="https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1065" target="_blank">デフォルトでは <i aria-hidden="true" class="fa fa-external-link"></i></a>ポート51235）を転送するように設定します。</p>
 </li>
 </ul>
 <h3 id="サーバーから応答がない場合">サーバーから応答がない場合<a aria-hidden="true" class="hover_anchor" href="#サーバーから応答がない場合"><i class="fa fa-link"></i></a></h3>
@@ -397,7 +397,7 @@
 <li><code>rippled</code>サーバーがJSON-RPC接続を受け入れるように構成されていない可能性があります。</li>
 </ul>
 <h2 id="サーバーログの確認">サーバーログの確認<a aria-hidden="true" class="hover_anchor" href="#サーバーログの確認"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142" target="_blank">デフォルトでは <i aria-hidden="true" class="fa fa-external-link"></i></a><code>rippled</code>はサーバーのデバッグログを<code>/var/log/rippled/debug.log</code>ファイルに書き込みます。このデバッグログの位置は、サーバーの構成ファイルにより異なる可能性があります。<code>rippled</code>サービスを（<code>systemctl</code>または<code>service</code>を使用して開始するのではなく）直接開始した場合、デフォルトではログメッセージはコンソールにも出力されます。</p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142" target="_blank">デフォルトでは <i aria-hidden="true" class="fa fa-external-link"></i></a><code>rippled</code>はサーバーのデバッグログを<code>/var/log/rippled/debug.log</code>ファイルに書き込みます。このデバッグログの位置は、サーバーの構成ファイルにより異なる可能性があります。<code>rippled</code>サービスを（<code>systemctl</code>または<code>service</code>を使用して開始するのではなく）直接開始した場合、デフォルトではログメッセージはコンソールにも出力されます。</p>
 <p>デフォルトの構成ファイルでは、起動時に<a href="log_level.html">log_levelメソッド</a>を内部で使用して、すべてのログメッセージカテゴリーでログレベルの重大度は「警告」に設定されています。デバッグログの詳細レベルを制御するには、<a href="commandline-usage.html#詳細レベルのオプション">起動時に<code>--silent</code>コマンドラインオプションを使用し</a>、サーバーの稼働中に<a href="log_level.html">log_levelメソッド</a>を使用します。（設定については構成ファイルの<code>[rpc_startup]</code>スタンザを参照してください。）</p>
 <p><code>rippled</code>サーバーが起動中に多数の警告レベルの（<code>WRN</code>）メッセージを出力し、その後はときどきいくつかの警告レベルメッセージを出力することは正常です。サーバー起動時の最初の5～15分間に出力されるほとんどの警告は、<strong>安全に無視</strong>できます。</p>
 <p>さまざまな種類のログメッセージに関する詳しい説明については、<a href="understanding-log-messages.html">ログメッセージについて</a>を参照してください。</p>
@@ -935,22 +935,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

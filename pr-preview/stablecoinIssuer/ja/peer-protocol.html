@@ -313,16 +313,16 @@
 <li>履歴レジャーへのレジャーデータの要求、またはレジャーデータの提供。</li>
 <li>コンセンサスのための一連のトランザクションの提示、またはコンセンサストランザクションセットの適用に関する算出結果の共有。</li>
 </ul>
-<p>ピアツーピア接続を確立するには、サーバーどうしをHTTPSで接続し、一方のサーバーはRTXPへの切り替えのために<a class="external-link" href="https://tools.ietf.org/html/rfc7230#section-6.7" target="_blank">HTTPアップグレード <i aria-hidden="true" class="fa fa-external-link"></i></a>を要求します。（詳細は、<a class="external-link" href="https://github.com/ripple/rippled" target="_blank"><code>rippled</code>リポジトリ <i aria-hidden="true" class="fa fa-external-link"></i></a>の<a class="external-link" href="https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake" target="_blank">Overlay Network <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。）</p>
+<p>ピアツーピア接続を確立するには、サーバーどうしをHTTPSで接続し、一方のサーバーはRTXPへの切り替えのために<a class="external-link" href="https://tools.ietf.org/html/rfc7230#section-6.7" target="_blank">HTTPアップグレード <i aria-hidden="true" class="fa fa-external-link"></i></a>を要求します。（詳細は、<a class="external-link" href="https://github.com/ripple/rippled" target="_blank"><code>rippled</code>リポジトリ <i aria-hidden="true" class="fa fa-external-link"></i></a>の<a class="external-link" href="https://github.com/XRPLF/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake" target="_blank">Overlay Network <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。）</p>
 <h2 id="ピアの検出">ピアの検出<a aria-hidden="true" class="hover_anchor" href="#ピアの検出"><i class="fa fa-link"></i></a></h2>
-<p>XRP Ledgerでは、「ゴシップ」プロトコルを使用して、XRP Ledgerネットワーク内でサーバーが互いを識別できるようにします。サーバーは、起動するたびに、以前に接続したその他のあらゆるピアに再接続します。フォールバックとして、<a class="external-link" href="https://github.com/ripple/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525" target="_blank">ハードコーディングされた公開ハブ <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用します。サーバーがピアに正常に接続されると、ピアを探している他のXRP Ledgerサーバーの接続情報（通常はIPアドレスとポート）をそのピアに要求します。その後、サーバーはそれらのサーバーに接続し、ピア接続するXRP Ledgerサーバーの接続情報をさらに要求できます。このプロセスにより、サーバーは十分なピア接続を確立し、単一のピアへの接続が失われた場合でも、ネットワークの残りの部分にその後も接続されます。</p>
+<p>XRP Ledgerでは、「ゴシップ」プロトコルを使用して、XRP Ledgerネットワーク内でサーバーが互いを識別できるようにします。サーバーは、起動するたびに、以前に接続したその他のあらゆるピアに再接続します。フォールバックとして、<a class="external-link" href="https://github.com/XRPLF/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525" target="_blank">ハードコーディングされた公開ハブ <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用します。サーバーがピアに正常に接続されると、ピアを探している他のXRP Ledgerサーバーの接続情報（通常はIPアドレスとポート）をそのピアに要求します。その後、サーバーはそれらのサーバーに接続し、ピア接続するXRP Ledgerサーバーの接続情報をさらに要求できます。このプロセスにより、サーバーは十分なピア接続を確立し、単一のピアへの接続が失われた場合でも、ネットワークの残りの部分にその後も接続されます。</p>
 <p>通常、サーバーが公開ハブに接続する必要があるのは1回のみです。他のピアを見つけるために、短時間のみ接続します。そうすることで、ネットワーク接続の安定性、ハブのビジー状態、およびサーバーが検出する他の高品質ピアの数に応じて、ハブにサーバーを引き続き接続するかどうかが異なります。サーバーでは、これらの他のピアのアドレスを保存するため、ネットワークの停止後または再起動後、それらのピアへの直接再接続を試行できます。</p>
 <p><a href="peers.html">peersメソッド</a>は、サーバーが現在接続しているピアのリストを示します。</p>
 <p>価値の高いサーバー（重要な<a href="rippled-server-modes.html#rippledサーバーのモード">バリデータ</a>など）によっては、ピア検出プロセスを通じて、サーバーを信頼性の低いピアに接続しないようにする場合があります。この場合、<a href="#プライベートピア">プライベートピア</a>のみを使用するようにサーバーを構成できます。</p>
 <h2 id="ピアプロトコルポート">ピアプロトコルポート<a aria-hidden="true" class="hover_anchor" href="#ピアプロトコルポート"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledgerに参加するため、<code>rippled</code>サーバーはピアプロトコルを使用して任意のピアに接続します。（すべてのピアは、現行サーバーで<a href="clustering.html">クラスター化されている</a>場合を除き、信頼できないものとして扱われます。）</p>
 <p>サーバーがピアポートで接続を送信 <em>かつ</em> 受信できることが理想的です。<code>rippled</code>サーバーに、<a href="forward-ports-for-peering.html">ファイアウォール経由でピアプロトコルに使用するポートを転送する</a>必要があります。</p>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg" target="_blank">デフォルトの<code>rippled</code>構成ファイル <i aria-hidden="true" class="fa fa-external-link"></i></a>は、すべてのネットワークインターフェイスにおいて、ポート51235で着信ピアプロトコル接続をリッスンします。使用するポートを変更するには、<code>rippled.cfg</code>ファイル内の該当するスタンザを編集します。</p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg" target="_blank">デフォルトの<code>rippled</code>構成ファイル <i aria-hidden="true" class="fa fa-external-link"></i></a>は、すべてのネットワークインターフェイスにおいて、ポート51235で着信ピアプロトコル接続をリッスンします。使用するポートを変更するには、<code>rippled.cfg</code>ファイル内の該当するスタンザを編集します。</p>
 <p>例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="k">[port_peer]</span>
 <span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">51235</span>
@@ -338,7 +338,7 @@
 <p>通常、<code>rippled</code>サーバーでは多数のピアを維持するよう試みるため、信頼性の低いピアの最大数まで自動接続されます。特定のピアサーバーへの接続を維持するように<code>rippled</code>サーバーを構成するには、いくつかの方法があります。</p>
 <ul>
 <li><strong>固定ピア</strong>を使用して、IPアドレスに基づき特定の他のピアへの接続を維持します。これは、ピアのIPアドレスが固定されている場合にのみ機能します。固定ピアを構成するには、構成スタンザ<code>[ips_fixed]</code>を使用します。これは、<a href="clustering.html">クラスタリング</a>または<a href="#プライベートピア">プライベートピア</a>の重要な部分です。固定ピアは構成ファイルで定義されているため、変更を適用するにはサーバーを再起動する必要があります。サーバーが同じユーザーまたは組織によって実行されている場合、固定ピアは、サーバーの接続状態を維持するのに最も有益です。</li>
-<li><strong>ピアリザベーション</strong>を使用して、特定のピアに優先順位を付けます。サーバーに特定のピアのピアリザベーションがある場合、既に最大数のピアに接続されていても、サーバーは常にそのピアからの接続要求を受け入れます。（これにより、サーバーでのピアの最大接続数を<em>超える</em>可能性があります。）<a href="#ノードキーペア">ノードキーペア</a>によって確保済みピアを識別するため、可変IPアドレスを持つピアに対してもこれを行うことができます。ピアリザベーションは、管理コマンドを使用して構成され、サーバーデータベースに保存されるため、サーバーがオンラインの場合に調整することができ、再起動後も保存されます。ピアリザベーションは、さまざまなユーザーや組織が運営するサーバーを接続するのに最も有益です。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><strong>ピアリザベーション</strong>を使用して、特定のピアに優先順位を付けます。サーバーに特定のピアのピアリザベーションがある場合、既に最大数のピアに接続されていても、サーバーは常にそのピアからの接続要求を受け入れます。（これにより、サーバーでのピアの最大接続数を<em>超える</em>可能性があります。）<a href="#ノードキーペア">ノードキーペア</a>によって確保済みピアを識別するため、可変IPアドレスを持つピアに対してもこれを行うことができます。ピアリザベーションは、管理コマンドを使用して構成され、サーバーデータベースに保存されるため、サーバーがオンラインの場合に調整することができ、再起動後も保存されます。ピアリザベーションは、さまざまなユーザーや組織が運営するサーバーを接続するのに最も有益です。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="新規: rippled 1.4.0"><img alt="新規: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
 <p>次の場合、<code>rippled</code>サーバーは、信頼性の低いピアには接続されません。</p>
 <ul>
@@ -354,7 +354,7 @@
 <li>サーバーは、他のサーバーからの接続を受け入れるように明示的に設定されていない場合、他のサーバーからの着信接続を受け入れません。</li>
 <li>サーバーはそのダイレクトピアに対し、信頼できない通信（<a href="peer-crawler.html">ピアクローラーAPI応答</a>を含む）の中ではサーバーのIPアドレスを公開しないように指示します。これは、<a href="peers.html">peers adminメソッド</a>などの信頼できる通信には影響しません。</li>
 </ul>
-<p>プライベートサーバーの設定に関係なく、バリデータは常にそのピアに対し、バリデータのIPアドレスを非公開にするように指示します。これにより、バリデータがサービス拒否攻撃を受け過剰な負荷がかかることから保護されます。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.1" target="_blank" title="新規: rippled 1.2.1"><img alt="新規: rippled 1.2.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.2.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>プライベートサーバーの設定に関係なく、バリデータは常にそのピアに対し、バリデータのIPアドレスを非公開にするように指示します。これにより、バリデータがサービス拒否攻撃を受け過剰な負荷がかかることから保護されます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" target="_blank" title="新規: rippled 1.2.1"><img alt="新規: rippled 1.2.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.2.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p class="devportal-callout 注意"><strong>注意:</strong> サーバーのソースコードを改ざんして、サーバーがこの要求を無視し、直近のピアのIPアドレスを共有する可能性があります。プライベートサーバーを、このように改ざんされていないことが確認されているサーバーにのみ接続するように設定してください。</p>
 <h3 id="ピア接続設定のメリットとデメリット">ピア接続設定のメリットとデメリット<a aria-hidden="true" class="hover_anchor" href="#ピア接続設定のメリットとデメリット"><i class="fa fa-link"></i></a></h3>
 <p>XRP Ledgerで使用できるように、<code>rippled</code>サーバーをピアツーピアのオープンネットワークの残りの部分に接続する必要があります。大まかに言えば、<code>rippled</code>サーバーがネットワークに接続する方法には、次の3種類の構成があります。</p>
@@ -946,22 +946,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

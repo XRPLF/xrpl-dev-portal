@@ -306,7 +306,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="submit">submit<a aria-hidden="true" class="hover_anchor" href="#submit"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>submit</code> method applies a <a href="transaction-formats.html">transaction</a> and sends it to the network to be confirmed and included in future ledgers.</p>
 <p>This command has two modes:</p>
 <ul>
@@ -416,7 +416,7 @@ submit<span class="w"> </span>1200002280000000240000000361D4838D7EA4C68000000000
 <tr>
 <td style="text-align: left;"><code>fail_hard</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is <code>false</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="Updated in: rippled 1.5.0"><img alt="Updated in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is <code>false</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="Updated in: rippled 1.5.0"><img alt="Updated in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>offline</code></td>
@@ -426,7 +426,7 @@ submit<span class="w"> </span>1200002280000000240000000361D4838D7EA4C68000000000
 <tr>
 <td style="text-align: left;"><code>build_path</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If this field is provided, the server <a href="transaction-common-fields.html#auto-fillable-fields">auto-fills</a> the <code>Paths</code> field of a <a href="payment.html">Payment transaction</a> before signing. You must omit this field if the transaction is a <a href="direct-xrp-payments.html">direct XRP payment</a> or if it is not a Payment-type transaction. <strong>Caution:</strong> The server looks for the presence or absence of this field, not its value. This behavior may change. (<a class="external-link" href="https://github.com/ripple/rippled/issues/3272" target="_blank">Issue #3272 <i aria-hidden="true" class="fa fa-external-link"></i></a>)</td>
+<td style="text-align: left;"><em>(Optional)</em> If this field is provided, the server <a href="transaction-common-fields.html#auto-fillable-fields">auto-fills</a> the <code>Paths</code> field of a <a href="payment.html">Payment transaction</a> before signing. You must omit this field if the transaction is a <a href="direct-xrp-payments.html">direct XRP payment</a> or if it is not a Payment-type transaction. <strong>Caution:</strong> The server looks for the presence or absence of this field, not its value. This behavior may change. (<a class="external-link" href="https://github.com/XRPLF/rippled/issues/3272" target="_blank">Issue #3272 <i aria-hidden="true" class="fa fa-external-link"></i></a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>fee_mult_max</code></td>
@@ -436,7 +436,7 @@ submit<span class="w"> </span>1200002280000000240000000361D4838D7EA4C68000000000
 <tr>
 <td style="text-align: left;"><code>fee_div_max</code></td>
 <td style="text-align: left;">Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> Sign-and-submit fails with the error <code>rpcHIGH_FEE</code> if the <a href="transaction-common-fields.html#auto-fillable-fields">auto-filled <code>Fee</code> value</a> would be greater than the <a href="transaction-cost.html#special-transaction-costs">reference transaction cost</a> × <code>fee_mult_max</code> ÷ <code>fee_div_max</code>. This field has no effect if you explicitly specify the <code>Fee</code> field of the transaction. The default is <code>1</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> Sign-and-submit fails with the error <code>rpcHIGH_FEE</code> if the <a href="transaction-common-fields.html#auto-fillable-fields">auto-filled <code>Fee</code> value</a> would be greater than the <a href="transaction-cost.html#special-transaction-costs">reference transaction cost</a> × <code>fee_mult_max</code> ÷ <code>fee_div_max</code>. This field has no effect if you explicitly specify the <code>Fee</code> field of the transaction. The default is <code>1</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -646,42 +646,42 @@ rippled<span class="w"> </span>submit<span class="w"> </span>s██████
 <tr>
 <td style="text-align: left;"><code>accepted</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The value <code>true</code> indicates that the transaction was applied, queued, broadcast, or kept for later. The value <code>false</code> indicates that none of those happened, so the transaction cannot possibly succeed as long as you do not submit it again and have not already submitted it another time. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The value <code>true</code> indicates that the transaction was applied, queued, broadcast, or kept for later. The value <code>false</code> indicates that none of those happened, so the transaction cannot possibly succeed as long as you do not submit it again and have not already submitted it another time. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>account_sequence_available</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The next <a href="basic-data-types.html#account-sequence">Sequence Number</a> available for the sending account after all pending and <a href="transaction-queue.html">queued</a> transactions. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The next <a href="basic-data-types.html#account-sequence">Sequence Number</a> available for the sending account after all pending and <a href="transaction-queue.html">queued</a> transactions. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>account_sequence_next</code></td>
 <td style="text-align: left;">number</td>
-<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The next <a href="basic-data-types.html#account-sequence">Sequence Number</a> for the sending account after all transactions that have been provisionally applied, but not transactions in the <a href="transaction-queue.html">queue</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The next <a href="basic-data-types.html#account-sequence">Sequence Number</a> for the sending account after all transactions that have been provisionally applied, but not transactions in the <a href="transaction-queue.html">queue</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>applied</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The value <code>true</code> indicates that this transaction was applied to the open ledger. In this case, the transaction is likely, but not guaranteed, to be validated in the next ledger version. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The value <code>true</code> indicates that this transaction was applied to the open ledger. In this case, the transaction is likely, but not guaranteed, to be validated in the next ledger version. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>broadcast</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The value <code>true</code> indicates this transaction was broadcast to peer servers in the peer-to-peer XRP Ledger network. (Note: if the server has no peers, such as in <a href="rippled-server-modes.html#stand-alone-mode">stand-alone mode</a>, the server uses the value <code>true</code> for cases where it <em>would</em> have broadcast the transaction.) The value <code>false</code> indicates the transaction was not broadcast to any other servers. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The value <code>true</code> indicates this transaction was broadcast to peer servers in the peer-to-peer XRP Ledger network. (Note: if the server has no peers, such as in <a href="rippled-server-modes.html#stand-alone-mode">stand-alone mode</a>, the server uses the value <code>true</code> for cases where it <em>would</em> have broadcast the transaction.) The value <code>false</code> indicates the transaction was not broadcast to any other servers. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>kept</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The value <code>true</code> indicates that the transaction was kept to be retried later. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The value <code>true</code> indicates that the transaction was kept to be retried later. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>queued</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The value <code>true</code> indicates the transaction was put in the <a href="transaction-queue.html">Transaction Queue</a>, which means it is likely to be included in a future ledger version. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The value <code>true</code> indicates the transaction was put in the <a href="transaction-queue.html">Transaction Queue</a>, which means it is likely to be included in a future ledger version. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>open_ledger_cost</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The current <a href="transaction-cost.html#open-ledger-cost">open ledger cost</a> before processing this transaction. Transactions with a lower cost are likely to be <a href="transaction-queue.html">queued</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted in sign-and-submit mode)</em> The current <a href="transaction-cost.html#open-ledger-cost">open ledger cost</a> before processing this transaction. Transactions with a lower cost are likely to be <a href="transaction-queue.html">queued</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated_ledger_index</code></td>
@@ -709,7 +709,7 @@ rippled<span class="w"> </span>submit<span class="w"> </span>s██████
 <li><code>invalidTransaction</code> - The transaction is malformed or otherwise invalid.</li>
 <li><code>noPath</code> - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)</li>
 <li><code>tooBusy</code> - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)</li>
-<li><code>notSupported</code> - Signing is not supported by this server (Sign-and-Submit mode only.) If you are the server admin, you can still access signing when connected <a href="admin-api-methods.html">as an admin</a>, or you could <a href="enable-public-signing.html">enable public signing</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><code>notSupported</code> - Signing is not supported by this server (Sign-and-Submit mode only.) If you are the server admin, you can still access signing when connected <a href="admin-api-methods.html">as an admin</a>, or you could <a href="enable-public-signing.html">enable public signing</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
 <!-- -->
 <!-- -->
@@ -1225,22 +1225,22 @@ rippled<span class="w"> </span>submit<span class="w"> </span>s██████
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

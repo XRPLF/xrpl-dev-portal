@@ -301,11 +301,11 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="sign">sign<a aria-hidden="true" class="hover_anchor" href="#sign"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>sign</code>メソッドは<a href="transaction-formats.html">JSONフォーマットのトランザクション</a>と<a href="cryptographic-keys.html">シード値</a>を受け取り、トランザクションの署名済みバイナリー表現を返します。<a href="multi-signing.html">マルチシグトランザクション</a>に署名を付与する場合は、代わりに<a href="sign_for.html">sign_forメソッド</a>を使用します。</p>
 <p><em>By default, this method is <a href="admin-api-methods.html">admin-only</a>. It can be used as a public method if the server admin has <a href="enable-public-signing.html">enabled public signing</a>.</em></p>
 <!--_ -->
-<p class="devportal-callout 注意"><strong>注意:</strong> 独自の<code>rippled</code>サーバーを運用している場合を除き、このコマンドを使用するのではなく、<a href="client-libraries.html">クライアントライブラリ</a>を実行してください。詳細については<a href="secure-signing.html">安全な署名の設定</a>を参照してください。 </p>
+<p class="devportal-callout 注意"><strong>注意:</strong> 独自の<code>rippled</code>サーバーを運用している場合を除き、このコマンドを使用するのではなく、<a href="client-libraries.html">クライアントライブラリ</a>を実行してください。詳細については<a href="secure-signing.html">安全な署名の設定</a>を参照してください。</p>
 <h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>要求フォーマットの例:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-0-2">コマンドライン</a></li></ul>
@@ -418,7 +418,7 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
 <tr>
 <td style="text-align: left;"><code>fee_div_max</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;"><em>（省略可）</em> 現在の<a href="transaction-cost.html#ローカル負荷コスト">トランザクションコストの負荷の乗数</a>が（<code>fee_mult_max</code> ÷ <code>fee_div_max</code>）よりも大きい場合、署名は<code>rpcHIGH_FEE</code>エラーで失敗します。トランザクションの<code>Fee</code>フィールド（<a href="transaction-cost.html">トランザクションコスト</a>）を指定した場合は無視されます。デフォルトは<code>1</code>です。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（省略可）</em> 現在の<a href="transaction-cost.html#ローカル負荷コスト">トランザクションコストの負荷の乗数</a>が（<code>fee_mult_max</code> ÷ <code>fee_div_max</code>）よりも大きい場合、署名は<code>rpcHIGH_FEE</code>エラーで失敗します。トランザクションの<code>Fee</code>フィールド（<a href="transaction-cost.html">トランザクションコスト</a>）を指定した場合は無視されます。デフォルトは<code>1</code>です。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -1065,22 +1065,22 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

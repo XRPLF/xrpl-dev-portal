@@ -365,7 +365,7 @@
 <p>Trust line limits protect you from receiving more of a token as payment than you want. Offers can go beyond those limits because they are an explicit statement of how much of the token you want.</p>
 <h2 id="offer-preference">Offer Preference<a aria-hidden="true" class="hover_anchor" href="#offer-preference"><i class="fa fa-link"></i></a></h2>
 <p>Existing Offers are grouped by exchange rate, which is measured as the ratio between <code>TakerGets</code> and <code>TakerPays</code>. Offers with a higher exchange rate are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same exchange rate are taken on the basis of which offer was placed first.</p>
-<p>When Offers execute in the same ledger block, the order in which they execute is determined by the <a class="external-link" href="https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp" target="_blank" title="Source code: Transaction ordering">canonical order <i aria-hidden="true" class="fa fa-external-link"></i></a> in which the transactions were <a class="external-link" href="https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538" target="_blank" title="Source code: Applying transactions">applied to the ledger <i aria-hidden="true" class="fa fa-external-link"></i></a>. This behavior is designed to be deterministic, efficient, and hard to game.</p>
+<p>When Offers execute in the same ledger block, the order in which they execute is determined by the <a class="external-link" href="https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp" target="_blank" title="Source code: Transaction ordering">canonical order <i aria-hidden="true" class="fa fa-external-link"></i></a> in which the transactions were <a class="external-link" href="https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538" target="_blank" title="Source code: Applying transactions">applied to the ledger <i aria-hidden="true" class="fa fa-external-link"></i></a>. This behavior is designed to be deterministic, efficient, and hard to game.</p>
 <h2 id="offer-expiration">Offer Expiration<a aria-hidden="true" class="hover_anchor" href="#offer-expiration"><i class="fa fa-link"></i></a></h2>
 <p>When you place an Offer, you can optionally add an expiration time to it. By default, Offers don't expire. You can't create a new Offer that is already expired.</p>
 <p>Expiration times are specified down to the second, but the exact, real-world time when an Offer expires is less precise. An Offer is expired if it has an expiration time that is <em>earlier than or equal to</em> the close time of the previous ledger. Otherwise, the Offer can still execute, even if the real-world time is later than the Offer's expiration. In other words, an Offer is still "active" if its expiration time is later than the close time of the latest validated ledger, regardless of what your clock says.</p>
@@ -901,22 +901,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

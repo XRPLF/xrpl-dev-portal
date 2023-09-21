@@ -300,7 +300,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="sign">sign<a aria-hidden="true" class="hover_anchor" href="#sign"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>sign</code> method takes a <a href="transaction-formats.html">transaction in JSON format</a> and a <a href="cryptographic-keys.html">seed value</a>, and returns a signed binary representation of the transaction. To contribute one signature to a <a href="multi-signing.html">multi-signed transaction</a>, use the <a href="sign_for.html">sign_for method</a> instead.</p>
 <p><em>By default, this method is <a href="admin-api-methods.html">admin-only</a>. It can be used as a public method if the server admin has <a href="enable-public-signing.html">enabled public signing</a>.</em></p>
 <!--_ -->
@@ -407,7 +407,7 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
 <tr>
 <td style="text-align: left;"><code>build_path</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If this field is provided, the server <a href="transaction-common-fields.html#auto-fillable-fields">auto-fills</a> the <code>Paths</code> field of a <a href="payment.html">Payment transaction</a> before signing. You must omit this field if the transaction is a <a href="direct-xrp-payments.html">direct XRP payment</a> or if it is not a Payment-type transaction. <strong>Caution:</strong> The server looks for the presence or absence of this field, not its value. This behavior may change. (<a class="external-link" href="https://github.com/ripple/rippled/issues/3272" target="_blank">Issue #3272 <i aria-hidden="true" class="fa fa-external-link"></i></a>)</td>
+<td style="text-align: left;"><em>(Optional)</em> If this field is provided, the server <a href="transaction-common-fields.html#auto-fillable-fields">auto-fills</a> the <code>Paths</code> field of a <a href="payment.html">Payment transaction</a> before signing. You must omit this field if the transaction is a <a href="direct-xrp-payments.html">direct XRP payment</a> or if it is not a Payment-type transaction. <strong>Caution:</strong> The server looks for the presence or absence of this field, not its value. This behavior may change. (<a class="external-link" href="https://github.com/XRPLF/rippled/issues/3272" target="_blank">Issue #3272 <i aria-hidden="true" class="fa fa-external-link"></i></a>)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>fee_mult_max</code></td>
@@ -417,7 +417,7 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
 <tr>
 <td style="text-align: left;"><code>fee_div_max</code></td>
 <td style="text-align: left;">Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> Signing fails with the error <code>rpcHIGH_FEE</code> if the <a href="transaction-common-fields.html#auto-fillable-fields">auto-filled <code>Fee</code> value</a> would be greater than the <a href="transaction-cost.html#special-transaction-costs">reference transaction cost</a> × <code>fee_mult_max</code> ÷ <code>fee_div_max</code>. This field has no effect if you explicitly specify the <code>Fee</code> field of the transaction. The default is <code>1</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> Signing fails with the error <code>rpcHIGH_FEE</code> if the <a href="transaction-common-fields.html#auto-fillable-fields">auto-filled <code>Fee</code> value</a> would be greater than the <a href="transaction-cost.html#special-transaction-costs">reference transaction cost</a> × <code>fee_mult_max</code> ÷ <code>fee_div_max</code>. This field has no effect if you explicitly specify the <code>Fee</code> field of the transaction. The default is <code>1</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -1069,22 +1069,22 @@ rippled<span class="w"> </span>sign<span class="w"> </span>s██████�
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

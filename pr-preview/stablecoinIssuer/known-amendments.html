@@ -2574,7 +2574,7 @@
 <p>Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against <a href="transaction-malleability.html">transaction malleability</a> on <em>all</em> transactions, instead of only transactions with the <a href="transaction-common-fields.html#global-flags"><code>tfFullyCanonicalSig</code> flag</a> enabled.</p>
 <p>Without this amendment, a transaction is malleable if it uses a secp256k1 signature and does not have <code>tfFullyCanonicalSig</code> enabled. Most signing utilities enable <code>tfFullyCanonicalSig</code> by default, but there are exceptions.</p>
 <p>With this amendment, no single-signed transactions are malleable. (<a href="transaction-malleability.html#malleability-with-multi-signatures">Multi-signed transactions may still be malleable</a> if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the <code>tfFullyCanonicalSig</code> flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.</p>
-<p>For more information, see <a class="external-link" href="https://github.com/ripple/rippled/issues/3042" target="_blank"><code>rippled</code> issue #3042 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>For more information, see <a class="external-link" href="https://github.com/XRPLF/rippled/issues/3042" target="_blank"><code>rippled</code> issue #3042 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h3 id="shamapv2">SHAMapV2<a aria-hidden="true" class="hover_anchor" href="#shamapv2"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
@@ -3395,22 +3395,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

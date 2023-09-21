@@ -322,7 +322,7 @@
 <p>XRP Ledgerは、コンテンツの一意のハッシュを使用して（さまざまなレベルの）データを識別します。XRP Ledgerの状態データには、レジャーの履歴の概要が<a href="ledgerhashes.html">LedgerHashesオブジェクトタイプ</a>の形式で含まれています。サーバーはLedgerHashesオブジェクトを使用して取得するレジャーバージョンを認識し、受信するレジャーデータが正しく完全であることを確認します。</p>
 <p><a id="with-advisory-deletion"></a></p>
 <h3 id="履歴の埋め戻し">履歴の埋め戻し<a aria-hidden="true" class="hover_anchor" href="#履歴の埋め戻し"><i class="fa fa-link"></i></a></h3>
-<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.6.0" target="_blank" title="新規: rippled 1.6.0"><img alt="新規: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" target="_blank" title="新規: rippled 1.6.0"><img alt="新規: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>サーバーがダウンロードしようとする履歴の量は、その設定に依存します。サーバーは自動的に、<strong>最も古い台帳までの履歴</strong>をダウンロードしてギャップを埋めようとします。<code>[ledger_history]</code>設定を使用すると、サーバーがそれ以降の履歴を埋め戻すようにすることができます。ただし、<a href="online-deletion.html">削除</a>が予定されている台帳は、サーバーがダウンロードすることはありません。</p>
 <p><code>[ledger_history]</code>設定は、現在有効な台帳の前から蓄積する台帳の最小数を定義します。ネットワークの<a href="#すべての履歴">完全な履歴</a>をダウンロードするには、特別な値<code>full</code>を使用します。<code>[ledger_history]</code>設定を使用して、サーバーに <em>より少ない</em> 履歴をダウンロードさせることはできません。サーバーが保存する履歴の量を減らすには、代わりに<a href="online-deletion.html">オンライン削除</a>設定を変更してください。</p>
 <h2 id="すべての履歴">すべての履歴<a aria-hidden="true" class="hover_anchor" href="#すべての履歴"><i class="fa fa-link"></i></a></h2>
@@ -875,22 +875,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

@@ -316,7 +316,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="ledger_entry">ledger_entry<a aria-hidden="true" class="hover_anchor" href="#ledger_entry"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>ledger_entry</code> method returns a single ledger entry from the XRP Ledger in its raw format. See <a href="ledger-object-types.html">ledger format</a> for information on the different types of entries you can retrieve.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters, comprised of the general and type-specific fields listed below, and following the standard <a href="request-formatting.html">request formatting</a>. (For example, a WebSocket request always has the <code>command</code> field and optionally an <code>id</code> field, and a JSON-RPC request uses the <code>method</code> and <code>params</code> fields.)</p>
@@ -334,7 +334,7 @@
 <tr>
 <td style="text-align: left;"><code>binary</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, return the requested ledger entry's contents as a hex string in the XRP Ledger's <a href="serialization.html">binary format</a>. Otherwise, return data in JSON format. The default is <code>false</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="Updated in: rippled 1.2.0"><img alt="Updated in: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, return the requested ledger entry's contents as a hex string in the XRP Ledger's <a href="serialization.html">binary format</a>. Otherwise, return data in JSON format. The default is <code>false</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" target="_blank" title="Updated in: rippled 1.2.0"><img alt="Updated in: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
@@ -716,7 +716,7 @@
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-ripplestate">Try it!</a></p>
 <h3 id="get-check-object">Get Check Object<a aria-hidden="true" class="hover_anchor" href="#get-check-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve a <a href="check.html">Check entry</a>, which is a potential payment that can be cashed by its recipient. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Retrieve a <a href="check.html">Check entry</a>, which is a potential payment that can be cashed by its recipient. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -757,7 +757,7 @@
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-check">Try it!</a></p>
 <h3 id="get-escrow-object">Get Escrow Object<a aria-hidden="true" class="hover_anchor" href="#get-escrow-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve an <a href="escrow-object.html">Escrow entry</a>, which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Retrieve an <a href="escrow-object.html">Escrow entry</a>, which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -814,7 +814,7 @@
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-escrow">Try it!</a></p>
 <h3 id="get-paychannel-object">Get PayChannel Object<a aria-hidden="true" class="hover_anchor" href="#get-paychannel-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve a <a href="paychannel.html">PayChannel entry</a>, which holds XRP for asynchronous payments. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Retrieve a <a href="paychannel.html">PayChannel entry</a>, which holds XRP for asynchronous payments. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -855,7 +855,7 @@
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#ledger_entry-paychannel">Try it!</a></p>
 <h3 id="get-depositpreauth-object">Get DepositPreauth Object<a aria-hidden="true" class="hover_anchor" href="#get-depositpreauth-object"><i class="fa fa-link"></i></a></h3>
-<p>Retrieve a <a href="depositpreauth-object.html">DepositPreauth entry</a>, which tracks preauthorization for payments to accounts requiring <a href="depositauth.html">Deposit Authorization</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Retrieve a <a href="depositpreauth-object.html">DepositPreauth entry</a>, which tracks preauthorization for payments to accounts requiring <a href="depositauth.html">Deposit Authorization</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1660,22 +1660,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

@@ -337,6 +337,7 @@
 <p>To create your first NFTs, follow the instructions in the tutorial <em>Mint and Burn NFTokens</em>. See <a href="mint-and-burn-nfts-using-javascript.html">Mint and Burn NFTokens</a>.</p>
 <p>The NFToken URL is a link to the location where the content of the NFT is stored. One option is create an IPFS account and store the NFToken content at a persistent URL. See <a class="external-link" href="https://docs.ipfs.io/how-to/best-practices-for-nft-data" target="_blank">Best Practices for Storing NFT Data <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>If you, as the issuer, want to be able to burn the token in the future, set the <code>Flags</code> field to <em>1.</em> To make the NFT transferable, set the <code>Flags</code> field to <em>8</em>. Set the <code>Flags</code> field to <em>9</em> to make the NFT both burnable and transferable. See <a href="nftoken.html">Burnable flag</a> and <a href="nftoken.html">Transferable flag</a>.</p>
+<p><img alt="Burning a token" src="img/uc-nft-burn.png"/></p>
 <p>You can collect royalties from future sales by setting a <code>transfer fee<em>. </em></code>This is a value from 0-50000 representing 0-50% of the sale price. See <a href="nftoken.html#transferfee">Transfer Fee</a>.</p>
 <p>You can mint NFTs in logical collections using the <code>TokenTaxon</code> field. See <a href="nft-collections.html">Minting NFTs into Collections</a>.</p>
 <p>You can mint your own NFTs with content you create yourself, but you can also become an authorized minter to generate NFTs on behalf of another creator. This allows the creator to focus on making new NFTs while you handle production and sales of the NFTs.</p>
@@ -349,11 +350,13 @@
 <p>When you set up your account, keep in mind that there is a base reserve requirement of 10 XRP. See <a href="reserves.html#base-reserve-and-owner-reserve">Reserves</a>.</p>
 <h3 id="transferring-nfts">Transferring NFTs<a aria-hidden="true" class="hover_anchor" href="#transferring-nfts"><i class="fa fa-link"></i></a></h3>
 <p>You transfer NFTs by creating a sell offer or accepting a buy offer. See <a href="transfer-nfts-using-javascript.html">Transfer NFTokens</a>.</p>
+<p><img alt="Transferring NFTs" src="img/uc-nft-transferring-nfts.png"/></p>
 <p>You can sell your NFTs in an auction format. See <a href="nftoken-auctions.html">Running an NFT Auction</a>.</p>
 <p>You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See <a href="broker-an-nft-sale-using-javascript.html">Broker a NFToken sale</a>.</p>
 <h4 id="reserve-requirements">Reserve requirements<a aria-hidden="true" class="hover_anchor" href="#reserve-requirements"><i class="fa fa-link"></i></a></h4>
 <p>There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.</p>
 <p>Each <code>NFTokenOffer</code> object requires a reserve of 2 XRP.</p>
+<p><img alt="Reserves" src="img/uc-nft-reserves.png"/></p>
 <p>When you post the <code>NFTokenOffer</code> or sell the NFT, there are trivial transfer fees (roughly 6000 drops, or .006 XRP). When you are selling at a high volume, the trivial amounts can add up quickly, and need to be considered as part of your cost of doing business.</p>
 <p>See:</p>
 <ol>
@@ -363,6 +366,7 @@
 </ol>
 <h4 id="checkout">Checkout<a aria-hidden="true" class="hover_anchor" href="#checkout"><i class="fa fa-link"></i></a></h4>
 <p>The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see <a href="transfer-nfts-using-javascript.html">Transfer NFTokens</a>.</p>
+<p><img alt="Checkout" src="img/uc-nft-checkout.png"/></p>
 <p>For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See <a href="trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange">Trade in the Decentralized Exchange</a>.</p>
 <!-- 
 
@@ -370,7 +374,9 @@
 - On-chain validation of completing transactions [No link- isn’t this just a cross-currency payment?] (Query after the transaction is completed.]
  -->
 <h2 id="indexing-nfts">Indexing NFTs<a aria-hidden="true" class="hover_anchor" href="#indexing-nfts"><i class="fa fa-link"></i></a></h2>
-<p>When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.</p>
+<p>When listing NFTs for sale, it can be useful to use object metadata to organize them. </p>
+<p><img alt="Indexing NFTs" src="img/uc-nft-indexing.png"/></p>
+<p>You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.</p>
 <p>See:</p>
 <ul>
 <li><a href="install-clio-on-ubuntu.html">Clio setup</a> </li>
@@ -919,22 +925,22 @@ We can derive inspiration for the need of caching and point to some of their doc
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

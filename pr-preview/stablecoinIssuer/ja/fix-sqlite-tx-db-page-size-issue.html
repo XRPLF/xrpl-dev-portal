@@ -301,13 +301,13 @@
 <h2 id="検出">検出<a aria-hidden="true" class="hover_anchor" href="#検出"><i class="fa fa-link"></i></a></h2>
 <p>サーバーがこの問題に対して脆弱である場合は、次の2種類の方法でこの問題を検出できます。</p>
 <ul>
-<li>ご使用の<code>rippled</code>サーバーが<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">バージョン1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a>以降の場合、（問題が発生する前に）<a href="#事前の検出">事前に</a>問題を検出できます。</li>
+<li>ご使用の<code>rippled</code>サーバーが<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">バージョン1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a>以降の場合、（問題が発生する前に）<a href="#事前の検出">事前に</a>問題を検出できます。</li>
 <li>（サーバーがクラッシュした場合）どの<code>rippled</code>バージョンでも、問題を<a href="#事後の検出">事後に</a>特定できます。</li>
 </ul>
 <p>いずれの場合でも、問題を検出するには<code>rippled</code>のサーバーログへのアクセスが必要です。</p>
-<p class="devportal-callout ヒント"><strong>ヒント:</strong> このデバッグログの位置は、<code>rippled</code>サーバーの構成ファイルの設定に応じて異なる可能性があります。<a class="external-link" href="https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142" target="_blank">デフォルトの構成 <i aria-hidden="true" class="fa fa-external-link"></i></a>では、サーバーのデバッグログは<code>/var/log/rippled/debug.log</code>ファイルに書き込まれます。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> このデバッグログの位置は、<code>rippled</code>サーバーの構成ファイルの設定に応じて異なる可能性があります。<a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142" target="_blank">デフォルトの構成 <i aria-hidden="true" class="fa fa-external-link"></i></a>では、サーバーのデバッグログは<code>/var/log/rippled/debug.log</code>ファイルに書き込まれます。</p>
 <h3 id="事前の検出">事前の検出<a aria-hidden="true" class="hover_anchor" href="#事前の検出"><i class="fa fa-link"></i></a></h3>
-<p>SQLiteのページサイズの問題を事前に検出するには、 <strong><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">rippled 1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a>以上</strong>を実行している必要があります。<code>rippled</code>サーバーは、以下のようなメッセージをデバッグログに定期的に（少なくとも2分間隔で）書き込みます。（ログエントリーの正確な数値とトランザクションデータベースへのパスは、ご使用の環境に応じて異なります。）</p>
+<p>SQLiteのページサイズの問題を事前に検出するには、 <strong><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">rippled 1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a>以上</strong>を実行している必要があります。<code>rippled</code>サーバーは、以下のようなメッセージをデバッグログに定期的に（少なくとも2分間隔で）書き込みます。（ログエントリーの正確な数値とトランザクションデータベースへのパスは、ご使用の環境に応じて異なります。）</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">Transaction DB pathname:/opt/rippled/transaction.db; SQLite page size:1024
  bytes; Free pages:247483646; Free space:253423253504 bytes; Note that this
  does not take into account available disk space.
@@ -333,7 +333,7 @@
 <h3 id="前提条件">前提条件<a aria-hidden="true" class="hover_anchor" href="#前提条件"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li>
-<p><strong><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">rippledバージョン1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a>以上</strong>を実行している必要があります。</p>
+<p><strong><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" target="_blank" title="BADGE_BLUE">rippledバージョン1.1.0 <i aria-hidden="true" class="fa fa-external-link"></i></a>以上</strong>を実行している必要があります。</p>
 <ul>
 <li>
 <p>このプロセスを開始する前に、安定した最新バージョンに<a href="install-rippled.html">rippledをアップグレード</a>します。</p>
@@ -952,22 +952,22 @@ Filesystem      Size  Used Avail Use% Mounted on
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

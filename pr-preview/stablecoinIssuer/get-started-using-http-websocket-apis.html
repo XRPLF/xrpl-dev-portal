@@ -310,7 +310,7 @@
 <p>Both APIs can be served unencrypted (<code>http://</code> and <code>ws://</code>) or encrypted using TLS (<code>https://</code> and <code>wss://</code>). Unencrypted connections should not be served over open networks, but can be used when the client is on the same machine as the server.</p>
 <h2 id="admin-access">Admin Access<a aria-hidden="true" class="hover_anchor" href="#admin-access"><i class="fa fa-link"></i></a></h2>
 <p>The API methods are divided into <a href="public-api-methods.html">Public Methods</a> and <a href="admin-api-methods.html">Admin Methods</a> so that organizations can offer public servers for the benefit of the community. To access admin methods, or admin functionality of public methods, you must connect to the API on a <strong>port and IP address marked as admin</strong> in the server's config file.</p>
-<p>The <a class="external-link" href="https://github.com/ripple/rippled/blob/f00f263852c472938bf8e993e26c7f96f435935c/cfg/rippled-example.cfg#L1154-L1179" target="_blank">example config file <i aria-hidden="true" class="fa fa-external-link"></i></a> listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.</p>
+<p>The <a class="external-link" href="https://github.com/XRPLF/rippled/blob/f00f263852c472938bf8e993e26c7f96f435935c/cfg/rippled-example.cfg#L1154-L1179" target="_blank">example config file <i aria-hidden="true" class="fa fa-external-link"></i></a> listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.</p>
 <h2 id="websocket-api">WebSocket API<a aria-hidden="true" class="hover_anchor" href="#websocket-api"><i class="fa fa-link"></i></a></h2>
 <p>If you are looking to try out some methods on the XRP Ledger, you can skip writing your own WebSocket code and go straight to using the API at the <a href="websocket-api-tool.html">WebSocket API Tool</a>. Later on, when you want to connect to your own <code>rippled</code> server, you can <a href="monitor-incoming-payments-with-websocket.html">build your own client</a> or use a <a href="client-libraries.html">client library</a> with WebSocket support.</p>
 <p>Example WebSocket API request:</p>
@@ -885,22 +885,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

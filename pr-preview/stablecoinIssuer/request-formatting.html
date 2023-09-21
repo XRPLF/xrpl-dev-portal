@@ -349,7 +349,7 @@
 <tr>
 <td style="text-align: left;"><code>api_version</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(Optional)</em> The API version to use. If omitted, use version 1. For details, see <a href="#api-versioning">API Versioning</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> The API version to use. If omitted, use version 1. For details, see <a href="#api-versioning">API Versioning</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;">(Method Parameters)</td>
@@ -398,7 +398,7 @@
 <tr>
 <td style="text-align: left;"><code>api_version</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(Optional)</em> The API version to use. If omitted, use version 1. For details, see <a href="#api-versioning">API Versioning</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> The API version to use. If omitted, use version 1. For details, see <a href="#api-versioning">API Versioning</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;">(Method Parameters)</td>
@@ -414,7 +414,7 @@
 <p>The commandline always uses the latest <a href="#api-versioning">API version</a>.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> The commandline interface is intended for administrative purposes only and is <em>not a supported API</em>. New versions of <code>rippled</code> may introduce breaking changes to the commandline API without warning!</p>
 <h2 id="api-versioning">API Versioning<a aria-hidden="true" class="hover_anchor" href="#api-versioning"><i class="fa fa-link"></i></a></h2>
-<p>The <code>rippled</code> server uses a single integer to identify the API version to use. The first API version is <code>1</code>; currently, this is the only version of the <code>rippled</code> API. (There is no API version 0.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>rippled</code> server uses a single integer to identify the API version to use. The first API version is <code>1</code>; currently, this is the only version of the <code>rippled</code> API. (There is no API version 0.) <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>Future versions of <code>rippled</code> that introduce breaking changes will introduce a new API version number, such as <code>2</code>. The server will support a range of API versions, which it reports in the <code>version</code> API method. <!-- STYLE_OVERRIDE: will --> <!-- TODO: add a link when <code>version</code> method is documented. --> <!-- Uncomment when multiple API versions exist: Separate API requests can use different API versions even on the same persistent connection. For example, if you connect WebSocket to a server that supports API versions 1 and 2, you can make a server_info request using API version 2 and then make another server_info request using API version 1 from the same connection. --></p>
 <h3 id="breaking-changes">Breaking Changes<a aria-hidden="true" class="hover_anchor" href="#breaking-changes"><i class="fa fa-link"></i></a></h3>
 <p>The following types of changes are <strong>breaking changes</strong>:</p>
@@ -957,22 +957,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

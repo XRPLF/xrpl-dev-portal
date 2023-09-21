@@ -300,8 +300,8 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="download_shard">download_shard<a aria-hidden="true" class="hover_anchor" href="#download_shard"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>サーバーに対し、外部ソースから特定の<a href="history-sharding.html">履歴レジャーデータのシャード</a>をダウンロードするように指示します。<code>rippled</code>サーバーで<a href="configure-history-sharding.html">履歴シャードが保管されるように設定する</a>必要があります。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="新規: rippled 1.1.0"><img alt="新規: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>サーバーに対し、外部ソースから特定の<a href="history-sharding.html">履歴レジャーデータのシャード</a>をダウンロードするように指示します。<code>rippled</code>サーバーで<a href="configure-history-sharding.html">履歴シャードが保管されるように設定する</a>必要があります。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" target="_blank" title="新規: rippled 1.1.0"><img alt="新規: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em><code>download_shard</code>メソッドは、権限のないユーザーは実行できない<a href="admin-api-methods.html">管理メソッド</a>です。</em></p>
 <p>外部ソースからHTTPSを使用してシャードが<a class="external-link" href="https://lz4.github.io/lz4/" target="_blank">lz4圧縮 <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://en.wikipedia.org/wiki/Tar_(computing)" target="_blank">tarアーカイブ <i aria-hidden="true" class="fa fa-external-link"></i></a>として提供される必要があります。アーカイブには、NuDB形式のシャードディレクトリとデータファイルが含まれている必要があります。</p>
 <p>通常、このメソッドを使用してシャードをダウンロードしてインポートすれば、ピアツーピアネットワークからシャードを個別に取得するよりも短い時間で取得できます。また、サーバーから提供される特定範囲のシャードまたはシャードのセットを選択する場合にもこのメソッドを使用できます。</p>
@@ -350,7 +350,7 @@
 </tr>
 </tbody>
 </table>
-<p><code>validate</code>のフィールドは廃止予定であり、今後予告なしに削除される可能性があります。<code>rippled</code>は全てのシャードの検証を実行します。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.6.0" target="_blank" title="更新: rippled 1.6.0"><img alt="更新: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><code>validate</code>のフィールドは廃止予定であり、今後予告なしに削除される可能性があります。<code>rippled</code>は全てのシャードの検証を実行します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" target="_blank" title="更新: rippled 1.6.0"><img alt="更新: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>shards</code>配列の各<strong>Shard Descriptorオブジェクト</strong>には以下のフィールドが含まれています。</p>
 <table class="table-responsive">
 <thead>
@@ -369,7 +369,7 @@
 <tr>
 <td style="text-align: left;"><code>url</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;">このシャードをダウンロードできるURL。このURLは<code>https://</code>か<code>http://</code>かで始まり<code>.tar.lz4</code>（大文字小文字の区別なし）で終わる必要があります。このダウンロードを提供するWebサーバーは、信頼できる認証局（CA）によって署名された有効なTLS証明書を使用する必要があります。（<code>rippled</code>はオペレーティングシステムのCAストアーを使用します。） <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="更新: rippled 1.7.0"><img alt="更新: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">このシャードをダウンロードできるURL。このURLは<code>https://</code>か<code>http://</code>かで始まり<code>.tar.lz4</code>（大文字小文字の区別なし）で終わる必要があります。このダウンロードを提供するWebサーバーは、信頼できる認証局（CA）によって署名された有効なTLS証明書を使用する必要があります。（<code>rippled</code>はオペレーティングシステムのCAストアーを使用します。） <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="更新: rippled 1.7.0"><img alt="更新: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -935,22 +935,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

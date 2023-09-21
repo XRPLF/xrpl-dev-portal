@@ -387,7 +387,7 @@ Loading:<span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</
 <p>If you have 0 peers, your server may be unable to contact the network, or your system clock may be wrong. (Ripple recommends running an <a class="external-link" href="http://www.ntp.org/" target="_blank">NTP <i aria-hidden="true" class="fa fa-external-link"></i></a> daemon on all servers to keep their clocks synced.)</p>
 </li>
 <li>
-<p>If you have exactly 10 peers, that may indicate that your <code>rippled</code> is unable to receive incoming connections through a router using <a class="external-link" href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank">NAT <i aria-hidden="true" class="fa fa-external-link"></i></a>. You can improve connectivity by configuring your router's firewall to forward the port used for peer-to-peer connections (port 51235 <a class="external-link" href="https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1065" target="_blank">by default <i aria-hidden="true" class="fa fa-external-link"></i></a>).</p>
+<p>If you have exactly 10 peers, that may indicate that your <code>rippled</code> is unable to receive incoming connections through a router using <a class="external-link" href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank">NAT <i aria-hidden="true" class="fa fa-external-link"></i></a>. You can improve connectivity by configuring your router's firewall to forward the port used for peer-to-peer connections (port 51235 <a class="external-link" href="https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1065" target="_blank">by default <i aria-hidden="true" class="fa fa-external-link"></i></a>).</p>
 </li>
 </ul>
 </li>
@@ -408,13 +408,13 @@ Loading:<span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</
 <li>The <code>rippled</code> server may be configured not to accept JSON-RPC connections.</li>
 </ul>
 <h2 id="check-the-server-log">Check the server log<a aria-hidden="true" class="hover_anchor" href="#check-the-server-log"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142" target="_blank">By default, <i aria-hidden="true" class="fa fa-external-link"></i></a> <code>rippled</code> writes the server's debug log to the file <code>/var/log/rippled/debug.log</code>. The location of the debug log can differ based on your server's config file. If you start the <code>rippled</code> service directly (instead of using <code>systemctl</code> or <code>service</code> to start it), it also prints log messages to the console by default.</p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142" target="_blank">By default, <i aria-hidden="true" class="fa fa-external-link"></i></a> <code>rippled</code> writes the server's debug log to the file <code>/var/log/rippled/debug.log</code>. The location of the debug log can differ based on your server's config file. If you start the <code>rippled</code> service directly (instead of using <code>systemctl</code> or <code>service</code> to start it), it also prints log messages to the console by default.</p>
 <p>The default config file sets the log level to severity "warning" for all categories of log messages by internally using the <a href="log_level.html">log_level method</a> during startup. You can control the verbosity of the debug log <a href="commandline-usage.html#verbosity-options">using the <code>--silent</code> commandline option during startup</a> and with the <a href="log_level.html">log_level method</a> while the server is running. (See the <code>[rpc_startup]</code> stanza of the config file for settings.)</p>
 <p>It is normal for a <code>rippled</code> the server to print many warning-level (<code>WRN</code>) messages during startup and a few warning-level messages from time to time later on. You can <strong>safely ignore</strong> most warnings in the first 5 to 15 minutes of server startup.</p>
 <p>For a more thorough explanation of various types of log messages, see <a href="understanding-log-messages.html">Understanding Log Messages</a>.</p>
 <h2 id="info-collection-script">Info Collection Script<a aria-hidden="true" class="hover_anchor" href="#info-collection-script"><i class="fa fa-link"></i></a></h2>
-<p>If you have problems diagnosing the problem, or you are unable to resolve the problem with any of the common fixes, you may want to ask for help in a support forum or the <a class="external-link" href="https://github.com/ripple/rippled/issues" target="_blank">GitHub issues <i aria-hidden="true" class="fa fa-external-link"></i></a>. When asking for help, you can use an info collection script to gather information about your system to help others diagnose the issue.</p>
-<p>The official package installation (for <a href="install-rippled-on-ubuntu.html">Ubuntu/Debian</a> or <a href="install-rippled-on-centos-rhel-with-yum.html">CentOS/RedHat</a>) installs such a script by default, to <code>/opt/ripple/bin/getRippledInfo</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a> If you compiled <code>rippled</code> yourself, you can find the same script <a class="external-link" href="https://github.com/ripple/rippled/blob/develop/bin/getRippledInfo" target="_blank">in the <code>rippled</code> source code repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>If you have problems diagnosing the problem, or you are unable to resolve the problem with any of the common fixes, you may want to ask for help in a support forum or the <a class="external-link" href="https://github.com/XRPLF/rippled/issues" target="_blank">GitHub issues <i aria-hidden="true" class="fa fa-external-link"></i></a>. When asking for help, you can use an info collection script to gather information about your system to help others diagnose the issue.</p>
+<p>The official package installation (for <a href="install-rippled-on-ubuntu.html">Ubuntu/Debian</a> or <a href="install-rippled-on-centos-rhel-with-yum.html">CentOS/RedHat</a>) installs such a script by default, to <code>/opt/ripple/bin/getRippledInfo</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a> If you compiled <code>rippled</code> yourself, you can find the same script <a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/bin/getRippledInfo" target="_blank">in the <code>rippled</code> source code repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>To use the script:</p>
 <ol>
 <li>
@@ -981,22 +981,22 @@ Loading:<span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

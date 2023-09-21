@@ -313,7 +313,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="path_find">path_find<a aria-hidden="true" class="hover_anchor" href="#path_find"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>WebSocket API only!</em> The <code>path_find</code> method searches for a <a href="paths.html">path</a> along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see the <a href="ripple_path_find.html">ripple_path_find method</a>. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account.</p>
 <p>There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the <code>subcommand</code> parameter:</p>
 <ul>
@@ -323,7 +323,7 @@
 </ul>
 <p>Although the <code>rippled</code> server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results. (<strong>Note:</strong> A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)</p>
 <h2 id="path_find-create">path_find create<a aria-hidden="true" class="hover_anchor" href="#path_find-create"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L50-L56" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L50-L56" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>create</code> sub-command of <code>path_find</code> creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains a suggested path between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with <code>"type": "path_find"</code>, with updates to the potential paths. The frequency of updates is left to the discretion of the server, but it usually means once every few seconds when there is a new ledger version.</p>
 <p>A client can only have one pathfinding request open at a time. If another pathfinding request is already open on the same connection, the old request is automatically closed and replaced with the new request.</p>
 <h3 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h3>
@@ -373,12 +373,12 @@
 <tr>
 <td style="text-align: left;"><code>destination_amount</code></td>
 <td style="text-align: left;">String or Object</td>
-<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a> that the destination account would receive in a transaction. <strong>Special case:</strong> <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.0" target="_blank" title="New in: rippled 0.30.0"><img alt="New in: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a> You can specify <code>"-1"</code> (for XRP) or provide -1 as the contents of the <code>value</code> field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in <code>send_max</code> (if provided).</td>
+<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a> that the destination account would receive in a transaction. <strong>Special case:</strong> <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.0" target="_blank" title="New in: rippled 0.30.0"><img alt="New in: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a> You can specify <code>"-1"</code> (for XRP) or provide -1 as the contents of the <code>value</code> field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in <code>send_max</code> (if provided).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>send_max</code></td>
 <td style="text-align: left;">String or Object</td>
-<td style="text-align: left;"><em>(Optional)</em> <a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a> that would be spent in the transaction. Not compatible with <code>source_currencies</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.0" target="_blank" title="New in: rippled 0.30.0"><img alt="New in: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Optional)</em> <a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a> that would be spent in the transaction. Not compatible with <code>source_currencies</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.0" target="_blank" title="New in: rippled 0.30.0"><img alt="New in: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>paths</code></td>
@@ -790,7 +790,7 @@
 <tr>
 <td style="text-align: left;"><code>full_reply</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">If <code>false</code>, this is the result of an incomplete search. A later reply may have a better path. If <code>true</code>, then this is the best path found. (It is still theoretically possible that a better path could exist, but <code>rippled</code> won't find it.) Until you close the pathfinding request, <code>rippled</code> continues to send updates each time a new ledger closes. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.29.0" target="_blank" title="New in: rippled 0.29.0"><img alt="New in: rippled 0.29.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.29.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">If <code>false</code>, this is the result of an incomplete search. A later reply may have a better path. If <code>true</code>, then this is the best path found. (It is still theoretically possible that a better path could exist, but <code>rippled</code> won't find it.) Until you close the pathfinding request, <code>rippled</code> continues to send updates each time a new ledger closes. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.29.0" target="_blank" title="New in: rippled 0.29.0"><img alt="New in: rippled 0.29.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.29.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -850,7 +850,7 @@
 </code></pre></div></div>
 </div>
 <h2 id="path_find-close">path_find close<a aria-hidden="true" class="hover_anchor" href="#path_find-close"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>close</code> sub-command of <code>path_find</code> instructs the server to stop sending information about the current open pathfinding request.</p>
 <h3 id="request-format-1">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-1"><i class="fa fa-link"></i></a></h3>
 <p>An example of the request format:</p>
@@ -907,7 +907,7 @@
 <li><code>noPathRequest</code> - You tried to close a pathfinding request when there is not an open one.</li>
 </ul>
 <h2 id="path_find-status">path_find status<a aria-hidden="true" class="hover_anchor" href="#path_find-status"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L69-L77" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L69-L77" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>status</code> sub-command of <code>path_find</code> requests an immediate update about the client's currently-open pathfinding request.</p>
 <h3 id="request-format-2">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-2"><i class="fa fa-link"></i></a></h3>
 <p>An example of the request format:</p>
@@ -1476,22 +1476,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

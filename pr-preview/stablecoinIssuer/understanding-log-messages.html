@@ -325,7 +325,7 @@
 <ol>
 <li>The date the log entry was written, such as <code>2020-Jul-08</code>.</li>
 <li>The time the log entry was written, such as <code>20:12:12.075081020</code>.</li>
-<li>The time zone indicator <code>UTC</code>. (Log dates are always in UTC.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li>The time zone indicator <code>UTC</code>. (Log dates are always in UTC.) <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li>The log partition and severity, such as <code>LoadMonitor:WRN</code>.</li>
 <li>The log message, such as <code>Job: sweep run: 1172ms wait: 0ms</code>.</li>
 </ol>
@@ -384,7 +384,7 @@
 <p>The following log message indicates that a client to the server's public API has been dropped as a result of <a href="rate-limiting.html">rate limiting</a>:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">Resource:WRN Consumer entry 169.55.164.21 dropped with balance 15970 at or above drop threshold 15000
 </code></pre></div>
-<p>The entry contains the IP address of the client that exceeded its rate limit, and the client's "balance", which is a score estimating the rate at which the client has been using the API. The threshold for dropping a client is <a class="external-link" href="https://github.com/ripple/rippled/blob/06c371544acc3b488b9d9c057cee4e51f6bef7a2/src/ripple/resource/impl/Tuning.h#L34-L35" target="_blank">hardcoded to a score of 15000 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>The entry contains the IP address of the client that exceeded its rate limit, and the client's "balance", which is a score estimating the rate at which the client has been using the API. The threshold for dropping a client is <a class="external-link" href="https://github.com/XRPLF/rippled/blob/06c371544acc3b488b9d9c057cee4e51f6bef7a2/src/ripple/resource/impl/Tuning.h#L34-L35" target="_blank">hardcoded to a score of 15000 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>If you see frequent messages from the same IP address, you may want to block those IP addresses from your network to reduce the load on your server's public API. (For example, you may be able to configure your firewall to block those IP addresses.)</p>
 <p>To avoid being dropped by rate limiting on your own server, <a href="get-started-using-http-websocket-apis.html#admin-access">connect as an admin</a>.</p>
 <h2 id="inboundledger-11-timeouts-for-ledger">InboundLedger 11 timeouts for ledger<a aria-hidden="true" class="hover_anchor" href="#inboundledger-11-timeouts-for-ledger"><i class="fa fa-link"></i></a></h2>
@@ -1054,22 +1054,22 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

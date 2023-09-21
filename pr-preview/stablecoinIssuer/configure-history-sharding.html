@@ -318,7 +318,7 @@
 <li>The history shard store and the ledger store <em>MUST</em> be stored at different file paths. You can configure the ledger store and history store to be on different disks or partitions if desired.</li>
 <li>It is possible but redundant to hold full ledger history in both the ledger store and the history shard store.</li>
 <li>The time to acquire a shard, number of file handles needed by the <code>rippled</code> server, and memory cache usage is directly affected by the size of the shard.</li>
-<li>You can specify additional paths to store older history shards by providing a <code>[historical_shard_paths]</code> stanza. These paths may be on different, slower disks because they hold data that is used less often. The most recent two shards (the ones with the largest ledger indexes) are always stored in the path specified in the <code>[shard_db]</code> stanza. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="New in: rippled 1.7.0"><img alt="New in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li>You can specify additional paths to store older history shards by providing a <code>[historical_shard_paths]</code> stanza. These paths may be on different, slower disks because they hold data that is used less often. The most recent two shards (the ones with the largest ledger indexes) are always stored in the path specified in the <code>[shard_db]</code> stanza. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="New in: rippled 1.7.0"><img alt="New in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
 <h2 id="2-edit-rippledcfg">2. Edit rippled.cfg<a aria-hidden="true" class="hover_anchor" href="#2-edit-rippledcfg"><i class="fa fa-link"></i></a></h2>
 <!-- SPELLING_IGNORE: cfg -->
@@ -334,9 +334,9 @@
 <span class="na">/mnt/disk1</span>
 <span class="na">/mnt/disk2</span>
 </code></pre></div>
-<p>The <code>type</code> field of <code>[shard_db]</code> can be omitted. If present, it <em>MUST</em> be <code>NuDB</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.3.1" target="_blank" title="New in: rippled 1.3.1"><img alt="New in: rippled 1.3.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.3.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>type</code> field of <code>[shard_db]</code> can be omitted. If present, it <em>MUST</em> be <code>NuDB</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.3.1" target="_blank" title="New in: rippled 1.3.1"><img alt="New in: rippled 1.3.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.3.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p class="devportal-callout caution"><strong>Caution:</strong> If <code>rippled</code> detects the wrong type of data in the shard store path, it may <a href="server-wont-start.html">fail to start</a>. You should use a new folder for the shard store. If you previously used a RocksDB shard store (<code>rippled</code> 1.2.x and lower), use a different path or delete the RocksDB shard data.</p>
-<p>For more information, reference the <code>[shard_db]</code> example in the <a class="external-link" href="https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg" target="_blank">rippled.cfg configuration example <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>For more information, reference the <code>[shard_db]</code> example in the <a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg" target="_blank">rippled.cfg configuration example <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="3-restart-the-server">3. Restart the server<a aria-hidden="true" class="hover_anchor" href="#3-restart-the-server"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">systemctl restart rippled
 </code></pre></div>
@@ -881,22 +881,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

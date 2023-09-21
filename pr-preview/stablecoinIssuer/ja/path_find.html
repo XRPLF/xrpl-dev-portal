@@ -314,7 +314,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="path_find">path_find<a aria-hidden="true" class="hover_anchor" href="#path_find"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>WebSocket APIのみ。</em><code>path_find</code>メソッドは、トランザクションが実行される可能性のある<a href="paths.html">パス</a>を探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。JSON-RPCでサポートされているシンプルなバージョンについては、<a href="ripple_path_find.html">ripple_path_findメソッド</a>を参照してください。完全にXRPで行われる支払いの場合、XRPはどのアカウントにも直接送金できるためパスを探索する必要はありません。</p>
 <p>path_findコマンドには3種類のモード（サブコマンド）があります。使用するモードを<code>subcommand</code>パラメーターに指定します。</p>
 <ul>
@@ -324,7 +324,7 @@
 </ul>
 <p><code>rippled</code>サーバーは支払いを行うにあたり最も安価なパスまたはパスの組み合わせを探索しますが、このメソッドで返されるパスが最良のパスであることは保証されません。サーバーの負荷が原因で、Pathfindingで最良のパスを検出できないことがあります。また、信頼できないサーバーからのPathfindingの結果には注意する必要があります。オペレーターの収益となるように、最良ではないパスを返すようにサーバーが改ざんされる可能性があります。Pathfindingについて信頼できる独自サーバーがない場合は、1つのサーバーから不適切な結果が返されるリスクを最小限に抑えるため、異なる当事者が実行する複数のサーバーからのPathfindingの結果を比較してください。（<strong>注記:</strong> サーバーから最良ではない結果が返されても、必ずしも悪意のある振る舞いの証拠とはなりません。サーバーの負荷が高い場合の症状である可能性もあります。）</p>
 <h2 id="path_find-create">path_find create<a aria-hidden="true" class="hover_anchor" href="#path_find-create"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L50-L56" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L50-L56" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>path_find</code>の<code>create</code>サブコマンドは、指定された特定アカウントから支払トランザクションを実行できるパスを探索する継続的な要求を作成し、別のアカウントが何らかの通貨で希望する額を受領できるようにします。初期応答には2つのアドレス間で提案されるパスが含まれています。このパスにより、希望する額を受領できます。その後サーバーは、<code>"type": "path_find"</code>で有効なパスの更新を含む追加メッセージを送信します。更新の頻度はサーバーにより決定されますが、新しいレジャーバージョンがある場合には通常、数秒間に1回です。</p>
 <p>クライアントは一度に1つのPathfinding要求のみ実行できます。同じ接続ですでに他のPathfinding要求が実行されている場合、古い要求が自動的にクローズされ、新しい要求に置き換えられます。</p>
 <h3 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h3>
@@ -374,12 +374,12 @@
 <tr>
 <td style="text-align: left;"><code>destination_amount</code></td>
 <td style="text-align: left;">文字列またはオブジェクト</td>
-<td style="text-align: left;">送金先アカウントがトランザクションで受領する<a href="basic-data-types.html#通貨額の指定">通貨額</a>。<strong>特殊なケース:</strong><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.0" target="_blank" title="新規: rippled 0.30.0"><img alt="新規: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a><code>value</code>フィールドには<code>"-1"</code>（XRPの場合）または-1（XRP以外の通貨の場合）を指定できます。これにより、最大限の額を送金できるパスが要求されます。ただし<code>send_max</code>が指定されている場合は、指定額を上回る額が支払われることはありません。</td>
+<td style="text-align: left;">送金先アカウントがトランザクションで受領する<a href="basic-data-types.html#通貨額の指定">通貨額</a>。<strong>特殊なケース:</strong><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.0" target="_blank" title="新規: rippled 0.30.0"><img alt="新規: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a><code>value</code>フィールドには<code>"-1"</code>（XRPの場合）または-1（XRP以外の通貨の場合）を指定できます。これにより、最大限の額を送金できるパスが要求されます。ただし<code>send_max</code>が指定されている場合は、指定額を上回る額が支払われることはありません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>send_max</code></td>
 <td style="text-align: left;">文字列またはオブジェクト</td>
-<td style="text-align: left;"><em>（省略可）</em> トランザクションに使用する<a href="basic-data-types.html#通貨額の指定">通貨額</a>。<code>source_currencies</code>と同時に指定することはできません。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.30.0" target="_blank" title="新規: rippled 0.30.0"><img alt="新規: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（省略可）</em> トランザクションに使用する<a href="basic-data-types.html#通貨額の指定">通貨額</a>。<code>source_currencies</code>と同時に指定することはできません。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.0" target="_blank" title="新規: rippled 0.30.0"><img alt="新規: rippled 0.30.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>paths</code></td>
@@ -796,7 +796,7 @@
 <tr>
 <td style="text-align: left;"><code>full_reply</code></td>
 <td style="text-align: left;">ブール値</td>
-<td style="text-align: left;"><code>false</code>の場合、これは不完全な検索の結果です。これ以降の応答に、より適切なパスが含まれている可能性があります。<code>true</code>の場合、これは検出された最良のパスです。（理論上、これよりも優れたパスが存在している可能性がありますが<code>rippled</code>では検出されません。）Pathfinding要求をクローズするまで、<code>rippled</code>は引き続き、新しいレジャーが閉鎖されるたびに更新を送信します。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.29.0" target="_blank" title="新規: rippled 0.29.0"><img alt="新規: rippled 0.29.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.29.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><code>false</code>の場合、これは不完全な検索の結果です。これ以降の応答に、より適切なパスが含まれている可能性があります。<code>true</code>の場合、これは検出された最良のパスです。（理論上、これよりも優れたパスが存在している可能性がありますが<code>rippled</code>では検出されません。）Pathfinding要求をクローズするまで、<code>rippled</code>は引き続き、新しいレジャーが閉鎖されるたびに更新を送信します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.29.0" target="_blank" title="新規: rippled 0.29.0"><img alt="新規: rippled 0.29.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.29.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -851,7 +851,7 @@
 </code></pre></div></div>
 </div>
 <h2 id="path_find-close">path_find close<a aria-hidden="true" class="hover_anchor" href="#path_find-close"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>path_find</code>の<code>close</code>サブコマンドは、サーバーに対して現在実行中のPathfinding要求に関する情報の送信を停止するように指示します。</p>
 <h3 id="要求フォーマット-1">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット-1"><i class="fa fa-link"></i></a></h3>
 <p>要求フォーマットの例:</p>
@@ -908,7 +908,7 @@
 <li><code>noPathRequest</code> - Pathfinding要求をクローズしようとしましたが、実行中の要求がありませんでした。</li>
 </ul>
 <h2 id="path_find-status">path_find status<a aria-hidden="true" class="hover_anchor" href="#path_find-status"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L69-L77" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L69-L77" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>path_find</code>の<code>status</code>サブコマンドは、現在実行中のクライアントのPathfinding要求の即時更新を要求します。</p>
 <h3 id="要求フォーマット-2">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット-2"><i class="fa fa-link"></i></a></h3>
 <p>要求フォーマットの例:</p>
@@ -1477,22 +1477,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

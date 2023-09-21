@@ -330,17 +330,17 @@
 <li>トランザクションは適切な形式で作成され、有効な署名によって<a href="transactions.html#トランザクションの承認">承認</a>されている必要があります。</li>
 <li><code>AccountTxnID</code>フィールドが指定されているトランザクションはキューに入れることができません。</li>
 <li>1つの送信側アドレスには、同時に最大10個のトランザクションを入れることができます。</li>
-<li>トランザクションをキューに入れるには、送信者が以下のすべてを行うのに十分なXRPを保有している必要があります。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="更新: rippled 1.2.0"><img alt="更新: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a><ul>
+<li>トランザクションをキューに入れるには、送信者が以下のすべてを行うのに十分なXRPを保有している必要があります。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" target="_blank" title="更新: rippled 1.2.0"><img alt="更新: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a><ul>
 <li>キュー内のすべての送信者のトランザクションの<code>Fee</code>フィールドに指定されているXRP<a href="transaction-cost.html">トランザクションコスト</a>の消却。キュー内のトランザクションの合計額は、アカウントの基本準備金（現時点では10 XRP）を超えることはできません。（トランザクションコストの支払いが最小額の0.00001 XRPを大幅に上回るトランザクションは、キューをスキップし、オープンレジャーに直接追加されます。）</li>
 <li>キュー内のすべての送信者のトランザクションの送金を可能とするXRPの最大合計額の送信。</li>
 <li>アカウントの<a href="reserves.html">必要準備金</a>を確保するのに十分なXRPの保有。</li>
 </ul>
 </li>
-<li>あるトランザクションが、送信側アドレスがトランザクションを承認する方法に影響する場合、同じアドレスからの他のトランザクションをそのトランザクションの後にキューに入れることはできません。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li>あるトランザクションが、送信側アドレスがトランザクションを承認する方法に影響する場合、同じアドレスからの他のトランザクションをそのトランザクションの後にキューに入れることはできません。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li>トランザクションに<code>LastLedgerSequence</code>フィールドが指定されている場合、そのフィールドの値は少なくとも <strong>現在のレジャーインデックス+ 2</strong>になります。</li>
 </ul>
 <h3 id="手数料の平均化">手数料の平均化<a aria-hidden="true" class="hover_anchor" href="#手数料の平均化"><i class="fa fa-link"></i></a></h3>
-<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>送信側アドレスのキューに1つ以上のトランザクションが入っている場合、その送信者はキューに入れられている既存のトランザクションをオープンレジャーに「プッシュ」するため、それらすべてのトランザクションのトランザクションコストの支払いをするのに十分なトランザクションコストが指定された新しいトランザクションを送信します。具体的には、新しいトランザクションは、そのトランザクション自体と、そのトランザクションより先にキュー内に入れられている同じ送信者からの各トランザクションの<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>をカバーするのに十分なトランザクションコストを支払う必要があります。（オープンレジャーコストは、トランザクションがトランザクションコストを支払うたびに急激に増加することに留意してください。）トランザクションは他の<a href="#キューの制約事項">キューの制約事項</a>にも従い、送信側アドレスはキュー内のすべてのトランザクションのトランザクションコストを支払うのに十分な額のXRPを保有している必要があります。</p>
 <p>この機能により、特定の状況を回避できます。キュー内にある低コストのトランザクションを1つ以上送信した場合、同じアドレスから新しいトランザクションを送信するには、以下のいずれかを実行する必要があります。</p>
 <ul>
@@ -872,22 +872,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       

@@ -308,9 +308,9 @@
 <p>You should consider these factors to ensure that your server has the capacity to handle XRP Ledger network activity today and in the future.</p>
 <h2 id="configuration-settings">Configuration Settings<a aria-hidden="true" class="hover_anchor" href="#configuration-settings"><i class="fa fa-link"></i></a></h2>
 <p>The default configuration file contains settings for a broad range of common use cases. You can get better performance by customizing the settings for your specific hardware and intended usage pattern.</p>
-<p>The settings in this section are parameters in the <code>rippled.cfg</code> file. You can access an example config file, <code>rippled-example.cfg</code>, in the <a class="external-link" href="https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg" target="_blank"><code>cfg</code> directory <i aria-hidden="true" class="fa fa-external-link"></i></a> in the <code>rippled</code> GitHub repo. The settings in the example config file match the default config installed alongside the server.</p>
+<p>The settings in this section are parameters in the <code>rippled.cfg</code> file. You can access an example config file, <code>rippled-example.cfg</code>, in the <a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg" target="_blank"><code>cfg</code> directory <i aria-hidden="true" class="fa fa-external-link"></i></a> in the <code>rippled</code> GitHub repo. The settings in the example config file match the default config installed alongside the server.</p>
 <h3 id="node-size">Node Size<a aria-hidden="true" class="hover_anchor" href="#node-size"><i class="fa fa-link"></i></a></h3>
-<p>The <code>[node_size]</code> parameter should match the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.8.1" target="_blank" title="Updated in: rippled 1.8.1"><img alt="Updated in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>[node_size]</code> parameter should match the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" target="_blank" title="Updated in: rippled 1.8.1"><img alt="Updated in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>As a general rule, you should always use the largest node size your available RAM can support. See the following table for recommended settings.</p>
 <h4 id="recommendation">Recommendation<a aria-hidden="true" class="hover_anchor" href="#recommendation"><i class="fa fa-link"></i></a></h4>
 <p>Each <code>[node_size]</code> has a corresponding requirement for available RAM. For example, if you set <code>[node_size]</code> to <code>huge</code>, you should have at least 32 GB of available RAM to help ensure that <code>rippled</code> can run smoothly.</p>
@@ -1040,22 +1040,22 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-configuration.html">Stablecoin Issuer  - Configuration</a>
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-precautions.html">Stablecoin Issuer - Precautions</a>
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-compliance-guidelines.html">Stablecoin Issuer - Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-issuer-technical-details.html">Stablecoin Issuer - Technical Details</a>
+    <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
       
