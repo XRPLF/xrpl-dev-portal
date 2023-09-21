@@ -1,4 +1,48 @@
 /* Use Cases ---------------------------------------------------------------- */
+
+// Define each category's logos
+$infrastructure-logos: "XRP-Ledger","Gatehub","towoLabs","xrpscan","xrp-toolkit","bithomp","onthedex";
+$developer-tooling-logos: "blockforce","Evernode","threezy","tokenize";
+$interoperability-logos: "Allbridge","futureverse","multichain";
+$wallet-logos: "Bitfrost","Crossmark","Edge","gem-wallet","Xumm";
+$nfts-logos: "aesthetes","audiotarky","nftmaster","peerkat","sologenic_dex","xrp-cafe","xrp-oval";
+$exchanges-logos: "sologenic_dex","XPMarket";
+$gaming-logos: "Forte","Futureverse","ledger-city","onXRP","styngr";
+$security-logos: "Anchain";
+$payments-logos: "ripple","SuperMojo";
+$cbdc-logos: "ripple";
+$carbon-markets-logos: "carbonland-trust","Rootmaker";
+$other-logos: "casino-coin","Momento";
+
+// Create a mixin to handle the common logic
+@mixin create-logo-classes($logo-list) {
+  @each $logo in $logo-list {
+    .#{$logo} {
+      content: url(../img/uses/modalLogos/#{$logo}.png);
+    }
+    html.light{
+      .#{$logo} {
+        content: url(../img/uses/lightmode/#{$logo}.png);
+      }
+    }
+  }
+}
+
+// Use the mixin for each category
+@include create-logo-classes($infrastructure-logos);
+@include create-logo-classes($developer-tooling-logos);
+@include create-logo-classes($interoperability-logos);
+@include create-logo-classes($wallet-logos);
+@include create-logo-classes($nfts-logos);
+@include create-logo-classes($exchanges-logos);
+@include create-logo-classes($gaming-logos);
+@include create-logo-classes($security-logos);
+@include create-logo-classes($payments-logos);
+@include create-logo-classes($cbdc-logos);
+@include create-logo-classes($carbon-markets-logos);
+@include create-logo-classes($other-logos);
+
+
 .related-tasks-links a {
   color: $gray-600;
   text-decoration: none;
@@ -256,13 +300,13 @@
 
   @include media-breakpoint-up(lg) {
     margin-bottom: 0;
-    height: 230px;
+    height: 247px;
 
   }
 }
 
 .use-case-circle:hover {
-  border-color: #ee5555;
+  border-color: #838386;
 
 }
 

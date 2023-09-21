@@ -1,60 +1,57 @@
 $(document).ready(() => {
   const logos = {
     infrastructure: [
-      "XRP-Ledger.png",
-      "Gatehub.png",
-      "towoLabs.png",
-      "xrpscan.png",
-      "xrp-toolkit.png",
-      "bithomp.png",
-      "onthedex.png",
+      "XRP-Ledger",
+      "Gatehub",
+      "towoLabs",
+      "xrpscan",
+      "xrp-toolkit",
+      "bithomp",
+      "onthedex",
     ],
     developer_tooling: [
-      "blockforce.png",
-      "Evernode.png",
-      "threezy.png",
-      "tokenize.png",
+      "blockforce",
+      "Evernode",
+      "threezy",
+      "tokenize",
     ],
-    interoperability: ["Allbridge.png", "futureverse.png", "multichain.png"],
+    interoperability: ["Allbridge", "futureverse", "multichain"],
     wallet: [
-      "Bitfrost.png",
-      "Crossmark.png",
-      "Edge.png",
-      "gem-wallet.png",
-      "Xumm.png",
+      "Bitfrost",
+      "Crossmark",
+      "Edge",
+      "gem-wallet",
+      "Xumm",
     ],
     nfts: [
-      "aesthetes.png",
-      "audiotarky.png",
-      "nftmaster.png",
-      "peerkat.png",
-      "sologenic_dex.png",
-      "xrp-cafe.png",
-      "xrp-oval.png",
+      "aesthetes",
+      "audiotarky",
+      "nftmaster",
+      "peerkat",
+      "sologenic_dex",
+      "xrp-cafe",
+      "xrp-oval",
     ],
-    exchanges: ["sologenic_dex.png", "XPMarket.png"],
+    exchanges: ["sologenic_dex", "XPMarket"],
     gaming: [
-      "Forte.png",
-      "Futureverse.png",
-      "ledger-city.png",
-      "onXRP.png",
-      "styngr.png",
+      "Forte",
+      "Futureverse",
+      "ledger-city",
+      "onXRP",
+      "styngr",
     ],
-    security: ["Anchain.png"],
-    payments: ["ripple.png", "SuperMojo.png"],
-    cbdc: ["ripple.png"],
-    carbon_markets: ["carbonland-trust.png", "Rootmaker.png"],
-    other: ["casino-coin.png", "Momento.png"],
+    security: ["Anchain"],
+    payments: ["ripple", "SuperMojo"],
+    cbdc: ["ripple"],
+    carbon_markets: ["carbonland-trust", "Rootmaker"],
+    other: ["casino-coin", "Momento"],
   };
   // Helper function to create a logo element
   function createLogoElement(logoSrc, title, id) {
-    const logoElem = document.createElement("img");
-    const src = `assets/img/uses/${id}/${logoSrc}`;
-    console.log({ src });
-    logoElem.src = src;
+    const logoElem = document.createElement("div");
     logoElem.alt = `${title} logo`;
     logoElem.classList.add(`logo-item`);
-    logoElem.classList.add(`${logoSrc.replace(".png", "")}-logo`);
+    logoElem.classList.add(`${logoSrc}`);
     return logoElem;
   }
   // Add two new constiables for arrow buttons
