@@ -290,6 +290,8 @@
         <li class="nav-item level-3"><a class="nav-link" href="#clawback">Clawback</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#burn">Burn</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#reliable-transaction-submission">Reliable Transaction Submission</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#list-on-an-xrpl-native-dex">List on an XRPL Native DEX</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#list-on-an-amm">List on an AMM</a></li>
       </ul>
   </div>
       </aside>
@@ -401,17 +403,13 @@ How to transparently report the current number of stablecoins held in reserve.
 <li>Resubmit a transaction if it has not appeared in a validated ledger whose <a href="basic-data-types.html#ledger-index">ledger index</a> is less than or equal to the transaction's <code>LastLedgerSequence</code> parameter.</li>
 </ul>
 <p>For more information, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
-<!--
-### List on XRPL Native DEX
-
-
-### List on AMM (link to future tutorials)
-
-
-### List on XRPL Token Marketplaces
-Sologenic, onXRP, XPMarket
-
--->
+<h3 id="list-on-an-xrpl-native-dex">List on an XRPL Native DEX<a aria-hidden="true" class="hover_anchor" href="#list-on-an-xrpl-native-dex"><i class="fa fa-link"></i></a></h3>
+<p>Decentralized exchanges are integral to the decentralized finance ecosystem. Listing your token on well known DEXs operating on XRPL will enhance its visibility and accessibility, thereby attracting more liquidity. Begin by placing sell offers on a suitable DEX, such as <a class="external-link" href="https://sologenic.org/trade" target="_blank">Sologenic <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<h3 id="list-on-an-amm">List on an AMM<a aria-hidden="true" class="hover_anchor" href="#list-on-an-amm"><i class="fa fa-link"></i></a></h3>
+<p><em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
+<p>Automated Market Makers (AMMs) are smart contracts that provide liquidity in the XRP Ledger's decentralized exchange. Each AMM holds a pool of two assets and enables users to swap between them at an exchange rate set by a formula.</p>
+<p>For any given pair of assets, there can be up to one AMM in the ledger. You can create the AMM for an asset pair with your new token if it doesn't exist yet, or deposit to an existing AMM. Those who deposit assets into an AMM are called <em>liquidity providers</em> (LPs) and receive <em>LP Tokens</em> from the AMM. </p>
+<p>See <a href="automated-market-makers.html">Automated Market Makers</a>.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
