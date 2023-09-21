@@ -835,11 +835,11 @@ pages:
             - ja
 
     -   md: concepts/networks-and-servers/the-clio-server.md
-        outdated_translation: true
         targets:
             - en
 
     -   md: concepts/networks-and-servers/the-clio-server.ja.md
+        outdated_translation: true
         targets:
             - ja
 
