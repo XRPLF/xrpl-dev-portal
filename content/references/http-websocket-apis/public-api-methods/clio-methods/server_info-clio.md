@@ -4,7 +4,6 @@ parent: clio-methods.html
 blurb: Retrieve status of the Clio server in human-readable format.
 labels:
   - Core Server
-outdated_translation: true
 ---
 # server_info
 [[Source]](https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/ServerInfo.cpp "Source")
