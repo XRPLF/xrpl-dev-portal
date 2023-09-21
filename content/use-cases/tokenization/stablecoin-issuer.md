@@ -152,17 +152,20 @@ To submit transactions reliably, follow these guidelines:
 
 For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
-<!--
-### List on XRPL Native DEX
+### List on an XRPL Native DEX
+
+Decentralized exchanges are integral to the decentralized finance ecosystem. Listing your token on well known DEXs operating on XRPL will enhance its visibility and accessibility, thereby attracting more liquidity. Begin by placing sell offers on a suitable DEX, such as [Sologenic](https://sologenic.org/trade).
 
 
-### List on AMM (link to future tutorials)
+### List on an AMM
+_(Requires the [AMM amendment][] :not_enabled:)_
 
 
-### List on XRPL Token Marketplaces
-Sologenic, onXRP, XPMarket
+Automated Market Makers (AMMs) are smart contracts that provide liquidity in the XRP Ledger's decentralized exchange. Each AMM holds a pool of two assets and enables users to swap between them at an exchange rate set by a formula.
 
--->
+For any given pair of assets, there can be up to one AMM in the ledger. You can create the AMM for an asset pair with your new token if it doesn't exist yet, or deposit to an existing AMM. Those who deposit assets into an AMM are called _liquidity providers_ (LPs) and receive _LP Tokens_ from the AMM. 
+
+See [Automated Market Makers](automated-market-makers.html).
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
