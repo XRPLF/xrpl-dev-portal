@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-15 07:18+0000\n"
+"POT-Creation-Date: 2023-09-22 20:20+0000\n"
 "PO-Revision-Date: 2021-11-05 20:34+0530\n"
 "Last-Translator: FULL NAME tpardhe@gmail.com\n"
 "Language: hi\n"
@@ -375,7 +375,6 @@ msgid "Apply for funding to build your XRPL project"
 msgstr ""
 
 #: template/page-community.html.jinja:122 template/page-funding.html.jinja:134
-#: template/page-xrpl-overview.html.jinja:169
 msgid "XRPL Grants"
 msgstr ""
 
@@ -402,8 +401,7 @@ msgid "Open-source projects funded "
 msgstr ""
 
 #: template/page-community.html.jinja:148 template/page-events.html.jinja:56
-#: template/page-funding.html.jinja:383 template/page-home.html.jinja:161
-#: template/page-xrpl-overview.html.jinja:99
+#: template/page-home.html.jinja:161 template/page-xrpl-overview.html.jinja:99
 #, fuzzy
 msgid "Learn More"
 msgstr "एक्सप्लोरर"
@@ -1157,21 +1155,6 @@ msgstr ""
 msgid "Visit XRPL Bounties"
 msgstr ""
 
-#: template/page-funding.html.jinja:379
-msgid "Are you an independent creator?"
-msgstr ""
-
-#: template/page-funding.html.jinja:380
-#, fuzzy
-msgid "Ripple’s Creator Fund"
-msgstr "वॉलेट और प्लेटफॉर्म"
-
-#: template/page-funding.html.jinja:382
-msgid ""
-"If you’re a creator looking to mint NFTs on the XRP Ledger and do not "
-"have technical experience, check out Ripple’s Creator Fund."
-msgstr ""
-
 #: template/page-history.html.jinja:28
 msgid "Provide a Better Alternative to Bitcoin"
 msgstr ""
@@ -1736,8 +1719,8 @@ msgstr ""
 #: template/page-impact.html.jinja:139
 msgid ""
 "View the <a href=\"https://github.com/XRPLF/xrpl-dev-portal/\" "
-"target=\"_blank\">Github repositories</a> to find <a href='developer-"
-"funding.html'>blockchain projects</a> to see how you can contribute."
+"target=\"_blank\">Github repositories</a> to find blockchain projects to "
+"see how you can contribute."
 msgstr ""
 
 #: template/page-impact.html.jinja:147 template/page-impact.html.jinja:168
@@ -3167,10 +3150,9 @@ msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:112
 msgid ""
-"With the XRPL, these developers are building innovative <a href"
-"='developer-funding.html'>blockchain projects</a> and applications across"
-" use cases including tokenization of assets, online gaming, asset "
-"custody, NFTs, and DeFi."
+"With the XRPL, these developers are building innovative blockchain "
+"projects and applications across use cases including tokenization of "
+"assets, online gaming, asset custody, NFTs, and DeFi."
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:113
@@ -3234,7 +3216,12 @@ msgstr ""
 msgid ""
 "XRP Ledger’s innovation relies on the shared community experience of "
 "builders like you. If you’re ready to start your next big blockchain "
-"project, explore the XRPL now and consider applying for an XRPL Grant."
+"project, explore the XRPL now and consider applying for funding on your "
+"next <a href='developer-funding.html'>blockchain project</a>."
+msgstr ""
+
+#: template/page-xrpl-overview.html.jinja:169
+msgid "Explore XRPL Developer Funding"
 msgstr ""
 
 #: template/page-xrpl-overview.html.jinja:177
@@ -5632,7 +5619,7 @@ msgstr "इस दस्तावेज़ में"
 #~ msgstr ""
 
 #~ msgid "Ripple’s Creator Fund"
-#~ msgstr ""
+#~ msgstr "वॉलेट और प्लेटफॉर्म"
 
 #~ msgid ""
 #~ "If you’re a creator looking to "
@@ -5745,4 +5732,30 @@ msgstr "इस दस्तावेज़ में"
 
 #~ msgid "Contact Us"
 #~ msgstr "स्थिति"
+
+#~ msgid ""
+#~ "View the <a href=\"https://github.com/XRPLF/xrpl-"
+#~ "dev-portal/\" target=\"_blank\">Github "
+#~ "repositories</a> to find <a href"
+#~ "='developer-funding.html'>blockchain projects</a> to"
+#~ " see how you can contribute."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "With the XRPL, these developers are "
+#~ "building innovative <a href='developer-"
+#~ "funding.html'>blockchain projects</a> and "
+#~ "applications across use cases including "
+#~ "tokenization of assets, online gaming, "
+#~ "asset custody, NFTs, and DeFi."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "XRP Ledger’s innovation relies on the"
+#~ " shared community experience of builders"
+#~ " like you. If you’re ready to "
+#~ "start your next big blockchain project,"
+#~ " explore the XRPL now and consider"
+#~ " applying for an XRPL Grant."
+#~ msgstr ""
 
