@@ -487,14 +487,13 @@ const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 ```javascript
 const main = async () => {
   const appWindow = createWindow()
-
+  
+  // Step 3 code modifications - start
   ipcMain.on('address-entered', async (event, address) =>  {
 
     const client = new xrpl.Client(TESTNET_URL)
 
     await client.connect()
-
-    // Step 3 code modifications - start
     
     // Reference: https://xrpl.org/subscribe.html
     await client.request({
@@ -539,9 +538,9 @@ const main = async () => {
     })
     const accountData = prepareAccountData(accountInfoResponse.result.account_data)
     appWindow.webContents.send('update-account-data', accountData)
-
-    // Step 3 code modifications - end
+    
   })
+  // Step 3 code modifications - end
 }
 ```
 
