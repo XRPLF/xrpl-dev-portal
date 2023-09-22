@@ -78,7 +78,6 @@ const main = async () => {
         })
         const transactions = prepareTxData(txResponse.result.transactions)
         appWindow.webContents.send('update-transaction-data', transactions)
-
     })
 }
 

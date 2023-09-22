@@ -18,7 +18,11 @@ async function main() {
   console.log("Requesting addresses from the Testnet faucet...")
   const hot_wallet = (await client.fundWallet()).wallet
   const cold_wallet = (await client.fundWallet()).wallet
+  const customer_one_wallet = (await client.fundWallet()).wallet
+  const customer_two_wallet = (await client.fundWallet()).wallet
   console.log(`Got hot address ${hot_wallet.address} and cold address ${cold_wallet.address}.`)
+  console.log(`Got customer_one address ${hot_wallet.address} and customer_two address ${cold_wallet.address}.`)
+
 
   // Configure issuer (cold address) settings ----------------------------------
   const cold_settings_tx = {
@@ -90,9 +94,54 @@ async function main() {
     throw `Error sending transaction: ${ts_result.result.meta.TransactionResult}`
   }
 
+    // Create trust line from customer_one to cold address --------------------------------
+  const trust_set_tx2 = {
+    "TransactionType": "TrustSet",
+    "Account": customer_one_wallet.address,
+    "LimitAmount": {
+      "currency": currency_code,
+      "issuer": cold_wallet.address,
+      "value": "10000000000" // Large limit, arbitrarily chosen
+    }
+  }
+
+  const ts_prepared2 = await client.autofill(trust_set_tx2)
+  const ts_signed2 = customer_one_wallet.sign(ts_prepared2)
+  console.log("Creating trust line from customer_one address to issuer...")
+  const ts_result2 = await client.submitAndWait(ts_signed2.tx_blob)
+  if (ts_result2.result.meta.TransactionResult == "tesSUCCESS") {
+    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${ts_signed2.hash}`)
+  } else {
+    throw `Error sending transaction: ${ts_result2.result.meta.TransactionResult}`
+  }
+
+
+  const trust_set_tx3 = {
+    "TransactionType": "TrustSet",
+    "Account": customer_two_wallet.address,
+    "LimitAmount": {
+      "currency": currency_code,
+      "issuer": cold_wallet.address,
+      "value": "10000000000" // Large limit, arbitrarily chosen
+    }
+  }
+
+  const ts_prepared3 = await client.autofill(trust_set_tx3)
+  const ts_signed3 = customer_two_wallet.sign(ts_prepared3)
+  console.log("Creating trust line from customer_two address to issuer...")
+  const ts_result3 = await client.submitAndWait(ts_signed3.tx_blob)
+  if (ts_result3.result.meta.TransactionResult == "tesSUCCESS") {
+    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${ts_signed3.hash}`)
+  } else {
+    throw `Error sending transaction: ${ts_result3.result.meta.TransactionResult}`
+  }
+
+
+
 
   // Send token ----------------------------------------------------------------
-  const issue_quantity = "3840"
+  let issue_quantity = "3800"
+
   const send_token_tx = {
     "TransactionType": "Payment",
     "Account": cold_wallet.address,
@@ -108,13 +157,67 @@ async function main() {
 
   const pay_prepared = await client.autofill(send_token_tx)
   const pay_signed = cold_wallet.sign(pay_prepared)
-  console.log(`Sending ${issue_quantity} ${currency_code} to ${hot_wallet.address}...`)
+  console.log(`Cold to hot - Sending ${issue_quantity} ${currency_code} to ${hot_wallet.address}...`)
   const pay_result = await client.submitAndWait(pay_signed.tx_blob)
   if (pay_result.result.meta.TransactionResult == "tesSUCCESS") {
     console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed.hash}`)
   } else {
+    console.log(pay_result)
     throw `Error sending transaction: ${pay_result.result.meta.TransactionResult}`
   }
+
+
+  issue_quantity = "100"
+  const send_token_tx2 = {
+    "TransactionType": "Payment",
+    "Account": hot_wallet.address,
+    "Amount": {
+      "currency": currency_code,
+      "value": issue_quantity,
+      "issuer": cold_wallet.address
+    },
+    "Destination": customer_one_wallet.address,
+    "DestinationTag": 1 // Needed since we enabled Require Destination Tags
+                        // on the hot account earlier.
+  }
+
+  const pay_prepared2 = await client.autofill(send_token_tx2)
+  const pay_signed2 = hot_wallet.sign(pay_prepared2)
+  console.log(`Hot to customer_one - Sending ${issue_quantity} ${currency_code} to ${customer_one_wallet.address}...`)
+  const pay_result2 = await client.submitAndWait(pay_signed2.tx_blob)
+  if (pay_result2.result.meta.TransactionResult == "tesSUCCESS") {
+    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed2.hash}`)
+  } else {
+    console.log(pay_result2)
+    throw `Error sending transaction: ${pay_result2.result.meta.TransactionResult}`
+  }
+
+
+  issue_quantity = "12"
+  const send_token_tx3 = {
+    "TransactionType": "Payment",
+    "Account": customer_one_wallet.address,
+    "Amount": {
+      "currency": currency_code,
+      "value": issue_quantity,
+      "issuer": cold_wallet.address
+    },
+    "Destination": customer_two_wallet.address,
+    "DestinationTag": 1 // Needed since we enabled Require Destination Tags
+                        // on the hot account earlier.
+  }
+
+  const pay_prepared3 = await client.autofill(send_token_tx3)
+  const pay_signed3 = customer_one_wallet.sign(pay_prepared3)
+  console.log(`Customer_one to customer_two - Sending ${issue_quantity} ${currency_code} to ${customer_two_wallet.address}...`)
+  const pay_result3 = await client.submitAndWait(pay_signed3.tx_blob)
+  if (pay_result3.result.meta.TransactionResult == "tesSUCCESS") {
+    console.log(`Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed3.hash}`)
+  } else {
+    console.log(pay_result3)
+    throw `Error sending transaction: ${pay_result3.result.meta.TransactionResult}`
+  }
+
 
   // Check balances ------------------------------------------------------------
   console.log("Getting hot address balances...")
