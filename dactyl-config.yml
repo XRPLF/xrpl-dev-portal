@@ -2374,7 +2374,7 @@ pages:
         parent: references.html
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerプロトコルの、利用方法に依存しない特徴やルールについて。
-        eyebrow_text: Features and Rules
+        eyebrow_text: 特徴とルール
         targets:
             - ja
 
@@ -5411,6 +5411,7 @@ pages:
         targets:
             - en
 
+    # add trans script to page-events.html.jinja and translate (messages.po)
     -   name: イベント
         html: events.html
         parent: contribute.html
