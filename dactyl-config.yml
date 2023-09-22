@@ -68,6 +68,9 @@ default_keys: &defaults
     light_theme_enabled: true
     # Script tags used in a variety of tools & examples.
     ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.11.0.min.js"></script>'
+    # Current reserves values on Mainnet. These strings can be overwritten by language if necessary for localization.
+    base_reserve: 10 XRP
+    owner_reserve: 2 XRP
 
 targets:
     # First member is the default that gets built when target not specified
@@ -2431,165 +2434,177 @@ pages:
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-ids.md
+        # TODO: translate
+    -   md: references/protocol-reference/ledger-data/ledger-entry-common-fields.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-ids.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledger-object-types.md
+        # redirect from old "ledger object types" URL
+    -   name: Ledger Entry Types
+        html: ledger-object-types.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: ledger-entry-types.html
+        nav_omit: true
         targets:
             - en
-
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledger-object-types.ja.md
-        targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.md
+        # redirect from old ledger object IDs URL
+    -   name: Ledger Entry IDs
+        html: ledger-object-ids.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: ledger-entry-common-fields.html
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/accountroot.md
         targets:
             - en
 
         # TODO: update translation for rippled v1.11.0 & AMM
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/accountroot.ja.md
         outdated_translation: true
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/amendments.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amendments.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/amendments.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amendments.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amm.md
         targets:
             - en
 
         # TODO: update translation
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/amm.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amm.ja.md
         outdated_translation: true
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/check.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/check.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/check.ja.md
         targets:
             - ja
 
-# TODO: Translate
-    -   md: references/protocol-reference/transactions/transaction-types/clawback.md
-        targets:
-            - en
-            - ja
-
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/depositpreauth.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/depositpreauth.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/depositpreauth.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/depositpreauth.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/directorynode.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/directorynode.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/directorynode.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/directorynode.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/escrow.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/escrow.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/escrow.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/escrow.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/feesettings.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/feesettings.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/feesettings.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/feesettings.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledgerhashes.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledgerhashes.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledgerhashes.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledgerhashes.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/negativeunl.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/negativeunl.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenoffer.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenoffer.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenpage.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenpage.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/offer.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/offer.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/offer.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/offer.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/paychannel.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/paychannel.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/paychannel.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/paychannel.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ripplestate.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ripplestate.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ripplestate.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ripplestate.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/signerlist.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/signerlist.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/signerlist.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/signerlist.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ticket.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ticket.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ticket.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ticket.ja.md
         targets:
             - ja
 
@@ -2715,6 +2730,12 @@ pages:
 
     -   md: references/protocol-reference/transactions/transaction-types/checkcreate.ja.md
         targets:
+            - ja
+
+# TODO: Translate
+    -   md: references/protocol-reference/transactions/transaction-types/clawback.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/depositpreauth.md
