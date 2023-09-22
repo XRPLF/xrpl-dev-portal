@@ -52,6 +52,8 @@ The `ledger` field is deprecated and may be removed without further notice.
 > * `accounts`
 > * `full`
 > * `queue`
+>
+> Clio will **always** forward the request to `rippled` when any of the above fields is set to `true`.
 
 ## Response Format
 
@@ -124,7 +126,6 @@ If the request specified `"diff: true`, the response has an object `diff`. The f
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-* `notSupported` - One of `full`, `queue` or `accounts` fields specified but Clio does not support these fields.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
