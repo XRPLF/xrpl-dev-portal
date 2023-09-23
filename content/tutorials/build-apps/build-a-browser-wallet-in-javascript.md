@@ -1,12 +1,12 @@
 ---
-html: build-a-browser-wallet-using-javascript.html
+html: build-a-browser-wallet-in-javascript.html
 parent: javascript.html
 targets:
   - en
   - ja # TODO: translate this page
 blurb: Build a graphical browser wallet for the XRPL using Javascript.
 ---
-# Build A Browser Wallet Using JavaScript
+# Build a Browser Wallet in JavaScript
 <!-- STYLE_OVERRIDE: wallet -->
 
 This tutorial demonstrates how to build a browser wallet for the XRP Ledger using the Javascript programming language and various libraries. This application can be used as a starting point for building a more complete and powerful application, as a reference point for building comparable apps, or as a learning experience to better understand how to integrate XRP Ledger functionality into a larger project.
@@ -21,7 +21,7 @@ To complete this tutorial, you should meet the following guidelines:
 
 ## Source Code
 
-You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/).
+You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-browser-wallet/js/).
 
 ## Goals
 
@@ -57,7 +57,7 @@ yarn create vite simple-xrpl-wallet --template vanilla
 
 3. Create or modify the file `package.json` to have the following contents:
 
-{{ include_code("_code-samples/build-a-wallet/js/package.json", language="js") }}
+{{ include_code("_code-samples/build-a-browser-wallet/js/package.json", language="js") }}
 
    - Alternatively you can also do `yarn add <package-name>` for each individual package to add them to your `package.json` file.
 
@@ -79,7 +79,7 @@ SEED="s████████████████████████�
 
 7. Set up a Vite bundler. Create a file named `vite.config.js` in the root directory of the project and fill it with the following code:
 
-{{ include_code("_code-samples/build-a-wallet/js/vite.config.js", language="js") }}
+{{ include_code("_code-samples/build-a-browser-wallet/js/vite.config.js", language="js") }}
 
 This example includes the necessary configuration to make [xrpl.js work with Vite](https://github.com/XRPLF/xrpl.js/blob/main/UNIQUE_SETUPS.md#using-xrpljs-with-vite-react).
 
@@ -103,9 +103,9 @@ In this step, we create a home page that displays account and ledger details.
 
 2. Make a new folder named `src` in the root directory of the project.
 
-3. Copy the contents of [index.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/index.html) in your code.
+3. Copy the contents of [index.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-browser-wallet/js/index.html) in your code.
 
-4. Add styling to your [index.css]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/index.css) file by following the link.
+4. Add styling to your [index.css]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-browser-wallet/js/index.css) file by following the link.
 
 This basic setup creates a homepage and applies some visual styles. The goal is for the homepage to:
 
@@ -117,15 +117,15 @@ To make that happen, we need to connect to the XRP Ledger and look up the accoun
 
 5. In the `src/` directory, make a new folder named `helpers`. Create a new file there named `get-wallet-details.js` and define a function named `getWalletDetails` there. This function uses the [account_info method](account_info.html) to fetch account details and the [server_info method](server_info.html) to calculate the current [reserves](reserves.html). The code to do all this is as follows:
 
-{{ include_code("_code-samples/build-a-wallet/js/src/helpers/get-wallet-details.js", language="js") }}
+{{ include_code("_code-samples/build-a-browser-wallet/js/src/helpers/get-wallet-details.js", language="js") }}
 
 6. Now, let's add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. Here we render the wallet details using the function we defined in `get-wallet-details.js`. In order to make sure we have up to date ledger data, we are using the [ledger stream](subscribe.html#ledger-stream) to listen for ledger close events.
 
-{{ include_code("_code-samples/build-a-wallet/js/index.js", language="js") }}
+{{ include_code("_code-samples/build-a-browser-wallet/js/index.js", language="js") }}
 
-7. In the `helpers` folder, add [render-xrpl-logo.js]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/helpers/render-xrpl-logo.js) to handle displaying a logo.
+7. In the `helpers` folder, add [render-xrpl-logo.js]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-browser-wallet/js/src/helpers/render-xrpl-logo.js) to handle displaying a logo.
 
-8. Finally create a new folder named `assets` in the `src/` directory and add the file [`xrpl.svg`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/assets/xrpl.svg) there.
+8. Finally create a new folder named `assets` in the `src/` directory and add the file [`xrpl.svg`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-browser-wallet/js/src/assets/xrpl.svg) there.
 
 These files are used to render the XRPL logo for aesthetic purposes.
 
@@ -149,15 +149,15 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 
 2. Inside the `send-xrp` folder, create two files named `send-xrp.js` and `send-xrp.html`.
 
-3. Copy the contents of the [send-xrp.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.html) file to your `send-xrp.html` file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.
+3. Copy the contents of the [send-xrp.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-browser-wallet/js/src/send-xrp/send-xrp.html) file to your `send-xrp.html` file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.
 
 4. Now that we have the HTML code, let's add the JavaScript code. In the `helpers` folder, create a new file named `submit-transaction.js` and copy the code written below to the file. In this file, we are using the [submit](submit.html) method to submit the transaction to the XRPL. Before submitting every transaction needs to be signed by a wallet, learn more about [signing](sign.html) a transaction.
 
-{{ include_code("_code-samples/build-a-wallet/js/src/helpers/submit-transaction.js", language="js") }}
+{{ include_code("_code-samples/build-a-browser-wallet/js/src/helpers/submit-transaction.js", language="js") }}
 
 5. Now back to the `send-xrp.js` file, copy the code written below to the file. In this piece of code we are first getting all the DOM elements from HTML and adding event listners to update & validate the fields based on the user input. Using `renderAvailableBalance` method we display the current available balance of the wallet. `validateAddress` function validates the user address, and the amount is validated using a regular expression. When all the fields are filled with correct inputs, we call the `submitTransaction` function to submit the transaction to the ledger.
 
-{{ include_code("_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.js", language="js") }}
+{{ include_code("_code-samples/build-a-browser-wallet/js/src/send-xrp/send-xrp.js", language="js") }}
 
 You can now click 'Send XRP' to try creating your own transaction! You can use this example to send XRP to the testnet faucet to try it out.
 
@@ -187,11 +187,11 @@ Now that we have created the home page and the send XRP page, let's create the t
 1. Create a folder named `transaction-history` in the src directory.
 2. Create a file named `transaction-history.js` and copy the code written below.
 
-{{ include_code("_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.js", language="js") }}
+{{ include_code("_code-samples/build-a-browser-wallet/js/src/transaction-history/transaction-history.js", language="js") }}
 
 This code uses [account_tx](account_tx.html) to fetch transactions we've sent to and from this account. In order to get all the results, we're using the `marker` parameter to paginate through the incomplete list of transactions until we reach the end.
 
-3. Create a file named `transaction-history.html` and copy the code from [transaction-history.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.html) into it.
+3. Create a file named `transaction-history.html` and copy the code from [transaction-history.html]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-browser-wallet/js/src/transaction-history/transaction-history.html) into it.
 
 `transaction-history.html` defines a table which displays the fields mentioned above.
 

@@ -1831,10 +1831,19 @@ pages:
             - ja
 
         # TODO: translate
-    -   md: tutorials/build-apps/build-a-browser-wallet-using-javascript.md
+    -   md: tutorials/build-apps/build-a-browser-wallet-in-javascript.md
         targets:
-          - en
-          - ja
+            - en
+            - ja
+
+        # Redirect old page URL
+    -   name: Build a Browser Wallet in JavaScript
+        html: build-a-browser-wallet-using-javascript.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: build-a-browser-wallet-in-javascript.html
+        targets:
+            - en
+            - ja
 
     # Java ---------------------------------------------------------------------
 
