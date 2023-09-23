@@ -1845,6 +1845,12 @@ pages:
             - en
             - ja
 
+        # TODO: translate
+    -   md: tutorials/build-apps/build-a-desktop-wallet-in-javascript.md
+        targets:
+            - en
+            - ja
+
     # Java ---------------------------------------------------------------------
 
     -   name: Java

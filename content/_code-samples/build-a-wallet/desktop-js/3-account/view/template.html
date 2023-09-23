@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+    <title>XRPL Wallet Tutorial (JavaScript / Electron)</title>
+</head>
+
+<body>
+
+    <h3>Build a XRPL Wallet - Part 3/8</h3>
+
+    <fieldset>
+        <legend>Account</legend>
+        Classic Address: <strong id="account-address-classic"></strong><br/>
+        X-Address: <strong id="account-address-x"></strong><br/>
+        XRP Balance: <strong id="account-balance"></strong><br/>
+    </fieldset>
+
+    <fieldset>
+        <legend>Latest validated ledger</legend>
+        Ledger Index: <strong id="ledger-index"></strong><br/>
+        Ledger Hash: <strong id="ledger-hash"></strong><br/>
+        Close Time: <strong id="ledger-close-time"></strong><br/>
+    </fieldset>
+
+    <dialog id="account-address-dialog">
+        <form method="dialog">
+            <div>
+                <label for="address-input">Enter account address:</label>
+                <input type="text" id="address-input" name="address-input" />
+            </div>
+            <div>
+                <button type="submit">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+
+</body>
+
+<script src="renderer.js"></script>
+
+</html>

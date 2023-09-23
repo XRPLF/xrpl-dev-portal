@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>XRPL Wallet Tutorial (JavaScript / Electron)</title>
+
+    <link rel="stylesheet" href="../../bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../bootstrap/custom.css"/>
+</head>
+
+<body>
+
+    <main class="bg-light">
+
+        <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <img class="logo" height="40"/>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard"
+                            type="button" role="tab" aria-controls="dashboard" aria-selected="true">
+                        Dashboard
+                    </button>
+                </li>
+                <li>
+                    <button class="nav-link" data-bs-toggle="tab" id="transactions-tab" data-bs-target="#transactions"
+                            type="button" role="tab" aria-controls="transactions" aria-selected="false">
+                        Transactions
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="main-content tab-content d-flex flex-column flex-shrink-0 p-3">
+
+            <div class="header border-bottom">
+                <h3>
+                    Build a XRPL Wallet
+                    <small class="text-muted">- Part 8/8</small>
+                </h3>
+                <button type="button" class="btn btn-primary" id="send-xrp-modal-button">
+                    Send XRP
+                </button>
+            </div>
+
+            <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                <h3>Account:</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">Classic Address: <strong id="account-address-classic"></strong></li>
+                    <li class="list-group-item">X-Address: <strong id="account-address-x"></strong></li>
+                    <li class="list-group-item">XRP Balance: <strong id="account-balance"></strong></li>
+                </ul>
+                <div class="spacer"></div>
+                <h3>
+                    Ledger
+                    <small class="text-muted">(Latest validated ledger)</small>
+                </h3>
+                <ul class="list-group">
+                    <li class="list-group-item">Ledger Index: <strong id="ledger-index"></strong></li>
+                    <li class="list-group-item">Ledger Hash: <strong id="ledger-hash"></strong></li>
+                    <li class="list-group-item">Close Time: <strong id="ledger-close-time"></strong></li>
+                </ul>
+            </div>
+
+            <div class="tab-pane fade" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
+                <h3>Transactions:</h3>
+                <table id="tx-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Confirmed</th>
+                            <th>Type</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Value Delivered</th>
+                            <th>Hash</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="send-xrp-modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="send-xrp-modal-label">Send XRP</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <div class="accountVerificationIndicator">
+                                <span>Verification status:</span>
+                            </div>
+                            <input type="text" class="form-control" value="rP4zcp52pa7ZjhjtU9LrnFcitBUadNW8Xz"
+                                   id="input-destination-address">
+                            <span class="input-group-text">To (Address)</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" value="12345"
+                                   id="input-destination-tag">
+                            <span class="input-group-text">Destination Tag</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" value="100"
+                                   id="input-xrp-amount">
+                            <span class="input-group-text">Amount of XRP</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="send-xrp-submit-button">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <dialog id="seed-dialog">
+        <form method="dialog">
+            <div>
+                <label for="seed-input">Enter seed:</label>
+                <input type="text" id="seed-input" name="seed-input" />
+            </div>
+            <div>
+                <button type="submit">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="password-dialog">
+        <form method="dialog">
+            <div>
+                <label for="password-input">Enter password (min-length 5):</label><br />
+                <input type="text" id="password-input" name="password-input" /><br />
+                <span class="invalid-password"></span>
+            </div>
+            <div>
+                <button type="button">Change Seed</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </dialog>
+
+</body>
+
+<script src="../../bootstrap/bootstrap.bundle.min.js"></script>
+<script src="renderer.js"></script>
+
+</html>
