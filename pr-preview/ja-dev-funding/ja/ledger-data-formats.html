@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['データ保持']
+      "page_labels": []
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -258,15 +258,7 @@
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
     <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ja-dev-funding/content/references/protocol-reference/ledger-data/ledger-data-formats.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2156" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
-</div><!-- /.github-edit --><div class="labels-wrap">
-  <ul class="list-inline">
-    <li class="list-inline-item">
-      <span class="label label-データ保持">データ保持</span>
-      <!-- TEMPLATE WARNING: no label landing found for "データ保持" -->
-    </li>
-  </ul>
-</div><!--/.labels-wrap-->
-    <div class="toc-header">
+</div><!-- /.github-edit -->    <div class="toc-header">
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
@@ -303,61 +295,6 @@
 <h2 id="状態データ">状態データ<a aria-hidden="true" class="hover_anchor" href="#状態データ"><i class="fa fa-link"></i></a></h2>
 <p>各<a href="ledgers.html">レジャー</a>の状態ツリーは<strong>レジャーオブジェクト</strong>のセットで構成されており、それらが総合して共有レジャーのすべての設定、残高、関係を表します。</p>
 <p>rippledサーバーが互いに通信するために使用する<a href="peer-protocol.html">ピアプロトコル</a>では、レジャーオブジェクトは生<a href="serialization.html">バイナリーフォーマット</a>で表されます。rippled APIでは、レジャーオブジェクトはJSONオブジェクトとして表されます。</p>
-<ul class="children-display">
-<li class="level-1"><a href="accountroot.html">AccountRoot</a>
-<p class="blurb child-blurb">あるアカウントの設定、XRP残高、その他のメタデータです。</p>
-</li>
-<li class="level-1"><a href="amendments-object.html">Amendments</a>
-<p class="blurb child-blurb">有効化されているAmendmentと保留中のAmendmentのステータスを持つシングルトンオブジェクトです。</p>
-</li>
-<li class="level-1"><a href="amm.html">AMM</a>
-<span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>
-<p class="blurb child-blurb">自動マーケットメーカー（AMM）インスタンスの定義と詳細。</p>
-</li>
-<li class="level-1"><a href="check.html">Check</a>
-<p class="blurb child-blurb">送信先が清算して資金にできるCheckです。</p>
-</li>
-<li class="level-1"><a href="depositpreauth-object.html">DepositPreauth</a>
-<p class="blurb child-blurb">承認を必要とするアカウントへの送金ペイメントの事前承認の記録です。</p>
-</li>
-<li class="level-1"><a href="directorynode.html">DirectoryNode</a>
-<p class="blurb child-blurb">他のオブジェクトへのリンクを含みます。</p>
-</li>
-<li class="level-1"><a href="escrow-object.html">Escrow</a>
-<p class="blurb child-blurb">条件付き決済のために保有されているXRPを含みます。</p>
-</li>
-<li class="level-1"><a href="feesettings.html">FeeSettings</a>
-<p class="blurb child-blurb">コンセンサスで承認された基本トランザクションコストと必要準備金があるシングルトンオブジェクトです。</p>
-</li>
-<li class="level-1"><a href="ledgerhashes.html">LedgerHashes</a>
-<p class="blurb child-blurb">履歴検索用に以前のレジャーバージョンのハッシュをリスト表示します。</p>
-</li>
-<li class="level-1"><a href="negativeunl.html">NegativeUNL</a>
-<p class="blurb child-blurb">現在オフラインと思われるバリデーターの一覧を表します。</p>
-</li>
-<li class="level-1"><a href="nftokenoffer.html">NFTokenOffer</a>
-<p class="blurb child-blurb">NFTを売買するオファーを作成する。</p>
-</li>
-<li class="level-1"><a href="nftokenpage.html">NFTokenPage</a>
-<p class="blurb child-blurb">NFTokenを記録するためのレジャー構造。</p>
-</li>
-<li class="level-1"><a href="offer.html">Offer</a>
-<p class="blurb child-blurb">通貨取引を行う注文</p>
-</li>
-<li class="level-1"><a href="paychannel.html">PayChannel</a>
-<p class="blurb child-blurb">非同期XRP支払い用のチャネルです。</p>
-</li>
-<li class="level-1"><a href="ripplestate.html">RippleState</a>
-<p class="blurb child-blurb">2つのアカウントをリンクし、それらのアカウント間の特定の通貨の残高を追跡します。トラストラインのコンセプトは、このオブジェクトタイプを抽象化することです。</p>
-</li>
-<li class="level-1"><a href="signerlist.html">SignerList</a>
-<p class="blurb child-blurb">マルチシグトランザクションのアドレスのリストです。</p>
-</li>
-<li class="level-1"><a href="ticket.html">Ticket</a>
-<p class="blurb child-blurb">チケットは、将来使用するために確保されたアカウントのシーケンス番号を追跡します。</p>
-</li>
-</ul>
-<!--/.children-display-->
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -1176,7 +1113,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1503,17 +1445,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -1630,11 +1567,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
   </div>
 
@@ -1686,6 +1618,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

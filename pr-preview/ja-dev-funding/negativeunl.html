@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ja-dev-funding/content/references/protocol-reference/ledger-data/ledger-object-types/negativeunl.md?pr=/XRPLF/xrpl-dev-portal/pull/2156" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ja-dev-funding/content/references/protocol-reference/ledger-data/ledger-entry-types/negativeunl.md?pr=/XRPLF/xrpl-dev-portal/pull/2156" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -271,7 +271,9 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#negativeunl">NegativeUNL</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-negativeunl-json">Example NegativeUNL JSON</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#disabledvalidator-objects">DisabledValidator Objects</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#negativeunl-fields">NegativeUNL Fields</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#disabledvalidator-objects">DisabledValidator Objects</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#negativeunl-flags">NegativeUNL Flags</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#negativeunl-id-format">NegativeUNL ID Format</a></li>
       </ul>
   </div>
@@ -293,15 +295,15 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">NegativeUNL</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="negativeunl">NegativeUNL<a aria-hidden="true" class="hover_anchor" href="#negativeunl"><i class="fa fa-link"></i></a></h1>
 <p><em>(Added by the <a href="known-amendments.html#negativeunl">NegativeUNL amendment</a>.)</em></p>
-<p>The <code>NegativeUNL</code> object type contains the current status of the <a href="negative-unl.html">Negative UNL</a>, a list of trusted validators currently believed to be offline.</p>
-<p>Each ledger version contains <strong>at most one</strong> <code>NegativeUNL</code> object. If no validators are currently disabled or scheduled to be disabled, there is no <code>NegativeUNL</code> object in the ledger.</p>
+<p>The <code>NegativeUNL</code> ledger entry type contains the current status of the <a href="negative-unl.html">Negative UNL</a>, a list of trusted validators currently believed to be offline.</p>
+<p>Each ledger version contains <strong>at most one</strong> <code>NegativeUNL</code> entry. If no validators are currently disabled or scheduled to be disabled, there is no <code>NegativeUNL</code> entry.</p>
 <h2 id="example-negativeunl-json">Example NegativeUNL JSON<a aria-hidden="true" class="hover_anchor" href="#example-negativeunl-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"DisabledValidators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -317,7 +319,8 @@
 <span class="w">  </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244"</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>A <code>NegativeUNL</code> object has the following fields:</p>
+<h2 id="negativeunl-fields">NegativeUNL Fields<a aria-hidden="true" class="hover_anchor" href="#negativeunl-fields"><i class="fa fa-link"></i></a></h2>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, the <code>NegativeUNL</code> ledger entry has the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -337,18 +340,11 @@
 <td style="text-align: left;">A list of <code>DisabledValidator</code> objects (see below), each representing a trusted validator that is currently disabled.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A bit-map of boolean flags. No flags are defined for the NegativeUNL object type, so this value is always <code>0</code>.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt16</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The value <code>0x004E</code>, mapped to the string <code>NegativeUNL</code>, indicates that this object is the Negative UNL.</td>
+<td style="text-align: left;">The value <code>0x004E</code>, mapped to the string <code>NegativeUNL</code>, indicates that this entry is the Negative UNL.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ValidatorToDisable</code></td>
@@ -366,7 +362,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="disabledvalidator-objects">DisabledValidator Objects<a aria-hidden="true" class="hover_anchor" href="#disabledvalidator-objects"><i class="fa fa-link"></i></a></h2>
+<h3 id="disabledvalidator-objects">DisabledValidator Objects<a aria-hidden="true" class="hover_anchor" href="#disabledvalidator-objects"><i class="fa fa-link"></i></a></h3>
 <!-- SPELLING_IGNORE: DisabledValidator -->
 <p>Each <code>DisabledValidator</code> object represents one disabled validator. In JSON, a <code>DisabledValidator</code> object has one field, <code>DisabledValidator</code>, which in turn contains another object with the following fields:</p>
 <table class="table-responsive">
@@ -393,8 +389,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="negativeunl-flags">NegativeUNL Flags<a aria-hidden="true" class="hover_anchor" href="#negativeunl-flags"><i class="fa fa-link"></i></a></h2>
+<p>There are no flags defined for the <code>NegativeUNL</code> entry.</p>
 <h2 id="negativeunl-id-format">NegativeUNL ID Format<a aria-hidden="true" class="hover_anchor" href="#negativeunl-id-format"><i class="fa fa-link"></i></a></h2>
-<p>The <code>NegativeUNL</code> object ID is the hash of the <code>NegativeUNL</code> space key (<code>0x004E</code>) only. This means that the ID of the <code>NegativeUNL</code> object in a ledger is always:</p>
+<p>The ID of the <code>NegativeUNL</code> entry is the hash of the <code>NegativeUNL</code> space key (<code>0x004E</code>) only. This means that the ID is always:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="mf">2</span><span class="n">E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244</span>
 </code></pre></div>
 <!-- -->
@@ -1227,7 +1225,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1553,18 +1556,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1681,11 +1679,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1737,6 +1730,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ja-dev-funding/content/references/protocol-reference/ledger-data/ledger-object-types/ledgerhashes.md?pr=/XRPLF/xrpl-dev-portal/pull/2156" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ja-dev-funding/content/references/protocol-reference/ledger-data/ledger-entry-types/ledgerhashes.md?pr=/XRPLF/xrpl-dev-portal/pull/2156" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -270,8 +270,10 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#ledgerhashes">LedgerHashes</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ledgerhashes-fields">LedgerHashes Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#recent-history-ledgerhashes">Recent History LedgerHashes</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#previous-history-ledgerhashes">Previous History LedgerHashes</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ledgerhashes-flags">LedgerHashes Flags</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ledgerhashes-id-formats">LedgerHashes ID Formats</a></li>
       </ul>
   </div>
@@ -293,7 +295,7 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">LedgerHashes</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
@@ -325,7 +327,8 @@
 <span class="w">  </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B"</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>A <code>LedgerHashes</code> object has the following fields:</p>
+<h2 id="ledgerhashes-fields">LedgerHashes Fields<a aria-hidden="true" class="hover_anchor" href="#ledgerhashes-fields"><i class="fa fa-link"></i></a></h2>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>LedgerHashes</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -341,15 +344,8 @@
 <td style="text-align: left;"><code>FirstLedgerSequence</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;"><strong>DEPRECATED</strong> Do not use. (The "recent hashes" object of the production XRP Ledger has the value <code>2</code> in this field as a result of a previous <code>rippled</code> software. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in <a href="parallel-networks.html">parallel networks</a> started with more recent versions of <code>rippled</code>.)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for <code>LedgerHashes</code> objects. The value is always <code>0</code>.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;"><strong>DEPRECATED</strong> Do not use. (The "recent hashes" object on Mainnet has the value <code>2</code> in this field as a result of an old software bug. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in <a href="parallel-networks.html">parallel networks</a> started with more recent versions of <code>rippled</code>.)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Hashes</code></td>
@@ -362,7 +358,7 @@
 <td style="text-align: left;"><code>LastLedgerSequence</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
 <td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">Ledger Index</a> of the last entry in this object's <code>Hashes</code> array.</td>
 </tr>
 <tr>
@@ -381,6 +377,8 @@
 <p>The "previous history" <code>LedgerHashes</code> entries collectively contain the hash of every 256th ledger version (also called "flag ledgers") in the full history of the ledger. When the child of a flag ledger closes, the flag ledger's hash is added to the <code>Hashes</code> array of the newest "previous history" <code>LedgerHashes</code> object. Every 65536 ledgers, <code>rippled</code> creates a new <code>LedgerHashes</code> object, so that each "previous history" object has the hashes of 256 flag ledgers.</p>
 <p class="devportal-callout note"><strong>Note:</strong> The oldest "previous history" <code>LedgerHashes</code> object contains only 255 entries because the genesis ledger has ledger index 1, not 0.</p>
 <p>The "previous history" <code>LedgerHashes</code> objects act as a <a class="external-link" href="https://en.wikipedia.org/wiki/Skip_list" target="_blank">skip list <i aria-hidden="true" class="fa fa-external-link"></i></a> so you can get the hash of any historical flag ledger from its index. From there, you can use that flag ledger's "recent history" object to get the hash of any other ledger.</p>
+<h2 id="ledgerhashes-flags">LedgerHashes Flags<a aria-hidden="true" class="hover_anchor" href="#ledgerhashes-flags"><i class="fa fa-link"></i></a></h2>
+<p>There are no flags defined for <code>LedgerHashes</code> entries.</p>
 <h2 id="ledgerhashes-id-formats">LedgerHashes ID Formats<a aria-hidden="true" class="hover_anchor" href="#ledgerhashes-id-formats"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>There are two formats for <code>LedgerHashes</code> object IDs, depending on whether the object is a "recent history" sub-type or a "previous history" sub-type.</p>
@@ -1223,7 +1221,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1549,18 +1552,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1677,11 +1675,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1733,6 +1726,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

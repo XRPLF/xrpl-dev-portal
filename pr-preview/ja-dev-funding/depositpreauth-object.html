@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ja-dev-funding/content/references/protocol-reference/ledger-data/ledger-object-types/depositpreauth.md?pr=/XRPLF/xrpl-dev-portal/pull/2156" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ja-dev-funding/content/references/protocol-reference/ledger-data/ledger-entry-types/depositpreauth.md?pr=/XRPLF/xrpl-dev-portal/pull/2156" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -272,6 +272,8 @@
         <li class="nav-item level-1"><a class="nav-link" href="#depositpreauth">DepositPreauth</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-depositpreauth-json">Example DepositPreauth JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#depositpreauth-fields">DepositPreauth Fields</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#depositpreauth-flags">DepositPreauth Flags</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#depositpreauth-reserve">DepositPreauth Reserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#depositpreauth-id-format">DepositPreauth ID Format</a></li>
       </ul>
   </div>
@@ -293,14 +295,14 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">DepositPreauth</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="depositpreauth">DepositPreauth<a aria-hidden="true" class="hover_anchor" href="#depositpreauth"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>A <code>DepositPreauth</code> object tracks a preauthorization from one account to another. <a href="depositpreauth.html">DepositPreauth transactions</a> create these objects.</p>
+<p>A <code>DepositPreauth</code> entry tracks a preauthorization from one account to another. <a href="depositpreauth.html">DepositPreauth transactions</a> create these entries.</p>
 <p>This has no effect on processing of transactions unless the account that provided the preauthorization requires <a href="depositauth.html">Deposit Authorization</a>. In that case, the account that was preauthorized can send payments and other transactions directly to the account that provided the preauthorization. Preauthorizations are one-directional, and have no effect on payments going the opposite direction.</p>
 <h2 id="example-depositpreauth-json">Example DepositPreauth JSON<a aria-hidden="true" class="hover_anchor" href="#example-depositpreauth-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -315,7 +317,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="depositpreauth-fields">DepositPreauth Fields<a aria-hidden="true" class="hover_anchor" href="#depositpreauth-fields"><i class="fa fa-link"></i></a></h2>
-<p>A <code>DepositPreauth</code> object has the following fields:</p>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>DepositPreauth</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -340,13 +342,6 @@
 <td style="text-align: left;">Account</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The account that received the preauthorization. (The sender of the preauthorized payments.)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for <code>DepositPreauth</code> objects. The value is always <code>0</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
@@ -378,6 +373,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="depositpreauth-flags">DepositPreauth Flags<a aria-hidden="true" class="hover_anchor" href="#depositpreauth-flags"><i class="fa fa-link"></i></a></h2>
+<p>There are no flags defined for <code>DepositPreauth</code> entries.</p>
+<h2 id="depositpreauth-reserve">DepositPreauth Reserve<a aria-hidden="true" class="hover_anchor" href="#depositpreauth-reserve"><i class="fa fa-link"></i></a></h2>
+<p><code>DepositPreauth</code> entries count as one item towards the owner reserve of the account that granted preauthorization, as long as the entry is in the ledger. Unauthorizing the counterparty frees up the reserve.</p>
 <h2 id="depositpreauth-id-format">DepositPreauth ID Format<a aria-hidden="true" class="hover_anchor" href="#depositpreauth-id-format"><i class="fa fa-link"></i></a></h2>
 <p>The ID of a <code>DepositPreauth</code> object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
@@ -1215,7 +1214,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1541,18 +1545,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1669,11 +1668,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1725,6 +1719,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

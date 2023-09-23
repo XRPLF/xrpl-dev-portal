@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ja-dev-funding/content/references/protocol-reference/ledger-data/ledger-object-types/signerlist.md?pr=/XRPLF/xrpl-dev-portal/pull/2156" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ja-dev-funding/content/references/protocol-reference/ledger-data/ledger-entry-types/signerlist.md?pr=/XRPLF/xrpl-dev-portal/pull/2156" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -296,7 +296,7 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">SignerList</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
@@ -304,7 +304,7 @@
         <h1 id="signerlist">SignerList<a aria-hidden="true" class="hover_anchor" href="#signerlist"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Added by the <a href="known-amendments.html#multisign">MultiSign amendment</a>.)</em></p>
-<p>The <code>SignerList</code> object type represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a signer list using a <a href="signerlistset.html">SignerListSet transaction</a>.</p>
+<p>A <code>SignerList</code> entry represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a signer list using a <a href="signerlistset.html">SignerListSet transaction</a>.</p>
 <h2 id="example-signerlist-json">Example SignerList JSON<a aria-hidden="true" class="hover_anchor" href="#example-signerlist-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
@@ -338,7 +338,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="signerlist-fields">SignerList Fields<a aria-hidden="true" class="hover_anchor" href="#signerlist-fields"><i class="fa fa-link"></i></a></h2>
-<p>A <code>SignerList</code> object has the following fields:</p>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>SignerList</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -351,18 +351,11 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A bit-map of Boolean flags enabled for this signer list. For more information, see <a href="#signerlist-flags">SignerList Flags</a>.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt16</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The value <code>0x0053</code>, mapped to the string <code>SignerList</code>, indicates that this object is a SignerList object.</td>
+<td style="text-align: left;">The value <code>0x0053</code>, mapped to the string <code>SignerList</code>, indicates that this is a SignerList ledger entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerNode</code></td>
@@ -441,10 +434,10 @@
 </tr>
 </tbody>
 </table>
-<p>When processing a multi-signed transaction, the server looks up the <code>Account</code> values with respect to the ledger at the time of transaction execution. If the address <em>does not</em> correspond to a funded <a href="accountroot.html">AccountRoot object</a>, then only the <a href="cryptographic-keys.html">master private key</a> associated with that address can be used to produce a valid signature. If the account <em>does</em> exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.</p>
+<p>When processing a multi-signed transaction, the server looks up the <code>Account</code> values with respect to the ledger at the time of transaction execution. If the address <em>does not</em> correspond to a funded <a href="accountroot.html">AccountRoot ledger entry</a>, then only the <a href="cryptographic-keys.html">master private key</a> associated with that address can be used to produce a valid signature. If the account <em>does</em> exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.</p>
 <h2 id="signerlist-flags">SignerList Flags<a aria-hidden="true" class="hover_anchor" href="#signerlist-flags"><i class="fa fa-link"></i></a></h2>
 <p><em>(Added by the <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a>.)</em></p>
-<p>SignerList objects can have the following flag value:</p>
+<p>SignerList entries can have the following value in the <code>Flags</code> field:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -464,11 +457,11 @@
 </tbody>
 </table>
 <h2 id="signer-lists-and-reserves">Signer Lists and Reserves<a aria-hidden="true" class="hover_anchor" href="#signer-lists-and-reserves"><i class="fa fa-link"></i></a></h2>
-<p>A signer list contributes to its owner's <a href="reserves.html">reserve requirement</a>.</p>
-<p>The <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a> (enabled 2019-04-17) made it so each signer list counts as one object, regardless of how many members it has. As a result, the owner reserve associated with a new signer list is 2 XRP.</p>
-<p>A signer list created before the <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a> itself counts as two objects, and each member of the list counts as one. As a result, the total owner reserve associated with the signer list is anywhere from 3 times to 10 times the reserve required by a single trust line (<a href="ripplestate.html">RippleState</a>) or <a href="offer.html">Offer</a> object in the ledger. To update a signer list to use the new, reduced reserve, update the signer list by sending a <a href="signerlistset.html">SignerListSet transaction</a>.</p>
+<p>A signer list contributes to its owner's <a href="reserves.html">reserve requirement</a>. Removing the signer list frees up the reserve.</p>
+<p>The <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a> (enabled 2019-04-17) made it so each signer list counts as one item, regardless of how many members it has. As a result, the owner reserve for any signer list added or updated after this time is 2 XRP.</p>
+<p>A signer list created before the <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a> itself counts as two items towards the owner reserve, and each member of the list counts as one. As a result, the total owner reserve associated with an old signer list is anywhere from 3 times to 10 times as much as a new signer list. To update a signer list to use the new, reduced reserve, update the signer list by sending a <a href="signerlistset.html">SignerListSet transaction</a>.</p>
 <h2 id="signerlist-id-format">SignerList ID Format<a aria-hidden="true" class="hover_anchor" href="#signerlist-id-format"><i class="fa fa-link"></i></a></h2>
-<p>The ID of a signer list object is the SHA-512Half of the following values, concatenated in order:</p>
+<p>The ID of a <code>SignerList</code> entry is the SHA-512Half of the following values, concatenated in order:</p>
 <ul>
 <li>The RippleState space key (<code>0x0053</code>)</li>
 <li>The AccountID of the owner of the signer list</li>
@@ -1304,7 +1297,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1630,18 +1628,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1758,11 +1751,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1814,6 +1802,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

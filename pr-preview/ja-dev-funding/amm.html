@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ja-dev-funding/content/references/protocol-reference/ledger-data/ledger-object-types/amm.md?pr=/XRPLF/xrpl-dev-portal/pull/2156" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ja-dev-funding/content/references/protocol-reference/ledger-data/ledger-entry-types/amm.md?pr=/XRPLF/xrpl-dev-portal/pull/2156" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -274,6 +274,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#amm-fields">AMM Fields</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#auction-slot-object">Auction Slot Object</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#voteentry-object">VoteEntry Object</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#amm-reserve">AMM Reserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amm-flags">AMM Flags</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amm-id-format">AMM ID Format</a></li>
       </ul>
@@ -296,7 +297,7 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">AMM</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
@@ -304,7 +305,7 @@
         <h1 id="amm">AMM<a aria-hidden="true" class="hover_anchor" href="#amm"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/89780c8e4fd4d140fcb912cf2d0c01c1b260539e/src/ripple/protocol/impl/LedgerFormats.cpp#L272-L284" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
-<p>The <code>AMM</code> object type describes a single <a href="automated-market-makers.html">Automated Market Maker</a> (AMM) instance.</p>
+<p>An <code>AMM</code> ledger entry describes a single <a href="automated-market-makers.html">Automated Market Maker</a> (AMM) instance. This is always paired with a <a href="accountroot.html#special-amm-accountroot-entries">special AccountRoot entry</a>.</p>
 <h2 id="example-amm-json">Example AMM JSON<a aria-hidden="true" class="hover_anchor" href="#example-amm-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"AMMAccount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rE54zDvgnghAoPopCgvtiqWNq3dU5y836S"</span><span class="p">,</span>
@@ -356,7 +357,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="amm-fields">AMM Fields<a aria-hidden="true" class="hover_anchor" href="#amm-fields"><i class="fa fa-link"></i></a></h2>
-<p>The <code>AMM</code> object has the following fields:</p>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>AMM</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -387,7 +388,7 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
 <td style="text-align: left;">Yes</td>
-<td>The address of the <a href="accountroot.html#special-amm-accountroot-objects">special account</a> that holds this AMM's assets.</td>
+<td>The address of the <a href="accountroot.html#special-amm-accountroot-entries">special account</a> that holds this AMM's assets.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>AuctionSlot</code></td>
@@ -505,10 +506,12 @@
 </tr>
 </tbody>
 </table>
+<h2 id="amm-reserve">AMM Reserve<a aria-hidden="true" class="hover_anchor" href="#amm-reserve"><i class="fa fa-link"></i></a></h2>
+<p><code>AMM</code> entries do not require a reserve.</p>
 <h2 id="amm-flags">AMM Flags<a aria-hidden="true" class="hover_anchor" href="#amm-flags"><i class="fa fa-link"></i></a></h2>
-<p>There are currently no flags defined for <code>AMM</code> objects.</p>
+<p>There are no flags defined for <code>AMM</code> entries.</p>
 <h2 id="amm-id-format">AMM ID Format<a aria-hidden="true" class="hover_anchor" href="#amm-id-format"><i class="fa fa-link"></i></a></h2>
-<p>The ID of an <code>AMM</code> object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
+<p>The ID of an <code>AMM</code> entry is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ol>
 <li>The <code>AMM</code> space key (<code>0x0041</code>)</li>
 <li>The AccountID of the first asset's issuer.</li>
@@ -1347,7 +1350,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1673,18 +1681,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1801,11 +1804,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1857,6 +1855,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -306,7 +306,7 @@
 <li>You have some understanding of what the XRP Ledger can do and of cryptocurrency in general. You don't need to be an expert.</li>
 </ul>
 <h2 id="source-code">Source Code<a aria-hidden="true" class="hover_anchor" href="#source-code"><i class="fa fa-link"></i></a></h2>
-<p>You can find the complete source code for all of this tutorial's examples in the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-wallet/py/" target="_blank">code samples section of this website's repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>You can find the complete source code for all of this tutorial's examples in the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-desktop-wallet/py/" target="_blank">code samples section of this website's repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="goals">Goals<a aria-hidden="true" class="hover_anchor" href="#goals"><i class="fa fa-link"></i></a></h2>
 <p>At the end of this tutorial, you should have a Python application that looks something like this:</p>
 <p><img alt="Desktop wallet screenshot" src="img/python-wallet-preview.png"/></p>
@@ -317,7 +317,7 @@
 <li>Shows how much XRP is set aside for the account's <a href="reserves.html">reserve requirement</a>.</li>
 <li>Can send <a href="direct-xrp-payments.html">direct XRP payments</a>, and provides feedback about the intended destination address, including:<ul>
 <li>Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.</li>
-<li>If the address doesn't want to receive XRP (<a href="stablecoin-issuer.html#disallow-xrp"><code>DisallowXRP</code> flag</a> enabled).</li>
+<li>If the address doesn't want to receive XRP (<strong>Disallow XRP</strong> flag enabled).</li>
 <li>If the address has a <a href="xrp-ledger-toml.html#account-verification">verified domain name</a> associated with it.</li>
 </ul>
 </li>
@@ -397,7 +397,7 @@
 <p><img alt="Screenshot: Step 1, hello world equivalent" src="img/python-wallet-1.png"/></p>
 <p>Under the hood, the code makes a JSON-RPC client, connects to a public Testnet server, and uses the <a href="ledger.html">ledger method</a> to get this information. Meanwhile, it creates a <a class="external-link" href="https://docs.wxpython.org/wx.Frame.html" target="_blank"><code>wx.Frame</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> subclass as the base of the user interface. This class makes a window the user can see, with a <a class="external-link" href="https://docs.wxpython.org/wx.StaticText.html" target="_blank"><code>wx.StaticText</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> widget to display text to the user, and a <a class="external-link" href="https://docs.wxpython.org/wx.Panel.html" target="_blank"><code>wx.Panel</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to hold that widget.</p>
 <h3 id="2-show-ledger-updates">2. Show Ledger Updates<a aria-hidden="true" class="hover_anchor" href="#2-show-ledger-updates"><i class="fa fa-link"></i></a></h3>
-<p><strong>Full code for this step:</strong> <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-wallet/py/2_threaded.py" target="_blank"><code>2_threaded.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><strong>Full code for this step:</strong> <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-desktop-wallet/py/2_threaded.py" target="_blank"><code>2_threaded.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>You may have noticed that the app in step 1 only shows the latest validated ledger at the time you opened it: the text displayed never changes unless you close the app and reopen it. The actual XRP Ledger is constantly making forward progress, so a more useful app would show it, something like this:</p>
 <p><img alt="Animation: Step 2, showing ledger updates" src="img/python-wallet-2.gif"/></p>
 <p>If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two <em>threads</em>: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so the user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.</p>
@@ -534,7 +534,7 @@
 <p>On macOS, run the <a class="external-link" href="https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate" target="_blank"><code>Install Certificates.command</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> for your Python version.</p>
 <p>On Windows, open Edge or Chrome and browse to <a class="external-link" href="https://s1.ripple.com" target="_blank">https://s1.ripple.com <i aria-hidden="true" class="fa fa-external-link"></i></a>, then close the page. This should be enough to update your system's certificates. (It doesn't work if you use Firefox or Safari, because those browser's don't use Windows' certificate validation APIs.) <!-- SPELLING_IGNORE: s1 --></p>
 <h3 id="3-display-an-account">3. Display an Account<a aria-hidden="true" class="hover_anchor" href="#3-display-an-account"><i class="fa fa-link"></i></a></h3>
-<p><strong>Full code for this step:</strong> <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-wallet/py/3_account.py" target="_blank"><code>3_account.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><strong>Full code for this step:</strong> <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-desktop-wallet/py/3_account.py" target="_blank"><code>3_account.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>Now that you have a working, ongoing connection to the XRP Ledger, it's time to start adding some "wallet" functionality that lets you manage an individual account. For this step, you should prompt the user to input their address or master seed, then use that to display information about their account including how much XRP is set aside for the <a href="reserves.html">reserve requirement</a>.</p>
 <p>The prompt is in a pop-up dialog like this:</p>
 <p><img alt="Screenshot: step 3, account input prompt" src="img/python-wallet-3-enter.png"/></p>
@@ -802,7 +802,7 @@
 <p>(If you change the code to connect to a Mainnet server URL, also change this value to <code>False</code>.)</p>
 <p>To test your wallet app with your own test account, first go to the <a href="xrp-testnet-faucet.html">Testnet Faucet</a> and <strong>Get Testnet credentials</strong>. Save the address and secret key somewhere, and try your wallet app with either one. Then, to see balance changes, go to the <a href="tx-sender.html">Transaction Sender</a> and paste your address into the <strong>Destination Address</strong> field. Click <strong>Initialize</strong> and try out some of the transaction types there, and see if the balance displayed by your wallet app updates as you expect.</p>
 <h3 id="4-show-accounts-transactions">4. Show Account's Transactions<a aria-hidden="true" class="hover_anchor" href="#4-show-accounts-transactions"><i class="fa fa-link"></i></a></h3>
-<p><strong>Full code for this step:</strong> <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-wallet/py/4_tx_history.py" target="_blank"><code>4_tx_history.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><strong>Full code for this step:</strong> <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-desktop-wallet/py/4_tx_history.py" target="_blank"><code>4_tx_history.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>At this point, your wallet shows the account's balance getting updated, but doesn't show you anything about the actual transactions that caused the updates. So, the next step is to display the account's transaction history (and keep it updated).</p>
 <p>The new transaction history displays in a new tab, like this:</p>
 <p><img alt="Screenshot: transaction history tab" src="img/python-wallet-4-main.png"/></p>
@@ -975,7 +975,7 @@
 </code></pre></div>
 <p>As before, you can test your wallet app with your own test account if you use the <a href="xrp-testnet-faucet.html">Testnet Faucet</a> and the <a href="tx-sender.html">Transaction Sender</a>. On the Faucet page, select <strong>Get Testnet credentials</strong> (or use the same credentials from before). Input either the address or secret when you open your wallet app. On the Transaction Sender page, paste your address into the <strong>Destination Address</strong> field, click <strong>Initialize</strong>, then click various transaction buttons to see how your wallet displays the results.</p>
 <h3 id="5-send-xrp">5. Send XRP<a aria-hidden="true" class="hover_anchor" href="#5-send-xrp"><i class="fa fa-link"></i></a></h3>
-<p><strong>Full code for this step:</strong> <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-wallet/py/5_send_xrp.py" target="_blank"><code>5_send_xrp.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><strong>Full code for this step:</strong> <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-desktop-wallet/py/5_send_xrp.py" target="_blank"><code>5_send_xrp.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>Until now, you've made the app able to view data from the ledger, and it's capable of showing the transactions an account has received. Now it's finally time to make the app capable of <em>sending</em> transactions. For now, you can stick to sending <a href="direct-xrp-payments.html">direct XRP payments</a> because there are more complexities involved in sending <a href="issued-currencies.html">issued tokens</a>.</p>
 <p>The main window gets a new "Send XRP" button:</p>
 <p><img alt='Screenshot: main frame with "Send XRP" button enabled' src="img/python-wallet-5-main.png"/></p>
@@ -1220,7 +1220,7 @@
 </li>
 </ol>
 <h3 id="6-domain-verification-and-polish">6. Domain Verification and Polish<a aria-hidden="true" class="hover_anchor" href="#6-domain-verification-and-polish"><i class="fa fa-link"></i></a></h3>
-<p><strong>Full code for this step:</strong> <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-wallet/py/6_verification_and_polish.py" target="_blank"><code>6_verification_and_polish.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><strong>Full code for this step:</strong> <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py" target="_blank"><code>6_verification_and_polish.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and scams. These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.</p>
 <p>One type of check you can make is to verify the domain name associated with an XRP Ledger address; this is called <a href="xrp-ledger-toml.html#account-verification">account domain verification</a>. When an account's domain is verified, you could show it like this:</p>
 <p><img alt="Screenshot: domain verified destination" src="img/python-wallet-6.png"/></p>
@@ -1555,7 +1555,7 @@
 <p>Now that you have a functional wallet, you can take it in several new directions. The following are a few ideas:</p>
 <ul>
 <li>You could support more of the XRP Ledger's <a href="transaction-types.html">transaction types</a> including <a href="issued-currencies.html">tokens</a> and <a href="cross-currency-payments.html">cross-currency payments</a><ul>
-<li>Example code for displaying token balances and other objects: <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-wallet/py/7_owned_objects.py" target="_blank"><code>7_owned_objects.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li>Example code for displaying token balances and other objects: <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/ja-dev-funding/content/_code-samples/build-a-desktop-wallet/py/7_owned_objects.py" target="_blank"><code>7_owned_objects.py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
 </li>
 <li>Allow the user to trade in the <a href="decentralized-exchange.html">decentralized exchange</a></li>
@@ -2392,7 +2392,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -2719,17 +2724,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -2846,11 +2846,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -2902,6 +2897,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
