@@ -3253,13 +3253,12 @@ msgstr ""
 "XRP "
 "Ledgerのイノベーションは、皆さんのような開発者が共有するコミュニティーの経験を大切にしています。"
 "もしあなたが次の大きな<a href='developer-funding.html'>ブロックチェーン・プロジェクト</a>"
-"を始める準備ができているなら、今すぐXRPLを試し、XRPL"
-" 開発者資金提供への応募を検討しましょう。"
+"を始める準備ができているなら、今すぐXRPLを試し、XRPL開発者向け資金提供プログラムへの応募を検討しましょう。"
 
 #: template/page-xrpl-overview.html.jinja:169
 #, fuzzy
 msgid "Explore XRPL Developer Funding"
-msgstr "XRPL開発者向け資金提供プログラム"
+msgstr "XRPL開発者向け資金提供プログラムを見る"
 
 #: template/page-xrpl-overview.html.jinja:177
 msgid "Is XRPL a private blockchain, owned by Ripple?"
