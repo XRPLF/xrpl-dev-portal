@@ -1,14 +1,21 @@
 const xrpl = require("xrpl");
 
 const prepareTxData = (transactions) => {
-    return transactions.map(transaction => ({
-        confirmed: transaction.tx.date,
-        type: transaction.tx.TransactionType,
-        from: transaction.tx.Account,
-        to: transaction.tx.Destination,
-        value: getDisplayableAmount(transaction.meta.delivered_amount),
-        hash: transaction.tx.hash
-    }))
+    return transactions.map(transaction => {
+        let tx_value = "-"
+        if (transaction.meta !== undefined && transaction.meta.delivered_amount !== undefined) {
+            tx_value = getDisplayableAmount(transaction.meta.delivered_amount)
+        }
+
+        return {
+            confirmed: transaction.tx.date,
+            type: transaction.tx.TransactionType,
+            from: transaction.tx.Account,
+            to: transaction.tx.Destination ?? "-",
+            value: tx_value,
+            hash: transaction.tx.hash
+        }
+    })
 }
 
 const getDisplayableAmount = (rawAmount) => {

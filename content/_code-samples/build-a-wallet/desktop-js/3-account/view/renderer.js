@@ -14,7 +14,6 @@ function openAccountAddressDialog(){
     accountAddressDialog.showModal()
 }
 
-// Step 3 - Section start - this remains as it is, the rest is new
 const ledgerIndexEl = document.getElementById('ledger-index')
 const ledgerHashEl = document.getElementById('ledger-hash')
 const ledgerCloseTimeEl = document.getElementById('ledger-close-time')
@@ -24,7 +23,6 @@ window.electronAPI.onUpdateLedgerData((_event, ledger) => {
     ledgerHashEl.innerText = ledger.ledgerHash
     ledgerCloseTimeEl.innerText = ledger.ledgerCloseTime
 })
-// Step 3 - Section end
 
 const accountAddressClassicEl = document.getElementById('account-address-classic')
 const accountAddressXEl = document.getElementById('account-address-x')
