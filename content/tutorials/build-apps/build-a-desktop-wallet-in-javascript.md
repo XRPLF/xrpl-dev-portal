@@ -76,7 +76,7 @@ In addition to the above features, you'll also learn a bit about Events, IPC (in
     "xrpl": "^2.6.0"
   },
   "devDependencies": {
-    "electron": "22.3.2"
+    "electron": "22.3.24"
   }
 }
 ```
