@@ -58,7 +58,7 @@ In addition to the above features, you'll also learn a bit about Events, IPC (in
 
 ### 0. Project setup - Hello World
 
-1. To initialize the project, create a package.json file with the following content:
+1. To initialize the project, create a file named `package.json` with the following content:
 
 ```json
 {
@@ -243,14 +243,14 @@ This helper function does the following: It establishes a WebSocket connection t
   })
 ```
 
-3. Now in the `view` folder, create a file `preload.js`with the following content:
+3. Now in the `view` folder, create a file `preload.js` with the following content:
 
 ```javascript
 const { contextBridge, ipcRenderer } = require('electron');
 
 // Expose functionality from main process (aka. "backend") to be used by the renderer process(aka. "backend")
 contextBridge.exposeInMainWorld('electronAPI', {
-  // By calling "onUpdateLedgerIndex" in the frontend process we can now attach a callback function to
+  // By calling "onUpdateLedgerIndex" in the frontend process we can now attach a callback function
   // by making onUpdateLedgerIndex available at the window level.
   // The subscribed function gets triggered whenever the backend process triggers the event 'update-ledger-index'
   onUpdateLedgerIndex: (callback) => {
@@ -259,7 +259,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 })
 ```
 
-This preloader script is used to expose functions to the browsers window object which can be used to subscribe frontend logic to events broadcast from the main logic in `index.js`.
+This preloader script is used to expose functions to the browser's window object, so that the user interface can react to events broadcast from the main logic in `index.js`.
 
 In the browser, `window.electronAPI.onUpdateLedgerIndex(callback)` can now be used to pass a callback function via `ipcRenderer.on('eventName', callback)` that will be triggered by `appWindow.webContents.send('eventName', value)`.
 
@@ -321,8 +321,8 @@ This example shows how to do Inter Process Communication (IPC) in Electron. Tech
 
 1. We started by creating a function that enables the frontend to subscribe to backend events via the `ContextBridge` (`onUpdateLedgerIndex` in `view/preload.js`)
 2. Then we make the function available by putting it in a preloader script to ensure it is loaded and can be used by the frontend.
-3. On the frontend, we can then use that function to attach a callback that handles frontend updates when the event is dispatched. We could do this in the console, in a `<script>` tag in the frontend or in our case in a separate file.
-4. Lastly, we dispatch the event from the main logic in `index.js`via `appWindow.webContents.send('update-ledger-index', value)`.
+3. On the frontend, we can then use that function to attach a callback that handles frontend updates when the event is dispatched. In this case, we created a separate file, `renderer.js`, to define and attach the callback.
+4. Lastly, we dispatch the event from the main logic in `index.js` using `appWindow.webContents.send('update-ledger-index', value)`.
 
 To get the application running at this early stage of development, run the following command:
 
@@ -467,7 +467,7 @@ We will ask the user for address of the account to monitor by using a HTML dialo
 
 Here we define three utility functions that will transform data we receive from the ledger into flat value objects for easy digestion in the frontend code. As we progress in this tutorial, we will keep this pattern of adding functionality by adding files that are prefixed by the step number.
 
-2. Modify `index.js` and add `ipcMain` to the imports from the `require('electron')`line. Then add the new helper file at the bottom of the include section:
+2. Modify `index.js` and add `ipcMain` to the imports on the `require('electron')` line. Then add the new helper file at the bottom of the include section:
 
 ```javascript
 // Step 3 code additions - start
@@ -856,7 +856,7 @@ const main = async () => {
       saveSaltedSeed('../' + WALLET_DIR, seed, password)
     } else {
       try {
-        seed = loadSaltedSeed(WALLET_DIR, password)
+        seed = loadSaltedSeed('../' + WALLET_DIR, password)
       } catch (error) {
         appWindow.webContents.send('open-password-dialog', true)
         return
@@ -1077,7 +1077,7 @@ After finishing this step the application should look like this:
   <title>XRPL Wallet Tutorial (JavaScript / Electron)</title>
 
   <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
-  <link rel="stylesheet" href="./custom.css"/>
+  <link rel="stylesheet" href="../bootstrap/custom.css"/>
 </head>
 
 <body>
@@ -1223,6 +1223,7 @@ Up until now we have enabled our app to query and display data from the XRPL. No
 
 {{ include_code("_code-samples/build-a-wallet/desktop-js/library/7_helpers.js", language="js") }}
 
+
 (There was no `6-helpers.js`, so don't worry!)
 2. Add the new function to the import section in `index.js`:
 
@@ -1260,9 +1261,11 @@ const { sendXrp } = require('./library/7_helpers')
             Build a XRPL Wallet
             <small class="text-muted">- Part 7/8</small>
         </h3>
+        <!-- Step 7 code additions - start -->
         <button type="button" class="btn btn-primary" id="send-xrp-modal-button">
             Send XRP
         </button>
+        <!-- Step 7 code additions - end -->
     </div>
 ```
 
@@ -1375,7 +1378,7 @@ The code in `8_helpers.js` looks up the account on the ledger by sending an [`ac
 
 If the account does exist, the code checks for the [`lsfDisallowXRP` flag](accountroot.html#accountroot-flags).
 
-2. Import the new helper function in`index.js`:
+2. Import the new helper function in `index.js`:
 
 ```javascript
 const { initialize, subscribe, saveSaltedSeed, loadSaltedSeed } = require('./library/5_helpers')
@@ -1425,7 +1428,7 @@ Finally, the code decodes the account's `Domain` field, if present, and performs
         <span>Verification status:</span>
     </div>
     <!-- Step 8 code additions - end -->
-    <input type="text" class="form-control" placeholder="rP4zcp52pa7ZjhjtU9LrnFcitBUadNW8Xz" id="input-destination-address">
+    <input type="text" class="form-control" placeholder="r9jEyy3nrB8D7uRc5w2k3tizKQ1q8cpeHU" id="input-destination-address">
     <span class="input-group-text">To (Address)</span>
 </div>
 ```
@@ -1493,11 +1496,11 @@ Congratulations, you now have created your own wallet application! In completing
 ![Desktop wallet screenshot](img/javascript-wallet-preview.png)
 
 0. First you set up the project and created a basic electron application.
-1. In Step 1 you did your first ledger query and had the application display the latest closed ledger index, using electrons inter-process-communication.
+1. In Step 1 you did your first ledger query and had the application display the latest closed ledger index, using Electron's inter-process-communication.
 2. You expanded on that in Step 2, where you established a permanent subscription to the XRPL and had the application display ledger updates in real time.
 3. In Step 3 you had the application monitor a specific account, prompting the user for an account address and having data flow bi-directionally from `ipcRender` to `ipcMain` and back.
-4. You then added a dynamic list of the accounts transaction to the application.
-5. In Step 5 you implemented a password-protected seed vault, so that secrets that should remain secrets are not stored in environment variables.
+4. You then added a dynamic list of the account's transaction to the application.
+5. In Step 5 you implemented a password-protected seed vault, so that secret information can remain protected when not in use.
 6. Then you gave the application a facelift by adding bootstrap and restructuring the template.
 7. In Step 7 you added wallet functionalities to what was so far a monitoring application by adding a dialog and the corresponding backend functionality to transfer XRP.
-8. Finally, you stepped into some finder details of XRPL development by implementing the domain verification check.
+8. Finally, you stepped into some finer details of XRPL development by implementing the domain verification check.
