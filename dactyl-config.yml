@@ -5722,8 +5722,12 @@ known_broken_links:
     - https://xrplimpact.devpost.com/
     - https://www.postgresqltutorial.com/install-postgresql-linux/
     - http://www.investopedia.com/terms/o/order-book.asp
+    - https://linux.die.net/man/8/logrotate
     # This site often times out, but it does work and is the original.
     - https://theworld.com/~reinhold/diceware.html
+    # Returns an "expected a POST" error, but it's linked specifically for a
+    # case where you need to update certs, and that works.
+    - https://s1.ripple.com
 
 
 # Style Checker Config ------------------------------------------------------ #
