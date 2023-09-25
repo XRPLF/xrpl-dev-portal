@@ -1,7 +1,7 @@
 ---
 html: configure-history-sharding.html
 parent: data-retention.html
-blurb: 履歴XRPレジャーデータのシャードを保存するようにサーバーを設定します。
+blurb: XRP Ledgerの履歴データのシャードを保存するようにサーバを設定します。
 labels:
   - データ保持
   - コアサーバー
