@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2023-09-15 07:18+0000\n"
+"POT-Creation-Date: 2023-09-22 20:20+0000\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -375,7 +375,6 @@ msgid "Apply for funding to build your XRPL project"
 msgstr "将来のXRPLプロジェクトのための資金調達に応募する"
 
 #: template/page-community.html.jinja:122 template/page-funding.html.jinja:134
-#: template/page-xrpl-overview.html.jinja:169
 msgid "XRPL Grants"
 msgstr ""
 
@@ -405,8 +404,7 @@ msgid "Open-source projects funded "
 msgstr "オープンソースプロジェクトへの資金提供"
 
 #: template/page-community.html.jinja:148 template/page-events.html.jinja:56
-#: template/page-funding.html.jinja:383 template/page-home.html.jinja:161
-#: template/page-xrpl-overview.html.jinja:99
+#: template/page-home.html.jinja:161 template/page-xrpl-overview.html.jinja:99
 msgid "Learn More"
 msgstr "もっと知る"
 
@@ -1186,22 +1184,6 @@ msgstr "マイルストーンごとに$500～$100,000"
 msgid "Visit XRPL Bounties"
 msgstr "XRPL Bountiesを見る"
 
-#: template/page-funding.html.jinja:379
-msgid "Are you an independent creator?"
-msgstr "個人のクリエイターですか？"
-
-#: template/page-funding.html.jinja:380
-msgid "Ripple’s Creator Fund"
-msgstr "Ripple社のCreator Fund"
-
-#: template/page-funding.html.jinja:382
-msgid ""
-"If you’re a creator looking to mint NFTs on the XRP Ledger and do not "
-"have technical experience, check out Ripple’s Creator Fund."
-msgstr ""
-"XRP Ledger上でNFTを作成することを検討しているクリエイターで、技術的な経験がない場合は、Ripple社のCreator "
-"Fundをチェックしてみてください。"
-
 #: template/page-history.html.jinja:28
 msgid "Provide a Better Alternative to Bitcoin"
 msgstr "Bitcoinに代わる選択肢"
@@ -1785,12 +1767,11 @@ msgstr "コード"
 #: template/page-impact.html.jinja:139
 msgid ""
 "View the <a href=\"https://github.com/XRPLF/xrpl-dev-portal/\" "
-"target=\"_blank\">Github repositories</a> to find <a href='developer-"
-"funding.html'>blockchain projects</a> to see how you can contribute."
+"target=\"_blank\">Github repositories</a> to find blockchain projects to "
+"see how you can contribute."
 msgstr ""
 "<a href=\"https://github.com/XRPLF/xrpl-dev-portal/\" "
-"target=\"_blank\">Githubリポジトリ</a>から<a href='developer-"
-"funding.html'>ブロックチェーンプロジェクト</a>を見つけ、どのように貢献できるかご覧ください。"
+"target=\"_blank\">Githubリポジトリ</a>からブロックチェーンプロジェクトを見つけ、どのように貢献できるかご覧ください。"
 
 #: template/page-impact.html.jinja:147 template/page-impact.html.jinja:168
 msgid "Join the conversation on social media using #XRPLCommunity."
@@ -3200,10 +3181,9 @@ msgstr "XRPLは、10年以上にわたって機能を提供し、エンタープ
 #: template/page-xrpl-overview.html.jinja:112
 #, fuzzy
 msgid ""
-"With the XRPL, these developers are building innovative <a href"
-"='developer-funding.html'>blockchain projects</a> and applications across"
-" use cases including tokenization of assets, online gaming, asset "
-"custody, NFTs, and DeFi."
+"With the XRPL, these developers are building innovative blockchain "
+"projects and applications across use cases including tokenization of "
+"assets, online gaming, asset custody, NFTs, and DeFi."
 msgstr "XRPLにより、開発者たちは、資産のトークン化、オンラインゲーム、資産保管、NFT、DeFiなどのブロックチェーンのユースケースにわたって革新的なプロジェクトやアプリケーションを構築しています。"
 
 #: template/page-xrpl-overview.html.jinja:113
@@ -3263,14 +3243,22 @@ msgid "Tomorrow’s Blockchain Starts With You"
 msgstr "未来のブロックチェーンは、あなたから始まる"
 
 #: template/page-xrpl-overview.html.jinja:168
+#, fuzzy
 msgid ""
 "XRP Ledger’s innovation relies on the shared community experience of "
 "builders like you. If you’re ready to start your next big blockchain "
-"project, explore the XRPL now and consider applying for an XRPL Grant."
+"project, explore the XRPL now and consider applying for funding on your "
+"next <a href='developer-funding.html'>blockchain project</a>."
 msgstr ""
 "XRP "
-"Ledgerのイノベーションは、皆さんのような開発者が共有するコミュニティーの経験を大切にしています。もしあなたが次の大きなブロックチェーン・プロジェクトを始める準備ができているなら、今すぐXRPLを試し、XRPL"
-" Grantへの応募を検討しましょう。"
+"Ledgerのイノベーションは、皆さんのような開発者が共有するコミュニティーの経験を大切にしています。"
+"もしあなたが次の大きな<a href='developer-funding.html'>ブロックチェーン・プロジェクト</a>"
+"を始める準備ができているなら、今すぐXRPLを試し、XRPL開発者向け資金提供プログラムへの応募を検討しましょう。"
+
+#: template/page-xrpl-overview.html.jinja:169
+#, fuzzy
+msgid "Explore XRPL Developer Funding"
+msgstr "XRPL開発者向け資金提供プログラムを見る"
 
 #: template/page-xrpl-overview.html.jinja:177
 msgid "Is XRPL a private blockchain, owned by Ripple?"
@@ -5079,4 +5067,20 @@ msgstr "目次"
 
 #~ msgid "Contact Us"
 #~ msgstr "ステータス"
+
+#~ msgid "Are you an independent creator?"
+#~ msgstr "個人のクリエイターですか？"
+
+#~ msgid "Ripple’s Creator Fund"
+#~ msgstr "Ripple社のCreator Fund"
+
+#~ msgid ""
+#~ "If you’re a creator looking to "
+#~ "mint NFTs on the XRP Ledger and"
+#~ " do not have technical experience, "
+#~ "check out Ripple’s Creator Fund."
+#~ msgstr ""
+#~ "XRP "
+#~ "Ledger上でNFTを作成することを検討しているクリエイターで、技術的な経験がない場合は、Ripple社のCreator "
+#~ "Fundをチェックしてみてください。"
 
