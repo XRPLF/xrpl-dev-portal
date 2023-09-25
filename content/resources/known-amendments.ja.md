@@ -85,7 +85,7 @@ labels:
 | [XChainBridge][]             | [開発中: 未定]( "BADGE_LIGHTGREY") | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [ドキュメント](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
 | [OwnerPaysFee][]                  | [開発中: 未定]( "BADGE_LIGHTGREY") | |
 
-**注記:** このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRPレジャーへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code-flow.html)をご覧ください。
+**注記:** このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRP Ledgerへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code-flow.html)をご覧ください。
 
 ## 撤回または廃止されたAmendment
 
