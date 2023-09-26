@@ -4255,6 +4255,7 @@ pages:
         # TODO: translate
     -   md: infrastructure/rippled/installation/build-run-rippled-in-reporting-mode.md
         top_nav_grouping: 人気ページ
+        untranslated_warning: true
         targets:
             - ja
 
