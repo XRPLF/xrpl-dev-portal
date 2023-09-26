@@ -7,7 +7,7 @@ labels:
 ---
 # NegativeUNL
 
-_([NegativeUNL amendment][]によって追加されました。)_
+_([NegativeUNL amendment][]により追加されました。)_
 
 `NegativeUNL`オブジェクトタイプは、[ネガティブUNL](negative-unl.html)の現在の状態、つまり現在オフラインであると考えられる信頼できるバリデーションのリストを含んでいます。
 
