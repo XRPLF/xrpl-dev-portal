@@ -520,7 +520,7 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
 <tr>
 <td style="text-align: left;"><code>signer_lists</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;"><em>(Omitted unless the request specified <code>signer_lists</code> and at least one SignerList is associated with the account.)</em> Array of <a href="signerlist.html">SignerList ledger objects</a> associated with this account for <a href="multi-signing.html">Multi-Signing</a>. Since an account can own at most one SignerList, this array must have exactly one member if it is present. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" target="_blank" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted unless the request specified <code>signer_lists</code> and at least one SignerList is associated with the account.)</em> Array of <a href="signerlist.html">SignerList ledger objects</a> associated with this account for <a href="multi-signing.html">Multi-Signing</a>. Since an account can own at most one SignerList, this array must have exactly one member if it is present. <strong>Quirk:</strong> In <a class="external-link" href="https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md#v1-account_info-response" target="_blank">API version 1 <i aria-hidden="true" class="fa fa-external-link"></i></a>, this field is nested under <code>account_data</code>. For this method, <a class="external-link" href="https://github.com/XRPLF/clio" target="_blank">Clio <i aria-hidden="true" class="fa fa-external-link"></i></a> implements the API version 2 behavior where is field is <strong>not</strong> nested under <code>account_data</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
@@ -1536,7 +1536,12 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1863,17 +1868,12 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1990,11 +1990,6 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -2046,6 +2041,11 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

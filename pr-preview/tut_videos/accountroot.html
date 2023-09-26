@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/tut_videos/content/references/protocol-reference/ledger-data/ledger-object-types/accountroot.md?pr=/XRPLF/xrpl-dev-portal/pull/2146" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/tut_videos/content/references/protocol-reference/ledger-data/ledger-entry-types/accountroot.md?pr=/XRPLF/xrpl-dev-portal/pull/2146" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -276,8 +276,9 @@
         <li class="nav-item level-1"><a class="nav-link" href="#accountroot">AccountRoot</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-accountroot-json">Example AccountRoot JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-fields">AccountRoot Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#special-amm-accountroot-objects">Special AMM AccountRoot Objects</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#special-amm-accountroot-entries">Special AMM AccountRoot Entries</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-flags">AccountRoot Flags</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#accountroot-reserve">AccountRoot Reserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-id-format">AccountRoot ID Format</a></li>
       </ul>
   </div>
@@ -299,7 +300,7 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">AccountRoot</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
@@ -326,7 +327,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="accountroot-fields">AccountRoot Fields<a aria-hidden="true" class="hover_anchor" href="#accountroot-fields"><i class="fa fa-link"></i></a></h2>
-<p>An <code>AccountRoot</code> object has the following fields:</p>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>AccountRoot</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -393,13 +394,6 @@
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">The account's <a href="basic-data-types.html#account-sequence">Sequence Number</a> at the time it minted its first <a href="non-fungible-tokens.html">non-fungible-token</a>. <em>(Added by the <a href="known-amendments.html#fixnftokenremint">fixNFTokenRemint amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#accountroot-flags"><code>Flags</code></a></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A bit-map of boolean flags enabled for this account.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
@@ -501,7 +495,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="special-amm-accountroot-objects">Special AMM AccountRoot Objects<a aria-hidden="true" class="hover_anchor" href="#special-amm-accountroot-objects"><i class="fa fa-link"></i></a></h2>
+<h2 id="special-amm-accountroot-entries">Special AMM AccountRoot Entries<a aria-hidden="true" class="hover_anchor" href="#special-amm-accountroot-entries"><i class="fa fa-link"></i></a></h2>
 <p><em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
 <p>Automated Market Makers use an AccountRoot ledger entry to issue their LP Tokens and hold the assets in the AMM pool, and an <a href="amm.html">AMM ledger entry</a> for tracking some of the details of the AMM. The address of an AMM's AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoot objects are created with the following settings:</p>
 <ul>
@@ -518,8 +512,8 @@
 </ul>
 <p>Other than those exceptions, these accounts are like ordinary accounts; the LP Tokens they issue behave like other <a class="external-link" href="https://xrpl.org/tokens.html" target="_blank">tokens <i aria-hidden="true" class="fa fa-external-link"></i></a> except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.</p>
 <h2 id="accountroot-flags">AccountRoot Flags<a aria-hidden="true" class="hover_anchor" href="#accountroot-flags"><i class="fa fa-link"></i></a></h2>
-<p>There are several options which can be either enabled or disabled for an account. These options can be changed with an <a href="accountset.html">AccountSet transaction</a>. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <strong><code>lsf</code></strong>.</p>
-<p>AccountRoot objects can have the following flag values:</p>
+<p>Many AccountRoot flags correspond to options you can change with an <a href="accountset.html">AccountSet transaction</a>. However, the bit values used in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <strong><code>lsf</code></strong>.</p>
+<p>AccountRoot objects can have the following flags combined in the <code>Flags</code> field:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -536,7 +530,7 @@
 <td><code>0x80000000</code></td>
 <td>2147483648</td>
 <td><code>asfAllowTrustLineClawback</code></td>
-<td>Enable <a href="clawing-back-tokens.html">Clawback</a> for this account.</td>
+<td>Enable <a href="clawing-back-tokens.html">Clawback</a> for this account. <em>(Requires the <a href="known-amendments.html#clawback">Clawback amendment</a>.)</em></td>
 </tr>
 <tr>
 <td><code>lsfDefaultRipple</code></td>
@@ -564,28 +558,28 @@
 <td><code>0x08000000</code></td>
 <td>134217728</td>
 <td><code>asfDisallowIncomingCheck</code></td>
-<td>This account blocks incoming Checks. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
+<td>This account blocks incoming Checks. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
 </tr>
 <tr>
 <td><code>lsfDisallowIncomingNFTokenOffer</code></td>
 <td><code>0x04000000</code></td>
 <td>67108864</td>
 <td><code>asfDisallowIncomingNFTokenOffer</code></td>
-<td>This account blocks incoming NFTokenOffers. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
+<td>This account blocks incoming NFTokenOffers. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
 </tr>
 <tr>
 <td><code>lsfDisallowIncomingPayChan</code></td>
 <td><code>0x10000000</code></td>
 <td>268435456</td>
 <td><code>asfDisallowIncomingPayChan</code></td>
-<td>This account blocks incoming Payment Channels. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
+<td>This account blocks incoming Payment Channels. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
 </tr>
 <tr>
 <td><code>lsfDisallowIncomingTrustline</code></td>
 <td><code>0x20000000</code></td>
 <td>536870912</td>
 <td><code>asfDisallowIncomingTrustline</code></td>
-<td>This account blocks incoming trust lines. <em>(Requires the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>.)</em></td>
+<td>This account blocks incoming trust lines. <em>(Added by the <a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>.)</em></td>
 </tr>
 <tr>
 <td><code>lsfDisallowXRP</code></td>
@@ -631,8 +625,11 @@
 </tr>
 </tbody>
 </table>
+<h2 id="accountroot-reserve">AccountRoot Reserve<a aria-hidden="true" class="hover_anchor" href="#accountroot-reserve"><i class="fa fa-link"></i></a></h2>
+<p>The <a href="reserves.html">reserve</a> for an AccountRoot entry is the base reserve, currently 10 XRP, except in the case of a special AMM AccountRoot.</p>
+<p>This XRP cannot be sent to others but it can be burned as part of the <a href="transaction-cost.html">transaction cost</a>.</p>
 <h2 id="accountroot-id-format">AccountRoot ID Format<a aria-hidden="true" class="hover_anchor" href="#accountroot-id-format"><i class="fa fa-link"></i></a></h2>
-<p>The ID of an AccountRoot object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
+<p>The ID of an AccountRoot entry is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
 <li>The Account space key (<code>0x0061</code>)</li>
 <li>The AccountID of the account</li>
@@ -1467,7 +1464,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1793,18 +1795,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item active">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1921,11 +1918,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1977,6 +1969,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

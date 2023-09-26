@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/tut_videos/content/references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.md?pr=/XRPLF/xrpl-dev-portal/pull/2146" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/tut_videos/content/references/protocol-reference/ledger-data/ledger-entry-types/nftokenpage.md?pr=/XRPLF/xrpl-dev-portal/pull/2146" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -276,7 +276,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#finding-nftokens">Finding NFTokens</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#adding-nftokens">Adding NFTokens</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#removing-nftokens">Removing NFTokens</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#reserve-for-nftokenpage-objects">Reserve for NFTokenPage objects</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokenpage-reserve">NFTokenPage Reserve</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#the-reserve-in-practice">The reserve in practice</a></li>
       </ul>
   </div>
@@ -298,13 +298,13 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">NFTokenPage</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="nftokenpage">NFTokenPage<a aria-hidden="true" class="hover_anchor" href="#nftokenpage"><i class="fa fa-link"></i></a></h1>
-<p>The <code>NFTokenPage</code> object represents a collection of <code>NFToken</code> objects owned by the same account. An account can have multiple <code>NFTokenPage</code> ledger objects, which form a doubly linked list.</p>
+<p>The <code>NFTokenPage</code> object represents a collection of <a href="non-fungible-tokens.html">NFTs</a> owned by the same account. An account can have multiple <code>NFTokenPage</code> entries, which form a doubly linked list.</p>
 <p><em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></p>
 <h2 id="example-nftokenpage-json">Example NFTokenPage JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenpage-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -329,9 +329,8 @@
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>In the interest of minimizing the size of a page and optimizing storage, the <code>Owner</code> field is not present, since it is encoded as part of the object's ledger identifier.</p>
 <h2 id="nftokenpage-fields">NFTokenPage Fields<a aria-hidden="true" class="hover_anchor" href="#nftokenpage-fields"><i class="fa fa-link"></i></a></h2>
-<p>An <code>NFTokenPage</code> object can have the following required and optional fields:</p>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>NFTokenPage</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -399,15 +398,16 @@
 <p>To add an <code>NFToken</code>, find the <code>NFTokenPage</code> it should be in (using the same technique as searching for an <code>NFToken</code> object) and add it to that page. If the <code>NFTokenPage</code> is already full, find the previous and next pages (if any) and balance those three pages, inserting a new <code>NFTokenPage</code> as needed.</p>
 <h3 id="removing-nftokens">Removing NFTokens<a aria-hidden="true" class="hover_anchor" href="#removing-nftokens"><i class="fa fa-link"></i></a></h3>
 <p>Removing <code>NFToken</code> objects works like adding them. If the number of <code>NFToken</code> objects in the page goes below a certain threshold, the ledger combines the page with a previous or next page if possible.</p>
-<h2 id="reserve-for-nftokenpage-objects">Reserve for NFTokenPage objects<a aria-hidden="true" class="hover_anchor" href="#reserve-for-nftokenpage-objects"><i class="fa fa-link"></i></a></h2>
-<p>Each <code>NFTokenPage</code> counts as one item towards an account's <a href="reserves.html#owner-reserves">owner reserve</a>. Since each page can hold up to 32 <code>NFToken</code> entries, the <em>effective</em> reserve cost per <code>NFToken</code> can be as low as <em>R</em>/32 where <em>R</em> is the incremental reserve.</p>
+<h2 id="nftokenpage-reserve">NFTokenPage Reserve<a aria-hidden="true" class="hover_anchor" href="#nftokenpage-reserve"><i class="fa fa-link"></i></a></h2>
+<p>Each <code>NFTokenPage</code> counts as one item towards its owner's <a href="reserves.html#owner-reserves">owner reserve</a>. Burning or trading away enough NFTs to remove the page frees up the reserve.</p>
+<p>Since each page can hold up to 32 entries, the <em>effective</em> reserve cost per NFT can be as low as <em>R</em>/32 where <em>R</em> is the incremental owner reserve for one item.</p>
 <h3 id="the-reserve-in-practice">The reserve in practice<a aria-hidden="true" class="hover_anchor" href="#the-reserve-in-practice"><i class="fa fa-link"></i></a></h3>
-<p>Because of the way splitting and combining pages works, the actual number of <code>NFToken</code> objects per page is somewhat unpredictable and depends on the actual <code>NFTokenID</code> values involved. In practice, after minting or receiving a large number of <code>NFToken</code> objects, each page can have as few as 16 <code>NFToken</code> objects, or as many as 32, with the typical case being around 24 <code>NFToken</code> objects per page.</p>
-<p>Currently, the reserve per item is 2 XRP. The table below shows how much the <strong>total owner reserve</strong> is for various numbers of <code>NFToken</code> objects owned under various scenarios:</p>
+<p>Because of the way splitting and combining pages works, the actual number of <code>NFToken</code> objects per page is somewhat unpredictable and depends on the actual <code>NFTokenID</code> values involved. In practice, after minting or receiving a large number of NFTs, each page can have as few as 16 items, or as many as 32, with the typical case being around 24 <code>NFToken</code> objects per page.</p>
+<p>Currently, the reserve per item is 2 XRP. The table below shows how much the <strong>total owner reserve</strong> is for various numbers of NFTs owned under various scenarios:</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;"><code>NFTokens</code> Owned</th>
+<th style="text-align: left;">NFTs Owned</th>
 <th style="text-align: left;">Best Case</th>
 <th style="text-align: left;">Typical</th>
 <th style="text-align: left;">Worst Case</th>
@@ -1271,7 +1271,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1597,18 +1602,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1725,11 +1725,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1781,6 +1776,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

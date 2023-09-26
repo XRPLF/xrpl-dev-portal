@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/tut_videos/content/references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md?pr=/XRPLF/xrpl-dev-portal/pull/2146" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/tut_videos/content/references/protocol-reference/ledger-data/ledger-entry-types/nftokenoffer.md?pr=/XRPLF/xrpl-dev-portal/pull/2146" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -272,8 +272,9 @@
         <li class="nav-item level-1"><a class="nav-link" href="#nftokenoffer">NFTokenOffer</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-nftokenoffer-json">Example NFTokenOffer JSON</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-fields">NFTokenOffer Fields</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftokenoffer-flags">NFTokenOffer Flags</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenoffer-transactions">NFTokenOffer Transactions</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#locating-nftokenoffer-objects">Locating NFTokenOffer objects</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#locating-nftokenoffer-entries">Locating NFTokenOffer entries</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-reserve">NFTokenOffer Reserve</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#nftokenoffer-id-format">NFTokenOffer ID Format</a></li>
       </ul>
@@ -296,13 +297,13 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">NFTokenOffer</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="nftokenoffer">NFTokenOffer<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer"><i class="fa fa-link"></i></a></h1>
-<p>Tokens that have the <code>lsfTransferable</code> flag set can be transferred among participants using offers. The <code>NFTokenOffer</code> object represents an offer to buy, sell or transfer an <code>NFToken</code> object. The owner of a <code>NFToken</code> can use <code>NFTokenCreateOffer</code> to start a transaction.</p>
+<p>An <code>NFTokenOffer</code> entry represents an offer to buy, sell or transfer an <a href="non-fungible-tokens.html">NFT</a>.</p>
 <p><em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></p>
 <h2 id="example-nftokenoffer-json">Example NFTokenOffer JSON<a aria-hidden="true" class="hover_anchor" href="#example-nftokenoffer-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -352,18 +353,11 @@
 <td style="text-align: left;">The time after which the offer is no longer active. The value is the number of seconds since the Ripple Epoch.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A set of flags associated with this object, used to specify various options or settings. Flags are listed in the table below.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
 <td style="text-align: left;">string</td>
 <td style="text-align: left;">UInt16</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The value <code>0x0074</code>, mapped to the string <code>NFTokenOffer</code>, indicates that this is an offer to trade a <code>NFToken</code>.</td>
+<td style="text-align: left;">The value <code>0x0037</code>, mapped to the string <code>NFTokenOffer</code>, indicates that this is an offer to trade a <code>NFToken</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>NFTokenID</code></td>
@@ -409,7 +403,8 @@
 </tr>
 </tbody>
 </table>
-<h4 id="nftokenoffer-flags">NFTokenOffer Flags<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-flags"><i class="fa fa-link"></i></a></h4>
+<h2 id="nftokenoffer-flags">NFTokenOffer Flags<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-flags"><i class="fa fa-link"></i></a></h2>
+<p>NFTokenOffer entries can have the following flags combined in the <code>Flags</code> field:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -436,14 +431,14 @@
 <li><a href="nftokencanceloffer.html">NFTokenCancelOffer</a></li>
 <li><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a></li>
 </ul>
-<h3 id="locating-nftokenoffer-objects">Locating NFTokenOffer objects<a aria-hidden="true" class="hover_anchor" href="#locating-nftokenoffer-objects"><i class="fa fa-link"></i></a></h3>
-<p>Each <code>NFToken</code> has two <a href="directorynode.html">directories</a>: one contains offers to buy the token and the other contains offers to sell the token. Marketplaces or other client applications can use these directories to find and display offers to trade <code>NFToken</code> objects to users or even automatically match them and accept them.</p>
+<h2 id="locating-nftokenoffer-entries">Locating NFTokenOffer entries<a aria-hidden="true" class="hover_anchor" href="#locating-nftokenoffer-entries"><i class="fa fa-link"></i></a></h2>
+<p>Each unique NFT has up to two <a href="directorynode.html">directories</a>: one contains offers to buy the token and the other contains offers to sell the token. (These two directories are created as necessary and deleted if empty.) Marketplaces or other client applications can use these directories to find and display offers to trade <code>NFToken</code> objects to users or even automatically match them and accept them.</p>
 <h3 id="nftokenoffer-reserve">NFTokenOffer Reserve<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-reserve"><i class="fa fa-link"></i></a></h3>
-<p>Each <code>NFTokenOffer</code> object costs the account placing the offer one incremental reserve. As of this writing the incremental reserve is 2 XRP. The reserve can be recovered by cancelling the offer.</p>
+<p><code>NFTokenOffer</code> entries each count as one item towards the owner reserve of the account placing the offer, as long as the entry is in the ledger. Accepting or canceling the offer frees up the reserve.</p>
 <h3 id="nftokenoffer-id-format">NFTokenOffer ID Format<a aria-hidden="true" class="hover_anchor" href="#nftokenoffer-id-format"><i class="fa fa-link"></i></a></h3>
 <p>The unique ID (<code>NFTokenOfferID</code>) of a <code>NFTokenOffer</code> object is the result of the following values concatenated in order:</p>
 <ul>
-<li>The <code>NFTokenOffer</code> space key, <code>0x0074</code>;</li>
+<li>The <code>NFTokenOffer</code> space key, <code>0x0037</code>;</li>
 <li>The <code>AccountID</code> of the account placing the offer; and</li>
 <li>The <code>Sequence</code> (or <code>Ticket</code>) of the <code>NFTokenCreateOffer</code> transaction that created the <code>NFTokenOffer</code>.</li>
 </ul>
@@ -1277,7 +1272,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1603,18 +1603,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1731,11 +1726,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1787,6 +1777,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

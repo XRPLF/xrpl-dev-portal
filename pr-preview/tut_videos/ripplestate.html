@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="RippleState | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/ripplestate.html" />
-    <meta property="og:description" content="Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type." />
-    <meta name="description" content="Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type." />
+    <meta property="og:description" content="This entry represents a trust line, tracking the net balance of tokens between them." />
+    <meta name="description" content="This entry represents a trust line, tracking the net balance of tokens between them." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/tut_videos/content/references/protocol-reference/ledger-data/ledger-object-types/ripplestate.md?pr=/XRPLF/xrpl-dev-portal/pull/2146" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/tut_videos/content/references/protocol-reference/ledger-data/ledger-entry-types/ripplestate.md?pr=/XRPLF/xrpl-dev-portal/pull/2146" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -274,7 +274,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-ripplestate-json">Example RippleState JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ripplestate-fields">RippleState Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ripplestate-flags">RippleState Flags</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#contributing-to-the-owner-reserve">Contributing to the Owner Reserve</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ripplestate-reserve">RippleState Reserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ripplestate-id-format">RippleState ID Format</a></li>
       </ul>
   </div>
@@ -296,17 +296,17 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">RippleState</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="ripplestate">RippleState<a aria-hidden="true" class="hover_anchor" href="#ripplestate"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>RippleState</code> object type connects two accounts in a single currency. Conceptually, a <code>RippleState</code> object represents two <a href="trust-lines-and-issuing.html">trust lines</a> between the accounts, one from each side. Each account can change the settings for its side of the <code>RippleState</code> object, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist, so <code>rippled</code> deletes <code>RippleState</code> objects when their properties are entirely default.</p>
+<p>A <code>RippleState</code> ledger entry represents a <a href="trust-lines-and-issuing.html">trust line</a> between two accounts. Each account can change its own limit and other settings, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist and is automatically deleted.</p>
 <h2 id="high-vs-low-account">High vs. Low Account<a aria-hidden="true" class="hover_anchor" href="#high-vs-low-account"><i class="fa fa-link"></i></a></h2>
-<p>There can only be one <code>RippleState</code> object per currency for any given pair of accounts. Since no account is privileged in the XRP Ledger, a <code>RippleState</code> object sorts account addresses numerically, to ensure a canonical form. Whichever address is numerically lower when <a href="addresses.html#address-encoding">decoded</a> is deemed the "low account" and the other is the "high account". The net balance of the trust line is stored from the low account's perspective.</p>
-<p>The <a href="trust-lines-and-issuing.html">"issuer"</a> for the balance in a trust line depends on whether the balance is positive or negative. If a <code>RippleState</code> object shows a positive balance, the high account is the issuer. If the balance is negative, the low account is the issuer. Often, the issuer has its limit set to 0 and the other account has a positive limit, but this is not reliable because limits can change without affecting an existing balance.</p>
+<p>There can only be one <code>RippleState</code> entry per currency for any given pair of accounts. Since no account is privileged in the XRP Ledger, a <code>RippleState</code> entry sorts account addresses numerically, to ensure a canonical form. Whichever address is numerically lower when <a href="addresses.html#address-encoding">decoded</a> is deemed the "low account" and the other is the "high account". The net balance of the trust line is stored from the low account's perspective.</p>
+<p>The <a href="trust-lines-and-issuing.html">"issuer"</a> for the balance in a trust line depends on whether the balance is positive or negative. If a <code>RippleState</code> entry shows a positive balance, the high account is the issuer. If the balance is negative, the low account is the issuer. Often, the issuer has its limit set to 0 and the other account has a positive limit, but this is not reliable because limits can change without affecting an existing balance.</p>
 <h2 id="example-ripplestate-json">Example RippleState JSON<a aria-hidden="true" class="hover_anchor" href="#example-ripplestate-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -334,7 +334,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="ripplestate-fields">RippleState Fields<a aria-hidden="true" class="hover_anchor" href="#ripplestate-fields"><i class="fa fa-link"></i></a></h2>
-<p>A <code>RippleState</code> object has the following fields:</p>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>RippleState</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -358,7 +358,7 @@
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A bit-map of boolean options enabled for this object.</td>
+<td style="text-align: left;">A bit-map of boolean options enabled for this entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>HighLimit</code></td>
@@ -372,7 +372,7 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt64</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">(Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this object, in case the directory consists of multiple pages.</td>
+<td style="text-align: left;">(Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this entry, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>HighQualityIn</code></td>
@@ -393,7 +393,7 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt16</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The value <code>0x0072</code>, mapped to the string <code>RippleState</code>, indicates that this object is a RippleState object.</td>
+<td style="text-align: left;">The value <code>0x0072</code>, mapped to the string <code>RippleState</code>, indicates that this is a RippleState entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LowLimit</code></td>
@@ -407,7 +407,7 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt64</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">(Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this object, in case the directory consists of multiple pages.</td>
+<td style="text-align: left;">(Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this entry, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LowQualityIn</code></td>
@@ -428,20 +428,19 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The identifying hash of the transaction that most recently modified this object.</td>
+<td style="text-align: left;">The identifying hash of the transaction that most recently modified this entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this object.</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this entry.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="ripplestate-flags">RippleState Flags<a aria-hidden="true" class="hover_anchor" href="#ripplestate-flags"><i class="fa fa-link"></i></a></h2>
-<p>There are several options which can be either enabled or disabled for a trust line. These options can be changed with a <a href="trustset.html">TrustSet transaction</a>. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <strong><code>lsf</code></strong>.</p>
-<p>RippleState objects can have the following flag values:</p>
+<p><code>RippleState</code> entries can have the following flags combined into the <code>Flags</code> field:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -458,14 +457,14 @@
 <td><code>0x00010000</code></td>
 <td>65536</td>
 <td>(None)</td>
-<td>This RippleState object <a href="#contributing-to-the-owner-reserve">contributes to the low account's owner reserve</a>.</td>
+<td>This entry <a href="#ripplestate-reserve">contributes to the low account's owner reserve</a>.</td>
 </tr>
 <tr>
 <td><code>lsfHighReserve</code></td>
 <td><code>0x00020000</code></td>
 <td>131072</td>
 <td>(None)</td>
-<td>This RippleState object <a href="#contributing-to-the-owner-reserve">contributes to the high account's owner reserve</a>.</td>
+<td>This entry <a href="#ripplestate-reserve">contributes to the high account's owner reserve</a>.</td>
 </tr>
 <tr>
 <td><code>lsfLowAuth</code></td>
@@ -511,8 +510,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="contributing-to-the-owner-reserve">Contributing to the Owner Reserve<a aria-hidden="true" class="hover_anchor" href="#contributing-to-the-owner-reserve"><i class="fa fa-link"></i></a></h2>
-<p>If an account modifies a trust line to put it in a non-default state, then that trust line counts towards the account's <a href="reserves.html#owner-reserves">owner reserve</a>. In a RippleState object, the <code>lsfLowReserve</code> and <code>lsfHighReserve</code> flags indicate which account(s) are responsible for the owner reserve. The <code>rippled</code> server automatically sets these flags when it modifies a trust line.</p>
+<p>The two accounts connected by the trust line can each change their own settings with a <a href="trustset.html">TrustSet transaction</a>.</p>
+<h2 id="ripplestate-reserve">RippleState Reserve<a aria-hidden="true" class="hover_anchor" href="#ripplestate-reserve"><i class="fa fa-link"></i></a></h2>
+<p><a id="contributing-to-the-owner-reserve"></a></p>
+<p>A <code>RippleState</code> entry counts as one item towards the owner reserve of <a href="reserves.html#owner-reserves">owner reserve</a> of <em>one or both</em> of the accounts it connects. In typical cases, the holder of a token owes a reserve and the issuer of the token does not.</p>
+<p>Specifically, the entry counts towards an account's reserve if that account modifies a trust line to put it in a non-default state. The <code>lsfLowReserve</code> and <code>lsfHighReserve</code> flags indicate which account(s) are responsible for the owner reserve. The protocol automatically sets these flags when it modifies a trust line.</p>
 <p>The values that count towards a trust line's non-default state are as follows:</p>
 <table class="table-responsive">
 <thead>
@@ -549,11 +551,11 @@
 </tbody>
 </table>
 <p>The <strong><code>lsfLowAuth</code></strong> and <strong><code>lsfHighAuth</code></strong> flags do not count against the default state, because they cannot be disabled.</p>
-<p>The default state of the two No Ripple flags depends on the state of the <a href="accountroot.html#accountroot-flags"><code>lsfDefaultRipple</code> flag</a> in their corresponding AccountRoot objects. If Default Ripple is disabled (the default), then the default state of the <code>lsfNoRipple</code> flag is <em>enabled</em> for all of an account's trust lines. If an account enables Default Ripple, then the <code>lsfNoRipple</code> flag is <em>disabled</em> (rippling is enabled) for an account's trust lines by default.</p>
+<p>The default state of the two No Ripple flags depends on the state of the <a href="accountroot.html#accountroot-flags"><code>lsfDefaultRipple</code> flag</a> in their corresponding AccountRoot entries. If Default Ripple is disabled (the default), then the default state of the <code>lsfNoRipple</code> flag is <em>enabled</em> for all of an account's trust lines. If an account enables Default Ripple, then the <code>lsfNoRipple</code> flag is <em>disabled</em> (rippling is enabled) for an account's trust lines by default.</p>
 <p class="devportal-callout note"><strong>Note:</strong> Prior to the introduction of the Default Ripple flag in <code>rippled</code> version 0.27.3 (March 10, 2015), the default state for all trust lines was with both No Ripple flags disabled (rippling enabled).</p>
-<p>Fortunately, <code>rippled</code> uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the Default Ripple flag, that account's reserve stays the same initially. If an account modifies a trust line, <code>rippled</code> re-evaluates whether that individual trust line is in its default state and should contribute to the owner reserve.</p>
+<p>The XRP Ledger uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the Default Ripple flag, that account's reserve stays the same initially. When an account modifies a trust line, the protocol re-evaluates whether that individual trust line is in its default state and should contribute to the owner reserve.</p>
 <h2 id="ripplestate-id-format">RippleState ID Format<a aria-hidden="true" class="hover_anchor" href="#ripplestate-id-format"><i class="fa fa-link"></i></a></h2>
-<p>The ID of a RippleState object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
+<p>The ID of a RippleState entry is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
 <li>The RippleState space key (<code>0x0072</code>)</li>
 <li>The AccountID of the low account</li>
@@ -1390,7 +1392,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1716,18 +1723,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1844,11 +1846,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1900,6 +1897,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

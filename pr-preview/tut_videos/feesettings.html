@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/tut_videos/content/references/protocol-reference/ledger-data/ledger-object-types/feesettings.md?pr=/XRPLF/xrpl-dev-portal/pull/2146" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/tut_videos/content/references/protocol-reference/ledger-data/ledger-entry-types/feesettings.md?pr=/XRPLF/xrpl-dev-portal/pull/2146" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -272,6 +272,7 @@
         <li class="nav-item level-1"><a class="nav-link" href="#feesettings">FeeSettings</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-feesettings-json">Example FeeSettings JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#feesettings-fields">FeeSettings Fields</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#feesettings-flags">FeeSettings Flags</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#feesettings-id-format">FeeSettings ID Format</a></li>
       </ul>
   </div>
@@ -293,16 +294,15 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">FeeSettings</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="feesettings">FeeSettings<a aria-hidden="true" class="hover_anchor" href="#feesettings"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>FeeSettings</code> object type contains the current base <a href="transaction-cost.html">transaction cost</a> and <a href="reserves.html">reserve amounts</a> as determined by <a href="fee-voting.html">fee voting</a>. Each ledger version contains <strong>at most one</strong> <code>FeeSettings</code> object.</p>
+<p>The <code>FeeSettings</code> entry contains the current base <a href="transaction-cost.html">transaction cost</a> and <a href="reserves.html">reserve amounts</a> as determined by <a href="fee-voting.html">fee voting</a>. Each ledger version contains <strong>at most one</strong> <code>FeeSettings</code> entry.</p>
 <h2 id="example-feesettings-json">Example FeeSettings JSON<a aria-hidden="true" class="hover_anchor" href="#example-feesettings-json"><i class="fa fa-link"></i></a></h2>
-<p>Example <code>FeeSettings</code> object:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">   </span><span class="nt">"BaseFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000000000A"</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
@@ -314,7 +314,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="feesettings-fields">FeeSettings Fields<a aria-hidden="true" class="hover_anchor" href="#feesettings-fields"><i class="fa fa-link"></i></a></h2>
-<p>The <code>FeeSettings</code> object has the following fields:</p>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, the <code>FeeSettings</code> ledger entry has the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -370,7 +370,7 @@
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout warning"><strong>Warning:</strong> The JSON format for this ledger object type is unusual. The <code>BaseFee</code>, <code>ReserveBase</code>, and <code>ReserveIncrement</code> indicate drops of XRP but <strong><em>not</em></strong> in the usual format for <a href="basic-data-types.html#specifying-currency-amounts">specifying XRP</a>.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> The JSON format for this ledger entry type is unusual. The <code>BaseFee</code>, <code>ReserveBase</code>, and <code>ReserveIncrement</code> indicate drops of XRP but <strong><em>not</em></strong> in the usual format for <a href="basic-data-types.html#specifying-currency-amounts">specifying XRP</a>.</p>
 <p>If the <em><a href="known-amendments.html#xrpfees">XRPFees amendment</a></em> is enabled, the <code>FeeSettings</code> object has these fields instead:</p>
 <table class="table-responsive">
 <thead>
@@ -420,8 +420,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="feesettings-flags">FeeSettings Flags<a aria-hidden="true" class="hover_anchor" href="#feesettings-flags"><i class="fa fa-link"></i></a></h2>
+<p>There are no flags defined for the <code>FeeSettings</code> entry.</p>
 <h2 id="feesettings-id-format">FeeSettings ID Format<a aria-hidden="true" class="hover_anchor" href="#feesettings-id-format"><i class="fa fa-link"></i></a></h2>
-<p>The <code>FeeSettings</code> object ID is the hash of the <code>FeeSettings</code> space key (<code>0x0065</code>) only. This means that the ID of the <code>FeeSettings</code> object in a ledger is always:</p>
+<p>The ID of the <code>FeeSettings</code> entry is the hash of the <code>FeeSettings</code> space key (<code>0x0065</code>) only. This means that the ID is always:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="mf">4</span><span class="n">BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651</span>
 </code></pre></div>
 <!-- -->
@@ -1254,7 +1256,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1580,18 +1587,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1708,11 +1710,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1764,6 +1761,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

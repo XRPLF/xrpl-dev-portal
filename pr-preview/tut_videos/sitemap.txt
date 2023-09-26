@@ -154,7 +154,9 @@ https://xrpl.org/transfer-nfts-using-javascript.html
 https://xrpl.org/broker-an-nft-sale-using-javascript.html
 https://xrpl.org/assign-an-authorized-minter-using-javascript.html
 https://xrpl.org/batch-mint-nfts-using-javascript.html
+https://xrpl.org/build-a-browser-wallet-in-javascript.html
 https://xrpl.org/build-a-browser-wallet-using-javascript.html
+https://xrpl.org/build-a-desktop-wallet-in-javascript.html
 https://xrpl.org/java.html
 https://xrpl.org/get-started-using-java.html
 https://xrpl.org/http-websocket-apis-tutorials.html
@@ -214,13 +216,14 @@ https://xrpl.org/currency-formats.html
 https://xrpl.org/nftoken.html
 https://xrpl.org/ledger-data-formats.html
 https://xrpl.org/ledger-header.html
-https://xrpl.org/ledger-object-ids.html
+https://xrpl.org/ledger-entry-common-fields.html
+https://xrpl.org/ledger-entry-types.html
 https://xrpl.org/ledger-object-types.html
+https://xrpl.org/ledger-object-ids.html
 https://xrpl.org/accountroot.html
 https://xrpl.org/amendments-object.html
 https://xrpl.org/amm.html
 https://xrpl.org/check.html
-https://xrpl.org/clawback.html
 https://xrpl.org/depositpreauth-object.html
 https://xrpl.org/directorynode.html
 https://xrpl.org/escrow-object.html
@@ -248,6 +251,7 @@ https://xrpl.org/ammwithdraw.html
 https://xrpl.org/checkcancel.html
 https://xrpl.org/checkcash.html
 https://xrpl.org/checkcreate.html
+https://xrpl.org/clawback.html
 https://xrpl.org/depositpreauth.html
 https://xrpl.org/escrowcancel.html
 https://xrpl.org/escrowcreate.html

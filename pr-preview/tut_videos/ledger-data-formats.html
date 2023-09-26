@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Ledger Data Formats | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/ledger-data-formats.html" />
-    <meta property="og:description" content="Learn about individual data objects that comprise the XRP Ledger&#39;s shared state." />
-    <meta name="description" content="Learn about individual data objects that comprise the XRP Ledger&#39;s shared state." />
+    <meta property="og:description" content="Learn about individual entries that comprise the XRP Ledger&#39;s shared state data." />
+    <meta name="description" content="Learn about individual entries that comprise the XRP Ledger&#39;s shared state data." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['Data Retention']
+      "page_labels": []
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -257,15 +257,7 @@
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
     <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/tut_videos/content/references/protocol-reference/ledger-data/ledger-data-formats.md?pr=/XRPLF/xrpl-dev-portal/pull/2146" target="_blank" class="btn btn-primary github-edit">Edit page</a>
-</div><!-- /.github-edit --><div class="labels-wrap">
-  <ul class="list-inline">
-    <li class="list-inline-item">
-      <span class="label label-data-retention">Data Retention</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Data Retention" -->
-    </li>
-  </ul>
-</div><!--/.labels-wrap-->
-    <div class="toc-header">
+</div><!-- /.github-edit -->    <div class="toc-header">
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
@@ -295,69 +287,14 @@
         <h1 id="ledger-data-formats">Ledger Data Formats<a aria-hidden="true" class="hover_anchor" href="#ledger-data-formats"><i class="fa fa-link"></i></a></h1>
 <p>Each <a href="ledgers.html">ledger version</a> in the XRP Ledger is made up of three parts:</p>
 <ul>
-<li><strong><a href="ledger-header.html">Ledger Header</a></strong>: Metadata about this ledger version itself.</li>
-<li><strong><a href="transaction-formats.html">Transaction Set</a></strong>: All the transactions that were executed to create this ledger version.</li>
-<li><strong><a href="ledger-object-types.html">State Data</a></strong>: The complete record of objects representing accounts, settings, and balances as of this ledger version. (This is also called the "account state".)</li>
+<li><strong><a href="ledger-header.html">Ledger Header</a></strong>: Data about this ledger version itself.</li>
+<li><strong><a href="transaction-formats.html">Transaction Set</a></strong>: The transactions that were executed to create this ledger version.</li>
+<li><strong><a href="ledger-entry-types.html">State Data</a></strong>: A list of ledger entries, representing all accounts, settings, and balances as of this ledger version. (This is also called the "account state".)</li>
 </ul>
 <h2 id="state-data">State Data<a aria-hidden="true" class="hover_anchor" href="#state-data"><i class="fa fa-link"></i></a></h2>
 <p>Each <a href="ledgers.html">ledger version</a>'s state data is a set of <strong>ledger objects</strong>, sometimes called <em>ledger entries</em>, which collectively represent all settings, balances, and relationships at a given point in time. To store or retrieve an object in the state data, the protocol uses that object's unique <strong><a href="ledger-object-ids.html">Ledger Object ID</a></strong>.</p>
 <p>In the <a href="peer-protocol.html">peer protocol</a>, ledger objects have a <a href="serialization.html">canonical binary format</a>. In <code>rippled</code> APIs, ledger objects are represented as JSON objects.</p>
 <p>A ledger object's data fields depend on the type of object; the XRP Ledger supports the following types:</p>
-<ul class="children-display">
-<li class="level-1"><a href="accountroot.html">AccountRoot</a>
-<p class="blurb child-blurb">The settings, XRP balance, and other metadata for one account.</p>
-</li>
-<li class="level-1"><a href="amendments-object.html">Amendments</a>
-<p class="blurb child-blurb">Singleton object with status of enabled and pending amendments.</p>
-</li>
-<li class="level-1"><a href="amm.html">AMM</a>
-<span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>
-<p class="blurb child-blurb">The definition and details of an Automated Market Maker (AMM) instance.</p>
-</li>
-<li class="level-1"><a href="check.html">Check</a>
-<p class="blurb child-blurb">A check that can be redeemed for money by its destination.</p>
-</li>
-<li class="level-1"><a href="depositpreauth-object.html">DepositPreauth</a>
-<p class="blurb child-blurb">A record of preauthorization for sending payments to an account that requires authorization.</p>
-</li>
-<li class="level-1"><a href="directorynode.html">DirectoryNode</a>
-<p class="blurb child-blurb">Contains links to other objects.</p>
-</li>
-<li class="level-1"><a href="escrow-object.html">Escrow</a>
-<p class="blurb child-blurb">Contains XRP held for a conditional payment.</p>
-</li>
-<li class="level-1"><a href="feesettings.html">FeeSettings</a>
-<p class="blurb child-blurb">Singleton object with consensus-approved base transaction cost and reserve requirements.</p>
-</li>
-<li class="level-1"><a href="ledgerhashes.html">LedgerHashes</a>
-<p class="blurb child-blurb">Lists of prior ledger versions' hashes for history lookup.</p>
-</li>
-<li class="level-1"><a href="negativeunl.html">NegativeUNL</a>
-<p class="blurb child-blurb">List of validators currently believed to be offline.</p>
-</li>
-<li class="level-1"><a href="nftokenoffer.html">NFTokenOffer</a>
-<p class="blurb child-blurb">Create offers to buy or sell NFTs.</p>
-</li>
-<li class="level-1"><a href="nftokenpage.html">NFTokenPage</a>
-<p class="blurb child-blurb">Ledger structure for recording NFTokens.</p>
-</li>
-<li class="level-1"><a href="offer.html">Offer</a>
-<p class="blurb child-blurb">An order to make a currency trade.</p>
-</li>
-<li class="level-1"><a href="paychannel.html">PayChannel</a>
-<p class="blurb child-blurb">A channel for asynchronous XRP payments.</p>
-</li>
-<li class="level-1"><a href="ripplestate.html">RippleState</a>
-<p class="blurb child-blurb">Links two accounts, tracking the balance of one currency between them. The concept of a trust line is an abstraction of this object type.</p>
-</li>
-<li class="level-1"><a href="signerlist.html">SignerList</a>
-<p class="blurb child-blurb">A list of addresses for multi-signing transactions.</p>
-</li>
-<li class="level-1"><a href="ticket.html">Ticket</a>
-<p class="blurb child-blurb">A Ticket tracks an account sequence number that has been set aside for future use.</p>
-</li>
-</ul>
-<!--/.children-display-->
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -1181,7 +1118,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1508,17 +1450,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1635,11 +1572,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1691,6 +1623,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -254,10 +254,10 @@
   <h1>RPC Tool</h1>
   <div class="content">
 
-  <p>This is a debug tool for printing raw information about an account (by classic address), a transaction (by hash) or a ledger (by sequence number).</p>
+  <p>これは、アカウント(クラシックアドレス)、トランザクション(ハッシュ)、またはレジャー(シーケンス番号)に関する実際の情報を表示するためのデバッグツールです。</p>
 
   <form id="account-entry">
-  <fieldset class="form-group"><input id="target" class="form-control" required="" type="text" placeholder="XRP Ledger address, transaction ID, or ledger index" />
+  <fieldset class="form-group"><input id="target" class="form-control" required="" type="text" placeholder="XRP Ledgerアドレス、トランザクションID、またはレジャーインデックス" />
   <span class="help-block"><small><em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>のようなアカウントで試してみてください。</small></span>
   <button class="btn btn-primary">情報を見る</button></fieldset>
   </form>
@@ -297,21 +297,21 @@
          <li><a class="account-lines-expand">すべて展開</a></li>
          <li><a class="account-lines-collapse">すべて閉じる</a></li>
     </ul>
-    <h3><a href="account_tx.html">account_tx</a> (last 20)</h3>
+    <h3><a href="account_tx.html">account_tx</a> (直近20件)</h3>
     <ul class="tools nav nav-pills">
-         <li><a class="account-tx-expand-tx">tx展開</a></li>
+         <li><a class="account-tx-expand-tx">txを展開</a></li>
          <li><a class="account-tx-expand">すべて展開</a></li>
          <li><a class="account-tx-collapse">すべて閉じる</a></li>
          <li><a class="account-tx-more">次の20件</a></li>
-         <li><a class="account-tx-back">prev 20</a></li>
+         <li><a class="account-tx-back">前の20件</a></li>
     </ul>
     <pre id="account_tx" class="json"></pre>
     <ul class="tools nav nav-pills">
-         <li><a class="account-tx-expand-tx">tx展開</a></li>
+         <li><a class="account-tx-expand-tx">txを展開</a></li>
          <li><a class="account-tx-expand">すべて展開</a></li>
          <li><a class="account-tx-collapse">すべて閉じる</a></li>
          <li><a class="account-tx-more">次の20件</a></li>
-         <li><a class="account-tx-back">prev 20</a></li>
+         <li><a class="account-tx-back">前の20件</a></li>
     </ul>
     <h3><a href="account_objects.html">account_objects</a></h3>
     <ul class="tools nav nav-pills">
@@ -328,13 +328,13 @@
     <div class="group group-ledger">
     <h3><a href="ledger.html">ledger</a></h3>
     <ul class="tools nav nav-pills">
-         <li><a class="ledger-expand-tx">tx展開</a></li>
+         <li><a class="ledger-expand-tx">txを展開</a></li>
          <li><a class="ledger-tx-expand">すべて展開</a></li>
          <li><a class="ledger-tx-collapse">すべて閉じる</a></li>
     </ul>
     <pre id="ledger_info" class="json"></pre>
     <ul class="tools nav nav-pills">
-         <li><a class="ledger-tx-expand-tx">tx展開</a></li>
+         <li><a class="ledger-tx-expand-tx">txを展開</a></li>
          <li><a class="ledger-tx-expand">すべて展開</a></li>
          <li><a class="ledger-tx-collapse">すべて閉じる</a></li>
     </ul>
@@ -1196,7 +1196,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1523,17 +1528,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -1650,11 +1650,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
   </div>
 
@@ -1706,6 +1701,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
