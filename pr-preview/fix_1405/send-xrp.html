@@ -1,0 +1,3497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Send XRP - XRPL.org</title>
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Send XRP | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/send-xrp.html" />
+    <meta property="og:description" content="Learn how to send test payments right from your browser." />
+    <meta name="description" content="Learn how to send test payments right from your browser." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+    <meta name="docsearch:language" content="en" />
+    <link rel="alternate" href="https://xrpl.org/send-xrp.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/send-xrp.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/send-xrp.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+    <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
+    <meta name="color-scheme" content="dark light">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Document",
+      "page_group": "Docs",
+      "page_funnel": "Tutorials",
+      "page_labels": ['XRP', 'Payments']
+    })
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+
+
+    <!-- Stylesheet -->
+    <link href="assets/css/devportal2022-v25.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+
+    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+
+
+    <!-- Theme switch -->
+    <script src="assets/js/theme-switch.js"></script>
+
+
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <!-- copy code button -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+            new ClipboardJS('.clipboard-btn');
+        });
+    </script>
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>About</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL Overview</a>
+            <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
+            <a class="dropdown-item" href="history.html">History</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="impact.html">Impact</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
+            <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Docs</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-documentation" href="docs.html">
+            <img id="top-nav-hero-docs" alt="Documentation icon" />
+            <div class="dropdown-hero-text">
+              <h4>Documentation</h4>
+              <p>Dive into XRP Ledger technology and start integrating.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="introduction.html">Introduction</a>
+            <a class="dropdown-item" href="use-cases.html">Use Cases</a>
+            <a class="dropdown-item" href="concepts.html">Concepts</a>
+            <a class="dropdown-item" href="tutorials.html">Tutorials</a>
+            <a class="dropdown-item" href="references.html">References</a>
+            <a class="dropdown-item" href="infrastructure.html">Infrastructure</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+          </div><!--./col-->
+          <div class="navcol col-for-popular-pages">
+            <h5 class="dropdown-item">Popular Pages</h5>
+            <a class="dropdown-item active" href="send-xrp.html">Send XRP</a>
+            <a class="dropdown-item" href="reserves.html">Reserves</a>
+            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
+            <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Resources</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-development">
+            <h5 class="dropdown-item">Development</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
+            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+          </div><!--./col-->
+          <div class="navcol col-for-current-status">
+            <h5 class="dropdown-item">Current Status</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
+            <a class="dropdown-item" href="known-amendments.html">Known Amendments</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item" href="contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="contribute-documentation.html">Contribute Documentation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
+            <div class="dropdown-hero-text">
+              <h4>Contribute to the XRPL Community</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item" href="developer-funding.html">Developer Funding</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group" id="topsearchboxcontainer">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/send-xrp.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+
+    <div class="nav-item" id="topnav-theme">
+      <form class="form-inline">
+        <div class="custom-control custom-theme-toggle form-inline-item" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
+          <input type="checkbox" class="custom-control-input" id="css-toggle-btn">
+          <label class="custom-control-label" for="css-toggle-btn"><span class="d-lg-none">Light/Dark Theme</span></label>
+        </div>
+      </form>
+    </div><!--/#topnav-theme-->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/fix_1405/content/tutorials/get-started/send-xrp.md?pr=/XRPLF/xrpl-dev-portal/pull/2171" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-xrp">XRP</span>
+      <!-- TEMPLATE WARNING: no label landing found for "XRP" -->
+    </li>
+    <li class="list-inline-item">
+      <span class="label label-payments">Payments</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Payments" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
+      <h4>In this document</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#send-xrp">Send XRP</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#send-a-payment-on-the-test-net">Send a Payment on the Test Net</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#1-get-credentials">1. Get Credentials</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#2-connect-to-a-testnet-server">2. Connect to a Testnet Server</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#3-prepare-transaction">3. Prepare Transaction</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#4-sign-the-transaction-instructions">4. Sign the Transaction Instructions</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#5-submit-the-signed-blob">5. Submit the Signed Blob</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#6-wait-for-validation">6. Wait for Validation</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#7-check-transaction-status">7. Check Transaction Status</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#differences-for-production">Differences for Production</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#getting-a-real-xrp-account">Getting a Real XRP Account</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#connecting-to-the-production-xrp-ledger">Connecting to the Production XRP Ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#next-steps">Next Steps</a></li>
+      </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+
+
+
+    <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
+    <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
+    <li class="active breadcrumb-item"><a href="tasks.html">Tasks</a></li>
+    <li class="active breadcrumb-item">Send XRP</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article>
+    <div class="content">
+        <h1 id="send-xrp">Send XRP<a aria-hidden="true" class="hover_anchor" href="#send-xrp"><i class="fa fa-link"></i></a></h1>
+<p>This tutorial explains how to send a direct XRP Payment using <code>xrpl.js</code> for JavaScript, <code>xrpl-py</code> for Python, or xrpl4j for Java. First, we step through the process with the <a href="parallel-networks.html">XRP Ledger Testnet</a>. Then, we compare that to the additional requirements for doing the equivalent in production.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> Check out the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples" target="_blank">Code Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> for a complete version of the code used in this tutorial.</p>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
+<!-- Source for this specific tutorial's interactive bits: -->
+<script src="assets/js/tutorials/send-xrp.js" type="application/javascript"></script>
+<p>To interact with the XRP Ledger, you need to set up a dev environment with the necessary tools. This tutorial provides examples using the following options:</p>
+<ul>
+<li><strong>JavaScript</strong> with the <a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank">xrpl.js library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-javascript.html">Get Started Using JavaScript</a> for setup steps.</li>
+<li><strong>Python</strong> with the <a class="external-link" href="https://xrpl-py.readthedocs.io/" target="_blank"><code>xrpl-py</code> library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-python.html">Get Started using Python</a> for setup steps.</li>
+<li><strong>Java</strong> with the <a class="external-link" href="https://github.com/XRPLF/xrpl4j" target="_blank">xrpl4j library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-java.html">Get Started Using Java</a> for setup steps.</li>
+</ul>
+<h2 id="send-a-payment-on-the-test-net">Send a Payment on the Test Net<a aria-hidden="true" class="hover_anchor" href="#send-a-payment-on-the-test-net"><i class="fa fa-link"></i></a></h2>
+<h3 id="1-get-credentials">1. Get Credentials<a aria-hidden="true" class="hover_anchor" href="#1-get-credentials"><i class="fa fa-link"></i></a></h3>
+<p>To transact on the XRP Ledger, you need an address and secret key, and some XRP. The address and secret key look like this:</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li><li><a class="python" href="#code-0-1">Python</a></li><li><a class="java" href="#code-0-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// Example credentials</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="c1">// rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="c1"># Example Credentials ----------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
+<span class="kn">from</span> <span class="nn">xrpl.constants</span> <span class="kn">import</span> <span class="n">CryptoAlgorithm</span>
+<span class="n">test_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">CryptoAlgorithm</span><span class="o">.</span><span class="n">SECP256K1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">)</span> <span class="c1"># "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">// Create a KeyPair</span>
+<span class="n">KeyPair</span><span class="w"> </span><span class="n">randomKeyPair</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Seed</span><span class="p">.</span><span class="na">ed25519Seed</span><span class="p">().</span><span class="na">deriveKeyPair</span><span class="p">();</span>
+
+<span class="c1">// Get the Classic address from testWallet</span>
+<span class="n">Address</span><span class="w"> </span><span class="n">classicAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">randomKeyPair</span><span class="p">.</span><span class="na">publicKey</span><span class="p">().</span><span class="na">deriveAddress</span><span class="p">();</span>
+</code></pre></div></div>
+</div>
+<p>The secret key shown here is for example only. For development purposes, you can get your own credentials, pre-funded with XRP, on the Testnet using the following interface:</p>
+<div class="interactive-block" data-stepnumber="1" data-totalsteps="7" id="interactive-generate">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="generate" data-steplabel="Generate" id="bc-ul-generate">
+<li class="breadcrumb-item bc-generate current"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-prepare disabled"><a href="#interactive-prepare">Prepare</a></li><li class="breadcrumb-item bc-sign disabled"><a href="#interactive-sign">Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-check disabled"><a href="#interactive-check">Check</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary" data-fauceturl="https://faucet.altnet.rippletest.net/accounts" id="generate-creds-button">Get Testnet credentials</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"/>Generating Keys...</div>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<p class="devportal-callout caution"><strong>Caution:</strong> Ripple provides the <a href="parallel-networks.html">Testnet and Devnet</a> for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, <strong>do not</strong> use the same addresses on Testnet/Devnet and Mainnet.</p>
+<p>When you're <a href="production-readiness.html">building production-ready software</a>, you should use an existing account, and manage your keys using a <a href="secure-signing.html">secure signing configuration</a>.</p>
+<h3 id="2-connect-to-a-testnet-server">2. Connect to a Testnet Server<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-a-testnet-server"><i class="fa fa-link"></i></a></h3>
+<p>First, you must connect to an XRP Ledger server so you can get the current status of your account and the shared ledger. You can use this information to <a href="transaction-common-fields.html#auto-fillable-fields">automatically fill in some required fields of a transaction</a>. You also must be connected to the network to submit transactions to it.</p>
+<p>The following code connects to a public Testnet servers:</p>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="python" href="#code-1-1">Python</a></li><li><a class="java" href="#code-1-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
+<span class="c1">// const xrpl = require('xrpl')</span>
+
+<span class="c1">// Wrap code in an async function so we can use await</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="c1">// Define the network client</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s2">"wss://s.altnet.rippletest.net:51233"</span><span class="p">)</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+
+<span class="w">  </span><span class="c1">// ... custom code goes here</span>
+
+<span class="w">  </span><span class="c1">// Disconnect when done (If you omit this, Node.js won't end the process)</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="nx">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1"># Connect ----------------------------------------------------------------------</span>
+<span class="kn">import</span> <span class="nn">xrpl</span>
+<span class="n">testnet_url</span> <span class="o">=</span> <span class="s2">"https://s.altnet.rippletest.net:51234"</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">testnet_url</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="c1">// Connect --------------------------------------------------------------------</span>
+<span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://s.altnet.rippletest.net:51234/"</span><span class="p">);</span>
+<span class="n">XrplClient</span><span class="w"> </span><span class="n">xrplClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span>
+</code></pre></div></div>
+</div>
+<p>For this tutorial, click the following button to connect:</p>
+<!--/.interactive-block--><div class="interactive-block" data-stepnumber="2" data-totalsteps="7" id="interactive-connect">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="connect" data-steplabel="Connect" id="bc-ul-connect">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled current"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-prepare disabled"><a href="#interactive-prepare">Prepare</a></li><li class="breadcrumb-item bc-sign disabled"><a href="#interactive-sign">Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-check disabled"><a href="#interactive-check">Check</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary" data-explorer="https://testnet.xrpl.org" data-wsurl="wss://s.altnet.rippletest.net:51233" id="connect-button">Connect to Testnet</button>
+<div>
+<strong>Connection status:</strong>
+<span id="connection-status">Not connected</span>
+<div class="loader collapse" id="loader-connect"><img class="throbber" src="assets/img/xrp-loader-96.png"/></div>
+</div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="3-prepare-transaction">3. Prepare Transaction<a aria-hidden="true" class="hover_anchor" href="#3-prepare-transaction"><i class="fa fa-link"></i></a></h3>
+<p>Typically, we create XRP Ledger transactions as objects in the JSON <a href="transaction-formats.html">transaction format</a>. The following example shows a minimal Payment specification:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span>
+<span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The bare minimum set of instructions you must provide for an XRP Payment is:</p>
+<ul>
+<li>An indicator that this is a payment. (<code>"TransactionType": "Payment"</code>)</li>
+<li>The sending address. (<code>"Account"</code>)</li>
+<li>The address that should receive the XRP (<code>"Destination"</code>). This can't be the same as the sending address.</li>
+<li>The amount of XRP to send (<code>"Amount"</code>). Typically, this is specified as an integer in "drops" of XRP, where 1,000,000 drops equals 1 XRP.</li>
+</ul>
+<p>Technically, a transaction must contain some additional fields, and certain optional fields such as <code>LastLedgerSequence</code> are strongly recommended. Some other language-specific notes:</p>
+<ul>
+<li>If you're using <code>xrpl.js</code> for JavaScript, you can use the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#autofill" target="_blank"><code>Client.autofill()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to automatically fill in good defaults for the remaining fields of a transaction. In TypeScript, you can also use the transaction models like <code>xrpl.Payment</code> to enforce the correct fields.</li>
+<li>With <code>xrpl-py</code> for Python, you can use the models in <code>xrpl.models.transactions</code> to construct transactions as native Python objects.</li>
+<li>With xrpl4j for Java, you can use the model objects in the <code>xrpl4j-model</code> module to construct transactions as Java objects.<ul>
+<li>Unlike the other libraries, you must provide the account <code>sequence</code> and the <code>signingPublicKey</code> of the source
+account of a <code>Transaction</code> at the time of construction, as well as a <code>fee</code>.</li>
+</ul>
+</li>
+</ul>
+<p>Here's an example of preparing the above payment:</p>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li><li><a class="python" href="#code-2-1">Python</a></li><li><a class="java" href="#code-2-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Prepare transaction -------------------------------------------------------</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
+<span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"Amount"</span><span class="o">:</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">xrpToDrops</span><span class="p">(</span><span class="s2">"22"</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">"Destination"</span><span class="o">:</span><span class="w"> </span><span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">max_ledger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prepared</span><span class="p">.</span><span class="nx">LastLedgerSequence</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Prepared transaction instructions:"</span><span class="p">,</span><span class="w"> </span><span class="nx">prepared</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction cost:"</span><span class="p">,</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">prepared</span><span class="p">.</span><span class="nx">Fee</span><span class="p">),</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction expires after ledger:"</span><span class="p">,</span><span class="w"> </span><span class="nx">max_ledger</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1"># Prepare transaction ----------------------------------------------------------</span>
+<span class="n">my_payment</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">Payment</span><span class="p">(</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">test_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+    <span class="n">amount</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">xrp_to_drops</span><span class="p">(</span><span class="mi">22</span><span class="p">),</span>
+    <span class="n">destination</span><span class="o">=</span><span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Payment object:"</span><span class="p">,</span> <span class="n">my_payment</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-2-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="c1">// Prepare transaction --------------------------------------------------------</span>
+<span class="c1">// Look up your Account Info</span>
+<span class="n">AccountInfoRequestParams</span><span class="w"> </span><span class="n">requestParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="na">ledgerSpecifier</span><span class="p">(</span><span class="n">LedgerSpecifier</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span>
+<span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="n">AccountInfoResult</span><span class="w"> </span><span class="n">accountInfoResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">accountInfo</span><span class="p">(</span><span class="n">requestParams</span><span class="p">);</span>
+<span class="n">UnsignedInteger</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accountInfoResult</span><span class="p">.</span><span class="na">accountData</span><span class="p">().</span><span class="na">sequence</span><span class="p">();</span>
+
+<span class="c1">// Request current fee information from rippled</span>
+<span class="n">FeeResult</span><span class="w"> </span><span class="n">feeResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">fee</span><span class="p">();</span>
+<span class="n">XrpCurrencyAmount</span><span class="w"> </span><span class="n">openLedgerFee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">feeResult</span><span class="p">.</span><span class="na">drops</span><span class="p">().</span><span class="na">openLedgerFee</span><span class="p">();</span>
+
+<span class="c1">// Get the latest validated ledger index</span>
+<span class="n">LedgerIndex</span><span class="w"> </span><span class="n">validatedLedger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">ledger</span><span class="p">(</span>
+<span class="w">  </span><span class="n">LedgerRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="na">ledgerSpecifier</span><span class="p">(</span><span class="n">LedgerSpecifier</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="na">ledgerIndex</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">"LedgerIndex not available."</span><span class="p">));</span>
+
+<span class="c1">// LastLedgerSequence is the current ledger index + 4</span>
+<span class="n">UnsignedInteger</span><span class="w"> </span><span class="n">lastLedgerSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">validatedLedger</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="mi">4</span><span class="p">)).</span><span class="na">unsignedIntegerValue</span><span class="p">();</span>
+
+<span class="c1">// Construct a Payment</span>
+<span class="n">Payment</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Payment</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="na">amount</span><span class="p">(</span><span class="n">XrpCurrencyAmount</span><span class="p">.</span><span class="na">ofXrp</span><span class="p">(</span><span class="n">BigDecimal</span><span class="p">.</span><span class="na">ONE</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="na">destination</span><span class="p">(</span><span class="n">Address</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="na">fee</span><span class="p">(</span><span class="n">openLedgerFee</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="na">signingPublicKey</span><span class="p">(</span><span class="n">randomKeyPair</span><span class="p">.</span><span class="na">publicKey</span><span class="p">())</span>
+<span class="w">  </span><span class="p">.</span><span class="na">lastLedgerSequence</span><span class="p">(</span><span class="n">lastLedgerSequence</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Constructed Payment: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">payment</span><span class="p">);</span>
+</code></pre></div></div>
+</div>
+<!--/.interactive-block--><div class="interactive-block" data-stepnumber="3" data-totalsteps="7" id="interactive-prepare">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="prepare" data-steplabel="Prepare" id="bc-ul-prepare">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-prepare disabled current"><a href="#interactive-prepare">Prepare</a></li><li class="breadcrumb-item bc-sign disabled"><a href="#interactive-sign">Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-check disabled"><a href="#interactive-check">Check</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<div class="input-group mb-3">
+<div class="input-group-prepend">
+<span class="input-group-text">Send: </span>
+</div>
+<input aria-describedby="xrp-amount-label" aria-label="Amount of XRP, as a decimal" class="form-control" id="xrp-amount" max="100000000000" min=".000001" step="any" type="number" value="22"/>
+<div class="input-group-append">
+<span class="input-group-text" id="xrp-amount-label"> XRP</span>
+</div>
+</div>
+<button class="btn btn-primary previous-steps-required" id="prepare-button">Prepare
+  example transaction</button>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="4-sign-the-transaction-instructions">4. Sign the Transaction Instructions<a aria-hidden="true" class="hover_anchor" href="#4-sign-the-transaction-instructions"><i class="fa fa-link"></i></a></h3>
+<p>Signing a transaction uses your credentials to authorize the transaction on your behalf. The input to this step is a completed set of transaction instructions (usually JSON), and the output is a binary blob containing the instructions and a signature from the sender.</p>
+<ul>
+<li><strong>JavaScript:</strong> Use the <a class="external-link" href="https://js.xrpl.org/classes/Wallet.html#sign" target="_blank"><code>sign()</code> method of a <code>Wallet</code> instance <i aria-hidden="true" class="fa fa-external-link"></i></a> to sign the transaction with <code>xrpl.js</code>.</li>
+<li><strong>Python:</strong> Use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction" target="_blank"><code>xrpl.transaction.safe_sign_transaction()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> with a model and <code>Wallet</code> object.</li>
+<li><strong>Java:</strong> Use a <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html" target="_blank"><code>SignatureService</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> instance to sign the transaction. For this tutorial, use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html" target="_blank"><code>SingleKeySignatureService</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
+</ul>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="javascript" href="#code-3-0">JavaScript</a></li><li><a class="python" href="#code-3-1">Python</a></li><li><a class="java" href="#code-3-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1">// Sign prepared instructions ------------------------------------------------</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Identifying hash:"</span><span class="p">,</span><span class="w"> </span><span class="nx">signed</span><span class="p">.</span><span class="nx">hash</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Signed blob:"</span><span class="p">,</span><span class="w"> </span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="c1"># Sign transaction -------------------------------------------------------------</span>
+<span class="n">signed_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">autofill_and_sign</span><span class="p">(</span>
+        <span class="n">my_payment</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">test_wallet</span><span class="p">)</span>
+<span class="n">max_ledger</span> <span class="o">=</span> <span class="n">signed_tx</span><span class="o">.</span><span class="n">last_ledger_sequence</span>
+<span class="n">tx_id</span> <span class="o">=</span> <span class="n">signed_tx</span><span class="o">.</span><span class="n">get_hash</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Signed transaction:"</span><span class="p">,</span> <span class="n">signed_tx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Transaction cost:"</span><span class="p">,</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">drops_to_xrp</span><span class="p">(</span><span class="n">signed_tx</span><span class="o">.</span><span class="n">fee</span><span class="p">),</span> <span class="s2">"XRP"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Transaction expires after ledger:"</span><span class="p">,</span> <span class="n">max_ledger</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Identifying hash:"</span><span class="p">,</span> <span class="n">tx_id</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="c1">// Sign transaction -----------------------------------------------------------</span>
+<span class="c1">// Construct a SignatureService to sign the Payment</span>
+<span class="n">SignatureService</span><span class="o">&lt;</span><span class="n">PrivateKey</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signatureService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BcSignatureService</span><span class="p">();</span>
+
+<span class="c1">// Sign the Payment</span>
+<span class="n">SingleSignedTransaction</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedPayment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="n">randomKeyPair</span><span class="p">.</span><span class="na">privateKey</span><span class="p">(),</span><span class="w"> </span><span class="n">payment</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Signed Payment: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">signedPayment</span><span class="p">.</span><span class="na">signedTransaction</span><span class="p">());</span>
+</code></pre></div></div>
+</div>
+<p>The result of the signing operation is a transaction object containing a signature. Typically, XRP Ledger APIs expect a signed transaction to be the hexadecimal representation of the transaction's canonical <a href="serialization.html">binary format</a>, called a "blob".</p>
+<ul>
+<li>In <code>xrpl.js</code>, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.</li>
+<li>In <code>xrpl-py</code>, you can get the transaction's hash in the response to submitting it in the next step.</li>
+<li>In xrpl4j, <code>SignatureService.sign</code> returns a <code>SignedTransaction</code>, which contains the transaction's hash, which you can use to look up the transaction later.</li>
+</ul>
+<!--/.interactive-block--><div class="interactive-block" data-stepnumber="4" data-totalsteps="7" id="interactive-sign">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="sign" data-steplabel="Sign" id="bc-ul-sign">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-prepare disabled"><a href="#interactive-prepare">Prepare</a></li><li class="breadcrumb-item bc-sign disabled current"><a href="#interactive-sign">Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-check disabled"><a href="#interactive-check">Check</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary previous-steps-required" id="sign-button">Sign
+  example transaction</button>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="5-submit-the-signed-blob">5. Submit the Signed Blob<a aria-hidden="true" class="hover_anchor" href="#5-submit-the-signed-blob"><i class="fa fa-link"></i></a></h3>
+<p>Now that you have a signed transaction, you can submit it to an XRP Ledger server, which relays it through the network. It's also a good idea to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it. Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)</p>
+<ul>
+<li><strong>JavaScript:</strong> Use the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitAndWait" target="_blank"><code>submitAndWait()</code> method of the Client <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a signed transaction to the network and wait for the response, or use <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitSigned" target="_blank"><code>submitSigned()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction and get only the preliminary response.</li>
+<li><strong>Python:</strong> Use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait" target="_blank"><code>xrpl.transaction.submit_and_wait()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction to the network and wait for a response.</li>
+<li><strong>Java:</strong> Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)" target="_blank"><code>XrplClient.submit(SignedTransaction)</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction to the network. Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)" target="_blank"><code>XrplClient.ledger()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method to get the latest validated ledger index.</li>
+</ul>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li><li><a class="python" href="#code-4-1">Python</a></li><li><a class="java" href="#code-4-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="c1">// Submit signed blob --------------------------------------------------------</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="c1"># Submit transaction -----------------------------------------------------------</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">tx_response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">submit_and_wait</span><span class="p">(</span><span class="n">signed_tx</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">XRPLReliableSubmissionException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">exit</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Submit failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="c1">// Submit transaction ---------------------------------------------------------</span>
+<span class="n">SubmitResult</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">paymentSubmitResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">submit</span><span class="p">(</span><span class="n">signedPayment</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">paymentSubmitResult</span><span class="p">);</span>
+</code></pre></div></div>
+</div>
+<p>This method returns the <strong>tentative</strong> result of trying to apply the transaction to the open ledger. This result <em>can</em> change when the transaction is included in a validated ledger: transactions that succeed initially might ultimately fail, and transactions that fail initially might ultimately succeed. Still, the tentative result often matches the final result, so it's OK to get excited if you see <code>tesSUCCESS</code> here. 😁</p>
+<p>If you see any other result, you should check the following:</p>
+<ul>
+<li>Are you using the correct addresses for the sender and destination?</li>
+<li>Did you forget any other fields of the transaction, skip any steps, or make any other typos?</li>
+<li>Do you have enough Test XRP to send the transaction? The amount of XRP you can send is limited by the <a href="reserves.html">reserve requirement</a>, which is currently 10 XRP with an additional 2 XRP for each "object" you own in the ledger. (If you generated a new address with the Testnet Faucet, you don't own any objects.)</li>
+<li>Are you connected to a server on the test network?</li>
+</ul>
+<p>See the full list of <a href="transaction-results.html">transaction results</a> for more possibilities.</p>
+<!--/.interactive-block--><div class="interactive-block" data-stepnumber="5" data-totalsteps="7" id="interactive-submit">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="submit" data-steplabel="Submit" id="bc-ul-submit">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-prepare disabled"><a href="#interactive-prepare">Prepare</a></li><li class="breadcrumb-item bc-sign disabled"><a href="#interactive-sign">Sign</a></li><li class="breadcrumb-item bc-submit disabled current"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-check disabled"><a href="#interactive-check">Check</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary previous-steps-required" data-tx-blob-from="#signed-tx-blob" data-wait-step-name="Wait" id="submit-button">Submit
+example transaction</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"/> Sending...</div>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="6-wait-for-validation">6. Wait for Validation<a aria-hidden="true" class="hover_anchor" href="#6-wait-for-validation"><i class="fa fa-link"></i></a></h3>
+<p>Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For more information on expiration of unconfirmed transactions, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.)</p>
+<ul>
+<li>
+<p><strong>JavaScript:</strong>  If you used the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitAndWait" target="_blank"><code>.submitAndWait()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>, you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.</p>
+</li>
+<li>
+<p><strong>Python:</strong> If you used the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait" target="_blank"><code>xrpl.transaction.submit_and_wait()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>, you can wait for the function to return. Other approaches, including asynchronous ones using the WebSocket client, are also possible.</p>
+</li>
+<li>
+<p><strong>Java</strong> Poll the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)" target="_blank"><code>XrplClient.transaction()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to see if your transaction has a final result. Periodically check that the latest validated ledger index has not passed the <code>LastLedgerIndex</code> of the transaction using the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)" target="_blank"><code>XrplClient.ledger()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method.</p>
+</li>
+</ul>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="javascript" href="#code-5-0">JavaScript</a></li><li><a class="python" href="#code-5-1">Python</a></li><li><a class="java" href="#code-5-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="c1">// Wait for validation -------------------------------------------------------</span>
+<span class="w">  </span><span class="c1">// submitAndWait() handles this automatically, but it can take 4-7s.</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="c1"># Wait for validation ----------------------------------------------------------</span>
+<span class="c1"># submit_and_wait() handles this automatically, but it can take 4-7s.</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="c1">// Wait for validation --------------------------------------------------------</span>
+<span class="n">TransactionResult</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">transactionResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="kt">boolean</span><span class="w"> </span><span class="n">transactionValidated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="kt">boolean</span><span class="w"> </span><span class="n">transactionExpired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">transactionValidated</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">transactionExpired</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">LedgerIndex</span><span class="w"> </span><span class="n">latestValidatedLedgerIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">ledger</span><span class="p">(</span>
+<span class="w">    </span><span class="n">LedgerRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">ledgerSpecifier</span><span class="p">(</span><span class="n">LedgerSpecifier</span><span class="p">.</span><span class="na">VALIDATED</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">ledgerIndex</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">"Ledger response did not contain a LedgerIndex."</span><span class="p">));</span>
+
+<span class="w">  </span><span class="n">transactionResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">transaction</span><span class="p">(</span><span class="n">TransactionRequestParams</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">signedPayment</span><span class="p">.</span><span class="na">hash</span><span class="p">()),</span><span class="w"> </span><span class="n">Payment</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">transactionResult</span><span class="p">.</span><span class="na">validated</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Payment was validated with result code "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">transactionResult</span><span class="p">.</span><span class="na">metadata</span><span class="p">().</span><span class="na">get</span><span class="p">().</span><span class="na">transactionResult</span><span class="p">());</span>
+<span class="w">    </span><span class="n">transactionValidated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">lastLedgerSequenceHasPassed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FluentCompareTo</span><span class="p">.</span><span class="na">is</span><span class="p">(</span><span class="n">latestValidatedLedgerIndex</span><span class="p">.</span><span class="na">unsignedIntegerValue</span><span class="p">())</span>
+<span class="w">      </span><span class="p">.</span><span class="na">greaterThan</span><span class="p">(</span><span class="n">UnsignedInteger</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">lastLedgerSequence</span><span class="p">.</span><span class="na">intValue</span><span class="p">()));</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lastLedgerSequenceHasPassed</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"LastLedgerSequence has passed. Last tx response: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">transactionResult</span><span class="p">);</span>
+<span class="w">      </span><span class="n">transactionExpired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Payment not yet validated."</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
+<!--/.interactive-block--><div class="interactive-block" data-stepnumber="6" data-totalsteps="7" id="interactive-wait">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="wait" data-steplabel="Wait" id="bc-ul-wait">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-prepare disabled"><a href="#interactive-prepare">Prepare</a></li><li class="breadcrumb-item bc-sign disabled"><a href="#interactive-sign">Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled current"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-check disabled"><a href="#interactive-check">Check</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<table class="wait-step table-responsive" data-explorerurl="https://testnet.xrpl.org">
+<tr>
+<th>Transaction ID:</th>
+<td class="waiting-for-tx">(None)</td>
+<tr>
+<th>Latest Validated Ledger Index:</th>
+<td class="validated-ledger-version">(Not connected)</td>
+</tr>
+<tr>
+<th>Ledger Index at Time of Submission:</th>
+<td class="earliest-ledger-version">(Not submitted)</td>
+</tr>
+<tr>
+<th>Transaction <code>LastLedgerSequence</code>:</th>
+<td class="lastledgersequence">(Not prepared)</td>
+</tr>
+<tr class="tx-validation-status">
+</tr>
+</tr></table>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="7-check-transaction-status">7. Check Transaction Status<a aria-hidden="true" class="hover_anchor" href="#7-check-transaction-status"><i class="fa fa-link"></i></a></h3>
+<p>To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version.</p>
+<ul>
+<li>
+<p><strong>JavaScript:</strong> Use the response from <code>submitAndWait()</code> or call the <a href="tx.html">tx method</a> using <a class="external-link" href="https://js.xrpl.org/classes/Client.html#request" target="_blank"><code>Client.request()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> In <strong>TypeScript</strong> you can pass a <a class="external-link" href="https://js.xrpl.org/interfaces/TxRequest.html" target="_blank"><code>TxRequest</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#request" target="_blank"><code>Client.request()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method.</p>
+</li>
+<li>
+<p><strong>Python:</strong> Use the response from <a class="external-link" href="https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait" target="_blank"><code>submit_and_wait()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> or call the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash" target="_blank"><code>xrpl.transaction.get_transaction_from_hash()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>. (See the <a href="tx.html#response-format">tx method response format</a> for a detailed reference of the fields this can contain.)</p>
+</li>
+<li>
+<p><strong>Java:</strong> Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)" target="_blank"><code>XrplClient.transaction()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method to check the status of a transaction.</p>
+</li>
+</ul>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a class="javascript" href="#code-6-0">JavaScript</a></li><li><a class="python" href="#code-6-1">Python</a></li><li><a class="java" href="#code-6-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-6-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="c1">// Check transaction results -------------------------------------------------</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction result:"</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Balance changes:"</span><span class="p">,</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">getBalanceChanges</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-6-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20"><span class="c1"># Check transaction results ----------------------------------------------------</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">tx_response</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Explorer link: https://testnet.xrpl.org/transactions/</span><span class="si">{</span><span class="n">tx_id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">tx_response</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"meta"</span><span class="p">,</span> <span class="p">{})</span>
+<span class="k">if</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"TransactionResult"</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Result code:"</span><span class="p">,</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">"TransactionResult"</span><span class="p">])</span>
+<span class="k">if</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"delivered_amount"</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"XRP delivered:"</span><span class="p">,</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">drops_to_xrp</span><span class="p">(</span>
+                <span class="n">metadata</span><span class="p">[</span><span class="s2">"delivered_amount"</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-6-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="c1">// Check transaction results --------------------------------------------------</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">transactionResult</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Explorer link: https://testnet.xrpl.org/transactions/"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">signedPayment</span><span class="p">.</span><span class="na">hash</span><span class="p">());</span>
+<span class="n">transactionResult</span><span class="p">.</span><span class="na">metadata</span><span class="p">().</span><span class="na">ifPresent</span><span class="p">(</span><span class="n">metadata</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Result code: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">metadata</span><span class="p">.</span><span class="na">transactionResult</span><span class="p">());</span>
+<span class="w">  </span><span class="n">metadata</span><span class="p">.</span><span class="na">deliveredAmount</span><span class="p">().</span><span class="na">ifPresent</span><span class="p">(</span><span class="n">deliveredAmount</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"XRP Delivered: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">((</span><span class="n">XrpCurrencyAmount</span><span class="p">)</span><span class="w"> </span><span class="n">deliveredAmount</span><span class="p">).</span><span class="na">toXrp</span><span class="p">()));</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div></div>
+</div>
+<p class="devportal-callout caution"><strong>Caution:</strong> XRP Ledger APIs may return tentative results from ledger versions that have not yet been validated. For example, in <a href="tx.html">tx method</a> response, be sure to look for <code>"validated": true</code> to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see <a href="finality-of-results.html">Finality of Results</a>.</p>
+<!--/.interactive-block--><div class="interactive-block" data-stepnumber="7" data-totalsteps="7" id="interactive-check">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="check" data-steplabel="Check" id="bc-ul-check">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-prepare disabled"><a href="#interactive-prepare">Prepare</a></li><li class="breadcrumb-item bc-sign disabled"><a href="#interactive-sign">Sign</a></li><li class="breadcrumb-item bc-submit disabled"><a href="#interactive-submit">Submit</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-check disabled current"><a href="#interactive-check">Check</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary previous-steps-required" id="get-tx-button">Check transaction status</button>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h2 id="differences-for-production">Differences for Production<a aria-hidden="true" class="hover_anchor" href="#differences-for-production"><i class="fa fa-link"></i></a></h2>
+<p>To send an XRP payment on the production XRP Ledger, the steps you take are largely the same. However, there are some key differences in the necessary setup:</p>
+<ul>
+<li><a href="#getting-a-real-xrp-account">Getting real XRP isn't free.</a></li>
+<li><a href="#connecting-to-the-production-xrp-ledger">You must connect to a server that's synced with the production XRP Ledger network.</a></li>
+</ul>
+<h3 id="getting-a-real-xrp-account">Getting a Real XRP Account<a aria-hidden="true" class="hover_anchor" href="#getting-a-real-xrp-account"><i class="fa fa-link"></i></a></h3>
+<p>This tutorial uses a button to get an address that's already funded with Test Net XRP, which only works because Test Net XRP is not worth anything. For actual XRP, you need to get XRP from someone who already has some. (For example, you might buy it on an exchange.) You can generate an address and secret that'll work on either production or the Testnet as follows:</p>
+<div class="multicode" id="code-7"><ul class="codetabs"><li><a class="javascript" href="#code-7-0">JavaScript</a></li><li><a class="python" href="#code-7-1">Python</a></li><li><a class="java" href="#code-7-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-7-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="kd">const</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="c1">// Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">seed</span><span class="p">)</span><span class="w"> </span><span class="c1">// Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-7-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23"><span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
+<span class="n">my_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">)</span> <span class="c1"># Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>            <span class="c1"># Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-7-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="n">WalletFactory</span><span class="w"> </span><span class="n">walletFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultWalletFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
+<span class="n">SeedWalletGenerationResult</span><span class="w"> </span><span class="n">generationResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletFactory</span><span class="p">.</span><span class="na">randomWallet</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="n">Wallet</span><span class="w"> </span><span class="n">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generationResult</span><span class="p">.</span><span class="na">wallet</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">wallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">());</span><span class="w"> </span><span class="c1">// Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">generationResult</span><span class="p">.</span><span class="na">seed</span><span class="p">());</span><span class="w"> </span><span class="c1">// Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
+</code></pre></div></div>
+</div>
+<p class="devportal-callout warning"><strong>Warning:</strong> You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could also be valid to execute on the other network, depending on the parameters you provided.</p>
+<p>Generating an address and secret doesn't get you XRP directly; you're only choosing a random number. You must also receive XRP at that address to <a href="accounts.html#creating-accounts">fund the account</a>. A common way to acquire XRP is to buy it from an <a href="exchanges.html">exchange</a>, then withdraw it to your own address.</p>
+<h3 id="connecting-to-the-production-xrp-ledger">Connecting to the Production XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#connecting-to-the-production-xrp-ledger"><i class="fa fa-link"></i></a></h3>
+<p>When you instantiate your client's connect to the XRP Ledger, you must specify a server that's synced with the appropriate <a href="parallel-networks.html">network</a>. For many cases, you can use <a href="public-servers.html">public servers</a>, such as in the following example:</p>
+<div class="multicode" id="code-8"><ul class="codetabs"><li><a class="javascript" href="#code-8-0">JavaScript</a></li><li><a class="python" href="#code-8-1">Python</a></li><li><a class="java" href="#code-8-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-8-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="kd">const</span><span class="w"> </span><span class="nx">xrpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://xrplcluster.com'</span><span class="p">)</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-8-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26"><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="s2">"https://xrplcluster.com"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-8-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="kd">final</span><span class="w"> </span><span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://xrplcluster.com"</span><span class="p">);</span>
+<span class="n">XrplClient</span><span class="w"> </span><span class="n">xrplClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span>
+</code></pre></div></div>
+</div>
+<p>If you <a href="install-rippled.html">install <code>rippled</code></a> yourself, it connects to the production network by default. (You can also <a href="connect-your-rippled-to-the-xrp-test-net.html">configure it to connect to the test net</a> instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect to it locally, which has <a href="xrpl-servers.html">various benefits</a>. The following example shows how to connect to a server running the default configuration:</p>
+<div class="multicode" id="code-9"><ul class="codetabs"><li><a class="javascript" href="#code-9-0">JavaScript</a></li><li><a class="python" href="#code-9-1">Python</a></li><li><a class="java" href="#code-9-2">Java</a></li></ul>
+
+<div class="code_sample javascript" id="code-9-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="kd">const</span><span class="w"> </span><span class="nx">xrpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'ws://localhost:6006'</span><span class="p">)</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-9-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29"><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="s2">"http://localhost:5005"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample java" id="code-9-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-30" id="codeblock-30button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-30"><span class="kd">final</span><span class="w"> </span><span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"http://localhost:5005"</span><span class="p">);</span>
+<span class="n">XrplClient</span><span class="w"> </span><span class="n">xrplClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span>
+</code></pre></div></div>
+</div>
+<p class="devportal-callout tip"><strong>Tip:</strong> The local connection uses an unencrypted protocol (<code>ws</code> or <code>http</code>) rather than the TLS-encrypted version (<code>wss</code> or <code>https</code>). This is secure only because the communications never leave the same machine, and is easier to set up because it does not require a TLS certificate. For connections on an outside network, always use <code>wss</code> or <code>https</code>.</p>
+<h2 id="next-steps">Next Steps<a aria-hidden="true" class="hover_anchor" href="#next-steps"><i class="fa fa-link"></i></a></h2>
+<p>After completing this tutorial, you may want to try the following:</p>
+<ul>
+<li><a href="issue-a-fungible-token.html">Issue a token</a> on the XRP Ledger Testnet.</li>
+<li><a href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>.</li>
+<li>Build <a href="reliable-transaction-submission.html">Reliable transaction submission</a> for production systems.</li>
+<li>Check your <a href="client-libraries.html">client library</a>'s API reference for the full range of XRP Ledger functionality.</li>
+<li>Customize your <a href="manage-account-settings.html">Account Settings</a>.</li>
+<li>Learn how <a href="transaction-metadata.html">Transaction Metadata</a> describes the outcome of a transaction in detail.</li>
+<li>Explore more <a href="payment-types.html">Payment Types</a> such as Escrows and Payment Channels.</li>
+</ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+<!--/.interactive-block-->
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<script src="assets/vendor/feedback-widget.js"></script>
+<div id="feedback-content"></div>
+<script>
+  // Options
+  const options = {
+    analyticsConfig: [
+      // { name: 'ga', id: 'UA-45576805-2' },
+      { name: 'gtm', id: 'GTM-KCQZ3L8' },
+    ],
+    analyticsName: 'Feedback Widget Tracker',
+    theme: 'xrpl',
+    currentPath: window.location.pathname,
+    parentElement: '#feedback-content',
+  };
+
+  // Init WidgetClass
+  const r = new WidgetClass(options);
+</script>      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
+
+
+<nav class="nav flex-column dactyl-tree-nav">
+  <div class="nav-item nav-parent">
+    <a class="nav-link" href="docs.html">Documentation</a>
+  </div>
+    
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+
+        <a class="nav-link" href="introduction.html">Introduction</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="what-is-xrp.html">What is XRP?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="crypto-wallets.html">Crypto Wallets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="txn-and-requests.html">Transactions and Requests</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="software-ecosystem.html">Software Ecosystem</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="use-cases.html">Use Cases</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+
+        <a class="nav-link" href="payments-uc.html">Payments</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="restricting-deposits-uc.html">Restricting Deposits</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow-uc.html">Smart Contracts</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="tokenization.html">Tokenization</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-issuer.html">Stablecoin Issuer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
+
+        <a class="nav-link" href="nft-mkt-overview.html">NFT Marketplace Overview</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-marketplace.html">NFT Marketplace</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-minter.html">Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="digital-artist.html">Digital Artist</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+
+        <a class="nav-link" href="defi-uc.html">Decentralized Finance</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="algorithmic-trading.html">Algorithmic Trading</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="concepts.html">Concepts</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
+
+        <a class="nav-link" href="networks-and-servers.html">Networks and Servers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-server-modes.html">rippled Server Modes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clustering.html">Clustering</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-history.html">Ledger History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-protocol.html">Peer Protocol</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amendments.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+
+        <a class="nav-link" href="consensus.html">Consensus Protocol</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-structure.html">Consensus Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-principles-and-rules.html">Consensus Principles and Rules</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-protections.html">Consensus Protections Against Attacks and Failure Modes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="invariant-checking.html">Invariant Checking</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fee-voting.html">Fee Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-research.html">Consensus Research</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+
+        <a class="nav-link" href="ledgers.html">Ledgers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-structure.html">Ledger Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-close-times.html">Ledger Close Times</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4" aria-expanded="false" aria-controls="tree_nav_group_4_4"></a>
+
+        <a class="nav-link" href="transactions.html">Transactions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fees.html">Fees (Disambiguation)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="reliable-transaction-submission.html">Reliable Transaction Submission</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="secure-signing.html">Secure Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="source-and-destination-tags.html">Source and Destination Tags</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-cost.html">Transaction Cost</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-queue.html">Transaction Queue</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_4_7"></a>
+
+        <a class="nav-link" href="finality-of-results.html">Finality of Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-transaction-results.html">Look Up Transaction Results</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-malleability.html">Transaction Malleability</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="canceling-a-transaction.html">Canceling a Transaction</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5" aria-expanded="false" aria-controls="tree_nav_group_4_5"></a>
+
+        <a class="nav-link" href="payment-types.html">Payment Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="direct-xrp-payments.html">Direct XRP Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cross-currency-payments.html">Cross-Currency Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="partial-payments.html">Partial Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6" aria-expanded="false" aria-controls="tree_nav_group_4_6"></a>
+
+        <a class="nav-link" href="tokens.html">Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-reserve-requirements.html">NFT Reserve Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-auctions.html">Running an NFT Auction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-apis.html">NFT APIs</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+
+        <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offers.html">Offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="autobridging.html">Auto-Bridging</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticksize.html">Tick Size</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_7"></a>
+
+        <a class="nav-link" href="accounts.html">Accounts</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account-types.html">Account Types</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="deleting-accounts.html">Deleting Accounts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="reserves.html">Reserves</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="addresses.html">Addresses</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cryptographic-keys.html">Cryptographic Keys</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositauth.html">Deposit Authorization</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="true" aria-controls="tree_nav_group_5"></a>
+
+        <a class="nav-link" href="tutorials.html">Tutorials</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2" aria-expanded="false" aria-controls="tree_nav_group_5_2"></a>
+
+        <a class="nav-link" href="python.html">Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-python.html">Get Started Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2"></a>
+
+        <a class="nav-link" href="modular-tutorials-in-python.html">Modular Tutorials in Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_1"></a>
+
+        <a class="nav-link" href="send-payments-using-python.html">Send Payments Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-accounts-send-xrp.html">Create Accounts and Send XRP Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-python.html">NFTs Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-mint-and-burn-nfts.html">Mint and Burn NFTs Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-transfer-nfts.html">Transfer NFTs Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-broker-sale.html">Broker an NFT Sale Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_3"></a>
+
+        <a class="nav-link" href="javascript.html">JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2"></a>
+
+        <a class="nav-link" href="modular-tutorials-in-javascript.html">Modular Tutorials in JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_1"></a>
+
+        <a class="nav-link" href="send-payments-using-javascript.html">Send Payments Using JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp-using-javascript.html">Create Accounts and Send XRP Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency-using-javascript.html">Create Trust Line and Send Currency Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-time-based-escrows-using-javascript.html">Create Time-based Escrows Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-conditional-escrows-using-javascript.html">Create Conditional Escrows Using JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-javascript.html">NFTs Using JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nfts-using-javascript.html">Mint and Burn NFTs Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nfts-using-javascript.html">Transfer NFTs Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-an-nft-sale-using-javascript.html">Broker an NFT Sale Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="assign-an-authorized-minter-using-javascript.html">Assign an Authorized Minter Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="batch-mint-nfts-using-javascript.html">Batch Mint NFTs Using JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
+
+        <a class="nav-link" href="java.html">Java</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-java.html">Get Started Using Java</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-http-websocket-apis.html">Get Started Using HTTP / WebSocket APIs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="true" aria-controls="tree_nav_group_5_6"></a>
+
+        <a class="nav-link" href="tasks.html">Tasks</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_5_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
+
+        <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="disable-master-key-pair.html">Disable Master Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="set-up-multi-signing.html">Set Up Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="require-destination-tags.html">Require Destination Tags</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offline-account-setup.html">Offline Account Setup Tutorial</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="send-xrp.html">Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
+
+        <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
+
+        <a class="nav-link" href="use-escrows.html">Use Escrows</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-conditionally-held-escrow.html">Send a Conditionally-Held Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-escrows.html">Look up Escrows</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
+
+        <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
+
+        <a class="nav-link" href="use-checks.html">Use Checks</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cash-a-check-for-an-exact-amount.html">Cash a Check for an Exact Amount</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cash-a-check-for-a-flexible-amount.html">Cash a Check for a Flexible Amount</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cancel-a-check.html">Cancel a Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-checks-by-sender.html">Look Up Checks by Sender</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-checks-by-recipient.html">Look Up Checks by Recipient</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
+
+        <a class="nav-link" href="use-tokens.html">Use Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-an-automated-market-maker.html">Create an Automated Market Maker <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+
+        <a class="nav-link" href="references.html">References</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1" aria-expanded="false" aria-controls="tree_nav_group_6_1"></a>
+
+        <a class="nav-link" href="protocol-reference.html">XRP Ledger Protocol Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_6_1_1"></a>
+
+        <a class="nav-link" href="basic-data-types.html">Basic Data Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="base58-encodings.html">base58 Encodings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="currency-formats.html">Currency Formats</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken.html">NFToken</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2"></a>
+
+        <a class="nav-link" href="ledger-data-formats.html">Ledger Data Formats</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-header.html">Ledger Header</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
+
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amendments-object.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="check.html">Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositpreauth-object.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="directorynode.html">DirectoryNode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow-object.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="feesettings.html">FeeSettings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledgerhashes.html">LedgerHashes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offer.html">Offer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paychannel.html">PayChannel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ripplestate.html">RippleState</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="signerlist.html">SignerList</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
+
+        <a class="nav-link" href="transaction-formats.html">Transaction Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-common-fields.html">Transaction Common Fields</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_2"></a>
+
+        <a class="nav-link" href="transaction-types.html">Transaction Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdelete.html">AMMDelete <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcancel.html">CheckCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcash.html">CheckCash</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositpreauth.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowcancel.html">EscrowCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowcreate.html">EscrowCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offercancel.html">OfferCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offercreate.html">OfferCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="payment.html">Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelclaim.html">PaymentChannelClaim</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelcreate.html">PaymentChannelCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelfund.html">PaymentChannelFund</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="setregularkey.html">SetRegularKey</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="signerlistset.html">SignerListSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trustset.html">TrustSet</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_3"></a>
+
+        <a class="nav-link" href="pseudo-transaction-types.html">Pseudo-Transactions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enableamendment.html">EnableAmendment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="setfee.html">SetFee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_4"></a>
+
+        <a class="nav-link" href="transaction-results.html">Transaction Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tec-codes.html">tec Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tef-codes.html">tef Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tel-codes.html">tel Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tem-codes.html">tem Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ter-codes.html">ter Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tes-success.html">tes Success</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-metadata.html">Transaction Metadata</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="serialization.html">Serialization Format</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2" aria-expanded="false" aria-controls="tree_nav_group_6_2"></a>
+
+        <a class="nav-link" href="client-libraries.html">Client Libraries</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-py.readthedocs.io/">Python Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://javadoc.io/doc/org.xrpl/">Java Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://www.rubydoc.info/gems/xrbp">Ruby Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3" aria-expanded="false" aria-controls="tree_nav_group_6_3"></a>
+
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_1"></a>
+
+        <a class="nav-link" href="api-conventions.html">API Conventions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="request-formatting.html">Request Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="response-formatting.html">Response Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="error-formatting.html">Error Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="markers-and-pagination.html">Markers and Pagination</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rate-limiting.html">Rate Limiting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-server-states.html">rippled Server States</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2"></a>
+
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_1"></a>
+
+        <a class="nav-link" href="account-methods.html">Account Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_channels.html">account_channels</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_currencies.html">account_currencies</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_info.html">account_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_objects.html">account_objects</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_offers.html">account_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_tx.html">account_tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="gateway_balances.html">gateway_balances</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="noripple_check.html">noripple_check</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_2"></a>
+
+        <a class="nav-link" href="ledger-methods.html">Ledger Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_closed.html">ledger_closed</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_current.html">ledger_current</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_data.html">ledger_data</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_entry.html">ledger_entry</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_3"></a>
+
+        <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="submit.html">submit</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="submit_multisigned.html">submit_multisigned</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction_entry.html">transaction_entry</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tx.html">tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tx_history.html">tx_history</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_4"></a>
+
+        <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="path_find.html">path_find</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ripple_path_find.html">ripple_path_find</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_5"></a>
+
+        <a class="nav-link" href="payment-channel-methods.html">Payment Channel Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="channel_authorize.html">channel_authorize</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="channel_verify.html">channel_verify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_6"></a>
+
+        <a class="nav-link" href="subscription-methods.html">Subscription Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="subscribe.html">subscribe</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="unsubscribe.html">unsubscribe</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_7"></a>
+
+        <a class="nav-link" href="server-info-methods.html">Server Info Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fee.html">fee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_state.html">server_state</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_8"></a>
+
+        <a class="nav-link" href="clio-methods.html">Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_history.html">nft_history</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_9">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="json.html">json</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ping.html">ping</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="random.html">random</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3"></a>
+
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_1"></a>
+
+        <a class="nav-link" href="key-generation-methods.html">Key Generation Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validation_create.html">validation_create</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="wallet_propose.html">wallet_propose</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_2"></a>
+
+        <a class="nav-link" href="logging-and-data-management-methods.html">Logging and Data Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="can_delete.html">can_delete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="crawl_shards.html">crawl_shards</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="download_shard.html">download_shard</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_cleaner.html">ledger_cleaner</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_request.html">ledger_request</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="log_level.html">log_level</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_3"></a>
+
+        <a class="nav-link" href="server-control-methods.html">Server Control Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_accept.html">ledger_accept</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stop.html">stop</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validation_seed.html">validation_seed <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_4"></a>
+
+        <a class="nav-link" href="signing-methods.html">Signing Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_5"></a>
+
+        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect.html">connect</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_add.html">peer_reservations_add</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_del.html">peer_reservations_del</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_list.html">peer_reservations_list</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peers.html">peers</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_6"></a>
+
+        <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="feature.html">feature</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fetch_info.html">fetch_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get_counts.html">get_counts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="print.html">print</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator_info.html">validator_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator_list_sites.html">validator_list_sites</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validators.html">validators</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_4"></a>
+
+        <a class="nav-link" href="peer-port-methods.html">Peer Port Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="health-check.html">Health Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-crawler.html">Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator-list.html">Validator List Method</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrp-ledger-toml.html">xrp-ledger.toml File</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
+
+        <a class="nav-link" href="infrastructure.html">Infrastructure</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="commandline-usage.html">Commandline Usage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_2" aria-expanded="false" aria-controls="tree_nav_group_7_2"></a>
+
+        <a class="nav-link" href="install-rippled.html">Install rippled</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-rippled-on-ubuntu.html">Install on Ubuntu or Debian Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-automatically-on-linux.html">Update Automatically on Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-manually-on-centos-rhel.html">Update Manually on CentOS/Red Hat</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="capacity-planning.html">Capacity Planning</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-1-3-migration-instructions.html">rippled v1.3.x Migration Instructions <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3" aria-expanded="false" aria-controls="tree_nav_group_7_3"></a>
+
+        <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_7_3_1"></a>
+
+        <a class="nav-link" href="server-modes.html">Server Modes</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_7_3_2"></a>
+
+        <a class="nav-link" href="data-retention.html">Data Retention</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-full-history.html">Configure Full History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="online-deletion.html">Online Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-online-deletion.html">Configure Online Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-advisory-deletion.html">Configure Advisory Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="history-sharding.html">History Sharding</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-history-sharding.html">Configure History Sharding</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-amendment-voting.html">Configure Amendment Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-grpc.html">Configure gRPC</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-public-signing.html">Enable Public Signing</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
+
+        <a class="nav-link" href="configure-peering.html">Peering</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-a-private-server.html">Configure a Private Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-link-compression.html">Enable Link Compression</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="forward-ports-for-peering.html">Forward Ports for Peering</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="manually-connect-to-a-specific-peer.html">Manually Connect to a Specific Peer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="set-max-number-of-peers.html">Set Maximum Number of Peers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-a-peer-reservation.html">Use a Peer Reservation</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_5" aria-expanded="false" aria-controls="tree_nav_group_7_5"></a>
+
+        <a class="nav-link" href="use-stand-alone-mode.html">Testing and Auditing</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_6" aria-expanded="false" aria-controls="tree_nav_group_7_6"></a>
+
+        <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="health-check-interventions.html">Health Check Interventions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="understanding-log-messages.html">Understanding Log Messages</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-wont-start.html">rippled Server Won't Start</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+</nav>      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>About</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
+            <li class="nav-item"><a href="uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
+            <li class="nav-item"><a href="history.html" class="nav-link">History</a></li>
+            <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Docs</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="docs.html" class="nav-link">Documentation</a></li>
+            <li class="nav-item"><a href="introduction.html" class="nav-link">Introduction</a></li>
+            <li class="nav-item"><a href="use-cases.html" class="nav-link">Use Cases</a></li>
+            <li class="nav-item"><a href="concepts.html" class="nav-link">Concepts</a></li>
+            <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
+            <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
+            <li class="nav-item"><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Resources</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
+            <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
+            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Community</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex row">
+      <a href="/" class="footer-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="Jump to top of page"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+  indexName: 'xrpl',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
+
+<!-- ripple-lib & prerequisites -->
+<script type="application/javascript" src="assets/js/xrpl-2.11.0.min.js"></script>
+
+<!-- Helper for interactive tutorials -->
+<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
+
+</body>
+</html>
