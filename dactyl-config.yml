@@ -3729,7 +3729,7 @@ pages:
     -   name: キー生成メソッド
         html: key-generation-methods.html
         parent: admin-api-methods.html
-        blurb: 以下のメソッドを使用してキーを生成および管理することができます。。
+        blurb: 以下のメソッドを使用してキーを生成および管理することができます。
         template: pagetype-category.html.jinja
         targets:
             - ja
