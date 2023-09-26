@@ -1,0 +1,3193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Cryptographic Keys - XRPL.org</title>
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Cryptographic Keys | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/cryptographic-keys.html" />
+    <meta property="og:description" content="Use cryptographic keys to approve transactions so the XRP Ledger can execute them." />
+    <meta name="description" content="Use cryptographic keys to approve transactions so the XRP Ledger can execute them." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+    <meta name="docsearch:language" content="en" />
+    <link rel="alternate" href="https://xrpl.org/cryptographic-keys.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/cryptographic-keys.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/cryptographic-keys.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+    <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
+    <meta name="color-scheme" content="dark light">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Document",
+      "page_group": "Docs",
+      "page_funnel": "Concepts",
+      "page_labels": ['Smart Contracts', 'Security']
+    })
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+
+
+    <!-- Stylesheet -->
+    <link href="assets/css/devportal2022-v25.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+
+    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+
+
+    <!-- Theme switch -->
+    <script src="assets/js/theme-switch.js"></script>
+
+
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <!-- copy code button -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+            new ClipboardJS('.clipboard-btn');
+        });
+    </script>
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>About</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL Overview</a>
+            <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
+            <a class="dropdown-item" href="history.html">History</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="impact.html">Impact</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
+            <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Docs</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-documentation" href="docs.html">
+            <img id="top-nav-hero-docs" alt="Documentation icon" />
+            <div class="dropdown-hero-text">
+              <h4>Documentation</h4>
+              <p>Dive into XRP Ledger technology and start integrating.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="introduction.html">Introduction</a>
+            <a class="dropdown-item" href="use-cases.html">Use Cases</a>
+            <a class="dropdown-item" href="concepts.html">Concepts</a>
+            <a class="dropdown-item" href="tutorials.html">Tutorials</a>
+            <a class="dropdown-item" href="references.html">References</a>
+            <a class="dropdown-item" href="infrastructure.html">Infrastructure</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+          </div><!--./col-->
+          <div class="navcol col-for-popular-pages">
+            <h5 class="dropdown-item">Popular Pages</h5>
+            <a class="dropdown-item" href="send-xrp.html">Send XRP</a>
+            <a class="dropdown-item" href="reserves.html">Reserves</a>
+            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
+            <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Resources</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-development">
+            <h5 class="dropdown-item">Development</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
+            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+          </div><!--./col-->
+          <div class="navcol col-for-current-status">
+            <h5 class="dropdown-item">Current Status</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
+            <a class="dropdown-item" href="known-amendments.html">Known Amendments</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item" href="contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="contribute-documentation.html">Contribute Documentation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
+            <div class="dropdown-hero-text">
+              <h4>Contribute to the XRPL Community</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item" href="developer-funding.html">Developer Funding</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group" id="topsearchboxcontainer">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/cryptographic-keys.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+
+    <div class="nav-item" id="topnav-theme">
+      <form class="form-inline">
+        <div class="custom-control custom-theme-toggle form-inline-item" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
+          <input type="checkbox" class="custom-control-input" id="css-toggle-btn">
+          <label class="custom-control-label" for="css-toggle-btn"><span class="d-lg-none">Light/Dark Theme</span></label>
+        </div>
+      </form>
+    </div><!--/#topnav-theme-->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/remove-bounty/content/concepts/accounts/cryptographic-keys.md?pr=/XRPLF/xrpl-dev-portal/pull/2168" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-smart-contracts">Smart Contracts</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Smart Contracts" -->
+    </li>
+    <li class="list-inline-item">
+      <span class="label label-security">Security</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Security" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
+      <h4>In this document</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#cryptographic-keys">Cryptographic Keys</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#generating-keys">Generating Keys</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#key-components">Key Components</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#passphrase">Passphrase</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#seed">Seed</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#private-key">Private Key</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#public-key">Public Key</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#account-id-and-address">Account ID and Address</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#key-type">Key Type</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#master-key-pair">Master Key Pair</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#special-permissions">Special Permissions</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#regular-key-pair">Regular Key Pair</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#signing-algorithms">Signing Algorithms</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#future-algorithms">Future Algorithms</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#key-derivation">Key Derivation</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#sample-code">Sample Code</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ed25519-key-derivation">Ed25519 Key Derivation</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#secp256k1-key-derivation">secp256k1 Key Derivation</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+      </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+
+
+
+    <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
+    <li class="active breadcrumb-item"><a href="concepts.html">Concepts</a></li>
+    <li class="active breadcrumb-item"><a href="accounts.html">Accounts</a></li>
+    <li class="active breadcrumb-item">Cryptographic Keys</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article>
+    <div class="content">
+        <h1 id="cryptographic-keys">Cryptographic Keys<a aria-hidden="true" class="hover_anchor" href="#cryptographic-keys"><i class="fa fa-link"></i></a></h1>
+<p>In the XRP Ledger, a digital signature <em>authorizes</em> a <a href="transactions.html">transaction</a> to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.</p>
+<p>To make a digital signature, you use a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported <a href="#signing-algorithms">cryptographic signing algorithms</a>. A key pair can be used as a <a href="#master-key-pair">master key pair</a>, <a href="#regular-key-pair">regular key pair</a> or a member of a <a href="multi-signing.html">signer list</a>, regardless of what algorithm was used to generate it.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> It is important to maintain proper security over your cryptographic keys. Digital signatures are the only way of authorizing transactions in the XRP Ledger, and there is no privileged administrator who can undo or reverse any transactions after they have applied. If someone else knows the seed or private key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.</p>
+<h2 id="generating-keys">Generating Keys<a aria-hidden="true" class="hover_anchor" href="#generating-keys"><i class="fa fa-link"></i></a></h2>
+<p>Many <a href="client-libraries.html">client libraries</a> and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use key pairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.</p>
+<h2 id="key-components">Key Components<a aria-hidden="true" class="hover_anchor" href="#key-components"><i class="fa fa-link"></i></a></h2>
+<p>A cryptographic key pair is a <strong>private key</strong> and a <strong>public key</strong> that are connected mathematically through a key derivation process. Each key is a number; the private key should be chosen using a strong source of randomness. The <a href="#signing-algorithms">cryptographic signing algorithm</a> defines the key derivation process and sets constraints on the numbers that can be cryptographic keys.</p>
+<p>When dealing with the XRP Ledger, you may also use some related values such as a passphrase, seed, account ID, or address.</p>
+<figure><a href="img/cryptographic-keys.svg" title="Diagram: Passphrase → Seed → Private Key → Public Key → Account ID ←→ Address"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="40 40 1040 170" width="1040" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/cryptographic-keys.svg__genericDefs"></defs><g><defs id="img/cryptographic-keys.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/cryptographic-keys.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/cryptographic-keys.svg__clipPath2"><path d="M0 0 L0 70 L160 70 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/cryptographic-keys.svg__clipPath3"><path d="M0 0 L0 30 L440 30 L440 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/cryptographic-keys.svg__clipPath4"><path d="M0 0 L0 130 L500 130 L500 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/cryptographic-keys.svg__clipPath5"><path d="M0 0 L0 70 L120 70 L120 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/cryptographic-keys.svg__clipPath6"><path d="M0 0 L0 70 L140 70 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/cryptographic-keys.svg__clipPath7"><path d="M0 0 L0 30 L70 30 L70 0 Z"></path></clippath></defs><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(900,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath2)" height="68.5" stroke="none" width="158.5" x="0.5" y="0.5"></rect></g><g transform="translate(900,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath2)" fill="none" height="68.5" width="158.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/cryptographic-keys.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="51" xml:space="preserve" y="18.1094">Address</text><path clip-path="url(#img/cryptographic-keys.svg__clipPath2)" d="M1 24.1094 L159 24.1094" fill="none"></path><text clip-path="url(#img/cryptographic-keys.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="39.2188">24 bytes (classic)</text><text clip-path="url(#img/cryptographic-keys.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="55.3281">32 bytes (X-address)</text></g><g font-family="sans-serif" font-size="14px" transform="translate(580,60)"><text clip-path="url(#img/cryptographic-keys.svg__clipPath3)" stroke="none" x="156" xml:space="preserve" y="18.1094">Public information</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(60,60)"><path clip-path="url(#img/cryptographic-keys.svg__clipPath4)" d="M0.5 0.5 L488.5 0.5 L499 12.5 L499 129 L0.5 129 Z" stroke="none"></path></g><g fill="red" stroke="red" transform="translate(60,60)"><path clip-path="url(#img/cryptographic-keys.svg__clipPath4)" d="M0.5 0.5 L488.5 0.5 L499 12.5 L499 129 L0.5 129 Z" fill="none"></path><path clip-path="url(#img/cryptographic-keys.svg__clipPath4)" d="M488.5 0.5 L488.5 12.5 L499 12.5" fill="none"></path><text clip-path="url(#img/cryptographic-keys.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="18.1094">Secrets</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(740,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath5)" height="68.5" stroke="none" width="118.5" x="0.5" y="0.5"></rect></g><g transform="translate(740,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath5)" fill="none" height="68.5" width="118.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/cryptographic-keys.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="21" xml:space="preserve" y="18.1094">Account ID</text><path clip-path="url(#img/cryptographic-keys.svg__clipPath5)" d="M1 24.1094 L119 24.1094" fill="none"></path><text clip-path="url(#img/cryptographic-keys.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="39.2188">20 bytes</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(580,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath5)" height="68.5" stroke="none" width="118.5" x="0.5" y="0.5"></rect></g><g transform="translate(580,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath5)" fill="none" height="68.5" width="118.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/cryptographic-keys.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="23" xml:space="preserve" y="18.1094">Public Key</text><path clip-path="url(#img/cryptographic-keys.svg__clipPath5)" d="M1 24.1094 L119 24.1094" fill="none"></path><text clip-path="url(#img/cryptographic-keys.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="39.2188">33 bytes</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(420,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath5)" height="68.5" stroke="none" width="118.5" x="0.5" y="0.5"></rect></g><g transform="translate(420,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath5)" fill="none" height="68.5" width="118.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/cryptographic-keys.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="18.1094">Private Key</text><path clip-path="url(#img/cryptographic-keys.svg__clipPath5)" d="M1 24.1094 L119 24.1094" fill="none"></path><text clip-path="url(#img/cryptographic-keys.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="39.2188">32 bytes</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(80,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath6)" height="68.5" stroke="none" width="138.5" x="0.5" y="0.5"></rect></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(80,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath6)" fill="none" height="68.5" width="138.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/cryptographic-keys.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="30" xml:space="preserve" y="13.3906">Passphrase</text><text clip-path="url(#img/cryptographic-keys.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="28" xml:space="preserve" y="29.5">or source of</text><text clip-path="url(#img/cryptographic-keys.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="26" xml:space="preserve" y="45.6094">randomness</text></g><g font-family="sans-serif" font-size="14px" transform="translate(80,100)"><path clip-path="url(#img/cryptographic-keys.svg__clipPath6)" d="M1 51.6094 L139 51.6094" fill="none"></path><text clip-path="url(#img/cryptographic-keys.svg__clipPath6)" stroke="none" x="34" xml:space="preserve" y="66.7188">(Optional)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(260,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath5)" height="68.5" stroke="none" width="118.5" x="0.5" y="0.5"></rect></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(260,100)"><rect clip-path="url(#img/cryptographic-keys.svg__clipPath5)" fill="none" height="68.5" width="118.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/cryptographic-keys.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="42" xml:space="preserve" y="18.1094">Seed</text></g><g font-family="sans-serif" font-size="14px" transform="translate(260,100)"><path clip-path="url(#img/cryptographic-keys.svg__clipPath5)" d="M1 24.1094 L119 24.1094" fill="none"></path><text clip-path="url(#img/cryptographic-keys.svg__clipPath5)" stroke="none" x="5" xml:space="preserve" y="39.2188">(Optional)</text><text clip-path="url(#img/cryptographic-keys.svg__clipPath5)" stroke="none" x="5" xml:space="preserve" y="55.3281">16 bytes</text></g><g transform="translate(850,130)"><path clip-path="url(#img/cryptographic-keys.svg__clipPath7)" d="M11.5 10.5 L50.5 10.5" fill="none"></path><path clip-path="url(#img/cryptographic-keys.svg__clipPath7)" d="M22.2583 17 L11 10.5 L22.2583 4" fill="none"></path><path clip-path="url(#img/cryptographic-keys.svg__clipPath7)" d="M38.7417 17 L50 10.5 L38.7417 4" fill="none"></path></g><g transform="translate(690,130)"><path clip-path="url(#img/cryptographic-keys.svg__clipPath7)" d="M10.5 10.5 L49.5 10.5" fill="none"></path><path clip-path="url(#img/cryptographic-keys.svg__clipPath7)" d="M38.7417 17 L50 10.5 L38.7417 4" fill="none"></path></g><g transform="translate(530,130)"><path clip-path="url(#img/cryptographic-keys.svg__clipPath7)" d="M10.5 10.5 L49.5 10.5" fill="none"></path><path clip-path="url(#img/cryptographic-keys.svg__clipPath7)" d="M38.7417 17 L50 10.5 L38.7417 4" fill="none"></path></g><g transform="translate(370,130)"><path clip-path="url(#img/cryptographic-keys.svg__clipPath7)" d="M10.5 10.5 L49.5 10.5" fill="none"></path><path clip-path="url(#img/cryptographic-keys.svg__clipPath7)" d="M38.7417 17 L50 10.5 L38.7417 4" fill="none"></path></g><g transform="translate(210,130)"><path clip-path="url(#img/cryptographic-keys.svg__clipPath7)" d="M10.5 10.5 L49.5 10.5" fill="none"></path><path clip-path="url(#img/cryptographic-keys.svg__clipPath7)" d="M38.7417 17 L50 10.5 L38.7417 4" fill="none"></path></g></g></svg></a></figure>
+<p><em>Figure: A simplified view of the relationship between cryptographic key values.</em></p>
+<p>The passphrase, seed, and private key are <strong>secrets</strong>: if you know any of these values for an account, you can make valid signatures and you have full control over that account. If you own an account, be <strong>very careful</strong> with your account's secret information. If you don't have it, you can't use your account. If someone else can access it, they can take control of your account.</p>
+<p>The public key, account ID, and address are public information. There are some situations where you might temporarily keep a public key to yourself, but eventually you need to publish it as part of a transaction so that the XRP Ledger can verify the signature and process the transaction.</p>
+<p>For more technical details of how key derivation works, see <a href="#key-derivation">Key Derivation</a>.</p>
+<h3 id="passphrase">Passphrase<a aria-hidden="true" class="hover_anchor" href="#passphrase"><i class="fa fa-link"></i></a></h3>
+<p>You can, optionally, use a passphrase or some other input as a way of choosing a seed or private key. This is less secure than choosing the seed or private key completely at random, but there are some rare cases where you want to do this. (For example, in 2018 "XRPuzzler" gave away XRP to the first person <a class="external-link" href="https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/" target="_blank">to solve a puzzle <i aria-hidden="true" class="fa fa-external-link"></i></a>; he used the puzzle's solution as the passphrase to an account holding the prize XRP.)  <!-- SPELLING_IGNORE: xrpuzzler --></p>
+<p>The passphrase is secret information, so you must protect it very carefully. Anyone who knows an address's passphrase has effectively full control over the address.</p>
+<h3 id="seed">Seed<a aria-hidden="true" class="hover_anchor" href="#seed"><i class="fa fa-link"></i></a></h3>
+<p>A <em>seed</em> value is a compact value that is used to <a href="#key-derivation">derive</a> the actual private and public keys for an account. In a <a href="wallet_propose.html">wallet_propose method</a> response, the <code>master_key</code>, <code>master_seed</code>, and <code>master_seed_hex</code> all represent the same seed value, in various formats. Any of these formats can be used to sign transactions. Despite being prefixed with <code>master_</code>, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.</p>
+<p>The seed value is secret information, so you must protect it very carefully. Anyone who knows an address's seed value has effectively full control over that address.</p>
+<h3 id="private-key">Private Key<a aria-hidden="true" class="hover_anchor" href="#private-key"><i class="fa fa-link"></i></a></h3>
+<p>The <em>private key</em> is the value that is used to create a digital signature. Most XRP Ledger software does not explicitly show the private key, and <a href="#key-derivation">derives the private key</a> from the seed value when necessary. It is technically possible to save the private key instead of the seed and use that to sign transactions directly, but this usage is rare.</p>
+<p>Like the seed, the private key is secret information, so you must protect it very carefully. Anyone who knows an address's private key has effectively full control over that address.</p>
+<h3 id="public-key">Public Key<a aria-hidden="true" class="hover_anchor" href="#public-key"><i class="fa fa-link"></i></a></h3>
+<p>The <em>public key</em> is the value used to verify the authenticity of a digital signature. The public key is derived from the private key as part of key derivation. In a <a href="wallet_propose.html">wallet_propose method</a> response, the <code>public_key</code> and <code>public_key_hex</code> both represent the same public key value.</p>
+<p>Transactions in the XRP Ledger must include the public keys so that the network can verify the transactions' signatures. The public key cannot be used to create valid signatures, so it is safe to share publicly.</p>
+<h3 id="account-id-and-address">Account ID and Address<a aria-hidden="true" class="hover_anchor" href="#account-id-and-address"><i class="fa fa-link"></i></a></h3>
+<p>The <strong>Account ID</strong> is the core identifier for an <a href="accounts.html">account</a> or a key pair. It is derived from the public key. In the XRP Ledger protocol, the Account ID is 20 bytes of binary data. Most XRP Ledger APIs represent the Account ID as an address, in one of two formats:</p>
+<ul>
+<li>A "classic address" writes an Account ID in <a href="base58-encodings.html">base58</a> with a checksum. In a <a href="wallet_propose.html">wallet_propose method</a> response, this is the <code>account_id</code> value.</li>
+<li>An "X-Address" combines an Account ID <em>and</em> a <a href="source-and-destination-tags.html">Destination Tag</a> and writes the combined value in <a href="base58-encodings.html">base58</a> with a checksum.</li>
+</ul>
+<p>The checksum in both formats is there so that small changes result in an invalid address, instead of changing it to refer to a different, but still potentially valid, account. This way, if you make a typo or a transmission error occurs, you don't send money to the wrong place.</p>
+<p>It is important to know that not all Account IDs (or addresses) refer to accounts in the ledger. Deriving keys and addresses is purely a mathematical operation. For an account to have a record in the XRP Ledger, it must <a href="accounts.html#creating-accounts">receive a payment of XRP</a> that funds its <a href="reserves.html">reserve requirement</a>. An account cannot send any transactions until after it has been funded.</p>
+<p>Even if an Account ID or address does not refer to a funded account, you <em>can</em> use that Account ID or address to represent a <a href="#regular-key-pair">regular key pair</a> or a <a href="multi-signing.html">member of a signer list</a>.</p>
+<h3 id="key-type">Key Type<a aria-hidden="true" class="hover_anchor" href="#key-type"><i class="fa fa-link"></i></a></h3>
+<p>The XRP Ledger supports more than one <a href="#signing-algorithms">cryptographic signing algorithm</a>. Any given key pair is only valid for a specific cryptographic signing algorithm. Some private keys may technically qualify as valid keys for more than one algorithm, but those private keys would have different public keys for each algorithm, and you should not reuse private keys anyway.</p>
+<p>The <code>key_type</code> field in the <a href="wallet_propose.html">wallet_propose method</a> refers to the cryptographic signing algorithm to use.</p>
+<h2 id="master-key-pair">Master Key Pair<a aria-hidden="true" class="hover_anchor" href="#master-key-pair"><i class="fa fa-link"></i></a></h2>
+<p>The master key pair consists of a private key and a public key. The address of an account is derived from the account's master key pair, so they are intrinsically related. You cannot change or remove the master key pair, but you can disable it.</p>
+<p>The <a href="wallet_propose.html">wallet_propose method</a> is one way of generating a master key pair. The response from this method shows the account's seed, address, and master public key together. For some other ways of setting up master key pairs, see <a href="secure-signing.html">Secure Signing</a>.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> If a malicious actor learns your master private key (or seed), they have full control over your account, unless your master key pair is disabled. They can take all the money your account holds and do other irreparable harm. Treat your secret values with care!</p>
+<p>Because changing a master key pair is impossible, you should treat it with care proportionate to the value it holds. A good practice is to <a href="offline-account-setup.html">keep your master key pair offline</a> and set up a regular key pair to sign transactions from your account instead. By keeping the master key pair enabled but offline, you can be reasonably certain that no one can get access to it using the internet, but you can still go find it to use in an emergency.</p>
+<p>Keeping your master key pair offline means not putting the secret information (passphrase, seed, or private key) anywhere that malicious actors can get access to it. In general, this means it is not within reach of a computer program that interacts with the internet at large. For example, you could keep it on an air-gapped machine that never connects to the internet, on a piece of paper stored in a safe, or have it completely memorized. (Memorization has some drawbacks, though, including making it impossible to pass the key on after you are dead.)</p>
+<h3 id="special-permissions">Special Permissions<a aria-hidden="true" class="hover_anchor" href="#special-permissions"><i class="fa fa-link"></i></a></h3>
+<p><strong>Only</strong> the master key pair can authorize transactions to do certain things:</p>
+<ul>
+<li>
+<p>Send an account's very first transaction, because accounts cannot be initialized with another way of <a href="transactions.html#authorizing-transactions">authorizing transactions</a>.</p>
+</li>
+<li>
+<p>Disable the master key pair.</p>
+</li>
+<li>
+<p>Permanently give up the ability to <a href="freezes.html#no-freeze">freeze</a>.</p>
+</li>
+<li>
+<p>Send a special <a href="transaction-cost.html#key-reset-transaction">key reset transaction</a> with a transaction cost of 0 XRP.</p>
+</li>
+</ul>
+<p>A regular key or <a href="multi-signing.html">multi-signature</a> can do anything else the same as the master key pair. Notably, after you have disabled the master key pair, you can re-enable it using a regular key pair or multi-signature. You can also <a href="deleting-accounts.html">delete an account</a> if it meets the requirements for deletion.</p>
+<h2 id="regular-key-pair">Regular Key Pair<a aria-hidden="true" class="hover_anchor" href="#regular-key-pair"><i class="fa fa-link"></i></a></h2>
+<p>An XRP Ledger account can authorize a secondary key pair, called a <em>regular key pair</em>. After doing so, you can use either the <a href="#master-key-pair">master key pair</a> or the regular key to authorize transactions. You can remove or replace your regular key pair at any time without changing the rest of your account.</p>
+<p>A regular key pair can authorize most of the same types of transactions as the master key pair, with <a href="#special-permissions">certain exceptions</a>. For example, a regular key pair <em>can</em> authorize a transaction to change the regular key pair.</p>
+<p>A good security practice is to save your master private key somewhere offline, and use a regular key pair most of the time. As a precaution, you can change the regular key pair regularly. If a malicious user learns your regular private key, you can get the master key pair out of offline storage and use it to change or remove the regular key pair. This way, you can regain control of your account. Even if you are not fast enough to stop the malicious user from stealing your money, at least you don't need to move to a new account and re-create all your settings and relationships from scratch.</p>
+<p>Regular key pairs have the same format as master key pairs. You generate them the same way (for example, using the <a href="wallet_propose.html">wallet_propose method</a>). The only difference is that a regular key pair is not intrinsically tied to the account it signs transactions for. It is possible (but not a good idea) to use the master key pair from one account as the regular key pair for another account.</p>
+<p>The <a href="setregularkey.html">SetRegularKey transaction</a> assigns or changes the regular key pair for an account. For a tutorial on assigning or changing a regular key pair, see <a href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>.</p>
+<h2 id="signing-algorithms">Signing Algorithms<a aria-hidden="true" class="hover_anchor" href="#signing-algorithms"><i class="fa fa-link"></i></a></h2>
+<p>Cryptographic key pairs are always tied to a specific signing algorithm, which defines the mathematical relationships between the secret key and the public key. Cryptographic signing algorithms have the property that, given the current state of cryptographic techniques, it is "easy" to use a secret key to calculate a matching public key, but it is effectively impossible to compute a matching secret key by starting from a public key. <!-- STYLE_OVERRIDE: easy --></p>
+<p>The XRP Ledger supports the following cryptographic signing algorithms:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th>Key Type</th>
+<th>Algorithm</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>secp256k1</code></td>
+<td><a class="external-link" href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm" target="_blank">ECDSA <i aria-hidden="true" class="fa fa-external-link"></i></a> using the elliptic curve <a class="external-link" href="https://en.bitcoin.it/wiki/Secp256k1" target="_blank">secp256k1 <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td>This is the same scheme Bitcoin uses. The XRP Ledger uses these key types by default.</td>
+</tr>
+<tr>
+<td><code>ed25519</code></td>
+<td><a class="external-link" href="https://tools.ietf.org/html/rfc8032" target="_blank">EdDSA <i aria-hidden="true" class="fa fa-external-link"></i></a> using the elliptic curve <a class="external-link" href="https://ed25519.cr.yp.to/" target="_blank">Ed25519 <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td>This is a newer algorithm which has better performance and other convenient properties. Since Ed25519 public keys are one byte shorter than secp256k1 keys, <code>rippled</code> prefixes Ed25519 public keys with the byte <code>0xED</code> so both types of public key are 33 bytes.</td>
+</tr>
+</tbody>
+</table>
+<p>When you generate a key pair with the <a href="wallet_propose.html">wallet_propose method</a>, you can specify the <code>key_type</code> to choose which cryptographic signing algorithm to use to derive the keys. If you generated a key type other than the default, you must also specify the <code>key_type</code> when signing transactions.</p>
+<p>The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of <a href="addresses.html#address-encoding">deriving an address</a> is the same for secp256k1 and Ed25519 key pairs.</p>
+<h3 id="future-algorithms">Future Algorithms<a aria-hidden="true" class="hover_anchor" href="#future-algorithms"><i class="fa fa-link"></i></a></h3>
+<p>In the future, it is likely that the XRP Ledger will need new cryptographic signing algorithms to keep up with developments in cryptography. For example, if quantum computers using <a class="external-link" href="https://en.wikipedia.org/wiki/Shor's_algorithm" target="_blank">Shor's algorithm <i aria-hidden="true" class="fa fa-external-link"></i></a> (or something similar) will soon be practical enough to break elliptic curve cryptography, XRP Ledger developers can add a cryptographic signing algorithm that isn't easily broken. As of mid 2020, there's no clear first choice "quantum-resistant" signing algorithm and quantum computers are not yet practical enough to be a threat, so there are no immediate plans to add any specific algorithms. <!-- STYLE_OVERRIDE: will, easily --></p>
+<h2 id="key-derivation">Key Derivation<a aria-hidden="true" class="hover_anchor" href="#key-derivation"><i class="fa fa-link"></i></a></h2>
+<p>The process of deriving a key pair depends on the signing algorithm. In all cases, keys are generated from a <em>seed</em> value that is 16 bytes (128 bits) in length. The seed value can be completely random (recommended) or it can be derived from a specific passphrase by taking the <a href="basic-data-types.html#hashes">SHA-512 hash</a> and keeping the first 16 bytes (like <a href="basic-data-types.html#hashes">SHA-512Half</a>, but keeping only 128 bits instead of 256 bits of the output).</p>
+<h3 id="sample-code">Sample Code<a aria-hidden="true" class="hover_anchor" href="#sample-code"><i class="fa fa-link"></i></a></h3>
+<p>The key derivation processes described here are implemented in multiple places and programming languages:</p>
+<ul>
+<li>In C++ in the <code>rippled</code> code base:<ul>
+<li><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h" target="_blank">Seed definition <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp" target="_blank">General &amp; Ed25519 key derivation <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp" target="_blank">secp256k1 key derivation <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+</ul>
+</li>
+<li>In Python 3 in <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/blob/remove-bounty/content/_code-samples/key-derivation/py/key_derivation.py" target="_blank">this repository's code samples section <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
+<li>In JavaScript in the <a class="external-link" href="https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs" target="_blank"><code>ripple-keypairs</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> package.</li>
+</ul>
+<h3 id="ed25519-key-derivation">Ed25519 Key Derivation<a aria-hidden="true" class="hover_anchor" href="#ed25519-key-derivation"><i class="fa fa-link"></i></a></h3>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<figure><a href="img/key-derivation-ed25519.svg" title="Passphrase → Seed → Secret Key → Prefix + Public Key"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="0 10 440 450" width="440" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/key-derivation-ed25519.svg__genericDefs"></defs><g><defs id="img/key-derivation-ed25519.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath2"><path d="M0 0 L0 70 L60 70 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath3"><path d="M0 0 L0 70 L230 70 L230 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath4"><path d="M0 0 L0 70 L120 70 L120 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath5"><path d="M0 0 L0 70 L320 70 L320 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath6"><path d="M0 0 L0 90 L180 90 L180 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath7"><path d="M0 0 L0 100 L120 100 L120 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-ed25519.svg__clipPath8"><path d="M0 0 L0 50 L170 50 L170 0 Z"></path></clippath></defs><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(110,300)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" height="68.5" stroke="none" width="58.5" x="0.5" y="0.5"></rect></g><g transform="translate(110,300)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" fill="none" height="68.5" width="58.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="11" xml:space="preserve" y="13.3906">0xED</text><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="10" xml:space="preserve" y="29.5">Prefix</text><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" d="M1 35.5 L59 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="2" xml:space="preserve" y="50.6094">(1 byte)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(170,300)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" height="68.5" stroke="none" width="228.5" x="0.5" y="0.5"></rect></g><g transform="translate(170,300)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" fill="none" height="68.5" width="228.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="78" xml:space="preserve" y="29.5">Public Key</text><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" d="M1 35.5 L229 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="79" xml:space="preserve" y="50.6094">(32 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(170,170)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" height="68.5" stroke="none" width="228.5" x="0.5" y="0.5"></rect></g><g transform="translate(170,170)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" fill="none" height="68.5" width="228.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="75" xml:space="preserve" y="29.5">Private Key</text><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" d="M1 35.5 L229 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="79" xml:space="preserve" y="50.6094">(32 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(280,30)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" height="68.5" stroke="none" width="118.5" x="0.5" y="0.5"></rect></g><g transform="translate(280,30)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" fill="none" height="68.5" width="118.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="42" xml:space="preserve" y="29.5">Seed</text><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" d="M1 35.5 L119 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="24" xml:space="preserve" y="50.6094">(16 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(20,30)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" height="68.5" stroke="none" width="118.5" x="0.5" y="0.5"></rect></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(20,30)"><rect clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" fill="none" height="68.5" width="118.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="21.4453">Passphrase</text></g><g font-family="sans-serif" font-size="14px" transform="translate(20,30)"><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" d="M1 27.4453 L119 27.4453" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" stroke="none" x="24" xml:space="preserve" y="42.5547">(Optional)</text><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath4)" stroke="none" x="24" xml:space="preserve" y="58.6641">Any string</text></g><g stroke-dasharray="1,2" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(100,370)"><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath5)" d="M10.5 10.5 L10.5 30.5" fill="none"></path><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath5)" d="M10.5 30.5 L300.5 30.5" fill="none"></path><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath5)" d="M300.5 30.5 L300.5 10.5" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="93.6582" xml:space="preserve" y="42.1094">Master Public Key</text><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="120.3213" xml:space="preserve" y="58.2188">(33 bytes)</text></g><g transform="translate(230,230)"><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath6)" d="M10.5 10.5 L10.5 69.5" fill="none"></path><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath6)" d="M4 58.7417 L10.5 70 L17 58.7417" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="14" xml:space="preserve" y="48.0547">Public Key Derivation</text></g><g transform="translate(290,90)"><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath7)" d="M10.5 79.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath7)" d="M17 68.7417 L10.5 80 L4 68.7417" fill="none"></path><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath7)" font-family="sans-serif" font-size="14px" stroke="none" x="14" xml:space="preserve" y="53.0547">SHA-512Half</text></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(130,50)"><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath8)" d="M10.5 20.5 L149.5 20.5" fill="none"></path><path clip-path="url(#img/key-derivation-ed25519.svg__clipPath8)" d="M138.7417 27 L150 20.5 L138.7417 14" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(130,50)"><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath8)" stroke="none" x="28.8989" xml:space="preserve" y="16">SHA-512, keep</text><text clip-path="url(#img/key-derivation-ed25519.svg__clipPath8)" stroke="none" x="34.186" xml:space="preserve" y="32.1094">first 16 bytes</text></g></g></svg></a></figure>
+<ol>
+<li>
+<p>Calculate the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the seed value. The result is the 32-byte secret key.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> All 32-byte numbers are valid Ed25519 secret keys. However, only numbers that are chosen randomly enough are secure enough to be used as secret keys.</p>
+</li>
+<li>
+<p>To calculate an Ed25519 public key, use the standard public key derivation for <a class="external-link" href="https://ed25519.cr.yp.to/software.html" target="_blank">Ed25519 <i aria-hidden="true" class="fa fa-external-link"></i></a> to derive the 32-byte public key.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, <a class="external-link" href="https://www.openssl.org/" target="_blank">OpenSSL <i aria-hidden="true" class="fa fa-external-link"></i></a> has implementations of core Ed25519 and secp256k1 functions.</p>
+</li>
+<li>
+<p>Prefix the 32-byte public key with the single byte <code>0xED</code> to indicate an Ed25519 public key, resulting in 33 bytes.</p>
+<p>If you are implementing code to sign transactions, remove the <code>0xED</code> prefix and use the 32-byte key for the actual signing process.</p>
+</li>
+<li>
+<p>When serializing an account public key to <a href="base58-encodings.html">base58</a>, use the account public key prefix <code>0x23</code>.</p>
+<p>Validator ephemeral keys cannot be Ed25519.</p>
+</li>
+</ol>
+<h3 id="secp256k1-key-derivation">secp256k1 Key Derivation<a aria-hidden="true" class="hover_anchor" href="#secp256k1-key-derivation"><i class="fa fa-link"></i></a></h3>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<figure><a href="img/key-derivation-secp256k1.svg" title="Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="30 20 940 730" width="940" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/key-derivation-secp256k1.svg__genericDefs"></defs><g><defs id="img/key-derivation-secp256k1.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath2"><path d="M0 0 L0 50 L210 50 L210 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath3"><path d="M0 0 L0 70 L150 70 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath4"><path d="M0 0 L0 40 L160 40 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath5"><path d="M0 0 L0 40 L140 40 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath6"><path d="M0 0 L0 80 L150 80 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath7"><path d="M0 0 L0 80 L20 80 L20 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath8"><path d="M0 0 L0 70 L110 70 L110 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath9"><path d="M0 0 L0 70 L20 70 L20 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath10"><path d="M0 0 L0 70 L140 70 L140 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath11"><path d="M0 0 L0 70 L180 70 L180 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath12"><path d="M0 0 L0 270 L80 270 L80 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath13"><path d="M0 0 L0 50 L130 50 L130 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath14"><path d="M0 0 L0 60 L410 60 L410 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath15"><path d="M0 0 L0 380 L410 380 L410 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath16"><path d="M0 0 L0 30 L50 30 L50 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath17"><path d="M0 0 L0 410 L120 410 L120 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath18"><path d="M0 0 L0 80 L70 80 L70 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath19"><path d="M0 0 L0 280 L210 280 L210 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath20"><path d="M0 0 L0 70 L210 70 L210 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath21"><path d="M0 0 L0 70 L60 70 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath22"><path d="M0 0 L0 30 L60 30 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath23"><path d="M0 0 L0 80 L60 80 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath24"><path d="M0 0 L0 220 L410 220 L410 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath25"><path d="M0 0 L0 50 L160 50 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath26"><path d="M0 0 L0 170 L460 170 L460 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/key-derivation-secp256k1.svg__clipPath27"><path d="M0 0 L0 50 L180 50 L180 0 Z"></path></clippath></defs><g fill="lime" stroke="lime" transform="translate(630,600)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" stroke="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" fill="none" stroke="black"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M198.5 0.5 L198.5 12.5 L209 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(630,600)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">Accounts use the master</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="34.2188">key pair.</text></g><g fill="lime" stroke="lime" transform="translate(590,200)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" stroke="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" fill="none" stroke="black"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M198.5 0.5 L198.5 12.5 L209 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(590,200)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">Validators use the root key</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="34.2188">pair.</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(330,660)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" height="68.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(330,660)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" fill="none" height="68.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="9" xml:space="preserve" y="29.5">Master Private Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" d="M1 35.5 L149 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="39" xml:space="preserve" y="50.6094">(32 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(150,670)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath4)" d="M0.5 0.5 L128.5 0.5 L159 20.5 L128.5 39 L0.5 39 Z" stroke="none"></path></g><g transform="translate(150,670)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath4)" d="M0.5 0.5 L128.5 0.5 L159 20.5 L128.5 39 L0.5 39 Z" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="36" xml:space="preserve" y="17">Add, Modulo</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="36" xml:space="preserve" y="33.1094">Group Order</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(800,290)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" height="68.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(800,290)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" fill="none" height="68.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="12" xml:space="preserve" y="21.4453">Master Public Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" d="M1 27.4453 L149 27.4453" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="41" xml:space="preserve" y="42.5547">(33 bytes</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="58.6641">compressed)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(660,300)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath5)" d="M0.5 0.5 L112.5 0.5 L139 20.5 L112.5 39 L0.5 39 Z" stroke="none"></path></g><g transform="translate(660,300)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath5)" d="M0.5 0.5 L112.5 0.5 L139 20.5 L112.5 39 L0.5 39 Z" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="23" xml:space="preserve" y="17">Elliptic Curve</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="36" xml:space="preserve" y="33.1094">Point Add</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(330,550)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" height="78.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(330,550)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" fill="none" height="78.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="18.3906">Intermediate</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="38" xml:space="preserve" y="34.5">Public Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" d="M1 40.5 L149 40.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="41" xml:space="preserve" y="55.6094">(33 bytes</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="71.7188">compressed)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(80,550)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" height="78.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(80,550)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" fill="none" height="78.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="18.3906">Intermediate</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="35" xml:space="preserve" y="34.5">Private Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" d="M1 40.5 L149 40.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="39" xml:space="preserve" y="55.6094">(32 bytes)</text></g><g stroke-width="5" transform="translate(500,330)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath7)" d="M10.5 0.5 L10.5 79" fill="none"></path></g><g fill="yellow" stroke="yellow" transform="translate(150,430)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" stroke="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" fill="none" stroke="black"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M198.5 0.5 L198.5 12.5 L209 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="10px" transform="translate(150,430)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="14.375">Increment the key sequence and try</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="26.75">again if the SHA-512Half doesn't make</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="39.125">a valid private key.</text></g><g fill="yellow" stroke="yellow" transform="translate(140,140)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" stroke="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M0.5 0.5 L198.5 0.5 L209 12.5 L209 49 L0.5 49 Z" fill="none" stroke="black"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" d="M198.5 0.5 L198.5 12.5 L209 12.5" fill="none" stroke="black"></path></g><g font-family="sans-serif" font-size="10px" transform="translate(140,140)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="14.375">Increment the key sequence and try</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="26.75">again if the SHA-512Half doesn't make</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="39.125">a valid private key.</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(370,330)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" height="68.5" stroke="none" width="108.5" x="0.5" y="0.5"></rect></g><g transform="translate(370,330)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" fill="none" height="68.5" width="108.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="31" xml:space="preserve" y="13.3906">Family</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="26" xml:space="preserve" y="29.5">Number</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" d="M1 35.5 L109 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="23" xml:space="preserve" y="50.6094">(4 bytes;</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="31" xml:space="preserve" y="66.7188">all 0's)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(370,410)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" height="68.5" stroke="none" width="108.5" x="0.5" y="0.5"></rect></g><g transform="translate(370,410)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" fill="none" height="68.5" width="108.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="30" xml:space="preserve" y="13.3906">Int Key</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="29.5">Sequence</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" d="M1 35.5 L109 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="23" xml:space="preserve" y="50.6094">(4 bytes;</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="66.7188">default 0)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(370,120)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" height="68.5" stroke="none" width="108.5" x="0.5" y="0.5"></rect></g><g transform="translate(370,120)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" fill="none" height="68.5" width="108.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="23" xml:space="preserve" y="13.3906">Root Key</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="29.5">Sequence</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" d="M1 35.5 L109 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="23" xml:space="preserve" y="50.6094">(4 bytes;</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="66.7188">default 0)</text></g><g stroke-width="5" transform="translate(500,80)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath9)" d="M10.5 0.5 L10.5 69" fill="none"></path></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(330,250)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" height="68.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(330,250)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" fill="none" height="68.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="20" xml:space="preserve" y="21.4453">Root Public Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" d="M1 27.4453 L149 27.4453" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="41" xml:space="preserve" y="42.5547">(33 bytes</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="29" xml:space="preserve" y="58.6641">compressed)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(50,250)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" height="68.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(50,250)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" fill="none" height="68.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="16" xml:space="preserve" y="29.5">Root Private Key</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" d="M1 35.5 L149 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="39" xml:space="preserve" y="50.6094">(32 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(340,40)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" height="68.5" stroke="none" width="138.5" x="0.5" y="0.5"></rect></g><g transform="translate(340,40)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" fill="none" height="68.5" width="138.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" font-family="sans-serif" font-size="14px" stroke="none" x="52" xml:space="preserve" y="29.5">Seed</text><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" d="M1 35.5 L139 35.5" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" font-family="sans-serif" font-size="14px" stroke="none" x="34" xml:space="preserve" y="50.6094">(16 bytes)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(50,40)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" height="68.5" stroke="none" width="138.5" x="0.5" y="0.5"></rect></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(50,40)"><rect clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" fill="none" height="68.5" width="138.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" font-family="sans-serif" font-size="14px" stroke="none" x="30" xml:space="preserve" y="21.4453">Passphrase</text></g><g font-family="sans-serif" font-size="14px" transform="translate(50,40)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" d="M1 27.4453 L139 27.4453" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" stroke="none" x="34" xml:space="preserve" y="42.5547">(Optional)</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath10)" stroke="none" x="34" xml:space="preserve" y="58.6641">Any string</text></g><g fill="rgb(37,167,104)" stroke="rgb(37,167,104)" stroke-dasharray="1,2" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(470,630)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath11)" d="M11.4662 50.2423 L160.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath11)" d="M23.5361 53.7508 L10.9831 50.3712 L20.1865 41.1898" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g fill="rgb(37,167,104)" stroke="rgb(37,167,104)" stroke-dasharray="1,2" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(760,350)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath12)" d="M60.296 11.479 L10.5 250.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath12)" d="M51.7385 20.6855 L60.398 10.9895 L64.4652 23.3369" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g fill="rgb(37,167,104)" stroke="rgb(37,167,104)" stroke-dasharray="1,2" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(480,230)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" d="M11.4806 30.3039 L110.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" d="M23.3047 34.5678 L10.9903 30.4019 L20.7552 21.8202" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g fill="rgb(37,167,104)" stroke="rgb(37,167,104)" stroke-dasharray="1,2" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(200,210)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath14)" d="M11.4969 40.4213 L390.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath14)" d="M22.7334 46.0544 L10.9984 40.4606 L21.7103 33.0948" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(470,350)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath15)" d="M10.5 350.5 L390.5 350.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath15)" d="M390.5 350.5 L390.5 11.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath15)" d="M397 22.2583 L390.5 11 L384 22.2583" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(470,350)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath15)" stroke="none" x="125.2573" xml:space="preserve" y="346">(Public key derivation</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath15)" stroke="none" x="118.2412" xml:space="preserve" y="362.1094">yields the same result.)</text></g><g transform="translate(300,680)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath16)" d="M29.5 10.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath16)" d="M18.7417 4 L30 10.5 L18.7417 17" fill="none"></path></g><g transform="translate(50,310)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath17)" d="M99.5 390.5 L10.5 390.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath17)" d="M10.5 390.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath17)" d="M88.7417 384 L100 390.5 L88.7417 397" fill="none"></path></g><g transform="translate(100,620)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath18)" d="M49.5 60.5 L10.5 60.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath18)" d="M10.5 60.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath18)" d="M38.7417 54 L50 60.5 L38.7417 67" fill="none"></path></g><g transform="translate(470,320)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath19)" d="M189.5 10.5 L150.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath19)" d="M150.5 10.5 L150.5 260.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath19)" d="M150.5 260.5 L10.5 260.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath19)" d="M178.7417 4 L190 10.5 L178.7417 17" fill="none"></path></g><g transform="translate(470,260)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath20)" d="M189.5 50.5 L150.5 50.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath20)" d="M150.5 50.5 L150.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath20)" d="M150.5 10.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath20)" d="M178.7417 44 L190 50.5 L178.7417 57" fill="none"></path></g><g transform="translate(220,580)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" d="M10.5 20.5 L109.5 20.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" d="M98.7417 27 L110 20.5 L98.7417 14" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" font-family="sans-serif" font-size="14px" stroke="none" x="24.7886" xml:space="preserve" y="16">Public Key</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath13)" font-family="sans-serif" font-size="14px" stroke="none" x="24.9199" xml:space="preserve" y="32.1094">Derivation</text></g><g transform="translate(470,380)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath21)" d="M10.5 50.5 L20.5 50.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath21)" d="M20.5 50.5 L20.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath21)" d="M20.5 10.5 L39.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath21)" d="M28.7417 17 L40 10.5 L28.7417 4" fill="none"></path></g><g transform="translate(470,360)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M10.5 10.5 L39.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M28.7417 17 L40 10.5 L28.7417 4" fill="none"></path></g><g transform="translate(470,290)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath23)" d="M10.5 10.5 L20.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath23)" d="M20.5 10.5 L20.5 60.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath23)" d="M20.5 60.5 L39.5 60.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath23)" d="M28.7417 67 L40 60.5 L28.7417 54" fill="none"></path></g><g transform="translate(140,350)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" d="M10.5 199.5 L10.5 160.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" d="M10.5 160.5 L390.5 160.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" d="M390.5 160.5 L390.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" d="M390.5 10.5 L370.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" d="M17 188.7417 L10.5 200 L4 188.7417" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath24)" font-family="sans-serif" font-size="14px" stroke="none" x="155.979" xml:space="preserve" y="156">SHA-512Half</text></g><g transform="translate(470,120)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M10.5 10.5 L39.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M28.7417 17 L40 10.5 L28.7417 4" fill="none"></path></g><g transform="translate(470,90)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M10.5 10.5 L39.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath22)" d="M28.7417 17 L40 10.5 L28.7417 4" fill="none"></path></g><g transform="translate(190,270)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath25)" d="M10.5 20.5 L139.5 20.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath25)" d="M128.7417 27 L140 20.5 L128.7417 14" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath25)" font-family="sans-serif" font-size="14px" stroke="none" x="39.7886" xml:space="preserve" y="16">Public Key</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath25)" font-family="sans-serif" font-size="14px" stroke="none" x="39.9199" xml:space="preserve" y="32.1094">Derivation</text></g><g transform="translate(110,100)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" d="M10.5 149.5 L10.5 110.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" d="M10.5 110.5 L440.5 110.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" d="M440.5 110.5 L440.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" d="M440.5 10.5 L400.5 10.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" d="M17 138.7417 L10.5 150 L4 138.7417" fill="none"></path><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath26)" font-family="sans-serif" font-size="14px" stroke="none" x="180.979" xml:space="preserve" y="106">SHA-512Half</text></g><g stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(180,60)"><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath27)" d="M10.5 20.5 L159.5 20.5" fill="none"></path><path clip-path="url(#img/key-derivation-secp256k1.svg__clipPath27)" d="M148.7417 27 L160 20.5 L148.7417 14" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g font-family="sans-serif" font-size="14px" transform="translate(180,60)"><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath27)" stroke="none" x="33.8989" xml:space="preserve" y="16">SHA-512, keep</text><text clip-path="url(#img/key-derivation-secp256k1.svg__clipPath27)" stroke="none" x="39.186" xml:space="preserve" y="32.1094">first 16 bytes</text></g></g></svg></a></figure>
+<p>Key derivation for secp256k1 XRP Ledger account keys involves more steps than Ed25519 key derivation for a couple reasons:</p>
+<ul>
+<li>Not all 32-byte numbers are valid secp256k1 secret keys.</li>
+<li>The XRP Ledger's reference implementation has an unused, incomplete framework for deriving a family of key pairs from a single seed value.</li>
+</ul>
+<p>The steps to derive the XRP Ledger's secp256k1 account key pair from a seed value are as follows:</p>
+<ol>
+<li>
+<p>Calculate a "root key pair" from the seed value, as follows:</p>
+<ol>
+<li>
+<p>Concatenate the following in order, for a total of 20 bytes:</p>
+<ul>
+<li>The seed value (16 bytes)</li>
+<li>A "root sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the root sequence.</li>
+</ul>
+</li>
+<li>
+<p>Calculate the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the concatenated (seed+root sequence) value.</p>
+</li>
+<li>
+<p>If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. <a class="external-link" href="https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>A valid secp256k1 key must not be zero, and it must be numerically less than the <em>secp256k1 group order</em>. The secp256k1 group order is the constant value <code>0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141</code>.</p>
+</li>
+<li>
+<p>With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the root public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, <a class="external-link" href="https://www.openssl.org/" target="_blank">OpenSSL <i aria-hidden="true" class="fa fa-external-link"></i></a> has implementations of core Ed25519 and secp256k1 functions.)</p>
+</li>
+</ol>
+<p class="devportal-callout tip"><strong>Tip:</strong> Validators use this root key pair. If you are calculating a validator's key pair, you can stop here. To distinguish between these two different types of public keys, the <a href="base58-encodings.html">base58</a> serialization for validator public keys uses the prefix <code>0x1c</code>.</p>
+</li>
+<li>
+<p>Convert the root public key to its 33-byte compressed form.</p>
+<p>The uncompressed form of any ECDSA public key consists of a pair of 32-byte integers: an X coordinate, and a Y coordinate. The compressed form is the X coordinate and a one-byte prefix: <code>0x02</code> if the Y coordinate is even, or <code>0x03</code> if the Y coordinate is odd.</p>
+<p>You can convert an uncompressed public key to the compressed form with the <code>openssl</code> commandline tool. For example, if the uncompressed public key is in the file <code>ec-pub.pem</code>, you can output the compressed form like this:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">$<span class="w"> </span>openssl<span class="w"> </span>ec<span class="w"> </span>-in<span class="w"> </span>ec-pub.pem<span class="w"> </span>-pubin<span class="w"> </span>-text<span class="w"> </span>-noout<span class="w"> </span>-conv_form<span class="w"> </span>compressed
+</code></pre></div>
+</li>
+<li>
+<p>Derive an "intermediate key pair" from the compressed root public key you, as follows:</p>
+<ol>
+<li>
+<p>Concatenate the following in order, for a total of 41 bytes:</p>
+<ul>
+<li>The compressed root public key (33 bytes)</li>
+<li><code>0x00000000000000000000000000000000</code> (4 bytes of zeroes). (This value was intended to be used to derive different members of the same family, but in practice only the value 0 is used.)</li>
+<li>A "key sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the key sequence.</li>
+</ul>
+</li>
+<li>
+<p>Calculate the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the concatenated value.</p>
+</li>
+<li>
+<p>If the result is not a valid secp256k1 secret key, increment the key sequence by 1 and restart deriving the account's intermediate key pair.</p>
+</li>
+<li>
+<p>With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the intermediate public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, <a class="external-link" href="https://www.openssl.org/" target="_blank">OpenSSL <i aria-hidden="true" class="fa fa-external-link"></i></a> has implementations of core Ed25519 and secp256k1 functions.)</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Derive the master public key pair by adding the intermediate public key to the root public key. Similarly, derive the secret key by adding the intermediate secret key to the root secret key.</p>
+<ul>
+<li>
+<p>An ECDSA secret key is a very large integer, so you can calculate the sum of two secret keys by summing them modulo the secp256k1 group order.</p>
+</li>
+<li>
+<p>An ECDSA public key is a point on the elliptic curve, so you should use elliptic curve math to sum the points.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Convert the master public key to its 33-byte compressed form, as before.</p>
+</li>
+<li>
+<p>When serializing an account's public key to its <a href="base58-encodings.html">base58</a> format, use the account public key prefix, <code>0x23</code>.</p>
+<p>See <a href="addresses.html#address-encoding">Address Encoding</a> for information and sample code to convert from an account's public key to its address.</p>
+</li>
+</ol>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>Concepts:</strong><ul>
+<li><a href="account-types.html">Issuing and Operational Addresses</a></li>
+</ul>
+</li>
+<li><strong>Tutorials:</strong><ul>
+<li><a href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
+<li><a href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a></li>
+</ul>
+</li>
+<li><strong>References:</strong><ul>
+<li><a href="setregularkey.html">SetRegularKey transaction</a></li>
+<li><a href="accountroot.html">AccountRoot ledger object</a></li>
+<li><a href="wallet_propose.html">wallet_propose method</a></li>
+<li><a href="account_info.html">account_info method</a></li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<script src="assets/vendor/feedback-widget.js"></script>
+<div id="feedback-content"></div>
+<script>
+  // Options
+  const options = {
+    analyticsConfig: [
+      // { name: 'ga', id: 'UA-45576805-2' },
+      { name: 'gtm', id: 'GTM-KCQZ3L8' },
+    ],
+    analyticsName: 'Feedback Widget Tracker',
+    theme: 'xrpl',
+    currentPath: window.location.pathname,
+    parentElement: '#feedback-content',
+  };
+
+  // Init WidgetClass
+  const r = new WidgetClass(options);
+</script>      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
+
+
+<nav class="nav flex-column dactyl-tree-nav">
+  <div class="nav-item nav-parent">
+    <a class="nav-link" href="docs.html">Documentation</a>
+  </div>
+    
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+
+        <a class="nav-link" href="introduction.html">Introduction</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="what-is-xrp.html">What is XRP?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="crypto-wallets.html">Crypto Wallets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="txn-and-requests.html">Transactions and Requests</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="software-ecosystem.html">Software Ecosystem</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="use-cases.html">Use Cases</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+
+        <a class="nav-link" href="payments-uc.html">Payments</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="restricting-deposits-uc.html">Restricting Deposits</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow-uc.html">Smart Contracts</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="tokenization.html">Tokenization</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-issuer.html">Stablecoin Issuer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
+
+        <a class="nav-link" href="nft-mkt-overview.html">NFT Marketplace Overview</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-marketplace.html">NFT Marketplace</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-minter.html">Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="digital-artist.html">Digital Artist</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+
+        <a class="nav-link" href="defi-uc.html">Decentralized Finance</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="algorithmic-trading.html">Algorithmic Trading</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="true" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="concepts.html">Concepts</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
+
+        <a class="nav-link" href="networks-and-servers.html">Networks and Servers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-server-modes.html">rippled Server Modes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clustering.html">Clustering</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-history.html">Ledger History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-protocol.html">Peer Protocol</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amendments.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+
+        <a class="nav-link" href="consensus.html">Consensus Protocol</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-structure.html">Consensus Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-principles-and-rules.html">Consensus Principles and Rules</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-protections.html">Consensus Protections Against Attacks and Failure Modes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="invariant-checking.html">Invariant Checking</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fee-voting.html">Fee Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-research.html">Consensus Research</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+
+        <a class="nav-link" href="ledgers.html">Ledgers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-structure.html">Ledger Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-close-times.html">Ledger Close Times</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4" aria-expanded="false" aria-controls="tree_nav_group_4_4"></a>
+
+        <a class="nav-link" href="transactions.html">Transactions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fees.html">Fees (Disambiguation)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="reliable-transaction-submission.html">Reliable Transaction Submission</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="secure-signing.html">Secure Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="source-and-destination-tags.html">Source and Destination Tags</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-cost.html">Transaction Cost</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-queue.html">Transaction Queue</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_4_7"></a>
+
+        <a class="nav-link" href="finality-of-results.html">Finality of Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-transaction-results.html">Look Up Transaction Results</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-malleability.html">Transaction Malleability</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="canceling-a-transaction.html">Canceling a Transaction</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5" aria-expanded="false" aria-controls="tree_nav_group_4_5"></a>
+
+        <a class="nav-link" href="payment-types.html">Payment Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="direct-xrp-payments.html">Direct XRP Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cross-currency-payments.html">Cross-Currency Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="partial-payments.html">Partial Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6" aria-expanded="false" aria-controls="tree_nav_group_4_6"></a>
+
+        <a class="nav-link" href="tokens.html">Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-reserve-requirements.html">NFT Reserve Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-auctions.html">Running an NFT Auction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-apis.html">NFT APIs</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+
+        <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offers.html">Offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="autobridging.html">Auto-Bridging</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticksize.html">Tick Size</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_7" aria-expanded="true" aria-controls="tree_nav_group_4_7"></a>
+
+        <a class="nav-link" href="accounts.html">Accounts</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_4_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account-types.html">Account Types</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="deleting-accounts.html">Deleting Accounts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="reserves.html">Reserves</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="addresses.html">Addresses</a>
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="cryptographic-keys.html">Cryptographic Keys</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositauth.html">Deposit Authorization</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+
+        <a class="nav-link" href="tutorials.html">Tutorials</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2" aria-expanded="false" aria-controls="tree_nav_group_5_2"></a>
+
+        <a class="nav-link" href="python.html">Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-python.html">Get Started Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2"></a>
+
+        <a class="nav-link" href="modular-tutorials-in-python.html">Modular Tutorials in Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_1"></a>
+
+        <a class="nav-link" href="send-payments-using-python.html">Send Payments Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-accounts-send-xrp.html">Create Accounts and Send XRP Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-python.html">NFTs Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-mint-and-burn-nfts.html">Mint and Burn NFTs Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-transfer-nfts.html">Transfer NFTs Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-broker-sale.html">Broker an NFT Sale Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_3"></a>
+
+        <a class="nav-link" href="javascript.html">JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2"></a>
+
+        <a class="nav-link" href="modular-tutorials-in-javascript.html">Modular Tutorials in JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_1"></a>
+
+        <a class="nav-link" href="send-payments-using-javascript.html">Send Payments Using JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp-using-javascript.html">Create Accounts and Send XRP Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency-using-javascript.html">Create Trust Line and Send Currency Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-time-based-escrows-using-javascript.html">Create Time-based Escrows Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-conditional-escrows-using-javascript.html">Create Conditional Escrows Using JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-javascript.html">NFTs Using JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nfts-using-javascript.html">Mint and Burn NFTs Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nfts-using-javascript.html">Transfer NFTs Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-an-nft-sale-using-javascript.html">Broker an NFT Sale Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="assign-an-authorized-minter-using-javascript.html">Assign an Authorized Minter Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="batch-mint-nfts-using-javascript.html">Batch Mint NFTs Using JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
+
+        <a class="nav-link" href="java.html">Java</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-java.html">Get Started Using Java</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-http-websocket-apis.html">Get Started Using HTTP / WebSocket APIs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
+
+        <a class="nav-link" href="tasks.html">Tasks</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
+
+        <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="disable-master-key-pair.html">Disable Master Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="set-up-multi-signing.html">Set Up Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="require-destination-tags.html">Require Destination Tags</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offline-account-setup.html">Offline Account Setup Tutorial</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-xrp.html">Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
+
+        <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
+
+        <a class="nav-link" href="use-escrows.html">Use Escrows</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-conditionally-held-escrow.html">Send a Conditionally-Held Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-escrows.html">Look up Escrows</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
+
+        <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
+
+        <a class="nav-link" href="use-checks.html">Use Checks</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cash-a-check-for-an-exact-amount.html">Cash a Check for an Exact Amount</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cash-a-check-for-a-flexible-amount.html">Cash a Check for a Flexible Amount</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cancel-a-check.html">Cancel a Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-checks-by-sender.html">Look Up Checks by Sender</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-checks-by-recipient.html">Look Up Checks by Recipient</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
+
+        <a class="nav-link" href="use-tokens.html">Use Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-an-automated-market-maker.html">Create an Automated Market Maker <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+
+        <a class="nav-link" href="references.html">References</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1" aria-expanded="false" aria-controls="tree_nav_group_6_1"></a>
+
+        <a class="nav-link" href="protocol-reference.html">XRP Ledger Protocol Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_6_1_1"></a>
+
+        <a class="nav-link" href="basic-data-types.html">Basic Data Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="base58-encodings.html">base58 Encodings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="currency-formats.html">Currency Formats</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken.html">NFToken</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2"></a>
+
+        <a class="nav-link" href="ledger-data-formats.html">Ledger Data Formats</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-header.html">Ledger Header</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
+
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amendments-object.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="check.html">Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositpreauth-object.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="directorynode.html">DirectoryNode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow-object.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="feesettings.html">FeeSettings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledgerhashes.html">LedgerHashes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offer.html">Offer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paychannel.html">PayChannel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ripplestate.html">RippleState</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="signerlist.html">SignerList</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
+
+        <a class="nav-link" href="transaction-formats.html">Transaction Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-common-fields.html">Transaction Common Fields</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_2"></a>
+
+        <a class="nav-link" href="transaction-types.html">Transaction Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdelete.html">AMMDelete <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcancel.html">CheckCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcash.html">CheckCash</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositpreauth.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowcancel.html">EscrowCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowcreate.html">EscrowCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offercancel.html">OfferCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offercreate.html">OfferCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="payment.html">Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelclaim.html">PaymentChannelClaim</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelcreate.html">PaymentChannelCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelfund.html">PaymentChannelFund</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="setregularkey.html">SetRegularKey</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="signerlistset.html">SignerListSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trustset.html">TrustSet</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_3"></a>
+
+        <a class="nav-link" href="pseudo-transaction-types.html">Pseudo-Transactions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enableamendment.html">EnableAmendment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="setfee.html">SetFee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_4"></a>
+
+        <a class="nav-link" href="transaction-results.html">Transaction Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tec-codes.html">tec Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tef-codes.html">tef Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tel-codes.html">tel Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tem-codes.html">tem Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ter-codes.html">ter Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tes-success.html">tes Success</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-metadata.html">Transaction Metadata</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="serialization.html">Serialization Format</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2" aria-expanded="false" aria-controls="tree_nav_group_6_2"></a>
+
+        <a class="nav-link" href="client-libraries.html">Client Libraries</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-py.readthedocs.io/">Python Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://javadoc.io/doc/org.xrpl/">Java Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://www.rubydoc.info/gems/xrbp">Ruby Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3" aria-expanded="false" aria-controls="tree_nav_group_6_3"></a>
+
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_1"></a>
+
+        <a class="nav-link" href="api-conventions.html">API Conventions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="request-formatting.html">Request Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="response-formatting.html">Response Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="error-formatting.html">Error Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="markers-and-pagination.html">Markers and Pagination</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rate-limiting.html">Rate Limiting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-server-states.html">rippled Server States</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2"></a>
+
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_1"></a>
+
+        <a class="nav-link" href="account-methods.html">Account Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_channels.html">account_channels</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_currencies.html">account_currencies</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_info.html">account_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_objects.html">account_objects</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_offers.html">account_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_tx.html">account_tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="gateway_balances.html">gateway_balances</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="noripple_check.html">noripple_check</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_2"></a>
+
+        <a class="nav-link" href="ledger-methods.html">Ledger Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_closed.html">ledger_closed</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_current.html">ledger_current</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_data.html">ledger_data</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_entry.html">ledger_entry</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_3"></a>
+
+        <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="submit.html">submit</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="submit_multisigned.html">submit_multisigned</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction_entry.html">transaction_entry</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tx.html">tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tx_history.html">tx_history</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_4"></a>
+
+        <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="path_find.html">path_find</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ripple_path_find.html">ripple_path_find</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_5"></a>
+
+        <a class="nav-link" href="payment-channel-methods.html">Payment Channel Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="channel_authorize.html">channel_authorize</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="channel_verify.html">channel_verify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_6"></a>
+
+        <a class="nav-link" href="subscription-methods.html">Subscription Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="subscribe.html">subscribe</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="unsubscribe.html">unsubscribe</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_7"></a>
+
+        <a class="nav-link" href="server-info-methods.html">Server Info Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fee.html">fee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_state.html">server_state</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_8"></a>
+
+        <a class="nav-link" href="clio-methods.html">Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_history.html">nft_history</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_9">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="json.html">json</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ping.html">ping</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="random.html">random</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3"></a>
+
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_1"></a>
+
+        <a class="nav-link" href="key-generation-methods.html">Key Generation Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validation_create.html">validation_create</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="wallet_propose.html">wallet_propose</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_2"></a>
+
+        <a class="nav-link" href="logging-and-data-management-methods.html">Logging and Data Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="can_delete.html">can_delete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="crawl_shards.html">crawl_shards</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="download_shard.html">download_shard</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_cleaner.html">ledger_cleaner</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_request.html">ledger_request</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="log_level.html">log_level</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_3"></a>
+
+        <a class="nav-link" href="server-control-methods.html">Server Control Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_accept.html">ledger_accept</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stop.html">stop</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validation_seed.html">validation_seed <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_4"></a>
+
+        <a class="nav-link" href="signing-methods.html">Signing Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_5"></a>
+
+        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect.html">connect</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_add.html">peer_reservations_add</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_del.html">peer_reservations_del</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_list.html">peer_reservations_list</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peers.html">peers</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_6"></a>
+
+        <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="feature.html">feature</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fetch_info.html">fetch_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get_counts.html">get_counts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="print.html">print</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator_info.html">validator_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator_list_sites.html">validator_list_sites</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validators.html">validators</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_4"></a>
+
+        <a class="nav-link" href="peer-port-methods.html">Peer Port Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="health-check.html">Health Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-crawler.html">Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator-list.html">Validator List Method</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrp-ledger-toml.html">xrp-ledger.toml File</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
+
+        <a class="nav-link" href="infrastructure.html">Infrastructure</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="commandline-usage.html">Commandline Usage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_2" aria-expanded="false" aria-controls="tree_nav_group_7_2"></a>
+
+        <a class="nav-link" href="install-rippled.html">Install rippled</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-rippled-on-ubuntu.html">Install on Ubuntu or Debian Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-automatically-on-linux.html">Update Automatically on Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-manually-on-centos-rhel.html">Update Manually on CentOS/Red Hat</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="capacity-planning.html">Capacity Planning</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-1-3-migration-instructions.html">rippled v1.3.x Migration Instructions <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3" aria-expanded="false" aria-controls="tree_nav_group_7_3"></a>
+
+        <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_7_3_1"></a>
+
+        <a class="nav-link" href="server-modes.html">Server Modes</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_7_3_2"></a>
+
+        <a class="nav-link" href="data-retention.html">Data Retention</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-full-history.html">Configure Full History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="online-deletion.html">Online Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-online-deletion.html">Configure Online Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-advisory-deletion.html">Configure Advisory Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="history-sharding.html">History Sharding</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-history-sharding.html">Configure History Sharding</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-amendment-voting.html">Configure Amendment Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-grpc.html">Configure gRPC</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-public-signing.html">Enable Public Signing</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
+
+        <a class="nav-link" href="configure-peering.html">Peering</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-a-private-server.html">Configure a Private Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-link-compression.html">Enable Link Compression</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="forward-ports-for-peering.html">Forward Ports for Peering</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="manually-connect-to-a-specific-peer.html">Manually Connect to a Specific Peer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="set-max-number-of-peers.html">Set Maximum Number of Peers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-a-peer-reservation.html">Use a Peer Reservation</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_5" aria-expanded="false" aria-controls="tree_nav_group_7_5"></a>
+
+        <a class="nav-link" href="use-stand-alone-mode.html">Testing and Auditing</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_6" aria-expanded="false" aria-controls="tree_nav_group_7_6"></a>
+
+        <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="health-check-interventions.html">Health Check Interventions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="understanding-log-messages.html">Understanding Log Messages</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-wont-start.html">rippled Server Won't Start</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+</nav>      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>About</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
+            <li class="nav-item"><a href="uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
+            <li class="nav-item"><a href="history.html" class="nav-link">History</a></li>
+            <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Docs</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="docs.html" class="nav-link">Documentation</a></li>
+            <li class="nav-item"><a href="introduction.html" class="nav-link">Introduction</a></li>
+            <li class="nav-item"><a href="use-cases.html" class="nav-link">Use Cases</a></li>
+            <li class="nav-item"><a href="concepts.html" class="nav-link">Concepts</a></li>
+            <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
+            <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
+            <li class="nav-item"><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Resources</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
+            <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
+            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Community</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex row">
+      <a href="/" class="footer-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="Jump to top of page"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+  indexName: 'xrpl',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
+
+
+
+</body>
+</html>
