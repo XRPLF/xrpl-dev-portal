@@ -920,28 +920,32 @@ pages:
         targets:
             - en
 
-        # TODO: update translation. Some parts split into "ledger structure"
     -   md: concepts/ledgers/ledgers.ja.md
-        outdated_translation: true
         targets:
             - ja
 
-        # TODO: translate. Some parts taken from "ledgers.md"
     -   md: concepts/ledgers/ledger-structure.md
         targets:
             - en
+
+    -   md: concepts/ledgers/ledger-structure.ja.md
+        targets:
             - ja
 
-        # TODO: translate. Content mostly split off from "ledgers.md"
     -   md: concepts/ledgers/open-closed-validated-ledgers.md
         targets:
             - en
+
+    -   md: concepts/ledgers/open-closed-validated-ledgers.ja.md
+        targets:
             - ja
 
-        # TODO: translate. Content mostly split off from "ledgers.md"
     -   md: concepts/ledgers/ledger-close-times.md
         targets:
             - en
+
+    -   md: concepts/ledgers/ledger-close-times.ja.md
+        targets:
             - ja
 
         # TODO: add a "ledger history" page that doesn't go too deep into
