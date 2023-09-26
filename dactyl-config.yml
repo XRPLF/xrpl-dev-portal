@@ -1333,16 +1333,16 @@ pages:
         targets:
             - en
 
-        #TODO: update translation. Mostly just the title has changed
     -   md: concepts/accounts/account-types.ja.md
-        outdated_translation: true
         targets:
             - ja
 
-        #TODO: translate. Draws heavily on content that used to be in accounts.md
     -   md: concepts/accounts/deleting-accounts.md
         targets:
             - en
+
+    -   md: concepts/accounts/deleting-accounts.ja.md
+        targets:
             - ja
 
     -   md: concepts/accounts/reserves.md
@@ -1353,19 +1353,19 @@ pages:
         targets:
             - ja
 
-        #TODO: translate. Draws heavily on content that used to be in accounts.md
     -   md: concepts/accounts/addresses.md
         targets:
             - en
+
+    -   md: concepts/accounts/addresses.ja.md
+        targets:
             - ja
 
     -   md: concepts/accounts/cryptographic-keys.md
         targets:
             - en
 
-        # TODO: update translation based on latest English version
     -   md: concepts/accounts/cryptographic-keys.ja.md
-        outdated_translation: true
         targets:
             - ja
 
@@ -1373,6 +1373,7 @@ pages:
         targets:
             - en
 
+    # TODO: translate table(depositauth-semantics-table.html)
     -   md: concepts/accounts/depositauth.ja.md
         targets:
             - ja
