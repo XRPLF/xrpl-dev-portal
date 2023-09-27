@@ -920,28 +920,32 @@ pages:
         targets:
             - en
 
-        # TODO: update translation. Some parts split into "ledger structure"
     -   md: concepts/ledgers/ledgers.ja.md
-        outdated_translation: true
         targets:
             - ja
 
-        # TODO: translate. Some parts taken from "ledgers.md"
     -   md: concepts/ledgers/ledger-structure.md
         targets:
             - en
+
+    -   md: concepts/ledgers/ledger-structure.ja.md
+        targets:
             - ja
 
-        # TODO: translate. Content mostly split off from "ledgers.md"
     -   md: concepts/ledgers/open-closed-validated-ledgers.md
         targets:
             - en
+
+    -   md: concepts/ledgers/open-closed-validated-ledgers.ja.md
+        targets:
             - ja
 
-        # TODO: translate. Content mostly split off from "ledgers.md"
     -   md: concepts/ledgers/ledger-close-times.md
         targets:
             - en
+
+    -   md: concepts/ledgers/ledger-close-times.ja.md
+        targets:
             - ja
 
         # TODO: add a "ledger history" page that doesn't go too deep into
@@ -3730,7 +3734,7 @@ pages:
     -   name: キー生成メソッド
         html: key-generation-methods.html
         parent: admin-api-methods.html
-        blurb: 以下のメソッドを使用してキーを生成および管理することができます。。
+        blurb: 以下のメソッドを使用してキーを生成および管理することができます。
         template: pagetype-category.html.jinja
         targets:
             - ja
@@ -4256,6 +4260,7 @@ pages:
         # TODO: translate
     -   md: infrastructure/rippled/installation/build-run-rippled-in-reporting-mode.md
         top_nav_grouping: 人気ページ
+        untranslated_warning: true
         targets:
             - ja
 

@@ -38,9 +38,9 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](accountro
 | `NFTokenMinter`  | 文字列           | Blob              | _(省略可)_ あなたのために[NFTokensをミントする](assign-an-authorized-minter-using-javascript.html)ことができる別のアカウント。 _([NonFungibleTokensV1_1 amendment][]により追加されました.)_ |
 | [`SetFlag`](#accountsetのフラグ)      | 数値           | UInt32            |  _（省略可）_ このアカウントについてオプションを有効にするための整数フラグ。 |
 | [`TransferRate`](#transferrate) | 符号なし整数 | UInt32            |  _（省略可）_ ユーザーがこのアカウントの発行済み通貨を送金するときに請求される手数料。通貨単位の10億分の1で表現されます。手数料なしを意味する特殊なケースの`0`を除いて、`2000000000`より大きくしたり、`1000000000`より小さくしたりすることはできません。 |
-| [`TickSize`](ticksize.html)     | 符号なし整数 | UInt8             | _（省略可）_このアドレスによって発行されている通貨が関係するオファーに使用する為替レートの呼値の単位。それらのオファーの為替レートは、この有効桁数へと丸められます。有効な値は`3`から`15`、または無効にするための`0`です_（[TickSize Amendment][]によって追加されました）。_ |
+| [`TickSize`](ticksize.html)     | 符号なし整数 | UInt8             | _（省略可）_このアドレスによって発行されている通貨が関係するオファーに使用する為替レートの呼値の単位。それらのオファーの為替レートは、この有効桁数へと丸められます。有効な値は`3`から`15`、または無効にするための`0`です_（[TickSize Amendment][]により追加されました）。_ |
 | `WalletLocator`    | 文字列           | Hash256           |  _（省略可）_ 任意の256ビット値です。指定された場合、この値はアカウントの設定の一部として保存さ れますが、固有の定義や要件を持ちません。 |
-| `WalletSize`       | 数値           | UInt32            |  _（省略可）_ 使用されません。このフィールドはAccountSetトランザクションで有効ですが、何の機能もありません。。 |
+| `WalletSize`       | 数値           | UInt32            |  _（省略可）_ 使用されません。このフィールドはAccountSetトランザクションで有効ですが、何の機能もありません |
 
 これらのオプションがいずれも指定されていない場合、AccountSetトランザクションは（取引コストの消却以外に）意味がありません。詳細は、[トランザクションのキャンセルまたはスキップ](cancel-or-skip-a-transaction.html)を参照してください。
 
@@ -74,7 +74,7 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](accountro
 | `asfAccountTxnID`                 | 5     | （なし）                           | このアカウントの直近のトランザクションのIDを追跡します。[AccountTxnID](transaction-common-fields.html#accounttxnid)については必須です。 |
 | `asfAuthorizedNFTokenMinter`      | 10    | (なし)                            | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](accountroot.html)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 _([NonFungibleTokensV1_1 amendment][]により追加されました。)_ |
 | `asfDefaultRipple`                | 8     | `lsfDefaultRipple`                | このアカウントのトラストラインでの[リップリング](rippling.html)をデフォルトで有効にします。 |
-| `asfDepositAuth`                  | 9     | `lsfDepositAuth`                  | このアカウントに対して[Deposit Authorization](depositauth.html)を有効にします _（[DepositAuth Amendment][]によって追加されました）。_  |
+| `asfDepositAuth`                  | 9     | `lsfDepositAuth`                  | このアカウントに対して[Deposit Authorization](depositauth.html)を有効にします _（[DepositAuth Amendment][]により追加されました）。_  |
 | `asfDisableMaster`                | 4     | `lsfDisableMaster`                | マスターキーペアの使用を禁止します。[レギュラーキー](cryptographic-keys.html)や[署名者リスト](multi-signing.html)など、トランザクションに署名するための別の手段がアカウントで設定されている場合のみ有効にできます。 |
 | `asfDisallowIncomingCheck`        | 13    | `lsfDisallowIncomingCheck`        | チェックの着信をブロックします。_([DisallowIncoming amendment][] :not_enabled: が必要です。)_ |
 | `asfDisallowIncomingNFTokenOffer` | 12    | `lsfDisallowIncomingNFTokenOffer` | NFTokenOffersの着信をブロックします。_([DisallowIncoming amendment][] :not_enabled: が必要です)_。 |
