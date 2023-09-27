@@ -10,6 +10,6 @@ Accounts in the XRP Ledger are identified by an address in the XRP Ledger's [bas
 >
 > The XRP Ledger protocol only supports "classic" addresses natively, but many [client libraries](client-libraries.html) support X-addresses too.
 
-{% if currentpage.md != "concept-accounts.md" %}
+{% if currentpage.md != "addresses.md" %}
 For more information, see [Accounts](accounts.html) and [base58 Encodings](base58-encodings.html).
 {% endif %}
