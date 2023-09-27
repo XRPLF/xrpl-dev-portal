@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="48"
+   height="48"
+   viewBox="0 0 47.999999 48.000001"
+   version="1.1"
+   id="svg10"
+   sodipodi:docname="stack-overflow.svg"
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs14" />
+  <sodipodi:namedview
+     id="namedview12"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="2.0241158"
+     inkscape:cx="204.78077"
+     inkscape:cy="61.75536"
+     inkscape:window-width="1920"
+     inkscape:window-height="1053"
+     inkscape:window-x="3000"
+     inkscape:window-y="840"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg10" />
+  <g
+     id="g824"
+     transform="matrix(0.3894695,0,0,0.3894695,4,0)">
+    <polygon
+       fill="#bbbbbb"
+       points="11,113 88,113 88,80 99,80 99,124 0,124 0,80 11,80 "
+       id="polygon4"
+       style="fill-rule:evenodd"
+       transform="translate(0,-0.192)" />
+    <path
+       fill="#f58025"
+       fill-rule="nonzero"
+       d="m 22.987891,76.538 54.025,11.355 2.271,-10.8 -54.025,-11.36 z m 7.149,-25.869 50.046,23.308 4.662,-10.009 -50.047,-23.308 z m 13.848,-24.553 42.428,35.331 7.066,-8.485 -42.428,-35.33 z M 71.371891,0 l -8.86,6.59 32.948,44.3 8.859999,-6.589 z M 22,101.808 h 55 v -11 H 22 Z"
+       id="path6" />
+  </g>
+</svg>
