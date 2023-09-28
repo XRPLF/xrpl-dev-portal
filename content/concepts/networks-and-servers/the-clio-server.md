@@ -39,7 +39,6 @@ When a Clio server receives an API request, it looks up data from these data sto
 Clio will **always** forward to `rippled` if any of the following is true:
 
 - `ledger_index` is set to `current` or `closed`.
-- `api_version` is set to `1` - Clio only supports API v2.
 - `accounts`, `queue` or `full` are set to `true` for the `ledger` API.
 - `queue` is set to `true` for the `account_info` API.
 - Requested API method (`"command"`) is `submit`, `submit_multisigned`, `fee`, `ledger_closed`, `ledger_current`, `ripple_path_find`, `manifest`, `channel_authorize` or `channel_verify`.
