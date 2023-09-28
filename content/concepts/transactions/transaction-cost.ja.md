@@ -29,7 +29,7 @@ XRP LedgerをスパムやDoS攻撃から守るため、各トランザクショ�
 | [Key Resetトランザクション](#key-resetトランザクション)| 0 |
 | [マルチシグトランザクション](multi-signing.html)| 10 drop × （1 + 署名の数） |
 | [フルフィルメントを伴うEscrowFinishトランザクション](escrowfinish.html)| 10 drop × （33 + （バイト単位のフルフィルメントサイズ ÷ 16）） |
-| [AccountDeleteトランザクション](accounts.html#アカウントの削除)| 2,000,000 drop |
+| [AccountDeleteトランザクション](deleting-accounts.html)| 2,000,000 drop |
 
 
 ## トランザクションコストの受取人

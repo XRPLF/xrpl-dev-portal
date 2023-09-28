@@ -18,7 +18,7 @@ After an account has been deleted, it can be re-created in the ledger through th
 To be deleted, an account must meet the following requirements:
 
 - The account's `Sequence` number plus 256 must be less than the current [Ledger Index][].
-- The account must not be linked to any of the following types of [ledger objects](ledger-object-types.html) (as a sender or receiver):
+- The account must not be linked to any of the following types of [ledger entries](ledger-object-types.html) (as a sender or receiver):
     - `Escrow`
     - `PayChannel`
     - `RippleState`

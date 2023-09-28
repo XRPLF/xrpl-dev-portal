@@ -14,7 +14,7 @@ labels:
 
 | フィールド         | デフォルト値                                            |
 |:--------------|:---------------------------------------------------------|
-| Account       | [ACCOUNT_ZERO](accounts.html#特別なアドレス) |
+| Account       | [ACCOUNT_ZERO](addresses.html#特別なアドレス) |
 | Sequence      | 0                                                        |
 | Fee           | 0                                                        |
 | SigningPubKey | ""                                                       |
