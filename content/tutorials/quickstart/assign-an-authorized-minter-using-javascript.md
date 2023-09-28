@@ -46,6 +46,10 @@ To authorize another account to create NFTs for your account:
 
 ## Mint an NFT for Another Account
 
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cXvyu2ZDCBM?si=AFrGzgV4CAF2LoAk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 This example uses the Operational account, which was authorized in the previous step, to mint a token on behalf of the Standby account.
 
 To mint a non-fungible token for another account:
