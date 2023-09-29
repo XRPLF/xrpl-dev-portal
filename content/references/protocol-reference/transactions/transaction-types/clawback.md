@@ -4,7 +4,6 @@ parent: transaction-types.html
 blurb: Claw back tokens you've issued.
 labels:
   - Tokens
-status: not_enabled
 ---
 # Clawback
 
@@ -16,7 +15,7 @@ Claw back tokens issued by your account.
 
 Clawback is disabled by default. To use clawback, you must send an [AccountSet transaction][] to enable the **Allow Trust Line Clawback** setting. An issuer with any existing tokens cannot enable Clawback. You can only enable **Allow Trust Line Clawback** if you have a completely empty owner directory, meaning you must do so before you set up any trust lines, offers, escrows, payment channels, checks, or signer lists.  After you enable Clawback, it cannot reverted: the account permanently gains the ability to claw back issued assets on trust lines.
 
-## Example Clawback JSON
+## Example {{currentpage.name}} JSON
 
 ```json
 {
@@ -29,8 +28,6 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
     }
 }
 ```
-
-## Clawback Fields
 
 {% include '_snippets/tx-fields-intro.md' %}
 

@@ -1227,10 +1227,14 @@ pages:
         targets:
             - ja
 
-# TODO - Translate
     -   md: concepts/tokens/clawing-back-tokens.md
+        status: not_enabled
         targets:
             - en
+
+    -   md: concepts/tokens/clawing-back-tokens.ja.md
+        status: not_enabled
+        targets:
             - ja
 
     -   md: concepts/tokens/freezes.md
@@ -2752,10 +2756,14 @@ pages:
         targets:
             - ja
 
-# TODO: Translate
     -   md: references/protocol-reference/transactions/transaction-types/clawback.md
+        status: not_enabled
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/clawback.ja.md
+        status: not_enabled
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/depositpreauth.md
