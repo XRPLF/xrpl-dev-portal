@@ -34,6 +34,10 @@ Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-p
 
 ## Usage
 
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Uu36ga0iMv0?si=jUoxQDcmqXpg1c_5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 To get test accounts:
 
 1. Open and launch `lesson1-send-xrp.py`.
@@ -46,6 +50,10 @@ To get test accounts:
 [![Standby and Operational Accounts](img/quickstart-py3.png)](img/quickstart-py3.png)
 
 You can transfer XRP between your new accounts. Each account has its own fields and buttons.
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qUd-CTFdiks?si=chUPgcHZssL54x6U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 To transfer XRP from the Standby account to the Operational account:
 
