@@ -1,3 +1,19 @@
 html.light pre code {
   color: var(--code-block-controls-text-color) !important;
 }
+
+ul.nav.navbar-nav {
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 992px) and (min-width: 1200px) {
+  .top-nav .topnav-search {
+    margin-left: 3.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.top-nav .topnav-search {
+  flex-grow: 1;
+}
