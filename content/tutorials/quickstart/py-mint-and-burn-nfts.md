@@ -41,6 +41,10 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Mint an NFT
 
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/StOLO9Bx9n8?si=IgMtoYRQlheaXzsG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 To mint a non-fungible token object:
 
 1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT can be transferred to another account. Otherwise, the NFT can only be transferred back to the issuing account. See [NFToken Mint](https://xrpl.org/nftokenmint.html#:~:text=Example%20NFTokenMint%20JSON-,NFTokenMint%20Fields,-NFTokenMint%20Flags) for information about all of the available flags for minting NFTs.
