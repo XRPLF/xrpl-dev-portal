@@ -1,0 +1,18 @@
+<svg width="159" height="93" viewBox="0 0 159 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1 21C1 9.9543 9.95431 1 21 1H138C149.046 1 158 9.9543 158 21V72C158 83.0457 149.046 92 138 92H21C9.95431 92 1 83.0457 1 72V21Z" fill="#343437" stroke="#F5F5F7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 3"/>
+<path d="M38.8075 28.8542L25.8734 50.7397" stroke="#F5F5F7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M46.4851 23.7806L77.2133 18.272" stroke="#F5F5F7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M48.7569 72.6252L66.6657 51.7345" stroke="#F5F5F7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M115.045 59.3296L100.974 44.8424" stroke="#F5F5F7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M98.5687 70.2166L115.045 59.3296" stroke="#F5F5F7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M123.336 55.864L131.96 38.9912" stroke="#F5F5F7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<ellipse cx="43.0325" cy="25.139" rx="6.26067" ry="6.25979" fill="#A2A2A4"/>
+<ellipse cx="6.26067" cy="6.25979" rx="6.26067" ry="6.25979" transform="matrix(1 0 0 -1 75.6841 23.1734)" fill="#A2A2A4"/>
+<ellipse cx="6.26067" cy="6.25979" rx="6.26067" ry="6.25979" transform="matrix(1 0 0 -1 62.9123 54.4283)" fill="#A2A2A4"/>
+<ellipse cx="6.26067" cy="6.25979" rx="6.26067" ry="6.25979" transform="matrix(1 0 0 -1 113.641 64.7736)" fill="#A2A2A4"/>
+<ellipse cx="6.26067" cy="6.25979" rx="6.26067" ry="6.25979" transform="matrix(1 0 0 -1 19.5909 60.5297)" fill="#A2A2A4"/>
+<rect x="38.9716" y="69.4352" width="13.3371" height="13.3371" fill="#A2A2A4"/>
+<rect x="94.0085" y="37.6349" width="13.3371" height="13.3371" fill="#A2A2A4"/>
+<path d="M135.385 44.4219H127.232L123.224 37.3751L127.232 30.4665H135.385L139.392 37.3751L135.385 44.4219Z" fill="#A2A2A4"/>
+<path d="M100.161 78.9554H92.0076L88 71.9086L92.0076 65H100.161L104.168 71.9086L100.161 78.9554Z" fill="#A2A2A4"/>
+</svg>

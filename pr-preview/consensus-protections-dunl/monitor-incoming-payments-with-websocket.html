@@ -1,0 +1,3683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Monitor Incoming Payments with WebSocket - XRPL.org</title>
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Monitor Incoming Payments with WebSocket | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/monitor-incoming-payments-with-websocket.html" />
+    <meta property="og:description" content="Use the WebSocket API to actively monitor for new XRP payments (and more)." />
+    <meta name="description" content="Use the WebSocket API to actively monitor for new XRP payments (and more)." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+    <meta name="docsearch:language" content="en" />
+    <link rel="alternate" href="https://xrpl.org/monitor-incoming-payments-with-websocket.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/monitor-incoming-payments-with-websocket.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/monitor-incoming-payments-with-websocket.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+    <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
+    <meta name="color-scheme" content="dark light">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Document",
+      "page_group": "Docs",
+      "page_funnel": "Tutorials",
+      "page_labels": ['Payments']
+    })
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+
+
+    <!-- Stylesheet -->
+    <link href="assets/css/devportal2022-v25.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+
+    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+
+
+    <!-- Theme switch -->
+    <script src="assets/js/theme-switch.js"></script>
+
+
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <!-- copy code button -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+            new ClipboardJS('.clipboard-btn');
+        });
+    </script>
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>About</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL Overview</a>
+            <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
+            <a class="dropdown-item" href="history.html">History</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="impact.html">Impact</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
+            <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Docs</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-documentation" href="docs.html">
+            <img id="top-nav-hero-docs" alt="Documentation icon" />
+            <div class="dropdown-hero-text">
+              <h4>Documentation</h4>
+              <p>Dive into XRP Ledger technology and start integrating.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="introduction.html">Introduction</a>
+            <a class="dropdown-item" href="use-cases.html">Use Cases</a>
+            <a class="dropdown-item" href="concepts.html">Concepts</a>
+            <a class="dropdown-item" href="tutorials.html">Tutorials</a>
+            <a class="dropdown-item" href="references.html">References</a>
+            <a class="dropdown-item" href="infrastructure.html">Infrastructure</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+          </div><!--./col-->
+          <div class="navcol col-for-popular-pages">
+            <h5 class="dropdown-item">Popular Pages</h5>
+            <a class="dropdown-item" href="send-xrp.html">Send XRP</a>
+            <a class="dropdown-item" href="reserves.html">Reserves</a>
+            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
+            <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Resources</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-development">
+            <h5 class="dropdown-item">Development</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
+            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+          </div><!--./col-->
+          <div class="navcol col-for-current-status">
+            <h5 class="dropdown-item">Current Status</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
+            <a class="dropdown-item" href="known-amendments.html">Known Amendments</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item" href="contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="contribute-documentation.html">Contribute Documentation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
+            <div class="dropdown-hero-text">
+              <h4>Contribute to the XRPL Community</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item" href="developer-funding.html">Developer Funding</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group" id="topsearchboxcontainer">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/monitor-incoming-payments-with-websocket.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+
+    <div class="nav-item" id="topnav-theme">
+      <form class="form-inline">
+        <div class="custom-control custom-theme-toggle form-inline-item" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
+          <input type="checkbox" class="custom-control-input" id="css-toggle-btn">
+          <label class="custom-control-label" for="css-toggle-btn"><span class="d-lg-none">Light/Dark Theme</span></label>
+        </div>
+      </form>
+    </div><!--/#topnav-theme-->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/consensus-protections-dunl/content/tutorials/get-started/monitor-incoming-payments-with-websocket.md?pr=/XRPLF/xrpl-dev-portal/pull/2180" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-payments">Payments</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Payments" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
+      <h4>In this document</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#monitor-incoming-payments-with-websocket">Monitor Incoming Payments with WebSocket</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#1-connect-to-the-xrp-ledger">1. Connect to the XRP Ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#2-dispatch-incoming-messages-to-handlers">2. Dispatch Incoming Messages to Handlers</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#3-subscribe-to-the-account">3. Subscribe to the Account</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#4-read-incoming-payments">4. Read Incoming Payments</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#next-steps">Next Steps</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#other-programming-languages">Other Programming Languages</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#footnotes">Footnotes</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+      </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+
+
+
+    <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
+    <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
+    <li class="active breadcrumb-item"><a href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a></li>
+    <li class="active breadcrumb-item">Monitor Incoming Payments with WebSocket</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article>
+    <div class="content">
+        <h1 id="monitor-incoming-payments-with-websocket">Monitor Incoming Payments with WebSocket<a aria-hidden="true" class="hover_anchor" href="#monitor-incoming-payments-with-websocket"><i class="fa fa-link"></i></a></h1>
+<p>This tutorial shows how to monitor for incoming <a href="payment-types.html">payments</a> using the <a href="http-websocket-apis.html">WebSocket API</a>. Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.</p>
+<p>WebSocket follows a model where the client and server open one connection, then send messages both ways through the same connection, which stays open until explicitly closed (or until the connection fails). This is in contrast to the HTTP-based API model (including JSON-RPC and RESTful APIs), where the client opens and closes a new connection for each request.<a href="#footnote-1">¹</a><a id="from-footnote-1"></a></p>
+<p class="devportal-callout tip"><strong>Tip:</strong> The examples in this page use JavaScript so that the examples can run natively in a web browser. If you are developing in JavaScript, you can also use the <a class="external-link" href="https://js.xrpl.org/" target="_blank">xrpl.js library for JavaScript <i aria-hidden="true" class="fa fa-external-link"></i></a> to simplify some tasks. This tutorial shows how to monitor for transactions <em>without</em> using a xrpl.js so that you can translate the steps to other programming languages that don't have a native XRP Ledger client library.</p>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li>The examples in this page use JavaScript and the WebSocket protocol, which are available in all major modern browsers. If you have some JavaScript knowledge and expertise in another programming language with a WebSocket client, you can follow along while adapting the instructions to the language of your choice.</li>
+<li>You need a stable internet connection and access to an XRP Ledger server. The embedded examples connect to Ripple's pool of public servers. If you <a href="install-rippled.html">run your own <code>rippled</code> or Clio server</a>, you can also connect to that server locally.</li>
+<li>To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use <a class="external-link" href="https://github.com/MikeMcl/big.js/" target="_blank">big.js <i aria-hidden="true" class="fa fa-external-link"></i></a>. If you are working with <a href="tokens.html">tokens</a>, you need even more precision. For more information, see <a href="currency-formats.html#xrp-precision">Currency Precision</a>.</li>
+</ul>
+<!-- Big number support -->
+<script src="assets/vendor/big.min.js" type="application/javascript"></script>
+<script type="application/javascript">
+// Helper stuff for this interactive tutorial specifically
+
+function writeToConsole(console_selector, message) {
+  let write_msg = "<div class='console-entry'>" + message + "</div>"
+  $(console_selector).find(".placeholder").remove()
+  $(console_selector).append(write_msg)
+  // TODO: JSON pretty-printing, maybe w/ multiple input args?
+}
+</script>
+<h2 id="1-connect-to-the-xrp-ledger">1. Connect to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#1-connect-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
+<p>The first step of monitoring for incoming payments is to connect to the XRP Ledger, specifically a <code>rippled</code> server.</p>
+<p>The following JavaScript code connects to one of Ripple's public server clusters. It then logs a message to the console, sends a request using the <a href="ping.html">ping method</a> and sets up a handler to log to the console again when it receives any message from the server side.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="kd">const</span><span class="w"> </span><span class="nx">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">)</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'open'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// This callback runs when the connection is open</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Connected!"</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"id"</span><span class="o">:</span><span class="w"> </span><span class="s2">"on_open_ping_1"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"command"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ping"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">command</span><span class="p">))</span>
+<span class="p">})</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Got message from server:'</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Use this event to detect when you have become disconnected</span>
+<span class="w">  </span><span class="c1">// and respond appropriately.</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected...'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>The above example opens a secure connection (<code>wss://</code>) to one of Ripple's public API servers on the <a href="xrp-test-net-faucet.html">Test Net</a>. To connect to a locally-running <code>rippled</code> server with the default configuration instead, open an <em>unsecured</em> connection (<code>ws://</code>) on port <strong>6006</strong> locally, using the following first line:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kd">const</span><span class="w"> </span><span class="nx">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'ws://localhost:6006'</span><span class="p">)</span>
+</code></pre></div>
+<p class="devportal-callout tip"><strong>Tip:</strong> By default, connecting to a local <code>rippled</code> server gives you access to the full set of <a href="admin-api-methods.html">admin methods</a> and admin-only data in some responses such as <a href="server_info.html">server_info</a>, plus the <a href="public-api-methods.html">public methods</a> that are available when you connect to public servers over the internet.</p>
+<p>Example:</p>
+<div class="interactive-block" data-stepnumber="1" data-totalsteps="4" id="interactive-connect">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="connect" data-steplabel="Connect" id="bc-ul-connect">
+<li class="breadcrumb-item bc-connect current"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-dispatch_messages disabled"><a href="#interactive-dispatch_messages">Dispatch Messages</a></li><li class="breadcrumb-item bc-subscribe disabled"><a href="#interactive-subscribe">Subscribe</a></li><li class="breadcrumb-item bc-read_payments disabled"><a href="#interactive-read_payments">Read Payments</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary" id="connect-socket-button">Connect</button>
+<strong>Connection status:</strong>
+<span id="connection-status">Not connected</span>
+<h5 id="console">Console:<a aria-hidden="true" class="hover_anchor" href="#console"><i class="fa fa-link"></i></a></h5>
+<div class="ws-console" id="monitor-console-connect"><span class="placeholder">(Log is empty)</span></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<!--/.interactive-block--><script type="application/javascript">
+let socket;
+$("#connect-socket-button").click((event) => {
+  socket = new WebSocket('wss://s.altnet.rippletest.net:51233')
+  socket.addEventListener('open', (event) => {
+    // This callback runs when the connection is open
+    writeToConsole("#monitor-console-connect", "Connected!")
+    $("#connection-status").text("Connected")
+    const command = {
+      "id": "on_open_ping_1",
+      "command": "ping"
+    }
+    socket.send(JSON.stringify(command))
+
+    complete_step("Connect")
+    $("#connect-button").prop("disabled", "disabled")
+    $("#enable_dispatcher").prop("disabled",false)
+  })
+  socket.addEventListener('close', (event) => {
+    $("#connection-status").text("Disconnected")
+    $("#connect-button").prop("disabled", false)
+  })
+  socket.addEventListener('message', (event) => {
+    writeToConsole("#monitor-console-connect", "Got message from server: " +
+          JSON.stringify(event.data))
+  })
+})
+</script>
+<h2 id="2-dispatch-incoming-messages-to-handlers">2. Dispatch Incoming Messages to Handlers<a aria-hidden="true" class="hover_anchor" href="#2-dispatch-incoming-messages-to-handlers"><i class="fa fa-link"></i></a></h2>
+<p>Since WebSocket connections can have several messages going each way and there is not a strict 1:1 correlation between requests and responses, you need to identify what to do with each incoming message. A good model for coding this is to set up a "dispatcher" function that reads incoming messages and relays each message to the correct code path for handling it. To help dispatch messages appropriately, the <code>rippled</code> server provides a <code>type</code> field on every WebSocket message:</p>
+<ul>
+<li>
+<p>For any message that is a direct response to a request from the client side, the <code>type</code> is the string <code>response</code>. In this case, the server also provides the following:</p>
+<ul>
+<li>
+<p>An <code>id</code> field that matches the <code>id</code> provided in the request this is a response for. (This is important because responses may arrive out of order.)</p>
+</li>
+<li>
+<p>A <code>status</code> field that indicates whether the API successfully processed your request. The string value <code>success</code> indicates <a href="response-formatting.html">a successful response</a>. The string value <code>error</code> indicates <a href="error-formatting.html">an error</a>.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> When submitting transactions, a <code>status</code> of <code>success</code> at the top level of the WebSocket message does not mean that the transaction itself succeeded. It only indicates that the server understood your request. For looking up a transaction's actual outcome, see <a href="look-up-transaction-results.html">Look Up Transaction Results</a>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>For follow-up messages from <a href="subscribe.html">subscriptions</a>, the <code>type</code> indicates the type of follow-up message it is, such as the notification of a new transaction, ledger, or validation; or a follow-up to an ongoing <a href="path_find.html">pathfinding request</a>. Your client only receives these messages if it subscribes to them.</p>
+</li>
+</ul>
+<p class="devportal-callout tip"><strong>Tip:</strong> The <a class="external-link" href="https://js.xrpl.org/" target="_blank">xrpl.js library for JavaScript <i aria-hidden="true" class="fa fa-external-link"></i></a> handles this step by default. All asynchronous API requests use Promises to provide the response, and you can listen to streams using the <code>.on(event, callback)</code> method of the <code>Client</code>.</p>
+<p>The following JavaScript code defines a helper function to make API requests into convenient asynchronous <a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises" target="_blank">Promises <i aria-hidden="true" class="fa fa-external-link"></i></a>, and sets up an interface to map other types of messages to global handlers:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="kd">const</span><span class="w"> </span><span class="nx">AWAITING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">handleResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"id"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Got response event without ID:"</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">AWAITING</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">AWAITING</span><span class="p">[</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">].</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">"Response to un-awaited request w/ ID "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">autoid_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">api_request</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"id"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">options</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"autoid_"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">autoid_n</span><span class="o">++</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">resolveHolder</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">AWAITING</span><span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Save the resolve func to be called by the handleResponse function later</span>
+<span class="w">    </span><span class="nx">resolveHolder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resolve</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// Use the socket opened in the previous example...</span>
+<span class="w">      </span><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">options</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="nx">AWAITING</span><span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">id</span><span class="p">].</span><span class="nx">resolve</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resolveHolder</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">AWAITING</span><span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">WS_HANDLERS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"response"</span><span class="o">:</span><span class="w"> </span><span class="nx">handleResponse</span>
+<span class="w">  </span><span class="c1">// Fill this out with your handlers in the following format:</span>
+<span class="w">  </span><span class="c1">// "type": function(event) { /* handle event of this type */ }</span>
+<span class="p">}</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">parsed_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">WS_HANDLERS</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">parsed_data</span><span class="p">.</span><span class="nx">type</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Call the mapped handler</span>
+<span class="w">    </span><span class="nx">WS_HANDLERS</span><span class="p">[</span><span class="nx">parsed_data</span><span class="p">.</span><span class="nx">type</span><span class="p">](</span><span class="nx">parsed_data</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Unhandled message from server"</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">})</span>
+
+<span class="c1">// Show api_request functionality</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">pingpong</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Ping..."</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api_request</span><span class="p">({</span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="s2">"ping"</span><span class="p">})</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Pong!"</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Add pingpong() to the 'open' listener for socket</span>
+</code></pre></div>
+<div class="interactive-block" data-stepnumber="2" data-totalsteps="4" id="interactive-dispatch_messages">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="dispatch_messages" data-steplabel="Dispatch Messages" id="bc-ul-dispatch_messages">
+<li class="breadcrumb-item bc-connect"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-dispatch_messages disabled current"><a href="#interactive-dispatch_messages">Dispatch Messages</a></li><li class="breadcrumb-item bc-subscribe disabled"><a href="#interactive-subscribe">Subscribe</a></li><li class="breadcrumb-item bc-read_payments disabled"><a href="#interactive-read_payments">Read Payments</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary" disabled="disabled" id="enable_dispatcher">Enable Dispatcher</button>
+<button class="btn btn-primary" disabled="disabled" id="dispatch_ping">Ping!</button>
+<h5 id="responses">Responses<a aria-hidden="true" class="hover_anchor" href="#responses"><i class="fa fa-link"></i></a></h5>
+<div class="ws-console" id="monitor-console-ping"><span class="placeholder">(Log is empty)</span></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<!--/.interactive-block--><script type="application/javascript">
+const AWAITING = {}
+const handleResponse = function(data) {
+  if (!data.hasOwnProperty("id")) {
+    writeToConsole("#monitor-console-ping", "Got response event without ID:", data)
+    return
+  }
+  if (AWAITING.hasOwnProperty(data.id)) {
+    AWAITING[data.id].resolve(data)
+  } else {
+    writeToConsole("#monitor-console-ping", "Response to un-awaited request w/ ID " + data.id)
+  }
+}
+
+let autoid_n = 0
+function api_request(options) {
+  if (!options.hasOwnProperty("id")) {
+    options.id = "autoid_" + (autoid_n++)
+  }
+  let resolveFunc;
+  AWAITING[options.id] = new Promise((resolve, reject) => {
+    // Save the resolve func to be called by the handleResponse function later
+    resolveFunc = resolve
+    try {
+      // Use the socket opened in the previous example...
+      socket.send(JSON.stringify(options))
+    } catch(error) {
+      reject(error)
+    }
+  })
+  AWAITING[options.id].resolve = resolveFunc
+  return AWAITING[options.id]
+}
+
+const WS_HANDLERS = {
+  "response": handleResponse
+}
+$("#enable_dispatcher").click((clickEvent) => {
+  socket.addEventListener('message', (event) => {
+    const parsed_data = JSON.parse(event.data)
+    if (WS_HANDLERS.hasOwnProperty(parsed_data.type)) {
+      // Call the mapped handler
+      WS_HANDLERS[parsed_data.type](parsed_data)
+    } else {
+      writeToConsole("#monitor-console-ping", "Unhandled message from server: " + event)
+    }
+  })
+  complete_step("Dispatch Messages")
+  $("#dispatch_ping").prop("disabled", false)
+  $("#tx_subscribe").prop("disabled", false)
+})
+
+async function pingpong() {
+  const response = await api_request({command: "ping"})
+  writeToConsole("#monitor-console-ping", "Pong! " + JSON.stringify(response))
+}
+
+$("#dispatch_ping").click((event) => {
+  pingpong()
+})
+</script>
+<h2 id="3-subscribe-to-the-account">3. Subscribe to the Account<a aria-hidden="true" class="hover_anchor" href="#3-subscribe-to-the-account"><i class="fa fa-link"></i></a></h2>
+<p>To get a live notification whenever a transaction affects your account, you can subscribe to the account with the <a href="subscribe.html">subscribe method</a>. In fact, it doesn't have to be your own account: since all transactions are public, you can subscribe to any account or even a combination of accounts.</p>
+<p>After you subscribe to one or more accounts, the server sends a message with <code>"type": "transaction"</code> on each <em>validated</em> transaction that affects any of the specified accounts in some way. To confirm this, look for <code>"validated": true</code> in the transaction messages.</p>
+<p>The following code sample subscribes to the Test Net Faucet's sending address. It logs a message on each such transaction by adding a handler to the dispatcher from the previous step.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">do_subscribe</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sub_response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api_request</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">command</span><span class="o">:</span><span class="s2">"subscribe"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">accounts</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">]</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sub_response</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"success"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully subscribed!"</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error subscribing: "</span><span class="p">,</span><span class="w"> </span><span class="nx">sub_response</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Add do_subscribe() to the 'open' listener for socket</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">log_tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" transaction sent by "</span><span class="w"> </span><span class="o">+</span>
+<span class="w">              </span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">Account</span><span class="w"> </span><span class="o">+</span>
+<span class="w">              </span><span class="s2">"\n  Result: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">+</span>
+<span class="w">              </span><span class="s2">" in ledger "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">ledger_index</span><span class="w"> </span><span class="o">+</span>
+<span class="w">              </span><span class="s2">"\n  Validated? "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">validated</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">WS_HANDLERS</span><span class="p">[</span><span class="s2">"transaction"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">log_tx</span>
+</code></pre></div>
+<p>For the following example, try opening the <a href="tx-sender.html">Transaction Sender</a> in a different window or even on a different device and sending transactions to the address you subscribed to:</p>
+<div class="interactive-block" data-stepnumber="3" data-totalsteps="4" id="interactive-subscribe">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="subscribe" data-steplabel="Subscribe" id="bc-ul-subscribe">
+<li class="breadcrumb-item bc-connect"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-dispatch_messages disabled"><a href="#interactive-dispatch_messages">Dispatch Messages</a></li><li class="breadcrumb-item bc-subscribe disabled current"><a href="#interactive-subscribe">Subscribe</a></li><li class="breadcrumb-item bc-read_payments disabled"><a href="#interactive-read_payments">Read Payments</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<label for="subscribe_address">Test Net Address:</label>
+<input class="form-control" id="subscribe_address" type="text" value="rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"/>
+<button class="btn btn-primary" disabled="disabled" id="tx_subscribe">Subscribe</button>
+<h5 id="transactions">Transactions<a aria-hidden="true" class="hover_anchor" href="#transactions"><i class="fa fa-link"></i></a></h5>
+<div class="ws-console" id="monitor-console-subscribe"><span class="placeholder">(Log is empty)</span></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<!--/.interactive-block--><script type="application/javascript">
+async function do_subscribe() {
+  const sub_address = $("#subscribe_address").val()
+  const sub_response = await api_request({
+    command:"subscribe",
+    accounts: [sub_address]
+  })
+  if (sub_response.status === "success") {
+    writeToConsole("#monitor-console-subscribe", "Successfully subscribed!")
+  } else {
+    writeToConsole("#monitor-console-subscribe",
+                   "Error subscribing: " + JSON.stringify(sub_response))
+  }
+}
+$("#tx_subscribe").click((event) => {
+  do_subscribe()
+  complete_step("Subscribe")
+  $("#tx_read").prop("disabled", false)
+})
+
+const log_tx = function(tx) {
+  writeToConsole("#monitor-console-subscribe",
+                  tx.transaction.TransactionType + " transaction sent by " +
+                  tx.transaction.Account +
+                  "<br/>&nbsp;&nbsp;Result: " + tx.meta.TransactionResult +
+                  " in ledger " + tx.ledger_index +
+                  "<br/>&nbsp;&nbsp;Validated? " + tx.validated)
+}
+WS_HANDLERS["transaction"] = log_tx
+</script>
+<h2 id="4-read-incoming-payments">4. Read Incoming Payments<a aria-hidden="true" class="hover_anchor" href="#4-read-incoming-payments"><i class="fa fa-link"></i></a></h2>
+<p>When you subscribe to an account, you get messages for <em>all transactions to or from the account</em>, as well as <em>transactions that affect the account indirectly</em>, such as trading its <a href="tokens.html">tokens</a>. If your goal is to recognize when the account has received incoming payments, you must filter the transactions stream and process the payments based on the amount they actually delivered. Look for the following information:</p>
+<ul>
+<li>The <strong><code>validated</code> field</strong> indicates that the transaction's outcome is <a href="finality-of-results.html">final</a>. This should always be the case when you subscribe to <code>accounts</code>, but if you <em>also</em> subscribe to <code>accounts_proposed</code> or the <code>transactions_proposed</code> stream then the server sends similar messages on the same connection for unconfirmed transactions. As a precaution, it's best to always check the <code>validated</code> field.</li>
+<li>The <strong><code>meta.TransactionResult</code> field</strong> is the <a href="transaction-results.html">transaction result</a>. If the result is not <code>tesSUCCESS</code>, the transaction failed and cannot have delivered any value.</li>
+<li>The <strong><code>transaction.Account</code></strong> field is the sender of the transaction. If you are only looking for transactions sent by others, you can ignore any transactions where this field matches your account's address. (Keep in mind, it <em>is</em> possible to make a cross-currency payment to yourself.)</li>
+<li>
+<p>The <strong><code>transaction.TransactionType</code> field</strong> is the type of transaction. The transaction types that can possibly deliver currency to an account are as follows:</p>
+<ul>
+<li>
+<p><strong><a href="payment.html">Payment transactions</a></strong> can deliver XRP or <a href="tokens.html">tokens</a>. Filter these by the <code>transaction.Destination</code> field, which contains the address of the recipient, and always use the <code>meta.delivered_amount</code> to see how much the payment actually delivered. XRP amounts are <a href="basic-data-types.html#specifying-currency-amounts">formatted as strings</a>.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> If you use the <code>transaction.Amount</code> field instead, you may be vulnerable to the <a href="partial-payments.html#partial-payments-exploit">partial payments exploit</a>. Malicious users can use this exploit to trick you into allowing the malicious user to trade or withdraw more money than they paid you.</p>
+</li>
+<li>
+<p><strong><a href="checkcash.html">CheckCash transactions</a></strong> allow an account to receive money authorized by a different account's <a href="checkcreate.html">CheckCreate transaction</a>. Look at the metadata of a <strong>CheckCash transaction</strong> to see how much currency the account received.</p>
+</li>
+<li>
+<p><strong><a href="escrowfinish.html">EscrowFinish transactions</a></strong> can deliver XRP by finishing an <a href="escrow.html">Escrow</a> created by a previous <a href="escrowcreate.html">EscrowCreate transaction</a>. Look at the metadata of the <strong>EscrowFinish transaction</strong> to see which account received XRP from the escrow and how much.</p>
+</li>
+<li>
+<p><strong><a href="offercreate.html">OfferCreate transactions</a></strong> can deliver XRP or tokens by consuming offers your account has previously placed in the XRP Ledger's <a href="decentralized-exchange.html">decentralized exchange</a>. If you never place offers, you cannot receive money this way. Look at the metadata to see what currency the account received, if any, and how much.</p>
+</li>
+<li>
+<p><strong><a href="paymentchannelclaim.html">PaymentChannelClaim transactions</a></strong> can deliver XRP from a <a href="payment-channels.html">payment channel</a>. Look at the metadata to see which accounts, if any, received XRP from the transaction.</p>
+</li>
+<li>
+<p><strong><a href="paymentchannelfund.html">PaymentChannelFund transactions</a></strong> can return XRP from a closed (expired) payment channel to the sender.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The <strong><code>meta</code> field</strong> contains <a href="transaction-metadata.html">transaction metadata</a>, including exactly how much of which currency or currencies was delivered where. See <a href="look-up-transaction-results.html">Look Up transaction Results</a> for more information on how to understand transaction metadata.</p>
+</li>
+</ul>
+<p>The following sample code looks at transaction metadata of all the above transaction types to report how much XRP an account received:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="kd">function</span><span class="w"> </span><span class="nx">CountXRPDifference</span><span class="p">(</span><span class="nx">affected_nodes</span><span class="p">,</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Helper to find an account in an AffectedNodes array and see how much</span>
+<span class="w">  </span><span class="c1">// its balance changed, if at all. Fortunately, each account appears at most</span>
+<span class="w">  </span><span class="c1">// once in the AffectedNodes array, so we can return as soon as we find it.</span>
+
+<span class="w">  </span><span class="c1">// Note: this reports the net balance change. If the address is the sender,</span>
+<span class="w">  </span><span class="c1">// the transaction cost is deducted and combined with XRP sent/received</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">affected_nodes</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"ModifiedNode"</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// modifies an existing ledger entry</span>
+<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">ledger_entry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">ModifiedNode</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">LedgerEntryType</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">          </span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">FinalFields</span><span class="p">.</span><span class="nx">Account</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">PreviousFields</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"Balance"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"XRP balance did not change."</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// Balance is in PreviousFields, so it changed. Time for</span>
+<span class="w">        </span><span class="c1">// high-precision math!</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">old_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Big</span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">PreviousFields</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">new_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Big</span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">FinalFields</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">diff_in_drops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">new_balance</span><span class="p">.</span><span class="nx">minus</span><span class="p">(</span><span class="nx">old_balance</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">diff_in_drops</span><span class="p">.</span><span class="nx">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">gte</span><span class="p">(</span><span class="mf">0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" XRP."</span><span class="p">)</span>
+<span class="w">          </span><span class="k">return</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Spent "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">abs</span><span class="p">().</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" XRP."</span><span class="p">)</span>
+<span class="w">          </span><span class="k">return</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"CreatedNode"</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// created a ledger entry. maybe the account just got funded?</span>
+<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">ledger_entry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">affected_nodes</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">CreatedNode</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">LedgerEntryType</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">          </span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">NewFields</span><span class="p">.</span><span class="nx">Account</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">balance_drops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Big</span><span class="p">(</span><span class="nx">ledger_entry</span><span class="p">.</span><span class="nx">NewFields</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">balance_drops</span><span class="p">.</span><span class="nx">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" XRP (account funded)."</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// accounts cannot be deleted at this time, so we ignore DeletedNode</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Did not find address in affected nodes."</span><span class="p">)</span>
+<span class="w">  </span><span class="k">return</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">CountXRPReceived</span><span class="p">(</span><span class="nx">tx</span><span class="p">,</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction failed."</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">Destination</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Not the destination of this payment."</span><span class="p">)</span>
+<span class="w">      </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">delivered_amount</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"string"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">amount_in_drops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Big</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">delivered_amount</span><span class="p">)</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">amount_in_drops</span><span class="p">.</span><span class="nx">div</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">xrp_amount</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" XRP."</span><span class="p">)</span>
+<span class="w">      </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Received non-XRP currency."</span><span class="p">)</span>
+<span class="w">      </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">([</span><span class="s2">"PaymentChannelClaim"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PaymentChannelFund"</span><span class="p">,</span><span class="w"> </span><span class="s2">"OfferCreate"</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">"CheckCash"</span><span class="p">,</span><span class="w"> </span><span class="s2">"EscrowFinish"</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span>
+<span class="w">          </span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">CountXRPDifference</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">AffectedNodes</span><span class="p">,</span><span class="w"> </span><span class="nx">address</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Not a currency-delivering transaction type ("</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                </span><span class="nx">tx</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">")."</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="interactive-block" data-stepnumber="4" data-totalsteps="4" id="interactive-read_payments">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="read_payments" data-steplabel="Read Payments" id="bc-ul-read_payments">
+<li class="breadcrumb-item bc-connect"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-dispatch_messages disabled"><a href="#interactive-dispatch_messages">Dispatch Messages</a></li><li class="breadcrumb-item bc-subscribe disabled"><a href="#interactive-subscribe">Subscribe</a></li><li class="breadcrumb-item bc-read_payments disabled current"><a href="#interactive-read_payments">Read Payments</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary" disabled="disabled" id="tx_read">Start Reading</button>
+<h5 id="transactions-1">Transactions<a aria-hidden="true" class="hover_anchor" href="#transactions-1"><i class="fa fa-link"></i></a></h5>
+<div class="ws-console" id="monitor-console-read"><span class="placeholder">(Log is empty)</span></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<!--/.interactive-block--><script type="application/javascript">
+function CountXRPDifference(affected_nodes, address) {
+  // Helper to find an account in an AffectedNodes array and see how much
+  // its balance changed, if at all. Fortunately, each account appears at most
+  // once in the AffectedNodes array, so we can return as soon as we find it.
+
+  // Note: this reports the net balance change. If the address is the sender,
+  // any XRP balance changes combined with the transaction cost.
+
+  for (let i=0; i<affected_nodes.length; i++) {
+    if ((affected_nodes[i].hasOwnProperty("ModifiedNode"))) {
+      // modifies an existing ledger entry
+      let ledger_entry = affected_nodes[i].ModifiedNode
+      if (ledger_entry.LedgerEntryType === "AccountRoot" &&
+          ledger_entry.FinalFields.Account === address) {
+        if (!ledger_entry.PreviousFields.hasOwnProperty("Balance")) {
+          writeToConsole("#monitor-console-read", "XRP balance did not change.")
+        }
+        // Balance is in PreviousFields, so it changed. Time for
+        // high-precision math!
+        const old_balance = new Big(ledger_entry.PreviousFields.Balance)
+        const new_balance = new Big(ledger_entry.FinalFields.Balance)
+        const diff_in_drops = new_balance.minus(old_balance)
+        const xrp_amount = diff_in_drops.div(1e6)
+        if (xrp_amount.gte(0)) {
+          writeToConsole("#monitor-console-read", "Received " + xrp_amount.toString()+" XRP.")
+          return
+        } else {
+          writeToConsole("#monitor-console-read", "Spent " + xrp_amount.abs().toString() + " XRP.")
+          return
+        }
+      }
+    } else if ((affected_nodes[i].hasOwnProperty("CreatedNode"))) {
+      // created a ledger entry. maybe the account got funded?
+      let ledger_entry = affected_nodes[i].CreatedNode
+      if (ledger_entry.LedgerEntryType === "AccountRoot" &&
+          ledger_entry.NewFields.Account === address) {
+        const balance_drops = new Big(ledger_entry.NewFields.Balance)
+        const xrp_amount = balance_drops.div(1e6)
+        writeToConsole("#monitor-console-read", "Received " + xrp_amount.toString() + " XRP (account funded).")
+        return
+      }
+    } // accounts cannot be deleted at this time, so we ignore DeletedNode
+  }
+
+  writeToConsole("#monitor-console-read", "Did not find address in affected nodes.")
+  return
+}
+
+function CountXRPReceived(tx, address) {
+  if (tx.meta.TransactionResult !== "tesSUCCESS") {
+    writeToConsole("#monitor-console-read", "Transaction failed.")
+    return
+  }
+  if (tx.transaction.TransactionType === "Payment") {
+    if (tx.transaction.Destination !== address) {
+      writeToConsole("#monitor-console-read", "Not the destination of this payment. (We're " +
+                      address + "; they're " + tx.transaction.Destination + ")")
+      return
+    }
+    if (typeof tx.meta.delivered_amount === "string") {
+      const amount_in_drops = new Big(tx.meta.delivered_amount)
+      const xrp_amount = amount_in_drops.div(1e6)
+      writeToConsole("#monitor-console-read", "Received " + xrp_amount.toString() + " XRP.")
+      return
+    } else {
+      writeToConsole("#monitor-console-read", "Received non-XRP currency.")
+      return
+    }
+  } else if (["PaymentChannelClaim", "PaymentChannelFund", "OfferCreate",
+          "CheckCash", "EscrowFinish"].includes(
+          tx.transaction.TransactionType)) {
+    CountXRPDifference(tx.meta.AffectedNodes, address)
+  } else {
+    writeToConsole("#monitor-console-read", "Not a currency-delivering transaction type (" +
+                tx.transaction.TransactionType + ").")
+  }
+}
+
+$("#tx_read").click((event) => {
+  // Wrap the existing "transaction" handler to do the old thing and also
+  // do the CountXRPReceived thing
+  const sub_address = $("#subscribe_address").val()
+  const old_handler = WS_HANDLERS["transaction"]
+  const new_handler = function(data) {
+    old_handler(data)
+    CountXRPReceived(data, sub_address)
+  }
+  WS_HANDLERS["transaction"] = new_handler
+  // Disable the button so you can't stack up multiple levels of the new handler
+  $("#tx_read").prop("disabled", "disabled")
+  complete_step("Read Payments")
+})
+</script>
+<h2 id="next-steps">Next Steps<a aria-hidden="true" class="hover_anchor" href="#next-steps"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><a href="look-up-transaction-results.html">Look Up Transaction Results</a> to see exactly what a transaction did, and build your software to react appropriately.</li>
+<li>Try <a href="send-xrp.html">Sending XRP</a> from your own address.</li>
+<li>Try monitoring for transactions of advanced types like <a href="escrow.html">Escrows</a>, <a href="checks.html">Checks</a>, or <a href="payment-channels.html">Payment Channels</a>, and responding to incoming notifications.</li>
+</ul>
+<!-- -->
+<h2 id="other-programming-languages">Other Programming Languages<a aria-hidden="true" class="hover_anchor" href="#other-programming-languages"><i class="fa fa-link"></i></a></h2>
+<p>Many programming languages have libraries for sending and receiving data over a WebSocket connection. If you want a head-start on communicating with <code>rippled</code>'s WebSocket API in a language other than JavaScript, the following examples show how:</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="go" href="#code-0-0">Go</a></li><li><a class="python" href="#code-0-1">Python</a></li></ul>
+
+<div class="code_sample go" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="c1">// Connect to the XRPL Ledger using websocket and subscribe to an account</span>
+<span class="c1">// translation from the JavaScript example to Go</span>
+<span class="c1">// https://xrpl.org/monitor-incoming-payments-with-websocket.html</span>
+<span class="c1">// This example uses the Gorilla websocket library to create a websocket client</span>
+<span class="c1">// install: go get github.com/gorilla/websocket</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"encoding/json"</span>
+<span class="w">    </span><span class="s">"flag"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"net/url"</span>
+<span class="w">    </span><span class="s">"os"</span>
+<span class="w">    </span><span class="s">"os/signal"</span>
+<span class="w">    </span><span class="s">"time"</span>
+
+<span class="w">    </span><span class="s">"github.com/gorilla/websocket"</span>
+<span class="p">)</span>
+
+<span class="c1">// websocket address</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">addr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"addr"</span><span class="p">,</span><span class="w"> </span><span class="s">"s.altnet.rippletest.net:51233"</span><span class="p">,</span><span class="w"> </span><span class="s">"http service address"</span><span class="p">)</span>
+
+<span class="c1">// Payload object</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Command</span><span class="w">  </span><span class="kt">string</span><span class="w">   </span><span class="s">`json:"command"`</span>
+<span class="w">    </span><span class="nx">Accounts</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"accounts"`</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">SetFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="nx">message</span>
+
+<span class="w">    </span><span class="c1">// check for interrupts and cleanly close the connection</span>
+<span class="w">    </span><span class="nx">interrupt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Signal</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">signal</span><span class="p">.</span><span class="nx">Notify</span><span class="p">(</span><span class="nx">interrupt</span><span class="p">,</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Interrupt</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">url</span><span class="p">.</span><span class="nx">URL</span><span class="p">{</span><span class="nx">Scheme</span><span class="p">:</span><span class="w"> </span><span class="s">"ws"</span><span class="p">,</span><span class="w"> </span><span class="nx">Host</span><span class="p">:</span><span class="w"> </span><span class="o">*</span><span class="nx">addr</span><span class="p">,</span><span class="w"> </span><span class="nx">Path</span><span class="p">:</span><span class="w"> </span><span class="s">"/"</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"connecting to %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">u</span><span class="p">.</span><span class="nx">String</span><span class="p">())</span>
+
+<span class="w">    </span><span class="c1">// make the connection</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">websocket</span><span class="p">.</span><span class="nx">DefaultDialer</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">String</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="s">"dial:"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// on exit close</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">done</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{})</span>
+
+<span class="w">    </span><span class="c1">// send a subscribe command and a target XRPL account</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">.</span><span class="nx">Command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">"subscribe"</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">.</span><span class="nx">Accounts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">Accounts</span><span class="p">,</span><span class="w"> </span><span class="s">"rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// struct to JSON marshalling</span>
+<span class="w">    </span><span class="nx">msg</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// write to the websocket</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">WriteMessage</span><span class="p">(</span><span class="nx">websocket</span><span class="p">.</span><span class="nx">TextMessage</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">msg</span><span class="p">)))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"write:"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// read from the websocket</span>
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">ReadMessage</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"read:"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// print the response from the XRP Ledger</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"recv: %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// handle interrupt</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">done</span><span class="p">:</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">interrupt</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"interrupt"</span><span class="p">)</span>
+
+<span class="w">            </span><span class="c1">// Cleanly close the connection by sending a close message and then</span>
+<span class="w">            </span><span class="c1">// waiting (with timeout) for the server to close the connection.</span>
+<span class="w">            </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">WriteMessage</span><span class="p">(</span><span class="nx">websocket</span><span class="p">.</span><span class="nx">CloseMessage</span><span class="p">,</span><span class="w"> </span><span class="nx">websocket</span><span class="p">.</span><span class="nx">FormatCloseMessage</span><span class="p">(</span><span class="nx">websocket</span><span class="p">.</span><span class="nx">CloseNormalClosure</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">))</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"write close:"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">                </span><span class="k">return</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">done</span><span class="p">:</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nx">After</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">):</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample python" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">websockets</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># Using client libraries for ASYNC functions and websockets are needed in python.</span>
+<span class="c1"># To install, use terminal command 'pip install asyncio &amp;&amp; pip install websockets'</span>
+
+<span class="c1"># Handles incoming messages</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">websocket</span><span class="p">):</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">message</span>
+
+<span class="c1"># Use this to send API requests</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">api_request</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">websocket</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">options</span><span class="p">))</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">e</span>
+
+<span class="c1"># Tests functionality of API_Requst</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">pingpong</span><span class="p">(</span><span class="n">websocket</span><span class="p">):</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"on_open_ping_1"</span><span class="p">,</span>
+        <span class="s2">"command"</span><span class="p">:</span> <span class="s2">"ping"</span>
+    <span class="p">}</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="k">await</span> <span class="n">api_request</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">websocket</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">do_subscribe</span><span class="p">(</span><span class="n">websocket</span><span class="p">):</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="k">await</span> <span class="n">api_request</span><span class="p">({</span>
+        <span class="s1">'command'</span><span class="p">:</span> <span class="s1">'subscribe'</span><span class="p">,</span>
+        <span class="s1">'accounts'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe'</span><span class="p">]</span>
+        <span class="p">},</span> <span class="n">websocket</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">command</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'success'</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Successfully Subscribed!'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Error subscribing: "</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Received message from server'</span><span class="p">,</span> <span class="k">await</span> <span class="n">handler</span><span class="p">(</span><span class="n">websocket</span><span class="p">))</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="c1"># Opens connection to ripple testnet</span>
+    <span class="k">async</span> <span class="k">for</span> <span class="n">websocket</span> <span class="ow">in</span> <span class="n">websockets</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+           <span class="k">await</span> <span class="n">pingpong</span><span class="p">(</span><span class="n">websocket</span><span class="p">)</span>
+           <span class="k">await</span> <span class="n">do_subscribe</span><span class="p">(</span><span class="n">websocket</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">websockets</span><span class="o">.</span><span class="n">ConnectionClosed</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">'Disconnected...'</span><span class="p">)</span>
+
+<span class="c1"># Runs the webhook on a loop</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">run</span><span class="p">())</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Restarting Loop'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+</div>
+<p class="devportal-callout tip"><strong>Tip:</strong> Don't see the programming language of your choice? Click the "Edit on GitHub" link at the top of this page and contribute your own sample code!</p>
+<h2 id="footnotes">Footnotes<a aria-hidden="true" class="hover_anchor" href="#footnotes"><i class="fa fa-link"></i></a></h2>
+<p><a href="#from-footnote-1">1.</a> <a id="footnote-1"></a> In practice, when calling an HTTP-based API multiple times, the client and server may reuse the same connection for several requests and responses. This practice is called <a class="external-link" href="https://en.wikipedia.org/wiki/HTTP_persistent_connection" target="_blank">HTTP persistent connection, or keep-alive <i aria-hidden="true" class="fa fa-external-link"></i></a>. From a development standpoint, the code to use an HTTP-based API is the same regardless of whether the underlying connection is new or reused.</p>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>Concepts:</strong><ul>
+<li><a href="transactions.html">Transactions</a></li>
+<li><a href="finality-of-results.html">Finality of Results</a> - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)</li>
+</ul>
+</li>
+<li><strong>Tutorials:</strong><ul>
+<li><a href="reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+<li><a href="look-up-transaction-results.html">Look Up Transaction Results</a></li>
+</ul>
+</li>
+<li><strong>References:</strong><ul>
+<li><a href="transaction-types.html">Transaction Types</a></li>
+<li><a href="transaction-metadata.html">Transaction Metadata</a> - Summary of the metadata format and fields that appear in metadata</li>
+<li><a href="transaction-results.html">Transaction Results</a> - Tables of all possible result codes for transactions.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<script src="assets/vendor/feedback-widget.js"></script>
+<div id="feedback-content"></div>
+<script>
+  // Options
+  const options = {
+    analyticsConfig: [
+      // { name: 'ga', id: 'UA-45576805-2' },
+      { name: 'gtm', id: 'GTM-KCQZ3L8' },
+    ],
+    analyticsName: 'Feedback Widget Tracker',
+    theme: 'xrpl',
+    currentPath: window.location.pathname,
+    parentElement: '#feedback-content',
+  };
+
+  // Init WidgetClass
+  const r = new WidgetClass(options);
+</script>      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
+
+
+<nav class="nav flex-column dactyl-tree-nav">
+  <div class="nav-item nav-parent">
+    <a class="nav-link" href="docs.html">Documentation</a>
+  </div>
+    
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+
+        <a class="nav-link" href="introduction.html">Introduction</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="what-is-xrp.html">What is XRP?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="crypto-wallets.html">Crypto Wallets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="txn-and-requests.html">Transactions and Requests</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="software-ecosystem.html">Software Ecosystem</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="use-cases.html">Use Cases</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+
+        <a class="nav-link" href="payments-uc.html">Payments</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="restricting-deposits-uc.html">Restricting Deposits</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow-uc.html">Smart Contracts</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="tokenization.html">Tokenization</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-issuer.html">Stablecoin Issuer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
+
+        <a class="nav-link" href="nft-mkt-overview.html">NFT Marketplace Overview</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-marketplace.html">NFT Marketplace</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-minter.html">Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="digital-artist.html">Digital Artist</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+
+        <a class="nav-link" href="defi-uc.html">Decentralized Finance</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="algorithmic-trading.html">Algorithmic Trading</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="concepts.html">Concepts</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
+
+        <a class="nav-link" href="networks-and-servers.html">Networks and Servers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-server-modes.html">rippled Server Modes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clustering.html">Clustering</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-history.html">Ledger History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-protocol.html">Peer Protocol</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amendments.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+
+        <a class="nav-link" href="consensus.html">Consensus Protocol</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-structure.html">Consensus Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-principles-and-rules.html">Consensus Principles and Rules</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-protections.html">Consensus Protections Against Attacks and Failure Modes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="invariant-checking.html">Invariant Checking</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fee-voting.html">Fee Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-research.html">Consensus Research</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+
+        <a class="nav-link" href="ledgers.html">Ledgers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-structure.html">Ledger Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-close-times.html">Ledger Close Times</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4" aria-expanded="false" aria-controls="tree_nav_group_4_4"></a>
+
+        <a class="nav-link" href="transactions.html">Transactions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fees.html">Fees (Disambiguation)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="reliable-transaction-submission.html">Reliable Transaction Submission</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="secure-signing.html">Secure Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="source-and-destination-tags.html">Source and Destination Tags</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-cost.html">Transaction Cost</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-queue.html">Transaction Queue</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_4_7"></a>
+
+        <a class="nav-link" href="finality-of-results.html">Finality of Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-transaction-results.html">Look Up Transaction Results</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-malleability.html">Transaction Malleability</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="canceling-a-transaction.html">Canceling a Transaction</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5" aria-expanded="false" aria-controls="tree_nav_group_4_5"></a>
+
+        <a class="nav-link" href="payment-types.html">Payment Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="direct-xrp-payments.html">Direct XRP Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cross-currency-payments.html">Cross-Currency Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="partial-payments.html">Partial Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6" aria-expanded="false" aria-controls="tree_nav_group_4_6"></a>
+
+        <a class="nav-link" href="tokens.html">Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-reserve-requirements.html">NFT Reserve Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-auctions.html">Running an NFT Auction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-apis.html">NFT APIs</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+
+        <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offers.html">Offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="autobridging.html">Auto-Bridging</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticksize.html">Tick Size</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_7"></a>
+
+        <a class="nav-link" href="accounts.html">Accounts</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account-types.html">Account Types</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="deleting-accounts.html">Deleting Accounts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="reserves.html">Reserves</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="addresses.html">Addresses</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cryptographic-keys.html">Cryptographic Keys</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositauth.html">Deposit Authorization</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="true" aria-controls="tree_nav_group_5"></a>
+
+        <a class="nav-link" href="tutorials.html">Tutorials</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2" aria-expanded="false" aria-controls="tree_nav_group_5_2"></a>
+
+        <a class="nav-link" href="python.html">Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-python.html">Get Started Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2"></a>
+
+        <a class="nav-link" href="modular-tutorials-in-python.html">Modular Tutorials in Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_1"></a>
+
+        <a class="nav-link" href="send-payments-using-python.html">Send Payments Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-accounts-send-xrp.html">Create Accounts and Send XRP Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-python.html">NFTs Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-mint-and-burn-nfts.html">Mint and Burn NFTs Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-transfer-nfts.html">Transfer NFTs Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-broker-sale.html">Broker an NFT Sale Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_3"></a>
+
+        <a class="nav-link" href="javascript.html">JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2"></a>
+
+        <a class="nav-link" href="modular-tutorials-in-javascript.html">Modular Tutorials in JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_1"></a>
+
+        <a class="nav-link" href="send-payments-using-javascript.html">Send Payments Using JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp-using-javascript.html">Create Accounts and Send XRP Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency-using-javascript.html">Create Trust Line and Send Currency Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-time-based-escrows-using-javascript.html">Create Time-based Escrows Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-conditional-escrows-using-javascript.html">Create Conditional Escrows Using JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-javascript.html">NFTs Using JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nfts-using-javascript.html">Mint and Burn NFTs Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nfts-using-javascript.html">Transfer NFTs Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-an-nft-sale-using-javascript.html">Broker an NFT Sale Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="assign-an-authorized-minter-using-javascript.html">Assign an Authorized Minter Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="batch-mint-nfts-using-javascript.html">Batch Mint NFTs Using JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
+
+        <a class="nav-link" href="java.html">Java</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-java.html">Get Started Using Java</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="true" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_5_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-http-websocket-apis.html">Get Started Using HTTP / WebSocket APIs</a>
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
+
+        <a class="nav-link" href="tasks.html">Tasks</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
+
+        <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="disable-master-key-pair.html">Disable Master Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="set-up-multi-signing.html">Set Up Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="require-destination-tags.html">Require Destination Tags</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offline-account-setup.html">Offline Account Setup Tutorial</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-xrp.html">Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
+
+        <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
+
+        <a class="nav-link" href="use-escrows.html">Use Escrows</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-conditionally-held-escrow.html">Send a Conditionally-Held Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-escrows.html">Look up Escrows</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
+
+        <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
+
+        <a class="nav-link" href="use-checks.html">Use Checks</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cash-a-check-for-an-exact-amount.html">Cash a Check for an Exact Amount</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cash-a-check-for-a-flexible-amount.html">Cash a Check for a Flexible Amount</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cancel-a-check.html">Cancel a Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-checks-by-sender.html">Look Up Checks by Sender</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-checks-by-recipient.html">Look Up Checks by Recipient</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
+
+        <a class="nav-link" href="use-tokens.html">Use Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-an-automated-market-maker.html">Create an Automated Market Maker <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+
+        <a class="nav-link" href="references.html">References</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1" aria-expanded="false" aria-controls="tree_nav_group_6_1"></a>
+
+        <a class="nav-link" href="protocol-reference.html">XRP Ledger Protocol Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_6_1_1"></a>
+
+        <a class="nav-link" href="basic-data-types.html">Basic Data Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="base58-encodings.html">base58 Encodings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="currency-formats.html">Currency Formats</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken.html">NFToken</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2"></a>
+
+        <a class="nav-link" href="ledger-data-formats.html">Ledger Data Formats</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-header.html">Ledger Header</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
+
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amendments-object.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="check.html">Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositpreauth-object.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="directorynode.html">DirectoryNode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow-object.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="feesettings.html">FeeSettings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledgerhashes.html">LedgerHashes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offer.html">Offer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paychannel.html">PayChannel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ripplestate.html">RippleState</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="signerlist.html">SignerList</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
+
+        <a class="nav-link" href="transaction-formats.html">Transaction Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-common-fields.html">Transaction Common Fields</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_2"></a>
+
+        <a class="nav-link" href="transaction-types.html">Transaction Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdelete.html">AMMDelete <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcancel.html">CheckCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcash.html">CheckCash</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositpreauth.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowcancel.html">EscrowCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowcreate.html">EscrowCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offercancel.html">OfferCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offercreate.html">OfferCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="payment.html">Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelclaim.html">PaymentChannelClaim</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelcreate.html">PaymentChannelCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelfund.html">PaymentChannelFund</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="setregularkey.html">SetRegularKey</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="signerlistset.html">SignerListSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trustset.html">TrustSet</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_3"></a>
+
+        <a class="nav-link" href="pseudo-transaction-types.html">Pseudo-Transactions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enableamendment.html">EnableAmendment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="setfee.html">SetFee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_4"></a>
+
+        <a class="nav-link" href="transaction-results.html">Transaction Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tec-codes.html">tec Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tef-codes.html">tef Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tel-codes.html">tel Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tem-codes.html">tem Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ter-codes.html">ter Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tes-success.html">tes Success</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-metadata.html">Transaction Metadata</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="serialization.html">Serialization Format</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2" aria-expanded="false" aria-controls="tree_nav_group_6_2"></a>
+
+        <a class="nav-link" href="client-libraries.html">Client Libraries</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-py.readthedocs.io/">Python Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://javadoc.io/doc/org.xrpl/">Java Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://www.rubydoc.info/gems/xrbp">Ruby Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3" aria-expanded="false" aria-controls="tree_nav_group_6_3"></a>
+
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_1"></a>
+
+        <a class="nav-link" href="api-conventions.html">API Conventions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="request-formatting.html">Request Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="response-formatting.html">Response Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="error-formatting.html">Error Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="markers-and-pagination.html">Markers and Pagination</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rate-limiting.html">Rate Limiting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-server-states.html">rippled Server States</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2"></a>
+
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_1"></a>
+
+        <a class="nav-link" href="account-methods.html">Account Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_channels.html">account_channels</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_currencies.html">account_currencies</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_info.html">account_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_objects.html">account_objects</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_offers.html">account_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_tx.html">account_tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="gateway_balances.html">gateway_balances</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="noripple_check.html">noripple_check</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_2"></a>
+
+        <a class="nav-link" href="ledger-methods.html">Ledger Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_closed.html">ledger_closed</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_current.html">ledger_current</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_data.html">ledger_data</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_entry.html">ledger_entry</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_3"></a>
+
+        <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="submit.html">submit</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="submit_multisigned.html">submit_multisigned</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction_entry.html">transaction_entry</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tx.html">tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tx_history.html">tx_history</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_4"></a>
+
+        <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="path_find.html">path_find</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ripple_path_find.html">ripple_path_find</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_5"></a>
+
+        <a class="nav-link" href="payment-channel-methods.html">Payment Channel Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="channel_authorize.html">channel_authorize</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="channel_verify.html">channel_verify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_6"></a>
+
+        <a class="nav-link" href="subscription-methods.html">Subscription Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="subscribe.html">subscribe</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="unsubscribe.html">unsubscribe</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_7"></a>
+
+        <a class="nav-link" href="server-info-methods.html">Server Info Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fee.html">fee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_state.html">server_state</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_8"></a>
+
+        <a class="nav-link" href="clio-methods.html">Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_history.html">nft_history</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_9">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="json.html">json</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ping.html">ping</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="random.html">random</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3"></a>
+
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_1"></a>
+
+        <a class="nav-link" href="key-generation-methods.html">Key Generation Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validation_create.html">validation_create</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="wallet_propose.html">wallet_propose</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_2"></a>
+
+        <a class="nav-link" href="logging-and-data-management-methods.html">Logging and Data Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="can_delete.html">can_delete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="crawl_shards.html">crawl_shards</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="download_shard.html">download_shard</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_cleaner.html">ledger_cleaner</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_request.html">ledger_request</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="log_level.html">log_level</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_3"></a>
+
+        <a class="nav-link" href="server-control-methods.html">Server Control Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_accept.html">ledger_accept</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stop.html">stop</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validation_seed.html">validation_seed <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_4"></a>
+
+        <a class="nav-link" href="signing-methods.html">Signing Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_5"></a>
+
+        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect.html">connect</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_add.html">peer_reservations_add</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_del.html">peer_reservations_del</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_list.html">peer_reservations_list</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peers.html">peers</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_6"></a>
+
+        <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="feature.html">feature</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fetch_info.html">fetch_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get_counts.html">get_counts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="print.html">print</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator_info.html">validator_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator_list_sites.html">validator_list_sites</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validators.html">validators</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_4"></a>
+
+        <a class="nav-link" href="peer-port-methods.html">Peer Port Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="health-check.html">Health Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-crawler.html">Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator-list.html">Validator List Method</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrp-ledger-toml.html">xrp-ledger.toml File</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
+
+        <a class="nav-link" href="infrastructure.html">Infrastructure</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="commandline-usage.html">Commandline Usage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_2" aria-expanded="false" aria-controls="tree_nav_group_7_2"></a>
+
+        <a class="nav-link" href="install-rippled.html">Install rippled</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-rippled-on-ubuntu.html">Install on Ubuntu or Debian Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-automatically-on-linux.html">Update Automatically on Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-manually-on-centos-rhel.html">Update Manually on CentOS/Red Hat</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="capacity-planning.html">Capacity Planning</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-1-3-migration-instructions.html">rippled v1.3.x Migration Instructions <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3" aria-expanded="false" aria-controls="tree_nav_group_7_3"></a>
+
+        <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_7_3_1"></a>
+
+        <a class="nav-link" href="server-modes.html">Server Modes</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_7_3_2"></a>
+
+        <a class="nav-link" href="data-retention.html">Data Retention</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-full-history.html">Configure Full History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="online-deletion.html">Online Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-online-deletion.html">Configure Online Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-advisory-deletion.html">Configure Advisory Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="history-sharding.html">History Sharding</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-history-sharding.html">Configure History Sharding</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-amendment-voting.html">Configure Amendment Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-grpc.html">Configure gRPC</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-public-signing.html">Enable Public Signing</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
+
+        <a class="nav-link" href="configure-peering.html">Peering</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-a-private-server.html">Configure a Private Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-link-compression.html">Enable Link Compression</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="forward-ports-for-peering.html">Forward Ports for Peering</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="manually-connect-to-a-specific-peer.html">Manually Connect to a Specific Peer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="set-max-number-of-peers.html">Set Maximum Number of Peers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-a-peer-reservation.html">Use a Peer Reservation</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_5" aria-expanded="false" aria-controls="tree_nav_group_7_5"></a>
+
+        <a class="nav-link" href="use-stand-alone-mode.html">Testing and Auditing</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_6" aria-expanded="false" aria-controls="tree_nav_group_7_6"></a>
+
+        <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="health-check-interventions.html">Health Check Interventions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="understanding-log-messages.html">Understanding Log Messages</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-wont-start.html">rippled Server Won't Start</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+</nav>      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>About</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
+            <li class="nav-item"><a href="uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
+            <li class="nav-item"><a href="history.html" class="nav-link">History</a></li>
+            <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Docs</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="docs.html" class="nav-link">Documentation</a></li>
+            <li class="nav-item"><a href="introduction.html" class="nav-link">Introduction</a></li>
+            <li class="nav-item"><a href="use-cases.html" class="nav-link">Use Cases</a></li>
+            <li class="nav-item"><a href="concepts.html" class="nav-link">Concepts</a></li>
+            <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
+            <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
+            <li class="nav-item"><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Resources</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
+            <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
+            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Community</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex row">
+      <a href="/" class="footer-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="Jump to top of page"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+  indexName: 'xrpl',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
+
+
+<!-- Helper for interactive tutorials -->
+<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
+
+</body>
+</html>
