@@ -1,10 +1,10 @@
 ---
 html: privacy-policy.html
 parent: xrp-ledger-overview.html
-blurb: 
+blurb:
 subtitle: Privacy Policy
 top_nav_grouping: About
-template: page-privacy-policy.html.jinja
+# template: page-privacy-policy.html.jinja
 name: Privacy Policy
 ---
 # XRPL.org Privacy Policy
@@ -117,14 +117,14 @@ If you have any questions about this Privacy Policy, You can contact us:
 
 MTU XRP Ledger Trust
 
-**Regd Office**  
-15, Ringtee  
-Kuressaare  
+**Regd Office**
+15, Ringtee
+Kuressaare
 Estonia 93815
 
-**Tallinn Office**  
-802, Lõõtsa tn 5  
-Tallinn  
+**Tallinn Office**
+802, Lõõtsa tn 5
+Tallinn
 Estonia 11415
 
 **By email:** info@xrplf.org

@@ -2,7 +2,7 @@
 html: xrp-api.html
 parent: references.html
 blurb: XRP LedgerにRESTライクのインターフェイスを提供するAPIサーバ
-template: pagetype-redirect.html.jinja
+# template: pagetype-redirect.html.jinja
 redirect_url: https://xpring-eng.github.io/xrp-api/
 nav_omit: true
 filters:

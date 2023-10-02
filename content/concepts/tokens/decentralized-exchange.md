@@ -1,7 +1,7 @@
 ---
 html: decentralized-exchange.html
 parent: tokens.html
-template: pagetype-category.html.jinja
+# template: pagetype-category.html.jinja
 blurb: The XRP Ledger contains a fully-functional exchange where users can trade tokens for XRP or each other.
 targets:
   - en

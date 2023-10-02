@@ -2,7 +2,7 @@
 html: transaction-formats.html
 parent: protocol-reference.html
 blurb: Definitions for all the protocol's transaction types and their results.
-template: pagetype-category.html.jinja
+# template: pagetype-category.html.jinja
 ---
 # Transaction Reference
 
