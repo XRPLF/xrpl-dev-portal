@@ -18,7 +18,7 @@ A custodial wallet means a third party holds your funds, typically on an account
 
 For day-to-day payments, this may be preferable, since these types of wallets are user-friendly: if you forget your password, you can typically have it reset. Also, if you don't have an individual XRP Ledger account, the ledger's reserve requirement doesn't apply to you. The custodian acts a buffer to any issues you run into on the XRP Ledger, and may offer support or assistance if you're not sure how to do something.
 
-![Custodial vs. Non-custodial Wallets](img/introduction15-custodial-non-custodial.png)
+![Custodial vs. Non-custodial Wallets](/img/introduction15-custodial-non-custodial.png)
 
 A non-custodial wallet, such as [XUMM](https://xumm.app/), is one where you have the secret keys to your account. This means you're ultimately responsible for managing the security of your account.
 
@@ -35,7 +35,7 @@ Another deciding factor when choosing a wallet is picking between a hardware or 
 
 Hardware wallets are physical devices that store your private/secret keys. The main benefit of using hardware wallets is that you can secure your information by disconnecting it from the internet when it's not in use; hardware wallets totally isolate your keys from easier-to-hack computers or smartphones.
 
-![Hardware vs. Software Wallets](img/introduction16-hardware-software.png)
+![Hardware vs. Software Wallets](/img/introduction16-hardware-software.png)
 
 Software wallets on the other hand, are entirely digital. While this makes them easier to use, it also makes them the less secure method of the two, but they usually come with additional features to enhance your experience. Ultimately, the decision between the two will come down to your comfort level and how important ease-of-use is to you.
 
@@ -45,4 +45,4 @@ Software wallets on the other hand, are entirely digital. While this makes them 
 The XRP Ledger is an opensource project with publicly available client libraries and API methods. While you can technically interact with the ledger using HTTP/WebSocket tools, it isn't practical for day-to-day use. You can create your own wallet to interact with the ledger, but you'll need to understand exactly how accounts, transactions, and the ledger work together before committing to this option.
 
 
-Next: [Transactions and Requests](txn-and-requests.html)
+Next: [Transactions and Requests](/concepts/introduction/txn-and-requests.md)
