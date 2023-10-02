@@ -12,7 +12,7 @@ $security-logos: "Anchain";
 $payments-logos: "ripple","SuperMojo";
 $cbdc-logos: "ripple";
 $carbon-markets-logos: "carbonland-trust","Rootmaker";
-$other-logos: "casino-coin","Momento";
+$custody-logos: "Gatehub","Bitgo";
 
 // Create a mixin to handle the common logic
 @mixin create-logo-classes($logo-list) {
@@ -40,8 +40,24 @@ $other-logos: "casino-coin","Momento";
 @include create-logo-classes($payments-logos);
 @include create-logo-classes($cbdc-logos);
 @include create-logo-classes($carbon-markets-logos);
-@include create-logo-classes($other-logos);
+@include create-logo-classes($custody-logos);
 
+.arrow-button.left-arrow img {
+  content: url(../img/uses/left-arrow.svg);
+}
+.arrow-button.right-arrow img {
+  content: url(../img/uses/right-arrow.svg);
+}
+
+
+.html.light {
+  .arrow-button.left-arrow img {
+    content: url(../img/uses/left-arrow-light.svg);
+  }
+  .arrow-button.right-arrow img {
+    content: url(../img/uses/right-arrow-light.svg);
+  }
+}
 
 .related-tasks-links a {
   color: $gray-600;

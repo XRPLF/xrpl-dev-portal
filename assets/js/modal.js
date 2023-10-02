@@ -43,8 +43,8 @@ $(document).ready(() => {
     security: ["Anchain"],
     payments: ["ripple", "SuperMojo"],
     cbdc: ["ripple"],
-    carbon_markets: ["carbonland-trust", "Rootmaker"],
-    other: ["casino-coin", "Momento"],
+    sustainability: ["carbonland-trust", "Rootmaker"],
+    custody: ["Gatehub", "Bitgo"],
   };
   // Helper function to create a logo element
   function createLogoElement(logoSrc, title, id) {

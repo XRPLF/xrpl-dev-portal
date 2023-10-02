@@ -50,6 +50,14 @@
     "category_name": "Custody",
     "link": "https://www.bitgo.com/",
   },
+    {
+    "id": "gatehub",
+    "title": _("Gatehub"),
+    "description": _("Gatehub XRP Ledger Markets is an explorer to track Gatehub's inssuances on the XRP Ledger."),
+    "category_id": "custody",
+    "category_name": "Custody",
+    "link": "https://gatehub.net/markets",
+  },
   {
     "id": "bithomp",
     "title": _("Bithomp"),
@@ -266,14 +274,6 @@
     "category_name": "Wallet",
     "link": "https://xumm.app/#team",
   },
-  {
-    "id": "casino-coin",
-    "title": _("Casino Coin"),
-    "description": _("CasinoCoin (CSC) is a digital currency developed specifically for the regulated gaming industry."),
-    "category_id": "other",
-    "category_name": "Other",
-    "link": "https://casinocoin.im/",
-  },
 
 ] %}
 
@@ -291,12 +291,9 @@
   "gaming": "Gaming",
   "security": "Security",
   "payments": "Payments",
-  "web_monetization": "Web Monetization",
   "sustainability": "Sustainability",
   "cbdcs": "CBDCs",
-  "custody": "Custody",
-  "defi": "DeFi",
-  "other": "Other",
+  "custody": "Custody"
 } %}
 
 
@@ -385,7 +382,7 @@
           {"id": "interoperability",
             "title": _("Interoperability"),
             "number": 3,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at orci eget ligula cursus mollis quis a lacus."
+            "description": "Developers and node operators can build and run custom sidechains while leveraging the XRPL’s lean and efficient feature set."
           },
           {"id": "wallet",
             "title": _("Wallet"),
@@ -425,16 +422,16 @@
             "description": "A private version of the XRP Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs)."
           },
 
-          {"id": "carbon_markets",
-            "title": _("Carbon Markets"),
+          {"id": "sustainability",
+            "title": _("Sustainability"),
             "number": 2,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at orci eget ligula cursus mollis quis a lacus."
+            "description": "Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs)."
           },
 
-          {"id": "other",
-            "title": _("Other"),
-            "number": 1,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at orci eget ligula cursus mollis quis a lacus."
+          {"id": "custody",
+            "title": _("Custody"),
+            "number": 2,
+            "description": "Use the XRP Ledger to build crypto custody and securely hold, store and use your assets."
           },
       ] %}
  {% for use in uses %}
@@ -457,10 +454,10 @@
   <div class="modal-content-uses">
       <div class="arrows-container" id="arrows-container">
       <button class="arrow-button left-arrow" id="leftArrow">
-        <img src="assets/img/uses/left-arrow.png" alt="left arrow">
+        <img  alt="left arrow">
       </button>
       <button class="arrow-button right-arrow" id="rightArrow">
-        <img src="assets/img/uses/right-arrow.png" alt="right arrow">
+        <img  alt="right arrow">
       </button>
     </div>
 
@@ -487,7 +484,7 @@
   <div class="colorful-join-text-wrapper">
     <span class="colorful-join-text"> Join the XRPL Ecosystem and showcase your XRPL project, application, or product. Get featured on the Developer Reflections blog or Ecosystem page. </span>
         <div class="mt-10">
-          <a class="btn btn-primary btn-arrow" href="docs.html">{% trans %}Submit Your Project{% endtrans %}</a>
+          <a class="btn btn-primary btn-arrow" href="https://xrpl.typeform.com/dev-spotlight">{% trans %}Submit Your Project{% endtrans %}</a>
         </div>
   </div>
   </section>
