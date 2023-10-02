@@ -1,0 +1,96 @@
+# alertbanner:
+#   show: true
+#   message: This is the draft Redocly version of the site!
+#   button: Cool
+#   link: https://github.com/ripple/xrpl-org-dev-portal
+
+# nav:
+- group: About
+  items:
+    - group: XRP Ledger Overview
+      items:
+        - label: XRPL Overview
+          link: /about/xrp-ledger-overview/
+        - label: Use Cases
+          link: /about/use-cases/
+        - label: History
+          link: /about/history/
+        - label: Ledger Explorer
+          link: https://livenet.xrpl.org
+          external: true
+    - group: XRP
+      items:
+        - label: XRP Overview
+          link: /about/xrp-overview
+    - group: Sustainability
+      items:
+        - label: Impact
+          link: /about/impact/
+    - group: About
+      items:
+        - label: XRPL Foundation
+          link: https://foundation.xrpl.org/
+          external: true
+        - label: FAQ
+          link: /about/faq/
+
+- group: Docs
+  items:
+    - hero: top-nav-hero-docs
+      label: Documentation
+      description: Dive into XRP Ledger technology and start integrating.
+      link: /docs/
+    - group: Introduction to the XRP Ledger
+      items:
+        - label: What is XRP?
+          link: /docs/concepts/introduction/what-is-xrp
+        - label: What is the XRP Ledger?
+          link: /docs/concepts/introduction/what-is-xrpl
+        - label: Transactions and Requests
+          link: /docs/concepts/introduction/txn-and-requests
+    - group: Tutorials
+      items:
+        - label: Quickstart
+          link: /docs/tutorials/quickstart
+        - label: Code Samples
+          link: /docs/code-samples
+    - group: API Reference
+      items:
+        - label: Client Libraries
+          link: /docs/references/client-libraries/
+        - label: Public API Methods
+          link: /docs/references/http-websocket-apis/public-api-methods/
+        - label: Admin API Methods
+          link: /docs/references/http-websocket-apis/admin-api-methods/
+    - group: Popular Pages
+      items:
+        - label: Send XRP
+          href: /tutorials/send-xrp/
+        - label: XRP Faucets
+          href: /docs/dev-tools/xrp-faucets/
+        - label: XRPL Servers
+          href: /infrastructure/xrpl-servers/
+    - label: Dev Tools
+      link: /docs/dev-tools/
+
+
+- group: Community
+  items:
+    - hero: top-nav-hero-contribute
+      label: Contribute to the XRPL Community
+      description: Join the conversation
+      link: /community/
+    - label: Events
+      link: /community/events/
+    - label: Ambassadors
+      link: /community/ambassadors/
+    - label: XRPL Jobs
+      link: https://jobs.xrpl.org/
+      external: true
+    - label: Blog
+      link: /blog/
+    - label: XRPL Grants
+      link: https://xrplgrants.org/
+      external: true
+    - label: Report a Scam
+      link: /community/report-a-scam/
