@@ -1,18 +1,18 @@
 /* Use Cases ---------------------------------------------------------------- */
 
 // Define each category's logos
-$infrastructure-logos: "XRP-Ledger","Gatehub","towoLabs","xrpscan","xrp-toolkit","bithomp","onthedex";
-$developer-tooling-logos: "blockforce","Evernode","threezy","tokenize";
-$interoperability-logos: "Allbridge","futureverse","multichain";
-$wallet-logos: "Bitfrost","Crossmark","Edge","gem-wallet","Xumm";
-$nfts-logos: "aesthetes","audiotarky","nftmaster","peerkat","sologenic_dex","xrp-cafe","xrp-oval";
-$exchanges-logos: "sologenic_dex","XPMarket";
-$gaming-logos: "Forte","Futureverse","ledger-city","onXRP","styngr";
+$infrastructure-logos: "XRP-Ledger", "Gatehub", "towoLabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
+$developer-tooling-logos: "blockforce", "Evernode", "threezy", "tokenize";
+$interoperability-logos: "Allbridge", "futureverse", "multichain";
+$wallet-logos: "Bitfrost", "Crossmark", "Edge", "gem-wallet", "Xumm";
+$nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex", "xrp-cafe", "xrp-oval";
+$exchanges-logos: "sologenic_dex", "XPMarket";
+$gaming-logos: "Forte", "Futureverse", "ledger-city", "onXRP", "styngr";
 $security-logos: "Anchain";
-$payments-logos: "ripple","SuperMojo";
+$payments-logos: "ripple", "SuperMojo";
 $cbdc-logos: "ripple";
-$carbon-markets-logos: "carbonland-trust","Rootmaker";
-$custody-logos: "Gatehub","Bitgo";
+$carbon-markets-logos: "carbonland-trust", "Rootmaker";
+$custody-logos: "Gatehub", "Bitgo";
 
 // Create a mixin to handle the common logic
 @mixin create-logo-classes($logo-list) {
@@ -20,7 +20,8 @@ $custody-logos: "Gatehub","Bitgo";
     .#{$logo} {
       content: url(../img/uses/modalLogos/#{$logo}.png);
     }
-    html.light{
+
+    html.light {
       .#{$logo} {
         content: url(../img/uses/lightmode/#{$logo}.png);
       }
@@ -45,6 +46,7 @@ $custody-logos: "Gatehub","Bitgo";
 .arrow-button.left-arrow img {
   content: url(../img/uses/left-arrow.svg);
 }
+
 .arrow-button.right-arrow img {
   content: url(../img/uses/right-arrow.svg);
 }
@@ -54,6 +56,7 @@ $custody-logos: "Gatehub","Bitgo";
   .arrow-button.left-arrow img {
     content: url(../img/uses/left-arrow-light.svg);
   }
+
   .arrow-button.right-arrow img {
     content: url(../img/uses/right-arrow-light.svg);
   }
@@ -300,24 +303,24 @@ $custody-logos: "Gatehub","Bitgo";
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(20vw - 20px);
-  height: calc(47vw - 20px);
-  min-width: 100px;
-  min-height: 100px;
+  aspect-ratio: 1 / 1; // Maintain aspect ratio
   border: 1px solid #343437;
   border-radius: 50%;
   margin-bottom: 30px;
   cursor: pointer;
 
+  // Media query for medium screens
   @include media-breakpoint-up(md) {
-    width: 230px;
-    height: 266px;
+    aspect-ratio: 1 / 1; // Maintain aspect ratio
+    min-width: 200px !important; // Set a minimum width
+    min-height: 200px !important; // Set a minimum height
   }
 
+  // Media query for large screens
   @include media-breakpoint-up(lg) {
-    margin-bottom: 0;
-    height: 247px;
-
+    aspect-ratio: 1 / 1; // Maintain aspect ratio
+    min-width: 250px !important; // Set a minimum width
+    min-height: 250px !important; // Set a minimum height
   }
 }
 
