@@ -1,0 +1,18 @@
+{
+  "name": "xrpl-dev-portal",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "The XRP Ledger Dev Portal is the authoritative source for XRP Ledger documentation, including the `rippled` server, client libraries, and other open-source XRP Ledger software.",
+  "scripts": {
+    "start": "portal develop -d content"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "@redocly/portal": "^0.43.1"
+  },
+  "devDependencies": {
+    "htmltojsx": "^0.3.0"
+  }
+}
