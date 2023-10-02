@@ -32,11 +32,11 @@ The only way to confirm an invalid transaction would be to get at least 80% of t
 
 ## Software Vulnerabilities
 
-As with any software system, bugs (or intentionally malicious code) in the implementation of the XRP Ledger Consensus Protocol, commonly deployed software packages, or their dependencies, are a problem to be taken seriously. Even bugs that cause a server to crash when it sees carefully crafted inputs can be abused to disrupt the progress of the network. Ripple takes precautions to address this threat in its reference implementations of XRP Ledger software, including:
+As with any software system, bugs (or intentionally malicious code) in the implementation of the XRP Ledger Consensus Protocol, commonly deployed software packages, or their dependencies, are a problem to be taken seriously. Even bugs that cause a server to crash when it sees carefully crafted inputs can be abused to disrupt the progress of the network. XRP Ledger developers take precautions to address this threat in the reference implementations of XRP Ledger software, including:
 
 - An [open-source code base](https://github.com/XRPLF/rippled/), so any member of the public can review, compile, and independently test the relevant software.
 - A thorough and robust code review process for all changes to the official XRP Ledger repositories.
-- Digital signatures from Ripple employees on all releases and official software packages.
+- Digital signatures from well-known developers on all releases and official software packages.
 - Regularly-commissioned professional reviews for security vulnerabilities and insecurities.
 - A [bug bounty program](https://ripple.com/bug-bounty/) that rewards security researchers who responsibly disclose vulnerabilities.
 
@@ -57,11 +57,11 @@ A "51% attack" is an attack on a blockchain system where one party controls more
 
 ## Validator Overlap Requirements
 
-For all participants in the XRP Ledger to agree on what they consider validated, they must start by choosing a set of trusted validators that are fairly similar to the sets chosen by everyone else. In the worst case, less than about 90% overlap could cause some participants to diverge from each other. For that reason, Ripple publishes a signed list of recommended validators, including trustworthy and well-maintained servers run by the company, industry, and community.
+For all participants in the XRP Ledger to agree on what they consider validated, they must start by choosing a set of trusted validators that are fairly similar to the sets chosen by everyone else. In the worst case, less than about 90% overlap could cause some participants to diverge from each other. For that reason, there are signed lists of recommended validators, meant to include trustworthy and well-maintained servers run by the industry and community.
 
-By default, XRP Ledger servers are configured to use a validator list site run by Ripple. The site provides a list of recommended validators (also known as a recommended _Unique Node List_, or UNL), which Ripple updates periodically. Servers configured this way trust all validators in the latest version of the list, which ensures 100% overlap with others also using the same list. The default configuration includes a public key that verifies the authenticity of the site's contents. In case the site goes down, servers in the XRP Ledger's peer-to-peer network can directly relay the signed updates to the list among themselves.
+By default, XRP Ledger servers are configured to use validator list sites run by the XRPL Foundation and Ripple. The sites provide a list of recommended validators (also known as a recommended _Unique Node List_, or UNL), which is updated periodically. Servers configured this way trust all validators in the latest version of the list, which ensures 100% overlap with others also using the same list. The default configuration includes public keys that verify the authenticity of the sites' contents. Servers in the XRP Ledger's peer-to-peer network also directly relay the signed updates to the list among themselves, reducing potential points of failure.
 
-Technically, if you run a server, you can configure your own list site or explicitly choose validators to trust on an individual basis, but Ripple does not recommended doing so. If your chosen set of validators does not have enough overlap with others, your server may diverge from the rest of the network, and you could lose money by taking action based on your server's divergent state.
+Technically, if you run a server, you can configure your own list site or explicitly choose validators to trust on an individual basis, but this is not recommended. If your chosen set of validators does not have enough overlap with others, your server may diverge from the rest of the network, and you could lose money by taking action based on your server's divergent state.
 
 Research is ongoing to design an improved consensus protocol that allows more heterogeneous validator lists. For more information, see the [Consensus Research](consensus-research.html) page.
 
