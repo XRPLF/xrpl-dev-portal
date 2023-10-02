@@ -1,0 +1,98 @@
+ignore:
+  - content/_*/**
+i18n:
+  defaultLocale: en-US
+  locales:
+    - code: en-US
+      name: English
+    - code: ja
+      name: 日本語
+redirects:
+  $ref: redirects.yaml
+theme:
+  scripts:
+    head:
+      - src: ./static/js/xrpl-2.11.0.min.js
+      - src: ./static/vendor/jquery-3.7.1.min.js
+      - src: ./static/vendor/bootstrap.min.js
+  links:
+    - href: https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
+      rel: stylesheet
+    - href: https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
+      rel: stylesheet
+    - href: ./static/css/devportal2022-v25.css
+      rel: stylesheet
+    - href: ./static/vendor/fontawesome/css/font-awesome.min.css
+      rel: stylesheet
+
+  logo:
+    srcSet: ./static/img/XRPLedger_DevPortal-black.svg light ./static/img/XRPLedger_DevPortal-white.svg dark'
+    altText: XRP Ledger Developer Portal
+    link: /
+    # favicon:
+  navbar:
+    # hide:
+    items:
+      $ref: top-nav.yaml
+  # footer:
+  #   # hide:
+  #   copyrightText: © 2022-2023, Redocly Inc. All right reserved.
+  #   items:
+  #     - group: Legal
+  #       items:
+  #         - label: Terms of Use
+  #           href: 'https://redocly.com/subscription-agreement/'
+  #         - label: Privacy Notice
+  #           href: 'https://redocly.com/privacy-policy/'
+  #         - label: Cookie Notice
+  #           href: 'https://redocly.com/privacy-policy/'
+  #     - group: Social
+  #       items:
+  #         - label: Facebook
+  #           href: 'https://www.facebook.com/redocly/'
+  #         - label: Youtube
+  #           href: 'https://www.youtube.com/channel/UCxYbPjnpqmHCmwg9iWf7wtQ'
+  #         - label: Twitter
+  #           href: 'https://twitter.com/Redocly'
+  # sidebar:
+  #   hide:
+  # search:
+  #   placement:
+  #   hide:
+  # colorMode: #...
+  # navigation:
+  #   nextButton:
+  #     hide:
+  #     label:
+  #   previousButton:
+  #     hide:
+  #     label:
+  # markdown:
+  #   frontMatterKeysToResolve:
+  #   lastUpdatedBlock:
+  #     format:
+  #     locale:
+  #     hide:
+  #   toc:
+  #     header:
+  #     depth:
+  #     hide:
+  #   editPage:
+  #     baseUrl:
+  #     text:
+  #     hide:
+  # codeSnippet:
+  #   copy:
+  #     buttonText:
+  #     tooltipText:
+  #     toasterText:
+  #     toasterDuration:
+  #     hide:
+  #   report:
+  #     label:
+  #     tooltipText:
+  #     hide:
+  # openapi:
+  # all openapi docs options
+  # graphql:
+  # all graphql docs options
