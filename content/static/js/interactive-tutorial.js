@@ -40,7 +40,7 @@ LOCALES = {
  */
 const current_locale = $("html").prop("lang")
 function tl(key) {
-  let mesg = LOCALES[current_locale][key]
+  let mesg = LOCALES[current_locale || 'en'][key ]
   if (typeof mesg === "undefined") {
     mesg = key
   }
