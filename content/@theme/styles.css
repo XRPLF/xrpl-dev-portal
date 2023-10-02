@@ -1,0 +1,3 @@
+html.light pre code {
+  color: var(--code-block-controls-text-color) !important;
+}
