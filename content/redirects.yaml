@@ -1,0 +1,4 @@
+'/docs.html':
+  to: '/docs/'
+  type: 301 # optional
+# more here
