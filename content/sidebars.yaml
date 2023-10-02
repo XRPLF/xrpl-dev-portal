@@ -1,0 +1,209 @@
+# I copied it from the previous version of the docs
+# It needs to be adjusted to reflect the new structure of the docs
+- page: concepts/introduction/index.md
+  expanded: false
+  items:
+    - page: concepts/introduction/what-is-the-xrp-ledger.md
+    - page: concepts/introduction/what-is-xrp.md
+    - page: concepts/introduction/crypto-wallets.md
+    - page: concepts/introduction/txn-and-requests.md
+    - page: concepts/introduction/software-ecosystem.md
+- group: Tutorials
+  page: tutorials/index.mdx
+  expanded: false
+  items:
+    - group: Quickstart
+      page: tutorials/quickstart/index.md
+      expanded: false
+      items:
+        - page: tutorials/quickstart/create-accounts-send-xrp.md
+        - page: tutorials/quickstart/create-trustline-send-currency.md
+        - page: tutorials/quickstart/mint-and-burn-nftokens.md
+        - page: tutorials/quickstart/transfer-nftokens.md
+        - page: tutorials/quickstart/broker-sale.md
+        - page: tutorials/quickstart/authorize-minter.md
+        - page: tutorials/quickstart/batch-minting.md
+- group: Understanding the XRPL
+  page: concepts/understanding-xrpl/understanding-xrpl.md
+  expanded: false
+  items:
+    - group: XRP Ledger Ecosystem
+      page: concepts/understanding-xrpl/xrpl/xrpl-ecosystem.md
+      expanded: false
+      items:
+        - label: Ledger Structure
+          page: concepts/understanding-xrpl/xrpl/ledger-structure.md
+        - group: Consensus
+          page: concepts/understanding-xrpl/xrpl/consensus.md
+          expanded: false
+          items:
+            - page: concepts/understanding-xrpl/xrpl/double-spend.md
+            - page: concepts/understanding-xrpl/xrpl/consensus-protocol-properties.md
+            - page: concepts/understanding-xrpl/xrpl/how-consensus-works.md
+            - page: concepts/understanding-xrpl/xrpl/consensus-protections.md
+            - page: concepts/understanding-xrpl/xrpl/consensus-research.md
+        - group: Validation
+          page: concepts/understanding-xrpl/xrpl/validation.md
+          items:
+            - page: concepts/understanding-xrpl/xrpl/fee-voting.md
+            - page: concepts/understanding-xrpl/xrpl/negative-unl.md
+    - group: XRP Ledger Servers
+      page: concepts/understanding-xrpl/server/xrpl-servers.md
+      expanded: false
+      items:
+        - group: The rippled Server
+          page: concepts/understanding-xrpl/server/rippled-server.md
+          expanded: false
+          items:
+            - page: concepts/understanding-xrpl/server/server-modes.md
+            - page: concepts/understanding-xrpl/server/transaction-queue.md
+        - page: concepts/understanding-xrpl/server/clio-server.md
+
+    - group: XRP Ledger Networks
+      page: concepts/understanding-xrpl/networks/xrpl-networks.md
+      expanded: false
+      items:
+        - page: concepts/understanding-xrpl/networks/parallel-networks.md
+        - page: concepts/understanding-xrpl/networks/federated-sidechains.md
+    - group: Transactions
+      page: concepts/understanding-xrpl/transactions/transactions.md
+      expanded: false
+      items:
+        - page: concepts/understanding-xrpl/transactions/transaction-types.md
+        - page: concepts/understanding-xrpl/transactions/transaction-common-fields.md
+        - page: concepts/understanding-xrpl/transactions/transaction-metadata.md
+        - page: concepts/understanding-xrpl/transactions/source-and-destination-tags.md
+        - page: concepts/understanding-xrpl/transactions/trust-lines-and-issuing.md
+        - page: concepts/understanding-xrpl/transactions/transaction-cost.md
+        - page: concepts/understanding-xrpl/transactions/transaction-malleability.md
+        - page: concepts/understanding-xrpl/transactions/about-canceling-a-transaction.md
+        - page: concepts/understanding-xrpl/transactions/multi-signing.md
+        - page: concepts/understanding-xrpl/transactions/tickets.md
+        - page: concepts/understanding-xrpl/transactions/finality-of-results.md
+        - page: concepts/understanding-xrpl/transactions/invariant-checking.md
+        - group: Payment Types
+          page: concepts/understanding-xrpl/transactions/payments/payment-types.md
+          expanded: false
+          items:
+            - page: concepts/understanding-xrpl/transactions/payments/direct-xrp-payments.md
+            - page: concepts/understanding-xrpl/transactions/payments/cross-currency-payments.md
+            - page: concepts/understanding-xrpl/transactions/payments/checks.md
+            - page: concepts/understanding-xrpl/transactions/payments/escrow.md
+            - page: concepts/understanding-xrpl/transactions/payments/partial-payments.md
+            - page: concepts/understanding-xrpl/transactions/payments/payment-channels.md
+        - group: Transaction Results
+          page: concepts/understanding-xrpl/transactions/transaction-results/transaction-results.md
+          expanded: false
+          items:
+            - page: concepts/understanding-xrpl/transactions/transaction-results/tec-codes.md
+            - page: concepts/understanding-xrpl/transactions/transaction-results/tef-codes.md
+            - page: concepts/understanding-xrpl/transactions/transaction-results/tel-codes.md
+            - page: concepts/understanding-xrpl/transactions/transaction-results/tem-codes.md
+            - page: concepts/understanding-xrpl/transactions/transaction-results/ter-codes.md
+            - page: concepts/understanding-xrpl/transactions/transaction-results/tes-success.md
+    - group: Tokens
+      page: concepts/understanding-xrpl/tokens/tokens.md
+      expanded: false
+      items:
+        - group: Token Types
+          page: concepts/understanding-xrpl/tokens/token-types.md
+          expanded: false
+          items:
+            - group: Non-fungible Tokens
+              page: concepts/understanding-xrpl/tokens/non-fungible.md
+              expanded: false
+              items:
+                - page: concepts/understanding-xrpl/tokens/non-fungible-token-transfers.md
+        - page: concepts/understanding-xrpl/tokens/transfer-fees.md
+        - page: concepts/understanding-xrpl/tokens/paths.md
+        - page: concepts/understanding-xrpl/tokens/authorized-trust-lines.md
+        - page: concepts/understanding-xrpl/tokens/rippling.md
+        - group: Freezing Tokens
+          page: concepts/understanding-xrpl/tokens/freezing-tokens.md
+          expanded: false
+          items:
+            - page: concepts/understanding-xrpl/tokens/common-misunderstandings-about-freezes.md
+    - group: Accounts
+      page: concepts/understanding-xrpl/accounts/accounts.md
+      expanded: false
+      items:
+        - page: concepts/understanding-xrpl/accounts/account-types.md
+        - page: concepts/understanding-xrpl/accounts/account-creating.md
+        - page: concepts/understanding-xrpl/accounts/reserves.md
+        - page: concepts/understanding-xrpl/accounts/cryptographic-keys.md
+        - page: concepts/understanding-xrpl/accounts/deposit-authorization.md
+        - page: concepts/understanding-xrpl/accounts/account-deleting.md
+    - page: concepts/understanding-xrpl/fees.md
+- group: Use Cases
+  page: use-cases/index.mdx
+  expanded: false
+  items:
+    - group: Payments
+      page: use-cases/payments/index.mdx
+      items:
+        - page: use-cases/payments/payment-channels.md
+        - page: use-cases/payments/cross-currency-payments.md
+        - page: use-cases/payments/escrow.md
+    - group: DeFi
+      page: use-cases/defi/index.mdx
+      items:
+        - page: use-cases/defi/moneychanger.md
+        - page: use-cases/defi/decentralized-exchange.md
+    - group: Tokenization
+      page: use-cases/tokenization/index.mdx
+      items:
+        - page: use-cases/tokenization/stablecoin-issuer.md
+        - page: use-cases/tokenization/nftoken-marketplace.md
+        - page: use-cases/tokenization/authorized-minter.md
+        - page: use-cases/tokenization/digital-artist.md
+    - group: Interoperability
+      page: use-cases/interoperability/index.mdx
+      items:
+        - page: use-cases/interoperability/sidechains.md
+        - label: Hooks
+          href: https://xrpl-hooks.readme.io/
+          external: true
+- group: XRPL Infrastructure
+  page: infrastructure/index.mdx
+  expanded: false
+  items:
+    - label: rippled Server
+      href: https://xrpl.org/manage-the-rippled-server.html
+      external: true
+    - label: Clio server
+      href: https://xrpl.org/manage-the-clio-server.html
+      external: true
+- group: API Reference
+  expanded: false
+  items:
+    - group: XRP Ledger Protocol Reference
+      expanded: false
+      items:
+        - page: references/protocol-reference/ledger-data/ledger-header.md
+        - page: references/protocol-reference/ledger-data/ledger-data-formats.md
+        - page: references/protocol-reference/transactions/transaction-formats.md
+        - page: references/protocol-reference/transactions/transaction-common-fields.md
+        - page: references/protocol-reference/transactions/transaction-metadata.md
+    - group: Client Libraries
+      expanded: false
+      items:
+        - page: references/client-libraries.md
+        - page: references/data-api.md
+    - group: HTTP / WebSocket APIs
+      page: references/http-websocket-apis/index.mdx
+      items:
+    - page: references/xrp-ledger-toml.md
+- group: Amendments
+  expanded: false
+  items:
+    - page: amendments/amendments.md
+    - page: amendments/known-amendments.md
+- label: Developer Tools
+  page: dev-tools/index.mdx
+- group: Online Tools
+  expanded: false
+  items:
+    - label: Code Samples
+      page: code-samples/index.mdx
+
+- page: releases.md
