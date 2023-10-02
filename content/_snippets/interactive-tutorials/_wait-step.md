@@ -1,12 +1,14 @@
-{% if use_network is undefined or use_network == "Testnet" %}
+<!-- {% if use_network is undefined or use_network == "Testnet" %}
   {% set explorer_url = "https://testnet.xrpl.org" %}
 {% elif use_network == "Devnet" %}
   {% set explorer_url = "https://devnet.xrpl.org" %}
 {% elif use_network == "Mainnet" %}
   {% set explorer_url = "https://livenet.xrpl.org" %}
-{% endif %}
+{% endif %} -->
 
-<table class="wait-step" data-explorerurl="{{explorer_url}}">
+{% start-step stepIdx=3 steps=$frontmatter.steps %}
+
+<table class="wait-step" data-explorerurl="{% $env.PUBLIC_EXPLORER_URL %}">
   <tr>
     <th>Transaction ID:</th>
     <td class="waiting-for-tx">(None)</td>
@@ -25,3 +27,5 @@
   <tr class="tx-validation-status">
   </tr>
 </table>
+
+{% /start-step %}
