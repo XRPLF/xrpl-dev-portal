@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "react",
+    "paths": {
+      "@theme/*": [
+        "./@theme/*",
+        "./node_modules/@redocly/theme/src/*"
+      ],
+      "@portal/*": [
+        "./node_modules/@redocly/portal/dist/client/App/*"
+      ]
+    },
+  }
+}
