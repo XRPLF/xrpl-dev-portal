@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Clawing Back Tokens - XRPL.org (日本語)</title>
+    <title>トークンの回収 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Clawing Back Tokens | XRPL.org (日本語)">
+    <meta property="og:title" content="トークンの回収 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/clawing-back-tokens.html" />
-    <meta property="og:description" content="Issuers can claw back their tokens for compliance purposes if they enable the Clawback feature before issuing tokens." />
-    <meta name="description" content="Issuers can claw back their tokens for compliance purposes if they enable the Clawback feature before issuing tokens." />
+    <meta property="og:description" content="発行者は、トークンを発行する前にClawback機能を有効にすると、規制遵守の目的でトークンを取り戻すことができます。" />
+    <meta name="description" content="発行者は、トークンを発行する前にClawback機能を有効にすると、規制遵守の目的でトークンを取り戻すことができます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['Tokens']
+      "page_labels": ['トークン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -257,12 +257,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/addEscrowCode/content/concepts/tokens/clawing-back-tokens.md?pr=/XRPLF/xrpl-dev-portal/pull/2165" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/addEscrowCode/content/concepts/tokens/clawing-back-tokens.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2165" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-tokens">Tokens</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Tokens" -->
+      <span class="label label-トークン">トークン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "トークン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -270,8 +270,8 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#clawing-back-tokens">Clawing Back Tokens</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-clawback-transaction">Example Clawback Transaction</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#トークンの回収">トークンの回収</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#clawbackトランザクションの例">Clawbackトランザクションの例</a></li>
       </ul>
   </div>
       </aside>
@@ -289,22 +289,19 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
-    <li class="active breadcrumb-item">Clawing Back Tokens</li>
+    <li class="active breadcrumb-item">トークンの回収</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="clawing-back-tokens">Clawing Back Tokens<a aria-hidden="true" class="hover_anchor" href="#clawing-back-tokens"><i class="fa fa-link"></i></a></h1>
-<p><em>Requires the <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-39d-clawback" target="_blank">Clawback amendment <i aria-hidden="true" class="fa fa-external-link"></i></a>.</em></p>
-<p>For regulatory purposes, some issuers need the ability to recover tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em>, the funds.</p>
-<p>Issuers can gain the ability to claw back their tokens by enabling the <strong>Allow Clawback</strong> flag on their issuing account. This flag cannot be enabled if the issuer has already issued tokens.</p>
-<p class="devportal-callout note"><strong>Note:</strong> You can only claw back issued tokens created by your account. You cannot claw back XRP in this way.</p>
-<p>Clawback is disabled by default. To use clawback, you must send an <a href="accountset.html">AccountSet transaction</a> to enable the <strong>Allow Trust Line Clawback</strong> setting. <strong>An issuer with any existing tokens cannot enable Clawback.</strong> You can only enable <strong>Allow Trust Line Clawback</strong> if you have a completely empty owner directory, meaning you must do so before you set up any trust lines, offers, escrows, payment channels, checks, or signer lists.</p>
-<p>If you attempt to set <code>lsfAllowTrustLineClawback</code> while <code>lsfNoFreeze</code> is set, the transaction returns <code>tecNO_PERMISSION</code>, because clawback cannot be enabled on an account that has already disclaimed the ability to freeze trust lines. 
-Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrustLineClawback</code> is set, the transaction also returns <code>tecNO_PERMISSION</code>.</p>
-<h2 id="example-clawback-transaction">Example Clawback Transaction<a aria-hidden="true" class="hover_anchor" href="#example-clawback-transaction"><i class="fa fa-link"></i></a></h2>
+        <h1 id="トークンの回収">トークンの回収<a aria-hidden="true" class="hover_anchor" href="#トークンの回収"><i class="fa fa-link"></i></a></h1>
+<p><em><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-39d-clawback" target="_blank">Clawback amendment <i aria-hidden="true" class="fa fa-external-link"></i></a>が必要です。</em></p>
+<p>規制上の目的から、トークンがアカウントに送信された後にトークンを回収する機能を必要とする発行者が存在します。例えば、トークンが違法行為で制裁を受けたアカウントに送られたことが発覚した場合、発行者はその資金を「回収」することができます。</p>
+<p>発行者は、発行アカウントで<strong>Allow Clawback</strong>フラグを有効にすることで、トークンを回収する権限を得ることができます。発行者がすでにトークンを発行している場合、このフラグを有効にすることはできません。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> アカウント自身が発行したトークンのみを回収することができます。この方法でXRPを回収することはできません。</p>
+<p>Clawback機能はデフォルトで無効になっています。使用するには、<a href="accountset.html">AccountSetトランザクション</a>を送信して、<strong>Allow Trust Line Clawback</strong>設定を有効にする必要があります。<strong>既存のトークンを持つ発行者はClawback機能を有効にすることはできません</strong>。<strong>Allow Trust Line Clawback</strong>を有効にできるのは、所有者ディレクトリが完全に空の場合のみです。つまり、トラストライン、オファー、エスクロー、ペイメントチャネル、チェック、または署名者リストを設定する前に有効にする必要があります。</p>
+<p><code>lsfNoFreeze</code>が設定されているときに<code>lsfAllowTrustLineClawback</code>を設定しようとすると、トランザクションは<code>tecNO_PERMISSION</code>を返します。
+逆に、<code>lsfAllowTrustLineClawback</code>が設定されている時に<code>lsfNoFreeze</code>を設定しようとすると、トランザクションは<code>tecNO_PERMISSION</code>を返します。</p>
+<h2 id="clawbackトランザクションの例">Clawbackトランザクションの例<a aria-hidden="true" class="hover_anchor" href="#clawbackトランザクションの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clawback"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S"</span><span class="p">,</span>
@@ -315,7 +312,7 @@ Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrust
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>If successful, this transaction would claw back at most 314.159 FOO issued by rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S and held by rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW.</p>
+<p>このトランザクションが成功した場合、rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9Sが発行し、rsA2LpzuawewSBQXkiju3YQTMzW13pAAdWが保有する最大314.159FOOを回収することになります。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -612,17 +609,17 @@ Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrust
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -817,7 +814,7 @@ Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrust
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -913,12 +910,12 @@ Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrust
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -928,7 +925,7 @@ Conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrust
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       

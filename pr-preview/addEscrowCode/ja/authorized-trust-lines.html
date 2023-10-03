@@ -305,7 +305,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="認可トラストライン">認可トラストライン<a aria-hidden="true" class="hover_anchor" href="#認可トラストライン"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledgerの認可トラストライン機能により、発行者は、発行者が許可したアカウントのみが保有できるトークンを作成することができます。。認可トラストライン機能はトークンにのみ適用され、XRPには影響しません。</p>
+<p>XRP Ledgerの認可トラストライン機能により、発行者は、発行者が許可したアカウントのみが保有できるトークンを作成することができます。認可トラストライン機能はトークンにのみ適用され、XRPには影響しません。</p>
 <p>認可トラストライン機能を使用するには、発行アドレスで<strong>RequireAuth</strong>フラグを有効にします。その後、他のアカウントは、あなたがそのアカウントのトラストラインをあなたの発行アカウントに承認した場合にのみ、あなたが発行したトークンを保持することができます。</p>
 <p>発行アドレスから<a href="trustset.html">TrustSetトランザクション</a>を送信し、自分のアカウントと認可するアカウントとの間のトラストラインを設定することで、トラストラインを認可することができます。トラストラインを認可した後、その認可を取り消すことはできません。(ただし、必要に応じてトラストラインを<a href="freezes.html">凍結</a>することは可能です)。</p>
 <p>トラストラインを認可するためのトランザクションは、発行アドレスの署名が必要であり、残念ながらそのアドレスのリスクエクスポージャーが増加することを意味します。</p>
@@ -318,7 +318,7 @@
 <li>顧客は<a href="trustset.html">TrustSetトランザクション</a>を送信し、発行者のアドレスにトラストラインを作成し、正のリミットを設定します。</li>
 <li>発行者はTrustSetトランザクションを送信し、顧客のトラストラインを認可します。</li>
 </ol>
-<p class="devportal-callout ヒント"><strong>ヒント:</strong> 2つのTrustSetトランザクション（ステップ3および4）は、どちらの順序で発生しても構いません。発行者がトラストラインを先に認可した場合、これにより限度額が0に設定されたトラストラインが作成され、顧客のTrustSetトランザクションは、事前に認可されたトラストラインの限度額を設定することになります。(<a href="known-amendments.html#trustsetauth">TrustSetAuth amendment</a>によって追加されました。)_</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> 2つのTrustSetトランザクション（ステップ3および4）は、どちらの順序で発生しても構いません。発行者がトラストラインを先に認可した場合、これにより限度額が0に設定されたトラストラインが作成され、顧客のTrustSetトランザクションは、事前に認可されたトラストラインの限度額を設定することになります。(<a href="known-amendments.html#trustsetauth">TrustSetAuth amendment</a>により追加されました。)_</p>
 <h2 id="注意事項">注意事項<a aria-hidden="true" class="hover_anchor" href="#注意事項"><i class="fa fa-link"></i></a></h2>
 <p>認可トラストラインを使用するつもりがない場合でも、<a href="account-types.html">運用アカウントと予備アカウント</a>のRequire Auth設定を有効にし、これらのアカウントにトラストラインを認可させないようにすることができます。これは、これらのアカウントが誤ってトークンを発行することを防止します（たとえば、ユーザーが誤って間違ったアドレスをトラストしてしまった場合など）。これはあくまで予防措置であり、運用アカウントと予備アカウントが意図したとおりに <em>発行者の</em> トークンを転送することを止めるものではありません。</p>
 <h2 id="技術情報">技術情報<a aria-hidden="true" class="hover_anchor" href="#技術情報"><i class="fa fa-link"></i></a></h2>
@@ -692,17 +692,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -897,7 +897,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -993,12 +993,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -1008,7 +1008,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       

@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Open, Closed, and Validated Ledgers - XRPL.org (日本語)</title>
+    <title>オープン、閉鎖済み、および検証済みレジャー - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Open, Closed, and Validated Ledgers | XRPL.org (日本語)">
+    <meta property="og:title" content="オープン、閉鎖済み、および検証済みレジャー | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/open-closed-validated-ledgers.html" />
-    <meta property="og:description" content="Ledger objects have one of three states — open, closed, or validated." />
-    <meta name="description" content="Ledger objects have one of three states — open, closed, or validated." />
+    <meta property="og:description" content="レジャーオブジェクトには、オープン、閉鎖済み、検証済みの3つの状態があります。" />
+    <meta name="description" content="レジャーオブジェクトには、オープン、閉鎖済み、検証済みの3つの状態があります。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['Blockchain']
+      "page_labels": ['ブロックチェーン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -257,12 +257,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/addEscrowCode/content/concepts/ledgers/open-closed-validated-ledgers.md?pr=/XRPLF/xrpl-dev-portal/pull/2165" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/addEscrowCode/content/concepts/ledgers/open-closed-validated-ledgers.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2165" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-blockchain">Blockchain</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Blockchain" -->
+      <span class="label label-ブロックチェーン">ブロックチェーン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "ブロックチェーン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -270,7 +270,7 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#open-closed-and-validated-ledgers">Open, Closed, and Validated Ledgers</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#オープン閉鎖済みおよび検証済みレジャー">オープン、閉鎖済み、および検証済みレジャー</a></li>
       </ul>
   </div>
       </aside>
@@ -288,54 +288,51 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/ledgers.html">レジャー</a></li>
-    <li class="active breadcrumb-item">Open, Closed, and Validated Ledgers</li>
+    <li class="active breadcrumb-item">オープン、閉鎖済み、および検証済みレジャー</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="open-closed-and-validated-ledgers">Open, Closed, and Validated Ledgers<a aria-hidden="true" class="hover_anchor" href="#open-closed-and-validated-ledgers"><i class="fa fa-link"></i></a></h1>
-<p>The <code>rippled</code> server makes a distinction between ledger versions that are <em>open</em>, <em>closed</em>, and <em>validated</em>. A server has one open ledger, any number of closed but unvalidated ledgers, and an immutable history of validated ledgers. The following table summarizes the difference:</p>
+        <h1 id="オープン閉鎖済みおよび検証済みレジャー">オープン、閉鎖済み、および検証済みレジャー<a aria-hidden="true" class="hover_anchor" href="#オープン閉鎖済みおよび検証済みレジャー"><i class="fa fa-link"></i></a></h1>
+<p><code>rippled</code>サーバはレジャーのバージョンを <em>オープン(open)</em>、<em>閉鎖済み(closed)</em>、<em>検証済み(validated)</em> に区別します。サーバはオープンなレジャーを1つ、閉鎖済みだが未検証のレジャーをいくつでも、そして検証済みレジャーの変更不可能な履歴を持ちます。以下の表はその違いをまとめたものです。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Ledger Type:</th>
-<th style="text-align: left;">Open</th>
-<th style="text-align: left;">Closed</th>
-<th style="text-align: left;">Validated</th>
+<th style="text-align: left;">レジャーの種類:</th>
+<th style="text-align: left;">オープン</th>
+<th style="text-align: left;">閉鎖済み</th>
+<th style="text-align: left;">検証済み</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Purpose:</strong></td>
-<td style="text-align: left;">Temporary workspace</td>
-<td style="text-align: left;">Proposed next state</td>
-<td style="text-align: left;">Confirmed previous state</td>
+<td style="text-align: left;"><strong>目的:</strong></td>
+<td style="text-align: left;">一時的な作業領域</td>
+<td style="text-align: left;">次の状態の提案</td>
+<td style="text-align: left;">直前の状態の確認</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Number used:</strong></td>
+<td style="text-align: left;"><strong>使用する数:</strong></td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">Any number, but usually 0 or 1</td>
-<td style="text-align: left;">One per ledger index, growing over time</td>
+<td style="text-align: left;">任意の数、通常は0または1</td>
+<td style="text-align: left;">レジャーインデックスごとに1つ、時間の経過とともに増加</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Can contents change?</strong></td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">No, but the whole ledger could be replaced</td>
-<td style="text-align: left;">Never</td>
+<td style="text-align: left;"><strong>内容は変更可能?</strong></td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">いいえ、ただし、別のレジャーが採用される可能性あり。</td>
+<td style="text-align: left;">いいえ</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Transactions are applied in:</strong></td>
-<td style="text-align: left;">The order they are received</td>
-<td style="text-align: left;">Canonical order</td>
-<td style="text-align: left;">Canonical order</td>
+<td style="text-align: left;"><strong>トランザクションの適用方法:</strong></td>
+<td style="text-align: left;">受信順</td>
+<td style="text-align: left;">正規順序</td>
+<td style="text-align: left;">正規順序</td>
 </tr>
 </tbody>
 </table>
-<p>Unintuitively, the XRP Ledger never "closes" an open ledger to convert it into a closed ledger. Instead, the server throws away the open ledger, creates a new closed ledger by applying transactions on top of a previous closed ledger, then creates a new open ledger using the latest closed ledger as a base. This is a consequence of <a href="consensus-principles-and-rules.html#問題の単純化">how consensus solves the double-spend problem</a>.</p>
-<p>For an open ledger, servers apply transactions in the order those transactions appear, but different servers may see transactions in different orders. Since there is no central timekeeper to decide which transaction was actually first, servers may disagree on the exact order of transactions that were sent around the same time. Thus, the process for calculating a closed ledger version that is eligible for <a href="consensus-structure.html#検証">validation</a> is different than the process of building an open ledger from proposed transactions in the order they arrive. To create a "closed" ledger, each XRP Ledger server starts with a set of transactions and a previous, or "parent", ledger version. The server puts the transactions in a canonical order, then applies them to the previous ledger in that order. The canonical order is designed to be deterministic and efficient, but hard to game, to increase the difficulty of front-running Offers in the <a href="decentralized-exchange.html">decentralized exchange</a>.</p>
-<p>Thus, an open ledger is only ever used as a temporary workspace, which is a major reason why transactions' <a href="finality-of-results.html">tentative results may vary from their final results</a>.</p>
+<p>直感に反し、XRP Ledgerはオープンレジャーを「閉鎖」して閉鎖済みレジャーへと変換することはありません。その代わりに、サーバはオープンレジャーを捨て、以前の閉鎖済みレジャーの上にトランザクションを適用して閉鎖済みレジャーを作成し、最新の閉鎖済みレジャーをベースとして新しいオープンレジャーを作成します。これは、<a href="consensus-principles-and-rules.html#問題の単純化">コンセンサスが二重支出問題を解決する方法</a>の結果と言えます。</p>
+<p>オープンレジャーでは、サーバはトランザクションを受信した順番にトランザクションを適用しますが、サーバによってトランザクションが異なる順番で表示されることがあります。実際にどのトランザクションが先だったかを決定するための中心的なタイムキーパーが存在しないため、同じ時刻に送信されたトランザクションの正確な順序について、サーバ間で見解が一致しない可能性があります。したがって、<a href="consensus-structure.html#検証">検証</a>の対象となる閉鎖済みのレジャーバージョンを計算するプロセスは、提案されたトランザクションを受信順に並べてオープンレジャーを構築するプロセスとは異なります。「閉鎖済み」レジャーを作成するために、各XRP Ledgerサーバは、トランザクションのセットと、以前、つまり「親」レジャーを使用します。サーバはトランザクションを正規順序に並べ、その順序で前のレジャーに適用します。正規順序は、<a href="decentralized-exchange.html">分散型取引所</a>におけるオファーのフロントランニングの難易度を高めるために、決定論的で効率的であるが、悪用されにくいように設計されています。</p>
+<p>このように、オープンレジャーは一時的な作業領域としてしか使用されないため、トランザクションの<a href="finality-of-results.html">暫定的な結果と最終的な結果が異なる可能性がある</a>という大きな特徴があります。</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -625,17 +622,17 @@
     <nav class="nav flex-column show " id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -830,7 +827,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -926,12 +923,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -941,7 +938,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       

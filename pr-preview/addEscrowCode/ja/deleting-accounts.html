@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Deleting Accounts - XRPL.org (日本語)</title>
+    <title>アカウントの削除 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Deleting Accounts | XRPL.org (日本語)">
+    <meta property="og:title" content="アカウントの削除 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/deleting-accounts.html" />
-    <meta property="og:description" content="About deleting an XRP Ledger account." />
-    <meta name="description" content="About deleting an XRP Ledger account." />
+    <meta property="og:description" content="XRP Ledgerのアカウントの削除について。" />
+    <meta name="description" content="XRP Ledgerのアカウントの削除について。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['Accounts']
+      "page_labels": ['アカウント']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -257,12 +257,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/addEscrowCode/content/concepts/accounts/deleting-accounts.md?pr=/XRPLF/xrpl-dev-portal/pull/2165" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/addEscrowCode/content/concepts/accounts/deleting-accounts.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2165" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-accounts">Accounts</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Accounts" -->
+      <span class="label label-アカウント">アカウント</span>
+      <!-- TEMPLATE WARNING: no label landing found for "アカウント" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -270,9 +270,9 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#deleting-accounts">Deleting Accounts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#requirements">Requirements</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#cost-of-deleting">Cost of Deleting</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#アカウントの削除">アカウントの削除</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#要件">要件</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#削除コスト">削除コスト</a></li>
       </ul>
   </div>
       </aside>
@@ -290,35 +290,32 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/accounts.html">アカウント</a></li>
-    <li class="active breadcrumb-item">Deleting Accounts</li>
+    <li class="active breadcrumb-item">アカウントの削除</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="deleting-accounts">Deleting Accounts<a aria-hidden="true" class="hover_anchor" href="#deleting-accounts"><i class="fa fa-link"></i></a></h1>
-<p>The owner of an account can send an <a href="accountdelete.html">AccountDelete transaction</a> to deletes the account and related entries from the ledger, sending most of the account's remaining XRP balance to another account. To discourage wasteful creation and deletion of accounts, deleting an account requires burning a higher than usual amount of XRP as the <a href="transaction-cost.html">transaction cost</a>.</p>
-<p>Some types of associated ledger entries block an account from being deleted. For example, the issuer of a fungible token can't be deleted while anyone holds a nonzero balance of that token.</p>
-<p>After an account has been deleted, it can be re-created in the ledger through the normal method of <a href="accounts.html#アカウントの作成">creating accounts</a>. An account that has been deleted and re-created is no different than an account that has been created for the first time.</p>
-<h2 id="requirements">Requirements<a aria-hidden="true" class="hover_anchor" href="#requirements"><i class="fa fa-link"></i></a></h2>
-<p>To be deleted, an account must meet the following requirements:</p>
+        <h1 id="アカウントの削除">アカウントの削除<a aria-hidden="true" class="hover_anchor" href="#アカウントの削除"><i class="fa fa-link"></i></a></h1>
+<p>アカウントの所有者は<a href="accountdelete.html">AccountDeleteトランザクション</a>を送信することで、レジャーからアカウントと関連するエントリーを削除し、アカウントの残りのXRP残高のほとんどを別のアカウントに送ることができます。アカウントの無駄な作成と削除を抑止するため、アカウントの削除には<a href="transaction-cost.html">トランザクションコスト</a>として通常よりも多くのXRPをバーンする必要があります。</p>
+<p>いくつかの種類のレジャーエントリーを保有している場合、アカウントの削除がブロックされます。たとえば、(代替可能)トークンの発行者は、そのトークンの発行残高がゼロでなければ、削除することはできません。
+アカウントは削除した後、通常の<a href="accounts.html#アカウントの作成">アカウントの作成方法</a>によって再作成できます。削除後に再作成されたアカウントと、初めて作成されたアカウントに違いはありません。</p>
+<h2 id="要件">要件<a aria-hidden="true" class="hover_anchor" href="#要件"><i class="fa fa-link"></i></a></h2>
+<p>アカウントを削除するには、次の条件を満たす必要があります。</p>
 <ul>
-<li>The account's <code>Sequence</code> number plus 256 must be less than the current <a href="basic-data-types.html#レジャーインデックス">Ledger Index</a>.</li>
-<li>The account must not be linked to any of the following types of <a href="ledger-object-types.html">ledger objects</a> (as a sender or receiver):<ul>
+<li>アカウントの<code>Sequence</code>番号に256を加えた値が、現在の<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>未満であること。</li>
+<li>アカウントが次の<a href="ledger-object-types.html">レジャーエントリー</a>のいずれも(送金元または受取人として)保有していないこと。<ul>
 <li><code>Escrow</code></li>
 <li><code>PayChannel</code></li>
 <li><code>RippleState</code></li>
 <li><code>Check</code></li>
 </ul>
 </li>
-<li>The account must own fewer than 1000 objects in the ledger.</li>
-<li>The transaction must pay a special <a href="transaction-cost.html">transaction cost</a> equal to at least the <a href="reserves.html">owner reserve</a> for one item (currently 2 XRP).</li>
+<li>アカウントがレジャー内に所有するオブジェクトが1000個未満であること。</li>
+<li>トランザクションの送信時、少なくとも1つ分の<a href="reserves.html">所有者準備金</a>(現在2XRP)に相当する特別な<a href="transaction-cost.html">トランザクションコスト</a>を支払う必要があります。</li>
 </ul>
-<h2 id="cost-of-deleting">Cost of Deleting<a aria-hidden="true" class="hover_anchor" href="#cost-of-deleting"><i class="fa fa-link"></i></a></h2>
-<p class="devportal-callout warning"><strong>Warning:</strong> The <a href="accountdelete.html">AccountDelete transaction</a>'s transaction cost always applies when the transaction is included in a validated ledger, even if the transaction failed because the account does not meet the requirements to be deleted. To greatly reduce the chances of paying the high transaction cost if the account cannot be deleted, use the <code>fail_hard</code> option when submitting an AccountDelete transaction.</p>
-<p>Unlike Bitcoin and many other cryptocurrencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, you should not create new XRP Ledger accounts unless necessary. You can recover some of an account's 10 XRP <a href="reserves.html">reserve</a> by deleting the account, but you must still destroy at least 2 XRP to do so.</p>
-<p>Institutions who send and receive value on behalf of many users can use <a href="source-and-destination-tags.html"><strong>Source Tags</strong> and <strong>Destination Tags</strong></a> to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.</p>
+<h2 id="削除コスト">削除コスト<a aria-hidden="true" class="hover_anchor" href="#削除コスト"><i class="fa fa-link"></i></a></h2>
+<p class="devportal-callout 注意"><strong>注意:</strong> アカウントの削除要件を満たしていないためにトランザクションが失敗した場合でも、<a href="accountdelete.html">AccountDeleteトランザクション</a>のトランザクションコストは、トランザクションが検証済みレジャーに含まれる場合常に発生します。アカウントを削除できなかった場合に高いトランザクションコストを支払う可能性を減らすには、AccountDeleteトランザクションを送信するときに<code>fail_hard</code>オプションを使用してください。</p>
+<p>ビットコインや他の多くの暗号通貨とは異なり、XRP Ledgerの公開レジャーチェーンのそれぞれの新しいレジャーバージョンは、レジャーの完全な状態を含んでおり、新しいアカウントが増えるごとにサイズが増加します。そのため、必要な場合を除き、新しいXRP Ledgerアカウントを作成すべきではありません。アカウントを削除することで、アカウントの10XRPの<a href="reserves.html">準備金</a>の一部を回復することができますが、そのためには少なくとも2XRPを破棄する必要があります。</p>
+<p>取引所など、多くのユーザのために価値の送受信を行う組織は、<a href="source-and-destination-tags.html"><strong>送信元タグ</strong>と<strong>宛先タグ</strong></a>を使用することで、XRP Ledgerのアカウントを1つだけ(または少数)使用するだけで、ユーザの支払いを区別することができます。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -615,17 +612,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -820,7 +817,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -916,12 +913,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -931,7 +928,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       

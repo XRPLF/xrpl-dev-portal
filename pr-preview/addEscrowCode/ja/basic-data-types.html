@@ -302,16 +302,17 @@
 <h2 id="アドレス">アドレス<a aria-hidden="true" class="hover_anchor" href="#アドレス"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledgerのアカウントは、XRP Ledgerの<a href="base58-encodings.html">base58</a>フォーマットのアドレスで識別されます。このアドレスはアカウントのマスター<a class="external-link" href="https://en.wikipedia.org/wiki/Public-key_cryptography" target="_blank">公開鍵 <i aria-hidden="true" class="fa fa-external-link"></i></a>から生成され、マスター公開鍵は秘密鍵から生成されます。アドレスはJSON文字列で記述され、以下の特徴があります。</p>
 <ul>
-<li>長さは25から35文字です</li>
-<li>文字<code>r</code>で始まります</li>
+<li>長さは25から35文字</li>
+<li>文字<code>r</code>から始まる</li>
+<li>数字"<code>0</code>"、大文字"<code>O</code>"、大文字"<code>I</code>"、小文字"<code>l</code>"を除く英数字</li>
+<li>大文字と小文字を区別</li>
+<li>4バイトのチェックサムが含まれており、ランダムな文字から有効なアドレスが生成される確率はおよそ2<sup>32</sup>分の1</li>
 </ul>
-<p class="devportal-callout 注記"><strong>注記:</strong> XRPコミュニティは、取引所およびウォレットで<a href="source-and-destination-tags.html">宛先タグ</a>の代わりに使用できる新しいフォーマット、<strong>X</strong>アドレスを<a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/issues/6" target="_blank">提案 <i aria-hidden="true" class="fa fa-external-link"></i></a>（これをサポートする<a class="external-link" href="https://github.com/xrp-community/xrpl-tagged-address-codec" target="_blank">コーデック <i aria-hidden="true" class="fa fa-external-link"></i></a>も開発）しました。これらの「パック化」したアドレスは、<code>r</code>ではなく<code>X</code>で開始します。詳細は、<a class="external-link" href="https://xrpaddress.info/" target="_blank">𝗫-address format <i aria-hidden="true" class="fa fa-external-link"></i></a>のサイトを参照してください。</p>
-<ul>
-<li>英数字を使用します（数字「<code>0</code>」、大文字「<code>O</code>」、大文字「<code>I</code>」、小文字「<code>l</code>」を除く）</li>
-<li>大/小文字を区別します</li>
-<li>4バイトのチェックサムを含むため、ランダムな文字から有効なアドレスが生成される確率はおよそ2^32分の1となります</li>
-</ul>
-<p>詳しくは、<a href="accounts.html">アカウント</a>と<a href="base58-encodings.html">base58エンコード</a>を参照してください。</p>
+<blockquote class="devportal-callout 注記">
+<p><strong>注記:</strong> <a href="source-and-destination-tags.html">宛先タグ</a>をアドレスに「組み込む」<strong>X</strong>アドレス形式もあります。これらのアドレスは<code>X</code>（メインネット用）または<code>T</code>（<a href="parallel-networks.html">テストネットワーク</a>用）で始まります。取引所とウォレットは、顧客が知る必要のあるすべてのデータを1つの値で表すためにXアドレスを使用できます。詳細については、<a class="external-link" href="https://xrpaddress.info/" target="_blank">Xアドレスフォーマットサイト <i aria-hidden="true" class="fa fa-external-link"></i></a>と<a class="external-link" href="https://github.com/xrp-community/xrpl-tagged-address-codec" target="_blank">コーデック <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください</p>
+<p>XRP Ledgerプロトコルは「クラシック」アドレスのみをネイティブにサポートしていますが、多くの<a href="client-libraries.html">クライアントライブラリ</a>はXアドレスもサポートしています。</p>
+</blockquote>
+<p>詳しくは、<a href="accounts.html">アカウント</a>と<a href="base58-encodings.html">base58エンコード</a>をご覧ください。</p>
 <!-- -->
 <h2 id="ハッシュ">ハッシュ<a aria-hidden="true" class="hover_anchor" href="#ハッシュ"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledger内の多くのオブジェクト、特にトランザクションとレジャーは、256ビットのハッシュ値で一意に識別されます。通常、この値は「SHA-512ハーフ」として算出されます。SHA-512ハーフは、あるコンテンツから<a class="external-link" href="http://dx.doi.org/10.6028/NIST.FIPS.180-4" target="_blank">SHA-512 <i aria-hidden="true" class="fa fa-external-link"></i></a>ハッシュを計算し、出力の前半を取得したものです。（これは256ビット、つまり32バイトで、16進数表記では64文字です。）オブジェクトのハッシュは、極めて競合の発生しにくい方法でコンテンツから生成されるため、2つのオブジェクトが同じハッシュを持つ場合、それらのオブジェクトは同じものと見なされます。</p>
@@ -836,17 +837,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -1041,7 +1042,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1137,12 +1138,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -1152,7 +1153,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       

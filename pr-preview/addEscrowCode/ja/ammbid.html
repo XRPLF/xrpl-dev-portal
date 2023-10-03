@@ -442,7 +442,7 @@
 </code></pre></div>
 </li>
 </ul>
-<p class="devportal-callout 注記"><strong>注記:</strong> 台帳を作成する際に、ネットワーク上のすべてのサーバーが同じ結果になるように、時間の計測は前回の台帳の<a href="ledgers.html#ledger-close-times">正規の終了時刻</a> に基づいており、これはおおよその目安の時間です。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> 台帳を作成する際に、ネットワーク上のすべてのサーバーが同じ結果になるように、時間の計測は前回のレジャーの<a href="ledger-close-times.html">正規の閉鎖時刻</a> に基づいており、これはおおよその目安の時間です。</p>
 <h2 id="払い戻し">払い戻し<a aria-hidden="true" class="hover_anchor" href="#払い戻し"><i class="fa fa-link"></i></a></h2>
 <p>アクティブなオークションスロットを競り落とした場合、AMMは以下の計算式で前ホルダーに価格の一部を払い戻します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">R = B × (1 - t)
@@ -453,7 +453,7 @@
 <li><code>t</code>: 現在の24時間枠で経過した時間の割合。0.05の倍数に切り捨てられる。</li>
 </ul>
 <p>特殊なケースとして、オークションスロットの最終（20番目）区間では、払い戻し額は0となる。</p>
-<p class="devportal-callout 注記"><strong>注記:</strong> XRP Ledgerの時刻と同様に、トランザクション処理では <em>前回の</em> 台帳の<a href="ledgers.html#ledger-close-times">正規の終了時刻</a>を使用するため、実時間と最大で約10秒の差が生じる場合があります。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> XRP Ledgerの時刻と同様に、トランザクション処理では <em>前回の</em> レジャーの<a href="ledger-close-times.html">正規の閉鎖時刻</a>を使用するため、実時間と最大で約10秒の差が生じる場合があります。</p>
 <h2 id="エラーケース">エラーケース<a aria-hidden="true" class="hover_anchor" href="#エラーケース"><i class="fa fa-link"></i></a></h2>
 <p>すべてのトランザクションで発生する可能性のあるエラーに加えて、AMMBidトランザクションでは、次の<a href="transaction-results.html">トランザクション結果コード</a>が発生する可能性があります。</p>
 <table class="table-responsive">
@@ -790,17 +790,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -995,7 +995,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1091,12 +1091,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -1106,7 +1106,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       

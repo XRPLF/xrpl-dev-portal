@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Clawback | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/clawback.html" />
-    <meta property="og:description" content="Claw back tokens you&#39;ve issued." />
-    <meta name="description" content="Claw back tokens you&#39;ve issued." />
+    <meta property="og:description" content="発行したトークンを取り戻します。" />
+    <meta name="description" content="発行したトークンを取り戻します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['Tokens']
+      "page_labels": ['トークン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -257,12 +257,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/addEscrowCode/content/references/protocol-reference/transactions/transaction-types/clawback.md?pr=/XRPLF/xrpl-dev-portal/pull/2165" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/addEscrowCode/content/references/protocol-reference/transactions/transaction-types/clawback.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2165" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-tokens">Tokens</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Tokens" -->
+      <span class="label label-トークン">トークン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "トークン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -271,10 +271,9 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#clawback">Clawback</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-clawback-json">Example Clawback JSON</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#clawback-fields">Clawback Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#clawback-fields-1">Clawback Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#clawback-jsonの例">Clawback JSONの例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#clawback-フィールド">Clawback フィールド</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#エラーケース">エラーケース</a></li>
       </ul>
   </div>
       </aside>
@@ -299,16 +298,13 @@
     <li class="active breadcrumb-item">Clawback</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="clawback">Clawback<a aria-hidden="true" class="hover_anchor" href="#clawback"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Clawback.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><em>Requires the <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-39d-clawback" target="_blank">Clawback amendment <i aria-hidden="true" class="fa fa-external-link"></i></a>.</em></p>
-<p>Claw back tokens issued by your account.</p>
-<p>Clawback is disabled by default. To use clawback, you must send an <a href="accountset.html">AccountSet transaction</a> to enable the <strong>Allow Trust Line Clawback</strong> setting. An issuer with any existing tokens cannot enable Clawback. You can only enable <strong>Allow Trust Line Clawback</strong> if you have a completely empty owner directory, meaning you must do so before you set up any trust lines, offers, escrows, payment channels, checks, or signer lists.  After you enable Clawback, it cannot reverted: the account permanently gains the ability to claw back issued assets on trust lines.</p>
-<h2 id="example-clawback-json">Example Clawback JSON<a aria-hidden="true" class="hover_anchor" href="#example-clawback-json"><i class="fa fa-link"></i></a></h2>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Clawback.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><em><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-39d-clawback" target="_blank">Clawback amendment <i aria-hidden="true" class="fa fa-external-link"></i></a>が必要です。</em></p>
+<p>あなたのアカウントが発行したトークンを回収します。</p>
+<p>Clawback機能はデフォルトで無効になっています。使用するには、<a href="accountset.html">AccountSetトランザクション</a>を送信して<strong>Allow Trust Line Clawback</strong>設定を有効にする必要があります。既存のトークンを持つ発行者はClawback機能を有効にできません。つまり、トラストライン、オファー、エスクロー、ペイメントチャネル、チェック、または署名者リストを設定する前に行う必要があります。Clawback機能を有効にした後、元に戻すことはできません：アカウントは永久にトラストラインで発行された資産を回収する権限を得ます。</p>
+<h2 id="clawback-jsonの例">Clawback JSONの例<a aria-hidden="true" class="hover_anchor" href="#clawback-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clawback"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S"</span><span class="p">,</span>
@@ -319,53 +315,52 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="clawback-fields">Clawback Fields<a aria-hidden="true" class="hover_anchor" href="#clawback-fields"><i class="fa fa-link"></i></a></h2>
-<h2 id="clawback-fields-1">Clawback Fields<a aria-hidden="true" class="hover_anchor" href="#clawback-fields-1"><i class="fa fa-link"></i></a></h2>
-<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, Clawback transactions use the following fields:</p>
+<h2 id="clawback-フィールド">Clawback フィールド<a aria-hidden="true" class="hover_anchor" href="#clawback-フィールド"><i class="fa fa-link"></i></a></h2>
+<p><a href="transaction-common-fields.html">共通フィールド</a>に加えて、Clawbackトランザクションは以下のフィールドを使用します。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">フィールド　</th>
+<th style="text-align: left;">JSONの型</th>
+<th style="text-align: left;"><a href="serialization.html">内部の型</a></th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>Amount</code></td>
-<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">Currency Amount</a></td>
+<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a></td>
 <td style="text-align: left;">Amount</td>
-<td style="text-align: left;">Indicates the amount being clawed back, as well as the counterparty from which the amount is being clawed back. The quantity to claw back, in the <code>value</code> sub-field, must not be zero. If this is more than the current balance, the transaction claws back the entire balance. The sub-field <code>issuer</code> within <code>Amount</code> represents the token holder's account ID, rather than the issuer's.</td>
+<td style="text-align: left;">回収する金額と、その金額を回収する相手を表します。<code>value</code>サブフィールドの回収する数量はゼロであってはなりません。これが現在の残高より多い場合、トランザクションは全残高を回収します。サブフィールド<code>Amount</code>内の<code>issuer</code>はトークン所有者のアカウントを表します。</td>
 </tr>
 </tbody>
 </table>
-<p>The account executing this transaction must be the issuer of the asset being clawed back. Note that in the XRP Ledger, trust lines are bidirectional and, under some configurations, both sides can be seen as the <em>issuer</em> of an asset. In this specification, the term <em>issuer</em> is used to mean the side of the trust line that has an outstanding balance (that is, 'owes' the issued asset) that it wants to claw back.</p>
-<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<p>Besides errors that can occur for all transactions, Clawback transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<p>このトランザクションを実行するアカウントは、回収する資産の発行者でなければなりません。XRP Ledgerでは、トラストラインは双方向であり、設定によっては双方が資産の<em>発行者</em>とみなされることに注意してください。この仕様において、<em>発行者</em>という用語は、未払い残高がある(つまり、発行された資産に"債務がある")トラストラインの側が、その資産を回収することを意味します。</p>
+<h2 id="エラーケース">エラーケース<a aria-hidden="true" class="hover_anchor" href="#エラーケース"><i class="fa fa-link"></i></a></h2>
+<p>すべてのトランザクションで発生する可能性のあるエラーに加えて、Clawbackトランザクションでは、次の<a href="transaction-results.html">トランザクション結果コード</a>が発生する可能性があります。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Error Code</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">エラーコード</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>temDISABLED</code></td>
-<td style="text-align: left;">Occurs if the <a href="known-amendments.html#clawback">Clawback amendment</a> is not enabled.</td>
+<td style="text-align: left;"><a href="known-amendments.html#clawback">Clawback amendment</a>が有効ではありません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_AMOUNT</code></td>
-<td style="text-align: left;">Occurs if the holder's balance is 0. It is not an error if the amount exceeds the holder's balance; in that case, the maximum available balance is clawed back. Also occurs if the counterparty listed in <code>Amount</code> is the same as the <code>Account</code> issuing this transaction.</td>
+<td style="text-align: left;">保有者の残高が0です。回収しようとする金額が保有者の残高を超えていてもエラーにはなりません。また、<code>Amount</code>に記載されている相手がこのトランザクションを発行している<code>Account</code>と同じ場合にもエラーが発生します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO-LINE</code></td>
-<td style="text-align: left;">Occurs there is no trust line with the counterparty or that trust line's balance is 0.</td>
+<td style="text-align: left;">取引相手とのトラストラインがない、またはトラストラインの残高が0です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO-PERMISSION</code></td>
-<td style="text-align: left;">Occurs if you attempt to set <code>lsfAllowTrustlineClawback</code> while <code>lsfNoFreeze</code> is set. Also occurs, conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrustLineClawback</code> is set.</td>
+<td style="text-align: left;"><code>lsfNoFreeze</code>が設定されているときに<code>lsfAllowTrustlineClawback</code>を設定、または<code>lsfAllowTrustLineClawback</code>が設定されているときに<code>lsfNoFreeze</code>を設定しようとしています。</td>
 </tr>
 </tbody>
 </table>
@@ -665,17 +660,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -870,7 +865,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -966,12 +961,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -981,7 +976,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       
