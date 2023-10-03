@@ -126,7 +126,7 @@
 <!-- fontawesome icons -->
 <link rel="stylesheet" href="{{currentpage.prefix}}assets/vendor/fontawesome/css/font-awesome.min.css" />
 
-<!-- Algolia DocSearch -->
+{# <!-- Algolia DocSearch -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 $(document).ready(() => {
@@ -145,7 +145,47 @@ $(document).ready(() => {
     ds.autocomplete.autocomplete.open()
   }
 })
-</script>
+</script> #}
+<link rel="stylesheet" href="{{currentpage.prefix}}assets/css/xrplai.css" />
+<!-- XRPL AI-->
+<script>
+        /** @type {import('@xrpl/ai-react').MarkpromptOptions} */
+        window.markprompt = {
+          // NOTE: This is the development key, DO NOT USE THIS IN PRODCTION
+          projectKey: `sk_test_i4WeLrhPtulIx1wHkcb15XouWrGiY9bf`,
+          options: {
+            prompt: {
+              apiUrl: 'https://api.xrplai.dev.ripplex.io/completions'
+            },
+            feedback:{
+              enabled: true
+            },
+            close:{
+              visible:false
+            },
+            references: {
+              getHref: (reference) => reference.file?.path?.replace(/\.[^.]+$/, ''),
+              getLabel: (reference) => {
+                return reference.meta?.leadHeading?.value || reference.file?.title;
+              },
+            },
+            showBranding: false,
+            trigger: {
+              customElement: true
+            },
+            search:{
+              enabled: true,
+              provider: {
+                name: 'algolia',
+                apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+                appId: 'R39QY3MZC7',
+                indexName: 'xrpl',
+              },
+            },
+          },
+        };
+      </script>
+      <script src="{{currentpage.prefix}}assets/js/xrplai.js"></script>
 
 {% if currentpage.embed_xrpl_js %}
 <!-- ripple-lib & prerequisites -->
