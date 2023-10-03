@@ -444,8 +444,7 @@ pages:
         html: docs.html
         parent: index.html
         template: page-docs.html.jinja
-        sidebar: disabled
-        top_nav_level: 1
+        sidebar: left_only
         top_nav_name: ドキュメント
         top_nav_shortcuts:
             # Programming Languages
