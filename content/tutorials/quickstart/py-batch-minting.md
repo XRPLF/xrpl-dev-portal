@@ -1,6 +1,6 @@
 ---
 html: py-batch-minting.html
-parent: quickstart-python.html
+parent: nfts-using-python.html
 blurb: Mint multiple NFTs with the press of a button.
 labels:
   - Accounts
@@ -28,20 +28,26 @@ You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl
     1. If you want to use an existing account seed:
         1. Paste the account seed in the **Standby Seed** field.
         2. Click **Get Standby Account**.
-    2. If you do not want to use an existing account seed, click **Get Standby Account**.
+    2. If you do not want to use an existing account seed, just click **Get Standby Account**.
+3. Click **Get Standby Account Info** to get the current XRP balance.
 
 
 ## Batch Mint NFTs
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NjEqEWcqhwc?si=E8ws75gts_7TtOuU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 This example lets you mint multiple NFTs for a single unique item. The NFT might represent "prints" of an original artwork, tickets to an event, or another limited set of unique items. 
 
 To batch mint non-fungible token objects:
 
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](nftokenmint.html) for available NFT minting flags.
-2. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
-3. Enter an **NFT Count** of up to 200 NFTs to create in one batch.
-4. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
-5. Click **Batch Mint NFTs**.
+1. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT object. You can use this sample URI if you do not have one of your own: ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi.
+2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](nftokenmint.html) for available NFT minting flags.
+3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
+4. Enter the **Taxon** for the NFT. If you do not have a need for the Taxon field, set this value to 0.
+5. Enter an **NFT Count** of up to 200 NFTs to create in one batch.
+6. Click **Batch Mint NFTs**.
 
 ## Get Batch NFTs
 
@@ -235,11 +241,7 @@ import tkinter as tk
 import xrpl
 import json
 
-from mod1 import get_account, get_account_info, send_xrp
-from mod2 import (
-    get_balance,
-    configure_account,
-)
+from mod1 import get_account, get_account_info
 ```
 
 Import dependencies from `mod7.py`.
@@ -265,17 +267,11 @@ def batch_mint_nfts():
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
 
-def get_batch_nfts():
-    results = get_batch(ent_standby_seed.get(), ent_standby_account.get())
-    text_standby_results.delete("1.0", tk.END)
-    text_standby_results.insert("1.0",json.dumps(results, indent=4))
-
-# Module 2 Handlers
-
-def standby_configure_account():
-    results = configure_account(
+def standby_get_batch_nfts():
+    results = get_batch(
         ent_standby_seed.get(),
-        standbyRippling)
+        ent_standby_account.get()
+    )
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
 
@@ -298,12 +294,10 @@ def get_standby_account_info():
 Rename the window for Module 7.
 
 ```python
-# Create a new window with the title "Quickstart Module 7"
+# Create a new window with the title "Python Module - Batch Minting"
 window = tk.Tk()
-window.title("Quickstart Module 7")
+window.title("Python Module - Batch Minting")
 
-standbyRippling = tk.BooleanVar()
-operationalRippling = tk.BooleanVar()
 
 
 # Form frame
@@ -315,11 +309,8 @@ lbl_standy_seed = tk.Label(master=frm_form, text="Standby Seed")
 ent_standby_seed = tk.Entry(master=frm_form, width=50)
 lbl_standby_account = tk.Label(master=frm_form, text="Standby Account")
 ent_standby_account = tk.Entry(master=frm_form, width=50)
-lbl_standy_amount = tk.Label(master=frm_form, text="Amount")
-ent_standby_amount = tk.Entry(master=frm_form, width=50)
 lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
 ent_standby_balance = tk.Entry(master=frm_form, width=50)
-cb_standby_allow_rippling = tk.Checkbutton(master=frm_form, text="Allow Rippling", variable=standbyRippling, onvalue=True, offvalue=False)
 lbl_standby_uri = tk.Label(master=frm_form, text="NFT URI")
 ent_standby_uri = tk.Entry(master=frm_form, width=50)
 lbl_standby_flags = tk.Label(master=frm_form, text="Flags")
@@ -330,6 +321,8 @@ lbl_standby_taxon = tk.Label(master=frm_form, text="Taxon")
 ent_standby_taxon = tk.Entry(master=frm_form, width="50")
 lbl_standby_nft_id = tk.Label(master=frm_form, text="NFT ID")
 ent_standby_nft_id = tk.Entry(master=frm_form, width="50")
+lbl_standby_nft_offer_index = tk.Label(master=frm_form, text="NFT Offer Index")
+ent_standby_nft_offer_index = tk.Entry(master=frm_form, width="50")
 ```
 
 Add the **NFT Count** field for batch minting.
@@ -345,11 +338,8 @@ lbl_standy_seed.grid(row=0, column=0, sticky="w")
 ent_standby_seed.grid(row=0, column=1)
 lbl_standby_account.grid(row=2, column=0, sticky="e")
 ent_standby_account.grid(row=2, column=1)
-lbl_standy_amount.grid(row=3, column=0, sticky="e")
-ent_standby_amount.grid(row=3, column=1)
 lbl_standby_balance.grid(row=5, column=0, sticky="e")
 ent_standby_balance.grid(row=5, column=1)
-cb_standby_allow_rippling.grid(row=7,column=1, sticky="w")
 lbl_standby_uri.grid(row=8, column=0, sticky="e")
 ent_standby_uri.grid(row=8, column=1, sticky="w")
 lbl_standby_flags.grid(row=9, column=0, sticky="e")
@@ -358,8 +348,6 @@ lbl_standby_transfer_fee.grid(row=10, column=0, sticky="e")
 ent_standby_transfer_fee.grid(row=10, column=1, sticky="w")
 lbl_standby_taxon.grid(row=11, column=0, sticky="e")
 ent_standby_taxon.grid(row=11, column=1, sticky="w")
-lbl_standby_nft_id.grid(row=12, column=0, sticky="e")
-ent_standby_nft_id.grid(row=12, column=1, sticky="w")
 ```
 
 Place the **NFT Count** field in the grid.
@@ -369,7 +357,6 @@ lbl_standby_nft_count.grid(row=13, column=0, sticky="e")
 ent_standby_nft_count.grid(row=13, column=1, sticky="w")
 lbl_standby_results.grid(row=14, column=0, sticky="ne")
 text_standby_results.grid(row=14, column=1, sticky="nw")
-cb_standby_allow_rippling.select()
 
 #############################################
 ## Buttons ##################################
@@ -383,22 +370,19 @@ btn_get_standby_account_info = tk.Button(master=frm_form,
                                          text="Get Standby Account Info",
                                          command = get_standby_account_info)
 btn_get_standby_account_info.grid(row=1, column=2, sticky = "nsew")
-btn_standby_configure_account = tk.Button(master=frm_form,
-                                          text="Configure Account",
-                                          command = standby_configure_account)
-btn_standby_configure_account.grid(row=7,column=0, sticky = "nsew")
 ```
 
 Add the **Batch Mint NFTs** and **Get Batch NFTs** buttons.
 
 ```python
-btn_standby_mint_token = tk.Button(master=frm_form, text="Batch Mint NFTs",
-                                   command = batch_mint_nfts)
-btn_standby_mint_token.grid(row=8, column=2, sticky="nsew")
-btn_standby_get_tokens = tk.Button(master=frm_form, text="Get Batch NFTs",
-                                   command = get_batch_nfts)
-btn_standby_get_tokens.grid(row=9, column=2, sticky="nsew")
-
+btn_standby_batch_mint = tk.Button(master=frm_form,
+                                         text="Batch Mint NFTs",
+                                         command = standby_batch_mint)
+btn_standby_batch_mint.grid(row=5, column=2, sticky = "nsew")
+btn_standby_get_batch_nfts = tk.Button(master=frm_form,
+                                         text="Get Batch NFTs",
+                                         command = standby_get_batch_nfts)
+btn_standby_get_batch_nfts.grid(row=8, column=2, sticky = "nsew")
 # Start the application
 window.mainloop()
 
