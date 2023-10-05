@@ -28,6 +28,8 @@ There are many decisions to make and artifacts to generate as you prepare to rel
 
 The first step is to decide the type of stablecoin you want to create. Your choice of stablecoin type might require additional steps, such as signing on financial or audit partners.
 
+![Stablecoin](img/uc-stablecoin-stable-coin.png)
+
 There are five common types of stablecoin you can create on the XRPL: fiat-backed, crypto-backed, commodity-backed, financial instrument-backed, and non-collateralized. See [Stablecoin Types](stablecoin-types.html).
 
 ## Set Up Your Node Services
@@ -39,6 +41,8 @@ There are many reasons you might want to run your own servers, but most of them 
 Alternatively, you can use an external node service provider like OpenNode. See [OpenNode](https://www.opennodecloud.com/).
 
 ## Sandbox Access
+
+![Sandbox](img/uc-stablecoin-sandbox.png)
 
 For testing purposes, you can implement, deploy, and trade your stablecoin on the XRPL Testnet or Devnet servers. Visit the XRP Faucets page to generate your test network credentials. Use the listed server URIs on that page to connect to and interact with your chosen test network. See [XRP Faucets](xrp-testnet-faucet.html).
 
@@ -119,6 +123,8 @@ See [Freeze a Trust Line](freeze-a-trust-line.html).
 
 If you see signs of suspicious activity, you can enact a global freeze on your account to prevent users from sending your tokens to each other and trading your token in the decentralized exchange. 
 
+![Global Freeze](img/uc-stablecoin-global-freeze.png)
+
 See [Enact Global Freeze](enact-global-freeze.html)
 
 
@@ -127,6 +133,8 @@ See [Enact Global Freeze](enact-global-freeze.html)
 For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_, the funds.
 
 See [Clawback](clawback.html).
+
+![Clawback](img/uc-stablecoin-clawback.png)
 
 ### Burn
 
