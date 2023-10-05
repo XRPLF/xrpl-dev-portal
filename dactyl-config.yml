@@ -1322,9 +1322,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: concepts/tokens/automated-market-makers.ja.md
-        outdated_translation: true
         targets:
             - ja
 
@@ -2496,9 +2494,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation for rippled v1.11.0 & AMM
     -   md: references/protocol-reference/ledger-data/ledger-entry-types/accountroot.ja.md
-        outdated_translation: true
         targets:
             - ja
 
@@ -2514,9 +2510,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/ledger-data/ledger-entry-types/amm.ja.md
-        outdated_translation: true
         targets:
             - ja
 
@@ -2680,9 +2674,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/ammbid.ja.md
-        outdated_translation: true
         targets:
             - ja
 
@@ -2690,25 +2682,23 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/ammcreate.ja.md
-        outdated_translation: true
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol-reference/transactions/transaction-types/ammdelete.md
         targets:
             - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammdelete.ja.md
+        targets:
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.md
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.ja.md
-        outdated_translation: true
         targets:
             - ja
 
@@ -2716,9 +2706,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/ammvote.ja.md
-        outdated_translation: true
         targets:
             - ja
 
@@ -2726,9 +2714,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.ja.md
-        outdated_translation: true
         targets:
             - ja
 

@@ -7,11 +7,11 @@ labels:
 status: not_enabled
 ---
 # AMM
-[[Source]](https://github.com/xrplf/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275 "Source")
+[[ソース]](https://github.com/xrplf/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275 "Source")
 
-_([AMM amendment][] :not_enabled:が必要。)_
+_([AMM amendment][] :not_enabled:が必要です。)_
 
-`AMM`オブジェクトは、単一の[自動マーケットメーカー](automated-market-makers.html)(AMM)インスタンスを表します。
+`AMM`レジャーエントリは、単一の[自動マーケットメーカー](automated-market-makers.html)(AMM)インスタンスを表します。これは常に[特殊な AccountRootエントリ](accountroot.html#ammの特殊なaccountrootエントリ)と対になっています。
 
 
 ## AMM JSONの例
@@ -75,7 +75,7 @@ _([AMM amendment][] :not_enabled:が必要。)_
 |:-----------------|:--------------------|:------------------|:----------|--------------|
 | `Asset`          | オブジェクト          | STIssue           | はい       | このAMMが保有する2つのアセットのうちの1つの定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
 | `Asset2`         | オブジェクト          | STIssue           | はい       | このAMMが保有するもう一つの資産の定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
-| `AMMAccount`     | 文字列               | AccountID         | はい       | このAMMの資産を保有する[特殊なアカウント](accountroot.html#ammの特殊なaccountrootオブジェクト)のアドレス。 |
+| `AMMAccount`     | 文字列               | AccountID         | はい       | このAMMの資産を保有する[特殊なアカウント](accountroot.html#ammの特殊なaccountrootエントリ)のアドレス。 |
 | `AuctionSlot`    | オブジェクト          | STObject          | いいえ     | オークションスロットの現在の所有者の詳細。[オークションスロットオブジェクト](#オークションスロットオブジェクト)形式です。|
 | `LPTokenBalance` | [通貨額][]           | Amount            | はい       | AMMインスタンスの流動性供給者トークンの発行残高の合計。このトークンの保有者は、保有量に比例してAMMの取引手数料に投票したり、取引手数料の徴収とともに増えていくAMMの資産の一部とトークンを交換したりすることができます。 |
 | `TradingFee`     | 数値                 | UInt16            | はい       | AMMインスタンスに対する取引に課される手数料のパーセンテージを1/100,000の単位で指定します。最大値は1000で、これは1%の手数料となります。 |
@@ -93,19 +93,23 @@ _([AMM amendment][] :not_enabled:が必要。)_
 | `Price`         | [通貨額][]           | Amount            | はい       | オークションスロットの所有者がこのスロットを落札するために支払った金額（LPトークン）。 |
 | `Expiration`    | 文字列               | UInt32            | はい       | このスロットの有効期限が切れる[Rippleエポック以降の経過秒数][]で指定した時刻。 |
 
+## {{currentpage.name}}の準備金
+
+`{{currentpage.name}}`エントリは準備金が不要です。
+
 ## AMM フラグ
 
-現在、`AMM`オブジェクトに定義されているフラグはありません。
+`AMM`エントリに定義されているフラグはありません。
 
 ## AMM ID フォーマット
 
-`AMM`オブジェクトのIIは、以下の値の[SHA-512Half][]を順に繋げたものです。
+`AMM`エントリのIDは、以下の値を順に繋げた[SHA-512Half][]です。
 
 1. `AMM`のスペースキー(`0x0041`)
-0. 第1アセットの発行者のAccountID。
-0. 第1トークンの160ビットの通貨コード。
-0. 第2アセットの発行者のAccountID。
-0. 第2トークンの160ビットの通貨コード。
+2. 第1アセットの発行者のAccountID。
+3. 第1トークンの160ビットの通貨コード。
+4. 第2アセットの発行者のAccountID。
+5. 第2トークンの160ビットの通貨コード。
 
 XRPの場合、トークン・発行者ともに全て0を使用します。
 
