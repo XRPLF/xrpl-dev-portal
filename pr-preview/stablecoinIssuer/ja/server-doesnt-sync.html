@@ -305,10 +305,10 @@
 <h2 id="通常の同期動作">通常の同期動作<a aria-hidden="true" class="hover_anchor" href="#通常の同期動作"><i class="fa fa-link"></i></a></h2>
 <p>ネットワークとの同期は、通常はおよそ5分から15分で完了します。その間に、サーバーは次のようなさまざまなことを行います。</p>
 <ul>
-<li>推奨バリデータリストを読み込み（通常は<code>vl.ripple.com</code>から）、信頼できるバリデータを判断します。</li>
+<li>推奨バリデータリストを読み込み（例: <code>vl.ripple.com</code>）、信頼できるバリデータを判断します。</li>
 <li><a href="peer-protocol.html#ピアの検出">ピアサーバーを検出</a>して接続します。</li>
-<li>ピアから最新のレジャーの<a href="ledger-header.html">ヘッダー</a>と完全な<a href="ledgers.html#ツリーの形式">状態情報</a>をダウンロードし、それを使用してレジャーデータの内部データベースを構築します。</li>
 <li>信頼できるバリデータをリッスンして、最近検証されたレジャーハッシュを見つけます。</li>
+<li>ピアから最新のレジャーを完全にダウンロードし、それを使ってレジャーデータの内部データベースを構築します。</li>
 <li>新たにブロードキャストされたトランザクションを収集し、それを進行中のレジャーに適用します。</li>
 </ul>
 <p>サーバーがこれらのタスクを行うときにネットワークに同調して対応できなかった場合は、サーバーはネットワークと同期しない状態になります。</p>
@@ -683,17 +683,17 @@ $<span class="w"> </span>mkdir<span class="w"> </span>/var/lib/rippled/db_new/nu
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -931,17 +931,12 @@ $<span class="w"> </span>mkdir<span class="w"> </span>/var/lib/rippled/db_new/nu
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_11" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_11"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_10"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_11">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -953,6 +948,11 @@ $<span class="w"> </span>mkdir<span class="w"> </span>/var/lib/rippled/db_new/nu
 
     </nav>
 
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -978,11 +978,11 @@ $<span class="w"> </span>mkdir<span class="w"> </span>/var/lib/rippled/db_new/nu
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_4_6_8"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1031,12 +1031,12 @@ $<span class="w"> </span>mkdir<span class="w"> </span>/var/lib/rippled/db_new/nu
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -1046,7 +1046,7 @@ $<span class="w"> </span>mkdir<span class="w"> </span>/var/lib/rippled/db_new/nu
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       
@@ -1259,7 +1259,12 @@ $<span class="w"> </span>mkdir<span class="w"> </span>/var/lib/rippled/db_new/nu
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1586,17 +1591,12 @@ $<span class="w"> </span>mkdir<span class="w"> </span>/var/lib/rippled/db_new/nu
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -1713,11 +1713,6 @@ $<span class="w"> </span>mkdir<span class="w"> </span>/var/lib/rippled/db_new/nu
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
   </div>
 
@@ -1769,6 +1764,11 @@ $<span class="w"> </span>mkdir<span class="w"> </span>/var/lib/rippled/db_new/nu
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

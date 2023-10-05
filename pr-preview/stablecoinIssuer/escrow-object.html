@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/references/protocol-reference/ledger-data/ledger-object-types/escrow.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/references/protocol-reference/ledger-data/ledger-entry-types/escrow.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -272,6 +272,8 @@
         <li class="nav-item level-1"><a class="nav-link" href="#escrow">Escrow</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-escrow-json">Example Escrow JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#escrow-fields">Escrow Fields</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#escrow-flags">Escrow Flags</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#escrow-reserve">Escrow Reserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#escrow-id-format">Escrow ID Format</a></li>
       </ul>
   </div>
@@ -293,7 +295,7 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">Escrow</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
@@ -301,12 +303,7 @@
         <h1 id="escrow">Escrow<a aria-hidden="true" class="hover_anchor" href="#escrow"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Added by the <a href="known-amendments.html#escrow">Escrow amendment</a>.)</em></p>
-<p>The <code>Escrow</code> object type represents a held payment of XRP waiting to be executed or canceled. An <a href="escrowcreate.html">EscrowCreate transaction</a> creates an <code>Escrow</code> object in the ledger. A successful <a href="escrowfinish.html">EscrowFinish</a> or <a href="escrowcancel.html">EscrowCancel</a> transaction deletes the object. If the <code>Escrow</code> object has a <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02" target="_blank"><em>crypto-condition</em> <i aria-hidden="true" class="fa fa-external-link"></i></a>, the payment can only succeed if an EscrowFinish transaction provides the corresponding <em>fulfillment</em> that satisfies the condition. (The only supported crypto-condition type is <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1" target="_blank">PREIMAGE-SHA-256 <i aria-hidden="true" class="fa fa-external-link"></i></a>.) If the <code>Escrow</code> object has a <code>FinishAfter</code> time, the held payment can only execute after that time.</p>
-<p>An <code>Escrow</code> object is associated with two addresses:</p>
-<ul>
-<li>The owner, who provides the XRP when creating the <code>Escrow</code> object. If the held payment is canceled, the XRP returns to the owner.</li>
-<li>The destination, where the XRP is paid when the held payment succeeds. The destination can be the same as the owner.</li>
-</ul>
+<p>An <code>Escrow</code> ledger entry represents an <a href="escrow.html">escrow</a>, which holds XRP until specific conditions are met.</p>
 <h2 id="example-escrow-json">Example Escrow JSON<a aria-hidden="true" class="hover_anchor" href="#example-escrow-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
@@ -327,7 +324,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="escrow-fields">Escrow Fields<a aria-hidden="true" class="hover_anchor" href="#escrow-fields"><i class="fa fa-link"></i></a></h2>
-<p>An <code>Escrow</code> object has the following fields:</p>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>Escrow</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -344,21 +341,21 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The address of the owner (sender) of this held payment. This is the account that provided the XRP, and gets it back if the held payment is canceled.</td>
+<td style="text-align: left;">The address of the owner (sender) of this escrow. This is the account that provided the XRP, and gets it back if the escrow is canceled.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Amount</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Amount</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The amount of XRP, in drops, to be delivered by the held payment.</td>
+<td style="text-align: left;">The amount of XRP, in drops, currently held in the escrow.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>CancelAfter</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">The held payment can be canceled if and only if this field is present <em>and</em> the time it specifies has passed. Specifically, this is specified as <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a> and it "has passed" if it's earlier than the close time of the previous validated ledger.</td>
+<td style="text-align: left;">The escrow can be canceled if and only if this field is present <em>and</em> the time it specifies has passed. Specifically, this is specified as <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a> and it "has passed" if it's earlier than the close time of the previous validated ledger.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Condition</code></td>
@@ -372,7 +369,7 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The destination address where the XRP is paid if the held payment is successful.</td>
+<td style="text-align: left;">The destination address where the XRP is paid if the escrow is successful.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>DestinationNode</code></td>
@@ -386,65 +383,62 @@
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">An arbitrary tag to further specify the destination for this held payment, such as a hosted recipient at the destination address.</td>
+<td style="text-align: left;">An arbitrary tag to further specify the destination for this escrow, such as a hosted recipient at the destination address.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>FinishAfter</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">The time, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>, after which this held payment can be finished. Any <a href="escrowfinish.html">EscrowFinish transaction</a> before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for <code>Escrow</code> objects. The value is always <code>0</code>.</td>
+<td style="text-align: left;">The time, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>, after which this escrow can be finished. Any <a href="escrowfinish.html">EscrowFinish transaction</a> before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt16</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The value <code>0x0075</code>, mapped to the string <code>Escrow</code>, indicates that this object is an <code>Escrow</code> object.</td>
+<td style="text-align: left;">The value <code>0x0075</code>, mapped to the string <code>Escrow</code>, indicates that this is an <code>Escrow</code> entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerNode</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt64</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. <strong>Note:</strong> The object does not contain a direct link to the owner directory containing it, since that value can be derived from the <code>Account</code>.</td>
+<td style="text-align: left;">A hint indicating which page of the sender's owner directory links to this entry, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnID</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The identifying hash of the transaction that most recently modified this object.</td>
+<td style="text-align: left;">The identifying hash of the transaction that most recently modified this entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this object.</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>SourceTag</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">An arbitrary tag to further specify the source for this held payment, such as a hosted recipient at the owner's address.</td>
+<td style="text-align: left;">An arbitrary tag to further specify the source for this escrow, such as a hosted recipient at the owner's address.</td>
 </tr>
 </tbody>
 </table>
+<h2 id="escrow-flags">Escrow Flags<a aria-hidden="true" class="hover_anchor" href="#escrow-flags"><i class="fa fa-link"></i></a></h2>
+<p>There are no flags defined for <code>Escrow</code> entries.</p>
+<h2 id="escrow-reserve">Escrow Reserve<a aria-hidden="true" class="hover_anchor" href="#escrow-reserve"><i class="fa fa-link"></i></a></h2>
+<p><code>Escrow</code> entries count as one item towards the sender's owner reserve as long as the entry is in the ledger. Finishing or canceling the escrow frees up this reserve.</p>
 <h2 id="escrow-id-format">Escrow ID Format<a aria-hidden="true" class="hover_anchor" href="#escrow-id-format"><i class="fa fa-link"></i></a></h2>
-<p>The ID of an <code>Escrow</code> object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
+<p>The ID of an <code>Escrow</code> entry is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
 <li>The Escrow space key (<code>0x0075</code>)</li>
-<li>The AccountID of the sender of the <a href="escrowcreate.html">EscrowCreate transaction</a> that created the <code>Escrow</code> object</li>
-<li>The Sequence number of the <a href="escrowcreate.html">EscrowCreate transaction</a> that created the <code>Escrow</code> object
+<li>The AccountID of the sender of the <a href="escrowcreate.html">EscrowCreate transaction</a> that created the <code>Escrow</code> entry</li>
+<li>The Sequence number of the <a href="escrowcreate.html">EscrowCreate transaction</a> that created the <code>Escrow</code> entry
     If the EscrowCreate transaction used a <a href="tickets.html">Ticket</a>, use the <code>TicketSequence</code> value instead.</li>
 </ul>
 <!-- -->
@@ -1324,7 +1318,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1650,18 +1649,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1778,11 +1772,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1834,6 +1823,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

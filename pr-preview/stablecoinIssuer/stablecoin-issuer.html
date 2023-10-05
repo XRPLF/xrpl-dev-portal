@@ -327,12 +327,14 @@
 <p>There are many decisions to make and artifacts to generate as you prepare to release a new stablecoin. You can use the XRPL Foundation's <a class="external-link" href="https://foundation.xrpl.org/wp-content/uploads/2022/03/self_assessment_questionnaire_140322.pdf" target="_blank">Self-assessment Questionnaire <i aria-hidden="true" class="fa fa-external-link"></i></a> as a starting point to gather and produce the necessary information for a successful launch.</p>
 <h2 id="choose-the-type-of-stablecoin">Choose the Type of Stablecoin<a aria-hidden="true" class="hover_anchor" href="#choose-the-type-of-stablecoin"><i class="fa fa-link"></i></a></h2>
 <p>The first step is to decide the type of stablecoin you want to create. Your choice of stablecoin type might require additional steps, such as signing on financial or audit partners.</p>
+<p><img alt="Stablecoin" src="img/uc-stablecoin-stable-coin.png"/></p>
 <p>There are five common types of stablecoin you can create on the XRPL: fiat-backed, crypto-backed, commodity-backed, financial instrument-backed, and non-collateralized. See <a href="stablecoin-types.html">Stablecoin Types</a>.</p>
 <h2 id="set-up-your-node-services">Set Up Your Node Services<a aria-hidden="true" class="hover_anchor" href="#set-up-your-node-services"><i class="fa fa-link"></i></a></h2>
 <p>For lighter use cases and individual servers, you can often rely on free public servers. However, the more serious your use of the XRP Ledger becomes, the more important it becomes to have your own infrastructure.</p>
 <p>There are many reasons you might want to run your own servers, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it. See <a href="networks-and-servers.html#reasons-to-run-your-own-server">Reasons to Run Your Own Server</a>.</p>
 <p>Alternatively, you can use an external node service provider like OpenNode. See <a class="external-link" href="https://www.opennodecloud.com/" target="_blank">OpenNode <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <h2 id="sandbox-access">Sandbox Access<a aria-hidden="true" class="hover_anchor" href="#sandbox-access"><i class="fa fa-link"></i></a></h2>
+<p><img alt="Sandbox" src="img/uc-stablecoin-sandbox.png"/></p>
 <p>For testing purposes, you can implement, deploy, and trade your stablecoin on the XRPL Testnet or Devnet servers. Visit the XRP Faucets page to generate your test network credentials. Use the listed server URIs on that page to connect to and interact with your chosen test network. See <a href="xrp-testnet-faucet.html">XRP Faucets</a>.</p>
 <h2 id="stablecoin-settings">Stablecoin Settings<a aria-hidden="true" class="hover_anchor" href="#stablecoin-settings"><i class="fa fa-link"></i></a></h2>
 <p>Before you mint your new stablecoin, you need to configure settings, some of which are immutable once you issue the first coin.</p>
@@ -382,10 +384,12 @@ How to transparently report the current number of stablecoins held in reserve.
 <p>See <a href="freeze-a-trust-line.html">Freeze a Trust Line</a>.</p>
 <h3 id="global-freeze">Global Freeze<a aria-hidden="true" class="hover_anchor" href="#global-freeze"><i class="fa fa-link"></i></a></h3>
 <p>If you see signs of suspicious activity, you can enact a global freeze on your account to prevent users from sending your tokens to each other and trading your token in the decentralized exchange. </p>
+<p><img alt="Global Freeze" src="img/uc-stablecoin-global-freeze.png"/></p>
 <p>See <a href="enact-global-freeze.html">Enact Global Freeze</a></p>
 <h3 id="clawback">Clawback<a aria-hidden="true" class="hover_anchor" href="#clawback"><i class="fa fa-link"></i></a></h3>
 <p>For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em>, the funds.</p>
 <p>See <a href="clawback.html">Clawback</a>.</p>
+<p><img alt="Clawback" src="img/uc-stablecoin-clawback.png"/></p>
 <h3 id="burn">Burn<a aria-hidden="true" class="hover_anchor" href="#burn"><i class="fa fa-link"></i></a></h3>
 <p>One way to manage the value of a stablecoin is to destroy, or <em>burn</em> stablecoins. When you burn stablecoins, you reduce the number of tokens in circulation. That will typically increase the value of the remaining tokens as supply falls.</p>
 <p>To destroy stablecoins, you can transfer them to a "black hole" account (an account address where no one knows the secret key).</p>
@@ -1287,7 +1291,12 @@ How to transparently report the current number of stablecoins held in reserve.
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1614,17 +1623,12 @@ How to transparently report the current number of stablecoins held in reserve.
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1741,11 +1745,6 @@ How to transparently report the current number of stablecoins held in reserve.
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1797,6 +1796,11 @@ How to transparently report the current number of stablecoins held in reserve.
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

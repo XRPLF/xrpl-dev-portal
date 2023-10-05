@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/references/protocol-reference/ledger-data/ledger-object-types/offer.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/references/protocol-reference/ledger-data/ledger-entry-types/offer.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -273,6 +273,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#example-offer-json">Example Offer JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#offer-fields">Offer Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#offer-flags">Offer Flags</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#offer-reserve">Offer Reserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#offer-id-format">Offer ID Format</a></li>
       </ul>
   </div>
@@ -294,7 +295,7 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">Offer</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
@@ -302,7 +303,7 @@
         <h1 id="offer">Offer<a aria-hidden="true" class="hover_anchor" href="#offer"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>Offer</code> ledger entry describes an <a href="offers.html">Offer</a> to exchange currencies in the XRP Ledger's <a href="decentralized-exchange.html">decentralized exchange</a>. (In finance, this is more traditionally known as an <em>order</em>.) An <a href="offercreate.html">OfferCreate transaction</a> only creates an <code>Offer</code> entry in the ledger when the Offer cannot be fully executed immediately by consuming other Offers already in the ledger.</p>
-<p>An Offer can become unfunded through other activities in the network, while remaining in the ledger. When processing transactions, the network automatically prunes any unfunded Offers that those transactions come across. (Otherwise, unfunded Offers remain, because <em>only</em> transactions can change the ledger state.)</p>
+<p>An Offer can become unfunded through other activities in the network, while remaining in the ledger. When processing transactions, the network automatically removes any unfunded Offers that those transactions come across. (Otherwise, unfunded Offers remain, because <em>only</em> transactions can change the ledger state.)</p>
 <h2 id="example-offer-json">Example Offer JSON<a aria-hidden="true" class="hover_anchor" href="#example-offer-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt"</span><span class="p">,</span>
@@ -324,7 +325,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="offer-fields">Offer Fields<a aria-hidden="true" class="hover_anchor" href="#offer-fields"><i class="fa fa-link"></i></a></h2>
-<p>An <code>Offer</code> object has the following fields:</p>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>Offer</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -355,7 +356,7 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt64</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A hint indicating which page of the offer directory links to this object, in case the directory consists of multiple pages.</td>
+<td style="text-align: left;">A hint indicating which page of the offer directory links to this entry, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Expiration</code></td>
@@ -365,32 +366,25 @@
 <td style="text-align: left;">Indicates the time after which this Offer is considered unfunded. See <a href="basic-data-types.html#specifying-time">Specifying Time</a> for details.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A bit-map of boolean flags enabled for this offer.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt16</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The value <code>0x006F</code>, mapped to the string <code>Offer</code>, indicates that this object describes an Offer.</td>
+<td style="text-align: left;">The value <code>0x006F</code>, mapped to the string <code>Offer</code>, indicates that this is an Offer entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerNode</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt64</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. <strong>Note:</strong> The offer does not contain a direct link to the owner directory containing it, since that value can be derived from the <code>Account</code>.</td>
+<td style="text-align: left;">A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnID</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The identifying hash of the transaction that most recently modified this object.</td>
+<td style="text-align: left;">The identifying hash of the transaction that most recently modified this entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
@@ -404,18 +398,18 @@
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The <code>Sequence</code> value of the <a href="offercreate.html">OfferCreate</a> transaction that created this <code>Offer</code> object. Used in combination with the <code>Account</code> to identify this Offer.</td>
+<td style="text-align: left;">The <code>Sequence</code> value of the <a href="offercreate.html">OfferCreate</a> transaction that created this offer. Used in combination with the <code>Account</code> to identify this offer.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TakerPays</code></td>
-<td style="text-align: left;">String or Object</td>
+<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
 <td style="text-align: left;">Amount</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The remaining amount and type of currency requested by the Offer creator.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TakerGets</code></td>
-<td style="text-align: left;">String or Object</td>
+<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
 <td style="text-align: left;">Amount</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The remaining amount and type of currency being provided by the Offer creator.</td>
@@ -423,8 +417,7 @@
 </tbody>
 </table>
 <h2 id="offer-flags">Offer Flags<a aria-hidden="true" class="hover_anchor" href="#offer-flags"><i class="fa fa-link"></i></a></h2>
-<p>There are several options which can be either enabled or disabled when an <a href="offercreate.html">OfferCreate transaction</a> creates an offer object. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <strong><code>lsf</code></strong>.</p>
-<p><code>Offer</code> objects can have the following flag values:</p>
+<p><code>Offer</code> entries can have the following flags combined into the <code>Flags</code> field:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -441,19 +434,21 @@
 <td><code>0x00010000</code></td>
 <td>65536</td>
 <td><code>tfPassive</code></td>
-<td>The object was placed as a passive Offer. This has no effect on the object in the ledger.</td>
+<td>The offer was placed as "passive". This has no effect after the offer is placed into the ledger.</td>
 </tr>
 <tr>
 <td><code>lsfSell</code></td>
 <td><code>0x00020000</code></td>
 <td>131072</td>
 <td><code>tfSell</code></td>
-<td>The object was placed as a sell Offer. This has no effect on the object in the ledger (because <code>tfSell</code> only matters if you get a better rate than you asked for, which cannot happen after the object enters the ledger).</td>
+<td>The offer was placed as a "Sell" offer. This has no effect after the offer is placed in the ledger, because <code>tfSell</code> only matters if you get a better rate than you asked for, which can only happen when the offer is initially placed.</td>
 </tr>
 </tbody>
 </table>
+<h2 id="offer-reserve">Offer Reserve<a aria-hidden="true" class="hover_anchor" href="#offer-reserve"><i class="fa fa-link"></i></a></h2>
+<p><code>Offer</code> entries count as one item towards the owner reserve of the account that placed the offer, as long as the entry is in the ledger. Canceling or consuming the offer frees up the reserve. The reserve is also freed up if the offer is removed because it was found unfunded.</p>
 <h2 id="offer-id-format">Offer ID Format<a aria-hidden="true" class="hover_anchor" href="#offer-id-format"><i class="fa fa-link"></i></a></h2>
-<p>The ID of an <code>Offer</code> object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
+<p>The ID of an <code>Offer</code> entry is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
 <li>The Offer space key (<code>0x006F</code>)</li>
 <li>The AccountID of the account placing the Offer</li>
@@ -1339,7 +1334,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1665,18 +1665,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1793,11 +1788,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1849,6 +1839,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

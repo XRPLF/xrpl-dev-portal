@@ -322,7 +322,7 @@
 <p>Objects that count towards their owner's reserve requirement include: <a href="checks.html">Checks</a>, <a href="depositauth.html#preauthorization">Deposit Preauthorizations</a>, <a href="escrow.html">Escrows</a>, <a href="non-fungible-token-transfers.html">NFT Offers</a>, <a href="non-fungible-tokens.html">NFT Pages</a>, <a href="offer.html">Offers</a>, <a href="payment-channels.html">Payment Channels</a>, <a href="multi-signing.html">Signer Lists</a>, <a href="tickets.html">Tickets</a>, and <a href="trust-lines-and-issuing.html">Trust Lines</a>.</p>
 <p>Some special cases:</p>
 <ul>
-<li>Non-Fungible Tokens (NFTs) are grouped into pages containing up to 32 NFTs each, and the owner reserve applies per page rather than per NFT. Due to the mechanism for splitting and combining pages, the number of NFTs actually stored per page varies. See also: <a href="nftokenpage.html#reserve-for-nftokenpage-objects">Reserve for NFTokenPage objects</a>.</li>
+<li>Non-Fungible Tokens (NFTs) are grouped into pages containing up to 32 NFTs each, and the owner reserve applies per page rather than per NFT. Due to the mechanism for splitting and combining pages, the number of NFTs actually stored per page varies. See also: <a href="nftokenpage.html#nftokenpage-reserve">Reserve for NFTokenPage objects</a>.</li>
 <li>Trust lines (<code>RippleState</code> entries) are shared between two accounts. The owner reserve can apply to one or both of them. Most often, the token holder owes a reserve and the issuer does not. See also: <a href="ripplestate.html#contributing-to-the-owner-reserve">RippleState: Contributing to the Owner Reserve</a>.</li>
 <li>Signer lists created before the <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a> activated in April 2019 count as multiple objects. See also: <a href="signerlist.html#signer-lists-and-reserves">Signer Lists and Reserves</a>.</li>
 <li>An <a href="directorynode.html">Owner Directory</a> is a ledger entry that lists all objects related to an account, including all objects the account owns. However, the owner directory itself does not count towards the reserve.</li>
@@ -353,7 +353,7 @@
 </tr>
 </tbody>
 </table>
-<p>To determine the owner reserve of an account, multiply the incremental reserve by the number of objects the account owns. To look up the number of objects an account owns, call the <a href="account_info.html">account_info method</a> and take <code>account_data.OwnerCount</code>. </p>
+<p>To determine the owner reserve of an account, multiply the incremental reserve by the number of objects the account owns. To look up the number of objects an account owns, call the <a href="account_info.html">account_info method</a> and take <code>account_data.OwnerCount</code>.</p>
 <p>To calculate an address's total reserve requirement, multiply <code>OwnerCount</code> by <code>reserve_inc_xrp</code>, then add <code>reserve_base_xrp</code>. <a href="build-a-desktop-wallet-in-python.html#codeblock-17">Here is a demonstration</a> of this calculation in Python.</p>
 <h2 id="going-below-the-reserve-requirement">Going Below the Reserve Requirement<a aria-hidden="true" class="hover_anchor" href="#going-below-the-reserve-requirement"><i class="fa fa-link"></i></a></h2>
 <p>During transaction processing, the <a href="transaction-cost.html">transaction cost</a> destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement. You can even destroy <em>all</em> of your XRP this way.</p>
@@ -1246,7 +1246,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1573,17 +1578,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1700,11 +1700,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1756,6 +1751,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

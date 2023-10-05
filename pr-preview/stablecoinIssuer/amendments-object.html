@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Amendments | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/amendments-object.html" />
-    <meta property="og:description" content="Singleton object with status of enabled and pending amendments." />
-    <meta name="description" content="Singleton object with status of enabled and pending amendments." />
+    <meta property="og:description" content="Singleton ledger entry with status of enabled and pending amendments." />
+    <meta name="description" content="Singleton ledger entry with status of enabled and pending amendments." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/references/protocol-reference/ledger-data/ledger-object-types/amendments.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/references/protocol-reference/ledger-data/ledger-entry-types/amendments.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -272,6 +272,8 @@
         <li class="nav-item level-1"><a class="nav-link" href="#amendments">Amendments</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-amendments-json">Example Amendments JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amendments-fields">Amendments Fields</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#amendments-flags">Amendments Flags</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#amendments-reserve">Amendments Reserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amendments-id-format">Amendments ID Format</a></li>
       </ul>
   </div>
@@ -293,14 +295,14 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">Amendments</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="amendments">Amendments<a aria-hidden="true" class="hover_anchor" href="#amendments"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L138-L144" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>Amendments</code> object type contains a list of <a href="amendments.html">Amendments</a> that are currently active. Each ledger version contains <strong>at most one</strong> <code>Amendments</code> object.</p>
+<p>The <code>Amendments</code> ledger entry type contains a list of <a href="amendments.html">Amendments</a> that are currently active. Each ledger version contains <strong>at most one</strong> <code>Amendments</code> entry.</p>
 <h2 id="example-amendments-json">Example Amendments JSON<a aria-hidden="true" class="hover_anchor" href="#example-amendments-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Majorities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -323,6 +325,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="amendments-fields">Amendments Fields<a aria-hidden="true" class="hover_anchor" href="#amendments-fields"><i class="fa fa-link"></i></a></h2>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, the <code>Amendments</code> ledger entry has the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -391,11 +394,15 @@
 </table>
 <p>In the <a href="amendments.html#amendment-process">amendment process</a>, a consensus of validators adds a new amendment to the <code>Majorities</code> field using an <a href="enableamendment.html">EnableAmendment</a> pseudo-transaction with the <code>tfGotMajority</code> flag when 80% or more of validators support it. If support for a pending amendment goes below 80%, an <a href="enableamendment.html">EnableAmendment</a> pseudo-transaction with the <code>tfLostMajority</code> flag removes the amendment from the <code>Majorities</code> array. If an amendment remains in the <code>Majorities</code> field for at least 2 weeks, an <a href="enableamendment.html">EnableAmendment</a> pseudo-transaction with no flags removes it from <code>Majorities</code> and permanently adds it to the <code>Amendments</code> field.</p>
 <p class="devportal-callout note"><strong>Note:</strong> Technically, all transactions in a ledger are processed based on which amendments are enabled in the ledger version immediately before it. While applying transactions to a ledger version where an amendment becomes enabled, the rules don't change mid-ledger. After the ledger is closed, the next ledger uses the new rules as defined by any new amendments that applied.</p>
+<h2 id="amendments-flags">Amendments Flags<a aria-hidden="true" class="hover_anchor" href="#amendments-flags"><i class="fa fa-link"></i></a></h2>
+<p>There are no flags defined for the <code>Amendments</code> entry.</p>
+<h2 id="amendments-reserve">Amendments Reserve<a aria-hidden="true" class="hover_anchor" href="#amendments-reserve"><i class="fa fa-link"></i></a></h2>
+<p>The <code>Amendments</code> entry does not require a reserve.</p>
 <h2 id="amendments-id-format">Amendments ID Format<a aria-hidden="true" class="hover_anchor" href="#amendments-id-format"><i class="fa fa-link"></i></a></h2>
-<p>The <code>Amendments</code> object ID is the hash of the <code>Amendments</code> space key (<code>0x0066</code>) only. This means that the ID of the <code>Amendments</code> object in a ledger is always:</p>
+<p>The ID of the <code>Amendments</code> entry is the hash of the <code>Amendments</code> space key (<code>0x0066</code>) only. This means that the ID is always:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="mf">7</span><span class="n">DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4</span>
 </code></pre></div>
-<p>(Don't mix up the ID of the <code>Amendments</code> ledger object type with the Amendment ID of an individual amendment.)</p>
+<p>(Don't mix up the ID of the <code>Amendments</code> ledger entry type with the Amendment ID of an individual amendment.)</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -1273,7 +1280,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1599,18 +1611,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1727,11 +1734,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1783,6 +1785,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

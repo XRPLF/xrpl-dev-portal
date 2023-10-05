@@ -288,7 +288,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="base58エンコード">base58エンコード<a aria-hidden="true" class="hover_anchor" href="#base58エンコード"><i class="fa fa-link"></i></a></h1>
-<p><code>rippled</code> APIでは、チェックサムを含む<strong>base58</strong>エンコード（「Base58Check」とも呼ばれます）を使用して<a href="accounts.html#アドレス">アカウントアドレス</a>や暗号鍵に関連するその他のタイプの値が表現されることがよくあります。このエンコードは、<a class="external-link" href="https://en.bitcoin.it/wiki/Base58Check_encoding" target="_blank">Bitcoinのアドレスに使用されているエンコード <i aria-hidden="true" class="fa fa-external-link"></i></a>と同じですが、XRP Ledgerでは以下のディクショナリが使用される点が異なります。<code>rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz</code>。</p>
+<p><code>rippled</code> APIでは、チェックサムを含む<strong>base58</strong>エンコード（「Base58Check」とも呼ばれます）を使用して<a href="addresses.html">アカウントアドレス</a>や暗号鍵に関連するその他のタイプの値が表現されることがよくあります。このエンコードは、<a class="external-link" href="https://en.bitcoin.it/wiki/Base58Check_encoding" target="_blank">Bitcoinのアドレスに使用されているエンコード <i aria-hidden="true" class="fa fa-external-link"></i></a>と同じですが、XRP Ledgerでは以下のディクショナリが使用される点が異なります。<code>rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz</code>。</p>
 <p>XRP Ledgerにより、さまざまなタイプの値をエンコードする前に、データタイプを区別する固有の8ビット数値が値の前に付加されます。XRP Ledgerのbase58ディクショナリの文字配列と組み合わされた、さまざまなタイプのエンコード値のbase58表現は、タイプごとに固有の文字で始まります。</p>
 <p>以下の表に、XRP Ledgerで使用されるすべてのエンコードを示します。</p>
 <table class="table-responsive">
@@ -335,7 +335,7 @@
 <p>¹ コンテンツのサイズでは1バイトのタイププレフィクスは除外されます。</p>
 <h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><a href="accounts.html#アドレスのエンコード">アドレスのエンコード</a> - アドレスのエンコードについての詳細な情報</li>
+<li><a href="addresses.html#アドレスのエンコード">アドレスのエンコード</a> - アドレスのエンコードについての詳細な情報</li>
 <li><a href="cryptographic-keys.html">暗号鍵</a> - XRP Ledgerの暗号鍵のタイプとその使用法</li>
 <li><a href="wallet_propose.html">wallet_proposeリファレンス</a> - アカウントキーを生成するためのAPIメソッド</li>
 <li><a href="validation_create.html">validation_createリファレンス</a> - バリデータキーを生成するためのAPIメソッド</li>
@@ -636,17 +636,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -884,17 +884,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_11" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_11"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_10"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_11">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -906,6 +901,11 @@
 
     </nav>
 
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -931,11 +931,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_4_6_8"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -984,12 +984,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -999,7 +999,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       
@@ -1212,7 +1212,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1539,17 +1544,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -1666,11 +1666,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
   </div>
 
@@ -1722,6 +1717,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

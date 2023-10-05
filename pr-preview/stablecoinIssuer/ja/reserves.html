@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="準備金 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/reserves.html" />
-    <meta property="og:description" content="XRP Ledgerアカウントでは、レジャーデータ内のスパムを減らすためにXRPの準備金が必要です。" />
-    <meta name="description" content="XRP Ledgerアカウントでは、レジャーデータ内のスパムを減らすためにXRPの準備金が必要です。" />
+    <meta property="og:description" content="XRP Ledgerのアカウントでは、レジャーデータ内のスパムを減らすためにXRPの準備金が必要です。" />
+    <meta name="description" content="XRP Ledgerのアカウントでは、レジャーデータ内のスパムを減らすためにXRPの準備金が必要です。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -277,8 +277,10 @@
         <li class="nav-item level-1"><a class="nav-link" href="#準備金">準備金</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#基本準備金と所有者準備金">基本準備金と所有者準備金</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#所有者準備金">所有者準備金</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#準備金の確認">準備金の確認</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#必要準備金を下回る">必要準備金を下回る</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#必要準備金の変更">必要準備金の変更</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#準備金要件の変更">準備金要件の変更</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -301,34 +303,73 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="準備金">準備金<a aria-hidden="true" class="hover_anchor" href="#準備金"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledgerでは、スパムや悪意のある使用によって、共有グローバル台帳（レジャー）が過度に大きくならないように、 <em>準備金</em> の仕組みをXRPに適用しています。現在一般に市販されているのマシンで、処理中の現行レジャーを常にRAMに保存でき、全履歴がディスクに収まるように、技術の向上に合わせて台帳が大きくなるのを制限することが目的です。</p>
-<p>取引（トランザクション）を送信するには、各アドレスが共有グローバル台帳内に最小量のXRPを保有している必要があります。このXRPを他のアドレスに送信することはできません。新しいアドレスに資金供給するには、必要準備金を満たすのに十分なXRPを送信する必要があります。</p>
-<p>現在の最低必要準備金は<strong>10 XRP</strong>です。（これは、レジャーにそれ以外のオブジェクトを所有していないアドレスにかかるコストです。）</p>
+<p>XRP Ledgerでは、スパムや悪意のある使用によって、共有グローバル台帳(レジャー)が過度に大きくならないように、XRPを用いた <em>準備金</em> の仕組みを採用しています。現在一般に市販されているのマシンで、処理中の現行レジャーを常にRAMに保存でき、全履歴がディスクに収まるように、技術の向上に合わせて台帳サイズが大きくなるのを制限することが目的です。</p>
+<p>取引(トランザクション)を送信するには、各アドレスが共有グローバル台帳内に少量のXRPを保有している必要があります。このXRPを他のアドレスに送信することはできません。新しいアドレスに資金供給するには、必要となる準備金を満たすのに十分なXRPを送信する必要があります。</p>
+<p>準備金要件は、バリデータが新しい準備金設定に合意する<a href="fee-voting.html">手数料の投票</a>プロセスにより、随時変更されます。</p>
 <h2 id="基本準備金と所有者準備金">基本準備金と所有者準備金<a aria-hidden="true" class="hover_anchor" href="#基本準備金と所有者準備金"><i class="fa fa-link"></i></a></h2>
-<p>必要な準備金は2つの部分に分けられます。</p>
+<p>準備金は2つの部分に分けられます。</p>
 <ul>
-<li><strong>基本準備金</strong>は、レジャーの各アドレスに必要なXRPの最小額です。現在、この準備金は、10 XRP（<code>10000000</code> drop）です。</li>
-<li><strong>所有者準備金</strong>は、アドレスがレジャーに所有しているオブジェクトごとに必要な準備金の増加額です。現在、これは1アイテムにつき2 XRP（<code>2000000</code> drop）です。</li>
+<li><strong>基本準備金</strong>は、レジャーの各アドレスに必要なXRPの最小額です。</li>
+<li><strong>所有者準備金</strong>は、アドレスがレジャーに所有しているオブジェクトごとに必要な準備金の増加額です。アイテムごとのコストは「増分準備金」とも呼ばれます。</li>
 </ul>
+<p>メインネットにおける現在の準備金要件は次の通りです。</p>
+<ul>
+<li>基本準備金 <strong>10 XRP</strong></li>
+<li>所有者準備金 アイテムにつき<strong>2 XRP</strong></li>
+</ul>
+<p>他のネットワークでの準備金は異なる場合があります。</p>
 <h3 id="所有者準備金">所有者準備金<a aria-hidden="true" class="hover_anchor" href="#所有者準備金"><i class="fa fa-link"></i></a></h3>
-<p>レジャー内の多くのオブジェクトは特定のアドレスによって所有され、そのアドレスに対する必要準備金と見なされます。レジャーから削除されたオブジェクトは、所有者の必要準備金にカウントされなくなります。</p>
+<p>レジャー内の多くのオブジェクト(レジャーエントリー)は、特定のアカウントが所有しています。通常、所有者はオブジェクトを作成したアカウントです。各オブジェクトは、所有者の合計必要準備金を所有者準備金によって増加させます。オブジェクトがレジャーから削除されると、所有者の必要準備金にカウントされなくなります。</p>
+<p>所有者の必要準備金にカウントされるオブジェクトには次のものが含まれます。<a href="checks.html">Check</a>, <a href="depositauth.html#事前承認">入金の事前承認</a>, <a href="escrow.html">エスクロー</a>, <a href="non-fungible-token-transfers.html">NFTのオファー</a>, <a href="non-fungible-tokens.html">NFTのページ</a>, <a href="offer.html">オファー</a>, <a href="payment-channels.html">ペイメントチャネル</a>, <a href="multi-signing.html">マルチシグの署名者リスト</a>, <a href="tickets.html">Ticket</a>, そして<a href="trust-lines-and-issuing.html">トラストライン</a>.</p>
+<p>次のようないくつかの特殊なケースが存在します。</p>
 <ul>
-<li><a href="offer.html">オファー</a>はそれらを発行したアドレスによって所有されています。すべてが処理済みとなるか、または資金供給のないことが判明したオファーは、取引処理によって自動的に削除されます。または、所有者は、<a href="offercancel.html">OfferCancelトランザクション</a>を送信するか、<code>OfferSequence</code>パラメーターを含む<a href="offercreate.html">OfferCreateトランザクション</a>を送信することで、オファーを取り消すことができます。</li>
-<li><a href="ripplestate.html">トラストライン</a>は2つのアドレス間で共有されます。所有者準備金は、いずれかまたは両方のアドレスに適用されます。どちらに適用されるかは、アドレスが制御するフィールドがデフォルト状態であるかどうかによって決まります。詳細については、<a href="ripplestate.html#所有者の準備金への資金供給">Contributing to the Owner Reserve</a>を参照してください。</li>
-<li><a href="known-amendments.html#multisignreserve">MultiSignReserve Amendment</a>がない場合、1つの<a href="signerlist.html">SignerList</a>は、メンバーの数に応じて、所有者準備金用に3～10個のオブジェクトとしてカウントされます。<a href="known-amendments.html#multisignreserve">MultiSignReserve Amendment</a>が有効になっている場合、1つのSignerListは、メンバーの数に関係なく、所有者準備金用に1つのオブジェクトとしてカウントされます。関連項目: <a href="signerlist.html#signerlistと準備金">SignerListと準備金</a></li>
-<li><a href="escrow-object.html">保留中の支払い（Escrow）</a>は、支払元のアドレスが所有します。</li>
-<li><a href="use-payment-channels.html">Payment Channel</a>は、作成したアドレスが所有します。</li>
-<li><a href="directorynode.html">所有者ディレクトリー</a>には、アドレスの所有者の準備金の対象となるすべてのレジャーオブジェクトが一覧表示されます。所有者ディレクトリー自体は準備金としてカウントされません。</li>
-<li><a href="checks.html">Checks</a>は、作成したアドレス（送信先ではなく送信元）が所有します。</li>
+<li>非代替性トークン(NFT)は、それぞれ最大32個のNFTを含むページにグループ化され、所有者準備金はNFTごとではなくページごとに適用されます。ページの分割と結合の仕組みにより、実際に保存されるNFTの数はページごとに異なります。<a href="nftokenpage.html#nftokenpage-オブジェクトの準備金">NFTokenPageオブジェクトの準備金</a>もご覧ください。</li>
+<li>トラストライン(<code>RippleState</code>エントリ)は2つのアカウント間で共有されます。所有者準備金はどちらか一方、または両方に適用できます。多くの場合、トークン所有者は準備金を負担し、発行者は負担しません。<a href="ripplestate.html#所有者の準備金への資金供給">RippleState: 所有者準備金への資金提供</a>もご覧ください。</li>
+<li>2019年4月に有効化された<a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a>以前に作成された署名者リストは、複数のオブジェクトとしてカウントされます。<a href="signerlist.html#signerlistと準備金">署名者リストと準備金</a>もご覧ください。</li>
+<li><a href="directorynode.html">所有者ディレクトリ</a>は、アカウントが所有するすべてのオブジェクトを含む、アカウントに関連するすべてのオブジェクトをリストしたレジャーエントリーです。ただし、所有者ディレクトリ自体は準備金にカウントされません。</li>
 </ul>
-<h4 id="所有者準備金のエッジケース">所有者準備金のエッジケース<a aria-hidden="true" class="hover_anchor" href="#所有者準備金のエッジケース"><i class="fa fa-link"></i></a></h4>
-<p>XRP Ledgerでは、 <a href="offercreate.html">OfferCreateトランザクション</a>は、資産を保持する意図の明示的なステートメントであるとみなします。オファーが実行されることで、（限界値0で、その限界値を超える残高の）トラストラインが（そのようなトラストラインが存在しない場合）<code>taker_pays</code>の通貨で自動的に作成されます。ただし、オファーの所有者が新しく作られたトラストラインの所有者準備金を満たすための十分なXRPを保持していない場合、そのオファーは資金不足とみなされます。関連項目: <a href="offers.html#オファーのライフサイクル">オファーのライフサイクル</a></p>
+<h3 id="準備金の確認">準備金の確認<a aria-hidden="true" class="hover_anchor" href="#準備金の確認"><i class="fa fa-link"></i></a></h3>
+<p>アプリケーションは、<a href="server_info.html">server_infoメソッド</a>または<a href="server_state.html">server_stateメソッド</a>を使用して、現在の基本準備金と増分準備金の値を調べることができます。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th>メソッド</th>
+<th>単位</th>
+<th>基本準備金のフィールド</th>
+<th>増分準備金のフィールド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="server_info.html">server_infoメソッド</a></td>
+<td>10進数のXRP値</td>
+<td><code>validated_ledger.reserve_base_xrp</code></td>
+<td><code>validated_ledger.reserve_inc_xrp</code></td>
+</tr>
+<tr>
+<td><a href="server_state.html">server_stateメソッド</a></td>
+<td>整数のdrop値</td>
+<td><code>validated_ledger.reserve_base</code></td>
+<td><code>validated_ledger.reserve_inc</code></td>
+</tr>
+</tbody>
+</table>
+<p>アカウントの所有者準備金を決定するには、増分準備金にアカウントが所有するオブジェクトの数を掛けます。アカウントが所有しているオブジェクトの数を調べるには、<a href="account_info.html">account_infoメソッド</a>を呼び出し、<code>account_data.OwnerCount</code>を取得します。</p>
+<p>アドレスの必要となる合計準備金を計算するには、<code>OwnerCount</code>に<code>reserve_inc_xrp</code>を掛け、次に<code>reserve_base_xrp</code>を加えます。<a href="build-a-desktop-wallet-in-python.html#codeblock-17">この計算をPythonで行うデモ</a>があります。</p>
 <h2 id="必要準備金を下回る">必要準備金を下回る<a aria-hidden="true" class="hover_anchor" href="#必要準備金を下回る"><i class="fa fa-link"></i></a></h2>
-<p>トランザクション処理中、<a href="transaction-cost.html">トランザクションコスト</a>によって、送信元アドレスのXRP残高の一部が消却されます。その結果、そのアドレスのXRPが必要準備金を下回る可能性があります。</p>
-<p>アドレスが保持しているXRPが、現在の必要準備金を下回ると、XRPを他のアドレスに転送するトランザクションを送信したり、自身の準備金を増やしたりできなくなります。このような場合でも、そのアドレスはレジャー内に存在し、トランザクションコストを支払うのに十分なXRPを持っている限り、その他のトランザクションを送信することができます。必要準備金を満たすために十分なXRPを受け取った場合、またはそのアドレスのXRP保有額よりも<a href="#必要準備金の変更">準備金の必要額が減少した</a>場合、そのアドレスはすべてのタイプのトランザクションを再度送信できるようになります。</p>
-<p class="devportal-callout ヒント"><strong>ヒント:</strong> アドレスが必要準備金を下回った場合は、新しい<a href="offercreate.html">OfferCreateトランザクション</a>を送信して、追加のXRP、または既存のトラストライン上の他の通貨を入手することができます。このような取引では、新しい<a href="ripplestate.html">トラストライン</a>や<a href="offer.html">レジャー内のオファーノード</a>を作成することはできないため、すでにオーダーブック内にあるオファーを実行するトランザクションのみを実行することができます。</p>
-<h2 id="必要準備金の変更">必要準備金の変更<a aria-hidden="true" class="hover_anchor" href="#必要準備金の変更"><i class="fa fa-link"></i></a></h2>
-<p>XRP Ledgerには、XRPの価値の長期的な変動に応じて必要準備金を調整する仕組みがあります。変更はすべて、コンセンサスプロセスによる承認が必要です。詳細については、<a href="fee-voting.html">手数料の投票</a>を参照してください。</p>
+<p>トランザクション処理中、<a href="transaction-cost.html">トランザクションコスト</a>によって、送信元アドレスのXRP残高の一部がバーンされます。その結果、そのアドレスのXRPが必要準備金を下回る可能性があります。</p>
+<p>アドレスが保持しているXRPが、現在の必要準備金を下回ると、XRPを他のアドレスに送信するトランザクションを送信したり、自身の準備金を増やしたりできなくなります。このような場合でも、そのアドレスはレジャー内に存在し、トランザクションコストを支払うのに十分なXRPを持っている限り、その他のトランザクションを送信することができます。必要準備金を満たすために十分なXRPを受け取った場合、またはそのアドレスのXRP保有額よりも<a href="#準備金要件の変更">準備金の必要額が減少した</a>場合、そのアドレスはすべてのタイプのトランザクションを再度送信できるようになります。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> アドレスが必要準備金を下回った場合は、新しい<a href="offercreate.html">OfferCreateトランザクション</a>を送信して、追加のXRP、または既存のトラストライン上の他の通貨を入手することができます。このような取引では、新しい<a href="ripplestate.html">トラストライン</a>や<a href="offer.html">レジャー内のオファーエントリー</a>を作成することはできないため、すでにオーダーブック内にあるオファーを実行するトランザクションのみを実行することができます。</p>
+<h2 id="準備金要件の変更">準備金要件の変更<a aria-hidden="true" class="hover_anchor" href="#準備金要件の変更"><i class="fa fa-link"></i></a></h2>
+<p>XRP Ledgerには、準備金要件を調整する仕組みがあります。このような調整は、例えばXRPの価値の長期的な変化、汎用レベルのハードウェアの性能の向上、サーバソフトウェアの実装の効率化などを考慮することができます。いかなる変更も、コンセンサスプロセスによる合意が必要です。詳細は<a href="fee-voting.html">手数料の投票</a>をご覧ください。</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><a href="account_objects.html">account_objectsメソッド</a></li>
+<li><a href="accountroot.html">AccountRootオブジェクト</a></li>
+<li><a href="fee-voting.html">手数料の投票</a></li>
+<li><a href="setfee.html">SetFee疑似トランザクション</a>疑似トランザクション</li>
+<li><a href="build-a-desktop-wallet-in-python.html#3-display-an-account">チュートリアル: 必要準備金の計算と表示（Python）</a></li>
+</ul>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -625,17 +666,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -873,17 +914,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_11" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_11"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_10"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_11">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -895,6 +931,11 @@
 
     </nav>
 
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -920,11 +961,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_4_6_8"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -973,12 +1014,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -988,7 +1029,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       
@@ -1201,7 +1242,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1528,17 +1574,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -1655,11 +1696,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
   </div>
 
@@ -1711,6 +1747,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

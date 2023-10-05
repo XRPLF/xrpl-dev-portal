@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/references/protocol-reference/ledger-data/ledger-object-types/ticket.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/references/protocol-reference/ledger-data/ledger-entry-types/ticket.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -272,6 +272,8 @@
         <li class="nav-item level-1"><a class="nav-link" href="#ticket">Ticket</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-ticket-json">Example Ticket JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ticket-fields">Ticket Fields</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ticket-reserve">Ticket Reserve</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ticket-flags">Ticket Flags</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ticket-id-format">Ticket ID Format</a></li>
       </ul>
   </div>
@@ -293,7 +295,7 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">Ticket</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
@@ -301,7 +303,7 @@
         <h1 id="ticket">Ticket<a aria-hidden="true" class="hover_anchor" href="#ticket"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/76a6956138c4ecd156c5c408f136ed3d6ab7d0c1/src/ripple/protocol/impl/LedgerFormats.cpp#L155-L164" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Added by the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a>.)</em></p>
-<p>The <code>Ticket</code> object type represents a <a href="tickets.html">Ticket</a>, which tracks an account <a href="basic-data-types.html#account-sequence">sequence number</a> that has been set aside for future use. You can create new tickets with a <a href="ticketcreate.html">TicketCreate transaction</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="New in: rippled 1.7.0"><img alt="New in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>A <code>Ticket</code> entry type represents a <a href="tickets.html">Ticket</a>, which tracks an account <a href="basic-data-types.html#account-sequence">sequence number</a> that has been set aside for future use. You can create new tickets with a <a href="ticketcreate.html">TicketCreate transaction</a>.</p>
 <h2 id="example-ticket-json">Example Ticket JSON<a aria-hidden="true" class="hover_anchor" href="#example-ticket-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de"</span><span class="p">,</span>
@@ -314,7 +316,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="ticket-fields">Ticket Fields<a aria-hidden="true" class="hover_anchor" href="#ticket-fields"><i class="fa fa-link"></i></a></h2>
-<p>A <code>Ticket</code> object has the following fields:</p>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>Ticket</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -334,39 +336,32 @@
 <td style="text-align: left;">The <a href="accounts.html">account</a> that owns this Ticket.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for <code>Ticket</code> objects. The value is always <code>0</code>.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt16</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The value <code>0x0054</code>, mapped to the string <code>Ticket</code>, indicates that this object is a Ticket object.</td>
+<td style="text-align: left;">The value <code>0x0054</code>, mapped to the string <code>Ticket</code>, indicates that this is a Ticket entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerNode</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt64</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. <strong>Note:</strong> The object does not contain a direct link to the owner directory containing it, since that value can be derived from the <code>Account</code>.</td>
+<td style="text-align: left;">A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnID</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The identifying hash of the <a href="transactions.html">transaction</a> that most recently modified this object.</td>
+<td style="text-align: left;">The identifying hash of the <a href="transactions.html">transaction</a> that most recently modified this entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this object.</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>TicketSequence</code></td>
@@ -377,6 +372,10 @@
 </tr>
 </tbody>
 </table>
+<h2 id="ticket-reserve">Ticket Reserve<a aria-hidden="true" class="hover_anchor" href="#ticket-reserve"><i class="fa fa-link"></i></a></h2>
+<p><code>Ticket</code> entries count as one item towards the owner reserve of the account that placed the created it, as long as the entry is in the ledger. Using the ticket frees up the reserve.</p>
+<h2 id="ticket-flags">Ticket Flags<a aria-hidden="true" class="hover_anchor" href="#ticket-flags"><i class="fa fa-link"></i></a></h2>
+<p>There are no flags defined for <code>Ticket</code> entries.</p>
 <h2 id="ticket-id-format">Ticket ID Format<a aria-hidden="true" class="hover_anchor" href="#ticket-id-format"><i class="fa fa-link"></i></a></h2>
 <p>The ID of a Ticket object is the SHA-512Half of the following values, concatenated in order:</p>
 <ul>
@@ -1261,7 +1260,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1587,18 +1591,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1715,11 +1714,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1771,6 +1765,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>発行アドレスと運用アドレス - XRPL.org (日本語)</title>
+    <title>アカウントの種類 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="発行アドレスと運用アドレス | XRPL.org (日本語)">
+    <meta property="og:title" content="アカウントの種類 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/account-types.html" />
     <meta property="og:description" content="XRP Ledgerで自動的にトランザクションを送信するビジネスは、リスクを最小限に抑えるために目的ごとに別のアドレスを設定することをおすすめします。" />
     <meta name="description" content="XRP Ledgerで自動的にトランザクションを送信するビジネスは、リスクを最小限に抑えるために目的ごとに別のアドレスを設定することをおすすめします。" />
@@ -274,14 +274,14 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#発行アドレスと運用アドレス">発行アドレスと運用アドレス</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#アカウントの種類">アカウントの種類</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#資金のライフサイクル">資金のライフサイクル</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#発行アドレス">発行アドレス</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#発行アドレスの漏えい">発行アドレスの漏えい</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#複数の発行アドレス">複数の発行アドレス</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#運用アドレス">運用アドレス</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#運用アドレスの漏えい">運用アドレスの漏えい</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#スタンバイアドレス">スタンバイアドレス</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#待機アドレス">待機アドレス</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#スタンバイアドレスの漏えい">スタンバイアドレスの漏えい</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
@@ -301,14 +301,11 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/accounts.html">アカウント</a></li>
-    <li class="active breadcrumb-item">発行アドレスと運用アドレス</li>
+    <li class="active breadcrumb-item">アカウントの種類</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="発行アドレスと運用アドレス">発行アドレスと運用アドレス<a aria-hidden="true" class="hover_anchor" href="#発行アドレスと運用アドレス"><i class="fa fa-link"></i></a></h1>
+        <h1 id="アカウントの種類">アカウントの種類<a aria-hidden="true" class="hover_anchor" href="#アカウントの種類"><i class="fa fa-link"></i></a></h1>
 <p>XRP Ledgerでは、金融機関は秘密鍵の漏えいに関連するリスクを最小限に抑えるために、複数のXRP Ledgerアドレスを使用するのが一般的です。業界標準では、以下のような役割分担をしています。</p>
 <ul>
 <li>1つの<strong>発行アドレス</strong>。「コールドウォレット」とも呼ばれます。このアドレスは、レジャーでの金融機関の会計上の関係の中心となるものですが、トランザクションの送信は可能な限り少なく抑えます。</li>
@@ -317,41 +314,50 @@
 </ul>
 <!-- -->
 <h2 id="資金のライフサイクル">資金のライフサイクル<a aria-hidden="true" class="hover_anchor" href="#資金のライフサイクル"><i class="fa fa-link"></i></a></h2>
-<p>XRP LedgerのXRP以外の残高はすべて、2つのXRP Ledgerアドレス間の会計上の関係に関連付けられている <em>発行済み通貨</em> です。Rippleが推奨する役割の分割を金融機関が行うと、その金融機関に関連する資金の流れは循環する傾向にあります。</p>
-<p><a href="img/funds_flow_diagram.png"><img alt="図: 発行アドレスからスタンバイアドレス、運用アドレス、顧客アドレスおよびパートナーアドレスに移動し、最後に発行アドレスに戻る資金フロー" src="img/funds_flow_diagram.png"/></a></p>
-<p>発行アドレスはペイメントの送金時に、XRP Ledgerの会計上の関係に残高を作成します。ユーザーはXRP Ledger内のさまざまな会計上の関係と残高を交換できます。このため、XRP以外の残高を表す用語として <em>イシュアンス</em> を使用します。イシュアンスの額は、発行アドレスの側から見ると債務を表すため、マイナスです。同じイシュアンスの額を発行アドレスの相手側から見ると、プラスになります。発行アドレスがペイメントを受領すると、送信されたイシュアンスが消去され、発行アドレスの債務が減少します。</p>
-<p>イシュアンスは発行アドレスからスタンバイアドレスに送信されるか、または運用アドレスに直接送信されます。これらのイシュアンスはスタンバイアドレスから運用アドレスに送信されます。運用アドレスから他の取引相手（流動性プロバイダー、パートナー、その他の顧客など）にペイメントが送信されます。すべてのイシュアンスは発行アドレスとの会計上の関係に関連付けられているため、イシュアンスのペイメントと取引は、発行アドレスを「通じてRippling」されます。ペイメントが行われると、送金元と発行アドレスの会計上の関係において送金元の残高から支払額が引き落とされ、受取人と発行アドレスの会計上の関係において受取人の残高に支払額が入金されます。XRP Ledgerでは、オーダーブックや<a href="rippling.html">資金のRipplingに対応する流動性プロバイダー</a>を通じて複数のイシュアーを結び付ける、より複雑な<a href="paths.html">パス</a>もサポートされています。</p>
+<p>トークン発行者がこのような役割を分担すると、以下の図のように資金が一方向に流れるようになります。</p>
+<figure><a href="img/issued-currency-funds-flow.ja.svg" title="図: 発行アドレスから待機アドレス、運用アドレス、顧客アドレスおよびパートナーアドレスに移動し、最後に発行アドレスに戻る資金フロー"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="320 250 910 540" width="910" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/issued-currency-funds-flow.ja.svg__genericDefs"></defs><g><defs id="img/issued-currency-funds-flow.ja.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath2"><path d="M0 0 L0 30 L60 30 L60 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath3"><path d="M0 0 L0 160 L160 160 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath4"><path d="M0 0 L0 40 L160 40 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath5"><path d="M0 0 L0 40 L40 40 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath6"><path d="M0 0 L0 40 L180 40 L180 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath7"><path d="M0 0 L0 30 L150 30 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath8"><path d="M0 0 L0 170 L300 170 L300 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath9"><path d="M0 0 L0 150 L150 150 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath10"><path d="M0 0 L0 70 L70 70 L70 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath11"><path d="M0 0 L0 30 L110 30 L110 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath12"><path d="M0 0 L0 40 L170 40 L170 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath13"><path d="M0 0 L0 210 L210 210 L210 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath14"><path d="M0 0 L0 210 L230 210 L230 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath15"><path d="M0 0 L0 40 L150 40 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath16"><path d="M0 0 L0 30 L210 30 L210 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath17"><path d="M0 0 L0 30 L170 30 L170 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/issued-currency-funds-flow.ja.svg__clipPath18"><path d="M0 0 L0 160 L30 160 L30 0 Z"></path></clippath></defs><g fill="blue" font-family="sans-serif" font-size="14px" stroke="blue" transform="translate(830,460)"><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">補充</text></g><g fill="blue" font-family="sans-serif" font-size="14px" stroke="blue" transform="translate(630,460)"><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">融資</text></g><g fill="white" stroke="white" transform="translate(360,300)"><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" cx="79.75" cy="79.75" r="79.25" stroke="none"></circle><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" cx="79.75" cy="79.75" fill="none" r="79.25" stroke="black"></circle></g><g fill="white" stroke="white" transform="translate(350,310)"><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" cx="79.75" cy="79.75" r="79.25" stroke="none"></circle><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" cx="79.75" cy="79.75" fill="none" r="79.25" stroke="black"></circle></g><g font-family="sans-serif" font-size="14px" transform="translate(1020,640)"><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">XRP Ledgerアドレス</text></g><g fill="white" stroke="white" transform="translate(950,640)"><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath5)" cx="19.75" cy="19.75" r="19.25" stroke="none"></circle><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath5)" cx="19.75" cy="19.75" fill="none" r="19.25" stroke="black"></circle></g><g font-family="sans-serif" font-size="14px" transform="translate(1020,680)"><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath6)" stroke="none" x="5" xml:space="preserve" y="18.1094">会計関係</text><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath6)" stroke="none" x="5" xml:space="preserve" y="34.2188">(トラストライン)</text></g><g font-family="sans-serif" font-size="14px" transform="translate(1020,730)"><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="18.1094">送信 / 支払い</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(910,600)"><rect clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath8)" height="168.5" stroke="none" width="298.5" x="0.5" y="0.5"></rect></g><g transform="translate(910,600)"><rect clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath8)" fill="none" height="168.5" width="298.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="124" xml:space="preserve" y="18.1094">凡例</text><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath8)" d="M1 24.1094 L299 24.1094" fill="none"></path></g><g fill="white" stroke="white" transform="translate(680,610)"><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" cx="79.75" cy="79.75" r="79.25" stroke="none"></circle><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" cx="79.75" cy="79.75" fill="none" r="79.25" stroke="black"></circle></g><g font-family="sans-serif" font-size="14px" transform="translate(680,610)"><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" stroke="none" x="40" xml:space="preserve" y="77">運用アドレス</text><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" stroke="none" x="65" xml:space="preserve" y="93.1094">(自動)</text></g><g fill="white" stroke="white" transform="translate(340,320)"><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" cx="79.75" cy="79.75" r="79.25" stroke="none"></circle><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" cx="79.75" cy="79.75" fill="none" r="79.25" stroke="black"></circle></g><g font-family="sans-serif" font-size="14px" transform="translate(340,320)"><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" stroke="none" x="50" xml:space="preserve" y="68.9453">パートナー, </text><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" stroke="none" x="20" xml:space="preserve" y="85.0547">流動性プロバイダー,</text><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" stroke="none" x="68" xml:space="preserve" y="101.1641">顧客</text></g><g fill="white" stroke="white" transform="translate(980,320)"><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath9)" cx="74.75" cy="74.75" r="74.25" stroke="none"></circle><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath9)" cx="74.75" cy="74.75" fill="none" r="74.25" stroke="black"></circle></g><g font-family="sans-serif" font-size="14px" transform="translate(980,320)"><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath9)" stroke="none" x="35" xml:space="preserve" y="72">待機アドレス</text><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath9)" stroke="none" x="60" xml:space="preserve" y="88.1094">(手動)</text></g><g fill="lime" stroke="lime" transform="translate(680,320)"><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" cx="79.75" cy="79.75" r="79.25" stroke="none"></circle><circle clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" cx="79.75" cy="79.75" fill="none" r="79.25" stroke="black"></circle></g><g font-family="sans-serif" font-size="14px" transform="translate(680,320)"><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" stroke="none" x="40" xml:space="preserve" y="77">発行アドレス</text><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" stroke="none" x="44" xml:space="preserve" y="93.1094">(最高水準の</text><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath3)" stroke="none" x="37" xml:space="preserve" y="113.1094">セキュリティ)</text></g><g fill="blue" stroke="blue" stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(400,270)"><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath10)" d="M50.5 39.5 L50.5 10.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath10)" d="M50.5 10.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath10)" d="M10.5 10.5 L10.5 50.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath10)" d="M57 28.7417 L50.5 40 L44 28.7417 Z" fill="white" stroke="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath10)" d="M57 28.7417 L50.5 40 L44 28.7417 Z" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g transform="translate(920,690)"><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath11)" d="M11.5 10.5 L90.5 10.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath11)" d="M22.2583 17 L11 10.5 L22.2583 4 Z" stroke="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath11)" d="M22.2583 17 L11 10.5 L22.2583 4 Z" fill="none"></path></g><g fill="blue" stroke="blue" stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(920,730)"><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath11)" d="M11.5 10.5 L90.5 10.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath11)" d="M22.2583 17 L11 10.5 L22.2583 4" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g fill="blue" stroke="blue" stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(520,350)"><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath12)" d="M10.5 20.5 L149.5 20.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath12)" d="M138.7417 27 L150 20.5 L138.7417 14" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g fill="blue" font-family="sans-serif" font-size="14px" stroke="blue" transform="translate(520,350)"><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath12)" stroke="none" x="52.2339" xml:space="preserve" y="16">償還</text></g><g fill="blue" stroke="blue" stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(780,400)"><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath13)" d="M190.5 10.5 L90.5 10.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath13)" d="M90.5 10.5 L10.5 100.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath13)" d="M10.5 100.5 L10.5 189.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath13)" d="M4 178.7417 L10.5 190 L17 178.7417" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g fill="blue" stroke="blue" stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(520,400)"><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath14)" d="M210.5 190.5 L210.5 100.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath14)" d="M210.5 100.5 L130.5 10.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath14)" d="M130.5 10.5 L11.5 10.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath14)" d="M22.2583 4 L11 10.5 L22.2583 17" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g fill="blue" stroke="blue" stroke-dasharray="8,5" stroke-linecap="butt" stroke-miterlimit="5" transform="translate(840,350)"><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath15)" d="M10.5 20.5 L129.5 20.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath15)" d="M118.7417 27 L130 20.5 L118.7417 14" fill="none" stroke-dasharray="none" stroke-linecap="square" stroke-miterlimit="10"></path></g><g fill="blue" font-family="sans-serif" font-size="14px" stroke="blue" transform="translate(840,350)"><text clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath15)" stroke="none" x="52.9551" xml:space="preserve" y="16">発行</text></g><g transform="translate(490,380)"><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath16)" d="M189.5 10.5 L10.5 10.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath16)" d="M178.7417 4 L190 10.5 L178.7417 17 Z" stroke="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath16)" d="M178.7417 4 L190 10.5 L178.7417 17 Z" fill="none"></path></g><g transform="translate(830,380)"><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath17)" d="M11.5 10.5 L150.5 10.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath17)" d="M22.2583 17 L11 10.5 L22.2583 4 Z" stroke="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath17)" d="M22.2583 17 L11 10.5 L22.2583 4 Z" fill="none"></path></g><g transform="translate(750,470)"><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath18)" d="M10.5 11.5 L10.5 140.5" fill="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath18)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" stroke="none"></path><path clip-path="url(#img/issued-currency-funds-flow.ja.svg__clipPath18)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="none"></path></g></g></svg></a></figure>
+<p>発行アドレスは、待機アドレスに支払いを送信することでトークンを作成します。これらのトークンは(多くの場合)債務を表すため、発行アドレスの観点からはマイナスの価値を持ちます。同じトークンは、待機アドレスの観点も含めると、他の観点からはプラスの価値を持ちます。</p>
+<p>待機アドレスは、実際の人間によって操作され、トークンを運用アドレスに送信します。このステップにより、発行アドレスはこの時点以降、可能な限り使用されることなく、同時に少なくとも一定のトークンを待機状態にすることができます。</p>
+<p>自動化されたシステムにより運用される運用アドレスは、流動性プロバイダー、パートナー、その他の顧客など、他のカウンターパーティに資金を送ります。これらのカウンターパーティは、資金を自由に複数回送金することができます。</p>
+<p>いつものように、トークンの支払いはトラストラインを通じて発行者を「波及」しなければなりません。</p>
+<p>最終的に、誰かがトークンを発行者に送り返します。これによってトークンはバーンされ、XRP Ledgerにおける発行者の債務は減少します。トークンがステーブルコインであれば、これはトークンを対応するオフレジャー資産と交換する最初のステップです。</p>
 <h2 id="発行アドレス">発行アドレス<a aria-hidden="true" class="hover_anchor" href="#発行アドレス"><i class="fa fa-link"></i></a></h2>
-<p>発行アドレスは、金庫に似ています。パートナーアドレス、顧客アドレス、運用アドレスは、発行アドレスとの間で会計上の関係（トラストライン）を作成しますが、発行アドレスから送信されるトランザクションは可能な限り少ない数に抑えられます。人間のオペレーターが定期的に、発行アドレスからトランザクションを作成、署名し、スタンバイアドレスまたは運用アドレスの残高を補充します。このようなトランザクションの署名に使用されるシークレットキーには、インターネットに接続されたどのコンピューターからもアクセスできないことが極めて重要です。</p>
-<p>金庫とは異なり、発行アドレスは顧客またはパートナーからのペイメントを直接受領できます。XRP Ledgerのトランザクションはすべて公開されているため、自動システムは発行アドレスからのペイメントを監視する際にシークレットキーを必要としません。</p>
+<p>発行アドレスは金庫に似ています。パートナーアドレス、顧客アドレス、運用アドレスは、発行アドレスにトラストラインを作成しますが、このアドレスは可能な限りトランザクションを送信しません。人間のオペレーターが定期的に、発行アドレスからトランザクションを作成、署名し、待機アドレスまたは運用アドレスの残高を補充します。理想的には、これらのトランザクションに署名するために使用される秘密鍵は、インターネットに接続されたコンピュータから決してアクセスできないようにする必要があります。</p>
+<p>金庫とは異なり、発行アドレスは顧客またはパートナーからの支払いを直接受領できます。XRP Ledgerのトランザクションは全て公開されているため、自動化されたシステムは秘密鍵を必要とせずに発行アドレスへの支払いを監視することができます。</p>
 <h3 id="発行アドレスの漏えい">発行アドレスの漏えい<a aria-hidden="true" class="hover_anchor" href="#発行アドレスの漏えい"><i class="fa fa-link"></i></a></h3>
-<p>不正使用者は金融機関の発行アドレスのシークレットキーを入手すると、際限なく新しいイシュアンスを作成し、分散型取引所でそのイシュアンスを取引できるようになります。これにより、金融機関が正式に取得したイシュアンスを識別して適切に清算することが難しくなります。金融機関の発行アドレスが乗っ取られた場合には、金融機関が新たに発行アドレスを作成する必要があり、また古い発行アドレスと会計上の関係を有するすべてのユーザーは新しいアドレスで、アカウントとの関係を新たに作成する必要があります。</p>
+<p>悪意のある第三者が金融機関の発行アドレスの秘密鍵を知った場合、その第三者は新しいトークンを発行し、ユーザに送ったり、分散型取引所で取引したりすることができます。これにより、ステーブルコインの発行者は支払不能に陥る可能性があります。金融機関が合法的に入手したトークンを区別し、公正に換金することが困難になる可能性があります。金融機関が発行アドレスのコントロールを失った場合、金融機関は新しい発行アドレスを作成しなければならず、古い発行アドレスにトラストラインを持つすべてのユーザは、新しいアドレスで新しいトラストラインを作成しなければなりません。</p>
 <h3 id="複数の発行アドレス">複数の発行アドレス<a aria-hidden="true" class="hover_anchor" href="#複数の発行アドレス"><i class="fa fa-link"></i></a></h3>
-<p>金融機関はXRP Ledgerで1つの発行アドレスから複数の通貨を発行できます。ただし、いくつかの設定（<a href="transfer-fees.html">送金手数料</a>のパーセンテージや<a href="freezes.html">Global Freeze</a>の状況など）は、1つのアドレスから発行されるすべての通貨に同様に適用されます。金融機関が通貨ごとに設定を変えて柔軟に管理したい場合、金融機関は通貨ごとに異なる発行アドレスを使用する必要があります。</p>
+<p>金融機関はXRP Ledgerで1つの発行アドレスから複数の通貨を発行することができます。ただし、<a href="transfer-fees.html">送金手数料</a>のパーセンテージや<a href="freezes.html">Global Freeze</a>の状態など、1つのアドレスから発行される全ての(代替可能)トークンに等しく適用される設定もあります。トークンの種類ごとに設定を変えて柔軟に管理したい場合、金融機関は通貨ごとに異なる発行アドレスを使用する必要があります。</p>
 <h2 id="運用アドレス">運用アドレス<a aria-hidden="true" class="hover_anchor" href="#運用アドレス"><i class="fa fa-link"></i></a></h2>
-<p>運用アドレスはレジに似ています。イシュアンスを顧客とパートナーに送信して、金融機関に代わってペイメントを行います。トランザクションに自動的に署名するには、運用アドレスのシークレットキーをインターネットに接続されたサーバーに保管する必要があります。（シークレットキーは暗号化して保管できますが、サーバーがトランザクションに署名する際にシークレットキーを暗号化解除する必要があります。）顧客とパートナーは、運用アドレスとの会計上の関係を作成すべきではありません。</p>
-<p>各運用アドレスではイシュアンスの残高が限られています。運用アドレスの残高が少なくなると、金融機関は残高を補充するため、発行アドレスまたはスタンバイアドレスから送金します。</p>
+<p>運用アドレスはレジに似ています。イシュアンスを顧客とパートナーに送信して、金融機関に代わって支払いを行います。トランザクションに自動的に署名するには、運用アドレスの秘密鍵をインターネットに接続されたサーバに保管する必要があります。(秘密鍵は暗号化して保管できますが、サーバがトランザクションに署名する際に秘密鍵を復号化する必要があります。)顧客やパートナーは、運用アドレスへのトラストラインを作成しませんし、作成すべきではありません。</p>
+<p>各運用アドレスのトークンとXRPの残高は限られています。運用アドレスの残高が少なくなると、金融機関は発行アドレスまたは待機アドレスから支払いを送ることで残高を補充します。</p>
 <h3 id="運用アドレスの漏えい">運用アドレスの漏えい<a aria-hidden="true" class="hover_anchor" href="#運用アドレスの漏えい"><i class="fa fa-link"></i></a></h3>
-<p>不正使用者が運用アドレスのシークレットキーを入手した場合に金融機関が失う可能性のある通貨額は、最大でも運用アドレスが保有している額までです。金融機関は、顧客やパートナーからのアクションなしに、新しい運用アドレスに切り替えることができます。</p>
-<h2 id="スタンバイアドレス">スタンバイアドレス<a aria-hidden="true" class="hover_anchor" href="#スタンバイアドレス"><i class="fa fa-link"></i></a></h2>
-<p>金融機関がリスクと利便性のバランスを保つためのもう1つの手段として、発行アドレスと運用アドレスの中間ステップとして「スタンバイアドレス」を利用することができます。金融機関はスタンバイアドレスという追加のXRP Ledgerアドレスに資金を供給できます。このアドレスのキーはオンライン上に保管されず、別の信頼できるユーザーに預けられています。</p>
-<p>運用アドレスの資金が少なくなると、信頼できるユーザーがスタンバイアドレスを使用して運用アドレスの残高を補充できます。スタンバイアドレスの資金が少なくなると、金融機関は発行アドレスを使用して1回のトランザクションでスタンバイアドレスにより多くの額の通貨を送金できます。スタンバイアドレスは、送金された通貨を必要に応じてスタンバイアドレス間で分散できます。これにより発行アドレスのセキュリティが強化され、発行アドレスが実行する合計トランザクション数が減少し、1つの自動化システムの管理下に過剰な資金が残ることがなくなります。</p>
-<p>運用アドレスと同様に、スタンバイアドレスは顧客やパートナーではなく発行アドレスとの間に会計上の関係を確立する必要があります。運用アドレスに適用される注意事項はすべてスタンバイアドレスにも適用されます。</p>
+<p>不正使用者が運用アドレスのシークレットキーを入手した場合に金融機関が失う可能性のある通貨額は、最大でも運用アドレスが保有している額までです。金融機関は、顧客やパートナーからのアクションなしに、新しい運用アドレスに切り替えることができます。
+悪意のある第三者が運用アドレスの秘密鍵を知ってしまった場合、金融機関が失うのはその運用アドレスが持つ分の金額のみです。金融機関は、顧客やパートナーが何もしなくても、新しい運用アドレスに切り替えることができます。</p>
+<h2 id="待機アドレス">待機アドレス<a aria-hidden="true" class="hover_anchor" href="#待機アドレス"><i class="fa fa-link"></i></a></h2>
+<p>金融機関がリスクと利便性のバランスのために取ることができるもう一つの手段として、発行アドレスと運用アドレスの中間地点として「待機アドレス」を使用することです。金融機関は、待機アドレスとして追加のXRP Ledgerアドレスに資金を供給することができ、その鍵は常時オンラインのサーバでは利用できませんが、別の信頼できるユーザに委託されます。</p>
+<p>運用アドレスの資金(トークンまたはXRP)が不足した場合、信頼できるユーザは待機アドレスを使って運用アドレスの残高を補充することができます。待機アドレスの資金が不足した場合、金融機関は発行アドレスを使用して、単一のトランザクションでより多くの資金を待機アドレスに送ることができ、待機アドレスは必要に応じてそれらの資金を自分たちの間で分配することができます。これにより、発行アドレスのセキュリティが向上し、単一の自動化システムの管理下に多くの資金を残すことなく、トランザクションの総数を少なくすることができます。</p>
+<p>運用アドレスと同様に、待機アドレスは、顧客やパートナーではなく、発行アドレスとトラストラインを設定しなければなりません。運用アドレスに適用されるすべての注意事項は、待機アドレスにも適用されます。</p>
 <h3 id="スタンバイアドレスの漏えい">スタンバイアドレスの漏えい<a aria-hidden="true" class="hover_anchor" href="#スタンバイアドレスの漏えい"><i class="fa fa-link"></i></a></h3>
-<p>スタンバイアドレスの漏えいが発生した場合、運用アドレスが漏えいした場合と同様の影響が及びます。不正使用者がスタンバイアドレスに保有される残高を盗むことが可能となり、金融機関は顧客やパートナーからのアクションなしに新しいスタンバイアドレスに切り替えることができます。</p>
+<p>待機アドレスの秘密鍵が漏えいした場合、その影響は運用アドレスの場合と同じです。悪意のある第三者は、待機アドレスが保有するすべての残高を盗むことができ、金融機関は顧客やパートナーが何もしなくても、新しい待機アドレスに切り替えることができます。</p>
 <h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><strong>コンセプト:</strong></li>
+<li><strong>コンセプト:</strong><ul>
 <li><a href="accounts.html">アカウント</a></li>
 <li><a href="cryptographic-keys.html">暗号鍵</a></li>
-<li><strong>チュートリアル:</strong></li>
-<li><a href="stablecoin-issuer.html">XRP Ledgerゲートウェイの開設</a></li>
+</ul>
+</li>
+<li><strong>チュートリアル:</strong><ul>
 <li><a href="assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a></li>
 <li><a href="change-or-remove-a-regular-key-pair.html">レギュラーキーペアの変更または削除</a></li>
-<li><strong>リファレンス:</strong></li>
+</ul>
+</li>
+<li><strong>リファレンス:</strong><ul>
 <li><a href="account_info.html">account_infoメソッド</a></li>
 <li><a href="setregularkey.html">SetRegularKeyトランザクション</a></li>
 <li><a href="accountroot.html">AccountRootオブジェクト</a></li>
+</ul>
+</li>
 </ul>
 <!-- -->
 <!-- -->
@@ -649,17 +655,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -897,17 +903,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_11" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_11"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_10"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_11">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -919,6 +920,11 @@
 
     </nav>
 
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -944,11 +950,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_4_6_8"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -997,12 +1003,12 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -1012,7 +1018,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       
@@ -1225,7 +1231,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1552,17 +1563,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -1679,11 +1685,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
   </div>
 
@@ -1735,6 +1736,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

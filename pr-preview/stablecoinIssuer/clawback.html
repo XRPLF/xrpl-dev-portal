@@ -272,7 +272,6 @@
         <li class="nav-item level-1"><a class="nav-link" href="#clawback">Clawback</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-clawback-json">Example Clawback JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#clawback-fields">Clawback Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#clawback-fields-1">Clawback Fields</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
       </ul>
   </div>
@@ -316,7 +315,6 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="clawback-fields">Clawback Fields<a aria-hidden="true" class="hover_anchor" href="#clawback-fields"><i class="fa fa-link"></i></a></h2>
-<h2 id="clawback-fields-1">Clawback Fields<a aria-hidden="true" class="hover_anchor" href="#clawback-fields-1"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="transaction-common-fields.html">common fields</a>, Clawback transactions use the following fields:</p>
 <table class="table-responsive">
 <thead>
@@ -356,11 +354,11 @@
 <td style="text-align: left;">Occurs if the holder's balance is 0. It is not an error if the amount exceeds the holder's balance; in that case, the maximum available balance is clawed back. Also occurs if the counterparty listed in <code>Amount</code> is the same as the <code>Account</code> issuing this transaction.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>tecNO-LINE</code></td>
+<td style="text-align: left;"><code>tecNO_LINE</code></td>
 <td style="text-align: left;">Occurs there is no trust line with the counterparty or that trust line's balance is 0.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>tecNO-PERMISSION</code></td>
+<td style="text-align: left;"><code>tecNO_PERMISSION</code></td>
 <td style="text-align: left;">Occurs if you attempt to set <code>lsfAllowTrustlineClawback</code> while <code>lsfNoFreeze</code> is set. Also occurs, conversely, if you try to set <code>lsfNoFreeze</code> while <code>lsfAllowTrustLineClawback</code> is set.</td>
 </tr>
 </tbody>
@@ -1242,7 +1240,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1569,17 +1572,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1695,11 +1693,6 @@
 
     <nav class="nav flex-column show " id="tree_nav_group_6_1_3_2">
       
-  <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
@@ -1752,6 +1745,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -630,7 +630,7 @@
 </code></pre></div>
 <h3 id="payment-channel">Payment Channel<a aria-hidden="true" class="hover_anchor" href="#payment-channel"><i class="fa fa-link"></i></a></h3>
 <p>Payment Channelの作成時に、LedgerEntryTypeが<code>PayChannel</code>の<code>CreatedNode</code>を探します。また、送金元の残高の減少を示す、LedgerEntryTypeが<code>AccountRoot</code>の<code>ModifiedNode</code>も探す必要があります。アドレスが送金元に一致することを確認するために<code>FinalFields</code>の<code>Account</code>フィールドを探し、XRP残高の変化を確認するために<code>Balance</code>フィールドの差異を確認します。</p>
-<p><a href="known-amendments.html#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir Amendment</a>が有効な場合は、メタデータは宛先のアカウントの<a href="directorynode.html">所有者ディレクトリー</a>を変更して、新しく作成されるPayment Channelをリストで示す必要もあります。これにより、アカウントがオープンPayment Channelの受取人である場合に、そのアカウントが<a href="accounts.html#アカウントの削除">削除される</a>ことを防ぎます。（fixPayChanRecipientOwnerDir Amendmentが有効になる前にPayment Channelが作成された場合は、アカウントを削除できます。）</p>
+<p><a href="known-amendments.html#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir Amendment</a>が有効な場合は、メタデータは宛先のアカウントの<a href="directorynode.html">所有者ディレクトリー</a>を変更して、新しく作成されるPayment Channelをリストで示す必要もあります。これにより、アカウントがオープンPayment Channelの受取人である場合に、そのアカウントが<a href="deleting-accounts.html">削除される</a>ことを防ぎます。（fixPayChanRecipientOwnerDir Amendmentが有効になる前にPayment Channelが作成された場合は、アカウントを削除できます。）</p>
 <p>Payment Channelの閉鎖を要求する方法は、Payment Channelの不変の<code>CancelAfter</code>時刻（作成時にのみ設定されます）以外にもいくつかあります。トランザクションでChannelの閉鎖をスケジュールする場合は、そのChannel用にLedgerEntryTypeが<code>PayChannel</code>の<code>ModifiedNode</code>エントリーがあり、<code>FinalFields</code>の<code>Expiration</code>フィールドには閉鎖時刻が新たに追加されています。以下の例は、送金元がクレームを清算せずにChannelを閉鎖するよう要求した場合に<code>PayChannel</code>に対して行われる変更を示します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -691,7 +691,7 @@
 <li><a href="signerlistset.html">SignerListSetトランザクション</a>は、<a href="signerlist.html">SignerListオブジェクト</a>を追加、削除、または置換します。</li>
 </ul>
 <h3 id="疑似トランザクション">疑似トランザクション<a aria-hidden="true" class="hover_anchor" href="#疑似トランザクション"><i class="fa fa-link"></i></a></h3>
-<p><a href="pseudo-transaction-types.html">疑似トランザクション</a>にもメタデータがありますが、これらのトランザクションは通常のトランザクションのすべてのルールに従うとは限りません。これらのトランザクションは、実在のアカウントには関連付けられていないため（この<code>Account</code>の値は、<a href="accounts.html#特別なアドレス">base58エンコード形式の数字の0</a>です）、レジャーのAccountRootオブジェクトを変更して<code>Sequence</code>シーケンス番号を増やしたり、XRPを消却したりしません。疑似トランザクションは、特別なレジャーオブジェクトに対して特定の変更のみを行います。</p>
+<p><a href="pseudo-transaction-types.html">疑似トランザクション</a>にもメタデータがありますが、これらのトランザクションは通常のトランザクションのすべてのルールに従うとは限りません。これらのトランザクションは、実在のアカウントには関連付けられていないため（この<code>Account</code>の値は、<a href="addresses.html#特別なアドレス">base58エンコード形式の数字の0</a>です）、レジャーのAccountRootオブジェクトを変更して<code>Sequence</code>シーケンス番号を増やしたり、XRPを消却したりしません。疑似トランザクションは、特別なレジャーオブジェクトに対して特定の変更のみを行います。</p>
 <ul>
 <li><a href="enableamendment.html">EnableAmendment疑似トランザクション</a>は、<a href="amendments-object.html">Amendmentレジャーオブジェクト</a>を変更して、有効なAmendment、過半数の支持を得ている保留中のAmendment、および保留中の期間を追跡します。</li>
 <li><a href="setfee.html">SetFee疑似トランザクション</a>は、<a href="feesettings.html">FeeSettingsレジャーオブジェクト</a>を変更して、<a href="transaction-cost.html">トランザクションコスト</a>および<a href="reserves.html">必要準備金</a>のベースレベルを変更します。</li>
@@ -1004,17 +1004,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -1252,17 +1252,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_11" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_11"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_10"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_11">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -1274,6 +1269,11 @@
 
     </nav>
 
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1299,11 +1299,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_4_6_8"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1352,12 +1352,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -1367,7 +1367,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       
@@ -1580,7 +1580,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1907,17 +1912,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -2034,11 +2034,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
   </div>
 
@@ -2090,6 +2085,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -303,7 +303,7 @@
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMCreate.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
 <p>Create a new <a href="automated-market-makers.html">Automated Market Maker</a> (AMM) instance for trading a pair of assets (<a href="tokens.html">fungible tokens</a> or <a href="xrp.html">XRP</a>).</p>
-<p>Creates both an <a href="amm.html">AMM object</a> and a <a href="accountroot.html#special-amm-accountroot-objects">special AccountRoot object</a> to represent the AMM. Also transfers ownership of the starting balance of both assets from the sender to the created <code>AccountRoot</code> and issues an initial balance of liquidity provider tokens (LP Tokens) from the AMM account to the sender.</p>
+<p>Creates both an <a href="amm.html">AMM entry</a> and a <a href="accountroot.html#special-amm-accountroot-entries">special AccountRoot entry</a> to represent the AMM. Also transfers ownership of the starting balance of both assets from the sender to the created <code>AccountRoot</code> and issues an initial balance of liquidity provider tokens (LP Tokens) from the AMM account to the sender.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> When you create the AMM, you should fund it with (approximately) equal-value amounts of each asset. Otherwise, other users can profit at your expense by trading with this AMM (<a class="external-link" href="https://www.machow.ski/posts/an_introduction_to_automated_market_makers/#price-arbitrage" target="_blank">performing arbitrage <i aria-hidden="true" class="fa fa-external-link"></i></a>). The currency risk that liquidity providers take on increases with the volatility (potential for imbalance) of the asset pair. The higher the trading fee, the more it offsets this risk, so it's best to set the trading fee based on the volatility of the asset pair.</p>
 <h2 id="example-ammcreate-json">Example AMMCreate JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammcreate-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -1297,7 +1297,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1624,17 +1629,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1751,11 +1751,6 @@
     <nav class="nav flex-column show " id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1807,6 +1802,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

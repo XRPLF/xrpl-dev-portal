@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Ledger Close Times - XRPL.org (日本語)</title>
+    <title>レジャーの閉鎖時刻 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Ledger Close Times | XRPL.org (日本語)">
+    <meta property="og:title" content="レジャーの閉鎖時刻 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/ledger-close-times.html" />
-    <meta property="og:description" content="How the XRP Ledger calculates a unique close time value for each ledger version." />
-    <meta name="description" content="How the XRP Ledger calculates a unique close time value for each ledger version." />
+    <meta property="og:description" content="XRP Ledgerが、レジャーバージョンごとに一意の閉鎖時刻を計算する方法。" />
+    <meta name="description" content="XRP Ledgerが、レジャーバージョンごとに一意の閉鎖時刻を計算する方法。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['Blockchain']
+      "page_labels": ['ブロックチェーン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -257,12 +257,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/concepts/ledgers/ledger-close-times.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/concepts/ledgers/ledger-close-times.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-blockchain">Blockchain</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Blockchain" -->
+      <span class="label label-ブロックチェーン">ブロックチェーン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "ブロックチェーン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -270,8 +270,8 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#ledger-close-times">Ledger Close Times</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#example">Example</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#レジャーの閉鎖時刻">レジャーの閉鎖時刻</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#例">例</a></li>
       </ul>
   </div>
       </aside>
@@ -289,39 +289,36 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/ledgers.html">レジャー</a></li>
-    <li class="active breadcrumb-item">Ledger Close Times</li>
+    <li class="active breadcrumb-item">レジャーの閉鎖時刻</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="ledger-close-times">Ledger Close Times<a aria-hidden="true" class="hover_anchor" href="#ledger-close-times"><i class="fa fa-link"></i></a></h1>
-<p>The time that a ledger version closed is recorded at the <code>close_time</code> field of the <a href="ledger-header.html">ledger header</a>. To make it easier for the network to reach a consensus on an exact close time, this value is rounded to a number of seconds based on the close time resolution, currently 10 seconds. If rounding would cause a ledger's close time to be the same as (or earlier than) its parent ledger's, the child ledger has its close time set to the parent's close time plus 1. This guarantees that the close times of validated ledgers are strictly increasing. <!-- STYLE_OVERRIDE: a number of --></p>
-<p>Since new ledger versions usually close about every 3 to 5 seconds, these rules result in a loose pattern where ledgers' close times end in :00, :01, :02, :10, :11, :20, :21, and so on. Times ending in 2 are less common and times ending in 3 are very rare, but both occur randomly when more ledgers randomly happen to close within a 10-second window.</p>
-<p>Generally speaking, the ledger cannot make any time-based measurements that are more precise than the close time resolution. For example, to check if an object has passed an expiration date, the rule is to compare it to the close time of the parent ledger. (The close time of a ledger is not yet known when executing transactions to go into that ledger.) This means that, for example, an <a href="escrow.html">Escrow</a> could successfully finish at a real-world time that is up to about 10 seconds later than the time-based expiration specified in the Escrow object.</p>
-<h3 id="example">Example<a aria-hidden="true" class="hover_anchor" href="#example"><i class="fa fa-link"></i></a></h3>
-<p>The following examples show the rounding behavior of ledger close times, from the perspective of an example validator, following a ledger with the close time <strong>12:00:00</strong>:</p>
-<p><strong>Current consensus round</strong></p>
+        <h1 id="レジャーの閉鎖時刻">レジャーの閉鎖時刻<a aria-hidden="true" class="hover_anchor" href="#レジャーの閉鎖時刻"><i class="fa fa-link"></i></a></h1>
+<p>レジャーバージョンの閉鎖時刻は、<a href="ledger-header.html">レジャーヘッダー</a>の<code>close_time</code>フィールドに記録されます。ネットワークの正確な閉鎖時刻についてコンセンサスを得やすくするため、この値は閉鎖時刻の精度に基づく秒数に丸められます(現在は10秒)。丸めによってレジャーの閉鎖時刻が親レジャーの閉鎖時刻と同じになる(または早くなる)場合、子レジャーの閉鎖時刻は親レジャーの閉鎖時刻に1を足した時刻に設定されます。これにより、有効なレジャーの閉鎖時刻が確実に増加することが保証されます。</p>
+<p>通常、新しいレジャーバージョンは約3～5秒ごとに閉鎖するため、これらのルールの結果、レジャーの閉鎖時刻は、:00、:01、:02、:10、:11、:20、:21、...で終わるような、あいまいなパターンになります。2で終わることはあまりなく、3で終わることは非常にまれですが、どちらも、より多くのレジャーが10秒の時間内にランダムに閉鎖した場合にランダムに発生します。</p>
+<p>一般的に、レジャーは閉鎖時刻よりも正確な時刻計測を行うことはできません。例えば、あるオブジェクトが有効期限を過ぎているかどうかを確認するには、親レジャーの閉鎖時刻と比較するルールになっています。(レジャーの閉鎖時刻は、そのレジャーに登録されるトランザクションの実行時点では確定していません)。これは、例えば<a href="escrow.html">Escrow</a>が、Escrowオブジェクトで指定された時間ベースの有効期限より最大で約10秒遅い実世界の時刻に終了する可能性があることを意味します。</p>
+<h3 id="例">例<a aria-hidden="true" class="hover_anchor" href="#例"><i class="fa fa-link"></i></a></h3>
+<p>以下の例は、バリデータの観点から、レジャーの閉鎖時刻<strong>12:00:00</strong>の丸め動作を示しています。</p>
+<p><strong>現在のコンセンサスラウンド</strong></p>
 <ol>
-<li>A validator notes that it was <strong>12:00:03</strong> when the ledger closed and entered consensus. The validator includes this close time in its proposals.</li>
-<li>The validator observes that most other validators (on its UNL) proposed a close time of 12:00:02, and one other proposed a close time of 12:00:03. It changes its proposed close time to match the consensus of <strong>12:00:02</strong>.</li>
-<li>The validator rounds this value to the nearest close time interval, resulting in <strong>12:00:00</strong>.</li>
-<li>Since 12:00:00 is not greater than the previous ledger's close time, the validator adjusts the close time to be exactly 1 second after the previous ledger's close time. The result is an adjusted close time of <strong>12:00:01</strong>.</li>
-<li>The validator builds the ledger with these details, calculates the resulting hash, and confirms in the validation step that others did the same.</li>
+<li>バリデータは、レジャーが閉鎖してコンセンサスに達したのが<strong>12:00:03</strong>であったことを記録します。バリデータはこの閉鎖時刻を自分の提案に含めます。</li>
+<li>バリデータは、(そのUNL上の)大多数のバリデータが閉鎖時刻を12:00:02と提案し、 残りのバリデータが閉鎖時刻を12:00:03と提案したことを確認します。そのバリデータは、提案された閉鎖時刻をコンセンサスの<strong>12:00:02</strong>に合わせます。</li>
+<li>バリデータはこの値を最も近い時間に丸め、<strong>12:00:00</strong> とします。</li>
+<li>12:00:00は前のレジャーの閉鎖時刻より大きくないので、バリデータは閉鎖時刻を前のレジャーの閉鎖時刻のちょうど1秒後に調整します。その結果、調整後の閉鎖時刻は <strong>12:00:01</strong> となります。</li>
+<li>バリデータはこれらの詳細情報を使ってレジャーを作成し、ハッシュを計算します。</li>
 </ol>
-<p>Non-validating servers do all the same steps, except they don't propose their recorded close times to the rest of the network.</p>
-<p><strong>Next consensus round</strong></p>
+<p>検証を行わないサーバは、記録した閉鎖時刻をネットワークの他のサーバに提案しないことを除いて、すべて同じ手順を踏みます。</p>
+<p><strong>次のコンセンサスラウンド</strong></p>
 <ol>
-<li>The next ledger enters consensus at <strong>12:00:04</strong> according to most validators.</li>
-<li>This rounds down again, to a close time of <strong>12:00:00</strong>.</li>
-<li>Since this is not greater than the previous ledger's close time of 12:00:01, the adjusted close time is <strong>12:00:02</strong>.</li>
+<li>大多数のバリデータによると、次のレジャーは<strong>12:00:04</strong>にコンセンサスに入ります。</li>
+<li>閉鎖時刻は再び切り捨てられ、<strong>12:00:00</strong>となります。</li>
+<li>これは前のレジャーの閉鎖時刻12:00:01より大きくないため、調整後の閉鎖時刻は<strong>12:00:02</strong>となります。</li>
 </ol>
-<p><strong>Next consensus round after that</strong></p>
+<p><strong>その次のコンセンサスラウンド</strong></p>
 <ol>
-<li>The ledger after that enters consensus at <strong>12:00:05</strong> according to most validators.</li>
-<li>This rounds up, based on the close time resolution, to <strong>12:00:10</strong>.</li>
-<li>Since this value is larger than the previous ledger's close time, it does not need to be adjusted. <strong>12:00:10</strong> becomes the official close time.</li>
+<li>大多数のバリデータによると、この次のレジャーは<strong>12:00:05</strong>にコンセンサスに入ります。</li>
+<li>これは、閉鎖時刻の制度に基づいて、<strong>12:00:10</strong>に切り上げられます。</li>
+<li>この値は前のレジャーの閉鎖時刻より大きいので、調整する必要はありません。<strong>12:00:10</strong>が正式な閉鎖時刻となります。</li>
 </ol>
     </div>
   </article>
@@ -612,17 +609,17 @@
     <nav class="nav flex-column show " id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -860,17 +857,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_11" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_11"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_10"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_11">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -882,6 +874,11 @@
 
     </nav>
 
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -907,11 +904,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_4_6_8"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -960,12 +957,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -975,7 +972,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       
@@ -1188,7 +1185,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1515,17 +1517,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -1642,11 +1639,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
   </div>
 
@@ -1698,6 +1690,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

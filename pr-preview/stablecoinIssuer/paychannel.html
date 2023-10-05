@@ -256,7 +256,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/references/protocol-reference/ledger-data/ledger-object-types/paychannel.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/references/protocol-reference/ledger-data/ledger-entry-types/paychannel.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -272,10 +272,11 @@
         <li class="nav-item level-1"><a class="nav-link" href="#paychannel">PayChannel</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-paychannel-json">Example PayChannel JSON</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#paychannel-fields">PayChannel Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#setting-channel-expiration">Setting Channel Expiration</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#channel-expiration">Channel Expiration</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#source-address">Source Address</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#destination-address">Destination Address</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#other-addresses">Other Addresses</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#paychannel-reserve">PayChannel Reserve</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#paychannel-id-format">PayChannel ID Format</a></li>
       </ul>
   </div>
@@ -297,7 +298,7 @@
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
     <li class="active breadcrumb-item"><a href="ledger-data-formats.html">Ledger Data Formats</a></li>
-    <li class="active breadcrumb-item"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+    <li class="active breadcrumb-item"><a href="ledger-entry-types.html">Ledger Entry Types</a></li>
     <li class="active breadcrumb-item">PayChannel</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
@@ -305,10 +306,7 @@
         <h1 id="paychannel">PayChannel<a aria-hidden="true" class="hover_anchor" href="#paychannel"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Added by the <a href="known-amendments.html#paychan">PayChan amendment</a>.)</em></p>
-<p>The <code>PayChannel</code> object type represents a payment channel. Payment channels enable small, rapid off-ledger payments of XRP that can be later reconciled with the consensus ledger. A payment channel holds a balance of XRP that can only be paid out to a specific destination address until the channel is closed. Any unspent XRP is returned to the channel's owner (the source address that created and funded it) when the channel closes.</p>
-<p>The <a href="paymentchannelcreate.html">PaymentChannelCreate transaction</a> type creates a <code>PayChannel</code> object. The <a href="paymentchannelfund.html">PaymentChannelFund</a> and <a href="paymentchannelclaim.html">PaymentChannelClaim transaction</a> types modify existing <code>PayChannel</code> objects.</p>
-<p>When a payment channel expires, at first it remains on the ledger, because only new transactions can modify ledger contents. Transaction processing automatically closes a payment channel when any transaction accesses it after the expiration. To close an expired channel and return the unspent XRP to the owner, some address must send a new PaymentChannelClaim or PaymentChannelFund transaction accessing the channel.</p>
-<p>For an example of using payment channels, see the <a href="use-payment-channels.html">Payment Channels Tutorial</a>.</p>
+<p>A <code>PayChannel</code> entry represents a <a href="payment-channels.html">payment channel</a>.</p>
 <h2 id="example-paychannel-json">Example PayChannel JSON<a aria-hidden="true" class="hover_anchor" href="#example-paychannel-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt"</span><span class="p">,</span>
@@ -331,7 +329,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="paychannel-fields">PayChannel Fields<a aria-hidden="true" class="hover_anchor" href="#paychannel-fields"><i class="fa fa-link"></i></a></h2>
-<p>A <code>PayChannel</code> object has the following fields:</p>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>PayChannel</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -390,49 +388,42 @@
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt64</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on payment channels created before enabling the <a href="known-amendments.html#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir amendment</a>.</td>
+<td style="text-align: left;">A hint indicating which page of the destination's owner directory links to this entry, in case the directory consists of multiple pages. Omitted on payment channels created before enabling the <a href="known-amendments.html#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir amendment</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Expiration</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">The mutable expiration time for this payment channel, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>. The channel is expired if this value is present and smaller than the previous ledger's <a href="ledger-header.html"><code>close_time</code> field</a>. See <a href="#setting-channel-expiration">Setting Channel Expiration</a> for more details.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>Flags</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for <code>PayChannel</code> objects. The value is always <code>0</code>.</td>
+<td style="text-align: left;">The mutable expiration time for this payment channel, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>. The channel is expired if this value is present and smaller than the previous ledger's <a href="ledger-header.html"><code>close_time</code> field</a>. See <a href="#channel-expiration">Channel Expiration</a> for more details.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LedgerEntryType</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt16</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The value <code>0x0078</code>, mapped to the string <code>PayChannel</code>, indicates that this object is a payment channel object.</td>
+<td style="text-align: left;">The value <code>0x0078</code>, mapped to the string <code>PayChannel</code>, indicates that this is a payment channel entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>OwnerNode</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">UInt64</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">A hint indicating which page of the source address's owner directory links to this object, in case the directory consists of multiple pages.</td>
+<td style="text-align: left;">A hint indicating which page of the source address's owner directory links to this entry, in case the directory consists of multiple pages.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnID</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The identifying hash of the transaction that most recently modified this object.</td>
+<td style="text-align: left;">The identifying hash of the transaction that most recently modified this entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
 <td style="text-align: left;">Number</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this object.</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this entry.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>PublicKey</code></td>
@@ -457,8 +448,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="setting-channel-expiration">Setting Channel Expiration<a aria-hidden="true" class="hover_anchor" href="#setting-channel-expiration"><i class="fa fa-link"></i></a></h2>
-<p>The <code>Expiration</code> field of a payment channel is the mutable expiration time, in contrast to the immutable expiration time represented by the <code>CancelAfter</code> field. The expiration of a channel is always considered relative to the <a href="ledger-header.html"><code>close_time</code> field</a> of the previous ledger. The <code>Expiration</code> field is omitted when a <code>PayChannel</code> object is created. There are several ways the <code>Expiration</code> field of a <code>PayChannel</code> object can be updated, which can be summarized as follows: a channel's source address can set the <code>Expiration</code> of the channel freely as long as the channel always remains open at least <code>SettleDelay</code> seconds after the first attempt to close it.</p>
+<h2 id="channel-expiration">Channel Expiration<a aria-hidden="true" class="hover_anchor" href="#channel-expiration"><i class="fa fa-link"></i></a></h2>
+<p>The <code>Expiration</code> field of a payment channel is the mutable expiration time, in contrast to the immutable expiration time represented by the <code>CancelAfter</code> field. The expiration of a channel is always considered relative to the <a href="ledger-header.html"><code>close_time</code> field</a> of the previous ledger. The <code>Expiration</code> field is omitted when a <code>PayChannel</code> entry is created. There are several ways the <code>Expiration</code> field of a <code>PayChannel</code> entry can be updated, which can be summarized as follows: a channel's source address can set the <code>Expiration</code> of the channel freely as long as the channel always remains open at least <code>SettleDelay</code> seconds after the first attempt to close it.</p>
+<p>When a payment channel expires, at first it remains on the ledger, because only new transactions can modify ledger contents. Transaction processing automatically closes a payment channel when any transaction accesses it after the expiration. To close an expired channel and return the unspent XRP to the owner, some address must send a new PaymentChannelClaim or PaymentChannelFund transaction accessing the channel.</p>
 <h3 id="source-address">Source Address<a aria-hidden="true" class="hover_anchor" href="#source-address"><i class="fa fa-link"></i></a></h3>
 <p>The source address can set the <code>Expiration</code> directly with the PaymentChannelFund transaction type. The new value must not be earlier than whichever of the following values is earliest:</p>
 <ul>
@@ -476,8 +468,10 @@
 <p>The destination address cannot set the <code>Expiration</code> field. However, the destination address can use the PaymentChannelClaim's <code>tfClose</code> flag to close a channel immediately.</p>
 <h3 id="other-addresses">Other Addresses<a aria-hidden="true" class="hover_anchor" href="#other-addresses"><i class="fa fa-link"></i></a></h3>
 <p>If any other address attempts to set an <code>Expiration</code> field, the transaction fails with the <code>tecNO_PERMISSION</code> error code. However, if the channel is already expired, the transaction causes the channel to close and results in <code>tesSUCCESS</code> instead.</p>
+<h2 id="paychannel-reserve">PayChannel Reserve<a aria-hidden="true" class="hover_anchor" href="#paychannel-reserve"><i class="fa fa-link"></i></a></h2>
+<p><code>PayChannel</code> entries count as one item towards the owner reserve of the account that created the payment channel, as long as the entry is in the ledger. Removing the channel frees up the reserve; this can only be done after the channel expires (including as a result of being explicitly closed).</p>
 <h2 id="paychannel-id-format">PayChannel ID Format<a aria-hidden="true" class="hover_anchor" href="#paychannel-id-format"><i class="fa fa-link"></i></a></h2>
-<p>The ID of a <code>PayChannel</code> object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
+<p>The ID of a <code>PayChannel</code> entry is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
 <li>The PayChannel space key (<code>0x0078</code>)</li>
 <li>The AccountID of the source account</li>
@@ -1362,7 +1356,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1688,18 +1687,13 @@
   </div>
 
       
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
-
-      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="true" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column show " id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1816,11 +1810,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -1872,6 +1861,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

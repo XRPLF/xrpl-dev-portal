@@ -365,7 +365,7 @@
 <p><a href="payment.html#paymentのフラグ">tfPartialPaymentフラグ</a>が有効にされると、<code>Amount</code>フィールド <strong><em>は受取り金額とは同じでなくなることがあります</em></strong> 。支払いのメタデータにある<code>delivered_amount</code>フィールドは、宛先アカウントが実際に受け取る通貨の金額を示しています。支払いを受信するときに、Amountフィールドの代わりに、<code>delivered_amount</code>を使用してアカウントで受信した金額を判断します。</p>
 <p class="devportal-callout 警告"><strong>警告:</strong> この機能が悪用されることがあります。詳細については、<a href="partial-payments.html">Partial Payments</a>を参照してください。</p>
 <h3 id="アカウント">アカウント<a aria-hidden="true" class="hover_anchor" href="#アカウント"><i class="fa fa-link"></i></a></h3>
-<p>XRPは、XRP Ledgerの <em>アカウント</em> （ <em>ウォレット</em> や <em>アドレス</em> とも呼ばれる）で保持されます。XRP Ledgerのアカウントは、例えばBitcoinのような、アカウントに経費がほとんどまたは一切かからない他のブロックチェーンの台帳とは異なります。XRP Ledgerでは、<a href="accounts.html#アカウントの削除">アカウントの削除</a>は可能が、各アカウントは個別の、他の人に送信することのできない、<a href="reserves.html">XRPの準備金</a>を保持する必要があります。このような理由から、Rippleでは利用機関に対し、必要のない過剰なアカウントを作成しないように勧めています。</p>
+<p>XRPは、XRP Ledgerの <em>アカウント</em> （ <em>ウォレット</em> や <em>アドレス</em> とも呼ばれる）で保持されます。XRP Ledgerのアカウントは、例えばBitcoinのような、アカウントに経費がほとんどまたは一切かからない他のブロックチェーンの台帳とは異なります。XRP Ledgerでは、<a href="deleting-accounts.html">アカウントの削除</a>は可能が、各アカウントは個別の、他の人に送信することのできない、<a href="reserves.html">XRPの準備金</a>を保持する必要があります。このような理由から、Rippleでは利用機関に対し、必要のない過剰なアカウントを作成しないように勧めています。</p>
 <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet -->
 <p>Rippleが推奨するベストプラクティスに従い、Alpha Exchangeは、XRP Ledgerに最低2つのアカウントを作成する必要があります。シークレットキーが悪用された場合の危険を最小限にとどめるため、Rippleでは、<a class="external-link" href="https://ripple.com/build/issuing-operational-addresses/" target="_blank"> <em>コールドアカウント</em> 、 <em>ホットアカウント</em> 、 <em>ウォームアカウント</em>  <i aria-hidden="true" class="fa fa-external-link"></i></a>（それぞれコールドウォレット、ホットウォレット、ウォームウォレットとも呼ばれる）の作成をお勧めしています。コールド/ホット/ウォームのモデルは、セキュリティと利便性のバランスをとるためのものです。XRPを上場する取引所は、以下のアカウントを作成する必要があります。</p>
 <ul>
@@ -504,7 +504,7 @@ XRP残高</i></b></td>
 <p><em>Alpha Exchange</em> のような取引所では、XRPは「台帳上」または「台帳外」に存在します。</p>
 <ul>
 <li>
-<p><strong>台帳上のXRP</strong>: XRP保有者のパブリック<a href="accounts.html#アドレス">アドレス</a>を指定し、パブリックのXRP Ledgerを通じて照会できるXRP。これらの残高の取引相手はXRP Ledgerです。詳細については、<a href="what-is-xrp.html">XRP</a>を参照してください。</p>
+<p><strong>台帳上のXRP</strong>: XRP保有者のパブリック<a href="addresses.html">アドレス</a>を指定し、パブリックのXRP Ledgerを通じて照会できるXRP。これらの残高の取引相手はXRP Ledgerです。詳細については、<a href="what-is-xrp.html">XRP</a>を参照してください。</p>
 </li>
 <li>
 <p><strong>台帳外のXRP</strong>: 取引所の会計システムに保持されている、取引所のインターフェイスで照会できるXRP。台帳外のXRP残高はクレジットペースです。取引相手は、XRPを保有している取引所です。</p>
@@ -1187,17 +1187,17 @@ XRP残高</i></b></td>
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -1435,17 +1435,12 @@ XRP残高</i></b></td>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_11" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_11"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_10"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_11">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -1457,6 +1452,11 @@ XRP残高</i></b></td>
 
     </nav>
 
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1482,11 +1482,11 @@ XRP残高</i></b></td>
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_4_6_8"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1535,12 +1535,12 @@ XRP残高</i></b></td>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -1550,7 +1550,7 @@ XRP残高</i></b></td>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       
@@ -1763,7 +1763,12 @@ XRP残高</i></b></td>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -2090,17 +2095,12 @@ XRP残高</i></b></td>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -2217,11 +2217,6 @@ XRP残高</i></b></td>
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
   </div>
 
@@ -2273,6 +2268,11 @@ XRP残高</i></b></td>
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

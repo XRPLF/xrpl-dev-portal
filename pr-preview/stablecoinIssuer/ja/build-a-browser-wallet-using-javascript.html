@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Build A Browser Wallet Using JavaScript - XRPL.org (日本語)</title>
+    <title>Build a Browser Wallet in JavaScript - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Build A Browser Wallet Using JavaScript | XRPL.org (日本語)">
+    <meta property="og:title" content="Build a Browser Wallet in JavaScript | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/build-a-browser-wallet-using-javascript.html" />
-    <meta property="og:description" content="Build a graphical browser wallet for the XRPL using Javascript." />
-    <meta name="description" content="Build a graphical browser wallet for the XRPL using Javascript." />
+    <meta property="og:description" content="XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。" />
+    <meta name="description" content="XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -36,16 +36,6 @@
     <script src="/ja/assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
-    <script type="application/javascript">
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      "event": "page_info",
-      "page_type": "Document",
-      "page_group": "Docs",
-      "page_funnel": "Tutorials",
-      "page_labels": []
-    })
-    </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -66,21 +56,7 @@
     <script src="/ja/assets/js/theme-switch.js"></script>
 
 
-
-    <!-- expandable code samples -->
-    <script src="/ja/assets/js/expandcode.js"></script>
-    <!-- multi-code selection tabs -->
-    <script src="/ja/assets/js/multicodetab.js"></script>
-    <!-- copy code button -->
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".multicode").minitabs();
-            make_code_expandable();
-            new ClipboardJS('.clipboard-btn');
-        });
-    </script>
-
+<meta http-equiv="refresh" content="0;url=build-a-browser-wallet-in-javascript.html" />
 
 </head>
 
@@ -251,29 +227,6 @@
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
       <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
-  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
-    Page Toolbar
-    <span class="chevron"><span></span><span></span></span>
-  </a>
-  <div id="page-toc-wrapper" class="collapse d-lg-block">
-<div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/tutorials/build-apps/build-a-browser-wallet-using-javascript.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
-</div><!-- /.github-edit -->    <div class="toc-header">
-      <h4>目次</h4>
-    </div>
-    <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#build-a-browser-wallet-using-javascript">Build A Browser Wallet Using JavaScript</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#source-code">Source Code</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#goals">Goals</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#steps">Steps</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#1-set-up-the-project">1. Set up the project</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#2-create-the-home-page-displaying-account-ledger-details">2. Create the Home Page (Displaying Account & Ledger Details)</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#3-create-the-send-xrp-page">3. Create the Send XRP Page</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#4-create-the-transactions-page">4. Create the Transactions Page</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#next-steps">Next Steps</a></li>
-      </ul>
-  </div>
       </aside>
 
       <!-- main column -->
@@ -282,761 +235,87 @@
   <ul class="breadcrumb">
     
 
-
-
-
     <li class="active breadcrumb-item"><a href="/ja/index.html">Home</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/tutorials.html">チュートリアル</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/javascript.html">JavaScript</a></li>
-    <li class="active breadcrumb-item">Build A Browser Wallet Using JavaScript</li>
+    <li class="active breadcrumb-item">Build a Browser Wallet in JavaScript</li>
   </ul>
-</nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
+</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="build-a-browser-wallet-using-javascript">Build A Browser Wallet Using JavaScript<a aria-hidden="true" class="hover_anchor" href="#build-a-browser-wallet-using-javascript"><i class="fa fa-link"></i></a></h1>
-<!-- STYLE_OVERRIDE: wallet -->
-<p>This tutorial demonstrates how to build a browser wallet for the XRP Ledger using the Javascript programming language and various libraries. This application can be used as a starting point for building a more complete and powerful application, as a reference point for building comparable apps, or as a learning experience to better understand how to integrate XRP Ledger functionality into a larger project.</p>
-<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
-<p>To complete this tutorial, you should meet the following guidelines:</p>
-<ol>
-<li>You have <a class="external-link" href="https://nodejs.org/en/download/" target="_blank">Node.js <i aria-hidden="true" class="fa fa-external-link"></i></a> v14 or higher installed.</li>
-<li>You have <a class="external-link" href="https://yarnpkg.com/en/docs/install" target="_blank">Yarn <i aria-hidden="true" class="fa fa-external-link"></i></a> (v1.17.3 or higher) installed.</li>
-<li>You are somewhat familiar with coding with JavaScript and have completed the <a href="get-started-using-javascript.html">Get Started Using JavaScript</a> tutorial.</li>
-</ol>
-<h2 id="source-code">Source Code<a aria-hidden="true" class="hover_anchor" href="#source-code"><i class="fa fa-link"></i></a></h2>
-<p>You can find the complete source code for all of this tutorial's examples in the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/stablecoinIssuer/content/_code-samples/build-a-wallet/js/" target="_blank">code samples section of this website's repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="goals">Goals<a aria-hidden="true" class="hover_anchor" href="#goals"><i class="fa fa-link"></i></a></h2>
-<p>At the end of this tutorial, you should be able to build a simple XRP wallet displayed below.</p>
-<p><img alt="Home Page Screenshot" src="img/js-wallet-home.png"/></p>
-<p>This application can:</p>
-<ul>
-<li>Show updates to the XRP Ledger in real-time.</li>
-<li>View any XRP Ledger account's activity, including showing how much XRP was delivered by each transaction.</li>
-<li>Show how much XRP is set aside for the account's <a href="reserves.html">reserve requirement</a>.</li>
-<li>Send <a href="direct-xrp-payments.html">direct XRP payments</a>, and provide feedback about the intended destination address, including:<ul>
-<li>Displaying your account's available balance</li>
-<li>Verifying that the destination address is valid</li>
-<li>Validating the account has enough XRP to send</li>
-<li>Allowing you to specify a destination tag</li>
-</ul>
-</li>
-</ul>
-<h2 id="steps">Steps<a aria-hidden="true" class="hover_anchor" href="#steps"><i class="fa fa-link"></i></a></h2>
-<p>Before you begin, make sure you have the prerequisites installed. Check your node version by running <code>node -v</code>. If necessary, <a class="external-link" href="https://nodejs.org/en/download/" target="_blank">download Node.js <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<p class="devportal-callout tip"><strong>Tip:</strong> If you get stuck while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's <a class="external-link" href="https://discord.com/invite/KTNmhJDXqa" target="_blank">Developer Discord <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h3 id="1-set-up-the-project">1. Set up the project<a aria-hidden="true" class="hover_anchor" href="#1-set-up-the-project"><i class="fa fa-link"></i></a></h3>
-<ol>
-<li>Navigate to the directory that you want to create the project in.</li>
-<li>Create a new Vite project:</li>
-</ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">yarn<span class="w"> </span>create<span class="w"> </span>vite<span class="w"> </span>simple-xrpl-wallet<span class="w"> </span>--template<span class="w"> </span>vanilla
-</code></pre></div>
-<ol start="3">
-<li>Create or modify the file <code>package.json</code> to have the following contents:</li>
-</ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
-<span class="w">    </span><span class="s2">"name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"simple-xrpl-wallet"</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"module"</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">"scripts"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">"dev"</span><span class="o">:</span><span class="w"> </span><span class="s2">"vite"</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="s2">"devDependencies"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">"@esbuild-plugins/node-globals-polyfill"</span><span class="o">:</span><span class="w"> </span><span class="s2">"^0.2.3"</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">"crypto-browserify"</span><span class="o">:</span><span class="w"> </span><span class="s2">"^3.12.0"</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">"events"</span><span class="o">:</span><span class="w"> </span><span class="s2">"^3.3.0"</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">"https-browserify"</span><span class="o">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">"rollup-plugin-polyfill-node"</span><span class="o">:</span><span class="w"> </span><span class="s2">"^0.12.0"</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">"stream-browserify"</span><span class="o">:</span><span class="w"> </span><span class="s2">"^3.0.0"</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">"stream-http"</span><span class="o">:</span><span class="w"> </span><span class="s2">"^3.2.0"</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">"vite"</span><span class="o">:</span><span class="w"> </span><span class="s2">"^4.1.5"</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="s2">"dependencies"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">"dotenv"</span><span class="o">:</span><span class="w"> </span><span class="s2">"^16.0.3"</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">"xrpl"</span><span class="o">:</span><span class="w"> </span><span class="s2">"^2.11.0"</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>Alternatively you can also do <code>yarn add &lt;package-name&gt;</code> for each individual package to add them to your <code>package.json</code> file.</li>
-</ul>
-<ol start="4">
-<li>Install dependencies:</li>
-</ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">yarn
-</code></pre></div>
-<ol start="5">
-<li>Create a new file <code>.env</code> in the root directory of the project and add the following variables:</li>
-</ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="nv">CLIENT</span><span class="o">=</span><span class="s2">"wss://s.altnet.rippletest.net:51233/"</span>
-<span class="nv">EXPLORER_NETWORK</span><span class="o">=</span><span class="s2">"testnet"</span>
-<span class="nv">SEED</span><span class="o">=</span><span class="s2">"s████████████████████████████"</span>
-</code></pre></div>
-<ol start="6">
-<li>
-<p>Change the seed to your own seed. You can get credentials from <a href="xrp-test-net-faucet.html">the Testnet faucet</a>.</p>
-</li>
-<li>
-<p>Set up a Vite bundler. Create a file named <code>vite.config.js</code> in the root directory of the project and fill it with the following code:</p>
-</li>
-</ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">,</span><span class="w"> </span><span class="nx">loadEnv</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'vite'</span><span class="p">;</span>
-
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">NodeGlobalsPolyfillPlugin</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@esbuild-plugins/node-globals-polyfill'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">polyfillNode</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'rollup-plugin-polyfill-node'</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">viteConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">mode</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">loadEnv</span><span class="p">(</span><span class="nx">mode</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">define</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="s1">'process.env'</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">,</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nx">optimizeDeps</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">esbuildOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">define</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nb">global</span><span class="o">:</span><span class="w"> </span><span class="s1">'globalThis'</span><span class="p">,</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="nx">NodeGlobalsPolyfillPlugin</span><span class="p">({</span>
-<span class="w">                        </span><span class="nx">process</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                        </span><span class="nx">buffer</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                    </span><span class="p">}),</span>
-<span class="w">                </span><span class="p">],</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nx">build</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">rollupOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">polyfillNode</span><span class="p">()],</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nx">resolve</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">alias</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="s1">'events'</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">crypto</span><span class="o">:</span><span class="w"> </span><span class="s1">'crypto-browserify'</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">stream</span><span class="o">:</span><span class="w"> </span><span class="s1">'stream-browserify'</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">http</span><span class="o">:</span><span class="w"> </span><span class="s1">'stream-http'</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">https</span><span class="o">:</span><span class="w"> </span><span class="s1">'https-browserify'</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">ws</span><span class="o">:</span><span class="w"> </span><span class="s1">'xrpl/dist/npm/client/WSWrapper'</span><span class="p">,</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="p">};</span>
-
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">viteConfig</span><span class="p">;</span>
-</code></pre></div>
-<p>This example includes the necessary configuration to make <a class="external-link" href="https://github.com/XRPLF/xrpl.js/blob/main/UNIQUE_SETUPS.md#using-xrpljs-with-vite-react" target="_blank">xrpl.js work with Vite <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<ol start="8">
-<li>Add script to <code>package.json</code></li>
-</ol>
-<p>In your <code>package.json</code> file, add the following section if it's not there already:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vite"</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="2-create-the-home-page-displaying-account-ledger-details">2. Create the Home Page (Displaying Account &amp; Ledger Details)<a aria-hidden="true" class="hover_anchor" href="#2-create-the-home-page-displaying-account-ledger-details"><i class="fa fa-link"></i></a></h3>
-<p>In this step, we create a home page that displays account and ledger details.</p>
-<p><img alt="Home Page Screenshot" src="img/js-wallet-home.png"/></p>
-<ol>
-<li>
-<p>If not already present, create new files in the root folder named <code>index.html</code>, <code>index.js</code> and <code>index.css</code>.</p>
-</li>
-<li>
-<p>Make a new folder named <code>src</code> in the root directory of the project.</p>
-</li>
-<li>
-<p>Copy the contents of <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/stablecoinIssuer/content/_code-samples/build-a-wallet/js/index.html" target="_blank">index.html <i aria-hidden="true" class="fa fa-external-link"></i></a> in your code.</p>
-</li>
-<li>
-<p>Add styling to your <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/stablecoinIssuer/content/_code-samples/build-a-wallet/js/index.css" target="_blank">index.css <i aria-hidden="true" class="fa fa-external-link"></i></a> file by following the link.</p>
-</li>
-</ol>
-<p>This basic setup creates a homepage and applies some visual styles. The goal is for the homepage to:</p>
-<ul>
-<li>Display our account info</li>
-<li>Show what's happening on the ledger</li>
-<li>And add a little logo for fun</li>
-</ul>
-<p>To make that happen, we need to connect to the XRP Ledger and look up the account and the latest validated ledger.</p>
-<ol start="5">
-<li>In the <code>src/</code> directory, make a new folder named <code>helpers</code>. Create a new file there named <code>get-wallet-details.js</code> and define a function named <code>getWalletDetails</code> there. This function uses the <a href="account_info.html">account_info method</a> to fetch account details and the <a href="server_info.html">server_info method</a> to calculate the current <a href="reserves.html">reserves</a>. The code to do all this is as follows:</li>
-</ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="nx">Wallet</span><span class="p">,</span><span class="w"> </span><span class="nx">classicAddressToXAddress</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'xrpl'</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getWalletDetails</span><span class="p">({</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SEED</span><span class="p">);</span><span class="w"> </span><span class="c1">// Convert the seed to a wallet : https://xrpl.org/cryptographic-keys.html</span>
-
-<span class="w">        </span><span class="c1">// Get the wallet details: https://xrpl.org/account_info.html</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">account_data</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-<span class="w">            </span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="s1">'account_info'</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">account</span><span class="o">:</span><span class="w"> </span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">ledger_index</span><span class="o">:</span><span class="w"> </span><span class="s1">'validated'</span><span class="p">,</span>
-<span class="w">        </span><span class="p">});</span>
-
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">ownerCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">account_data</span><span class="p">.</span><span class="nx">OwnerCount</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-
-<span class="w">        </span><span class="c1">// Get the reserve base and increment</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">info</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nx">validated_ledger</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">reserve_base_xrp</span><span class="p">,</span><span class="w"> </span><span class="nx">reserve_inc_xrp</span><span class="w"> </span><span class="p">},</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-<span class="w">            </span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="s1">'server_info'</span><span class="p">,</span>
-<span class="w">        </span><span class="p">});</span>
-
-<span class="w">        </span><span class="c1">// Calculate the reserves by multiplying the owner count by the increment and adding the base reserve to it.</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">accountReserves</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ownerCount</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">reserve_inc_xrp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">reserve_base_xrp</span><span class="p">;</span>
-
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Got wallet details!'</span><span class="p">);</span>
-
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
-<span class="w">            </span><span class="nx">account_data</span><span class="p">,</span><span class="w"> </span>
-<span class="w">            </span><span class="nx">accountReserves</span><span class="p">,</span><span class="w"> </span>
-<span class="w">            </span><span class="nx">xAddress</span><span class="o">:</span><span class="w"> </span><span class="nx">classicAddressToXAddress</span><span class="p">(</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">),</span><span class="w"> </span><span class="c1">// Learn more: https://xrpaddress.info/</span>
-<span class="w">            </span><span class="nx">address</span><span class="o">:</span><span class="w"> </span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="w"> </span>
-<span class="w">        </span><span class="p">};</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Error getting wallet details'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<ol start="6">
-<li>Now, let's add the code to <code>index.js</code> file to fetch the account and ledger details and display them on the home page. Copy the code written below to the <code>index.js</code> file. Here we render the wallet details using the function we defined in <code>get-wallet-details.js</code>. In order to make sure we have up to date ledger data, we are using the <a href="subscribe.html#レジャーストリーム">ledger stream</a> to listen for ledger close events.</li>
-</ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="nx">dropsToXrp</span><span class="p">,</span><span class="w"> </span><span class="nx">rippleTimeToISOTime</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'xrpl'</span><span class="p">;</span>
-
-<span class="k">import</span><span class="w"> </span><span class="nx">addXrplLogo</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./src/helpers/render-xrpl-logo'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">getWalletDetails</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./src/helpers/get-wallet-details.js'</span><span class="p">;</span>
-
-<span class="c1">// Optional: Render the XRPL logo</span>
-<span class="nx">addXrplLogo</span><span class="p">();</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Client</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CLIENT</span><span class="p">);</span><span class="w"> </span><span class="c1">// Get the client from the environment variables</span>
-
-<span class="c1">// Get the elements from the DOM</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">sendXrpButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#send_xrp_button'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">txHistoryButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#transaction_history_button'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">walletElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#wallet'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">walletLoadingDiv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#loading_wallet_details'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">ledgerLoadingDiv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#loading_ledger_details'</span><span class="p">);</span>
-
-<span class="c1">// Add event listeners to the buttons</span>
-<span class="nx">sendXrpButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/src/send-xrp/send-xrp.html'</span><span class="p">;</span>
-<span class="p">});</span>
-
-<span class="nx">txHistoryButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/src/transaction-history/transaction-history.html'</span><span class="p">;</span>
-<span class="p">});</span>
-
-<span class="c1">// Self-invoking function to connect to the client</span>
-<span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span><span class="w"> </span><span class="c1">// Connect to the client</span>
-
-<span class="w">        </span><span class="c1">// Subscribe to the ledger stream</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-<span class="w">            </span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="s1">'subscribe'</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">streams</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'ledger'</span><span class="p">],</span>
-<span class="w">        </span><span class="p">});</span>
-
-<span class="w">        </span><span class="c1">// Fetch the wallet details</span>
-<span class="w">        </span><span class="nx">getWalletDetails</span><span class="p">({</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="p">})</span>
-<span class="w">            </span><span class="p">.</span><span class="nx">then</span><span class="p">(({</span><span class="w"> </span><span class="nx">account_data</span><span class="p">,</span><span class="w"> </span><span class="nx">accountReserves</span><span class="p">,</span><span class="w"> </span><span class="nx">xAddress</span><span class="p">,</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">walletElement</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.wallet_address'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Wallet Address: </span><span class="si">${</span><span class="nx">account_data</span><span class="p">.</span><span class="nx">Account</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">                </span><span class="nx">walletElement</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.wallet_balance'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Wallet Balance: </span><span class="si">${</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">account_data</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span><span class="si">}</span><span class="sb"> XRP`</span><span class="p">;</span>
-<span class="w">                </span><span class="nx">walletElement</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.wallet_reserve'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Wallet Reserve: </span><span class="si">${</span><span class="nx">accountReserves</span><span class="si">}</span><span class="sb"> XRP`</span><span class="p">;</span>
-<span class="w">                </span><span class="nx">walletElement</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.wallet_xaddress'</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`X-Address: </span><span class="si">${</span><span class="nx">xAddress</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-
-<span class="w">                </span><span class="c1">// Redirect on View More link click</span>
-<span class="w">                </span><span class="nx">walletElement</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#view_more_button'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="sb">`https://</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">EXPLORER_NETWORK</span><span class="si">}</span><span class="sb">.xrpl.org/accounts/</span><span class="si">${</span><span class="nx">address</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="s1">'_blank'</span><span class="p">);</span>
-<span class="w">                </span><span class="p">});</span>
-<span class="w">            </span><span class="p">})</span>
-<span class="w">            </span><span class="p">.</span><span class="k">finally</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">walletLoadingDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'none'</span><span class="p">;</span>
-<span class="w">            </span><span class="p">});</span>
-
-
-<span class="w">        </span><span class="c1">// Fetch the latest ledger details</span>
-<span class="w">        </span><span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'ledgerClosed'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">ledger</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">ledgerLoadingDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'none'</span><span class="p">;</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">ledgerIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#ledger_index'</span><span class="p">);</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">ledgerHash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#ledger_hash'</span><span class="p">);</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">closeTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#close_time'</span><span class="p">);</span>
-<span class="w">            </span><span class="nx">ledgerIndex</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Ledger Index: </span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">ledger_index</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">            </span><span class="nx">ledgerHash</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Ledger Hash: </span><span class="si">${</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">ledger_hash</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">            </span><span class="nx">closeTime</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Close Time: </span><span class="si">${</span><span class="nx">rippleTimeToISOTime</span><span class="p">(</span><span class="nx">ledger</span><span class="p">.</span><span class="nx">ledger_time</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">        </span><span class="p">});</span>
-
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">})();</span>
-</code></pre></div>
-<ol start="7">
-<li>
-<p>In the <code>helpers</code> folder, add <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/stablecoinIssuer/content/_code-samples/build-a-wallet/js/src/helpers/render-xrpl-logo.js" target="_blank">render-xrpl-logo.js <i aria-hidden="true" class="fa fa-external-link"></i></a> to handle displaying a logo.</p>
-</li>
-<li>
-<p>Finally create a new folder named <code>assets</code> in the <code>src/</code> directory and add the file <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/stablecoinIssuer/content/_code-samples/build-a-wallet/js/src/assets/xrpl.svg" target="_blank"><code>xrpl.svg</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> there.</p>
-</li>
-</ol>
-<p>These files are used to render the XRPL logo for aesthetic purposes.</p>
-<p>The one other thing we do here is add events to two buttons - one to send XRP and one to view transaction history. They won't work just yet — we'll implement them in the next steps.</p>
-<p>Now the application is ready to run. You can start it in dev mode using the following command:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">yarn<span class="w"> </span>dev
-</code></pre></div>
-<p>Your terminal should output a URL which you can use to open your app in a browser. This dev site automatically updates to reflect any changes you make to the code.</p>
-<h3 id="3-create-the-send-xrp-page">3. Create the Send XRP Page<a aria-hidden="true" class="hover_anchor" href="#3-create-the-send-xrp-page"><i class="fa fa-link"></i></a></h3>
-<p>Now that we've created the home page, we can move on to the "Send XRP" page. This is what allows this wallet to manage your account's funds.</p>
-<p><img alt="Send XRP Page Screenshot" src="img/js-wallet-send-xrp.png"/></p>
-<ol>
-<li>
-<p>Create a folder named <code>send-xrp</code> in the <code>src</code> directory.</p>
-</li>
-<li>
-<p>Inside the <code>send-xrp</code> folder, create two files named <code>send-xrp.js</code> and <code>send-xrp.html</code>.</p>
-</li>
-<li>
-<p>Copy the contents of the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/stablecoinIssuer/content/_code-samples/build-a-wallet/js/src/send-xrp/send-xrp.html" target="_blank">send-xrp.html <i aria-hidden="true" class="fa fa-external-link"></i></a> file to your <code>send-xrp.html</code> file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.</p>
-</li>
-<li>
-<p>Now that we have the HTML code, let's add the JavaScript code. In the <code>helpers</code> folder, create a new file named <code>submit-transaction.js</code> and copy the code written below to the file. In this file, we are using the <a href="submit.html">submit</a> method to submit the transaction to the XRPL. Before submitting every transaction needs to be signed by a wallet, learn more about <a href="sign.html">signing</a> a transaction.</p>
-</li>
-</ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Wallet</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'xrpl'</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">submitTransaction</span><span class="p">({</span><span class="w"> </span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Create a wallet using the seed</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SEED</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">;</span>
-
-<span class="w">        </span><span class="c1">// Sign and submit the transaction : https://xrpl.org/send-xrp.html#send-xrp</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">tx</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="p">});</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<ol start="5">
-<li>Now back to the <code>send-xrp.js</code> file, copy the code written below to the file. In this piece of code we are first getting all the DOM elements from HTML and adding event listners to update &amp; validate the fields based on the user input. Using <code>renderAvailableBalance</code> method we display the current available balance of the wallet. <code>validateAddress</code> function validates the user address, and the amount is validated using a regular expression. When all the fields are filled with correct inputs, we call the <code>submitTransaction</code> function to submit the transaction to the ledger.</li>
-</ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="nx">Wallet</span><span class="p">,</span><span class="w"> </span><span class="nx">dropsToXrp</span><span class="p">,</span><span class="w"> </span><span class="nx">isValidClassicAddress</span><span class="p">,</span><span class="w"> </span><span class="nx">xrpToDrops</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'xrpl'</span><span class="p">;</span>
-
-<span class="k">import</span><span class="w"> </span><span class="nx">getWalletDetails</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'../helpers/get-wallet-details'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">renderXrplLogo</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'../helpers/render-xrpl-logo'</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">submitTransaction</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'../helpers/submit-transaction'</span><span class="p">;</span>
-
-<span class="c1">// Optional: Render the XRPL logo</span>
-<span class="nx">renderXrplLogo</span><span class="p">();</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Client</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CLIENT</span><span class="p">);</span><span class="w"> </span><span class="c1">// Get the client from the environment variables</span>
-
-<span class="c1">// Self-invoking function to connect to the client</span>
-<span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span><span class="w"> </span><span class="c1">// Connect to the client   </span>
-
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SEED</span><span class="p">);</span><span class="w"> </span><span class="c1">// Convert the seed to a wallet : https://xrpl.org/cryptographic-keys.html</span>
-
-<span class="w">        </span><span class="c1">// Subscribe to account transaction stream</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
-<span class="w">            </span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="s1">'subscribe'</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">accounts</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">],</span>
-<span class="w">        </span><span class="p">});</span>
-
-<span class="w">        </span><span class="c1">// Fetch the wallet details and show the available balance</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">getWalletDetails</span><span class="p">({</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="p">}).</span><span class="nx">then</span><span class="p">(({</span><span class="w"> </span><span class="nx">accountReserves</span><span class="p">,</span><span class="w"> </span><span class="nx">account_data</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">availableBalanceElement</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Available Balance: </span><span class="si">${</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">account_data</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">accountReserves</span><span class="si">}</span><span class="sb"> XRP`</span><span class="p">;</span>
-<span class="w">        </span><span class="p">});</span>
-
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">})();</span>
-
-<span class="c1">// Get the elements from the DOM</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">homeButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#home_button'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">txHistoryButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#transaction_history_button'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">destinationAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#destination_address'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#amount'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">destinationTag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#destination_tag'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">submitTxBtn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#submit_tx_button'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">availableBalanceElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#available_balance'</span><span class="p">);</span>
-
-<span class="c1">// Disable the submit button by default</span>
-<span class="nx">submitTxBtn</span><span class="p">.</span><span class="nx">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">isValidDestinationAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">allInputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'#destination_address, #amount'</span><span class="p">);</span>
-
-<span class="c1">// Add event listener to the redirect buttons</span>
-<span class="nx">homeButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/index.html'</span><span class="p">;</span>
-<span class="p">});</span>
-
-<span class="nx">txHistoryButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/src/transaction-history/transaction-history.html'</span><span class="p">;</span>
-<span class="p">});</span>
-
-<span class="c1">// Update the account balance on successful transaction</span>
-<span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'transaction'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">validated</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">transaction</span><span class="p">.</span><span class="nx">TransactionType</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'Payment'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">getWalletDetails</span><span class="p">({</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="p">}).</span><span class="nx">then</span><span class="p">(({</span><span class="w"> </span><span class="nx">accountReserves</span><span class="p">,</span><span class="w"> </span><span class="nx">account_data</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">availableBalanceElement</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Available Balance: </span><span class="si">${</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">account_data</span><span class="p">.</span><span class="nx">Balance</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">accountReserves</span><span class="si">}</span><span class="sb"> XRP`</span><span class="p">;</span>
-<span class="w">        </span><span class="p">});</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">});</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">validateAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">destinationAddress</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">destinationAddress</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
-<span class="w">    </span><span class="c1">// Check if the address is valid</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isValidClassicAddress</span><span class="p">(</span><span class="nx">destinationAddress</span><span class="p">.</span><span class="nx">value</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Remove the invalid class if the address is valid</span>
-<span class="w">        </span><span class="nx">destinationAddress</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'invalid'</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">isValidDestinationAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Add the invalid class if the address is invalid</span>
-<span class="w">        </span><span class="nx">isValidDestinationAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">destinationAddress</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">'invalid'</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">};</span>
-
-<span class="c1">// Add event listener to the destination address</span>
-<span class="nx">destinationAddress</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'input'</span><span class="p">,</span><span class="w"> </span><span class="nx">validateAddress</span><span class="p">);</span>
-
-<span class="c1">// Add event listener to the amount input</span>
-<span class="nx">amount</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'keydown'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">codes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">190</span><span class="p">];</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/^[0-9\b.]+$/</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// Allow: backspace, delete, tab, escape, enter and .</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">regex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">codes</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">keyCode</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="p">});</span>
-
-<span class="c1">// NOTE: Keep this code at the bottom of the other input event listeners</span>
-<span class="c1">// All the inputs should have a value to enable the submit button</span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">allInputs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">allInputs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'input'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-<span class="w">        </span><span class="nx">allInputs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">values</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">value</span><span class="p">));</span>
-<span class="w">        </span><span class="nx">submitTxBtn</span><span class="p">.</span><span class="nx">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="nx">isValidDestinationAddress</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">values</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="p">}</span>
-
-<span class="c1">// Add event listener to the submit button</span>
-<span class="nx">submitTxBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Submitting transaction'</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">submitTxBtn</span><span class="p">.</span><span class="nx">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">submitTxBtn</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Submitting...'</span><span class="p">;</span>
-
-<span class="w">        </span><span class="c1">// Create the transaction object: https://xrpl.org/transaction-common-fields.html</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">txJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">TransactionType</span><span class="o">:</span><span class="w"> </span><span class="s1">'Payment'</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">Amount</span><span class="o">:</span><span class="w"> </span><span class="nx">xrpToDrops</span><span class="p">(</span><span class="nx">amount</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span><span class="w"> </span><span class="c1">// Convert XRP to drops: https://xrpl.org/basic-data-types.html#specifying-currency-amounts</span>
-<span class="w">            </span><span class="nx">Destination</span><span class="o">:</span><span class="w"> </span><span class="nx">destinationAddress</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
-<span class="w">        </span><span class="p">};</span>
-
-<span class="w">        </span><span class="c1">// Get the destination tag if it exists</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">destinationTag</span><span class="o">?</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">txJson</span><span class="p">.</span><span class="nx">DestinationTag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">destinationTag</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="c1">// Submit the transaction to the ledger</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">submitTransaction</span><span class="p">({</span><span class="w"> </span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="o">:</span><span class="w"> </span><span class="nx">txJson</span><span class="w"> </span><span class="p">});</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">txResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">result</span><span class="o">?</span><span class="p">.</span><span class="nx">meta</span><span class="o">?</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">result</span><span class="o">?</span><span class="p">.</span><span class="nx">engine_result</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">''</span><span class="p">;</span><span class="w"> </span><span class="c1">// Response format: https://xrpl.org/transaction-results.html</span>
-
-<span class="w">        </span><span class="c1">// Check if the transaction was successful or not and show the appropriate message to the user</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">txResult</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'tesSUCCESS'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Transaction submitted successfully!'</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="nx">txResult</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Error submitting transaction, Please try again.'</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Re-enable the submit button after the transaction is submitted so the user can submit another transaction</span>
-<span class="w">        </span><span class="nx">submitTxBtn</span><span class="p">.</span><span class="nx">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">submitTxBtn</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Submit Transaction'</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>You can now click 'Send XRP' to try creating your own transaction! You can use this example to send XRP to the testnet faucet to try it out.</p>
-<p>Testnet faucet account: <code>rHbZCHJSGLWVMt8D6AsidnbuULHffBFvEN</code></p>
-<p>Amount: 9</p>
-<p>Destination Tag: (Not usually necessary unless you're paying an account tied to an exchange)</p>
-<p><img alt="Send XRP Transaction Screenshot" src="img/js-wallet-send-xrp-transaction-details.png"/></p>
-<h3 id="4-create-the-transactions-page">4. Create the Transactions Page<a aria-hidden="true" class="hover_anchor" href="#4-create-the-transactions-page"><i class="fa fa-link"></i></a></h3>
-<p>Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account. In order to see what's happening on the ledger, we're going to display the following fields:</p>
-<ul>
-<li>Account: The account that sent the transaction.</li>
-<li>Destination: The account that received the transaction.</li>
-<li>Transaction Type: The type of transaction.</li>
-<li>Result: The result of the transaction.</li>
-<li>Delivered amount: The amount of XRP or tokens delivered by the transaction, if applicable.</li>
-<li>Link: A link to the transaction on the XRP Ledger Explorer.</li>
-</ul>
-<p class="devportal-callout caution"><strong>Caution:</strong> When displaying how much money a transaction delivered, always use the <code>delivered_amount</code> field from the metadata, not the <code>Amount</code> field from the transaction instructions. <a href="partial-payments.html">Partial Payments</a> can deliver much less than the stated <code>Amount</code> and still be successful.</p>
-<p><img alt="Transactions Page Screenshot" src="img/js-wallet-transaction.png"/></p>
-<ol>
-<li>Create a folder named <code>transaction-history</code> in the src directory.</li>
-<li>Create a file named <code>transaction-history.js</code> and copy the code written below.</li>
-</ol>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="nx">Wallet</span><span class="p">,</span><span class="w"> </span><span class="nx">convertHexToString</span><span class="p">,</span><span class="w"> </span><span class="nx">dropsToXrp</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'xrpl'</span><span class="p">;</span>
-
-<span class="k">import</span><span class="w"> </span><span class="nx">renderXrplLogo</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'../helpers/render-xrpl-logo'</span><span class="p">;</span>
-
-<span class="c1">// Optional: Render the XRPL logo</span>
-<span class="nx">renderXrplLogo</span><span class="p">();</span>
-
-<span class="c1">// Declare the variables</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">marker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-
-<span class="c1">// Get the elements from the DOM</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">txHistoryElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#tx_history_data'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">sendXrpButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#send_xrp_button'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">homeButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#home_button'</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">loadMore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#load_more_button'</span><span class="p">);</span>
-
-<span class="c1">// Add event listeners to the buttons</span>
-<span class="nx">sendXrpButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/src/send-xrp/send-xrp.html'</span><span class="p">;</span>
-<span class="p">});</span>
-
-<span class="nx">homeButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/index.html'</span><span class="p">;</span>
-<span class="p">});</span>
-
-<span class="c1">// Add the header to the table</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">);</span>
-<span class="nx">header</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
-<span class="sb">    &lt;th&gt;Account&lt;/th&gt;</span>
-<span class="sb">    &lt;th&gt;Destination&lt;/th&gt;</span>
-<span class="sb">    &lt;th&gt;Fee (XRP)&lt;/th&gt;</span>
-<span class="sb">    &lt;th&gt;Amount Delivered&lt;/th&gt;</span>
-<span class="sb">    &lt;th&gt;Transaction Type&lt;/th&gt;</span>
-<span class="sb">    &lt;th&gt;Result&lt;/th&gt;</span>
-<span class="sb">    &lt;th&gt;Link&lt;/th&gt;</span>
-<span class="sb">`</span><span class="p">;</span>
-<span class="nx">txHistoryElement</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">header</span><span class="p">);</span>
-
-<span class="c1">// Converts the hex value to a string</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">getTokenName</span><span class="p">(</span><span class="nx">currencyCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">currencyCode</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currencyCode</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">currencyCode</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">()</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">'xrp'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// "Standard" currency code</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">currencyCode</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currencyCode</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^[a-fA-F0-9]{40}$/</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Hexadecimal currency code</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">text_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">convertHexToString</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s1">'\u0000'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">text_code</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/[a-zA-Z0-9]{3,}/</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">text_code</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">toLowerCase</span><span class="p">()</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">'xrp'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// ASCII or UTF-8 encoded alphanumeric code, 3+ characters long</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">text_code</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="c1">// Other hex format, return as-is.</span>
-<span class="w">        </span><span class="c1">// For parsing other rare formats, see https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/normalize-currency-codes/js/normalize-currency-code.js</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">currencyCode</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">renderAmount</span><span class="p">(</span><span class="nx">delivered</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">delivered</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'unavailable'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// special case for pre-2014 partial payments</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s1">'unavailable'</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">delivered</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'string'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// It's an XRP amount in drops. Convert to decimal.</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">delivered</span><span class="p">)</span><span class="si">}</span><span class="sb"> XRP`</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">delivered</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'object'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// It's a token amount.</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">delivered</span><span class="p">.</span><span class="nx">value</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">getTokenName</span><span class="p">(</span><span class="nx">delivered</span><span class="p">.</span><span class="nx">currency</span><span class="p">)</span><span class="si">}</span><span class="sb">.</span><span class="si">${</span><span class="nx">delivered</span><span class="p">.</span><span class="nx">issuer</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Could be undefined -- not all transactions deliver value</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">"-"</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// Fetches the transaction history from the ledger</span>
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchTxHistory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">loadMore</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Loading...'</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">loadMore</span><span class="p">.</span><span class="nx">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SEED</span><span class="p">);</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Client</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CLIENT</span><span class="p">);</span>
-
-<span class="w">        </span><span class="c1">// Wait for the client to connect</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
-
-<span class="w">        </span><span class="c1">// Get the transaction history</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="s1">'account_tx'</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">account</span><span class="o">:</span><span class="w"> </span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
-<span class="w">        </span><span class="p">};</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">marker</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">payload</span><span class="p">.</span><span class="nx">marker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">marker</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="c1">// Wait for the response: use the client.request() method to send the payload</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">transactions</span><span class="p">,</span><span class="w"> </span><span class="nx">marker</span><span class="o">:</span><span class="w"> </span><span class="nx">nextMarker</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">result</span><span class="p">;</span>
-
-<span class="w">        </span><span class="c1">// Add the transactions to the table</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">transactions</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">transaction</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">meta</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">transaction</span><span class="p">;</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">Account</span><span class="o">:</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Account</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">Destination</span><span class="o">:</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Destination</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">Fee</span><span class="o">:</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Fee</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">Hash</span><span class="o">:</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">hash</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">TransactionType</span><span class="o">:</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">TransactionType</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="nx">meta</span><span class="o">?</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">delivered</span><span class="o">:</span><span class="w"> </span><span class="nx">meta</span><span class="o">?</span><span class="p">.</span><span class="nx">delivered_amount</span>
-<span class="w">            </span><span class="p">};</span>
-<span class="w">        </span><span class="p">});</span>
-
-<span class="w">        </span><span class="c1">// If there are no more transactions, hide the load more button</span>
-<span class="w">        </span><span class="nx">loadMore</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nextMarker</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">'block'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'none'</span><span class="p">;</span>
-
-<span class="w">        </span><span class="c1">// If there are no transactions, show a message</span>
-<span class="w">        </span><span class="c1">// Create a new row: https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement</span>
-<span class="w">        </span><span class="c1">// Add the row to the table: https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">values</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">);</span>
-<span class="w">            </span><span class="nx">row</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`&lt;td colspan="6"&gt;No transactions found&lt;/td&gt;`</span><span class="p">;</span>
-<span class="w">            </span><span class="nx">txHistoryElement</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// Otherwise, show the transactions by iterating over each transaction and adding it to the table</span>
-<span class="w">            </span><span class="nx">values</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="kd">const</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">);</span>
-<span class="w">                </span><span class="c1">// Add the transaction details to the row</span>
-<span class="w">                </span><span class="nx">row</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
-<span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Account</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;</span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Account</span><span class="si">}</span><span class="sb">&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span>
-<span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Destination</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;</span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Destination</span><span class="si">}</span><span class="sb">&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span>
-<span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Fee</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;</span><span class="si">${</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">Fee</span><span class="p">)</span><span class="si">}</span><span class="sb">&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span>
-<span class="sb">                </span><span class="si">${</span><span class="nx">renderAmount</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">delivered</span><span class="p">)</span><span class="si">}</span>
-<span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">TransactionType</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;</span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">TransactionType</span><span class="si">}</span><span class="sb">&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span>
-<span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">result</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;</span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">result</span><span class="si">}</span><span class="sb">&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span>
-<span class="sb">                </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Hash</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">`&lt;td&gt;&lt;a href="https://</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">EXPLORER_NETWORK</span><span class="si">}</span><span class="sb">.xrpl.org/transactions/</span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">Hash</span><span class="si">}</span><span class="sb">" target="_blank"&gt;View&lt;/a&gt;&lt;/td&gt;`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'-'</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">                </span><span class="c1">// Add the row to the table</span>
-<span class="w">                </span><span class="nx">txHistoryElement</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>
-<span class="w">            </span><span class="p">});</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="c1">// Disconnect</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
-
-<span class="w">        </span><span class="c1">// Enable the load more button only if there are more transactions</span>
-<span class="w">        </span><span class="nx">loadMore</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Load More'</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">loadMore</span><span class="p">.</span><span class="nx">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-
-<span class="w">        </span><span class="c1">// Return the marker</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">nextMarker</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// Render the transaction history</span>
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">renderTxHistory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Fetch the transaction history</span>
-<span class="w">    </span><span class="nx">marker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchTxHistory</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">loadMore</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">nextMarker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchTxHistory</span><span class="p">();</span>
-<span class="w">        </span><span class="nx">marker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nextMarker</span><span class="p">;</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="p">}</span>
-
-<span class="c1">// Call the renderTxHistory() function</span>
-<span class="nx">renderTxHistory</span><span class="p">();</span>
-</code></pre></div>
-<p>This code uses <a href="account_tx.html">account_tx</a> to fetch transactions we've sent to and from this account. In order to get all the results, we're using the <code>marker</code> parameter to paginate through the incomplete list of transactions until we reach the end.</p>
-<ol start="3">
-<li>Create a file named <code>transaction-history.html</code> and copy the code from <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/stablecoinIssuer/content/_code-samples/build-a-wallet/js/src/transaction-history/transaction-history.html" target="_blank">transaction-history.html <i aria-hidden="true" class="fa fa-external-link"></i></a> into it.</li>
-</ol>
-<p><code>transaction-history.html</code> defines a table which displays the fields mentioned above.</p>
-<p>You can use this code as a starting point for displaying your account's transaction history. If you want an additional challenge, try expanding it to support different transaction types (e.g. <a href="trustset.html">TrustSet</a>). If you want inspiration for how to handle this, you can check out the <a class="external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a> to see how the transaction details are displayed.</p>
-<h2 id="next-steps">Next Steps<a aria-hidden="true" class="hover_anchor" href="#next-steps"><i class="fa fa-link"></i></a></h2>
-<p>Now that you have a functional wallet, you can take it in several new directions. The following are a few ideas:</p>
-<ul>
-<li>You could support more of the XRP Ledger's <a href="transaction-types.html">transaction types</a> including <a href="issued-currencies.html">tokens</a> and <a href="cross-currency-payments.html">cross-currency payments</a></li>
-<li>You could add support for displaying multiple tokens, beyond just XRP</li>
-<li>You could support creating <a href="offers.html">offers</a> in the <a href="decentralized-exchange.html">decentralized exchange</a></li>
-<li>You could add new ways to request payments, such as with QR codes or URIs that open in your wallet.</li>
-<li>You could support better account security including allowing users to set <a href="cryptographic-keys.html#レギュラーキーペア">regular key pairs</a> or handle <a href="multi-signing.html">multi-signing</a>.</li>
-<li>Or you could take your code to production by following the <a class="external-link" href="https://vitejs.dev/guide/build.html#public-base-path" target="_blank">Building for Production with Vite <i aria-hidden="true" class="fa fa-external-link"></i></a> guide.</li>
-</ul>
-<!-- -->
-<!-- -->
-<!-- API object types -->
-<!-- -->
-<!-- -->
-<!-- -->
-<!-- rippled release notes links -->
+        <p>This page has been moved! You should be redirected automatically. If not, <a href="build-a-browser-wallet-in-javascript.html">click here to go to the new Build a Browser Wallet in JavaScript page</a>.
     </div>
   </article>
-<!-- Feedback Widget -->
-<script src="/ja/assets/vendor/feedback-widget.js"></script>
-<div id="feedback-content"></div>
-<script>
-  // Options
-  const options = {
-    analyticsConfig: [
-      // { name: 'ga', id: 'UA-45576805-2' },
-      { name: 'gtm', id: 'GTM-KCQZ3L8' },
-    ],
-    analyticsName: 'Feedback Widget Tracker',
-    theme: 'xrpl',
-    currentPath: window.location.pathname,
-    parentElement: '#feedback-content',
-  };
-
-  // Init WidgetClass
-  const r = new WidgetClass(options);
-</script>      </main>
+      </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
 
 
 <nav class="nav flex-column dactyl-tree-nav">
   <div class="nav-item nav-parent">
-    <a class="nav-link" href="/ja/docs.html">ドキュメント</a>
+    <a class="nav-link" href="/ja/index.html">Home</a>
   </div>
     
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_1" aria-expanded="false" aria-controls="tree_nav_group_1"></a>
+
+        <a class="nav-link" href="/ja/xrp-ledger-overview.html">XRPLの概要</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/history.html">歴史</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-overview.html">XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/impact.html">インパクト</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://foundation.xrpl.org/">XRPL財団 <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/faq.html">よくある質問</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/privacy-policy.html">プライバシーポリシー</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     
   <div class="nav-item ">
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
 
-        <a class="nav-link" href="/ja/introduction.html">基本</a>
+        <a class="nav-link" href="/ja/docs.html">ドキュメント</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2">
+      
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_2"></a>
+
+        <a class="nav-link" href="/ja/introduction.html">基本</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/what-is-the-xrp-ledger.html">XRP Ledgerとは?</a>
@@ -1066,22 +345,22 @@
 
   </div>
 
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
-
-        <a class="nav-link" href="/ja/use-cases.html">ユースケース</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_3"></a>
+
+        <a class="nav-link" href="/ja/use-cases.html">ユースケース</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_3_1"></a>
 
         <a class="nav-link" href="/ja/payments-uc.html">Payment</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/peer-to-peer-payments-uc.html">個人間取引</a>
@@ -1104,11 +383,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_2"></a>
 
         <a class="nav-link" href="/ja/tokenization.html">Tokenization</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/stablecoin-issuer.html">ステーブルコインの発行者</a>
@@ -1117,11 +396,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_3_2_2"></a>
 
         <a class="nav-link" href="/ja/nft-mkt-overview.html">NFTマーケットプレイスの概要</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nftoken-marketplace.html">NFTマーケットプレイス</a>
@@ -1148,11 +427,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_3_3"></a>
 
         <a class="nav-link" href="/ja/defi-uc.html">DeFi</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/algorithmic-trading.html">アルゴリズムトレード</a>
@@ -1171,22 +450,22 @@
 
   </div>
 
-    
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
-
-        <a class="nav-link" href="/ja/concepts.html">コンセプト</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_4"></a>
+
+        <a class="nav-link" href="/ja/concepts.html">コンセプト</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_1" aria-expanded="false" aria-controls="tree_nav_group_2_4_1"></a>
 
         <a class="nav-link" href="/ja/networks-and-servers.html">ネットワークとサーバ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/rippled-server-modes.html">rippledサーバーのモード</a>
@@ -1234,11 +513,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_2" aria-expanded="false" aria-controls="tree_nav_group_2_4_2"></a>
 
         <a class="nav-link" href="/ja/consensus.html">コンセンサスプロトコル</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus-structure.html">コンセンサス</a>
@@ -1281,24 +560,24 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_3" aria-expanded="false" aria-controls="tree_nav_group_2_4_3"></a>
 
         <a class="nav-link" href="/ja/ledgers.html">レジャー</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -1308,11 +587,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4" aria-expanded="false" aria-controls="tree_nav_group_4_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4" aria-expanded="false" aria-controls="tree_nav_group_2_4_4"></a>
 
         <a class="nav-link" href="/ja/transactions.html">トランザクション</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/fees.html">手数料（曖昧さの回避）</a>
@@ -1346,11 +625,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_4_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_2_4_4_7"></a>
 
         <a class="nav-link" href="/ja/finality-of-results.html">結果のファイナリティー</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_4_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_4_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/look-up-transaction-results.html">トランザクションの結果の確認</a>
@@ -1377,11 +656,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5" aria-expanded="false" aria-controls="tree_nav_group_4_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_5" aria-expanded="false" aria-controls="tree_nav_group_2_4_5"></a>
 
         <a class="nav-link" href="/ja/payment-types.html">支払いのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
@@ -1419,19 +698,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6" aria-expanded="false" aria-controls="tree_nav_group_4_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6" aria-expanded="false" aria-controls="tree_nav_group_2_4_6"></a>
 
         <a class="nav-link" href="/ja/tokens.html">トークン</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_1"></a>
 
         <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
@@ -1484,11 +763,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_2"></a>
 
         <a class="nav-link" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
@@ -1536,17 +815,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_11" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_11"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_2_10"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_11">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -1558,6 +832,11 @@
 
     </nav>
 
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1583,11 +862,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_8"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1619,11 +898,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_7" aria-expanded="false" aria-controls="tree_nav_group_2_4_7"></a>
 
         <a class="nav-link" href="/ja/accounts.html">アカウント</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
@@ -1636,12 +915,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -1651,7 +930,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       
@@ -1672,22 +951,22 @@
 
   </div>
 
-    
-  <div class="nav-item active-parent">
-
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="true" aria-controls="tree_nav_group_5"></a>
-
-        <a class="nav-link" href="/ja/tutorials.html">チュートリアル</a>
-
-    <nav class="nav flex-column show " id="tree_nav_group_5">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_1" aria-expanded="false" aria-controls="tree_nav_group_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_5"></a>
+
+        <a class="nav-link" href="/ja/tutorials.html">チュートリアル</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_1"></a>
 
         <a class="nav-link" href="/ja/python.html">Python</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-python.html">Get Started Using Python</a>
@@ -1696,19 +975,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_1_2" aria-expanded="false" aria-controls="tree_nav_group_5_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_1_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_1_2"></a>
 
         <a class="nav-link" href="/ja/modular-tutorials-in-python.html">Pythonのモジュール形式チュートリアル</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_1_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_1_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_1_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_1_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_1_2_1"></a>
 
         <a class="nav-link" href="/ja/send-payments-using-python.html">Send Payments Using Python</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_1_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_1_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/py-create-accounts-send-xrp.html">Create Accounts and Send XRP Using Python</a>
@@ -1726,11 +1005,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_1_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_1_2_2"></a>
 
         <a class="nav-link" href="/ja/nfts-using-python.html">NFTs Using Python</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_1_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/py-mint-and-burn-nfts.html">Mint and Burn NFTs Using Python</a>
@@ -1769,13 +1048,13 @@
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_5_2" aria-expanded="true" aria-controls="tree_nav_group_5_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2"></a>
 
         <a class="nav-link" href="/ja/javascript.html">JavaScript</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_5_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-javascript.html">JavaScriptを使ってみよう</a>
@@ -1784,19 +1063,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2_2"></a>
 
         <a class="nav-link" href="/ja/modular-tutorials-in-javascript.html">JavaScriptのモジュール形式チュートリアル</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_2_2_1"></a>
 
         <a class="nav-link" href="/ja/send-payments-using-javascript.html">Send Payments Using JavaScript</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/create-accounts-send-xrp-using-javascript.html">Create Accounts and Send XRP Using JavaScript</a>
@@ -1824,11 +1103,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_2_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_2_2_2"></a>
 
         <a class="nav-link" href="/ja/nfts-using-javascript.html">JavaScriptを使ったNFT</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_2_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/mint-and-burn-nfts-using-javascript.html">Mint and Burn NFTs Using JavaScript</a>
@@ -1863,8 +1142,13 @@
   </div>
 
       
-  <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1874,11 +1158,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_3"></a>
 
         <a class="nav-link" href="/ja/java.html">Java</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-java.html">Get Started Using Java</a>
@@ -1891,11 +1175,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_4" aria-expanded="false" aria-controls="tree_nav_group_2_5_4"></a>
 
         <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
@@ -1913,19 +1197,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_5" aria-expanded="false" aria-controls="tree_nav_group_2_5_5"></a>
 
         <a class="nav-link" href="/ja/tasks.html">タスク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_5">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_5_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_5_1"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_5_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1978,19 +1262,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_5_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_5_3"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門的な支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_5_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_5_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_5_5_3_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_5_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -2023,11 +1307,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_5_5_3_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_5_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -2040,11 +1324,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_5_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_5_5_3_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checkの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_5_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -2086,11 +1370,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_5_4" aria-expanded="false" aria-controls="tree_nav_group_2_5_5_4"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_5_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -2133,30 +1417,30 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6"></a>
 
         <a class="nav-link" href="/ja/references.html">リファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1" aria-expanded="false" aria-controls="tree_nav_group_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1"></a>
 
         <a class="nav-link" href="/ja/protocol-reference.html">XRP Ledgerプロトコルリファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_6_1_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_1"></a>
 
         <a class="nav-link" href="/ja/basic-data-types.html">基本的なデータ型</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/base58-encodings.html">base58エンコード</a>
@@ -2179,11 +1463,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_2"></a>
 
         <a class="nav-link" href="/ja/ledger-data-formats.html">レジャーのデータ型</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger-header.html">レジャーヘッダー</a>
@@ -2191,17 +1475,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -2298,11 +1577,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3"></a>
 
         <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transaction-common-fields.html">トランザクションの共通フィールド</a>
@@ -2311,16 +1590,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3_2"></a>
 
         <a class="nav-link" href="/ja/transaction-types.html">トランザクションのタイプ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
@@ -2374,6 +1648,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -2478,11 +1757,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3_3"></a>
 
         <a class="nav-link" href="/ja/pseudo-transaction-types.html">疑似トランザクション</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/enableamendment.html">EnableAmendment</a>
@@ -2505,11 +1784,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_3_4"></a>
 
         <a class="nav-link" href="/ja/transaction-results.html">トランザクションの結果</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/tec-codes.html">tecコード</a>
@@ -2565,19 +1844,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2" aria-expanded="false" aria-controls="tree_nav_group_6_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_2"></a>
 
         <a class="nav-link" href="/ja/client-libraries.html">クライアントライブラリ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_2_1"></a>
 
         <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript/TypeScript クライアントライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/xrpljs2-migration-guide.html">ripple-lib 1.xからxrpl.js 2.xへの移行ガイド</a>
@@ -2609,19 +1888,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3" aria-expanded="false" aria-controls="tree_nav_group_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3"></a>
 
         <a class="nav-link" href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_1"></a>
 
         <a class="nav-link" href="/ja/api-conventions.html">APIの規則</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/request-formatting.html">要求フォーマット</a>
@@ -2659,19 +1938,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2"></a>
 
         <a class="nav-link" href="/ja/public-api-methods.html">rippledのパブリックメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_1"></a>
 
         <a class="nav-link" href="/ja/account-methods.html">Accountメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account_channels.html">account_channels</a>
@@ -2729,11 +2008,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_2"></a>
 
         <a class="nav-link" href="/ja/ledger-methods.html">Ledgerメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger.html">ledger</a>
@@ -2766,11 +2045,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_3"></a>
 
         <a class="nav-link" href="/ja/transaction-methods.html">Transactionメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/submit.html">submit</a>
@@ -2803,11 +2082,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_4"></a>
 
         <a class="nav-link" href="/ja/path-and-order-book-methods.html">PathおよびOrderBookのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
@@ -2850,11 +2129,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_5"></a>
 
         <a class="nav-link" href="/ja/payment-channel-methods.html">Payment Channelメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/channel_authorize.html">channel_authorize</a>
@@ -2872,11 +2151,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_6"></a>
 
         <a class="nav-link" href="/ja/subscription-methods.html">Subscriptionメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/subscribe.html">subscribe</a>
@@ -2894,11 +2173,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_7"></a>
 
         <a class="nav-link" href="/ja/server-info-methods.html">Server Infoメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/fee.html">fee</a>
@@ -2926,11 +2205,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_8"></a>
 
         <a class="nav-link" href="/ja/clio-methods.html">Clio Serverメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/server_info-clio.html">server_info</a>
@@ -2958,11 +2237,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_9"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_2_9"></a>
 
         <a class="nav-link" href="/ja/utility-methods.html">ユーティリティメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_9">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_2_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/json.html">json</a>
@@ -2989,19 +2268,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3"></a>
 
         <a class="nav-link" href="/ja/admin-api-methods.html">管理APIメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_1"></a>
 
         <a class="nav-link" href="/ja/key-generation-methods.html">キー生成メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/validation_create.html">validation_create</a>
@@ -3019,11 +2298,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_2"></a>
 
         <a class="nav-link" href="/ja/logging-and-data-management-methods.html">ログとデータの管理メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/can_delete.html">can_delete</a>
@@ -3071,11 +2350,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_3"></a>
 
         <a class="nav-link" href="/ja/server-control-methods.html">サーバ操作メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ledger_accept.html">ledger_accept</a>
@@ -3098,11 +2377,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_4"></a>
 
         <a class="nav-link" href="/ja/signing-methods.html">署名メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/sign.html">sign</a>
@@ -3120,11 +2399,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_5"></a>
 
         <a class="nav-link" href="/ja/peer-management-methods.html">ピア管理メソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/connect.html">connect</a>
@@ -3157,11 +2436,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_3_6"></a>
 
         <a class="nav-link" href="/ja/status-and-debugging-methods.html">ステータスとデバッグのメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_3_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/consensus_info.html">consensus_info</a>
@@ -3213,11 +2492,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_2_6_3_4"></a>
 
         <a class="nav-link" href="/ja/peer-port-methods.html">ピアポートメソッド</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_3_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
@@ -3252,14 +2531,14 @@
 
   </div>
 
-    
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7" aria-expanded="false" aria-controls="tree_nav_group_2_7"></a>
 
         <a class="nav-link" href="/ja/infrastructure.html">インフラストラクチャ</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/commandline-usage.html">Commandline Usage</a>
@@ -3268,11 +2547,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_2" aria-expanded="false" aria-controls="tree_nav_group_7_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_2" aria-expanded="false" aria-controls="tree_nav_group_2_7_2"></a>
 
         <a class="nav-link" href="/ja/install-rippled.html">rippledのインストール</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/system-requirements.html">システム要件</a>
@@ -3326,19 +2605,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3" aria-expanded="false" aria-controls="tree_nav_group_7_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3" aria-expanded="false" aria-controls="tree_nav_group_2_7_3"></a>
 
         <a class="nav-link" href="/ja/configure-rippled.html">rippledの設定</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_7_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_2_7_3_1"></a>
 
         <a class="nav-link" href="/ja/server-modes.html">Server Modes</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>
@@ -3356,11 +2635,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_7_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_2_7_3_2"></a>
 
         <a class="nav-link" href="/ja/data-retention.html">Data Retention</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/configure-full-history.html">全履歴の設定</a>
@@ -3432,11 +2711,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_4" aria-expanded="false" aria-controls="tree_nav_group_2_7_4"></a>
 
         <a class="nav-link" href="/ja/configure-peering.html">Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/cluster-rippled-servers.html">rippledサーバーのクラスター化</a>
@@ -3484,11 +2763,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_5" aria-expanded="false" aria-controls="tree_nav_group_7_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_5" aria-expanded="false" aria-controls="tree_nav_group_2_7_5"></a>
 
         <a class="nav-link" href="/ja/use-stand-alone-mode.html">スタンドアロンモードでrippledをテスト</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a>
@@ -3511,11 +2790,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_6" aria-expanded="false" aria-controls="tree_nav_group_7_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_7_6" aria-expanded="false" aria-controls="tree_nav_group_2_7_6"></a>
 
         <a class="nav-link" href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_7_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/diagnosing-problems.html">rippledの問題の診断</a>
@@ -3563,6 +2842,196 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="/ja/resources.html">リソース</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/code-samples.html">サンプルコード</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="/ja/dev-tools.html">開発者ツール</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-rpc-tool.html">RPCツール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/websocket-api-tool.html">WebSocket APIツール</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-ledger-toml-checker.html">xrp-ledger.tomlチェッカー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/validator-domain-verifier.html">ドメイン検証チェッカー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tx-sender.html">トランザクション送信ツール</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://learn.xrpl.org/">XRPL学習ポータル <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/known-amendments.html">既知のAmendment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_6" aria-expanded="false" aria-controls="tree_nav_group_3_6"></a>
+
+        <a class="nav-link" href="/ja/contribute-code.html">コードへの貢献</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/create-custom-transactors.html">カスタムトランザクタの作成</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_7" aria-expanded="false" aria-controls="tree_nav_group_3_7"></a>
+
+        <a class="nav-link" href="/ja/contribute-documentation.html">ドキュメントへの貢献</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.ja.md">コントリビューター行動規範 <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/documentation-translations.html">翻訳</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/creating-diagrams.html">図の作成</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tutorial-guidelines.html">チュートリアルガイドライン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tutorial-structure.html">チュートリアルの構成</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="/ja/contribute.html">XRPLコミュニティへの貢献</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/events.html">イベント</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ambassadors.html">アンバサダー</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/developer-funding.html">開発者ファンド</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://jobs.xrpl.org/">XRPL Jobs <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl.org/blog/">開発者ブログ <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrplgrants.org/">XRPL Grants <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/">GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip">XRPLブランドキット <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/report-a-scam.html">詐欺の報告</a>
   </div>
 
     </nav>

@@ -315,14 +315,24 @@
         </div>
         <div class="card-footer">&nbsp;</div>
       </a>
-      <a class="card cardtest col-12 col-lg-5  lang_js  lang_py  " href="https://github.com/XRPLF/xrpl-dev-portal/tree/stablecoinIssuer/content/_code-samples/build-a-wallet">
+      <a class="card cardtest col-12 col-lg-5  lang_js  " href="https://github.com/XRPLF/xrpl-dev-portal/tree/stablecoinIssuer/content/_code-samples/build-a-browser-wallet">
+        <div class="card-header">
+          <span class="circled-logo"><img alt="js" src="assets/img/logos/javascript.svg" /></span>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title h5">Build a Browser Wallet</h4>
+          <p class="card-text">Implement a non-custodial wallet application that runs on in a web browser and can check an account's balances, send XRP, and notify when the account receives incoming transactions.</p>
+        </div>
+        <div class="card-footer">&nbsp;</div>
+      </a>
+      <a class="card cardtest col-12 col-lg-5  lang_js  lang_py  " href="https://github.com/XRPLF/xrpl-dev-portal/tree/stablecoinIssuer/content/_code-samples/build-a-desktop-wallet">
         <div class="card-header">
           <span class="circled-logo"><img alt="js" src="assets/img/logos/javascript.svg" /></span>
           <span class="circled-logo"><img alt="py" src="assets/img/logos/python.svg" /></span>
         </div>
         <div class="card-body">
           <h4 class="card-title h5">Build a Wallet</h4>
-          <p class="card-text">Implement a non-custodial wallet application that can check an account's balances, send XRP, and notify when the account receives incoming transactions.</p>
+          <p class="card-text">Implement a non-custodial wallet application that runs on a desktop and can check an account's balances, send XRP, and notify when the account receives incoming transactions.</p>
         </div>
         <div class="card-footer">&nbsp;</div>
       </a>
@@ -1545,7 +1555,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1872,17 +1887,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_2_6_1_2_3"></a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -1999,11 +2009,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -2055,6 +2060,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -3448,16 +3458,16 @@
             <input type="radio" name="langs" id="input_all" value="All" checked> <label for="input_all">All</label>
         </div>
             <div class="single_lang">
-                <input type="radio" name="langs" id="input_py" value="py">
-                <label for="input_py">Python</label>
+                <input type="radio" name="langs" id="input_http" value="http">
+                <label for="input_http">HTTP</label>
             </div>
             <div class="single_lang">
                 <input type="radio" name="langs" id="input_js" value="js">
                 <label for="input_js">JavaScript</label>
             </div>
             <div class="single_lang">
-                <input type="radio" name="langs" id="input_http" value="http">
-                <label for="input_http">HTTP</label>
+                <input type="radio" name="langs" id="input_py" value="py">
+                <label for="input_py">Python</label>
             </div>
             <div class="single_lang">
                 <input type="radio" name="langs" id="input_java" value="java">

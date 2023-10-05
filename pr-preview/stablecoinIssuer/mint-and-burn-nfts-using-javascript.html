@@ -280,7 +280,7 @@
         <li class="nav-item level-1"><a class="nav-link" href="#mint-and-burn-nfts-using-javascript">Mint and Burn NFTs Using JavaScript</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#usage">Usage</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#get-accounts">Get Accounts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#mint-a-nft">Mint a NFT</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#mint-an-nft">Mint an NFT</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#get-tokens">Get Tokens</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#burn-a-token">Burn a Token</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#code-walkthrough">Code Walkthrough</a></li>
@@ -320,7 +320,7 @@
 <ol>
 <li>Mint new Non-fungible Tokens (NFTs).</li>
 <li>Get a list of existing NFTs.</li>
-<li>Delete (Burn) a NFT.</li>
+<li>Delete (Burn) an NFT.</li>
 </ol>
 <p><a href="img/quickstart8.png"><img alt="Test harness with mint NFT fields" src="img/quickstart8.png"/></a></p>
 <h1 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h1>
@@ -343,7 +343,10 @@
 </li>
 </ol>
 <p><a href="img/quickstart9.png"><img alt="Get accounts" src="img/quickstart9.png"/></a></p>
-<h2 id="mint-a-nft">Mint a NFT<a aria-hidden="true" class="hover_anchor" href="#mint-a-nft"><i class="fa fa-link"></i></a></h2>
+<h2 id="mint-an-nft">Mint an NFT<a aria-hidden="true" class="hover_anchor" href="#mint-an-nft"><i class="fa fa-link"></i></a></h2>
+<div align="center">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/Qyb_x_GlUDg?si=fow07WIV6DjuHZ3K" title="YouTube video player" width="560"></iframe>
+</div>
 <p>To mint a non-fungible token object:</p>
 <ol>
 <li>Set the <strong>Flags</strong> field. For testing purposes, we recommend setting the value to <em>8</em>. This sets the <em>tsTransferable</em> flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See <a href="nftokenmint.html">NFTokenMint</a> for information about all of the available flags for minting NFTs.</li>
@@ -356,8 +359,8 @@
 <p>Click <strong>Get NFTs</strong> to get a list of NFTs owned by the account.</p>
 <p><a href="img/quickstart11.png"><img alt="Get NFTs" src="img/quickstart11.png"/></a></p>
 <h2 id="burn-a-token">Burn a Token<a aria-hidden="true" class="hover_anchor" href="#burn-a-token"><i class="fa fa-link"></i></a></h2>
-<p>The current owner of a NFT can always destroy (or <em>burn</em>) a NFT object.</p>
-<p>To permanently destroy a NFT:</p>
+<p>The current owner of an NFT can always destroy (or <em>burn</em>) an NFT object.</p>
+<p>To permanently destroy an NFT:</p>
 <ol>
 <li>Enter the <strong>Token ID</strong>.</li>
 <li>Click <strong>Burn NFT</strong>.</li>
@@ -1792,7 +1795,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -2119,17 +2127,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="ledger-object-ids.html">Ledger Object IDs</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
 
-        <a class="nav-link" href="ledger-object-types.html">Ledger Object Types</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
@@ -2246,11 +2249,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
   </div>
 
@@ -2302,6 +2300,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

@@ -686,7 +686,7 @@
 </tbody>
 </table>
 <h3 id="accountidフィールド">AccountIDフィールド<a aria-hidden="true" class="hover_anchor" href="#accountidフィールド"><i class="fa fa-link"></i></a></h3>
-<p>このタイプのフィールドには、XRP Ledger<a href="accounts.html">アカウント</a>の160ビットのIDが含まれています。JSONではこれらのフィールドは<a href="base58-encodings.html">base58</a> XRP Ledger「アドレス」および追加のチェックサムデータとして表示されます。このため、スペルミスが有効なアドレスとなることがありません。（このエンコードは「Base58Check」とも呼ばれ、誤ったアドレスへの送金を防止します。）これらのフィールドのバイナリフォーマットにはチェックサムデータは含まれておらず、また<a href="accounts.html#アドレスのエンコード">アドレスのbase58エンコード</a>で使用される<code>0x00</code>「タイププレフィクス」も含まれていません。（ただし、バイナリフォーマットは主に署名済みトランザクションに使用されるため、署名済みトランザクションを転記する際にスペルミスなどのエラーが発生すると署名が無効となり、送金できなくなります。）</p>
+<p>このタイプのフィールドには、XRP Ledger<a href="accounts.html">アカウント</a>の160ビットのIDが含まれています。JSONではこれらのフィールドは<a href="base58-encodings.html">base58</a> XRP Ledger「アドレス」および追加のチェックサムデータとして表示されます。このため、スペルミスが有効なアドレスとなることがありません。（このエンコードは「Base58Check」とも呼ばれ、誤ったアドレスへの送金を防止します。）これらのフィールドのバイナリフォーマットにはチェックサムデータは含まれておらず、また<a href="addresses.html#アドレスのエンコード">アドレスのbase58エンコード</a>で使用される<code>0x00</code>「タイププレフィクス」も含まれていません。（ただし、バイナリフォーマットは主に署名済みトランザクションに使用されるため、署名済みトランザクションを転記する際にスペルミスなどのエラーが発生すると署名が無効となり、送金できなくなります。）</p>
 <p>スタンドアロンフィールドとして表示されるAccountID（<code>Account</code>や<code>Destination</code>など）の長さは固定長の160ビットですが、<a href="#長さプレフィクスを付加する">長さプレフィクスが付加</a>されます。その結果、これらのフィールドの長さインディケーターは常に<code>0x14</code>バイトになります。特殊フィールドの子として示されるAccountID（<a href="#amountフィールド">Amount <code>issuer</code></a>、<a href="#pathsetフィールド">PathSet <code>account</code></a>など）では長さプレフィクスは付加 <em>されません</em> 。</p>
 <h3 id="amountフィールド">Amountフィールド<a aria-hidden="true" class="hover_anchor" href="#amountフィールド"><i class="fa fa-link"></i></a></h3>
 <!-- TODO: update translation based on the English version, which moves in content from the Currency Formats page -->
@@ -702,7 +702,7 @@
 <ol>
 <li><a href="currency-formats.html#発行済み通貨の計算">内部通貨フォーマット</a>の額を示す64ビット。1番目のビットは、これがXRPではないことを示す<code>1</code>です。</li>
 <li><a href="currency-formats.html#通貨コード">通貨コード</a>を示す160ビット。標準APIでは、<a href="currency-formats.html#標準通貨コード">標準通貨コードフォーマット</a>を使用して「USD」などの3文字のコードが160ビットのコードに変換されますが、160ビットのカスタムコードも使用できます。</li>
-<li>イシュアーのアカウントIDを示す160ビット。（関連項目: <a href="accounts.html#アドレスのエンコード">アカウントアドレスエンコード</a>)</li>
+<li>イシュアーのアカウントIDを示す160ビット。（関連項目: <a href="addresses.html#アドレスのエンコード">アカウントアドレスエンコード</a></li>
 </ol>
 <p>1番目のビットに基づいて2つのサブタイプのいずれに該当するかを確認できます。<code>0</code>の場合はXRP、<code>1</code>の場合は発行済み通貨です。</p>
 <p>以下の図に、XRPの額と発行済み通貨の額のシリアル化フォーマットを示します。</p>
@@ -1084,17 +1084,17 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -1332,17 +1332,12 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_11" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_11"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_10"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_11">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -1354,6 +1349,11 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
     </nav>
 
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -1379,11 +1379,11 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_4_6_8"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1432,12 +1432,12 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -1447,7 +1447,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       
@@ -1660,7 +1660,12 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1987,17 +1992,12 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -2114,11 +2114,6 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
   </div>
 
@@ -2170,6 +2165,11 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       

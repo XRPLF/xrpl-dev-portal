@@ -358,7 +358,7 @@
 <li>有効期限切れの保留中の支払いは実行できません。具体的には、対応する<a href="escrowcreate.html">EscrowCreateトランザクション</a>で指定されている<code>CancelAfter</code>時刻が、最後に閉鎖されたレジャーの閉鎖時刻よりも前の場合、EscrowFinishトランザクションは失敗します。</li>
 </ul>
 <p class="devportal-callout 注記"><strong>注記:</strong> EscrowFinishトランザクションにフルフィルメントが含まれている場合、このトランザクションを送信するための最小<a href="transaction-cost.html">トランザクションコスト</a>が増加します。トランザクションにフルフィルメントが含まれていない場合、トランザクションコストは標準の10 dropです。トランザクションにフルフィルメントが含まれている場合、トランザクションコストは330 <a href="basic-data-types.html#通貨額の指定">XRP drop</a>に加えて、プリイメージサイズの16バイトごとに更に10 dropです。</p>
-<p><a href="parallel-networks.html">本番環境以外のネットワーク</a>では、保留中のescrowの送金先アカウントを<a href="accounts.html#アカウントの削除">削除</a>できる場合があります。この場合、 escrowを終了しようとしても結果<code>tecNO_TARGET</code>で失敗しますが、 escrowオブジェクトは通常期限切れになる場合を除き、維持されます。別の支払いで送金先アカウントが再作成された場合、 escrowは正常に終了できます。escrowの送金先アカウントは、<a href="known-amendments.html#fix1523">fix1523 Amendment</a>が有効になる前にescrowが作成された場合にのみ削除できます。本番環境の XRP Ledgerにはそのようなescrowは存在しないため、本番環境のXRP Ledgerではこのようなエッジケースには対応できません。また、このエッジケースは、fix1523とescrowのAmendmentを同時に有効にするテストネットワークでも不可能です。これは、<a href="start-a-new-genesis-ledger-in-stand-alone-mode.html">新しいジェネシスレジャーを開始</a>するときのデフォルトです。</p>
+<p><a href="parallel-networks.html">本番環境以外のネットワーク</a>では、保留中のescrowの送金先アカウントを<a href="deleting-accounts.html">削除</a>できる場合があります。この場合、 escrowを終了しようとしても結果<code>tecNO_TARGET</code>で失敗しますが、 escrowオブジェクトは通常期限切れになる場合を除き、維持されます。別の支払いで送金先アカウントが再作成された場合、 escrowは正常に終了できます。escrowの送金先アカウントは、<a href="known-amendments.html#fix1523">fix1523 Amendment</a>が有効になる前にescrowが作成された場合にのみ削除できます。本番環境の XRP Ledgerにはそのようなescrowは存在しないため、本番環境のXRP Ledgerではこのようなエッジケースには対応できません。また、このエッジケースは、fix1523とescrowのAmendmentを同時に有効にするテストネットワークでも不可能です。これは、<a href="start-a-new-genesis-ledger-in-stand-alone-mode.html">新しいジェネシスレジャーを開始</a>するときのデフォルトです。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -655,17 +655,17 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">Ledger Structure</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-structure.html">レジャーの構成要素</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+    <a class="nav-link nav-leaf" href="/ja/open-closed-validated-ledgers.html">オープン、閉鎖済み、および検証済みレジャー</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">Ledger Close Times</a>
+    <a class="nav-link nav-leaf" href="/ja/ledger-close-times.html">レジャーの閉鎖時刻</a>
   </div>
 
     </nav>
@@ -903,17 +903,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
 
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_11" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_11"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_10"></a>
 
         <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_11">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_10">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
@@ -925,6 +920,11 @@
 
     </nav>
 
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
@@ -950,11 +950,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_7"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_4_6_8"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_8">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1003,12 +1003,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/account-types.html">発行アドレスと運用アドレス</a>
+    <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">Deleting Accounts</a>
+    <a class="nav-link nav-leaf" href="/ja/deleting-accounts.html">アカウントの削除</a>
   </div>
 
       
@@ -1018,7 +1018,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/addresses.html">Addresses</a>
+    <a class="nav-link nav-leaf" href="/ja/addresses.html">アドレス</a>
   </div>
 
       
@@ -1231,7 +1231,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-using-javascript.html">Build A Browser Wallet Using JavaScript</a>
+    <a class="nav-link nav-leaf" href="/ja/build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
   </div>
 
     </nav>
@@ -1558,17 +1563,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ledger-object-ids.html">レジャーオブジェクトID</a>
-  </div>
 
-      
-  <div class="nav-item ">
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_3"></a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
 
-        <a class="nav-link" href="/ja/ledger-object-types.html">レジャーオブジェクトのタイプ</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountroot.html">AccountRoot</a>
@@ -1685,11 +1685,6 @@
     <nav class="nav flex-column show " id="tree_nav_group_6_1_3_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/accountset.html">AccountSet</a>
   </div>
 
@@ -1741,6 +1736,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
