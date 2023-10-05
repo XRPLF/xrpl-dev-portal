@@ -6,7 +6,7 @@ labels:
   - コアサーバー
 ---
 # connect
-[[ソース]](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp "Source")
 
 `connect`コマンドは、`rippled`サーバーを特定のピア`rippled`サーバーに強制的に接続します。
 

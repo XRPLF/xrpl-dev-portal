@@ -150,7 +150,7 @@ halign=center</panel_attributes>
     </coordinates>
     <panel_attributes>Address
 --
-24 bytes (classic)
+25 bytes (classic)
 32 bytes (X-address)</panel_attributes>
     <additional_attributes/>
   </element>

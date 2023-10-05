@@ -59,7 +59,7 @@ Aborted (core dumped)
 
 - `rippled`ユーザーが読み取ることができる構成ファイルを`$HOME/.config/ripple/rippled.cfg`に作成します（`$HOME`は`rippled`ユーザーのホームディレクトリを指しています）。
 
-    **ヒント:** `rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。
+    **ヒント:** `rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。
 
 - `--conf`[コマンドラインオプション](commandline-usage.html)を使用して、使用する構成ファイルのパスを指定します。
 
@@ -77,7 +77,7 @@ Aborted (core dumped)
 
 - `[validators.txt]`ファイルが存在し、`rippled`ユーザーにこのファイルの読み取り権限があることを確認します。
 
-    **ヒント:** `rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/ripple/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。
+    **ヒント:** `rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。
 
 - `rippled.cfg`ファイルを編集し、`[validators_file]`設定を変更して、`validators.txt`ファイル（またはこれに相当するファイル）の正しいパスを指定します。ファイル名の前後に余分な空白があるかどうかを確認します。
 

@@ -23,13 +23,13 @@ labels:
 | `tecEXPIRED` | 148 | トランザクションがオブジェクト（OfferやCheckなど）を作成しようとしましたが、そのオブジェクトで指定された有効期限がすでに経過しています。 |
 | `tecFAILED_PROCESSING` | 105 | トランザクションの処理中に不明なエラーが発生しました。 |
 | `tecFROZEN` | 137 | [OfferCreateトランザクション][]が失敗しました。関係する1つまたは両方の資産が[Global Freeze](freezes.html)の対象となっています。 |
-| `tecHAS_OBLIGATIONS ` | 151 | 削除するアカウントが削除できないオブジェクトを所有しているため、[AccountDeleteトランザクション][]が失敗しました。詳細は、[アカウントの削除](accounts.html#アカウントの削除)を参照してください。 |
+| `tecHAS_OBLIGATIONS ` | 151 | 削除するアカウントが削除できないオブジェクトを所有しているため、[AccountDeleteトランザクション][]が失敗しました。詳細は、[アカウントの削除](deleting-accounts.html)を参照してください。 |
 | `tecINSUF_RESERVE_LINE` | 122 | 送信側アカウントに、新しいトラストラインを作成するのに十分なXRPがないため、トランザクションが失敗しました。（[準備金](reserves.html)を参照してください）このエラーは、取引相手から同一通貨の送信側アカウントへのトラストラインがデフォルト以外の状態である場合に発生します。（その他のケースについては`tecNO_LINE_INSUF_RESERVE`を参照してください。） |
 | `tecINSUF_RESERVE_OFFER` | 123 | 送信側アカウントに、新しいオファーを作成するのに十分なXRPがないため、トランザクションが失敗しました。（[準備金](reserves.html)を参照してください。) |
 | `tecINSUFF_FEE` | 136 | 指定された[トランザクションコスト](transaction-cost.html)を支払うのに十分なXRPが送金元アカウントにないため、トランザクションが失敗しました。（この場合、送金元のXRPが指定されたトランザクションコストよりも低い場合でも、トランザクション処理によってすべて消却されます。）この結果は、このトランザクションがコンセンサスセットに含まれるのに十分なネットワークに配布された*後に*アカウントの残高が減少した場合にのみ発生します。そうでない場合、トランザクションは配布される前に[`terINSUF_FEE_B`](ter-codes.html)で失敗します。 |
 | `tecINSUFFICIENT_RESERVE` | 141 | トランザクションによって[必要準備金](reserves.html)が増加し、送信側アカウントの残高を超える可能性があります。[SignerListSet][]、[PaymentChannelCreate][]、[PaymentChannelFund][]、および[EscrowCreate][]からこのエラーコードが返されることがあります。詳細は、[SignerListと準備金](signerlist.html#signerlistと準備金)を参照してください。 |
-| `tecINTERNAL` | 144 | 不明な内部エラーが発生し、トランザクションコストは適用されました。通常はこのエラーは返されません。このエラーを再現できる場合は、[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
-| `tecINVARIANT_FAILED` | 147 | このトランザクションを実行しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]が必要です。このエラーを再現できる場合は、[問題を報告](https://github.com/ripple/rippled/issues)してください。 |
+| `tecINTERNAL` | 144 | 不明な内部エラーが発生し、トランザクションコストは適用されました。通常はこのエラーは返されません。このエラーを再現できる場合は、[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
+| `tecINVARIANT_FAILED` | 147 | このトランザクションを実行しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]が必要です。このエラーを再現できる場合は、[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
 | `tecKILLED` | 150 | [OfferCreateトランザクション][]がtfFillOrKillフラグを指定しましたが、トランザクションを確定できなかったため、このトランザクションは取り消されました。_（[fix1578 Amendment][]が必要です。）_ |
 | `tecNEED_MASTER_KEY` | 142 | このトランザクションはマスターキーを必要とする変更（[マスターキーの無効化または残高凍結能力の放棄](accountset.html#accountsetのフラグ)など）を試みました。[新規: rippled 0.28.0][] |
 | `tecNO_ALTERNATIVE_KEY` | 130 | トランザクションが唯一の[トランザクション承認](transactions.html#トランザクションの承認)メソッドを削除しようとしました。これは、レギュラーキーを削除する[SetRegularKeyトランザクション][]、SignerListを削除する[SignerListSetトランザクション][]、またはマスターキーを無効にする[AccountSetトランザクション][]である可能性があります。（`rippled` 0.30.0より前のバージョンでは、このトランザクションは`tecMASTER_DISABLED`と呼ばれていました。） |

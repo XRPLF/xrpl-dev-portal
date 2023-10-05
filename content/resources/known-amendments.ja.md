@@ -85,7 +85,7 @@ labels:
 | [XChainBridge][]             | [開発中: 未定]( "BADGE_LIGHTGREY") | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [ドキュメント](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
 | [OwnerPaysFee][]                  | [開発中: 未定]( "BADGE_LIGHTGREY") | |
 
-**注記:** このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRPレジャーへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code-flow.html)をご覧ください。
+**注記:** このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRP Ledgerへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code-flow.html)をご覧ください。
 
 ## 撤回または廃止されたAmendment
 
@@ -325,7 +325,7 @@ Checks、Payment Channels、NFTokenOffer、およびトラストラインを自�
 
 - トランザクションによって消却されたXRPの合計額は、[トランザクションコスト](transaction-cost.html)と正確に一致していなければなりません。
 - XRPは作成できません。
-- [レジャー内の`AccountRoot`オブジェクト](accountroot.html)は、[DeletableAccounts](#deletableaccounts)が有効でない限り削除できません。（関連項目: [アカウントの削除](accounts.html#アカウントの削除)）
+- [レジャー内の`AccountRoot`オブジェクト](accountroot.html)は、[DeletableAccounts](#deletableaccounts)が有効でない限り削除できません。（関連項目: [アカウントの削除](deleting-accounts.html)）
 - [レジャー内のオブジェクト](ledger-object-types.html)のタイプは変更できません。（`LedgerEntryType`フィールドは変更できません。）
 - XRPにトラストラインはありません。
 
@@ -1140,7 +1140,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 
 この修正により、単独署名のトランザクションは展性になりません。(署名者が必要以上の署名を提供した場合、[マルチシグのトランザクションはまだ展性であるかもしれません](transaction-malleability.html#マルチシグの展性))。すべてのトランザクションは、tfFullyCanonicalSigフラグに関係なく、署名の完全な正規の形式を使用する必要があります。完全に正規化された署名を作成しない署名ユーティリティはサポートされていません。Ripple社が提供するすべての署名ユーティリティは、少なくとも2014年以降、完全に正規化された署名のみを提供するようになっています。
 
-詳しくは、[`rippled` issue #3042](https://github.com/ripple/rippled/issues/3042)を参照してください。
+詳しくは、[`rippled` issue #3042](https://github.com/XRPLF/rippled/issues/3042)を参照してください。
 
 
 ### SHAMapV2

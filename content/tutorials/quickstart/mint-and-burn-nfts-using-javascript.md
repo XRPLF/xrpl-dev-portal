@@ -13,7 +13,7 @@ This example shows how to:
 
 1. Mint new Non-fungible Tokens (NFTs).
 2. Get a list of existing NFTs.
-3. Delete (Burn) a NFT.
+3. Delete (Burn) an NFT.
 
 [![Test harness with mint NFT fields](img/quickstart8.png)](img/quickstart8.png)
 
@@ -34,7 +34,11 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 [![Get accounts](img/quickstart9.png)](img/quickstart9.png)
 
-## Mint a NFT
+## Mint an NFT
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Qyb_x_GlUDg?si=fow07WIV6DjuHZ3K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 To mint a non-fungible token object:
 
@@ -54,9 +58,9 @@ Click **Get NFTs** to get a list of NFTs owned by the account.
 
 ## Burn a Token
 
-The current owner of a NFT can always destroy (or _burn_) a NFT object.
+The current owner of an NFT can always destroy (or _burn_) an NFT object.
 
-To permanently destroy a NFT:
+To permanently destroy an NFT:
 
 1. Enter the **Token ID**.
 2. Click **Burn NFT**.

@@ -29,7 +29,7 @@ XRP LedgerをスパムやDoS攻撃から守るため、各トランザクショ�
 | [Key Resetトランザクション](#key-resetトランザクション)| 0 |
 | [マルチシグトランザクション](multi-signing.html)| 10 drop × （1 + 署名の数） |
 | [フルフィルメントを伴うEscrowFinishトランザクション](escrowfinish.html)| 10 drop × （33 + （バイト単位のフルフィルメントサイズ ÷ 16）） |
-| [AccountDeleteトランザクション](accounts.html#アカウントの削除)| 2,000,000 drop |
+| [AccountDeleteトランザクション](deleting-accounts.html)| 2,000,000 drop |
 
 
 ## トランザクションコストの受取人
@@ -63,7 +63,7 @@ XRP LedgerをスパムやDoS攻撃から守るため、各トランザクショ�
 
 オープンレジャーコストの水準は、絶対的なトランザクションコストではなく[標準的なトランザクションコストに比例](#手数料レベル)しています。標準よりも高い要件を持つトランザクションタイプ（[マルチシグトランザクション](multi-signing.html)など）は、オープンレジャーコストを満たすために最低限のトランザクションコスト要件を持つトランザクションよりも多く支払う必要があります。
 
-関連項目: [`rippled`リポジトリー内のFee Escalationの説明](https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md)。
+関連項目: [`rippled`リポジトリー内のFee Escalationの説明](https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md)。
 
 ### キューに入れられたトランザクション
 
@@ -176,6 +176,6 @@ XRP Ledgerは、XRPの価値が長期的に変化することを見越して、�
   - [SetFee疑似トランザクション][]
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

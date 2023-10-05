@@ -6,7 +6,7 @@ labels:
   - コアサーバー
 ---
 # stop
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Stop.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Stop.cpp "Source")
 
 サーバーのグレースフルシャットダウンを行います。
 

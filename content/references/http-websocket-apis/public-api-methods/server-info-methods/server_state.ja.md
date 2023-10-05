@@ -6,7 +6,7 @@ labels:
   - コアサーバー
 ---
 # server_state
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerState.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerState.cpp "Source")
 
 `server_state`コマンドは、サーバーに対し`rippled`サーバーの現在の状態に関するさまざまな機械可読の情報を問い合わせます。応答は[server_infoメソッド][]の場合とほぼ同じですが、読み取りやすい単位ではなく処理しやすい単位を使用します。（たとえば、XRP値は科学的記数法や10進数値の代わりに整数のdrop数で示され、時刻は秒単位ではなくミリ秒単位で示されます。）
 

@@ -7,7 +7,7 @@ labels:
   - 複数通貨間
 ---
 # book_offers
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")
 
 `book_offers`メソッドは、[オーダーブック](http://www.investopedia.com/terms/o/order-book.asp)と呼ばれる、2つの通貨間のオファーのリストを取得します。結果が非常に大きい場合、結果の一部がマーカー付きで返されます。これにより、その後の要求は前回の要求で終わった箇所から再開できます。
 

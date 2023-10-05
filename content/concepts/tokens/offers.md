@@ -84,7 +84,7 @@ Trust line limits protect you from receiving more of a token as payment than you
 
 Existing Offers are grouped by exchange rate, which is measured as the ratio between `TakerGets` and `TakerPays`. Offers with a higher exchange rate are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same exchange rate are taken on the basis of which offer was placed first.
 
-When Offers execute in the same ledger block, the order in which they execute is determined by the [canonical order](https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp "Source code: Transaction ordering") in which the transactions were [applied to the ledger](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 "Source code: Applying transactions"). This behavior is designed to be deterministic, efficient, and hard to game.
+When Offers execute in the same ledger block, the order in which they execute is determined by the [canonical order](https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp "Source code: Transaction ordering") in which the transactions were [applied to the ledger](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 "Source code: Applying transactions"). This behavior is designed to be deterministic, efficient, and hard to game.
 
 
 ## Offer Expiration

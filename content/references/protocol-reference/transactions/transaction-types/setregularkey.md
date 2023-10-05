@@ -7,7 +7,7 @@ labels:
 ---
 # SetRegularKey
 
-[[Source]](https://github.com/ripple/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp "Source")
 
 A `SetRegularKey` transaction assigns, changes, or removes the regular key pair associated with an account.
 

@@ -18,7 +18,7 @@ To complete this tutorial, you should meet the following guidelines:
 
 ## Source Code
 
-You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/).
+You can find the complete source code for all of this tutorial's examples in the [code samples section of this website's repository]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-desktop-wallet/py/).
 
 ## Goals
 
@@ -33,6 +33,7 @@ The exact look and feel of the user interface depend on your computer's operatin
 - Shows how much XRP is set aside for the account's [reserve requirement](reserves.html).
 - Can send [direct XRP payments](direct-xrp-payments.html), and provides feedback about the intended destination address, including:
     - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
+
     - If the address doesn't want to receive XRP (DisallowXRP flag enabled).
     - If the address has a [verified domain name](xrp-ledger-toml.html#account-verification) associated with it.
 
@@ -84,7 +85,7 @@ python -m pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/g
 
 The first step is to build an app that combines the "hello world" equivalents for the XRP Ledger and wxPython programming. The code is as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/1_hello.py", language="py") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/1_hello.py", language="py") }}
 
 When you run this script, it displays a single window that (hopefully) shows the latest validated ledger index on the XRP Ledger Testnet. It looks like this:
 
@@ -94,7 +95,7 @@ Under the hood, the code makes a JSON-RPC client, connects to a public Testnet s
 
 ### 2. Show Ledger Updates
 
-**Full code for this step:** [`2_threaded.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/2_threaded.py).
+**Full code for this step:** [`2_threaded.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-desktop-wallet/py/2_threaded.py).
 
 You may have noticed that the app in step 1 only shows the latest validated ledger at the time you opened it: the text displayed never changes unless you close the app and reopen it. The actual XRP Ledger is constantly making forward progress, so a more useful app would show it, something like this:
 
@@ -113,11 +114,11 @@ To make full use of the XRP Ledger's ability to push messages to the client, use
 
 Add these imports to the top of the file:
 
-{{ include_code("_code-samples/build-a-wallet/py/2_threaded.py", language="py", start_with="import async", end_before="class XRPLMonitorThread") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/2_threaded.py", language="py", start_with="import async", end_before="class XRPLMonitorThread") }}
 
 Then, the code for the monitor thread is as follows (put this in the same file as the rest of the app):
 
-{{ include_code("_code-samples/build-a-wallet/py/2_threaded.py", language="py", start_with="class XRPLMonitorThread", end_before="class TWaXLFrame") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/2_threaded.py", language="py", start_with="class XRPLMonitorThread", end_before="class TWaXLFrame") }}
 
 This code defines a `Thread` subclass for the worker. When the thread starts, it sets up an event loop, which waits for async tasks to be created and run. The code uses [`asyncio`'s Debug Mode](https://docs.python.org/3/library/asyncio-dev.html#asyncio-debug-mode) so that the console shows any errors that occur in async tasks.
 
@@ -127,7 +128,7 @@ The `watch_xrpl()` function is an example of a such a task (which the GUI thread
 
 Update the code for the main thread and GUI frame to look like this:
 
-{{ include_code("_code-samples/build-a-wallet/py/2_threaded.py", language="py", start_with="class TWaXLFrame", end_before="if __name__") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/2_threaded.py", language="py", start_with="class TWaXLFrame", end_before="if __name__") }}
 
 The part that builds the GUI has been moved to a separate method, `build_ui(self)`. This helps to divide the code into chunks that are easier to understand, because the `__init__()` constructor has other work to do now, too: it starts the worker thread, and gives it its first job. The GUI setup also now uses a [sizer](https://docs.wxpython.org/sizers_overview.html) to control placement of the text within the frame.
 
@@ -139,7 +140,7 @@ Instead of a `get_validated_ledger()` method, the GUI class now has an `update_l
 
 Finally, change the code to start the app (at the end of the file) slightly:
 
-{{ include_code("_code-samples/build-a-wallet/py/2_threaded.py", language="py", start_with="if __name__") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/2_threaded.py", language="py", start_with="if __name__") }}
 
 Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to use a WebSocket URL to connect.
 
@@ -160,7 +161,7 @@ On Windows, open Edge or Chrome and browse to <https://s1.ripple.com>, then clos
 
 ### 3. Display an Account
 
-**Full code for this step:** [`3_account.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/3_account.py)
+**Full code for this step:** [`3_account.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-desktop-wallet/py/3_account.py)
 
 Now that you have a working, ongoing connection to the XRP Ledger, it's time to start adding some "wallet" functionality that lets you manage an individual account. For this step, you should prompt the user to input their address or master seed, then use that to display information about their account including how much XRP is set aside for the [reserve requirement](reserves.html).
 
@@ -174,33 +175,33 @@ After the user inputs the prompt, the updated GUI looks like this:
 
 When you do math on XRP amounts, you should use the `Decimal` class so that you don't get rounding errors. Add this to the top of the file, with the other imports:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="from decimal", end_before="class XRPLMonitorThread") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="from decimal", end_before="class XRPLMonitorThread") }}
 
 In the `XRPLMonitorThread` class, rename and update the `watch_xrpl()` method as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="async def watch_xrpl", end_before="async def on_connected") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="async def watch_xrpl", end_before="async def on_connected") }}
 
 The newly renamed `watch_xrpl_account()` method now takes an address and optional wallet and saves them for later. (The GUI thread provides these based on user input.) This method also adds a new case for [transaction stream messages](subscribe.html#transaction-streams). When it sees a new transaction, the worker does not yet do anything with the transaction itself, but it uses that as a trigger to get the account's latest XRP balance and other info using the [account_info method][]. When _that_ response arrives, the worker passes the account data to the GUI for display.
 
 Still in the `XRPLMonitorThread` class, update the `on_connected()` method as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="async def on_connected", end_before="class AutoGridBagSizer") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="async def on_connected", end_before="class AutoGridBagSizer") }}
 
 The `on_connected()` method now subscribes to transactions for the provided account (and the ledger stream too). Furthermore, it now calls [account_info][account_info method] on startup, and passes the response to the GUI for display.
 
 The new GUI has a lot more fields that need to be laid out in two dimensions. The following subclass of [`wx.GridBagSizer`](https://docs.wxpython.org/wx.GridBagSizer.html) provides a quick way to do so, setting the appropriate padding and sizing values for a two-dimensional list of widgets. Add this code to the same file:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="class AutoGridBagSizer", end_before="class TWaXLFrame") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="class AutoGridBagSizer", end_before="class TWaXLFrame") }}
 
 Update the `TWaXLFrame`'s constructor as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def __init__(self, url, test_network=True):", end_before="def build_ui(self):") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="def __init__(self, url, test_network=True):", end_before="def build_ui(self):") }}
 
 Now the constructor takes a boolean to indicate whether it's connecting to a test network. (If you provide a Mainnet URL, you should also pass `False`.) It uses this to encode and decode X-addresses and warn if they're intended for a different network. It also calls a new method, `prompt_for_account()` to get an address and wallet, and passes those to the renamed `watch_xrpl_account()` background job.
 
 Update the `build_ui()` method definition as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def build_ui(self):", end_before="def run_bg_job(self, job):") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="def build_ui(self):", end_before="def run_bg_job(self, job):") }}
 
 This adds a [`wx.StaticBox`](https://docs.wxpython.org/wx.StaticBox.html) with several new widgets, then uses the `AutoGridBagSizer` (defined above) to lay them out in 2×4 grid within the box. These new widgets are all static text to display [details of the account](accountroot.html), though some of them start with placeholder text. (Since they require data from the ledger, you have to wait for the worker thread to send that data back.)
 
@@ -208,7 +209,7 @@ This adds a [`wx.StaticBox`](https://docs.wxpython.org/wx.StaticBox.html) with s
 
 Add a new `prompt_for_account()` method to the `TWaXLFrame` class:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def prompt_for_account", end_before="def update_ledger") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="def prompt_for_account", end_before="def update_ledger") }}
 
 The constructor calls this method to prompt the user for their [address](addresses.html) or [master seed](cryptographic-keys.html#seed), then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:
 
@@ -225,27 +226,27 @@ This code also binds an _event handler_, which is a method that is called whenev
 
 Add the following method to `TWaXLFrame` class to define the handler:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def toggle_dialog_style", end_before="def prompt_for_account") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="def toggle_dialog_style", end_before="def prompt_for_account") }}
 
 Event handlers generally take one positional argument, a [`wx.Event` object](https://docs.wxpython.org/wx.Event.html) which describes the exact event that occurred. In this case, the handler uses this object to find out what value the user input. If the input looks like a master seed (it starts with the letter "s"), the handler switches the dialog to a "password" style that masks the user input, so people viewing the user's screen won't see the secret. And, if the user erases it and switches back to inputting an address, the handler toggles the style back.
 
 Add the following lines **at the end of** the `update_ledger()` method:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="# Save reserve settings", end_before="def calculate_reserve_xrp") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="# Save reserve settings", end_before="def calculate_reserve_xrp") }}
 
 This saves the ledger's current reserves settings, so that you can use them to calculate the account's total amount of XRP reserved. Add the following method to the `TWaXLFrame` class, to do exactly that:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def calculate_reserve_xrp", end_before="def update_account") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="def calculate_reserve_xrp", end_before="def update_account") }}
 
 Add an `update_account()` method to the `TWaXLFrame` class:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="def update_account", end_before="if __name__") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="def update_account", end_before="if __name__") }}
 
 The worker thread calls this method to pass account details to the GUI for display.
 
 Lastly, towards the end of the file, in the `if __name__ == "__main__":` block, update the line that instantiates the `TWaXLFrame` class to pass the new `test_net` parameter:
 
-{{ include_code("_code-samples/build-a-wallet/py/3_account.py", language="py", start_with="frame = TWaXLFrame", end_before="frame.Show()") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/3_account.py", language="py", start_with="frame = TWaXLFrame", end_before="frame.Show()") }}
 
 (If you change the code to connect to a Mainnet server URL, also change this value to `False`.)
 
@@ -254,7 +255,7 @@ To test your wallet app with your own test account, first go to the [Testnet Fau
 
 ### 4. Show Account's Transactions
 
-**Full code for this step:** [`4_tx_history.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/4_tx_history.py)
+**Full code for this step:** [`4_tx_history.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-desktop-wallet/py/4_tx_history.py)
 
 At this point, your wallet shows the account's balance getting updated, but doesn't show you anything about the actual transactions that caused the updates. So, the next step is to display the account's transaction history (and keep it updated).
 
@@ -268,7 +269,7 @@ Additionally, the app can produce desktop notifications (sometimes called "toast
 
 First, add the following imports to get GUI classes for the table view and notifications:
 
-{{ include_code("_code-samples/build-a-wallet/py/4_tx_history.py", language="py", start_with="import wx.dataview", end_before="import asyncio") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/4_tx_history.py", language="py", start_with="import wx.dataview", end_before="import asyncio") }}
 
 Next, update the `watch_xrpl_account()` method of the worker class to pass transaction details to the GUI when you receive a transaction subscription message. This requires only one line:
 
@@ -278,50 +279,50 @@ wx.CallAfter(self.gui.add_tx_from_sub, message)
 
 The complete method should look like this:
 
-{{ include_code("_code-samples/build-a-wallet/py/4_tx_history.py", language="py", start_with="async def watch_xrpl_account", end_before="async def on_connected") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/4_tx_history.py", language="py", start_with="async def watch_xrpl_account", end_before="async def on_connected") }}
 
 Have the worker use the [account_tx method][] to look up the account's transaction history and pass it to the GUI. This method gets a list of transactions that affected an account, including transactions from, to, or passing through the account in question, starting with the most recent by default. Add new code **to the end of** the `XRPLMonitorThread`'s `on_connected()` method, as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/4_tx_history.py", language="py", start_with="# Get the first page of the account's transaction history", end_before="class AutoGridBagSizer") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/4_tx_history.py", language="py", start_with="# Get the first page of the account's transaction history", end_before="class AutoGridBagSizer") }}
 
 **Note:** You may have to [paginate](markers-and-pagination.html) across multiple [account_tx][account_tx method] requests and responses if you want the _complete_ list of transactions that affected an account since its creation. This example does not show pagination, so the app only displays the most recent transactions to affect the account.
 
 Now, edit the `build_ui()` method of the `TWaXLFrame` class. **Update the beginning of the method** to add a new [`wx.Notebook`](https://docs.wxpython.org/wx.Notebook.html), which makes a "tabs" interface, and make the `main_panel` into the first tab, as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/4_tx_history.py", language="py", start_with="def build_ui", end_before="self.acct_info_area") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/4_tx_history.py", language="py", start_with="def build_ui", end_before="self.acct_info_area") }}
 
 Additionally, add a new tab for the transaction history to the **end of the** `build_ui()` method, as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/4_tx_history.py", language="py", start_with="Tab 2: \"Transaction History\"", end_before="def run_bg_job") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/4_tx_history.py", language="py", start_with="Tab 2: \"Transaction History\"", end_before="def run_bg_job") }}
 
 This adds a second tab containing a [`wx.dataview.DataViewListCtrl`](https://docs.wxpython.org/wx.dataview.DataViewListCtrl.html), which is capable of displaying a bunch of info as a table. It sets up the table columns to show some relevant details of the account's transactions.
 
 Add the following helper method to the `TWaXLFrame` class:
 
-{{ include_code("_code-samples/build-a-wallet/py/4_tx_history.py", language="py", start_with="def displayable_amount", end_before="def add_tx_row") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/4_tx_history.py", language="py", start_with="def displayable_amount", end_before="def add_tx_row") }}
 
 This method takes a [currency amount](basic-data-types.html#specifying-currency-amounts) and converts it into a string for display to a human. Since it's used with the [`delivered_amount` field](transaction-metadata.html#delivered_amount) in particular, it also handles the special case for pre-2014 partial payments where the delivered amount is unavailable.
 
 After that, add another helper method to the `TWaXLFrame` class:
 
-{{ include_code("_code-samples/build-a-wallet/py/4_tx_history.py", language="py", start_with="def add_tx_row", end_before="def update_account_tx") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/4_tx_history.py", language="py", start_with="def add_tx_row", end_before="def update_account_tx") }}
 
 This method takes a transaction object, parses some of its fields into formats more suitable for displaying to users, and then adds it to the `DataViewListCtrl` in the transaction history tab.
 
 Add a method to the `TWaXLFrame` class to update the transaction history based on the [account_tx response][account_tx method] from the worker thread, as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/4_tx_history.py", language="py", start_with="def update_account_tx", end_before="def add_tx_from_sub") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/4_tx_history.py", language="py", start_with="def update_account_tx", end_before="def add_tx_from_sub") }}
 
 Lastly, add a similar method to the `TWaXLFrame` to add a single transaction to the transaction history table whenever the worker thread passes a transaction subscription message:
 
-{{ include_code("_code-samples/build-a-wallet/py/4_tx_history.py", language="py", start_with="def add_tx_from_sub", end_before="if __name__") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/4_tx_history.py", language="py", start_with="def add_tx_from_sub", end_before="if __name__") }}
 
 As before, you can test your wallet app with your own test account if you use the [Testnet Faucet](xrp-testnet-faucet.html) and the [Transaction Sender](tx-sender.html). On the Faucet page, select **Get Testnet credentials** (or use the same credentials from before). Input either the address or secret when you open your wallet app. On the Transaction Sender page, paste your address into the **Destination Address** field, click **Initialize**, then click various transaction buttons to see how your wallet displays the results.
 
 
 ### 5. Send XRP
 
-**Full code for this step:** [`5_send_xrp.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/5_send_xrp.py)
+**Full code for this step:** [`5_send_xrp.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-desktop-wallet/py/5_send_xrp.py)
 
 Until now, you've made the app able to view data from the ledger, and it's capable of showing the transactions an account has received. Now it's finally time to make the app capable of _sending_ transactions. For now, you can stick to sending [direct XRP payments](direct-xrp-payments.html) because there are more complexities involved in sending [issued tokens](issued-currencies.html).
 
@@ -335,27 +336,27 @@ Clicking this button opens a dialog where the user can enter the details of the 
 
 First, add the [regular expressions](https://docs.python.org/3/howto/regex.html) library to the list of imports at the top of the file:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="import re", end_before="from threading") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="import re", end_before="from threading") }}
 
 In the `XRPLMonitorThread` class, add the following lines to the `on_connected()` method, anywhere **after getting a successful [account_info][account_info method] response**:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="if self.wallet:", end_before="# Get the first page") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="if self.wallet:", end_before="# Get the first page") }}
 
 Add a new method to the `XRPLMonitorThread` class to send an XRP payment based on data the user provides, and alert the GUI when it has been sent:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="def send_xrp", end_before="class AutoGridBagSizer") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="def send_xrp", end_before="class AutoGridBagSizer") }}
 
 In this flow, the app sends the transaction without waiting for it to be confirmed by the consensus process. You should be careful to mark any results from the initial submission as "pending" or "tentative" since the actual result of the transaction [isn't final until it's confirmed](finality-of-results.html). Since the app is also subscribed to the account's transactions, it automatically gets notified when the transaction is confirmed.
 
 Now, create a custom dialog for the user to input the necessary details for the payment:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="class SendXRPDialog", end_before="def on_to_edit") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="class SendXRPDialog", end_before="def on_to_edit") }}
 
 This subclass of [`wx.Dialog`](https://docs.wxpython.org/wx.Dialog.html) has several custom widgets, which are laid out using the `GridBagSizer` defined earlier. Notably, it has text boxes for the "To" address, the amount of XRP, and the [destination tag](source-and-destination-tags.html) to use, if any. (A destination tag is kind of like a phone extension for an XRP Ledger address: for addresses owned by individuals, you don't need it, but if the destination address has many users then you need to specify it so that the destination knows which recipient you intended. It's common to need a destination tag to deposit at a cryptocurrency exchange.) The dialog also has **OK** and **Cancel** buttons, which automatically function to cancel or complete the dialog, although the "OK" button is labeled "Send" instead to make it clearer what the app does when the user clicks it.
 
 The `SendXRPDialog` constructor also binds two event handlers for when the user inputs text in the "to" and "destination tag" fields, so you need the definitions for those handlers to the same class. First, add `on_to_edit()`:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="def on_to_edit", end_before="def on_dest_tag_edit") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="def on_to_edit", end_before="def on_dest_tag_edit") }}
 
 This checks the "To" address to ensure that it matches two conditions:
 
@@ -366,43 +367,43 @@ If either condition is not met, the handler disables the "Send" button for this 
 
 Next, add the `on_dest_tag_edit()` handler, also as a method of the `SendXRPDialog` class:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="def on_dest_tag_edit", end_before="class TWaXLFrame") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="def on_dest_tag_edit", end_before="class TWaXLFrame") }}
 
 In other GUI toolkits, you might be able to use a dedicated number entry control for the Destination Tag field, but with wxPython there is only a generic text entry field, so the `on_dest_tag_edit()` handler makes it behave more like a number-only control by instantly deleting any non-numeric characters the user tries to enter in the field.
 
 From here, you need to edit the `TWaXLFrame` class. First, in the `build_ui()` method, you need to add a new "Send XRP" button, and bind it to a new event handler. Add the following lines **before the code to add things to the sizer**:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="# Send XRP button.", end_before="self.ledger_info =") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="# Send XRP button.", end_before="self.ledger_info =") }}
 
 Still in the `build_ui()` method, add the new button to the `main_sizer` so it fits nicely in between the account info area and the ledger info area. The sizer code **at the end of the "Tab 1" section** should look like the following, including one new line and the previous (unchanged) lines:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="main_sizer = wx.BoxSizer", end_before="# Tab 2:") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="main_sizer = wx.BoxSizer", end_before="# Tab 2:") }}
 
 Also in the `build_ui()` method, initialize a dictionary to hold rows with pending transaction details, so that you can replace them with the confirmed results when those are available. Add this line **anywhere near the "Tab 2" section** that sets up `self.tx_list` code:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="self.pending_tx_rows = {}", end_before="objs_panel") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="self.pending_tx_rows = {}", end_before="objs_panel") }}
 
 The "Send XRP" button starts out disabled, so you need to add a new method to the `TWaXLFrame` class to enable it when the right conditions are met:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="def enable_readwrite", end_before="def displayable_amount") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="def enable_readwrite", end_before="def displayable_amount") }}
 
 The changes you made to `on_connected()` earlier in this step call this method after successfully receiving account data, but only if the worker class has a `Wallet` instance—meaning the user input the secret key to an account that really exists. If the user input an address, this method never gets called.
 
 Add the handler for when the user clicks the "Send XRP" button as a method of the `TWaXLFrame` class:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="def click_send_xrp", end_before="if __name__") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="def click_send_xrp", end_before="if __name__") }}
 
 This dialog opens a new "Send XRP" dialog using the custom `SendXRPDialog` class defined earlier in this step. If the user clicks the "Send" button, it passes the details to the worker thread to send the payment, and displays a notification that indicates the transaction is sending. (Note, the transaction can still fail after this point, so the notification does not say what the transaction did.)
 
 Also add a new method to the `TWaXLFrame` class to display the pending transaction in the Transaction History pane when the worker thread sends it, as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="def add_pending_tx", end_before="def click_send_xrp") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="def add_pending_tx", end_before="def click_send_xrp") }}
 
 This method is similar to the `add_tx_row()` method in that it processes a transaction for display and adds it to the Transaction History table. The differences are that it takes one of [xrpl-py's Transaction models](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.models.transactions.html) rather than a JSON-like API response; and it handles certain columns differently because the transaction has not yet been confirmed. Importantly, it saves a reference to table row containing this transaction to the `pending_tx_rows` dictionary, so that later on when the transaction is confirmed, you can remove the table row for the pending version and replace it with the final version of the transaction.
 
 Lastly, update the `add_tx_from_sub()` method so that it finds and updates pending transactions with their final results when those transactions are confirmed. Add the following lines **right before the call to** `self.add_tx_row()`:
 
-{{ include_code("_code-samples/build-a-wallet/py/5_send_xrp.py", language="py", start_with="if t[\"tx\"][\"hash\"] in", end_before="self.add_tx_row(t, prepend=True)") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/5_send_xrp.py", language="py", start_with="if t[\"tx\"][\"hash\"] in", end_before="self.add_tx_row(t, prepend=True)") }}
 
 You can now use your wallet to send XRP! You can even fund an entirely new account. To do that:
 
@@ -436,7 +437,7 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 ### 6. Domain Verification and Polish
 
-**Full code for this step:** [`6_verification_and_polish.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/6_verification_and_polish.py)
+**Full code for this step:** [`6_verification_and_polish.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py)
 
 One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and scams. These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
 
@@ -450,15 +451,15 @@ When there are other errors, you can expose them to the user with an icon and a 
 
 The following code implements account domain verification; **save it as a new file** named `verify_domain.py` in the same folder as your app's main file:
 
-{{ include_code("_code-samples/build-a-wallet/py/verify_domain.py", language="py") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/verify_domain.py", language="py") }}
 
 **In your app's main file,** import the `verify_account_domain` function:
 
-{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="from verify_domain", end_before="class XRPLMonitorThread") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py", language="py", start_with="from verify_domain", end_before="class XRPLMonitorThread") }}
 
 In the `XRPLMonitorThread` class, add a new `check_destination()` method to check the destination address, as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="async def check_destination", end_before="async def send_xrp") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py", language="py", start_with="async def check_destination", end_before="async def send_xrp") }}
 
 This code uses [`xrpl.asyncio.account.get_account_info()`](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.asyncio.account.html#xrpl.asyncio.account.get_account_info) to look up the account in the ledger; unlike using the client's `request()` method, `get_account_info()` raises an exception if the account is not found.
 
@@ -470,23 +471,23 @@ Finally, the code decodes the account's `Domain` field, if present, and performs
 
 After this, it's time to update the `SendXRPDialog` class to make it capable of displaying these errors. You can also set a more specific upper bound for how much XRP the account can actually send. Change the constructor to take a new parameter:
 
-{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="def __init__(self, parent, max_send=100000000.0)", end_before="wx.Dialog.__init__") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py", language="py", start_with="def __init__(self, parent, max_send=100000000.0)", end_before="wx.Dialog.__init__") }}
 
 Add some icon widgets to the UI, also in the `SendXRPDialog` constructor:
 
-{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="# Icons to indicate", end_before="lbl_to =") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py", language="py", start_with="# Icons to indicate", end_before="lbl_to =") }}
 
 Still in the `SendXRPDialog` constructor, add a maximum value to the line that creates the `self.txt_amt` widget:
 
-{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="self.txt_amt =", end_before="self.txt_amt.SetDigits(6)") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py", language="py", start_with="self.txt_amt =", end_before="self.txt_amt.SetDigits(6)") }}
 
 Don't forget to add all the new widgets to the `SendXRPDialog`'s sizer so they fit in the right places. Update the `BulkAdd` call in the constructor as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="sizer.BulkAdd(((lbl_to,", end_before="sizer.Fit(self)") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py", language="py", start_with="sizer.BulkAdd(((lbl_to,", end_before="sizer.Fit(self)") }}
 
 Next, refactor the `on_to_edit()` handler in the `SendXRPDialog` class to perform more checks, including the new background check on the destination address. The updated handler should be as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="def on_to_edit", end_before="def on_dest_tag_edit") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py", language="py", start_with="def on_to_edit", end_before="def on_dest_tag_edit") }}
 
 In addition to starting the background check, this handler does some checks immediately. Any check that doesn't require getting data from the network is probably fast enough to run directly in the handler; if the check requires network access, you have to run it in the worker thread instead.
 
@@ -501,21 +502,21 @@ The code shows the error icons when it finds errors (and hides them when it does
 
 Moving on, you also need a new method in the `SendXRPDialog` class to process the results from the background check. Add the following code:
 
-{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="def update_dest_info", end_before="class TWaXLFrame") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py", language="py", start_with="def update_dest_info", end_before="class TWaXLFrame") }}
 
 This code takes the dictionary passed by the `check_destination()` and uses it to update various widgets in the Send XRP dialog's GUI.
 
 You need to make a few small updates to configure the maximum send amount in the Send XRP dialog. Start by adding these lines to the `TWaXLFrame` class's constructor:
 
-{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="# This account's total XRP reserve", end_before="self.build_ui()") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py", language="py", start_with="# This account's total XRP reserve", end_before="self.build_ui()") }}
 
 Then modify the `update_account()` method of the `TWaXLFrame` to save the latest calculated reserve. Modify the last few lines to look like this:
 
-{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="# Display account reserve and", end_before="def enable_readwrite") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py", language="py", start_with="# Display account reserve and", end_before="def enable_readwrite") }}
 
 Finally, calculate the maximum amount the user can send and provide it to the Send XRP dialog. Modify **the beginning of the `click_send_xrp()` handler** as follows:
 
-{{ include_code("_code-samples/build-a-wallet/py/6_verification_and_polish.py", language="py", start_with="xrp_bal = Decimal", end_before="dlg.CenterOnScreen()") }}
+{{ include_code("_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py", language="py", start_with="xrp_bal = Decimal", end_before="dlg.CenterOnScreen()") }}
 
 The formula this code uses to calculate the maximum amount the user can send is the account's XRP balance, minus its [reserve](reserves.html) and minus the [transaction cost](transaction-cost.html). The calculation uses the `Decimal` class to avoid rounding errors, but ultimately it has to be converted down to a `float` because that's what wxPython's [`wx.SpinCtrlDouble`](https://docs.wxpython.org/wx.SpinCtrlDouble.html) accepts for minimum and maximum values. Still there is less opportunity for floating-point rounding errors to occur if the conversion happens _after_ the other calculations.
 
@@ -542,7 +543,7 @@ To test X-addresses, try the following addresses:
 Now that you have a functional wallet, you can take it in several new directions. The following are a few ideas:
 
 - You could support more of the XRP Ledger's [transaction types](transaction-types.html) including [tokens](issued-currencies.html) and [cross-currency payments](cross-currency-payments.html)
-    - Example code for displaying token balances and other objects: [`7_owned_objects.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-wallet/py/7_owned_objects.py)
+    - Example code for displaying token balances and other objects: [`7_owned_objects.py`]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-desktop-wallet/py/7_owned_objects.py)
 - Allow the user to trade in the [decentralized exchange](decentralized-exchange.html)
 - Add a way to request payments, such as with QR codes or URIs that open in your wallet.
 - Support better account security including [regular key pairs](cryptographic-keys.html#regular-key-pair) or [multi-signing](multi-signing.html).

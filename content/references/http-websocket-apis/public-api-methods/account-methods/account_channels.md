@@ -6,7 +6,7 @@ labels:
   - Payment Channels
 ---
 # account_channels
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
 _(Added by the [PayChan amendment][]. [New in: rippled 0.33.0][])_
 

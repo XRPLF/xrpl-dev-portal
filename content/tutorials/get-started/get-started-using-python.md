@@ -67,7 +67,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
         JSON_RPC_URL = "http://localhost:5005/"
         client = JsonRpcClient(JSON_RPC_URL)
 
-    See the example [core server config file](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
+    See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
 
 * By using one of the available [public servers][]:
 
@@ -101,7 +101,7 @@ classic_address: raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q
 
 #### Using the account
 
-In this tutorial we only query details about the generated account from the XRP Ledger, but you can use the values in the `Wallet` instance to prepare, sign, and submit transactions with `xrpl-py`.   
+In this tutorial we only query details about the generated account from the XRP Ledger, but you can use the values in the `Wallet` instance to prepare, sign, and submit transactions with `xrpl-py`.
 
 ##### Prepare
 
@@ -129,7 +129,7 @@ The X-address format [packs the address and destination tag](https://github.com/
 
 ### {{n.next()}}. Query the XRP Ledger
 
-You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exchange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).  
+You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exchange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).
 
 Here, we use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html) module to look up information about the [account we got](#2-get-account) in the previous step.
 

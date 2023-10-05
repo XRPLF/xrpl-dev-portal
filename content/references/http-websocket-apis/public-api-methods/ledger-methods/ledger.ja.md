@@ -6,7 +6,7 @@ label:
   - ブロックチェーン
 ---
 # ledger
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
 
 公開レジャーに関する情報を取得します。
 

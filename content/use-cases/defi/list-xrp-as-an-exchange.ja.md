@@ -61,7 +61,7 @@ XRPをサポートするために、Alpha Exchangeでは以下を行う必要が
 
 ### アカウント
 
-XRPは、XRP Ledgerの _アカウント_ （ _ウォレット_ や _アドレス_ とも呼ばれる）で保持されます。XRP Ledgerのアカウントは、例えばBitcoinのような、アカウントに経費がほとんどまたは一切かからない他のブロックチェーンの台帳とは異なります。XRP Ledgerでは、[アカウントの削除](accounts.html#アカウントの削除)は可能が、各アカウントは個別の、他の人に送信することのできない、[XRPの準備金](reserves.html)を保持する必要があります。このような理由から、Rippleでは利用機関に対し、必要のない過剰なアカウントを作成しないように勧めています。
+XRPは、XRP Ledgerの _アカウント_ （ _ウォレット_ や _アドレス_ とも呼ばれる）で保持されます。XRP Ledgerのアカウントは、例えばBitcoinのような、アカウントに経費がほとんどまたは一切かからない他のブロックチェーンの台帳とは異なります。XRP Ledgerでは、[アカウントの削除](deleting-accounts.html)は可能が、各アカウントは個別の、他の人に送信することのできない、[XRPの準備金](reserves.html)を保持する必要があります。このような理由から、Rippleでは利用機関に対し、必要のない過剰なアカウントを作成しないように勧めています。
 
 <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet -->
 
@@ -198,7 +198,7 @@ XRPの額は、XRP Ledgerで、符号なし整数の _drop_ として示され�
 
  _Alpha Exchange_ のような取引所では、XRPは「台帳上」または「台帳外」に存在します。
 
-* **台帳上のXRP**: XRP保有者のパブリック[アドレス](accounts.html#アドレス)を指定し、パブリックのXRP Ledgerを通じて照会できるXRP。これらの残高の取引相手はXRP Ledgerです。詳細については、[XRP](what-is-xrp.html)を参照してください。
+* **台帳上のXRP**: XRP保有者のパブリック[アドレス](addresses.html)を指定し、パブリックのXRP Ledgerを通じて照会できるXRP。これらの残高の取引相手はXRP Ledgerです。詳細については、[XRP](what-is-xrp.html)を参照してください。
 
 * **台帳外のXRP**: 取引所の会計システムに保持されている、取引所のインターフェイスで照会できるXRP。台帳外のXRP残高はクレジットペースです。取引相手は、XRPを保有している取引所です。
 

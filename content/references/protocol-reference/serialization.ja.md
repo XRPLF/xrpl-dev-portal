@@ -14,7 +14,7 @@ curated_anchors:
     anchor: "#タイプリスト"
 ---
 # シリアル化フォーマット
-[[ソース]](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
 
 このページでは、XRP Ledgerのトランザクションとその他のデータの正規バイナリフォーマットについて説明します。このバイナリフォーマットは、トランザクションの内容のデジタル署名を作成および検証するために必要であり、[サーバー間のピアツーピア通信](peer-protocol.html)を含む他の用途にも使用されます。通常、[`rippled` API](http-websocket-apis.html)は、JSONを使用してクライアントアプリケーションと通信します。ただしJSONは、同じデータをさまざまな同等の方法で表現できるため、デジタル署名を付与するトランザクションをシリアル化するのに適したフォーマットではありません。
 
@@ -58,7 +58,7 @@ curated_anchors:
 
 ここで説明するシリアル化プロセスは複数の場所にさまざまなプログラミング言語で実装されています。
 
-- C++: [`rippled`コードベース](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp)
+- C++: [`rippled`コードベース](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp)
 - JavaScript: [`ripple-binary-codec`](https://github.com/ripple/ripple-binary-codec/)パッケージ
 - Python 3: [このリポジトリのコードサンプルセクション]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/)
 
@@ -68,7 +68,7 @@ curated_anchors:
 
 ## 内部フォーマット
 
-各フィールドには「内部」バイナリフォーマットがあります。このフォーマットは、`rippled`ソースコードで署名時に（およびその他のほとんどの場合に）そのフィールドを表示するのに使用されます。すべてのフィールドの内部フォーマットは、[`SField.cpp`](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/SField.cpp)のソースコードに定義されています。（このフィールドには、トランザクションフィールド以外のフィールドも含まれています。）[トランザクションフォーマットリファレンス](transaction-formats.html)にも、すべてのトランザクションフィールドの内部フォーマットが記載されています。
+各フィールドには「内部」バイナリフォーマットがあります。このフォーマットは、`rippled`ソースコードで署名時に（およびその他のほとんどの場合に）そのフィールドを表示するのに使用されます。すべてのフィールドの内部フォーマットは、[`SField.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/SField.cpp)のソースコードに定義されています。（このフィールドには、トランザクションフィールド以外のフィールドも含まれています。）[トランザクションフォーマットリファレンス](transaction-formats.html)にも、すべてのトランザクションフィールドの内部フォーマットが記載されています。
 
 たとえば`Flags`[共通トランザクションフィールド](transaction-common-fields.html)はUInt32（32ビット符号なし整数）になります。
 
@@ -154,17 +154,17 @@ curated_anchors:
 
 ### タイプコード
 
-各フィールドタイプには任意のタイプコードが含まれており、番号が小さいコードから最初にソートされます。これらのコードは[`SField.h`](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/SField.h#L57-L74)で定義されています。
+各フィールドタイプには任意のタイプコードが含まれており、番号が小さいコードから最初にソートされます。これらのコードは[`SField.h`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/SField.h#L57-L74)で定義されています。
 
-たとえば [UInt32のタイプコードが2である](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L59)ので、すべてのUInt32フィールドは、すべての[Amountフィールド（タイプコード6）](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L63)よりも前に位置します。
+たとえば [UInt32のタイプコードが2である](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L59)ので、すべてのUInt32フィールドは、すべての[Amountフィールド（タイプコード6）](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L63)よりも前に位置します。
 
 [定義ファイル](#定義ファイル)には、`TYPES`マップの各タイプのタイプコードがリストされています。
 
 ### フィールドコード
 
-各フィールドにはフィールドコードが含まれています。フィールドコードは、同じタイプのフィールドをソートするときに使用され、番号が小さいコードが最初になるようにソートされます。これらのフィールドは[`SField.cpp`](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L72-L266)で定義されています。
+各フィールドにはフィールドコードが含まれています。フィールドコードは、同じタイプのフィールドをソートするときに使用され、番号が小さいコードが最初になるようにソートされます。これらのフィールドは[`SField.cpp`](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L72-L266)で定義されています。
 
-たとえば[Paymentトランザクション][]の`Account`フィールドの[ソートコードが1である](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L219)場合、このフィールドは`Destination`フィールド（[ソートコードが3である](https://github.com/ripple/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L221)フィールド）よりも前に位置します。
+たとえば[Paymentトランザクション][]の`Account`フィールドの[ソートコードが1である](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L219)場合、このフィールドは`Destination`フィールド（[ソートコードが3である](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L221)フィールド）よりも前に位置します。
 
 フィールドコードは異なるフィールドタイプのフィールドで再利用されますが、同じタイプのフィールドに同じフィールドコードが含まれることはありません。タイプコードとフィールドコードを組み合わせると、フィールドの一意の[フィールドID](#フィールドid)になります。
 
@@ -208,7 +208,7 @@ curated_anchors:
 ### AccountIDフィールド
 [AccountID]: #accountidフィールド
 
-このタイプのフィールドには、XRP Ledger[アカウント](accounts.html)の160ビットのIDが含まれています。JSONではこれらのフィールドは[base58][] XRP Ledger「アドレス」および追加のチェックサムデータとして表示されます。このため、スペルミスが有効なアドレスとなることがありません。（このエンコードは「Base58Check」とも呼ばれ、誤ったアドレスへの送金を防止します。）これらのフィールドのバイナリフォーマットにはチェックサムデータは含まれておらず、また[アドレスのbase58エンコード](accounts.html#アドレスのエンコード)で使用される`0x00`「タイププレフィクス」も含まれていません。（ただし、バイナリフォーマットは主に署名済みトランザクションに使用されるため、署名済みトランザクションを転記する際にスペルミスなどのエラーが発生すると署名が無効となり、送金できなくなります。）
+このタイプのフィールドには、XRP Ledger[アカウント](accounts.html)の160ビットのIDが含まれています。JSONではこれらのフィールドは[base58][] XRP Ledger「アドレス」および追加のチェックサムデータとして表示されます。このため、スペルミスが有効なアドレスとなることがありません。（このエンコードは「Base58Check」とも呼ばれ、誤ったアドレスへの送金を防止します。）これらのフィールドのバイナリフォーマットにはチェックサムデータは含まれておらず、また[アドレスのbase58エンコード](addresses.html#アドレスのエンコード)で使用される`0x00`「タイププレフィクス」も含まれていません。（ただし、バイナリフォーマットは主に署名済みトランザクションに使用されるため、署名済みトランザクションを転記する際にスペルミスなどのエラーが発生すると署名が無効となり、送金できなくなります。）
 
 スタンドアロンフィールドとして表示されるAccountID（`Account`や`Destination`など）の長さは固定長の160ビットですが、[長さプレフィクスが付加](#長さプレフィクスを付加する)されます。その結果、これらのフィールドの長さインディケーターは常に`0x14`バイトになります。特殊フィールドの子として示されるAccountID（[Amount `issuer`][Amount]、[PathSet `account`][PathSet]など）では長さプレフィクスは付加 _されません_ 。
 
@@ -229,7 +229,7 @@ curated_anchors:
 
   1. [内部通貨フォーマット](currency-formats.html#発行済み通貨の計算)の額を示す64ビット。1番目のビットは、これがXRPではないことを示す`1`です。
   2. [通貨コード](currency-formats.html#通貨コード)を示す160ビット。標準APIでは、[標準通貨コードフォーマット](currency-formats.html#標準通貨コード)を使用して「USD」などの3文字のコードが160ビットのコードに変換されますが、160ビットのカスタムコードも使用できます。
-  3. イシュアーのアカウントIDを示す160ビット。（関連項目: [アカウントアドレスエンコード](accounts.html#アドレスのエンコード))
+  3. イシュアーのアカウントIDを示す160ビット。（関連項目: [アカウントアドレスエンコード](addresses.html#アドレスのエンコード)
 
 1番目のビットに基づいて2つのサブタイプのいずれに該当するかを確認できます。`0`の場合はXRP、`1`の場合は発行済み通貨です。
 
@@ -274,7 +274,7 @@ XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256がありま�
 [STIssue]: #issueフィールド -->
 <!-- TODO: translate this section -->
 
-<!-- 
+<!--
 _(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) :not_enabled: and [Federated Sidechains](federated-sidechains.html) :not_enabled:)_
 -->
 
@@ -301,12 +301,12 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
 複数通貨間[Paymentトランザクション][]の`Paths`フィールドは、JSONで配列からなる配列として表される「PathSet」です。使用されるパスについての詳細は、[パス](paths.html)を参照してください。
 
-PathSetは、**1～6**の個別パスとして順序どおりにシリアル化されます[[ソース]](https://github.com/ripple/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L35-L36 "Source")。それぞれの完全なパスの後には、パスの後に続く内容を示すバイトが配置されます。
+PathSetは、**1～6**の個別パスとして順序どおりにシリアル化されます[[ソース]](https://github.com/XRPLF/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L35-L36 "Source")。それぞれの完全なパスの後には、パスの後に続く内容を示すバイトが配置されます。
 
 - `0xff`は別のパスが続くことを示します。
 - `0x00`はPathSetの終わりを示します。
 
-各パスには**1～8**のパスステップがこの順序で含まれています[[ソース]](https://github.com/ripple/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L38-L39 "Source")。各ステップは**タイプ**を示すバイトで始まり、その後にパスステップを記述する1つ以上のフィールドが続きます。タイプは、ビット単位のフラグを使用してそのパスステップに含まれるフィールドを示します。（たとえば値が`0x30`の場合、通貨とイシュアーの両方が変更されます。）複数のフィールドが含まれている場合、フィールドは常に特定の順序で配置されます。
+各パスには**1～8**のパスステップがこの順序で含まれています[[ソース]](https://github.com/XRPLF/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L38-L39 "Source")。各ステップは**タイプ**を示すバイトで始まり、その後にパスステップを記述する1つ以上のフィールドが続きます。タイプは、ビット単位のフラグを使用してそのパスステップに含まれるフィールドを示します。（たとえば値が`0x30`の場合、通貨とイシュアーの両方が変更されます。）複数のフィールドが含まれている場合、フィールドは常に特定の順序で配置されます。
 
 以下の表に、有効なフィールドと、タイプバイトでフィールドを示すために設定されるビット単位のフラグを示します。
 
@@ -342,6 +342,6 @@ JSONオブジェクトにこれらのフィールドが含まれている場合�
 もう1つの特殊なケースとして`TransactionType`フィールドがあります。JSONではこのフィールドは便宜上、トランザクションタイプの名前の文字列として表現されますが、バイナリではこのフィールドはUInt16です。[定義ファイル](#定義ファイル)内の`TRANSACTION_TYPES`オブジェクトにより、これらの文字列が特定の数値にマップされます。
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

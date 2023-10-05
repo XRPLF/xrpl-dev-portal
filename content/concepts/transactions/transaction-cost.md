@@ -62,7 +62,7 @@ For each new ledger version, the server picks a soft limit on the number of tran
 
 The open ledger cost requirement is [proportional to the normal cost of the transaction](#fee-levels), not the absolute transaction cost. Transaction types that have a higher-than-normal requirement, such as [multi-signed transactions](multi-signing.html) must pay more to meet the open ledger cost than transactions which have minimum transaction cost requirements.
 
-See also: [Fee Escalation explanation in `rippled` repository](https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md).
+See also: [Fee Escalation explanation in `rippled` repository](https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md).
 
 ### Queued Transactions
 
@@ -174,6 +174,6 @@ The XRP Ledger has a mechanism for changing the minimum transaction cost to acco
     - [SetFee pseudo-transaction][]
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

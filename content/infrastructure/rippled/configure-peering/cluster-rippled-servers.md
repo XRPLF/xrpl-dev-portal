@@ -30,7 +30,7 @@ If you run multiple [`rippled` servers](xrpl-servers.html) in the same data cent
 
     Save the `validation_seed` and `validation_public_key` parameters from each response somewhere secure.
 
-3. On each server, edit the [config file](https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg), modifying the following sections:
+3. On each server, edit the [config file](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg), modifying the following sections:
 
     1. In the `[ips_fixed]` section, list the IP address and port of each _other_ member of the cluster. For each of those servers, the port number should match the `protocol = peer` port (usually 51235) from that server's `rippled.cfg`. For example:
 

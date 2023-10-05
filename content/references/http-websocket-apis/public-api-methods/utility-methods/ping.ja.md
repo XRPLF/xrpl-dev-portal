@@ -6,7 +6,7 @@ labels:
   - コアサーバー
 ---
 # ping
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")
 
 `ping`コマンドは確認応答を返します。これにより、クライアントは接続のステータスと遅延をテストできます。
 
@@ -86,6 +86,6 @@ rippled ping
 * [汎用エラータイプ][]のすべて。
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

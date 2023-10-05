@@ -11,7 +11,7 @@ This tutorial shows how to look up [Checks](checks.html) by their sender. You ma
 
 ## 1. Look up all Checks for the address
 
-<!--{# TODO: Update if https://github.com/ripple/rippled/issues/2443 gets done #}-->
+<!--{# TODO: Update if https://github.com/XRPLF/rippled/issues/2443 gets done #}-->
 
 To get a list of all incoming and outgoing Checks for an account, use the `account_objects` command with the sending account's address and set the `type` field of the request to `checks`.
 

@@ -7,7 +7,7 @@ labels:
 ---
 # EscrowFinish
 
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
 _[Escrow Amendment][]が必要です。_
 
@@ -45,7 +45,7 @@ _[Escrow Amendment][]が必要です。_
 
 **注記:** EscrowFinishトランザクションにフルフィルメントが含まれている場合、このトランザクションを送信するための最小[トランザクションコスト](transaction-cost.html)が増加します。トランザクションにフルフィルメントが含まれていない場合、トランザクションコストは標準の10 dropです。トランザクションにフルフィルメントが含まれている場合、トランザクションコストは330 [XRP drop][XRPのdrop数]に加えて、プリイメージサイズの16バイトごとに更に10 dropです。
 
-[本番環境以外のネットワーク](parallel-networks.html)では、保留中のescrowの送金先アカウントを[削除](accounts.html#アカウントの削除)できる場合があります。この場合、 escrowを終了しようとしても結果`tecNO_TARGET`で失敗しますが、 escrowオブジェクトは通常期限切れになる場合を除き、維持されます。別の支払いで送金先アカウントが再作成された場合、 escrowは正常に終了できます。escrowの送金先アカウントは、[fix1523 Amendment](known-amendments.html#fix1523)が有効になる前にescrowが作成された場合にのみ削除できます。本番環境の XRP Ledgerにはそのようなescrowは存在しないため、本番環境のXRP Ledgerではこのようなエッジケースには対応できません。また、このエッジケースは、fix1523とescrowのAmendmentを同時に有効にするテストネットワークでも不可能です。これは、[新しいジェネシスレジャーを開始](start-a-new-genesis-ledger-in-stand-alone-mode.html)するときのデフォルトです。
+[本番環境以外のネットワーク](parallel-networks.html)では、保留中のescrowの送金先アカウントを[削除](deleting-accounts.html)できる場合があります。この場合、 escrowを終了しようとしても結果`tecNO_TARGET`で失敗しますが、 escrowオブジェクトは通常期限切れになる場合を除き、維持されます。別の支払いで送金先アカウントが再作成された場合、 escrowは正常に終了できます。escrowの送金先アカウントは、[fix1523 Amendment](known-amendments.html#fix1523)が有効になる前にescrowが作成された場合にのみ削除できます。本番環境の XRP Ledgerにはそのようなescrowは存在しないため、本番環境のXRP Ledgerではこのようなエッジケースには対応できません。また、このエッジケースは、fix1523とescrowのAmendmentを同時に有効にするテストネットワークでも不可能です。これは、[新しいジェネシスレジャーを開始](start-a-new-genesis-ledger-in-stand-alone-mode.html)するときのデフォルトです。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

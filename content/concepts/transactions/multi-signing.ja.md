@@ -37,7 +37,7 @@ _([ExpandedSignerList amendment][]により更新されました。)_
 
 また、リスト内の各署名者のエントリに最大256ビットの任意のデータを追加することができます。このデータはネットワークで必要とされたり使用されたりすることはありませんが、スマートコントラクトや他のアプリケーションが署名者に関する他のデータを特定したり確認したりするために使用することができます。
 
-_([ExpandedSignerList amendment][]によって追加されました。)_
+_([ExpandedSignerList amendment][]により追加されました。)_
 
 ### Signer WeightとQuorumの使用例
 

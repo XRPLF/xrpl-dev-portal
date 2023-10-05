@@ -6,7 +6,7 @@ labels:
   - Blockchain
 ---
 # manifest
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp "Source")
 
 The `{{currentpage.name}}` method reports the current "manifest" information for a given validator public key. The "manifest" is a block of data that authorizes an ephemeral signing key with a signature from the validator's master key pair. [Updated in: rippled 1.7.0][]
 
@@ -52,7 +52,7 @@ The request includes the following parameters:
 |:-------------|:-------|:-----------------------------------|
 | `public_key` | String | The [base58][]-encoded public key of the validator to look up. This can be the master public key or ephemeral public key. |
 
-**Note:** The commandline format for this method does not work in rippled v1.5.0. See [issue #3317](https://github.com/ripple/rippled/issues/3317) for details.
+**Note:** The commandline format for this method does not work in rippled v1.5.0. See [issue #3317](https://github.com/XRPLF/rippled/issues/3317) for details.
 
 ### Response Format
 
@@ -122,7 +122,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-<!-- Note, the CLI response above is mocked up to compensate for https://github.com/ripple/rippled/issues/3317 -->
+<!-- Note, the CLI response above is mocked up to compensate for https://github.com/XRPLF/rippled/issues/3317 -->
 
 The response follows the [standard format][], with a successful result containing the following fields:
 

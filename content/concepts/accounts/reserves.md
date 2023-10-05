@@ -37,7 +37,7 @@ Objects that count towards their owner's reserve requirement include: [Checks](c
 
 Some special cases:
 
-- Non-Fungible Tokens (NFTs) are grouped into pages containing up to 32 NFTs each, and the owner reserve applies per page rather than per NFT. Due to the mechanism for splitting and combining pages, the number of NFTs actually stored per page varies. See also: [Reserve for NFTokenPage objects](nftokenpage.html#reserve-for-nftokenpage-objects).
+- Non-Fungible Tokens (NFTs) are grouped into pages containing up to 32 NFTs each, and the owner reserve applies per page rather than per NFT. Due to the mechanism for splitting and combining pages, the number of NFTs actually stored per page varies. See also: [Reserve for NFTokenPage objects](nftokenpage.html#nftokenpage-reserve).
 - Trust lines (`RippleState` entries) are shared between two accounts. The owner reserve can apply to one or both of them. Most often, the token holder owes a reserve and the issuer does not. See also: [RippleState: Contributing to the Owner Reserve](ripplestate.html#contributing-to-the-owner-reserve).
 - Signer lists created before the [MultiSignReserve amendment][] activated in April 2019 count as multiple objects. See also: [Signer Lists and Reserves](signerlist.html#signer-lists-and-reserves).
 - An [Owner Directory](directorynode.html) is a ledger entry that lists all objects related to an account, including all objects the account owns. However, the owner directory itself does not count towards the reserve.
@@ -51,7 +51,7 @@ Applications can look up the current base and incremental reserve values using t
 | [server_info method][]  | Decimal XRP          | `validated_ledger.reserve_base_xrp` | `validated_ledger.reserve_inc_xrp` |
 | [server_state method][] | Integer drops of XRP | `validated_ledger.reserve_base`     | `validated_ledger.reserve_inc`     |
 
-To determine the owner reserve of an account, multiply the incremental reserve by the number of objects the account owns. To look up the number of objects an account owns, call the [account_info method][] and take `account_data.OwnerCount`. 
+To determine the owner reserve of an account, multiply the incremental reserve by the number of objects the account owns. To look up the number of objects an account owns, call the [account_info method][] and take `account_data.OwnerCount`.
 
 To calculate an address's total reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`, then add `reserve_base_xrp`. [Here is a demonstration](build-a-desktop-wallet-in-python.html#codeblock-17) of this calculation in Python.
 

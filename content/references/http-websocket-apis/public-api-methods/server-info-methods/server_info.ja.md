@@ -6,7 +6,7 @@ labels:
   - コアサーバー
 ---
 # server_info (rippled)
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
 
 `server_info`コマンドは、問い合わせ中の`rippled`サーバーについての各種情報を、人間が読めるフォーマットでサーバーに要求します。
 
