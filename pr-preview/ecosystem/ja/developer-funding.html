@@ -33,7 +33,7 @@
     <meta name="color-scheme" content="dark light">
 
     <!-- jQuery -->
-    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/ja/assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     <script type="application/javascript">
@@ -49,11 +49,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v18.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -93,24 +93,23 @@
         <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
           <div class="navcol col-for-xrp-ledger">
             <h5 class="dropdown-item">XRP Ledger</h5>
-            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPLの概要</a>
             <a class="dropdown-item" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
-            <a class="dropdown-item" href="/ja/history.html">沿革</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/history.html">歴史</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
-            <a class="dropdown-item" href="/ja/xrp-overview.html">XRP Overview</a>
+            <a class="dropdown-item" href="/ja/xrp-overview.html">XRPの概要</a>
           </div><!--./col-->
-          <div class="navcol col-for-sustainability">
-            <h5 class="dropdown-item">Sustainability</h5>
+          <div class="navcol col-for-持続可能性">
+            <h5 class="dropdown-item">持続可能性</h5>
             <a class="dropdown-item" href="/ja/impact.html">インパクト</a>
           </div><!--./col-->
-          <div class="navcol col-for-about">
-            <h5 class="dropdown-item">About</h5>
+          <div class="navcol col-for-概要">
+            <h5 class="dropdown-item">概要</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
             <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
-            <a class="dropdown-item" href="/ja/privacy-policy.html">Privacy Policy</a>
+            <a class="dropdown-item" href="/ja/privacy-policy.html">プライバシーポリシー</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -122,26 +121,20 @@
             <img id="top-nav-hero-docs" alt="ドキュメント icon" />
             <div class="dropdown-hero-text">
               <h4>ドキュメント</h4>
-              <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
+              <p>XRP Ledgerのテクノロジーに飛び込み、実装を始めましょう。</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="/ja/docs-index.html">Documentation Index</a>
-          </div><!--./col-->
-          <div class="navcol col-for-article-types">
-            <h5 class="dropdown-item">Article Types</h5>
+          <div class="navcol col-for-カテゴリ">
+            <h5 class="dropdown-item">カテゴリ</h5>
+            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
+            <a class="dropdown-item" href="/ja/use-cases.html">ユースケース</a>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
             <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
             <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
+            <a class="dropdown-item" href="/ja/infrastructure.html">インフラストラクチャ</a>
           </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
-            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
-          </div><!--./col-->
-          <div class="navcol col-for-get-started">
-            <h5 class="dropdown-item">Get Started</h5>
+          <div class="navcol col-for-始めましょう">
+            <h5 class="dropdown-item">始めましょう</h5>
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
@@ -153,12 +146,30 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-          </div><!--./col-->
-          <div class="navcol col-for-popular-pages">
-            <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
-            <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>リソース</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-開発">
+            <h5 class="dropdown-item">開発</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+          </div><!--./col-->
+          <div class="navcol col-for-現在のステータス">
+            <h5 class="dropdown-item">現在のステータス</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/known-amendments.html">既知のAmendment</a>
+          </div><!--./col-->
+          <div class="navcol col-for-参加する">
+            <h5 class="dropdown-item">参加する</h5>
+            <a class="dropdown-item" href="/ja/contribute-code.html">コードへの貢献</a>
+            <a class="dropdown-item" href="/ja/contribute-documentation.html">ドキュメントへの貢献</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -166,11 +177,11 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティ</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
-            <img id="top-nav-hero-contribute" alt="貢献する icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-xrplコミュニティへの貢献" href="/ja/contribute.html">
+            <img id="top-nav-hero-contribute" alt="XRPLコミュニティへの貢献 icon" />
             <div class="dropdown-hero-text">
-              <h4>貢献する</h4>
-              <p>話題に加わろう</p>
+              <h4>XRPLコミュニティへの貢献</h4>
+              <p>コミュニティに参加しましょう</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
@@ -181,7 +192,8 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
-            <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPLブランドキット</a>
+            <a class="dropdown-item" href="/ja/report-a-scam.html">詐欺の報告</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -233,14 +245,14 @@
       <main class="main col-md-12 order-md-3  landing page-funding" role="main" id="main_content_body">
 
 <div class="position-relative d-none-sm">
-  <img src="./img/backgrounds/funding-purple.svg" class="position-absolute" style="top: 0; right:0">
+  <img alt="" src="./img/backgrounds/funding-purple.svg" class="position-absolute" style="top: 0; right:0">
 </div>
 
 <section class="container-new py-26 text-lg-center">
     <div class="p-0 col-lg-6 mx-lg-auto">
         <div class="d-flex flex-column-reverse">
-            <h1 class="mb-0">XRPL Developer Funding Programs</h1>
-            <h6 class="eyebrow mb-3">Project Resources</h6>
+            <h1 class="mb-0">XRPL開発者向け資金提供プログラム</h1>
+            <h6 class="eyebrow mb-3">プロジェクト資金</h6>
         </div>
     </div>
 </section>
@@ -248,10 +260,10 @@
 <section class="container-new py-26">
     <div class="p-0 col-lg-6 mx-lg-auto" style="max-width: 520px;">
         <div class="d-flex flex-column-reverse">
-            <h1 class="mb-0 h4 h2-sm">Explore funding opportunities for developers and teams</h1>
-            <h6 class="eyebrow mb-3">Funding Overview</h6>
+            <h1 class="mb-0 h4 h2-sm">開発者やチームのための資金調達の方法を見つけましょう</h1>
+            <h6 class="eyebrow mb-3">資金調達の概要</h6>
         </div>
-        <p class="mt-3 py-3 p-0 longform">If you’re a software developer or team looking to build your next project or venture on the XRP Ledger (XRPL), there are a number of opportunities to fund your next innovation.</p>
+        <p class="mt-3 py-3 p-0 longform">あなたがXRP Ledger（XRPL）上に次のプロジェクトやベンチャーを構築しようとしているソフトウェア開発者やチームであれば、次のイノベーションに資金を提供するチャンスは数多く存在します。</p>
     </div>
 </section>
 
@@ -262,13 +274,13 @@
 
         <div class="order-1 order-lg-2 mb-4 pb-3 mb-lg-0 pb-lg-0 col-lg-6 px-0"  style="max-width: 520px;">
             <div class="d-flex flex-column-reverse p-lg-3">
-                <h3 class="h4 h2-sm">XRPL Hackathons</h3>
-                <h6 class="eyebrow mb-3">Join an Event</h6>
+                <h3 class="h4 h2-sm">XRPLハッカソン</h3>
+                <h6 class="eyebrow mb-3">イベントに参加</h6>
             </div>
-            <p class="p-lg-3 mb-2 longform">Hackathons are open to all developers to explore and invent a project on the XRP Ledger. Visit the events page for updates on upcoming hackathons.</p>
+            <p class="p-lg-3 mb-2 longform">ハッカソンは、XRP Ledger上のプロジェクトを調査・考案するために、すべての開発者に開放されています。今後のハッカソンに関する最新情報は、イベントページでご確認ください。</p>
 
             <div class="d-none d-lg-block p-lg-3">
-                <a class="btn btn-primary btn-arrow" href="events.html">See Upcoming Events</a> 
+                <a class="btn btn-primary btn-arrow" href="events.html">今後のイベントを見る</a> 
             </div>
         </div>
 
@@ -279,23 +291,23 @@
                     <div class="px-lg-3 pb-3">
                         <img id="funding-01" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Best for</h6>
-                            <p>Software developers and teams building directly on the XRP Ledger</p>
+                            <h6 class="mb-3">こんな方に最適</h6>
+                            <p>XRP Ledger上のソフトウェア開発者やXRP Ledger上で直接開発を行うチーム</p>
                         </div>
                     </div>
                     <!-- Hide on large -->
                     <div class="px-lg-3 pb-3 d-lg-none">
                         <img id="funding-02" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Required</h6>
-                            <p>Some coding experience</p>
+                            <h6 class="mb-3">必須要件</h6>
+                            <p>コーディング経験</p>
                         </div>
                     </div>
                     <div class="px-lg-3 pb-3 pt-lg-5">
                         <img id="funding-03" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Level</h6>
-                            <p>XRPL beginner to advanced developers</p>
+                            <h6 class="mb-3">レベル</h6>
+                            <p>XRPLの初級開発者から上級開発者まで</p>
                         </div>
                     </div>
 
@@ -303,8 +315,8 @@
                     <div class="px-lg-3 pb-3 d-lg-none">
                         <img id="funding-04" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Funding Levels</h6>
-                            <p>Prize money and awards</p>
+                            <h6 class="mb-3">資金調達の規模</h6>
+                            <p>賞金および賞品</p>
                         </div>
                     </div>
                 </div>
@@ -316,16 +328,16 @@
                         <div class="pt-1 mt-3">
                             <img id="funding-02" src="data:," />
                             <div class="pt-3">
-                                <h6 class="mb-3">Required</h6>
-                                <p>Some coding experience</p>
+                                <h6 class="mb-3">必須要件</h6>
+                                <p>コーディング経験</p>
                             </div>
                         </div>
                     </div>
                     <div class="px-lg-3 pb-3 pt-5">
                         <img id="funding-04" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Funding Levels</h6>
-                            <p>Prize money and awards</p>
+                            <h6 class="mb-3">資金調達の規模</h6>
+                            <p>賞金および賞品</p>
                         </div>
                     </div>
                 </div>
@@ -333,7 +345,7 @@
             </div>
         </div>
         <div class="d-lg-none order-3 mt-4 pt-3">
-            <a class="btn btn-primary btn-arrow" href="events.html">See Upcoming Events</a> 
+            <a class="btn btn-primary btn-arrow" href="events.html">今後のイベントを見る</a> 
         </div>
     </div>
 </section>
@@ -347,17 +359,17 @@
         <div class="order-1  mb-4 pb-3 mb-lg-0 pb-lg-0 col-lg-6 px-0 p-lg-3">
             <div class="d-flex flex-column-reverse py-lg-3">
                 <h3 class="h4 h2-sm">XRPL Grants</h3>
-                <h6 class="eyebrow mb-3">Fund Your Project</h6>
+                <h6 class="eyebrow mb-3">プロジェクトの資金調達</h6>
             </div>
-            <p class="py-lg-3 mb-2 longform" style="max-width: 520px;">XRPL Grantsプログラムは、拡大を続ける XRP Ledger コミュニティに貢献する厳選されたオープンソースプロジェクトに資金を提供します。</p>
+            <p class="py-lg-3 mb-2 longform" style="max-width: 520px;">成長するXRP Ledgerコミュニティに貢献するプロジェクトに開発者助成金を提供します。</p>
 
             <div class="mt-4 pt-3" style="max-width: 520px;">
-                <span class="h6" style="font-size: 1rem;">Past awardees include:</span>
+                <span class="h6" style="font-size: 1rem;">過去の受賞者は次の通り:</span>
                 <div class="mb-4 py-3" id="xrplGrantsDark"></div>
             </div>
 
             <div class="d-none d-lg-block py-lg-3">
-                <a class="btn btn-primary btn-arrow-out" target="_blank" href="https://xrplgrants.org/">Visit XRPL Grants</a>
+                <a class="btn btn-primary btn-arrow-out" target="_blank" href="https://xrplgrants.org/">XRPL Grantsを見る</a>
             </div>
         </div>
 
@@ -368,31 +380,31 @@
                     <div class="px-lg-3 pb-3">
                         <img id="funding-01" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Best for</h6>
-                            <p>Software developers, teams, and start-ups building directly on the XRP Ledger</p>
+                            <h6 class="mb-3">こんな方に最適</h6>
+                            <p>XRP Ledger上で直接開発を行うソフトウェア開発者やチーム、スタートアップ企業</p>
                         </div>
                     </div>
                     <!-- Hide on large -->
                     <div class="px-lg-3 pb-3 d-lg-none">
                         <img id="funding-02" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Required</h6>
-                            <p>Coding experience <span style="color: #7919FF;">&bull;</span> Github repository <span style="color: #7919FF;">&bull;</span> Project narrative/description <span style="color: #7919FF;">&bull;</span> At least one developer on the core team  <span style="color: #7919FF;">&bull;</span> Budget and milestones</p>
+                            <h6 class="mb-3">必須要件</h6>
+                            <p>コーディング経験 <span style="color： #7919FF;">&bull;</span> Githubリポジトリ <span style="color： #7919FF;">&bull;</span> プロジェクトの説明 <span style="color： #7919FF;">&bull;</span> コアチームに最低1人の開発者 <span style="color： #7919FF;">&bull;</span> 予算とマイルストーン</p>
                         </div>
                     </div>
                     <div class="px-lg-3 pb-3 pt-lg-5">
                         <img id="funding-03" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Level</h6>
-                            <p>XRPL intermediate to advanced developers</p>
+                            <h6 class="mb-3">レベル</h6>
+                            <p>XRPLの中級開発者から上級開発者</p>
                         </div>
                     </div>
                     <!-- Hide on large -->
                     <div class="px-lg-3 pb-3 d-lg-none">
                         <img id="funding-04" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Funding Levels</h6>
-                            <p>$10,000 - $200,000</p>
+                            <h6 class="mb-3">資金調達の規模</h6>
+                            <p>$10,000 ~ $200,000</p>
                         </div>
                     </div>
                 </div>
@@ -404,16 +416,16 @@
                         <div class="pt-1 mt-3">
                             <img id="funding-02" src="data:," />
                             <div class="pt-3">
-                                <h6 class="mb-3">Required</h6>
-                                <p>Coding experience <span style="color: #7919FF;">&bull;</span> Github repository <span style="color: #7919FF;">&bull;</span> Project narrative/description <span style="color: #7919FF;">&bull;</span> At least one developer on the core team  <span style="color: #7919FF;">&bull;</span> Budget and milestones</p>
+                                <h6 class="mb-3">必須要件</h6>
+                                <p>コーディング経験 <span style="color： #7919FF;">&bull;</span> Githubリポジトリ <span style="color： #7919FF;">&bull;</span> プロジェクトの説明 <span style="color： #7919FF;">&bull;</span> コアチームに最低1人の開発者 <span style="color： #7919FF;">&bull;</span> 予算とマイルストーン</p>
                             </div>
                         </div>
                     </div>
                     <div class="px-lg-3 pb-3 pt-5">
                         <img id="funding-04" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Funding Levels</h6>
-                            <p>$10,000 - $200,000</p>
+                            <h6 class="mb-3">資金調達の規模</h6>
+                            <p>$10,000 ~ $200,000</p>
                         </div>
                     </div>
                 </div>
@@ -422,7 +434,7 @@
         </div>
 
         <div class="d-lg-none order-3 mt-4 pt-3">
-            <a class="btn btn-primary btn-arrow-out" target="_blank" href="https://xrplgrants.org/">Visit XRPL Grants</a>
+            <a class="btn btn-primary btn-arrow-out" target="_blank" href="https://xrplgrants.org/">XRPL Grantsを見る</a>
         </div>
     </div>
 </section>
@@ -434,13 +446,13 @@
 
         <div class="order-1 order-lg-2 mb-4 pb-3 mb-lg-0 pb-lg-0 col-lg-6 px-0"  style="max-width: 520px;">
             <div class="d-flex flex-column-reverse p-lg-3">
-                <h3 class="h4 h2-sm">XRPL Accelerator</h3>
-                <h6 class="eyebrow mb-3">Advance your project</h6>
+                <h3 class="h4 h2-sm">XRPLアクセラレータ</h3>
+                <h6 class="eyebrow mb-3">プロジェクトの推進</h6>
             </div>
-            <p class="p-lg-3 mb-2 longform">12-week program for entrepreneurs building on the XRP Ledger to scale their projects into thriving businesses.</p>
+            <p class="p-lg-3 mb-2 longform">XRP Ledgerをベースにした起業家向けの12週間のプログラムで、プロジェクトを繁栄するビジネスへとスケールアップさせることができます。</p>
 
             <div class="d-none d-lg-block p-lg-3">
-                <a class="btn btn-primary btn-arrow" href="https://xrplaccelerator.org/">View XRPL Accelerator</a> 
+                <a class="btn btn-primary btn-arrow" href="https://xrplaccelerator.org/">XRPLアクセラレータを見る</a> 
             </div>
         </div>
 
@@ -451,23 +463,23 @@
                     <div class="px-lg-3 pb-3">
                         <img id="funding-01" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Best for</h6>
-                            <p>Start-ups building scalable products on XRPL that can capture a large market opportunity</p>
+                            <h6 class="mb-3">こんな方に最適</h6>
+                            <p>XRPL上でスケーラブルなプロダクトを構築し、大きな市場機会を獲得できるスタートアップ企業</p>
                         </div>
                     </div>
                     <!-- Hide on large -->
                     <div class="px-lg-3 pb-3 d-lg-none">
                         <img id="funding-02" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Required</h6>
-                            <p><span style="color: #7919FF;">&bull;</span> Strong founding team <br/> <span style="color: #7919FF;">&bull;</span> Bold, ambitious vision <br/> <span style="color: #7919FF;">&bull;</span> Ideally an MVP and monetization strategy</p>
+                            <h6 class="mb-3">必須要件</h6>
+                            <p><span style="color: #7919FF;">&bull;</span> 強力な創業チーム<br/> <span style="color: #7919FF;">&bull;</span> 大胆で野心的なビジョン<br/> <span style="color: #7919FF;">&bull;</span> 理想のMVPと収益化戦略</p>
                         </div>
                     </div>
                     <div class="px-lg-3 pb-3 pt-lg-5">
                         <img id="funding-03" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Level</h6>
-                            <p><span style="color: #7919FF;">&bull;</span> XRPL advanced developers <br/> <span style="color: #7919FF;">&bull;</span> Business acumen</p>
+                            <h6 class="mb-3">レベル</h6>
+                            <p><span style="color: #7919FF;">&bull;</span> XRPLの上級開発者 <br/> <span style="color: #7919FF;">&bull;</span> ビジネス能力</p>
                         </div>
                     </div>
 
@@ -475,8 +487,8 @@
                     <div class="px-lg-3 pb-3 d-lg-none">
                         <img id="funding-04" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Funding Levels</h6>
-                            <p>$50,000 (grant) + pitch for venture funding</p>
+                            <h6 class="mb-3">資金調達の規模</h6>
+                            <p>$50,000(助成金)＋ベンチャー資金へのピッチ</p>
                         </div>
                     </div>
                 </div>
@@ -488,16 +500,16 @@
                         <div class="pt-1 mt-3">
                             <img id="funding-02" src="data:," />
                             <div class="pt-3">
-                                <h6 class="mb-3">Required</h6>
-                            <p><span style="color: #7919FF;">&bull;</span> Strong founding team <br/> <span style="color: #7919FF;">&bull;</span> Bold, ambitious vision <br/> <span style="color: #7919FF;">&bull;</span> Ideally an MVP and monetization strategy</p>
+                                <h6 class="mb-3">必須要件</h6>
+                            <p><span style="color: #7919FF;">&bull;</span> 強力な創業チーム<br/> <span style="color: #7919FF;">&bull;</span> 大胆で野心的なビジョン<br/> <span style="color: #7919FF;">&bull;</span> 理想のMVPと収益化戦略</p>
                             </div>
                         </div>
                     </div>
                     <div class="px-lg-3 pb-3 pt-5">
                         <img id="funding-04" src="data:," />
                         <div class="pt-3">
-                            <h6 class="mb-3">Funding Levels</h6>
-                            <p>$50,000 (grant) + pitch for venture funding</p>
+                            <h6 class="mb-3">資金調達の規模</h6>
+                            <p>$50,000(助成金)＋ベンチャー資金へのピッチ</p>
                         </div>
                     </div>
                 </div>
@@ -505,102 +517,14 @@
             </div>
         </div>
         <div class="d-lg-none order-3 mt-4 pt-3">
-            <a class="btn btn-primary btn-arrow" href="https://xrplaccelerator.org/">View XRPL Accelerator</a> 
+            <a class="btn btn-primary btn-arrow" href="https://xrplaccelerator.org/">XRPLアクセラレータを見る</a> 
         </div>
     </div>
 </section>
 
 <div class="position-relative d-none-sm">
-    <img src="./img/backgrounds/funding-orange.svg" id="funding-orange">
+    <img alt="" src="./img/backgrounds/funding-orange.svg" id="funding-orange">
 </div>
-
-<section class="container-new py-26">
-    <div class="p-0 col-lg-6 mx-lg-auto" style="max-width: 520px;">
-        <div class="d-flex flex-column-reverse">
-            <h1 class="mb-0 h4">XRPL Bounties</h1>
-            <h6 class="eyebrow mb-3">Go Deep</h6>
-        </div>
-        <p class="mt-3 py-3 p-0 longform pb-4 mb-0">Bounties are awards for developing software and integrations that enable and improve specific use cases for the XRP Ledger.</p>
-
-        <div class="row m-0 funding-list pt-2 mt-2 pt-lg-2 mt-lg-5"> 
-            <!-- funding list -->
-            <div class="col-12 col-lg-6 p-0 pr-lg-4">
-                <div class="pb-3  mb-lg-5 funding-box">
-                    <img id="funding-01" src="data:," />
-                    <div class="pt-3">
-                        <h6 class="mb-3">Best for</h6>
-                        <p>Software developers and teams</p>
-                    </div>
-                </div>
-                <!-- Hide on large -->
-                <div class="pb-3 d-lg-none">
-                    <img id="funding-02" src="data:," />
-                    <div class="pt-3">
-                        <h6 class="mb-3">Required</h6>
-                        <p>Coding experience <span style="color: #7919FF;">&bull;</span> Specialized skills (depending on the bounty)</p>
-                    </div>
-                </div>
-                <div class="pb-3">
-                    <img id="funding-03" src="data:," />
-                    <div class="pt-3">
-                        <h6 class="mb-3">Level</h6>
-                        <p>Intermediate to advanced (prior XRPL experience not required)</p>
-                    </div>
-                </div>
-
-                <!-- Hide on large -->
-                <div class="px-lg-3 pb-3 d-lg-none">
-                    <img id="funding-04" src="data:," />
-                    <div class="pt-3">
-                        <h6 class="mb-3">Funding Levels</h6>
-                        <p>$500 - $100,000 per milestone</p>
-                    </div>
-                </div>
-            </div>
-            <!-- end col 1 -->
-
-            <!-- Show on large -->
-            <div class="col-12 col-lg-6 p-0 d-none d-lg-block">
-                <div class="px-lg-3 pb-3 mb-lg-5  funding-box">
-                    <img id="funding-02" src="data:," />
-                    <div class="pt-3">
-                        <h6 class="mb-3">Required</h6>
-                        <p>Intermediate to advanced (prior XRPL experience not required)</p>
-                    </div>
-                </div>
-
-                <div class="px-lg-3 pb-3">
-                    <img id="funding-04" src="data:," />
-                    <div class="pt-3">
-                        <h6 class="mb-3">Funding Levels</h6>
-                        <p>$500 - $100,000 per milestone</p>
-                    </div>
-                </div>
-            </div>
-            <!-- end col 2 -->
-        </div>
-        <div class="d-none d-lg-block py-lg-3">
-                <a class="btn btn-primary btn-arrow-out" target="_blank" href="https://xrplbounties.org/">Visit XRPL Bounties</a>
-        </div>
-    </div>
-</section>
-
-
-<section class="container-new">
-    <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-      <img src="./img/backgrounds/cta-funding-orange.svg" class="cta cta-bottom-right">
-      <div class="z-index-1 position-relative">
-        <div class="d-flex flex-column-reverse">
-          <h2 class="h4 h2-sm mb-10-until-sm mb-8-sm">Are you an independent creator?</h2>
-          <h6 class="eyebrow mb-3">Ripple’s Creator Fund</h6>
-        </div>
-        <p class="mb-10">If you’re a creator looking to mint NFTs on the XRP Ledger and do not have technical experience, check out Ripple’s Creator Fund.</p>
-        <a class="btn btn-primary btn-arrow-out" href="https://ripple.com/creatorfund/" target="_blank">もっと知る</a>
-      </div>
-    </div>
-</section>
-
-
       </main>
     </div><!--/.row (main layout)-->
   </div>
@@ -611,15 +535,14 @@
         <div class="col-lg">
           <h5>概要</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
+            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPLの概要</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
-            <li class="nav-item"><a href="/ja/history.html" class="nav-link">沿革</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
-            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="/ja/history.html" class="nav-link">歴史</a></li>
+            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRPの概要</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
             <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
-            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">プライバシーポリシー</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -627,22 +550,33 @@
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
-            <li class="nav-item"><a href="/ja/docs-index.html" class="nav-link">Documentation Index</a></li>
+            <li class="nav-item"><a href="/ja/introduction.html" class="nav-link">基本</a></li>
+            <li class="nav-item"><a href="/ja/use-cases.html" class="nav-link">ユースケース</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
-            <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/infrastructure.html" class="nav-link">インフラストラクチャ</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>リソース</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/resources.html" class="nav-link">リソース</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">コードへの貢献</a></li>
+            <li class="nav-item"><a href="/ja/contribute-documentation.html" class="nav-link">ドキュメントへの貢献</a></li>
           </ul>
         </div><!--/.col -->
 
         <div class="col-lg">
           <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
-            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">XRPLコミュニティへの貢献</a></li>
             <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
             <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
             <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
@@ -650,7 +584,8 @@
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
-            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPLブランドキット</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">詐欺の報告</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -661,7 +596,7 @@
     <div class="d-lg-flex row">
       <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
       <span class="flex-grow-1">&nbsp;</span>
-      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース。</a>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース</a>
       </div>
     </div><!-- /.absolute_bottom_footer -->
 
@@ -669,7 +604,7 @@
 </footer>
 
 <!-- Jump to top button -->
-<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="ページの先頭へ"><i class="fa fa-arrow-up"></i></a>
 <script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
 
 <!-- Non-blocking resources -->

@@ -33,7 +33,7 @@
     <meta name="color-scheme" content="dark light">
 
     <!-- jQuery -->
-    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/ja/assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     <script type="application/javascript">
@@ -49,11 +49,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v18.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -93,24 +93,23 @@
         <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
           <div class="navcol col-for-xrp-ledger">
             <h5 class="dropdown-item">XRP Ledger</h5>
-            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPLの概要</a>
             <a class="dropdown-item active" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
-            <a class="dropdown-item" href="/ja/history.html">沿革</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/history.html">歴史</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
-            <a class="dropdown-item" href="/ja/xrp-overview.html">XRP Overview</a>
+            <a class="dropdown-item" href="/ja/xrp-overview.html">XRPの概要</a>
           </div><!--./col-->
-          <div class="navcol col-for-sustainability">
-            <h5 class="dropdown-item">Sustainability</h5>
+          <div class="navcol col-for-持続可能性">
+            <h5 class="dropdown-item">持続可能性</h5>
             <a class="dropdown-item" href="/ja/impact.html">インパクト</a>
           </div><!--./col-->
-          <div class="navcol col-for-about">
-            <h5 class="dropdown-item">About</h5>
+          <div class="navcol col-for-概要">
+            <h5 class="dropdown-item">概要</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
             <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
-            <a class="dropdown-item" href="/ja/privacy-policy.html">Privacy Policy</a>
+            <a class="dropdown-item" href="/ja/privacy-policy.html">プライバシーポリシー</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -122,26 +121,20 @@
             <img id="top-nav-hero-docs" alt="ドキュメント icon" />
             <div class="dropdown-hero-text">
               <h4>ドキュメント</h4>
-              <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
+              <p>XRP Ledgerのテクノロジーに飛び込み、実装を始めましょう。</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="/ja/docs-index.html">Documentation Index</a>
-          </div><!--./col-->
-          <div class="navcol col-for-article-types">
-            <h5 class="dropdown-item">Article Types</h5>
+          <div class="navcol col-for-カテゴリ">
+            <h5 class="dropdown-item">カテゴリ</h5>
+            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
+            <a class="dropdown-item" href="/ja/use-cases.html">ユースケース</a>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
             <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
             <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
+            <a class="dropdown-item" href="/ja/infrastructure.html">インフラストラクチャ</a>
           </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
-            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
-          </div><!--./col-->
-          <div class="navcol col-for-get-started">
-            <h5 class="dropdown-item">Get Started</h5>
+          <div class="navcol col-for-始めましょう">
+            <h5 class="dropdown-item">始めましょう</h5>
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
@@ -153,12 +146,30 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-          </div><!--./col-->
-          <div class="navcol col-for-popular-pages">
-            <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
-            <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>リソース</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-開発">
+            <h5 class="dropdown-item">開発</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+          </div><!--./col-->
+          <div class="navcol col-for-現在のステータス">
+            <h5 class="dropdown-item">現在のステータス</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/known-amendments.html">既知のAmendment</a>
+          </div><!--./col-->
+          <div class="navcol col-for-参加する">
+            <h5 class="dropdown-item">参加する</h5>
+            <a class="dropdown-item" href="/ja/contribute-code.html">コードへの貢献</a>
+            <a class="dropdown-item" href="/ja/contribute-documentation.html">ドキュメントへの貢献</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -166,11 +177,11 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティ</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
-            <img id="top-nav-hero-contribute" alt="貢献する icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-xrplコミュニティへの貢献" href="/ja/contribute.html">
+            <img id="top-nav-hero-contribute" alt="XRPLコミュニティへの貢献 icon" />
             <div class="dropdown-hero-text">
-              <h4>貢献する</h4>
-              <p>話題に加わろう</p>
+              <h4>XRPLコミュニティへの貢献</h4>
+              <p>コミュニティに参加しましょう</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
@@ -181,7 +192,8 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
-            <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPLブランドキット</a>
+            <a class="dropdown-item" href="/ja/report-a-scam.html">詐欺の報告</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -242,23 +254,23 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <a class="btn cancel" data-dismiss="modal"><span class="chevron"><span></span><span></span></span> Cancel</a>
-        <a class="btn apply" data-dismiss="modal">Apply <span class="chevron"><span></span><span></span></span></a>
+        <a class="btn cancel" data-dismiss="modal"><span class="chevron"><span></span><span></span></span> キャンセル</a>
+        <a class="btn apply" data-dismiss="modal">応募 <span class="chevron"><span></span><span></span></span></a>
       </div>
       <div class="modal-body">
   <!--  -->
           <div class="p-3 page-events">
             <form >
-              <p class="category-header mb-4">Featured Categories <span id="featured_count_old" class="featured_count category_count">2</span></p>
+              <p class="category-header mb-4">注目のカテゴリ <span id="featured_count_old" class="featured_count category_count">2</span></p>
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_infrastructure" type="checkbox" name="categories" id="input_infrastructure" value="infrastructure" checked>
-                      <label class="font-weight-bold" for="input_infrastructure">Infrastructure</label>
+                      <label class="font-weight-bold" for="input_infrastructure">インフラストラクチャ</label>
                   </div>
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_developer_tooling" type="checkbox" name="categories" id="input_developer_tooling" value="developer_tooling" checked>
-                      <label class="font-weight-bold" for="input_developer_tooling">Developer Tooling</label>
+                      <label class="font-weight-bold" for="input_developer_tooling">開発者ツール</label>
                   </div>
-              <p class="category-header pt-5 mt-3 mb-4">Other Categories <span id="other_count_old" class="other_count category_count">0</span></p>    
+              <p class="category-header pt-5 mt-3 mb-4">他のカテゴリ <span id="other_count_old" class="other_count category_count">0</span></p>    
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_interoperability" type="checkbox" name="categories" id="input_interoperability" value="interoperability">
                       <label for="input_interoperability">Interoperability</label>
@@ -288,10 +300,6 @@
                       <label for="input_payments">Payments</label>
                   </div>
                   <div class="cat_checkbox category-checkbox pb-2">
-                      <input class="events-filter input_web_monetization" type="checkbox" name="categories" id="input_web_monetization" value="web_monetization">
-                      <label for="input_web_monetization">Web Monetization</label>
-                  </div>
-                  <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_sustainability" type="checkbox" name="categories" id="input_sustainability" value="sustainability">
                       <label for="input_sustainability">Sustainability</label>
                   </div>
@@ -303,21 +311,13 @@
                       <input class="events-filter input_custody" type="checkbox" name="categories" id="input_custody" value="custody">
                       <label for="input_custody">Custody</label>
                   </div>
-                  <div class="cat_checkbox category-checkbox pb-2">
-                      <input class="events-filter input_defi" type="checkbox" name="categories" id="input_defi" value="defi">
-                      <label for="input_defi">DeFi</label>
-                  </div>
-                  <div class="cat_checkbox category-checkbox pb-2">
-                      <input class="events-filter input_other" type="checkbox" name="categories" id="input_other" value="other">
-                      <label for="input_other">Other</label>
-                  </div>
             </form>
         </div>
   <!--  -->
        </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Apply</button>
-        <a class="btn " data-dismiss="modal">Cancel</a>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">応募</button>
+        <a class="btn " data-dismiss="modal">キャンセル</a>
       </div>
     </div>
   </div>
@@ -331,7 +331,7 @@
     <div class="p-3 col-lg-8 mx-lg-auto">
       <div class="d-flex flex-column-reverse">
         <h1 class="mb-0">Powering Innovative Use Cases and Projects.</h1>
-        <h6 class="eyebrow mb-3">XRPL Ecosystem</h6>
+        <h6 class="eyebrow mb-3">XRPLエコシステム</h6>
       </div>
     </div>
   </section>
@@ -364,28 +364,28 @@
     </div>
   </div>
 </li>
-<li class="col use-case-circle ls-none p-3 open-modal" data-id="developer_tooling" data-title="Developer Tooling" data-description="Developers can leverage open-source libraries, SDKs and more to help build their project and access essential XRP Ledger functionality." data-number="4" data-src="">
+<li class="col use-case-circle ls-none p-3 open-modal" data-id="developer_tooling" data-title="開発者ツール" data-description="Developers can leverage open-source libraries, SDKs and more to help build their project and access essential XRP Ledger functionality." data-number="4" data-src="">
   <div class="circle-content">
     <img class="circle-img" id=developer_tooling alt="use-logos">
-    <p class="circle-text">Developer Tooling</p>
+    <p class="circle-text">開発者ツール</p>
     <div class="pill-box">
       <span class="pill-number">4</span>
     </div>
   </div>
 </li>
-<li class="col use-case-circle ls-none p-3 open-modal" data-id="interoperability" data-title="Interoperability" data-description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at orci eget ligula cursus mollis quis a lacus." data-number="3" data-src="">
+<li class="col use-case-circle ls-none p-3 open-modal" data-id="interoperability" data-title="相互運用性" data-description="Developers and node operators can build and run custom sidechains while leveraging the XRPL’s lean and efficient feature set." data-number="3" data-src="">
   <div class="circle-content">
     <img class="circle-img" id=interoperability alt="use-logos">
-    <p class="circle-text">Interoperability</p>
+    <p class="circle-text">相互運用性</p>
     <div class="pill-box">
       <span class="pill-number">3</span>
     </div>
   </div>
 </li>
-<li class="col use-case-circle ls-none p-3 open-modal" data-id="wallet" data-title="Wallet" data-description="Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP." data-number="4" data-src="">
+<li class="col use-case-circle ls-none p-3 open-modal" data-id="wallet" data-title="ウォレット" data-description="Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP." data-number="4" data-src="">
   <div class="circle-content">
     <img class="circle-img" id=wallet alt="use-logos">
-    <p class="circle-text">Wallet</p>
+    <p class="circle-text">ウォレット</p>
     <div class="pill-box">
       <span class="pill-number">4</span>
     </div>
@@ -409,10 +409,10 @@
     </div>
   </div>
 </li>
-<li class="col use-case-circle ls-none p-3 open-modal" data-id="gaming" data-title="Gaming" data-description="The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability." data-number="5" data-src="">
+<li class="col use-case-circle ls-none p-3 open-modal" data-id="gaming" data-title="ゲーム" data-description="The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability." data-number="5" data-src="">
   <div class="circle-content">
     <img class="circle-img" id=gaming alt="use-logos">
-    <p class="circle-text">Gaming</p>
+    <p class="circle-text">ゲーム</p>
     <div class="pill-box">
       <span class="pill-number">5</span>
     </div>
@@ -427,10 +427,10 @@
     </div>
   </div>
 </li>
-<li class="col use-case-circle ls-none p-3 open-modal" data-id="payments" data-title="Payments" data-description="Leverage the efficiency and speed of the XRP Ledger to move value all over the globe." data-number="2" data-src="">
+<li class="col use-case-circle ls-none p-3 open-modal" data-id="payments" data-title="ペイメント" data-description="Leverage the efficiency and speed of the XRP Ledger to move value all over the globe." data-number="2" data-src="">
   <div class="circle-content">
     <img class="circle-img" id=payments alt="use-logos">
-    <p class="circle-text">Payments</p>
+    <p class="circle-text">ペイメント</p>
     <div class="pill-box">
       <span class="pill-number">2</span>
     </div>
@@ -445,21 +445,21 @@
     </div>
   </div>
 </li>
-<li class="col use-case-circle ls-none p-3 open-modal" data-id="carbon_markets" data-title="Carbon Markets" data-description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at orci eget ligula cursus mollis quis a lacus." data-number="2" data-src="">
+<li class="col use-case-circle ls-none p-3 open-modal" data-id="sustainability" data-title="持続可能性" data-description="Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs)." data-number="2" data-src="">
   <div class="circle-content">
-    <img class="circle-img" id=carbon_markets alt="use-logos">
-    <p class="circle-text">Carbon Markets</p>
+    <img class="circle-img" id=sustainability alt="use-logos">
+    <p class="circle-text">持続可能性</p>
     <div class="pill-box">
       <span class="pill-number">2</span>
     </div>
   </div>
 </li>
-<li class="col use-case-circle ls-none p-3 open-modal" data-id="other" data-title="Ethereum" data-description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at orci eget ligula cursus mollis quis a lacus." data-number="1" data-src="">
+<li class="col use-case-circle ls-none p-3 open-modal" data-id="custody" data-title="カストディ" data-description="Use the XRP Ledger to build crypto custody and securely hold, store and use your assets." data-number="2" data-src="">
   <div class="circle-content">
-    <img class="circle-img" id=other alt="use-logos">
-    <p class="circle-text">Ethereum</p>
+    <img class="circle-img" id=custody alt="use-logos">
+    <p class="circle-text">カストディ</p>
     <div class="pill-box">
-      <span class="pill-number">1</span>
+      <span class="pill-number">2</span>
     </div>
   </div>
 </li>
@@ -472,10 +472,10 @@
   <div class="modal-content-uses">
       <div class="arrows-container" id="arrows-container">
       <button class="arrow-button left-arrow" id="leftArrow">
-        <img src="assets/img/uses/left-arrow.png" alt="left arrow">
+        <img  alt="left arrow">
       </button>
       <button class="arrow-button right-arrow" id="rightArrow">
-        <img src="assets/img/uses/right-arrow.png" alt="right arrow">
+        <img  alt="right arrow">
       </button>
     </div>
 
@@ -492,7 +492,7 @@
       <hr class="section-separator">
     </div>
     <div class="content-section">
-      <p class="section-logos">Group of logos here...</p>
+      <div class="section-logos">Group of logos here...</div>
     </div>
   </div>
 </div>
@@ -502,7 +502,7 @@
   <div class="colorful-join-text-wrapper">
     <span class="colorful-join-text"> Join the XRPL Ecosystem and showcase your XRPL project, application, or product. Get featured on the Developer Reflections blog or Ecosystem page. </span>
         <div class="mt-10">
-          <a class="btn btn-primary btn-arrow" href="docs.html">Submit Your Project</a>
+          <a target="_blank" class="btn btn-primary btn-arrow" href="https://xrpl.typeform.com/dev-spotlight">Submit Your Project</a>
         </div>
   </div>
   </section>
@@ -510,14 +510,14 @@
   <section class="container-new py-26">
     <div class="col-12 col-lg-8 col-xl-6 p-3 mb-5">
       <div class="d-flex flex-column-reverse">
-        <h3 class="h4 h2-sm">Businesses and projects running<br class="until-sm"> on the XRP Ledger</h3>
+        <h3 class="h4 h2-sm">XRP Ledger上で活動するビジネスやプロジェクト</h3>
         <h6 class="eyebrow mb-3">さまざまな業界の実際の問題を解決しています</h6>
       </div>
-      <p class="mb-0 longform mt-8-until-sm mt-3 ">There are companies and developer projects around the world that leverage the XRP Ledger to solve interesting problems across a variety of industries and use cases.</p>
+      <p class="mb-0 longform mt-8-until-sm mt-3 ">XRP Ledgerは、開発を加速させ、市場投入までの時間を最短にする意図的なイノベーション、ツール、ドキュメントによって、幅広い業界やユースケースにおけるソリューションの構築に利用されています。</p>
     </div>
 
     <a class="btn  d-block d-lg-none" data-toggle="modal" data-target="#categoryFilterModal">
-      <span class="mr-3"><img src="./assets/img/uses/usecase-filter.svg" class=""></span>Filter by Categories<span class="ml-3 total_count category_count">2</span>
+      <span class="mr-3"><img src="./assets/img/uses/usecase-filter.svg" alt="Filter button"></span>カテゴリでフィルタ<span class="ml-3 total_count category_count">2</span>
     </a>
 
 <!-- Start company cards -->
@@ -527,17 +527,17 @@
 <!-- Side bar Desktop.  -->
         <div class="p-3 category_sidebar">
             <form >
-              <p class="category-header mb-4">Featured Categories <span id="featured_count_old" class="featured_count category_count">2</span></p>
+              <p class="category-header mb-4">注目のカテゴリ <span id="featured_count_old" class="featured_count category_count">2</span></p>
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_infrastructure" type="checkbox" name="categories" id="input_infrastructure" value="infrastructure" checked>
-                      <label class="font-weight-bold" for="input_infrastructure">Infrastructure</label>
+                      <label class="font-weight-bold" for="input_infrastructure">インフラストラクチャ</label>
                   </div>
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_developer_tooling" type="checkbox" name="categories" id="input_developer_tooling" value="developer_tooling" checked>
-                      <label class="font-weight-bold" for="input_developer_tooling">Developer Tooling</label>
+                      <label class="font-weight-bold" for="input_developer_tooling">開発者ツール</label>
                   </div>
   
-              <p class="category-header pt-5 mt-3 mb-4">Other Categories <span id="other_count_old" class="other_count category_count">0</span></p>    
+              <p class="category-header pt-5 mt-3 mb-4">他のカテゴリ <span id="other_count_old" class="other_count category_count">0</span></p>    
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_interoperability" type="checkbox" name="categories" id="input_interoperability" value="interoperability">
                       <label for="input_interoperability">Interoperability</label>
@@ -567,10 +567,6 @@
                       <label for="input_payments">Payments</label>
                   </div>
                   <div class="cat_checkbox category-checkbox pb-2">
-                      <input class="events-filter input_web_monetization" type="checkbox" name="categories" id="input_web_monetization" value="web_monetization">
-                      <label for="input_web_monetization">Web Monetization</label>
-                  </div>
-                  <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_sustainability" type="checkbox" name="categories" id="input_sustainability" value="sustainability">
                       <label for="input_sustainability">Sustainability</label>
                   </div>
@@ -581,14 +577,6 @@
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_custody" type="checkbox" name="categories" id="input_custody" value="custody">
                       <label for="input_custody">Custody</label>
-                  </div>
-                  <div class="cat_checkbox category-checkbox pb-2">
-                      <input class="events-filter input_defi" type="checkbox" name="categories" id="input_defi" value="defi">
-                      <label for="input_defi">DeFi</label>
-                  </div>
-                  <div class="cat_checkbox category-checkbox pb-2">
-                      <input class="events-filter input_other" type="checkbox" name="categories" id="input_other" value="other">
-                      <label for="input_other">Other</label>
                   </div>
             </form>
         </div>
@@ -605,8 +593,8 @@
               <img class="mw-100 biz-logo" alt="Aesthetes">
             </span>
             <h4 class="card-title h6">Aesthetes</h4>
-            <p class="card-text">Aesthetes is a bridge between fine art and blockchain, enabling everyone, around the world, to buy and sell with just a click for fractional ownership of international physical art.</p>
-            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+            <p class="card-text">Aesthetesは、美術品とブロックチェーンの架け橋となり、世界中の誰もが、国際的な物理的アートの小口所有権を、クリックだけで売買できるようにします。</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFT</span></div>
           </div>
         </a>
         <a class="card-uses category_security" href="https://anchain.ai" target="_blank" id="anchain-ai">
@@ -615,8 +603,8 @@
               <img class="mw-100 biz-logo" alt="Anchain.AI">
             </span>
             <h4 class="card-title h6">Anchain.AI</h4>
-            <p class="card-text">AnChain.AI offers AI-powered intelligence enhancing blockchain security, risk, and compliance strategies.</p>
-            <div class="align-self-end"><span class="label label-use-security">Security</span></div>
+            <p class="card-text">AnChain.AIは、ブロックチェーンのセキュリティ、リスク、コンプライアンス戦略を強化するAIの力を借りた情報を提供します。</p>
+            <div class="align-self-end"><span class="label label-use-security">セキュリティ</span></div>
           </div>
         </a>
         <a class="card-uses category_nfts" href="https://www.audiotarky.com/" target="_blank" id="audiotarky">
@@ -625,8 +613,8 @@
               <img class="mw-100 biz-logo" alt="Audiotarky">
             </span>
             <h4 class="card-title h6">Audiotarky</h4>
-            <p class="card-text">Audiotarky is a new music streaming platform that prioritises artists and privacy over algorithms and shareholders.</p>
-            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+            <p class="card-text">Audiotarkyは、アルゴリズムや株主よりも、アーティストやプライバシーを優先する新しい音楽ストリーミング・プラットフォームです。</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFT</span></div>
           </div>
         </a>
         <a class="card-uses category_custody" href="https://www.bitgo.com/" target="_blank" id="bitgo">
@@ -636,6 +624,16 @@
             </span>
             <h4 class="card-title h6">BitGo</h4>
             <p class="card-text">BitGoは、XRPなどのデジタルアセット向けのカストディ型および非カストディ型アセット保有サービスを提供しています。BitGoのエンタープライズレベルのセキュリティを活用して、さまざまな企業がXRPなどのデジタル通貨を新規や既存の金融システムに統合しています。</p>
+            <div class="align-self-end"><span class="label label-use-custody">カストディ</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_custody" href="https://gatehub.net/markets" target="_blank" id="gatehub">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Gatehub">
+            </span>
+            <h4 class="card-title h6">Gatehub</h4>
+            <p class="card-text">Gatehub XRP Ledger Marketsは、XRP Ledger上のGatehubのインサンスを追跡するためのエクスプローラです。</p>
             <div class="align-self-end"><span class="label label-use-custody">Custody</span></div>
           </div>
         </a>
@@ -645,8 +643,8 @@
               <img class="mw-100 biz-logo" alt="Bithomp">
             </span>
             <h4 class="card-title h6">Bithomp</h4>
-            <p class="card-text">Bithomp is an XRPL explorer and toolkit, used by many cryptocurrency exchanges. Bithomp was launched in 2015 with a mission to build the most user-friendly XRPL explorer.</p>
-            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+            <p class="card-text">Bithompは、多くの暗号通貨取引所で使用されているXRPLエクスプローラーおよびツールキットです。Bithompは、最もユーザーフレンドリーなXRPLエクスプローラーを構築することをミッションに、2015年に立ち上げられました。</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">インフラストラクチャ</span></div>
           </div>
         </a>
         <a class="card-uses category_payments" href="https://bitpay.com/" target="_blank" id="bitpay">
@@ -656,7 +654,7 @@
             </span>
             <h4 class="card-title h6">bitpay</h4>
             <p class="card-text">BitPayは、XRPなどの暗号資産の受け入れや支払いが可能になる、強力なエンタープライズグレードのツールを構築しています。</p>
-            <div class="align-self-end"><span class="label label-use-payments">Payments</span></div>
+            <div class="align-self-end"><span class="label label-use-payments">ペイメント</span></div>
           </div>
         </a>
         <a class="card-uses category_sustainability" href="https://www.carbonlandtrust.com/" target="_blank" id="carbonland-trust">
@@ -665,8 +663,8 @@
               <img class="mw-100 biz-logo" alt="Carbonland Trust">
             </span>
             <h4 class="card-title h6">Carbonland Trust</h4>
-            <p class="card-text">Carbonland Trust offers transparent nature-based carbon credits, and inclusive access to voluntary carbon markets for landowners and corporations alike. </p>
-            <div class="align-self-end"><span class="label label-use-sustainability">Carbon Markets/Sustainability</span></div>
+            <p class="card-text">Carbonland Trustは、透明性の高い自然由来の炭素クレジットを提供し、土地所有者や企業を問わず、自主的な炭素市場への包括的なアクセスを可能にします。</p>
+            <div class="align-self-end"><span class="label label-use-sustainability">持続可能性</span></div>
           </div>
         </a>
         <a class="card-uses category_developer_tooling" href="https://blockforce.in/products/cryptum" target="_blank" id="cryptum">
@@ -675,8 +673,8 @@
               <img class="mw-100 biz-logo" alt="Cryptum">
             </span>
             <h4 class="card-title h6">Cryptum</h4>
-            <p class="card-text">Cryptum is an API/SDK platform for integrating the XRP Ledger with any application.</p>
-            <div class="align-self-end"><span class="label label-use-developer_tooling">Developer Tooling</span></div>
+            <p class="card-text">Cryptumは、XRP Ledgerをあらゆるアプリケーションと統合するためのAPI/SDKプラットフォームです。</p>
+            <div class="align-self-end"><span class="label label-use-developer_tooling">開発者ツール</span></div>
           </div>
         </a>
         <a class="card-uses category_developer_tooling" href="https://evernode.wordpress.com/" target="_blank" id="evernode">
@@ -685,8 +683,8 @@
               <img class="mw-100 biz-logo" alt="Evernode">
             </span>
             <h4 class="card-title h6">Evernode</h4>
-            <p class="card-text">Evernode proposes a permissionless, flexible, scalable Layer 2 smart contract network built from the XRP Ledger.</p>
-            <div class="align-self-end"><span class="label label-use-developer_tooling">Developer Tooling</span></div>
+            <p class="card-text">Evernodeは、XRP Ledgerで構築された、パーミッションレスで柔軟かつスケーラブルなレイヤー2スマートコントラクトネットワークを提供しています。</p>
+            <div class="align-self-end"><span class="label label-use-developer_tooling">開発者ツール</span></div>
           </div>
         </a>
         <a class="card-uses category_gaming" href="https://www.forte.io/" target="_blank" id="forte">
@@ -696,7 +694,7 @@
             </span>
             <h4 class="card-title h6">Forte</h4>
             <p class="card-text">Forteはゲーム開発者向けに、ゲームにブロックチェーン技術を組み込むことができる、今までになかったような使いやすいツールとサービスを提供しています。これらを活用することで、世界中のゲーマーに新たな収益化と創造の機会をもたらすことができます。</p>
-            <div class="align-self-end"><span class="label label-use-gaming">Gaming</span></div>
+            <div class="align-self-end"><span class="label label-use-gaming">ゲーム</span></div>
           </div>
         </a>
         <a class="card-uses category_infrastructure" href="https://gatehub.net/markets" target="_blank" id="gatehub">
@@ -705,8 +703,8 @@
               <img class="mw-100 biz-logo" alt="Gatehub">
             </span>
             <h4 class="card-title h6">Gatehub</h4>
-            <p class="card-text">Gatehub XRP Ledger Markets is an explorer to track Gatehub's inssuances on the XRP Ledger.</p>
-            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+            <p class="card-text">Gatehub XRP Ledger Marketsは、XRP Ledger上のGatehubのインサンスを追跡するためのエクスプローラです。</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">インフラストラクチャ</span></div>
           </div>
         </a>
         <a class="card-uses category_wallet" href="https://gemwallet.app/" target="_blank" id="gem-wallet">
@@ -715,8 +713,8 @@
               <img class="mw-100 biz-logo" alt="Gem Wallet">
             </span>
             <h4 class="card-title h6">Gem Wallet</h4>
-            <p class="card-text">GemWallet is a web extension that enables users to make fast payments on the XRP Ledger via a browser. It's a safer alternative to copying and pasting private keys for use with web applications.</p>
-            <div class="align-self-end"><span class="label label-use-wallet">Wallet</span></div>
+            <p class="card-text">GemWalletは、XRP Ledger上でブラウザから高速決済を可能にするウェブ拡張機能です。ウェブアプリケーションで使用するための秘密鍵のコピー＆ペーストに代わる、より安全な方法です。</p>
+            <div class="align-self-end"><span class="label label-use-wallet">ウォレット</span></div>
           </div>
         </a>
         <a class="card-uses category_gaming" href="https://ledgercitygame.com/" target="_blank" id="ledger-city">
@@ -725,8 +723,8 @@
               <img class="mw-100 biz-logo" alt="Ledger City">
             </span>
             <h4 class="card-title h6">Ledger City</h4>
-            <p class="card-text">Ledger City is a crypto real estate game powered by the XRP Ledger.</p>
-            <div class="align-self-end"><span class="label label-use-gaming">Gaming</span></div>
+            <p class="card-text">Ledger Cityは、XRP Ledgerを利用した暗号不動産ゲームです。</p>
+            <div class="align-self-end"><span class="label label-use-gaming">ゲーム</span></div>
           </div>
         </a>
         <a class="card-uses category_interoperability" href="https://multichain.org/" target="_blank" id="multichain">
@@ -735,8 +733,8 @@
               <img class="mw-100 biz-logo" alt="Multichain">
             </span>
             <h4 class="card-title h6">Multichain</h4>
-            <p class="card-text">Multichain is the ultimate Router for web3. It is an infrastructure developed for arbitrary cross-chain interactions.</p>
-            <div class="align-self-end"><span class="label label-use-interoperability">Interoperability</span></div>
+            <p class="card-text">Multichainはweb3の究極のRouterであり、任意のクロスチェーンインタラクションのために開発されたインフラです。</p>
+            <div class="align-self-end"><span class="label label-use-interoperability">相互運用性</span></div>
           </div>
         </a>
         <a class="card-uses category_nfts" href="https://nftmaster.com/" target="_blank" id="nft-master">
@@ -745,8 +743,8 @@
               <img class="mw-100 biz-logo" alt="NFT Master">
             </span>
             <h4 class="card-title h6">NFT Master</h4>
-            <p class="card-text">NFT Master is an NFT marketplace where creators can buy, mint and sell NFTs.</p>
-            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+            <p class="card-text">NFT Masterは、クリエイターがNFTを購入、ミント、販売することができるNFTマーケットプレイスです。</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFT</span></div>
           </div>
         </a>
         <a class="card-uses category_infrastructure" href="https://onthedex.live/" target="_blank" id="onthedex">
@@ -755,8 +753,8 @@
               <img class="mw-100 biz-logo" alt="OnTheDex">
             </span>
             <h4 class="card-title h6">OnTheDex</h4>
-            <p class="card-text">OnTheDex is a quality source of information for aggregator sites to take live feeds of XRPL token activity.</p>
-            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+            <p class="card-text">OnTheDexは、XRPLトークンの活動のライブフィードを取るためのアグリゲーターサイトのための質の高い情報源です。</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">インフラストラクチャ</span></div>
           </div>
         </a>
         <a class="card-uses category_nfts" href="https://onxrp.com/about/" target="_blank" id="onxrp">
@@ -765,8 +763,8 @@
               <img class="mw-100 biz-logo" alt="onXRP">
             </span>
             <h4 class="card-title h6">onXRP</h4>
-            <p class="card-text">onXRP is an NFT marketplace where creators can buy, mint and sell NFTs built by the XPUNKs.</p>
-            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+            <p class="card-text">onXRPは、クリエイターがXPUNKで構築したNFTを購入、造幣、販売することができるNFTマーケットプレイスです。</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFT</span></div>
           </div>
         </a>
         <a class="card-uses category_nfts" href="https://peerkat.io/" target="_blank" id="peerkat">
@@ -775,28 +773,48 @@
               <img class="mw-100 biz-logo" alt="Peerkat">
             </span>
             <h4 class="card-title h6">Peerkat</h4>
-            <p class="card-text">Peerkat is an NFT services and tooling provider for the XRPL community.</p>
-            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+            <p class="card-text">Peerkatは、XRPLコミュニティのためのNFTサービスおよびツールプロバイダーです。</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFT</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_wallet" href="https://github.com/crossmarkio" target="_blank" id="Crossmark">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Crossmark">
+            </span>
+            <h4 class="card-title h6">Crossmark</h4>
+            <p class="card-text">Crossmark is a browser extension wallet built for interacting with the XRP Ledger.</p>
+            <div class="align-self-end"><span class="label label-use-wallet">Wallet</span></div>
+          </div>
+        </a>
+        <a class="card-uses category_wallet" href="https://edge.app/ripple-wallet/" target="_blank" id="Edge">
+          <div class="card-body row">
+            <span class="w-100 mb-3 pb-3">
+              <img class="mw-100 biz-logo" alt="Edge">
+            </span>
+            <h4 class="card-title h6">Edge</h4>
+            <p class="card-text">Edge is a secure, easy, and private way to use, store, trade, and exchange crypto assets. Edge ensures sure you’re always in control of your money and information while also providing the tools necessary to protect yourself from others and your own mistakes. Edge has rich functionality, a battle-tested security architecture, and the industry’s best customer support.</p>
+            <div class="align-self-end"><span class="label label-use-wallet">Wallet</span></div>
           </div>
         </a>
         <a class="card-uses category_cbdcs" href="https://ripple.com/solutions/central-bank-digital-currency/" target="_blank" id="ripples-cbdc-platform">
           <div class="card-body row">
             <span class="w-100 mb-3 pb-3">
-              <img class="mw-100 biz-logo" alt="Ripple's CBDC Platform">
+              <img class="mw-100 biz-logo" alt="Ripple社のCBDC Platform"">
             </span>
-            <h4 class="card-title h6">Ripple's CBDC Platform</h4>
-            <p class="card-text">Ripple's Central Bank Digital Currency (CBDC) solution enables banks to mint, manage, transact and redeem currency to easily manage the full CBDC lifecycle. Each solution is built on a private ledger that is based upon XRP Ledger technology.</p>
+            <h4 class="card-title h6">Ripple社のCBDC Platform"</h4>
+            <p class="card-text">Rippleの中央銀行デジタル通貨（CBDC）ソリューションは、銀行が通貨の造幣、管理、トランザクション、償還を行い、CBDCの全ライフサイクルを容易に管理することができます。各ソリューションは、XRP Ledger技術に基づくプライベートな台帳の上に構築されています。</p>
             <div class="align-self-end"><span class="label label-use-cbdcs">CBDC</span></div>
           </div>
         </a>
         <a class="card-uses category_payments" href="https://ripple.com/" target="_blank" id="ripples-on-demand-liquidity">
           <div class="card-body row">
             <span class="w-100 mb-3 pb-3">
-              <img class="mw-100 biz-logo" alt="Ripple's On-Demand Liquidity">
+              <img class="mw-100 biz-logo" alt="Ripple社のOn-Demand Liquidity">
             </span>
-            <h4 class="card-title h6">Ripple's On-Demand Liquidity</h4>
-            <p class="card-text">Ripple powers real-time, low-cost cross-border payment settlement  by using XRP as a bridge currency between two fiat currencies.</p>
-            <div class="align-self-end"><span class="label label-use-payments">Payments</span></div>
+            <h4 class="card-title h6">Ripple社のOn-Demand Liquidity</h4>
+            <p class="card-text">Rippleは、XRP を 2 つのフィアット通貨間のブリッジ通貨として使用することで、リアルタイムかつ低コストの国境を越えた決済を実現します。</p>
+            <div class="align-self-end"><span class="label label-use-payments">ペイメント</span></div>
           </div>
         </a>
         <a class="card-uses category_exchanges" href="https://sologenic.org/" target="_blank" id="sologenic-dex">
@@ -805,8 +823,8 @@
               <img class="mw-100 biz-logo" alt="Sologenic DEX">
             </span>
             <h4 class="card-title h6">Sologenic DEX</h4>
-            <p class="card-text">Sologenic DEX is a popular decentralized exchange on the XRP Ledger made by Sologenic.</p>
-            <div class="align-self-end"><span class="label label-use-exchanges">Exchanges</span></div>
+            <p class="card-text">Sologenic DEXは、Sologenic社製のXRP Ledger上の人気の分散型取引所です。</p>
+            <div class="align-self-end"><span class="label label-use-exchanges">取引所</span></div>
           </div>
         </a>
         <a class="card-uses category_nfts" href="https://sologenic.org/nfts/marketplace?network=mainnet" target="_blank" id="sologenic-nft">
@@ -815,8 +833,8 @@
               <img class="mw-100 biz-logo" alt="Sologenic NFT">
             </span>
             <h4 class="card-title h6">Sologenic NFT</h4>
-            <p class="card-text">Sologenic NFT is an NFT marketplace designed by Sologenic.</p>
-            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+            <p class="card-text">Sologenic NFTは、Sologenicが設計したNFTマーケットプレイスです。</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFT</span></div>
           </div>
         </a>
         <a class="card-uses category_infrastructure" href="https://towolabs.com/" target="_blank" id="towo-labs">
@@ -826,7 +844,7 @@
             </span>
             <h4 class="card-title h6">Towo Labs</h4>
             <p class="card-text">Towo Labsは2019年に設立された会社です。XRP LedgerおよびInterledgerのインフラストラクチャの開発を手がけ、より簡単な非カストディ型暗号資産管理を実現するために取り組んでいます。</p>
-            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+            <div class="align-self-end"><span class="label label-use-infrastructure">インフラストラクチャ</span></div>
           </div>
         </a>
         <a class="card-uses category_developer_tooling" href="https://x-tokenize.com/" target="_blank" id="x-tokenize">
@@ -835,8 +853,8 @@
               <img class="mw-100 biz-logo" alt="X-tokenize">
             </span>
             <h4 class="card-title h6">X-tokenize</h4>
-            <p class="card-text">X-Tokenize is a command line tool to simplify the process of creating, managing and distributing issued currencies and eventually NFTs on the XRPL.</p>
-            <div class="align-self-end"><span class="label label-use-developer_tooling">Developer Tooling</span></div>
+            <p class="card-text">X-Tokenizeは、XRPL上で発行通貨、ひいてはNFTを作成、管理、配布するプロセスを簡素化するコマンドラインツールです。</p>
+            <div class="align-self-end"><span class="label label-use-developer_tooling">開発者ツール</span></div>
           </div>
         </a>
         <a class="card-uses category_exchanges" href="https://xpmarket.com/" target="_blank" id="xp-market">
@@ -845,8 +863,8 @@
               <img class="mw-100 biz-logo" alt="XP Market">
             </span>
             <h4 class="card-title h6">XP Market</h4>
-            <p class="card-text">XP Market is a price-tracking website for cryptoassets on the XRPL coupled with a decentralized exchange.</p>
-            <div class="align-self-end"><span class="label label-use-exchanges">Exchanges</span></div>
+            <p class="card-text">XP Marketは、分散型取引所と結合したXRPL上の暗号資産の価格追跡サイトです。</p>
+            <div class="align-self-end"><span class="label label-use-exchanges">取引所</span></div>
           </div>
         </a>
         <a class="card-uses category_nfts" href="https://xrp.cafe/" target="_blank" id="xrp-cafe">
@@ -855,8 +873,8 @@
               <img class="mw-100 biz-logo" alt="XRP Cafe">
             </span>
             <h4 class="card-title h6">XRP Cafe</h4>
-            <p class="card-text">XRP Cafe is an NFT marketplace built by the community that aims to be the easiest way to build, sell and mint NFTs.</p>
-            <div class="align-self-end"><span class="label label-use-nfts">NFTs</span></div>
+            <p class="card-text">XRP Cafeは、NFTを構築、販売、ミントする最も簡単な方法を目指して、コミュニティによって構築されたNFTマーケットプレイスです。</p>
+            <div class="align-self-end"><span class="label label-use-nfts">NFT</span></div>
           </div>
         </a>
         <a class="card-uses category_infrastructure" href="https://www.xrptoolkit.com/" target="_blank" id="xrp-toolkit">
@@ -865,8 +883,8 @@
               <img class="mw-100 biz-logo" alt="XRP Toolkit">
             </span>
             <h4 class="card-title h6">XRP Toolkit</h4>
-            <p class="card-text">XRP Toolkit is a platform for managing crypto assets and trading on the XRP Ledger's decentralized exchange.</p>
-            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+            <p class="card-text">XRP Toolkitは、暗号資産を管理し、XRP Ledgerの分散型取引所で取引するためのプラットフォームです。</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">インフラストラクチャ</span></div>
           </div>
         </a>
         <a class="card-uses category_infrastructure" href="https://threexrp.dev/" target="_blank" id="xrpl-rosetta">
@@ -875,8 +893,8 @@
               <img class="mw-100 biz-logo" alt="XRPL Rosetta">
             </span>
             <h4 class="card-title h6">XRPL Rosetta</h4>
-            <p class="card-text">XRPL Rosetta explores fiat data on XRPL through visualization.</p>
-            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+            <p class="card-text">XRPL Rosettaは、XRPL上のフィアットデータを可視化することで素晴らしさを追求します。</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">インフラストラクチャ</span></div>
           </div>
         </a>
         <a class="card-uses category_infrastructure" href="https://livenet.xrpl.org/" target="_blank" id="xrpl-org-ledger-explorer">
@@ -885,8 +903,8 @@
               <img class="mw-100 biz-logo" alt="XRPL.org Ledger Explorer">
             </span>
             <h4 class="card-title h6">XRPL.org Ledger Explorer</h4>
-            <p class="card-text">XRPL.org's Ledger Explorer is a block explorer of the XRP Ledger.</p>
-            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+            <p class="card-text">XRPL.orgのLedger Explorerは、XRP Ledgerのブロックエクスプローラーです。</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">インフラストラクチャ</span></div>
           </div>
         </a>
         <a class="card-uses category_infrastructure" href="https://xrpscan.com/" target="_blank" id="xrpscan">
@@ -895,8 +913,8 @@
               <img class="mw-100 biz-logo" alt="XRPScan">
             </span>
             <h4 class="card-title h6">XRPScan</h4>
-            <p class="card-text">XRPSCAN is an explorer and analytics platform for the XRP Ledger. We provide a clean and simple way to look up accounts, ledgers and transactions.</p>
-            <div class="align-self-end"><span class="label label-use-infrastructure">Infrastructure</span></div>
+            <p class="card-text">XRPSCANは、XRP Ledgerのためのエクスプローラおよび分析プラットフォームです。アカウント、台帳、トランザクションを調べるためのクリーンでシンプルな方法を提供します。</p>
+            <div class="align-self-end"><span class="label label-use-infrastructure">インフラストラクチャ</span></div>
           </div>
         </a>
         <a class="card-uses category_wallet" href="https://xumm.app/#team" target="_blank" id="xumm-wallet">
@@ -905,18 +923,8 @@
               <img class="mw-100 biz-logo" alt="Xumm Wallet">
             </span>
             <h4 class="card-title h6">Xumm Wallet</h4>
-            <p class="card-text">Xumm Wallet is a non custodial wallet with superpower for the XRP Ledger.</p>
-            <div class="align-self-end"><span class="label label-use-wallet">Wallet</span></div>
-          </div>
-        </a>
-        <a class="card-uses category_other" href="https://casinocoin.im/" target="_blank" id="casino-coin">
-          <div class="card-body row">
-            <span class="w-100 mb-3 pb-3">
-              <img class="mw-100 biz-logo" alt="Casino Coin">
-            </span>
-            <h4 class="card-title h6">Casino Coin</h4>
-            <p class="card-text">CasinoCoin (CSC) is a digital currency developed specifically for the regulated gaming industry.</p>
-            <div class="align-self-end"><span class="label label-use-other">Other</span></div>
+            <p class="card-text">Xumm Walletは、XRP Ledgerのための最高能力を備えた非カストディアルウォレットです。</p>
+            <div class="align-self-end"><span class="label label-use-wallet">ウォレット</span></div>
           </div>
         </a>
 
@@ -939,15 +947,14 @@
         <div class="col-lg">
           <h5>概要</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
+            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPLの概要</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
-            <li class="nav-item"><a href="/ja/history.html" class="nav-link">沿革</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
-            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="/ja/history.html" class="nav-link">歴史</a></li>
+            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRPの概要</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
             <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
-            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">プライバシーポリシー</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -955,22 +962,33 @@
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
-            <li class="nav-item"><a href="/ja/docs-index.html" class="nav-link">Documentation Index</a></li>
+            <li class="nav-item"><a href="/ja/introduction.html" class="nav-link">基本</a></li>
+            <li class="nav-item"><a href="/ja/use-cases.html" class="nav-link">ユースケース</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
-            <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/infrastructure.html" class="nav-link">インフラストラクチャ</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>リソース</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/resources.html" class="nav-link">リソース</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">コードへの貢献</a></li>
+            <li class="nav-item"><a href="/ja/contribute-documentation.html" class="nav-link">ドキュメントへの貢献</a></li>
           </ul>
         </div><!--/.col -->
 
         <div class="col-lg">
           <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
-            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">XRPLコミュニティへの貢献</a></li>
             <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
             <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
             <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
@@ -978,7 +996,8 @@
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
-            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPLブランドキット</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">詐欺の報告</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -989,7 +1008,7 @@
     <div class="d-lg-flex row">
       <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
       <span class="flex-grow-1">&nbsp;</span>
-      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース。</a>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース</a>
       </div>
     </div><!-- /.absolute_bottom_footer -->
 
@@ -997,7 +1016,7 @@
 </footer>
 
 <!-- Jump to top button -->
-<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="ページの先頭へ"><i class="fa fa-arrow-up"></i></a>
 <script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
 
 <!-- Non-blocking resources -->

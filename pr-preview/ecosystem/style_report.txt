@@ -1,12 +1,66 @@
 -------------
 Spell Checker
 -------------
-Found 44 possible spelling errors:
+Found 307 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gibs, gigs, gies
-  ringtee: 
+  gifs: gigs, gies, gis
   kuressaare: 
+  ringtee: 
   lõõtsa: 
+
+<Page 'What is the XRP Ledger?' (what-is-the-xrp-ledger.html)> Unknown Words:
+  livenet: livened, livener
+
+<Page 'What is XRP?' (what-is-xrp.html)> Unknown Words:
+  opencoin: 
+  mittetulundusühing: 
+
+<Page 'Crypto Wallets' (crypto-wallets.html)> Unknown Words:
+  opensource: 
+
+<Page 'Transactions and Requests' (txn-and-requests.html)> Unknown Words:
+  transactiontype: 
+  rf1bigexwwqoi8z2uefytexswujyfv2jpn: 
+  ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
+
+<Page 'Peer-to-Peer Payments' (peer-to-peer-payments-uc.html)> Unknown Words:
+  requiremen: requirement
+
+<Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Unknown Words:
+  xapps: apps, lapps, capps
+
+<Page 'NFT Marketplace Overview' (nft-mkt-overview.html)> Unknown Words:
+  arweave: 
+  infura: infula, infra
+
+<Page 'Authorized Minter' (authorized-minter.html)> Unknown Words:
+  tokentaxon: 
+
+<Page 'Algorithmic Trading' (algorithmic-trading.html)> Unknown Words:
+  investopedia: 
+  arbitraging: arbitrating
+  unprecented: unpresented, unprevented
+  clob: clos, cloy, colb
+  30d: 3rd, 3d, 3-d
+  frontrunning: 
+
+<Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
+  0b0: 
+  v3: t3, l3, ve
+
+<Page 'Amendments' (amendments.html)> Unknown Words:
+  11d: 
+
+<Page 'Invariant Checking' (invariant-checking.html)> Unknown Words:
+  validnftokenpage: 
+  nftokencounttracking: 
+
+<Page 'Finality of Results' (finality-of-results.html)> Unknown Words:
+  ooffers: goffers, doffers, coffers
+
+<Page 'NFT Payload Storage' (nft-storage.html)> Unknown Words:
+  arweave: 
+  webserver: 
 
 <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)> Unknown Words:
   24n: 
@@ -27,52 +81,259 @@ Found 44 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slav, slats, sas
+  slas: slaps, slaw, slar
 
-<Page 'Amendments' (amendments.html)> Unknown Words:
-  11d: 
+<Page 'Clawing Back Tokens' (clawing-back-tokens.html)> Unknown Words:
+  rsa2lpzuawewsbqxkiju3yqtmzw13paadw: 
+  rp6abvbtbjoce8zdjkt6snvxtzsymbcc9s: 
 
-<Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)> Unknown Words:
-  xlsd: lsd, xls
-
-<Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  fixuniversalnumber: 
-  immediateofferkilled: 
-  xrpfees: 
-  disallowincoming: 
-  depositpreauthamendment: 
-  fixnonfungibletokensv1_2: 
-  nftokenoffers: nftokenoffer
-  asfdisallowincomingcheck: 
-  asfdisallowincomingnftoffer: 
-  asfdisallowincomingpaychan: 
-  asfdisallowincomingtrustline: 
-  30d: 3-d, 3d, 3rd
-
-<Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  0b0: 
+<Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
+  stablefoo: 
+  unbalances: unbalance, unbalanced
+  machowski: 
+  ammdelete: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
+  v3: t3, l3, ve
+  30d: 3rd, 3d, 3-d
+
+<Page 'Create Accounts and Send XRP Using Python' (py-create-accounts-send-xrp.html)> Unknown Words:
+  mod1: modo, mods, mody
+  testnet_url: 
+  rippletest: 
+  get_account_info: 
+  send_xrp: 
+  lesson1: lesson, lessons
+  tkinter: tinter, twinter
+  getstandbyaccount: 
+  get_standby_account_info: 
+  standby_send_xrp: 
+
+<Page 'Create Trust Line and Send Currency Using Python' (py-create-trustline-send-currency.html)> Unknown Words:
+  mod2: modo, mods, mody
+  send_currency: 
+  get_balance: 
+  configure_account: 
+  lesson2: lesson, lessons
+
+<Page 'Mint and Burn NFTs Using Python' (py-mint-and-burn-nfts.html)> Unknown Words:
+  mod3: modo, mods, mody
+  minttoken: 
+  gettokens: 
+  burn_token: 
+
+<Page 'Transfer NFTs Using Python' (py-transfer-nfts.html)> Unknown Words:
+  mod4: modo, mods, mody
+  offer___index: 
+  alloffers: 
+  lesson4: lesson, lessons
+
+<Page 'Broker an NFT Sale Using Python' (py-broker-sale.html)> Unknown Words:
+  sell___offer___index: 
+  buy___offer___index: 
+  broker___fee: 
+  lesson5: lesson, lessons
+  frm_broker: 
+  nsew: nsec, new, nse
+  btn_broker_get_offers: 
+  btn_broker_get_account_info: 
+  broker_get_offers: 
+  broker_cancel_offer: 
+  broker_broker_sale: 
+  btn_broker_get_account: 
+  btn_broker_sale: 
+  get_broker_account_info: 
+  get_broker_account: 
+  btn_broker_cancel_offer: 
+  borderwidth: 
+  frm_form: 
+  lbl_standby_uri: 
+  offvalue: 
+  lbl_standby_flags: 
+  lbl_standy_amount: 
+  ent_standby_taxon: 
+  lbl_standby_nft_offer_index: 
+  ent_standby_uri: 
+  ent_standby_owner: 
+  ent_standby_flags: 
+  lbl_standby_expiration: 
+  lbl_standby_currency: 
+  ent_standby_amount: 
+  ent_standby_nft_offer_index: 
+  lbl_standy_seed: 
+  ent_standby_destination: 
+  text_standby_results: 
+  ent_standby_currency: 
+  onvalue: unvalue, nonvalue
+  ent_standby_expiration: 
+  ent_standby_nft_id: 
+  lbl_standby_taxon: 
+  lbl_standby_balance: 
+  cb_standby_allow_rippling: 
+  ent_standby_balance: 
+  lbl_standby_transfer_fee: 
+  lbl_standby_results: 
+  lbl_standby_nft_id: 
+  ent_standby_seed: 
+  lbl_standby_account: 
+  ent_standby_transfer_fee: 
+  lbl_standby_owner: 
+  ent_standby_account: 
+  lbl_standby_destination: 
+  standbyrippling: 
+  checkbutton: 
+  lbl_operational_currency: 
+  ent_operational_uri: 
+  ent_operational_nft_id: 
+  lbl_operational_owner: 
+  ent_operational_flags: 
+  operationalrippling: 
+  lbl_operational_transfer_fee: 
+  ent_operational_balance: 
+  ent_operational_destination: 
+  lbl_operational_nft_offer_index: 
+  lbl_operational_flags: 
+  ent_operational_expiration: 
+  lbl_operational_taxon: 
+  ent_operational_currency: 
+  ent_operational_taxon: 
+  cb_operational_allow_rippling: 
+  ent_operational_account: 
+  ent_operational_nft_offer_index: 
+  lbl_operational_uri: 
+  lbl_operational_results: 
+  ent_operational_seed: 
+  lbl_operational_account: 
+  lbl_operational_seed: 
+  lbl_operational_expiration: 
+  ent_operational_amount: 
+  lbl_operational_destination: 
+  lbl_operational_nft_id: 
+  ent_operational_owner: 
+  text_operational_results: 
+  ent_operational_transfer_fee: 
+  lbl_operational_amount: 
+  lbl_operational_balance: 
+  btn_standby_create_trust_line: 
+  standby_create_sell_offer: 
+  btn_standby_mint_token: 
+  btn_standby_accept_buy_offer: 
+  standby_get_tokens: 
+  btn_standby_create_buy_offer: 
+  btn_standby_cancel_offer: 
+  btn_standby_get_offers: 
+  standby_send_xrp: 
+  standby_create_buy_offer: 
+  btn_standby_burn_token: 
+  standby_mint_token: 
+  btn_standby_send_xrp: 
+  standby_configure_account: 
+  btn_standby_accept_sell_offer: 
+  btn_standby_get_tokens: 
+  standby_cancel_offer: 
+  standby_burn_token: 
+  btn_standby_send_currency: 
+  btn_standby_configure_account: 
+  get_balances: 
+  standby_accept_buy_offer: 
+  get_standby_account_info: 
+  standby_accept_sell_offer: 
+  btn_get_standby_account_info: 
+  standby_send_currency: 
+  btn_get_standby_account: 
+  get_standby_account: 
+  standby_create_trust_line: 
+  standby_get_offers: 
+  btn_standby_create_sell_offer: 
+  get_operational_account: 
+  operational_mint_token: 
+  op_accept_sell_offer: 
+  btn_op_create_buy_offer: 
+  operational_create_trust_line: 
+  operational_send_currency: 
+  operational_get_tokens: 
+  btn_op_mint_token: 
+  operational_send_xrp: 
+  get_operational_account_info: 
+  btn_op_get_offers: 
+  op_create_sell_offer: 
+  btn_op_create_sell_offer: 
+  btn_op_burn_token: 
+  btn_op_get_tokens: 
+  btn_op_accept_sell_offer: 
+  op_accept_buy_offer: 
+  btn_op_send_currency: 
+  btn_get_op_account_info: 
+  operational_burn_token: 
+  btn_op_configure_account: 
+  op_create_buy_offer: 
+  operational_configure_account: 
+  btn_get_operational_account: 
+  btn_op_get_balances: 
+  op_cancel_offer: 
+  op_get_offers: 
+  btn_op_cancel_offer: 
+  btn_op_accept_buy_offer: 
+  btn_op_send_xrp: 
+  btn_op_create_trust_line: 
+  mainloop: 
+
+<Page 'Assign an Authorized Minter Using Python' (py-authorize-minter.html)> Unknown Words:
+  mod6: modo, mods, mody
+  mint_other: 
+  lesson6: lesson, lessons
+  lesson4: lesson, lessons
+
+<Page 'Create Time-based Escrows Using JavaScript' (create-time-based-escrows-using-javascript.html)> Unknown Words:
+  ripple8: ripple, rippled, rippler
+  numofseconds: 
+  offersequence: 
+
+<Page 'Create Conditional Escrows Using JavaScript' (create-conditional-escrows-using-javascript.html)> Unknown Words:
+  getconditionandfulfillment: 
+  ripplex9: ripplex
+
+<Page 'Build a Desktop Wallet in JavaScript' (build-a-desktop-wallet-in-javascript.html)> Unknown Words:
+  preloader: preloaded, reloader
+  frontend: fronted
+  websockets: websocket
+  boostrap: bootstrap
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
+  fixnftokenremint: 
   disallowincoming: 
+  nftokenoffers: nftokenoffer
+
+<Page 'AMM' (amm.html)> Unknown Words:
+  voteentry: 
+
+<Page 'DepositPreauth' (depositpreauth-object.html)> Unknown Words:
+  unauthorizing: 
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
+<Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
+  networkid: networked
+  v3: t3, l3, ve
+
 <Page 'AccountSet' (accountset.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
   nftokenminter: 
+
+<Page 'AMMDelete' (ammdelete.html)> Unknown Words:
+  ammdelete: 
+
+<Page 'AMMWithdraw' (ammwithdraw.html)> Unknown Words:
+  ammdelete: 
 
 <Page 'CheckCreate' (checkcreate.html)> Unknown Words:
   disallowincoming: 
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
-  nftokenoffers: nftokenoffer
   disallowincoming: 
+  nftokenoffers: nftokenoffer
 
 <Page 'OfferCreate' (offercreate.html)> Unknown Words:
   immediateofferkilled: 
@@ -86,8 +347,82 @@ Found 44 possible spelling errors:
 <Page 'SetFee' (setfee.html)> Unknown Words:
   xrpfees: 
 
+<Page 'Transaction Metadata' (transaction-metadata.html)> Unknown Words:
+  nftokenid: 
+
+<Page 'account_info' (account_info.html)> Unknown Words:
+  disallowincoming: 
+
+<Page 'account_lines' (account_lines.html)> Unknown Words:
+  peterchen: 
+
 <Page 'nft_history' (nft_history.html)> Unknown Words:
   nft_history: 
+
+<Page 'Capacity Planning' (capacity-planning.html)> Unknown Words:
+  scalability: salability
+
+<Page 'Configure Full History' (configure-full-history.html)> Unknown Words:
+  zfs: zs, bfs, jfs
+  filesystems: filesystem
+  ext4: ext, extg, ext.
+  xfs: x's, xms, bfs
+
+<Page 'Known Amendments' (known-amendments.html)> Unknown Words:
+  fixnftokenremint: 
+  immediateofferkilled: 
+  fixreducedoffersv1: 
+  xrpfees: 
+  disallowincoming: 
+  depositpreauthamendment: 
+  fixnonfungibletokensv1_2: 
+  fixuniversalnumber: 
+  xchainbridge: 
+  38d: 3rd, 3d, 3-d
+  ammdelete: 
+  nftokenoffers: nftokenoffer
+  asfdisallowincomingnftoffer: 
+  asfdisallowincomingpaychan: 
+  asfdisallowincomingtrustline: 
+  asfdisallowincomingcheck: 
+  1e: ke, ce, xe
+  30d: 3rd, 3d, 3-d
+
+<Page 'Create Custom Transactors' (create-custom-transactors.html)> Unknown Words:
+  transactors: transactor
+
+<Page 'Contribute Documentation' (contribute-documentation.html)> Unknown Words:
+  img: mg, im-, im
+  _img: 
+  scss: sass, soss, scsi
+  umlet: mulet, umset, unlet
+  _code: code
+  _snippets: snippets
+  frontmatter: 
+  h1: hb, hr, hs
+  santilli: 
+  orderbook: order-book
+  camelcase: 
+  xrps: rps, xrpl, xrp
+  trustline: 
+  websockets: websocket
+  postgres: postures
+  fronmatter: 
+  dropdowns: 
+  dropdown: 
+
+<Page 'Translations' (documentation-translations.html)> Unknown Words:
+  hyperlinks: 
+  bcp47: 
+  zh: zl, 4h, zb
+  frontmatter: 
+  utf: dtf, uta, utv
+
+<Page 'Creating Diagrams' (creating-diagrams.html)> Unknown Words:
+  subfolder: subfolders
+  inlined: unlined, inclined, inline
+  umlet: mulet, umset, unlet
+  scss: sass, soss, scsi
 
 <Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
   screenshots: screenshot
@@ -95,7 +430,7 @@ Found 44 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 44 discouraged words/phrases:
+Found 189 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -108,33 +443,151 @@ Page: <Page 'Privacy Policy' (privacy-policy.html)>
    Discouraged word: advise (1 instances); suggest 'recommend, tell' instead.
    Discouraged word: notify (1 instances); suggest 'let know, tell' instead.
    Discouraged phrase: prior to (1 instances); suggest 'before' instead.
+Page: <Page 'What is the XRP Ledger?' (what-is-the-xrp-ledger.html)>
+   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+Page: <Page 'Crypto Wallets' (crypto-wallets.html)>
+   Discouraged word: wallet (14 instances); suggest 'address, client application, account' instead.
+   Discouraged word: assistance (1 instances); suggest 'aid, help' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Peer-to-Peer Payments' (peer-to-peer-payments-uc.html)>
+   Discouraged word: easily (1 instances); suggest '(omit)' instead.
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+Page: <Page 'Restricting Deposits' (restricting-deposits-uc.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Smart Contracts' (escrow-uc.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'Stablecoin Issuer' (stablecoin-issuer.html)>
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+   Discouraged word: facilitate (1 instances); suggest 'ease, help' instead.
+   Discouraged phrase: in order for (1 instances); suggest 'for' instead.
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+Page: <Page 'NFT Marketplace Overview' (nft-mkt-overview.html)>
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
+Page: <Page 'NFT Marketplace' (nftoken-marketplace.html)>
+   Discouraged word: selection (1 instances); suggest 'choice' instead.
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
+Page: <Page 'Authorized Minter' (authorized-minter.html)>
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: purchase (1 instances); suggest 'buy' instead.
+Page: <Page 'Digital Artist' (digital-artist.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: retain (1 instances); suggest 'keep' instead.
+Page: <Page 'Algorithmic Trading' (algorithmic-trading.html)>
+   Discouraged phrase: adjacent to (1 instances); suggest 'next to' instead.
+   Discouraged word: therefore (2 instances); suggest 'so' instead.
+   Discouraged word: simply (1 instances); suggest '(omit)' instead.
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: consult (1 instances); suggest 'see' instead.
+Page: <Page 'Amendments' (amendments.html)>
+   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+Page: <Page 'Ledgers' (ledgers.html)>
+   Discouraged word: simply (1 instances); suggest '(omit)' instead.
+   Discouraged phrase: a number of (1 instances); suggest 'some' instead.
+Page: <Page 'Ledger Structure' (ledger-structure.html)>
+   Discouraged phrase: a number of (1 instances); suggest 'some' instead.
+   Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
+   Discouraged word: therefore (1 instances); suggest 'so' instead.
+   Discouraged word: identical (1 instances); suggest 'same' instead.
+Page: <Page 'Escrow' (escrow.html)>
+   Discouraged word: facilitate (1 instances); suggest 'ease, help' instead.
+   Discouraged phrase: is responsible for (1 instances); suggest '(omit) handles' instead.
 Page: <Page 'NFT Reserve Requirements' (nft-reserve-requirements.html)>
    Discouraged word: therefore (1 instances); suggest 'so' instead.
 Page: <Page 'Running an NFT Auction' (nftoken-auctions.html)>
    Discouraged word: purchase (1 instances); suggest 'buy' instead.
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'Amendments' (amendments.html)>
+Page: <Page 'Automated Market Makers' (automated-market-makers.html)>
+   Discouraged phrase: market maker (2 instances); suggest 'liquidity provider' instead.
+   Discouraged word: remainder (1 instances); suggest 'rest' instead.
+Page: <Page 'Send Payments Using Python' (send-payments-using-python.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Create Accounts and Send XRP Using Python' (py-create-accounts-send-xrp.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Create Trust Line and Send Currency Using Python' (py-create-trustline-send-currency.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: wallet (5 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Mint and Burn NFTs Using Python' (py-mint-and-burn-nfts.html)>
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Transfer NFTs Using Python' (py-transfer-nfts.html)>
+   Discouraged word: wallet (6 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Broker an NFT Sale Using Python' (py-broker-sale.html)>
+   Discouraged word: wallet (1 instances); suggest 'address, client application, account' instead.
+   Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
+Page: <Page 'Assign an Authorized Minter Using Python' (py-authorize-minter.html)>
+   Discouraged word: wallet (2 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Send Payments Using JavaScript' (send-payments-using-javascript.html)>
+   Discouraged word: anticipate (1 instances); suggest 'expect' instead.
+Page: <Page 'Create Accounts and Send XRP Using JavaScript' (create-accounts-send-xrp-using-javascript.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Create Trust Line and Send Currency Using JavaScript' (create-trustline-send-currency-using-javascript.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Create Time-based Escrows Using JavaScript' (create-time-based-escrows-using-javascript.html)>
+   Discouraged phrase: prior to (1 instances); suggest 'before' instead.
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Create Conditional Escrows Using JavaScript' (create-conditional-escrows-using-javascript.html)>
+   Discouraged phrase: prior to (1 instances); suggest 'before' instead.
+Page: <Page 'Batch Mint NFTs Using JavaScript' (batch-mint-nfts-using-javascript.html)>
    Discouraged word: subsequent (1 instances); suggest 'later, next' instead.
-Page: <Page 'Contribute Code to the XRP Ledger' (contribute-code-flow.html)>
-   Discouraged phrase: defaults to (1 instances); suggest 'the default is' instead.
-Page: <Page 'Known Amendments' (known-amendments.html)>
-   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
-Page: <Page 'XRPL Quickstart' (xrpl-quickstart.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page '1. Create Accounts and Send XRP' (create-accounts-send-xrp.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page '2. Create Trust Line and Send Currency' (create-trustline-send-currency.html)>
-   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'Build A Browser Wallet Using JS' (build-a-browser-wallet-in-js.html)>
+Page: <Page 'Build a Browser Wallet in JavaScript' (build-a-browser-wallet-in-javascript.html)>
    Discouraged word: simple (1 instances); suggest '(omit)' instead.
    Discouraged word: render (1 instances); suggest 'give, make' instead.
    Discouraged word: just (2 instances); suggest '(omit)' instead.
    Discouraged word: reflect (1 instances); suggest 'say, show' instead.
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
-Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-stand-alone-mode.html)>
-   Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
+Page: <Page 'Build a Desktop Wallet in JavaScript' (build-a-desktop-wallet-in-javascript.html)>
+   Discouraged word: will (22 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: simple (2 instances); suggest '(omit)' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+   Discouraged word: easy (1 instances); suggest '(omit)' instead.
+   Discouraged word: basically (1 instances); suggest '(omit)' instead.
+Page: <Page 'Send a Time-Held Escrow' (send-a-time-held-escrow.html)>
+   Discouraged word: portion (1 instances); suggest 'part' instead.
+Page: <Page 'Create an Automated Market Maker' (create-an-automated-market-maker.html)>
+   Discouraged word: facilitate (1 instances); suggest 'ease, help' instead.
+   Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
+   Discouraged word: reflect (1 instances); suggest 'say, show' instead.
+Page: <Page 'Transaction Common Fields' (transaction-common-fields.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'tec Codes' (tec-codes.html)>
+   Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
+Page: <Page 'ter Codes' (ter-codes.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'ledger_data' (ledger_data.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-stand-alone-mode.html)>
+   Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
+Page: <Page 'Run a Private Network with Docker' (private-network-with-docker.html)>
+   Discouraged word: easily (1 instances); suggest '(omit)' instead.
+   Discouraged word: will (3 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: retain (1 instances); suggest 'keep' instead.
+   Discouraged word: simple (1 instances); suggest '(omit)' instead.
+Page: <Page 'Known Amendments' (known-amendments.html)>
+   Discouraged phrase: failed to (1 instances); suggest 'didn't' instead.
+Page: <Page 'Contribute Code' (contribute-code.html)>
+   Discouraged phrase: defaults to (1 instances); suggest 'the default is' instead.
+Page: <Page 'Create Custom Transactors' (create-custom-transactors.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'Contribute Documentation' (contribute-documentation.html)>
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+   Discouraged word: ious (1 instances); suggest 'tokens' instead.
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+   Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
+   Discouraged phrase: and/or (1 instances); suggest '__ or __ or both' instead.
+   Discouraged phrase: in the near future (1 instances); suggest 'shortly, soon' instead.
+Page: <Page 'Translations' (documentation-translations.html)>
+   Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
+   Discouraged phrase: the use of (1 instances); suggest '(omit)' instead.
+Page: <Page 'Creating Diagrams' (creating-diagrams.html)>
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
 Page: <Page 'Tutorial Guidelines' (tutorial-guidelines.html)>
    Discouraged word: accomplish (1 instances); suggest 'carry out, do' instead.
    Discouraged word: frequently (1 instances); suggest 'often' instead.
@@ -150,16 +603,25 @@ Page: <Page 'Tutorial Structure' (tutorial-structure.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 58.0 (Fairly Difficult)
-  Dale-Chall Readability Score: 8.0 (average 9th or 10th-grade student)
-  SMOG Index: Grade level 11.4
-  Gunning FOG Index: Grade level 9.1
-  Automated Readability Index: Grade level 10.9
+  Flesch Reading Ease Score: 58.4 (Fairly Difficult)
+  Dale-Chall Readability Score: 7.9 (average 9th or 10th-grade student)
+  SMOG Index: Grade level 11.3
+  Gunning FOG Index: Grade level 9.0
+  Automated Readability Index: Grade level 10.8
   Coleman-Liau Index: Grade level 11.5
-  Linsear Write Formula: Grade level 8.4
+  Linsear Write Formula: Grade level 8.6
 
 
 Most difficult pages by Flesch Reading Ease:
+<Page 'Broker an NFT Sale Using Python' (py-broker-sale.html)> Readability Scores:
+  Flesch Reading Ease Score: -68.9 (Very Confusing)
+  Dale-Chall Readability Score: 7.9 (average 9th or 10th-grade student)
+  SMOG Index: Grade level 10.6
+  Gunning FOG Index: Grade level 7.8
+  Automated Readability Index: Grade level 42.8
+  Coleman-Liau Index: Grade level 44.0
+  Linsear Write Formula: Grade level 7.6
+
 <Page 'XRP-API' (xrp-api.html)> Readability Scores:
   Flesch Reading Ease Score: 29.2 (Very Confusing)
   Dale-Chall Readability Score: 12.5 (higher than average college level)
@@ -170,46 +632,37 @@ Most difficult pages by Flesch Reading Ease:
   Linsear Write Formula: Grade level 20.5
 
 <Page 'Update Automatically on Linux' (update-rippled-automatically-on-linux.html)> Readability Scores:
-  Flesch Reading Ease Score: 31.4 (Difficult)
+  Flesch Reading Ease Score: 31.6 (Difficult)
   Dale-Chall Readability Score: 12.1 (higher than average college level)
-  SMOG Index: Grade level 13.2
-  Gunning FOG Index: Grade level 11.7
-  Automated Readability Index: Grade level 14.7
-  Coleman-Liau Index: Grade level 16.3
+  SMOG Index: Grade level 13.0
+  Gunning FOG Index: Grade level 11.3
+  Automated Readability Index: Grade level 14.5
+  Coleman-Liau Index: Grade level 16.2
   Linsear Write Formula: Grade level 7.5
-
-<Page 'Consensus Research' (consensus-research.html)> Readability Scores:
-  Flesch Reading Ease Score: 33.2 (Difficult)
-  Dale-Chall Readability Score: 11.4 (higher than average college level)
-  SMOG Index: Grade level 16.9
-  Gunning FOG Index: Grade level 14.5
-  Automated Readability Index: Grade level 17.8
-  Coleman-Liau Index: Grade level 17.1
-  Linsear Write Formula: Grade level 15.6
 
 -------------------
 Page Length Metrics
 -------------------
 Average Page Length Metrics:
-  Sentences: 55
-  Words: 742
-  Characters: 4,615
+  Sentences: 56
+  Words: 747
+  Characters: 4,639
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
-  Sentences: 539
-  Words: 7,452
-  Characters: 54,728
+  Sentences: 619
+  Words: 8,456
+  Characters: 61,587
 
-<Page 'Become a Stablecoin Issuer' (become-an-xrp-ledger-gateway.html)> Length Metrics:
-  Sentences: 380
-  Words: 5,852
-  Characters: 36,639
+<Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Length Metrics:
+  Sentences: 398
+  Words: 6,410
+  Characters: 40,005
 
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Length Metrics:
-  Sentences: 299
-  Words: 5,187
-  Characters: 29,550
+  Sentences: 297
+  Words: 5,145
+  Characters: 29,344
 
 Shortest pages by character count:
 <Page 'API Conventions' (api-conventions.html)> Length Metrics:

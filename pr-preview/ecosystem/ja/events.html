@@ -33,7 +33,7 @@
     <meta name="color-scheme" content="dark light">
 
     <!-- jQuery -->
-    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/ja/assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     <script type="application/javascript">
@@ -49,11 +49,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v18.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -93,24 +93,23 @@
         <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
           <div class="navcol col-for-xrp-ledger">
             <h5 class="dropdown-item">XRP Ledger</h5>
-            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPLの概要</a>
             <a class="dropdown-item" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
-            <a class="dropdown-item" href="/ja/history.html">沿革</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/history.html">歴史</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
-            <a class="dropdown-item" href="/ja/xrp-overview.html">XRP Overview</a>
+            <a class="dropdown-item" href="/ja/xrp-overview.html">XRPの概要</a>
           </div><!--./col-->
-          <div class="navcol col-for-sustainability">
-            <h5 class="dropdown-item">Sustainability</h5>
+          <div class="navcol col-for-持続可能性">
+            <h5 class="dropdown-item">持続可能性</h5>
             <a class="dropdown-item" href="/ja/impact.html">インパクト</a>
           </div><!--./col-->
-          <div class="navcol col-for-about">
-            <h5 class="dropdown-item">About</h5>
+          <div class="navcol col-for-概要">
+            <h5 class="dropdown-item">概要</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
             <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
-            <a class="dropdown-item" href="/ja/privacy-policy.html">Privacy Policy</a>
+            <a class="dropdown-item" href="/ja/privacy-policy.html">プライバシーポリシー</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -122,26 +121,20 @@
             <img id="top-nav-hero-docs" alt="ドキュメント icon" />
             <div class="dropdown-hero-text">
               <h4>ドキュメント</h4>
-              <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
+              <p>XRP Ledgerのテクノロジーに飛び込み、実装を始めましょう。</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="/ja/docs-index.html">Documentation Index</a>
-          </div><!--./col-->
-          <div class="navcol col-for-article-types">
-            <h5 class="dropdown-item">Article Types</h5>
+          <div class="navcol col-for-カテゴリ">
+            <h5 class="dropdown-item">カテゴリ</h5>
+            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
+            <a class="dropdown-item" href="/ja/use-cases.html">ユースケース</a>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
             <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
             <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
+            <a class="dropdown-item" href="/ja/infrastructure.html">インフラストラクチャ</a>
           </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
-            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
-          </div><!--./col-->
-          <div class="navcol col-for-get-started">
-            <h5 class="dropdown-item">Get Started</h5>
+          <div class="navcol col-for-始めましょう">
+            <h5 class="dropdown-item">始めましょう</h5>
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
@@ -153,12 +146,30 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-          </div><!--./col-->
-          <div class="navcol col-for-popular-pages">
-            <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
-            <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>リソース</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-開発">
+            <h5 class="dropdown-item">開発</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+          </div><!--./col-->
+          <div class="navcol col-for-現在のステータス">
+            <h5 class="dropdown-item">現在のステータス</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/known-amendments.html">既知のAmendment</a>
+          </div><!--./col-->
+          <div class="navcol col-for-参加する">
+            <h5 class="dropdown-item">参加する</h5>
+            <a class="dropdown-item" href="/ja/contribute-code.html">コードへの貢献</a>
+            <a class="dropdown-item" href="/ja/contribute-documentation.html">ドキュメントへの貢献</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -166,11 +177,11 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティ</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
-            <img id="top-nav-hero-contribute" alt="貢献する icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-xrplコミュニティへの貢献" href="/ja/contribute.html">
+            <img id="top-nav-hero-contribute" alt="XRPLコミュニティへの貢献 icon" />
             <div class="dropdown-hero-text">
-              <h4>貢献する</h4>
-              <p>話題に加わろう</p>
+              <h4>XRPLコミュニティへの貢献</h4>
+              <p>コミュニティに参加しましょう</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
@@ -181,7 +192,8 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
-            <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPLブランドキット</a>
+            <a class="dropdown-item" href="/ja/report-a-scam.html">詐欺の報告</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -233,52 +245,22 @@
       <main class="main col-md-12 order-md-3  landing page-events" role="main" id="main_content_body">
 
 <div class="position-relative d-none-sm">
-  <img src="./img/backgrounds/events-orange.svg" id="events-orange">
+  <img alt="" src="./img/backgrounds/events-orange.svg" id="events-orange">
 </div>
 
 <section class="text-center py-26">
   <div class="mx-auto text-center col-lg-5">
     <div class="d-flex flex-column-reverse">
-      <h1 class="mb-0">Find the XRPL Community Around the World</h1>
-      <h6 class="mb-3 eyebrow">Events</h6>
+      <h1 class="mb-0">世界中のXRPLコミュニティを見つけよう</h1>
+      <h6 class="mb-3 eyebrow">イベント</h6>
     </div>
-  </div>
-</section>
-
-<section class="container-new py-26">
-  <div class="event-hero card-grid card-grid-2xN">
-    
-    <div class="pr-2 col">
-        <img src="./assets/img/events/event-hero3@2x.png" class="w-100">
-    </div>
-    
-    <div class="pt-5 pr-2 col">
-      <div class="d-flex flex-column-reverse">
-        <h2 class="mb-8 h4 h2-sm">The XRPL Developer Summit</h2>
-        <h6 class="mb-3 eyebrow">Save the Date</h6>
-      </div>
-      <p class="mb-4">Apex is back and headed to Amsterdam. Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.</p>
-      
-      <div class="py-2 my-3 event-small-gray" >
-        Location: Amsterdam
-      </div>
-
-      <div class="py-2 my-3 event-small-gray" >
-        Date: September 6-8, 2023
-      </div>
-      
-      <div class="d-lg-block">
-        <a class="btn btn-primary btn-arrow-out" target="_blank" href="http://apexdevsummit.com/">もっと知る</a> 
-      </div>
-    </div>
-    
   </div>
 </section>
 
 <section class="container-new py-26" id="upcoming-events">
   <div class="p-0 pb-2 mb-4 d-flex flex-column-reverse col-lg-6 pr-lg-5">
-    <h3 class="h4 h2-sm">Check out meetups, hackathons, and other events hosted by the XRPL Community</h3>
-    <h6 class="mb-3 eyebrow">Upcoming Events</h6>
+    <h3 class="h4 h2-sm">XRPLコミュニティが主催するミートアップ、ハッカソン、その他のイベントをチェックしましょう。</h3>
+    <h6 class="mb-3 eyebrow">今後のイベント情報</h6>
   </div>
 
   <div class="filter row col-12 mt-lg-5 d-flex flex-column">
@@ -308,31 +290,23 @@
         <input value="zone" id="zone-upcoming" name="zone-upcoming" type="checkbox" class="events-filter" checked />
         <label for="zone-upcoming">XRPL Zone</label>
       </div>
+      <div class="form-check form-check-inline">
+        <input value="info-session" id="info-session-upcoming" name="info-session-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="info-session-upcoming">Info Session</label>
+      </div>
     </div>
   </div>
 
 
 
   <div class="mt-2 row row-cols-1 row-cols-lg-3 card-deck">
-    <a class="event-card conference-upcoming" href="http://apexdevsummit.com" style="" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/Conference.png);">
-        <div class="event-card-title">APEX 2023: The XRPL Developer Summit</div>
-      </div>
-      <div class="event-card-body">
-        <p>Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.</p>
-      </div>
-      <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="mb-2 d-flex icon icon-location">Amsterdam</span>
-        <span class="d-flex icon icon-date">September 6 - 8, 2023</span>
-      </div>
-    </a>
   </div>
 </section>
 
 <section class="container-new pt-26" id="past-events">
   <div class="p-0 pb-2 mb-4 d-flex flex-column-reverse col-lg-6 pr-lg-5">
-    <h3 class="h4 h2-sm">Explore past community-hosted events</h3>
-    <h6 class="mb-3 eyebrow">Past Events</h6>
+    <h3 class="h4 h2-sm">過去のコミュニティ主催のイベントを見る</h3>
+    <h6 class="mb-3 eyebrow">過去のイベント</h6>
   </div>
 
   <div class="filter row col-12 mt-lg-5 d-flex flex-column">
@@ -362,10 +336,170 @@
         <input value="zone" id="zone-past" name="zone-past" type="checkbox" class="events-filter" checked />
         <label for="zone-past">XRPL Zone</label>
       </div>
+      <div class="form-check form-check-inline">
+        <input value="info-session" id="info-session-past" name="info-session-past" type="checkbox" class="events-filter" checked />
+        <label for="info-session-past">Info Session</label>
+      </div>
     </div>
   </div>
 
   <div class="mt-2 mb-0 row row-cols-1 row-cols-lg-3 card-deck ">
+    <a class="event-card info-session-past" href="https://ripple.zoom.us/webinar/register/WN_ITv-kDuCS3i6UOgBxBe7-A" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/InfoSessions.png); ">
+        <div class="event-card-title">XRPL Grants Info Session: Decentralized Exchange (DEX) Focused</div>
+      </div>
+      <div class="event-card-body">
+        <p>Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Virtual - Zoom</span>
+        <span class="d-flex icon icon-date">September 06, 2023</span>
+      </div>
+    </a>
+    <a class="event-card meetup-past" href="https://lu.ma/xrplxccess" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/SouthKoreaMeetup.png); ">
+        <div class="event-card-title">XRPL South Korea Meetup - XCCESS</div>
+      </div>
+      <div class="event-card-body">
+        <p>We are excited to introduce the XRP Ledger XCCESS - an exclusive meetup bringing together the brightest minds, innovators, and enthusiasts from South Korea's blockchain industry. Join us for an engaging experience during the Korea Blockchain Week.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">South Korea - JBK Tower</span>
+        <span class="d-flex icon icon-date">September 06, 2023</span>
+      </div>
+    </a>
+    <a class="event-card info-session-past" href="https://ripple.zoom.us/webinar/register/WN_YdxeVY9_RJG5SVo-LSip6w#/registration" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/InfoSessions.png); ">
+        <div class="event-card-title">XRPL Grants Info Session: Financial Inclusion Focused</div>
+      </div>
+      <div class="event-card-body">
+        <p>Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Financial Inclusion projects.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Virtual - Zoom</span>
+        <span class="d-flex icon icon-date">September 05, 2023</span>
+      </div>
+    </a>
+    <a class="event-card hackathon-past" href="https://lu.ma/4h3bqfw1" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/Hackathons.png); ">
+        <div class="event-card-title">XRPL Hackathon - Apex 2023</div>
+      </div>
+      <div class="event-card-body">
+        <p>Join the XRPL Hackathon - APEX 2023, a week before the XRP Ledger's annual developer conference. Explore the Future of Finance and Web3 tracks, collaborate, learn, and compete for 10K USD in prizes.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Delft, Netherlands </span>
+        <span class="d-flex icon icon-date">August 30, 2023 - August 31, 2023</span>
+      </div>
+    </a>
+    <a class="event-card conference-past" href="https://lu.ma/xrplaccelerator" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/Conference.png); ">
+        <div class="event-card-title">XRPL Accelerator Demo Day</div>
+      </div>
+      <div class="event-card-body">
+        <p>​​Join us for our very first XRPL Accelerator Demo Day in London. Witness pitches from nine portfolio startups, engage in Q&A sessions, and network with founders and investors. </p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Central London and Online</span>
+        <span class="d-flex icon icon-date">September 05, 2023</span>
+      </div>
+    </a>
+    <a class="event-card meetup-past" href="https://lu.ma/xrplacceleratorhappyhour" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-london.png); ">
+        <div class="event-card-title">XRPL London Meetup (Accelerator Edition)</div>
+      </div>
+      <div class="event-card-body">
+        <p>Join us for a Happy Hour hosted by the XRPL Accelerator Team! Connect with fellow start-ups in the blockchain space and gain insights into cutting-edge projects and founders.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Central London</span>
+        <span class="d-flex icon icon-date">September 04, 2023</span>
+      </div>
+    </a>
+    <a class="event-card meetup-past" href="https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/event-meetup-toronto@2x.jpg); ">
+        <div class="event-card-title">XRPL Toronto Meetup</div>
+      </div>
+      <div class="event-card-body">
+        <p>Prepare for an evening of XRPL Toronto Meetup – a celebration of discovery and connection. Join enthusiasts, innovators, and developers for inspiring talks, conversations, and learning. All are welcome, from seasoned developers to curious newcomers.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Downtown Toronto</span>
+        <span class="d-flex icon icon-date">August 14, 2023</span>
+      </div>
+    </a>
+    <a class="event-card meetup-past" href="https://www.meetup.com/ripple-xrp-community/events/292740612" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/Virtual-Event.png); ">
+        <div class="event-card-title">Q3 2023 Ripple XRP Meetup</div>
+      </div>
+      <div class="event-card-body">
+        <p>Join your fellow Ripple XRP Enthusiasts for a 90-minute discussion. Topics: XRP, Flare, XRPL, Ripple (Company), General Crypto QA.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Online</span>
+        <span class="d-flex icon icon-date">July 13, 2023</span>
+      </div>
+    </a>
+    <a class="event-card ama-past" href="http://xrpldevs.org/" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/AMAs.png); ">
+        <div class="event-card-title">AMAs: XRPL Developer AMAs</div>
+      </div>
+      <div class="event-card-body">
+        <p>A chat with Matt Mankins from Lorem Labs to discuss Kudos for Code and his recent XRPL Accelerator acceptance.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">XRPL Developers Discord</span>
+        <span class="d-flex icon icon-date">July 18, 2023</span>
+      </div>
+    </a>
+    <a class="event-card hackathon-past" href="https://dorahacks.io/hackathon/xrpl-hackathon" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/Hackathons.png); ">
+        <div class="event-card-title">XRPL Summer Hackathon</div>
+      </div>
+      <div class="event-card-body">
+        <p>The XRPL Hackathon is all about supporting innovative projects and getting developers from diverse backgrounds to explore creative ideas and transition from centralized systems to the exciting world of blockchain. Bring your innovative projects to life and get a chance to secure up to $10,000 in funding.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Online</span>
+        <span class="d-flex icon icon-date">June 5, 2023 - July 30, 2023</span>
+      </div>
+    </a>
+    <a class="event-card ama-past" href="https://twitter.com/RippleXDev" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/AMAs.png); ">
+        <div class="event-card-title">XRPL Roundtable: XRPL @ Consensus</div>
+      </div>
+      <div class="event-card-body">
+        <p>A roundtable chat with those who represented the XRP Ledger at Consensus 2023.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Twitter Spaces</span>
+        <span class="d-flex icon icon-date">June 24, 2023</span>
+      </div>
+    </a>
+    <a class="event-card cc-past" href="https://discord.com/invite/xrpl" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/CommunityCalls.png); ">
+        <div class="event-card-title">Community Calls #3</div>
+      </div>
+      <div class="event-card-body">
+        <p>An open chat with the XRP Ledger community about NFTs and the EVM sidechain testnet.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">XRPL Developers Discord</span>
+        <span class="d-flex icon icon-date">March 30, 2023</span>
+      </div>
+    </a>
+    <a class="event-card conference-past" href="http://apexdevsummit.com" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/Conference.png); ">
+        <div class="event-card-title">APEX 2023: The XRPL Developer Summit</div>
+      </div>
+      <div class="event-card-body">
+        <p>Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">Amsterdam</span>
+        <span class="d-flex icon icon-date">September 6 - 8, 2023</span>
+      </div>
+    </a>
     <a class="event-card meetup-past" href="https://www.meetup.com/xrp-ledger-espana-madrid-y-barcelona/events/292597878" target="_blank">
       <div class="event-card-header" style="background: no-repeat url(assets/img/events/Madrid.png); ">
         <div class="event-card-title">XRPL Community Meetup: Madrid</div>
@@ -402,18 +536,6 @@
         <span class="d-flex icon icon-date">February 15, 2023</span>
       </div>
     </a>
-    <a class="event-card cc-past" href="https://youtu.be/KpSt0PFT2QM" target="_blank">
-      <div class="event-card-header" style="background: no-repeat url(assets/img/events/CommunityCalls.png); ">
-        <div class="event-card-title">Community Calls #1</div>
-      </div>
-      <div class="event-card-body">
-        <p>An open discussion about the development of XLS-20 and NFTs on the XRP Ledger.</p>
-      </div>
-      <div class="mt-lg-auto event-card-footer d-flex flex-column">
-        <span class="mb-2 d-flex icon icon-location">XRPL Developers Discord</span>
-        <span class="d-flex icon icon-date">June 02, 2022</span>
-      </div>
-    </a>
     <a class="event-card cc-past" href="https://youtu.be/oNJ1Qqns2Gw" target="_blank">
       <div class="event-card-header" style="background: no-repeat url(assets/img/events/CommunityCalls.png); ">
         <div class="event-card-title">Community Calls #2</div>
@@ -424,6 +546,18 @@
       <div class="mt-lg-auto event-card-footer d-flex flex-column">
         <span class="mb-2 d-flex icon icon-location">XRPL Developers Discord</span>
         <span class="d-flex icon icon-date">August 8, 2022</span>
+      </div>
+    </a>
+    <a class="event-card cc-past" href="https://youtu.be/KpSt0PFT2QM" target="_blank">
+      <div class="event-card-header" style="background: no-repeat url(assets/img/events/CommunityCalls.png); ">
+        <div class="event-card-title">Community Calls #1</div>
+      </div>
+      <div class="event-card-body">
+        <p>An open discussion about the development of XLS-20 and NFTs on the XRP Ledger.</p>
+      </div>
+      <div class="mt-lg-auto event-card-footer d-flex flex-column">
+        <span class="mb-2 d-flex icon icon-location">XRPL Developers Discord</span>
+        <span class="d-flex icon icon-date">June 02, 2022</span>
       </div>
     </a>
     <a class="event-card ama-past" href="https://dev.to/ripplexdev/xrpcafe-ama-on-xrpl-developers-discord-36gp" target="_blank">
@@ -704,6 +838,14 @@
       $('.zone-upcoming').hide();
     }
   });
+  $('#info-session-upcoming').change(function () {
+    if ($('#info-session-upcoming').is(':checked')) {
+        $('.info-session-upcoming').show();
+    } else {
+      $('.info-session-upcoming').hide();
+    }
+  });
+  
 
   $('#conference-past').change(function () {
     if ($('#conference-past').is(':checked')) {
@@ -747,6 +889,13 @@
       $('.zone-past').hide();
     }
   });
+   $('#info-session-past').change(function () {
+    if ($('#info-session-past').is(':checked')) {
+        $('.info-session-past').show();
+    } else {
+      $('.info-session-past').hide();
+    }
+  }); 
 
 </script>
 
@@ -761,15 +910,14 @@
         <div class="col-lg">
           <h5>概要</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
+            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPLの概要</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
-            <li class="nav-item"><a href="/ja/history.html" class="nav-link">沿革</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
-            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="/ja/history.html" class="nav-link">歴史</a></li>
+            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRPの概要</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
             <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
-            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">プライバシーポリシー</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -777,22 +925,33 @@
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
-            <li class="nav-item"><a href="/ja/docs-index.html" class="nav-link">Documentation Index</a></li>
+            <li class="nav-item"><a href="/ja/introduction.html" class="nav-link">基本</a></li>
+            <li class="nav-item"><a href="/ja/use-cases.html" class="nav-link">ユースケース</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
-            <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/infrastructure.html" class="nav-link">インフラストラクチャ</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>リソース</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/resources.html" class="nav-link">リソース</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">コードへの貢献</a></li>
+            <li class="nav-item"><a href="/ja/contribute-documentation.html" class="nav-link">ドキュメントへの貢献</a></li>
           </ul>
         </div><!--/.col -->
 
         <div class="col-lg">
           <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
-            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">XRPLコミュニティへの貢献</a></li>
             <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
             <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
             <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
@@ -800,7 +959,8 @@
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
-            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPLブランドキット</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">詐欺の報告</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -811,7 +971,7 @@
     <div class="d-lg-flex row">
       <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
       <span class="flex-grow-1">&nbsp;</span>
-      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース。</a>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース</a>
       </div>
     </div><!-- /.absolute_bottom_footer -->
 
@@ -819,7 +979,7 @@
 </footer>
 
 <!-- Jump to top button -->
-<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="ページの先頭へ"><i class="fa fa-arrow-up"></i></a>
 <script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
 
 <!-- Non-blocking resources -->

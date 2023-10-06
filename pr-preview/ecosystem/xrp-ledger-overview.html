@@ -33,7 +33,7 @@
     <meta name="color-scheme" content="dark light">
 
     <!-- jQuery -->
-    <script src="assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     <script type="application/javascript">
@@ -49,10 +49,10 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v18.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -99,7 +99,6 @@
             <a class="dropdown-item  active" href="xrp-ledger-overview.html">XRPL Overview</a>
             <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
             <a class="dropdown-item" href="history.html">History</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
@@ -128,20 +127,14 @@
               <p>Dive into XRP Ledger technology and start integrating.</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="docs-index.html">Documentation Index</a>
-          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="introduction.html">Introduction</a>
+            <a class="dropdown-item" href="use-cases.html">Use Cases</a>
             <a class="dropdown-item" href="concepts.html">Concepts</a>
             <a class="dropdown-item" href="tutorials.html">Tutorials</a>
             <a class="dropdown-item" href="references.html">References</a>
-          </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
-            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+            <a class="dropdown-item" href="infrastructure.html">Infrastructure</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -157,8 +150,29 @@
             <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
-            <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
             <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Resources</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-development">
+            <h5 class="dropdown-item">Development</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
+            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+          </div><!--./col-->
+          <div class="navcol col-for-current-status">
+            <h5 class="dropdown-item">Current Status</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
+            <a class="dropdown-item" href="known-amendments.html">Known Amendments</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item" href="contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="contribute-documentation.html">Contribute Documentation</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -180,7 +194,8 @@
             <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
-            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
             <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -247,14 +262,14 @@
   <section class="py-26 text-center">
     <div class="col-lg-5 mx-auto text-center">
       <div class="d-flex flex-column-reverse">
-        <h1 class="mb-0">XRPL Today and the Vision for Tomorrow</h1>
-        <h6 class="eyebrow mb-3">XRPL | XRP Ledger Overview</h6>
+        <h1 class="mb-0">The Business <br class="until-sm"/> of Impact</h1>
+        <h6 class="eyebrow mb-3">XRPL Today, XRPL Tomorrow</h6>
       </div>
     </div>
   </section>
 
   <div class="position-relative d-none-sm">
-    <img src="./img/backgrounds/xrpl-overview-orange.svg" id="xrpl-overview-orange">
+    <img alt="" src="./img/backgrounds/xrpl-overview-orange.svg" id="xrpl-overview-orange">
   </div>
 
   <section class="container-new py-26">
@@ -264,8 +279,8 @@
           <h2 class="h4 h2-sm mb-8">How the XRP Ledger works</h2>
           <h6 class="eyebrow mb-3">XRP Ledger Basics</h6>
         </div>
-        <h5 class="longform mb-10">The XRP Ledger is a decentralized public blockchain. </h5>
-        <p class="mb-4">Anyone can connect their computer to the peer-to-peer network that manages the ledger. The global XRP Ledger community—a diverse set of software engineers, server operators, users, and businesses—maintains the ledger.</p>
+        <h5 class="longform mb-10">The XRP Ledger is a decentralized public blockchain built for business. </h5>
+        <p class="mb-4">The peer-to-peer network that manages the ledger is open to everyone. The XRP Ledger is maintained by software engineers, server operators, users, and businesses–a global community working to solve problems and create real-world value.</p>
         <div class="d-none d-lg-block">
           <a class="btn btn-primary btn-arrow" href="docs.html">Read Technical Docs</a> <a class="ml-4 video-external-link" target="_blank" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi">Watch Explainer Videos </a>
         </div>
@@ -273,7 +288,7 @@
       <div class="col">
         <iframe id="video1" style="display:none;" width="560" height="315" src="https://www.youtube.com/embed/sVTybJ3cNyo" title="Intro to the XRP Ledger" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <a href="#" id="playvideo">
-          <img src="./assets/img/overview/video_explainer_intro@2x.png" id="xrpl-overview-video-intro" class="w-100 video-image">
+          <img alt="XRPL logo with play button surrounded with image bubbles of various people" src="./assets/img/overview/video_explainer_intro@2x.png" id="xrpl-overview-video-intro" class="w-100 video-image">
         </a>
 
         <div class="text-center d-lg-none">
@@ -291,9 +306,9 @@
           <h2 class="h4 h2-sm mb-8">How the Consensus Protocol works</h2>
           <h6 class="eyebrow mb-3">Consensus</h6>
         </div>
-        <h5 class="longform mb-10">XRPL uses a consensus protocol, in which designated servers called <a href="run-a-rippled-validator.html">validators</a> come to an agreement on the order and outcome of XRP transactions every 3-5 seconds.</h5>
-        <p class="mb-6">All servers in the network process each transaction according to the same rules, and any transaction that follows the protocol is confirmed right away. All transactions are public, with strong cryptography to guarantee the integrity of the system.</p>
-        <p class="mb-0">Anyone can operate a validator; currently, over 150 <a href="https://livenet.xrpl.org/network/validators" target="_blank">validators</a> are active on the ledger, operated by universities, exchanges, businesses, and individuals. Additionally, the consensus protocol ensures the blockchain becomes more decentralized over time as the validator pool grows.</p>
+        <h5 class="longform mb-10">To uphold performance, XRPL uses a consensus protocol. Designated servers called <a href="run-a-rippled-validator.html">validators</a>, which anyone can operate, come to an agreement on the order and outcome of XRP transactions every three to five seconds.</h5>
+        <p class="mb-6">All servers in the network process each transaction according to the same rules, and any transaction that follows the protocol is confirmed right away. All transactions are public, and strong cryptography guarantees the integrity of the system.</p>
+        <p class="mb-0">Currently, over 120 <a href="https://livenet.xrpl.org/network/validators" target="_blank">validators</a> are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.</p>
       </div>
       <div class="col mb-16-sm">
         <img class="mw-100" id="validator-graphic" alt="(Graphic: Validators in Consensus)">
@@ -303,10 +318,10 @@
 
   <section class="container-new py-26">
     <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-      <img src="./img/backgrounds/cta-xrpl-overview-green.svg" class="cta cta-bottom-right">
+      <img alt="" src="./img/backgrounds/cta-xrpl-overview-green.svg" class="cta cta-bottom-right">
       <div class="z-index-1 position-relative">
-        <h2 class="h4 mb-10-until-sm mb-8-sm">A Greener Blockchain</h2>
-        <p class="mb-10">Unlike most other blockchains, the XRP Ledger does not need mining, so <a href="impact.html">no energy is wasted</a> in the transaction process.</p>
+        <h2 class="h4 mb-10-until-sm mb-8-sm">A Sustainable Blockchain</h2>
+        <p class="mb-10">Unlike most other blockchains, the XRP Ledger requires no mining and uses negligible energy, key to long-term growth and stability.</p>
         <a class="btn btn-primary btn-arrow" href="impact.html">Learn More</a>
       </div>
     </div>
@@ -316,20 +331,20 @@
     <div class="card-grid card-grid-2xN">
       <div class="col">
         <div class="d-flex flex-column-reverse">
-          <h4 class="h4 h2-sm mb-8">XRPL provides powerful utility across the blockchain space</h4>
+          <h4 class="h4 h2-sm mb-8">Building with confidence on <br class="until-sm"/> proven technology</h4>
           <h6 class="eyebrow mb-3">XRPL Today</h6>
         </div>
-        <h5 class="longform mb-10">The ledger’s unique properties, such as its fast and efficient consensus algorithm and censorship-resistant transaction processing, are leveraged by thousands of developers.</h5>
-        <p class="mb-10">With the XRPL, these developers are building innovative projects and applications across blockchain use cases including tokenization of assets, online gaming, asset custody, NFTs, and DeFi.</p>
+        <h5 class="longform mb-10">With 10+ years of error-free functioning and enterprise companies as champions, XRPL has established reliability.</h5>
+        <p class="mb-10">With the XRPL, these developers are building innovative blockchain projects and applications across use cases including tokenization of assets, online gaming, asset custody, NFTs, and DeFi.</p>
         <a class="btn btn-primary btn-arrow mb-10-sm" href="uses.html">Explore More</a>
       </div>
       <div class="col mb-0">
         <div class="d-flex flex-column-reverse">
-          <h4 class="h4 h2-sm mb-8">Fulfilling the vision of the XRPL community</h4>
+          <h4 class="h4 h2-sm mb-8">Creating new value for long-term growth</h4>
           <h6 class="eyebrow mb-3">XRPL Tomorrow</h6>
         </div>
-        <h5 class="longform mb-10">While XRPL is the choice of developers who don’t want to sacrifice security or performance and who want to build on the greenest blockchain, that’s only the beginning.</h5>
-        <p class="mb-0">As a community-led blockchain, XRPL’s vision is also a community effort. <a href="https://xrplf.org/" target="_blank">The XRPL Foundation</a> is currently collaborating with community members to define a shared vision statement. Stay tuned for more on this effort—we can’t wait to share it with you.</p>
+        <h5 class="longform mb-10">As a community-led blockchain built for business, XRPL attracts companies and developers driven to solve real problems and generate real value–now and into the future.</h5>
+        <p class="mb-0">Significant investment in development, along with low transaction costs and energy usage, is fueling growth and opening up a wide variety of use cases at scale.</p>
       </div>
     </div>
   </section>
@@ -343,7 +358,7 @@
     <div class="row row-cols-1 row-cols-lg-3 d-flex justify-content-between w-100 mx-0 mx-md-n3 mt-md-5">
         <div class="px-md-3 pt-5 pt-md-0">
           <a href="#" class="btn1" data-url="https://www.youtube.com/embed/k6VqEkqRTmk?rel=0&amp;showinfo=0&amp;autoplay=1">
-            <img src="./assets/img/overview/video_explainer_consensus@2x.png" id="xrpl-overview-video-consensus" class="w-100 video-image">
+            <img alt="Two Monitors with person image bubbles inside, facing each other with a play button in between" src="./assets/img/overview/video_explainer_consensus@2x.png" id="xrpl-overview-video-consensus" class="w-100 video-image">
           </a>
           <div class="mt-2">
             <h4 class="video-title mt-3 mb-0">The Consensus Mechanism</h4>
@@ -351,7 +366,7 @@
         </div>
         <div class="px-md-3 pt-5 pt-md-0">
           <a href="#" class="btn1" data-url="https://www.youtube.com/embed/JjaVDXPqnbA?rel=0&amp;showinfo=0&amp;autoplay=1">
-            <img src="./assets/img/overview/video_explainer_nodes@2x.png" id="xrpl-overview-video-nodes" class="w-100 video-image">
+            <img alt="graphlike background with play button in center" src="./assets/img/overview/video_explainer_nodes@2x.png" id="xrpl-overview-video-nodes" class="w-100 video-image">
           </a>
           <div class="mt-2">
             <h4 class="video-title mt-3 mb-0">Nodes and Validators</h4>
@@ -359,7 +374,7 @@
         </div>
         <div class="px-md-3 pt-5 pt-md-0">
           <a href="#" class="btn1" data-url="https://www.youtube.com/embed/WsmldDNGQ9s?rel=0&amp;showinfo=0&amp;autoplay=1">
-            <img src="./assets/img/overview/video_explainer_sustainability@2x.png" id="xrpl-overview-video-sustainability" class="w-100 video-image">
+            <img alt="A globe graph with a play button in center" src="./assets/img/overview/video_explainer_sustainability@2x.png" id="xrpl-overview-video-sustainability" class="w-100 video-image">
           </a>
           <div class="mt-2">
             <h4 class="video-title mt-3 mb-0">Sustainability of the XRP Ledger</h4>
@@ -373,11 +388,11 @@
 
   <section class="container-new py-26">
     <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-      <img src="./img/backgrounds/cta-xrpl-overview-orange.svg" class="cta cta-bottom-right">
+      <img alt="" src="./img/backgrounds/cta-xrpl-overview-orange.svg" class="cta cta-bottom-right">
       <div class="z-index-1 position-relative">
         <h4 class="h4 mb-10-until-sm mb-8-sm">Tomorrow’s Blockchain Starts With You</h4>
-        <p class="mb-10">XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for an XRPL Grant.</p>
-        <a class="btn btn-primary btn-arrow" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
+        <p class="mb-10">XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for funding on your next <a href='developer-funding.html'>blockchain project</a>.</p>
+        <a class="btn btn-primary btn-arrow" href="https://xrplgrants.org/" target="_blank">Explore XRPL Developer Funding</a>
       </div>
     </div>
   </section>
@@ -437,7 +452,6 @@
             <li class="nav-item"><a href="xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
             <li class="nav-item"><a href="uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
             <li class="nav-item"><a href="history.html" class="nav-link">History</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
@@ -450,14 +464,26 @@
           <h5>Docs</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="docs.html" class="nav-link">Documentation</a></li>
-            <li class="nav-item"><a href="docs-index.html" class="nav-link">Documentation Index</a></li>
+            <li class="nav-item"><a href="introduction.html" class="nav-link">Introduction</a></li>
+            <li class="nav-item"><a href="use-cases.html" class="nav-link">Use Cases</a></li>
             <li class="nav-item"><a href="concepts.html" class="nav-link">Concepts</a></li>
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
-            <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Resources</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
+            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -465,14 +491,14 @@
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
-            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
             <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
             <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
             <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
-            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->

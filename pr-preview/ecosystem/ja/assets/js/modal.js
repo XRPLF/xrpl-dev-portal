@@ -1,4 +1,59 @@
 $(document).ready(() => {
+  const logos = {
+    infrastructure: [
+      "XRP-Ledger",
+      "Gatehub",
+      "towoLabs",
+      "xrpscan",
+      "xrp-toolkit",
+      "bithomp",
+      "onthedex",
+    ],
+    developer_tooling: [
+      "blockforce",
+      "Evernode",
+      "threezy",
+      "tokenize",
+    ],
+    interoperability: ["Allbridge", "futureverse", "multichain"],
+    wallet: [
+      "Bitfrost",
+      "Crossmark",
+      "Edge",
+      "gem-wallet",
+      "Xumm",
+    ],
+    nfts: [
+      "aesthetes",
+      "audiotarky",
+      "nftmaster",
+      "peerkat",
+      "sologenic_dex",
+      "xrp-cafe",
+      "xrp-oval",
+    ],
+    exchanges: ["sologenic_dex", "XPMarket"],
+    gaming: [
+      "Forte",
+      "Futureverse",
+      "ledger-city",
+      "onXRP",
+      "styngr",
+    ],
+    security: ["Anchain"],
+    payments: ["ripple", "SuperMojo"],
+    cbdc: ["ripple"],
+    sustainability: ["carbonland-trust", "Rootmaker"],
+    custody: ["Gatehub", "Bitgo"],
+  };
+  // Helper function to create a logo element
+  function createLogoElement(logoSrc, title, id) {
+    const logoElem = document.createElement("div");
+    logoElem.alt = `${title} logo`;
+    logoElem.classList.add(`logo-item`);
+    logoElem.classList.add(`${logoSrc}`);
+    return logoElem;
+  }
   // Add two new constiables for arrow buttons
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
@@ -51,11 +106,79 @@ $(document).ready(() => {
   function updateModalContent({ id, title, number, src, description, index }) {
     const arrowContainer = document.getElementById("arrows-container");
     modalImage.src = src;
-    modalImage.id = id
+    modalImage.id = id;
     modalImage.alt = title + " logo";
     modalTextDescription.textContent = description;
     modalTextTitle.textContent = title;
-    modalLogos.textContent = "Group of logos for " + title + " here...";
+    modalLogos.innerHTML = "";
+    const logoArray = logos[id] || [];
+    // Reset styles and classes for modalLogos
+    modalLogos.removeAttribute("style");
+    modalLogos.className = "";
+
+    if (logoArray.length > 0) {
+      const topRowDiv = document.createElement("div");
+      topRowDiv.className = "top-row";
+      const bottomRowDiv = document.createElement("div");
+      bottomRowDiv.className = "bottom-row";
+
+      if (logoArray.length === 7) {
+        // 4 on top, 3 on bottom
+        for (let i = 0; i < 4; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          topRowDiv.appendChild(logoElem);
+        }
+        for (let i = 4; i < 7; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          bottomRowDiv.appendChild(logoElem);
+        }
+      } else if (logoArray.length === 6) {
+        // Special case: 3 on top, 3 on bottom
+        for (let i = 0; i < 3; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          topRowDiv.appendChild(logoElem);
+        }
+        for (let i = 3; i < 6; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          bottomRowDiv.appendChild(logoElem);
+        }
+      } else if (logoArray.length === 5) {
+        // Special case: 3 on top, 2 on bottom
+        for (let i = 0; i < 3; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          topRowDiv.appendChild(logoElem);
+        }
+        for (let i = 3; i < 5; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          bottomRowDiv.appendChild(logoElem);
+        }
+        bottomRowDiv.style.justifyContent = "center"; // Center the logos
+      } else if (logoArray.length === 4) {
+        // Special case: 2 on top, 2 on bottom
+        for (let i = 0; i < 2; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          topRowDiv.appendChild(logoElem);
+        }
+        for (let i = 2; i < 4; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          bottomRowDiv.appendChild(logoElem);
+        }
+        bottomRowDiv.style.justifyContent = "center"; // Center the logos
+      } else {
+        // Default case
+        logoArray.forEach((logoSrc) => {
+          const logoElem = createLogoElement(logoSrc, title, id);
+          topRowDiv.appendChild(logoElem);
+        });
+      }
+
+      modalLogos.appendChild(topRowDiv);
+      if (bottomRowDiv.hasChildNodes()) {
+        modalLogos.appendChild(bottomRowDiv);
+      }
+    } else {
+      modalLogos.className = "flex-center";
+    }
     if (id === "infrastructure") {
       arrowContainer.style.justifyContent = "end";
     } else {
@@ -76,7 +199,6 @@ $(document).ready(() => {
       modalImage.alt = title + " logo";
       modalTextDescription.textContent = description;
       modalTextTitle.textContent = title;
-      modalLogos.textContent = "Group of logos for " + title + " here...";
 
       // Set the data index on the modal
       modal.setAttribute("data-index", index);
@@ -91,7 +213,7 @@ $(document).ready(() => {
 
       modal.style.display = "block";
 
-      if (id === 'infrastructure') {
+      if (id === "infrastructure") {
         arrowContainer.style.justifyContent = "end";
       } else {
         arrowContainer.style.justifyContent = "space-between";

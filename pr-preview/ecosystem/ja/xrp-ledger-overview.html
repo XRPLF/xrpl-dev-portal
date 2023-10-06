@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>XRPL オーバービュー - XRPL.org (日本語)</title>
+    <title>XRPLの概要 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="XRPL オーバービュー | XRPL.org (日本語)">
+    <meta property="og:title" content="XRPLの概要 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/xrp-ledger-overview.html" />
     <meta property="og:description" content="XRPL開発者コミュニティが推進するパブリックブロックチェーン「XRP Ledger」の主なメリットと特徴をご紹介します。" />
     <meta name="description" content="XRPL開発者コミュニティが推進するパブリックブロックチェーン「XRP Ledger」の主なメリットと特徴をご紹介します。" />
@@ -33,7 +33,7 @@
     <meta name="color-scheme" content="dark light">
 
     <!-- jQuery -->
-    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/ja/assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     <script type="application/javascript">
@@ -49,11 +49,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v18.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -97,24 +97,23 @@
         <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
           <div class="navcol col-for-xrp-ledger">
             <h5 class="dropdown-item">XRP Ledger</h5>
-            <a class="dropdown-item  active" href="/ja/xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item  active" href="/ja/xrp-ledger-overview.html">XRPLの概要</a>
             <a class="dropdown-item" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
-            <a class="dropdown-item" href="/ja/history.html">沿革</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/history.html">歴史</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
-            <a class="dropdown-item" href="/ja/xrp-overview.html">XRP Overview</a>
+            <a class="dropdown-item" href="/ja/xrp-overview.html">XRPの概要</a>
           </div><!--./col-->
-          <div class="navcol col-for-sustainability">
-            <h5 class="dropdown-item">Sustainability</h5>
+          <div class="navcol col-for-持続可能性">
+            <h5 class="dropdown-item">持続可能性</h5>
             <a class="dropdown-item" href="/ja/impact.html">インパクト</a>
           </div><!--./col-->
-          <div class="navcol col-for-about">
-            <h5 class="dropdown-item">About</h5>
+          <div class="navcol col-for-概要">
+            <h5 class="dropdown-item">概要</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
             <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
-            <a class="dropdown-item" href="/ja/privacy-policy.html">Privacy Policy</a>
+            <a class="dropdown-item" href="/ja/privacy-policy.html">プライバシーポリシー</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -126,26 +125,20 @@
             <img id="top-nav-hero-docs" alt="ドキュメント icon" />
             <div class="dropdown-hero-text">
               <h4>ドキュメント</h4>
-              <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
+              <p>XRP Ledgerのテクノロジーに飛び込み、実装を始めましょう。</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="/ja/docs-index.html">Documentation Index</a>
-          </div><!--./col-->
-          <div class="navcol col-for-article-types">
-            <h5 class="dropdown-item">Article Types</h5>
+          <div class="navcol col-for-カテゴリ">
+            <h5 class="dropdown-item">カテゴリ</h5>
+            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
+            <a class="dropdown-item" href="/ja/use-cases.html">ユースケース</a>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
             <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
             <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
+            <a class="dropdown-item" href="/ja/infrastructure.html">インフラストラクチャ</a>
           </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
-            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
-          </div><!--./col-->
-          <div class="navcol col-for-get-started">
-            <h5 class="dropdown-item">Get Started</h5>
+          <div class="navcol col-for-始めましょう">
+            <h5 class="dropdown-item">始めましょう</h5>
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
@@ -157,12 +150,30 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-          </div><!--./col-->
-          <div class="navcol col-for-popular-pages">
-            <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
-            <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>リソース</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-開発">
+            <h5 class="dropdown-item">開発</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+          </div><!--./col-->
+          <div class="navcol col-for-現在のステータス">
+            <h5 class="dropdown-item">現在のステータス</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/known-amendments.html">既知のAmendment</a>
+          </div><!--./col-->
+          <div class="navcol col-for-参加する">
+            <h5 class="dropdown-item">参加する</h5>
+            <a class="dropdown-item" href="/ja/contribute-code.html">コードへの貢献</a>
+            <a class="dropdown-item" href="/ja/contribute-documentation.html">ドキュメントへの貢献</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -170,11 +181,11 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティ</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
-            <img id="top-nav-hero-contribute" alt="貢献する icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-xrplコミュニティへの貢献" href="/ja/contribute.html">
+            <img id="top-nav-hero-contribute" alt="XRPLコミュニティへの貢献 icon" />
             <div class="dropdown-hero-text">
-              <h4>貢献する</h4>
-              <p>話題に加わろう</p>
+              <h4>XRPLコミュニティへの貢献</h4>
+              <p>コミュニティに参加しましょう</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
@@ -185,7 +196,8 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
-            <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPLブランドキット</a>
+            <a class="dropdown-item" href="/ja/report-a-scam.html">詐欺の報告</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -251,14 +263,14 @@
   <section class="py-26 text-center">
     <div class="col-lg-5 mx-auto text-center">
       <div class="d-flex flex-column-reverse">
-        <h1 class="mb-0">XRPL Today and the Vision for Tomorrow</h1>
-        <h6 class="eyebrow mb-3">XRPL | XRP Ledger Overview</h6>
+        <h1 class="mb-0">高性能</h1>
+        <h6 class="eyebrow mb-3">現在のXRPL、未来のXRPL</h6>
       </div>
     </div>
   </section>
 
   <div class="position-relative d-none-sm">
-    <img src="./img/backgrounds/xrpl-overview-orange.svg" id="xrpl-overview-orange">
+    <img alt="" src="./img/backgrounds/xrpl-overview-orange.svg" id="xrpl-overview-orange">
   </div>
 
   <section class="container-new py-26">
@@ -266,22 +278,22 @@
       <div class="col">
         <div class="d-flex flex-column-reverse">
           <h2 class="h4 h2-sm mb-8">XRP Ledgerはどのような仕組みですか?</h2>
-          <h6 class="eyebrow mb-3">XRP Ledger Basics</h6>
+          <h6 class="eyebrow mb-3">XRP Ledgerの基礎知識</h6>
         </div>
-        <h5 class="longform mb-10">The XRP Ledger is a decentralized public blockchain. </h5>
-        <p class="mb-4">Anyone can connect their computer to the peer-to-peer network that manages the ledger. The global XRP Ledger community—a diverse set of software engineers, server operators, users, and businesses—maintains the ledger.</p>
+        <h5 class="longform mb-10">XRP Ledgerは、分散型パブリックブロックチェーンです。</h5>
+        <p class="mb-4">誰でも自分のコンピュータを、台帳を管理するピアツーピアのネットワークに接続することができます。ソフトウェア・エンジニア、サーバ・オペレーター、ユーザ、企業など、さまざまな人々が集まるグローバルなXRP Ledgerコミュニティが、台帳を管理しています。</p>
         <div class="d-none d-lg-block">
-          <a class="btn btn-primary btn-arrow" href="docs.html">技術を知る</a> <a class="ml-4 video-external-link" target="_blank" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi">Watch Explainer Videos </a>
+          <a class="btn btn-primary btn-arrow" href="docs.html">技術を知る</a> <a class="ml-4 video-external-link" target="_blank" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi">解説動画を見る </a>
         </div>
       </div>
       <div class="col">
         <iframe id="video1" style="display:none;" width="560" height="315" src="https://www.youtube.com/embed/sVTybJ3cNyo" title="Intro to the XRP Ledger" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <a href="#" id="playvideo">
-          <img src="./assets/img/overview/video_explainer_intro@2x.png" id="xrpl-overview-video-intro" class="w-100 video-image">
+          <img alt="XRPL logo with play button surrounded with image bubbles of various people" src="./assets/img/overview/video_explainer_intro@2x.png" id="xrpl-overview-video-intro" class="w-100 video-image">
         </a>
 
         <div class="text-center d-lg-none">
-        <a class="btn btn-primary btn-arrow mt-5 mb-4" href="docs.html">技術を知る</a> <a class="ml-4 video-external-link" target="_blank" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi">Watch Explainer Videos </a>
+        <a class="btn btn-primary btn-arrow mt-5 mb-4" href="docs.html">技術を知る</a> <a class="ml-4 video-external-link" target="_blank" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi">解説動画を見る </a>
         </div>
 
       </div>
@@ -292,12 +304,12 @@
     <div class="card-grid card-grid-2xN">
       <div class="col">
         <div class="d-flex flex-column-reverse">
-          <h2 class="h4 h2-sm mb-8">How the Consensus Protocol works</h2>
-          <h6 class="eyebrow mb-3">Consensus</h6>
+          <h2 class="h4 h2-sm mb-8">コンセンサスプロトコルの仕組み</h2>
+          <h6 class="eyebrow mb-3">コンセンサス</h6>
         </div>
-        <h5 class="longform mb-10">XRPL uses a consensus protocol, in which designated servers called <a href="run-a-rippled-validator.html">validators</a> come to an agreement on the order and outcome of XRP transactions every 3-5 seconds.</h5>
-        <p class="mb-6">ネットワーク内のすべてのサーバーが、同じルールに従って各取引を処理します。このプロトコルに従っている取引はすべて、バリデータが定数に達した時点ですぐに確認されます。</p>
-        <p class="mb-0">バリデータは誰でも運営できます。現在、レジャーでは、大学、取引所、企業、個人が運営している150以上の<a href="run-a-rippled-validator.html" class="underline">バリデータ</a>がアクティブです。</p>
+        <h5 class="longform mb-10">XRPLはコンセンサスプロトコルを採用しており、<a href="run-a-rippled-validator.html">バリデータ</a>と呼ばれる指定されたサーバが、3～5秒ごとにXRPトランザクションの順序と結果について合意に至ります。</h5>
+        <p class="mb-6">ネットワーク内のすべてのサーバが、同じルールに従って各取引を処理します。このプロトコルに従っている取引はすべて、バリデータが定数に達した時点ですぐに確認されます。</p>
+        <p class="mb-0">バリデータは誰でも運営できます。現在、レジャーでは、大学、取引所、企業、個人が運営している150以上の<a href="run-a-rippled-validator.html" class="underline">バリデータ</a>がアクティブです。さらに、コンセンサスプロトコルは、バリデータ・プールが成長するにつれて、ブロックチェーンがより分散化されることを保証します。</p>
       </div>
       <div class="col mb-16-sm">
         <img class="mw-100" id="validator-graphic" alt="(Graphic: Validators in Consensus)">
@@ -307,11 +319,11 @@
 
   <section class="container-new py-26">
     <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-      <img src="./img/backgrounds/cta-xrpl-overview-green.svg" class="cta cta-bottom-right">
+      <img alt="" src="./img/backgrounds/cta-xrpl-overview-green.svg" class="cta cta-bottom-right">
       <div class="z-index-1 position-relative">
-        <h2 class="h4 mb-10-until-sm mb-8-sm">A Greener Blockchain</h2>
-        <p class="mb-10">Unlike most other blockchains, the XRP Ledger does not need mining, so <a href="impact.html">no energy is wasted</a> in the transaction process.</p>
-        <a class="btn btn-primary btn-arrow" href="impact.html">Learn More</a>
+        <h2 class="h4 mb-10-until-sm mb-8-sm">XRP Ledger: スケーラブルで持続可能なブロックチェーン</h2>
+        <p class="mb-10">他のほとんどのブロックチェーンとは異なり、XRP Ledgerはマイニングを必要とせず、長期的な成長と安定性の鍵となるエネルギー消費もごくわずかです。</p>
+        <a class="btn btn-primary btn-arrow" href="impact.html">もっと知る</a>
       </div>
     </div>
   </section>
@@ -320,68 +332,68 @@
     <div class="card-grid card-grid-2xN">
       <div class="col">
         <div class="d-flex flex-column-reverse">
-          <h4 class="h4 h2-sm mb-8">XRPL provides powerful utility across the blockchain space</h4>
-          <h6 class="eyebrow mb-3">XRPL Today</h6>
+          <h4 class="h4 h2-sm mb-8">実績ある技術で<br class="until-smart"/>信頼性のある開発</h4>
+          <h6 class="eyebrow mb-3">XRPLの現在</h6>
         </div>
-        <h5 class="longform mb-10">The ledger’s unique properties, such as its fast and efficient consensus algorithm and censorship-resistant transaction processing, are leveraged by thousands of developers.</h5>
-        <p class="mb-10">With the XRPL, these developers are building innovative projects and applications across blockchain use cases including tokenization of assets, online gaming, asset custody, NFTs, and DeFi.</p>
+        <h5 class="longform mb-10">XRPLは、10年以上にわたって機能を提供し、エンタープライズ企業を顧客として、信頼性を確立してきました。</h5>
+        <p class="mb-10">XRPLにより、開発者たちは、資産のトークン化、オンラインゲーム、資産保管、NFT、DeFiなどのブロックチェーンのユースケースにわたって革新的なプロジェクトやアプリケーションを構築しています。</p>
         <a class="btn btn-primary btn-arrow mb-10-sm" href="uses.html">利用例を見る</a>
       </div>
       <div class="col mb-0">
         <div class="d-flex flex-column-reverse">
-          <h4 class="h4 h2-sm mb-8">Fulfilling the vision of the XRPL community</h4>
-          <h6 class="eyebrow mb-3">XRPL Tomorrow</h6>
+          <h4 class="h4 h2-sm mb-8">長期的な成長を見据えた<br class="until-smart"/>新たな価値の創造</h4>
+          <h6 class="eyebrow mb-3">XRPLの未来</h6>
         </div>
-        <h5 class="longform mb-10">While XRPL is the choice of developers who don’t want to sacrifice security or performance and who want to build on the greenest blockchain, that’s only the beginning.</h5>
-        <p class="mb-0">As a community-led blockchain, XRPL’s vision is also a community effort. <a href="https://xrplf.org/" target="_blank">The XRPL Foundation</a> is currently collaborating with community members to define a shared vision statement. Stay tuned for more on this effort—we can’t wait to share it with you.</p>
+        <h5 class="longform mb-10">ビジネスの発展のために構築されたコミュニティ主導のブロックチェーンであるXRPLは、現在そして将来にわたって真の問題を解決し、真の価値を生み出そうとする企業や開発者を惹きつけています。</h5>
+        <p class="mb-0">低い取引コストとエネルギー使用量に加え、開発への多額の投資が成長を促し、大規模で多様なユースケースを開拓しています。</p>
       </div>
     </div>
   </section>
 
   <section class="container-new py-26">
     <div class="d-flex flex-column-reverse col-xl-6 mb-lg-4 pl-0 ">
-      <h2 class="h4 h2-sm">Watch the explainer video series to learn more about the XRP Ledger</h2>
-      <h6 class="eyebrow mb-3">Tune In</h6>
+      <h2 class="h4 h2-sm">XRP Ledgerの詳細については、説明用のビデオシリーズをご覧ください。</h2>
+      <h6 class="eyebrow mb-3">視聴する</h6>
     </div>
 
     <div class="row row-cols-1 row-cols-lg-3 d-flex justify-content-between w-100 mx-0 mx-md-n3 mt-md-5">
         <div class="px-md-3 pt-5 pt-md-0">
           <a href="#" class="btn1" data-url="https://www.youtube.com/embed/k6VqEkqRTmk?rel=0&amp;showinfo=0&amp;autoplay=1">
-            <img src="./assets/img/overview/video_explainer_consensus@2x.png" id="xrpl-overview-video-consensus" class="w-100 video-image">
+            <img alt="Two Monitors with person image bubbles inside, facing each other with a play button in between" src="./assets/img/overview/video_explainer_consensus@2x.png" id="xrpl-overview-video-consensus" class="w-100 video-image">
           </a>
           <div class="mt-2">
-            <h4 class="video-title mt-3 mb-0">The Consensus Mechanism</h4>
+            <h4 class="video-title mt-3 mb-0">コンセンサスの仕組み</h4>
           </div>
         </div>
         <div class="px-md-3 pt-5 pt-md-0">
           <a href="#" class="btn1" data-url="https://www.youtube.com/embed/JjaVDXPqnbA?rel=0&amp;showinfo=0&amp;autoplay=1">
-            <img src="./assets/img/overview/video_explainer_nodes@2x.png" id="xrpl-overview-video-nodes" class="w-100 video-image">
+            <img alt="graphlike background with play button in center" src="./assets/img/overview/video_explainer_nodes@2x.png" id="xrpl-overview-video-nodes" class="w-100 video-image">
           </a>
           <div class="mt-2">
-            <h4 class="video-title mt-3 mb-0">ウォレットとアプリケーション</h4>
+            <h4 class="video-title mt-3 mb-0">ノードとバリデータ</h4>
           </div>
         </div>
         <div class="px-md-3 pt-5 pt-md-0">
           <a href="#" class="btn1" data-url="https://www.youtube.com/embed/WsmldDNGQ9s?rel=0&amp;showinfo=0&amp;autoplay=1">
-            <img src="./assets/img/overview/video_explainer_sustainability@2x.png" id="xrpl-overview-video-sustainability" class="w-100 video-image">
+            <img alt="A globe graph with a play button in center" src="./assets/img/overview/video_explainer_sustainability@2x.png" id="xrpl-overview-video-sustainability" class="w-100 video-image">
           </a>
           <div class="mt-2">
-            <h4 class="video-title mt-3 mb-0">Sustainability of the XRP Ledger</h4>
+            <h4 class="video-title mt-3 mb-0">XRP Ledgerの持続可能性</h4>
           </div>
         </div>
     </div>
     <div class="pt-5 w-100">
-      <a class="btn btn-primary btn-arrow" target="_blank" href="https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg">Watch Full Series on YouTube</a>
+      <a class="btn btn-primary btn-arrow" target="_blank" href="https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg">YouTubeで全てのシリーズを見る</a>
     </div>
   </section>
 
   <section class="container-new py-26">
     <div class="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-      <img src="./img/backgrounds/cta-xrpl-overview-orange.svg" class="cta cta-bottom-right">
+      <img alt="" src="./img/backgrounds/cta-xrpl-overview-orange.svg" class="cta cta-bottom-right">
       <div class="z-index-1 position-relative">
-        <h4 class="h4 mb-10-until-sm mb-8-sm">Tomorrow’s Blockchain Starts With You</h4>
-        <p class="mb-10">XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for an XRPL Grant.</p>
-        <a class="btn btn-primary btn-arrow" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
+        <h4 class="h4 mb-10-until-sm mb-8-sm">未来のブロックチェーンは、あなたから始まる</h4>
+        <p class="mb-10">XRP Ledgerのイノベーションは、皆さんのような開発者が共有するコミュニティーの経験を大切にしています。もしあなたが次の大きな<a href='developer-funding.html'>ブロックチェーン・プロジェクト</a>を始める準備ができているなら、今すぐXRPLを試し、XRPL開発者向け資金提供プログラムへの応募を検討しましょう。</p>
+        <a class="btn btn-primary btn-arrow" href="https://xrplgrants.org/" target="_blank">XRPL開発者向け資金提供プログラムを見る</a>
       </div>
     </div>
   </section>
@@ -391,38 +403,38 @@
       <div class="q-wrapper">
         <a href="#heading1" class="expander collapsed" data-toggle="collapse" data-target="#answer1" aria-expanded="false" aria-controls="answer1">
           <h4 id="heading1">
-            Is XRPL a private blockchain, owned by Ripple?
+            XRPLはRipple社が所有するプライベートブロックチェーンですか？
             <span class="chevron"><span></span><span></span></span>
           </h4>
         </a>
         <div id="answer1" class="answer-wrapper collapse" aria-labelledby="heading1">
-          <p>No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the Unique Node List (see “What are Unique Node Lists (UNLs)?” in the Full FAQ) — Ripple runs 6 of these nodes.</p>
+          <p>いいえ、XRP Ledgerは分散型のパブリックブロックチェーンです。取引処理やコンセンサスに影響を与えるような変更は、ネットワークの少なくとも80％の承認が必要です。Ripple社はネットワークへの貢献者ですが、その権利は他の貢献者と同じです。バリデーションの面では、ネットワーク上に150人以上のバリデーターが存在し、35人以上がユニークノードリスト（FAQ全文の「ユニークノードリスト（UNL）とは何ですか」参照）に登録されており、Ripple社はこれらのノードのうち1つを運営しています。</p>
         </div><!--/.answer-wrapper 1 -->
       </div>
       <div class="q-wrapper">
         <a href="#heading2" class="expander collapsed" data-toggle="collapse" data-target="#answer2" aria-expanded="false" aria-controls="answer2">
           <h4 id="heading2">
-            Isn’t Proof of Work the best validation mechanism?
+            Proof of Workが最良の検証メカニズムではないでしょうか？
             <span class="chevron"><span></span><span></span></span>
           </h4>
         </a>
         <div id="answer2" class="answer-wrapper collapse" aria-labelledby="heading2">
-          <p>Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. However the XRP Ledger’s consensus mechanism solves the same problem in a far faster, cheaper and more energy efficient way.</p>
+          <p>Proof of Work（PoW）は、信頼できる第三者を必要とせずに二重消費問題を解決する最初の仕組みでした。しかし、XRP Ledgerのコンセンサスメカニズムは、同じ問題をはるかに速く、安く、エネルギー効率の良い方法で解決しています。</p>
         </div><!--/.answer-wrapper 2 -->
       </div>
       <div class="q-wrapper">
         <a href="#heading3" class="expander collapsed" data-toggle="collapse" data-target="#answer3" aria-expanded="false" aria-controls="answer3">
           <h4 id="heading3">
-            How can a blockchain be sustainable?
+            ブロックチェーンはどうして持続可能なのでしょうか？
             <span class="chevron"><span></span><span></span></span>
           </h4>
         </a>
         <div id="answer3" class="answer-wrapper collapse" aria-labelledby="heading3">
-          <p>It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>one of the first truly carbon neutral blockchains</a>.</p>
+          <p>ビットコインのエネルギー消費量は、2021年時点で、アルゼンチンが使用するエネルギーと同等であり、ビットコインの採掘者が使用する電力の多くは環境破壊につながる資源から供給されていると広く報告されています。XRP Ledgerは、Proof of Workのようにエネルギーを浪費しない「コンセンサス」メカニズムを通じてトランザクションを検証し、カーボンオフセットを活用して、<a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>最初の真のカーボンニュートラルなブロックチェーンの1つとなっています。</a></p>
         </div><!--/.answer-wrapper 3 -->
       </div>
       <center>
-        <a class="btn btn-primary btn-arrow mt-20" href="faq.html">View Full FAQ</a>
+        <a class="btn btn-primary btn-arrow mt-20" href="faq.html">すべてのFAQを見る</a>
       </center>
     </div>
   </section>
@@ -438,15 +450,14 @@
         <div class="col-lg">
           <h5>概要</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
+            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPLの概要</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
-            <li class="nav-item"><a href="/ja/history.html" class="nav-link">沿革</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
-            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="/ja/history.html" class="nav-link">歴史</a></li>
+            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRPの概要</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
             <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
-            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">プライバシーポリシー</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -454,22 +465,33 @@
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
-            <li class="nav-item"><a href="/ja/docs-index.html" class="nav-link">Documentation Index</a></li>
+            <li class="nav-item"><a href="/ja/introduction.html" class="nav-link">基本</a></li>
+            <li class="nav-item"><a href="/ja/use-cases.html" class="nav-link">ユースケース</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
-            <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/infrastructure.html" class="nav-link">インフラストラクチャ</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>リソース</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/resources.html" class="nav-link">リソース</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">コードへの貢献</a></li>
+            <li class="nav-item"><a href="/ja/contribute-documentation.html" class="nav-link">ドキュメントへの貢献</a></li>
           </ul>
         </div><!--/.col -->
 
         <div class="col-lg">
           <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
-            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">XRPLコミュニティへの貢献</a></li>
             <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
             <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
             <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
@@ -477,7 +499,8 @@
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
-            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPLブランドキット</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">詐欺の報告</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -488,7 +511,7 @@
     <div class="d-lg-flex row">
       <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
       <span class="flex-grow-1">&nbsp;</span>
-      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース。</a>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース</a>
       </div>
     </div><!-- /.absolute_bottom_footer -->
 
@@ -496,7 +519,7 @@
 </footer>
 
 <!-- Jump to top button -->
-<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="ページの先頭へ"><i class="fa fa-arrow-up"></i></a>
 <script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
 
 <!-- Non-blocking resources -->

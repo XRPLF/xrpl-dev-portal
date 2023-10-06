@@ -33,7 +33,7 @@
     <meta name="color-scheme" content="dark light">
 
     <!-- jQuery -->
-    <script src="assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     <script type="application/javascript">
@@ -49,10 +49,10 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
-    <link href="assets/css/devportal2022-v18.css" rel="stylesheet" />
+    <link href="assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -95,7 +95,6 @@
             <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL Overview</a>
             <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
             <a class="dropdown-item" href="history.html">History</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
@@ -124,20 +123,14 @@
               <p>Dive into XRP Ledger technology and start integrating.</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="docs-index.html">Documentation Index</a>
-          </div><!--./col-->
           <div class="navcol col-for-article-types">
             <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="introduction.html">Introduction</a>
+            <a class="dropdown-item" href="use-cases.html">Use Cases</a>
             <a class="dropdown-item" href="concepts.html">Concepts</a>
             <a class="dropdown-item" href="tutorials.html">Tutorials</a>
             <a class="dropdown-item" href="references.html">References</a>
-          </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
-            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+            <a class="dropdown-item" href="infrastructure.html">Infrastructure</a>
           </div><!--./col-->
           <div class="navcol col-for-get-started">
             <h5 class="dropdown-item">Get Started</h5>
@@ -153,8 +146,29 @@
             <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
             <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
-            <a class="dropdown-item" href="intro-to-consensus.html">Introduction to Consensus</a>
             <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Resources</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-development">
+            <h5 class="dropdown-item">Development</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
+            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+          </div><!--./col-->
+          <div class="navcol col-for-current-status">
+            <h5 class="dropdown-item">Current Status</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
+            <a class="dropdown-item" href="known-amendments.html">Known Amendments</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item" href="contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="contribute-documentation.html">Contribute Documentation</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -176,7 +190,8 @@
             <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
-            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
             <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -228,7 +243,7 @@
       <!-- main column -->
       <main class="main col-md-12 order-md-3  landing" role="main" id="main_content_body">
 <div class="position-relative">
-  <img src="./img/backgrounds/xrp-overview-blue.svg" class="landing-bg" id="xrp-overview-blue">
+  <img alt="" src="./img/backgrounds/xrp-overview-blue.svg" class="landing-bg" id="xrp-overview-blue">
 </div>
 
 <section class="py-26 text-center">
@@ -285,7 +300,7 @@
               <tr>
                   <td>Sustainable</td>
                   <td>Environmentally sustainable (negligible energy consumption)</td>
-                <td>0.3% of global energy consumption</td>
+                <td>0.3&#37; of global energy consumption</td>
               </tr>
             </tbody>
           </table>
@@ -305,7 +320,7 @@
           </div>
         </div>
         <div class="mt-10 p-10 br-8 cta-card position-relative">
-          <img src="./img/backgrounds/cta-xrp-overview-magenta.svg" class="cta cta-bottom-right">
+          <img alt="" src="./img/backgrounds/cta-xrp-overview-magenta.svg" class="cta cta-bottom-right">
           <div class="z-index-1 position-relative">
             <h2 class="h4 mb-10-until-sm mb-8-sm">The XRP Ledger was designed with sustainability in mind.</h2>
             <p class="mb-10">Explore the impact of the world's first major, global, public carbon-neutral blockchain.</p>
@@ -324,9 +339,9 @@
       <div class="py-26 link-section" id="ripple">
         <h2 class="h4 h2-sm mb-8">What Is the Relationship Between Ripple and XRP?</h2>
         <h5 class="longform mb-10"><a href="https://ripple.com" target="_blank">Ripple</a> is a technology company that makes it easier to build a high-performance, global payments business. XRP is a digital asset independent of this.</h5>
-        <p>There is a finite amount of XRP. All XRP is already in existence today—no more than the original 100 billion can be created. The XRPL founders gifted 80 billion XRP, the platform’s native currency, to Ripple. To provide predictability to the XRP supply, Ripple has locked 55 billion XRP (55% of the total possible supply) into a series of escrows using the XRP Ledger itself. The XRPL's transaction processing rules, enforced by the consensus protocol, control the release of the XRP.</p>
+        <p>There is a finite amount of XRP. All XRP is already in existence today—no more than the original 100 billion can be created. The XRPL founders gifted 80 billion XRP, the platform’s native currency, to Ripple. To provide predictability to the XRP supply, Ripple has locked 55 billion XRP (55&#37; of the total possible supply) into a series of escrows using the XRP Ledger itself. The XRPL's transaction processing rules, enforced by the consensus protocol, control the release of the XRP.</p>
         <div class="mt-10 p-10 br-8 cta-card position-relative">
-          <img src="./img/backgrounds/cta-xrp-overview-green-2.svg" class="landing-bg cta cta-bottom-right">
+          <img alt="" src="./img/backgrounds/cta-xrp-overview-green-2.svg" class="landing-bg cta cta-bottom-right">
           <div class="z-index-1 position-relative">
             <h3 class="h4">As of <span class="stat-highlight" id="ripple-escrow-as-of">December 2017</span> <br/>
             <span class="d-inline-flex"><img id="xrp-mark-overview" class="mw-100 invertible-img mr-2" src="./img/logos/xrp-mark.svg" alt="XRP Logo Mark"> <span class="numbers stat-highlight" id="ripple-escrow-amount">55B</span></span><br/>
@@ -353,9 +368,12 @@
       <div class="link-section py-26" id="wallets">
         <h2 class="h4 h2-sm mb-8">What Wallets Support XRP?</h2>
         <h5 class="longform mb-10">Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software.</h5>
-        <ul class="nav nav-grid-lg cols-of-4" id="wallets">
+        <ul class="nav nav-grid-lg cols-of-5" id="wallets">
           <li class="nav-item nav-grid-head">
             <h6 class="fs-4-5">Software Wallets</h6>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link external-link" href="https://towolabs.com/" target="_blank"><img class="mw-100 " id="wallet-towo" alt="Towo" /></a>
           </li>
           <li class="nav-item">
             <a class="nav-link external-link" href="https://xumm.app/" target="_blank"><img class="mw-100 " id="wallet-xumm" alt="Xumm" /></a>
@@ -371,6 +389,12 @@
           </li>
           <li class="nav-item">
             <a class="nav-link external-link" href="https://www.ledger.com/" target="_blank"><img class="mw-100 invertible-img" id="wallet-ledger" alt="Ledger" /></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link external-link" href="https://keyst.one/" target="_blank"><img class="mw-100 " id="wallet-keystone" alt="Keystone" /></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link external-link" href="https://dcentwallet.com/?lang=en" target="_blank"><img class="mw-100 " id="wallet-dcent" alt="Dcent" /></a>
           </li>
           <li class="nav-item">
             <a class="nav-link external-link" href="https://trezor.io/" target="_blank"><img class="mw-100 invertible-img" id="wallet-trezor" alt="Trezor" /></a>
@@ -453,7 +477,6 @@
             <li class="nav-item"><a href="xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
             <li class="nav-item"><a href="uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
             <li class="nav-item"><a href="history.html" class="nav-link">History</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
             <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
             <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
@@ -466,14 +489,26 @@
           <h5>Docs</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="docs.html" class="nav-link">Documentation</a></li>
-            <li class="nav-item"><a href="docs-index.html" class="nav-link">Documentation Index</a></li>
+            <li class="nav-item"><a href="introduction.html" class="nav-link">Introduction</a></li>
+            <li class="nav-item"><a href="use-cases.html" class="nav-link">Use Cases</a></li>
             <li class="nav-item"><a href="concepts.html" class="nav-link">Concepts</a></li>
             <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
             <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
-            <li class="nav-item"><a href="by-label.html" class="nav-link">Browse By Label</a></li>
+            <li class="nav-item"><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Resources</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
+            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -481,14 +516,14 @@
           <h5>Community</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
-            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
             <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
             <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
             <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
             <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
-            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->

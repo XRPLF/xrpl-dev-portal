@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="ドキュメント | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/docs.html" />
-    <meta property="og:description" content="XRP Ledgerのドキュメントと、元帳を構築して統合するために必要なすべての情報を紹介します。" />
-    <meta name="description" content="XRP Ledgerのドキュメントと、元帳を構築して統合するために必要なすべての情報を紹介します。" />
+    <meta property="og:description" content="XRP Ledgerのドキュメントと、XRP Ledgerの構築と利用を開始するために必要なすべての情報を紹介します。" />
+    <meta name="description" content="XRP Ledgerのドキュメントと、XRP Ledgerの構築と利用を開始するために必要なすべての情報を紹介します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -33,7 +33,7 @@
     <meta name="color-scheme" content="dark light">
 
     <!-- jQuery -->
-    <script src="/ja/assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/ja/assets/vendor/jquery-3.7.1.min.js"></script>
 
     <!-- Google Tag Manager -->
     <script type="application/javascript">
@@ -49,11 +49,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
-    
+
 
     <!-- Stylesheet -->
     <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/ja/assets/css/devportal2022-v18.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v25.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
@@ -86,24 +86,23 @@
         <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
           <div class="navcol col-for-xrp-ledger">
             <h5 class="dropdown-item">XRP Ledger</h5>
-            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPL オーバービュー</a>
+            <a class="dropdown-item " href="/ja/xrp-ledger-overview.html">XRPLの概要</a>
             <a class="dropdown-item" href="/ja/uses.html">ユースケースと注目プロジェクト</a>
-            <a class="dropdown-item" href="/ja/history.html">沿革</a>
-            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/history.html">歴史</a>
           </div><!--./col-->
           <div class="navcol col-for-xrp">
             <h5 class="dropdown-item">XRP</h5>
-            <a class="dropdown-item" href="/ja/xrp-overview.html">XRP Overview</a>
+            <a class="dropdown-item" href="/ja/xrp-overview.html">XRPの概要</a>
           </div><!--./col-->
-          <div class="navcol col-for-sustainability">
-            <h5 class="dropdown-item">Sustainability</h5>
+          <div class="navcol col-for-持続可能性">
+            <h5 class="dropdown-item">持続可能性</h5>
             <a class="dropdown-item" href="/ja/impact.html">インパクト</a>
           </div><!--./col-->
-          <div class="navcol col-for-about">
-            <h5 class="dropdown-item">About</h5>
+          <div class="navcol col-for-概要">
+            <h5 class="dropdown-item">概要</h5>
             <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL財団</a>
             <a class="dropdown-item" href="/ja/faq.html">よくある質問</a>
-            <a class="dropdown-item" href="/ja/privacy-policy.html">Privacy Policy</a>
+            <a class="dropdown-item" href="/ja/privacy-policy.html">プライバシーポリシー</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -115,26 +114,20 @@
             <img id="top-nav-hero-docs" alt="ドキュメント icon" />
             <div class="dropdown-hero-text">
               <h4>ドキュメント</h4>
-              <p>XRP Ledgerの技術に飛び込んで、統合を始めましょう。</p>
+              <p>XRP Ledgerのテクノロジーに飛び込み、実装を始めましょう。</p>
             </div>
           </a>
-          <div class="navcol col-for-ungrouped">
-            <a class="dropdown-item" href="/ja/docs-index.html">Documentation Index</a>
-          </div><!--./col-->
-          <div class="navcol col-for-article-types">
-            <h5 class="dropdown-item">Article Types</h5>
+          <div class="navcol col-for-カテゴリ">
+            <h5 class="dropdown-item">カテゴリ</h5>
+            <a class="dropdown-item" href="/ja/introduction.html">基本</a>
+            <a class="dropdown-item" href="/ja/use-cases.html">ユースケース</a>
             <a class="dropdown-item" href="/ja/concepts.html">コンセプト</a>
             <a class="dropdown-item" href="/ja/tutorials.html">チュートリアル</a>
             <a class="dropdown-item" href="/ja/references.html">リファレンス</a>
+            <a class="dropdown-item" href="/ja/infrastructure.html">インフラストラクチャ</a>
           </div><!--./col-->
-          <div class="navcol col-for-online-tools">
-            <h5 class="dropdown-item">Online Tools</h5>
-            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
-            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
-            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
-          </div><!--./col-->
-          <div class="navcol col-for-get-started">
-            <h5 class="dropdown-item">Get Started</h5>
+          <div class="navcol col-for-始めましょう">
+            <h5 class="dropdown-item">始めましょう</h5>
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
@@ -146,12 +139,30 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-          </div><!--./col-->
-          <div class="navcol col-for-popular-pages">
-            <h5 class="dropdown-item">Popular Pages</h5>
             <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
-            <a class="dropdown-item" href="/ja/intro-to-consensus.html">コンセンサスについて</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/ja/resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>リソース</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-開発">
+            <h5 class="dropdown-item">開発</h5>
+            <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
+            <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+          </div><!--./col-->
+          <div class="navcol col-for-現在のステータス">
+            <h5 class="dropdown-item">現在のステータス</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger エクスプローラ</a>
+            <a class="dropdown-item" href="/ja/known-amendments.html">既知のAmendment</a>
+          </div><!--./col-->
+          <div class="navcol col-for-参加する">
+            <h5 class="dropdown-item">参加する</h5>
+            <a class="dropdown-item" href="/ja/contribute-code.html">コードへの貢献</a>
+            <a class="dropdown-item" href="/ja/contribute-documentation.html">ドキュメントへの貢献</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -159,11 +170,11 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/ja/contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>コミュニティ</span></a>
         <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
-          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-貢献する" href="/ja/contribute.html">
-            <img id="top-nav-hero-contribute" alt="貢献する icon" />
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-xrplコミュニティへの貢献" href="/ja/contribute.html">
+            <img id="top-nav-hero-contribute" alt="XRPLコミュニティへの貢献 icon" />
             <div class="dropdown-hero-text">
-              <h4>貢献する</h4>
-              <p>話題に加わろう</p>
+              <h4>XRPLコミュニティへの貢献</h4>
+              <p>コミュニティに参加しましょう</p>
             </div>
           </a>
           <div class="navcol col-for-ungrouped">
@@ -174,7 +185,8 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
-            <a class="dropdown-item" href="/ja/report-a-scam.html">Report a Scam</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPLブランドキット</a>
+            <a class="dropdown-item" href="/ja/report-a-scam.html">詐欺の報告</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
       </li>
@@ -227,8 +239,8 @@
   <section class="text-center title-space">
     <div class="col-lg-9 mx-auto text-center">
       <div class="d-flex flex-column-reverse">
-        <h1 class="">XRP Ledger Developer Resources</h1>
-        <h6 class="eyebrow mb-3">Documentation</h6>
+        <h1 class="">XRP Ledger 開発者向けリソース</h1>
+        <h6 class="eyebrow mb-3">XRP Ledger ドキュメント</h6>
       </div>
     </div>
   </section>
@@ -247,16 +259,16 @@
             <a href="./concepts.html" class="card flat-card float-up-on-hover">
       <img 
         class="mb-2 concepts-doc-illustration"
-        alt=Concepts
+        alt=コンセプト
       />
       <h5 class="row">
-        <div class="nav-link">Concepts</div>
+        <div class="nav-link">コンセプト</div>
       </h5>
       <p class="row faded-text flat-card-padding">
-        Learn the "what" and the "why" behind fundamental aspects of the XRP Ledger.
+        XRP Ledgerの基本的な機能の背景を学びましょう。
       </p>
       <div class="col align-button-on-bottom">
-        <div class="btn btn-primary btn-arrow" id="./concepts.html-button">Read the Docs</div>
+        <div class="btn btn-primary btn-arrow" id="./concepts.html-button">ドキュメントを読む</div>
       </div>
     </a>
 
@@ -265,16 +277,16 @@
             <a href="./tutorials.html" class="card flat-card float-up-on-hover">
       <img 
         class="mb-2 tutorial-illustration"
-        alt=Tutorials
+        alt=チュートリアル
       />
       <h5 class="row">
-        <div class="nav-link">Tutorials</div>
+        <div class="nav-link">チュートリアル</div>
       </h5>
       <p class="row faded-text flat-card-padding">
-        Get step-by-step guidance to perform common tasks with the XRP Ledger.
+        XRP Ledgerで一般的な作業の手順をご覧ください。
       </p>
       <div class="col align-button-on-bottom">
-        <div class="btn btn-primary btn-arrow" id="./tutorials.html-button">View Tutorials</div>
+        <div class="btn btn-primary btn-arrow" id="./tutorials.html-button">チュートリアルを見る</div>
       </div>
     </a>
 
@@ -283,16 +295,16 @@
             <a href="./references.html" class="card flat-card float-up-on-hover">
       <img 
         class="mb-2 ref-book-illustration"
-        alt=References
+        alt=リファレンス
       />
       <h5 class="row">
-        <div class="nav-link">References</div>
+        <div class="nav-link">リファレンス</div>
       </h5>
       <p class="row faded-text flat-card-padding">
-        Look up reference documentation for the XRP Ledger protocol, API methods, and more.
+        XRP LedgerプロトコルやAPIメソッドなどのリファレンスドキュメントをご覧ください。
       </p>
       <div class="col align-button-on-bottom">
-        <div class="btn btn-primary btn-arrow" id="./references.html-button">View References</div>
+        <div class="btn btn-primary btn-arrow" id="./references.html-button">リファレンスを見る</div>
       </div>
     </a>
 
@@ -301,47 +313,47 @@
   </section>
 
   <section class="container-new">
-    <h4 class="pb-4">Use Cases</h4>
+    <h4 class="pb-4">ユースケース</h4>
     <div class="card-grid card-grid-3xN use-cases">
             <div class="col">
       <img
         class="use-cases-img img-fluid mb-2 shadow wallet-illustration"
-        alt="On-Chain Finance"
+        alt="オンチェーン金融"
         id=on-chain-finance-use-cases
       >
-      <h5 class="mt-4">On-Chain Finance </h5>
+      <h5 class="mt-4">オンチェーン金融 </h5>
       <ul class="nav flex-column">
-        <li class="nav-item"><a href="./trade-in-the-decentralized-exchange.html" class="nav-link">Trade on the decentralized exchange</a>
-        <li class="nav-item"><a href="./send-xrp.html" class="nav-link">Make payments</a>
-        <li class="nav-item"><a href="./use-specialized-payment-types.html" class="nav-link">Use specialized payment types</a>
+        <li class="nav-item"><a href="./trade-in-the-decentralized-exchange.html" class="nav-link">分散型取引所でトレード</a>
+        <li class="nav-item"><a href="./send-xrp.html" class="nav-link">支払いを実行</a>
+        <li class="nav-item"><a href="./use-specialized-payment-types.html" class="nav-link">専門的な種類の支払いを行う</a>
       </ul>
     </div>
 
             <div class="col">
       <img
         class="use-cases-img img-fluid mb-2 shadow token-illustration"
-        alt="Tokens"
+        alt="トークン"
         id=token-use-cases
       >
-      <h5 class="mt-4">Tokens </h5>
+      <h5 class="mt-4">トークン </h5>
       <ul class="nav flex-column">
-        <li class="nav-item"><a href="./non-fungible-tokens.html" class="nav-link">Non-fungible Tokens</a>
-        <li class="nav-item"><a href="./issue-a-fungible-token.html" class="nav-link">Issue a stablecoin</a>
-        <li class="nav-item"><a href="./authorize-minter.html" class="nav-link">Assign an authorized minter</a>
+        <li class="nav-item"><a href="./non-fungible-tokens.html" class="nav-link">非代替性トークン</a>
+        <li class="nav-item"><a href="./issue-a-fungible-token.html" class="nav-link">ステーブルコインを発行</a>
+        <li class="nav-item"><a href="./assign-an-authorized-minter-using-javascript.html" class="nav-link">認可Minterの割り当て</a>
       </ul>
     </div>
 
             <div class="col">
       <img
         class="use-cases-img img-fluid mb-2 shadow connections-illustration"
-        alt="Payments"
+        alt="ペイメント"
         id=payments-use-cases
       >
-      <h5 class="mt-4">Payments </h5>
+      <h5 class="mt-4">ペイメント </h5>
       <ul class="nav flex-column">
-        <li class="nav-item"><a href="./direct-xrp-payments.html" class="nav-link">Peer to peer payments</a>
-        <li class="nav-item"><a href="./cross-currency-payments.html" class="nav-link">Cross-currency payments</a>
-        <li class="nav-item"><a href="./escrow.html" class="nav-link">Escrows</a>
+        <li class="nav-item"><a href="./direct-xrp-payments.html" class="nav-link">直接支払い</a>
+        <li class="nav-item"><a href="./cross-currency-payments.html" class="nav-link">クロスカレンシー決済</a>
+        <li class="nav-item"><a href="./escrow.html" class="nav-link">エスクロー</a>
       </ul>
     </div>
 
@@ -349,14 +361,13 @@
   </section>
 
   <section class="container-new ">
-    <h4 class="pb-4">Getting Started</h4>
+    <h4 class="pb-4">始めましょう</h4>
     <div class="card-grid card-grid-2xN quickstart-card">
       <div class="col">
-        <a href="./xrpl-quickstart.html" class="card float-up-on-hover">
-          <h5 class="mt-7">Quickstart to XRP Ledger</h5>
+        <a href="./send-payments-using-javascript.html" class="card float-up-on-hover">
+          <h5 class="mt-7">XRP Ledger クイックスタート</h5>
           <p class="mb-8 mt-4">
-An introduction to fundamental aspects of the XRP Ledger.
-          </p>
+XRP Ledgerの基本的な機能の紹介          </p>
           <div class="dg-lg-block mb-3">
             <div
               class="btn btn-primary btn-arrow get-started-button"
@@ -373,48 +384,48 @@ An introduction to fundamental aspects of the XRP Ledger.
       <div class="col">
         <div class="card-grid card-grid-2xN video-grid">
                 <div class="col float-up-on-hover">
-      <iframe id="video1" style="display:none;" src="https://www.youtube.com/embed/sVTybJ3cNyo?rel=0&amp;showinfo=0&amp;autoplay=1" title="Intro to XRP Ledger" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <a href="https://www.youtube.com/embed/sVTybJ3cNyo?rel=0&amp;showinfo=0&amp;autoplay=1" id="playvideo" class="btn1" data-url=https://www.youtube.com/embed/sVTybJ3cNyo?rel=0&amp;showinfo=0&amp;autoplay=1>
         <img
+          alt=XRP Ledger クイックスタート
           class="get-started-img video-image"
-          id=Intro to XRP Ledger
+          id=XRP Ledger クイックスタート
           src=./assets/img/backgrounds/docs-intro-to-XRP-ledger@2x.png
         />
-        <h6 class="pt-3">Intro to XRP Ledger</h6>
+        <h6 class="pt-3">XRP Ledger クイックスタート</h6>
       </a>
 
     </div>
 
                 <div class="col float-up-on-hover">
-      <iframe id="video1" style="display:none;" src="https://www.youtube.com/embed/eO8jE6PftX8?rel=0&amp;showinfo=0&amp;autoplay=1" title="Accounts" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <a href="https://www.youtube.com/embed/eO8jE6PftX8?rel=0&amp;showinfo=0&amp;autoplay=1" id="playvideo" class="btn1" data-url=https://www.youtube.com/embed/eO8jE6PftX8?rel=0&amp;showinfo=0&amp;autoplay=1>
         <img
+          alt=アカウント
           class="get-started-img video-image"
-          id=Accounts
+          id=アカウント
           src=./assets/img/backgrounds/docs-accounts@2x.png
         />
-        <h6 class="pt-3">Accounts</h6>
+        <h6 class="pt-3">アカウント</h6>
       </a>
 
     </div>
 
                 <div class="col float-up-on-hover">
-      <iframe id="video1" style="display:none;" src="https://www.youtube.com/embed/VWNrHBDfXvA?rel=0&amp;showinfo=0&amp;autoplay=1" title="Decentralized Exchange" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <a href="https://www.youtube.com/embed/VWNrHBDfXvA?rel=0&amp;showinfo=0&amp;autoplay=1" id="playvideo" class="btn1" data-url=https://www.youtube.com/embed/VWNrHBDfXvA?rel=0&amp;showinfo=0&amp;autoplay=1>
         <img
+          alt=分散型取引所
           class="get-started-img video-image"
-          id=Decentralized Exchange
+          id=分散型取引所
           src=./assets/img/backgrounds/docs-decentralized-exchange@2x.png
         />
-        <h6 class="pt-3">Decentralized Exchange</h6>
+        <h6 class="pt-3">分散型取引所</h6>
       </a>
 
     </div>
 
                 <div class="col float-up-on-hover">
-      <iframe id="video1" style="display:none;" src="https://www.youtube.com/embed/Oj4cWOiWf4A?rel=0&amp;showinfo=0&amp;autoplay=1" title="Tokenization" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <a href="https://www.youtube.com/embed/Oj4cWOiWf4A?rel=0&amp;showinfo=0&amp;autoplay=1" id="playvideo" class="btn1" data-url=https://www.youtube.com/embed/Oj4cWOiWf4A?rel=0&amp;showinfo=0&amp;autoplay=1>
         <img
+          alt=Tokenization
           class="get-started-img video-image"
           id=Tokenization
           src=./assets/img/backgrounds/docs-tokenization@2x.png
@@ -426,7 +437,7 @@ An introduction to fundamental aspects of the XRP Ledger.
 
         </div>
         <div class="align-button-on-bottom">
-                <a class="btn btn-primary btn-arrow-out" id="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi-button" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi">Watch Full Series</a>
+                <a class="btn btn-primary btn-arrow-out" id="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi-button" href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi">全てのシリーズを見る</a>
 
         </div>
       </div>
@@ -435,8 +446,8 @@ An introduction to fundamental aspects of the XRP Ledger.
 
   <section class="container-new ">
     <div class="d-flex flex-column-reverse col-sm-8 p-0">
-      <h3 class="h4 h2-sm">Interact with the XRP Ledger in a language of your choice</h3>
-      <h6 class="eyebrow mb-3">Explore SDKs</h6>
+      <h3 class="h4 h2-sm">お好みの言語でXRP Ledgerへアクセスできます</h3>
+      <h6 class="eyebrow mb-3">SDKを探す</h6>
     </div>
     <div class="card-grid card-grid-2xN">
       <div class="col">
@@ -444,6 +455,7 @@ An introduction to fundamental aspects of the XRP Ledger.
           <div class="col langs">
             <a href="./get-started-using-javascript.html">
               <img
+                alt="Javascript Logo"
                 src="./assets/img/logos/javascript.svg"
                 class="circled-logo"
               >
@@ -453,6 +465,7 @@ An introduction to fundamental aspects of the XRP Ledger.
           <div class="col langs">
             <a href="./get-started-using-python.html">
               <img
+                alt="Python Logo"
                 src="./assets/img/logos/python.svg"
                 class="circled-logo"
               >
@@ -462,6 +475,7 @@ An introduction to fundamental aspects of the XRP Ledger.
           <div class="col langs">
             <a href="./get-started-using-java.html">
               <img
+                alt="Java Logo"
                 src="./assets/img/logos/java.svg"
                 class="circled-logo"
               >
@@ -479,43 +493,43 @@ An introduction to fundamental aspects of the XRP Ledger.
   </section>
 
   <section class="container-new ">
-    <h4 class="pb-4">Intermediate Learning Sources</h4>
+    <h4 class="pb-4">次の学習教材</h4>
     <div class="card-grid card-grid-3xN">
             <div class="col float-up-on-hover">
-      <iframe id="video1" style="display:none;" src="https://www.youtube.com/embed/e2Iwsk37LMk?rel=0&amp;showinfo=0&amp;autoplay=1" title="Advanced Payment Features" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <a href="https://www.youtube.com/embed/e2Iwsk37LMk?rel=0&amp;showinfo=0&amp;autoplay=1" id="playvideo" class="btn1" data-url=https://www.youtube.com/embed/e2Iwsk37LMk?rel=0&amp;showinfo=0&amp;autoplay=1>
         <img
+          alt=高度な支払い機能
           class="get-started-img video-image"
-          id=Advanced Payment Features
+          id=高度な支払い機能
           src=./assets/img/backgrounds/docs-advanced-payment-features@2x.png
         />
-        <h6 class="pt-3">Advanced Payment Features</h6>
+        <h6 class="pt-3">高度な支払い機能</h6>
       </a>
 
     </div>
 
             <div class="col float-up-on-hover">
-      <iframe id="video1" style="display:none;" src="https://www.youtube.com/embed/4GbRdanHoR4?rel=0&amp;showinfo=0&amp;autoplay=1" title="Governance and the Amendment Process" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <a href="https://www.youtube.com/embed/4GbRdanHoR4?rel=0&amp;showinfo=0&amp;autoplay=1" id="playvideo" class="btn1" data-url=https://www.youtube.com/embed/4GbRdanHoR4?rel=0&amp;showinfo=0&amp;autoplay=1>
         <img
+          alt=ガバナンスとAmendmentプロセス
           class="get-started-img video-image"
-          id=Governance and the Amendment Process
+          id=ガバナンスとAmendmentプロセス
           src=./assets/img/backgrounds/docs-governance@2x.png
         />
-        <h6 class="pt-3">Governance and the Amendment Process</h6>
+        <h6 class="pt-3">ガバナンスとAmendmentプロセス</h6>
       </a>
 
     </div>
 
             <div class="col float-up-on-hover">
-      <iframe id="video1" style="display:none;" src="https://www.youtube.com/embed/NhH4LM8NxgY?rel=0&amp;showinfo=0&amp;autoplay=1" title="Federated Sidechains" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <a href="https://www.youtube.com/embed/NhH4LM8NxgY?rel=0&amp;showinfo=0&amp;autoplay=1" id="playvideo" class="btn1" data-url=https://www.youtube.com/embed/NhH4LM8NxgY?rel=0&amp;showinfo=0&amp;autoplay=1>
         <img
+          alt=連合サイドチェーン
           class="get-started-img video-image"
-          id=Federated Sidechains
+          id=連合サイドチェーン
           src=./assets/img/backgrounds/docs-sidechains@2x.png
         />
-        <h6 class="pt-3">Federated Sidechains</h6>
+        <h6 class="pt-3">連合サイドチェーン</h6>
       </a>
 
     </div>
@@ -532,30 +546,30 @@ An introduction to fundamental aspects of the XRP Ledger.
       </div>
       <div class="col explore-links">
         <div class="d-flex flex-column-reverse w-100">
-          <h4 class="mb-10">Explore, Test, Verify</h4>
-          <h6 class="mb-3">Explore Dev Tools</h6>
+          <h4 class="mb-10">探索、テスト、検証</h4>
+          <h6 class="mb-3">開発者ツールを探索</h6>
         </div>
         <p class="mb-20">
-Use these web-based tools to assist during all stages of development, from getting your first payment to testing your implementation for best practices.        </p>
+これらのウェブベースのツールを使用して、最初の支払いからベストプラクティスのための実装テストまで、開発のすべてのステージをサポートします。        </p>
         <div class="card-grid card-grid-2xN">
                 <a href="./xrp-testnet-faucet.html" class="col dev-tools-link">
-      <h6 class="btn-arrow">Faucets</h6>
-      <p> Get credentials and test-XRP for XRP Ledger Testnet or Devnet.</p>
+      <h6 class="btn-arrow">XRP Faucet</h6>
+      <p> XRP Ledger TestnetまたはDevnetでアカウントとテスト用XRPを取得しましょう</p>
     </a>
 
                 <a href="./websocket-api-tool.html" class="col dev-tools-link">
-      <h6 class="btn-arrow">WebSocket Tool</h6>
-      <p> Send sample requests and get responses from the rippled API.</p>
+      <h6 class="btn-arrow">Websocketツール</h6>
+      <p> サンプルリクエストを送信し、rippled APIからレスポンスを取得します。</p>
     </a>
 
                 <a href="https://livenet.xrpl.org" class="col dev-tools-link">
-      <h6 class="btn-arrow">XRP Ledger Explorer</h6>
-      <p> View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.</p>
+      <h6 class="btn-arrow">XRP Ledgerエクスプローラ</h6>
+      <p> 新しいレジャーバージョンの検証結果をリアルタイムで表示し、XRP Ledger内のサーバの位置をチャートで表示します。</p>
     </a>
 
                 <a href="./tx-sender.html" class="col dev-tools-link">
-      <h6 class="btn-arrow">Transaction Sender</h6>
-      <p> Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.</p>
+      <h6 class="btn-arrow">トランザクション送信ツール</h6>
+      <p> コードが様々なXRP Ledgerのトランザクションをどのように処理するか、テストネットを通じてテストしましょう。</p>
     </a>
 
         </div>
@@ -569,13 +583,13 @@ Use these web-based tools to assist during all stages of development, from getti
     <div class="row card-grid card-grid-2xN">
       <div class="col" id="popular-topics">
        
-          <h2 class="h4">Browse By Recommended Pages</h2>
+          <h2 class="h4">おすすめのページを見る</h2>
           <ul class="nav flex-column">
-              <li class="nav-item"><a href="./manage-the-rippled-server.html" class="nav-link">rippled API Reference</a>
+              <li class="nav-item"><a href="./manage-the-rippled-server.html" class="nav-link">rippled APIリファレンス</a>
               <li class="nav-item"><a href="./xrp-testnet-faucet.html" class="nav-link">XRP Faucet</a>
-              <li class="nav-item"><a href="./get-started-using-python.html#get-started-using-python" class="nav-link">Getting Started with Python</a>
-              <li class="nav-item"><a href="./websocket-api-tool.html" class="nav-link">Websocket API Tool</a>
-              <li class="nav-item"><a href="https://livenet.xrpl.org" class="nav-link">XRP Ledger Explorer</a>
+              <li class="nav-item"><a href="./get-started-using-python.html#get-started-using-python" class="nav-link">Pythonを使ってみよう</a>
+              <li class="nav-item"><a href="./websocket-api-tool.html" class="nav-link">Websocket APIツール</a>
+              <li class="nav-item"><a href="https://livenet.xrpl.org" class="nav-link">XRP Ledgerエクスプローラ</a>
           </ul>
       </div><!--/#popular-topics-->
       <div class="col">
@@ -583,16 +597,16 @@ Use these web-based tools to assist during all stages of development, from getti
           <img src="./img/backgrounds/cta-home-purple.svg" class="d-none-sm cta cta-top-left">
           <img src="./img/backgrounds/cta-home-green.svg" class="cta cta-bottom-right">
           <div class="z-index-1 position-relative">
-            <h2 class="h4 mb-8-sm mb-10-until-sm">Get Free Test XRP</h2>
-            <p class="mb-10">Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.</p>
-            <a class="btn btn-primary btn-arrow" href="xrp-testnet-faucet.html">Generate Testnet Credentials</a>
+            <h2 class="h4 mb-8-sm mb-10-until-sm">テスト用XRPを入手</h2>
+            <p class="mb-10">XRP Ledger Testnetネットワークに接続することで、XRP Ledger上に構築するアプリを開発・テストすることができます。</p>
+            <a class="btn btn-primary btn-arrow" href="xrp-testnet-faucet.html">テストネットのアカウントを作成</a>
           </div>
         </div>
       </div>
     </div>
   </section><!-- Browse by recommended and Generate Testnet Credentials -->
   <section class="container-new">
-    <a href="./docs-index.html" class="btn-arrow arrow-purple documentation-index mr-auto">See full documentation index</a>
+    <a href="./docs-index.html" class="btn-arrow arrow-purple documentation-index mr-auto">全ドキュメントの目次</a>
   </section>
       </main>
     </div><!--/.row (main layout)-->
@@ -604,15 +618,14 @@ Use these web-based tools to assist during all stages of development, from getti
         <div class="col-lg">
           <h5>概要</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPL オーバービュー</a></li>
+            <li class="nav-item"><a href="/ja/xrp-ledger-overview.html" class="nav-link">XRPLの概要</a></li>
             <li class="nav-item"><a href="/ja/uses.html" class="nav-link">ユースケースと注目プロジェクト</a></li>
-            <li class="nav-item"><a href="/ja/history.html" class="nav-link">沿革</a></li>
-            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
-            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="/ja/history.html" class="nav-link">歴史</a></li>
+            <li class="nav-item"><a href="/ja/xrp-overview.html" class="nav-link">XRPの概要</a></li>
             <li class="nav-item"><a href="/ja/impact.html" class="nav-link">インパクト</a></li>
             <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL財団</a></li>
             <li class="nav-item"><a href="/ja/faq.html" class="nav-link">よくある質問</a></li>
-            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+            <li class="nav-item"><a href="/ja/privacy-policy.html" class="nav-link">プライバシーポリシー</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -620,22 +633,33 @@ Use these web-based tools to assist during all stages of development, from getti
           <h5>ドキュメント</h5>
           <ul class="nav footer-nav flex-column">
             <li class="nav-item"><a href="/ja/docs.html" class="nav-link">ドキュメント</a></li>
-            <li class="nav-item"><a href="/ja/docs-index.html" class="nav-link">Documentation Index</a></li>
+            <li class="nav-item"><a href="/ja/introduction.html" class="nav-link">基本</a></li>
+            <li class="nav-item"><a href="/ja/use-cases.html" class="nav-link">ユースケース</a></li>
             <li class="nav-item"><a href="/ja/concepts.html" class="nav-link">コンセプト</a></li>
             <li class="nav-item"><a href="/ja/tutorials.html" class="nav-link">チュートリアル</a></li>
             <li class="nav-item"><a href="/ja/references.html" class="nav-link">リファレンス</a></li>
-            <li class="nav-item"><a href="/ja/by-label.html" class="nav-link">ラベル別に閲覧</a></li>
+            <li class="nav-item"><a href="/ja/infrastructure.html" class="nav-link">インフラストラクチャ</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>リソース</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="/ja/resources.html" class="nav-link">リソース</a></li>
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
+            <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
+            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">コードへの貢献</a></li>
+            <li class="nav-item"><a href="/ja/contribute-documentation.html" class="nav-link">ドキュメントへの貢献</a></li>
           </ul>
         </div><!--/.col -->
 
         <div class="col-lg">
           <h5>コミュニティ</h5>
           <ul class="nav footer-nav flex-column">
-            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">貢献する</a></li>
-            <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">Contribute Code to the XRP Ledger</a></li>
+            <li class="nav-item"><a href="/ja/contribute.html" class="nav-link">XRPLコミュニティへの貢献</a></li>
             <li class="nav-item"><a href="/ja/events.html" class="nav-link">イベント</a></li>
             <li class="nav-item"><a href="/ja/ambassadors.html" class="nav-link">アンバサダー</a></li>
             <li class="nav-item"><a href="/ja/developer-funding.html" class="nav-link">開発者ファンド</a></li>
@@ -643,7 +667,8 @@ Use these web-based tools to assist during all stages of development, from getti
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
-            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">Report a Scam</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPLブランドキット</a></li>
+            <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">詐欺の報告</a></li>
           </ul>
         </div><!--/.col -->
 
@@ -654,7 +679,7 @@ Use these web-based tools to assist during all stages of development, from getti
     <div class="d-lg-flex row">
       <a href="/ja/" class="footer-brand"><img src="/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org (日本語)" /></a>
       <span class="flex-grow-1">&nbsp;</span>
-      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース。</a>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">オープンソース</a>
       </div>
     </div><!-- /.absolute_bottom_footer -->
 
@@ -662,7 +687,7 @@ Use these web-based tools to assist during all stages of development, from getti
 </footer>
 
 <!-- Jump to top button -->
-<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="このページの先頭へ"><i class="fa fa-arrow-up"></i></a>
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="ページの先頭へ"><i class="fa fa-arrow-up"></i></a>
 <script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
 
 <!-- Non-blocking resources -->
