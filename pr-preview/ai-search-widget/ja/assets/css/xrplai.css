@@ -169,6 +169,7 @@
     grid-template-rows: 1fr auto;
     outline: 2px solid transparent;
     outline-offset: 2px;
+    z-index: 9999;
   }
   
   :where(.MarkpromptContentPlain) {
@@ -216,6 +217,11 @@
     border-top: 2px solid transparent;
     border-bottom: 2px solid var(--markprompt-primary);
     color: var(--markprompt-input);
+  }
+  :where(html.light .MarkpromptTab[data-state='active']) {
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid var(--markprompt-primary);
+    color: #111112 !important;
   }
   
   :where(.MarkpromptTab):not([data-state='active']) {
@@ -295,7 +301,7 @@
   
   :where(.MarkpromptPromptLabel) {
     cursor: pointer;
-    display: flex;
+    display: flex !important;
     flex: none;
     padding: 4px;
     border-width: 1px;
@@ -303,6 +309,7 @@
     border-color: transparent;
     background-color: #111112;
     height:100%;
+    margin-bottom: 0 !important;
   }
   
   :where(.MarkpromptPrimaryIcon) {
@@ -402,7 +409,9 @@
     font-size: 0.875rem;
     font-size: var(--markprompt-text-size);
     line-height: 1.7142857;
-    padding: 1rem 2rem;
+    padding: 0 1rem 1rem;
+    background-color: black;
+    background-clip: content-box; 
   }
   
   :where(.MarkpromptAnswer p) {
@@ -827,7 +836,6 @@
   
   :where(.MarkpromptPromptFeedback) {
     margin: 0 2rem 1rem;
-    padding: 0.75rem 0;
     border-top: 1px solid var(--markprompt-border);
   }
   
@@ -1097,7 +1105,6 @@
   
   .answerIcon svg{
     width: 1.5rem;
-    margin-top:0.5rem;
   }
   
   
@@ -1401,6 +1408,13 @@
     margin-left: 10px; /* Space between the icon and the text */
     overflow: auto;
   }
+  .markdown-content p {
+    margin-top: 1rem;
+  }
+
+  .markdown-content a {
+    text-decoration: underline;
+  }
   
   
   .example-container {
@@ -1617,8 +1631,11 @@
     word-wrap: break-word;
     display: flex;
     align-items: center;
-    padding-left: 2rem;
+    padding-left: 1rem;
     padding-top: 1.5rem;
+    background-color: black; 
+    background-clip: content-box; 
+    padding-right:1rem;
   }
   
   .simple-feedback-container{
@@ -1638,7 +1655,7 @@
   
   .answerIcon{
     width: 1.5rem;
-    margin-top:0.5rem;
+    margin-top: 1rem;
   }
   
   
@@ -1651,4 +1668,18 @@
   
   .MarkpromptExistingPromptText{
     margin-left:0.5rem;
+  }
+  .markdown-content pre{
+    margin-right: 1rem;
+  }
+  .new-icon-light{
+    display:none
+  }
+
+  .example-light-icon{
+    display:none;
+  }
+  
+  .input-light-icon{
+    display:none;
   }

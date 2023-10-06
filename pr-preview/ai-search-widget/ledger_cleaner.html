@@ -214,7 +214,7 @@
         <div class="form-inline">
           <div class="input-group" id="topsearchboxcontainer">
             <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
-            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search docs or Ask AI">
           </div><!--/.input-group-->
         </div>
       </form>
@@ -3045,7 +3045,8 @@
             },
             showBranding: false,
             trigger: {
-              customElement: true
+              customElement: true,
+              customElementId:"topsearchboxcontainer",
             },
             search:{
               enabled: true,
