@@ -147,7 +147,7 @@
     }
 
     .input-group-text {
-      height: 40px;
+      height: 100%;
     }
     .ds-input {
       height: 40px;
@@ -425,8 +425,7 @@
 
           // "Docs" dropdown placement
           .col-for-article-types,
-          .col-for-カテゴリ
-           {
+          .col-for-カテゴリ {
             grid-column: 1;
             grid-row: 2;
           }
@@ -437,8 +436,7 @@
           //   padding-bottom: 32px;
           // }
           .col-for-get-started,
-          .col-for-始めましょう
-          {
+          .col-for-始めましょう {
             grid-column: 2;
             grid-row: 2 / 4;
             padding-bottom: 32px;

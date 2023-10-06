@@ -3,8 +3,8 @@
   p code,
   table code,
   li > code {
-  background-color: $gray-200;
-  color: $gray-900;
+    background-color: $gray-200;
+    color: $gray-900;
   }
 }
 
@@ -115,7 +115,7 @@ h6,
   .DocSearch-Modal {
     background: $white;
   }
-  .DocSearch-Prefill{
+  .DocSearch-Prefill {
     color: $blue-purple-500;
   }
   .DocSearch-Button {
@@ -132,10 +132,10 @@ h6,
   .DocSearch-Search-Icon {
     color: var(--docsearch-text-color) !important;
   }
-  .DocSearch-Input{
+  .DocSearch-Input {
     color: $gray-900;
   }
-  .DocSearch-Hit-Select-Icon{
+  .DocSearch-Hit-Select-Icon {
     color: $gray-900;
   }
   .DocSearch-Form {
@@ -163,9 +163,10 @@ h6,
       color: $black-60 !important;
     }
   }
-  .DocSearch-Logo svg{
-    .cls-1, .cls-2{
-      fill:var(--docsearch-logo-color);;
+  .DocSearch-Logo svg {
+    .cls-1,
+    .cls-2 {
+      fill: var(--docsearch-logo-color);
     }
   }
   .DocSearch-Hit-title,
@@ -177,7 +178,7 @@ h6,
   .DocSearch-Hit[aria-selected="true"] a {
     background: $black-10;
     .DocSearch-Hit-Container {
-      background-color:  $black-10;
+      background-color: $black-10;
     }
     .DocSearch-Hit-content-wrapper {
       .DocSearch-Hit-title {
@@ -647,7 +648,6 @@ pre code {
   }
 }
 
-
 #top-exchanges {
   // Kraken, eToro are OK on both light and dark
 
@@ -673,7 +673,6 @@ pre code {
 
 // Use Cases & Featured Projects page
 .page-uses {
-
   .card-body {
     background: $white;
     color: $gray-700;
@@ -684,22 +683,10 @@ pre code {
     background-color: $gray-050;
   }
 
-
-
-  @each $usecase in "infrastructure",
-  "developer_tooling",
-  "interoperability",
-  "wallet",
-  "nfts",
-  "exchanges",
-  "gaming",
-  "security",
-  "payments",
-  "web_monetization",
-  "sustainability",
-  "cbdc",
-  "custody",
-  "defi" {
+  @each $usecase in "infrastructure", "developer_tooling", "interoperability",
+    "wallet", "nfts", "exchanges", "gaming", "security", "payments",
+    "web_monetization", "sustainability", "cbdc", "custody", "defi"
+  {
     ##{$usecase} {
       content: url("../img/icons/usecases/lightmode/ic_#{$usecase}.png");
     }
@@ -710,29 +697,31 @@ pre code {
   }
 
   .category_count {
-    background: #D2B2FF;
+    background: #d2b2ff;
     color: #350080;
   }
 
-  @each $company,$type in (
-    'bitgo': 'svg',
-    'sologenic-nft': 'svg',
-    'carbonland-trust': 'svg',
-    'x-tokenize': 'svg',
-    'casino-coin': 'svg',
-    'xrp-cafe': 'svg',
-    'coil': 'svg',
-    'xrp-toolkit': 'svg',
-    'cryptum': 'svg',
-    'xrpl-org-ledger-explorer': 'svg',
-    'evernode': 'svg',
-    'xrpl-rosetta': 'svg',
-    'ripples-cbdc-platform': 'svg',
-    'xrpscan': 'svg',
-    'ripples-on-demand-liquidity': 'svg',
-    'xumm-wallet': 'svg',
-    'sologenic-dex': 'svg'
-  )
+  @each $company,
+    $type
+      in (
+        "bitgo": "svg",
+        "sologenic-nft": "svg",
+        "carbonland-trust": "svg",
+        "x-tokenize": "svg",
+        "casino-coin": "svg",
+        "xrp-cafe": "svg",
+        "coil": "svg",
+        "xrp-toolkit": "svg",
+        "cryptum": "svg",
+        "xrpl-org-ledger-explorer": "svg",
+        "evernode": "svg",
+        "xrpl-rosetta": "svg",
+        "ripples-cbdc-platform": "svg",
+        "xrpscan": "svg",
+        "ripples-on-demand-liquidity": "svg",
+        "xumm-wallet": "svg",
+        "sologenic-dex": "svg"
+      )
   {
     #use_case_companies_list {
       ##{$company} {
@@ -749,13 +738,11 @@ pre code {
   // #coil,
   #forte,
   #xrplorer,
-  #gatehub
-  {
+  #gatehub {
     .biz-logo {
       filter: invert(100%);
     }
   }
-
 }
 
 .landing-bg {
@@ -808,7 +795,6 @@ pre code {
       filter: invert(100%);
     }
   }
-
 }
 
 // Docs landing page
@@ -1002,7 +988,6 @@ $placeholder-color: $gray-600;
 }
 
 .page-impact {
-
   .connect-list {
     @each $connect in "connect-01", "connect-02", "connect-03", "connect-04" {
       ##{$connect} {
@@ -1017,7 +1002,6 @@ $placeholder-color: $gray-600;
   #map-dark {
     display: none;
   }
-
 }
 
 .tutorial-card-grid {
@@ -1030,10 +1014,142 @@ $placeholder-color: $gray-600;
   }
 }
 
-.footer-nav{
-  .nav-item{
-    text-shadow: #F5F5F7 0px 0px 2px, #F5F5F7 1px 1px 2px, #F5F5F7 2px 2px 3px,
-    #F5F5F7 2px 2px 4px, #F5F5F7 2px 2px 5px, #F5F5F7 2px 2px 6px, #F5F5F7 -1px -1px 2px,
-    #F5F5F7 -2px -2px 3px, #F5F5F7 -2px -2px 4px;
+.footer-nav {
+  .nav-item {
+    text-shadow: #f5f5f7 0px 0px 2px, #f5f5f7 1px 1px 2px, #f5f5f7 2px 2px 3px,
+      #f5f5f7 2px 2px 4px, #f5f5f7 2px 2px 5px, #f5f5f7 2px 2px 6px,
+      #f5f5f7 -1px -1px 2px, #f5f5f7 -2px -2px 3px, #f5f5f7 -2px -2px 4px;
   }
+}
+
+.MarkpromptContentDialog {
+  background-color: #ffffff;
+}
+
+.MarkpromptTab {
+  color: #838386;
+}
+
+.MarkpromptTabBottom {
+  border-bottom: 1px solid #838386;
+}
+
+.MarkpromptForm {
+  border-bottom: none;
+}
+
+.example-container {
+  background: #f5f5f7;
+}
+
+.example-container .text {
+  color: #111112;
+}
+
+.example-container .header div {
+  color: #111112;
+}
+
+.MarkpromptPrompt {
+  background-color: #f5f5f7;
+  color: #838386;
+}
+
+.MarkpromptPromptLabel {
+  background-color: #f5f5f7;
+}
+
+.MarkpromptExistingPrompt {
+  background: #f5f5f7;
+}
+
+.MarkpromptAnswer {
+  background: #f5f5f7;
+}
+
+.MarkpromptExistingPromptText {
+  color: #838386;
+}
+
+.markdown-content * {
+  color: #111112;
+}
+
+#feedback-button {
+  background: #e0e0e1;
+}
+
+.feedback-container {
+  background: #e0e0e1;
+}
+
+.option-text {
+  color: #111112;
+}
+
+.MarkpromptProgress {
+  background: #e0e0e1;
+  color: #111112;
+}
+
+.markdown-content pre {
+  background: #e0e0e1;
+}
+
+.markdown-content pre code {
+  background: none;
+}
+
+.MarkpromptReferences {
+  background: #e0e0e1;
+}
+
+#markprompt-loading-text {
+  color: #111112;
+}
+
+.MarkpromptSearchResultIcon {
+  color: #737373;
+  background-color: #ffffff;
+}
+
+.MarkpromptSearchResultHeading {
+  background-color: #ffffff;
+}
+
+.MarkpromptSearchResultIconWrapperBordered {
+  background-color: #ffffff;
+}
+
+:where([aria-selected="true"] .MarkpromptMatch) {
+  border-color: var(--markprompt-primaryForeground);
+  color: #b480ff;
+}
+
+:where([aria-selected="true"] .MarkpromptSearchResultSubtitle) {
+  color: #737373;
+}
+
+.new-icon {
+  display: none;
+}
+
+.new-icon-light {
+  display: unset;
+}
+
+.example-icon {
+  display: none;
+}
+
+.example-light-icon {
+  display: unset;
+}
+
+.input-icon {
+  display: none;
+}
+
+.input-light-icon {
+  display: unset;
 }
