@@ -16,7 +16,7 @@ Delete an empty [Automated Market Maker](automated-market-makers.html) (AMM) ins
 Normally, an [AMMWithdraw transaction][] automatically deletes an AMM and all associated ledger entries when it withdraws all the assets from the AMM's pool. However, if there are too many trust lines to the AMM account to remove in one transaction, it may stop before fully removing the AMM. Similarly, an AMMDelete transaction removes up to a maximum of 512 trust lines; it may take several AMMDelete transactions to delete all the trust lines and the associated AMM. In all cases, only the last such transaction deletes the AMM and AccountRoot ledger entries.
 
 
-## Example AMMDelete JSON
+## Example {{currentpage.name}} JSON
 
 ```json
 {
