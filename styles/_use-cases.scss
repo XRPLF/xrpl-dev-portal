@@ -4,7 +4,7 @@
 $infrastructure-logos: "XRP-Ledger", "Gatehub", "towoLabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
 $developer-tooling-logos: "blockforce", "Evernode", "threezy", "tokenize";
 $interoperability-logos: "Allbridge", "futureverse", "multichain";
-$wallet-logos: "Bitfrost", "Crossmark", "Edge", "gem-wallet", "Xumm";
+$wallet-logos:  "Crossmark", "Edge", "gem-wallet", "Xumm";
 $nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex", "xrp-cafe", "xrp-oval";
 $exchanges-logos: "sologenic_dex", "XPMarket";
 $gaming-logos: "Forte", "Futureverse", "ledger-city", "onXRP", "styngr";
@@ -104,6 +104,9 @@ $custody-logos: "Gatehub", "Bitgo";
   display: flex;
   justify-content: space-between;
   z-index: 10;
+  @media only screen and (max-width: 768px) {
+    top: 30px;
+  }
 }
 
 .arrow-button {
@@ -119,10 +122,16 @@ $custody-logos: "Gatehub", "Bitgo";
 
 .left-arrow {
   margin-left: 40px;
+  @media only screen and (max-width: 768px) {
+    margin-left: 0px;
+  }
 }
 
 .right-arrow {
   margin-right: 40px;
+  @media only screen and (max-width: 768px) {
+    margin-right: 0px;
+  }
 }
 
 .modal {
@@ -152,6 +161,9 @@ $custody-logos: "Gatehub", "Bitgo";
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 768px) {
+    height: fit-content;
+  }
 }
 
 .modal-content-uses::before {
@@ -275,11 +287,14 @@ $custody-logos: "Gatehub", "Bitgo";
 .bottom-row {
   display: flex;
   justify-content: center;
+  @media only screen and (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 }
 
 .logo-item {
-  max-height: 24px;
-  max-width: 107px;
+  max-height: 30px;
+  max-width: 130px;
   margin: 10px 11px;
 }
 
