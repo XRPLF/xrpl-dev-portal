@@ -715,7 +715,9 @@ pre code {
     background: #D2B2FF;
     color: #350080;
   }
-
+  .section-text-title {
+    color: #000;
+  }
   @each $company,$type in (
     'bitgo': 'svg',
     'sologenic-nft': 'svg',
