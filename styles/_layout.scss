@@ -17,10 +17,6 @@ section {
   padding: 0;
 }
 
-#main_content_wrapper { // Push below fixed nav
-  margin-top: 80px;
-}
-
 // Square blocks ---------------------------------------------------------------
 
 .square {
@@ -93,7 +89,7 @@ section {
   padding-right: 0;
 }
 
-@for $i from 1 through 5 {
+@for $i from 1 through 6 {
   .cols-of-#{$i} {
     @include media-breakpoint-up(lg) {
       grid-template-rows: repeat($i, min-content);
@@ -219,19 +215,25 @@ section {
   z-index: 5;
   padding: 2rem;
   min-height: 700px;
+
+  @include media-breakpoint-up(lg) {
+    top: 80px;
+  }
 }
 
 .left-sidebar {
   padding: 2rem;
 
   .external-link::after {
-    background-position: left 5px bottom 7px;
+    background-position: left 6px bottom 1px;
     width: 2rem;
 
   }
-  .external-link:hover::after {
-    background-position: left 9px bottom 10px;
+
+  &:hover::after {
+    transform: translate(3px, -3px); // Translate the arrow up and to the right
   }
+
 
   @include media-breakpoint-up(lg) {
     position: sticky;

@@ -8,7 +8,7 @@ label:
 ---
 # Currency Formats
 
-The XRP Ledger has two kinds of digital asset: [XRP](xrp.html) and [tokens](tokens.html). Both types have high precision, although their formats are different.
+The XRP Ledger has two kinds of digital asset: XRP and [tokens](tokens.html). Both types have high precision, although their formats are different.
 
 ## Comparison
 
@@ -27,7 +27,7 @@ The following table summarizes some of the differences between XRP and tokens in
 | No transfer fees; XRP-to-XRP payments are always direct. | Can take indirect [paths](paths.html) with each issuer charging a percentage [transfer fee](transfer-fees.html). |
 | Can be used in [Payment Channels](payment-channels.html) and [Escrow](escrow.html). | Not compatible with Payment Channels or Escrow. |
 
-For more information, see [XRP](xrp.html) and [Tokens](tokens.html).
+For more information, see [What is XRP?](what-is-xrp.html) and [Tokens](tokens.html).
 
 ## Specifying Currency Amounts
 
@@ -56,7 +56,7 @@ To specify an amount of a [(fungible) token](tokens.html), use an Amount object.
 |:-----------|:---------------------------|:-----------------------------------|
 | `currency` | String - [Currency Code][] | Arbitrary currency code for the token. Cannot be `XRP`. |
 | `value`    | [String Number][]          | Quoted decimal representation of the amount of the token. This can include scientific notation, such as `1.23e11` meaning 123,000,000,000. Both `e` and `E` may be used. This can be negative when displaying balances, but negative values are disallowed in other contexts such as specifying how much to send. |
-| `issuer`   | String                     | Generally, the [account](accounts.html) that issues this token. In special cases, this can refer to the account that holds the token instead. |
+| `issuer`   | String                     | Generally, the [account](accounts.html) that issues this token. In special cases, this can refer to the account that holds the token instead (for example, in a [Clawback](clawback.html) transaction). |
 
 [String Number]: #string-numbers
 

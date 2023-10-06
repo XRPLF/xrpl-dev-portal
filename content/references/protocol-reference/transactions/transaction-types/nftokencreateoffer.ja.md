@@ -12,7 +12,7 @@ labels:
 
 成功した場合、トランザクションは[NFTokenOfferオブジェクト][]を作成します。各オファーは、オファーを提示したアカウントの[所有者準備金](reserves.html)に関連づけて1つのオブジェクトとしてカウントされます。
 
-_([NonFungibleTokensV1_1 amendment][]が必要です)_
+_([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ## {{currentpage.name}} JSONの例
 

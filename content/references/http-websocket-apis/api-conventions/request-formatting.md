@@ -90,7 +90,7 @@ See [Response Formatting](response-formatting.html) for the response from the se
 
 ## Commandline Format
 
-Put the API method name after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. For any parameter values that might contain spaces or other unusual characters, use single-quotes to encapsulate them. Not all methods have commandline API syntax. For more information, see [Commandline Usage](https://xrpl.org/commandline-usage.html#client-mode-options).
+Put the API method name after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. For any parameter values that might contain spaces or other unusual characters, use single-quotes to encapsulate them. Not all methods have commandline API syntax. For more information, see [Commandline Usage](commandline-usage.html#client-mode-options).
 
 The commandline calls JSON-RPC, so its responses always match the JSON-RPC [response format](response-formatting.html).
 

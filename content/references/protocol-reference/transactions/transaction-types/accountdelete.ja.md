@@ -7,11 +7,11 @@ labels:
 ---
 # AccountDelete
 
-[[ソース]](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/DeleteAccount.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/DeleteAccount.cpp "Source")
 
 _[DeletableAccounts Amendment](known-amendments.html#deletableaccounts)が必要です_
 
-AccountDeleteトランザクションは、XRP Ledgerで[アカウント](accountroot.html)と、アカウントが所有するオブジェクトを削除し、可能であれば、アカウントの残りのXRPを指定された送金先アカウントに送信します。アカウントを削除する要件については、[アカウントの削除](accounts.html#アカウントの削除)を参照してください。
+AccountDeleteトランザクションは、XRP Ledgerで[アカウント](accountroot.html)と、アカウントが所有するオブジェクトを削除し、可能であれば、アカウントの残りのXRPを指定された送金先アカウントに送信します。アカウントを削除する要件については、[アカウントの削除](deleting-accounts.html)を参照してください。
 
 ## {{currentpage.name}} JSONの例
 

@@ -184,7 +184,7 @@ It is generally safe to ignore this warning.
 - [Error Formatting](error-formatting.html) for unsuccessful API responses.
 - **Concepts:**
     - [The `rippled` Server](xrpl-servers.html)
-    - [Introduction to Consensus](intro-to-consensus.html)
+    - [Consensus](consensus.html)
     - [Amendments](amendments.html)
         - [Known Amendments](known-amendments.html)
 - **Tutorials:**

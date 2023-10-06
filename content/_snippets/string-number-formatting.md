@@ -1,4 +1,4 @@
-XRP Ledger APIs generally use strings, rather than native JSON numbers, to represent numeric amounts of currency for both [XRP](xrp.html) and [tokens](tokens.html). This protects against a loss of precision when using JSON parsers, which may automatically try to represent all JSON numbers in a floating-point format. Within the String value, the numbers are serialized in the same way as native JSON numbers:
+XRP Ledger APIs generally use strings, rather than native JSON numbers, to represent numeric amounts of currency for both [XRP](what-is-xrp.html) and [tokens](tokens.html). This protects against a loss of precision when using JSON parsers, which may automatically try to represent all JSON numbers in a floating-point format. Within the String value, the numbers are serialized in the same way as native JSON numbers:
 
 * Base-10.
 * Non-zero-prefaced.

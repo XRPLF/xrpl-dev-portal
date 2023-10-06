@@ -1,9 +1,9 @@
 ---
 html: get-started-using-javascript.html
-parent: get-started.html
+parent: javascript.html
 blurb: XRP Ledgerを参照するためのエントリーレベルのJavaScriptアプリケーションを構築します。
 top_nav_name: JavaScript
-top_nav_grouping: Get Started
+top_nav_grouping: 始めましょう
 labels:
   - 開発
 showcase_icon: assets/img/logos/javascript.svg
@@ -95,13 +95,13 @@ const xrpl = require("xrpl")
 
 前節のサンプルコードでは、利用可能な[並列ネットワーク](parallel-networks.html)の1つであるTestnetに接続する方法を紹介しました。本番環境に移行するには、XRP Ledger Mainnetに接続する必要があります。それには2つの方法があります。
 
-* [コアサーバをインストール](install-rippled.html) (`rippled`)して、自分でノードを動かしてみましょう。コアサーバーはデフォルトではMainnetに接続しますが、設定を変更してTestnetやDevnetを使うこともできます](connect-your-rippled-to-thexrp-test-net.html)。[独自のコアサーバーを運用するのには良い理由があります](xrpl-servers.html#reasons-to-run-your-own-server)。独自のサーバーを走らせた場合、次のようにして接続することができます。
+* [コアサーバをインストール](install-rippled.html) (`rippled`)して、自分でノードを動かしてみましょう。コアサーバーはデフォルトではMainnetに接続しますが、設定を変更してTestnetやDevnetを使うこともできます](connect-your-rippled-to-thexrp-test-net.html)。[独自のコアサーバーを運用するのには良い理由があります](networks-and-servers.html#reasons-to-run-your-own-server)。独自のサーバーを走らせた場合、次のようにして接続することができます。
 
         const MY_SERVER = "ws://localhost:6006/"
         const client = new xrpl.Client(MY_SERVER)
         await client.connect()
 
-    デフォルト値の詳細については、[コアサーバー設定ファイル](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562)の例を参照してください。
+    デフォルト値の詳細については、[コアサーバー設定ファイル](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562)の例を参照してください。
 
 * 利用可能な[公開サーバー][]を利用する:
 
@@ -130,14 +130,14 @@ const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // テ
 
 ### 4. XRP Ledgerの参照
 
-クライアントの`request()`メソッドを使って、XRP Ledgerの[WebSocket API](https://xrpl.org/request-formatting.html)にアクセスします。例えば、以下のようになります。
+クライアントの`request()`メソッドを使って、XRP Ledgerの[WebSocket API](request-formatting.html)にアクセスします。例えば、以下のようになります。
 
 {{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Get info", end_before="// Listen to ledger close events", language="js") }}
 
 
 ### 5. イベントのListen
 
-XRP Ledgerの[コンセンサス プロセス](intro-to-consensus.html)が新しい[レジャーバージョン](ledgers.html)を生成したときなど、`xrpl.js`ではさまざまなタイプのイベントのハンドラを設定することができます。そのためには、まず[subscribeメソッド][]を呼び出して欲しいイベントの種類を取得し、クライアントの`on(eventType, callback)`メソッドを使ってイベントハンドラをアタッチします。
+XRP Ledgerの[コンセンサス プロセス](consensus.html)が新しい[レジャーバージョン](ledgers.html)を生成したときなど、`xrpl.js`ではさまざまなタイプのイベントのハンドラを設定することができます。そのためには、まず[subscribeメソッド][]を呼び出して欲しいイベントの種類を取得し、クライアントの`on(eventType, callback)`メソッドを使ってイベントハンドラをアタッチします。
 
 {{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Listen to ledger close events", end_before="// Disconnect when done", language="js") }}
 
@@ -149,7 +149,7 @@ XRP Ledgerの[コンセンサス プロセス](intro-to-consensus.html)が新し
 
 * [XRPの送信](send-xrp.html).
 * [代替可能トークンの発行](issue-a-fungible-token.html)
-* アカウントに[安全な署名](set-up-secure-signing.html) を設定する。
+* アカウントに[安全な署名](secure-signing.html) を設定する。
 
 
 ## 関連記事

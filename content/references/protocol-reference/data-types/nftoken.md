@@ -30,11 +30,15 @@ Unlike full-fledged [ledger entries](ledger-object-types.html), `NFToken` has no
 
 This composite field uniquely identifies a token, and consists of the following sections.
 
-1. 16 bits that identify flags or settings specific to the NFToken
-2. 16 bits that encode the transfer fee associated with this NFToken, if any
-3. A 160-bit account identifier of the issuer
-4. A 32-bit issuer-specified [`NFTokenTaxon`](https://www.merriam-webster.com/dictionary/taxon)
-5. An (automatically generated) monotonically increasing 32-bit sequence number.
+A) 16 bits that identify flags or settings specific to the NFToken
+
+B) 16 bits that encode the transfer fee associated with this NFToken, if any
+
+C) A 160-bit account identifier of the issuer
+
+D) A 32-bit issuer-specified [`NFTokenTaxon`](https://www.merriam-webster.com/dictionary/taxon)
+
+E) An (automatically generated) monotonically increasing 32-bit sequence number.
 
 ![Token ID Breakdown](img/nftoken1.png "Token ID Breakdown")
 
@@ -95,7 +99,7 @@ The fifth section is a sequence number that increases with each `NFToken` the is
 
 ![Sequence Number](img/nftokene.png "Sequence Number")
 
-The [NFTokenMint transaction][] sets this part of the `NFTokenID` automatically based on the `MintedTokens` field of the `Issuer` account. If the issuer's [AccountRoot object][] does not have a `MintedTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
+The [NFTokenMint transaction][] sets this part of the `NFTokenID` automatically based on the `MintedNFTokens` field of the `Issuer` account. If the issuer's [AccountRoot object][] does not have a `MintedNFTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
 
 ## URI
 

@@ -9,7 +9,7 @@ labels:
   - トークン
 ---
 # Payment
-[[ソース]](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "ソース")
 
 Paymentトランザクションは、アカウント間での価値の移動を表現するものです(通過するパスによっては、非可分的に発生する追加的な価値交換を伴うことがあります)。このトランザクションタイプはいくつかの[支払いの種類](#paymentの種類)に使用することがでできます。
 
@@ -66,7 +66,7 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 
 ## SendMaxおよびAmountで使用する特殊なissuerの値
 
-ほとんどの場合、XRP以外の[通貨額][]の`issuer`フィールドは、金融機関の[発行アドレス](issuing-and-operational-addresses.html)を示しています。ただし、支払いを記述するにあたって、支払いの`Amount`フィールドと`SendMax`フィールドにある`issuer`フィールドについては、特殊なルールが存在します。
+ほとんどの場合、XRP以外の[通貨額][]の`issuer`フィールドは、金融機関の[発行アドレス](account-types.html)を示しています。ただし、支払いを記述するにあたって、支払いの`Amount`フィールドと`SendMax`フィールドにある`issuer`フィールドについては、特殊なルールが存在します。
 
 * 2つのアドレス間で、同一の通貨に関して存在する残高は常に1つです。つまり、金額の`issuer`フィールドが実際に表しているのは、イシュアンスを作成したアドレスではなく、イシュアンスを換金する相手方であることがあります。
 * 宛先`Amount`フィールドの`issuer`フィールドが`Destination`アドレスと一致している場合、「宛先が受け入れるあらゆるイシュアー」を意味する特殊なケースとして取り扱われます。これには、他のトラストラインで保持されている宛先によって作成されたイシュアンスに加え、宛先が当該アドレスまでトラストラインを延長しているすべてのアドレスが含まれます。
@@ -105,7 +105,7 @@ Payment型のトランザクションについては、[`Flags`フィールド](
 
 ## Partial Payments
 
-Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに[支払いを返金](become-an-xrp-ledger-gateway.html#bouncing-payments)する場合です。その一方で、成功したトランザクションの`Amount`フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。
+Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに[支払いを返金](stablecoin-issuer.html#不明な入金の返金)する場合です。その一方で、成功したトランザクションの`Amount`フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。
 
 Partial Paymentsとは、**tfPartialPayment**フラグが有効になっている[Paymentトランザクション][]です。Partial Paymentsは、`SendMax`値を超える金額を送金することなく、`DeliverMin`フィールド以上の正の金額（`DeliverMin`が指定されていない場合、任意の正の金額）を送金する場合に成功します。
 

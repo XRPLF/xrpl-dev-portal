@@ -1,0 +1,4 @@
+xrpl-py==2.0.0
+wxPython==4.2.1
+toml==0.10.2
+requests==2.31.0

@@ -8,7 +8,7 @@ labels:
 ---
 # Offline Account Setup Tutorial
 
-A highly secure [signing configuration](set-up-secure-signing.html) involves keeping an XRP Ledger [account](accounts.html)'s [cryptographic keys](cryptographic-keys.html) securely on an offline, air-gapped machine. After setting up this configuration, you can sign a variety of transactions, transfer only the signed transactions to an online computer, and submit them to the XRP Ledger network without ever exposing your secret key to malicious actors online.
+A highly secure [signing configuration](secure-signing.html) involves keeping an XRP Ledger [account](accounts.html)'s [cryptographic keys](cryptographic-keys.html) securely on an offline, air-gapped machine. After setting up this configuration, you can sign a variety of transactions, transfer only the signed transactions to an online computer, and submit them to the XRP Ledger network without ever exposing your secret key to malicious actors online.
 
 **Caution:** Proper operational security is necessary to protect your offline machine. For example, the offline machine must be physically located where untrusted people cannot get access to it, and trusted operators must be careful not to transfer compromised software onto the machine. (For example, do not use a USB drive that was previously attached to a network-connected computer.)
 
@@ -30,13 +30,13 @@ To use offline signing, you must meet the following prerequisites:
 
 ### {{n.next()}}. Set up offline machine
 
-The offline machine needs secure persistent storage (for example, an encrypted disk drive) and a way to [sign transactions](set-up-secure-signing.html). For an offline machine, you typically use physical media to transfer any necessary software after downloading it from an online machine. You must be sure that the online machine, the physical media, and the software itself are not infected with malware.
+The offline machine needs secure persistent storage (for example, an encrypted disk drive) and a way to [sign transactions](secure-signing.html). For an offline machine, you typically use physical media to transfer any necessary software after downloading it from an online machine. You must be sure that the online machine, the physical media, and the software itself are not infected with malware.
 
 Software options for signing on the XRP Ledger include:
 
 - [Install `rippled`](install-rippled.html) from a package (`.deb` or `.rpm` depending on which Linux distribution you use) file, then [run it in stand-alone mode](rippled-server-modes.html).
 - Install [xrpl.js](https://github.com/XRPLF/xrpl.js/) (or another [client library](client-libraries.html)) and its dependencies offline. The Yarn package manager, for example, has [recommended instructions for offline usage](https://yarnpkg.com/blog/2016/11/24/offline-mirror/).
-- See also: [Set Up Secure Signing](set-up-secure-signing.html)
+- See also: [Set Up Secure Signing](secure-signing.html)
 
 You may want to set up custom software to help construct transaction instructions on the offline machine. For example, your software may track what [sequence number][] to use next, or contain preset templates for certain types of transactions you expect to send.
 
@@ -148,9 +148,9 @@ On the offline machine, prepare and sign transactions for configuring your accou
 - [Set Up Multi-Signing](set-up-multi-signing.html) for a higher bar of account security.
 - [Enable DepositAuth](depositauth.html) so you can only receive payments you've explicitly accepted or from parties you've pre-approved.
 - [Require Auth](authorized-trust-lines.html#enabling-require-auth) so that users can't open [trust lines](trust-lines-and-issuing.html) to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or [token](tokens.html) features, you may want to do this as a precaution.
-- [Token Issuers](become-an-xrp-ledger-gateway.html) may have additional setup, such as:
-    - [Set a Transfer Fee](become-an-xrp-ledger-gateway.html#transfer-fees) for users transferring your tokens.
-    - [Disallow XRP payments](become-an-xrp-ledger-gateway.html#disallow-xrp) if you plan to use this address for tokens only.
+- [Token Issuers](stablecoin-issuer.html) may have additional setup, such as:
+    - Set a Transfer Fee for users transferring your tokens.
+    - Disallow XRP payments if you plan to use this address for tokens only.
 
 At this stage, you are only signing the transactions, not submitting them. For each transaction, you must provide all fields, including fields that are normally auto-fillable such as the `Fee` ([transaction cost](transaction-cost.html)) and `Sequence` ([sequence number][]). If you prepare multiple transactions at the same time, you must use sequentially increasing `Sequence` numbers in the order you want the transactions to execute.
 
@@ -332,7 +332,7 @@ Then adjust and sign any replacement transactions for transactions that failed i
     - [Accounts](accounts.html)
     - [Cryptographic Keys](cryptographic-keys.html)
 - **Tutorials:**
-    - [Set Up Secure Signing](set-up-secure-signing.html)
+    - [Set Up Secure Signing](secure-signing.html)
     - [Assign a Regular Key Pair](assign-a-regular-key-pair.html)
     - [Set Up Multi-Signing](set-up-multi-signing.html)
 - **References:**

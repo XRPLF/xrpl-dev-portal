@@ -27,7 +27,7 @@ Any market activity before the initial sale of the NFToken object is not recorde
 
 Use a program or script to mint many tokens at once. You might find that [Tickets](tickets.html) help you submit transactions in parallel, up to a current limit of 200 transactions in one group.
 
-For a practical example, see the [Batch Mint NFTokens](batch-minting.html) tutorial.
+For a practical example, see the [Batch Mint NFTs Using JavaScript](batch-mint-nfts-using-javascript.html) tutorial.
 
 ### Benefits
 

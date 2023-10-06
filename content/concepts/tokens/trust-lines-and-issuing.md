@@ -63,7 +63,7 @@ If your balance is negative (you are the issuer) or the other side's settings ar
 Since the **Authorized** setting cannot be turned off after it has been turned on, it does not count toward the trust line's default state.
 
 ### Free Trust Lines
-[[Source]](https://github.com/ripple/rippled/blob/72377e7bf25c4eaee5174186d2db3c6b4210946f/src/ripple/app/tx/impl/SetTrust.cpp#L148-L168)
+[[Source]](https://github.com/XRPLF/rippled/blob/72377e7bf25c4eaee5174186d2db3c6b4210946f/src/ripple/app/tx/impl/SetTrust.cpp#L148-L168)
 
 Since trust lines are a powerful feature of the XRP Ledger, there is a special feature to make an account's first two trust lines "free".
 
@@ -77,8 +77,6 @@ When an account owns 3 or more objects in the ledger, the full owner reserve app
 - **Concepts:**
     - [Decentralized Exchange](decentralized-exchange.html)
     - [Rippling](rippling.html)
-- **Tutorials:**
-    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
 - **References:**
     - [account_lines method][] - Look up trust lines attached to a given account
     - [gateway_balances method][] - Look up an issuer's total balance issued

@@ -20,7 +20,7 @@ def uniqify_urls(soup, attr, slug):
             el[attr] = el[attr].replace("url(#", "url(#"+slug)
 
 
-def include_svg(filename, alt_text="(diagram)"):
+def include_svg(filename, alt_text="(diagram)", classes=""):
     # TODO: try/except, retriable error
     with open(filename, "r", encoding="utf-8") as f:
         svgtext = f.read()
@@ -42,6 +42,7 @@ def include_svg(filename, alt_text="(diagram)"):
     uniqify_urls(soup.svg, "clip-path", slug)
     uniqify_urls(soup.svg, "fill", slug)
     uniqify_urls(soup.svg, "style", slug)
+    uniqify_urls(soup.svg, "mask", slug)
     #TODO: add any other attributes that may contain url(#id) values.
 
 
@@ -49,7 +50,9 @@ def include_svg(filename, alt_text="(diagram)"):
     a["href"]=filename
     a["title"]=alt_text
     soup.svg.wrap(a)
-    soup.a.wrap(soup.new_tag("figure"))
+    fig = soup.a.wrap(soup.new_tag("figure"))
+    if classes:
+        fig["class"] = classes
     # wrap in a block-level tag to prevent md parsing in the diagram text
     return str(soup.figure)
 

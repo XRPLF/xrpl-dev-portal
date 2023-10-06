@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <title>Token Test Harness</title>
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <style>
+       body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
+       h1{font-weight: bold;}
+       input, button {padding: 6px;margin-bottom: 8px;}
+       button{font-weight: bold;font-family: "Work Sans", sans-serif;}
+       td{vertical-align: middle;}
+    </style>
+    <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
+    <script src='ripplex1-send-xrp.js'></script>
+    <script src='ripplex3-mint-nfts.js'></script>
+    <script src='ripplex7-batch-minting.js'></script>
+    <script>
+      if (typeof module !== "undefined") {
+        const xrpl = require('xrpl')
+      }
+     
+    </script>
+  </head>
+  
+<!-- ************************************************************** -->
+<!-- ********************** The Form ****************************** -->
+<!-- ************************************************************** -->
+
+  <body>
+    <h1>Token Test Harness</h1>
+    <form id="theForm">
+      Choose your ledger instance:
+      &nbsp;&nbsp;
+      <input type="radio" id="tn" name="server"
+        value="wss://s.altnet.rippletest.net:51233" checked>
+      <label for="testnet">Testnet</label>
+      &nbsp;&nbsp;
+      <input type="radio" id="dn" name="server"
+        value="wss://s.devnet.rippletest.net:51233">
+      <label for="devnet">Devnet</label>
+      <br/><br/>
+      <button type="button" onClick="getAccountFromSeed()">Get Account From Seed</button>
+      <br/>
+      <textarea id="seeds" cols="40" rows= "1" maxlength="524,288"></textarea>
+      <br/><br/>
+			<table>
+				<tr valign="top">
+					<td>
+						<button type="button" onClick="getAccount('standby')">Get New Standby Account</button>
+						<table>
+							<tr valign="top">
+								<td align="right">
+									Standby Account
+								</td>
+								<td>
+									<input type="text" id="standbyAccountField" size="40"></input>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td align="right">
+									Public Key
+								</td>
+								<td>
+									<input type="text" id="standbyPubKeyField" size="40"></input>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td align="right">
+									Private Key
+								</td>
+								<td>
+									<input type="text" id="standbyPrivKeyField" size="40"></input>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td align="right">
+									Seed
+								</td>
+								<td>
+									<input type="text" id="standbySeedField" size="40"></input>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td align="right">
+									XRP Balance
+								</td>
+								<td>
+									<input type="text" id="standbyBalanceField" size="40"></input>
+									<br>
+								</td>
+							</tr>
+							<tr valign="top">
+								<td><button type="button" onClick="configureAccount('standby',document.querySelector('#standbyDefault').checked)">Configure Account</button></td>
+								<td>
+									<input type="checkbox" id="standbyDefault" checked="true"/>
+									<label for="standbyDefault">Allow Rippling</label>
+								</td>
+							</tr>
+							<tr>
+								<td align="right">
+									Currency
+								</td>
+								<td>
+									<input type="text" id="standbyCurrencyField" size="40" value="USD"></input>
+								</td>
+							</tr>
+							<tr>
+								<td align="right">NFT URL</td>
+								<td><input type="text" id="standbyTokenUrlField"
+									value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
+								</td>
+							</tr>
+							<tr>
+								<td align="right">Flags</td>
+								<td><input type="text" id="standbyFlagsField" value="8" size="10"/></td>
+							</tr>
+							<tr>
+								<td align="right">NFT ID</td>
+								<td><input type="text" id="standbyTokenIdField" value="" size="80"/></td>
+							</tr>
+							<tr>
+								<td align="right">
+									NFT Count
+								    </td>
+								    <td>
+									    <input type="text" id="standbyNFTokenCountField" size="40"></input>
+									    <br>
+								    </td>
+							    </tr>
+							    <tr>
+								    <td align="right">Transfer Fee</td>
+								    <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
+							    </tr>
+							  </td>
+							</tr>
+						</table>
+					</td>
+					<td align="left" valign="top">
+					  <button type="button" onClick="batchMint()">Batch Mint</button>
+						<br/>
+						<button type="button" onClick="getBatchNFTs()">Get Batch NFTs</button>
+						<br/>
+						<p align="left">
+									
+<!-- Note the increased maxlength to hold the most possible NFT info. -->
+
+            <textarea id="standbyResultField" cols="80" rows="20" maxlength="524288"></textarea>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

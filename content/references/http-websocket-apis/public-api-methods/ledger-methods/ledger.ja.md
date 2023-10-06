@@ -6,7 +6,7 @@ label:
   - ブロックチェーン
 ---
 # ledger
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
 
 公開レジャーに関する情報を取得します。
 
@@ -185,7 +185,7 @@ rippled ledger current
 | `retries_remaining` | 数値           | このトランザクションの再試行可能回数。この回数を超えるとトランザクションが除外されます。 |
 | `preflight_result`  | 文字列           | 初期トランザクションチェックの一時的な結果。これは常に`tesSUCCESS`です。 |
 | `last_result`       | 文字列           | _（省略される場合があります）_[再試行可能な (`ter`) の結果](ter-codes.html)を取得した後でこのトランザクションがキューに残っている場合、これは取得した正確な`ter`結果コードです。 |
-| `auth_change`       | ブール値          | _（省略される場合があります）_ このトランザクションがこのアドレスの[トランザクション承認方法](transaction-basics.html#トランザクションの承認)を変更するかどうかを示します。 |
+| `auth_change`       | ブール値          | _（省略される場合があります）_ このトランザクションがこのアドレスの[トランザクション承認方法](transactions.html#トランザクションの承認)を変更するかどうかを示します。 |
 | `fee`               | 文字列           | _（省略される場合があります）_ このトランザクションの[トランザクションコスト](transaction-cost.html)（[XRPのdrop数][]）。 |
 | `fee_level`         | 文字列           | _（省略される場合があります）_ このタイプのトランザクションの最少コストと比較した、このトランザクションのトランザクションコスト（[手数料レベル][]）。 |
 | `max_spend_drops`   | 文字列           | _（省略される場合があります）_ このトランザクションで送信または消却できる[XRP、drop単位][]の最高額。 |

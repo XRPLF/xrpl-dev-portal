@@ -1,4 +1,4 @@
-from xrpl.transaction import safe_sign_and_autofill_transaction, send_reliable_submission
+from xrpl.transaction import submit_and_wait
 from xrpl.models.transactions.nftoken_mint import NFTokenMint, NFTokenMintFlag
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.models.requests import AccountNFTs
@@ -22,10 +22,10 @@ client = JsonRpcClient(JSON_RPC_URL)
 if seed == "":
     print("Requesting address from the Testnet faucet...")
     issuer_wallet = generate_faucet_wallet(client=client)
-    issuerAddr = issuer_wallet.classic_address
+    issuerAddr = issuer_wallet.address
 else:
-    issuer_wallet = Wallet(seed=seed, sequence=0)
-    issuerAddr = issuer_wallet.classic_address
+    issuer_wallet = Wallet.from_seed(seed=seed)
+    issuerAddr = issuer_wallet.address
 
 print(f"\nIssuer Account: {issuerAddr}")
 print(f"          Seed: {issuer_wallet.seed}")
@@ -39,9 +39,8 @@ mint_tx = NFTokenMint(
 )
 
 # Sign mint_tx using the issuer account
-mint_tx_signed = safe_sign_and_autofill_transaction(transaction=mint_tx, wallet=issuer_wallet, client=client)
-mint_tx_signed = send_reliable_submission(transaction=mint_tx_signed, client=client)
-mint_tx_result = mint_tx_signed.result
+mint_tx_response = submit_and_wait(transaction=mint_tx, client=client, wallet=issuer_wallet)
+mint_tx_result = mint_tx_response.result
 
 print(f"\n  Mint tx result: {mint_tx_result['meta']['TransactionResult']}")
 print(f"     Tx response: {mint_tx_result}")

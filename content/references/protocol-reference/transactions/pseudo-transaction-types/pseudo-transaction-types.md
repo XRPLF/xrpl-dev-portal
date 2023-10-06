@@ -16,7 +16,7 @@ Some of the required [common fields][] for normal transactions do not make sense
 
 | Field           | JSON Type | [Internal Type][] | Value                      |
 |:----------------|:----------|:------------------|:---------------------------|
-| `Account`       | String    | AccountID         | [ACCOUNT_ZERO](accounts.html#special-addresses) |
+| `Account`       | String    | AccountID         | [ACCOUNT_ZERO](addresses.html#special-addresses) |
 | `Fee`           | String    | Amount            | `0`                        |
 | `Sequence`      | Number    | UInt32            | `0`                        |
 | `SigningPubKey` | String    | Blob              | `""` (Empty string)        |

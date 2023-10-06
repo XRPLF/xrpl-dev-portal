@@ -18,7 +18,7 @@
 {% block main %}
 
 <div class="position-relative d-none-sm">
-  <img src="./img/backgrounds/events-orange.svg" id="events-orange">
+  <img alt="" src="./img/backgrounds/events-orange.svg" id="events-orange">
 </div>
 
 <section class="text-center py-26">
@@ -29,12 +29,12 @@
     </div>
   </div>
 </section>
-
+{#
 <section class="container-new py-26">
   <div class="event-hero card-grid card-grid-2xN">
     
     <div class="pr-2 col">
-        <img src="./assets/img/events/event-hero3@2x.png" class="w-100">
+        <img alt="" src="./assets/img/events/event-hero3@2x.png" class="w-100">
     </div>
     
     <div class="pt-5 pr-2 col">
@@ -59,6 +59,7 @@
     
   </div>
 </section>
+#}
 
 {# Upcoming Events #}
 <section class="container-new py-26" id="upcoming-events">
@@ -93,6 +94,10 @@
       <div class="form-check form-check-inline">
         <input value="zone" id="zone-upcoming" name="zone-upcoming" type="checkbox" class="events-filter" checked />
         <label for="zone-upcoming">XRPL Zone</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="info-session" id="info-session-upcoming" name="info-session-upcoming" type="checkbox" class="events-filter" checked />
+        <label for="info-session-upcoming">Info Session</label>
       </div>
     </div>
   </div>
@@ -292,15 +297,6 @@
     "image": "AMAs.png",
     "end_date": "January 1, 2023"
     },
-    { "name": "Community Calls #2",      
-    "description": "A community call about XRPL amendments with Chris McKay.",
-    "type": "cc",
-    "link": "https://youtu.be/oNJ1Qqns2Gw",
-    "location": "XRPL Developers Discord",
-    "date": "August 8, 2022",
-    "image": "CommunityCalls.png",
-    "end_date": "August 8, 2022"
-    },
     { "name": "Community Calls #1",      
     "description": "An open discussion about the development of XLS-20 and NFTs on the XRP Ledger.",
     "type": "cc",
@@ -309,6 +305,15 @@
     "date": "June 02, 2022",
     "image": "CommunityCalls.png",
     "end_date": "June 02, 2022"
+    },
+    { "name": "Community Calls #2",      
+    "description": "A community call about XRPL amendments with Chris McKay.",
+    "type": "cc",
+    "link": "https://youtu.be/oNJ1Qqns2Gw",
+    "location": "XRPL Developers Discord",
+    "date": "August 8, 2022",
+    "image": "CommunityCalls.png",
+    "end_date": "August 8, 2022"
     },
     { "name": "AMAs: POS and Crypto Payments with FriiPay",      
     "description": "A discussion with FriiPay about payment rails and POS integrations through the XRP Ledger",
@@ -347,11 +352,120 @@
     "date": "September 6 - 8, 2023",
     "image": "Conference.png",
     "end_date": "September 8, 2023" 
-    }
+    },
+    { "name": "Community Calls #3",      
+    "description": "An open chat with the XRP Ledger community about NFTs and the EVM sidechain testnet.",
+    "type": "cc",
+    "link": "https://discord.com/invite/xrpl",
+    "location": "XRPL Developers Discord",
+    "date": "March 30, 2023",
+    "image": "CommunityCalls.png",
+    "end_date": "March 30, 2023"
+    },
+    { "name": "XRPL Roundtable: XRPL @ Consensus",      
+    "description": "A roundtable chat with those who represented the XRP Ledger at Consensus 2023.",
+    "type": "ama",
+    "link": "https://twitter.com/RippleXDev",
+    "location": "Twitter Spaces",
+    "date": "June 24, 2023",
+    "image": "AMAs.png",
+    "end_date": "June 24, 2023"
+    },
+    { "name": "XRPL Summer Hackathon",      
+    "description": "The XRPL Hackathon is all about supporting innovative projects and getting developers from diverse backgrounds to explore creative ideas and transition from centralized systems to the exciting world of blockchain. Bring your innovative projects to life and get a chance to secure up to $10,000 in funding.",
+    "type": "hackathon",
+    "link": "https://dorahacks.io/hackathon/xrpl-hackathon",
+    "location": "Online",
+    "date": "June 5, 2023 - July 30, 2023",
+    "image": "Hackathons.png",
+    "end_date": "July 30, 2023"
+    },
+    { "name": "AMAs: XRPL Developer AMAs",      
+    "description": "A chat with Matt Mankins from Lorem Labs to discuss Kudos for Code and his recent XRPL Accelerator acceptance.",
+    "type": "ama",
+    "link": "http://xrpldevs.org/",
+    "location": "XRPL Developers Discord",
+    "date": "July 18, 2023",
+    "image": "AMAs.png",
+    "end_date": "July 18, 2023"
+    },
+    { "name": "Q3 2023 Ripple XRP Meetup",      
+    "description": "Join your fellow Ripple XRP Enthusiasts for a 90-minute discussion. Topics: XRP, Flare, XRPL, Ripple (Company), General Crypto QA.",
+    "type": "meetup",
+    "link": "https://www.meetup.com/ripple-xrp-community/events/292740612",
+    "location": "Online",
+    "date": "July 13, 2023",
+    "image": "Virtual-Event.png",
+    "end_date": "July 13, 2023"
+    },
+    { "name": "XRPL Toronto Meetup",      
+    "description": "Prepare for an evening of XRPL Toronto Meetup – a celebration of discovery and connection. Join enthusiasts, innovators, and developers for inspiring talks, conversations, and learning. All are welcome, from seasoned developers to curious newcomers.",
+    "type": "meetup",
+    "link": "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
+    "location": "Downtown Toronto",
+    "date": "August 14, 2023",
+    "image": "event-meetup-toronto@2x.jpg",
+    "end_date": "August 14, 2023"
+    },
+    { "name": "XRPL London Meetup (Accelerator Edition)",      
+    "description": "Join us for a Happy Hour hosted by the XRPL Accelerator Team! Connect with fellow start-ups in the blockchain space and gain insights into cutting-edge projects and founders.",
+    "type": "meetup",
+    "link": "https://lu.ma/xrplacceleratorhappyhour",
+    "location": "Central London",
+    "date": "September 04, 2023",
+    "image": "event-meetup-london.png",
+    "end_date": "September 04, 2023"
+    },
+    {
+    "name": "XRPL Accelerator Demo Day",      
+    "description": "​​Join us for our very first XRPL Accelerator Demo Day in London. Witness pitches from nine portfolio startups, engage in Q&A sessions, and network with founders and investors. ",
+    "type": "conference",
+    "link": "https://lu.ma/xrplaccelerator",
+    "location": "Central London and Online",
+    "date": "September 05, 2023",
+    "image": "Conference.png",
+    "end_date": "September 05, 2023" 
+    },
+    { "name": "XRPL Hackathon - Apex 2023",      
+    "description": "Join the XRPL Hackathon - APEX 2023, a week before the XRP Ledger's annual developer conference. Explore the Future of Finance and Web3 tracks, collaborate, learn, and compete for 10K USD in prizes.",
+    "type": "hackathon",
+    "link": "https://lu.ma/4h3bqfw1",
+    "location": "Delft, Netherlands ",
+    "date": "August 30, 2023 - August 31, 2023",
+    "image": "Hackathons.png",
+    "end_date": "August 31, 2023"
+    },
+    { "name": "XRPL Grants Info Session: Financial Inclusion Focused",      
+    "description": "Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Financial Inclusion projects.",
+    "type": "info-session",
+    "link": "https://ripple.zoom.us/webinar/register/WN_YdxeVY9_RJG5SVo-LSip6w#/registration",
+    "location": "Virtual - Zoom",
+    "date": "September 05, 2023",
+    "image": "InfoSessions.png",
+    "end_date": "September 05, 2023"
+    },
+    { "name": "XRPL South Korea Meetup - XCCESS",      
+    "description": "We are excited to introduce the XRP Ledger XCCESS - an exclusive meetup bringing together the brightest minds, innovators, and enthusiasts from South Korea's blockchain industry. Join us for an engaging experience during the Korea Blockchain Week.",
+    "type": "meetup",
+    "link": "https://lu.ma/xrplxccess",
+    "location": "South Korea - JBK Tower",
+    "date": "September 06, 2023",
+    "image": "SouthKoreaMeetup.png",
+    "end_date": "September 06, 2023"
+    },
+    { "name": "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",      
+    "description": "Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.",
+    "type": "info-session",
+    "link": "https://ripple.zoom.us/webinar/register/WN_ITv-kDuCS3i6UOgBxBe7-A",
+    "location": "Virtual - Zoom",
+    "date": "September 06, 2023",
+    "image": "InfoSessions.png",
+    "end_date": "September 06, 2023"
+    },
 ]
 %}
 
-  {# Available Types - conference, hackathon, ama, cc, zone, meetup #}
+  {# Available Types - conference, hackathon, ama, cc, zone, meetup, info-session #}
 
   {% set results = categorize_dates(events) %}
   {% set upcoming = results.upcoming %}
@@ -408,6 +522,10 @@
       <div class="form-check form-check-inline">
         <input value="zone" id="zone-past" name="zone-past" type="checkbox" class="events-filter" checked />
         <label for="zone-past">XRPL Zone</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input value="info-session" id="info-session-past" name="info-session-past" type="checkbox" class="events-filter" checked />
+        <label for="info-session-past">Info Session</label>
       </div>
     </div>
   </div>
@@ -477,6 +595,14 @@
       $('.zone-upcoming').hide();
     }
   });
+  $('#info-session-upcoming').change(function () {
+    if ($('#info-session-upcoming').is(':checked')) {
+        $('.info-session-upcoming').show();
+    } else {
+      $('.info-session-upcoming').hide();
+    }
+  });
+  
 
   $('#conference-past').change(function () {
     if ($('#conference-past').is(':checked')) {
@@ -520,6 +646,13 @@
       $('.zone-past').hide();
     }
   });
+   $('#info-session-past').change(function () {
+    if ($('#info-session-past').is(':checked')) {
+        $('.info-session-past').show();
+    } else {
+      $('.info-session-past').hide();
+    }
+  }); 
 
 </script>
 

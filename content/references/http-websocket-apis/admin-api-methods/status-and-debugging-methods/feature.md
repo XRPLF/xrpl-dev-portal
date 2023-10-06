@@ -7,7 +7,7 @@ labels:
   - Core Server
 ---
 # feature
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")
 
 The `feature` command returns information about [amendments](amendments.html) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](amendments.html#amendment-process). [New in: rippled 0.31.0][]
 
@@ -68,7 +68,7 @@ The request includes the following parameters:
 | `Field`   | Type    | Description                                            |
 |:----------|:--------|:-------------------------------------------------------|
 | `feature` | String  | _(Optional)_ The unique ID of an amendment, as hexadecimal; or the short name of the amendment. If provided, limits the response to one amendment. Otherwise, the response lists all amendments. |
-| `vetoed`  | Boolean | (Optional; ignored unless `feature` also specified) If true, instructs the server to vote against the amendment specified by `feature`. If false, instructs the server to vote in favor of the amendment. On the commandline, use 'accept' or 'reject rather than 'true' or 'false'. |
+| `vetoed`  | Boolean | _(Optional; ignored unless `feature` also specified)_ If `true`, instructs the server to vote against the amendment specified by `feature`. If false, instructs the server to vote in favor of the amendment. On the commandline, use 'accept' or 'reject rather than 'true' or 'false'. You cannot vote in favor of an amendment that is marked as _obsolete_ in the server's source code. [Updated in: rippled 1.11.0][] |
 
 **Note:** You can configure your server to vote in favor of a new amendment, even if the server does not currently know how to apply that amendment, by specifying the amendment ID in the `feature` field. For example, you might want to do this if you plan to upgrade soon to a new `rippled` version that _does_ support the amendment.
 
@@ -188,7 +188,7 @@ The response follows the [standard format][], with a successful result containin
 | `enabled`   | Boolean | Whether this amendment is currently enabled in the latest ledger. |
 | `name`      | String  | (May be omitted) The human-readable name for this amendment, if known. |
 | `supported` | Boolean | Whether the server knows how to apply this amendment. If this field is set to `false` (the server does not know how to apply this amendment) and `enabled` is set to `true` (this amendment is enabled in the latest ledger), this amendment may cause your server to be [amendment blocked](amendments.html#amendment-blocked-servers). |
-| `vetoed`    | Boolean | Whether the server has been instructed to vote against this amendment. |
+| `vetoed`    | Boolean or String | For most amendments, this is a boolean value indicating whether the server has been instructed to vote against this amendment. For amendments that are marked as obsolete in the code, this is the string `Obsolete` instead. [Updated in: rippled 1.11.0][] |
 
 **Caution:** The `name` for an amendment does not strictly indicate what that amendment does. The name is not guaranteed to be unique or consistent across servers.
 

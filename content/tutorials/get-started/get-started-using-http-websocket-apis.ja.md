@@ -1,12 +1,12 @@
 ---
 html: get-started-using-http-websocket-apis.html
-parent: get-started.html
+parent: http-websocket-apis-tutorials.html
 blurb: XRP Ledgerの操作に使用できるAPIとライブラリを使い始めましょう。
 cta_text: 開始しよう
 labels:
   - 開発
 top_nav_name: HTTP / WebSocket
-top_nav_grouping: Get Started
+top_nav_grouping: 始めましょう
 showcase_icon: assets/img/logos/globe.svg
 ---
 # HTTP / WebSocket APIの使用開始
@@ -37,7 +37,7 @@ Rippleは、XRP Ledgerコミュニティ向けにいくつかの公開サーバ�
 
 `rippled`サーバーの[管理メソッド](admin-api-methods.html)を使用するには、次のように行います。この場合、サーバーのバインド用として設定したIPアドレスとポートを使用する必要があります（例えば`127.0.0.1:54321`）。また、管理機能にアクセスするには、構成ファイルで管理用としてマークされているポートおよびIPアドレスから接続しなければなりません。
 
-[構成ファイルの例](https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
+[構成ファイルの例](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
 
 
 ## WebSocket API

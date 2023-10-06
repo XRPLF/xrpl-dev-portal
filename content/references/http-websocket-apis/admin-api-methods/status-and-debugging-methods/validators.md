@@ -7,9 +7,9 @@ labels:
   - Blockchain
 ---
 # validators
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
 
-The `validators` command returns human readable information about the current list of published and [trusted validators](intro-to-consensus.html#trust-based-validation) used by the server. [New in: rippled 0.80.1][]
+The `validators` command returns human readable information about the current list of published and [trusted validators](consensus.html#trust-based-validation) used by the server.
 
 *The `validators` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users!*
 

@@ -22,9 +22,9 @@
     <div class="w-100">
       <img id="home-hero-graphic" alt="X" />
     </div>
-    <div class="col-lg-5 mx-auto text-center pl-0 pr-0">
+    <div class="col-lg-6 mx-auto text-center pl-0 pr-0">
       <div class="d-flex flex-column-reverse">
-        <h1 class="mb-10">{% trans %}Community<br class="until-sm"/> Powered Utility{% endtrans %}</h1>
+        <h1 class="mb-10">{% trans %}The Blockchain<br class="until-sm"/> Built for Business{% endtrans %}</h1>
         <h6 class="eyebrow mb-3">{% trans %}XRPL | XRP Ledger{% endtrans %}</h6>
       </div>
       <a href="docs.html" class="btn btn-primary btn-arrow">{% trans %}Start Building{% endtrans %}</a>
@@ -38,37 +38,37 @@
 
   <section class="container-new py-26">
     <div class="col-lg-6 offset-lg-3 pl-0-sm pr-0-sm p-8-sm p-10-until-sm">
-      <h2 class="h4 mb-8 h2-sm">{% trans %}The XRP Ledger: A Scalable, Sustainable Blockchain{% endtrans %}</h2>
-      <h6 class="longform mb-10">{% trans %}The XRP Ledger (XRPL) is a decentralized, public blockchain led by a global developer community.{% endtrans %}</h6>
-      <p class="mb-0">{% trans %}It’s fast, energy efficient, and reliable. With ease of development, low transaction costs, and a knowledgeable community, it provides developers with a strong open-source foundation for executing on the most demanding projects—without hurting the environment.{% endtrans %}</p>
+      <h2 class="h4 mb-8 h2-sm">{% trans %}The XRP Ledger: The Blockchain Built for Business{% endtrans %}</h2>
+      <h6 class="longform mb-10">{% trans %}The XRP Ledger (XRPL) is a decentralized, public blockchain led by a global community of businesses and developers looking to solve problems and create value.{% endtrans %}</h6>
+      <p class="mb-0">{% trans %}Proven reliable over more than a decade of error-free functioning, the XRPL offers streamlined development, low transaction costs, high performance, and sustainability. So you can build with confidence–and move your most critical projects forward.{% endtrans %}</p>
     </div>
   </section>
 
   <section class="container-new py-26">
     <div class="d-flex flex-column-reverse col-sm-8 p-0">
       <h3 class="h4 h2-sm">{% trans %}Why developers choose the XRP Ledger{% endtrans %}</h3>
-      <h6 class="eyebrow mb-3">{% trans %}Discover Benefits{% endtrans %}</h6>
+      <h6 class="eyebrow mb-3">{% trans %}Benefits{% endtrans %}</h6>
     </div>
     <ul class="mt-10 card-grid card-grid-3xN" id="benefits-list">
       {% set cards = [
         { "id": "public",
-          "title": _("Public and Decentralized Structure"),
+          "title": _("Public and Decentralized"),
           "description": _("Open source, open to anyone to build on, maintained by the community")},
         { "id": "streamlined",
-          "title": _("Streamlined <br class='until-sm'/>Development"),
-          "description": _("Tools and documentation that speed development and reduce time to market")},
+          "title": _("Streamlined Development"),
+          "description": _("Intentional innovations, tools and documentation reduce time to market")},
         { "id": "performance",
-          "title": _("High <br class='until-sm'/>Performance"),
-          "description": _("Capable of settling thousands of transactions in seconds")},
+          "title": _("High Performance"),
+          "description": _("Thousands of transactions settled in seconds")},
         { "id": "low-cost",
           "title": _("Low Cost"),
-          "description": _("At fractions of a penny per transaction, costs are inexpensive enough to enable a wide variety of use cases")},
+          "description": _("At fractions of a penny per transaction, costs are inexpensive enough to enable a wide variety of <a href='uses.html'>blockchain use cases</a>")},
         { "id": "community",
-          "title": _("Vibrant Community"),
-          "description": _("Developers, validators, users, and businesses make the XRP Ledger better every day")},
+          "title": _("Motivated Community"),
+          "description": _("Companies, developers, validators, and users work together to make the XRP Ledger better every day")},
         { "id": "reliability",
           "title": _("Proven Reliability"),
-          "description": _("8+ years of consistent performance over more than 63 million ledgers")},
+          "description": _("10+ years of error-free, uninterrupted performance over more than 63 million ledgers")},
       ] %}
       {% for card in cards %}
       <li class="col ls-none">
@@ -82,8 +82,8 @@
 
   <section class="container-new py-26">
     <div class="d-flex flex-column-reverse col-sm-8 p-0">
-      <h3 class="h4 h2-sm">{% trans %}Activate the power of the XRP Ledger and find the building blocks for your next innovation{% endtrans %}</h3>
-      <h6 class="eyebrow mb-3">{% trans %}Explore Advanced Features{% endtrans %}</h6>
+      <h3 class="h4 h2-sm">{% trans %}Activate the proven potential of the XRP Ledger and find a trusted foundation for your next innovation{% endtrans %}</h3>
+      <h6 class="eyebrow mb-3">{% trans %}Powerful Features{% endtrans %}</h6>
     </div>
     <div class="row row-cols-1 row-cols-lg-3 card-deck mt-10" id="advanced-features">
       {% set cards2 = [
@@ -118,8 +118,8 @@
 
   <section class="container-new py-26">
     <div class="d-flex flex-column-reverse col-sm-8 p-0">
-      <h3 class="h4 h2-sm">{% trans %}Choose a path to start building on the XRPL{% endtrans %}</h3>
-      <h6 class="eyebrow mb-3">{% trans %}Get Started{% endtrans %}</h6>
+      <h3 class="h4 h2-sm">{% trans %}Choose a path, and bring your project to life on the XRP Ledger{% endtrans %}</h3>
+      <h6 class="eyebrow mb-3">{% trans %}Where to Start{% endtrans %}</h6>
     </div>
     <div class="row row-cols-1 row-cols-lg-3 card-deck mt-10" id="get-started">
       {% set cards3 = [
@@ -158,7 +158,7 @@
       <div class="z-index-1 position-relative">
         <h2 class="h4 mb-8-sm mb-10-until-sm">{% trans %}Our Shared Vision for XRPL’s Future{% endtrans %}</h2>
         <p class="mb-10">{% trans %}Together, we're building the greenest infrastructure to drive blockchain innovation that doesn't sacrifice utility or performance, to bring the developer community's vision to life.{% endtrans %}</p>
-        <a class="btn btn-primary btn-arrow" href="overview.html">Learn More</a>
+        <a class="btn btn-primary btn-arrow" href="overview.html">{% trans %}Learn More{% endtrans %}</a>
       </div>
     </div>
   </section>
@@ -191,14 +191,13 @@
 
   <section class="container-new py-26">
     <div class="col-md-6 offset-md-3 p-8-sm p-10-until-sm br-8 cta-card">
-      <img src="./img/backgrounds/cta-home-magenta.svg" class="cta cta-bottom-right">
+      <img alt="" src="./img/backgrounds/cta-home-magenta.svg" class="cta cta-bottom-right">
       <div class="z-index-1 position-relative">
         <div class="d-flex flex-column-reverse">
-          <h2 class="h4 mb-8-sm mb-10-until-sm">{% trans %}XRPL.org: by the community, for the community{% endtrans %}</h2>
-          <h5 class="eyebrow mb-3">{% trans %}Get Involved{% endtrans %}</h5>
+          <h2 class="h4 mb-8-sm mb-10-until-sm">{% trans %}Join the Community <br class="until-sm"/> at XRPL.org{% endtrans %}</h2>
         </div>
-        <p class="mb-10">{% trans %}XRPL.org is a community-driven resource by and for developers who build on the XRP Ledger (XRPL).{% endtrans %}</p>
-        <a class="btn btn-primary btn-arrow" href="contribute.html">{% trans %}Join the Community{% endtrans %}</a>
+        <p class="mb-10">{% trans %}Connect at XRPL.org, a community by and for the developers <br class="until-sm"/> and entrepeneurs who rely on the XRPL.{% endtrans %}</p>
+        <a class="btn btn-primary btn-arrow" href="contribute.html">{% trans %}Get Involved{% endtrans %}</a>
       </div>
     </div>
   </section>

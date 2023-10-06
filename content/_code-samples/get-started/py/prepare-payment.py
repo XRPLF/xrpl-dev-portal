@@ -11,7 +11,7 @@ from xrpl.wallet import generate_faucet_wallet
 test_wallet = generate_faucet_wallet(client, debug=True)
 
 # Create an account str from the wallet
-test_account = test_wallet.classic_address
+test_account = test_wallet.address
 
 # Derive an x-address from the classic address:
 # https://xrpaddress.info/
@@ -32,18 +32,10 @@ my_tx_payment = Payment(
 # print prepared payment
 print(my_tx_payment)
 
-# Sign the transaction
-from xrpl.transaction import safe_sign_and_autofill_transaction
+# Sign and submit the transaction
+from xrpl.transaction import submit_and_wait
 
-my_tx_payment_signed = safe_sign_and_autofill_transaction(my_tx_payment, test_wallet, client)
-
-# Print signed tx
-print("Signed tx:", my_tx_payment_signed)
-
-# Submit and send the transaction
-from xrpl.transaction import send_reliable_submission
-
-tx_response = send_reliable_submission(my_tx_payment_signed, client)
+tx_response = submit_and_wait(my_tx_payment, client, test_wallet)
 
 # Print tx response
 print("Tx response:", tx_response)

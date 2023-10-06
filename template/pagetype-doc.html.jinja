@@ -19,11 +19,17 @@
 {% endblock %}
 
 {% block main %}
-  <article class="pt-3 p-md-3">
+  <article>
     {% if (target.lang != "en" and "en" in currentpage.targets) or currentpage.untranslated_warning %}
     {# Add a "sorry this page isn't translated" banner. #}
     <div class="mb-5 devportal-callout note"><strong>{% trans %}Sorry, this page is not available in your language.{% endtrans %}</strong>
       <p class="mb-0">{% trans %}We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">please contribute!</a>{% endtrans %}</p>
+    </div><!--/.devportal-callout-->
+    {% endif %}
+    {% if target.lang != "en" and currentpage.outdated_translation %}
+    {# Add a "This translation is not up-to-date." banner. #}
+    <div class="mb-5 devportal-callout note"><strong>{% trans %}This translated page is not updated to match the latest changes in the English version.{% endtrans %}</strong>
+      <p class="mb-0">{% trans %}We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all translated contents are up-to-date. If you'd like to help, <a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">please contribute!</a>{% endtrans %}</p>
     </div><!--/.devportal-callout-->
     {% endif %}
     <div class="content">

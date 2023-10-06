@@ -2,7 +2,7 @@
 html: faq.html
 parent: xrp-ledger-overview.html
 blurb: Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community.
-subtitle: Your Questions About XRPL, Answered
+subtitle: Answers to Your XRPL Questions
 top_nav_grouping: About
 sidebar: disabled
 labels:
@@ -13,21 +13,21 @@ filters:
 name: FAQ
 ---
 ###### FAQ
-# Your Questions About XRPL, Answered
+# Answers to Your XRPL Questions
 
 <!--#{ Use H4s for questions and H2s for sections. This keeps the sidebar nav from getting too clustered and allows the faq filter to stylize things as an accordion. #}-->
 
 #### Is XRPL a private blockchain, owned by Ripple?
 
-No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the default Unique Node List (see [“What are Unique Node Lists (UNLs)?” below](#what-are-unique-node-lists-unls)) — Ripple runs [only 2](https://foundation.xrpl.org/2022/10/06/unl-update-october-2022) of these nodes.
+No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the default Unique Node List (see [“What are Unique Node Lists (UNLs)?” below](#what-are-unique-node-lists-unls)) — Ripple runs [only 1](https://foundation.xrpl.org/2023/03/23/unl-update-march-2023/) of these nodes.
 
 #### Isn’t Proof of Work the best validation mechanism?
 
-Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. [The XRP Ledger’s consensus mechanism](intro-to-consensus.html) solves the same problem in a far faster, cheaper and more energy efficient way.
+Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. [The XRP Ledger’s consensus mechanism](consensus.html) solves the same problem in a far faster, cheaper and more energy efficient way.
 
 #### How can a blockchain be sustainable?
 
-It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “[consensus](intro-to-consensus.html)” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be [one of the first truly carbon neutral blockchains](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/).
+It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “[consensus](consensus.html)” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be [one of the first truly carbon neutral blockchains](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/).
 
 #### Can currencies other than XRP be traded through XRPL?
 
@@ -58,7 +58,7 @@ UNLs are the lists of validators a given participant believes will not conspire 
 
 #### Which UNL should I select?
 
-Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, three publishers (Ripple, the XRP Ledger Foundation, and Coil) are known to publish recommended default lists of high quality validators, based on past performance, proven identities, and responsible IT policies.  However, every network participant can choose which validators it chooses as reliable and need not follow one of the three publishers noted above.
+Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, the XRP Ledger Foundation and Ripple are known to publish recommended default lists of high quality validators, based on past performance, proven identities, and responsible IT policies.  However, every network participant can choose which validators it chooses as reliable and need not follow one of the publishers noted above.
 
 
 #### If Ripple recommends adoption of its UNL, doesn't that create a centralized system?
@@ -137,7 +137,7 @@ Ripple is committed to monitoring and reporting any AML flags across the XRP Led
 
 #### What is the process for reviewing third-party code contributions?
 
-The code contribution process starts with a developer opening a [pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to a source code repository such as the [`rippled` repository](https://github.com/ripple/rippled/), which contains Ripple's reference implementation of the core XRP Ledger server and protocol.
+The code contribution process starts with a developer opening a [pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to a source code repository such as the [`rippled` repository](https://github.com/xrplf/rippled/), which contains Ripple's reference implementation of the core XRP Ledger server and protocol.
 
 This pull request triggers automated unit and integration tests, as well as code reviews by several developers who, typically, have significant expertise in the area of code that the pull request affects.
 
@@ -150,7 +150,7 @@ No, Ripple does not own or control the XRP Ledger or XRP Ledger network.
 
 Ripple contributes to a reference implementation of the core XRP Ledger server ([`rippled`](https://github.com/xrplf/rippled)) and employs a team of engineers who contribute to the open-source codebase. Ripple periodically publishes pre-compiled binary packages of the software for convenience. Anyone can [download and compile the software from source](install-rippled.html).
 
-Several entities publish recommended validator lists (UNLs). As of September 2022, Ripple runs 3 of the 35 validators in the default UNL.
+Several entities publish recommended validator lists (UNLs). As of July 2023, Ripple runs only 1 of the 35 validators in the default UNL.
 
 
 #### Does the XRP Ledger distinguish between the codebase for validation and the one for user software?

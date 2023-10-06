@@ -1,24 +1,96 @@
 // TEMPORARY: overriding the feedback widget styles here
 #feedback-content {
   .docked-widget {
+    border: none !important;
+    background-color: transparent !important;
+    position: static !important;
+    box-shadow: none !important;
+    width: auto !important;
+  }
+
+  .widget-form-wrapper {
     position: static !important;
     box-shadow: none !important;
     display: block;
-    background-color: $body-bg !important;
+    background-color: $gray-800 !important;
     border-width: 0 !important;
-    padding: 2rem;
+    padding: 24px !important;
+    border-radius: 8px !important;
 
-    .widget-header {
-      background: none !important;
-
-      .widget-header-title {
-        flex-grow: 0 !important;
-        padding-right: 1rem !important;
-      }
+    div {
+      background-color: $gray-800 !important;
     }
 
-    #closeFeedback {
-      display: none;
+    textarea {
+      background-color: $white !important;
+      opacity: 1 !important;
+      border: none !important;
+      border-radius: 4px !important;
+      margin: 0 !important;
+      width: 100% !important;
+      color: $black !important;
+    }
+
+    .widget-header-title {
+      background: none !important;
+      flex-grow: 0 !important;
+      padding-right: 1rem !important;
+      height: auto !important;
+      padding: 0 !important;
+      margin-bottom: 10px !important;
+    }
+
+    .widget-header-footer {
+      background: none !important;
+    }
+
+    .widget-form-footer {
+      padding-right: 0 !important;
+    }
+    
+    .submit {
+        background-color: $blue-purple-500 !important;
+        font-weight: bold !important;
+        color: $white !important;
+        border: none !important;
+        border-color: transparent !important;
+        border-radius: 4px !important;
+        margin: 0 !important;
+        margin-top: 8px !important;
+        &:hover {
+          background: $blue-purple-600 !important;
+        }
+
+        &.disabled,
+        &[disabled="disabled"] {
+          background-color: $blue-purple-700 !important;
+
+          &:hover {
+            background-color: $blue-purple-700 !important;
+          }
+        }
+    }
+
+    .cancel {
+      margin: 0 !important;
+      margin-top: 8px !important;
+      color: $blue-purple-300 !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  #closeFeedback {
+    display: none;
+  }
+
+  .widget-helpful {
+    .widget-header {
+      background-color: $gray-800 !important;
+      border-radius: 8px !important;
+    }
+
+    .widget-header-title {
+      color: $white !important;
     }
   }
 }

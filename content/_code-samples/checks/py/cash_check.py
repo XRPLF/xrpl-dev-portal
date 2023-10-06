@@ -1,8 +1,7 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models import CheckCash, IssuedCurrencyAmount
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
-                              send_reliable_submission)
-from xrpl.utils import str_to_hex, xrp_to_drops
+from xrpl.transaction import submit_and_wait
+from xrpl.utils import xrp_to_drops
 from xrpl.wallet import generate_faucet_wallet
 
 # Connect to a network
@@ -21,13 +20,11 @@ amount = 10.00
 sender_wallet = generate_faucet_wallet(client=client)
 
 # Build check cash transaction
-check_txn = CheckCash(account=sender_wallet.classic_address, check_id=check_id, amount=xrp_to_drops(amount))
+check_txn = CheckCash(account=sender_wallet.address, check_id=check_id, amount=xrp_to_drops(amount))
 
-# Sign transaction
-stxn = safe_sign_and_autofill_transaction(check_txn, sender_wallet, client)
+# Autofill, sign, then submit transaction and wait for result
+stxn_response = submit_and_wait(check_txn, client, sender_wallet)
 
-# Submit transaction and wait for result
-stxn_response = send_reliable_submission(stxn, client)
 
 # Parse response for result
 stxn_result = stxn_response.result
@@ -49,22 +46,19 @@ token = "USD"
 amount = 10.00
 
 # Token issuer address
-issuer = generate_faucet_wallet(client=client).classic_address
+issuer = generate_faucet_wallet(client=client).address
 
 # Create sender wallet object
 sender_wallet = generate_faucet_wallet(client=client)
 
 # Build check cash transaction
-check_txn = CheckCash(account=sender_wallet.classic_address, check_id=check_id, amount=IssuedCurrencyAmount(
-    currency=str_to_hex(token),
+check_txn = CheckCash(account=sender_wallet.address, check_id=check_id, amount=IssuedCurrencyAmount(
+    currency=token,
     issuer=issuer,
     value=amount))
 
-# Sign transaction
-stxn = safe_sign_and_autofill_transaction(check_txn, sender_wallet, client)
-
-# Submit transaction and wait for result
-stxn_response = send_reliable_submission(stxn, client)
+# Autofill, sign, then submit transaction and wait for result
+stxn_response = submit_and_wait(check_txn, client, sender_wallet)
 
 # Parse response for result
 stxn_result = stxn_response.result

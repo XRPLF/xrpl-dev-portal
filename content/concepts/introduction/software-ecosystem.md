@@ -7,60 +7,60 @@ labels:
 ---
 # Software Ecosystem
 
-The XRP Ledger is home to a deep, layered ecosystem of software projects powering and enabling an Internet of Value. It's impossible to list every project, tool, and business that interacts with the XRP Ledger, so this page only lists a few categories and highlights some central projects that are documented here on [xrpl.org](https://xrpl.org). <!-- SPELLING_IGNORE: xrpl -->
+The XRP Ledger is home to a deep, layered ecosystem of software projects powering and enabling an Internet of Value. It's impossible to list every project, tool, and business that interacts with the XRP Ledger, so this page only lists a few categories and highlights some central projects that are documented on this website.
+![The XRPL Ecosystem](img/ecosystem-apps-and-services.svg)
 
 ## Stack Levels
 
-{{ include_svg("img/ecosystem.svg", "Ecosystem diagram with the four layers: XRP Ledger peer-to-peer network on the bottom, Programming Libraries above that, Middleware next, and Apps and Services at the top") }}
+- [_Core Servers_](#core-servers) form the basis of the XRP Ledger, a peer-to-peer network relaying and processing transactions at all times.
 
-- The [basis of the XRP Ledger](#rippled-the-core-server) is a peer-to-peer network of always-on servers sharing transactions, engaging in the [consensus process](consensus.html) and processing [transactions](transaction-basics.html). Everything else in the XRP Ledger ecosystem is ultimately built on top of this peer-to-peer network, directly or indirectly.
-
-- [_Programming Libraries_](#programming-libraries) exist in higher level software, where they are imported directly into program code, and contain methods to access the XRP Ledger.
+- [_Client Libraries_](#client-libraries) exist in higher level software, where they are imported directly into program code, and contain methods to access the XRP Ledger.
 
 - [_Middleware_](#middleware) provides indirect access to XRP Ledger data. Applications in this layer often have their own data storage and processing.
 
 - [_Apps and Services_](#apps-and-services) provide user-level interaction with the XRP Ledger, or provide a basis for even higher-level apps and services.
 
 
-### rippled: The Core Server
+### Core Servers
 
-The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliable, efficient server to enforce the rules of consensus and transaction processing. Ripple manages and publishes a reference implementation of this server software, called [**`rippled`**](xrpl-servers.html) (pronounced "ripple-dee"). The server is available under [a permissive open-source license](https://github.com/ripple/rippled/blob/develop/LICENSE.md), so anyone can inspect and modify their own instance of the server, and re-publish with few restrictions.
+The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliable, efficient server to enforce the rules of consensus and transaction processing. The XRP Ledger Foundation publishes a reference implementation of this server software, called [**`rippled`**](xrpl-servers.html) (pronounced "ripple-dee"). The server is available under [a permissive open-source license](https://github.com/XRPLF/rippled/blob/develop/LICENSE.md), so anyone can inspect and modify their own instance of the server, and re-publish with few restrictions.
 
-Every instance of `rippled` syncs to the same network (unless it's configured to follow a [parallel network such as a test net](parallel-networks.html)) and has access to all communications across the network. Every `rippled` server on the network keeps a complete copy of the latest state data for the entire XRP Ledger, along with a slice of recent transactions and a record of the changes those transactions made, and every server processes every transaction independently while verifying that its outcome matches the rest of the network. Servers can be configured to keep more [ledger history](ledger-history.html) and to participate in the consensus process as a [validator](rippled-server-modes.html#validators).
+![Core Servers](img/ecosystem-peer-to-peer.svg)
 
-This server exposes [`rippled` APIs](http-websocket-apis.html) for users to look up data, administer the server, and submit transactions.
+Every core server syncs to the same network (unless it's configured to follow a [test network](parallel-networks.html)) and has access to all communications across the network. Every server on the network keeps a complete copy of the latest state data for the entire XRP Ledger, along with recent transactions and a record of the changes those transactions made, and every server processes every transaction independently while verifying that its outcome matches the rest of the network. Servers can be configured to keep more [ledger history](ledger-history.html) and to participate in the consensus process as a [validator](rippled-server-modes.html#validators).
 
-### Programming Libraries
+Core servers expose [HTTP / WebSocket APIs](http-websocket-apis.html) for users to look up data, administer the server, and submit transactions. Some servers also serve HTTP / WebSocket APIs but don't connect directly to the peer-to-peer network and don't process transactions or participate in consensus. These servers, such as `rippled` servers running in Reporting Mode and Clio servers, rely on a core server in P2P mode to process transactions.
 
-[Programming libraries](client-libraries.html) are not strictly required to access XRP Ledger data, since you can use HTTP or WebSocket to connect to the [`rippled` APIs](http-websocket-apis.html) directly. Libraries simplify some of the common work of accessing the `rippled` APIs, and convert the data into forms that are easier to understand and program with in the programming language of the library.
 
-[xrpl.js for JavaScript](get-started-using-javascript.html) (formerly called "ripple-lib") is the longest-standing, most well-supported library for accessing the XRP Ledger. Many [middleware services](#middleware) use programming libraries like this internally.
+### Client Libraries
+
+Libraries simplify some of the common work of accessing the XRP Ledger, usually through the HTTP / WebSocket APIs. They convert the data into forms that are more familiar and convenient for various programming languages, and include implementations of common operations. 
+
+![Client Libraries](img/ecosystem-client-libraries.svg)
+
+One core feature of most client libraries is signing transactions locally, so users never have to send their private key across any network.
+
+Many middleware services use client libraries internally.
+
+See [Client Libraries](client-libraries.html) for some information about currently available client libraries.
+
 
 ### Middleware
 
 Middleware services are programs that consume the XRP Ledger APIs on one side and provide their own APIs on the other side. They provide a layer of abstraction to make it easier to build higher-level applications by providing some common functionality as a service.
 
-Unlike [programming libraries](#programming-libraries), which are instantiated fresh and shut down with the program that imports them, middleware services typically stay running indefinitely, and may have their own databases (relational SQL databases or otherwise) and configuration files.
+![Middleware](img/ecosystem-middleware.svg)
 
-The [Data API](data-api.html) is an example of a middleware service on top of the XRP Ledger. The Data API collects and transforms XRP Ledger data, so that you can query by time, filter by data type, or perform data analysis.
-
-[XRP-API](xrp-api.html) is another middleware service. XRP-API manages secret keys and provides a more convenient RESTful interface to the XRP Ledger for apps in any programming language.
+Unlike client libraries, which are instantiated fresh and shut down with the program that imports them, middleware services typically stay running indefinitely, and may have their own databases (relational SQL databases or otherwise) and configuration files. Some are available as cloud services with various pricing or usage limitations.
 
 
 ### Apps and Services
 
-Atop the stack is where the truly exciting things happen. Apps and services provide a way for users and devices to connect to the XRP Ledger. At this level, [exchanges list XRP](list-xrp-as-an-exchange.html), [gateways issue other currencies](become-an-xrp-ledger-gateway.html) for use in the decentralized exchange, and wallets provide user interfaces for buying, selling, or <s>HODLing</s> holding XRP. Many other possibilities exist, including additional services layered even higher. <!-- SPELLING_IGNORE: hodling -->
+Atop the stack is where the truly exciting things happen. Apps and services provide a way for users and devices to connect to the XRP Ledger. Services like private exchanges, token issuers, marketplaces, interfaces to the decentralized exchange, and wallets provide user interfaces for buying, selling, and trading various assets including XRP and tokens of all kinds. Many other possibilities exist, including additional services layered even higher.
 
-A great way to build applications that are compatible with not only XRP but lots of other ways of denominating value is to use the [Interledger Protocol][] with settlement in XRP.
+![Apps and Services](img/ecosystem-apps-and-services.svg)
 
-There are many other examples of projects using XRP and adjacent technologies to interact with users. For some examples, see [Businesses](businesses.html), [Exchanges](exchanges.html), and [Wallets](wallets.html).
-
-
-## See Also
-
-- [RippleX](https://ripplex.io/)
-- [Technical FAQ](technical-faq.html)
-- [XRPChat Links & Resources](https://www.xrpchat.com/links/) - Includes updated lists of gateways and exchanges, wallets and storage, apps, and more.
+See [Use Cases](use-cases.html) for some examples that can be built at or above this layer.
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

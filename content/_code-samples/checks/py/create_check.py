@@ -2,9 +2,8 @@ from datetime import datetime, timedelta
 
 from xrpl.clients import JsonRpcClient
 from xrpl.models import CheckCreate, IssuedCurrencyAmount
-from xrpl.transaction import (safe_sign_and_autofill_transaction,
-                              send_reliable_submission)
-from xrpl.utils import datetime_to_ripple_time, str_to_hex, xrp_to_drops
+from xrpl.transaction import submit_and_wait
+from xrpl.utils import datetime_to_ripple_time, xrp_to_drops
 from xrpl.wallet import generate_faucet_wallet
 
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234") # Connect to the testnetwork
@@ -26,16 +25,15 @@ expiry_date = datetime_to_ripple_time(datetime.now() + timedelta(days=5))
 sender_wallet = generate_faucet_wallet(client=client)
 
 # Build check create transaction
-check_txn = CheckCreate(account=sender_wallet.classic_address, destination=receiver_addr,
-send_max=IssuedCurrencyAmount(
-    currency=str_to_hex(token), 
-    issuer=issuer, 
-    value=amount),
-    expiration=expiry_date)
+check_txn = CheckCreate(account=sender_wallet.address, destination=check_receiver_addr,
+                        send_max=IssuedCurrencyAmount(
+                            currency=token_name,
+                            issuer=token_issuer,
+                            value=amount_to_deliver),
+                        expiration=expiry_date)
 
-# Sign, submit transaction and wait for result
-stxn = safe_sign_and_autofill_transaction(check_txn, sender_wallet, client)
-stxn_response = send_reliable_submission(stxn, client)
+# Autofill, sign, then submit transaction and wait for result
+stxn_response = submit_and_wait(check_txn, client, sender_wallet)
 
 # Parse response for result
 stxn_result = stxn_response.result
@@ -61,14 +59,13 @@ expiry_date = datetime_to_ripple_time(datetime.now() + timedelta(days=5))
 sender_wallet = generate_faucet_wallet(client=client)
 
 # Build check create transaction
-check_txn = CheckCreate(account=sender_wallet.classic_address,
-        destination=receiver_addr,
-        send_max=xrp_to_drops(amount),
-        expiration=expiry_date)
+check_txn = CheckCreate(account=sender_wallet.address,
+                        destination=check_receiver_addr,
+                        send_max=xrp_to_drops(amount_to_deliver),
+                        expiration=expiry_date)
 
-# Sign, submit transaction and wait for result
-stxn = safe_sign_and_autofill_transaction(check_txn, sender_wallet, client)
-stxn_response = send_reliable_submission(stxn, client)
+# Autofill, sign, then submit transaction and wait for result
+stxn_response = submit_and_wait(check_txn, client, sender_wallet)
 
 # Parse response for result
 stxn_result = stxn_response.result

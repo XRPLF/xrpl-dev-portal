@@ -1,4 +1,4 @@
-from xrpl.transaction import safe_sign_and_autofill_transaction, send_reliable_submission
+from xrpl.transaction import submit_and_wait
 from xrpl.models.transactions.nftoken_cancel_offer import NFTokenCancelOffer
 from xrpl.models.requests import AccountObjects, AccountObjectType
 from xrpl.clients import JsonRpcClient
@@ -22,8 +22,8 @@ else:
     client = JsonRpcClient(JSON_RPC_URL)
 
     # Initialize wallet from seed
-    wallet = Wallet(seed=seed, sequence=0)
-    Addr = wallet.classic_address
+    wallet = Wallet.from_seed(seed=seed)
+    Addr = wallet.address
 
     print(f"\n  Account: {Addr}")
     print(f"     Seed: {seed}")
@@ -60,11 +60,9 @@ else:
             ]
         )
 
-        # Sign cancel_sell_offer_tx using minter account
-        cancel_sell_offer_tx_signed = safe_sign_and_autofill_transaction(transaction=cancel_sell_offer_tx, wallet=wallet,
-                                                                         client=client)
-        cancel_sell_offer_tx_signed = send_reliable_submission(transaction=cancel_sell_offer_tx_signed, client=client)
-        cancel_sell_offer_tx_result = cancel_sell_offer_tx_signed.result
+        # Sign and submit cancel_sell_offer_tx using minter account
+        cancel_sell_offer_tx_response = submit_and_wait(transaction=cancel_sell_offer_tx, client=client, wallet=wallet)
+        cancel_sell_offer_tx_result = cancel_sell_offer_tx_response.result
         print(f"\n Cancel Sell Offer tx result: {cancel_sell_offer_tx_result['meta']['TransactionResult']}"
               f"\n                 Tx response: {cancel_sell_offer_tx_result}")
 

@@ -6,7 +6,7 @@ labels:
   - Payment Channels
 ---
 # account_channels
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
 _(Added by the [PayChan amendment][]. [New in: rippled 0.33.0][])_
 
@@ -55,14 +55,14 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 
 The request includes the following parameters:
 
-| Field                 | Type                       | Description             |
-|:----------------------|:---------------------------|:------------------------|
-| `account`             | String                     | The unique identifier of an account, typically the account's [Address][]. The request returns channels where this account is the channel's owner/source. |
-| `destination_account` | String                     | _(Optional)_ The unique identifier of an account, typically the account's [Address][]. If provided, filter results to payment channels whose destination is this account. |
-| `ledger_hash`         | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`        | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `limit`               | Integer                    | _(Optional)_ Limit the number of transactions to retrieve. Cannot be less than 10 or more than 400. The default is 200. |
-| `marker`              | [Marker][]                 | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [Updated in: rippled 1.5.0][] |
+| Field                 | Type                 | Required? | Description |
+|:----------------------|:---------------------|:----------|-------------|
+| `account`             | String - [Address][] | Yes       | Look up channels where this account is the channel's owner/source. |
+| `destination_account` | String - [Address][] | No        | A second account; if provided, filter results to payment channels whose destination is this account. |
+| `ledger_hash`         | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index`        | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `limit`               | Number               | No        | Limit the number of transactions to retrieve. Cannot be less than 10 or more than 400. Positive values outside this range are replaced with the closest valid option. The default is 200. |
+| `marker`              | [Marker][]           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 ## Response Format
 
@@ -182,8 +182,8 @@ Each Channel Object has the following fields:
 | `public_key_hex`      | String           | _(May be omitted)_ The public key for the payment channel in hexadecimal format, if one was specified at channel creation. Signed claims against this channel must be redeemed with the matching key pair. |
 | `expiration`          | Unsigned Integer | _(May be omitted)_ Time, in [seconds since the Ripple Epoch][], when this channel is set to expire. This expiration date is mutable. If this is before the close time of the most recent validated ledger, the channel is expired. |
 | `cancel_after`        | Unsigned Integer | _(May be omitted)_ Time, in [seconds since the Ripple Epoch][], of this channel's immutable expiration, if one was specified at channel creation. If this is before the close time of the most recent validated ledger, the channel is expired. |
-| `source_tag`          | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [source tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags) for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value in the `DestinationTag` of the return payment. |
-| `destination_tag`     | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [destination tag](become-an-xrp-ledger-gateway.html#source-and-destination-tags) for payments through this channel, if one was specified at channel creation. This indicates the payment channel's beneficiary or other purpose at the destination account. |
+| `source_tag`          | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [source tag](source-and-destination-tags.html) for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value in the `DestinationTag` of the return payment. |
+| `destination_tag`     | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [destination tag](source-and-destination-tags.html) for payments through this channel, if one was specified at channel creation. This indicates the payment channel's beneficiary or other purpose at the destination account. |
 
 ## Possible Errors
 

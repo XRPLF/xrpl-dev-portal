@@ -1,6 +1,6 @@
 ---
 html: send-xrp.html
-parent: get-started.html
+parent: tasks.html
 blurb: Learn how to send test payments right from your browser.
 cta_text: Send XRP
 embed_xrpl_js: true
@@ -57,7 +57,7 @@ The secret key shown here is for example only. For development purposes, you can
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
 
 
 ### {{n.next()}}. Connect to a Testnet Server
@@ -196,7 +196,7 @@ The result of the signing operation is a transaction object containing a signatu
 Now that you have a signed transaction, you can submit it to an XRP Ledger server, which relays it through the network. It's also a good idea to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it. Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)
 
 - **JavaScript:** Use the [`submitAndWait()` method of the Client](https://js.xrpl.org/classes/Client.html#submitAndWait) to submit a signed transaction to the network and wait for the response, or use [`submitSigned()`](https://js.xrpl.org/classes/Client.html#submitSigned) to submit a transaction and get only the preliminary response.
-- **Python:** Use the [`xrpl.transaction.send_reliable_submission()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission) to submit a transaction to the network and wait for a response.
+- **Python:** Use the [`xrpl.transaction.submit_and_wait()` method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait) to submit a transaction to the network and wait for a response.
 - **Java:** Use the [`XrplClient.submit(SignedTransaction)` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)) to submit a transaction to the network. Use the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method to get the latest validated ledger index.
 
 <!-- MULTICODE_BLOCK_START -->
@@ -239,7 +239,7 @@ Most transactions are accepted into the next ledger version after they're submit
 
 - **JavaScript:**  If you used the [`.submitAndWait()` method](https://js.xrpl.org/classes/Client.html#submitAndWait), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
 
-- **Python:** If you used the [`xrpl.transaction.send_reliable_submission()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.send_reliable_submission), you can wait for the function to return. Other approaches, including asynchronous ones using the WebSocket client, are also possible.
+- **Python:** If you used the [`xrpl.transaction.submit_and_wait()` method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait), you can wait for the function to return. Other approaches, including asynchronous ones using the WebSocket client, are also possible.
 
 - **Java** Poll the [`XrplClient.transaction()` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)) to see if your transaction has a final result. Periodically check that the latest validated ledger index has not passed the `LastLedgerIndex` of the transaction using the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method.
 
@@ -272,7 +272,7 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 
     **Tip:** In **TypeScript** you can pass a [`TxRequest`](https://js.xrpl.org/interfaces/TxRequest.html) to the [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) method.
 
-- **Python:** Use the response from `send_reliable_submission()` or call the [`xrpl.transaction.get_transaction_from_hash()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash). (See the [tx method response format](tx.html#response-format) for a detailed reference of the fields this can contain.)
+- **Python:** Use the response from [`submit_and_wait()`](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait) or call the [`xrpl.transaction.get_transaction_from_hash()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash). (See the [tx method response format](tx.html#response-format) for a detailed reference of the fields this can contain.)
 
 - **Java:** Use the [`XrplClient.transaction()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)) method to check the status of a transaction.
 
@@ -326,7 +326,7 @@ _Python_
 ```py
 from xrpl.wallet import Wallet
 my_wallet = Wallet.create()
-print(my_wallet.classic_address) # Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
+print(my_wallet.address) # Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 print(my_wallet.seed)            # Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
 
@@ -417,7 +417,6 @@ After completing this tutorial, you may want to try the following:
 - Customize your [Account Settings](manage-account-settings.html).
 - Learn how [Transaction Metadata](transaction-metadata.html) describes the outcome of a transaction in detail.
 - Explore more [Payment Types](payment-types.html) such as Escrows and Payment Channels.
-- Read best practices for [XRP Ledger Businesses](xrp-ledger-businesses.html).
 
 
 

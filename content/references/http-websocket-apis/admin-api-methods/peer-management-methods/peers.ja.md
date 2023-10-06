@@ -6,7 +6,7 @@ labels:
   - コアサーバー
 ---
 # peers
-[[ソース]](https://github.com/ripple/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
 
 `peers`コマンドは、[ピアプロトコル](peer-protocol.html)でこのサーバーに現在接続されているその他のすべての`rippled`サーバーのリスト（各サーバーの接続状況と同期状況を含む）を返します。
 

@@ -7,7 +7,7 @@ labels:
   - アカウント
 ---
 # wallet_propose
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
 `wallet_propose`メソッドを使用して、キーペアとXRP Ledgerアドレスを生成します。このコマンドは単にキーとアドレス値を生成し、XRP Ledger自体には何ら影響しません。レジャー上で資金供給済みのアドレスになるには、そのアドレスで、[必要準備金](reserves.html)を満たすのに十分なXRPの[Paymentトランザクションを受け取る](accounts.html#アカウントの作成)必要があります。
 
@@ -91,7 +91,7 @@ rippled wallet_propose masterpassphrase
 
 #### シードの指定
 
-ほとんどの場合、強力な乱数ソースから生成されたシード値を使用する必要があります。あるアドレスのシード値を知っている人は、[そのアドレスで署名されたトランザクションを送信する](transaction-basics.html#トランザクションの承認)すべての権限を持っています。一般的に、ランダムシードの生成には、このコマンドにパラメーターを指定しないで実行する方法が適しています。
+ほとんどの場合、強力な乱数ソースから生成されたシード値を使用する必要があります。あるアドレスのシード値を知っている人は、[そのアドレスで署名されたトランザクションを送信する](transactions.html#トランザクションの承認)すべての権限を持っています。一般的に、ランダムシードの生成には、このコマンドにパラメーターを指定しないで実行する方法が適しています。
 
 以下の場合には、既知のシードを指定します。
 

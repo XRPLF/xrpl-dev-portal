@@ -6,7 +6,7 @@ labels:
   - Checks
 ---
 # CheckCancel
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelCheck.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CancelCheck.cpp "Source")
 
 _（[Checks Amendment][]が必要です）_
 

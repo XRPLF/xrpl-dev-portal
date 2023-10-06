@@ -6,7 +6,7 @@ labels:
   - Payment Channel
 ---
 # account_channels
-[[ソース]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
 _（[PayChan Amendment][]が有効になっている必要があります。[新規: rippled 0.33.0][]）_
 
@@ -183,8 +183,8 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 | `settle_delay` | 符号なし整数 | Payment Channelの所有者がChannel閉鎖を依頼した後に、そのChannelが開いている必要がある秒数。 |
 | `expiration` | 符号なし整数 | _（省略される場合があります）_ このChannelに設定された有効期限（[Rippleエポック以降の経過秒数][]）。この有効期限の日付は変更可能です。これが最新の検証済みレジャーの閉鎖時刻よりも前の場合、Channelは有効期限切れです。 |
 | `cancel_after` | 符号なし整数 | _（省略される場合があります）_ このChannelの変更不可能な有効期限がChannel作成時に指定されている場合はその有効期限（[Rippleエポック以降の経過秒数][]）。これが最新の検証済みレジャーの閉鎖時刻よりも前の場合、Channelは有効期限切れです。 |
-| `source_tag` | 符号なし整数 | _（省略される場合があります）_ このPayment Channelを通じた支払いの[送金元タグ](become-an-xrp-ledger-gateway.html#source-and-destination-tags)として使用される32ビット符号なし整数（Channel作成時に指定されている場合）。送金元アカウントでのPayment Channelの送金人またはその他の目的を示します。通常、このChannelからの支払いを差し戻す場合、返金の`DestinationTag`にこの値を指定する必要があります。 |
-| `destination_tag` | 符号なし整数 | _（省略される場合があります）_ このChannelを通じた支払いの[送金先タグ](become-an-xrp-ledger-gateway.html#source-and-destination-tags)として使用される32ビット符号なし整数（Channel作成時に指定されている場合）。送金先アカウントでのPayment Channelの受取人またはその他の目的を示します。 |
+| `source_tag` | 符号なし整数 | _（省略される場合があります）_ このPayment Channelを通じた支払いの[送金元タグ](source-and-destination-tags.html)として使用される32ビット符号なし整数（Channel作成時に指定されている場合）。送金元アカウントでのPayment Channelの送金人またはその他の目的を示します。通常、このChannelからの支払いを差し戻す場合、返金の`DestinationTag`にこの値を指定する必要があります。 |
+| `destination_tag` | 符号なし整数 | _（省略される場合があります）_ このChannelを通じた支払いの[送金先タグ](source-and-destination-tags.html)として使用される32ビット符号なし整数（Channel作成時に指定されている場合）。送金先アカウントでのPayment Channelの受取人またはその他の目的を示します。 |
 
 ## 考えられるエラー
 

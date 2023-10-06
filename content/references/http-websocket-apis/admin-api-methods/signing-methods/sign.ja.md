@@ -6,14 +6,14 @@ labels:
   - トランザクション送信
 ---
 # sign
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "ソース")
 
 `sign`メソッドは[JSONフォーマットのトランザクション](transaction-formats.html)と[シード値](cryptographic-keys.html)を受け取り、トランザクションの署名済みバイナリー表現を返します。[マルチシグトランザクション](multi-signing.html)に署名を付与する場合は、代わりに[sign_forメソッド][]を使用します。
 
 {% include '_snippets/public-signing-note.md' %}
 <!--_ -->
 
-**注意:** 独自の`rippled`サーバーを運用している場合を除き、このコマンドを使用するのではなく、[クライアントライブラリ](client-libraries.html)を実行してください。詳細については[安全な署名の設定](set-up-secure-signing.html)を参照してください。 
+**注意:** 独自の`rippled`サーバーを運用している場合を除き、このコマンドを使用するのではなく、[クライアントライブラリ](client-libraries.html)を実行してください。詳細については[安全な署名の設定](secure-signing.html)を参照してください。
 
 ## 要求フォーマット
 要求フォーマットの例:
@@ -76,7 +76,7 @@ rippled sign s██████████████████████
 
 <!-- MULTICODE_BLOCK_END -->
 
-トランザクションに署名するには、[トランザクションを承認](transaction-basics.html#トランザクションの承認)できるシークレットキーを提供する必要があります。通常、サーバーが秘密鍵を取得するシード値を提供します。これを行うには、以下の方法があります。
+トランザクションに署名するには、[トランザクションを承認](transactions.html#トランザクションの承認)できるシークレットキーを提供する必要があります。通常、サーバーが秘密鍵を取得するシード値を提供します。これを行うには、以下の方法があります。
 
 * `secret`フィールドにシードを指定し、`key_type`フィールドを省略します。この値は、XRP Ledgerの[base58][]シード、RFC-1751、16進値のフォーマットで記述するか、文字列パスフレーズとして記述します（secp256k1キーのみ）。
 * `key_type`値と、`seed`、`seed_hex`、または`passphrase`のいずれか1つを提供します。`secret`フィールドは省略します。（コマンドライン構文ではサポートされません）。

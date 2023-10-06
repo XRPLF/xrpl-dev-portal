@@ -74,7 +74,7 @@ print(cancel_after)
 
 ## 3.EscrowCreateトランザクションの送信
 
-[EscrowCreateトランザクション][]に[署名して送信](transaction-basics.html#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Condition`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。前の手順で算出した`CancelAfter`または`FinishAfter`の時刻も指定します。`Amount`を、Escrowする[XRP、drop単位][]の合計額に設定します。
+[EscrowCreateトランザクション][]に[署名して送信](transactions.html#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Condition`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。前の手順で算出した`CancelAfter`または`FinishAfter`の時刻も指定します。`Amount`を、Escrowする[XRP、drop単位][]の合計額に設定します。
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 
@@ -136,7 +136,7 @@ print(cancel_after)
 
 ## 6.EscrowFinishトランザクションの送信
 
-`FinishAfter`の時刻が経過した後で資金のリリースを実行する[EscrowFinishトランザクション][]に[署名して送信](transaction-basics.html#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Owner`フィールドにEscrowCreateトランザクションの`Account`アドレスを設定し、`OfferSequence` にEscrowCreateトランザクションの`Sequence`番号を設定します。`Condition`フィールドと`Fulfillment`フィールドに、ステップ1で生成した条件値とフルフィルメント値をそれぞれ16進数で設定します。フルフィルメントのサイズ（バイト数）に基づいて`Fee`（[トランザクションコスト](transaction-cost.html)）の値を設定します。条件付きEscrowFinishでは、少なくとも330 drop（XRP）と、フルフィルメントのサイズで16バイトごとに10 dropが必要です。
+`FinishAfter`の時刻が経過した後で資金のリリースを実行する[EscrowFinishトランザクション][]に[署名して送信](transactions.html#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Owner`フィールドにEscrowCreateトランザクションの`Account`アドレスを設定し、`OfferSequence` にEscrowCreateトランザクションの`Sequence`番号を設定します。`Condition`フィールドと`Fulfillment`フィールドに、ステップ1で生成した条件値とフルフィルメント値をそれぞれ16進数で設定します。フルフィルメントのサイズ（バイト数）に基づいて`Fee`（[トランザクションコスト](transaction-cost.html)）の値を設定します。条件付きEscrowFinishでは、少なくとも330 drop（XRP）と、フルフィルメントのサイズで16バイトごとに10 dropが必要です。
 
 **注記:** EscrowCreateトランザクションに`FinishAfter`フィールドが含まれている場合、Escrowの条件として正しいフルフィルメントを指定しても、この時刻よりも前の時点ではこのトランザクションを実行できません。前に閉鎖されたレジャーの閉鎖時刻が`FinishAfter`の時刻よりも前である場合、EscrowFinishトランザクションは[結果コード](transaction-results.html)`tecNO_PERMISSION`で失敗します。
 

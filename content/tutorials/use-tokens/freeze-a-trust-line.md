@@ -39,7 +39,7 @@ Complete sample code for all of the steps of this tutorial is available under th
 
 ### {{n.next()}}. Get Credentials
 
-To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](issuing-and-operational-addresses.html), you need the keys to the _cold address_, which is the **issuer** of the token.
+To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](account-types.html), you need the keys to the _cold address_, which is the **issuer** of the token.
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
@@ -226,7 +226,7 @@ Example Request:
   "id": "example_check_individual_freeze",
   "command": "account_lines",
   "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-  "ledger": "validated",
+  "ledger_index": "validated",
   "peer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
 }
 

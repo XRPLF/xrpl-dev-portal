@@ -7,7 +7,7 @@ labels:
   - コアサーバー
 ---
 # validation_create
-[[ソース]](https://github.com/ripple/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp "Source")
 
 `validation_create`コマンドキーを使用して、[`rippled`サーバーがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵](peer-protocol.html#ノードキーペア)を生成します。[wallet_proposeメソッド][]と同様に、このメソッドでは適切なフォーマットで一連のキーが単に生成されるだけです。XRP Ledgerのデータやサーバー構成は変更されません。
 

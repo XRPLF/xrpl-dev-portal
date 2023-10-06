@@ -6,7 +6,7 @@ labels:
   - Tokens
 ---
 # account_lines
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp "Source")
 
 The `account_lines` method returns information about an account's trust lines, which contain balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.
 
@@ -50,16 +50,16 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 [Try it! >](websocket-api-tool.html#account_lines)
 
-The request accepts the following parameters:
+The request accepts the following parameters: /Users/peterchen/xrpl-dev-portal/content/references/http-websocket-apis/public-api-methods/account-methods/account_lines.md
 
-| `Field`        | Type                                       | Description    |
-|:---------------|:-------------------------------------------|:---------------|
-| `account`      | String                                     | A unique identifier for the account, most commonly the account's [Address][]. |
-| `ledger_hash`  | String                                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer                 | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `peer`         | String                                     | _(Optional)_ The [Address][] of a second account. If provided, show only lines of trust connecting the two accounts. |
-| `limit`        | Integer                                    | (Optional, default varies) Limit the number of trust lines to retrieve. The server is not required to honor this value. Must be within the inclusive range 10 to 400. [New in: rippled 0.26.4][] |
-| `marker`       | [Marker][] | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
+| `Field`        | Type                 | Description    |
+|:---------------|:---------------------|:---------------|
+| `account`      | String - [Address][] | Look up trust lines connected to this account. |
+| `ledger_hash`  | String               | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | Number or String     | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `peer`         | String - [Address][] | _(Optional)_ A second account; if provided, filter results to trust lines connecting the two accounts. |
+| `limit`        | Number               | _(Optional)_ Limit the number of trust lines to retrieve. The server may return less than the specified limit, even if there are more pages of results. Must be within the inclusive range 10 to 400.  Positive values outside this range are replaced with the closest valid option. The default is 200. |
+| `marker`       | [Marker][]           | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 

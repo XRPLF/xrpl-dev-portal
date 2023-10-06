@@ -7,7 +7,7 @@ labels:
 ---
 # UNLModify
 
-_([NegativeUNL amendment][]によって追加されました)_
+_([NegativeUNL amendment][]により追加されました)_
 
 `UNLModify`[疑似トランザクション](pseudo-transaction-types.html)は[Negative UNL](negative-unl.html)の変更を示し、信頼できるバリデータがオフラインになったかオンラインに戻ってきたことを示します。
 

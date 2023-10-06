@@ -8,7 +8,7 @@ labels:
 ---
 # Partial Payment
 
-デフォルトのケースでは、XRP Ledgerの[Paymentトランザクション][]の`Amount`フィールドに、為替レートと[送金手数料](transfer-fees.html)を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（[**tfPartialPayment**](payment.html#paymentのフラグ)）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで[支払を返金](become-an-xrp-ledger-gateway.html#bouncing-payments)したい場合に便利です。
+デフォルトのケースでは、XRP Ledgerの[Paymentトランザクション][]の`Amount`フィールドに、為替レートと[送金手数料](transfer-fees.html)を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（[**tfPartialPayment**](payment.html#paymentのフラグ)）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで[支払を返金](stablecoin-issuer.html#不明な入金の返金)したい場合に便利です。
 
 [トランザクションコスト](transaction-cost.html)に使用されるXRPの額は、トランザクションタイプに関わらず常に送金元のアカウントから差し引かれます。
 

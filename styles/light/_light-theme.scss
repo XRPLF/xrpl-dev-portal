@@ -1,13 +1,12 @@
-$light-bg: $gray-100;
-$light-fg: $black;
-$light-fg-muted: $gray-800;
-$light-fg-disabled: $gray-400;
-$light-form-bg: $gray-200;
-$light-box-shadow: 0px 5px 20px 0px $gray-300;
-$light-link-hover-color: $blue-purple-500;
-$light-standout-bg: $gray-050;
-
 // General color elements ------------------------------------------------------
+.content {
+  p code,
+  table code,
+  li > code {
+  background-color: $gray-200;
+  color: $gray-900;
+  }
+}
 
 body {
   background-color: $light-bg;
@@ -134,10 +133,10 @@ h6,
     color: var(--docsearch-text-color) !important;
   }
   .DocSearch-Input{
-    color: $gray-900; 
+    color: $gray-900;
   }
   .DocSearch-Hit-Select-Icon{
-    color: $gray-900; 
+    color: $gray-900;
   }
   .DocSearch-Form {
     box-shadow: inset 0 0 0 2px $blue-purple-500;
@@ -166,7 +165,7 @@ h6,
   }
   .DocSearch-Logo svg{
     .cls-1, .cls-2{
-      fill:var(--docsearch-logo-color);; 
+      fill:var(--docsearch-logo-color);;
     }
   }
   .DocSearch-Hit-title,
@@ -634,7 +633,20 @@ pre code {
   #wallet-xumm {
     content: url("../img/wallets/lightmode/xumm.svg");
   }
+  #wallet-bitfrost {
+    content: url("../img/wallets/lightmode/bitfrost.png");
+  }
+  #wallet-towo {
+    content: url("../img/wallets/lightmode/towo.svg");
+  }
+  #wallet-keystone {
+    content: url("../img/wallets/lightmode/keystone.svg");
+  }
+  #wallet-dcent {
+    content: url("../img/wallets/lightmode/dcent.svg");
+  }
 }
+
 
 #top-exchanges {
   // Kraken, eToro are OK on both light and dark
@@ -731,7 +743,7 @@ pre code {
           max-height: 40px;
           content: url("../img/uses/lightmode/#{$company}.#{$type}");
         }
-      } 
+      }
     }
   }
 
@@ -740,13 +752,13 @@ pre code {
   // #coil,
   #forte,
   #xrplorer,
-  #gatehub 
+  #gatehub
   {
     .biz-logo {
       filter: invert(100%);
     }
   }
-  
+
 }
 
 .landing-bg {
@@ -766,15 +778,40 @@ pre code {
 
 // feedback widget
 #feedback-content {
-  .docked-widget {
-    .widget-header {
-      background-color: $light-bg !important;
-      color: $light-fg !important;
+  .widget-form-wrapper {
+    background-color: $white !important;
+
+    div {
+      background-color: $white !important;
     }
+
+    textarea {
+      background-color: $gray-100 !important;
+    }
+
+    .widget-header-title {
+      color: $gray-900 !important;
+    }
+
+    .cancel {
+      color: $blue-purple-500 !important;
+    }
+  }
+
+  .widget-helpful {
+    .widget-header {
+      background-color: $white !important;
+    }
+
+    .widget-header-title {
+      color: $gray-900 !important;
+    }
+
     .widget-header-icon {
       filter: invert(100%);
     }
   }
+
 }
 
 // Docs landing page
@@ -996,4 +1033,10 @@ $placeholder-color: $gray-600;
   }
 }
 
-
+.footer-nav{
+  .nav-item{
+    text-shadow: #F5F5F7 0px 0px 2px, #F5F5F7 1px 1px 2px, #F5F5F7 2px 2px 3px,
+    #F5F5F7 2px 2px 4px, #F5F5F7 2px 2px 5px, #F5F5F7 2px 2px 6px, #F5F5F7 -1px -1px 2px,
+    #F5F5F7 -2px -2px 3px, #F5F5F7 -2px -2px 4px;
+  }
+}

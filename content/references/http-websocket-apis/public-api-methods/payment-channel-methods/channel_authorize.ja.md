@@ -6,7 +6,7 @@ labels:
   - Payment Channel
 ---
 # channel_authorize
-[[ソース]](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
 
 _（[PayChan Amendment][]が有効になっている必要があります。[新規: rippled 0.33.0][]）_
 
@@ -70,7 +70,7 @@ rippled channel_authorize s█████████████████�
 
 要求では、`secret`、`seed`、`seed_hex`、`passphrase`のうち1つだけを指定する**必要があります**。
 
-**警告:** 信頼できないサーバーに対して、またはセキュリティが確保されていないネットワーク接続を通じて秘密鍵を送信しないでください。（これには、この要求の`secret`、`seed`、`seed_hex`、または`passphrase`フィールドも含まれます）このメソッドは、自身が実行するサーバー、または資金を預けている十分に信頼できるサーバーへの、安全で暗号化されたネットワーク接続でのみ使用してください。そうでない場合、盗聴者があなたの秘密鍵を使用してクレームに署名し、同じキーペアを使用してこのPayment Channelなどから資金をすべて持ち出す可能性があります。手順については、[安全な署名の設定](set-up-secure-signing.html)を参照してください。
+**警告:** 信頼できないサーバーに対して、またはセキュリティが確保されていないネットワーク接続を通じて秘密鍵を送信しないでください。（これには、この要求の`secret`、`seed`、`seed_hex`、または`passphrase`フィールドも含まれます）このメソッドは、自身が実行するサーバー、または資金を預けている十分に信頼できるサーバーへの、安全で暗号化されたネットワーク接続でのみ使用してください。そうでない場合、盗聴者があなたの秘密鍵を使用してクレームに署名し、同じキーペアを使用してこのPayment Channelなどから資金をすべて持ち出す可能性があります。手順については、[安全な署名の設定](secure-signing.html)を参照してください。
 
 ## 応答フォーマット
 

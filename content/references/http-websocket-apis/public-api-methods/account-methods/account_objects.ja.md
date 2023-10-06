@@ -7,7 +7,7 @@ labels:
   - データ保持
 ---
 # account_objects
-[[ソース]](https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
 
 `account_objects`コマンドは、アカウントが所有するすべてのオブジェクトの生[レジャーフォーマット][]を返します。アカウントのトラストラインと残高の概要については、[account_linesメソッド][]を参照してください。
 
@@ -70,7 +70,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 | `Field`        | 型                                         | 説明           |
 |:---------------|:-------------------------------------------|:---------------|
 | `account` | 文字列 | アカウントの一意のIDであり、最も一般的にはアカウントのアドレスが使用されます。 |
-| `type` | 文字列 | _（省略可）_ 指定されている場合、結果をフィルタリングしてこのタイプのレジャーオブジェクトのみが含まれるようにします。有効なタイプは`check`、`deposit_preauth`、`escrow`、`offer`、`payment_channel`、`signer_list`、および`state`（トラストライン）です。 <!-- Author's note: Omitted types from this list that can't be owned by an account, and ticket until Tickets are enabled: https://github.com/ripple/rippled/blob/1dbc5a57e6b0e90a9da0d6e56f2f5a99e6ac1d8c/src/ripple/rpc/impl/RPCHelpers.cpp#L676-L686 --> |
+| `type` | 文字列 | _（省略可）_ 指定されている場合、結果をフィルタリングしてこのタイプのレジャーオブジェクトのみが含まれるようにします。有効なタイプは`check`、`deposit_preauth`、`escrow`、`offer`、`payment_channel`、`signer_list`、および`state`（トラストライン）です。 <!-- Author's note: Omitted types from this list that can't be owned by an account, and ticket until Tickets are enabled: https://github.com/XRPLF/rippled/blob/1dbc5a57e6b0e90a9da0d6e56f2f5a99e6ac1d8c/src/ripple/rpc/impl/RPCHelpers.cpp#L676-L686 --> |
 | `ledger_hash` | 文字列 | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定][]を参照してください） |
 | `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定][]を参照してください） |
 | `limit` | 符号なし整数 | _（省略可）_ 結果に含めることができるオブジェクトの最大数。非管理者接続では10以上400以下の範囲で値を指定する必要があります。デフォルトでは200です。 |

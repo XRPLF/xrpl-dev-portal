@@ -114,9 +114,12 @@
 }
 
 #wallets {
-  @each $wallet in "ledger", "secalot", "trezor", "xumm", "trust", "gatehub" {
+  @each $wallet in "ledger", "secalot", "trezor", "xumm", "trust", "gatehub", "towo", "keystone", "dcent" {
     #wallet-#{$wallet} {
       content: url("../img/wallets/#{$wallet}.svg");
+    }
+    #wallet-bitfrost {
+      content: url("../img/wallets/bitfrost.png");
     }
   }
 }

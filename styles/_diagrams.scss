@@ -18,6 +18,15 @@
   svg {
     max-width: 100%;
   }
+
+  .floating-diagram {
+    margin: 0.5rem;
+    float: left;
+  }
+
+  li {
+    clear: left; // avoid spilling to the side with floating diagrams
+  }
 }
 
 
@@ -291,6 +300,44 @@ html.light {
     g[stroke="red"],
     g[stroke="rgb(255,255,0)"] {
       stroke: $magenta-500;
+    }
+  }
+
+  // Recolor Figma diagrams for light mode ------------------------------------
+  svg[fill="none"] {
+    rect[fill="#111112"] {
+      fill: $light-bg;
+    }
+    path[fill="white"] {
+      fill: $black;
+    }
+    path[fill="#343437"] {
+      fill: $gray-300;
+    }
+    path[fill="#A2A2A4"],
+    rect[fill="#A2A2A4"],
+    ellipse[fill="#A2A2A4"] {
+      fill: $gray-600;
+    }
+    path[fill="#232325"] {
+      fill: $gray-200;
+    }
+    path[fill="#F5F5F7"] {
+      fill: $gray-900;
+    }
+    path[stroke="#F5F5F7"] {
+      stroke: $gray-900;
+    }
+    path[stroke="#FF198B"] {
+      // slightly darken up this magenta for more contrast in light mode
+      stroke: $magenta-700;
+    }
+
+    linearGradient stop[stop-color="#F5F5F7"] {
+      stop-color: $gray-900;
+    }
+    linearGradient stop[stop-color="#C1C1C2"] {
+      stop-color: $gray-700;
     }
   }
 }

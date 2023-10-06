@@ -26,7 +26,7 @@ XRP Ledgerの外部でGrand PaymentsはBoxSend SGに請求書（IDは`46060241FA
 - Checkの送信元である資金供給のあるアカウントの**アドレス**と**シークレットキー**。
     - [XRP Ledger Test Net Faucet](xrp-test-net-faucet.html)を使用して、10,000 Test Net XRPを保有する資金供給のあるアドレスおよびシークレットを取得できます。
 - Checkを受領する資金供給のあるアカウントの**アドレス**。
-- トランザクションに[安全に署名できる手段](set-up-secure-signing.html)。
+- トランザクションに[安全に署名できる手段](secure-signing.html)。
 - [クライアントライブラリ](client-libraries.html)またはHTTPライブラリ、WebSocketライブラリなど。
 
 ## {{send_n.next()}}.CheckCreateトランザクションの準備

@@ -1,6 +1,13 @@
 /* Footer ------------------------------------------------------------------- */
 
 .xrpl-footer {
+  .footer-nav{
+    .nav-item{
+      text-shadow: #111112 0px 0px 2px, #111112 1px 1px 2px, #111112 2px 2px 3px,
+      #111112 2px 2px 4px, #111112 2px 2px 5px, #111112 2px 2px 6px, #111112 -1px -1px 2px,
+      #111112 -2px -2px 3px, #111112 -2px -2px 4px;
+    }
+  }
   padding: 7.5rem 2rem;
 
   @include media-breakpoint-up(lg) {

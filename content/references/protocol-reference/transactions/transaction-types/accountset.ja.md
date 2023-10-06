@@ -35,12 +35,12 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](accountro
 | [`Domain`](#domain)       | 文字列           | Blob              |  _（省略可）_ このアカウントを保有するドメインのASCII小文字を表現する16進文字列。[256バイトを超える長さは使用できません。](https://github.com/XRPLF/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
 | `EmailHash`        | 文字列           | Hash128           |  _（省略可）_ アバターイメージの生成に使用されるメールアドレスのハッシュ。一般的に、クライアントは[Gravatar](http://en.gravatar.com/site/implement/hash/)を使用してこのイメージを表示しています。 |
 | `MessageKey`       | 文字列           | Blob              |  _（省略可）_ 暗号化されたメッセージをこのアカウントに送信するための公開鍵です。キーを設定するには、正確に33バイトである必要があり、最初のバイトはキーの種類を示します。secp256k1鍵の場合は`0x02`または`0x03`、Ed25519鍵の場合は`0xED`です。キーを削除するには、空の値を使用します。 |
-| `NFTokenMinter`  | 文字列           | Blob              | _(省略可)_ あなたのために[NFTokensをミントする](authorize-minter.html)ことができる別のアカウント。 _([NonFungibleTokensV1_1 amendment][]によって追加されました.)_ |
+| `NFTokenMinter`  | 文字列           | Blob              | _(省略可)_ あなたのために[NFTokensをミントする](assign-an-authorized-minter-using-javascript.html)ことができる別のアカウント。 _([NonFungibleTokensV1_1 amendment][]により追加されました.)_ |
 | [`SetFlag`](#accountsetのフラグ)      | 数値           | UInt32            |  _（省略可）_ このアカウントについてオプションを有効にするための整数フラグ。 |
 | [`TransferRate`](#transferrate) | 符号なし整数 | UInt32            |  _（省略可）_ ユーザーがこのアカウントの発行済み通貨を送金するときに請求される手数料。通貨単位の10億分の1で表現されます。手数料なしを意味する特殊なケースの`0`を除いて、`2000000000`より大きくしたり、`1000000000`より小さくしたりすることはできません。 |
-| [`TickSize`](ticksize.html)     | 符号なし整数 | UInt8             | _（省略可）_このアドレスによって発行されている通貨が関係するオファーに使用する為替レートの呼値の単位。それらのオファーの為替レートは、この有効桁数へと丸められます。有効な値は`3`から`15`、または無効にするための`0`です_（[TickSize Amendment][]によって追加されました）。_ |
+| [`TickSize`](ticksize.html)     | 符号なし整数 | UInt8             | _（省略可）_このアドレスによって発行されている通貨が関係するオファーに使用する為替レートの呼値の単位。それらのオファーの為替レートは、この有効桁数へと丸められます。有効な値は`3`から`15`、または無効にするための`0`です_（[TickSize Amendment][]により追加されました）。_ |
 | `WalletLocator`    | 文字列           | Hash256           |  _（省略可）_ 任意の256ビット値です。指定された場合、この値はアカウントの設定の一部として保存さ れますが、固有の定義や要件を持ちません。 |
-| `WalletSize`       | 数値           | UInt32            |  _（省略可）_ 使用されません。このフィールドはAccountSetトランザクションで有効ですが、何の機能もありません。。 |
+| `WalletSize`       | 数値           | UInt32            |  _（省略可）_ 使用されません。このフィールドはAccountSetトランザクションで有効ですが、何の機能もありません |
 
 これらのオプションがいずれも指定されていない場合、AccountSetトランザクションは（取引コストの消却以外に）意味がありません。詳細は、[トランザクションのキャンセルまたはスキップ](cancel-or-skip-a-transaction.html)を参照してください。
 
@@ -72,9 +72,9 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](accountro
 | フラグの名前                        | 10進値 | 対応するレジャーフラグ               | 説明   |
 |:----------------------------------|:------|:----------------------------------|:--------------|
 | `asfAccountTxnID`                 | 5     | （なし）                           | このアカウントの直近のトランザクションのIDを追跡します。[AccountTxnID](transaction-common-fields.html#accounttxnid)については必須です。 |
-| `asfAuthorizedNFTokenMinter`      | 10    | (なし)                            | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](accountroot.html)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 _([NonFungibleTokensV1_1 amendment][]によって追加されました。)_ |
+| `asfAuthorizedNFTokenMinter`      | 10    | (なし)                            | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](accountroot.html)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 _([NonFungibleTokensV1_1 amendment][]により追加されました。)_ |
 | `asfDefaultRipple`                | 8     | `lsfDefaultRipple`                | このアカウントのトラストラインでの[リップリング](rippling.html)をデフォルトで有効にします。 |
-| `asfDepositAuth`                  | 9     | `lsfDepositAuth`                  | このアカウントに対して[Deposit Authorization](depositauth.html)を有効にします _（[DepositAuth Amendment][]によって追加されました）。_  |
+| `asfDepositAuth`                  | 9     | `lsfDepositAuth`                  | このアカウントに対して[Deposit Authorization](depositauth.html)を有効にします _（[DepositAuth Amendment][]により追加されました）。_  |
 | `asfDisableMaster`                | 4     | `lsfDisableMaster`                | マスターキーペアの使用を禁止します。[レギュラーキー](cryptographic-keys.html)や[署名者リスト](multi-signing.html)など、トランザクションに署名するための別の手段がアカウントで設定されている場合のみ有効にできます。 |
 | `asfDisallowIncomingCheck`        | 13    | `lsfDisallowIncomingCheck`        | チェックの着信をブロックします。_([DisallowIncoming amendment][] :not_enabled: が必要です。)_ |
 | `asfDisallowIncomingNFTokenOffer` | 12    | `lsfDisallowIncomingNFTokenOffer` | NFTokenOffersの着信をブロックします。_([DisallowIncoming amendment][] :not_enabled: が必要です)_。 |
@@ -86,7 +86,7 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](accountro
 | `asfRequireAuth`                  | 2     | `lsfRequireAuth`                  | このアドレスによって発行された残高をユーザーが保持することについて、承認を要求します。アドレスにトラストラインが接続されていない場合のみ有効にできます。 |
 | `asfRequireDest`                  | 1     | `lsfRequireDestTag`               | トランザクションをこのアカウントに送信するための宛先タグを要求します。 |
 
-`asfDisableMaster`フラグまたは`asfNoFreeze`フラグを有効にするには、マスターキーペアで署名することによって[トランザクションを承認](transaction-basics.html#トランザクションの承認)する必要があります。レギュラーキーペアやマルチ署名を使用することはできません。レギュラーキーペアまたはマルチ署名を使用すると、`asfDisableMaster`を無効にする（つまり、マスターキーペアを再び有効にする）ことができます。[新規: rippled 0.28.0][]
+`asfDisableMaster`フラグまたは`asfNoFreeze`フラグを有効にするには、マスターキーペアで署名することによって[トランザクションを承認](transactions.html#トランザクションの承認)する必要があります。レギュラーキーペアやマルチ署名を使用することはできません。レギュラーキーペアまたはマルチ署名を使用すると、`asfDisableMaster`を無効にする（つまり、マスターキーペアを再び有効にする）ことができます。[新規: rippled 0.28.0][]
 
 以下の[トランザクションフラグ](transaction-common-fields.html#flagsフィールド)はAccountSetタイプのトランザクションに固有のもので、同様の目的を果たしますが、使用することはお勧めしません。限られたスペースのため、いくつかの設定には関連する `tf` フラグがありません。また、新しい `tf` フラグは `AccountSet` トランザクションタイプには追加されていません。一つのトランザクションで複数の設定を有効にするには、`tf`フラグと`asf`フラグを組み合わせて使用することができます。
 

@@ -6,7 +6,7 @@ labels:
   - Decentralized Exchange
 ---
 # account_offers
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
 
 The `account_offers` method retrieves a list of [offers](offers.html) made by a given [account](accounts.html) that are outstanding as of a particular [ledger version](ledgers.html).
 
@@ -42,8 +42,8 @@ An example of the request format:
 *Commandline*
 
 ```sh
-#Syntax: account_offers account [ledger_index] [strict]
-rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current strict
+#Syntax: account_offers account [ledger_index]
+rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -52,16 +52,15 @@ rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current strict
 
 A request can include the following parameters:
 
-| `Field`        | Type                        | Description                   |
-|:---------------|:----------------------------|:------------------------------|
-| `account`      | String                      | A unique identifier for the account, most commonly the account's [Address][]. |
-| `ledger_hash`  | String - [Hash][]           | _(Optional)_ A 20-byte hex string identifying the ledger version to use. |
-| `ledger_index` | Number - [Ledger Index][]   | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `limit`        | Integer                     | _(Optional)_ Limit the number of Offers to retrieve. The server may return fewer than this number of results. Must be within the inclusive range 10 to 400. The default is 200. [New in: rippled 0.26.4][] |
-| `marker`       | [Marker][]                  | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. [New in: rippled 0.26.4][] |
-| `strict`       | Boolean                    | _(Optional)_ If `true`, then the `account` field only accepts a public key or XRP Ledger address. Otherwise, `account` can be a secret or passphrase (not recommended). The default is `false`. |
+| Field          | Type                 | Required? | Description |
+|:---------------|:---------------------|:----------|-------------|
+| `account`      | String - [Address][] | Yes       | Look up Offers placed by this account. |
+| `ledger_hash`  | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `limit`        | Number               | No        | Limit the number of Offers to retrieve. The server may return fewer than this number of results. Must be within the inclusive range 10 to 400. Positive values outside this range are replaced with the closest valid option.The default is 200. |
+| `marker`       | [Marker][]           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
 
-The following parameter is deprecated and may be removed without further notice: `ledger`.
+The following parameters are deprecated should not be provided: `ledger`, `strict`.
 
 ## Response Format
 

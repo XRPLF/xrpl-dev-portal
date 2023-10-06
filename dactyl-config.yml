@@ -30,6 +30,7 @@ default_filters:
     - css_tables
     - slug
     - copy_code_to_clipboard
+    - enforce_filenames
 
 callout_class: "devportal-callout"
 callout_types:
@@ -66,7 +67,10 @@ default_keys: &defaults
     hover_anchors: <i class="fa fa-link"></i>
     light_theme_enabled: true
     # Script tags used in a variety of tools & examples.
-    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.2.0.min.js"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/xrpl-2.11.0.min.js"></script>'
+    # Current reserves values on Mainnet. These strings can be overwritten by language if necessary for localization.
+    base_reserve: 10 XRP
+    owner_reserve: 2 XRP
 
 targets:
     # First member is the default that gets built when target not specified
@@ -118,8 +122,6 @@ targets:
             "use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount": "use-payment-channels.html#8-準備が完了すれば受取人は承認された額のクレームを清算します"
             "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します"
             "reserves.html#owner-reserves": "reserves.html#所有者準備金"
-            # Fix links from untranslated issue-a-fungible-token.html:
-            "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
             # Fix links from untranslated validator-list.html
             "run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server": "run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"
             "basic-data-types.html#specifying-time": "basic-data-types.html#時間の指定"
@@ -141,13 +143,13 @@ targets:
             # Fix link from untranslated manifest.html:
             "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポートモード"
             # Fix links for untranslated get-started-using-python.html:
-            "xrpl-servers.html#reasons-to-run-your-own-server": "xrpl-servers.html#独自サーバーを運用する理由"
+            "networks-and-servers.html#reasons-to-run-your-own-server": "networks-and-servers.html#独自サーバーを運用する理由"
             "cryptographic-keys.html#key-components": "cryptographic-keys.html#キーの生成"
             "accounts.html#addresses": "accounts.html#アドレス"
             "cryptographic-keys.html#private-key": "cryptographic-keys.html#キーの生成"
             "basic-data-types.html#specifying-currency-amounts": "basic-data-types.html#通貨額の指定"
             "transaction-cost.html#current-transaction-cost": "transaction-cost.html#現在のトランザクションコスト"
-            "ledgers.html#open-closed-and-validated-ledgers": "ledgers.html#ツリーの形式"
+            #"ledgers.html#open-closed-and-validated-ledgers": "ledgers.html#ツリーの形式"
             "account_info.html#response-format": "account_info.html#応答フォーマット"
             # Fix link from untranslated rate-limiting.html:
             "get-started-using-http-websocket-apis.html#admin-access": "get-started-using-http-websocket-apis.html#管理者アクセス権限"
@@ -183,10 +185,7 @@ targets:
             "transaction-cost.html#fee-levels": "transaction-cost.html#手数料レベル"
             "offers.html#lifecycle-of-an-offer": "offers.html#オファーのライフサイクル"
             "subscribe.html#order-book-streams": "subscribe.html#オーダーブックストリーム"
-            "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの識別"
             "ledger-header.html#close-flags": "ledger-header.html#closeフラグ"
-            # Fix link from untranslated account_nfts.html
-            "nftoken.html#nftokentaxon": "nftoken.html#分類群"
             # Fix links from untranslated NFT API methods:
             "transaction-common-fields.html#flags-field": "transaction-common-fields.html#flagsフィールド"
             "nftoken.html#nftoken-flags": "nftoken.html#nftoken-フラグ"
@@ -199,9 +198,28 @@ targets:
             # Fix link from untranslated health-check.html:
             "amendments.html#amendment-blocked-servers": "amendments.html#amendment-blocked"
             # Fix link from nft-reserve-requirements.html:
-            "reserves.html#base-reserve-and-owner-reserve": "reserves.html#基本準備金と所有者準備金"
+            #"reserves.html#base-reserve-and-owner-reserve": "reserves.html#基本準備金と所有者準備金"
             # Fix link from nft-reserve-requirements.html:
-            "reserves.html#going-below-the-reserve-requirement": "reserves.html#必要準備金を下回る"
+            #"reserves.html#going-below-the-reserve-requirement": "reserves.html#必要準備金を下回る"
+            # Fix links from untranslated NFT use cases:
+            "nft-reserve-requirements.html#nftokenoffer-reserve": "nft-reserve-requirements.html#nftokenofferの準備金"
+            "nft-reserve-requirements.html#owner-reserve": "nft-reserve-requirements.html#所有者準備金"
+            "reserves.html#base-reserve-and-owner-reserve": "reserves.html#基本準備金と所有者準備金"
+            "nftoken.html#transferfee": "nftoken.html#送金手数料"
+            "nftoken-batch-minting.html#mint-on-demand-lazy-minting": "nftoken-batch-minting.html#オンデマンドmint-遅延minting"
+            "nftoken-batch-minting.html#scripted-minting": "nftoken-batch-minting.html#スクリプトminting"
+            # Fix link from untranslated Clio ledger method page:
+            "transactions.html#authorizing-transactions": "transactions.html#トランザクションの承認"
+            # Fix link from untranslated addresses.html:
+            "cryptographic-keys.html#key-derivation": "cryptographic-keys.html#鍵導出"
+            # Fix links from untranslated open-closed-validated-ledgers.html:
+            "consensus-principles-and-rules.html#simplifying-the-problem": "consensus-principles-and-rules.html#問題の単純化"
+            "consensus-structure.html#validation": "consensus-structure.html#検証"
+link_re_subs:
+            # Fix link from untranslated account_nfts.html.
+            # Because the replacement contains the original as a substring,
+            # simple link replacement doesn't work nicely here
+            "nftoken[.]html#nftokentaxon$": "nftoken.html#nftokentaxon分類群"
 
 
 pages:
@@ -219,7 +237,7 @@ pages:
         targets:
             - en
 
-    -   name: XRPL オーバービュー
+    -   name: XRPLの概要
         template: page-xrpl-overview.html.jinja
         html: xrp-ledger-overview.html
         parent: index.html
@@ -280,27 +298,13 @@ pages:
         targets:
             - en
 
-    -   name: 沿革
+    -   name: 歴史
         template: page-history.html.jinja
         html: history.html
         parent: xrp-ledger-overview.html
         blurb: より高速でスケーラブル、かつ持続可能なブロックチェーンとして2012年に登場した「XRP Ledger（XRPL）」の歴史。
         top_nav_grouping: XRP Ledger
         sidebar: disabled
-        targets:
-            - ja
-
-    -   name: Ledger Explorer
-        html: https://livenet.xrpl.org/
-        parent: xrp-ledger-overview.html
-        top_nav_grouping: XRP Ledger
-        targets:
-            - en
-
-    -   name: XRP Ledger エクスプローラ
-        html: https://livenet.xrpl.org/
-        parent: xrp-ledger-overview.html
-        top_nav_grouping: XRP Ledger
         targets:
             - ja
 
@@ -321,7 +325,7 @@ pages:
         parent: xrp-ledger-overview.html
         blurb: XRP LedgerのネイティブデジタルアセットであるXRPの詳細はこちら。
         top_nav_grouping: XRP
-        top_nav_name: XRP Overview
+        top_nav_name: XRPの概要
         sidebar: disabled
         targets:
             - ja
@@ -340,12 +344,12 @@ pages:
         html: impact.html
         parent: xrp-ledger-overview.html
         template: page-impact.html.jinja
-        top_nav_grouping: Sustainability
+        top_nav_grouping: 持続可能性
         blurb: XRP Ledgerが、現在利用可能な他のどの通貨よりも速く、安く、持続的に世界中のお金を動かすのに役立つかをご紹介します。
         sidebar: disabled
         targets:
             - ja
-    
+
 
         # Redirect old Carbon Calculator page to Impact
     -   name: Carbon Calculator
@@ -366,7 +370,7 @@ pages:
     -   name: XRPL財団
         html: https://foundation.xrpl.org/
         parent: xrp-ledger-overview.html
-        top_nav_grouping: About
+        top_nav_grouping: 概要
         targets:
             - ja
 
@@ -378,10 +382,16 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: privacy-policy.md
         targets:
             - en
+
+    # TODO: translate content, frontmatter, remove subtitle, top_nav_grouping in this file
+    -   md: privacy-policy.md
+        subtitle: プライバシーポリシー
+        top_nav_grouping: 概要
+        name: プライバシーポリシー
+        targets:
             - ja
 
     # Redirect old technical-faq.html to new faq.html URL
@@ -402,7 +412,7 @@ pages:
         template: page-docs.html.jinja
         sidebar: left_only
         top_nav_name: Docs
-        top_nav_shortcuts:
+        top_nav_shortcuts: #TODO: update shortcuts (en+ja)
             # Programming Languages
             - get-started-using-python.html
             - get-started-using-javascript.html
@@ -414,7 +424,6 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
             - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
         popular_pages: # TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
@@ -423,7 +432,6 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
             - public-api-methods.html
         blurb: Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.
         top_nav_blurb: Dive into XRP Ledger technology and start integrating.
@@ -451,7 +459,6 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
             - public-api-methods.html
         top_nav_hero_image: top-nav-hero-docs
         popular_pages: # TODO: find a way so this isn't a partial duplicate of top_nav_shortcuts?
@@ -460,24 +467,279 @@ pages:
             - xrp-testnet-faucet.html
             - run-rippled-as-a-validator.html
             - build-run-rippled-in-reporting-mode.html
-            - intro-to-consensus.html
             - public-api-methods.html
-        blurb: XRP Ledgerのドキュメントと、元帳を構築して統合するために必要なすべての情報を紹介します。
-        top_nav_blurb: XRP Ledgerの技術に飛び込んで、統合を始めましょう。
+        blurb: XRP Ledgerのドキュメントと、XRP Ledgerの構築と利用を開始するために必要なすべての情報を紹介します。
+        top_nav_blurb: XRP Ledgerのテクノロジーに飛び込み、実装を始めましょう。
         filters:
             - labels
         targets:
             - ja
-    
+
     -   name: Documentation Index
         longer_name: Full Documentation Index
         template: page-docs-index.html.jinja
         html: docs-index.html
         parent: docs.html
         sidebar: disabled
+        nav_omit: true
+        top_nav_omit: true
         targets:
             - en
             - ja
+
+# Introduction -----------------------------------------------------------------
+
+    # TODO: these are placed under "Docs" in nav but the files are under "Docs/Concepts"
+    -   name: Introduction
+        html: introduction.html
+        parent: docs.html
+        template: pagetype-category.html.jinja
+        blurb: This is a quick introduction to the principal features of the XRP Ledger (XRPL). Read this to get a high level understanding of the XRPL, then you can read more about areas of particular interest. The XRP Ledger is a blockchain that permanently records digital transactions of tokens between accounts. The sections below expand on the concepts introduced in that sentence.
+        top_nav_grouping: Article Types
+        targets:
+            - en
+
+    -   name: 基本
+        html: introduction.html
+        parent: docs.html
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledger(XRPL)の主要な機能を簡単に紹介します。これを読んでXRPLのハイレベルな理解を深め、その後、特に興味のある分野についての詳細を読むことができます。XRP Ledgerは、アカウント間のトークンのデジタルトランザクションを永続的に記録するブロックチェーンです。以下のセクションは、その文章で紹介された概念を拡張するものです。
+        top_nav_grouping: カテゴリ
+        targets:
+            - ja
+
+    -   md: concepts/introduction/what-is-the-xrp-ledger.md
+        targets:
+            - en
+
+    -   md: concepts/introduction/what-is-the-xrp-ledger.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/introduction/what-is-xrp.md
+        targets:
+            - en
+
+    -   md: concepts/introduction/what-is-xrp.ja.md
+        targets:
+            - ja
+
+        # Redirect from old XRP page
+    -   name: XRP
+        html: xrp.html
+        redirect_url: what-is-xrp.html
+        nav_omit: true
+        template: pagetype-redirect.html.jinja
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/introduction/crypto-wallets.md
+        parent: introduction.html
+        targets:
+            - en
+
+    -   md: concepts/introduction/crypto-wallets.ja.md
+        parent: introduction.html
+        targets:
+            - ja
+
+    -   md: concepts/introduction/txn-and-requests.md
+        parent: introduction.html
+        targets:
+            - en
+
+    -   md: concepts/introduction/txn-and-requests.ja.md
+        parent: introduction.html
+        targets:
+            - ja
+
+    -   md: concepts/introduction/software-ecosystem.md
+        parent: introduction.html
+        targets:
+            - en
+
+    -   md: concepts/introduction/software-ecosystem.ja.md
+        parent: introduction.html
+        targets:
+            - ja
+
+# Use Cases --------------------------------------------------------------------
+
+    -   name: Use Cases
+        html: use-cases.html
+        parent: docs.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Browse the documentation based on practical use cases.
+        targets:
+            - en
+
+    -   name: ユースケース
+        html: use-cases.html
+        parent: docs.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: 実践的なユースケースに基づいたドキュメントをご覧ください。
+        targets:
+            - ja
+
+
+    -   name: Payments
+        html: payments-uc.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Practical examples for using different types of payment on the XRP Ledger.
+        targets:
+            - en
+
+    -   name: Payment
+        html: payments-uc.html
+        parent: use-cases.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledgerで様々なタイプの支払いを利用するための実例を紹介します。
+        targets:
+            - ja
+
+    -   md: use-cases/payments/peer-to-peer-payments-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+
+    -   md: use-cases/payments/peer-to-peer-payments-uc.ja.md
+        parent: payments-uc.html
+        targets:
+            - ja
+
+    -   md: use-cases/payments/restricting-deposits-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+
+    -   md: use-cases/payments/restricting-deposits-uc.ja.md
+        parent: payments-uc.html
+        targets:
+            - ja
+
+    -   md: use-cases/payments/smart-contracts-uc.md
+        parent: payments-uc.html
+        targets:
+            - en
+
+    -   md: use-cases/payments/smart-contracts-uc.ja.md
+        parent: payments-uc.html
+        targets:
+            - ja
+
+    -   name: Tokenization
+        html: tokenization.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Work with a variety of tokens supported by the XRP Ledger.
+        targets:
+            - en
+
+    -   name: Tokenization
+        html: tokenization.html
+        parent: use-cases.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledgerが対応する様々なトークンを使用できます。
+        targets:
+            - ja
+
+    -   md: use-cases/tokenization/stablecoin-issuer.md
+        targets:
+            - en
+
+    -   md: use-cases/tokenization/stablecoin-issuer.ja.md
+        parent: tokenization.html
+        targets:
+            - ja
+
+    -   md: use-cases/tokenization/nft-mkt-overview.md
+        parent: tokenization.html
+        targets:
+            - en
+
+    -   md: use-cases/tokenization/nft-mkt-overview.ja.md
+        parent: tokenization.html
+        targets:
+            - ja
+
+        # TODO: these files aren't nested under "NFT mkt overview" but they are in the nav
+    -   md: use-cases/tokenization/nftoken-marketplace.md
+        parent: nft-mkt-overview.html
+        targets:
+            - en
+
+        # TODO: these files aren't nested under "NFT mkt overview" but they are in the nav
+    -   md: use-cases/tokenization/nftoken-marketplace.ja.md
+        parent: nft-mkt-overview.html
+        targets:
+            - ja
+
+    -   md: use-cases/tokenization/authorized-minter.md
+        parent: nft-mkt-overview.html
+        targets:
+            - en
+
+    -   md: use-cases/tokenization/authorized-minter.ja.md
+        parent: nft-mkt-overview.html
+        targets:
+            - ja
+
+    -   md: use-cases/tokenization/digital-artist.md
+        parent: nft-mkt-overview.html
+        targets:
+            - en
+
+    -   md: use-cases/tokenization/digital-artist.ja.md
+        parent: nft-mkt-overview.html
+        targets:
+            - ja
+
+    -   name: Decentralized Finance
+        html: defi-uc.html
+        parent: use-cases.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Enabling fast, secure financial transactions without a central authority.
+        targets:
+            - en
+
+    -   name: DeFi
+        html: defi-uc.html
+        parent: use-cases.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: 中央機関を介さずに、高速で安全な金融トランザクションを可能にします。
+        targets:
+            - ja
+
+    -   md: use-cases/defi/algorithmic-trading.md
+        parent: defi-uc.html
+        targets:
+            - en
+
+    -   md: use-cases/defi/algorithmic-trading.ja.md
+        parent: defi-uc.html
+        targets:
+            - ja
+
+    -   md: use-cases/defi/list-xrp-as-an-exchange.md
+        parent: defi-uc.html
+        targets:
+            - en
+
+    -   md: use-cases/defi/list-xrp-as-an-exchange.ja.md
+        parent: defi-uc.html
+        targets:
+            - ja
+
 
 # Concepts ---------------------------------------------------------------------
 
@@ -493,180 +755,313 @@ pages:
     -   name: コンセプト
         html: concepts.html
         parent: docs.html
-        top_nav_grouping: Article Types
+        top_nav_grouping: カテゴリ
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
         targets:
             - ja
 
-    -   name: Introduction
-        html: introduction.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: Learn the "what" and "why" of the XRP Ledger.
+    # Networks and Servers -----------------------------------------------------------------
+
+    -   md: concepts/networks-and-servers/networks-and-servers.md
         targets:
             - en
 
-    -   name: 基本
-        html: introduction.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: 「XRP Ledgerとは何なのか」、「なぜXRP Ledgerなのか」を学びましょう。
+    -   md: concepts/networks-and-servers/networks-and-servers.ja.md
         targets:
             - ja
 
-    # Supplanted by the new xrp-ledger-overview.html landing page.
-    # TODO: fully replace. https://github.com/XRPLF/xrpl-dev-portal/issues/1202
-    # -   md: concepts/introduction/xrp-ledger-overview.md
-    #     targets:
-    #         - en
-    #
-    # -   md: concepts/introduction/xrp-ledger-overview.ja.md
-    #     targets:
-    #         - ja
+    # Redirect from the old xrpl-servers.html
+    -   name: XRP Ledger Servers
+        html: xrpl-servers.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: networks-and-servers.html
+        targets:
+            - en
+            - ja
 
-    -   md: concepts/introduction/intro-to-consensus.md
+    -   md: concepts/networks-and-servers/rippled-server-modes.md
         targets:
             - en
 
-    -   md: concepts/introduction/intro-to-consensus.ja.md
+    -   md: concepts/networks-and-servers/rippled-server-modes.ja.md
         targets:
             - ja
 
-    -   md: concepts/introduction/xrp.md
+    -   md: concepts/networks-and-servers/clustering.md
         targets:
             - en
 
-    -   md: concepts/introduction/xrp.ja.md
+    -   md: concepts/networks-and-servers/clustering.ja.md
         targets:
             - ja
 
-    -   md: concepts/introduction/software-ecosystem.md
+    -   md: concepts/networks-and-servers/ledger-history/ledger-history.md
         targets:
             - en
 
-    -   md: concepts/introduction/software-ecosystem.ja.md
+    -   md: concepts/networks-and-servers/ledger-history/ledger-history.ja.md
         targets:
             - ja
 
-    -   name: Payment System Basics
-        html: payment-system-basics.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: One of the primary purposes of the XRP Ledger is payment processing. Learn more about key concepts that will help you understand the XRP Ledger payment system.
+    -   md: concepts/networks-and-servers/peer-protocol.md
         targets:
             - en
 
-    -   name: 支払いシステムの基本
-        html: payment-system-basics.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerの主な用途は決済処理です。主要なコンセプトを詳しく学んで、XRP Ledgerの決済システムの理解を深めましょう。
+    -   md: concepts/networks-and-servers/peer-protocol.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/accounts.md
+    -   md: concepts/networks-and-servers/transaction-censorship-detection.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/accounts.ja.md
+    -   md: concepts/networks-and-servers/transaction-censorship-detection.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/cryptographic-keys.md
+    -   md: concepts/networks-and-servers/parallel-networks.md
         targets:
             - en
 
-        # TODO: update translation based on latest English version
-    -   md: concepts/payment-system-basics/accounts/cryptographic-keys.ja.md
+    -   md: concepts/networks-and-servers/parallel-networks.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/multi-signing.md
+    -   md: concepts/networks-and-servers/amendments.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/multi-signing.ja.md
+    -   md: concepts/networks-and-servers/amendments.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/reserves.md
+    -   md: concepts/networks-and-servers/the-clio-server.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/reserves.ja.md
+    -   md: concepts/networks-and-servers/the-clio-server.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/tickets.md
+    # Consensus Protocol ------------------------------------------------------
+
+        # TODO: "consensus" subpages are nested in nav but not filesystem; also, might be a mismatch with other contents here
+    -   md: concepts/consensus-protocol/consensus.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/tickets.ja.md
+    -   md: concepts/consensus-protocol/consensus.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/accounts/depositauth.md
+    -   md: concepts/consensus-protocol/consensus-structure.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/accounts/depositauth.ja.md
+        # TODO: update title to match English
+    -   md: concepts/consensus-protocol/consensus-structure.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/fees.md
+    -   md: concepts/consensus-protocol/consensus-principles-and-rules.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/fees.ja.md
+    -   md: concepts/consensus-protocol/consensus-principles-and-rules.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/ledgers.md
+    -   md: concepts/consensus-protocol/consensus-protections.md
         targets:
             - en
 
-        # TODO: translation needs to be updated based on ledgers.md
-    -   md: concepts/payment-system-basics/ledgers.ja.md
+    -   md: concepts/consensus-protocol/consensus-protections.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.md
+        # TODO: maybe nest invariant checking under consensus protections?
+    -   md: concepts/consensus-protocol/invariant-checking.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-basics.ja.md
+    -   md: concepts/consensus-protocol/invariant-checking.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.md
+    -   md: concepts/consensus-protocol/fee-voting.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/transaction-basics/transaction-cost.ja.md
+    -   md: concepts/consensus-protocol/fee-voting.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.md
+    -   md: concepts/consensus-protocol/negative-unl.md
         targets:
             - en
 
-    -   md: concepts/payment-system-basics/transaction-basics/finality-of-results.ja.md
+    -   md: concepts/consensus-protocol/negative-unl.ja.md
         targets:
             - ja
 
-    -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
+    -   md: concepts/consensus-protocol/consensus-research.md
         targets:
             - en
 
-    # TODO: Somehow this page's blurb got translated into Japanese but the page itself wasn't?
-    # For now we overwrite the blurb but use the page otherwise as-is.
-    -   md: concepts/payment-system-basics/transaction-basics/source-and-destination-tags.md
+    -   md: concepts/consensus-protocol/consensus-research.ja.md
+        targets:
+            - ja
+
+    # Ledgers -----------------------------------------------------------------
+
+    -   md: concepts/ledgers/ledgers.md
+        targets:
+            - en
+
+    -   md: concepts/ledgers/ledgers.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/ledgers/ledger-structure.md
+        targets:
+            - en
+
+    -   md: concepts/ledgers/ledger-structure.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/ledgers/open-closed-validated-ledgers.md
+        targets:
+            - en
+
+    -   md: concepts/ledgers/open-closed-validated-ledgers.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/ledgers/ledger-close-times.md
+        targets:
+            - en
+
+    -   md: concepts/ledgers/ledger-close-times.ja.md
+        targets:
+            - ja
+
+        # TODO: add a "ledger history" page that doesn't go too deep into
+        #       server management topics.
+
+    # Transactions ------------------------------------------------------------
+    -   md: concepts/transactions/transactions.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/transactions.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/transactions/fees.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/fees.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/transactions/reliable-transaction-submission.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/reliable-transaction-submission.ja.md
+        targets:
+            - ja
+
+        # TODO: rename these to "secure-signing.md"
+    -   md: concepts/transactions/set-up-secure-signing.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/set-up-secure-signing.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/transactions/multi-signing.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/multi-signing.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/transactions/source-and-destination-tags.md
+        targets:
+            - en
+
+    # TODO: Translate to Japanese. Somehow this page's blurb got translated already.
+    -   md: concepts/transactions/source-and-destination-tags.md
         blurb: 多目的アドレスとの間で支払いのやり取りをする具体的な目的を示すためにソースタグと宛先タグを使用します。
         untranslated_warning: true
         targets:
             - ja
 
+    -   md: concepts/transactions/transaction-cost.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/transaction-cost.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/transactions/transaction-queue.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/transaction-queue.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/transactions/finality-of-results.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/finality-of-results.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/transactions/look-up-transaction-results.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/look-up-transaction-results.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/transactions/transaction-malleability.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/transaction-malleability.ja.md
+        targets:
+            - ja
+
+    # TODO: match filename to page title
+    -   md: concepts/transactions/about-canceling-a-transaction.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/about-canceling-a-transaction.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/transactions/tickets.md
+        targets:
+            - en
+
+    -   md: concepts/transactions/tickets.ja.md
+        targets:
+            - ja
+
+    # Payment Types -----------------------------------------------------------
     -   name: Payment Types
         html: payment-types.html
         parent: concepts.html
@@ -679,18 +1074,8 @@ pages:
         html: payment-types.html
         parent: concepts.html
         template: pagetype-category.html.jinja
-        blurb: XRP LedgerはポイントツーポイントのXRPペイメントのほかに、より専門化した支払いタイプをサポートしています。
+        blurb: XRP LedgerはポイントツーポイントのXRPペイメントのほかに、より専門的な支払いタイプをサポートしています。
         targets:
-            - ja
-
-        # Redirect from the old landing name/URL
-    -   name: Complex Payment Types
-        html: complex-payment-types.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: payment-types.html
-        targets:
-            - en
             - ja
 
     -   md: concepts/payment-types/direct-xrp-payments.md
@@ -741,60 +1126,12 @@ pages:
         targets:
             - ja
 
+    # Tokens ------------------------------------------------------------------
     -   md: concepts/tokens/tokens.md
         targets:
             - en
 
     -   md: concepts/tokens/tokens.ja.md
-        targets:
-            - ja
-
-        # Redirects from old (emptyish) landing pages.
-    -   name: Tokens
-        html: issued-currencies.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: tokens.html
-        blurb: Anyone can make tokens representing digital value on the XRP Ledger.
-        targets:
-            - en
-
-    -   name: トークン
-        html: issued-currencies.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: tokens.html
-        blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
-        targets:
-            - ja
-            
-    -   name: Tokens
-        html: issued-currencies-overview.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: tokens.html
-        blurb: Anyone can make tokens representing digital value on the XRP Ledger.
-        targets:
-            - en
-
-    -   name: トークン
-        html: issued-currencies-overview.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: tokens.html
-        blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
-        targets:
-            - ja
-
-    -   md: concepts/tokens/trust-lines-and-issuing.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/trust-lines-and-issuing.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/tokens/authorized-trust-lines.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/authorized-trust-lines.ja.md
         targets:
             - ja
 
@@ -804,6 +1141,11 @@ pages:
 
     -   md: concepts/tokens/non-fungible-tokens.ja.md
         targets:
+            - ja
+
+    -   md: concepts/tokens/nft-storage.md
+        targets:
+            - en
             - ja
 
     -   md: concepts/tokens/non-fungible-token-transfers.md
@@ -862,9 +1204,37 @@ pages:
         targets:
             - ja
 
+        # TODO: translate
     -   md: concepts/tokens/nft-apis.md
         targets:
             - en
+            - ja
+
+        # TODO: maybe fungible tokens should be in their own folder?
+    -   md: concepts/tokens/trust-lines-and-issuing.md
+        targets:
+            - en
+
+    -   md: concepts/tokens/trust-lines-and-issuing.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/tokens/authorized-trust-lines.md
+        targets:
+            - en
+
+    -   md: concepts/tokens/authorized-trust-lines.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/tokens/clawing-back-tokens.md
+        status: not_enabled
+        targets:
+            - en
+
+    -   md: concepts/tokens/clawing-back-tokens.ja.md
+        status: not_enabled
+        targets:
             - ja
 
     -   md: concepts/tokens/freezes.md
@@ -875,6 +1245,7 @@ pages:
         targets:
             - ja
 
+        # TODO: nest this file appropriately
     -   md: concepts/tokens/common-misconceptions-about-freezes.md
         targets:
             - en
@@ -899,14 +1270,6 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/tokens/issuing-and-operational-addresses.md
-        targets:
-            - en
-
-    -   md: concepts/tokens/issuing-and-operational-addresses.ja.md
-        targets:
-            - ja
-
     -   md: concepts/tokens/paths.md
         targets:
             - en
@@ -923,172 +1286,209 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/decentralized-exchange/decentralized-exchange.md
+    -   md: concepts/tokens/decentralized-exchange.md
         targets:
             - en
 
-    -   md: concepts/decentralized-exchange/decentralized-exchange.ja.md
+    -   md: concepts/tokens/decentralized-exchange.ja.md
         targets:
             - ja
 
-        # Redirect AMM concept to separate site for unreleased features
-    -   name: Automated Market Makers (AMM)
-        html: automated-market-makers.html
+    -   md: concepts/tokens/offers.md
+        targets:
+            - en
+
+    -   md: concepts/tokens/offers.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/tokens/autobridging.md
+        targets:
+            - en
+
+    -   md: concepts/tokens/autobridging.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/tokens/ticksize.md
+        targets:
+            - en
+
+    -   md: concepts/tokens/ticksize.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/tokens/automated-market-makers.md
+        targets:
+            - en
+
+        # TODO: update translation
+    -   md: concepts/tokens/automated-market-makers.ja.md
+        outdated_translation: true
+        targets:
+            - ja
+
+    # Accounts ----------------------------------------------------------------
+    -   md: concepts/accounts/accounts.md
+        targets:
+            - en
+
+    -   md: concepts/accounts/accounts.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/accounts/account-types.md
+        targets:
+            - en
+
+    -   md: concepts/accounts/account-types.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/accounts/deleting-accounts.md
+        targets:
+            - en
+
+    -   md: concepts/accounts/deleting-accounts.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/accounts/reserves.md
+        targets:
+            - en
+
+    -   md: concepts/accounts/reserves.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/accounts/addresses.md
+        targets:
+            - en
+
+    -   md: concepts/accounts/addresses.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/accounts/cryptographic-keys.md
+        targets:
+            - en
+
+    -   md: concepts/accounts/cryptographic-keys.ja.md
+        targets:
+            - ja
+
+    -   md: concepts/accounts/depositauth.md
+        targets:
+            - en
+
+    # TODO: translate table(depositauth-semantics-table.html)
+    -   md: concepts/accounts/depositauth.ja.md
+        targets:
+            - ja
+
+
+   ## REDIRECTS FROM OLD CONCEPT PAGES/LANDINGS -------------------------------
+    -   name: Intro to Consensus
+        html: intro-to-consensus.html
         template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/automated-market-makers/
+        nav_omit: true
+        redirect_url: consensus.html
         targets:
             - en
             - ja
 
-    -   md: concepts/decentralized-exchange/offers.md
+    -   name: Secure Signing
+        html: set-up-secure-signing.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: secure-signing.html
         targets:
             - en
-
-    -   md: concepts/decentralized-exchange/offers.ja.md
-        targets:
             - ja
 
-    -   md: concepts/decentralized-exchange/autobridging.md
+    -   name: Transactions
+        html: transaction-basics.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: transactions.html
         targets:
             - en
-
-    -   md: concepts/decentralized-exchange/autobridging.ja.md
-        targets:
             - ja
 
-    -   md: concepts/decentralized-exchange/ticksize.md
+    -   name: Stablecoin Issuer
+        html: become-an-xrp-ledger-gateway.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: stablecoin-issuer.html
         targets:
             - en
-
-    -   md: concepts/decentralized-exchange/ticksize.ja.md
-        targets:
             - ja
 
-    -   name: Consensus Network
+    -   name: Consensus
         html: consensus-network.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: The XRP Ledger uses a consensus algorithm to resolve the double spend problem and choose which transactions to execute in which order. Consensus also governs rules of transaction processing.
-        targets:
-            - en
-
-    -   name: コンセンサスネットワーク
-        html: consensus-network.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerは、コンセンサス・アルゴリズムを用いて二重支払い問題を解決し、トランザクションの実行順序を決定します。コンセンサスでは、トランザクション処理のルールも定められています。
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus-principles-and-rules.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus-principles-and-rules.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus-protections.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus-protections.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/invariant-checking.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/invariant-checking.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/negative-unl.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/negative-unl.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/transaction-queue.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/transaction-queue.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/about-canceling-a-transaction.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/about-canceling-a-transaction.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/transaction-malleability.md
-        targets:
-            - en
-
-        # TODO: translate
-    -   md: concepts/consensus-network/transaction-malleability.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/amendments/amendments.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/amendments/amendments.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/amendments/contribute-code-flow.md
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: consensus.html
         targets:
             - en
             - ja
 
-    -   md: concepts/consensus-network/amendments/known-amendments.md
+    -   name: Complex Payment Types
+        html: complex-payment-types.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: payment-types.html
+        targets:
+            - en
+            - ja
+
+    -   name: Canceling a Transaction
+        html: about-canceling-a-transaction.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: canceling-a-transaction.html
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+    -   name: Account Types
+        html: issuing-and-operational-addresses.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: account-types.html
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+    -   name: Tokens
+        html: issued-currencies.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: tokens.html
+        blurb: Anyone can make tokens representing digital value on the XRP Ledger.
         targets:
             - en
 
-    -   md: concepts/consensus-network/amendments/known-amendments.ja.md
+    -   name: トークン
+        html: issued-currencies.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: tokens.html
+        blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
         targets:
             - ja
 
-    -   md: concepts/consensus-network/fee-voting.md
+    -   name: Tokens
+        html: issued-currencies-overview.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: tokens.html
+        blurb: Anyone can make tokens representing digital value on the XRP Ledger.
         targets:
             - en
 
-    -   md: concepts/consensus-network/fee-voting.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/consensus-network/consensus-research.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/consensus-research.ja.md
-        targets:
-            - ja
-
-    # TODO: add pseudo-transactions concept page
-
-    -   md: concepts/consensus-network/parallel-networks.md
-        targets:
-            - en
-
-    -   md: concepts/consensus-network/parallel-networks.ja.md
+    -   name: トークン
+        html: issued-currencies-overview.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: tokens.html
+        blurb: 誰もがXRP Ledger上でデジタル価値を表すトークンを作ることができます。
         targets:
             - ja
 
@@ -1100,78 +1500,6 @@ pages:
         nav_omit: true
         targets:
             - en
-            - ja
-
-    -   md: concepts/xrpl-servers/xrpl-servers.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/xrpl-servers.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/rippled-server-modes.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/rippled-server-modes.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/clustering.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/clustering.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/ledger-history/ledger-history.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/ledger-history/ledger-history.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/ledger-history/online-deletion.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/ledger-history/online-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/ledger-history/history-sharding.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/ledger-history/history-sharding.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/peer-protocol.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/peer-protocol.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/transaction-censorship-detection.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/transaction-censorship-detection.ja.md
-        targets:
-            - ja
-
-    -   md: concepts/xrpl-servers/the-clio-server.md
-        targets:
-            - en
-
-    -   md: concepts/xrpl-servers/the-clio-server.ja.md
-        targets:
             - ja
 
     # Redirect for "Interoperability" landing page
@@ -1198,7 +1526,7 @@ pages:
     -   name: The rippled Server
         html: the-rippled-server.html
         template: pagetype-redirect.html.jinja
-        redirect_url: xrpl-servers.html
+        redirect_url: networks-and-servers.html
         blurb: Learn about the core servers that power the XRP Ledger.
         nav_omit: true
         targets:
@@ -1227,13 +1555,14 @@ pages:
             - ja
 
 
+
 # Tutorials --------------------------------------------------------------------
 
     -   name: Tutorials
         html: tutorials.html
         parent: docs.html
         top_nav_grouping: Article Types
-        template: pagetype-tutorials.html.jinja
+        template: page-tutorials.html.jinja
         blurb: The XRP Ledger tutorials walk you through the steps to learn and get started with the XRP Ledger and to use the ledger for advanced use cases.
         targets:
             - en
@@ -1241,65 +1570,9 @@ pages:
     -   name: チュートリアル
         html: tutorials.html
         parent: docs.html
-        top_nav_grouping: Article Types
-        template: pagetype-tutorials.html.jinja
+        top_nav_grouping: カテゴリ
+        template: page-tutorials.html.jinja
         blurb: XRP Ledgerで一般的なタスクを実行するためのステップバイステップのガイダンスを紹介します。
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/xrpl-quickstart.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/create-accounts-send-xrp.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/create-trustline-send-currency.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/mint-and-burn-nftokens.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/transfer-nftokens.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/broker-sale.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/authorize-minter.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/quickstart/batch-minting.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/get-started/get-started.md
-        targets:
-            - en
-
-    -   md: tutorials/get-started/get-started.ja.md
         targets:
             - ja
 
@@ -1311,16 +1584,130 @@ pages:
         targets:
             - ja
 
+    # Python -------------------------------------------------------------------
+
+    -   name: Python
+        html: python.html
+        parent: tutorials.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPL tutorials in Python.
+        targets:
+            - en
+
+    -   name: Python
+        html: python.html
+        parent: tutorials.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: PythonでのXRPLチュートリアルです。
+        targets:
+            - ja
+
+    -   md: tutorials/get-started/get-started-using-python.md
+        targets:
+            - en
+
+
         # TODO: translate
     -   md: tutorials/get-started/get-started-using-python.md
+        top_nav_grouping: 始めましょう
+        targets:
+            - ja
+
+    -   name: Modular Tutorials in Python
+        html: modular-tutorials-in-python.html
+        parent: python.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Modular XRPL tutorials in Python.
+        targets:
+            - en
+
+    -   name: Pythonのモジュール形式チュートリアル
+        html: modular-tutorials-in-python.html
+        parent: python.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: Pythonによるモジュール式XRPLチュートリアル。
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/send-payments-using-python.md
         targets:
             - en
             - ja
 
         # TODO: translate
-    -   md: tutorials/get-started/get-started-using-java.md
+    -   md: tutorials/quickstart/py-create-accounts-send-xrp.md
         targets:
             - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-create-trustline-send-currency.md
+        targets:
+            - en
+            - ja
+
+    -   name: NFTs Using Python
+        html: nfts-using-python.html
+        parent: modular-tutorials-in-python.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Mint and sell NFTs on the XRP Ledger using Python.
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-mint-and-burn-nfts.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-transfer-nfts.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-broker-sale.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-authorize-minter.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/build-apps/build-a-desktop-wallet-in-python.md
+        targets:
+          - en
+          - ja # TODO: translate this page
+
+    # JavaScript ---------------------------------------------------------------
+
+    -   name: JavaScript
+        html: javascript.html
+        parent: tutorials.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPL tutorials in JavaScript.
+        targets:
+            - en
+
+    -   name: JavaScript
+        html: javascript.html
+        parent: tutorials.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: JavaScriptでのXRPLチュートリアルです。
+        targets:
             - ja
 
     -   md: tutorials/get-started/get-started-using-javascript.md
@@ -1356,11 +1743,171 @@ pages:
             - en
             - ja
 
-    -   md: tutorials/get-started/get-started-using-http-websocket-apis.md
+    -   name: Modular Tutorials in JavaScript
+        html: modular-tutorials-in-javascript.html
+        parent: javascript.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Modular XRPL tutorials in JavaScript.
         targets:
             - en
 
-    -   md: tutorials/get-started/get-started-using-http-websocket-apis.ja.md
+    -   name: JavaScriptのモジュール形式チュートリアル
+        html: modular-tutorials-in-javascript.html
+        parent: javascript.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: JavaScriptによるモジュール式XRPLチュートリアルです。
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/send-payments-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/create-accounts-send-xrp-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/create-trustline-send-currency-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/create-time-based-escrows-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/create-conditional-escrows-using-javascript.md
+        targets:
+            - en
+            - ja
+
+    -   name: NFTs Using JavaScript
+        html: nfts-using-javascript.html
+        parent: modular-tutorials-in-javascript.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Mint and sell NFTs on the XRP Ledger using JavaScript.
+        targets:
+            - en
+
+    -   name: JavaScriptを使ったNFT
+        html: nfts-using-javascript.html
+        parent: modular-tutorials-in-javascript.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledger上でNFTのミントと販売を行います。
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/mint-and-burn-nfts-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/transfer-nfts-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/broker-an-nft-sale-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/assign-an-authorized-minter-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/batch-mint-nfts-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/build-apps/build-a-browser-wallet-in-javascript.md
+        targets:
+            - en
+            - ja
+
+        # Redirect old page URL
+    -   name: Build a Browser Wallet in JavaScript
+        html: build-a-browser-wallet-using-javascript.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: build-a-browser-wallet-in-javascript.html
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/build-apps/build-a-desktop-wallet-in-javascript.md
+        targets:
+            - en
+            - ja
+
+    # Java ---------------------------------------------------------------------
+
+    -   name: Java
+        html: java.html
+        parent: tutorials.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPL tutorials in Java.
+        targets:
+            - en
+
+    -   name: Java
+        html: java.html
+        parent: tutorials.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: JavaでのXRPLチュートリアルです。
+        targets:
+            - ja
+
+    -   md: tutorials/get-started/get-started-using-java.md
+        targets:
+            - en
+
+        # TODO: translate
+    -   md: tutorials/get-started/get-started-using-java.md
+        top_nav_grouping: 始めましょう
+        untranslated_warning: true
+        targets:
+            - ja
+
+    # HTTP / Websocket Tutorials ---------------------------------------------------
+
+    -   name: HTTP / Websocket APIs
+        html: http-websocket-apis-tutorials.html
+        parent: tutorials.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPL tutorials for HTTP / Websocket APIs.
+        targets:
+            - en
+
+    -   name: HTTP / Websocket API
+        html: http-websocket-apis-tutorials.html
+        parent: tutorials.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: HTTP / Websocket APIのXRPLチュートリアルです。
         targets:
             - ja
 
@@ -1374,11 +1921,11 @@ pages:
             - en
             - ja
 
-    -   md: tutorials/get-started/send-xrp.md
+    -   md: tutorials/get-started/get-started-using-http-websocket-apis.md
         targets:
             - en
 
-    -   md: tutorials/get-started/send-xrp.ja.md
+    -   md: tutorials/get-started/get-started-using-http-websocket-apis.ja.md
         targets:
             - ja
 
@@ -1390,95 +1937,31 @@ pages:
         targets:
             - ja
 
-        # Send old "Use Direct XRP Payments" landing to "Get Started" instead
-    -   name: Use Direct XRP Payments
-        html: use-simple-xrp-payments.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: get-started.html
-        targets:
-            - en
-            - ja
+    # Tasks --------------------------------------------------------------------
 
-    -   name: Build Apps
-        html: build-apps.html
+    -   name: Tasks
+        html: tasks.html
         parent: tutorials.html
+        top_nav_grouping: Article Types
         template: pagetype-category.html.jinja
-        blurb: Develop applications and services that use the XRP Ledger.
+        blurb: Common tasks on the XRP Ledger.
         targets:
             - en
 
-    -   name: アプリケーションの構築
-        html: build-apps.html
+    -   name: タスク
+        html: tasks.html
         parent: tutorials.html
+        top_nav_grouping: カテゴリ
         template: pagetype-category.html.jinja
-        blurb: XRP Ledgerを利用したアプリケーションやサービスを開発しましょう。
+        blurb: XRP Ledgerの代表的なタスクです。
         targets:
             - ja
 
-    -   md: tutorials/build-apps/build-a-desktop-wallet-in-python.md
-        targets:
-          - en
-          - ja # TODO: translate this page
-
-    -   md: tutorials/build-apps/build-a-browser-wallet-in-js.md
-        targets:
-          - en
-          - ja # TODO: translate this page
-          
-    -   name: Production Readiness
-        html: production-readiness.html
-        parent: tutorials.html
-        template: pagetype-category.html.jinja
-        blurb: Follow these best practices to build a robust, safe production system for using the XRP Ledger.
-        targets:
-            - en
-
-    -   name: 本番環境への準備
-        html: production-readiness.html
-        parent: tutorials.html
-        template: pagetype-category.html.jinja
-        blurb: 以下のベストプラクティスに従って、XRPレジャーを使用するための堅牢で安全な本番システムを構築しましょう。
-        targets:
-            - ja
-
-    -   md: tutorials/production-readiness/set-up-secure-signing.md
-        targets:
-            - en
-
-    -   md: tutorials/production-readiness/set-up-secure-signing.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/production-readiness/look-up-transaction-results.md
-        targets:
-            - en
-
-    -   md: tutorials/production-readiness/look-up-transaction-results.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/production-readiness/reliable-transaction-submission.md
-        targets:
-            - en
-
-    -   md: tutorials/production-readiness/reliable-transaction-submission.ja.md
-        targets:
-            - ja
-
-        # Redirect for this page's new home outside of tutorials
-    -   name: Cancel or Skip a Transaction
-        html: cancel-or-skip-a-transaction.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: about-canceling-a-transaction.html
-        targets:
-            - en
-            - ja
+        # Manage Account Settings ----------------------------------------------
 
     -   name: Manage Account Settings
         html: manage-account-settings.html
-        parent: tutorials.html
+        parent: tasks.html
         template: pagetype-category.html.jinja
         blurb: Set up your XRP Ledger account to send and receive payments the way you want it to.
         targets:
@@ -1486,7 +1969,7 @@ pages:
 
     -   name: アカウントの設定の利用
         html: manage-account-settings.html
-        parent: tutorials.html
+        parent: tasks.html
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerアカウントを設定して、思い通りの支払いをしましょう。
         targets:
@@ -1559,19 +2042,27 @@ pages:
         targets:
             - ja
 
-    # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
+    -   md: tutorials/get-started/send-xrp.md
+        targets:
+            - en
+
+    -   md: tutorials/get-started/send-xrp.ja.md
+        targets:
+            - ja
+
+        # Use Specialized Payment Types --------------------------------------------------------
 
     -   name: Use Specialized Payment Types
         html: use-specialized-payment-types.html
-        parent: tutorials.html
+        parent: tasks.html
         template: pagetype-category.html.jinja
         blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger.
         targets:
             - en
 
-    -   name: 専門化した支払いタイプの使用
+    -   name: 専門的な支払いタイプの使用
         html: use-specialized-payment-types.html
-        parent: tutorials.html
+        parent: tasks.html
         template: pagetype-category.html.jinja
         blurb: EscrowやPayment Channelなどの高度な機能を使用して、XRP Ledgerでスマートアプリケーションを構築しましょう。
         targets:
@@ -1661,7 +2152,9 @@ pages:
         targets:
             - en
 
+        # TODO: update translation to match English updates
     -   md: tutorials/use-specialized-payment-types/use-checks/use-checks.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -1713,9 +2206,11 @@ pages:
         targets:
             - ja
 
+        # Use Tokens ------------------------------------------------------------------
+
     -   name: Use Tokens
         html: use-tokens.html
-        parent: tutorials.html
+        parent: tasks.html
         blurb: Create and trade tokens (fungible or otherwise) in the XRP Ledger.
         template: pagetype-category.html.jinja
         targets:
@@ -1723,7 +2218,7 @@ pages:
 
     -   name: トークンの利用
         html: use-tokens.html
-        parent: tutorials.html
+        parent: tasks.html
         blurb: XRP Ledgerでトークン(代替型やそれ以外)を発行し、取引しましょう
         template: pagetype-category.html.jinja
         targets:
@@ -1759,500 +2254,54 @@ pages:
             - en
             - ja
 
-    # TODO: "Send a Cross-Currency Payment"
-
-    # TODO: Set up issuing/operational addresses, monitor changes to balances,
-    # enable/disable rippling, use auth'd trust lines
-
-    -   name: XRP Ledger Businesses
-        html: xrp-ledger-businesses.html
-        parent: tutorials.html
-        blurb: This section demonstrates how to follow various best practices for running businesses that interface with the XRP Ledger, such as exchanges listing XRP and gateways issuing currency in the XRP Ledger.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: ビジネスとしてのXRP Ledger
-        html: xrp-ledger-businesses.html
-        parent: tutorials.html
-        blurb: このセクションでは、XRPを上場している取引所やXRP Ledgerで通貨を発行しているゲートウェイなど、XRP Ledgerとインターフェースを持つビジネスを運営するための様々なベストプラクティスをご紹介しています。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.md
-        targets:
-            - en
-
-    -   md: tutorials/xrp-ledger-businesses/list-xrp-as-an-exchange.ja.md
-        targets:
-            - ja
-
-    # legacy feature that has been removed.
-    -   md: tutorials/xrp-ledger-businesses/list-your-exchange-on-xrp-charts.md
+    # TODO: translate this page & blurb
+    -   md: tutorials/use-tokens/create-an-automated-market-maker.md
         targets:
             - en
             - ja
 
-    # TODO: translate
-    -   md: tutorials/xrp-ledger-businesses/become-an-xrp-ledger-gateway.md
-        targets:
-            - en
-            - ja
-
-    -   name: Manage the rippled Server
-        html: manage-the-rippled-server.html
-        parent: tutorials.html
-        blurb: Install, configure, and manage the core server that powers the XRP Ledger.
-        cta_text: Run rippled
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: rippledサーバの管理
-        html: manage-the-rippled-server.html
-        parent: tutorials.html
-        blurb: XRP Ledgerを動かすコアサーバーをインストール、設定、管理しましょう。
-        cta_text: インストールしよう
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   name: Install rippled
-        html: install-rippled.html
-        parent: manage-the-rippled-server.html
-        top_nav_name: Install & Configure
-        blurb: Install and update the rippled server.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: rippledのインストール
-        html: install-rippled.html
-        parent: manage-the-rippled-server.html
-        blurb: rippledサーバーをインストールして更新します。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/system-requirements.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/system-requirements.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum.ja.md
-        targets:
-            - ja
-
-    # Redirect old Alien-based install
-    -   name: Install rippled on Ubuntu with Alien
-        html: install-rippled-on-ubuntu-with-alien.html
-        parent: install-rippled.html
+        # Redirect to tutorial parent nav.
+    -   name: Get Started
+        html: get-started.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: install-rippled-on-ubuntu.html
+        redirect_url: tutorials.html
         targets:
             - en
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.ja.md
-        targets:
-            - ja
-
-    # Redirect old CentOS/RHEL install
-    -   name: Update rippled Automatically on CentOS/RHEL
-        html: update-rippled-automatically-on-centos-rhel.html
+        # Send old "Use Direct XRP Payments" landing to "Get Started" instead
+    -   name: Use Direct XRP Payments
+        html: use-simple-xrp-payments.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: update-rippled-automatically-on-linux.html
+        redirect_url: send-xrp.html
         targets:
             - en
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-automatically-on-linux.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-automatically-on-linux.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-centos-rhel.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-centos-rhel.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-ubuntu.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/update-rippled-manually-on-ubuntu.ja.md
-        targets:
-            - ja
-
-        # Redirect to build instructions on rippled repo.
-    -   name: Build and Run rippled on Ubuntu
-        html: build-run-rippled-ubuntu.html
+        # Redirect old Production Readiness category.
+        # There's no equivalent category now, so go to Tutorials top
+    -   name: Production Readiness
+        html: production-readiness.html
+        redirect_url: tutorials.html
         template: pagetype-redirect.html.jinja
-        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
+        nav_omit: true
         targets:
             - en
             - ja
 
-        # Redirect to b uild instructions on rippled repo.
-    -   name: Build and Run rippled on macOS
-        html: build-run-rippled-macos.html
+        # Redirect for this page's new home outside of tutorials
+    -   name: Cancel or Skip a Transaction
+        html: cancel-or-skip-a-transaction.html
         template: pagetype-redirect.html.jinja
-        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
-        targets:
-            - en
-            - ja
-        
-    -   md: tutorials/manage-the-rippled-server/installation/build-run-rippled-in-reporting-mode.md
+        nav_omit: true
+        redirect_url: about-canceling-a-transaction.html
         targets:
             - en
             - ja
 
-    -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/capacity-planning.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/installation/rippled-1-3-migration-instructions.ja.md
-        targets:
-            - ja
-
-    -   name: Configure rippled
-        html: configure-rippled.html
-        parent: manage-the-rippled-server.html
-        blurb: Customize your rippled server configuration.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: rippledの設定
-        html: configure-rippled.html
-        parent: manage-the-rippled-server.html
-        blurb: rippledサーバーの構成をカスタマイズします。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-stock-server.md
-        targets:
-            - en
-
-        # TODO: update this translation and rename the file like in the English version
-    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.ja.md
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/manage-the-rippled-server/configuration/test-amendments.md
-        targets:
-            - en
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-online-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-advisory-deletion.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-history-sharding.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-full-history.ja.md
-        targets:
-            - ja
-
-        # TODO: translate page
-    -   md: tutorials/manage-the-rippled-server/configuration/configure-grpc.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-peering.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/cluster-rippled-servers.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-a-private-server.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-a-private-server.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
-        targets:
-            - en
-
-    # TODO: translate this page. # For now we just have a translated blurb.
-    -   md: tutorials/manage-the-rippled-server/configure-peering/configure-the-peer-crawler.md
-        blurb: rippledサーバーがステータスとピアについてどの程度の情報を公表するか設定します。
-        untranslated_warning: true
-        targets:
-            - ja
-
-    # TODO: translate this page
-    -   md: tutorials/manage-the-rippled-server/configure-peering/enable-link-compression.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/forward-ports-for-peering.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/manually-connect-to-a-specific-peer.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/set-max-number-of-peers.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.ja.md
-        targets:
-            - ja
-
-    -   name: Test rippled Functionality in Stand-Alone Mode
-        html: use-stand-alone-mode.html
-        parent: manage-the-rippled-server.html
-        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: スタンドアロンモードでrippledをテスト
-        html: use-stand-alone-mode.html
-        parent: manage-the-rippled-server.html
-        blurb: 新機能や実験用に、スタンドアロンモードを使用してフルネットワークで機能をテストできます。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.ja.md
-        targets:
-            - ja
-
-    -   name: Troubleshooting
-        html: troubleshoot-the-rippled-server.html
-        parent: manage-the-rippled-server.html
-        blurb: Troubleshoot all kinds of problems with the rippled server.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: rippledのトラブルシューティング
-        html: troubleshoot-the-rippled-server.html
-        parent: manage-the-rippled-server.html
-        blurb: rippledサーバーのあらゆる種類の問題をトラブルシューティングします。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/diagnosing-problems.ja.md
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.md
-        targets:
-            - en
-
-        # TODO: translate the blurb in this page's frontmatter
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-doesnt-sync.ja.md
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-is-amendment-blocked.md
-        targets:
-            - en
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.ja.md
-        targets:
-            - ja
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
-        targets:
-            - en
-
-    -   md: tutorials/manage-the-rippled-server/troubleshooting/fix-sqlite-tx-db-page-size-issue.ja.md
-        targets:
-            - ja
-
-    -   name: Manage the Clio Server
-        html: manage-the-clio-server.html
-        parent: tutorials.html
-        blurb: Install, configure, and manage the Clio server.
-        template: pagetype-category.html.jinja
-        targets:
-            - en
-
-    -   name: Clioサーバの管理
-        html: manage-the-clio-server.html
-        parent: tutorials.html
-        blurb: Clioサーバーのインストール、設定、管理しましょう。
-        template: pagetype-category.html.jinja
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: tutorials/manage-the-clio-server/install-clio-on-ubuntu.md
-        targets:
-            - en
-            - ja
+    # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
 
     # Redirect for "Interoperability - EVM Sidechain" tutorial landing page
     -   name: Interoperability - EVM Sidechain
@@ -2322,7 +2371,7 @@ pages:
         html: references.html
         parent: docs.html
         top_nav_grouping: Article Types
-        sidebar: disabled
+        sidebar: left_only
         blurb: Complete references for different interfaces to the XRP Ledger.
         targets:
             - en
@@ -2332,8 +2381,8 @@ pages:
         template: page-references.html.jinja
         html: references.html
         parent: docs.html
-        top_nav_grouping: Article Types
-        sidebar: disabled
+        top_nav_grouping: カテゴリ
+        sidebar: left_only
         blurb: XRP Ledgerへのさまざまなインターフェイスの包括的なリファレンスです。
         targets:
             - ja
@@ -2352,7 +2401,7 @@ pages:
         parent: references.html
         template: pagetype-category.html.jinja
         blurb: XRP Ledgerプロトコルの、利用方法に依存しない特徴やルールについて。
-        eyebrow_text: Features and Rules
+        eyebrow_text: 特徴とルール
         targets:
             - ja
 
@@ -2378,6 +2427,7 @@ pages:
 
         # TODO: update translation to add a table like in the English version
     -   md: references/protocol-reference/data-types/currency-formats.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2388,6 +2438,7 @@ pages:
         # TODO: update translation to use the term "sequence number" rather than
         # "dumb sequential"
     -   md: references/protocol-reference/data-types/nftoken.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2407,157 +2458,177 @@ pages:
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-ids.md
+        # TODO: translate
+    -   md: references/protocol-reference/ledger-data/ledger-entry-common-fields.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-ids.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledger-object-types.md
-        targets:
-            - en
-
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledger-object-types.ja.md
-        targets:
-            - ja
-
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.md
-        targets:
-            - en
-
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/accountroot.ja.md
-        targets:
-            - ja
-
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/amendments.md
-        targets:
-            - en
-
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/amendments.ja.md
-        targets:
-            - ja
-
-    # Redirect for "AMM" ledger object type page
-    -   name: AMM
-        html: amm.html
+        # redirect from old "ledger object types" URL
+    -   name: Ledger Entry Types
+        html: ledger-object-types.html
         template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/ledger-object-types/amm/
+        redirect_url: ledger-entry-types.html
         nav_omit: true
         targets:
             - en
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/check.md
+        # redirect from old ledger object IDs URL
+    -   name: Ledger Entry IDs
+        html: ledger-object-ids.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: ledger-entry-common-fields.html
+        nav_omit: true
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/accountroot.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/check.ja.md
+        # TODO: update translation for rippled v1.11.0 & AMM
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/accountroot.ja.md
+        outdated_translation: true
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/depositpreauth.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amendments.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/depositpreauth.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amendments.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/directorynode.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amm.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/directorynode.ja.md
+        # TODO: update translation
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amm.ja.md
+        outdated_translation: true
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/escrow.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/check.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/escrow.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/check.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/feesettings.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/depositpreauth.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/feesettings.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/depositpreauth.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledgerhashes.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/directorynode.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ledgerhashes.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/directorynode.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/escrow.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/negativeunl.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/escrow.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/feesettings.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenoffer.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/feesettings.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledgerhashes.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/nftokenpage.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledgerhashes.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/offer.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/negativeunl.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/offer.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/negativeunl.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/paychannel.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenoffer.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/paychannel.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenoffer.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ripplestate.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenpage.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ripplestate.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenpage.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/signerlist.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/offer.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/signerlist.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/offer.ja.md
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ticket.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/paychannel.md
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-object-types/ticket.ja.md
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/paychannel.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ripplestate.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ripplestate.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/signerlist.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/signerlist.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ticket.md
+        targets:
+            - en
+
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ticket.ja.md
         targets:
             - ja
 
@@ -2567,6 +2638,7 @@ pages:
 
         # TODO: update blurb translation based on English version
     -   md: references/protocol-reference/transactions/transaction-formats.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2574,7 +2646,9 @@ pages:
         targets:
             - en
 
+        # TODO: update translation with rippled 1.11.0 changes
     -   md: references/protocol-reference/transactions/transaction-common-fields.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2602,54 +2676,60 @@ pages:
         targets:
             - ja
 
-    # Redirect for "AMMBid" transaction type page
-    -   name: AMMBid
-        html: ammbid.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammbid/
-        nav_omit: true        
+    -   md: references/protocol-reference/transactions/transaction-types/ammbid.md
+        targets:
+            - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammbid.ja.md
+        outdated_translation: true
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.md
+        targets:
+            - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.ja.md
+        outdated_translation: true
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: references/protocol-reference/transactions/transaction-types/ammdelete.md
         targets:
             - en
             - ja
 
-    # Redirect for "AMMCreate" transaction type page
-    -   name: AMMCreate
-        html: ammcreate.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammcreate/
-        nav_omit: true
+    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.md
         targets:
             - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.ja.md
+        outdated_translation: true
+        targets:
             - ja
 
-     # Redirect for "AMMDeposit" transaction type page
-    -   name: AMMDeposit
-        html: ammdeposit.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammdeposit/
-        nav_omit: true
+    -   md: references/protocol-reference/transactions/transaction-types/ammvote.md
         targets:
             - en
+
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammvote.ja.md
+        outdated_translation: true
+        targets:
             - ja
 
-     # Redirect for "AMMVote" transaction type page
-    -   name: AMMVote
-        html: ammvote.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammvote/
-        nav_omit: true
+    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.md
         targets:
             - en
-            - ja
 
-     # Redirect for "AMMWithdraw" transaction type page
-    -   name: AMMWithdraw
-        html: ammwithdraw.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/transaction-types/ammwithdraw/
-        nav_omit: true
+        # TODO: update translation
+    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.ja.md
+        outdated_translation: true
         targets:
-            - en
             - ja
 
     -   md: references/protocol-reference/transactions/transaction-types/checkcancel.md
@@ -2673,6 +2753,16 @@ pages:
             - en
 
     -   md: references/protocol-reference/transactions/transaction-types/checkcreate.ja.md
+        targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/clawback.md
+        status: not_enabled
+        targets:
+            - en
+
+    -   md: references/protocol-reference/transactions/transaction-types/clawback.ja.md
+        status: not_enabled
         targets:
             - ja
 
@@ -2888,7 +2978,9 @@ pages:
         targets:
             - en
 
+        # TODO: update translation
     -   md: references/protocol-reference/transactions/transaction-results/tel-codes.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2922,6 +3014,7 @@ pages:
 
         # TODO: update translation to latest English version
     -   md: references/protocol-reference/transactions/transaction-metadata.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -2940,6 +3033,7 @@ pages:
 
         # TODO: update translation with new/updated sections from the English version
     -   md: references/protocol-reference/serialization.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3031,7 +3125,7 @@ pages:
             - ja
 
 
-    # HTTP / Websocket APIs ----------------------------------------------------
+    # HTTP / Websocket APIs References ----------------------------------------------------
 
     -   name: HTTP / WebSocket APIs
         html: http-websocket-apis.html
@@ -3162,7 +3256,9 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_currencies.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3170,7 +3266,9 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_info.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3178,21 +3276,27 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_lines.ja.md
+        outdated_translation: true
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
         targets:
             - en
+
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.ja.md
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.md
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3200,7 +3304,9 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/public-api-methods/account-methods/account_offers.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3357,14 +3463,14 @@ pages:
         targets:
             - ja
 
-     # Redirect for "amm_info" public api reference page
-    -   name: amm_info
-        html: amm_info.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: https://opensource.ripple.com/docs/xls-30d-amm/public-api-methods/amm_info/
-        nav_omit: true
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
         targets:
             - en
+
+        # TODO: update translation
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.ja.md
+        outdated_translation: true
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
@@ -3510,8 +3616,9 @@ pages:
         targets:
             - en
 
-        # TODO: update translation with reporting fields, ETL source object, corrected state_account.*.transitions field
+        # TODO: update translation with reporting fields, ports field, ETL source object, corrected state_account.*.transitions field
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3519,12 +3626,13 @@ pages:
         targets:
             - en
 
-        # TODO: update translation with reporting fields, ETL source object, corrected state_account.*.transitions field
+        # TODO: update translation with reporting fields, ports field, ETL source object, corrected state_account.*.transitions field
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.ja.md
+        outdated_translation: true
         targets:
             - ja
 
-    -   name: Clio Server 
+    -   name: Clio Server
         html: clio-methods.html
         parent: public-api-methods.html
         blurb: Use these methods to retrieve information using Clio server APIs.
@@ -3634,7 +3742,7 @@ pages:
     -   name: キー生成メソッド
         html: key-generation-methods.html
         parent: admin-api-methods.html
-        blurb: 以下のメソッドを使用してキーを生成および管理することができます。。
+        blurb: 以下のメソッドを使用してキーを生成および管理することができます。
         template: pagetype-category.html.jinja
         targets:
             - ja
@@ -3891,7 +3999,9 @@ pages:
         targets:
             - en
 
+        # TODO: update translation for rippled v1.11.0
     -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.ja.md
+        outdated_translation: true
         targets:
             - ja
 
@@ -3938,15 +4048,6 @@ pages:
             - en
 
     -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.ja.md
-        targets:
-            - ja
-
-    -   md: references/http-websocket-apis/commandline-usage.md
-        targets:
-            - en
-
-        # TODO: update translation
-    -   md: references/http-websocket-apis/commandline-usage.ja.md
         targets:
             - ja
 
@@ -4016,446 +4117,935 @@ pages:
         targets:
             - ja
 
-    # Landing pages for labels -------------------------------------------------
-    -   name: Accounts
-        html: label-accounts.html
-        parent: by-label.html
-        landing_for: Accounts
-        template: pagetype-label.html.jinja
-        blurb: Pages relating to accounts in the XRP Ledger.
-        filters:
-            - labels
+# Infrastructure ---------------------------------------------------------------
+
+    -   name: Infrastructure
+        html: infrastructure.html
+        parent: docs.html
+        blurb: Install, configure, and manage the software that powers the XRP Ledger.
+        template: pagetype-category.html.jinja
+        top_nav_grouping: Article Types
         targets:
             - en
 
-    -   name: アカウント
-        html: label-accounts.html
-        parent: by-label.html
-        landing_for: アカウント
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerのアカウントに関するページ。
-        filters:
-            - labels
+    -   name: インフラストラクチャ
+        html: infrastructure.html
+        parent: docs.html
+        blurb: XRP Ledgerを動かすソフトウェアのインストール、設定、管理。
+        template: pagetype-category.html.jinja
+        top_nav_grouping: カテゴリ
         targets:
             - ja
 
+        # Redirect old landing
+    -   name: Manage the rippled server
+        html: manage-the-rippled-server.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: install-rippled-on-ubuntu.html
+        targets:
+            - en
+            - ja
 
-    -   name: Blockchain
-        html: label-blockchain.html
-        parent: by-label.html
-        landing_for: Blockchain
-        template: pagetype-label.html.jinja
-        blurb: Pages about how the XRP Ledger functions as a blockchain.
-        filters:
-            - labels
+    -   md: infrastructure/rippled/commandline-usage.md
         targets:
             - en
 
-    -   name: ブロックチェーン
-        html: label-blockchain.html
-        parent: by-label.html
-        landing_for: ブロックチェーン
-        template: pagetype-label.html.jinja
-        blurb: ブロックチェーンとしてのXRP Ledgerの機能に関するページ。
-        filters:
-            - labels
+        # TODO: update translation
+    -   md: infrastructure/rippled/commandline-usage.ja.md
+        outdated_translation: true
         targets:
             - ja
 
-    -   name: Checks
-        html: label-checks.html
-        parent: by-label.html
-        landing_for: Checks
-        template: pagetype-label.html.jinja
-        blurb: Pages about the Checks feature.
-        filters:
-            - labels
+    -   name: Install rippled
+        html: install-rippled.html
+        parent: infrastructure.html
+        top_nav_name: Install & Configure
+        blurb: Install and update the rippled server.
+        template: pagetype-category.html.jinja
         targets:
             - en
 
-    -   name: Checks
-        html: label-checks.html
-        parent: by-label.html
-        landing_for: Checks
-        template: pagetype-label.html.jinja
-        blurb: Checks機能に関するページ。
-        filters:
-            - labels
+    -   name: rippledのインストール
+        html: install-rippled.html
+        parent: infrastructure.html
+        blurb: rippledサーバーをインストールして更新します。
+        template: pagetype-category.html.jinja
         targets:
             - ja
 
-    -   name: Core Server
-        html: label-rippled.html
-        parent: by-label.html
-        landing_for: Core Server
-        template: pagetype-label.html.jinja
-        blurb: Pages about the XRP Ledger's core server implementation, rippled.
-        filters:
-            - labels
+    -   md: infrastructure/rippled/installation/system-requirements.md
         targets:
             - en
 
-    -   name: コアサーバー
-        html: label-rippled.html
-        parent: by-label.html
-        landing_for: コアサーバー
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerのコアサーバー「rippled」に関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/installation/system-requirements.ja.md
         targets:
             - ja
 
-    -   name: Cross-Currency
-        html: label-cross-currency.html
-        parent: by-label.html
-        landing_for: Cross-Currency
-        template: pagetype-label.html.jinja
-        blurb: Pages about exchanging currencies, tokens, and XRP in payments or the decentralized exchange.
-        filters:
-            - labels
+    -   md: infrastructure/rippled/installation/install-rippled-on-centos-rhel-with-yum.md
         targets:
             - en
 
-    -   name: 複数通貨間
-        html: label-cross-currency.html
-        parent: by-label.html
-        landing_for: 複数通貨間
-        template: pagetype-label.html.jinja
-        blurb: 決済や分散型取引所での通貨、トークン、XRPの交換に関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/installation/install-rippled-on-centos-rhel-with-yum.ja.md
+        targets:
+            - ja
+
+    # Redirect old Alien-based install
+    -   name: Install rippled on Ubuntu with Alien
+        html: install-rippled-on-ubuntu-with-alien.html
+        parent: install-rippled.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: install-rippled-on-ubuntu.html
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/installation/install-rippled-on-ubuntu.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/install-rippled-on-ubuntu.ja.md
+        targets:
+            - ja
+
+    # Redirect old CentOS/RHEL install
+    -   name: Update rippled Automatically on CentOS/RHEL
+        html: update-rippled-automatically-on-centos-rhel.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: update-rippled-automatically-on-linux.html
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/installation/update-rippled-automatically-on-linux.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/update-rippled-automatically-on-linux.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/installation/update-rippled-manually-on-centos-rhel.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/update-rippled-manually-on-centos-rhel.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/installation/update-rippled-manually-on-ubuntu.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/update-rippled-manually-on-ubuntu.ja.md
+        targets:
+            - ja
+
+        # Redirect to build instructions on rippled repo.
+    -   name: Build and Run rippled on Ubuntu
+        html: build-run-rippled-ubuntu.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
+        targets:
+            - en
+            - ja
+
+        # Redirect to build instructions on rippled repo.
+    -   name: Build and Run rippled on macOS
+        html: build-run-rippled-macos.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/installation/build-run-rippled-in-reporting-mode.md
+        targets:
+            - en
+
+        # TODO: translate
+    -   md: infrastructure/rippled/installation/build-run-rippled-in-reporting-mode.md
+        top_nav_grouping: 人気ページ
+        untranslated_warning: true
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/installation/capacity-planning.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/capacity-planning.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/installation/rippled-1-3-migration-instructions.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/installation/rippled-1-3-migration-instructions.ja.md
+        targets:
+            - ja
+
+    -   name: Configure rippled
+        html: configure-rippled.html
+        parent: infrastructure.html
+        blurb: Customize your rippled server configuration.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+
+    -   name: rippledの設定
+        html: configure-rippled.html
+        parent: infrastructure.html
+        blurb: rippledサーバーの構成をカスタマイズします。
+        template: pagetype-category.html.jinja
+        targets:
+            - ja
+
+    -   name: Server Modes
+        html: server-modes.html
+        parent: configure-rippled.html
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/configuration/run-rippled-as-a-validator.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configuration/run-rippled-as-a-validator.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configuration/run-rippled-as-a-stock-server.md
+        targets:
+            - en
+
+        # TODO: update this translation and rename the file like in the English version
+    -   md: infrastructure/rippled/configuration/run-rippled-as-a-wallet-server.ja.md
         targets:
             - ja
 
     -   name: Data Retention
-        html: label-data-retention.html
-        parent: by-label.html
-        landing_for: Data Retention
-        template: pagetype-label.html.jinja
-        blurb: Pages about how and for how long XRP Ledger software stores data.
-        filters:
-            - labels
+        html: data-retention.html
+        parent: configure-rippled.html
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/configuration/configure-full-history.md
         targets:
             - en
 
-    -   name: データ保持
-        html: label-data-retention.html
-        parent: by-label.html
-        landing_for: データ保持
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerのソフトウェアがデータを保存する方法と期間に関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configuration/configure-full-history.ja.md
         targets:
             - ja
 
-    -   name: Decentralized Exchange
-        html: label-decentralized-exchange.html
-        parent: by-label.html
-        landing_for: Decentralized Exchange
-        template: pagetype-label.html.jinja
-        blurb: Pages about the Decentralized Exchange built into the XRP Ledger.
-        filters:
-            - labels
+    -   md: concepts/networks-and-servers/ledger-history/online-deletion.md
         targets:
             - en
 
-    -   name: 分散型取引所
-        html: label-decentralized-exchange.html
-        parent: by-label.html
-        landing_for: 分散型取引所
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerの分散型取引所に関するページ。
-        filters:
-            - labels
+    -   md: concepts/networks-and-servers/ledger-history/online-deletion.ja.md
         targets:
             - ja
 
-    -   name: Development
-        html: label-development.html
-        parent: by-label.html
-        landing_for: Development
-        template: pagetype-label.html.jinja
-        blurb: Pages about developing apps that use the XRP Ledger.
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configuration/configure-online-deletion.md
         targets:
             - en
 
-    -   name: 開発
-        html: label-development.html
-        parent: by-label.html
-        landing_for: 開発
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerを使うアプリケーションの開発に関するページ。
-        filters:
-            - labels
-        targets:
-             - ja
-
-    -   name: Escrow
-        html: label-escrow.html
-        parent: by-label.html
-        landing_for: Escrow
-        template: pagetype-label.html.jinja
-        blurb: Pages about the Escrow feature.
-        filters:
-            - labels
-        targets:
-            - en
-
-    -   name: Escrow
-        html: label-escrow.html
-        parent: by-label.html
-        landing_for: Escrow
-        template: pagetype-label.html.jinja
-        blurb: Escrow機能に関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configuration/configure-online-deletion.ja.md
         targets:
             - ja
 
-    -   name: Fees
-        html: label-fees.html
-        parent: by-label.html
-        landing_for: Fees
-        template: pagetype-label.html.jinja
-        blurb: Pages about fees and related costs of transacting in the XRP Ledger.
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.md
         targets:
             - en
 
-    -   name: 手数料
-        html: label-fees.html
-        parent: by-label.html
-        landing_for: 手数料
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerのトランザクション処理時の手数料とコストに関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.ja.md
         targets:
             - ja
 
-    -   name: "Non-fungible Tokens, NFTs"
-        html: label-nfts.html
-        landing_for: "Non-fungible Tokens, NFTs"
-        template: pagetype-label.html.jinja
-        blurb: Pages about non-fungible tokens.
-        filters:
-            - labels
+    -   md: concepts/networks-and-servers/ledger-history/history-sharding.md
         targets:
             - en
 
-    -   name: "非代替性トークン, NFT"
-        html: label-nfts.html
-        landing_for: "非代替性トークン, NFT"
-        template: pagetype-label.html.jinja
-        blurb: NFTに関するページ。
-        filters:
-            - labels
+    -   md: concepts/networks-and-servers/ledger-history/history-sharding.ja.md
         targets:
             - ja
 
-    -   name: Payment Channels
-        html: label-payment-channels.html
-        parent: by-label.html
-        landing_for: Payment Channels
-        template: pagetype-label.html.jinja
-        blurb: Pages about the Payment Channels feature.
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configuration/configure-history-sharding.md
         targets:
             - en
 
-    -   name: Payment Channel
-        html: label-payment-channels.html
-        parent: by-label.html
-        landing_for: Payment Channel
-        template: pagetype-label.html.jinja
-        blurb: Payment Channel機能に関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configuration/configure-history-sharding.ja.md
         targets:
             - ja
 
-    -   name: Payments
-        html: label-payments.html
-        parent: by-label.html
-        landing_for: Payments
-        template: pagetype-label.html.jinja
-        blurb: About sending payments (of XRP or tokens) in the XRP Ledger.
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configuration/configure-amendment-voting.md
         targets:
             - en
 
-    -   name: 支払い
-        html: label-payments.html
-        parent: by-label.html
-        landing_for: 支払い
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerでの支払い機能に関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configuration/configure-amendment-voting.ja.md
         targets:
             - ja
 
-    -   name: Smart Contracts
-        html: label-smart-contracts.html
-        parent: by-label.html
-        landing_for: Smart Contracts
-        template: pagetype-label.html.jinja
-        blurb: Pages about XRP Ledger features that can be used to build smart contracts.
-        filters:
-            - labels
+        # TODO: translate
+    -   md: infrastructure/rippled/configuration/test-amendments.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/rippled/configuration/configure-statsd.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.md
         targets:
             - en
 
-    -   name: スマートコントラクト
-        html: label-smart-contracts.html
-        parent: by-label.html
-        landing_for: スマートコントラクト
-        template: pagetype-label.html.jinja
-        blurb: スマートコントラクトを構築する際に利用できるXRP Ledgerの特徴に関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.ja.md
         targets:
             - ja
 
-    -   name: Security
-        html: label-security.html
-        parent: by-label.html
-        landing_for: Security
-        template: pagetype-label.html.jinja
-        blurb: Pages about security issues and precautions.
-        filters:
-            - labels
+        # TODO: translate page
+    -   md: infrastructure/rippled/configuration/configure-grpc.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/configuration/enable-public-signing.md
         targets:
             - en
 
-    -   name: セキュリティ
-        html: label-security.html
-        parent: by-label.html
-        landing_for: セキュリティ
-        template: pagetype-label.html.jinja
-        blurb: セキュリティ問題と予防措置に関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configuration/enable-public-signing.ja.md
         targets:
             - ja
 
-    -   name: Tokens
-        html: label-tokens.html
-        parent: by-label.html
-        landing_for: Tokens
-        template: pagetype-label.html.jinja
-        blurb: Pages about issuing tokens in the XRP Ledger.
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configure-peering/configure-peering.md
         targets:
             - en
 
-    -   name: トークン
-        html: label-tokens.html
-        parent: by-label.html
-        landing_for: トークン
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerでの発行トークンに関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configure-peering/configure-peering.ja.md
         targets:
             - ja
 
-    -   name: Transaction Sending
-        html: label-transaction-sending.html
-        parent: by-label.html
-        landing_for: Transaction Sending
-        template: pagetype-label.html.jinja
-        blurb: Pages about sending transactions in the XRP Ledger.
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configure-peering/cluster-rippled-servers.md
         targets:
             - en
 
-    -   name: トランザクション送信
-        html: label-transaction-sending.html
-        parent: by-label.html
-        landing_for: トランザクション送信
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerでのトランザクション送信に関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configure-peering/cluster-rippled-servers.ja.md
         targets:
             - ja
 
-    -   name: XRP
-        html: label-xrp.html
-        parent: by-label.html
-        landing_for: XRP
-        template: pagetype-label.html.jinja
-        blurb: Pages about XRP, the native digital asset built into the XRP Ledger.
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configure-peering/configure-a-private-server.md
         targets:
             - en
 
-    -   name: XRP
-        html: label-xrp.html
-        parent: by-label.html
-        landing_for: XRP
-        template: pagetype-label.html.jinja
-        blurb: XRP Ledgerのネイティブ暗号資産「XRP」に関するページ。
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configure-peering/configure-a-private-server.ja.md
         targets:
             - ja
 
-    -   name: Browse By Label
-        html: by-label.html
-        parent: docs.html
-        template: page-by-label.html.jinja
-        sidebar: left_only
-        blurb: See all pages labeled with a specific topic or idea.
-        top_nav_omit: true
-        filters:
-            - labels
+    -   md: infrastructure/rippled/configure-peering/configure-the-peer-crawler.md
         targets:
             - en
 
-    -   name: ラベル別に閲覧
-        html: by-label.html
-        parent: docs.html
-        template: page-by-label.html.jinja
-        sidebar: left_only
-        blurb: 特定のトピックでラベル付けされたページを表示します。
-        top_nav_omit: true
-        filters:
-            - labels
+    # TODO: translate this page. # For now we just have a translated blurb.
+    -   md: infrastructure/rippled/configure-peering/configure-the-peer-crawler.md
+        blurb: rippledサーバーがステータスとピアについてどの程度の情報を公表するか設定します。
+        untranslated_warning: true
         targets:
             - ja
 
+    # TODO: translate this page
+    -   md: infrastructure/rippled/configure-peering/enable-link-compression.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/forward-ports-for-peering.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configure-peering/forward-ports-for-peering.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/manually-connect-to-a-specific-peer.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configure-peering/manually-connect-to-a-specific-peer.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/set-max-number-of-peers.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configure-peering/set-max-number-of-peers.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/configure-peering/use-a-peer-reservation.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/configure-peering/use-a-peer-reservation.ja.md
+        targets:
+            - ja
+
+    -   name: Testing and Auditing
+        html: use-stand-alone-mode.html
+        parent: infrastructure.html
+        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+
+        # TODO: Translate page name.
+    -   name: スタンドアロンモードでrippledをテスト
+        html: use-stand-alone-mode.html
+        parent: infrastructure.html
+        blurb: 新機能や実験用に、スタンドアロンモードを使用してフルネットワークで機能をテストできます。
+        template: pagetype-category.html.jinja
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.ja.md
+        targets:
+            - ja
+
+    -   name: Troubleshooting
+        html: troubleshoot-the-rippled-server.html
+        parent: infrastructure.html
+        blurb: Troubleshoot all kinds of problems with the rippled server.
+        template: pagetype-category.html.jinja
+        targets:
+            - en
+
+    -   name: rippledのトラブルシューティング
+        html: troubleshoot-the-rippled-server.html
+        parent: infrastructure.html
+        blurb: rippledサーバーのあらゆる種類の問題をトラブルシューティングします。
+        template: pagetype-category.html.jinja
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/troubleshooting/diagnosing-problems.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/troubleshooting/diagnosing-problems.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/rippled/troubleshooting/health-check-interventions.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/troubleshooting/understanding-log-messages.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/troubleshooting/understanding-log-messages.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/troubleshooting/server-doesnt-sync.md
+        targets:
+            - en
+
+        # TODO: translate the blurb in this page's frontmatter
+    -   md: infrastructure/rippled/troubleshooting/server-doesnt-sync.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/rippled/troubleshooting/server-is-amendment-blocked.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/rippled/troubleshooting/server-wont-start.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/troubleshooting/server-wont-start.ja.md
+        targets:
+            - ja
+
+    -   md: infrastructure/rippled/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
+        targets:
+            - en
+
+    -   md: infrastructure/rippled/troubleshooting/fix-sqlite-tx-db-page-size-issue.ja.md
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/clio/install-clio-on-ubuntu.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/rippled/run-private-network-with-docker.md
+        targets:
+        - en
+        - ja
+
+
+    # # Landing pages for labels -------------------------------------------------
+    # -   name: Accounts
+    #     html: label-accounts.html
+    #     parent: by-label.html
+    #     landing_for: Accounts
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages relating to accounts in the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: アカウント
+    #     html: label-accounts.html
+    #     parent: by-label.html
+    #     landing_for: アカウント
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerのアカウントに関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+
+    # -   name: Blockchain
+    #     html: label-blockchain.html
+    #     parent: by-label.html
+    #     landing_for: Blockchain
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about how the XRP Ledger functions as a blockchain.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: ブロックチェーン
+    #     html: label-blockchain.html
+    #     parent: by-label.html
+    #     landing_for: ブロックチェーン
+    #     template: pagetype-label.html.jinja
+    #     blurb: ブロックチェーンとしてのXRP Ledgerの機能に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Checks
+    #     html: label-checks.html
+    #     parent: by-label.html
+    #     landing_for: Checks
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about the Checks feature.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: Checks
+    #     html: label-checks.html
+    #     parent: by-label.html
+    #     landing_for: Checks
+    #     template: pagetype-label.html.jinja
+    #     blurb: Checks機能に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Core Server
+    #     html: label-rippled.html
+    #     parent: by-label.html
+    #     landing_for: Core Server
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about the XRP Ledger's core server implementation, rippled.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: コアサーバー
+    #     html: label-rippled.html
+    #     parent: by-label.html
+    #     landing_for: コアサーバー
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerのコアサーバー「rippled」に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Cross-Currency
+    #     html: label-cross-currency.html
+    #     parent: by-label.html
+    #     landing_for: Cross-Currency
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about exchanging currencies, tokens, and XRP in payments or the decentralized exchange.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: 複数通貨間
+    #     html: label-cross-currency.html
+    #     parent: by-label.html
+    #     landing_for: 複数通貨間
+    #     template: pagetype-label.html.jinja
+    #     blurb: 決済や分散型取引所での通貨、トークン、XRPの交換に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Data Retention
+    #     html: label-data-retention.html
+    #     parent: by-label.html
+    #     landing_for: Data Retention
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about how and for how long XRP Ledger software stores data.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: データ保持
+    #     html: label-data-retention.html
+    #     parent: by-label.html
+    #     landing_for: データ保持
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerのソフトウェアがデータを保存する方法と期間に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Decentralized Exchange
+    #     html: label-decentralized-exchange.html
+    #     parent: by-label.html
+    #     landing_for: Decentralized Exchange
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about the Decentralized Exchange built into the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: 分散型取引所
+    #     html: label-decentralized-exchange.html
+    #     parent: by-label.html
+    #     landing_for: 分散型取引所
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerの分散型取引所に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Development
+    #     html: label-development.html
+    #     parent: by-label.html
+    #     landing_for: Development
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about developing apps that use the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: 開発
+    #     html: label-development.html
+    #     parent: by-label.html
+    #     landing_for: 開発
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerを使うアプリケーションの開発に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #          - ja
+
+    # -   name: Escrow
+    #     html: label-escrow.html
+    #     parent: by-label.html
+    #     landing_for: Escrow
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about the Escrow feature.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: Escrow
+    #     html: label-escrow.html
+    #     parent: by-label.html
+    #     landing_for: Escrow
+    #     template: pagetype-label.html.jinja
+    #     blurb: Escrow機能に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Fees
+    #     html: label-fees.html
+    #     parent: by-label.html
+    #     landing_for: Fees
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about fees and related costs of transacting in the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: 手数料
+    #     html: label-fees.html
+    #     parent: by-label.html
+    #     landing_for: 手数料
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerのトランザクション処理時の手数料とコストに関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: "Non-fungible Tokens, NFTs"
+    #     html: label-nfts.html
+    #     landing_for: "Non-fungible Tokens, NFTs"
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about non-fungible tokens.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: "非代替性トークン, NFT"
+    #     html: label-nfts.html
+    #     landing_for: "非代替性トークン, NFT"
+    #     template: pagetype-label.html.jinja
+    #     blurb: NFTに関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Payment Channels
+    #     html: label-payment-channels.html
+    #     parent: by-label.html
+    #     landing_for: Payment Channels
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about the Payment Channels feature.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: Payment Channel
+    #     html: label-payment-channels.html
+    #     parent: by-label.html
+    #     landing_for: Payment Channel
+    #     template: pagetype-label.html.jinja
+    #     blurb: Payment Channel機能に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Payments
+    #     html: label-payments.html
+    #     parent: by-label.html
+    #     landing_for: Payments
+    #     template: pagetype-label.html.jinja
+    #     blurb: About sending payments (of XRP or tokens) in the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: 支払い
+    #     html: label-payments.html
+    #     parent: by-label.html
+    #     landing_for: 支払い
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerでの支払い機能に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Smart Contracts
+    #     html: label-smart-contracts.html
+    #     parent: by-label.html
+    #     landing_for: Smart Contracts
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about XRP Ledger features that can be used to build smart contracts.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: スマートコントラクト
+    #     html: label-smart-contracts.html
+    #     parent: by-label.html
+    #     landing_for: スマートコントラクト
+    #     template: pagetype-label.html.jinja
+    #     blurb: スマートコントラクトを構築する際に利用できるXRP Ledgerの特徴に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Security
+    #     html: label-security.html
+    #     parent: by-label.html
+    #     landing_for: Security
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about security issues and precautions.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: セキュリティ
+    #     html: label-security.html
+    #     parent: by-label.html
+    #     landing_for: セキュリティ
+    #     template: pagetype-label.html.jinja
+    #     blurb: セキュリティ問題と予防措置に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Tokens
+    #     html: label-tokens.html
+    #     parent: by-label.html
+    #     landing_for: Tokens
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about issuing tokens in the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: トークン
+    #     html: label-tokens.html
+    #     parent: by-label.html
+    #     landing_for: トークン
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerでの発行トークンに関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Transaction Sending
+    #     html: label-transaction-sending.html
+    #     parent: by-label.html
+    #     landing_for: Transaction Sending
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about sending transactions in the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: トランザクション送信
+    #     html: label-transaction-sending.html
+    #     parent: by-label.html
+    #     landing_for: トランザクション送信
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerでのトランザクション送信に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: XRP
+    #     html: label-xrp.html
+    #     parent: by-label.html
+    #     landing_for: XRP
+    #     template: pagetype-label.html.jinja
+    #     blurb: Pages about XRP, the native digital asset built into the XRP Ledger.
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: XRP
+    #     html: label-xrp.html
+    #     parent: by-label.html
+    #     landing_for: XRP
+    #     template: pagetype-label.html.jinja
+    #     blurb: XRP Ledgerのネイティブ暗号資産「XRP」に関するページ。
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
+
+    # -   name: Browse By Label
+    #     html: by-label.html
+    #     parent: docs.html
+    #     template: page-by-label.html.jinja
+    #     sidebar: left_only
+    #     blurb: See all pages labeled with a specific topic or idea.
+    #     top_nav_omit: true
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - en
+
+    # -   name: ラベル別に閲覧
+    #     html: by-label.html
+    #     parent: docs.html
+    #     template: page-by-label.html.jinja
+    #     sidebar: left_only
+    #     blurb: 特定のトピックでラベル付けされたページを表示します。
+    #     top_nav_omit: true
+    #     filters:
+    #         - labels
+    #     targets:
+    #         - ja
 
 
 # --------------- end "Docs" section -------------------------------------------
-# Use Cases: these have been removed. Only redirects remain.
-
-    -   name: Use Cases
-        html: use-cases.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: uses.html
-        targets:
-            - en
-
-    -   name: ユースケース
-        html: use-cases.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: uses.html
-        targets:
-            - ja
+# Old use Cases: these have been removed. Only redirects remain.
 
     -   name: Run a rippled Validator
         html: run-a-rippled-validator.html
@@ -4493,7 +5083,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - en
 
@@ -4501,7 +5091,7 @@ pages:
         html: contribute-code-to-rippled.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - ja
 
@@ -4509,7 +5099,7 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - en
 
@@ -4517,53 +5107,79 @@ pages:
         html: contribute-code-to-ripple-lib.html
         template: pagetype-redirect.html.jinja
         nav_omit: true
-        redirect_url: contribute-code-flow.html
+        redirect_url: contribute-code.html
         targets:
             - ja
 
-# Code Samples page (final location TBD)
+    -   name: Contribute Code
+        html: contribute-code-flow.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: contribute-code.html
+        targets:
+            - en
+            - ja
+
+# Resources tab ---------------------------------------------------------------
+    -   name: Resources
+        html: resources.html
+        parent: index.html
+        # Temporary: redirect to Dev Tools Eventually this should become a real landing page.
+        template: pagetype-category.html.jinja
+        blurb: Other resources to help understand the XRP Ledger and develop on it.
+        targets:
+            - en
+
+    -   name: リソース
+        html: resources.html
+        parent: index.html
+        template: pagetype-category.html.jinja
+        blurb: XRP Ledgerの理解や開発ためのリソース。Other resources to help understand the XRPL and develop on it.
+        targets:
+            - ja
+
     -   name: Code Samples
         html: code-samples.html
-        parent: docs.html
+        parent: resources.html
         template: page-code-samples.html.jinja
         sidebar: left_only
         codesamples: true
+        top_nav_grouping: Development
         filters:
             - code_samples
-        top_nav_grouping: Online Tools
         blurb: Browse sample code for building common use cases on the XRP Ledger.
         targets:
             - en
 
     -   name: サンプルコード
         html: code-samples.html
-        parent: docs.html
+        parent: resources.html
         template: page-code-samples.html.jinja
         sidebar: left_only
         codesamples: true
+        top_nav_grouping: 開発
         filters:
             - code_samples
-        top_nav_grouping: Online Tools
         blurb: XRP Ledgerで一般的なユースケースを構築するためのサンプルコードを確認することができます。
         targets:
             - ja
 
-# Dev Tools --------------------------------------------------------------------
+    # Dev Tools ---------------------------------------------------------------
     -   name: Dev Tools
         html: dev-tools.html
         template: page-dev-tools.html.jinja
-        parent: docs.html
-        top_nav_grouping: Online Tools
+        parent: resources.html
         sidebar: left_only
+        top_nav_grouping: Development
         targets:
             - en
 
     -   name: 開発者ツール
         html: dev-tools.html
         template: page-dev-tools.html.jinja
-        parent: docs.html
-        top_nav_grouping: Online Tools
+        parent: resources.html
         sidebar: left_only
+        top_nav_grouping: 開発
         targets:
             - ja
 
@@ -4574,20 +5190,6 @@ pages:
         redirect_url: dev-tools.html
         targets:
             - en
-            - ja
-    
-    -   name: XRPL Learning Portal
-        html: https://learn.xrpl.org/
-        parent: docs.html
-        top_nav_grouping: Online Tools
-        targets:
-            - en
-
-    -   name: XRPL学習ポータル
-        html: https://learn.xrpl.org/
-        parent: docs.html
-        top_nav_grouping: Online Tools
-        targets:
             - ja
 
     -   name: RPC Tool
@@ -4702,6 +5304,121 @@ pages:
         targets:
             - ja
 
+    -   name: XRPL Learning Portal
+        html: https://learn.xrpl.org/
+        parent: resources.html
+        top_nav_grouping: Development
+        targets:
+            - en
+
+    -   name: XRPL学習ポータル
+        html: https://learn.xrpl.org/
+        parent: resources.html
+        top_nav_grouping: 開発
+        targets:
+            - ja
+
+    -   name: Ledger Explorer
+        html: https://livenet.xrpl.org/
+        parent: resources.html
+        top_nav_grouping: Current Status
+        targets:
+            - en
+
+    -   name: XRP Ledger エクスプローラ
+        html: https://livenet.xrpl.org/
+        parent: resources.html
+        top_nav_grouping: 現在のステータス
+        targets:
+            - ja
+
+    -   md: resources/known-amendments.md
+        top_nav_grouping: Current Status
+        targets:
+            - en
+
+    -   md: resources/known-amendments.ja.md
+        top_nav_grouping: 現在のステータス
+        targets:
+            - ja
+
+
+    # Contribute Code ---------------------------------------------------------
+
+    -   md: resources/contribute-code/contribute-code.md
+        top_nav_grouping: Join In
+        targets:
+            - en
+
+    -   md: resources/contribute-code/contribute-code.ja.md
+        top_nav_grouping: 参加する
+        targets:
+            - ja
+
+    -   md: resources/contribute-code/create-custom-transactors.md
+        targets:
+            - en
+
+    -   md: resources/contribute-code/create-custom-transactors.ja.md
+        targets:
+            - ja
+
+    # Contribute Documentation ------------------------------------------------
+
+    -   md: resources/contribute-documentation/contribute-documentation.md
+        top_nav_grouping: Join In
+        targets:
+            - en
+
+    -   md: resources/contribute-documentation/contribute-documentation.ja.md
+        top_nav_grouping: 参加する
+        targets:
+            - ja
+
+    -   name: Contributor Code of Conduct
+        html: https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.md
+        parent: contribute-documentation.html
+        targets:
+            - en
+
+    -   name: コントリビューター行動規範
+        html: https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.ja.md
+        parent: contribute-documentation.html
+        targets:
+            - ja
+
+    -   md: resources/contribute-documentation/documentation-translations.md
+        targets:
+            - en
+
+    -   md: resources/contribute-documentation/documentation-translations.ja.md
+        targets:
+            - ja
+
+    -   md: resources/contribute-documentation/creating-diagrams.md
+        targets:
+            - en
+
+    -   md: resources/contribute-documentation/creating-diagrams.ja.md
+        targets:
+            - ja
+
+    -   md: resources/contribute-documentation/tutorial-guidelines.md
+        targets:
+            - en
+
+    -   md: resources/contribute-documentation/tutorial-guidelines.ja.md
+        targets:
+            - ja
+
+    -   md: resources/contribute-documentation/tutorial-structure.md
+        targets:
+            - en
+
+    -   md: resources/contribute-documentation/tutorial-structure.ja.md
+        targets:
+            - ja
+
 
 # "Community" tab --------------------------------------------------------------
     -   name: Contribute to the XRPL Community
@@ -4716,44 +5433,19 @@ pages:
         targets:
             - en
 
-        # TODO: translate blurb & contents
-    -   name: 貢献する
+        # TODO: translate contents
+    -   name: XRPLコミュニティへの貢献
         html: contribute.html
         parent: index.html
         template: page-community.html.jinja
         sidebar: disabled
-        blurb: 話題に加わろう
+        top_nav_blurb: コミュニティに参加しましょう
+        blurb: XRP Ledger (XRPL) はコミュニティ主導のパブリックブロックチェーンです。ここでは、その参加方法について説明します。
         top_nav_name: コミュニティ
         top_nav_hero_image: top-nav-hero-contribute
         targets:
             - ja
 
-    # TODO: translate
-    -   md: contributing/contribute-code.md
-        html: contribute-code.html
-        parent: contribute.html
-        top_nav_omit: true
-        targets:
-            - en
-            - ja
-
-    # TODO: translate
-    -   md: contributing/tutorial-guidelines.md
-        html: tutorial-guidelines.html
-        parent: contribute-code.html
-        top_nav_omit: true
-        targets:
-            - en
-            - ja
-
-    # TODO: translate
-    -   md: contributing/tutorial-structure.md
-        html: tutorial-structure.html
-        parent: tutorial-guidelines.html
-        top_nav_omit: true
-        targets:
-            - en
-            - ja
 
     -   name: Events
         html: events.html
@@ -4764,11 +5456,12 @@ pages:
         blurb: The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.
         top_nav_name: Events
         top_nav_hero_image: top-nav-hero-contribute
-        filters: 
+        filters:
             - categorize_dates
         targets:
             - en
 
+    # add trans script to page-events.html.jinja and translate (messages.po)
     -   name: イベント
         html: events.html
         parent: contribute.html
@@ -4778,7 +5471,7 @@ pages:
         blurb: XRP Ledger (XRPL) はコミュニティ主導のパブリックブロックチェーンです。ここでは、その参加方法について説明します。
         top_nav_name: イベント
         top_nav_hero_image: top-nav-hero-contribute
-        filters: 
+        filters:
             - categorize_dates
         targets:
             - ja
@@ -4861,23 +5554,39 @@ pages:
             - ja
 
     -   name: GitHub
-        html: https://github.com/XRPLF/xrpl-dev-portal/
+        html: https://github.com/XRPLF
         parent: contribute.html
-        blurb: View and propose changes to this site's source code on GitHub.
+        blurb: View XRP Ledger projects and source code on GitHub.
         targets:
             - en
 
     -   name: GitHub
         html: https://github.com/XRPLF/xrpl-dev-portal/
         parent: contribute.html
-        blurb: このサイトのソースコードをGitHubで閲覧し、変更を提案することができます。
+        blurb: XRP LedgerのソースコードをGitHubで閲覧し、変更を提案することができます。
         targets:
             - ja
 
-    # TODO: Translate
+    -   name: XRPL Brand Kit
+        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
+        parent: contribute.html
+        blurb: Review guidelines for using XRPL design assets.
+        targets:
+            - en
+
+    -   name: XRPLブランドキット
+        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
+        parent: contribute.html
+        blurb: XRPLのデザインアセットのガイドラインを確認しましょう。
+        targets:
+            - ja
+
     -   md: contributing/report-a-scam.md
         targets:
             - en
+
+    -   md: contributing/report-a-scam.ja.md
+        targets:
             - ja
 
 # Redirects from deprecated "Explore" pages ------------------------------------
@@ -4896,7 +5605,7 @@ pages:
         nav_omit: true
         targets:
             - ja
-            
+
     -   name: Wallet
         html: wallet.html
         template: pagetype-redirect.html.jinja
@@ -5027,8 +5736,12 @@ known_broken_links:
     - https://xrplimpact.devpost.com/
     - https://www.postgresqltutorial.com/install-postgresql-linux/
     - http://www.investopedia.com/terms/o/order-book.asp
+    - https://linux.die.net/man/8/logrotate
     # This site often times out, but it does work and is the original.
     - https://theworld.com/~reinhold/diceware.html
+    # Returns an "expected a POST" error, but it's linked specifically for a
+    # case where you need to update certs, and that works.
+    - https://s1.ripple.com
 
 
 # Style Checker Config ------------------------------------------------------ #

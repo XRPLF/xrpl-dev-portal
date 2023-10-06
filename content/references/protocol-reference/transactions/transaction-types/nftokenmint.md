@@ -8,7 +8,7 @@ labels:
 # NFTokenMint
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenMint.cpp "Source")
 
-The `NFTokenMint` transaction creates a non-fungible token and adds it to the relevant [NFTokenPage object][] of the `NFTokenMinter` as an [NFToken][] object. A required parameter to this transaction is the `Token` field specifying the actual token. This transaction is the only opportunity the `NFTokenMinter` has to specify any token fields that are defined as immutable (for example, the `TokenFlags`).
+The `NFTokenMint` transaction creates a non-fungible token and adds it to the relevant [NFTokenPage object][] of the `NFTokenMinter` as an [NFToken][] object. This transaction is the only opportunity the `NFTokenMinter` has to specify any token fields that are defined as immutable (for example, the `TokenFlags`).
 
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
@@ -59,7 +59,7 @@ Transactions of the NFTokenMint type support additional values in the [`Flags` f
 | `tfBurnable` | `0x00000001` | 1 | Allow the issuer (or an entity authorized by the issuer) to destroy the minted `NFToken`. (The `NFToken`'s owner can _always_ do so.) |
 | `tfOnlyXRP` | `0x00000002` | 2 | The minted `NFToken` can only be bought or sold for XRP. This can be desirable if the token has a transfer fee and the issuer does not want to receive fees in non-XRP currencies. |
 | `tfTrustLine` | `0x00000004` | 4 | **DEPRECATED** Automatically create [trust lines](trust-lines-and-issuing.html) from the issuer to hold transfer fees received from transferring the minted `NFToken`. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to set this flag. |
-| `tfTransferable` | `0x00000008` | 8 | The minted `NFToken` can be transferred to others. If this flag is _not_ enabled, the token can still be transferred _from_ or _to_ the issuer. |
+| `tfTransferable` | `0x00000008` | 8 | The minted `NFToken` can be transferred to others. If this flag is _not_ enabled, the token can still be transferred _from_ or _to_ the issuer, but a transfer to the issuer must be made based on a buy offer from the issuer and not a sell offer from the NFT holder. |
 
 
 ## Embedding additional information

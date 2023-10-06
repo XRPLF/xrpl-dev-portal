@@ -65,8 +65,6 @@ DefaultRippleフラグは、デフォルトで着信トラストラインでのR
 
 アカウントのDefaultRipple設定は、他者があなたに対してオープンしたトラストラインにのみ影響し、あなたが作成するトラストラインには影響しません。アカウントのDefaultRipple設定を変更する場合、変更前に作成したトラストラインでは既存のNoRipple設定が維持されます。アドレスの新しいデフォルトに合わせてトラストラインのNoRipple設定を変更するには、[TrustSetトランザクション][]を使用します。
 
-詳細は、[「XRP Ledgerゲートウェイの開設」のDefaultRipple](become-an-xrp-ledger-gateway.html#default-ripple)を参照してください。
-
 
 ## NoRippleを使用する
 <!--{# TODO: move these things into their own tutorials #}-->
@@ -89,8 +87,6 @@ DefaultRippleフラグは、デフォルトで着信トラストラインでのR
 
 - **コンセプト:**
   - [パス](paths.html)
-- **チュートリアル:**
-  - [XRP Ledgerゲートウェイの開設](become-an-xrp-ledger-gateway.html)
 - **リファレンス:**
   - [account_linesメソッド][]
   - [account_infoメソッド][]

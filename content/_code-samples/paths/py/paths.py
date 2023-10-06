@@ -27,7 +27,7 @@ destination_amount = IssuedCurrencyAmount(
 
 # Create a RipplePathFind request and have the client call it
 path_request = RipplePathFind(
-    source_account=wallet.classic_address,
+    source_account=wallet.address,
     source_currencies=[XRP()],
     destination_account=destination_account,
     destination_amount=destination_amount,
@@ -41,10 +41,10 @@ print(paths)
 
 # # Create a Payment to send money from wallet to destination_account using path
 payment_tx = Payment(
-    account=wallet.classic_address,
+    account=wallet.address,
     amount=destination_amount,
     destination=destination_account,
     paths=paths,
 )
 
-print("signed: ", autofill_and_sign(payment_tx, wallet, client))
+print("signed: ", autofill_and_sign(payment_tx, client, wallet))

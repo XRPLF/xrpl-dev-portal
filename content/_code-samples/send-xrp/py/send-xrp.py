@@ -1,7 +1,8 @@
 # Example Credentials ----------------------------------------------------------
 from xrpl.wallet import Wallet
-test_wallet = Wallet(seed="sn3nxiW7v8KXzPzAqzyHXbSSKNuN9", sequence=16237283)
-print(test_wallet.classic_address) # "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"
+from xrpl.constants import CryptoAlgorithm
+test_wallet = Wallet.from_seed(seed="sn3nxiW7v8KXzPzAqzyHXbSSKNuN9", algorithm=CryptoAlgorithm.SECP256K1)
+print(test_wallet.address) # "rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH"
 
 # Connect ----------------------------------------------------------------------
 import xrpl
@@ -17,15 +18,15 @@ test_wallet = generate_faucet_wallet(client, debug=True)
 
 # Prepare transaction ----------------------------------------------------------
 my_payment = xrpl.models.transactions.Payment(
-    account=test_wallet.classic_address,
+    account=test_wallet.address,
     amount=xrpl.utils.xrp_to_drops(22),
     destination="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
 )
 print("Payment object:", my_payment)
 
 # Sign transaction -------------------------------------------------------------
-signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        my_payment, test_wallet, client)
+signed_tx = xrpl.transaction.autofill_and_sign(
+        my_payment, client, test_wallet)
 max_ledger = signed_tx.last_ledger_sequence
 tx_id = signed_tx.get_hash()
 print("Signed transaction:", signed_tx)
@@ -35,12 +36,12 @@ print("Identifying hash:", tx_id)
 
 # Submit transaction -----------------------------------------------------------
 try:
-    tx_response = xrpl.transaction.send_reliable_submission(signed_tx, client)
+    tx_response = xrpl.transaction.submit_and_wait(signed_tx, client)
 except xrpl.transaction.XRPLReliableSubmissionException as e:
     exit(f"Submit failed: {e}")
 
 # Wait for validation ----------------------------------------------------------
-# send_reliable_submission() handles this automatically, but it can take 4-7s.
+# submit_and_wait() handles this automatically, but it can take 4-7s.
 
 # Check transaction results ----------------------------------------------------
 import json

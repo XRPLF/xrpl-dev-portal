@@ -7,11 +7,11 @@ from pathlib import Path, PureWindowsPath, PurePath
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-from xrpl import wallet
 from xrpl.core import keypairs
 from xrpl.utils import xrp_to_drops
 from xrpl.models.transactions import Payment
-from xrpl.transaction import safe_sign_transaction
+from xrpl.transaction import sign
+from xrpl.wallet.main import Wallet
 
 
 def create_wallet(silent: False):
@@ -63,24 +63,23 @@ def sign_transaction(xrp_amount, destination, ledger_seq, wallet_seq, password):
     seed = crypt.decrypt(seed)
 
     print("4. Initializing wallet using decrypted private key")
-    _wallet = wallet.Wallet(seed=seed.decode(), sequence=0)
+    _wallet = Wallet.from_seed(seed=seed.decode())
 
     validated_seq = ledger_seq
-    _wallet.sequence = wallet_seq
 
     print("5. Constructing payment transaction...")
     my_tx_payment = Payment(
-        account=_wallet.classic_address,
+        account=_wallet.address,
         amount=xrp_to_drops(xrp=xrp_amount),
         destination=destination,
         last_ledger_sequence=validated_seq + 100,
         # +100 to catch up with the ledger when we transmit the signed tx blob to Machine 2
-        sequence=_wallet.sequence,
+        sequence=wallet_seq,
         fee="10"
     )
 
     print("6. Signing transaction...")
-    my_tx_payment_signed = safe_sign_transaction(transaction=my_tx_payment, wallet=_wallet)
+    my_tx_payment_signed = sign(transaction=my_tx_payment, wallet=_wallet)
 
     img = qrcode.make(my_tx_payment_signed.to_dict())
 

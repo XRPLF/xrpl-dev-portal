@@ -7,7 +7,7 @@ labels:
 ---
 # OfferCancel
 
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/CancelOffer.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CancelOffer.cpp "Source")
 
 OfferCancelトランザクションは、XRP LedgerからOfferオブジェクトを削除します。
 

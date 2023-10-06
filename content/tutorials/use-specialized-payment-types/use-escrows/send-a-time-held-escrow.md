@@ -45,7 +45,7 @@ print(release_date_ripple)
 
 ## 2. Submit EscrowCreate transaction
 
-[Sign and submit](transaction-basics.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender. Set the `Amount` to the total amount of [XRP, in drops][], to escrow.
+[Sign and submit](transactions.html#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender. Set the `Amount` to the total amount of [XRP, in drops][], to escrow.
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 
@@ -141,8 +141,9 @@ Response:
 
 ## 6. Submit EscrowFinish transaction
 
-[Sign and submit](transaction-basics.html#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. For an escrow held only by time, omit the `Condition` and `Fulfillment` fields.
+[Sign and submit](transactions.html#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. For an escrow held only by time, omit the `Condition` and `Fulfillment` fields.
 
+***TODO: First half of this statement is covered by concept info already. It's also reiterated in escrow.md. The second portion about potential recipients should remain.***
 **Tip:** The EscrowFinish transaction is necessary because the XRP Ledger's state can only be modified by transactions. The sender of this transaction may be the recipient of the escrow, the original sender of the escrow, or any other XRP Ledger address.
 
 If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-escrow.html) instead.
@@ -211,7 +212,7 @@ Response:
 ## See Also
 
 - **Concepts:**
-    - [XRP](xrp.html)
+    - [What is XRP?](what-is-xrp.html)
     - [Payment Types](payment-types.html)
         - [Escrow](escrow.html)
 - **Tutorials:**

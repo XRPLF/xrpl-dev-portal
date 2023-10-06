@@ -104,7 +104,7 @@ _Python_
 ```py
 keypair = xrpl.wallet.Wallet.create()
 print("seed:", keypair.seed)
-print("classic address:", keypair.classic_address)
+print("classic address:", keypair.address)
 ```
 
 _JavaScript_
@@ -133,7 +133,7 @@ In the next step, you'll use the address from this response (`account_id` in the
 
 Use a [SetRegularKey transaction][] to assign the key pair you generated in step 1 to your account as a regular key pair.
 
-When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing with your account's master private key (secret). There are [several ways of securely signing transactions](set-up-secure-signing.html), but this tutorial uses a local `rippled` server.
+When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing with your account's master private key (secret). There are [several ways of securely signing transactions](secure-signing.html), but this tutorial uses a local `rippled` server.
 
 When you send later SetRegularKey transactions, you can sign using the existing regular private key to replace or [remove itself](change-or-remove-a-regular-key-pair.html). Note that you should still not submit your regular private key across the network.
 
@@ -414,7 +414,7 @@ Note that the response contains a `hash` of the transaction, which you can use t
 
 At this point, the regular key pair is assigned to your account and you should be able to send transactions using the regular key pair. **To avoid losing control of your account,** it is important that you test your regular key before you take any additional steps such as [disabling the master key pair](disable-master-key-pair.html). If you make a mistake and lose access to your account, no one can restore it for you.
 
-To verify that your account has the regular key pair set correctly, submit an [AccountSet transaction][] from your account, signing it with the regular private key you assigned to your account in step 2. As in step 1, this tutorial uses a local `rippled` server as a [way of securely signing transactions](set-up-secure-signing.html).
+To verify that your account has the regular key pair set correctly, submit an [AccountSet transaction][] from your account, signing it with the regular private key you assigned to your account in step 2. As in step 1, this tutorial uses a local `rippled` server as a [way of securely signing transactions](secure-signing.html).
 
 
 ### Sign Your Transaction
@@ -692,7 +692,7 @@ Now that you're familiar with the benefits of assigning a regular key pair to an
 - **Concepts:**
     - [Cryptographic Keys](cryptographic-keys.html)
     - [Multi-Signing](multi-signing.html)
-    - [Issuing and Operational Addresses](issuing-and-operational-addresses.html)
+    - [Issuing and Operational Addresses](account-types.html)
 - **Tutorials:**
     - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
     - [Set Up Multi-Signing](set-up-multi-signing.html)

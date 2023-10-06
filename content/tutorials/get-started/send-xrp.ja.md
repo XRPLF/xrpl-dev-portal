@@ -1,6 +1,6 @@
 ---
 html: send-xrp.html
-parent: get-started.html
+parent: tasks.html
 blurb: Test Netを使用してXRPの送金をテストします。
 cta_text: XRPを送金しよう
 embed_xrpl_js: true
@@ -262,7 +262,7 @@ _Python_
 ```py
 from xrpl.wallet import Wallet
 my_wallet = Wallet.create()
-print(my_wallet.classic_address) # Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
+print(my_wallet.address) # Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 print(my_wallet.seed)            # Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
 
@@ -323,7 +323,6 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 - [アカウント設定](manage-account-settings.html)をカスタマイズする
 - [トランザクションのメタデータ](transaction-metadata.html)にトランザクションの結果の詳細がどのように記述されているかを知る
 - escrowやPayment Channelなどの[複雑な支払いタイプ](complex-payment-types.html)について調べる
-- [XRP Ledgerビジネス](xrp-ledger-businesses.html)のベストプラクティスを読む
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			

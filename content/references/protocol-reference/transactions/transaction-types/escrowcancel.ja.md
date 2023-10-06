@@ -7,7 +7,7 @@ labels:
 ---
 # EscrowCancel
 
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
 _[Escrow Amendment][]が必要です。_
 

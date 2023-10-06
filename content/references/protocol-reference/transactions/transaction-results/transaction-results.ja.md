@@ -7,7 +7,7 @@ labels:
 ---
 # トランザクションの結果
 
-[[ソース]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/TER.h "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/TER.h "Source")
 
 `rippled`サーバーは、トランザクション結果の要約を結果コードで示し、結果コードは`engine_result`や`meta.TransactionResult`などのフィールドに記述されます。これらのコードは、それぞれ異なるプレフィクスを付加した複数のカテゴリーに分類されます。
 

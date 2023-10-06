@@ -10,7 +10,7 @@ from xrpl.wallet import generate_faucet_wallet
 test_wallet = generate_faucet_wallet(client, debug=True)
 
 # Create an account str from the wallet
-test_account = test_wallet.classic_address
+test_account = test_wallet.address
 
 # Derive an x-address from the classic address:
 # https://xrpaddress.info/

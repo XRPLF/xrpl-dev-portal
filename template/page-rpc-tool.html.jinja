@@ -7,10 +7,10 @@
   <h1>RPC Tool</h1>
   <div class="content">
 
-  <p>This is a debug tool for printing raw information about an account (by classic address), a transaction (by hash) or a ledger (by sequence number).</p>
+  <p>{% trans %}This is a debug tool for printing raw information about an account (by classic address), a transaction (by hash) or a ledger (by sequence number).{% endtrans %}</p>
 
   <form id="account-entry">
-  <fieldset class="form-group"><input id="target" class="form-control" required="" type="text" placeholder="XRP Ledger address, transaction ID, or ledger index" />
+  <fieldset class="form-group"><input id="target" class="form-control" required="" type="text" placeholder="{% trans %}XRP Ledger address, transaction ID, or ledger index{% endtrans %}" />
   <span class="help-block"><small>{% trans %}Try an account like <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>.{% endtrans %}</small></span>
   <button class="btn btn-primary">{% trans %}Get info{% endtrans %}</button></fieldset>
   </form>
@@ -50,7 +50,7 @@
          <li><a class="account-lines-expand">{% trans %}expand all{% endtrans %}</a></li>
          <li><a class="account-lines-collapse">{% trans %}collapse all{% endtrans %}</a></li>
     </ul>
-    <h3><a href="account_tx.html">account_tx</a> (last 20)</h3>
+    <h3><a href="account_tx.html">account_tx</a> {% trans %}(last 20){% endtrans %}</h3>
     <ul class="tools nav nav-pills">
          <li><a class="account-tx-expand-tx">{% trans %}expand tx{% endtrans %}</a></li>
          <li><a class="account-tx-expand">{% trans %}expand all{% endtrans %}</a></li>

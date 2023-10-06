@@ -1,5 +1,5 @@
 from xrpl.models.transactions import TicketCreate, AccountSet, SignerListSet, SignerEntry
-from xrpl.transaction import safe_sign_and_submit_transaction, autofill, multisign, sign
+from xrpl.transaction import sign_and_submit, autofill, multisign, sign
 from xrpl.models.requests.account_objects import AccountObjects, AccountObjectType
 from xrpl.models.requests.submit_multisigned import SubmitMultisigned
 from xrpl.wallet import generate_faucet_wallet
@@ -21,7 +21,7 @@ client = JsonRpcClient(JSON_RPC_URL)
 
 # Generate a wallet and request faucet
 test_wallet = generate_faucet_wallet(client=client)
-myAddr = test_wallet.classic_address
+myAddr = test_wallet.address
 
 print("Setting up all the signers' accounts via the testnet faucet, this may take a while...")
 signer_1_wallet = generate_faucet_wallet(client=client)
@@ -30,9 +30,9 @@ signer_3_wallet = generate_faucet_wallet(client=client)
 
 # Set the list of accounts that are able to authorize transactions on behalf of our Account via a multi-sig transaction
 signers = [
-        SignerEntry(account=signer_1_wallet.classic_address, signer_weight=1),
-        SignerEntry(account=signer_2_wallet.classic_address, signer_weight=1),
-        SignerEntry(account=signer_3_wallet.classic_address, signer_weight=1)
+        SignerEntry(account=signer_1_wallet.address, signer_weight=1),
+        SignerEntry(account=signer_2_wallet.address, signer_weight=1),
+        SignerEntry(account=signer_3_wallet.address, signer_weight=1)
 ]
 
 # Display all the signers' account address
@@ -55,7 +55,7 @@ tx_set_signer_list = SignerListSet(
 
 # Sign transaction locally and submit
 print("Submitting a SignerListSet transaction to update our account to use our new Signers...")
-tx_set_signer_list_signed = safe_sign_and_submit_transaction(transaction=tx_set_signer_list, wallet=test_wallet, client=client)
+tx_set_signer_list_signed = sign_and_submit(transaction=tx_set_signer_list, client=client, wallet=test_wallet)
 
 # Construct a TicketCreate transaction, 3 tickets will be created
 tx_create_ticket = TicketCreate(
@@ -65,7 +65,7 @@ tx_create_ticket = TicketCreate(
 
 # Sign transaction locally and submit
 print("Submitting a TicketCreate transaction to get Ticket Sequences for future transactions...")
-tx_create_ticket_signed = safe_sign_and_submit_transaction(transaction=tx_create_ticket, wallet=test_wallet, client=client)
+tx_create_ticket_signed = sign_and_submit(transaction=tx_create_ticket, client=client, wallet=test_wallet)
 
 # Get a Ticket Sequence
 get_ticket_sequence = client.request(AccountObjects(

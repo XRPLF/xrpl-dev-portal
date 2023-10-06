@@ -1,72 +1,58 @@
+/* "pencil banner" style, currently unused */
 .top-banner {
-    height: 46px;
-    background: url(../img/backgrounds/bg-apex-banner.svg);
-    background-position: left;
-    background-size: cover;
-    background-color: #7919FF;
-    // padding: 2px 0;
-    color: #fff;
+  height: 46px;
+  background: url(../img/backgrounds/bg-apex-banner.svg);
+  background-position: left;
+  background-size: cover;
+  background-color: $blue-purple-500;
+  // padding: 2px 0;
+  color: $white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 24px;
+
+  .btn {
+    margin-left: 4px;
+    font-size: 12px;
+    color: $white;
+    padding: 2px 4px;
+    border: 1px solid $white;
+    border-radius: 2px;
+
+    @include media-breakpoint-up(md) {
+      margin-top: 9px;
+      margin-left: 16px;
+      font-size: 16px;
+      padding: 4px 8px;
+      border: 1.5px solid $white;
+      border-radius: 4px;
+    }
+  }
+
+  .btn-outline-secondary {
+    &:not(:disabled):not(.disabled):hover {
+      color: $gray-900;
+      background-color: $white;
+    }
+  }
+
+  p {
+    font-size: 12px;
+    line-height: 20px;
     text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 24px;
+    margin: auto;
 
-
-
-    .btn {
-        margin-left: 4px;
-        font-size: 12px;
-        color: #fff;
-        padding: 2px 4px;
-        border: 1px solid #fff;
-        border-radius: 2px;
-
-        @include media-breakpoint-up(md) {
-            margin-top: 9px;
-            margin-left: 16px;
-            font-size: 16px;
-            padding: 4px 8px;
-            border: 1.5px solid #fff;
-            border-radius: 4px;
-        }
+    @include media-breakpoint-up(md) {
+      padding-top: 11px;
+      font-size: 16px;
+      width: initial;
+      line-height: 24px;
     }
-
-    .btn-outline-secondary {
-        &:not(:disabled):not(.disabled):hover {
-            color: #111112;
-            background-color: #fff;
-        }
-    }
-
-    p {
-        font-size: 12px;
-        line-height: 20px;
-        text-align: center;
-        margin: auto;
-
-        @include media-breakpoint-up(md) {
-            padding-top: 11px;
-            font-size: 16px;
-            width: initial;
-            line-height: 24px;
-        }
-    }
+  }
 }
 
-body {
-    padding-top: 46px;
-}
-.top-nav {
-    top: 46px;
-}
-.right-sidebar,
-.left-sidebar {
-    @include media-breakpoint-up(lg) {
-        top: 100px;
-    }
-}
-
-$banner-top-offset: 146px;
+$banner-top-offset: 108px;
 
 .floating-nav {
   top: $banner-top-offset;
@@ -80,31 +66,24 @@ $banner-top-offset: 146px;
 .main h6:before,
 #main_content_wrapper:before,
 .interactive-block:before {
-    margin-top: -$banner-top-offset;
-    height: $banner-top-offset;
+  margin-top: -$banner-top-offset;
+  height: $banner-top-offset;
 }
 
 .content h1:first-child:before {
-    margin-top: -$banner-top-offset;
-}
-
-#main_content_wrapper {
-    margin-top: 53px;
+  margin-top: -$banner-top-offset;
 }
 
 html.light {
-    .top-banner {
-
-        .btn-outline-secondary {
-            color: #fff;
-            border-color: #fff;
-            &:not(:disabled):not(.disabled):hover {
-                color: #111112;
-                background-color: #fff;
-                border-color: #fff;
-            }
-        }
-
+  .top-banner {
+    .btn-outline-secondary {
+      color: $white;
+      border-color: $white;
+      &:not(:disabled):not(.disabled):hover {
+        color: $gray-900;
+        background-color: $white;
+        border-color: $white;
+      }
     }
+  }
 }
-

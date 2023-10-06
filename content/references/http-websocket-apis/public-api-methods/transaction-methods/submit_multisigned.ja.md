@@ -6,7 +6,7 @@ labels:
   - トランザクション送信
 ---
 # submit_multisigned
-[[ソース]](https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
 
 `submit_multisigned`コマンドは[マルチシグ](multi-signing.html)トランザクションを適用し、このトランザクションをネットワークに送信して、今後のレジャーに追加します。（[`submit`コマンドを送信専用モードで](submit.html#送信専用モード)使用して、マルチシグトランザクションをバイナリー形式で送信することもできます。)
 

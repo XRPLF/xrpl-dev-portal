@@ -1,0 +1,29 @@
+<nav class="breadcrumbs-wrap" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    {% set ns=namespace(crumbs = []) -%}
+    {%- macro get_crumbs(page) %}
+      {% if page.parent is undefined or page.parent == "index.html" %}
+        {% set homepage = pages|selectattr('html', 'defined_and_equalto', 'index.html')|list|first %}
+        {% set _ = ns.crumbs.insert(0, homepage) %}
+      {% else %}
+        {% set parent = pages|selectattr('html', 'defined_and_equalto', page.parent)|list|first %}
+        {% if parent is undefined %}
+        {% include "ERROR: Page "+page.html+" specifies a parent that doesn't exist in this target: "+page.parent %}
+        {% else %}
+        {% set _ = ns.crumbs.insert(0, parent) -%}
+        {{ get_crumbs(parent) }}
+        {% endif %}
+      {%- endif -%}
+    {%- endmacro %}
+    {{ get_crumbs(currentpage) }}
+
+    {% if currentpage.html != "index.html" %}
+    {%- for page in ns.crumbs %}
+    <li class="active breadcrumb-item"><a href="
+      {%- if page is defined and "//" not in page.html %}{{ currentpage.prefix }}{% endif -%}
+      {{ page.html }}">{{ page.name }}</a></li>
+    {% endfor %}
+    {% endif %}
+    <li class="active breadcrumb-item">{{ currentpage.name }}</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->

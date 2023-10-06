@@ -15,8 +15,8 @@
 [XRPのdrop数]: basic-data-types.html#通貨額の指定
 [Hash]: basic-data-types.html#hashes
 [ハッシュ]: basic-data-types.html#ハッシュ
-[identifying hash]: transaction-basics.html#identifying-transactions
-[識別用ハッシュ]: transaction-basics.html#トランザクションの識別
+[identifying hash]: transactions.html#identifying-transactions
+[識別用ハッシュ]: transactions.html#トランザクションの識別
 [Internal Type]: serialization.html
 [内部の型]: serialization.html
 [Ledger Index]: basic-data-types.html#ledger-index
@@ -85,12 +85,14 @@
 {% if ledger_entry in ["amendments", "depositpreauth", "escrow"] %}
   {# objects where the naive URL is already taken #}
 [{{ledger_entry}} object]: {{ledger_entry|lower}}-object.html
+[{{ledger_entry}} entry]: {{ledger_entry|lower}}-object.html
   {% if target.lang == "ja" %}
 [{{ledger_entry}}オブジェクト]: {{ledger_entry|lower}}-object.html
 [{{ledger_entry}} オブジェクト]: {{ledger_entry|lower}}-object.html
   {% endif %}
 {% else %}
 [{{ledger_entry}} object]: {{ledger_entry|lower}}.html
+[{{ledger_entry}} entry]: {{ledger_entry|lower}}.html
   {% if target.lang == "ja" %}
 [{{ledger_entry}}オブジェクト]: {{ledger_entry|lower}}.html
 [{{ledger_entry}} オブジェクト]: {{ledger_entry|lower}}.html
@@ -189,8 +191,10 @@
 
 <!--{# Amendment links #}-->
 {% set amendment_names = [
+  "AMM",
   "Checks",
   "CheckCashMakesTrustLine",
+  "Clawback",
   "CryptoConditions",
   "CryptoConditionsSuite",
   "DeletableAccounts",
@@ -216,6 +220,7 @@
   "fixCheckThreading",
   "fixMasterKeyAsRegularKey",
   "fixNFTokenDirV1",
+  "fixNFTokenRemint",
   "fixPayChanRecipientOwnerDir",
   "fixRemoveNFTokenAutoTrustLine",
   "fixQualityUpperBound",

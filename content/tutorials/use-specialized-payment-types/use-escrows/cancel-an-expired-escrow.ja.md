@@ -65,7 +65,7 @@ _Websocket_
 
 ## 2.EscrowCancelトランザクションの送信
 
-XRP Ledgerでは、[EscrowCancelトランザクション][]に[署名して送信する](transaction-basics.html#トランザクションへの署名とトランザクションの送信)ことで、***誰でも***有効期限切れのEscrowを取り消すことができます。トランザクションの`Owner`フィールドを、そのEscrowを作成した`EscrowCreate`トランザクションの`Account`に設定します。`OfferSequence`フィールドを、`EscrowCreate`トランザクションの`Sequence`に設定します。
+XRP Ledgerでは、[EscrowCancelトランザクション][]に[署名して送信する](transactions.html#トランザクションへの署名とトランザクションの送信)ことで、***誰でも***有効期限切れのEscrowを取り消すことができます。トランザクションの`Owner`フィールドを、そのEscrowを作成した`EscrowCreate`トランザクションの`Account`に設定します。`OfferSequence`フィールドを、`EscrowCreate`トランザクションの`Sequence`に設定します。
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 

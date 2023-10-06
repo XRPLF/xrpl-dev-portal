@@ -25,13 +25,13 @@ The following JSON object shows the metadata for [a complex cross-currency payme
 
 ## AffectedNodes
 
-The `AffectedNodes` array contains a complete list of the [objects in the ledger](ledger-object-types.html) that this transaction modified in some way. Each entry in this array is an object with one top-level field indicating what type it is:
+The `AffectedNodes` array contains a complete list of the [ledger entries](ledger-object-types.html) that this transaction modified in some way. Each item in this array is an object with one top-level field indicating what happened:
 
-- `CreatedNode` indicates that the transaction created a new object in the ledger.
-- `DeletedNode` indicates that the transaction removed an object from the ledger.
-- `ModifiedNode` indicates that the transaction modified an existing object in the ledger.
+- `CreatedNode` indicates that the transaction created a new ledger entry.
+- `DeletedNode` indicates that the transaction removed a ledger entry
+- `ModifiedNode` indicates that the transaction modified an existing ledger entry.
 
-The value of each of these fields is a JSON object describing the changes made to the ledger object.
+The value of each of these fields is a JSON object describing the changes made to the ledger entry.
 
 ### CreatedNode Fields
 
@@ -39,9 +39,9 @@ A `CreatedNode` object contains the following fields:
 
 | Field             | Value             | Description                          |
 |:------------------|:------------------|:-------------------------------------|
-| `LedgerEntryType` | String            | The [type of ledger object](ledger-object-types.html) that was created. |
-| `LedgerIndex`     | String - [Hash][] | The [ID of this ledger object](ledger-object-ids.html) in the ledger's [state tree](ledgers.html). **Note:** This is **not the same** as a [ledger index](basic-data-types.html#ledger-index), even though the field name is very similar. |
-| `NewFields`       | Object            | The content fields of the newly-created ledger object. Which fields are present depends on what type of ledger object was created. |
+| `LedgerEntryType` | String            | The [type of ledger entry](ledger-object-types.html) that was created. |
+| `LedgerIndex`     | String - [Hash][] | The [ID of this ledger entry](ledger-object-ids.html) in the ledger's [state tree](ledgers.html). **Note:** This is **not the same** as a [ledger index](basic-data-types.html#ledger-index), even though the field name is very similar. |
+| `NewFields`       | Object            | The content fields of the newly-created ledger entry. Which fields are present depends on what type of ledger entry was created. |
 
 ### DeletedNode Fields
 
@@ -49,9 +49,9 @@ A `DeletedNode` object contains the following fields:
 
 | Field             | Value             | Description                          |
 |:------------------|:------------------|:-------------------------------------|
-| `LedgerEntryType` | String            | The [type of ledger object](ledger-object-types.html) that was deleted. |
-| `LedgerIndex`     | String - [Hash][] | The [ID of this ledger object](ledger-object-ids.html) in the ledger's [state tree](ledgers.html). **Note:** This is **not the same** as a [ledger index](basic-data-types.html#ledger-index), even though the field name is very similar. |
-| `FinalFields`     | Object            | The content fields of the ledger object immediately before it was deleted. Which fields are present depends on what type of ledger object was created. |
+| `LedgerEntryType` | String            | The [type of ledger entry](ledger-object-types.html) that was deleted. |
+| `LedgerIndex`     | String - [Hash][] | The [ID of this ledger entry](ledger-object-ids.html) in the ledger's [state tree](ledgers.html). **Note:** This is **not the same** as a [ledger index](basic-data-types.html#ledger-index), even though the field name is very similar. |
+| `FinalFields`     | Object            | The content fields of the ledger entry immediately before it was deleted. Which fields are present depends on what type of ledger entry was created. |
 
 ### ModifiedNode Fields
 
@@ -59,15 +59,24 @@ A `ModifiedNode` object contains the following fields:
 
 | Field               | Value                     | Description                |
 |:--------------------|:--------------------------|:---------------------------|
-| `LedgerEntryType`   | String                    | The [type of ledger object](ledger-object-types.html) that was deleted. |
-| `LedgerIndex`       | String - [Hash][]         | The [ID of this ledger object](ledger-object-ids.html) in the ledger's [state tree](ledgers.html). **Note:** This is **not the same** as a [ledger index](basic-data-types.html#ledger-index), even though the field name is very similar. |
-| `FinalFields`       | Object                    | The content fields of the ledger object after applying any changes from this transaction. Which fields are present depends on what type of ledger object was created. This omits the `PreviousTxnID` and `PreviousTxnLgrSeq` fields, even though most types of ledger objects have them. |
+| `LedgerEntryType`   | String                    | The [type of ledger entry](ledger-object-types.html) that was deleted. |
+| `LedgerIndex`       | String - [Hash][]         | The [ID of this ledger entry](ledger-object-ids.html) in the ledger's [state tree](ledgers.html). **Note:** This is **not the same** as a [ledger index](basic-data-types.html#ledger-index), even though the field name is very similar. |
+| `FinalFields`       | Object                    | The content fields of the ledger entry after applying any changes from this transaction. Which fields are present depends on what type of ledger entry was created. This omits the `PreviousTxnID` and `PreviousTxnLgrSeq` fields, even though most types of ledger entries have them. |
 | `PreviousFields`    | Object                    | The previous values for all fields of the object that were changed as a result of this transaction. If the transaction _only added_ fields to the object, this field is an empty object. |
-| `PreviousTxnID`     | String - [Hash][]         | _(May be omitted)_ The [identifying hash][] of the previous transaction to modify this ledger object. Omitted for ledger object types that do not have a `PreviousTxnID` field. |
-| `PreviousTxnLgrSeq` | Number - [Ledger Index][] | _(May be omitted)_  The [Ledger Index][] of the ledger version containing the previous transaction to modify this ledger object. Omitted for ledger object types that do not have a `PreviousTxnLgrSeq` field. |
+| `PreviousTxnID`     | String - [Hash][]         | _(May be omitted)_ The [identifying hash][] of the previous transaction to modify this ledger entry. Omitted for ledger entry types that do not have a `PreviousTxnID` field. |
+| `PreviousTxnLgrSeq` | Number - [Ledger Index][] | _(May be omitted)_  The [Ledger Index][] of the ledger version containing the previous transaction to modify this ledger entry. Omitted for ledger entry types that do not have a `PreviousTxnLgrSeq` field. |
 
-**Note:** If the modified ledger object has `PreviousTxnID` and `PreviousTxnLgrSeq` fields, the transaction always updates them with the transaction's own identifying hash and the index of the ledger version that included the transaction, but these fields' new value is not listed in the `FinalFields` of the `ModifiedNode` object, and their previous values are listed at the top level of the `ModifiedNode` object rather than in the nested `PreviousFields` object.
+**Note:** If the modified ledger entry has `PreviousTxnID` and `PreviousTxnLgrSeq` fields, the transaction always updates them with the transaction's own identifying hash and the index of the ledger version that included the transaction, but these fields' new value is not listed in the `FinalFields` of the `ModifiedNode` object, and their previous values are listed at the top level of the `ModifiedNode` object rather than in the nested `PreviousFields` object.
 
+## NFT Fields
+
+Transactions (`tx` and `account_tx`) involving NFTs can contain the following fields in the metadata. These values are added by the Clio server at request time and are not stored in the hashed binary metadata:
+
+| Field               | Value                     | Description                |
+|:--------------------|:--------------------------|:---------------------------|
+| `nftoken_id`        | String                    | Shows the `NFTokenID` for the `NFToken` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenMint` or `NFTokenAcceptOffer`. See [NFTokenID](nftoken.html#nftokenid). |
+| `nftoken_ids`       | Array                     | Shows all the `NFTokenIDs` for the `NFTokens` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenCancelOffer`. |
+| `offer_id`          | String                    | Shows the `OfferID`of a new `NFTokenOffer` in a response from a `NFTokenCreateOffer` transaction.
 
 ## delivered_amount
 

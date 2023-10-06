@@ -1,6 +1,6 @@
 from xrpl.clients import JsonRpcClient
 from xrpl.models.transactions import Payment
-from xrpl.transaction import send_reliable_submission
+from xrpl.transaction import submit_and_wait
 
 
 def connect_node(_node):
@@ -27,7 +27,7 @@ def send_transaction(transaction_dict):
     # Since we manually inserted the tx blob, we need to initialize it into a Payment so xrpl-py could process it
     my_tx_signed = Payment.from_dict(transaction_dict)
 
-    tx = send_reliable_submission(transaction=my_tx_signed, client=client)
+    tx = submit_and_wait(transaction=my_tx_signed, client=client)
 
     tx_hash = tx.result['hash']
     tx_destination = tx.result['Destination']

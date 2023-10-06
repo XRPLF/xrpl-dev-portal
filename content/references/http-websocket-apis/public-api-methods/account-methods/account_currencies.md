@@ -6,7 +6,7 @@ labels:
   - Tokens
 ---
 # account_currencies
-[[Source]](https://github.com/ripple/rippled/blob/df966a9ac6dd986585ecccb206aff24452e41a30/src/ripple/rpc/handlers/AccountCurrencies.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/df966a9ac6dd986585ecccb206aff24452e41a30/src/ripple/rpc/handlers/AccountCurrencies.cpp "Source")
 
 The `account_currencies` command retrieves a list of currencies that an account can send or receive, based on its trust lines. (This is not a thoroughly confirmed list, but it can be used to populate user interfaces.)
 
@@ -21,7 +21,6 @@ An example of the request format:
 {
     "command": "account_currencies",
     "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-    "strict": true,
     "ledger_index": "validated"
 }
 ```
@@ -35,8 +34,7 @@ An example of the request format:
         {
             "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
             "account_index": 0,
-            "ledger_index": "validated",
-            "strict": true
+            "ledger_index": "validated"
         }
     ]
 }
@@ -45,8 +43,8 @@ An example of the request format:
 *Commandline*
 
 ```sh
-#Syntax: account_currencies account [ledger_index|ledger_hash] [strict]
-rippled account_currencies rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated strict
+#Syntax: account_currencies account [ledger_index|ledger_hash]
+rippled account_currencies rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -55,14 +53,13 @@ rippled account_currencies rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated strict
 
 The request includes the following parameters:
 
-| `Field`        | Type                       | Description                    |
-|:---------------|:---------------------------|:-------------------------------|
-| `account`      | String                     | A unique identifier for the account, most commonly the account's [Address][]. |
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `strict`       | Boolean                    | _(Optional)_ If `true`, then the `account` field only accepts a public key or XRP Ledger address. Otherwise, `account` can be a secret or passphrase (not recommended). The default is `false`. |
+| `Field`        | Type                 | Required? | Description |
+|:---------------|:---------------------|:----------|-------------|
+| `account`      | String - [Address][] | Yes       | Look up currencies this account can send or receive. [Updated in: rippled 1.11.0][] |
+| `ledger_hash`  | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
-The following field is deprecated and should not be provided: `account_index`.
+The following fields are deprecated and should not be provided: `account_index`, `strict`.
 
 ## Response Format
 
@@ -178,3 +175,4 @@ The response follows the [standard format][], with a successful result containin
 
 
 {% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

@@ -85,8 +85,6 @@ Content-Type: application/json
   - [ソースタグと宛先タグ](source-and-destination-tags.html)
   - [トランザクションコスト](transaction-cost.html)
   - [支払いタイプ](payment-types.html)
-- **チュートリアル:**
-  - [XRP Ledgerのビジネス](xrp-ledger-businesses.html)
 - **リファレンス:**
   - [account_infoメソッド][]
   - [AccountSetトランザクション][]

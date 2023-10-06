@@ -7,8 +7,6 @@ labels:
 ---
 # Cash a Check for a Flexible Amount
 
-_Added by the [Checks amendment][]._
-
 As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive a flexible amount by sending a [CheckCash transaction][] with a `DeliverMin` field. When cashing a Check in this way, the receiver gets as much as is possible to deliver, debiting the Check's sender for the Check's full `SendMax` amount or as much as is available. Cashing fails if it doesn't deliver at least the `DeliverMin` amount to the Check's recipient.
 
 You might cash a Check for a flexible amount if you want to get as much as possible from the Check.

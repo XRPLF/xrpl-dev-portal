@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "xrpl": "2.11.0"
+  }
+}

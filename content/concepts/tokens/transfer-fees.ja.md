@@ -8,10 +8,10 @@ labels:
 ---
 # 送金手数料
 
-[XRP Ledgerで通貨を発行する金融機関](become-an-xrp-ledger-gateway.html)は、XRP Ledgerの`TransferRate`設定を使用して、 その金融機関が発行する通貨を送金するユーザーに対し _送金手数料_ を請求できます。この送金の送金元からは送金手数料に基づくパーセンテージが引き落とされ、送金先には予定額が入金されます。差額が送金手数料です。送金手数料は発行アドレスの資産となり、XRP Ledgerではこれ以上追跡されません。発行アカウントとの _直接_ の送金と入金には送金手数料は適用されませんが、[運用アドレス][]から別のユーザーへの送金には送金手数料が適用されます。
+[XRP Ledgerで通貨を発行する金融機関](stablecoin-issuer.html)は、XRP Ledgerの`TransferRate`設定を使用して、 その金融機関が発行する通貨を送金するユーザーに対し _送金手数料_ を請求できます。この送金の送金元からは送金手数料に基づくパーセンテージが引き落とされ、送金先には予定額が入金されます。差額が送金手数料です。送金手数料は発行アドレスの資産となり、XRP Ledgerではこれ以上追跡されません。発行アカウントとの _直接_ の送金と入金には送金手数料は適用されませんが、[運用アドレス][]から別のユーザーへの送金には送金手数料が適用されます。
 
-[運用アドレス]: issuing-and-operational-addresses.html
-[発行アドレス]: issuing-and-operational-addresses.html
+[運用アドレス]: account-types.html
+[発行アドレス]: account-types.html
 
 XRPにはイシュアーがいないため、送金手数料が発生することはありません。
 
@@ -56,8 +56,6 @@ XRPにはイシュアーがいないため、送金手数料が発生するこ�
   - [手数料（曖昧さの回避）](fees.html)
   - [トランザクションコスト](transaction-cost.html)
   - [パス](paths.html)
-- **チュートリアル:**
-  - [XRP Ledgerゲートウェイの開設](become-an-xrp-ledger-gateway.html)
 - **リファレンス:**
   - [account_linesメソッド][]
   - [account_infoメソッド][]

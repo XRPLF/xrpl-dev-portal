@@ -203,7 +203,7 @@ Each member of the `queue_data` array represents one transaction in the queue. S
 | `retries_remaining` | Number           | How many times this transaction can be retried before being dropped. |
 | `preflight_result`  | String           | The tentative result from preliminary transaction checking. This is always `tesSUCCESS`. |
 | `last_result`       | String           | _(May be omitted)_ If this transaction was left in the queue after getting a [retriable (`ter`) result](ter-codes.html), this is the exact `ter` result code it got. |
-| `auth_change`       | Boolean          | _(May be omitted)_ Whether this transaction changes this address's [ways of authorizing transactions](transaction-basics.html#authorizing-transactions). |
+| `auth_change`       | Boolean          | _(May be omitted)_ Whether this transaction changes this address's [ways of authorizing transactions](transactions.html#authorizing-transactions). |
 | `fee`               | String           | _(May be omitted)_ The [Transaction Cost](transaction-cost.html) of this transaction, in [drops of XRP][]. |
 | `fee_level`         | String           | _(May be omitted)_ The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in [fee levels][]. |
 | `max_spend_drops`   | String           | _(May be omitted)_ The maximum amount of [XRP, in drops][], this transaction could potentially send or destroy. |

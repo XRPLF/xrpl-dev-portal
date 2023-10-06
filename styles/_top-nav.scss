@@ -3,13 +3,12 @@
   background-color: $gray-900;
   height: 80px;
   padding: 0;
-
   // Logo
   .navbar-brand {
     text-decoration: none;
     white-space: pre;
-    -webkit-transition: opacity .2s ease, color .2s ease;
-    transition: opacity .2s ease, color .2s ease;
+    -webkit-transition: opacity 0.2s ease, color 0.2s ease;
+    transition: opacity 0.2s ease, color 0.2s ease;
     padding-left: 2rem;
 
     .logo {
@@ -51,7 +50,6 @@
     }
   }
 
-
   // Dropdowns -----------------------------------------------------------------
   // Shared styles
   .dropdown-toggle {
@@ -68,7 +66,7 @@
     }
     .dropdown-item {
       line-height: 1rem;
-      padding: .75rem 0;
+      padding: 0.75rem 0;
       white-space: normal;
 
       &.dropdown-hero {
@@ -82,7 +80,7 @@
           background-color: $gray-800;
           border-radius: $border-radius-sm;
           flex-grow: 0;
-          padding: .75rem;
+          padding: 0.75rem;
           margin-right: 2rem;
           margin-top: auto;
           margin-bottom: auto;
@@ -190,7 +188,7 @@
       border-radius: 0 0 $border-radius-lg $border-radius-lg;
       padding: 2.5rem;
 
-      .dropdown-item{
+      .dropdown-item {
         &.dropdown-hero {
           padding: 0;
         }
@@ -213,6 +211,11 @@
           grid-template-columns: 200px;
         }
 
+        &#topnav_dd_resourceshtml {
+          grid-template-columns: 195px 180px 180px;
+          left: -200px;
+        }
+
         .dropdown-hero {
           grid-row: 1;
           grid-column: 1 / 4;
@@ -230,28 +233,33 @@
         .col-for-xrp {
           grid-column: 2;
         }
-        .col-for-sustainability {
+        .col-for-sustainability,
+        .col-for-持続可能性 {
           grid-column: 2;
         }
-        .col-for-about {
+        .col-for-about,
+        .col-for-概要 {
           grid-row: 1 / 3;
           grid-column: 3;
         }
 
         // "Docs" dropdown placement
-        .col-for-article-types {
+        .col-for-article-types,
+        .col-for-カテゴリ {
           grid-column: 1;
           grid-row: 2;
         }
-        .col-for-online-tools {
-          grid-column: 1;
-          grid-row: 3;
+        // Not used
+        // .col-for-online-tools {
+        //   grid-column: 1;
+        //   grid-row: 3;
 
-          .external-link {
-            white-space: nowrap;
-          }
-        }
-        .col-for-get-started {
+        //   .external-link {
+        //     white-space: nowrap;
+        //   }
+        // }
+        .col-for-get-started,
+        .col-for-始めましょう {
           grid-column: 2;
           grid-row: 2 / 4;
         }
@@ -261,6 +269,20 @@
           grid-row: 1 / 4;
           margin: -40px -40px -40px 0;
           padding: 40px;
+        }
+
+        // "Resources" dropdown placement
+        .col-for-development,
+        .col-for-開発 {
+          grid-column: 1;
+        }
+        .col-for-current-status,
+        .col-for-現在のステータス {
+          grid-column: 2;
+        }
+        .col-for-join-in,
+        .col-for-参加する {
+          grid-column: 3;
         }
       }
 
@@ -272,10 +294,10 @@
 
     #topnav-pages {
       flex-grow: 0;
-      @media (min-width: 992px) and (max-width: 1030px) {
-        // Fix for top nav overflow in this range
+      @media (min-width: 992px) and (max-width: 1133px) {
+        // Part of the fix for top nav overflow in this range
         .nav-link {
-          padding: $nav-link-padding-y 1.6rem;//TODO:checkme
+          padding: $nav-link-padding-y 1rem;
         }
       }
     }
@@ -289,13 +311,17 @@
 
       #language_selector_header_btn {
         padding-right: 0;
+        @media (min-width: 992px) and (max-width: 1133px) {
+          // Part of the fix for top nav overflow in this range
+          padding-left: 1rem;
+        }
       }
     }
 
     @include media-breakpoint-up(xl) {
       #topnav-search {
-        margin-left: 4rem;
-        margin-right: .5rem;
+        margin-left: 3.5rem;
+        margin-right: 0.5rem;
       }
     }
   } // End desktop styles
@@ -323,7 +349,7 @@
           display: block;
           width: 100%;
           height: 3px;
-          transition: all .2s ease;
+          transition: all 0.2s ease;
         }
         &::before {
           top: 0;
@@ -369,7 +395,7 @@
       margin: 0;
       width: 100%;
       overflow: auto;
-      transition: all .2s ease;
+      transition: all 0.2s ease;
       height: 0;
       display: block;
       padding: 0;
@@ -398,16 +424,21 @@
           }
 
           // "Docs" dropdown placement
-          .col-for-article-types {
+          .col-for-article-types,
+          .col-for-カテゴリ
+           {
             grid-column: 1;
             grid-row: 2;
           }
-          .col-for-online-tools {
-            grid-column: 1;
-            grid-row: 3;
-            padding-bottom: 32px;
-          }
-          .col-for-get-started {
+          // Not used
+          // .col-for-online-tools {
+          //   grid-column: 1;
+          //   grid-row: 3;
+          //   padding-bottom: 32px;
+          // }
+          .col-for-get-started,
+          .col-for-始めましょう
+          {
             grid-column: 2;
             grid-row: 2 / 4;
             padding-bottom: 32px;
@@ -451,19 +482,19 @@
         border: 0;
         font-family: FontAwesome;
         color: $blue-purple-400;
-        font-size: .75rem;
-        transition: all .2s ease;
+        font-size: 0.75rem;
+        transition: all 0.2s ease;
         overflow: clip;
         width: 1rem;
       }
 
       &::before {
-        content:"\f053"; // < chevron
+        content: "\f053"; // < chevron
         display: inline-block;
         margin-bottom: -5px; // fix weird placement on Chrome
       }
       &::after {
-        content:"\f054"; // > chevron
+        content: "\f054"; // > chevron
         position: absolute;
         right: 2rem;
       }
@@ -487,7 +518,7 @@
     #top-main-nav {
       padding-top: 72px;
       position: relative;
-      transition: padding-top .2s ease;
+      transition: padding-top 0.2s ease;
 
       // Hide search and other sub-menus when one sub-menu is expanded
       // (js required to add the class on the dropdown event)
@@ -512,7 +543,7 @@
       top: 0;
       width: 100%;
       height: 72px;
-      transition: all .2s ease;
+      transition: all 0.2s ease;
 
       .input-group {
         flex-wrap: nowrap; // Fix search bar splitting into two lines on iPhone 5
@@ -527,7 +558,6 @@
         display: static;
       }
     }
-
   } // end mobile specific styles ----------------------------------------------
 
   // nav "hero" images
@@ -537,9 +567,7 @@
   #top-nav-hero-contribute {
     content: url("../img/icons/contribute.svg");
   }
-
 }
-
 
 // Fix so anchors don't jump under the fixed header ----------------------------
 .main h1:before,
@@ -548,7 +576,6 @@
 .main h4:before,
 .main h5:before,
 .main h6:before,
-#main_content_wrapper:before,
 .interactive-block:before {
   display: block;
   content: " ";
@@ -567,17 +594,17 @@ a {
 .chevron {
   position: relative;
   display: inline-block;
-  width: .75rem;
-  height: .5625rem;
+  width: 0.75rem;
+  height: 0.5625rem;
 
   span {
     position: absolute;
-    top: .25rem;
+    top: 0.25rem;
     display: inline-block;
-    width: .5rem;
-    height: .15rem;
+    width: 0.5rem;
+    height: 0.15rem;
     background-color: $blue-purple-400;
-    transition: all .2s ease;
+    transition: all 0.2s ease;
     border: none;
   }
   &:not(.expander) span {
@@ -628,9 +655,9 @@ a {
     background-size: 3rem;
     background-color: transparent;
     transform-origin: center;
-    margin-left: -.5rem;
-    margin-right: .5rem;
-    transition: transform .4s ease, background-position .4s ease;
+    margin-left: -0.5rem;
+    margin-right: 0.5rem;
+    transition: transform 0.4s ease, background-position 0.4s ease;
     // Default: dark mode, show moon
     transform: rotate(15deg);
     background-position: top left;
