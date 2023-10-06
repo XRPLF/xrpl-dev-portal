@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="amm_info | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/amm_info.html" />
-    <meta property="og:description" content="Get info about an Automted Market Maker (AMM) instance." />
-    <meta name="description" content="Get info about an Automted Market Maker (AMM) instance." />
+    <meta property="og:description" content="自動マーケットメーカ(AMM)の情報を取得する。" />
+    <meta name="description" content="自動マーケットメーカ(AMM)の情報を取得する。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -315,9 +315,9 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="amm_info">amm_info<a aria-hidden="true" class="hover_anchor" href="#amm_info"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AMMInfo.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><code>amm_info</code> メソッドは、自動マーケットメーカー（AMM）インスタンスに関する情報を取得します。</p>
-<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要。)</em></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AMMInfo.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><code>amm_info</code>メソッドは、自動マーケットメーカー（AMM）インスタンスに関する情報を取得します。</p>
+<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要です。)</em></p>
 <h3 id="リクエストのフォーマット">リクエストのフォーマット<a aria-hidden="true" class="hover_anchor" href="#リクエストのフォーマット"><i class="fa fa-link"></i></a></h3>
 <p>リクエストの例</p>
 <p class="devportal-callout 注記"><strong>注記:</strong> このメソッドにはコマンドライン構文がありません。代わりに<a href="json.html">jsonメソッド</a>を使って、コマンドラインからこのメソッドにアクセスすることができます。</p>
@@ -356,22 +356,38 @@
 <tr>
 <th style="text-align: left;"><code>フィールド</code></th>
 <th style="text-align: left;">型</th>
+<th style="text-align: left;">必須?</th>
 <th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;"><code>account</code></td>
+<td style="text-align: left;">文字列 - <a href="basic-data-types.html#アドレス">アドレス</a></td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">この流動性プロバイダーが保有するLPトークンのみを表示します。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>amm_account</code></td>
+<td style="text-align: left;">文字列 - <a href="basic-data-types.html#アドレス">アドレス</a></td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">AMMの特別なAccountRootのアドレス。(これはAMMのLPトークンの<code>issuer</code>です)。</td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>asset</code></td>
 <td style="text-align: left;">オブジェクト または 文字列</td>
-<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a>のように、<code>currency</code>と<code>issuer</code>フィールドを持つオブジェクトとして（XRPの場合は<code>issuer</code>を省略）、検索するAMMの資産の一つを指定します。XRPの場合は、オブジェクトではなく文字列<code>XRP</code>として指定することができます。</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;"><a href="basic-data-types.html#通貨額の指定">通貨額</a>のように、<code>currency</code>と<code>issuer</code>フィールドを持つオブジェクトとして（XRPの場合は<code>issuer</code>を省略）、検索するAMMの資産の一つを指定します。XRPの場合は、オブジェクトではなく文字列<code>XRP</code>として指定することもできます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>asset2</code></td>
 <td style="text-align: left;">オブジェクト または 文字列</td>
+<td style="text-align: left;">いいえ</td>
 <td style="text-align: left;">AMMの資産のもう一方を、<code>currency</code>と<code>issuer</code>フィールド（XRPの場合は<code>issuer</code>を省略）を持つオブジェクトとして、<a href="basic-data-types.html#通貨額の指定">通貨額</a>のように指定することが可能です。</td>
 </tr>
 </tbody>
 </table>
+<p><code>amm_account</code>、または<code>asset</code>と<code>asset2</code>の両方を指定する必要があります。</p>
 <h3 id="レスポンスのフォーマット">レスポンスのフォーマット<a aria-hidden="true" class="hover_anchor" href="#レスポンスのフォーマット"><i class="fa fa-link"></i></a></h3>
 <p>処理が成功したレスポンスの例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
@@ -514,12 +530,12 @@
 <tr>
 <td style="text-align: left;"><code>validated</code></td>
 <td style="text-align: left;">真偽値</td>
-<td style="text-align: left;">もし<code>true</code>なら、このリクエストに使用された台帳は検証済みで、これらの結果は最終的なものです。もし省略されるか <code>false</code> に設定されると、データは未確定で変更される可能性があります。</td>
+<td style="text-align: left;">もし<code>true</code>なら、このリクエストに使用された台帳は検証済みで、これらの結果は最終的なものです。もし省略されるか<code>false</code>に設定されると、データは未確定で変更される可能性があります。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="amm詳細オブジェクト">AMM詳細オブジェクト<a aria-hidden="true" class="hover_anchor" href="#amm詳細オブジェクト"><i class="fa fa-link"></i></a></h3>
-<p>フィールド <code>amm</code> は、台帳上の自動マーケットメーカー（AMM）の現在の状態を記述するオブジェクトであり、以下のフィールドを含みます。</p>
+<p><code>amm</code>フィールドは、自動マーケットメーカー（AMM）の現在の状態を記述するオブジェクトであり、以下のフィールドを含みます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -562,7 +578,7 @@
 <tr>
 <td><code>lp_token</code></td>
 <td><a href="basic-data-types.html#通貨額の指定">通貨額</a></td>
-<td>このAMMのLPトークンの発行残高の合計。</td>
+<td>このAMMのLPトークンの発行残高の合計。リクエスト時に<code>account</code>フィールドで流動性プロバイダを指定した場合、その流動性プロバイダが保有するこのAMMのLPトークンの量です。</td>
 </tr>
 <tr>
 <td><code>trading_fee</code></td>
@@ -577,7 +593,7 @@
 </tbody>
 </table>
 <h3 id="オークションスロットオブジェクト">オークションスロットオブジェクト<a aria-hidden="true" class="hover_anchor" href="#オークションスロットオブジェクト"><i class="fa fa-link"></i></a></h3>
-<p><code>AMM</code> オブジェクトの <code>auction_slot</code> フィールドは、AMMの現在のオークションスロット保持者を表し、以下のフィールドを含みます。</p>
+<p><code>AMM</code>オブジェクトの<code>auction_slot</code>フィールドは、AMMの現在のオークションスロット保持者を表し、以下のフィールドを含みます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -595,7 +611,7 @@
 <tr>
 <td><code>auth_accounts</code></td>
 <td>配列</td>
-<td>オークションスロットの所有者が、取引手数料の割引の対象として指定した追加アカウントのリスト。この配列の各メンバーは、1つのフィールド <code>account</code> を持つオブジェクトで、指定したアカウントのアドレスが含まれています。</td>
+<td>オークションスロットの所有者が、取引手数料の割引の対象として指定した追加アカウントのリスト。この配列の各メンバーは、1つのフィールド<code>account</code>を持つオブジェクトで、指定したアカウントのアドレスが含まれています。</td>
 </tr>
 <tr>
 <td><code>discounted_fee</code></td>
@@ -605,7 +621,7 @@
 <tr>
 <td><code>expiration</code></td>
 <td>文字列</td>
-<td>このオークションスロットが期限切れとなるISO8601 UTCタイムスタンプ。期限切れになると、オークションスロットは適用されません (ただし、別のトランザクションで置き換えられるかクリーンアップされるまで、データは台帳に残ります)。</td>
+<td>このオークションスロットが期限切れとなるISO8601のUTCタイムスタンプ。期限切れになると、オークションスロットは適用されません (ただし、別のトランザクションで置き換えられるかクリーンアップされるまで、データは台帳に残ります)。</td>
 </tr>
 <tr>
 <td><code>price</code></td>

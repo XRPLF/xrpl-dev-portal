@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="AMMDelete | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/ammdelete.html" />
-    <meta property="og:description" content="Delete an Automated Market Maker instance with an empty asset pool." />
-    <meta name="description" content="Delete an Automated Market Maker instance with an empty asset pool." />
+    <meta property="og:description" content="空のプールを持つ自動マーケットメーカーのインスタンスを削除します。" />
+    <meta name="description" content="空のプールを持つ自動マーケットメーカーのインスタンスを削除します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -257,7 +257,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ecosystem/content/references/protocol-reference/transactions/transaction-types/ammdelete.md?pr=/XRPLF/xrpl-dev-portal/pull/1913" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/ecosystem/content/references/protocol-reference/transactions/transaction-types/ammdelete.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/1913" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -271,9 +271,9 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#ammdelete">AMMDelete</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-ammdelete-json">Example AMMDelete JSON</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#ammdelete-fields">AMMDelete Fields</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ammdelete-jsonの例">AMMDelete JSONの例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ammdelete-フィールド">AMMDelete フィールド</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#エラーケース">エラーケース</a></li>
       </ul>
   </div>
       </aside>
@@ -298,16 +298,13 @@
     <li class="active breadcrumb-item">AMMDelete</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="ammdelete">AMMDelete<a aria-hidden="true" class="hover_anchor" href="#ammdelete"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/AMMDelete.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><em>(Requires the <a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
-<p>Delete an empty <a href="automated-market-makers.html">Automated Market Maker</a> (AMM) instance that could not be fully deleted automatically.</p>
-<p>Normally, an <a href="ammwithdraw.html">AMMWithdraw transaction</a> automatically deletes an AMM and all associated ledger entries when it withdraws all the assets from the AMM's pool. However, if there are too many trust lines to the AMM account to remove in one transaction, it may stop before fully removing the AMM. Similarly, an AMMDelete transaction removes up to a maximum of 512 trust lines; it may take several AMMDelete transactions to delete all the trust lines and the associated AMM. In all cases, only the last such transaction deletes the AMM and AccountRoot ledger entries.</p>
-<h2 id="example-ammdelete-json">Example AMMDelete JSON<a aria-hidden="true" class="hover_anchor" href="#example-ammdelete-json"><i class="fa fa-link"></i></a></h2>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/AMMDelete.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> が必要です)</em></p>
+<p>自動で削除しきれなかった空の<a href="automated-market-makers.html">自動マーケットメーカー</a>(AMM)インスタンスを削除します。</p>
+<p>通常、<a href="ammwithdraw.html">AMMWithdraw トランザクション</a>は、AMMのプールからすべての資産を引き出すと、AMMと関連するすべてのレジャーエントリを自動的に削除します。ただし、AMMアカウントへのトラストラインが多すぎて1回のトランザクションで削除できない場合は、AMMの削除を行わない場合があります。しかしこの場合でも、AMMDeleteトランザクションは最大512のトラストラインを削除します。すべてのトラストラインとそのAMMを削除するには、数回のAMMDeleteトランザクションが必要な場合があります。いずれの場合も、AMMとAccountRootのレジャーエントリが削除されるのは、最後のトランザクションのみです。</p>
+<h2 id="ammdelete-jsonの例">AMMDelete JSONの例<a aria-hidden="true" class="hover_anchor" href="#ammdelete-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"Asset"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -323,56 +320,56 @@
 <span class="w">    </span><span class="nt">"TransactionType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AMMDelete"</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="ammdelete-fields">AMMDelete Fields<a aria-hidden="true" class="hover_anchor" href="#ammdelete-fields"><i class="fa fa-link"></i></a></h2>
-<p>In addition to the <a href="transaction-common-fields.html">common fields</a>, AMMDelete transactions use the following fields:</p>
+<h2 id="ammdelete-フィールド">AMMDelete フィールド<a aria-hidden="true" class="hover_anchor" href="#ammdelete-フィールド"><i class="fa fa-link"></i></a></h2>
+<p><a href="transaction-common-fields.html">共通フィールド</a>に加えて、AMMDeleteトランザクションは以下のフィールドを使用します。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">JSON Type</th>
-<th style="text-align: left;"><a href="serialization.html">Internal Type</a></th>
-<th style="text-align: left;">Required?</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">JSONの型</th>
+<th style="text-align: left;"><a href="serialization.html">内部の型</a></th>
+<th style="text-align: left;">必須?</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>Asset</code></td>
-<td style="text-align: left;">Object</td>
+<td style="text-align: left;">オブジェクト</td>
 <td style="text-align: left;">STIssue</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The definition for one of the assets in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">AMMのプールにある資産の一つを定義します。JSONでは、<code>currency</code>と<code>issuer</code>フィールドを持つオブジェクトになります（XRPの場合は<code>issuer</code>を省略します）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Asset2</code></td>
-<td style="text-align: left;">Object</td>
+<td style="text-align: left;">オブジェクト</td>
 <td style="text-align: left;">STIssue</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The definition for the other asset in the AMM's pool. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields (omit <code>issuer</code> for XRP).</td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">AMMのプールにあるもう一つの資産を定義します。JSONでは、<code>currency</code>と<code>issuer</code>フィールドを持つオブジェクトです(XRPの場合は<code>issuer</code>を省略)。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
-<p>Besides errors that can occur for all transactions, AMMCreate transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<h2 id="エラーケース">エラーケース<a aria-hidden="true" class="hover_anchor" href="#エラーケース"><i class="fa fa-link"></i></a></h2>
+<p>AMMCreateトランザクションでは、すべてのトランザクションで発生する可能性のあるエラーの他に、以下の<a href="transaction-results.html">トランザクション結果コード</a>が発生する可能性があります。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Error Code</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">エラーコード</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>tecAMM_NOT_EMPTY</code></td>
-<td style="text-align: left;">The AMM holds assets in its pools, so it cannot be deleted. If you are one of the AMM's liquidity providers, use <a href="ammwithdraw.html">AMMWithdraw</a> first.</td>
+<td style="text-align: left;">AMMが空でないため、削除することができません。AMMの流動性プロバイダーの一人である場合は、まず<a href="ammwithdraw.html">AMMWithdraw</a>を使用してください。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecINCOMPLETE</code></td>
-<td style="text-align: left;">There were too many associated ledger entries to fully delete, so the transaction removed as many as it could, but the AMM has not been fully deleted. You can send another AMMDelete transaction to continue and possibly finish the job.</td>
+<td style="text-align: left;">関連するレジャーエントリを可能な限り削除しましたが、AMM は完全には削除されませんでした。別の AMMDelete トランザクションを送信して、作業を続行し、完了させることができます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>terNO_AMM</code></td>
-<td style="text-align: left;">The specified AMM does not exist. (It may have been deleted already, or you may have specified a wrong asset for the AMM you intended.)</td>
+<td style="text-align: left;">指定したAMMが存在しません。(すでに削除されているか、指定したAMMの資産が間違っている可能性があります)。</td>
 </tr>
 </tbody>
 </table>
