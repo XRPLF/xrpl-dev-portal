@@ -5367,7 +5367,7 @@ pages:
             - en
 
     -   name: コントリビューター行動規範
-        html: https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.ja.md"
+        html: https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.ja.md
         parent: contribute-documentation.html
         targets:
             - ja
