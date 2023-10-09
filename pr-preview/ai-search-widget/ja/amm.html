@@ -274,6 +274,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#amm-jsonの例">AMM JSONの例</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amm-フィールド">AMM フィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#オークションスロットオブジェクト">オークションスロットオブジェクト</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ammの準備金">AMMの準備金</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amm-フラグ">AMM フラグ</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amm-id-フォーマット">AMM ID フォーマット</a></li>
       </ul>
@@ -300,14 +301,11 @@
     <li class="active breadcrumb-item">AMM</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="amm">AMM<a aria-hidden="true" class="hover_anchor" href="#amm"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/xrplf/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要。)</em></p>
-<p><code>AMM</code>オブジェクトは、単一の<a href="automated-market-makers.html">自動マーケットメーカー</a>(AMM)インスタンスを表します。</p>
+<p><a class="external-link" href="https://github.com/xrplf/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要です。)</em></p>
+<p><code>AMM</code>レジャーエントリは、単一の<a href="automated-market-makers.html">自動マーケットメーカー</a>(AMM)インスタンスを表します。これは常に<a href="accountroot.html#ammの特殊なaccountrootエントリ">特殊な AccountRootエントリ</a>と対になっています。</p>
 <h2 id="amm-jsonの例">AMM JSONの例<a aria-hidden="true" class="hover_anchor" href="#amm-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"AMMAccount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rE54zDvgnghAoPopCgvtiqWNq3dU5y836S"</span><span class="p">,</span>
@@ -390,7 +388,7 @@
 <td style="text-align: left;">文字列</td>
 <td style="text-align: left;">AccountID</td>
 <td style="text-align: left;">はい</td>
-<td>このAMMの資産を保有する<a href="accountroot.html#ammの特殊なaccountrootオブジェクト">特殊なアカウント</a>のアドレス。</td>
+<td>このAMMの資産を保有する<a href="accountroot.html#ammの特殊なaccountrootエントリ">特殊なアカウント</a>のアドレス。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>AuctionSlot</code></td>
@@ -472,10 +470,12 @@
 </tr>
 </tbody>
 </table>
+<h2 id="ammの準備金">AMMの準備金<a aria-hidden="true" class="hover_anchor" href="#ammの準備金"><i class="fa fa-link"></i></a></h2>
+<p><code>AMM</code>エントリは準備金が不要です。</p>
 <h2 id="amm-フラグ">AMM フラグ<a aria-hidden="true" class="hover_anchor" href="#amm-フラグ"><i class="fa fa-link"></i></a></h2>
-<p>現在、<code>AMM</code>オブジェクトに定義されているフラグはありません。</p>
+<p><code>AMM</code>エントリに定義されているフラグはありません。</p>
 <h2 id="amm-id-フォーマット">AMM ID フォーマット<a aria-hidden="true" class="hover_anchor" href="#amm-id-フォーマット"><i class="fa fa-link"></i></a></h2>
-<p><code>AMM</code>オブジェクトのIIは、以下の値の<a href="basic-data-types.html#ハッシュ">SHA-512Half</a>を順に繋げたものです。</p>
+<p><code>AMM</code>エントリのIDは、以下の値を順に繋げた<a href="basic-data-types.html#ハッシュ">SHA-512Half</a>です。</p>
 <ol>
 <li><code>AMM</code>のスペースキー(<code>0x0041</code>)</li>
 <li>第1アセットの発行者のAccountID。</li>

@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="AccountRoot | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/accountroot.html" />
-    <meta property="og:description" content="あるアカウントの設定、XRP残高、その他のメタデータです。" />
-    <meta name="description" content="あるアカウントの設定、XRP残高、その他のメタデータです。" />
+    <meta property="og:description" content="あるアカウントの設定、XRP残高、その他のメタデータを表します。" />
+    <meta name="description" content="あるアカウントの設定、XRP残高、その他のメタデータを表します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -277,8 +277,9 @@
         <li class="nav-item level-1"><a class="nav-link" href="#accountroot">AccountRoot</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-jsonの例">AccountRoot JSONの例</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountrootフィールド">AccountRootフィールド</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#ammの特殊なaccountrootオブジェクト">AMMの特殊なAccountRootオブジェクト</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ammの特殊なaccountrootエントリ">AMMの特殊なAccountRootエントリ</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountrootのフラグ">AccountRootのフラグ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#accountrootの準備金">AccountRootの準備金</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#accountroot-idのフォーマット">AccountRoot IDのフォーマット</a></li>
       </ul>
   </div>
@@ -304,9 +305,6 @@
     <li class="active breadcrumb-item">AccountRoot</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="accountroot">AccountRoot<a aria-hidden="true" class="hover_anchor" href="#accountroot"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/xrplf/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
@@ -361,7 +359,7 @@
 <td style="text-align: left;">文字列</td>
 <td style="text-align: left;">Hash256</td>
 <td style="text-align: left;">いいえ</td>
-<td style="text-align: left;"><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要。)</em> The ledger entry ID of the corresponding AMM ledger entry. Set during account creation; cannot be modified. If present, indicates that this is a special AMM AccountRoot; always omitted on non-AMM accounts. <!-- TODO: translate --></td>
+<td style="text-align: left;"><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要です。)</em> 対応するAMMレジャーエントリのレジャーエントリID。アカウント作成時に設定します。AMM以外のアカウントでは常に省略されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Balance</code></td>
@@ -498,20 +496,25 @@
 </tr>
 </tbody>
 </table>
-<h2 id="ammの特殊なaccountrootオブジェクト">AMMの特殊なAccountRootオブジェクト<a aria-hidden="true" class="hover_anchor" href="#ammの特殊なaccountrootオブジェクト"><i class="fa fa-link"></i></a></h2>
-<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要。)</em></p>
-<!-- TODO: update translation -->
-<p><a href="automated-market-makers.html">自動マーケットメーカー</a> (AMM) は、AMMの詳細の一部を追跡するための<a href="amm.html">AMMオブジェクト</a>に加えて、LPトークンを発行しAMMプール内の資産を保持するためにAccountRootオブジェクトを使用します。AMMに関連するAccountRootのアドレスは、AMMが作成される前にユーザーがそのアドレスを特定し資金を提供できないように、ランダム化されています。AMMのAccountRootは、通常のアカウントとは異なり、以下のような設定で作成されます。</p>
+<h2 id="ammの特殊なaccountrootエントリ">AMMの特殊なAccountRootエントリ<a aria-hidden="true" class="hover_anchor" href="#ammの特殊なaccountrootエントリ"><i class="fa fa-link"></i></a></h2>
+<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要です。)</em></p>
+<p><a href="automated-market-makers.html">自動マーケットメーカー</a>(AMM)は、AMMの詳細の一部を追跡するための<a href="amm.html">AMMレジャーエントリ</a>に加えて、LPトークンを発行しAMMプール内の資産を保持するためにAccountRootレジャーエントリを使用します。AMMに関連するAccountRootのアドレスは、AMMが作成される前にユーザがそのアドレスを特定し資金を提供できないように、ランダム化されています。AMMのAccountRootは、通常のアカウントとは異なり、以下のような設定で作成されます。</p>
 <ul>
 <li><code>lsfDisableMaster</code> <strong>有効</strong> : トランザクションへ署名する手段はありません。これにより、誰もそのアカウントを直接操作することができず、トランザクションを送信することができなくなります。</li>
 <li><code>lsfRequireAuth</code> <strong>有効</strong> : 事前承認されているアカウントは存在しません。これにより、AMMアカウントに資産を追加する唯一の方法は、<a href="ammdeposit.html">AMMDepositトランザクション</a>を使用することであることが保証されます。</li>
-<li><code>lsfDefaultRipple</code> <strong>有効</strong> : ユーザー間でAMMのLPトークンを送信したり、取引したりすることが可能になります。</li>
+<li><code>lsfDefaultRipple</code> <strong>有効</strong> : ユーザ間でAMMのLPトークンを送信したり、取引したりすることが可能になります。</li>
 </ul>
-<p>これらの特殊なアカウントは、<a href="reserves.html">準備金要件</a>の対象外ですが、AMMのプール内の2つの資産のうちの1つであれば、XRPを保有することができます。</p>
+<p>さらに、AMMのAccountRootエントリには以下の特別なルールが適用されます。</p>
+<ul>
+<li>このAMM向けの特殊なアカウントは、<a href="reserves.html">準備金要件</a>の対象外ですが、AMMのプール内の2つの資産のうちの1つであれば、XRPを保有することができます。</li>
+<li>チェック、エスクロー、ペイメントチャネルの宛先にはできません。そのようなエントリを作成するトランザクションは結果コード<code>tecNO_PERMISSION</code>で失敗します。</li>
+<li>ユーザはAMMのLPトークン以外のためにトラストラインを作成することはできません。そのようなトラストラインを作成するトランザクションは結果コード<code>tecNO_PERMISSION</code>で失敗します。(AMMはそのプール内のトークンを保持するために2つのトラストラインを持っており、プール内の他の資産がXRPの場合は1つのトラストラインを持っています)。</li>
+<li><a href="known-amendments.html#clawback">Clawback Amendment</a>も有効になっている場合においても、トークンの発行者はAMMから資金を回収することはできません。</li>
+</ul>
 <p>LPトークンは他の<a href="tokens.html">トークン</a>と同様に動作しますが、これらのトークンはAMM関連のトランザクションでも使用することができます。AMMの残高や、AMMに影響を与えたトランザクションの履歴は、通常のアカウントと同じように確認することができます。</p>
 <h2 id="accountrootのフラグ">AccountRootのフラグ<a aria-hidden="true" class="hover_anchor" href="#accountrootのフラグ"><i class="fa fa-link"></i></a></h2>
-<p>このアカウントに対して有効化または無効化できる各種オプションがあります。これらのオプションを変更するには、<a href="accountset.html">AccountSetトランザクション</a>を使用します。レジャーではフラグはバイナリ値として表され、これらのバイナリ値はビットOR演算と組み合わせることができます。レジャーでのフラグのビット値は、トランザクションでこれらのフラグを有効または無効にするために使用する値とは異なります。レジャーのフラグには、 <em>lsf</em> で始まる名前が付いています。</p>
-<p>AccountRootオブジェクトには以下のフラグ値を指定できます。</p>
+<p>AccountRootフラグの多くは、<a href="accountset.html">AccountSetトランザクション</a>で変更できるオプションに対応しています。ただし、レジャーで使用されるビット値は、トランザクションでそれらのフラグを有効または無効にするために使用される値とは異なります。レジャーのフラグは <strong>lsf`</strong> で始まる名前を持ちます。</p>
+<p>AccountRootオブジェクトは<code>Flags</code>フィールドに以下のフラグを指定できます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -523,6 +526,13 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code>lsfAllowTrustLineClawback</code></td>
+<td><code>0x80000000</code></td>
+<td>2147483648</td>
+<td><code>asfAllowTrustLineClawback</code></td>
+<td>このアカウントの<a href="clawing-back-tokens.html">Clawback</a>を有効にします。 <em>(<a href="known-amendments.html#clawback">Clawback Amendment</a>が必要です。)</em></td>
+</tr>
 <tr>
 <td><code>lsfDefaultRipple</code></td>
 <td><code>0x00800000</code></td>
@@ -543,6 +553,34 @@
 <td>1048576</td>
 <td><code>asfDisableMaster</code></td>
 <td>このアカウントのトランザクションの署名にマスターキーを使用することを禁止します。</td>
+</tr>
+<tr>
+<td><code>lsfDisallowIncomingCheck</code></td>
+<td><code>0x08000000</code></td>
+<td>134217728</td>
+<td><code>asfDisallowIncomingCheck</code></td>
+<td>このアカウントを宛先とするチェックの作成をブロックします。 <em>(<a href="known-amendments.html#disallowincoming">DisallowIncoming Amendment</a>により追加されました。)</em></td>
+</tr>
+<tr>
+<td><code>lsfDisallowIncomingNFTokenOffer</code></td>
+<td><code>0x04000000</code></td>
+<td>67108864</td>
+<td><code>asfDisallowIncomingNFTokenOffer</code></td>
+<td>このアカウントを宛先とするNFTokenオファーの作成をブロックします。 <em>(<a href="known-amendments.html#disallowincoming">DisallowIncoming Amendment</a>により追加されました。)</em></td>
+</tr>
+<tr>
+<td><code>lsfDisallowIncomingPayChan</code></td>
+<td><code>0x10000000</code></td>
+<td>268435456</td>
+<td><code>asfDisallowIncomingPayChan</code></td>
+<td>このアカウントを宛先とするペイメントチャネルの作成をブロックします。 <em>(<a href="known-amendments.html#disallowincoming">DisallowIncoming Amendment</a>により追加されました。)</em></td>
+</tr>
+<tr>
+<td><code>lsfDisallowIncomingTrustline</code></td>
+<td><code>0x20000000</code></td>
+<td>536870912</td>
+<td><code>asfDisallowIncomingTrustline</code></td>
+<td>このアカウントに対するトラストラインの作成をブロックします。 <em>(<a href="known-amendments.html#disallowincoming">DisallowIncoming Amendment</a>により追加されました。)</em></td>
 </tr>
 <tr>
 <td><code>lsfDisallowXRP</code></td>
@@ -588,8 +626,11 @@
 </tr>
 </tbody>
 </table>
+<h2 id="accountrootの準備金">AccountRootの準備金<a aria-hidden="true" class="hover_anchor" href="#accountrootの準備金"><i class="fa fa-link"></i></a></h2>
+<p>AccountRootエントリの<a href="reserves.html">準備金</a>は、特別なAMM AccountRootの場合を除き、現在の基本準備金である10 XRPです。</p>
+<p>このXRPは他人に送ることはできませんが、<a href="transaction-cost.html">トランザクションコスト</a>の一部として利用することができます。</p>
 <h2 id="accountroot-idのフォーマット">AccountRoot IDのフォーマット<a aria-hidden="true" class="hover_anchor" href="#accountroot-idのフォーマット"><i class="fa fa-link"></i></a></h2>
-<p>AccountRootオブジェクトのIDは、以下の値がこの順序で連結されている<a href="basic-data-types.html#ハッシュ">SHA-512ハーフ</a>です。</p>
+<p>AccountRootエントリのIDは、以下の値がこの順序で連結されている<a href="basic-data-types.html#ハッシュ">SHA-512ハーフ</a>です。</p>
 <ul>
 <li>Accountスペースキー（<code>0x0061</code>）</li>
 <li>アカウントのAccountID</li>
