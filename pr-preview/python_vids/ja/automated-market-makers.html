@@ -285,6 +285,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#取引手数料">取引手数料</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#オークションスロット">オークションスロット</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#台帳上の表示">台帳上の表示</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#削除">削除</a></li>
       </ul>
   </div>
       </aside>
@@ -307,12 +308,9 @@
     <li class="active breadcrumb-item">自動マーケットメーカー</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="自動マーケットメーカー">自動マーケットメーカー<a aria-hidden="true" class="hover_anchor" href="#自動マーケットメーカー"><i class="fa fa-link"></i></a></h1>
-<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要。)</em></p>
+<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要です。)</em></p>
 <p>自動マーケットメーカー(AMM)は、XRP Ledgerの分散型取引所において流動性を提供するスマートコントラクトです。個々のAMMは2つの資産のプールを保有し、数式で定められた取引レートでユーザーがその2つの資産間でスワップを可能とします。</p>
 <p>任意の資産ペアに対して、最大1つのAMMが元帳に存在することができます。AMMはそのペアが存在しない場合、誰でも作成することができ、また既存のAMMに預けることもできます。AMMに資産を預ける人は、流動性供給者(LP/Liquidity Provider)と呼ばれ、AMMから「LPトークン」を受け取ります。LPトークンによって、流動性供給者は以下のことが可能になります。</p>
 <ul>
@@ -344,20 +342,31 @@
 <p>これまでの自動マーケットメーカーとは異なり、XRP LedgerのAMMのデザインには、流動性供給者が24時間の取引手数料の割引を得るために入札することができる <em>オークションスロット</em> 機能があります。入札はLPトークンで支払う必要があり、落札に使用したLPトークンはAMMに返還されます。一度に複数のアカウントがオークションスロットを保持することはできませんが、落札者は割引を得るために追加で最大4つのアカウントを指定することができます。最低落札価格は設定されていませんが、もしその枠が埋まっている場合は、現在の枠の所有者に競り勝たなければなりません。もし誰かがあなたの入札を退けた場合、残り時間に応じて、落札額の一部が返金されます。アクティブなオークションスロットを保持している限り、そのAMMに対しては取引手数料なしで取引を行うことができます。</p>
 <p>どのようなAMMであっても、その資産の価格が外部市場で大きく変動すると、トレーダーは裁定取引によってAMMから利益を得ることができ、その結果、流動性供給者は損失を被ることになります。オークションの仕組みは、より多くの価値を流動性供給者に還元し、AMMの価格をより迅速に外部市場とのバランスに戻すことを意図しています。</p>
 <h2 id="台帳上の表示">台帳上の表示<a aria-hidden="true" class="hover_anchor" href="#台帳上の表示"><i class="fa fa-link"></i></a></h2>
-<p>台帳の状態データでは、AMMは複数の<a href="ledger-object-types.html">レジャーオブジェクトのタイプ</a>で構成されています。</p>
+<p>台帳の状態データでは、AMMは複数の<a href="ledger-object-types.html">レジャーエントリのタイプ</a>で構成されています。</p>
 <ul>
 <li>
-<p>自動マーケットメーカー自体を記述した<a href="amm.html">AMMオブジェクト</a></p>
+<p>自動マーケットメーカー自体を記述した<a href="amm.html">AMMエントリ</a></p>
 </li>
 <li>
-<p>AMMのLPトークンを発行し、AMMのXRP（保有している場合）を保有する特別な<a href="accountroot.html">AccountRootオブジェクト</a></p>
+<p>AMMのLPトークンを発行し、AMMのXRP（保有している場合）を保有する特別な<a href="accountroot.html">AccountRootエントリ</a></p>
 <p>このAccountRootのアドレスは、AMMの作成時にランダムに選ばれ、AMMを削除して再作成した場合にも異なるアドレスが選ばれます。これは、AMMのアカウントにユーザーが事前にXRPで資金を供給することを防止するためです。</p>
 </li>
 <li>
 <p>AMMのプールにあるトークンのAMM専用アカウントへの<a href="trust-lines-and-issuing.html">トラストライン</a></p>
 </li>
 </ul>
-<p>これらのオブジェクトはどのアカウントにも所有されていないため、<a href="reserves.html">準備金要件</a>は適用されません。ただし、スパムを防ぐため、AMMを作成するための取引には特別な<a href="transaction-cost.html">トランザクションコスト</a>があり、通常よりも多くのXRPを消費する必要があります。</p>
+<p>これらのレジャーエントリはどのアカウントにも所有されていないため、<a href="reserves.html">準備金要件</a>は適用されません。ただし、スパムを防ぐため、AMMを作成するための取引には特別な<a href="transaction-cost.html">トランザクションコスト</a>があり、通常よりも多くのXRPを消費する必要があります。</p>
+<h2 id="削除">削除<a aria-hidden="true" class="hover_anchor" href="#削除"><i class="fa fa-link"></i></a></h2>
+<p>AMMは、<a href="ammwithdraw.html">AMMWithdrawトランザクション</a>がそのプールから全てのアセットを引き出すと削除されます。これは、AMMのすべての発行済みLPトークンを償還することによってのみ発生します。AMMの削除には、以下のようなAMMに関連するすべてのレジャーエントリの削除も含まれます。</p>
+<ul>
+<li>AMM</li>
+<li>AccountRoot</li>
+<li>AMMのLPトークンのトラストライン。これらのトラストラインは残高が0ですが、限度額など他の詳細がデフォルト以外の値に設定されている可能性があります。</li>
+<li>AMMのプールに存在するトークンのトラストライン。</li>
+</ul>
+<p>AMMアカウントが削除されるときに、512を超えるトラストラインが設定されていた場合、出金は成功し、可能な限り多くのトラストラインを削除します。</p>
+<p>AMMのプールに資産がない間は、誰でも<a href="ammdelete.html">AMMDeleteトランザクション</a>を送信してAMMを削除することができます。別の方法として、誰でも<a href="ammdeposit.html#空のammの場合の特殊なケース">特別な入金</a>を行うことで、AMMにあたかも新規であるかのように入金することができます。資産プールが空のAMMに対しては、他の操作は無効です。</p>
+<p>空のAMMを削除することによる払い戻しやインセンティブはありません。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->

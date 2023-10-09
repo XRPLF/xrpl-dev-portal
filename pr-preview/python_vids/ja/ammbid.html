@@ -301,15 +301,12 @@
     <li class="active breadcrumb-item">AMMBid</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="ammbid">AMMBid<a aria-hidden="true" class="hover_anchor" href="#ammbid"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMBid.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要。)</em></p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMBid.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要です。)</em></p>
 <p><a href="automated-market-makers.html">自動マーケットメーカー</a>のオークションスロットに入札することができます。落札されると、競り落とされるか24時間が経過するまで、割引料金でAMMと取引することができます。24時間が経過する前に競り落とされた場合、残り時間に応じて落札価格の一部が払い戻されます。</p>
-<p>AMMのLPトークンを使って落札すると、落札額はAMMに返金され、LPトークンの残高が減ります。</p>
+<p>AMMのLPトークンを使って落札すると、落札に利用したLPトークンはAMMに返され、LPトークンの残高が減ります。</p>
 <h2 id="ammbid-jsonの例">AMMBid JSONの例<a aria-hidden="true" class="hover_anchor" href="#ammbid-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm"</span><span class="p">,</span>
@@ -368,7 +365,7 @@
 <td style="text-align: left;">オブジェクト</td>
 <td style="text-align: left;">STIssue</td>
 <td style="text-align: left;">はい</td>
-<td style="text-align: left;">AMM のプールにあるもう一つのアセットの定義です。JSONでは、<code>currency</code>と<code>issuer</code>フィールドを持つオブジェクトになります（XRPの場合は<code>issuer</code>を省略します）。</td>
+<td style="text-align: left;">AMMのプールにあるもう一つのアセットの定義です。JSONでは、<code>currency</code>と<code>issuer</code>フィールドを持つオブジェクトになります（XRPの場合は<code>issuer</code>を省略します）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>BidMin</code></td>
@@ -421,30 +418,30 @@
 <p>落札された場合、トランザクションは自動的に前のスロット所有者を競り落とし、送信者のLPトークンから落札価格が引き落とされます。落札価格は、72分ずつ20回に区切られた時間経過とともに減少します。もし送信者が落札するのに十分なLPトークンを持っていなかったり、入札価格がトランザクションの<code>BidMax</code>値より高い場合、トランザクションは<code>tecAMM_FAILED_BID</code>という結果で失敗します。</p>
 <ul>
 <li>
-<p>オークションスロットが現在空であったり、期限切れ、または最後のインターバルである場合、<strong>最低入札価格</strong>はAMMの総LPトークン残高の<strong>0.001%</strong>です。</p>
+<p>オークションスロットが現在空であったり、期限切れ、または最後のインターバルである場合、<strong>最低入札価格</strong>は<strong>AMMの総LPトークン残高の0.001%</strong>です。</p>
 <p class="devportal-callout 注意"><strong>注意:</strong> この最小値は暫定値であり、AMM機能が最終的に完成する前に変更される可能性があります。</p>
 </li>
 <li>
-<p>それ以外の場合、現在の保有者に競り勝つための価格は、以下の式で計算されます。</p>
+<p>それ以外の場合、現在の保有者に落札価格は、以下の式で計算されます。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">P = B × 1.05 × (1 - t⁶⁰) + M
 </code></pre></div>
 <ul>
-<li><code>P</code>: 競り落とすための価格。単位はLPトークン。</li>
+<li><code>P</code>: 落札価格。単位はLPトークン。</li>
 <li><code>B</code>: 現在の入札価格。単位はLPトークン。</li>
 <li><code>t</code>: 現在の24時間枠で経過した時間の割合。0.05の倍数に切り捨てられる。</li>
-<li><code>M</code>: M`は上記で定義された<strong>最低入札価格</strong>。</li>
+<li><code>M</code>: Mは上記で定義された<strong>最低入札価格</strong>。</li>
 </ul>
-<p>競り落とすためのコストには、2つの特殊なケースがあります。誰かが落札してから<strong>最初の時間枠</strong>では、その人を競り落とすための価格は、最低入札価格+既存の入札価格の5%アップとなります。</p>
+<p>落札コストには、2つの特殊なケースがあります。誰かが落札してから<strong>最初の時間枠</strong>では、その落札価格は、最低入札価格+既存の入札価格の5%アップとなります。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">P = B × 1.05 + M
 </code></pre></div>
-<p>スロットの<strong>最後の時間枠</strong>では、誰かを競り落とすためのコストは最低入札額のみです。</p>
+<p>スロットの<strong>最後の時間枠</strong>では、落札コストは最低入札額のみです。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">P = M
 </code></pre></div>
 </li>
 </ul>
-<p class="devportal-callout 注記"><strong>注記:</strong> 台帳を作成する際に、ネットワーク上のすべてのサーバーが同じ結果になるように、時間の計測は前回のレジャーの<a href="ledger-close-times.html">正規の閉鎖時刻</a> に基づいており、これはおおよその目安の時間です。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> レジャーを作成する際に、ネットワーク上のすべてのサーバーが同じ結果になるように、時間の計測は前回のレジャーの<a href="ledger-close-times.html">正規の閉鎖時刻</a>に基づいており、これはおおよその目安の時間です。</p>
 <h2 id="払い戻し">払い戻し<a aria-hidden="true" class="hover_anchor" href="#払い戻し"><i class="fa fa-link"></i></a></h2>
-<p>アクティブなオークションスロットを競り落とした場合、AMMは以下の計算式で前ホルダーに価格の一部を払い戻します。</p>
+<p>有効なオークションスロットを落札した場合、AMMは以下の計算式で前ホルダーに価格の一部を払い戻します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">R = B × (1 - t)
 </code></pre></div>
 <ul>
@@ -465,7 +462,11 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>tecAMM_FAILED_BID</code></td>
+<td style="text-align: left;"><code>tecAMM_EMPTY</code></td>
+<td style="text-align: left;">AMMのプールに資産がありません。この状態では、AMMを削除するか、新しい入金を行い資金を供給することしかできません。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tecAMM_FAILED</code></td>
 <td style="text-align: left;">このトランザクションでは、送信者が必要な入札額を支払うために十分なLPトークンを保有していないか、落札価格がトランザクションで指定された<code>BidMax</code>値より高いため、落札できませんでした。</td>
 </tr>
 <tr>
@@ -474,15 +475,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_AMM_TOKENS</code></td>
-<td style="text-align: left;">指定された<code>BidMin</code>または<code>BidMax</code>は、このAMMの正しいLPトークンとして指定されていません。</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>temBAD_AMM_OPTIONS</code></td>
-<td style="text-align: left;">トランザクションが無効なオプションを指定しました。例えば、<code>AuthAccounts</code>のリストが長すぎるか、<code>BidMin</code>とBidMax` の両方を指定しています。</td>
+<td style="text-align: left;">指定された<code>BidMin</code>または<code>BidMax</code>は、このAMMの正しいLPトークンではありません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temDISABLED</code></td>
-<td style="text-align: left;">このネットワークでは、AMM機能 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> は有効ではありません。</td>
+<td style="text-align: left;">このネットワークでは、AMM機能が有効ではありません。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temMALFORMED</code></td>
+<td style="text-align: left;">トランザクションが無効なオプションを指定しました。例えば、<code>AuthAccounts</code>のリストが長すぎるなど。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>terNO_ACCOUNT</code></td>
