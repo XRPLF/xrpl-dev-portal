@@ -1,0 +1,3645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>ledger - XRPL.org</title>
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="ledger | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/ledger-clio.html" />
+    <meta property="og:description" content="Get info about a ledger version." />
+    <meta name="description" content="Get info about a ledger version." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+    <meta name="docsearch:language" content="en" />
+    <link rel="alternate" href="https://xrpl.org/ledger-clio.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/ledger-clio.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/ledger-clio.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+    <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
+    <meta name="color-scheme" content="dark light">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Document",
+      "page_group": "Docs",
+      "page_funnel": "References",
+      "page_labels": ['Blockchain']
+    })
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+
+
+    <!-- Stylesheet -->
+    <link href="assets/css/devportal2022-v25.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+
+    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+
+
+    <!-- Theme switch -->
+    <script src="assets/js/theme-switch.js"></script>
+
+
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <!-- copy code button -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+            new ClipboardJS('.clipboard-btn');
+        });
+    </script>
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>About</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL Overview</a>
+            <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
+            <a class="dropdown-item" href="history.html">History</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="impact.html">Impact</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
+            <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Docs</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-documentation" href="docs.html">
+            <img id="top-nav-hero-docs" alt="Documentation icon" />
+            <div class="dropdown-hero-text">
+              <h4>Documentation</h4>
+              <p>Dive into XRP Ledger technology and start integrating.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="introduction.html">Introduction</a>
+            <a class="dropdown-item" href="use-cases.html">Use Cases</a>
+            <a class="dropdown-item" href="concepts.html">Concepts</a>
+            <a class="dropdown-item" href="tutorials.html">Tutorials</a>
+            <a class="dropdown-item" href="references.html">References</a>
+            <a class="dropdown-item" href="infrastructure.html">Infrastructure</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+          </div><!--./col-->
+          <div class="navcol col-for-popular-pages">
+            <h5 class="dropdown-item">Popular Pages</h5>
+            <a class="dropdown-item" href="send-xrp.html">Send XRP</a>
+            <a class="dropdown-item" href="reserves.html">Reserves</a>
+            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
+            <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Resources</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-development">
+            <h5 class="dropdown-item">Development</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
+            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+          </div><!--./col-->
+          <div class="navcol col-for-current-status">
+            <h5 class="dropdown-item">Current Status</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
+            <a class="dropdown-item" href="known-amendments.html">Known Amendments</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item" href="contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="contribute-documentation.html">Contribute Documentation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
+            <div class="dropdown-hero-text">
+              <h4>Contribute to the XRPL Community</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item" href="developer-funding.html">Developer Funding</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group" id="topsearchboxcontainer">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/ledger-clio.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+
+    <div class="nav-item" id="topnav-theme">
+      <form class="form-inline">
+        <div class="custom-control custom-theme-toggle form-inline-item" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
+          <input type="checkbox" class="custom-control-input" id="css-toggle-btn">
+          <label class="custom-control-label" for="css-toggle-btn"><span class="d-lg-none">Light/Dark Theme</span></label>
+        </div>
+      </form>
+    </div><!--/#topnav-theme-->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/rr-clawback-issuer-note/content/references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md?pr=/XRPLF/xrpl-dev-portal/pull/2205" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-blockchain">Blockchain</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Blockchain" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
+      <h4>In this document</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#ledger">ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#request-format">Request Format</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#response-when-diff-is-true">Response When diff is true</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
+      </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+
+
+
+
+
+    <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
+    <li class="active breadcrumb-item"><a href="references.html">References</a></li>
+    <li class="active breadcrumb-item"><a href="http-websocket-apis.html">HTTP / WebSocket APIs</a></li>
+    <li class="active breadcrumb-item"><a href="public-api-methods.html">Public API Methods</a></li>
+    <li class="active breadcrumb-item"><a href="clio-methods.html">Clio Server</a></li>
+    <li class="active breadcrumb-item">ledger</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article>
+    <div class="content">
+        <h1 id="ledger">ledger<a aria-hidden="true" class="hover_anchor" href="#ledger"><i class="fa fa-link"></i></a></h1>
+<p><a class="external-link" href="https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/Ledger.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>ledger</code> command retrieves information about the public <a href="ledgers.html">ledger</a>. <a class="external-link" href="https://github.com/XRPLF/clio/releases/tag/1.0.0" target="_blank" title="New in: Clio v1.0.0"><img alt="New in: Clio v1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-Clio%20v1.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Note that the Clio server returns validated ledger data by default.</p>
+<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
+<p>An example of the request format:</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"expand"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"owner_funds"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"diff"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"expand"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"owner_funds"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"diff"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
+<!-- [Try it! >](websocket-api-tool.html#ledger) -->
+<p>The request can contain the following parameters:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ledger_hash</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger_index</code></td>
+<td style="text-align: left;">String or Unsigned Integer</td>
+<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>transactions</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, return information on transactions in the specified ledger version. Defaults to <code>false</code>. Ignored if you did not specify a ledger version.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>expand</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><em>(Optional)</em> Provide full JSON-formatted information for transaction/account information instead of only hashes. Defaults to <code>false</code>. Ignored unless you request transactions, accounts, or both.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>owner_funds</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, include <code>owner_funds</code> field in the metadata of OfferCreate transactions in the response. Defaults to <code>false</code>. Ignored unless transactions are included and <code>expand</code> is true.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>binary</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, and <code>transactions</code> and <code>expand</code> are both also <code>true</code>, return transaction information in binary format (hexadecimal string) instead of JSON format. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.28.0" target="_blank" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>queue</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, and the command is requesting the <code>current</code> ledger, includes an array of <a href="transaction-cost.html#queued-transactions">queued transactions</a> in the results.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>diff</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, returns all objects that were added, modified, or deleted as part of applying transactions in the specified ledger.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>ledger</code> field is deprecated and may be removed without further notice.</p>
+<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
+
+<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"account_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10EFE192F59B3DE2A2BE5BCE2CA5DC83D066105696FCFC24C055359AAEBD6941"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">711134782</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_time_human"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-Jul-14 17:26:22.000000000 UTC"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_time_resolution"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19977716"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"parent_close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">711134781</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"parent_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D6DE54039FE5A22D86CD522F1A9B7794E487B74D9B6B8CBDE23F240F434B6749"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"seqNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19977716"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"totalCoins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99987079398940307"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"total_coins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99987079398940307"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transaction_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000000000000000000000000000"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">19977716</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include ledger_index:current in your request"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This server may be out of date"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"account_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10EFE192F59B3DE2A2BE5BCE2CA5DC83D066105696FCFC24C055359AAEBD6941"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">711134782</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_time_human"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-Jul-14 17:26:22.000000000 UTC"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_time_resolution"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19977716"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"parent_close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">711134781</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"parent_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D6DE54039FE5A22D86CD522F1A9B7794E487B74D9B6B8CBDE23F240F434B6749"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"seqNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19977716"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"totalCoins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99987079398940307"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"total_coins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99987079398940307"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transaction_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000000000000000000000000000"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">19977716</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">     </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include ledger_index:current in your request"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This server may be out of date"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
+<p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing information about the ledger, including the following fields:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ledger</code></td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;">The complete header data of this ledger.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.account_hash</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash of all account state information in this ledger, as hex</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.accountState</code></td>
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;">(Omitted unless requested) All the <a href="ledger-data-formats.html">account-state information</a> in this ledger.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.close_flags</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">A bit-map of <a href="ledger-header.html#close-flags">flags relating to the closing of this ledger</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.close_time</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The time this ledger was closed, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.close_time_human</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The time this ledger was closed, in human-readable format. Always uses the UTC time zone. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="Updated in: rippled 1.5.0"><img alt="Updated in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.close_time_resolution</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Ledger close times are rounded to within this many seconds.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.closed</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;">Whether or not this ledger has been closed</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.ledger_hash</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Unique identifying hash of the entire ledger.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.ledger_index</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">Ledger Index</a> of this ledger, as a quoted integer</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.parent_close_time</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The time at which the previous ledger was closed.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.parent_hash</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Unique identifying hash of the ledger that came immediately before this one.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.total_coins</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction costs destroy XRP.)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.transaction_hash</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Hash of the transaction information included in this ledger, as hex</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger.transactions</code></td>
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;">(Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying <a href="basic-data-types.html#hashes">Hash</a> strings. If the request specified <code>expand</code> as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger_hash</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Unique identifying hash of the entire ledger.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ledger_index</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">Ledger Index</a> of this ledger.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>validated</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><em>(May be omitted)</em> If <code>true</code>, this is a validated ledger version. If omitted or set to <code>false</code>, this ledger's data is not final.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>queue_data</code></td>
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;"><em>(Omitted unless requested with the <code>queue</code> parameter)</em> Array of objects describing queued transactions, in the same order as the queue. If the request specified <code>expand</code> as true, members contain full representations of the transactions, in either JSON or binary depending on whether the request specified <code>binary</code> as true. Added by the <a href="known-amendments.html#feeescalation">FeeEscalation amendment</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.70.0" target="_blank" title="New in: rippled 0.70.0"><img alt="New in: rippled 0.70.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.70.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>diff</code></td>
+<td style="text-align: left;">Object</td>
+<td style="text-align: left;"><em>(Omitted unless requested with the <code>diff</code> parameter)</em> Object containing an array of hashes that were added, modified, or deleted as part of applying transactions for the ledger.</td>
+</tr>
+</tbody>
+</table>
+<p>The following fields are deprecated and may be removed without further notice: <code>accepted</code>, <code>hash</code> (use <code>ledger_hash</code> instead), <code>seqNum</code> (use <code>ledger_index</code> instead), <code>totalCoins</code> (use <code>total_coins</code> instead).</p>
+<p>Each member of the <code>queue_data</code> array represents one transaction in the queue. Some fields of this object may be omitted because they have not yet been calculated. The fields of this object are as follows:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Value</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>account</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#addresses">Address</a> of the sender for this queued transaction.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tx</code></td>
+<td style="text-align: left;">String or Object</td>
+<td style="text-align: left;">By default, this is a String containing the <a href="basic-data-types.html#hashes">identifying hash</a> of the transaction. If transactions are expanded in binary format, this is an object whose only field is <code>tx_blob</code>, containing the binary form of the transaction as a decimal string. If transactions are expanded in JSON format, this is an object containing the <a href="transaction-formats.html">transaction object</a> including the transaction's identifying hash in the <code>hash</code> field.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>retries_remaining</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">How many times this transaction can be retried before being dropped.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>preflight_result</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The tentative result from preliminary transaction checking. This is always <code>tesSUCCESS</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>last_result</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><em>(May be omitted)</em> If this transaction was left in the queue after getting a <a href="ter-codes.html">retriable (<code>ter</code>) result</a>, this is the exact <code>ter</code> result code it got.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>auth_change</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><em>(May be omitted)</em> Whether this transaction changes this address's <a href="transactions.html#authorizing-transactions">ways of authorizing transactions</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fee</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The <a href="transaction-cost.html">Transaction Cost</a> of this transaction, in <a href="basic-data-types.html#specifying-currency-amounts">drops of XRP</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fee_level</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The transaction cost of this transaction, relative to the minimum cost for this type of transaction, in <a href="transaction-cost.html#fee-levels">fee levels</a>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>max_spend_drops</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The maximum amount of <a href="basic-data-types.html#specifying-currency-amounts">XRP, in drops</a>, this transaction could potentially send or destroy.</td>
+</tr>
+</tbody>
+</table>
+<p>If the request specified <code>"owner_funds": true</code> and expanded transactions, the response has a field <code>owner_funds</code> in the <code>metaData</code> object of each <a href="offercreate.html">OfferCreate transaction</a>. The purpose of this field is to make it easier to track the <a href="offers.html#lifecycle-of-an-offer">funding status of offers</a> with each new validated ledger. This field is defined slightly differently than the version of this field in <a href="subscribe.html#order-book-streams">Order Book subscription streams</a>:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">Value</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>owner_funds</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Numeric amount of the <code>TakerGets</code> currency that the <code>Account</code> sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is <a href="freezes.html">frozen</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>If the request specified <code>"diff: true</code>, the response has an object <code>diff</code>. The fields of this object are as follows:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">Value</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>object_id</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The object identifier.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Hashes</code></td>
+<td style="text-align: left;">Object or Hex String</td>
+<td style="text-align: left;">Depending on whether the request set <code>binary</code> to true or false, this field returns the contents of the object that was created, the new value of an object that was modified, or an empty string if the object was deleted.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response-when-diff-is-true">Response When <code>diff</code> is <code>true</code><a aria-hidden="true" class="hover_anchor" href="#response-when-diff-is-true"><i class="fa fa-link"></i></a></h3>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"account_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29E8799E80245DA68AE2D9C4A454DF3E8FEF5B66C520E644DE0756E548C6897B"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">711135301</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_time_human"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-Jul-14 17:35:01.000000000 UTC"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"close_time_resolution"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C769F00409D574A982DC0CC071A244C5507D9E2269404957B78081ED8F2FCB1C"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C769F00409D574A982DC0CC071A244C5507D9E2269404957B78081ED8F2FCB1C"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19977887"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"parent_close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">711135300</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"parent_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29BAC714E9BB7DFE9BE3C8B4AACFDB184389388340A4F3B09CC61A39BAFC3705"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"seqNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19977887"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"totalCoins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99987079398939527"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"total_coins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99987079398939527"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transaction_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000000000000000000000000000"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"diff"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"object_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"Hashes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">"A17FED77F200BF8FC66050BCFCC87241DB53C418B3B3C8794C857AAAB76C21EB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"F991F764BA7B44B5B28F7AC8F03F2BC03B1647AD355CE0F0F91D3B500F862959"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"06523FF3694A078F2DD073A728145455EB451651180C6B0EED1557B657C6C07D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"69D5C7A206A34CC4A1D21A9D2453E6D72526EA0DA712009F215AA614C259A333"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"94453F6FA048C153A7124C249A7C3393D1A3B4E34A508872A3AA4FE89021221C"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"406FABC4A1C9A30300C814F6B083C00F16568840BBFDCA04369A545CF248472C"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"9396907A543546ECF48C6417373705514653ACB4E585C009EEF525B51CE1F155"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"14082ABB45AFED62BFCDA3CD0465BD17545281C3D671DEC82A837CBEE36E470A"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1D4D19B06024BE49333EA6C010F9721C5C1A36A5C08D22160945247D3FF9F552"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"91095028948A56A16D8E17488057C27BED696B8E359BAB0D7B8510BBD5F0CFB7"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"FC073AAF3B07260545DCAF0BA0FCFBF7673302D972A534CC8EAB1CD5C4CC73EE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"4DB17A22F0857992E2BA75C4C15C39B0D420EA26AB6FA862B54E2D65C739117B"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"CB44073EB0A174C4757F453335A5A84848AD899AD09574883946F37DCDEA90B8"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"0B285623C693432532418BA783CF6D731CAFFC312566398B27B67C1B856AACE1"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"5024CD26CE82294E15656CCA0E350284ED6EF70DBD4E4791017F3E4B396D42F5"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"F0E4B4331D5B5B9BB1B43232C8B50E9EB17CD4F6817B04C3AC263C773B44E222"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"7CE5AA21BAEF20DCA4384D469451F6B9BA7AFBA265FCA83B48045C7D994E8BE8"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"91F8A45B27C8DC825157633ED5AE3435F51D5325D29F2F8547D3849F59812CDD"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"520B119EF4ECF9AC3F1B247621A04F0DC187CA6D756B6614E6BCE05A22839C8C"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"EE87D8EB08BCE989C87D530EE4497F5B59B82F859C687E49C6629F34623CF4AE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"965933B82140D8BC04C324E075AB3758F82F17BE610D12306614A4B1F3695270"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"EA1EF4CECA2EBABBA5A09041C186352B3A57F4496676DF0E4E743794CF2D7ED5"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A261123CFC1675958992C604778535208FE9C783AA77107393EC1E290D7D3ECF"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"5F3F22362E969A5E7479BB4A9FD31BCFBCCDB66741F49CB72755BC2B76A1D310"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1BF9D357835E4D8FA82AE99FA13F389F502401E59600F2B72E4B1CB703A54363"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"59A17903D6C8FF3F36C327E207AB54293163A8AA4A3DD515F2C677B736396BAB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"308905A9E623788DE1170B396AD379863D5492B490D6D56D68F3DDA41CED7F39"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"B686A8CBD0B5464C74B7D7E3AD04D055E59C7FB558B4F65D61FDC005AB91950D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"81831141523FDEEEF91BA883B0B394D8D608C2353936123F88B4C27F823E5F32"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"DE2BE267BF14EBB26696070989BD229603985CDA105B186C2987C6CC9A0CB83E"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"E54358313465A1701F94806969E07D392AA5E9A6DE99A37E4328B9C9736630C1"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"02190060960D241F3182D4E8CC154D2DAA8224CE3CC1DCDB1E21CAC65B56D9B0"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"B02916AF6E46353828988E785C2F0A26F8CD6196F5905AB4DEDF7034432FBC3E"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"3E95827426FC91549A8E9A80D6CC99997646F6B26CD3F625D94064BA16DE97E1"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1B83060E2DE91E889FFCE8D0DAEC810197C026EE0F037E612732639EDED3EBCD"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A8EC7EE25A6B6C13AC6A006F3397EFC8FE38829EF273469186CABE5B529A40EC"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"B00AA09BC4A6180967DD6BA88BDB13F5F59EA4E9C074B752A04DF7C515DF8504"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"45CD713F10A5ECD06B32A2B15E63FEF211852E8BD56B813362D16C7413948785"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A749FC031CC69E10476B7AD751B068F32DB9192C9CBCBD7CDB018FCF5C1B0934"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"28BC94EB8BC5A0A3313CD825FFC824454ED64C60988D530B334C3112621005AA"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"18DA83251BF498CEFDD189B7894E70ED2BDE832183C4C846B4D6E886B0749CD6"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"4DB4B88C5F4638816E06D880E55DD83C61747D0235C96E1CE1FD709777C20BEA"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"CED44414A9AA99BFD709B7A9072170CB2040EF31D5E84552A930E02CAAB2301C"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"9566A3A6E02FCA0648B67CDACE941BCA7D243D1E2F18742E50EE83C1C8950A19"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"0100F9B48D0999BEBBD18500036741B34E7FC395F155FFA81263EB772C2E1178"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"867719FDA972F549F2149341FE8089A09DFA590C55B7F682A4BDEAEC14A32EEC"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"12C96E5C7D29649AA86FF17969B13978DCBA004F691D476A8AA88EFDA318E5C1"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"8001BD1ED9A0772DA5C89144B56B2504F90329C06E05F4052862EA5560021448"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D3F85FA0E6B948F05578B99306247B569548A976773DBD0A7811CC8FD62A5033"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A2B15A5E7B8C3912C7FE9BB93B98333B00AB82322F9759CC43ED6D7BC25F48DF"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"3C7D539FB2D34B20B3BBFFBEA05738560A3811AC496BCB7D504041250D4C393B"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D5B91302F8146E5BC0FAAF08BE2C228CCC17EF192A423CCEDE1A38A604D9E842"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"F4DBF016BA3836F3B6B5971D1308C04C531FADBD6E74EDB03822851D8C1D5A84"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"EDA6E3DE8138D6129B3A11EBE98F676F66943158E2ADB0E5E548EFCA124C7F7D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"19EBC639A176F903A739C1C375C240ED5EB58B5D1FB6DF15B3CE4AD6B04689B8"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"E015FE6FCE6C587605A7918ABC25CB37BFABCD7D49A2C7EBDCABC490AEDD90AB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"9684F16CA2DE7C8056F5125D2AF167E8D3CB5FD8F9A12D87D9D60CE46F098BB3"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"EA9160D3B05F0DFF835AE2AF054BA0FED3DE6A381E11AED991E0850EA1D28A7B"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"2483BA35393AA70856554220E0A3AF07C33C6DB03BE12611456E202A0549FE4D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"FD0113CC43B968461C3F2747BAFD05878A406BFB77B2DC871CA38F437BF210AB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"F0DACE2C90812B32803F5D5BEFBACA52CF2F356D7DABD617D9EBBA97328FA785"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"3A0AF0AD0C70DCA0133030A00AAB6B988C898B85A46280D8E76D276CA338424F"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"44EECEB56CD25464A250C2D1A6F8229A2764BBEF7D0055136BCEF30891C38EDA"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"877D98B96F97C3E60F2943D1B8549FE4AE5028404595E5BBB202944AC6F01A60"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"2D315749EF112D77ED3678AB490EF8A57DE306CA8FBACF92C488768A96A9BCFA"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"4369B3388623807E1FC6CDF6903B52603FE4CB6B9BF077C59F8B13B51977AA69"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"56B0C8A81165767A2ABBA57DFAE643EDF4939E90812357C57D771494BF53842B"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"6A6BC82CE98722D24EA37A5BD6147964B80EAB15FA92040ABBE5EDC2091926AB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"49AF43F65FCA39766EE5A8E1A350728188EC7484415A08C99E1B5D20D3CCB02C"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"8EEB0C0B13C8F4AFC1290108A76A694657CBD88D386C01FAE14DDA3375500B2E"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"3B1005BDD07BD695EDD5E03F82B491D716E1385667403E71359CF4AD1E1A16A9"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"75D9C054146CA170317679319D5B4EABEB43A5BC54DC8C76436E3FDA419FFD02"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"28B85444D0F90113D9DCF445EE1988EE228980103F3E285ABEF1D74EA8D739F4"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"086064E478FE929117878CB7BFCDB615E3E9F2386DBA414922121C026B112A57"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"AD958731124D7ECCA778B9D5671C61E6D7F45FB9DFED3ED088A48BDC9549BF64"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"209D7728CBFA4071209906222B90EE625E4C2204FC26DDE4C07C23079AF75A9A"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"565907A56C26BD5A51CC030F43A06E3A147D468108115D5FA77E345A6E565F6F"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1D1DE732390C20EDBDDAC5DFC6818A6F0E016C50DC376AD2CDD3F24EF1FA1855"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A864A423696798807F2FB532F1708FA35C1DAF6C419E67E6E773A6BB129F8266"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"C47D3FFB2F918FA865597A668ECA393F9FC2E429CF0751E970A03C7F48554982"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D033B2D1E8A2CC77FBE576D074294E80E6C6018802E62FF7BC56701E54A00BD9"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"25D569F5D84842FFEED3A05178B6B9E582E922B43A8CC29F1146E34FAEBBDDD4"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"C56A6197504AD536CFD9A0C26599F6D3E305CF77354CF2D7A33546DA24439B16"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"28F8DB51BED3DDD90194D1452B18C2612C65FC09D77FE31B271C59291C0C2E06"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D6DE54039FE5A22D86CD522F1A9B7794E487B74D9B6B8CBDE23F240F434B6749"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D3878EF6C92B84678AE2FBADC40961A161A128EA54AE59C2775CE076C2AE7A85"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"6DF891006E4D4840263C561C54135BFE78FE766A5CC241DDC7A0563BCA4E4C5E"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"FE2D5BB3051F24F6114A7DA14CD393E4187219F52DB83CC0438E0F0B1B350874"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"39292A3C8E56BEA306D83441ADF3F0E65C02BE1DAF3F66F8B95EF46FF44D2487"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"506E1F0A25BE23A46C7483D23CC94583837411D79DD446219964DCE2C0807B0C"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1D4327D8480B5EA7A61AFB1DBA977D2621372227D5FC55FC90081B3675082DC2"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"39A957F6982825A34ED12AD63BB1DB76BB6C9E725C28BCDA198F62876E0FEE44"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"64C05FA4D16991A613F13655474ABC52C49093334A1C844F5F0682560B0BEE70"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A4E4AF4BC5B670F2726146233CCA99226EDE61468A26EC4378C919A1D0CC7162"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"6AD5D147ACBA2AA94D19AA4CF8FE8A92F11D57DB7AE21CE2226103CF1B4D49EE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"7764C4EB977E2E40825593AAC2B51FF8D2DC6E29FD8F257C235D009D24238860"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"DECBDC6150DA4CA92272AE45CBAE9D8174E84FD2D0053707778A3FEA4FCE8961"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"BFED2884BB6E0DCD3BC0E91326CAF674A449D05C7AFAC95BDAB3D51FFBF369E9"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"ADF69FD7A3273D709B2FDD7FC4A2C43D6D0D6BCCC0AF65FDC584B543FEF68240"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"FF3667A56CD39221B8F2B22A479345CBAB9E7CDBA43A0356E694AF58D347D2C9"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"4DD651F3A6E1B3EAEFF384F21C04B2BC39EEEBBD016180781CC007842F5C9DC5"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"B7FF750CAB3F806DD13ED55CB54443BFBA616762DC32891CFF55885407844911"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"24CDF209FBCFA4F10D46CCD4B05C8A80E030A212C6F53FD2DEFE93A0E64A2848"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"E3EA5323ACA4611D84415B787CA74B0BFD9FFC37E1BD862498A8370CEBAF6AA8"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"8D1A5630B0871D4E27F5B13E73CE313C7D65E4694541877940E6D113CBE6D5C1"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"FADA7F6865EF29AF7C9485E170D25C03B96354E8E419532090A33FE11E5C536F"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A13BFBD7E04AE200E7BF91159B63B8BB6B867B07905DE927515178DB786ABB10"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"0C7B5ECEF3C99096D29307EFCF2FF2C058EA8CAB8E8CE45602C877EE06C8E428"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"B58FF112CCAAAADBBE9CF2B986C84F6F9E63E21AED202DD6A8154287F1374540"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"0466E0A51610D718CCBEB76DD5375B8D19401F14F0D1FC43BADBDBB0CBC2E252"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"5D78C471A058971A621AAA03AC8B48629BBDCBA566729BFB9ABCD57F34C7431A"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"52154C4764859925DCEE21722E782B9661751CA5E12D5C6F20CB25329946FF42"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D1157510A1F7E60DEEA252C1556D442529BB85FD663ABBE0AB50FDBEB2E6B102"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"AFD343935B0A415478B1B939F7F65B01ACE8697E600D2D4876C44322B4F1C7E5"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"7009160F2CEB809C9D3579471F2AA4375CB898AEE4D75610A1597A231DDCE48D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"91908F58250C01130E5DCC2F4E27C7B1AC4F3DD2ED37D89903EA1C4814610215"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"F91F97F8B7ADC47DF97C57DBBD9172F6F474519BF98A3F191C36EDD5FED60FA1"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"681992EE99027FB7083F6801F4FC0C42342188D4C19977A723F922DCDD7D96C2"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"431EB9959F3D1FF3902BD92710E9A82D2F2FF2E21551A9A4704CC5D021612CB4"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"94AD216A9B3080BC850B1E4A2F3FDA73000806070FEF53A63EB993BCDC89C380"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"E1CA581E35FD56A476A09FB1FB69E0F756538FBFE8C7784C38042511AB9C98DE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"11C388D35E712ADC97A3D0AE46FC0C0CAD8F4719255A19A3882194FB2DF5F7F2"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"68D34928D77FCB509A8A06B6EB7C674CDF21E53BC5BED834FEE948F2BE3234AC"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"451A0520DFAD303D5564D9E383C4335EC457C870D4BBC62C33F3B229C41599AF"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"183155CAC5C01A29209CD866BBCCDF2B50EA3D60450AB8E6B69B6F85509C60F2"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"02494D95424824D3F83C9916CDF0C1CA0FAAA1C22B8E7647D16CE84C15E9850D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"4D140E49AE22792B21B6B96C7DF003954B34393BFB915C18AF1CA7B98C83DC45"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"21735614AFBBCF9D109DCD83424024EE8009292DD8D75715C3A6E1F96250B7DB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"82EFBE40A7B810369E7C39C199D77061E129CAE36FE4A0A000811A23A7AD7E63"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"AF3CB3F6F3B9D086390BBFC6FD3F8FF2918D58E2B2032D89E83879174F480E3D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"21848D2B5F50AAF2044662483386A629EA8162995E58A479625F9A1C617A01E7"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"BB8B7E9CAF46E29403C649613AF16FE8AF37478AFCE240BE6C0BC3F54A6EB4F1"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"F2874B80E64C57F8FD1DDA598FBEFFB4B2E6CECF3A984DAEC60F184ABFD2C03A"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"15CDBBDA11931E1D24D37218E65CB3CF08F0E539DD9AB942214C05B3E494B6F0"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"9C210C63F0679B59DA6F003A0C5D6F7E2DB4EA1406BE6EACF449D217C285E037"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"192C9D0C5A49989BCA788F1BBE63B58556BA0E433BBD8ADD4B863D1C0FC356AF"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"03F177E6517BB75C395B4E6A7AB45B8AFE0E974210828713AA02DD47ABD1408A"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"7DDEBAF7B185001AE2BBE964380753231869474CBDA1EC95600DA8E1A02646B7"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A85AB657FAEDBEB7131FEACDC65347EE08B4ED13D1C72A49CC2B5F8508A5B0CB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"9C6E9109DA0B5A513DF5E73392AADD7C6C0496C940BE60A9B8416C3D4B556EEB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"99E68186022471A787D7A8CDA6F75F067925A374B8A429EDC7F36E064AEA4199"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A4AE86CA5A78E2145856B3A1D3AB7C6F0907BA46978F50633E48049180D031C0"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"EBC6B139FB1EC3E9E24132689CA092C8672EDF356398D29100D9F56BEA81BABB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"C595DF4DE3C2127C9A6AF2136E6179341D9DF5155A4AC514B2CDD2C29C4AA07D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"29612714CE0AAAEB97B287F0C5ECD38782FF9BDB2B18D482679E64557223D380"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"DD025B92754F403EA9BCCC588CEE41F7AB64A7458757EAFED1025E193BAA8CFC"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"0E32604081E3D7349225F7F9379E291A69CD78D0C65D332DEA30FEE3795E0F4D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"CA6F59B04FAE47133310217A832300402B947163AD630365E9BADBCB1F839634"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1170E9481115804233BB48DECE4A40FC3822D90B304C1842FCF31185982C6A26"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1F5C266D7C98931AE2FE24C540D62691534CE19D3E0705866F2BCB4A9A7DC96D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"ED5EE281D36BFD1AF424C9893D81FC89A7B7904B46CBCC73878FDAB881D34104"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"126EFAA40EE6813C63D0C98776E3C1D367CDF082A1CD4BEAD9AEEA0F5B381BF6"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"41B9BAB0370A20827E8D982CBD998A9F3061DBF4E8D8D5FB9A94AB88ECDFA9E0"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"AD84AC38922A4F7419454303357C7F35694D428C4DBA055A73318647A28BBA22"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"F1E13F085E07E8B7B096A94046254D2C753F0A897228F82FA8E8E4470E8EBC84"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"E56D730E2A64F28B5D8F1F622224CA3DAFC9E8977C2D7F6916B668E6F5AC5FEA"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"5176BCD5B49F51EF0357BCDFA99393FF870C956548183C45CCABE3C45A6E0210"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D0BAF08FBA5DBB1C56B962D799F5A540227A0A730DA01A29709F1069036C0E4C"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"4B6864224578CC821F3FDD8481C9898BE2D6F7AA57E0C088A4190F97361066EE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"8C82AF844701C4A460E6977AC3138FCC0A16DEFB86C30A1DA5D850E79F4346EA"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"DC494D03BDC80BDB671DC34580C85101B4757C6FABE07B96CD50DCA08F870EF1"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"7E01B6E68F72C59B819D9FE3A427896EAF6976F54D11DBAF4E4B78AD0F4F94CE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"65DB13E8EF98054BF5EB1B7B458B37D09F062F1ED5AD29CBCD655E082CFDF948"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"87377F31ECBB1BA1FC8D2B78EBDC3BC63F034C81490097C445A43B571C24CE41"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"895B2CD5B1F669A35FBDEF28224126F433758E4A95A5D2503D9058BB70ED676A"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"503D2DA830018B8F422A32409D71DEFFE1F4DA682236B8218607191EC01A3A7D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A86D61D03AAB6D516C93F90C80C227A137776B7FEBE3E7BA6F7DBCB18FA800B9"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"E0E88839EFBF8E78AD5981928FC6B75BF1B037534CB20D8A19B173183F726D96"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1E64DCEF5EAD556D1243CD60AAC9DC8F5B6335ECDD3E2A606A2C504BDF24A752"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"4E3426C8BF92F0B713D59381A865EC646733BA6504907F43D3899E0437783D0F"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"47A43F68C85B560877398BF1F762B69517C43842EDF90D1869C5FFA3D334DFD2"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1D2077E03065C4B1B893B09A1F9ACFAF4CEFB8EFA48110ECFA88BFC83EBDD02F"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"FA46B288FEAD5D7314855929BEE8E7E6FEED199B4A8EA45DCB026DE0A2F85DEB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"CDEE9069327F829ECB476103E859033481B1ACA692527B2A117F5188259CB642"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"8C892E4EC406900DC3632A872849F2D58A248E8089EEA5F95B4650F2B8140037"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"9F5C5E1017556B907E60342E8D146556C41A8E125F62101F3E11023FCAB0FA0D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A97DFE953D243B9534C4CF446D58928B3DA526A52739C65C218D98E89AB8F154"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"EBF542E9C22DD349ECE2BC90BFA78412F97E45315349F7D6EC530F266A10874D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"C20330EDC46B8C3DC3841AE2141BF523E5D82BA7453E7C80772EC545B8D74D68"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"5AF5470AD82C035CAEE8822AB8E23F86C87A9304069BF4DDB7B4329C9D99CC95"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"899D94ED8FCA53556E2B679F007298FAD93FC7E948337918154907E8AF44BF88"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"0CD167820E508D58E0EAA828C611BA83E483F31316262AF4DA215A6BC0E049F9"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D7F686491E837A42A82CEB1209344EA906ABE1D5D2A88A09B3DAFAA41D174CEC"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"B2BD977BE83845585E5BF100DD8F1D074B97B863EF026E5B3E5CF58610A49B76"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"85ABA1F4F4EDC96E21491BDA3B0FBF9D24F85CA031C2CD7885F1EFA70D32B4DE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"4F88CAC8248F7BDFFBC6FA84FF90041CEEB7E6F37480BFEE121CF3E56D3A79AE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"5D2BDDB71EE422BDDC673E435121257D4A0603ECDD53A00FE2A5F7F2D0301173"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"198493B9CAAF02641DF7BC6C0F18B45C12E036EAE757F3465EF973924DF8C77D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"E4AE4E3F8C34122B47E1D5B860911CDC767DAFB039C005961175E2439BF78DC5"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"B5BB5640A47DA626D65122018BD3C415DDBE2A1CAA4407B8B079CEF0C304AD95"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"BDB7AD110926AA63846409D5FD1A99AA1BE868AF245389ABEE31F14EDD15EBB1"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D8495120CB075C928C72CD926B94C99F5254AAD2D6E244BAFA9A63BA52BD960E"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D2557CD093DCBFBD3AFDB8EFD11FC1E6F413EEB2761749EB200A872A3D2694DE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"571BC9B0877BBD6367B06671C27EAF34F816CCA2C21DCE5897B0EFCD0D43A2A3"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"04B1D993665ED4D933932058FD8FC2B94DCDFDE047548FCB3A01DBD14635D077"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"62C1D9B265994D0E7771EF89E862EA78DDD92393AFE0CE8AD8CA88CB6704D1E0"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"900D28DB3B3D291923AEF1D21A4C479C03351C5F8BAD5466B8342D7DA27D8CBC"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1DE86AADC71CA909F70481703077EE060173D6A29793C310C580B98ECC874201"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"4E0370E993DD3582AF5E6E4305DEDDB827FD54CD724FB1D8C0C9D3233E47BE14"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A3DB94469E15C3F6929B2D32F738175094927B5BBBB0B604C2D53CB06D346127"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"CAC99E91ED58500BDB307D5DE552CC8C47904475C80BBE11541E893BB1E12B4B"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"4765C07192C891F5241B66A30A97C97FBCC8F4CC69BCB1AF6E3300785623F3A6"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"45BF472F5B15A434F566CBB2FB47C5831D11E4B9B223541368E8548D4C55B59F"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"3FC3D33C9C4A183DA4637E4EF274E8FD33B875BA0FCC04C651FC7C4232B16FAA"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A98C78E925763C6C1E5042C84A67D41F88270ED729D69A26201E07A5DDA5230F"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"50C0C03269F1F6F7A2D043E87D77E33C90A1DFA89D1ECDEAF4A60C58F35B5A88"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"DE165AA3966F0563450D0574E640299CE74F7F34DCC91B6611F28D5B4F4787C3"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"5991D443A65155D51146CDEB92B20DC6741F5DC69CF9BB09D2143B1FB6CA5DEB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"7B277027ADA02DE4A2ED276DDFC25A24DC192C4621C690388214EA3A3702D160"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"6DF9246E01CCBB2EB84D45042759DE38626E31FF13C96B96D7B3D810B913C267"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"E57254EC7240FC6EDEDC06472720C85BA29D7767B558D80912153A9AC80B73C9"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D82D0B64692718A90F92DEA9B86DD919CAC9D00E81D67016622D9EC45ED881A9"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"E7422CE9EEB7CC82B3D4DF2B269EEC0B1D4600DC6CEB4378331724D9B27E498A"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D7B00E067380396A385C16E83B269DAA401D37983B88C2170F3F5868A8AB12E5"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"E5C8DB25AD8CA4227DD22B37A85ABC550CF10EB22107B9300ACA996CDE0FAD43"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"149EA8F908855BEC67176C2FDBEE3DF60A96996AFFC3CA29BCC19A0E2612A3ED"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"7D30BE677279B82584374E603FD195AA8141F2E7F4027178C86B7FB4489FC824"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"B3516D84A78F96AAE074D01FAA58711E79705D12164894B89A5C65FF8A459379"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"149E3515ACADD2514E3C452CC02A0043F064FC245E559A6F184F60E0B0910ECE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"7D58A24F7D64BBE0B394F416F332363FEAF205B0094347C4EC036D3B3945103D"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1433C2844DFB3910310FF1E1C33DFA6F6B687ACCC6D306B3D5EBEA4221B377EB"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"A1AB11FE6E3AF3610BBB0FD4294A6B0DEB8064FEEFC082AB3D02F7A9FC455715"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"E68A28C04129B4193082270FA2CCB8C5616EA265F43CDF3875C7FDB28D6E7FCD"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"05C99D4ED3F3817CC771B5C6C44A5C8D1DC12E104E2EE9D68FDED0A09AE04496"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"998D87EDA73CA171AAC58BFD81AF491655D35A56F39499808F0D615457DD15A3"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"DBB89E5A3DC843EBE9FD76D2900A5EAE13B1F0DD94C4ABD79419BDA49C0D198F"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"1B8CF3D3641353C5B542028D693EB48B234481EBBCDBFFBB4296E2F3F27EF73C"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"F4E458B405F45F4EEC826BE48C5C1DCAE63793D5BB9F594F92C67A3BADA0C22B"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"4C7E38C43A22C6B24060DCDC082F8A870A9B7F503863913AA231CB1464EDEBBA"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"BA1B4558AA11B62016A63D9A62C70D9F1F3D63596EA1FEB48B762C88E499A276"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"5008C69B9FFE9228582C1885E376DDB7F97A32F9D30320A3B6643703E9B36755"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"B8A8DF116E86B84732A2CDD730CB869783581CFF552EBE29B76D249BC03CFBCC"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"64CB6269F83A4E04B1484EFEEF680DF4FD53DEC015E04DAEC3B8A1AC320E64B9"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"15FB1B492A8F53CA3E3BA2DE62504586A895E3F1D9941A491CE44B5676355DA8"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"B815A256260EF5B646309EAF63057C70B83F82927D39E2E8869A4D4D9E4FFD21"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"5F559A5FE8A29C9959508AA33684F71BFD387395330988055C0062CA756DA44B"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"6A4E1C27AB06D35675648C9FC6609D55E778972F70FCD6F28852116BCE56DCB9"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"0390537EF63BF56857F6252E0CD6151C0321AC683AD91C5CBB59A1FE93285506"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"9717BEB3BF2DBFB82E7572458553D0E24C9DEA2B752711813AFA7E36235B6EEE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"BAE3CFD5371A27B256970B4D94E104D65440EEA94EEF55FE2FB8063D0BA31776"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"21CA517FFA45C251FCD86ABCCBB906BE365B5A597BF6283BEEFF99F562ACA922"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"5336C2C2A8602FE29AA1E67F628CEDC3392B66320A995694176BA34D4CB17C38"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"70C73DC0C72B1D95821F0EA13D4473341BB470044662025D6A228D084DA3859B"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"93BFEB7E283134FB6D4DA2C8AF413CCA5E7EE8903ABA5F6D48BE9BA00798852E"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"3A4B964920627F66A11249A5EF68A9FAC468A2076FC12BE725A5C343E83BCE95"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"13C233A526E35A73DEE0AC36909CC7522C39AED9D42C59D4D7CF646B3F0A09DE"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"94F66D4C66295A3ABEC3D30279F1BD734E09407384B6845770AFBE24E2CA233F"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"C5F9578F580F0111C8728740A39D07957DB8611769676A2ED02E6648B847D865"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D2BFD4D322A5F37CDCAD66952742943EA9D29D66D22EA0294781FFFF8DE8BD74"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"CF5B95D57193FDD94C3788BC9BED36762CD6B0231CAF5F38423BC7B9B8CCD625"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"FB311E71ED73477183EF1578D152626FCA7E7B2A93785AABF29C5A6267E46953"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D00F187A37A8E4BBAF6E9041893D30B432CAAFC1B175A27B45C5344AFE3FE462"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"0E9E27E3AA04E9DD3F77146FBE4065CF877EB1DE0555D9FB9EE776EDD7F9B78C"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"7A9D5ED47D42269852BA4AFA373C8BED88F99BB7C4ED9CC4900D2585A3832DD6"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"D7F92889EEC05282AE1BB4375FAC645B968EC23B0AE47E2206496D3E12770BA6"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"29BAC714E9BB7DFE9BE3C8B4AACFDB184389388340A4F3B09CC61A39BAFC3705"</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">19977886</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LedgerHashes"</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B"</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C769F00409D574A982DC0CC071A244C5507D9E2269404957B78081ED8F2FCB1C"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">19977887</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"Too many requests"</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
+<li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
+<li><code>lgrNotFound</code> - The ledger specified by the <code>ledger_hash</code> or <code>ledger_index</code> does not exist, or it does exist but the server does not have it.</li>
+<li><code>noPermission</code> - If you specified <code>full</code> or <code>accounts</code> as true, but are not connected to the server as an admin (usually, admin requires connecting on a local port).</li>
+</ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<script src="assets/vendor/feedback-widget.js"></script>
+<div id="feedback-content"></div>
+<script>
+  // Options
+  const options = {
+    analyticsConfig: [
+      // { name: 'ga', id: 'UA-45576805-2' },
+      { name: 'gtm', id: 'GTM-KCQZ3L8' },
+    ],
+    analyticsName: 'Feedback Widget Tracker',
+    theme: 'xrpl',
+    currentPath: window.location.pathname,
+    parentElement: '#feedback-content',
+  };
+
+  // Init WidgetClass
+  const r = new WidgetClass(options);
+</script>      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
+
+
+<nav class="nav flex-column dactyl-tree-nav">
+  <div class="nav-item nav-parent">
+    <a class="nav-link" href="docs.html">Documentation</a>
+  </div>
+    
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+
+        <a class="nav-link" href="introduction.html">Introduction</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="what-is-xrp.html">What is XRP?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="crypto-wallets.html">Crypto Wallets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="txn-and-requests.html">Transactions and Requests</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="software-ecosystem.html">Software Ecosystem</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="use-cases.html">Use Cases</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+
+        <a class="nav-link" href="payments-uc.html">Payments</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="restricting-deposits-uc.html">Restricting Deposits</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow-uc.html">Smart Contracts</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="false" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="tokenization.html">Tokenization</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-issuer.html">Stablecoin Issuer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
+
+        <a class="nav-link" href="nft-mkt-overview.html">NFT Marketplace Overview</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-marketplace.html">NFT Marketplace</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-minter.html">Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="digital-artist.html">Digital Artist</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+
+        <a class="nav-link" href="defi-uc.html">Decentralized Finance</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="algorithmic-trading.html">Algorithmic Trading</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="concepts.html">Concepts</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
+
+        <a class="nav-link" href="networks-and-servers.html">Networks and Servers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-server-modes.html">rippled Server Modes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clustering.html">Clustering</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-history.html">Ledger History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-protocol.html">Peer Protocol</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amendments.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+
+        <a class="nav-link" href="consensus.html">Consensus Protocol</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-structure.html">Consensus Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-principles-and-rules.html">Consensus Principles and Rules</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-protections.html">Consensus Protections Against Attacks and Failure Modes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="invariant-checking.html">Invariant Checking</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fee-voting.html">Fee Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-research.html">Consensus Research</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+
+        <a class="nav-link" href="ledgers.html">Ledgers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-structure.html">Ledger Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-close-times.html">Ledger Close Times</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4" aria-expanded="false" aria-controls="tree_nav_group_4_4"></a>
+
+        <a class="nav-link" href="transactions.html">Transactions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fees.html">Fees (Disambiguation)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="reliable-transaction-submission.html">Reliable Transaction Submission</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="secure-signing.html">Secure Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="source-and-destination-tags.html">Source and Destination Tags</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-cost.html">Transaction Cost</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-queue.html">Transaction Queue</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_4_7"></a>
+
+        <a class="nav-link" href="finality-of-results.html">Finality of Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-transaction-results.html">Look Up Transaction Results</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-malleability.html">Transaction Malleability</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="canceling-a-transaction.html">Canceling a Transaction</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5" aria-expanded="false" aria-controls="tree_nav_group_4_5"></a>
+
+        <a class="nav-link" href="payment-types.html">Payment Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="direct-xrp-payments.html">Direct XRP Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cross-currency-payments.html">Cross-Currency Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="partial-payments.html">Partial Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6" aria-expanded="false" aria-controls="tree_nav_group_4_6"></a>
+
+        <a class="nav-link" href="tokens.html">Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-reserve-requirements.html">NFT Reserve Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-auctions.html">Running an NFT Auction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-apis.html">NFT APIs</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+
+        <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offers.html">Offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="autobridging.html">Auto-Bridging</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticksize.html">Tick Size</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_7"></a>
+
+        <a class="nav-link" href="accounts.html">Accounts</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account-types.html">Account Types</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="deleting-accounts.html">Deleting Accounts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="reserves.html">Reserves</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="addresses.html">Addresses</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cryptographic-keys.html">Cryptographic Keys</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositauth.html">Deposit Authorization</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+
+        <a class="nav-link" href="tutorials.html">Tutorials</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2" aria-expanded="false" aria-controls="tree_nav_group_5_2"></a>
+
+        <a class="nav-link" href="python.html">Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-python.html">Get Started Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2"></a>
+
+        <a class="nav-link" href="modular-tutorials-in-python.html">Modular Tutorials in Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_1"></a>
+
+        <a class="nav-link" href="send-payments-using-python.html">Send Payments Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-accounts-send-xrp.html">Create Accounts and Send XRP Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-python.html">NFTs Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-mint-and-burn-nfts.html">Mint and Burn NFTs Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-transfer-nfts.html">Transfer NFTs Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-broker-sale.html">Broker an NFT Sale Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_3"></a>
+
+        <a class="nav-link" href="javascript.html">JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2"></a>
+
+        <a class="nav-link" href="modular-tutorials-in-javascript.html">Modular Tutorials in JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_1"></a>
+
+        <a class="nav-link" href="send-payments-using-javascript.html">Send Payments Using JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp-using-javascript.html">Create Accounts and Send XRP Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency-using-javascript.html">Create Trust Line and Send Currency Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-time-based-escrows-using-javascript.html">Create Time-based Escrows Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-conditional-escrows-using-javascript.html">Create Conditional Escrows Using JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-javascript.html">NFTs Using JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nfts-using-javascript.html">Mint and Burn NFTs Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nfts-using-javascript.html">Transfer NFTs Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-an-nft-sale-using-javascript.html">Broker an NFT Sale Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="assign-an-authorized-minter-using-javascript.html">Assign an Authorized Minter Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="batch-mint-nfts-using-javascript.html">Batch Mint NFTs Using JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
+
+        <a class="nav-link" href="java.html">Java</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-java.html">Get Started Using Java</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-http-websocket-apis.html">Get Started Using HTTP / WebSocket APIs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
+
+        <a class="nav-link" href="tasks.html">Tasks</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
+
+        <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="disable-master-key-pair.html">Disable Master Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="set-up-multi-signing.html">Set Up Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="require-destination-tags.html">Require Destination Tags</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offline-account-setup.html">Offline Account Setup Tutorial</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-xrp.html">Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
+
+        <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
+
+        <a class="nav-link" href="use-escrows.html">Use Escrows</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-conditionally-held-escrow.html">Send a Conditionally-Held Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-escrows.html">Look up Escrows</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
+
+        <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
+
+        <a class="nav-link" href="use-checks.html">Use Checks</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cash-a-check-for-an-exact-amount.html">Cash a Check for an Exact Amount</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cash-a-check-for-a-flexible-amount.html">Cash a Check for a Flexible Amount</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cancel-a-check.html">Cancel a Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-checks-by-sender.html">Look Up Checks by Sender</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-checks-by-recipient.html">Look Up Checks by Recipient</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
+
+        <a class="nav-link" href="use-tokens.html">Use Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-an-automated-market-maker.html">Create an Automated Market Maker <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="true" aria-controls="tree_nav_group_6"></a>
+
+        <a class="nav-link" href="references.html">References</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1" aria-expanded="false" aria-controls="tree_nav_group_6_1"></a>
+
+        <a class="nav-link" href="protocol-reference.html">XRP Ledger Protocol Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_6_1_1"></a>
+
+        <a class="nav-link" href="basic-data-types.html">Basic Data Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="base58-encodings.html">base58 Encodings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="currency-formats.html">Currency Formats</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken.html">NFToken</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2"></a>
+
+        <a class="nav-link" href="ledger-data-formats.html">Ledger Data Formats</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-header.html">Ledger Header</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
+
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amendments-object.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="check.html">Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositpreauth-object.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="directorynode.html">DirectoryNode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow-object.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="feesettings.html">FeeSettings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledgerhashes.html">LedgerHashes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offer.html">Offer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paychannel.html">PayChannel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ripplestate.html">RippleState</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="signerlist.html">SignerList</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
+
+        <a class="nav-link" href="transaction-formats.html">Transaction Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-common-fields.html">Transaction Common Fields</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_2"></a>
+
+        <a class="nav-link" href="transaction-types.html">Transaction Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdelete.html">AMMDelete <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcancel.html">CheckCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcash.html">CheckCash</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositpreauth.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowcancel.html">EscrowCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowcreate.html">EscrowCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offercancel.html">OfferCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offercreate.html">OfferCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="payment.html">Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelclaim.html">PaymentChannelClaim</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelcreate.html">PaymentChannelCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelfund.html">PaymentChannelFund</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="setregularkey.html">SetRegularKey</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="signerlistset.html">SignerListSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trustset.html">TrustSet</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_3"></a>
+
+        <a class="nav-link" href="pseudo-transaction-types.html">Pseudo-Transactions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enableamendment.html">EnableAmendment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="setfee.html">SetFee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_4"></a>
+
+        <a class="nav-link" href="transaction-results.html">Transaction Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tec-codes.html">tec Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tef-codes.html">tef Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tel-codes.html">tel Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tem-codes.html">tem Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ter-codes.html">ter Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tes-success.html">tes Success</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-metadata.html">Transaction Metadata</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="serialization.html">Serialization Format</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2" aria-expanded="false" aria-controls="tree_nav_group_6_2"></a>
+
+        <a class="nav-link" href="client-libraries.html">Client Libraries</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-py.readthedocs.io/">Python Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://javadoc.io/doc/org.xrpl/">Java Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://www.rubydoc.info/gems/xrbp">Ruby Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_3" aria-expanded="true" aria-controls="tree_nav_group_6_3"></a>
+
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_6_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_1"></a>
+
+        <a class="nav-link" href="api-conventions.html">API Conventions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="request-formatting.html">Request Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="response-formatting.html">Response Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="error-formatting.html">Error Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="markers-and-pagination.html">Markers and Pagination</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rate-limiting.html">Rate Limiting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-server-states.html">rippled Server States</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2" aria-expanded="true" aria-controls="tree_nav_group_6_3_2"></a>
+
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_6_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_1"></a>
+
+        <a class="nav-link" href="account-methods.html">Account Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_channels.html">account_channels</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_currencies.html">account_currencies</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_info.html">account_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_objects.html">account_objects</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_offers.html">account_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_tx.html">account_tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="gateway_balances.html">gateway_balances</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="noripple_check.html">noripple_check</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_2"></a>
+
+        <a class="nav-link" href="ledger-methods.html">Ledger Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_closed.html">ledger_closed</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_current.html">ledger_current</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_data.html">ledger_data</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_entry.html">ledger_entry</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_3"></a>
+
+        <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="submit.html">submit</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="submit_multisigned.html">submit_multisigned</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction_entry.html">transaction_entry</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tx.html">tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tx_history.html">tx_history</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_4"></a>
+
+        <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="path_find.html">path_find</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ripple_path_find.html">ripple_path_find</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_5"></a>
+
+        <a class="nav-link" href="payment-channel-methods.html">Payment Channel Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="channel_authorize.html">channel_authorize</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="channel_verify.html">channel_verify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_6"></a>
+
+        <a class="nav-link" href="subscription-methods.html">Subscription Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="subscribe.html">subscribe</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="unsubscribe.html">unsubscribe</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_7"></a>
+
+        <a class="nav-link" href="server-info-methods.html">Server Info Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fee.html">fee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_state.html">server_state</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_8" aria-expanded="true" aria-controls="tree_nav_group_6_3_2_8"></a>
+
+        <a class="nav-link" href="clio-methods.html">Clio Server</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_6_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_history.html">nft_history</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_9">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="json.html">json</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ping.html">ping</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="random.html">random</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3"></a>
+
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_1"></a>
+
+        <a class="nav-link" href="key-generation-methods.html">Key Generation Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validation_create.html">validation_create</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="wallet_propose.html">wallet_propose</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_2"></a>
+
+        <a class="nav-link" href="logging-and-data-management-methods.html">Logging and Data Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="can_delete.html">can_delete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="crawl_shards.html">crawl_shards</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="download_shard.html">download_shard</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_cleaner.html">ledger_cleaner</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_request.html">ledger_request</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="log_level.html">log_level</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_3"></a>
+
+        <a class="nav-link" href="server-control-methods.html">Server Control Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_accept.html">ledger_accept</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stop.html">stop</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validation_seed.html">validation_seed <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_4"></a>
+
+        <a class="nav-link" href="signing-methods.html">Signing Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_5"></a>
+
+        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect.html">connect</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_add.html">peer_reservations_add</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_del.html">peer_reservations_del</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_list.html">peer_reservations_list</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peers.html">peers</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_6"></a>
+
+        <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="feature.html">feature</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fetch_info.html">fetch_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get_counts.html">get_counts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="print.html">print</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator_info.html">validator_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator_list_sites.html">validator_list_sites</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validators.html">validators</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_4"></a>
+
+        <a class="nav-link" href="peer-port-methods.html">Peer Port Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="health-check.html">Health Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-crawler.html">Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator-list.html">Validator List Method</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrp-ledger-toml.html">xrp-ledger.toml File</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
+
+        <a class="nav-link" href="infrastructure.html">Infrastructure</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="commandline-usage.html">Commandline Usage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_2" aria-expanded="false" aria-controls="tree_nav_group_7_2"></a>
+
+        <a class="nav-link" href="install-rippled.html">Install rippled</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-rippled-on-ubuntu.html">Install on Ubuntu or Debian Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-automatically-on-linux.html">Update Automatically on Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-manually-on-centos-rhel.html">Update Manually on CentOS/Red Hat</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="capacity-planning.html">Capacity Planning</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-1-3-migration-instructions.html">rippled v1.3.x Migration Instructions <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3" aria-expanded="false" aria-controls="tree_nav_group_7_3"></a>
+
+        <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_7_3_1"></a>
+
+        <a class="nav-link" href="server-modes.html">Server Modes</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_7_3_2"></a>
+
+        <a class="nav-link" href="data-retention.html">Data Retention</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-full-history.html">Configure Full History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="online-deletion.html">Online Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-online-deletion.html">Configure Online Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-advisory-deletion.html">Configure Advisory Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="history-sharding.html">History Sharding</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-history-sharding.html">Configure History Sharding</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-amendment-voting.html">Configure Amendment Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-grpc.html">Configure gRPC</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-public-signing.html">Enable Public Signing</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
+
+        <a class="nav-link" href="configure-peering.html">Peering</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-a-private-server.html">Configure a Private Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-link-compression.html">Enable Link Compression</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="forward-ports-for-peering.html">Forward Ports for Peering</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="manually-connect-to-a-specific-peer.html">Manually Connect to a Specific Peer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="set-max-number-of-peers.html">Set Maximum Number of Peers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-a-peer-reservation.html">Use a Peer Reservation</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_5" aria-expanded="false" aria-controls="tree_nav_group_7_5"></a>
+
+        <a class="nav-link" href="use-stand-alone-mode.html">Testing and Auditing</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_6" aria-expanded="false" aria-controls="tree_nav_group_7_6"></a>
+
+        <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="health-check-interventions.html">Health Check Interventions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="understanding-log-messages.html">Understanding Log Messages</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-wont-start.html">rippled Server Won't Start</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+</nav>      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>About</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
+            <li class="nav-item"><a href="uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
+            <li class="nav-item"><a href="history.html" class="nav-link">History</a></li>
+            <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Docs</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="docs.html" class="nav-link">Documentation</a></li>
+            <li class="nav-item"><a href="introduction.html" class="nav-link">Introduction</a></li>
+            <li class="nav-item"><a href="use-cases.html" class="nav-link">Use Cases</a></li>
+            <li class="nav-item"><a href="concepts.html" class="nav-link">Concepts</a></li>
+            <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
+            <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
+            <li class="nav-item"><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Resources</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
+            <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
+            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Community</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex row">
+      <a href="/" class="footer-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="Jump to top of page"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+  indexName: 'xrpl',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
+
+
+
+</body>
+</html>
