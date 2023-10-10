@@ -378,7 +378,7 @@ pages:
         targets:
             - en
 
-    -   md: faq.ja.md
+    -   md: "@i18n/ja/faq.md"
         targets:
             - ja
 
@@ -511,7 +511,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/introduction/what-is-the-xrp-ledger.ja.md
+    -   md: "@i18n/ja/concepts/introduction/what-is-the-xrp-ledger.md"
         targets:
             - ja
 
@@ -519,7 +519,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/introduction/what-is-xrp.ja.md
+    -   md: "@i18n/ja/concepts/introduction/what-is-xrp.md"
         targets:
             - ja
 
@@ -538,7 +538,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/introduction/crypto-wallets.ja.md
+    -   md: "@i18n/ja/concepts/introduction/crypto-wallets.md"
         parent: introduction.html
         targets:
             - ja
@@ -548,7 +548,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/introduction/txn-and-requests.ja.md
+    -   md: "@i18n/ja/concepts/introduction/txn-and-requests.md"
         parent: introduction.html
         targets:
             - ja
@@ -558,7 +558,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/introduction/software-ecosystem.ja.md
+    -   md: "@i18n/ja/concepts/introduction/software-ecosystem.md"
         parent: introduction.html
         targets:
             - ja
@@ -607,7 +607,7 @@ pages:
         targets:
             - en
 
-    -   md: use-cases/payments/peer-to-peer-payments-uc.ja.md
+    -   md: "@i18n/ja/use-cases/payments/peer-to-peer-payments-uc.md"
         parent: payments-uc.html
         targets:
             - ja
@@ -617,7 +617,7 @@ pages:
         targets:
             - en
 
-    -   md: use-cases/payments/restricting-deposits-uc.ja.md
+    -   md: "@i18n/ja/use-cases/payments/restricting-deposits-uc.md"
         parent: payments-uc.html
         targets:
             - ja
@@ -627,7 +627,7 @@ pages:
         targets:
             - en
 
-    -   md: use-cases/payments/smart-contracts-uc.ja.md
+    -   md: "@i18n/ja/use-cases/payments/smart-contracts-uc.md"
         parent: payments-uc.html
         targets:
             - ja
@@ -654,7 +654,7 @@ pages:
         targets:
             - en
 
-    -   md: use-cases/tokenization/stablecoin-issuer.ja.md
+    -   md: "@i18n/ja/use-cases/tokenization/stablecoin-issuer.md"
         parent: tokenization.html
         targets:
             - ja
@@ -664,7 +664,7 @@ pages:
         targets:
             - en
 
-    -   md: use-cases/tokenization/nft-mkt-overview.ja.md
+    -   md: "@i18n/ja/use-cases/tokenization/nft-mkt-overview.md"
         parent: tokenization.html
         targets:
             - ja
@@ -676,7 +676,7 @@ pages:
             - en
 
         # TODO: these files aren't nested under "NFT mkt overview" but they are in the nav
-    -   md: use-cases/tokenization/nftoken-marketplace.ja.md
+    -   md: "@i18n/ja/use-cases/tokenization/nftoken-marketplace.md"
         parent: nft-mkt-overview.html
         targets:
             - ja
@@ -686,7 +686,7 @@ pages:
         targets:
             - en
 
-    -   md: use-cases/tokenization/authorized-minter.ja.md
+    -   md: "@i18n/ja/use-cases/tokenization/authorized-minter.md"
         parent: nft-mkt-overview.html
         targets:
             - ja
@@ -696,7 +696,7 @@ pages:
         targets:
             - en
 
-    -   md: use-cases/tokenization/digital-artist.ja.md
+    -   md: "@i18n/ja/use-cases/tokenization/digital-artist.md"
         parent: nft-mkt-overview.html
         targets:
             - ja
@@ -724,7 +724,7 @@ pages:
         targets:
             - en
 
-    -   md: use-cases/defi/algorithmic-trading.ja.md
+    -   md: "@i18n/ja/use-cases/defi/algorithmic-trading.md"
         parent: defi-uc.html
         targets:
             - ja
@@ -734,7 +734,7 @@ pages:
         targets:
             - en
 
-    -   md: use-cases/defi/list-xrp-as-an-exchange.ja.md
+    -   md: "@i18n/ja/use-cases/defi/list-xrp-as-an-exchange.md"
         parent: defi-uc.html
         targets:
             - ja
@@ -766,7 +766,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/networks-and-servers/networks-and-servers.ja.md
+    -   md: "@i18n/ja/concepts/networks-and-servers/networks-and-servers.md"
         targets:
             - ja
 
@@ -784,7 +784,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/networks-and-servers/rippled-server-modes.ja.md
+    -   md: "@i18n/ja/concepts/networks-and-servers/rippled-server-modes.md"
         targets:
             - ja
 
@@ -792,7 +792,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/networks-and-servers/clustering.ja.md
+    -   md: "@i18n/ja/concepts/networks-and-servers/clustering.md"
         targets:
             - ja
 
@@ -800,7 +800,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/networks-and-servers/ledger-history/ledger-history.ja.md
+    -   md: "@i18n/ja/concepts/networks-and-servers/ledger-history/ledger-history.md"
         targets:
             - ja
 
@@ -808,7 +808,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/networks-and-servers/peer-protocol.ja.md
+    -   md: "@i18n/ja/concepts/networks-and-servers/peer-protocol.md"
         targets:
             - ja
 
@@ -816,7 +816,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/networks-and-servers/transaction-censorship-detection.ja.md
+    -   md: "@i18n/ja/concepts/networks-and-servers/transaction-censorship-detection.md"
         targets:
             - ja
 
@@ -824,7 +824,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/networks-and-servers/parallel-networks.ja.md
+    -   md: "@i18n/ja/concepts/networks-and-servers/parallel-networks.md"
         targets:
             - ja
 
@@ -832,7 +832,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/networks-and-servers/amendments.ja.md
+    -   md: "@i18n/ja/concepts/networks-and-servers/amendments.md"
         targets:
             - ja
 
@@ -840,7 +840,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/networks-and-servers/the-clio-server.ja.md
+    -   md: "@i18n/ja/concepts/networks-and-servers/the-clio-server.md"
         targets:
             - ja
 
@@ -851,7 +851,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/consensus-protocol/consensus.ja.md
+    -   md: "@i18n/ja/concepts/consensus-protocol/consensus.md"
         targets:
             - ja
 
@@ -860,7 +860,7 @@ pages:
             - en
 
         # TODO: update title to match English
-    -   md: concepts/consensus-protocol/consensus-structure.ja.md
+    -   md: "@i18n/ja/concepts/consensus-protocol/consensus-structure.md"
         targets:
             - ja
 
@@ -868,7 +868,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/consensus-protocol/consensus-principles-and-rules.ja.md
+    -   md: "@i18n/ja/concepts/consensus-protocol/consensus-principles-and-rules.md"
         targets:
             - ja
 
@@ -876,7 +876,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/consensus-protocol/consensus-protections.ja.md
+    -   md: "@i18n/ja/concepts/consensus-protocol/consensus-protections.md"
         targets:
             - ja
 
@@ -885,7 +885,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/consensus-protocol/invariant-checking.ja.md
+    -   md: "@i18n/ja/concepts/consensus-protocol/invariant-checking.md"
         targets:
             - ja
 
@@ -893,7 +893,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/consensus-protocol/fee-voting.ja.md
+    -   md: "@i18n/ja/concepts/consensus-protocol/fee-voting.md"
         targets:
             - ja
 
@@ -901,7 +901,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/consensus-protocol/negative-unl.ja.md
+    -   md: "@i18n/ja/concepts/consensus-protocol/negative-unl.md"
         targets:
             - ja
 
@@ -909,7 +909,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/consensus-protocol/consensus-research.ja.md
+    -   md: "@i18n/ja/concepts/consensus-protocol/consensus-research.md"
         targets:
             - ja
 
@@ -919,7 +919,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/ledgers/ledgers.ja.md
+    -   md: "@i18n/ja/concepts/ledgers/ledgers.md"
         targets:
             - ja
 
@@ -927,7 +927,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/ledgers/ledger-structure.ja.md
+    -   md: "@i18n/ja/concepts/ledgers/ledger-structure.md"
         targets:
             - ja
 
@@ -935,7 +935,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/ledgers/open-closed-validated-ledgers.ja.md
+    -   md: "@i18n/ja/concepts/ledgers/open-closed-validated-ledgers.md"
         targets:
             - ja
 
@@ -943,7 +943,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/ledgers/ledger-close-times.ja.md
+    -   md: "@i18n/ja/concepts/ledgers/ledger-close-times.md"
         targets:
             - ja
 
@@ -955,7 +955,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/transactions.ja.md
+    -   md: "@i18n/ja/concepts/transactions/transactions.md"
         targets:
             - ja
 
@@ -963,7 +963,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/fees.ja.md
+    -   md: "@i18n/ja/concepts/transactions/fees.md"
         targets:
             - ja
 
@@ -971,7 +971,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/reliable-transaction-submission.ja.md
+    -   md: "@i18n/ja/concepts/transactions/reliable-transaction-submission.md"
         targets:
             - ja
 
@@ -980,7 +980,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/set-up-secure-signing.ja.md
+    -   md: "@i18n/ja/concepts/transactions/set-up-secure-signing.md"
         targets:
             - ja
 
@@ -988,7 +988,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/multi-signing.ja.md
+    -   md: "@i18n/ja/concepts/transactions/multi-signing.md"
         targets:
             - ja
 
@@ -1007,7 +1007,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/transaction-cost.ja.md
+    -   md: "@i18n/ja/concepts/transactions/transaction-cost.md"
         targets:
             - ja
 
@@ -1015,7 +1015,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/transaction-queue.ja.md
+    -   md: "@i18n/ja/concepts/transactions/transaction-queue.md"
         targets:
             - ja
 
@@ -1023,7 +1023,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/finality-of-results.ja.md
+    -   md: "@i18n/ja/concepts/transactions/finality-of-results.md"
         targets:
             - ja
 
@@ -1031,7 +1031,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/look-up-transaction-results.ja.md
+    -   md: "@i18n/ja/concepts/transactions/look-up-transaction-results.md"
         targets:
             - ja
 
@@ -1039,7 +1039,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/transaction-malleability.ja.md
+    -   md: "@i18n/ja/concepts/transactions/transaction-malleability.md"
         targets:
             - ja
 
@@ -1048,7 +1048,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/about-canceling-a-transaction.ja.md
+    -   md: "@i18n/ja/concepts/transactions/about-canceling-a-transaction.md"
         targets:
             - ja
 
@@ -1056,7 +1056,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/transactions/tickets.ja.md
+    -   md: "@i18n/ja/concepts/transactions/tickets.md"
         targets:
             - ja
 
@@ -1081,7 +1081,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/payment-types/direct-xrp-payments.ja.md
+    -   md: "@i18n/ja/concepts/payment-types/direct-xrp-payments.md"
         targets:
             - ja
 
@@ -1089,7 +1089,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/payment-types/cross-currency-payments.ja.md
+    -   md: "@i18n/ja/concepts/payment-types/cross-currency-payments.md"
         targets:
             - ja
 
@@ -1097,7 +1097,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/payment-types/checks.ja.md
+    -   md: "@i18n/ja/concepts/payment-types/checks.md"
         targets:
             - ja
 
@@ -1105,7 +1105,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/payment-types/escrow.ja.md
+    -   md: "@i18n/ja/concepts/payment-types/escrow.md"
         targets:
             - ja
 
@@ -1113,7 +1113,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/payment-types/partial-payments.ja.md
+    -   md: "@i18n/ja/concepts/payment-types/partial-payments.md"
         targets:
             - ja
 
@@ -1121,7 +1121,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/payment-types/payment-channels.ja.md
+    -   md: "@i18n/ja/concepts/payment-types/payment-channels.md"
         targets:
             - ja
 
@@ -1130,7 +1130,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/tokens.ja.md
+    -   md: "@i18n/ja/concepts/tokens/tokens.md"
         targets:
             - ja
 
@@ -1138,7 +1138,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/non-fungible-tokens.ja.md
+    -   md: "@i18n/ja/concepts/tokens/non-fungible-tokens.md"
         targets:
             - ja
 
@@ -1151,7 +1151,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/non-fungible-token-transfers.ja.md
+    -   md: "@i18n/ja/concepts/tokens/non-fungible-token-transfers.md"
         targets:
             - ja
 
@@ -1159,7 +1159,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/nft-reserve-requirements.ja.md
+    -   md: "@i18n/ja/concepts/tokens/nft-reserve-requirements.md"
         targets:
             - ja
 
@@ -1167,7 +1167,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/nftoken-batch-minting.ja.md
+    -   md: "@i18n/ja/concepts/tokens/nftoken-batch-minting.md"
         targets:
             - ja
 
@@ -1175,7 +1175,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/nftoken-authorized-minting.ja.md
+    -   md: "@i18n/ja/concepts/tokens/nftoken-authorized-minting.md"
         targets:
             - ja
 
@@ -1183,7 +1183,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/nftoken-auctions.ja.md
+    -   md: "@i18n/ja/concepts/tokens/nftoken-auctions.md"
         targets:
             - ja
 
@@ -1191,7 +1191,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/nft-collections.ja.md
+    -   md: "@i18n/ja/concepts/tokens/nft-collections.md"
         targets:
             - ja
 
@@ -1199,7 +1199,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/nft-fixed-supply.ja.md
+    -   md: "@i18n/ja/concepts/tokens/nft-fixed-supply.md"
         targets:
             - ja
 
@@ -1214,7 +1214,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/trust-lines-and-issuing.ja.md
+    -   md: "@i18n/ja/concepts/tokens/trust-lines-and-issuing.md"
         targets:
             - ja
 
@@ -1222,7 +1222,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/authorized-trust-lines.ja.md
+    -   md: "@i18n/ja/concepts/tokens/authorized-trust-lines.md"
         targets:
             - ja
 
@@ -1231,7 +1231,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/clawing-back-tokens.ja.md
+    -   md: "@i18n/ja/concepts/tokens/clawing-back-tokens.md"
         status: not_enabled
         targets:
             - ja
@@ -1240,7 +1240,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/freezes.ja.md
+    -   md: "@i18n/ja/concepts/tokens/freezes.md"
         targets:
             - ja
 
@@ -1249,7 +1249,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/common-misconceptions-about-freezes.ja.md
+    -   md: "@i18n/ja/concepts/tokens/common-misconceptions-about-freezes.md"
         targets:
             - ja
 
@@ -1257,7 +1257,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/rippling.ja.md
+    -   md: "@i18n/ja/concepts/tokens/rippling.md"
         targets:
             - ja
 
@@ -1265,7 +1265,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/transfer-fees.ja.md
+    -   md: "@i18n/ja/concepts/tokens/transfer-fees.md"
         targets:
             - ja
 
@@ -1273,7 +1273,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/paths.ja.md
+    -   md: "@i18n/ja/concepts/tokens/paths.md"
         targets:
             - ja
 
@@ -1281,7 +1281,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/demurrage.ja.md
+    -   md: "@i18n/ja/concepts/tokens/demurrage.md"
         targets:
             - ja
 
@@ -1289,7 +1289,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/decentralized-exchange.ja.md
+    -   md: "@i18n/ja/concepts/tokens/decentralized-exchange.md"
         targets:
             - ja
 
@@ -1297,7 +1297,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/offers.ja.md
+    -   md: "@i18n/ja/concepts/tokens/offers.md"
         targets:
             - ja
 
@@ -1305,7 +1305,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/autobridging.ja.md
+    -   md: "@i18n/ja/concepts/tokens/autobridging.md"
         targets:
             - ja
 
@@ -1313,7 +1313,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/ticksize.ja.md
+    -   md: "@i18n/ja/concepts/tokens/ticksize.md"
         targets:
             - ja
 
@@ -1321,7 +1321,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/tokens/automated-market-makers.ja.md
+    -   md: "@i18n/ja/concepts/tokens/automated-market-makers.md"
         targets:
             - ja
 
@@ -1330,7 +1330,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/accounts/accounts.ja.md
+    -   md: "@i18n/ja/concepts/accounts/accounts.md"
         targets:
             - ja
 
@@ -1338,7 +1338,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/accounts/account-types.ja.md
+    -   md: "@i18n/ja/concepts/accounts/account-types.md"
         targets:
             - ja
 
@@ -1346,7 +1346,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/accounts/deleting-accounts.ja.md
+    -   md: "@i18n/ja/concepts/accounts/deleting-accounts.md"
         targets:
             - ja
 
@@ -1354,7 +1354,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/accounts/reserves.ja.md
+    -   md: "@i18n/ja/concepts/accounts/reserves.md"
         targets:
             - ja
 
@@ -1362,7 +1362,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/accounts/addresses.ja.md
+    -   md: "@i18n/ja/concepts/accounts/addresses.md"
         targets:
             - ja
 
@@ -1370,7 +1370,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/accounts/cryptographic-keys.ja.md
+    -   md: "@i18n/ja/concepts/accounts/cryptographic-keys.md"
         targets:
             - ja
 
@@ -1379,7 +1379,7 @@ pages:
             - en
 
     # TODO: translate table(depositauth-semantics-table.html)
-    -   md: concepts/accounts/depositauth.ja.md
+    -   md: "@i18n/ja/concepts/accounts/depositauth.md"
         targets:
             - ja
 
@@ -1577,7 +1577,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/get-started/public-servers.ja.md
+    -   md: "@i18n/ja/tutorials/get-started/public-servers.md"
         targets:
             - ja
 
@@ -1711,13 +1711,13 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/get-started/get-started-using-javascript.ja.md
+    -   md: "@i18n/ja/tutorials/get-started/get-started-using-javascript.md"
         targets:
             - ja
 
     # Old translated JS quickstart for ripple-lib 1.x. Refers to code samples
     # that have been removed.
-    # -   md: tutorials/get-started/get-started-using-javascript.ja.md
+    # -   md: "@i18n/ja/tutorials/get-started/get-started-using-javascript.md"
     #     targets:
     #         - ja
 
@@ -1922,7 +1922,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/get-started/get-started-using-http-websocket-apis.ja.md
+    -   md: "@i18n/ja/tutorials/get-started/get-started-using-http-websocket-apis.md"
         targets:
             - ja
 
@@ -1930,7 +1930,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/get-started/monitor-incoming-payments-with-websocket.ja.md
+    -   md: "@i18n/ja/tutorials/get-started/monitor-incoming-payments-with-websocket.md"
         targets:
             - ja
 
@@ -1979,7 +1979,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/manage-account-settings/assign-a-regular-key-pair.ja.md
+    -   md: "@i18n/ja/tutorials/manage-account-settings/assign-a-regular-key-pair.md"
         targets:
             - ja
 
@@ -1987,7 +1987,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.ja.md
+    -   md: "@i18n/ja/tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md"
         targets:
             - ja
 
@@ -1995,7 +1995,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/manage-account-settings/disable-master-key-pair.ja.md
+    -   md: "@i18n/ja/tutorials/manage-account-settings/disable-master-key-pair.md"
         targets:
             - ja
 
@@ -2003,7 +2003,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/manage-account-settings/set-up-multi-signing.ja.md
+    -   md: "@i18n/ja/tutorials/manage-account-settings/set-up-multi-signing.md"
         targets:
             - ja
 
@@ -2011,7 +2011,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/manage-account-settings/send-a-multi-signed-transaction.ja.md
+    -   md: "@i18n/ja/tutorials/manage-account-settings/send-a-multi-signed-transaction.md"
         targets:
             - ja
 
@@ -2019,7 +2019,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/manage-account-settings/require-destination-tags.ja.md
+    -   md: "@i18n/ja/tutorials/manage-account-settings/require-destination-tags.md"
         targets:
             - ja
 
@@ -2027,7 +2027,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/manage-account-settings/offline-account-setup.ja.md
+    -   md: "@i18n/ja/tutorials/manage-account-settings/offline-account-setup.md"
         targets:
             - ja
 
@@ -2035,7 +2035,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/manage-account-settings/use-tickets.ja.md
+    -   md: "@i18n/ja/tutorials/manage-account-settings/use-tickets.md"
         targets:
             - ja
 
@@ -2043,7 +2043,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/get-started/send-xrp.ja.md
+    -   md: "@i18n/ja/tutorials/get-started/send-xrp.md"
         targets:
             - ja
 
@@ -2095,7 +2095,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.md"
         targets:
             - ja
 
@@ -2103,7 +2103,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md"
         targets:
             - ja
 
@@ -2111,7 +2111,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.md"
         targets:
             - ja
 
@@ -2119,7 +2119,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-specialized-payment-types/use-escrows/look-up-escrows.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-escrows/look-up-escrows.md"
         targets:
             - ja
 
@@ -2134,7 +2134,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-specialized-payment-types/use-payment-channels.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-payment-channels.md"
         targets:
             - ja
 
@@ -2150,7 +2150,7 @@ pages:
             - en
 
         # TODO: update translation to match English updates
-    -   md: tutorials/use-specialized-payment-types/use-checks/use-checks.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-checks/use-checks.md"
         outdated_translation: true
         targets:
             - ja
@@ -2159,7 +2159,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-specialized-payment-types/use-checks/send-a-check.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-checks/send-a-check.md"
         targets:
             - ja
 
@@ -2167,7 +2167,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md"
         targets:
             - ja
 
@@ -2175,7 +2175,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md"
         targets:
             - ja
 
@@ -2183,7 +2183,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-specialized-payment-types/use-checks/cancel-a-check.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-checks/cancel-a-check.md"
         targets:
             - ja
 
@@ -2191,7 +2191,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-sender.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md"
         targets:
             - ja
 
@@ -2199,7 +2199,7 @@ pages:
         targets:
             - en
 
-    -   md: tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.ja.md
+    -   md: "@i18n/ja/tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md"
         targets:
             - ja
 
@@ -2406,7 +2406,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/data-types/basic-data-types.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/data-types/basic-data-types.md"
         targets:
             - ja
 
@@ -2414,7 +2414,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/data-types/base58-encodings.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/data-types/base58-encodings.md"
         targets:
             - ja
 
@@ -2423,7 +2423,7 @@ pages:
             - en
 
         # TODO: update translation to add a table like in the English version
-    -   md: references/protocol-reference/data-types/currency-formats.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/data-types/currency-formats.md"
         outdated_translation: true
         targets:
             - ja
@@ -2434,7 +2434,7 @@ pages:
 
         # TODO: update translation to use the term "sequence number" rather than
         # "dumb sequential"
-    -   md: references/protocol-reference/data-types/nftoken.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/data-types/nftoken.md"
         outdated_translation: true
         targets:
             - ja
@@ -2443,7 +2443,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-data-formats.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-data-formats.md"
         targets:
             - ja
 
@@ -2451,7 +2451,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-header.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-header.md"
         targets:
             - ja
 
@@ -2465,7 +2465,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.md"
         targets:
             - ja
 
@@ -2493,7 +2493,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/accountroot.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/accountroot.md"
         targets:
             - ja
 
@@ -2501,7 +2501,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amendments.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/amendments.md"
         targets:
             - ja
 
@@ -2509,7 +2509,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amm.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/amm.md"
         targets:
             - ja
 
@@ -2517,7 +2517,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/check.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/check.md"
         targets:
             - ja
 
@@ -2525,7 +2525,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/depositpreauth.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/depositpreauth.md"
         targets:
             - ja
 
@@ -2533,7 +2533,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/directorynode.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/directorynode.md"
         targets:
             - ja
 
@@ -2541,7 +2541,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/escrow.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/escrow.md"
         targets:
             - ja
 
@@ -2549,7 +2549,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/feesettings.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/feesettings.md"
         targets:
             - ja
 
@@ -2557,7 +2557,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledgerhashes.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/ledgerhashes.md"
         targets:
             - ja
 
@@ -2565,7 +2565,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/negativeunl.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/negativeunl.md"
         targets:
             - ja
 
@@ -2573,7 +2573,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenoffer.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/nftokenoffer.md"
         targets:
             - ja
 
@@ -2581,7 +2581,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenpage.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/nftokenpage.md"
         targets:
             - ja
 
@@ -2589,7 +2589,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/offer.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/offer.md"
         targets:
             - ja
 
@@ -2597,7 +2597,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/paychannel.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/paychannel.md"
         targets:
             - ja
 
@@ -2605,7 +2605,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ripplestate.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/ripplestate.md"
         targets:
             - ja
 
@@ -2613,7 +2613,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/signerlist.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/signerlist.md"
         targets:
             - ja
 
@@ -2621,7 +2621,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ticket.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/ticket.md"
         targets:
             - ja
 
@@ -2630,7 +2630,7 @@ pages:
             - en
 
         # TODO: update blurb translation based on English version
-    -   md: references/protocol-reference/transactions/transaction-formats.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-formats.md"
         outdated_translation: true
         targets:
             - ja
@@ -2640,7 +2640,7 @@ pages:
             - en
 
         # TODO: update translation with rippled 1.11.0 changes
-    -   md: references/protocol-reference/transactions/transaction-common-fields.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-common-fields.md"
         outdated_translation: true
         targets:
             - ja
@@ -2649,7 +2649,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/transaction-types.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/transaction-types.md"
         targets:
             - ja
 
@@ -2657,7 +2657,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/accountset.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/accountset.md"
         targets:
             - ja
 
@@ -2665,7 +2665,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/accountdelete.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/accountdelete.md"
         targets:
             - ja
 
@@ -2673,7 +2673,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammbid.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammbid.md"
         targets:
             - ja
 
@@ -2681,7 +2681,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammcreate.md"
         targets:
             - ja
 
@@ -2689,7 +2689,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammdelete.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammdelete.md"
         targets:
             - ja
 
@@ -2697,7 +2697,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammdeposit.md"
         targets:
             - ja
 
@@ -2705,7 +2705,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammvote.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammvote.md"
         targets:
             - ja
 
@@ -2713,7 +2713,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammwithdraw.md"
         targets:
             - ja
 
@@ -2721,7 +2721,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/checkcancel.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/checkcancel.md"
         targets:
             - ja
 
@@ -2729,7 +2729,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/checkcash.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/checkcash.md"
         targets:
             - ja
 
@@ -2737,7 +2737,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/checkcreate.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/checkcreate.md"
         targets:
             - ja
 
@@ -2746,7 +2746,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/clawback.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/clawback.md"
         status: not_enabled
         targets:
             - ja
@@ -2755,7 +2755,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/depositpreauth.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/depositpreauth.md"
         targets:
             - ja
 
@@ -2763,7 +2763,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/escrowcancel.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/escrowcancel.md"
         targets:
             - ja
 
@@ -2771,7 +2771,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/escrowcreate.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/escrowcreate.md"
         targets:
             - ja
 
@@ -2779,7 +2779,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/escrowfinish.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/escrowfinish.md"
         targets:
             - ja
 
@@ -2787,7 +2787,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.md"
         targets:
             - ja
 
@@ -2795,7 +2795,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/nftokenburn.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/nftokenburn.md"
         targets:
             - ja
 
@@ -2803,7 +2803,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/nftokencanceloffer.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/nftokencanceloffer.md"
         targets:
             - ja
 
@@ -2811,7 +2811,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/nftokencreateoffer.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/nftokencreateoffer.md"
         targets:
             - ja
 
@@ -2819,7 +2819,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/nftokenmint.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/nftokenmint.md"
         targets:
             - ja
 
@@ -2827,7 +2827,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/offercancel.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/offercancel.md"
         targets:
             - ja
 
@@ -2835,7 +2835,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/offercreate.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/offercreate.md"
         targets:
             - ja
 
@@ -2843,7 +2843,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/payment.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/payment.md"
         targets:
             - ja
 
@@ -2851,7 +2851,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelclaim.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/paymentchannelclaim.md"
         targets:
             - ja
 
@@ -2859,7 +2859,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelcreate.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/paymentchannelcreate.md"
         targets:
             - ja
 
@@ -2867,7 +2867,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelfund.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/paymentchannelfund.md"
         targets:
             - ja
 
@@ -2875,7 +2875,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/setregularkey.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/setregularkey.md"
         targets:
             - ja
 
@@ -2883,7 +2883,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/signerlistset.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/signerlistset.md"
         targets:
             - ja
 
@@ -2891,7 +2891,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/ticketcreate.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ticketcreate.md"
         targets:
             - ja
 
@@ -2899,7 +2899,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-types/trustset.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/trustset.md"
         targets:
             - ja
 
@@ -2907,7 +2907,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/pseudo-transaction-types/pseudo-transaction-types.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/pseudo-transaction-types/pseudo-transaction-types.md"
         targets:
             - ja
 
@@ -2915,7 +2915,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/pseudo-transaction-types/enableamendment.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/pseudo-transaction-types/enableamendment.md"
         targets:
             - ja
 
@@ -2923,7 +2923,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/pseudo-transaction-types/setfee.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/pseudo-transaction-types/setfee.md"
         targets:
             - ja
 
@@ -2931,7 +2931,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.md"
         targets:
             - ja
 
@@ -2939,7 +2939,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-results/transaction-results.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/transaction-results.md"
         targets:
             - ja
 
@@ -2947,7 +2947,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-results/tec-codes.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/tec-codes.md"
         targets:
             - ja
 
@@ -2955,7 +2955,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-results/tef-codes.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/tef-codes.md"
         targets:
             - ja
 
@@ -2964,7 +2964,7 @@ pages:
             - en
 
         # TODO: update translation
-    -   md: references/protocol-reference/transactions/transaction-results/tel-codes.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/tel-codes.md"
         outdated_translation: true
         targets:
             - ja
@@ -2973,7 +2973,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-results/tem-codes.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/tem-codes.md"
         targets:
             - ja
 
@@ -2981,7 +2981,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-results/ter-codes.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/ter-codes.md"
         targets:
             - ja
 
@@ -2989,7 +2989,7 @@ pages:
         targets:
             - en
 
-    -   md: references/protocol-reference/transactions/transaction-results/tes-success.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/tes-success.md"
         targets:
             - ja
 
@@ -2998,7 +2998,7 @@ pages:
             - en
 
         # TODO: update translation to latest English version
-    -   md: references/protocol-reference/transactions/transaction-metadata.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-metadata.md"
         outdated_translation: true
         targets:
             - ja
@@ -3017,7 +3017,7 @@ pages:
             - en
 
         # TODO: update translation with new/updated sections from the English version
-    -   md: references/protocol-reference/serialization.ja.md
+    -   md: "@i18n/ja/references/protocol-reference/serialization.md"
         outdated_translation: true
         targets:
             - ja
@@ -3029,7 +3029,7 @@ pages:
         targets:
             - en
 
-    -   md: references/client-libraries.ja.md
+    -   md: "@i18n/ja/references/client-libraries.md"
         targets:
             - ja
 
@@ -3063,7 +3063,7 @@ pages:
         targets:
             - en
 
-    -   md: references/xrpljs2-migration-guide.ja.md
+    -   md: "@i18n/ja/references/xrpljs2-migration-guide.md"
         targets:
             - ja
 
@@ -3143,7 +3143,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/api-conventions/api-conventions.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/api-conventions.md"
         targets:
             - ja
 
@@ -3151,7 +3151,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/api-conventions/request-formatting.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/request-formatting.md"
         targets:
             - ja
 
@@ -3159,7 +3159,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/api-conventions/response-formatting.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/response-formatting.md"
         targets:
             - ja
 
@@ -3167,7 +3167,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/api-conventions/error-formatting.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/error-formatting.md"
         targets:
             - ja
 
@@ -3175,7 +3175,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/api-conventions/markers-and-pagination.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/markers-and-pagination.md"
         targets:
             - ja
 
@@ -3189,7 +3189,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/api-conventions/rippled-server-states.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/rippled-server-states.md"
         targets:
             - ja
 
@@ -3199,7 +3199,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/public-api-methods.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/public-api-methods.md"
         targets:
             - ja
 
@@ -3233,7 +3233,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_channels.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md"
         targets:
             - ja
 
@@ -3242,7 +3242,7 @@ pages:
             - en
 
         # TODO: update translation for rippled v1.11.0
-    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_currencies.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_currencies.md"
         outdated_translation: true
         targets:
             - ja
@@ -3252,7 +3252,7 @@ pages:
             - en
 
         # TODO: update translation for rippled v1.11.0
-    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_info.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_info.md"
         outdated_translation: true
         targets:
             - ja
@@ -3262,7 +3262,7 @@ pages:
             - en
 
         # TODO: update translation for rippled v1.11.0
-    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_lines.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_lines.md"
         outdated_translation: true
         targets:
             - ja
@@ -3271,7 +3271,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md"
         targets:
             - ja
 
@@ -3280,7 +3280,7 @@ pages:
             - en
 
         # TODO: update translation for rippled v1.11.0
-    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_objects.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_objects.md"
         outdated_translation: true
         targets:
             - ja
@@ -3290,7 +3290,7 @@ pages:
             - en
 
         # TODO: update translation for rippled v1.11.0
-    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_offers.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_offers.md"
         outdated_translation: true
         targets:
             - ja
@@ -3299,7 +3299,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/account-methods/account_tx.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_tx.md"
         targets:
             - ja
 
@@ -3307,7 +3307,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md"
         targets:
             - ja
 
@@ -3315,7 +3315,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/account-methods/noripple_check.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/noripple_check.md"
         targets:
             - ja
 
@@ -3339,7 +3339,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md"
         targets:
             - ja
 
@@ -3347,7 +3347,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.md"
         targets:
             - ja
 
@@ -3355,7 +3355,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current.md"
         targets:
             - ja
 
@@ -3363,7 +3363,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data.md"
         targets:
             - ja
 
@@ -3372,7 +3372,7 @@ pages:
             - en
 
         # TODO: update the translation of this page
-    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md"
         targets:
             - ja
 
@@ -3396,7 +3396,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/submit.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/transaction-methods/submit.md"
         targets:
             - ja
 
@@ -3404,7 +3404,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md"
         targets:
             - ja
 
@@ -3412,7 +3412,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md"
         targets:
             - ja
 
@@ -3420,7 +3420,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/tx.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/transaction-methods/tx.md"
         targets:
             - ja
 
@@ -3428,7 +3428,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/tx_history.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/transaction-methods/tx_history.md"
         targets:
             - ja
 
@@ -3453,7 +3453,7 @@ pages:
             - en
 
         # TODO: update translation
-    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md"
         outdated_translation: true
         targets:
             - ja
@@ -3462,7 +3462,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md"
         targets:
             - ja
 
@@ -3470,7 +3470,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md"
         targets:
             - ja
 
@@ -3490,7 +3490,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md"
         targets:
             - ja
 
@@ -3498,7 +3498,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md"
         targets:
             - ja
 
@@ -3522,7 +3522,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md"
         targets:
             - ja
 
@@ -3530,7 +3530,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md"
         targets:
             - ja
 
@@ -3555,7 +3555,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md"
         targets:
             - ja
 
@@ -3563,7 +3563,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe.md"
         targets:
             - ja
 
@@ -3587,7 +3587,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/fee.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/server-info-methods/fee.md"
         targets:
             - ja
 
@@ -3602,7 +3602,7 @@ pages:
             - en
 
         # TODO: update translation with reporting fields, ports field, ETL source object, corrected state_account.*.transitions field
-    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md"
         outdated_translation: true
         targets:
             - ja
@@ -3612,7 +3612,7 @@ pages:
             - en
 
         # TODO: update translation with reporting fields, ports field, ETL source object, corrected state_account.*.transitions field
-    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md"
         outdated_translation: true
         targets:
             - ja
@@ -3677,7 +3677,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/utility-methods/json.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/utility-methods/json.md"
         targets:
             - ja
 
@@ -3685,7 +3685,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/utility-methods/ping.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/utility-methods/ping.md"
         targets:
             - ja
 
@@ -3693,7 +3693,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/public-api-methods/utility-methods/random.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/utility-methods/random.md"
         targets:
             - ja
 
@@ -3701,7 +3701,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/admin-api-methods.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/admin-api-methods.md"
         targets:
             - ja
 
@@ -3736,7 +3736,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.md"
         targets:
             - ja
 
@@ -3744,7 +3744,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md"
         targets:
             - ja
 
@@ -3768,7 +3768,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md"
         targets:
             - ja
 
@@ -3776,7 +3776,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md"
         targets:
             - ja
 
@@ -3784,7 +3784,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md"
         targets:
             - ja
 
@@ -3792,7 +3792,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.md"
         targets:
             - ja
 
@@ -3800,7 +3800,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md"
         targets:
             - ja
 
@@ -3808,7 +3808,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md"
         targets:
             - ja
 
@@ -3816,7 +3816,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md"
         targets:
             - ja
 
@@ -3824,7 +3824,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.md"
         targets:
             - ja
 
@@ -3848,7 +3848,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.md"
         targets:
             - ja
 
@@ -3856,7 +3856,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/server-control-methods/stop.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/server-control-methods/stop.md"
         targets:
             - ja
 
@@ -3864,7 +3864,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.md"
         targets:
             - ja
 
@@ -3888,7 +3888,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/signing-methods/sign.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/signing-methods/sign.md"
         targets:
             - ja
 
@@ -3896,7 +3896,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md"
         targets:
             - ja
 
@@ -3920,7 +3920,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md"
         targets:
             - ja
 
@@ -3928,7 +3928,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_add.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_add.md"
         targets:
             - ja
 
@@ -3936,7 +3936,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_del.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_del.md"
         targets:
             - ja
 
@@ -3944,7 +3944,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list.md"
         targets:
             - ja
 
@@ -3952,7 +3952,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md"
         targets:
             - ja
 
@@ -3976,7 +3976,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md"
         targets:
             - ja
 
@@ -3985,7 +3985,7 @@ pages:
             - en
 
         # TODO: update translation for rippled v1.11.0
-    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md"
         outdated_translation: true
         targets:
             - ja
@@ -3994,7 +3994,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.md"
         targets:
             - ja
 
@@ -4002,7 +4002,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md"
         targets:
             - ja
 
@@ -4010,7 +4010,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.md"
         targets:
             - ja
 
@@ -4024,7 +4024,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.md"
         targets:
             - ja
 
@@ -4032,7 +4032,7 @@ pages:
         targets:
             - en
 
-    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.ja.md
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md"
         targets:
             - ja
 
@@ -4081,7 +4081,7 @@ pages:
         targets:
             - en
 
-    -   md: references/xrp-api.ja.md
+    -   md: "@i18n/ja/references/xrp-api.md"
         targets:
             - ja
 
@@ -4090,7 +4090,7 @@ pages:
         targets:
             - en
 
-    -   md: references/data-api.ja.md
+    -   md: "@i18n/ja/references/data-api.md"
         targets:
             - ja
 
@@ -4098,7 +4098,7 @@ pages:
         targets:
             - en
 
-    -   md: references/xrp-ledger-toml.ja.md
+    -   md: "@i18n/ja/references/xrp-ledger-toml.md"
         targets:
             - ja
 
@@ -4137,7 +4137,7 @@ pages:
             - en
 
         # TODO: update translation
-    -   md: infrastructure/rippled/commandline-usage.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/commandline-usage.md"
         outdated_translation: true
         targets:
             - ja
@@ -4163,7 +4163,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/installation/system-requirements.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/installation/system-requirements.md"
         targets:
             - ja
 
@@ -4171,7 +4171,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/installation/install-rippled-on-centos-rhel-with-yum.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/installation/install-rippled-on-centos-rhel-with-yum.md"
         targets:
             - ja
 
@@ -4190,7 +4190,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/installation/install-rippled-on-ubuntu.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/installation/install-rippled-on-ubuntu.md"
         targets:
             - ja
 
@@ -4208,7 +4208,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/installation/update-rippled-automatically-on-linux.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/installation/update-rippled-automatically-on-linux.md"
         targets:
             - ja
 
@@ -4216,7 +4216,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/installation/update-rippled-manually-on-centos-rhel.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/installation/update-rippled-manually-on-centos-rhel.md"
         targets:
             - ja
 
@@ -4224,7 +4224,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/installation/update-rippled-manually-on-ubuntu.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/installation/update-rippled-manually-on-ubuntu.md"
         targets:
             - ja
 
@@ -4261,7 +4261,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/installation/capacity-planning.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/installation/capacity-planning.md"
         targets:
             - ja
 
@@ -4269,7 +4269,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/installation/rippled-1-3-migration-instructions.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/installation/rippled-1-3-migration-instructions.md"
         targets:
             - ja
 
@@ -4301,7 +4301,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configuration/run-rippled-as-a-validator.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configuration/run-rippled-as-a-validator.md"
         targets:
             - ja
 
@@ -4310,7 +4310,7 @@ pages:
             - en
 
         # TODO: update this translation and rename the file like in the English version
-    -   md: infrastructure/rippled/configuration/run-rippled-as-a-wallet-server.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configuration/run-rippled-as-a-wallet-server.md"
         targets:
             - ja
 
@@ -4326,7 +4326,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configuration/configure-full-history.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configuration/configure-full-history.md"
         targets:
             - ja
 
@@ -4334,7 +4334,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/networks-and-servers/ledger-history/online-deletion.ja.md
+    -   md: "@i18n/ja/concepts/networks-and-servers/ledger-history/online-deletion.md"
         targets:
             - ja
 
@@ -4342,7 +4342,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configuration/configure-online-deletion.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configuration/configure-online-deletion.md"
         targets:
             - ja
 
@@ -4350,7 +4350,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configuration/configure-advisory-deletion.md"
         targets:
             - ja
 
@@ -4358,7 +4358,7 @@ pages:
         targets:
             - en
 
-    -   md: concepts/networks-and-servers/ledger-history/history-sharding.ja.md
+    -   md: "@i18n/ja/concepts/networks-and-servers/ledger-history/history-sharding.md"
         targets:
             - ja
 
@@ -4366,7 +4366,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configuration/configure-history-sharding.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configuration/configure-history-sharding.md"
         targets:
             - ja
 
@@ -4374,7 +4374,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configuration/configure-amendment-voting.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configuration/configure-amendment-voting.md"
         targets:
             - ja
 
@@ -4394,7 +4394,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.md"
         targets:
             - ja
 
@@ -4408,7 +4408,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configuration/enable-public-signing.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configuration/enable-public-signing.md"
         targets:
             - ja
 
@@ -4416,7 +4416,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configure-peering/configure-peering.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/configure-peering.md"
         targets:
             - ja
 
@@ -4424,7 +4424,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configure-peering/cluster-rippled-servers.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/cluster-rippled-servers.md"
         targets:
             - ja
 
@@ -4432,7 +4432,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configure-peering/configure-a-private-server.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/configure-a-private-server.md"
         targets:
             - ja
 
@@ -4457,7 +4457,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configure-peering/forward-ports-for-peering.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/forward-ports-for-peering.md"
         targets:
             - ja
 
@@ -4465,7 +4465,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configure-peering/manually-connect-to-a-specific-peer.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/manually-connect-to-a-specific-peer.md"
         targets:
             - ja
 
@@ -4473,7 +4473,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configure-peering/set-max-number-of-peers.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/set-max-number-of-peers.md"
         targets:
             - ja
 
@@ -4481,7 +4481,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/configure-peering/use-a-peer-reservation.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/use-a-peer-reservation.md"
         targets:
             - ja
 
@@ -4506,7 +4506,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md"
         targets:
             - ja
 
@@ -4514,7 +4514,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md"
         targets:
             - ja
 
@@ -4522,7 +4522,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md"
         targets:
             - ja
 
@@ -4546,7 +4546,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/troubleshooting/diagnosing-problems.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/troubleshooting/diagnosing-problems.md"
         targets:
             - ja
 
@@ -4560,7 +4560,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/troubleshooting/understanding-log-messages.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/troubleshooting/understanding-log-messages.md"
         targets:
             - ja
 
@@ -4569,7 +4569,7 @@ pages:
             - en
 
         # TODO: translate the blurb in this page's frontmatter
-    -   md: infrastructure/rippled/troubleshooting/server-doesnt-sync.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/troubleshooting/server-doesnt-sync.md"
         targets:
             - ja
 
@@ -4583,7 +4583,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/troubleshooting/server-wont-start.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/troubleshooting/server-wont-start.md"
         targets:
             - ja
 
@@ -4591,7 +4591,7 @@ pages:
         targets:
             - en
 
-    -   md: infrastructure/rippled/troubleshooting/fix-sqlite-tx-db-page-size-issue.ja.md
+    -   md: "@i18n/ja/infrastructure/rippled/troubleshooting/fix-sqlite-tx-db-page-size-issue.md"
         targets:
             - ja
 
@@ -5322,7 +5322,7 @@ pages:
         targets:
             - en
 
-    -   md: resources/known-amendments.ja.md
+    -   md: "@i18n/ja/resources/known-amendments.md"
         top_nav_grouping: 現在のステータス
         targets:
             - ja
@@ -5335,7 +5335,7 @@ pages:
         targets:
             - en
 
-    -   md: resources/contribute-code/contribute-code.ja.md
+    -   md: "@i18n/ja/resources/contribute-code/contribute-code.md"
         top_nav_grouping: 参加する
         targets:
             - ja
@@ -5344,7 +5344,7 @@ pages:
         targets:
             - en
 
-    -   md: resources/contribute-code/create-custom-transactors.ja.md
+    -   md: "@i18n/ja/resources/contribute-code/create-custom-transactors.md"
         targets:
             - ja
 
@@ -5355,7 +5355,7 @@ pages:
         targets:
             - en
 
-    -   md: resources/contribute-documentation/contribute-documentation.ja.md
+    -   md: "@i18n/ja/resources/contribute-documentation/contribute-documentation.md"
         top_nav_grouping: 参加する
         targets:
             - ja
@@ -5376,7 +5376,7 @@ pages:
         targets:
             - en
 
-    -   md: resources/contribute-documentation/documentation-translations.ja.md
+    -   md: "@i18n/ja/resources/contribute-documentation/documentation-translations.md"
         targets:
             - ja
 
@@ -5384,7 +5384,7 @@ pages:
         targets:
             - en
 
-    -   md: resources/contribute-documentation/creating-diagrams.ja.md
+    -   md: "@i18n/ja/resources/contribute-documentation/creating-diagrams.md"
         targets:
             - ja
 
@@ -5392,7 +5392,7 @@ pages:
         targets:
             - en
 
-    -   md: resources/contribute-documentation/tutorial-guidelines.ja.md
+    -   md: "@i18n/ja/resources/contribute-documentation/tutorial-guidelines.md"
         targets:
             - ja
 
@@ -5400,7 +5400,7 @@ pages:
         targets:
             - en
 
-    -   md: resources/contribute-documentation/tutorial-structure.ja.md
+    -   md: "@i18n/ja/resources/contribute-documentation/tutorial-structure.md"
         targets:
             - ja
 
@@ -5570,7 +5570,7 @@ pages:
         targets:
             - en
 
-    -   md: contributing/report-a-scam.ja.md
+    -   md: "@i18n/ja/contributing/report-a-scam.md"
         targets:
             - ja
 
