@@ -169,7 +169,7 @@ The fields from a ledger stream message are as follows:
 |:--------------------|:--------------------------|:---------------------------|
 | `type`              | String                    | `ledgerClosed` indicates this is from the ledger stream |
 | `fee_base`          | Number                    | The [reference transaction cost](transaction-cost.html#reference-transaction-cost) as of this ledger version, in [drops of XRP][]. If this ledger version includes a [SetFee pseudo-transaction](setfee.html) the new transaction cost applies starting with the following ledger version. |
-| `fee_ref`           | Number                    | _(May be omitted)_ The [reference transaction cost](transaction-cost.html#reference-transaction-cost) in "fee units". If the _[XRPFees amendment][]_ is enabled, it is permanently omitted, as it will no longer be relevant. |
+| `fee_ref`           | Number                    | _(May be omitted)_ The [reference transaction cost](transaction-cost.html#reference-transaction-cost) in "fee units". If the _[XRPFees amendment][]_ is enabled, this field is permanently omitted as it will no longer be relevant. |
 | `ledger_hash`       | String - [Hash][]         | The identifying hash of the ledger version that was closed. |
 | `ledger_index`      | Number - [Ledger Index][] | The ledger index of the ledger that was closed. |
 | `ledger_time`       | Number                    | The time this ledger was closed, in [seconds since the Ripple Epoch][] |
