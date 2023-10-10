@@ -58,7 +58,7 @@ rippled server_info counters # for optional performance statistics
 
 [Try it! >](websocket-api-tool.html#server_info)
 
-The request takes in an optional `counters` parameter. It will render metrics pertaining to Job Queue, nodestore and RPC call counters.
+The request takes in an optional `counters` parameter. It will render metrics, including those that pertain to Job Queue, nodestore and RPC call counters.
 
 ## Response Format
 
