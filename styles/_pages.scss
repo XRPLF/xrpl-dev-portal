@@ -164,7 +164,7 @@
 }
 
 .page-uses {
-  
+
   .container-new {
     padding-left: 16px;
     padding-right: 16px;
@@ -189,7 +189,7 @@
 
   /* Cleanup bootstrap modal */
   .modal {
-    padding: 0; 
+    padding: 0;
   }
   .modal-content {
     position: relative;
@@ -199,7 +199,7 @@
     pointer-events: auto;
     background-color: $black;
 
-    background-clip: padding-box; 
+    background-clip: padding-box;
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -224,12 +224,12 @@
     border: none;
     background: $gray-900;
     box-shadow: 0px -1px 2px $black;
-    
-    align-items: unset; 
+
+    align-items: unset;
     padding: 0.75rem;
     flex-direction: column;
     flex-wrap: wrap;
-  }    
+  }
 
   .card-title {
     margin-bottom: 0.5rem;
@@ -357,7 +357,7 @@
           max-height: 40px;
           content: url("../img/uses/#{$company}.#{$type}");
         }
-      } 
+      }
     }
 
   }
@@ -372,15 +372,15 @@
       padding-left: 64px;
       padding-right: 64px;
     }
-    
+
     .card-grid img {
       max-height: 48px;
     }
-  
+
     .card-grid {
       grid-gap: 48px
     }
-  
+
     .card-uses {
       padding: 24px;
     }
@@ -389,7 +389,7 @@
 
 
 }
-// End UseCases 
+// End UseCases
 
 // History Page
 #history-orange {
@@ -495,7 +495,7 @@
         }
       }
     }
-  
+
     #eligibility-list {
       @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03", "eligibility-04", "eligibility-05" {
         ##{$eligibility} {
@@ -510,30 +510,30 @@
   }
 
   #container-scroll {
-    height:160px; 
-    position:relative; 
+    height:160px;
+    position:relative;
     overflow:hidden;
     margin-top: 80px;
     margin-bottom: 64px;
   }
-  
+
   .photobanner {
-    position:absolute; 
-    top:0px; 
-    left:0px; 
-    overflow:hidden; 
+    position:absolute;
+    top:0px;
+    left:0px;
+    overflow:hidden;
     white-space: nowrap;
     animation: bannermove 40s linear infinite;
   }
 
   .photobanner-bottom {
-    top:112px; 
+    top:112px;
   }
-  
-  .photobanner img {    
-    margin: 0 0.5em 
+
+  .photobanner img {
+    margin: 0 0.5em
   }
-  
+
   @keyframes bannermove {
     0% {
         transform: translate(0, 0);
@@ -715,7 +715,7 @@
   label {
     margin: 0;
     padding-left: 8px;
-    color: $white;  
+    color: $white;
   }
 
   .events-filter h6 {
@@ -737,7 +737,7 @@
     display: block;
     width: 20px;
     height: 20px;
-  
+
     content: "";
     background: $gray-900;
 
@@ -746,17 +746,17 @@
     border-style: solid;
     border-color: $gray-400;
   }
-  
+
   .events-filter[type="checkbox"]::after {
     position: relative;
     display: block;
-  
+
     top: -20px;
     width: 20px;
     height: 20px;
-  
+
     content: "";
-  
+
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 4px;
@@ -764,7 +764,7 @@
     border-style: solid;
     border-color: $gray-400;
   }
-  
+
   .events-filter[type="checkbox"]:checked::before {
     background: $gray-900;
     border: none;
@@ -781,7 +781,7 @@
     border-color: $blue-purple-500;
     border-radius: 4px;
   }
-  
+
 
   .events-filter[type="checkbox"]:not(:disabled):checked:hover::after {
     background-image: url(../img/events/event-check.svg);
@@ -792,7 +792,7 @@
     border-color: $blue-purple-600;
     border-radius: 4px;
   }
-  
+
 
   .events-filter[type="checkbox"]:not(:disabled):hover::before {
     background: $gray-900;
@@ -973,7 +973,7 @@
 
 .page-docs-index {
   &::before {
-    background-image: url(../../img/backgrounds/docs-splash.svg);
+    // background-image: url(../../img/backgrounds/docs-splash.svg); // missing image
     background-position-x: right;
   }
 
@@ -1048,7 +1048,7 @@
       -o-transition: all 0.1s ease;
       transition: all 0.1s ease;
     }
-  
+
     .one {
       top: 160px;
       left: 0%;
@@ -1112,7 +1112,7 @@
         color: #fff;
         font-weight: bold;
 
-        &:hover { 
+        &:hover {
           text-decoration: none;
           background: none !important;
         }

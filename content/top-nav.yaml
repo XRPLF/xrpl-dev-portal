@@ -2,7 +2,7 @@
 #   show: true
 #   message: This is the draft Redocly version of the site!
 #   button: Cool
-#   link: https://github.com/ripple/xrpl-org-dev-portal
+#   href: https://github.com/ripple/xrpl-org-dev-portal
 
 # nav:
 - group: About
