@@ -10,58 +10,58 @@
     - group: XRP Ledger Overview
       items:
         - label: XRPL Overview
-          link: /about/xrp-ledger-overview/
+          href: /about/xrp-ledger-overview/
         - label: Use Cases
-          link: /about/use-cases/
+          href: /about/use-cases/
         - label: History
-          link: /about/history/
+          href: /about/history/
         - label: Ledger Explorer
-          link: https://livenet.xrpl.org
+          href: https://livenet.xrpl.org
           external: true
     - group: XRP
       items:
         - label: XRP Overview
-          link: /about/xrp-overview
+          href: /about/xrp-overview
     - group: Sustainability
       items:
         - label: Impact
-          link: /about/impact/
+          href: /about/impact/
     - group: About
       items:
         - label: XRPL Foundation
-          link: https://foundation.xrpl.org/
+          href: https://foundation.xrpl.org/
           external: true
         - label: FAQ
-          link: /about/faq/
+          href: /about/faq/
 
 - group: Docs
   items:
     - hero: top-nav-hero-docs
       label: Documentation
       description: Dive into XRP Ledger technology and start integrating.
-      link: /docs/
+      page: ./docs.page.tsx
     - group: Introduction to the XRP Ledger
       items:
         - label: What is XRP?
-          link: /docs/concepts/introduction/what-is-xrp
+          href: /docs/concepts/introduction/what-is-xrp
         - label: What is the XRP Ledger?
-          link: /docs/concepts/introduction/what-is-xrpl
+          href: /docs/concepts/introduction/what-is-xrpl
         - label: Transactions and Requests
-          link: /docs/concepts/introduction/txn-and-requests
+          href: /docs/concepts/introduction/txn-and-requests
     - group: Tutorials
       items:
         - label: Quickstart
-          link: /docs/tutorials/quickstart
+          href: /docs/tutorials/quickstart
         - label: Code Samples
-          link: /docs/code-samples
+          href: /docs/code-samples
     - group: API Reference
       items:
         - label: Client Libraries
-          link: /docs/references/client-libraries/
+          href: /docs/references/client-libraries/
         - label: Public API Methods
-          link: /docs/references/http-websocket-apis/public-api-methods/
+          href: /docs/references/http-websocket-apis/public-api-methods/
         - label: Admin API Methods
-          link: /docs/references/http-websocket-apis/admin-api-methods/
+          href: /docs/references/http-websocket-apis/admin-api-methods/
     - group: Popular Pages
       items:
         - label: Send XRP
@@ -71,7 +71,7 @@
         - label: XRPL Servers
           href: /infrastructure/xrpl-servers/
     - label: Dev Tools
-      link: /docs/dev-tools/
+      href: /docs/dev-tools/
 
 
 - group: Community
@@ -79,18 +79,18 @@
     - hero: top-nav-hero-contribute
       label: Contribute to the XRPL Community
       description: Join the conversation
-      link: /community/
+      href: /community/
     - label: Events
-      link: /community/events/
+      href: /community/events/
     - label: Ambassadors
-      link: /community/ambassadors/
+      href: /community/ambassadors/
     - label: XRPL Jobs
-      link: https://jobs.xrpl.org/
+      href: https://jobs.xrpl.org/
       external: true
     - label: Blog
-      link: /blog/
+      href: /blog/
     - label: XRPL Grants
-      link: https://xrplgrants.org/
+      href: https://xrplgrants.org/
       external: true
     - label: Report a Scam
-      link: /community/report-a-scam/
+      href: /community/report-a-scam/
