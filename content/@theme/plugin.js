@@ -15,6 +15,12 @@ export default function indexPagesPlugin() {
         // this uses some internals, we will expose them in nicer way in the future releases
         const sidebarId = actions.routesSharedData.get(route.slug)?.['sidebar']; // TODO: implement a helper function for this
         const sidebar = await readSharedData(sidebarId, actions.outdir);
+
+        if (!sidebar) {
+          console.log('Index route used with no sidebar', route.fsPath);
+          continue;
+        }
+
         const item = findItemDeep(sidebar.items, route.fsPath);
         const childrenPaths =(item.items || []).map(item => item.fsPath).filter(Boolean);
 
