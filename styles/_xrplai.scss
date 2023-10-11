@@ -1,0 +1,20 @@
+button.MarkpromptFloatingTrigger {
+  bottom: 4.5rem;
+}
+
+html.light .MarkpromptContentDialog a {
+  color: $light-link-hover-color;
+}
+
+html.light .MarkpromptContentDialog h3:not(.chip) {
+  color: $black;
+}
+
+.MarkpromptExtendedFeedbackTextInput {
+  background-color: $white;
+  color: $black;
+}
+
+.MarkpromptOverlay {
+  z-index: 20;
+}
