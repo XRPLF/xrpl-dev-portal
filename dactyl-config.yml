@@ -507,19 +507,19 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/introduction/what-is-the-xrp-ledger.md
+    -   md: introduction/what-is-the-xrp-ledger.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/introduction/what-is-the-xrp-ledger.md"
+    -   md: "@i18n/ja/introduction/what-is-the-xrp-ledger.md"
         targets:
             - ja
 
-    -   md: concepts/introduction/what-is-xrp.md
+    -   md: introduction/what-is-xrp.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/introduction/what-is-xrp.md"
+    -   md: "@i18n/ja/introduction/what-is-xrp.md"
         targets:
             - ja
 
@@ -533,32 +533,32 @@ pages:
             - en
             - ja
 
-    -   md: concepts/introduction/crypto-wallets.md
+    -   md: introduction/crypto-wallets.md
         parent: introduction.html
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/introduction/crypto-wallets.md"
+    -   md: "@i18n/ja/introduction/crypto-wallets.md"
         parent: introduction.html
         targets:
             - ja
 
-    -   md: concepts/introduction/txn-and-requests.md
+    -   md: introduction/transactions-and-requests.md
         parent: introduction.html
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/introduction/txn-and-requests.md"
+    -   md: "@i18n/ja/introduction/transactions-and-requests.md"
         parent: introduction.html
         targets:
             - ja
 
-    -   md: concepts/introduction/software-ecosystem.md
+    -   md: introduction/software-ecosystem.md
         parent: introduction.html
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/introduction/software-ecosystem.md"
+    -   md: "@i18n/ja/introduction/software-ecosystem.md"
         parent: introduction.html
         targets:
             - ja
