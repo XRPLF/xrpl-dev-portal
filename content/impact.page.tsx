@@ -1,9 +1,38 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
-
+import mapDark from "./static/js/impact/mapDark.json"
 export default function Impact() {
   const { translate } = useTranslate();
 
+ console.log(mapDark)
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // to do: FIX THIS ANIMATION
+      // const bodymovin = require('bodymovin');
+      // Light animation
+      // const mapLightAnimation = () => {
+      //   bodymovin.loadAnimation({
+      //     wrapper: document.getElementById('map-dark'),
+      //     animType: 'svg',
+      //     loop: true,
+      //     path: mapDark
+      //   });
+      // };
+      // Dark animation
+      // const mapDarkAnimation = () => {
+      //   bodymovin.loadAnimation({
+      //     container: document.getElementById('map-dark'),
+      //     renderer: 'svg',
+      //     loop: true,
+      //     autoplay: true,
+      //     animationData: require('./static/js/impact/mapLight.json'),
+      //   });
+      // };
+      // mapLightAnimation();
+      // mapDarkAnimation();
+    }
+  }, []);
+  
   return (
     <div className="landing page-impact">
       <div className="overflow-hidden">
