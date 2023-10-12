@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "baseUrl": ".",
     "jsx": "react-jsx",
     "resolveJsonModule": true,
