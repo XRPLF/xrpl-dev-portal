@@ -6,6 +6,7 @@ const langIcons = {
   go: require('./static/img/logos/golang.svg'),
   java: require('./static/img/logos/java.svg'),
   js: require('./static/img/logos/javascript.svg'),
+  php: require('./static/img/logos/php.svg'),
   py: require('./static/img/logos/python.svg'),
   http: require('./static/img/logos/globe.svg'),
 };
