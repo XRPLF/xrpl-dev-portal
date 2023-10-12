@@ -50,15 +50,36 @@ const jsx = HtmlToJsxInst.convert(replacedJinja);
 
 // replace trans
 
+// Specifically handling <img> tags
+const handleImgTags = (str) => {
+  return str.replace(/<img ([^>]*?)>/g, function(match) {
+    // If alt is not present, add a default one
+    if (!/alt=/.test(match)) {
+      return match.replace(/<img /, '<img alt="default-alt-text" ');
+    }
+    // If alt is present but malformed
+    if (/alt=\{(\d+)\}/.test(match)) {
+      return match.replace(/alt=\{(\d+)\}/, `alt="default-alt-text"`);
+    }
+    return match; // if alt is fine, return as is
+  });
+};
+const jsxWithHandledImgTags = handleImgTags(jsx);
+
 // replace $$ for card in cards3 $$
-const jsxWithReplacedForLoops = jsx
+const jsxWithReplacedForLoops = jsxWithHandledImgTags
   .replace(/\$\$ for ([\w\d]+) in ([\w\d]+) \$\$/g, ' { $2.map($1 => (')
   .replace(/\$\$ endfor \$\$/g, ')) }')
   .replace(/="\$\$(\w+\.\w+)\$\$"/g, '={$1}')
   .replace(/="\$\$(\w+\.\w+)\$\$\$\$(\w+\.\w+)\$\$"/g, '={$1 + $2}')
   .replace(/="\$\$(\w+\.\w+)\$\$(.+?)"/g, '={$1 + "$2"}')
   .replace(/\$\$(\w+\.\w+)\$\$/g, '{$1}')
-  .replace(/<img ([^>]*?)src="(.*?)"/g, '<img $1src={require("$2")}');
+  .replace(/<img ([^>]*?)src="(.*?)"/g, '<img $1src={require("$2")}')
+  .replace(/<img ([^>]*?)src="(.*?)"/g, (match, attrs, src) => {
+    // Replace ./assets with ./static in the src attribute
+    const newSrc = src.replace('./assets', './static');
+    return `<img ${attrs}src={require("${newSrc}")}`;
+  });
 
 const jsxWithReplacedTranslate = jsxWithReplacedForLoops.replace(
   /\$\$ trans \$\$((?:.|\n)+?)\$\$ endtrans \$\$/g,
@@ -74,7 +95,7 @@ const jsxWithReplacedTranslate = jsxWithReplacedForLoops.replace(
 const output = `import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 
-${sets?.map(set => `const ${set.name} = ${set.value};`).join('\n\n')}
+${!!sets && sets.map(set => `const ${set.name} = ${set.value};`).join('\n\n')}
 
 const target= {prefix: ''}; // TODO: fixme
 
