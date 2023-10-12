@@ -68,24 +68,32 @@ def compare_nav_and_fs_hierarchy(page, pages, logger):
     crumbs = get_hierarchy(page, pages, logger)
     crumbs = [idify(c["name"]) for c in crumbs]
     #TODO: either fix the protocol reference thing or generalize the magic string into an "allowed aliases" feature
-    crumbs = [("protocol-reference" if c == "xrp-ledger-protocol-reference" else c) for c in crumbs]
+    #crumbs = [("protocol-reference" if c == "xrp-ledger-protocol-reference" else c) for c in crumbs]
     expected_path = "/".join(crumbs) + ".md"
     actual_path = page["md"]
+    pretty_url = "/" + "/".join(crumbs)
 
     if expected_path != actual_path:
         path_parts = actual_path.split("/")
-        if len(path_parts) >=2 and path_parts[-2]+".md" == path_parts[-1]:
-            expected_path2 = "/".join(crumbs+[crumbs[-1]]) + ".md"
+        if len(path_parts) >= 1 and path_parts[-1] == "index":
+            expected_path2 = "/".join(crumbs+["index"]) + ".md"
             if actual_path == expected_path2:
-                logger.debug("Mismatched path {actual_path} is OK (follows 'topic/topic.md' convention)".format(actual_path=actual_path))
+                logger.debug("Topic index is fine at {actual_path}")
                 return
+        # elif len(path_parts) >=2 and path_parts[-2]+".md" == path_parts[-1]:
+        #     expected_path2 = "/".join(crumbs+[crumbs[-1]]) + ".md"
+        #     if actual_path == expected_path2:
+        #         logger.debug("Mismatched path {actual_path} is OK (follows 'topic/topic.md' convention)".format(actual_path=actual_path))
+        #         return
 
-        # Switch to the commented out print statement to get
+        # Switch to the commented out print statement(s) to get
         # tab-separated values you can paste into a spreadsheet:
-        # print(expected_path, "\t", actual_path)
+
+        #print(pretty_url, "\t", expected_path, "\t", actual_path)
         logger.warning("""File path doesn't match the recommendation based on navigation.
     Expected: {expected_path}
       Actual: {actual_path}""".format(expected_path=expected_path, actual_path=actual_path))
+    #print("/"+page["html"], "\t", pretty_url)
 
 
 def filter_soup(soup, currentpage={}, config={}, pages=[], logger=None, **kwargs):
@@ -112,5 +120,5 @@ def filter_soup(soup, currentpage={}, config={}, pages=[], logger=None, **kwargs
         return
 
     # TODO: allow configuration of loose/strict matching
-    if not normalized_match(page_filename, page_h1, loose=True):
+    if not normalized_match(page_filename, page_h1, loose=False):
         logger.warning("Filename/Title Mismatch: '{page_filename}' vs '{page_h1}'".format(page_filename=page_filename, page_h1=page_h1))
