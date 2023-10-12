@@ -1,15 +1,17 @@
 import { useState, useMemo } from "react";
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
+const moment = require('moment');
+
 
 function categorizeDates(arr) {
   const past = [];
   const upcoming = [];
-  const today = new Date();
+  const today = moment().startOf('day'); // set the time to midnight
 
   arr.forEach((obj) => {
-    const endDate = new Date(Date.parse(obj.end_date));
-    if (endDate < today) {
+    const endDate = moment(obj.end_date, "MMMM D, YYYY"); // parse the 'end_date' string into a moment object
+    if (endDate.isBefore(today)) {
       obj.type = `${obj.type}-past`;
       past.push(obj);
     } else {
@@ -173,7 +175,7 @@ const events = [
   },
 
   {
-    name: "Hackathon: New Year, New NFT",
+    name: "Hackathon:New Year, New NFT",
     id: "upcoming-xrpl-hackathon-new-year",
     description:
       "Build Functional NFTs that span across a full range of use cases.",
@@ -198,7 +200,7 @@ const events = [
   },
 
   {
-    name: "Conference: Apex 2021",
+    name: "Conference:Apex 2021",
     description:
       "View sessions from the Apex 2021 stages in Las Vegas and Tallinn.",
     type: "conference",
@@ -210,7 +212,7 @@ const events = [
   },
 
   {
-    name: "Hackathon: NFT Launch Party",
+    name: "Hackathon:NFT Launch Party",
     description:
       "Build Functional NFTs that span across a full range of use cases.",
     type: "hackathon",
@@ -341,6 +343,28 @@ const events = [
     end_date: "June 24, 2023",
   },
   {
+    name: "XRPL BUIDLERS BOOTCAMP",
+    description:
+      "First XRPL Ideathon in Japan Held Ahead of Crypto Event IVS Crypto.",
+    type: "hackathon",
+    link: "https://lu.ma/xrpl_builders_bootcamp",
+    location: "Tokyo",
+    date: "June 25, 2023",
+    image: "Hackathons.png",
+    end_date: "June 25, 2023",
+  },
+  {
+    name: "XRPL Workshop at WebX Asia",
+    description:
+      "Workshop with XRP Ledger co-developer David Schwartz and leading Japanese XRPL developers.",
+    type: "conference",
+    link: "https://lu.ma/mn90h3h9",
+    location: "Tokyo",
+    date: "July 26, 2023",
+    image: "Conference.png",
+    end_date: "July 26, 2023",
+  },
+  {
     name: "XRPL Summer Hackathon",
     description:
       "The XRPL Hackathon is all about supporting innovative projects and getting developers from diverse backgrounds to explore creative ideas and transition from centralized systems to the exciting world of blockchain. Bring your innovative projects to life and get a chance to secure up to $10,000 in funding.",
@@ -422,7 +446,7 @@ const events = [
     description:
       "Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Financial Inclusion projects.",
     type: "info-session",
-    link: "https://ripple.zoom.us/webinar/register/WN_YdxeVY9_RJG5SVo-LSip6w#/registration",
+    link: "https://www.youtube.com/watch?v=TgLaAXTZY7Q",
     location: "Virtual - Zoom",
     date: "September 05, 2023",
     image: "InfoSessions.png",
@@ -442,20 +466,38 @@ const events = [
   {
     name: "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",
     description:
-      "Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.",
+      "Watch the recorded information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.",
     type: "info-session",
-    link: "https://ripple.zoom.us/webinar/register/WN_ITv-kDuCS3i6UOgBxBe7-A",
+    link: "https://www.youtube.com/watch?v=BbGu0QC5WEE",
     location: "Virtual - Zoom",
     date: "September 06, 2023",
     image: "InfoSessions.png",
     end_date: "September 06, 2023",
   },
+  {
+    name: "XRPL Developers Discord AMA: Edge Wallet",
+    description:
+      "Join us for a live chat on Discord and learn more about Edge Wallet and how they are building on the XRP Ledger.",
+    type: "ama",
+    link: "http://xrpldevs.org/",
+    location: "XRPL Developers Discord",
+    date: "October 13, 2023",
+    image: "AMAs.png",
+    end_date: "October 13, 2023",
+  },
+
+  {
+    name: "XRPL Developers Reddit AMA: Real World Assets",
+    description:
+      "Join us for a live chat on Reddit and learn more about how developers are building real world assets with confidence on the XRP Ledger.",
+    type: "ama",
+    link: "https://xrplresources.org/rwa-ama?utm_source=web&utm_medium=web&utm_campaign=bwc",
+    location: "Virtual - Reddit",
+    date: "October 17, 2023",
+    image: "AMAs.png",
+    end_date: "October 17, 2023",
+  },
 ];
-const results = categorizeDates(events);
-
-const { past, upcoming } = results;
-
-const target = { prefix: "" }; // TODO: fixme
 
 export default function Events() {
   const { translate } = useTranslate();
@@ -495,15 +537,15 @@ export default function Events() {
     const { name, checked } = event.target;
     setUpcomingFilters((prevFilters) => ({
       ...prevFilters,
-      [name]: checked,
+      [name.replace('-upcoming','')]: checked,
     }));
   };
 
   const handlePastFilterChange = (event) => {
-    const { name, checked } = event.target;
+      const { name, checked } = event.target;
     setPastFilters((prevFilters) => ({
       ...prevFilters,
-      [name]: checked,
+      [name.replace('-past','')]: checked,
     }));
   };
 
