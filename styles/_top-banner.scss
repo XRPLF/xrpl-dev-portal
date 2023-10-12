@@ -1,7 +1,12 @@
 /* "pencil banner" style, currently unused */
+.top-nav.navbar.navbar-expand-lg {
+  position: relative;
+  top: 46px;
+}
+
 .top-banner {
   height: 46px;
-  background: url(../img/backgrounds/bg-apex-banner.svg);
+  background: url(../img/backgrounds/bg-banner.png);
   background-position: left;
   background-size: cover;
   background-color: $blue-purple-500;
@@ -79,6 +84,7 @@ html.light {
     .btn-outline-secondary {
       color: $white;
       border-color: $white;
+
       &:not(:disabled):not(.disabled):hover {
         color: $gray-900;
         background-color: $white;

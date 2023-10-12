@@ -1,4 +1,14 @@
-<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+<div class="top-banner fixed-top"> 
+  <div class="d-none d-md-flex justify-content-center">
+    <span><p class="mb-0">{% trans %}The XLS-30 AMM is now available for voting{% endtrans %}</p></span>
+    <span><a href="automated-market-makers.html" class="btn btn-outline-secondary">Learn More</a></span>
+  </div>
+  <div class="d-md-none d-block justify-content-center">
+    <span><p class="mb-0">{% trans %}The XLS-30 AMM is now available for voting{% endtrans %}</p></span>
+    <span><p class="mb-0"><a href="automated-market-makers.html" class="btn btn-outline-secondary">Learn More</a></p></span>
+  </div>
+</div>
+<nav class="top-nav navbar navbar-expand-lg navbar-dark">
   <a href="{% if currentpage.prefix %}{{currentpage.prefix}}{% else %}/{% endif %}" class="navbar-brand"><img class="logo"  height="40" alt="{{target.display_name}}" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"><div></div></span>
